@@ -1,0 +1,21 @@
+name        : gawk
+version     : 5.1.0
+release     : 1
+summary     : GNU awk pattern-matching language
+license     : GPL-3.0-or-later
+homepage    : https://www.gnu.org/software/gawk/gawk.html
+description : |
+    GNU awk pattern-matching language
+upstreams   :
+    - https://ftp.gnu.org/gnu/gawk/gawk-5.1.0.tar.xz: cf5fea4ac5665fd5171af4716baab2effc76306a9572988d5ba1078f196382bd
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Stateless: Move profile.d dir to stateless default path
+    %install_file %(installroot)/etc/profile.d/* -t %(installroot)/%(vendordir)/profile.d/
+    rm %(installroot)/etc/profile.d/*
+    rmdir %(installroot)/etc/profile.d %(installroot)/etc

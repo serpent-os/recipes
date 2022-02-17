@@ -1,0 +1,82 @@
+name        : gcc
+version     : 11.2.0
+release     : 1
+summary     : GNU C++ standard library and compiler
+license     : GPL-3.0-or-later
+homepage    : https://gcc.gnu.org/
+description : |
+    GNU C++ standard library and compiler
+upstreams   :
+    - https://ftp.gnu.org/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz: d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b
+    - https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz:
+        hash: fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2
+        stripdirs: 1
+        unpackdir: "%(name)-%(version)/gmp/"
+    - https://libisl.sourceforge.io/isl-0.24.tar.xz:
+        hash: 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
+        stripdirs: 1
+        unpackdir: "%(name)-%(version)/isl/"
+    - https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz:
+        hash: 17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459
+        stripdirs: 1
+        unpackdir: "%(name)-%(version)/mpc/"
+    - https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.xz:
+        hash: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
+        stripdirs: 1
+        unpackdir: "%(name)-%(version)/mpfr/"
+setup       : |
+    %patch %(pkgdir)/perf/use-highest-optimize-value.patch
+    %patch %(pkgdir)/serpent/0001-Use-modern-linker-locations-for-Serpent-OS.patch
+    %patch %(pkgdir)/serpent/0001-Install-libraries-into-lib-rather-than-lib64.patch
+
+    mkdir build && cd build
+    ../configure %(options_configure) \
+        --disable-libmpx \
+        --disable-libssp \
+        --disable-libunwind-exceptions \
+        --disable-libstdcxx-pch \
+        --disable-vtable-verify \
+        --enable-__cxa_atexit \
+        --enable-checking=release \
+        --enable-clocale=gnu \
+        --enable-gnu-indirect-function \
+        --enable-gnu-unique-object \
+        --enable-initfini-array \
+        --enable-languages=c,c++,lto \
+        --enable-linker-build-id \
+        --enable-lto \
+        --enable-multilib \
+        --enable-plugin \
+        --enable-shared \
+        --enable-threads=posix \
+        --with-arch=%(march) \
+        --with-arch_32=%(march) \
+        --with-gcc-major-version-only \
+        --with-isl \
+        --with-linker-hash-style=gnu \
+        --with-multilib-list=m32,m64 \
+        --with-system-zlib \
+        --with-tune=%(mtune) \
+        --with-tune_32=%(mtune)
+build       : |
+    %make -C build profiledbootstrap
+install     : |
+    %make_install -C build
+
+    # bfd needs to be able to find the LTO plugin
+    major_version=$(echo %(version) | cut -d. -f1)
+    %install_dir %(installroot)/%(libdir)/bfd-plugins
+    ln -sf %(libdir)/gcc/gcc/%(build)/${major_version}/liblto_plugin.so %(installroot)/%(libdir)/bfd-plugins/liblto_plugin.so
+
+    # gdb needs to autoload some files, maybe lldb piggy backs off this?
+    %install_dir %(installroot)/%(datadir)/gdb/auto-load/%(libdir)
+    %install_dir %(installroot)/%(datadir)/gdb/auto-load/%(libdir)32
+    mv %(installroot)/%(libdir)/libstdc++.so.*-gdb.py %(installroot)/%(datadir)/gdb/auto-load/%(libdir)/.
+    mv %(installroot)/%(libdir)32/libstdc++.so.*-gdb.py %(installroot)/%(datadir)/gdb/auto-load/%(libdir)32/.
+toolchain   : gnu
+tuning      :
+    - fortify: false
+    - harden: false
+    - nosemantic
+    - optimize: speed
+    - symbolic

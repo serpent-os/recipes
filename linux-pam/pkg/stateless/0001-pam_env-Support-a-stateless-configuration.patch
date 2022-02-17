@@ -1,0 +1,52 @@
+From 193ab9435391cd1334d0854d971fb8bdf5d85cd4 Mon Sep 17 00:00:00 2001
+From: Peter O'Connor <sunnyflunk@serpentos.com>
+Date: Fri, 6 Aug 2021 22:52:35 +1000
+Subject: [PATCH] pam_env: Support a stateless configuration
+
+Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+---
+ modules/pam_env/Makefile.am | 3 ++-
+ modules/pam_env/pam_env.c   | 7 +++++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/modules/pam_env/Makefile.am b/modules/pam_env/Makefile.am
+index c66112d..2bb7d30 100644
+--- a/modules/pam_env/Makefile.am
++++ b/modules/pam_env/Makefile.am
+@@ -28,7 +28,8 @@ securelib_LTLIBRARIES = pam_env.la
+ pam_env_la_LIBADD = $(top_builddir)/libpam/libpam.la
+ 
+ dist_secureconf_DATA = pam_env.conf
+-dist_sysconf_DATA = environment
++dist_defaultsdir = $(datadir)/defaults/etc
++dist_defaults_DATA = environment
+ 
+ if ENABLE_REGENERATE_MAN
+ dist_noinst_DATA = README
+diff --git a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
+index f5f8cea..6f56ed3 100644
+--- a/modules/pam_env/pam_env.c
++++ b/modules/pam_env/pam_env.c
+@@ -7,6 +7,7 @@
+  */
+ 
+ #define DEFAULT_ETC_ENVFILE     "/etc/environment"
++#define DEFAULT_ETC_STATELESS_ENVFILE     "/usr/share/defaults/etc/environment"
+ #define DEFAULT_READ_ENVFILE    1
+ 
+ #define DEFAULT_USER_ENVFILE    ".pam_environment"
+@@ -76,6 +77,12 @@ _pam_parse (const pam_handle_t *pamh, int argc, const char **argv,
+ 
+     *user_envfile = DEFAULT_USER_ENVFILE;
+     *envfile = DEFAULT_ETC_ENVFILE;
++
++    if (access(DEFAULT_ETC_ENVFILE, F_OK) == 0)
++        *envfile = DEFAULT_ETC_ENVFILE;
++    else
++        *envfile = DEFAULT_ETC_STATELESS_ENVFILE;
++
+     *readenv = DEFAULT_READ_ENVFILE;
+     *user_readenv = DEFAULT_USER_READ_ENVFILE;
+     *conffile = DEFAULT_CONF_FILE;
+-- 
+2.31.1

@@ -1,0 +1,21 @@
+name        : bash
+version     : 5.1
+release     : 1
+summary     : GNU Bourne Again shell
+license     : GPL-3.0-or-later
+homepage    : http://www.gnu.org/software/bash/bash.html
+description : |
+    GNU Bourne Again shell
+upstreams   :
+    - https://ftp.gnu.org/gnu/bash/bash-5.1.tar.gz: cc012bc860406dcf42f64431bcd3d2fa7560c02915a601aba9cd597a39329baa
+setup       : |
+    %patch %(pkgdir)/stateless/0001-Use-a-stateless-profile-by-default.patch
+
+    %configure --without-bash-malloc \
+        --enable-nls
+build       : |
+    %make -j3
+install     : |
+    %make_install -j3
+
+    %install_file %(pkgdir)/profile %(installroot)/%(vendordir)/profile

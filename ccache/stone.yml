@@ -1,0 +1,35 @@
+name        : ccache
+version     : 4.5.1
+release     : 1
+summary     : ccache - a fast C/C++ compiler cache
+license     : GPL-3.0-or-later
+homepage    : https://ccache.dev/
+description : |
+    Ccache is a compiler cache. It speeds up recompilation by caching previous compilations and detecting when the same compilation is being done again. Supported languages are C, C++, Objective-C and Objective-C++.
+upstreams   :
+    - https://github.com/ccache/ccache/releases/download/v4.5.1/ccache-4.5.1.tar.xz : 51186ebe0326365f4e6131e1caa8911de7da4aa6718efc00680322d63a759517
+builddeps   :
+    # pkgconfig(hiredis)
+    - pkgconfig(libzstd)
+setup       : |
+    # avoid packaging hiredis for now...
+    %cmake \
+      -DCMAKE_INSTALL_SYSCONFDIR="%(vendordir)/ccache" \
+      -DREDIS_STORAGE_BACKEND=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+
+    # Setup ccache symlinks for gnu and clang compilers
+    install -d %(installroot)/%(libdir)%/ccache/bin
+    TGT="%(installroot)/%(libdir)%/ccache/bin"
+    for compiler in gcc x86_64-serpent-linux-gcc g++ x86_64-serpent-linux-g++ c++ x86_64-serpent-linux-c++ clang clang++ ; do
+        ln -sv /usr/bin/ccache "${TGT}/${compiler}"
+    done
+
+    # Install our default config
+    %install_file %(pkgdir)/ccache.conf %(installroot)/%(vendordir)/ccache/ccache.conf
+check       : |
+    # needs elfutils packaged
+    %cmake_build test || :

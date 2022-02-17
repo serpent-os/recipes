@@ -1,0 +1,19 @@
+name        : slibtool
+version     : 0.5.31
+release     : 1
+summary     : A skinny libtool implementation, written in C
+license     : MIT
+homepage    : http://git.midipix.org/cgit.cgi/slibtool
+description : |
+    A skinny libtool implementation, written in C
+upstreams   :
+    - https://github.com/midipix-project/slibtool/archive/v0.5.31.tar.gz : 2f611e477a282b147e2c877764a27e58b90e5b546b4479844503827a587d7a7a
+setup       : |
+    %configure --disable-shared
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Use slibtool for all libtool purposes
+    ln -svf slibtool "%(installroot)/usr/bin/libtool"

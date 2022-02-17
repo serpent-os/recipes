@@ -1,0 +1,16 @@
+Based off the Gentoo patch but only adding soname.
+
+diff --git a/Makefile.SH b/Makefile.SH
+index 2895bfc..a903a8f 100755
+--- a/Makefile.SH
++++ b/Makefile.SH
+@@ -128,6 +128,9 @@ true)
+ 	    linklibperl='libperl.x'
+ 	    DPERL_EXTERNAL_GLOB=''
+ 	    ;;
++       linux*)
++           shrpldflags="$shrpldflags -Wl,-soname -Wl,libperl.so"
++           ;;
+ 	esac
+ 	case "$ldlibpthname" in
+ 	'') ;;

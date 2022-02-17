@@ -1,0 +1,20 @@
+name        : coreutils
+version     : 9.0
+release     : 1
+summary     : Basic file, shell, and text manipulation utilities
+license     : GPL-3.0-or-later
+homepage    : https://www.gnu.org/software/coreutils
+description : |
+    Basic file, shell, and text manipulation utilities
+upstreams   :
+    - https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz: ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce
+environment : |
+    export FORCE_UNSAFE_CONFIGURE=1
+setup       : |
+    %configure --enable-no-install-program=kill,groups \
+        --enable-single-binary \
+        --with-openssl=no
+build       : |
+    %make
+install     : |
+    %make_install

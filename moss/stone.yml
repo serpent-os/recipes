@@ -1,0 +1,14 @@
+name        : moss
+version     : 0.1
+release     : 1
+summary     : Default package manager of Serpent OS
+license     : Zlib
+homepage    : https://gitlab.com/serpent-os/core/moss
+description : |
+    The default package manager of Serpent OS.
+build       : |
+    #dub build --parallel -b release --compiler=ldc2 --skip-registry=all -v
+install     : |
+    #dub install --root=%(installroot)
+
+    %install_exe %(pkgdir)/moss %(installroot)/usr/bin/moss

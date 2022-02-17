@@ -1,0 +1,12 @@
+name        : leftover
+version     : 5.8
+release     : 1
+summary     : GNU Text Editor
+license     : GPL-3.0-or-Later
+homepage    : https://www.nano-editor.org/
+description : |
+    The GNU Text Editor
+install     : |
+    %install_file -t %(installroot)/usr/lib32/ /usr/lib32/libc++.so.1*
+    %install_file -t %(installroot)/usr/share/bin/ /usr/lib/libc++abi.so.1*
+    %install_file -t %(installroot)/usr/share/bin/ /usr/lib/libunwind.so.1*

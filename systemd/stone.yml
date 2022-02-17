@@ -1,0 +1,37 @@
+name        : systemd
+version     : 248.3
+release     : 1
+summary     : A System and Service Manager
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+    - MIT
+homepage    : http://www.freedesktop.org/wiki/Software/systemd
+description : |
+    A System and Service Manager
+upstreams   :
+    - https://github.com/systemd/systemd-stable/archive/v248.3.tar.gz : cc372aeed563379a734901ed73d6fbb6b75c171251e1d69c0b5650aaf9c15d06
+setup       : |
+    %meson \
+        -Defi=true \
+        -Dfuzz-tests=false \
+        -Dinstall-tests=false \
+        -Dslow-tests=false \
+        -Dsplit-bin=true \
+        -Dsplit-usr=false \
+        -Dtests=false \
+        -Dzstd=true
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
+    # Stateless: Clean up /var directories, they are created via tmpfiles already
+    rm %(installroot)/var/log/README
+    rmdir %(installroot)/var/lib/systemd %(installroot)/var/lib
+    rmdir %(installroot)/var/log/journal %(installroot)/var/log %(installroot)/var
+
+    # Stateless: Clean up /etc, contains mostly example configs to learn from that we should put somewhere
+    # Actual vendor files can go in /usr/lib/systemd/journald.conf.d for example
+    # Test via systemd-analyze cat-config systemd/journald.conf
+    rm -rf %(installroot)/etc

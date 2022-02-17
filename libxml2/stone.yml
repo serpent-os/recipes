@@ -1,0 +1,26 @@
+name        : libxml2
+version     : 2.9.12
+release     : 1
+summary     : XML parsing library
+license     : MIT
+homepage    : http://www.xmlsoft.org/
+description : |
+    XML parsing library
+upstreams   :
+    - ftp://xmlsoft.org/libxml2/libxml2-2.9.12.tar.gz: c8d6681e38c56f172892c85ddc0852e1fd4b53b4209e7f4ebf17f7e2eae71d92
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check
+workload    : |
+    %make dba100000.xml
+    ./xmllint --noout  dba100000.xml
+    ./xmllint --stream  dba100000.xml
+    ./xmllint --noout --valid test/valid/REC-xml-19980210.xml
+    ./xmllint --stream --valid test/valid/REC-xml-19980210.xml
+#For some reason libtool is stripping -fcs-profile-generate=%(pgo_dir)/CS from link flags
+cspgo       : false

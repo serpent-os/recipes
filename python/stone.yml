@@ -1,0 +1,30 @@
+name        : python
+version     : 3.9.7
+release     : 1
+summary     : Python language interpreter
+license     : Python-2.0
+homepage    : https://www.python.org
+description : |
+    Python language interpreter
+upstreams   :
+    - https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tar.xz : f8145616e68c00041d1a6399b76387390388f8359581abc24432bb969b5e3c57
+setup       : |
+    %patch %(pkgdir)/serpent/always-install-setuptools.patch
+
+    %configure --disable-ipv6 \
+        --enable-lto \
+        --enable-optimizations \
+        --enable-shared \
+        --with-computed-gotos \
+        --without-cxx-main \
+        ax_cv_c_float_words_bigendian=no
+build       : |
+    %make
+install     : |
+    %make_install
+tuning      :
+    - icf: all
+    - lto
+    - nosemantic
+    - optimize: speed
+    - symbolic

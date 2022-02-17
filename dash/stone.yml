@@ -1,0 +1,24 @@
+name        : dash
+version     : 0.5.11.5
+release     : 1
+summary     : Small and fast POSIX-compliant shell
+license     : BSD-3-Clause
+homepage    : http://gondor.apana.org.au/~herbert/dash
+description : |
+    Small and fast POSIX-compliant shell
+upstreams   :
+    - http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.11.5.tar.gz: db778110891f7937985f29bf23410fe1c5d669502760f584e54e0e7b29e123bd
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Make dash the default sh
+    %install_dir "%(installroot)/usr/bin"
+    ln -svf dash "%(installroot)/usr/bin/sh"
+tuning      :
+    - icf: all
+    - lto
+    - nosemantic

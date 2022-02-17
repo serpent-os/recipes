@@ -1,0 +1,27 @@
+name        : zstd
+version     : 1.5.0
+release     : 1
+summary     : Fast real-time compression algorithm
+license     :
+    - BSD-3-Clause
+    - GPL-2.0-only
+homepage    : https://facebook.github.io/zstd
+description : |
+    Fast real-time compression algorithm
+upstreams   :
+    - https://github.com/facebook/zstd/releases/download/v1.5.0/zstd-1.5.0.tar.gz : 5194fbfa781fcf45b98c5e849651aa7b3b0a008c6b72d4a0db760f3002291e94
+build       : |
+    %make
+install     : |
+    %make_install PREFIX=/usr LIBDIR=/usr/lib
+    rm %(installroot)/%(libdir)/*.a
+workload    : |
+    for i in $(seq 1 22); do
+        cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
+        cat $(find lib -type f) | programs/zstd --ultra --long -${i} | programs/zstd -d > /dev/null
+    done
+tuning      :
+    - icf: all
+    - lto
+    - nosemantic
+    - symbolic

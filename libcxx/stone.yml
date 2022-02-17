@@ -1,0 +1,74 @@
+name        : libcxx
+version     : 13.0.0
+release     : 1
+summary     : LLVM's libcxx
+license     :
+    - Apache-2.0 WITH LLVM-exception
+    - NCSA
+homepage    : https://www.llvm.org
+description : |
+    LLVM's libcxx
+upstreams   :
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/llvm-project-13.0.0.src.tar.xz : 6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3
+environment : |
+    if [ -z "%(libsuffix)" ]; then
+        BIT32=OFF
+        BIT64=ON
+        PROJECTS='libcxx;libcxxabi;libunwind'
+    else
+        BIT32=ON
+        BIT64=OFF
+        PROJECTS='libcxx;libcxxabi;libunwind'
+    fi
+
+    # This is a bit hacky till there's an export for all build stages
+    export llvmopts="
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLLVM_DEFAULT_TARGET_TRIPLE=%(build) \
+        -DLLVM_ENABLE_PROJECTS='${PROJECTS}' \
+        -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
+        -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
+        -DLLVM_USE_SANITIZER=OFF \
+        -DLLVM_ENABLE_LTO=ON \
+        -DLLVM_ENABLE_UNWIND_TABLES=ON \
+        -DLLVM_INCLUDE_BENCHMARKS=OFF \
+        -DLLVM_INCLUDE_TESTS=OFF \
+        -DLLVM_INCLUDE_UTILS=OFF \
+        -DLLVM_BUILD_TOOLS=OFF \
+        -DLIBCXXABI_ENABLE_SHARED=OFF \
+        -DLIBCXXABI_ENABLE_STATIC_UNWINDER=ON \
+        -DLIBCXXABI_INSTALL_LIBRARY=OFF \
+        -DLIBCXXABI_STATICALLY_LINK_UNWINDER_IN_SHARED_LIBRARY=ON \
+        -DLIBCXXABI_STATICALLY_LINK_UNWINDER_IN_STATIC_LIBRARY=ON \
+        -DLIBCXXABI_USE_COMPILER_RT=ON \
+        -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
+        -DLIBCXX_ENABLE_PARALLEL_ALGORITHMS=OFF \
+        -DLIBCXX_ENABLE_SHARED=ON \
+        -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
+        -DLIBCXX_ENABLE_STATIC=OFF \
+        -DLIBCXX_HAS_ATOMIC_LIB=ON \
+        -DLIBCXX_STATICALLY_LINK_ABI_IN_SHARED_LIBRARY=ON \
+        -DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON \
+        -DLIBCXX_USE_COMPILER_RT=ON \
+        -DLIBUNWIND_ENABLE_SHARED=OFF \
+        -DLIBUNWIND_ENABLE_STATIC=ON \
+        -DLIBUNWIND_INSTALL_LIBRARY=OFF \
+        -DLIBUNWIND_USE_COMPILER_RT=ON"
+
+    cd llvm
+setup      : |
+
+    %cmake ${llvmopts} \
+        -DLLVM_BUILD_LLVM_DYLIB=ON \
+        -DLLVM_LINK_LLVM_DYLIB=ON
+build       : |
+    %cmake_build cxx cxxabi unwind
+install     : |
+    DESTDIR="%(installroot)" %cmake_build install-cxx
+
+    # Set some support symlinks
+    echo "INPUT(libc++.so.1)" > "%(installroot)/usr/lib%(libsuffix)/libunwind.so"
+    echo "INPUT(libc++.so.1)" > "%(installroot)/usr/lib%(libsuffix)/libc++abi.so"
+    ln -svf libc++.so.1 "%(installroot)/usr/lib%(libsuffix)/libunwind.so.1"
+    ln -svf libc++.so.1 "%(installroot)/usr/lib%(libsuffix)/libc++abi.so.1"
+emul32      : true

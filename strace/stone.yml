@@ -1,0 +1,16 @@
+name        : strace
+version     : 5.15
+release     : 1
+summary     : Diagnostic, debugging and instructional userspace utility
+license     : LGPL-2.1-or-later
+homepage    : https://strace.io
+description : |
+    strace is a diagnostic, debugging and instructional userspace utility for Linux.
+upstreams   :
+    - https://github.com/strace/strace/releases/download/v5.15/strace-5.15.tar.xz : ebcac22f297335294dc654425cbc3ce013343bece6da2699e3aec86aee8d72dc
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

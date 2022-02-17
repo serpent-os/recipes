@@ -1,0 +1,14 @@
+name        : codespell
+version     : 2.1.0
+release     : 1
+summary     : Check code for common misspellings
+license     : GPL-2.0-only
+homepage    : https://github.com/codespell-project/codespell
+description : |
+    Check code for common misspellings.
+upstreams   :
+    - https://github.com/codespell-project/codespell/archive/refs/tags/v2.1.0.tar.gz: 8d0730b6ff35e56bda8d9600ccffbf27bb83905600775bf869cb8b9936b108c0
+build       : |
+    %python
+install     : |
+    %python_install

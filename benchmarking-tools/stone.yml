@@ -1,0 +1,18 @@
+name        : benchmarking-tools
+version     : 1
+release     : 1
+summary     : Scripts to easily facilitate benchmarking on Linux
+license     : MIT
+homepage    : https://github.com/sunnyflunk/benchmarking-tools
+description : |
+    Scripts to easily facilitate benchmarking on Linux.
+upstreams   :
+    - git|https://github.com/sunnyflunk/benchmarking-tools.git: main
+install     : |
+    %install_dir %(installroot)/usr/bin
+    %install_dir %(installroot)/usr/share/benchmarking-tools
+    cp -a * %(installroot)/usr/share/benchmarking-tools/
+
+    for bin in analyze-benchmark generate-power-results generate-results run-benchmark run-power-benchmark valgrind-benchmark; do
+         ln -sf /usr/share/benchmarking-tools/${bin}.sh %(installroot)/usr/bin/${bin}
+    done

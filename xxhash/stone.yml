@@ -1,0 +1,22 @@
+name        : xxhash
+version     : 0.8.1
+release     : 1
+summary     : Extremely fast non-cryptographic hash algorithm
+license     :
+    - BSD-2-Clause
+    - GPL-2.0-or-later
+homepage    : https://github.com/Cyan4973/xxHash
+description : |
+    Extremely fast non-cryptographic hash algorithm.
+upstreams   :
+    - https://github.com/Cyan4973/xxHash/archive/refs/tags/v0.8.1.tar.gz : 3bb6b7d6f30c591dd65aaaff1c8b7a5b94d81687998ca9400082c739a690436c
+build       : |
+    DISPATCH=1 %make
+install     : |
+    %make_install PREFIX=/usr
+    rm %(installroot)/%(libdir)/lib*.a
+tuning      :
+    - icf: all
+    - lto
+    - nosemantic
+    - symbolic

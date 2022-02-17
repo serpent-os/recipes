@@ -1,0 +1,248 @@
+This rebases Fāng-ruì Sòng's upstreaming of RELR on top of glibc-2.34.
+
+See https://sourceware.org/git/?p=glibc.git;a=shortlog;h=refs/heads/maskray/relr
+---
+ configure              | 31 +++++++++++++++++++++++++++++
+ configure.ac           |  4 ++++
+ elf/Makefile           |  7 +++++++
+ elf/dynamic-link.h     | 27 +++++++++++++++++++++++++
+ elf/elf.h              | 13 ++++++++++--
+ elf/get-dynamic-info.h |  3 +++
+ elf/tst-relr-no-pie.c  |  1 +
+ elf/tst-relr.c         | 45 ++++++++++++++++++++++++++++++++++++++++++
+ 8 files changed, 129 insertions(+), 2 deletions(-)
+ create mode 100644 elf/tst-relr-no-pie.c
+ create mode 100644 elf/tst-relr.c
+
+diff --git a/configure b/configure
+index 9619c109..182c5c54 100755
+--- a/configure
++++ b/configure
+@@ -5969,6 +5969,37 @@ $as_echo "$libc_linker_feature" >&6; }
+ config_vars="$config_vars
+ have-z-start-stop-gc = $libc_cv_z_start_stop_gc"
+ 
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for linker that supports --pack-dyn-relocs=relr" >&5
++$as_echo_n "checking for linker that supports --pack-dyn-relocs=relr... " >&6; }
++libc_linker_feature=no
++if test x"$gnu_ld" = x"yes"; then
++  cat > conftest.c <<EOF
++int _start (void) { return 42; }
++EOF
++  if { ac_try='${CC-cc} $CFLAGS $CPPFLAGS $LDFLAGS $no_ssp
++		    -Wl,--pack-dyn-relocs=relr -nostdlib -nostartfiles
++		    -fPIC -shared -o conftest.so conftest.c
++		    1>&5'
++  { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_try\""; } >&5
++  (eval $ac_try) 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; }
++  then
++    libc_linker_feature=yes
++  fi
++  rm -f conftest*
++fi
++if test $libc_linker_feature = yes; then
++  libc_cv_relr=yes
++else
++  libc_cv_relr=no
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $libc_linker_feature" >&5
++$as_echo "$libc_linker_feature" >&6; }
++config_vars="$config_vars
++have-relr = $libc_cv_relr"
++
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for linker that supports --no-dynamic-linker" >&5
+ $as_echo_n "checking for linker that supports --no-dynamic-linker... " >&6; }
+ libc_linker_feature=no
+diff --git a/configure.ac b/configure.ac
+index 34ecbba5..2da8f041 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1337,6 +1337,10 @@ LIBC_LINKER_FEATURE([-z start-stop-gc], [-Wl,-z,start-stop-gc],
+ 		    [libc_cv_z_start_stop_gc=yes], [libc_cv_z_start_stop_gc=no])
+ LIBC_CONFIG_VAR([have-z-start-stop-gc], [$libc_cv_z_start_stop_gc])
+ 
++LIBC_LINKER_FEATURE([--pack-dyn-relocs=relr], [-Wl,--pack-dyn-relocs=relr],
++		    [libc_cv_relr=yes], [libc_cv_relr=no])
++LIBC_CONFIG_VAR([have-relr], [$libc_cv_relr])
++
+ LIBC_LINKER_FEATURE([--no-dynamic-linker],
+ 		    [-Wl,--no-dynamic-linker],
+ 		    [libc_cv_no_dynamic_linker=yes],
+diff --git a/elf/Makefile b/elf/Makefile
+index 118d579c..60781bbb 100644
+--- a/elf/Makefile
++++ b/elf/Makefile
+@@ -238,6 +238,13 @@ selinux-enabled := $(shell cat /selinux/enforce 2> /dev/null)
+ ifneq ($(selinux-enabled),1)
+ tests-execstack-yes = tst-execstack tst-execstack-needed tst-execstack-prog
+ endif
++ifeq ($(have-relr),yes)
++tests += tst-relr tst-relr-no-pie
++tests-pie += tst-relr
++tests-no-pie += tst-relr-no-pie
++LDFLAGS-tst-relr += -Wl,--pack-dyn-relocs=relr
++LDFLAGS-tst-relr-no-pie += -Wl,--pack-dyn-relocs=relr
++endif
+ endif
+ tests += $(tests-execstack-$(have-z-execstack))
+ ifeq ($(run-built-tests),yes)
+diff --git a/elf/dynamic-link.h b/elf/dynamic-link.h
+index 3eb24ba3..85c6b34d 100644
+--- a/elf/dynamic-link.h
++++ b/elf/dynamic-link.h
+@@ -190,6 +190,33 @@ elf_machine_lazy_rel (struct link_map *map,
+ #  define ELF_DYNAMIC_DO_RELA(map, lazy, skip_ifunc) /* Nothing to do.  */
+ # endif
+ 
++# define ELF_DYNAMIC_DO_RELR(map)					      \
++  do {									      \
++    ElfW(Addr) l_addr = (map)->l_addr, *where = 0;			      \
++    const ElfW(Relr) *r, *end;						      \
++    if (!(map)->l_info[DT_RELR])					      \
++      break;								      \
++    r = (const ElfW(Relr) *)D_PTR((map), l_info[DT_RELR]);		      \
++    end = (const ElfW(Relr) *)((const char *)r +			      \
++                               (map)->l_info[DT_RELRSZ]->d_un.d_val);	      \
++    for (; r < end; r++)						      \
++      {									      \
++	ElfW(Relr) entry = *r;						      \
++	if ((entry & 1) == 0)						      \
++	  {								      \
++	    where = (ElfW(Addr) *)(l_addr + entry);			      \
++	    *where++ += l_addr;						      \
++	  }								      \
++	else 								      \
++	  {								      \
++	    for (long i = 0; (entry >>= 1) != 0; i++)			      \
++	      if ((entry & 1) != 0)					      \
++		where[i] += l_addr;					      \
++	    where += CHAR_BIT * sizeof(ElfW(Relr)) - 1;			      \
++	  }								      \
++      }									      \
++  } while (0);
++
+ /* This can't just be an inline function because GCC is too dumb
+    to inline functions containing inlines themselves.  */
+ # define ELF_DYNAMIC_RELOCATE(map, lazy, consider_profile, skip_ifunc) \
+diff --git a/elf/elf.h b/elf/elf.h
+index 4738dfa2..041cf408 100644
+--- a/elf/elf.h
++++ b/elf/elf.h
+@@ -443,7 +443,8 @@ typedef struct
+ #define SHT_PREINIT_ARRAY 16		/* Array of pre-constructors */
+ #define SHT_GROUP	  17		/* Section group */
+ #define SHT_SYMTAB_SHNDX  18		/* Extended section indices */
+-#define	SHT_NUM		  19		/* Number of defined types.  */
++#define SHT_RELR	  19            /* RELR relative relocations */
++#define	SHT_NUM		  20		/* Number of defined types.  */
+ #define SHT_LOOS	  0x60000000	/* Start OS-specific.  */
+ #define SHT_GNU_ATTRIBUTES 0x6ffffff5	/* Object attributes.  */
+ #define SHT_GNU_HASH	  0x6ffffff6	/* GNU-style hash table.  */
+@@ -662,6 +663,11 @@ typedef struct
+   Elf64_Sxword	r_addend;		/* Addend */
+ } Elf64_Rela;
+ 
++/* RELR relocation table entry */
++
++typedef Elf32_Word	Elf32_Relr;
++typedef Elf64_Xword	Elf64_Relr;
++
+ /* How to extract and insert information held in the r_info field.  */
+ 
+ #define ELF32_R_SYM(val)		((val) >> 8)
+@@ -887,7 +893,10 @@ typedef struct
+ #define DT_PREINIT_ARRAY 32		/* Array with addresses of preinit fct*/
+ #define DT_PREINIT_ARRAYSZ 33		/* size in bytes of DT_PREINIT_ARRAY */
+ #define DT_SYMTAB_SHNDX	34		/* Address of SYMTAB_SHNDX section */
+-#define	DT_NUM		35		/* Number used */
++#define DT_RELRSZ	35		/* Total size of RELR relative relocations */
++#define DT_RELR		36		/* Address of RELR relative relocations */
++#define DT_RELRENT	37		/* Size of one RELR relative relocaction */
++#define	DT_NUM		38		/* Number used */
+ #define DT_LOOS		0x6000000d	/* Start of OS-specific */
+ #define DT_HIOS		0x6ffff000	/* End of OS-specific */
+ #define DT_LOPROC	0x70000000	/* Start of processor-specific */
+diff --git a/elf/get-dynamic-info.h b/elf/get-dynamic-info.h
+index 4aa2058a..b0c7260b 100644
+--- a/elf/get-dynamic-info.h
++++ b/elf/get-dynamic-info.h
+@@ -90,6 +90,7 @@ elf_get_dynamic_info (struct link_map *l)
+ # if ! ELF_MACHINE_NO_REL
+       ADJUST_DYN_INFO (DT_REL);
+ # endif
++      ADJUST_DYN_INFO (DT_RELR);
+       ADJUST_DYN_INFO (DT_JMPREL);
+       ADJUST_DYN_INFO (VERSYMIDX (DT_VERSYM));
+       ADJUST_DYN_INFO (ADDRIDX (DT_GNU_HASH));
+@@ -114,6 +115,8 @@ elf_get_dynamic_info (struct link_map *l)
+   if (info[DT_REL] != NULL)
+     assert (info[DT_RELENT]->d_un.d_val == sizeof (ElfW(Rel)));
+ #endif
++  if (info[DT_RELR] != NULL)
++    assert (info[DT_RELRENT]->d_un.d_val == sizeof (ElfW(Relr)));
+ #ifdef RTLD_BOOTSTRAP
+   /* Only the bind now flags are allowed.  */
+   assert (info[VERSYMIDX (DT_FLAGS_1)] == NULL
+diff --git a/elf/tst-relr-no-pie.c b/elf/tst-relr-no-pie.c
+new file mode 100644
+index 00000000..7df0cdbf
+--- /dev/null
++++ b/elf/tst-relr-no-pie.c
+@@ -0,0 +1 @@
++#include "tst-relr.c"
+diff --git a/elf/tst-relr.c b/elf/tst-relr.c
+new file mode 100644
+index 00000000..0b0fe5ed
+--- /dev/null
++++ b/elf/tst-relr.c
+@@ -0,0 +1,45 @@
++#include <link.h>
++#include <stdbool.h>
++#include <stdio.h>
++
++static int o, x;
++
++#define ELEMS O O O O O O O O X X X X X X X O O X O O X X X E X E E O X O E
++#define E 0,
++
++#define O &o,
++#define X &x,
++void *arr[] = { ELEMS };
++#undef O
++#undef X
++
++#define O 1,
++#define X 2,
++static char val[] = { ELEMS };
++
++static int
++do_test (void)
++{
++  ElfW(Dyn) *d = _DYNAMIC;
++  if (d)
++    {
++      bool has_relr = false;
++      for (; d->d_tag != DT_NULL; d++)
++	if (d->d_tag == DT_RELR)
++	  has_relr = true;
++      if (!has_relr)
++	{
++	  fprintf (stderr, "no DT_RELR\n");
++	  return 1;
++	}
++    }
++
++  for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++)
++    if (!((arr[i] == 0 && val[i] == 0) ||
++	  (arr[i] == &o && val[i] == 1) ||
++	  (arr[i] == &x && val[i] == 2)))
++      return 1;
++  return 0;
++}
++
++#include <support/test-driver.c>
+--
+2.33.1

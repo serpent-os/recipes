@@ -1,0 +1,17 @@
+name        : file
+version     : 5.40
+release     : 1
+summary     : File type identification utility
+license     : BSD-2-Clause
+homepage    : http://www.darwinsys.com/file
+description : |
+    File type identification utility
+upstreams   :
+    - ftp://ftp.astron.com/pub/file/file-5.40.tar.gz: 167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57
+setup       : |
+    %configure --disable-static \
+        --enable-shared
+build       : |
+    %make
+install     : |
+    %make_install

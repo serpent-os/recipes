@@ -1,0 +1,24 @@
+name        : llvm-bolt
+version     : 1
+release     : 1
+summary     : Binary Optimization and Layout Tool
+license     : Apache-2.0
+homepage    : https://github.com/facebookincubator/BOLT
+description : |
+    Binary Optimization and Layout Tool.
+upstreams   :
+    - https://github.com/facebookincubator/BOLT/archive/be94db47a9d82fc82d6e0f2fca3609ba4cdb2cb8.tar.gz : af374cf8893d9d5d8f0e4373bf21555db0a8403b003211b1114c23761ec782f4
+environment : |
+    cd llvm
+setup       : |
+    %cmake -DLLVM_ENABLE_ASSERTIONS=ON \
+        -DLLVM_ENABLE_PROJECTS='bolt;clang;lld' \
+        -DLLVM_TARGETS_TO_BUILD='X86'
+install     : |
+    DESTDIR="%(installroot)" %cmake_build install-llvm-bolt install-perf2bolt install-merge-fdata install-llvm-boltdiff install-bolt_rt
+    rm -rf %(installroot)/root
+tuning      :
+    - icf: all
+    - lto: thin
+    - nosemantic
+    - symbolic

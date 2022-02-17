@@ -1,0 +1,19 @@
+name        : gettext
+version     : 0.21
+release     : 1
+summary     : GNU locale utilities
+license     : GPL-3.0-or-later
+homepage    : https://www.gnu.org/software/gettext/gettext.html
+description : |
+    GNU locale utilities.
+upstreams   :
+    - https://mirrors.kernel.org/gnu/gettext/gettext-0.21.tar.xz : d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Clean up examples which aren't particularly helpful
+    rm -rf %(installroot)/usr/share/doc/gettext/examples

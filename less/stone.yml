@@ -1,0 +1,18 @@
+name        : less
+version     : 590
+release     : 1
+summary     : Text File Browser and Pager
+license     : 
+    - BSD-2-Clause
+    - GPL-3.0-or-later
+homepage    : http://www.greenwoodsoftware.com/less
+description : |
+    Text File Browser and Pager
+upstreams   :
+    - http://www.greenwoodsoftware.com/less/less-590.tar.gz: 6aadf54be8bf57d0e2999a3c5d67b1de63808bb90deb8f77b028eafae3a08e10
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

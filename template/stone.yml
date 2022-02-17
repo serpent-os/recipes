@@ -1,0 +1,16 @@
+name        : 
+version     : 
+release     : 1
+summary     : 
+license     : GPL-3.0-or-later
+homepage    : 
+description : |
+    
+upstreams   :
+    - : 
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

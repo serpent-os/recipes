@@ -1,0 +1,31 @@
+name        : linux-pam
+version     : 1.5.1
+release     : 1
+summary     : Pluggable Authentication Modules
+license     :
+    - BSD-3-Clause
+    - GPL-3.0-or-later
+homepage    : http://www.linux-pam.org/
+description : |
+    Pluggable Authentication Modules
+upstreams   :
+    - https://github.com/linux-pam/linux-pam/releases/download/v1.5.1/Linux-PAM-1.5.1.tar.xz: 201d40730b1135b1b3cdea09f2c28ac634d73181ccd0172ceddee3649c5792fc
+setup       : |
+    #%patch %(pkgdir)/stateless/0001-pam_env-Support-a-stateless-configuration.patch
+    %patch %(pkgdir)/stateless/0002-pam_shells-Support-stateless-shells-file.patch
+
+    %configure --disable-nis \
+        --disable-econf \
+        --enable-vendordir="%(vendordir)" \
+        --with-kernel-overflow-uid=65534
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Stateless: Move files into the vendordir
+    # environment file can be cleaned up with gettext and running reconfigure
+    %install_dir %(installroot)/%(vendordir)/security
+    mv %(installroot)/etc/security %(installroot)/%(vendordir)/
+    mv %(installroot)/etc/environment %(installroot)/%(vendordir)/
+    rmdir %(installroot)/etc

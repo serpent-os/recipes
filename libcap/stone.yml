@@ -1,0 +1,18 @@
+name        : libcap
+version     : 2.59
+release     : 1
+summary     : Library for getting and setting POSIX.1e capabilities
+license     : GPL-3.0-or-later
+homepage    : https://sites.google.com/site/fullycapable
+description : |
+    Library for getting and setting POSIX.1e capabilities
+upstreams   :
+    - https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.59.tar.xz : 49f64ae40b113e53cbc161e22af7094e3bb4a0611fa33ef5a4257b011779f034
+setup       : |
+    # Static linking broken
+    sed -i Makefile -e '/\-C tests/d'
+build       : |
+    %make BUILD_CC=clang CC=clang
+install     : |
+    %make_install RAISE_SETFCAP=no prefix=/usr lib=lib
+    rm %(installroot)/%(libdir)/lib*.a

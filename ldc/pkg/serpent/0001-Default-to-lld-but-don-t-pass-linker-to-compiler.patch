@@ -1,0 +1,32 @@
+From d73e8ba00c6104bce334818d949d74aea1c7b121 Mon Sep 17 00:00:00 2001
+From: Peter O'Connor <sunnyflunk@serpentos.com>
+Date: Tue, 9 Feb 2021 23:34:47 +1100
+Subject: [PATCH] Default to lld, but don't pass linker to compiler
+
+It already knows what it's doing!
+
+Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+---
+ driver/linker-gcc.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/driver/linker-gcc.cpp b/driver/linker-gcc.cpp
+index e2a2523..fc2aa07 100644
+--- a/driver/linker-gcc.cpp
++++ b/driver/linker-gcc.cpp
+@@ -586,12 +586,10 @@ void ArgsBuilder::addLinker() {
+     // (see #2278) and older bfd versions stripping llvm.used symbols (e.g.,
+     // ModuleInfo refs) with --gc-sections (see #2870).
+     else {
+-      linker = "gold";
++      linker = "lld";
+     }
+   }
+ 
+-  if (!linker.empty())
+-    args.push_back(("-fuse-ld=" + linker).str());
+ }
+ 
+ //////////////////////////////////////////////////////////////////////////////
+-- 
+2.25.1

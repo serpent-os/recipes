@@ -1,0 +1,36 @@
+name        : binutils
+version     : 2.37
+release     : 1
+summary     : A GNU collection of binary utilities
+license     : GPL-3.0-or-later
+homepage    : https://sourceware.org/binutils
+description : |
+    A GNU collection of binary utilities
+upstreams   :
+    - https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz : 820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c
+setup       : |
+    mkdir %(builddir) && cd %(builddir)
+    ../configure %(options_configure) \
+        --disable-shared \
+        --enable-64-bit-bfd \
+        --enable-deterministic-archives \
+        --enable-ld=default \
+        --enable-lto \
+        --enable-multilib \
+        --enable-plugins \
+        --enable-secureplt \
+        --enable-static \
+        --enable-targets="x86_64-pep,bpf-unknown-none" \
+        --enable-threads \
+        --with-lib-path="/usr/lib:/usr/lib32" \
+        --with-system-zlib \
+        --without-debuginfod
+build       : |
+    %make tooldir=/usr -C %(builddir)
+install     : |
+    %make_install tooldir=/usr -C %(builddir)
+toolchain   : gnu
+tuning      :
+    - nosemantic
+    - optimize: speed
+    - symbolic

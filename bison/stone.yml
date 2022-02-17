@@ -1,0 +1,21 @@
+name        : bison
+version     : 3.8.2
+release     : 1
+summary     : The GNU general-purpose parser generator
+license     : GPL-3.0-or-later
+homepage    : https://www.gnu.org/software/bison
+description : |
+    The GNU general-purpose parser generator
+upstreams   :
+    - https://mirrors.kernel.org/gnu/bison/bison-3.8.2.tar.xz : 9bba0214ccf7f1079c5d59210045227bcf619519840ebfa80cd3849cff5a5bf2
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/lib*.a
+            - /usr/share/aclocal

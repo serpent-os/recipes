@@ -1,0 +1,23 @@
+name        : zlib
+version     : 1.2.11
+release     : 1
+summary     : Library implementing the DEFLATE compression algorithm
+license     : Zlib
+homepage    : https://zlib.net/
+description : |
+    Library implementing the DEFLATE compression algorithm
+upstreams   :
+    - https://zlib.net/zlib-1.2.11.tar.gz: c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1
+setup       : |
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib \
+        --enable-shared
+build       : |
+    %make
+install     : |
+    %make_install
+    rm %(installroot)/%(libdir)/*.a
+workload    : |
+    for i in $(seq 1 9); do
+        cat *.c | ./minigzip -${i} | ./minigzip -d > /dev/null
+    done

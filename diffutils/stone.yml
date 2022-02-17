@@ -1,0 +1,16 @@
+name        : diffutils
+version     : 3.8
+release     : 1
+summary     : A GNU collection of diff utilities
+license     : GPL-3.0-or-later
+homepage    : https://www.gnu.org/software/diffutils/
+description : |
+    A GNU collection of diff utilities
+upstreams   :
+    - https://mirror.koddos.net/gnu/diffutils/diffutils-3.8.tar.xz: a6bdd7d1b31266d11c4f4de6c1b748d4607ab0231af5188fc2533d0ae2438fec
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
