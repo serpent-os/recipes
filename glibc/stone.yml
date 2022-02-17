@@ -1,5 +1,5 @@
 name        : glibc
-version     : 2.34
+version     : 2.35
 release     : 1
 summary     : The GNU libc libraries
 license     :
@@ -10,14 +10,14 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - https://github.com/bminor/glibc/archive/a4f3bc23461e3f9f6053e827715984ba0d2e589a.tar.gz : 26ce72205de4cef9366b5260e3f420e811befc2407b517259fa513e344c1321e
+    - https://github.com/bminor/glibc/archive/f055faf801cbffd9a0311774589de1cc745ccbe4.tar.gz : 3d033a22f3f58f36c3cb72cc95424f22f8e0513413fe611a08886495f768d0c6
 environment : |
     # Fix build to use actual flags for more tuned glibc
     export CC="${CC} -B/usr/lib/gcc/x86_64-serpent-linux/11/%(libsuffix)"
 setup       : |
     # Patches ahoy!
     %patch %(pkgdir)/perf/fix-ld-audit-performance.patch
-    %patch %(pkgdir)/perf/0001-elf-Support-DT_RELR-relative-relocation-format-BZ-27.patch
+    %patch %(pkgdir)/perf/relr.patch
     %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
     %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
     %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
