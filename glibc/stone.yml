@@ -10,13 +10,12 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - https://github.com/bminor/glibc/archive/f055faf801cbffd9a0311774589de1cc745ccbe4.tar.gz : 3d033a22f3f58f36c3cb72cc95424f22f8e0513413fe611a08886495f768d0c6
+    - git|https://sourceware.org/git/glibc.git: a30807b7db924d31681e9c6e98e78f2f46a2640c
 environment : |
     # Fix build to use actual flags for more tuned glibc
     export CC="${CC} -B/usr/lib/gcc/x86_64-serpent-linux/11/%(libsuffix)"
 setup       : |
     # Patches ahoy!
-    %patch %(pkgdir)/perf/fix-ld-audit-performance.patch
     %patch %(pkgdir)/perf/relr.patch
     %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
     %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
@@ -61,10 +60,10 @@ build       : |
 install     : |
     %make_install build DESTDIR="%(installroot)" -C build
 
-    # Make gconv cache (hopefully this works through version updates)
-    LD_LIBRARY_PATH=%(installroot)/usr/lib%(libsuffix) %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
-
     if [ -z "%(libsuffix)" ]; then
+        # Make gconv cache
+        LD_LIBRARY_PATH=%(installroot)/usr/lib%(libsuffix) %(installroot)/usr/lib%(libsuffix)/ld-linux-x86-64.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
+
         %make localedata/install-locales DESTDIR="%(installroot)" -C build
 
         # Stateless: Remove obsolete rpc
@@ -74,6 +73,9 @@ install     : |
         %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)/ld.so.conf
         %install_dir %(installroot)/%(vendordir)/ld.so.conf.d
     else
+        # Make gconv cache
+        LD_LIBRARY_PATH=%(installroot)/usr/lib%(libsuffix) %(installroot)/usr/lib%(libsuffix)/ld-linux.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
+
         # Remove 32bit binary
         rm %(installroot)/usr/bin/lddlibc4
 
