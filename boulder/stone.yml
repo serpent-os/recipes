@@ -16,3 +16,4 @@ install     : |
     %install_exe %(pkgdir)/boulder %(installroot)/usr/bin/boulder
     %install_dir %(installroot)/usr/share/moss
     mv data/macros %(installroot)/usr/share/moss/
+    ln -sf boulder %(installroot)/usr/bin/mason
