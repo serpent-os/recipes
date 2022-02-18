@@ -1,0 +1,16 @@
+name        : texinfo
+version     : 6.7
+release     : 1
+summary     : GNU software documentation system
+license     : GPL-3.0-or-later
+homepage    : https://www.gnu.org/software/texinfo
+description : |
+    Texinfo is a documentation system that uses a single source to produce many forms of output.
+upstreams   :
+    - https://ftp.gnu.org/gnu/texinfo/texinfo-6.7.tar.xz: 988403c1542d15ad044600b909997ba3079b10e03224c61188117f3676b02caa
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
