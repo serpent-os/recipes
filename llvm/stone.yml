@@ -1,5 +1,5 @@
 name        : llvm
-version     : 13.0.0
+version     : 13.0.1
 release     : 1
 summary     : Low Level Virtual Machine
 license     :
@@ -9,12 +9,13 @@ homepage    : https://www.llvm.org
 description : |
     Low Level Virtual Machine
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/llvm-project-13.0.0.src.tar.xz : 6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.1/llvm-project-13.0.1.src.tar.xz: 326335a830f2e32d06d0a36393b5455d17dc73e0bd1211065227ee014f92cbf8
 environment : |
     export PATH="%(pkgdir)/bootstrap/bin:${PATH}"
 
     export llvmopts="
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_SKIP_RPATH=ON \
         -DCMAKE_AR=%(pkgdir)/bootstrap/bin/llvm-ar \
         -DCMAKE_NM=%(pkgdir)/bootstrap/bin/llvm-nm \
         -DCMAKE_RANLIB=%(pkgdir)/bootstrap/bin/llvm-ranlib \
@@ -22,7 +23,6 @@ environment : |
         -DCMAKE_CXX_COMPILER=%(pkgdir)/bootstrap/bin/clang++ \
         -DCLANG_TABLEGEN=%(pkgdir)/bootstrap/bin/clang-tblgen \
         -DLLVM_TABLEGEN=%(pkgdir)/bootstrap/bin/llvm-tblgen \
-        -DCLANG_BUILD_TOOLS=OFF \
         -DCLANG_DEFAULT_CXX_STDLIB=libc++ \
         -DCLANG_DEFAULT_LINKER=lld \
         -DCLANG_DEFAULT_OBJCOPY=llvm-objcopy \
@@ -49,6 +49,7 @@ environment : |
     cd llvm
 setup       : |
     cd ..
+    %patch %(pkgdir)/perf/0001-reduce-gcc-startup-searches.patch
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
     %patch %(pkgdir)/serpent/0001-Make-gnu-hash-the-default-for-lld-and-clang.patch
     %patch %(pkgdir)/serpent/0001-Update-binutils-version-to-match-Serpent-OS.patch
@@ -82,7 +83,6 @@ build       : |
     %cmake ${llvmopts} \
         -DLLVM_BUILD_LLVM_DYLIB=ON \
         -DLLVM_LINK_LLVM_DYLIB=ON
-    cd ..
 
     %cmake_build
 install     : |
@@ -92,13 +92,12 @@ install     : |
         -DLLVM_BUILD_LLVM_DYLIB=OFF \
         -DLLVM_LINK_LLVM_DYLIB=OFF \
         -DCLANG_LINK_CLANG_DYLIB=OFF
-    cd ..
 
     # Relink lld and clang statically
     %cmake_build lld clang
     %install_exe -t %(installroot)/usr/bin %(builddir)/bin/clang %(builddir)/bin/lld
 
-    rm %(installroot)/%(libdir)/*.a
+    rm %(installroot)/%(libdir)/libclang*.a
 workload    : |
     # check-compiler-rt needs sanitizer changes
     %cmake_build check-clang check-llvm check-lld -k 10000 ||:
