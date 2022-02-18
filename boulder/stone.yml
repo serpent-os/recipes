@@ -7,7 +7,7 @@ homepage    : https://gitlab.com/serpent-os/core/boulder
 description : |
     Serpent OS builder tool.
 upstreams   :
-    - https://gitlab.com/serpent-os/core/boulder/-/archive/main/boulder-fdf393a72f87c72da56302ee91a0c98e44390836.tar.gz : 9474dbea0478c2270c849d7fa82683e98a9bb189623b3697f92045f0a4a51bd1
+    - git|https://gitlab.com/serpent-os/core/boulder.git: main
 build       : |
     #dub build --parallel -b release --compiler=ldc2 --skip-registry=all -v
 install     : |
