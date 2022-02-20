@@ -19,7 +19,8 @@ setup       : |
     %patch %(pkgdir)/serpent/0001-Default-to-lld-but-don-t-pass-linker-to-compiler.patch
     %patch %(pkgdir)/stateless/0001-Fixups-for-packaging-and-stateless-config.patch
 
-    %cmake -DBUILD_SHARED_LIBS=ON \
+    %cmake -DBUILD_SHARED_LIBS=BOTH \
+        -DBUILD_LTO_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_RPATH=ON \
         -DBASH_COMPLETION_COMPLETIONSDIR="%(completionsdir)" \
@@ -33,6 +34,8 @@ build       : |
 install     : |
     %cmake_install
     %install_exe "dmd2/linux/bin64/dub" "%(installroot)/usr/bin/"
+    # Allow ldc to work before this is resolved properly
+    ln -sf clang "%(installroot)/usr/bin/cc"
 
     # Stateless: Put file in patched stateless location
     %install_file %(installroot)/etc/ldc2.conf %(installroot)/%(vendordir)/ldc2.conf
