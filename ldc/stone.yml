@@ -1,5 +1,5 @@
 name        : ldc
-version     : 1.27.1
+version     : 1.28.1
 release     : 1
 summary     : The LLVM-based D Compiler
 license     :
@@ -10,24 +10,29 @@ homepage    : https://github.com/ldc-developers/ldc
 description : |
     The LLVM-based D Compiler
 upstreams   :
-    - https://github.com/ldc-developers/ldc/releases/download/v1.27.1/ldc-1.27.1-src.tar.gz : 93c8f500b39823dcdabbd73e1bcb487a1b93cb9a60144b0de1c81ab50200e59c
-    - https://github.com/ldc-developers/ldc/releases/download/v1.27.1/ldc2-1.27.1-linux-x86_64.tar.xz: 48d68e0747dc17b9b0d2799a2fffdc5ddaf986c649283c784830f19c4c82830c
+    - https://github.com/ldc-developers/ldc/releases/download/v1.28.1/ldc-1.28.1-src.tar.gz: 654958bca5378cd97819f2ef61d3f220aa652a9d2b5ff41d6f2109302ae6eb94
+    - https://s3.us-west-2.amazonaws.com/downloads.dlang.org/releases/2021/dmd.2.098.1.linux.tar.xz:
+        hash: 19c28b0d306df56bbe9e053c929c56fdba2034685df092f26fc91c3abebcde63
+        stripdirs: 1
+        unpackdir: "%(name)-%(version)-src/dmd2/"
 setup       : |
     %patch %(pkgdir)/serpent/0001-Default-to-lld-but-don-t-pass-linker-to-compiler.patch
     %patch %(pkgdir)/stateless/0001-Fixups-for-packaging-and-stateless-config.patch
 
     %cmake -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_SKIP_RPATH=ON \
         -DBASH_COMPLETION_COMPLETIONSDIR="%(completionsdir)" \
         -DLDC_INSTALL_LTOPLUGIN=ON \
         -DLDC_INSTALL_LLVM_RUNTIME_LIBS=ON \
         -DLDC_WITH_LLD=ON \
+        -DD_COMPILER=%(buildroot)/%(name)-%(version)-src/dmd2/linux/bin64/dmd \
         -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
 build       : |
     %cmake_build
 install     : |
     %cmake_install
-    cp "%(buildroot)/ldc2-%(version)-linux-x86_64/bin/dub" "%(installroot)/usr/bin/"
+    %install_exe "dmd2/linux/bin64/dub" "%(installroot)/usr/bin/"
 
     # Stateless: Put file in patched stateless location
     %install_file %(installroot)/etc/ldc2.conf %(installroot)/%(vendordir)/ldc2.conf
