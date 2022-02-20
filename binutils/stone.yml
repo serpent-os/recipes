@@ -7,8 +7,9 @@ homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    - git|https://sourceware.org/git/binutils-gdb.git: 481876f834e0a100950dde6b878daa38c896b325
+    - git|https://sourceware.org/git/binutils-gdb.git: binutils-2_38-branch
 setup       : |
+    %patch %(pkgdir)/0001-Don-t-add-GLIBC_PRIVATE_DT_RELR-symbol-for-RELR.patch
     # Non release builds mess up the sonames
     sed -i '/^development=/s/true/false/' bfd/development.sh
 

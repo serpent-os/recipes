@@ -10,7 +10,7 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - git|https://sourceware.org/git/glibc.git: a30807b7db924d31681e9c6e98e78f2f46a2640c
+    - git|https://sourceware.org/git/glibc.git: release/2.35/master
 environment : |
     # Fix build to use actual flags for more tuned glibc
     export CC="${CC} -B/usr/lib/gcc/x86_64-serpent-linux/11/%(libsuffix)"

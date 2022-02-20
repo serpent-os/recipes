@@ -437,3 +437,229 @@ index 6c2a3a12b1..f4b957684b 100644
    if (info[DT_PLTREL] != NULL)
 --
 2.34.1
+
+
+Enable DT_RELR in glibc shared libraries and position independent
+executables (PIE) automatically if linker supports -z pack-relative-relocs.
+
+Also add a new configuration option, --disable-default-dt-relr, to
+avoid DT_RELR usage in glibc shared libraries and PIEs.
+---
+ INSTALL             |  6 ++++++
+ Makeconfig          | 19 +++++++++++++++++++
+ Makerules           |  2 ++
+ configure           | 18 ++++++++++++++++++
+ configure.ac        | 13 +++++++++++++
+ elf/Makefile        |  4 +++-
+ manual/install.texi |  5 +++++
+ 7 files changed, 66 insertions(+), 1 deletion(-)
+
+diff --git a/INSTALL b/INSTALL
+index 63c022d6b9..4a6506f11f 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -133,6 +133,12 @@ if 'CFLAGS' is specified it must enable optimization.  For example:
+      used with the GCC option, -static-pie, which is available with GCC
+      8 or above, to create static PIE.
+
++'--disable-default-dt-relr'
++     Don't enable DT_RELR in glibc shared libraries and position
++     independent executables (PIE). By default, DT_RELR is enabled in
++     glibc shared libraries and position independent executables on
++     targets that support it.
++
+ '--enable-cet'
+ '--enable-cet=permissive'
+      Enable Intel Control-flow Enforcement Technology (CET) support.
+diff --git a/Makeconfig b/Makeconfig
+index 47db08d6ae..70c0acc065 100644
+--- a/Makeconfig
++++ b/Makeconfig
+@@ -358,6 +358,23 @@ else
+ real-static-start-installed-name = $(static-start-installed-name)
+ endif
+
++# Linker option to enable and disable DT-RELR.
++ifeq ($(have-dt-relr),yes)
++dt-relr-ldflag = -Wl,-z,pack-relative-relocs
++no-dt-relr-ldflag = -Wl,-z,nopack-relative-relocs
++else
++dt-relr-ldflag =
++no-dt-relr-ldflag =
++endif
++
++# Default linker option for DT-RELR.
++ifeq (yes,$(build-dt-relr-default))
++default-rt-relr-ldflag = $(dt-relr-ldflag)
++else
++default-rt-relr-ldflag = $(no-dt-relr-ldflag)
++endif
++LDFLAGS-rtld += $(default-rt-relr-ldflag)
++
+ ifeq (yesyes,$(build-shared)$(have-z-combreloc))
+ combreloc-LDFLAGS = -Wl,-z,combreloc
+ LDFLAGS.so += $(combreloc-LDFLAGS)
+@@ -419,6 +436,7 @@ link-extra-libs-tests = $(libsupport)
+ # Command for linking PIE programs with the C library.
+ ifndef +link-pie
+ +link-pie-before-inputs = $(if $($(@F)-no-pie),$(no-pie-ldflag),-pie) \
++	     $(if $($(@F)-no-dt-relr),$(no-dt-relr-ldflag),$(default-rt-relr-ldflag)) \
+ 	     -Wl,-O1 -nostdlib -nostartfiles \
+ 	     $(sysdep-LDFLAGS) $(LDFLAGS) $(LDFLAGS-$(@F)) \
+ 	     $(combreloc-LDFLAGS) $(relro-LDFLAGS) $(hashstyle-LDFLAGS) \
+@@ -451,6 +469,7 @@ endif
+ ifndef +link-static
+ +link-static-before-inputs = -nostdlib -nostartfiles -static \
+ 	      $(if $($(@F)-no-pie),$(no-pie-ldflag),$(static-pie-ldflag)) \
++	      $(if $($(@F)-no-dt-relr),$(no-dt-relr-ldflag),$(default-rt-relr-ldflag)) \
+ 	      $(sysdep-LDFLAGS) $(LDFLAGS) $(LDFLAGS-$(@F))  \
+ 	      $(firstword $(CRT-$(@F)) $(csu-objpfx)$(real-static-start-installed-name)) \
+ 	      $(+preinit) $(+prectorT)
+diff --git a/Makerules b/Makerules
+index 5de2cec6be..260c7b7253 100644
+--- a/Makerules
++++ b/Makerules
+@@ -536,6 +536,7 @@ lib%.so: lib%_pic.a $(+preinit) $(+postinit) $(link-libc-deps)
+ define build-shlib-helper
+ $(LINK.o) -shared -static-libgcc -Wl,-O1 $(sysdep-LDFLAGS) \
+ 	  $(if $($(@F)-no-z-defs)$(no-z-defs),,-Wl,-z,defs) $(rtld-LDFLAGS) \
++	  $(if $($(@F)-no-dt-relr),$(no-dt-relr-ldflag),$(default-rt-relr-ldflag)) \
+ 	  $(extra-B-$(@F:lib%.so=%).so) -B$(csu-objpfx) \
+ 	  $(extra-B-$(@F:lib%.so=%).so) $(load-map-file) \
+ 	  -Wl,-soname=lib$(libprefix)$(@F:lib%.so=%).so$($(@F)-version) \
+@@ -595,6 +596,7 @@ endef
+ define build-module-helper
+ $(LINK.o) -shared -static-libgcc $(sysdep-LDFLAGS) $(rtld-LDFLAGS) \
+ 	  $(if $($(@F)-no-z-defs)$(no-z-defs),,-Wl,-z,defs) \
++	  $(if $($(@F)-no-dt-relr),$(no-dt-relr-ldflag),$(default-rt-relr-ldflag)) \
+ 	  -B$(csu-objpfx) $(load-map-file) \
+ 	  $(LDFLAGS.so) $(LDFLAGS-$(@F:%.so=%).so) \
+ 	  $(link-test-modules-rpath-link) \
+diff --git a/configure b/configure
+index 9156e29fe9..ee4137a977 100755
+--- a/configure
++++ b/configure
+@@ -768,6 +768,7 @@ enable_sanity_checks
+ enable_shared
+ enable_profile
+ enable_default_pie
++enable_default_dt_relr
+ enable_timezone_tools
+ enable_hardcoded_path_in_tests
+ enable_hidden_plt
+@@ -1425,6 +1426,7 @@ Optional Features:
+   --enable-profile        build profiled library [default=no]
+   --disable-default-pie   Do not build glibc programs and the testsuite as PIE
+                           [default=no]
++  --disable-dt-relr       Do not enable DT_RELR in glibc[default=no]
+   --disable-timezone-tools
+                           do not install timezone tools [default=install]
+   --enable-hardcoded-path-in-tests
+@@ -3441,6 +3443,13 @@ else
+   default_pie=yes
+ fi
+
++# Check whether --enable-default-dt-relr was given.
++if test "${enable_default_dt_relr+set}" = set; then :
++  enableval=$enable_default_dt_relr; default_dt_relr=$enableval
++else
++  default_dt_relr=yes
++fi
++
+ # Check whether --enable-timezone-tools was given.
+ if test "${enable_timezone_tools+set}" = set; then :
+   enableval=$enable_timezone_tools; enable_timezone_tools=$enableval
+@@ -7136,6 +7145,15 @@ fi
+ config_vars="$config_vars
+ enable-static-pie = $libc_cv_static_pie"
+
++# Disable build-dt-relr-default if linker does not support it or glibc is
++# configured with --disable-default-dt-relr.
++build_dt_relr_default=$default_dt_relr
++if test "x$build_dt_relr_default" != xno; then
++  build_dt_relr_default=$libc_cv_dt_relr
++fi
++config_vars="$config_vars
++build-dt-relr-default = $build_dt_relr_default"
++
+ # Set the `multidir' variable by grabbing the variable from the compiler.
+ # We do it once and save the result in a generated makefile.
+ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
+diff --git a/configure.ac b/configure.ac
+index 5c09871fee..680b036ffa 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -197,6 +197,11 @@ AC_ARG_ENABLE([default-pie],
+ 			     [Do not build glibc programs and the testsuite as PIE @<:@default=no@:>@]),
+ 	      [default_pie=$enableval],
+ 	      [default_pie=yes])
++AC_ARG_ENABLE([default-dt-relr],
++	      AS_HELP_STRING([--disable-dt-relr],
++			     [Do not enable DT_RELR in glibc@<:@default=no@:>@]),
++	      [default_dt_relr=$enableval],
++	      [default_dt_relr=yes])
+ AC_ARG_ENABLE([timezone-tools],
+ 	      AS_HELP_STRING([--disable-timezone-tools],
+ 			     [do not install timezone tools @<:@default=install@:>@]),
+@@ -1914,6 +1919,14 @@ if test "$libc_cv_static_pie" = "yes"; then
+ fi
+ LIBC_CONFIG_VAR([enable-static-pie], [$libc_cv_static_pie])
+
++# Disable build-dt-relr-default if linker does not support it or glibc is
++# configured with --disable-default-dt-relr.
++build_dt_relr_default=$default_dt_relr
++if test "x$build_dt_relr_default" != xno; then
++  build_dt_relr_default=$libc_cv_dt_relr
++fi
++LIBC_CONFIG_VAR([build-dt-relr-default], [$build_dt_relr_default])
++
+ # Set the `multidir' variable by grabbing the variable from the compiler.
+ # We do it once and save the result in a generated makefile.
+ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
+diff --git a/elf/Makefile b/elf/Makefile
+index a6515e8a21..1727f5acc0 100644
+--- a/elf/Makefile
++++ b/elf/Makefile
+@@ -1570,6 +1570,7 @@ $(objpfx)nodlopen2.out: $(objpfx)nodlopenmod2.so
+
+ $(objpfx)filtmod1.so: $(objpfx)filtmod1.os $(objpfx)filtmod2.so
+ 	$(LINK.o) -shared -o $@ -B$(csu-objpfx) $(LDFLAGS.so) \
++		  $(default-rt-relr-ldflag) \
+ 		  -L$(subst :, -L,$(rpath-link)) \
+ 		  -Wl,-rpath-link=$(rpath-link) \
+ 		  $< -Wl,-F,$(objpfx)filtmod2.so
+@@ -2376,7 +2377,7 @@ $(objpfx)tst-big-note: $(objpfx)tst-big-note-lib.so
+ # artificial, large note in tst-big-note-lib.o and invalidate the
+ # test.
+ $(objpfx)tst-big-note-lib.so: $(objpfx)tst-big-note-lib.o
+-	$(LINK.o) -shared -o $@ $(LDFLAGS.so) $<
++	$(LINK.o) -shared -o $@ $(LDFLAGS.so) $(default-rt-relr-ldflag) $<
+
+ $(objpfx)tst-unwind-ctor: $(objpfx)tst-unwind-ctor-lib.so
+
+@@ -2682,6 +2683,7 @@ $(objpfx)tst-ro-dynamic: $(objpfx)tst-ro-dynamic-mod.so
+ $(objpfx)tst-ro-dynamic-mod.so: $(objpfx)tst-ro-dynamic-mod.os \
+   tst-ro-dynamic-mod.map
+ 	$(LINK.o) -nostdlib -nostartfiles -shared -o $@ \
++		$(default-rt-relr-ldflag) \
+ 		-Wl,--script=tst-ro-dynamic-mod.map \
+ 		$(objpfx)tst-ro-dynamic-mod.os
+
+diff --git a/manual/install.texi b/manual/install.texi
+index 29c52f2927..04ea996561 100644
+--- a/manual/install.texi
++++ b/manual/install.texi
+@@ -161,6 +161,11 @@ and architecture support it, static executables are built as static PIE and the
+ resulting glibc can be used with the GCC option, -static-pie, which is
+ available with GCC 8 or above, to create static PIE.
+
++@item --disable-default-dt-relr
++Don't enable DT_RELR in glibc shared libraries and position independent
++executables (PIE).  By default, DT_RELR is enabled in glibc shared
++libraries and position independent executables on targets that support it.
++
+ @item --enable-cet
+ @itemx --enable-cet=permissive
+ Enable Intel Control-flow Enforcement Technology (CET) support.  When
+--
+2.34.1
