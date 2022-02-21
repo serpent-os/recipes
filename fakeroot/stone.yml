@@ -1,5 +1,5 @@
 name        : fakeroot
-version     : 1.26
+version     : 1.27
 release     : 1
 summary     : Tool for simulating superuser privileges
 license     : GPL-3.0-or-later
@@ -7,7 +7,7 @@ homepage    : https://packages.debian.org/fakeroot
 description : |
     Tool for simulating superuser privileges.
 upstreams   :
-    - https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.26.orig.tar.gz: 480a578ffdc5592e73df4c086950d321b4adc78dbdaec56c82e4fe1fb68de8e9
+    - https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.27.orig.tar.gz: 3c45eb2d1802a2762069e2e9d21bdd6fb533592bc0cda74c9aff066ab01caddc
 setup       : |
     %configure --disable-static \
        --libdir=%(libdir)/fakeroot \
