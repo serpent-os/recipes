@@ -1,5 +1,5 @@
 name        : file
-version     : 5.40
+version     : 5.41
 release     : 1
 summary     : File type identification utility
 license     : BSD-2-Clause
@@ -7,7 +7,7 @@ homepage    : http://www.darwinsys.com/file
 description : |
     File type identification utility
 upstreams   :
-    - ftp://ftp.astron.com/pub/file/file-5.40.tar.gz: 167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57
+    - https://astron.com/pub/file/file-5.41.tar.gz: 13e532c7b364f7d57e23dfeea3147103150cb90593a57af86c10e4f6e411603f
 setup       : |
     %configure --disable-static \
         --enable-shared
