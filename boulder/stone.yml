@@ -8,12 +8,35 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - git|https://gitlab.com/serpent-os/core/boulder.git: main
+    - git|https://gitlab.com/serpent-os/core/moss-config.git:
+       ref: main
+       clonedir: moss-config
+    - git|https://gitlab.com/serpent-os/core/moss-core.git:
+       ref: main
+       clonedir: moss-core
+    - git|https://gitlab.com/serpent-os/core/moss-deps.git:
+       ref: main
+       clonedir: moss-deps
+    - git|https://gitlab.com/serpent-os/core/moss-fetcher.git:
+       ref: main
+       clonedir: moss-fetcher
+    - git|https://gitlab.com/serpent-os/core/moss-format.git:
+       ref: main
+       clonedir: moss-format
+    - git|https://gitlab.com/serpent-os/core/moss-vendor.git:
+       ref: main
+       clonedir: moss-vendor
+environment : |
+    # LDC doesn't like passing -fPIC, review whether it should be an LDFLAG
+    export LDFLAGS="-Wl,-O2,-z,max-page-size=0x1000,--gc-sections -Wl,--as-needed -Wl,-z,relro,-z,now -Wl,--icf=safe -Wl,-Bsymbolic-functions -Wl,--pack-dyn-relocs=relr"
+    cd %(buildroot)/boulder
+setup       : |
+    %meson
 build       : |
-    #dub build --parallel -b release --compiler=ldc2 --skip-registry=all -v
+    %meson_build
 install     : |
-    #dub install --root=%(installroot)
+    %meson_install
+    ln -sf boulder %(installroot)/usr/bin/mason
 
-    %install_exe %(pkgdir)/boulder %(installroot)/usr/bin/boulder
     %install_dir %(installroot)/usr/share/moss
     mv data/macros %(installroot)/usr/share/moss/
-    ln -sf boulder %(installroot)/usr/bin/mason

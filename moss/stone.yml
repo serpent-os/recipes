@@ -5,10 +5,38 @@ summary     : Default package manager of Serpent OS
 license     : Zlib
 homepage    : https://gitlab.com/serpent-os/core/moss
 description : |
-    The default package manager of Serpent OS.
-build       : |
-    #dub build --parallel -b release --compiler=ldc2 --skip-registry=all -v
-install     : |
-    #dub install --root=%(installroot)
+    Default package manager of Serpent OS.
+upstreams   :
+    - git|https://gitlab.com/serpent-os/core/moss.git: main
+    - git|https://gitlab.com/serpent-os/core/moss-config.git:
+        ref: main
+        clonedir: moss-config
+    - git|https://gitlab.com/serpent-os/core/moss-core.git:
+        ref: main
+        clonedir: moss-core
+    - git|https://gitlab.com/serpent-os/core/moss-db.git:
+        ref: main
+        clonedir: moss-db
+    - git|https://gitlab.com/serpent-os/core/moss-deps.git:
+        ref: main
+        clonedir: moss-deps
+    - git|https://gitlab.com/serpent-os/core/moss-fetcher.git:
+        ref: main
+        clonedir: moss-fetcher
+    - git|https://gitlab.com/serpent-os/core/moss-format.git:
+        ref: main
+        clonedir: moss-format
+    - git|https://gitlab.com/serpent-os/core/moss-vendor.git:
+        ref: main
+        clonedir: moss-vendor
+environment : |
+    # LDC doesn't like passing -fPIC, review whether it should be an LDFLAG
+    export LDFLAGS="-Wl,-O2,-z,max-page-size=0x1000,--gc-sections -Wl,--as-needed -Wl,-z,relro,-z,now -Wl,--icf=safe -Wl,-Bsymbolic-functions -Wl,--pack-dyn-relocs=relr"
 
-    %install_exe %(pkgdir)/moss %(installroot)/usr/bin/moss
+    cd %(buildroot)/moss
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
