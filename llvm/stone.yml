@@ -176,7 +176,6 @@ packages    :
         paths:
             - /usr/bin/*lld*
             - /usr/bin/wasm-ld
-            - /usr/lib/libLTO.so.*
 
     - "lld-devel":
         summary: "Development files for lld"
@@ -186,5 +185,3 @@ packages    :
         paths:
             - /usr/lib/cmake/lld
             - /usr/lib/liblld*.a
-            - /usr/lib/libLTO.so
-            - /usr/share/lld
