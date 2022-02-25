@@ -110,3 +110,81 @@ tuning      :
     - nosemantic
     - symbolic
 cspgo       : false
+packages    :
+    - "%(name)-libs":
+        summary: "Library files for %(name)"
+        description: |
+            Library files for %(name), typically pulled in as a dependency of another package.
+        paths:
+            - /usr/lib/libLLVM-*.so
+
+    - "clang":
+        summary: "Clang compiler front-end (LLVM)"
+        description: |
+            Clang compiler front-end built as part of the LLVM compiler infrastructure project.
+        rundeps:
+            - libcxx-devel
+            - lld
+            - llvm
+        paths:
+            - /usr/bin/analyze-build
+            - /usr/bin/c-index-test
+            - /usr/bin/*clang*
+            - /usr/bin/diagtool
+            - /usr/bin/hmaptool
+            - /usr/bin/intercept-build
+            - /usr/bin/scan-*
+            - /usr/lib/clang/13.0.1/bin
+            - /usr/lib/clang/13.0.1/include
+            - /usr/lib/clang/13.0.1/lib/linux/*x86_64*
+            - /usr/lib/clang/13.0.1/share
+            - /usr/lib/libear
+            - /usr/libexec
+            - /usr/share/clang
+            - /usr/share/man
+            - /usr/share/scan-*
+
+    - "clang-libs":
+        summary: "Library files for clang"
+        description: |
+            Library files for clang, typically pulled in as a dependency of another package.
+        paths:
+            - /usr/lib/libclang*.so.*
+
+    - "clang-devel":
+        summary: "Development files for clang"
+        description: |
+            Install this package if you intend to build software against
+            the clang package.
+        paths:
+            - /usr/lib/cmake/clang
+            - /usr/lib/libclang*.so
+            - /usr/include/clang*
+
+    - "clang-32bit":
+        summary: "Provides 32-bit runtime libraries for clang"
+        description: |
+            Install this package if you need the 32-bit versions of the
+            clang package libraries.
+        paths:
+            - /usr/lib/clang/13.0.1/lib/linux/*i386*
+
+    - "lld":
+        summary: "Clang compiler front-end (LLVM)"
+        description: |
+            Clang compiler front-end built as part of the LLVM compiler infrastructure project.
+        paths:
+            - /usr/bin/*lld*
+            - /usr/bin/wasm-ld
+            - /usr/lib/libLTO.so.*
+
+    - "lld-devel":
+        summary: "Development files for lld"
+        description: |
+            Install this package if you intend to build software against
+            the lld package.
+        paths:
+            - /usr/lib/cmake/lld
+            - /usr/lib/liblld*.a
+            - /usr/lib/libLTO.so
+            - /usr/share/lld
