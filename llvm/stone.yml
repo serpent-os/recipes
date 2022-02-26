@@ -10,6 +10,30 @@ description : |
     Low Level Virtual Machine
 upstreams   :
     - https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.1/llvm-project-13.0.1.src.tar.xz: 326335a830f2e32d06d0a36393b5455d17dc73e0bd1211065227ee014f92cbf8
+builddeps   :
+    - gcc
+    - gcc-devel
+    - gcc-32bit
+    - gcc-32bit-devel
+    - glibc-32bit
+    - glibc-32bit-devel
+    - ncurses-devel
+    - cmake
+    - diffutils
+    - findutils
+    - ninja
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
+    - libcxx-32bit
+    - libcxx-32bit-devel
+    - libffi-devel
+    - libxcrypt-devel
+    - patch
+    - python
+    - libxml2-devel
+    - zlib-devel
 environment : |
     export PATH="%(pkgdir)/bootstrap/bin:${PATH}"
 
@@ -99,6 +123,7 @@ install     : |
 
     rm %(installroot)/%(libdir)/libclang*.a
 workload    : |
+    export LD_LIBRARY_PATH="%(workdir)/llvm/%(builddir)/lib"
     # check-compiler-rt needs sanitizer changes
     %cmake_build check-clang check-llvm check-lld -k 10000 ||:
 # LTO needs to be set in LLVM cmake flags so it adds -fno-lto where needed
