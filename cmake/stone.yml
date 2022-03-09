@@ -8,6 +8,17 @@ description : |
     Cross-platform build system
 upstreams   :
     - https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3.tar.gz : d14d06df4265134ee42c4d50f5a60cb8b471b7b6a47da8e5d914d49dd783794f
+builddeps   :
+    - cmake
+    - ninja
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
+    - curl-devel
+    - expat-devel
+    - libarchive-devel
+    - zlib-devel
 setup       : |
     %cmake -DBUILD_TESTING=OFF \
         -DCMAKE_USE_SYSTEM_CURL=ON \
