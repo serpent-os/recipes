@@ -24,6 +24,23 @@ upstreams   :
         hash: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
         stripdirs: 1
         unpackdir: "%(name)-%(version)/mpfr/"
+builddeps   :
+    - patch
+    - make
+    - python
+    - binutils
+    - bison
+    - m4
+    - gzip
+    - gcc
+    - gcc-devel
+    - gcc-32bit
+    - gcc-32bit-devel
+    - glibc-32bit
+    - glibc-32bit-devel
+    - libxcrypt-devel
+    - zlib-devel
+    - zstd-devel
 setup       : |
     %patch %(pkgdir)/perf/use-highest-optimize-value.patch
     %patch %(pkgdir)/serpent/0001-Use-modern-linker-locations-for-Serpent-OS.patch
@@ -51,6 +68,7 @@ setup       : |
         --enable-threads=posix \
         --with-arch=%(march) \
         --with-arch_32=%(march) \
+        --with-build-config=bootstrap-lto \
         --with-gcc-major-version-only \
         --with-isl \
         --with-linker-hash-style=gnu \
