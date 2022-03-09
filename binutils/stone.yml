@@ -7,7 +7,21 @@ homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    - git|https://sourceware.org/git/binutils-gdb.git: binutils-2_38-branch
+    - https://github.com/bminor/binutils-gdb/archive/c002554e789b8acc72688fa8225a68f5c00be46f.tar.gz: c74e19115670837ac34f2f1298e04d5c97cf85947f555d6ad2ea44eb83c04c0e
+builddeps   :
+    - patch
+    - make
+    - binutils
+    - bison
+    - m4
+    - gzip
+    - gcc
+    - gcc-devel
+    - texinfo
+    - perl
+    - ncurses
+    - zlib-devel
+    - flex
 setup       : |
     %patch %(pkgdir)/0001-Don-t-add-GLIBC_PRIVATE_DT_RELR-symbol-for-RELR.patch
     # Non release builds mess up the sonames
@@ -26,6 +40,7 @@ setup       : |
         --enable-ld=default \
         --enable-lto \
         --enable-multilib \
+        --enable-pgo-build=lto \
         --enable-plugins \
         --enable-secureplt \
         --enable-static \
