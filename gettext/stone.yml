@@ -8,6 +8,14 @@ description : |
     GNU locale utilities.
 upstreams   :
     - https://mirrors.kernel.org/gnu/gettext/gettext-0.21.tar.xz : d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
+builddeps   :
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
+    - ncurses-devel
+    - make
+    - libxml2-devel
 setup       : |
     %configure --disable-static
 build       : |
