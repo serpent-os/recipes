@@ -10,7 +10,21 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - git|https://sourceware.org/git/glibc.git: release/2.35/master
+    - https://github.com/bminor/glibc/archive/732dd3a63d39c7ca77e817b462285c14551c8b49.tar.gz: 1d223253ded38f7adfa36fd9df5d09ed108c30b7fec7b0b0566770ed304ea239
+builddeps   :
+    - patch
+    - make
+    - python
+    - binutils
+    - bison
+    - m4
+    - gzip
+    - gcc
+    - gcc-devel
+    - gcc-32bit
+    - gcc-32bit-devel
+    - glibc-32bit
+    - glibc-32bit-devel
 environment : |
     # Fix build to use actual flags for more tuned glibc
     export CC="${CC} -B/usr/lib/gcc/x86_64-serpent-linux/11/%(libsuffix)"
