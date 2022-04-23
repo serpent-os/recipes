@@ -1,5 +1,5 @@
 name        : zstd
-version     : 1.5.0
+version     : 1.5.2
 release     : 1
 summary     : Fast real-time compression algorithm
 license     :
@@ -9,7 +9,16 @@ homepage    : https://facebook.github.io/zstd
 description : |
     Fast real-time compression algorithm
 upstreams   :
-    - https://github.com/facebook/zstd/releases/download/v1.5.0/zstd-1.5.0.tar.gz : 5194fbfa781fcf45b98c5e849651aa7b3b0a008c6b72d4a0db760f3002291e94
+    - https://github.com/facebook/zstd/releases/download/v1.5.2/zstd-1.5.2.tar.gz: 7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
+    - zlib-devel
+    - xz-devel
+    - zlib-devel
 build       : |
     %make
 install     : |
