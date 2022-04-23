@@ -1,5 +1,5 @@
 name        : llvm
-version     : 13.0.1
+version     : 14.0.0
 release     : 1
 summary     : Low Level Virtual Machine
 license     :
@@ -9,7 +9,7 @@ homepage    : https://www.llvm.org
 description : |
     Low Level Virtual Machine
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.1/llvm-project-13.0.1.src.tar.xz: 326335a830f2e32d06d0a36393b5455d17dc73e0bd1211065227ee014f92cbf8
+    - https://github.com/llvm/llvm-project/archive/23d08271a4b24f21a88bfe73a5ea31c1e2c6365c.tar.gz: 5d04a1362ccc4714c97da5149ffa9325f3264cbb84c42891e908221f1b731d52
 builddeps   :
     - gcc
     - gcc-devel
@@ -19,8 +19,6 @@ builddeps   :
     - glibc-32bit-devel
     - ncurses-devel
     - cmake
-    - diffutils
-    - findutils
     - ninja
     - clang
     - lld
@@ -35,18 +33,11 @@ builddeps   :
     - libxml2-devel
     - zlib-devel
 environment : |
-    export PATH="%(pkgdir)/bootstrap/bin:${PATH}"
+    export BOOTSTRAP=TRUE
 
     export llvmopts="
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_SKIP_RPATH=ON \
-        -DCMAKE_AR=%(pkgdir)/bootstrap/bin/llvm-ar \
-        -DCMAKE_NM=%(pkgdir)/bootstrap/bin/llvm-nm \
-        -DCMAKE_RANLIB=%(pkgdir)/bootstrap/bin/llvm-ranlib \
-        -DCMAKE_C_COMPILER=%(pkgdir)/bootstrap/bin/clang \
-        -DCMAKE_CXX_COMPILER=%(pkgdir)/bootstrap/bin/clang++ \
-        -DCLANG_TABLEGEN=%(pkgdir)/bootstrap/bin/clang-tblgen \
-        -DLLVM_TABLEGEN=%(pkgdir)/bootstrap/bin/llvm-tblgen \
         -DCLANG_DEFAULT_CXX_STDLIB=libc++ \
         -DCLANG_DEFAULT_LINKER=lld \
         -DCLANG_DEFAULT_OBJCOPY=llvm-objcopy \
@@ -70,21 +61,39 @@ environment : |
         -DLLVM_TARGETS_TO_BUILD=X86 \
         -DLLVM_USE_SANITIZER=OFF \
         "
-    cd llvm
+
+    if [ -d "%(pkgdir)/bootstrap" ]; then
+    export PATH="%(pkgdir)/bootstrap/bin:${PATH}"
+    export llvmopts="${llvmopts} \
+        -DCMAKE_AR=%(pkgdir)/bootstrap/bin/llvm-ar \
+        -DCMAKE_NM=%(pkgdir)/bootstrap/bin/llvm-nm \
+        -DCMAKE_RANLIB=%(pkgdir)/bootstrap/bin/llvm-ranlib \
+        -DCMAKE_C_COMPILER=%(pkgdir)/bootstrap/bin/clang \
+        -DCMAKE_CXX_COMPILER=%(pkgdir)/bootstrap/bin/clang++ \
+        -DCLANG_TABLEGEN=%(pkgdir)/bootstrap/bin/clang-tblgen \
+        -DLLVM_TABLEGEN=%(pkgdir)/bootstrap/bin/llvm-tblgen \
+        "
+    fi
+
+    # Without RPATH, we need help finding the right libraries to use
+    export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib"
 setup       : |
-    cd ..
-    %patch %(pkgdir)/perf/0001-reduce-gcc-startup-searches.patch
+    # Patch doesn't make the empty file
+    %patch %(pkgdir)/llvm-libgcc.patch
+    touch llvm-libgcc/lib/blank.c
+
+    %patch %(pkgdir)/perf/0001-Reduce-GCC-startup-searches.patch
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
     %patch %(pkgdir)/serpent/0001-Make-gnu-hash-the-default-for-lld-and-clang.patch
     %patch %(pkgdir)/serpent/0001-Update-binutils-version-to-match-Serpent-OS.patch
 
-    # Remove profile flags for bootstrap - this only works if this is last (it should be)
-    export CFLAGS="${CFLAGS%%-fprofile-generate=*IR}"
-    export CXXFLAGS="${CXXFLAGS%%-fprofile-generate=*IR}"
-    export LDFLAGS="${LDFLAGS%%-fprofile-generate=*IR}"
-
     # Build a bootstrap stage1 compiler if it doesn't exist already
-    if [ ! -d "%(pkgdir)/bootstrap" ]; then
+    if [ ! -d "%(pkgdir)/bootstrap" ] && [ ! -z "${BOOTSTRAP}" ]; then
+        # Remove profile flags for bootstrap - this only works if this is last (it should be)
+        export CFLAGS="-march=native -fno-semantic-interposition -pipe -O3"
+        export CXXFLAGS="-march=native -fno-semantic-interposition -pipe -O3"
+        export LDFLAGS="-Wl,--icf=all -Wl,-Bsymbolic-functions -Wl,--as-needed -Wl,--pack-dyn-relocs=relr"
+
         mkdir -p %(pkgdir)/bootstrap
         cd %(pkgdir)/bootstrap
         cmake -G Ninja %(workdir)/llvm \
@@ -104,7 +113,7 @@ setup       : |
     fi
 build       : |
     # Separate the cmake stage from bootstrap for clean FLAGS
-    %cmake ${llvmopts} \
+    %cmake ${llvmopts} -S llvm \
         -DLLVM_BUILD_LLVM_DYLIB=ON \
         -DLLVM_LINK_LLVM_DYLIB=ON
 
@@ -112,7 +121,7 @@ build       : |
 install     : |
     %cmake_install
 
-    %cmake ${llvmopts} \
+    %cmake ${llvmopts} -S llvm \
         -DLLVM_BUILD_LLVM_DYLIB=OFF \
         -DLLVM_LINK_LLVM_DYLIB=OFF \
         -DCLANG_LINK_CLANG_DYLIB=OFF
@@ -121,9 +130,8 @@ install     : |
     %cmake_build lld clang
     %install_exe -t %(installroot)/usr/bin %(builddir)/bin/clang %(builddir)/bin/lld
 
-    rm %(installroot)/%(libdir)/libclang*.a
+    rm -rf %(installroot)/usr/lib/libclang*.a
 workload    : |
-    export LD_LIBRARY_PATH="%(workdir)/llvm/%(builddir)/lib"
     # check-compiler-rt needs sanitizer changes
     %cmake_build check-clang check-llvm check-lld -k 10000 ||:
 # LTO needs to be set in LLVM cmake flags so it adds -fno-lto where needed
@@ -159,10 +167,10 @@ packages    :
             - /usr/bin/hmaptool
             - /usr/bin/intercept-build
             - /usr/bin/scan-*
-            - /usr/lib/clang/13.0.1/bin
-            - /usr/lib/clang/13.0.1/include
-            - /usr/lib/clang/13.0.1/lib/linux/*x86_64*
-            - /usr/lib/clang/13.0.1/share
+            - /usr/lib/clang/*/bin
+            - /usr/lib/clang/*/include
+            - /usr/lib/clang/*/lib/linux/*x86_64*
+            - /usr/lib/clang/*/share
             - /usr/lib/libear
             - /usr/libexec
             - /usr/share/clang
@@ -192,7 +200,7 @@ packages    :
             Install this package if you need the 32-bit versions of the
             clang package libraries.
         paths:
-            - /usr/lib/clang/13.0.1/lib/linux/*i386*
+            - /usr/lib/clang/*/lib/linux/*i386*
 
     - "lld":
         summary: "Clang compiler front-end (LLVM)"
