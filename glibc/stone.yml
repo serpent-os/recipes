@@ -10,7 +10,7 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - https://github.com/bminor/glibc/archive/732dd3a63d39c7ca77e817b462285c14551c8b49.tar.gz: 1d223253ded38f7adfa36fd9df5d09ed108c30b7fec7b0b0566770ed304ea239
+    - https://github.com/bminor/glibc/archive/499a60179657d2945c6ad01bdac90e8427a6310e.tar.gz: a7db8b506b1438dd3ef83bc20bb1be0cbb4f32f18c8c62551fafb7285c833676
 builddeps   :
     - patch
     - make
