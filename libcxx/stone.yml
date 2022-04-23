@@ -1,5 +1,5 @@
 name        : libcxx
-version     : 13.0.0
+version     : 14.0.0
 release     : 1
 summary     : LLVM's libcxx
 license     :
@@ -9,39 +9,56 @@ homepage    : https://www.llvm.org
 description : |
     LLVM's libcxx
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/llvm-project-13.0.0.src.tar.xz : 6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3
+    - https://github.com/llvm/llvm-project/archive/23d08271a4b24f21a88bfe73a5ea31c1e2c6365c.tar.gz: 5d04a1362ccc4714c97da5149ffa9325f3264cbb84c42891e908221f1b731d52
+builddeps   :
+    - glibc-32bit
+    - glibc-32bit-devel
+    - cmake
+    - gcc
+    - gcc-devel
+    - gcc-32bit
+    - gcc-32bit-devel
+    - ninja
+    - clang
+    - clang-32bit
+    - lld
+    - llvm
+    - libcxx-devel
+    - libcxx-32bit
+    - libcxx-32bit-devel
+    - libxcrypt-devel
+    - patch
+    - python
 environment : |
     if [ -z "%(libsuffix)" ]; then
         BIT32=OFF
         BIT64=ON
-        PROJECTS='libcxx;libcxxabi;libunwind'
     else
         BIT32=ON
         BIT64=OFF
-        PROJECTS='libcxx;libcxxabi;libunwind'
     fi
 
     # This is a bit hacky till there's an export for all build stages
     export llvmopts="
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLLVM_DEFAULT_TARGET_TRIPLE=%(build) \
-        -DLLVM_ENABLE_PROJECTS='${PROJECTS}' \
+        -DLLVM_ENABLE_PROJECTS='libcxx;libcxxabi;libunwind' \
+        -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
         -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
-        -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
         -DLLVM_USE_SANITIZER=OFF \
-        -DLLVM_ENABLE_LTO=ON \
+        -DLLVM_ENABLE_LTO=OFF \
         -DLLVM_ENABLE_UNWIND_TABLES=ON \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_INCLUDE_UTILS=OFF \
         -DLLVM_BUILD_TOOLS=OFF \
+        -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON \
+        -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
+        -DCOMPILER_RT_USE_LIBCXX=ON \
         -DLIBCXXABI_ENABLE_SHARED=OFF \
-        -DLIBCXXABI_ENABLE_STATIC_UNWINDER=ON \
         -DLIBCXXABI_INSTALL_LIBRARY=OFF \
         -DLIBCXXABI_STATICALLY_LINK_UNWINDER_IN_SHARED_LIBRARY=ON \
         -DLIBCXXABI_STATICALLY_LINK_UNWINDER_IN_STATIC_LIBRARY=ON \
-        -DLIBCXXABI_USE_COMPILER_RT=ON \
-        -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
         -DLIBCXX_ENABLE_PARALLEL_ALGORITHMS=OFF \
         -DLIBCXX_ENABLE_SHARED=ON \
         -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
@@ -49,26 +66,31 @@ environment : |
         -DLIBCXX_HAS_ATOMIC_LIB=ON \
         -DLIBCXX_STATICALLY_LINK_ABI_IN_SHARED_LIBRARY=ON \
         -DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON \
+        -DLIBUNWIND_INSTALL_HEADERS=ON \
+        -DLIBUNWIND_INSTALL_LIBRARY=ON \
+        -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
+        -DLIBCXXABI_ENABLE_STATIC_UNWINDER=ON \
+        -DLIBCXXABI_USE_COMPILER_RT=ON \
+        -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
         -DLIBCXX_USE_COMPILER_RT=ON \
-        -DLIBUNWIND_ENABLE_SHARED=OFF \
+        -DLIBUNWIND_ENABLE_SHARED=ON \
         -DLIBUNWIND_ENABLE_STATIC=ON \
-        -DLIBUNWIND_INSTALL_LIBRARY=OFF \
-        -DLIBUNWIND_USE_COMPILER_RT=ON"
-
-    cd llvm
+        -DLIBUNWIND_INSTALL_LIBRARY=ON \
+        -DLIBUNWIND_USE_COMPILER_RT=ON \
+    "
 setup      : |
+    %patch %(pkgdir)/llvm-libgcc.patch
+    touch llvm-libgcc/lib/blank.c
 
-    %cmake ${llvmopts} \
+    %cmake ${llvmopts} -S llvm \
         -DLLVM_BUILD_LLVM_DYLIB=ON \
         -DLLVM_LINK_LLVM_DYLIB=ON
 build       : |
     %cmake_build cxx cxxabi unwind
 install     : |
-    DESTDIR="%(installroot)" %cmake_build install-cxx
+    DESTDIR="%(installroot)" %cmake_build install-cxx install-unwind
 
     # Set some support symlinks
-    echo "INPUT(libc++.so.1)" > "%(installroot)/usr/lib%(libsuffix)/libunwind.so"
     echo "INPUT(libc++.so.1)" > "%(installroot)/usr/lib%(libsuffix)/libc++abi.so"
-    ln -svf libc++.so.1 "%(installroot)/usr/lib%(libsuffix)/libunwind.so.1"
     ln -svf libc++.so.1 "%(installroot)/usr/lib%(libsuffix)/libc++abi.so.1"
 emul32      : true
