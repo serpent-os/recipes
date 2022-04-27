@@ -42,16 +42,11 @@ environment : |
     export llvmopts="
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLLVM_DEFAULT_TARGET_TRIPLE=%(build) \
-        -DLLVM_ENABLE_PROJECTS='libcxx;libcxxabi;libunwind' \
+        -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
         -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
         -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
         -DLLVM_USE_SANITIZER=OFF \
-        -DLLVM_ENABLE_LTO=OFF \
-        -DLLVM_ENABLE_UNWIND_TABLES=ON \
-        -DLLVM_INCLUDE_BENCHMARKS=OFF \
-        -DLLVM_INCLUDE_TESTS=OFF \
-        -DLLVM_INCLUDE_UTILS=OFF \
-        -DLLVM_BUILD_TOOLS=OFF \
+        -DLLVM_INCLUDE_TESTS=ON \
         -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON \
         -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
         -DCOMPILER_RT_USE_LIBCXX=ON \
@@ -82,8 +77,7 @@ setup      : |
     %patch %(pkgdir)/llvm-libgcc.patch
     touch llvm-libgcc/lib/blank.c
 
-    %cmake ${llvmopts} -S llvm \
-        -DLLVM_BUILD_LLVM_DYLIB=ON \
+    %cmake ${llvmopts} -S runtimes \
         -DLLVM_LINK_LLVM_DYLIB=ON
 build       : |
     %cmake_build cxx cxxabi unwind
@@ -93,4 +87,6 @@ install     : |
     # Set some support symlinks
     echo "INPUT(libc++.so.1)" > "%(installroot)/usr/lib%(libsuffix)/libc++abi.so"
     ln -svf libc++.so.1 "%(installroot)/usr/lib%(libsuffix)/libc++abi.so.1"
+#workload    : |
+#    %cmake_build check-runtimes -k 10000 ||:
 emul32      : true
