@@ -1,5 +1,5 @@
 name        : ldc
-version     : 1.28.1
+version     : 1.29.0
 release     : 1
 summary     : The LLVM-based D Compiler
 license     :
@@ -10,20 +10,23 @@ homepage    : https://github.com/ldc-developers/ldc
 description : |
     The LLVM-based D Compiler
 upstreams   :
-    - https://github.com/ldc-developers/ldc/releases/download/v1.28.1/ldc-1.28.1-src.tar.gz: 654958bca5378cd97819f2ef61d3f220aa652a9d2b5ff41d6f2109302ae6eb94
+    - https://github.com/ldc-developers/ldc/releases/download/v1.29.0/ldc-1.29.0-src.tar.gz: d0c066eb965467625d9c5e75c00c583451b9ffa363601f9e37275ca8a8aea140
     - https://s3.us-west-2.amazonaws.com/downloads.dlang.org/releases/2021/dmd.2.098.1.linux.tar.xz:
         hash: 19c28b0d306df56bbe9e053c929c56fdba2034685df092f26fc91c3abebcde63
         stripdirs: 1
         unpackdir: "%(name)-%(version)-src/dmd2/"
 builddeps   :
     - cmake
-    - meson
+    - ninja
+    - patch
+    - gcc
+    - lld-devel
+    - llvm-devel
     - clang
     - lld
     - llvm
     - libcxx-devel
 setup       : |
-    %patch %(pkgdir)/serpent/0001-Default-to-lld-but-don-t-pass-linker-to-compiler.patch
     %patch %(pkgdir)/stateless/0001-Fixups-for-packaging-and-stateless-config.patch
 
     %cmake -DBUILD_SHARED_LIBS=BOTH \
