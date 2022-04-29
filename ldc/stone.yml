@@ -15,6 +15,13 @@ upstreams   :
         hash: 19c28b0d306df56bbe9e053c929c56fdba2034685df092f26fc91c3abebcde63
         stripdirs: 1
         unpackdir: "%(name)-%(version)-src/dmd2/"
+builddeps   :
+    - cmake
+    - meson
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     %patch %(pkgdir)/serpent/0001-Default-to-lld-but-don-t-pass-linker-to-compiler.patch
     %patch %(pkgdir)/stateless/0001-Fixups-for-packaging-and-stateless-config.patch

@@ -8,6 +8,13 @@ description : |
     Check code for common misspellings.
 upstreams   :
     - https://github.com/codespell-project/codespell/archive/refs/tags/v2.1.0.tar.gz: 8d0730b6ff35e56bda8d9600ccffbf27bb83905600775bf869cb8b9936b108c0
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
+    - python
 build       : |
     %python
 install     : |

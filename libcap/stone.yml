@@ -8,6 +8,12 @@ description : |
     Library for getting and setting POSIX.1e capabilities
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.59.tar.xz : 49f64ae40b113e53cbc161e22af7094e3bb4a0611fa33ef5a4257b011779f034
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     # Static linking broken
     sed -i Makefile -e '/\-C tests/d'

@@ -8,6 +8,12 @@ description : |
     Basic file, shell, and text manipulation utilities
 upstreams   :
     - https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz: ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 environment : |
     export FORCE_UNSAFE_CONFIGURE=1
 setup       : |

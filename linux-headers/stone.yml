@@ -8,6 +8,10 @@ description : |
     Kernel's libc headers
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.9.tar.xz : ba8f07db92d514a2636e882bcd646f79f1c8ab83f5ad82910732dd0ec83c87e6
+builddeps   :
+    - make
+    - gcc-devel
+    - binutils
 build       : |
     export ARCH="x86_64"
     make mrproper

@@ -29,6 +29,12 @@ upstreams   :
     - git|https://gitlab.com/serpent-os/core/moss-vendor.git:
         ref: main
         clonedir: moss-vendor
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 environment : |
     # LDC doesn't like passing -fPIC, review whether it should be an LDFLAG
     export LDFLAGS="-Wl,-O2,-z,max-page-size=0x1000,--gc-sections -Wl,--as-needed -Wl,-z,relro,-z,now -Wl,--icf=safe -Wl,-Bsymbolic-functions -Wl,--pack-dyn-relocs=relr"

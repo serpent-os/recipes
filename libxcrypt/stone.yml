@@ -8,6 +8,12 @@ description : |
     Extended crypt library for descrypt, md5crypt, bcrypt, and others.
 upstreams   :
     - https://github.com/besser82/libxcrypt/releases/download/v4.4.26/libxcrypt-4.4.26.tar.xz : 8e6ab1e22b9d1dc40165ec767662a34773d22f766aae1f989328069e8a3aa99a
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     %configure --disable-static
 build       : |

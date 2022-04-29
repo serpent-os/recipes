@@ -8,6 +8,12 @@ description : |
     Multi-format archive and compression library
 upstreams   :
     - https://www.libarchive.org/downloads/libarchive-3.5.2.tar.gz: 5f245bd5176bc5f67428eb0aa497e09979264a153a074d35416521a5b8e86189
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     %configure --disable-hardlink \
         --disable-rpath \

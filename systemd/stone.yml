@@ -11,6 +11,13 @@ description : |
     A System and Service Manager
 upstreams   :
     - https://github.com/systemd/systemd-stable/archive/v248.3.tar.gz : cc372aeed563379a734901ed73d6fbb6b75c171251e1d69c0b5650aaf9c15d06
+builddeps   :
+    - meson
+    - ninja
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     %meson \
         -Defi=true \

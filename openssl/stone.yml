@@ -8,6 +8,12 @@ description : |
     OpenSSL cryptography library.
 upstreams   :
     - https://www.openssl.org/source/openssl-3.0.0.tar.gz: 59eedfcb46c25214c9bd37ed6078297b4df01d012267fe9e9eee31f61bc70536
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     ./Configure --prefix=/usr \
         --libdir=/usr/lib

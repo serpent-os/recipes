@@ -10,6 +10,12 @@ description : |
     Extremely fast non-cryptographic hash algorithm.
 upstreams   :
     - https://github.com/Cyan4973/xxHash/archive/refs/tags/v0.8.1.tar.gz : 3bb6b7d6f30c591dd65aaaff1c8b7a5b94d81687998ca9400082c739a690436c
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 build       : |
     DISPATCH=1 %make
 install     : |

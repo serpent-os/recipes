@@ -10,6 +10,12 @@ description : |
     Text File Browser and Pager
 upstreams   :
     - http://www.greenwoodsoftware.com/less/less-590.tar.gz: 6aadf54be8bf57d0e2999a3c5d67b1de63808bb90deb8f77b028eafae3a08e10
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     %configure
 build       : |

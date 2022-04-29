@@ -8,6 +8,8 @@ description : |
     Fast and user friendly build system
 upstreams   :
     - https://github.com/mesonbuild/meson/releases/download/0.59.2/meson-0.59.2.tar.gz : 13dee549a7ba758b7e33ce7719f28d1d337a98d10d378a4779ccc996f5a2fc49
+builddeps   :
+    - python
 build       : |
     %python
 install     : |

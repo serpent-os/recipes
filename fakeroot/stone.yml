@@ -8,6 +8,12 @@ description : |
     Tool for simulating superuser privileges.
 upstreams   :
     - https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.27.orig.tar.gz: 3c45eb2d1802a2762069e2e9d21bdd6fb533592bc0cda74c9aff066ab01caddc
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     %configure --disable-static \
        --libdir=%(libdir)/fakeroot \

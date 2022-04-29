@@ -10,6 +10,12 @@ upstreams   :
     - https://github.com/ccache/ccache/releases/download/v4.5.1/ccache-4.5.1.tar.xz : 51186ebe0326365f4e6131e1caa8911de7da4aa6718efc00680322d63a759517
 builddeps   :
     # pkgconfig(hiredis)
+    - cmake
+    - ninja
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
     - pkgconfig(libzstd)
 setup       : |
     # avoid packaging hiredis for now...

@@ -8,6 +8,12 @@ description : |
     Extensible package of M4 macros
 upstreams   :
     - https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.xz: f14c83cfebcc9427f2c3cea7258bd90df972d92eb26752da4ddad81c87a0faa4
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     %configure
 build       : |

@@ -8,6 +8,12 @@ description : |
     Binary Optimization and Layout Tool.
 upstreams   :
     - https://github.com/facebookincubator/BOLT/archive/be94db47a9d82fc82d6e0f2fca3609ba4cdb2cb8.tar.gz : af374cf8893d9d5d8f0e4373bf21555db0a8403b003211b1114c23761ec782f4
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 environment : |
     cd llvm
 setup       : |

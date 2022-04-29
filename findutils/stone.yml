@@ -8,6 +8,12 @@ description : |
     GNU utilities for finding files
 upstreams   :
     - https://ftp.gnu.org/pub/gnu/findutils/findutils-4.8.0.tar.xz: 57127b7e97d91282c6ace556378d5455a9509898297e46e10443016ea1387164
+builddeps   :
+    - make
+    - clang
+    - lld
+    - llvm
+    - libcxx-devel
 setup       : |
     %configure
 build       : |
