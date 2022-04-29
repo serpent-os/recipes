@@ -7,36 +7,75 @@ homepage    : https://gitlab.com/serpent-os/core/boulder
 description : |
     Serpent OS builder tool.
 upstreams   :
-    - git|https://gitlab.com/serpent-os/core/boulder.git: main
-    - git|https://gitlab.com/serpent-os/core/moss-config.git:
-       ref: main
-       clonedir: moss-config
-    - git|https://gitlab.com/serpent-os/core/moss-core.git:
-       ref: main
-       clonedir: moss-core
-    - git|https://gitlab.com/serpent-os/core/moss-deps.git:
-       ref: main
-       clonedir: moss-deps
-    - git|https://gitlab.com/serpent-os/core/moss-fetcher.git:
-       ref: main
-       clonedir: moss-fetcher
-    - git|https://gitlab.com/serpent-os/core/moss-format.git:
-       ref: main
-       clonedir: moss-format
-    - git|https://gitlab.com/serpent-os/core/moss-vendor.git:
-       ref: main
-       clonedir: moss-vendor
-environment : |
-    # LDC doesn't like passing -fPIC, review whether it should be an LDFLAG
-    export LDFLAGS="-Wl,-O2,-z,max-page-size=0x1000,--gc-sections -Wl,--as-needed -Wl,-z,relro,-z,now -Wl,--icf=safe -Wl,-Bsymbolic-functions -Wl,--pack-dyn-relocs=relr"
-    cd %(buildroot)/boulder
+    - https://gitlab.com/serpent-os/core/boulder/-/archive/main/boulder-main.tar.gz:
+        hash: 6a1cc4e5afabff6ef6fa6bc9709b0db53bb635b1bb7b23e4b94829d32d318269
+        stripdirs: 1
+        unpackdir: "boulder/"
+    - https://gitlab.com/serpent-os/core/moss-config/-/archive/main/moss-config-main.tar.gz:
+        hash: 79e5d5c911cc947dfeca8905e2485e6a99984b348559c907e39733f3f951db6e
+        stripdirs: 1
+        unpackdir: "moss-config/"
+    - https://gitlab.com/serpent-os/core/moss-core/-/archive/main/moss-core-main.tar.gz:
+        hash: c676d93e0b2b58e6fbb16d1774fe13f6d2827fd2df5bbdb2aebcb618cc7a122d
+        stripdirs: 1
+        unpackdir: "moss-core/"
+    - https://gitlab.com/serpent-os/core/moss-deps/-/archive/main/moss-deps-main.tar.gz:
+        hash: aa2fad8db3234045af5ea5799a54e6203c4379b9f03fb815c3baf6f408f7d586
+        stripdirs: 1
+        unpackdir: "moss-deps/"
+    - https://gitlab.com/serpent-os/core/moss-fetcher/-/archive/main/moss-fetcher-main.tar.gz:
+        hash: 865476e03e7b56060f345ed92943db797d3c6a22ee5beb3084b13d6fcaa7c392
+        stripdirs: 1
+        unpackdir: "moss-fetcher/"
+    - https://gitlab.com/serpent-os/core/moss-format/-/archive/main/moss-format-main.tar.gz:
+        hash: 51a5ecaa26f12d79a05e3d36d0d4a7a0cce6b2b734cb43c9222574d751831273
+        stripdirs: 1
+        unpackdir: "moss-format/"
+    - https://gitlab.com/serpent-os/core/moss-vendor/-/archive/main/moss-vendor-main.tar.gz:
+        hash: 5f9fa97796e82a694779baf5a9045e06cb51d592c5531a591b8d5f2385394d1a
+        stripdirs: 1
+        unpackdir: "moss-vendor/"
+    - https://gitlab.com/serpent-os/dlang/elf-d/-/archive/e5ed31ed4d89564cfc91f1771951d4ca611e34b2/elf-d-e5ed31ed4d89564cfc91f1771951d4ca611e34b2.tar.gz:
+        hash: bdb6348586d872b451141bff96db2a82ab67d788ee58630e4a1f47157457b460
+        stripdirs: 1
+        unpackdir: "moss-vendor/vendor/elf/elf-d/"
+    - https://gitlab.com/serpent-os/dlang/rocksdb-binding/-/archive/v6.22.1/rocksdb-binding-v6.22.1.tar.gz:
+        hash: c9d05a5eef698baa7dc468fbff3fd4e4f94f1fdb5ddda13af40c429a25a0ede9 
+        stripdirs: 1
+        unpackdir: "moss-vendor/vendor/rocksdb/rocksdb-binding/"
+    - https://gitlab.com/serpent-os/dlang/xxhash-d/-/archive/main/xxhash-d-main.tar.gz:
+        hash: aac579cafc22aa8d862c41327df351cb8e03e97881db472272a1414fd92acf76
+        stripdirs: 1
+        unpackdir: "moss-vendor/vendor/xxhash/xxhash-d/"
+    - https://github.com/repeatedly/zstd-d/archive/refs/heads/master.tar.gz:
+        hash: 64ade7e5c9e737e84882efaecf92219b9e7253ff8f1c6758eadd91395c89b7e7
+        stripdirs: 1
+        unpackdir: "moss-vendor/vendor/zstd/zstd/"
+    - https://github.com/dlang-community/D-YAML/archive/da75f590dedf18cddfcba2003f72c1ec47bb2d8e.tar.gz:
+        hash: f5b210ee2a50629f50ab6dd803c00b8c8baae03182220bb7075349def42b6b93
+        stripdirs: 1
+        unpackdir: "moss-vendor/vendor/yaml/dyaml/"
+    - https://github.com/dlang-community/tinyendian/archive/7b67bd437e296e917c0c26d8bff96c80b102b8cd.tar.gz:
+        hash: 43f398886a269bafe6f3ce83a34fb15be696af75fc089ce5fe6b9507dc42063f
+        stripdirs: 1
+        unpackdir: "moss-vendor/vendor/yaml/tinyendian/"
 builddeps   :
     - meson
     - ninja
+    - python
+    - ldc
+    - ldc-devel
+    - xxhash-devel
+    - zstd-devel
+    - cmake
+    - pkgconf
+    - curl-devel
     - clang
     - lld
     - llvm
     - libcxx-devel
+environment : |
+    cd %(buildroot)/boulder
 setup       : |
     %meson
 build       : |
