@@ -14,6 +14,8 @@ builddeps   :
     - lld
     - llvm
     - libcxx-devel
+    - m4
+    - perl
 setup       : |
     %configure
 build       : |
