@@ -14,6 +14,10 @@ builddeps   :
     - lld
     - llvm
     - libcxx-devel
+    - bison
+    - flex
+    - m4
+    - perl
 setup       : |
     %configure
 build       : |
