@@ -1,5 +1,5 @@
 name        : bash
-version     : 5.1
+version     : 5.1.16
 release     : 1
 summary     : GNU Bourne Again shell
 license     : GPL-3.0-or-later
@@ -14,8 +14,13 @@ builddeps   :
     - lld
     - llvm
     - libcxx-devel
+    - bison
+    - ncurses-devel
+    - patch
 setup       : |
     %patch %(pkgdir)/stateless/0001-Use-a-stateless-profile-by-default.patch
+    for patch in $(seq 1 9); do %patch %(pkgdir)/bash51-00${patch} -p0; done
+    for patch in $(seq 10 16); do %patch %(pkgdir)/bash51-0${patch} -p0; done
 
     %configure --without-bash-malloc \
         --enable-nls
