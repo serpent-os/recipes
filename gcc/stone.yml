@@ -1,5 +1,5 @@
 name        : gcc
-version     : 11.2.0
+version     : 11.3.0
 release     : 1
 summary     : GNU C++ standard library and compiler
 license     : GPL-3.0-or-later
@@ -7,7 +7,7 @@ homepage    : https://gcc.gnu.org/
 description : |
     GNU C++ standard library and compiler
 upstreams   :
-    - https://ftp.gnu.org/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz: d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b
+    - https://ftp.gnu.org/gnu/gcc/gcc-11.3.0/gcc-11.3.0.tar.xz: b47cf2818691f5b1e21df2bb38c795fac2cfbd640ede2d0a5e1c89e338a3ac39
     - https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz:
         hash: fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2
         stripdirs: 1
@@ -26,6 +26,7 @@ upstreams   :
         unpackdir: "%(name)-%(version)/mpfr/"
 builddeps   :
     - patch
+    - perl
     - make
     - python
     - binutils
