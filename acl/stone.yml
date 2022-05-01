@@ -16,6 +16,7 @@ builddeps   :
     - lld
     - llvm
     - libcxx-devel
+    - pkgconfig(libattr)
 setup       : |
     %configure --enable-shared \
         --disable-static
