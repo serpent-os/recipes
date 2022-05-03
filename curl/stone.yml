@@ -1,5 +1,5 @@
 name        : curl
-version     : 7.79.1
+version     : 7.83.0
 release     : 1
 summary     : A utility for fetching files from remote servers
 license     : MIT
@@ -7,13 +7,18 @@ homepage    : https://curl.se/
 description : |
     A utility for fetching files from remote servers.
 upstreams   :
-    - https://github.com/curl/curl/releases/download/curl-7_79_1/curl-7.79.1.tar.xz: 0606f74b1182ab732a17c11613cbbaf7084f2e6cca432642d0e3ad7c224c3689
+    - https://github.com/curl/curl/releases/download/curl-7_83_0/curl-7.83.0.tar.xz: bbff0e6b5047e773f3c3b084d80546cc1be4e354c09e419c2d0ef6116253511a
 builddeps   :
     - make
     - clang
     - lld
     - llvm
     - libcxx-devel
+    - jansson-devel
+    - nghttp2-devel
+    - openssl-devel
+    - zlib-devel
+    - zstd-devel
 setup       : |
     %configure --disable-static \
         --with-openssl \
