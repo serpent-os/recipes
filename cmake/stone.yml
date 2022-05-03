@@ -1,5 +1,5 @@
 name        : cmake
-version     : 3.21.3
+version     : 3.23.1
 release     : 1
 summary     : Cross-platform build system
 license     : BSD-3-Clause
@@ -7,7 +7,7 @@ homepage    : https://cmake.org
 description : |
     Cross-platform build system
 upstreams   :
-    - https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3.tar.gz : d14d06df4265134ee42c4d50f5a60cb8b471b7b6a47da8e5d914d49dd783794f
+    - https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1.tar.gz: 33fd10a8ec687a4d0d5b42473f10459bb92b3ae7def2b745dc10b192760869f3
 builddeps   :
     - cmake
     - ninja
