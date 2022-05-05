@@ -68,7 +68,6 @@ builddeps   :
     - xxhash-devel
     - zstd-devel
     - cmake
-    - pkgconf
     - curl-devel
     - clang
     - lld
