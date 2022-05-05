@@ -23,7 +23,6 @@ builddeps   :
     - zlib-devel
     - flex
 setup       : |
-    %patch %(pkgdir)/0001-Don-t-add-GLIBC_PRIVATE_DT_RELR-symbol-for-RELR.patch
     # Non release builds mess up the sonames
     sed -i '/^development=/s/true/false/' bfd/development.sh
 
