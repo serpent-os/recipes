@@ -1,4 +1,263 @@
+From 4610b24f5e4e6d2c4b769594efa6d460943163bb Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Tue, 29 Mar 2022 14:08:54 -0700
+Subject: [PATCH] elf: Define DT_RELR related macros and types
+
+---
+ elf/elf.h           | 13 +++++++++++--
+ scripts/glibcelf.py |  4 ++++
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/elf/elf.h b/elf/elf.h
+index 0735f6b579..0195029188 100644
+--- a/elf/elf.h
++++ b/elf/elf.h
+@@ -443,7 +443,8 @@ typedef struct
+ #define SHT_PREINIT_ARRAY 16		/* Array of pre-constructors */
+ #define SHT_GROUP	  17		/* Section group */
+ #define SHT_SYMTAB_SHNDX  18		/* Extended section indices */
+-#define	SHT_NUM		  19		/* Number of defined types.  */
++#define SHT_RELR	  19            /* RELR relative relocations */
++#define	SHT_NUM		  20		/* Number of defined types.  */
+ #define SHT_LOOS	  0x60000000	/* Start OS-specific.  */
+ #define SHT_GNU_ATTRIBUTES 0x6ffffff5	/* Object attributes.  */
+ #define SHT_GNU_HASH	  0x6ffffff6	/* GNU-style hash table.  */
+@@ -662,6 +663,11 @@ typedef struct
+   Elf64_Sxword	r_addend;		/* Addend */
+ } Elf64_Rela;
+ 
++/* RELR relocation table entry */
++
++typedef Elf32_Word	Elf32_Relr;
++typedef Elf64_Xword	Elf64_Relr;
++
+ /* How to extract and insert information held in the r_info field.  */
+ 
+ #define ELF32_R_SYM(val)		((val) >> 8)
+@@ -887,7 +893,10 @@ typedef struct
+ #define DT_PREINIT_ARRAY 32		/* Array with addresses of preinit fct*/
+ #define DT_PREINIT_ARRAYSZ 33		/* size in bytes of DT_PREINIT_ARRAY */
+ #define DT_SYMTAB_SHNDX	34		/* Address of SYMTAB_SHNDX section */
+-#define	DT_NUM		35		/* Number used */
++#define DT_RELRSZ	35		/* Total size of RELR relative relocations */
++#define DT_RELR		36		/* Address of RELR relative relocations */
++#define DT_RELRENT	37		/* Size of one RELR relative relocaction */
++#define	DT_NUM		38		/* Number used */
+ #define DT_LOOS		0x6000000d	/* Start of OS-specific */
+ #define DT_HIOS		0x6ffff000	/* End of OS-specific */
+ #define DT_LOPROC	0x70000000	/* Start of processor-specific */
+diff --git a/scripts/glibcelf.py b/scripts/glibcelf.py
+index da0d5380f3..f847b36c55 100644
+--- a/scripts/glibcelf.py
++++ b/scripts/glibcelf.py
+@@ -304,6 +304,7 @@ class Sht(_OpenIntEnum):
+     SHT_PREINIT_ARRAY = 16
+     SHT_GROUP = 17
+     SHT_SYMTAB_SHNDX = 18
++    SHT_RELR = 19
+     SHT_GNU_ATTRIBUTES = 0x6ffffff5
+     SHT_GNU_HASH = 0x6ffffff6
+     SHT_GNU_LIBLIST = 0x6ffffff7
+@@ -593,6 +594,9 @@ class Dt(_OpenIntEnum):
+     DT_PREINIT_ARRAY = 32
+     DT_PREINIT_ARRAYSZ = 33
+     DT_SYMTAB_SHNDX = 34
++    DT_RELRSZ = 35
++    DT_RELR = 36
++    DT_RELRENT = 37
+     DT_GNU_PRELINKED = 0x6ffffdf5
+     DT_GNU_CONFLICTSZ = 0x6ffffdf6
+     DT_GNU_LIBLISTSZ = 0x6ffffdf7
+--
+2.27.0
+
+
+From 57292f574156f817b7cbeb33ea6278c6eab22bcc Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Fri, 19 Nov 2021 06:18:56 -0800
+Subject: [PATCH] Add GLIBC_ABI_DT_RELR for DT_RELR support
+
+The EI_ABIVERSION field of the ELF header in executables and shared
+libraries can be bumped to indicate the minimum ABI requirement on the
+dynamic linker.  However, EI_ABIVERSION in executables isn't checked by
+the Linux kernel ELF loader nor the existing dynamic linker.  Executables
+will crash mysteriously if the dynamic linker doesn't support the ABI
+features required by the EI_ABIVERSION field.  The dynamic linker should
+be changed to check EI_ABIVERSION in executables.
+
+Add a glibc version, GLIBC_ABI_DT_RELR, to indicate DT_RELR support so
+that the existing dynamic linkers will issue an error on executables with
+GLIBC_ABI_DT_RELR dependency.  When there is a DT_VERNEED entry with
+libc.so on DT_NEEDED, issue an error if there is a DT_RELR entry without
+GLIBC_ABI_DT_RELR dependency.
+
+Support __placeholder_only_for_empty_version_map as the placeholder symbol
+used only for empty version map to generate GLIBC_ABI_DT_RELR without any
+symbols.
+---
+ elf/Makefile         | 14 ++++++++++++--
+ elf/Versions         |  5 +++++
+ elf/dl-version.c     | 35 +++++++++++++++++++++++++++++++++--
+ include/link.h       |  2 ++
+ scripts/abilist.awk  |  2 ++
+ scripts/versions.awk |  7 ++++++-
+ 6 files changed, 60 insertions(+), 5 deletions(-)
+
+diff --git a/elf/Makefile b/elf/Makefile
+index e4907d5de9..073807ba85 100644
+--- a/elf/Makefile
++++ b/elf/Makefile
+@@ -1145,8 +1145,12 @@ $(eval $(call include_dsosort_tests,dso-sort-tests-1.def))
+ $(eval $(call include_dsosort_tests,dso-sort-tests-2.def))
+ endif
+ 
+-check-abi: $(objpfx)check-abi-ld.out
+-tests-special += $(objpfx)check-abi-ld.out
++check-abi: $(objpfx)check-abi-ld.out \
++	   $(objpfx)check-abi-version-libc.out
++tests-special += \
++  $(objpfx)check-abi-ld.out \
++  $(objpfx)check-abi-version-libc.out \
++# tests-special
+ update-abi: update-abi-ld
+ update-all-abi: update-all-abi-ld
+ 
+@@ -2779,3 +2783,9 @@ $(objpfx)tst-p_align3: $(objpfx)tst-p_alignmod3.so
+ $(objpfx)tst-p_align3.out: tst-p_align3.sh $(objpfx)tst-p_align3
+ 	$(SHELL) $< $(common-objpfx) '$(test-program-prefix)'; \
+ 	$(evaluate-test)
++
++$(objpfx)check-abi-version-libc.out: $(common-objpfx)libc.so
++	LC_ALL=C $(READELF) -V -W $< \
++		| sed -ne '/.gnu.version_d/, /.gnu.version_r/ p' \
++		| grep GLIBC_ABI_DT_RELR > $@; \
++	$(evaluate-test)
+diff --git a/elf/Versions b/elf/Versions
+index 8bed855d8c..a9ff278de7 100644
+--- a/elf/Versions
++++ b/elf/Versions
+@@ -23,6 +23,11 @@ libc {
+   GLIBC_2.35 {
+     _dl_find_object;
+   }
++  GLIBC_ABI_DT_RELR {
++    # This symbol is used only for empty version map and will be removed
++    # by scripts/versions.awk.
++    __placeholder_only_for_empty_version_map;
++  }
+   GLIBC_PRIVATE {
+     # functions used in other libraries
+     __libc_early_init;
+diff --git a/elf/dl-version.c b/elf/dl-version.c
+index b47bd91727..cda0889209 100644
+--- a/elf/dl-version.c
++++ b/elf/dl-version.c
+@@ -214,12 +214,19 @@ _dl_check_map_versions (struct link_map *map, int verbose, int trace_mode)
+ 	      while (1)
+ 		{
+ 		  /* Match the symbol.  */
++		  const char *string = strtab + aux->vna_name;
+ 		  result |= match_symbol (DSO_FILENAME (map->l_name),
+ 					  map->l_ns, aux->vna_hash,
+-					  strtab + aux->vna_name,
+-					  needed->l_real, verbose,
++					  string, needed->l_real, verbose,
+ 					  aux->vna_flags & VER_FLG_WEAK);
+ 
++		  /* 0xfd0e42: _dl_elf_hash ("GLIBC_ABI_DT_RELR").  */
++		  if (aux->vna_hash == 0xfd0e42
++		      && __glibc_likely (strcmp (string,
++						 "GLIBC_ABI_DT_RELR")
++					 == 0))
++		    map->l_dt_relr_ref = 1;
++
+ 		  /* Compare the version index.  */
+ 		  if ((unsigned int) (aux->vna_other & 0x7fff) > ndx_high)
+ 		    ndx_high = aux->vna_other & 0x7fff;
+@@ -352,6 +359,30 @@ _dl_check_map_versions (struct link_map *map, int verbose, int trace_mode)
+ 	}
+     }
+ 
++  /* When there is a DT_VERNEED entry with libc.so on DT_NEEDED, issue
++     an error if there is a DT_RELR entry without GLIBC_ABI_DT_RELR
++     dependency.  */
++  if (dyn != NULL
++      && map->l_info[DT_NEEDED] != NULL
++      && map->l_info[DT_RELR] != NULL
++      && __glibc_unlikely (!map->l_dt_relr_ref))
++    {
++      const char *strtab = (const void *) D_PTR (map, l_info[DT_STRTAB]);
++      const ElfW(Dyn) *d;
++      for (d = map->l_ld; d->d_tag != DT_NULL; ++d)
++	if (d->d_tag == DT_NEEDED)
++	  {
++	    const char *name = strtab + d->d_un.d_val;
++	    if (strncmp (name, "libc.so.", 8) == 0)
++	      {
++		_dl_exception_create
++		  (&exception, DSO_FILENAME (map->l_name),
++		   N_("DT_RELR without GLIBC_ABI_DT_RELR dependency"));
++		goto call_error;
++	      }
++	  }
++    }
++
+   return result;
+ }
+ 
+diff --git a/include/link.h b/include/link.h
+index 03db14c7b0..0ac82d7c77 100644
+--- a/include/link.h
++++ b/include/link.h
+@@ -177,6 +177,8 @@ struct link_map
+ 	lt_library,		/* Library needed by main executable.  */
+ 	lt_loaded		/* Extra run-time loaded shared object.  */
+       } l_type:2;
++    unsigned int l_dt_relr_ref:1; /* Nonzero if GLIBC_ABI_DT_RELR is
++				     referenced.  */
+     unsigned int l_relocated:1;	/* Nonzero if object's relocations done.  */
+     unsigned int l_init_called:1; /* Nonzero if DT_INIT function called.  */
+     unsigned int l_global:1;	/* Nonzero if object in _dl_global_scope.  */
+diff --git a/scripts/abilist.awk b/scripts/abilist.awk
+index 24a34ccbed..6cc7af6ac8 100644
+--- a/scripts/abilist.awk
++++ b/scripts/abilist.awk
+@@ -55,6 +55,8 @@ $2 == "g" || $2 == "w" && (NF == 7 || NF == 8) {
+   # caused STV_HIDDEN symbols to appear in .dynsym, though that is useless.
+   if (NF > 7 && $7 == ".hidden") next;
+ 
++  if (version ~ /^GLIBC_ABI_/ && !include_abi_version) next;
++
+   if (version == "GLIBC_PRIVATE" && !include_private) next;
+ 
+   desc = "";
+diff --git a/scripts/versions.awk b/scripts/versions.awk
+index 357ad1355e..d70b07bd1a 100644
+--- a/scripts/versions.awk
++++ b/scripts/versions.awk
+@@ -185,8 +185,13 @@ END {
+ 	closeversion(oldver, veryoldver);
+ 	veryoldver = oldver;
+       }
+-      printf("%s {\n  global:\n", $2) > outfile;
+       oldver = $2;
++      # Skip the placeholder symbol used only for empty version map.
++      if ($3 == "__placeholder_only_for_empty_version_map;") {
++	printf("%s {\n", $2) > outfile;
++	continue;
++      }
++      printf("%s {\n  global:\n", $2) > outfile;
+     }
+     printf("   ") > outfile;
+     for (n = 3; n <= NF; ++n) {
+--
+2.27.0
+
+
+From e895cff59aa562cad83fa0fdd187bfe4b45312d5 Mon Sep 17 00:00:00 2001
 From: Fangrui Song <maskray@google.com>
+Date: Tue, 4 Jan 2022 18:41:03 -0800
+Subject: [PATCH] elf: Support DT_RELR relative relocation format [BZ #27924]
 
 PIE and shared objects usually have many relative relocations. In
 2017/2018, SHT_RELR/DT_RELR was proposed on
@@ -59,24 +318,24 @@ it provides a GLIBC_2.XX symbol version.
 4. Use TEST_VERIFY in tst-relr.c.
 5. Add the check-tst-relr-pie.out test to check for linker generated
 libc.so version dependency on GLIBC_ABI_DT_RELR.
+6. Move ELF_DYNAMIC_DO_RELR before ELF_DYNAMIC_DO_REL.
 ---
- configure              | 42 +++++++++++++++++++++++++++
- configure.ac           | 10 +++++++
- elf/Makefile           | 14 +++++++++
+ configure              | 37 ++++++++++++++++++++++++
+ configure.ac           |  5 ++++
+ elf/Makefile           | 25 ++++++++++++++++
  elf/dynamic-link.h     | 34 ++++++++++++++++++++++
- elf/elf.h              | 13 +++++++--
  elf/get-dynamic-info.h |  3 ++
  elf/tst-relr-pie.c     |  1 +
- elf/tst-relr.c         | 64 ++++++++++++++++++++++++++++++++++++++++++
- 8 files changed, 179 insertions(+), 2 deletions(-)
+ elf/tst-relr.c         | 65 ++++++++++++++++++++++++++++++++++++++++++
+ 7 files changed, 170 insertions(+)
  create mode 100644 elf/tst-relr-pie.c
  create mode 100644 elf/tst-relr.c
 
 diff --git a/configure b/configure
-index 8e5bee775a..9156e29fe9 100755
+index 650bfd982c..5a730dc5fc 100755
 --- a/configure
 +++ b/configure
-@@ -6115,6 +6115,48 @@ $as_echo "$libc_linker_feature" >&6; }
+@@ -6076,6 +6076,43 @@ $as_echo "$libc_linker_feature" >&6; }
  config_vars="$config_vars
  have-depaudit = $libc_cv_depaudit"
  
@@ -116,20 +375,15 @@ index 8e5bee775a..9156e29fe9 100755
 +$as_echo "$libc_linker_feature" >&6; }
 +config_vars="$config_vars
 +have-dt-relr = $libc_cv_dt_relr"
-+if test "$libc_cv_dt_relr" = yes; then
-+  have_dt_relr=1
-+else
-+  have_dt_relr=0
-+fi
 +
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for linker that supports --no-dynamic-linker" >&5
  $as_echo_n "checking for linker that supports --no-dynamic-linker... " >&6; }
  libc_linker_feature=no
 diff --git a/configure.ac b/configure.ac
-index 87f67d25ec..5c09871fee 100644
+index 605efd549d..a045f6608e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1367,6 +1367,16 @@ LIBC_LINKER_FEATURE([--depaudit], [-Wl,--depaudit,x],
+@@ -1336,6 +1336,11 @@ LIBC_LINKER_FEATURE([--depaudit], [-Wl,--depaudit,x],
  		    [libc_cv_depaudit=yes], [libc_cv_depaudit=no])
  LIBC_CONFIG_VAR([have-depaudit], [$libc_cv_depaudit])
  
@@ -137,37 +391,43 @@ index 87f67d25ec..5c09871fee 100644
 +		    [-Wl,-z,pack-relative-relocs],
 +		    [libc_cv_dt_relr=yes], [libc_cv_dt_relr=no])
 +LIBC_CONFIG_VAR([have-dt-relr], [$libc_cv_dt_relr])
-+if test "$libc_cv_dt_relr" = yes; then
-+  have_dt_relr=1
-+else
-+  have_dt_relr=0
-+fi
 +
  LIBC_LINKER_FEATURE([--no-dynamic-linker],
  		    [-Wl,--no-dynamic-linker],
  		    [libc_cv_no_dynamic_linker=yes],
 diff --git a/elf/Makefile b/elf/Makefile
-index c96924e9c2..fd462ba315 100644
+index 073807ba85..3dcc550def 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
-@@ -541,6 +541,14 @@ tests-special += \
+@@ -542,6 +542,25 @@ tests-special += \
    # tests-special
  endif
  endif
 +ifeq ($(have-dt-relr),yes)
-+tests += tst-relr tst-relr-pie
-+tests-pie += tst-relr-pie
-+tests-special += $(objpfx)check-tst-relr-pie.out
++tests += \
++  tst-relr \
++# tests
++ifeq ($(have-fpie),yes)
++tests += \
++  tst-relr-pie \
++# tests
++tests-pie += \
++  tst-relr-pie \
++# tests-pie
++tests-special += \
++  $(objpfx)check-tst-relr-pie.out \
++# tests-special
++endif
 +CFLAGS-tst-relr-pie.c += $(pie-ccflag)
 +LDFLAGS-tst-relr += -Wl,-z,pack-relative-relocs
 +LDFLAGS-tst-relr-pie += -Wl,-z,pack-relative-relocs
 +endif
  endif
  
- ifeq ($(run-built-tests),yes)
-@@ -2725,3 +2733,9 @@ $(objpfx)tst-p_align3: $(objpfx)tst-p_alignmod3.so
- $(objpfx)tst-p_align3.out: tst-p_align3.sh $(objpfx)tst-p_align3
- 	$(SHELL) $< $(common-objpfx) '$(test-program-prefix)'; \
+ tests-special += $(objpfx)tst-relro-ldso.out $(objpfx)tst-relro-libc.out
+@@ -2789,3 +2808,9 @@ $(objpfx)check-abi-version-libc.out: $(common-objpfx)libc.so
+ 		| sed -ne '/.gnu.version_d/, /.gnu.version_r/ p' \
+ 		| grep GLIBC_ABI_DT_RELR > $@; \
  	$(evaluate-test)
 +
 +$(objpfx)check-tst-relr-pie.out: $(objpfx)tst-relr-pie
@@ -176,10 +436,10 @@ index c96924e9c2..fd462ba315 100644
 +		| grep GLIBC_ABI_DT_RELR > $@; \
 +	$(evaluate-test)
 diff --git a/elf/dynamic-link.h b/elf/dynamic-link.h
-index 25dd7ca4f2..5318079bac 100644
+index 25dd7ca4f2..019088f248 100644
 --- a/elf/dynamic-link.h
 +++ b/elf/dynamic-link.h
-@@ -146,14 +146,48 @@ elf_machine_lazy_rel (struct link_map *map, struct r_scope_elem *scope[],
+@@ -146,12 +146,46 @@ elf_machine_lazy_rel (struct link_map *map, struct r_scope_elem *scope[],
  #  define ELF_DYNAMIC_DO_RELA(map, scope, lazy, skip_ifunc) /* Nothing to do.  */
  # endif
  
@@ -187,7 +447,7 @@ index 25dd7ca4f2..5318079bac 100644
 +  do {									      \
 +    ElfW(Addr) l_addr = (map)->l_addr, *where = 0;			      \
 +    const ElfW(Relr) *r, *end;						      \
-+    if (!(map)->l_info[DT_RELR])					      \
++    if ((map)->l_info[DT_RELR] == NULL)					      \
 +      break;								      \
 +    r = (const ElfW(Relr) *)D_PTR((map), l_info[DT_RELR]);		      \
 +    end = (const ElfW(Relr) *)((const char *)r +			      \
@@ -202,7 +462,7 @@ index 25dd7ca4f2..5318079bac 100644
 +	  }								      \
 +	else 								      \
 +	  {								      \
-+	    for (long i = 0; (entry >>= 1) != 0; i++)			      \
++	    for (long int i = 0; (entry >>= 1) != 0; i++)		      \
 +	      if ((entry & 1) != 0)					      \
 +		where[i] += l_addr;					      \
 +	    where += CHAR_BIT * sizeof(ElfW(Relr)) - 1;			      \
@@ -221,51 +481,11 @@ index 25dd7ca4f2..5318079bac 100644
    do {									      \
      int edr_lazy = elf_machine_runtime_setup ((map), (scope), (lazy),	      \
  					      (consider_profile));	      \
-     ELF_DYNAMIC_DO_REL ((map), (scope), edr_lazy, skip_ifunc);		      \
-     ELF_DYNAMIC_DO_RELA ((map), (scope), edr_lazy, skip_ifunc);		      \
 +    if (((map) != &GL(dl_rtld_map) || DO_RTLD_BOOTSTRAP))		      \
 +      ELF_DYNAMIC_DO_RELR (map);					      \
+     ELF_DYNAMIC_DO_REL ((map), (scope), edr_lazy, skip_ifunc);		      \
+     ELF_DYNAMIC_DO_RELA ((map), (scope), edr_lazy, skip_ifunc);		      \
    } while (0)
- 
- #endif
-diff --git a/elf/elf.h b/elf/elf.h
-index 0735f6b579..0195029188 100644
---- a/elf/elf.h
-+++ b/elf/elf.h
-@@ -443,7 +443,8 @@ typedef struct
- #define SHT_PREINIT_ARRAY 16		/* Array of pre-constructors */
- #define SHT_GROUP	  17		/* Section group */
- #define SHT_SYMTAB_SHNDX  18		/* Extended section indices */
--#define	SHT_NUM		  19		/* Number of defined types.  */
-+#define SHT_RELR	  19            /* RELR relative relocations */
-+#define	SHT_NUM		  20		/* Number of defined types.  */
- #define SHT_LOOS	  0x60000000	/* Start OS-specific.  */
- #define SHT_GNU_ATTRIBUTES 0x6ffffff5	/* Object attributes.  */
- #define SHT_GNU_HASH	  0x6ffffff6	/* GNU-style hash table.  */
-@@ -662,6 +663,11 @@ typedef struct
-   Elf64_Sxword	r_addend;		/* Addend */
- } Elf64_Rela;
- 
-+/* RELR relocation table entry */
-+
-+typedef Elf32_Word	Elf32_Relr;
-+typedef Elf64_Xword	Elf64_Relr;
-+
- /* How to extract and insert information held in the r_info field.  */
- 
- #define ELF32_R_SYM(val)		((val) >> 8)
-@@ -887,7 +893,10 @@ typedef struct
- #define DT_PREINIT_ARRAY 32		/* Array with addresses of preinit fct*/
- #define DT_PREINIT_ARRAYSZ 33		/* size in bytes of DT_PREINIT_ARRAY */
- #define DT_SYMTAB_SHNDX	34		/* Address of SYMTAB_SHNDX section */
--#define	DT_NUM		35		/* Number used */
-+#define DT_RELRSZ	35		/* Total size of RELR relative relocations */
-+#define DT_RELR		36		/* Address of RELR relative relocations */
-+#define DT_RELRENT	37		/* Size of one RELR relative relocaction */
-+#define	DT_NUM		38		/* Number used */
- #define DT_LOOS		0x6000000d	/* Start of OS-specific */
- #define DT_HIOS		0x6ffff000	/* End of OS-specific */
- #define DT_LOPROC	0x70000000	/* Start of processor-specific */
 diff --git a/elf/get-dynamic-info.h b/elf/get-dynamic-info.h
 index 6c2ccd6db4..6c2a3a12b1 100644
 --- a/elf/get-dynamic-info.h
@@ -296,10 +516,10 @@ index 0000000000..7df0cdbfd6
 +#include "tst-relr.c"
 diff --git a/elf/tst-relr.c b/elf/tst-relr.c
 new file mode 100644
-index 0000000000..56addd2ad4
+index 0000000000..c634ce0d21
 --- /dev/null
 +++ b/elf/tst-relr.c
-@@ -0,0 +1,64 @@
+@@ -0,0 +1,65 @@
 +/* Basic tests for DT_RELR.
 +   Copyright (C) 2022 Free Software Foundation, Inc.
 +   This file is part of the GNU C Library.
@@ -320,6 +540,7 @@ index 0000000000..56addd2ad4
 +
 +#include <link.h>
 +#include <stdbool.h>
++#include <array_length.h>
 +#include <support/check.h>
 +
 +static int o, x;
@@ -355,7 +576,7 @@ index 0000000000..56addd2ad4
 +#endif
 +    }
 +
-+  for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++)
++  for (int i = 0; i < array_length (arr); i++)
 +    TEST_VERIFY ((arr[i] == 0 && val[i] == 0)
 +		 || (arr[i] == &o && val[i] == 1)
 +		 || (arr[i] == &x && val[i] == 2));
@@ -365,18 +586,24 @@ index 0000000000..56addd2ad4
 +
 +#include <support/test-driver.c>
 --
-2.35.1
+2.27.0
+
+
+From 60196d2ef2850f222c7c93818ccb4d9cdbd77276 Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Tue, 4 Jan 2022 05:47:21 -0800
+Subject: [PATCH] elf: Properly handle zero DT_RELA/DT_REL values
 
 With DT_RELR, there may be no relocations in DT_RELA/DT_REL and their
 entry values are zero.  Don't relocate DT_RELA/DT_REL and update the
 combined relocation start address if their entry values are zero.
 ---
  elf/dynamic-link.h     |  6 +++++-
- elf/get-dynamic-info.h | 18 ++++++++++++++----
- 2 files changed, 19 insertions(+), 5 deletions(-)
+ elf/get-dynamic-info.h | 24 ++++++++++++++++++------
+ 2 files changed, 23 insertions(+), 7 deletions(-)
 
 diff --git a/elf/dynamic-link.h b/elf/dynamic-link.h
-index 5318079bac..320a9029f2 100644
+index 019088f248..debbb8c9f7 100644
 --- a/elf/dynamic-link.h
 +++ b/elf/dynamic-link.h
 @@ -84,7 +84,9 @@ elf_machine_lazy_rel (struct link_map *map, struct r_scope_elem *scope[],
@@ -385,7 +612,7 @@ index 5318079bac..320a9029f2 100644
  									      \
 -    if ((map)->l_info[DT_##RELOC])					      \
 +    /* With DT_RELR, DT_RELA/DT_REL can have zero value.  */		      \
-+    if ((map)->l_info[DT_##RELOC]					      \
++    if ((map)->l_info[DT_##RELOC] != NULL				      \
 +	&& (map)->l_info[DT_##RELOC]->d_un.d_ptr != 0)			      \
        {									      \
  	ranges[0].start = D_PTR ((map), l_info[DT_##RELOC]);		      \
@@ -400,10 +627,22 @@ index 5318079bac..320a9029f2 100644
  	  ranges[0].size -= size;					      \
  	if (!(do_lazy)							      \
 diff --git a/elf/get-dynamic-info.h b/elf/get-dynamic-info.h
-index 6c2a3a12b1..f4b957684b 100644
+index 6c2a3a12b1..0314baf020 100644
 --- a/elf/get-dynamic-info.h
 +++ b/elf/get-dynamic-info.h
-@@ -83,16 +83,26 @@ elf_get_dynamic_info (struct link_map *l, bool bootstrap,
+@@ -75,24 +75,36 @@ elf_get_dynamic_info (struct link_map *l, bool bootstrap,
+ 
+ # define ADJUST_DYN_INFO(tag) \
+       do								      \
+-	if (info[tag] != NULL)						      \
+-         info[tag]->d_un.d_ptr += l_addr;				      \
++	{								      \
++	  if (info[tag] != NULL)					      \
++	  info[tag]->d_un.d_ptr += l_addr;				      \
++	}								      \
+       while (0)
+ 
+       ADJUST_DYN_INFO (DT_HASH);
        ADJUST_DYN_INFO (DT_PLTGOT);
        ADJUST_DYN_INFO (DT_STRTAB);
        ADJUST_DYN_INFO (DT_SYMTAB);
@@ -435,407 +674,4 @@ index 6c2a3a12b1..f4b957684b 100644
      }
    if (info[DT_PLTREL] != NULL)
 --
-2.35.1
-
-The EI_ABIVERSION field of the ELF header in executables and shared
-libraries can be bumped to indicate the minimum ABI requirement on the
-dynamic linker.  However, EI_ABIVERSION in executables isn't checked by
-the Linux kernel ELF loader nor the existing dynamic linker.  Executables
-will crash mysteriously if the dynamic linker doesn't support the ABI
-features required by the EI_ABIVERSION field.  The dynamic linker should
-be changed to check EI_ABIVERSION in executables.
-
-Add a glibc version, GLIBC_ABI_DT_RELR, to indicate DT_RELR support so
-that the existing dynamic linkers will issue an error on executables with
-GLIBC_ABI_DT_RELR dependency.  Issue an error if there is a DT_RELR entry
-without GLIBC_ABI_DT_RELR dependency nor GLIBC_PRIVATE definition.
-
-Support __placeholder_only_for_empty_version_map as the placeholder symbol
-used only for empty version map to generate GLIBC_ABI_DT_RELR without any
-symbols.
----
- elf/Makefile             | 16 ++++++++++++++--
- elf/Versions             |  5 +++++
- elf/dl-version.c         | 33 +++++++++++++++++++++++++++++++--
- elf/libc-abi-version.exp |  1 +
- include/link.h           |  6 ++++++
- scripts/abilist.awk      |  2 ++
- scripts/versions.awk     |  7 ++++++-
- 7 files changed, 65 insertions(+), 5 deletions(-)
- create mode 100644 elf/libc-abi-version.exp
-
-diff --git a/elf/Makefile b/elf/Makefile
-index fd462ba315..f533d377fd 100644
---- a/elf/Makefile
-+++ b/elf/Makefile
-@@ -1113,8 +1113,10 @@ $(eval $(call include_dsosort_tests,dso-sort-tests-1.def))
- $(eval $(call include_dsosort_tests,dso-sort-tests-2.def))
- endif
- 
--check-abi: $(objpfx)check-abi-ld.out
--tests-special += $(objpfx)check-abi-ld.out
-+check-abi: $(objpfx)check-abi-ld.out \
-+	   $(objpfx)check-abi-version-libc.out
-+tests-special += $(objpfx)check-abi-ld.out \
-+	   $(objpfx)check-abi-version-libc.out
- update-abi: update-abi-ld
- update-all-abi: update-all-abi-ld
- 
-@@ -2739,3 +2741,13 @@ $(objpfx)check-tst-relr-pie.out: $(objpfx)tst-relr-pie
- 		| sed -ne '/required from libc.so/,$$ p' \
- 		| grep GLIBC_ABI_DT_RELR > $@; \
- 	$(evaluate-test)
-+
-+$(objpfx)check-abi-version-libc.out: libc-abi-version.exp \
-+  $(objpfx)libc.symlist-abi-version
-+	cmp $^ > $@; \
-+	$(evaluate-test)
-+
-+$(objpfx)libc.symlist-abi-version: $(common-objpfx)libc.so
-+	LC_ALL=C $(OBJDUMP) --dynamic-syms $< | grep " GLIBC_ABI_" \
-+		| sed "s/0\+/00000000/g;s/[ \t]\+/ /g" > $@T
-+	mv -f $@T $@
-diff --git a/elf/Versions b/elf/Versions
-index 8bed855d8c..a9ff278de7 100644
---- a/elf/Versions
-+++ b/elf/Versions
-@@ -23,6 +23,11 @@ libc {
-   GLIBC_2.35 {
-     _dl_find_object;
-   }
-+  GLIBC_ABI_DT_RELR {
-+    # This symbol is used only for empty version map and will be removed
-+    # by scripts/versions.awk.
-+    __placeholder_only_for_empty_version_map;
-+  }
-   GLIBC_PRIVATE {
-     # functions used in other libraries
-     __libc_early_init;
-diff --git a/elf/dl-version.c b/elf/dl-version.c
-index b47bd91727..720ec596a5 100644
---- a/elf/dl-version.c
-+++ b/elf/dl-version.c
-@@ -214,12 +214,20 @@ _dl_check_map_versions (struct link_map *map, int verbose, int trace_mode)
- 	      while (1)
- 		{
- 		  /* Match the symbol.  */
-+		  const char *string = strtab + aux->vna_name;
- 		  result |= match_symbol (DSO_FILENAME (map->l_name),
- 					  map->l_ns, aux->vna_hash,
--					  strtab + aux->vna_name,
--					  needed->l_real, verbose,
-+					  string, needed->l_real, verbose,
- 					  aux->vna_flags & VER_FLG_WEAK);
- 
-+		  if (map->l_abi_version == lav_none
-+		      /* 0xfd0e42: _dl_elf_hash ("GLIBC_ABI_DT_RELR").  */
-+		      && aux->vna_hash == 0xfd0e42
-+		      && __glibc_likely (strcmp (string,
-+						 "GLIBC_ABI_DT_RELR")
-+					 == 0))
-+		    map->l_abi_version = lav_dt_relr_ref;
-+
- 		  /* Compare the version index.  */
- 		  if ((unsigned int) (aux->vna_other & 0x7fff) > ndx_high)
- 		    ndx_high = aux->vna_other & 0x7fff;
-@@ -253,6 +261,16 @@ _dl_check_map_versions (struct link_map *map, int verbose, int trace_mode)
-       ent = (ElfW(Verdef) *) (map->l_addr + def->d_un.d_ptr);
-       while (1)
- 	{
-+	  /* 0x0963cf85: _dl_elf_hash ("GLIBC_PRIVATE").  */
-+	  if (ent->vd_hash == 0x0963cf85)
-+	    {
-+	      ElfW(Verdaux) *aux = (ElfW(Verdaux) *) ((char *) ent
-+						      + ent->vd_aux);
-+	      if (__glibc_likely (strcmp ("GLIBC_PRIVATE",
-+					  strtab + aux->vda_name) == 0))
-+		map->l_abi_version = lav_private_def;
-+	    }
-+
- 	  if ((unsigned int) (ent->vd_ndx & 0x7fff) > ndx_high)
- 	    ndx_high = ent->vd_ndx & 0x7fff;
- 
-diff --git a/elf/libc-abi-version.exp b/elf/libc-abi-version.exp
-new file mode 100644
-index 0000000000..ff8506b3ba
---- /dev/null
-+++ b/elf/libc-abi-version.exp
-@@ -0,0 +1 @@
-+00000000 g DO *ABS* 00000000 GLIBC_ABI_DT_RELR GLIBC_ABI_DT_RELR
-diff --git a/include/link.h b/include/link.h
-index 03db14c7b0..8ec5e35cf2 100644
---- a/include/link.h
-+++ b/include/link.h
-@@ -177,6 +177,12 @@ struct link_map
- 	lt_library,		/* Library needed by main executable.  */
- 	lt_loaded		/* Extra run-time loaded shared object.  */
-       } l_type:2;
-+    enum			/* ABI dependency of this object.  */
-+      {
-+	lav_none,		/* No ABI dependency.  */
-+	lav_dt_relr_ref,	/* Need GLIBC_ABI_DT_RELR.  */
-+	lav_private_def		/* Define GLIBC_PRIVATE.  */
-+      } l_abi_version:2;
-     unsigned int l_relocated:1;	/* Nonzero if object's relocations done.  */
-     unsigned int l_init_called:1; /* Nonzero if DT_INIT function called.  */
-     unsigned int l_global:1;	/* Nonzero if object in _dl_global_scope.  */
-diff --git a/scripts/abilist.awk b/scripts/abilist.awk
-index 24a34ccbed..6cc7af6ac8 100644
---- a/scripts/abilist.awk
-+++ b/scripts/abilist.awk
-@@ -55,6 +55,8 @@ $2 == "g" || $2 == "w" && (NF == 7 || NF == 8) {
-   # caused STV_HIDDEN symbols to appear in .dynsym, though that is useless.
-   if (NF > 7 && $7 == ".hidden") next;
- 
-+  if (version ~ /^GLIBC_ABI_/ && !include_abi_version) next;
-+
-   if (version == "GLIBC_PRIVATE" && !include_private) next;
- 
-   desc = "";
-diff --git a/scripts/versions.awk b/scripts/versions.awk
-index 357ad1355e..d70b07bd1a 100644
---- a/scripts/versions.awk
-+++ b/scripts/versions.awk
-@@ -185,8 +185,13 @@ END {
- 	closeversion(oldver, veryoldver);
- 	veryoldver = oldver;
-       }
--      printf("%s {\n  global:\n", $2) > outfile;
-       oldver = $2;
-+      # Skip the placeholder symbol used only for empty version map.
-+      if ($3 == "__placeholder_only_for_empty_version_map;") {
-+	printf("%s {\n", $2) > outfile;
-+	continue;
-+      }
-+      printf("%s {\n  global:\n", $2) > outfile;
-     }
-     printf("   ") > outfile;
-     for (n = 3; n <= NF; ++n) {
---
-2.35.1
-
-Enable DT_RELR in glibc shared libraries and position independent
-executables (PIE) automatically if linker supports -z pack-relative-relocs.
-
-Also add a new configuration option, --disable-default-dt-relr, to
-avoid DT_RELR usage in glibc shared libraries and PIEs.
----
- INSTALL             |  6 ++++++
- Makeconfig          | 19 +++++++++++++++++++
- Makerules           |  2 ++
- configure           | 18 ++++++++++++++++++
- configure.ac        | 13 +++++++++++++
- elf/Makefile        |  4 +++-
- manual/install.texi |  5 +++++
- 7 files changed, 66 insertions(+), 1 deletion(-)
-
-diff --git a/INSTALL b/INSTALL
-index 63c022d6b9..4a6506f11f 100644
---- a/INSTALL
-+++ b/INSTALL
-@@ -133,6 +133,12 @@ if 'CFLAGS' is specified it must enable optimization.  For example:
-      used with the GCC option, -static-pie, which is available with GCC
-      8 or above, to create static PIE.
- 
-+'--disable-default-dt-relr'
-+     Don't enable DT_RELR in glibc shared libraries and position
-+     independent executables (PIE). By default, DT_RELR is enabled in
-+     glibc shared libraries and position independent executables on
-+     targets that support it.
-+
- '--enable-cet'
- '--enable-cet=permissive'
-      Enable Intel Control-flow Enforcement Technology (CET) support.
-diff --git a/Makeconfig b/Makeconfig
-index 47db08d6ae..70c0acc065 100644
---- a/Makeconfig
-+++ b/Makeconfig
-@@ -358,6 +358,23 @@ else
- real-static-start-installed-name = $(static-start-installed-name)
- endif
- 
-+# Linker option to enable and disable DT-RELR.
-+ifeq ($(have-dt-relr),yes)
-+dt-relr-ldflag = -Wl,-z,pack-relative-relocs
-+no-dt-relr-ldflag = -Wl,-z,nopack-relative-relocs
-+else
-+dt-relr-ldflag =
-+no-dt-relr-ldflag =
-+endif
-+
-+# Default linker option for DT-RELR.
-+ifeq (yes,$(build-dt-relr-default))
-+default-rt-relr-ldflag = $(dt-relr-ldflag)
-+else
-+default-rt-relr-ldflag = $(no-dt-relr-ldflag)
-+endif
-+LDFLAGS-rtld += $(default-rt-relr-ldflag)
-+
- ifeq (yesyes,$(build-shared)$(have-z-combreloc))
- combreloc-LDFLAGS = -Wl,-z,combreloc
- LDFLAGS.so += $(combreloc-LDFLAGS)
-@@ -419,6 +436,7 @@ link-extra-libs-tests = $(libsupport)
- # Command for linking PIE programs with the C library.
- ifndef +link-pie
- +link-pie-before-inputs = $(if $($(@F)-no-pie),$(no-pie-ldflag),-pie) \
-+	     $(if $($(@F)-no-dt-relr),$(no-dt-relr-ldflag),$(default-rt-relr-ldflag)) \
- 	     -Wl,-O1 -nostdlib -nostartfiles \
- 	     $(sysdep-LDFLAGS) $(LDFLAGS) $(LDFLAGS-$(@F)) \
- 	     $(combreloc-LDFLAGS) $(relro-LDFLAGS) $(hashstyle-LDFLAGS) \
-@@ -451,6 +469,7 @@ endif
- ifndef +link-static
- +link-static-before-inputs = -nostdlib -nostartfiles -static \
- 	      $(if $($(@F)-no-pie),$(no-pie-ldflag),$(static-pie-ldflag)) \
-+	      $(if $($(@F)-no-dt-relr),$(no-dt-relr-ldflag),$(default-rt-relr-ldflag)) \
- 	      $(sysdep-LDFLAGS) $(LDFLAGS) $(LDFLAGS-$(@F))  \
- 	      $(firstword $(CRT-$(@F)) $(csu-objpfx)$(real-static-start-installed-name)) \
- 	      $(+preinit) $(+prectorT)
-diff --git a/Makerules b/Makerules
-index 428464f092..7c1da551bf 100644
---- a/Makerules
-+++ b/Makerules
-@@ -536,6 +536,7 @@ lib%.so: lib%_pic.a $(+preinit) $(+postinit) $(link-libc-deps)
- define build-shlib-helper
- $(LINK.o) -shared -static-libgcc -Wl,-O1 $(sysdep-LDFLAGS) \
- 	  $(if $($(@F)-no-z-defs)$(no-z-defs),,-Wl,-z,defs) $(rtld-LDFLAGS) \
-+	  $(if $($(@F)-no-dt-relr),$(no-dt-relr-ldflag),$(default-rt-relr-ldflag)) \
- 	  $(extra-B-$(@F:lib%.so=%).so) -B$(csu-objpfx) \
- 	  $(extra-B-$(@F:lib%.so=%).so) $(load-map-file) \
- 	  -Wl,-soname=lib$(libprefix)$(@F:lib%.so=%).so$($(@F)-version) \
-@@ -595,6 +596,7 @@ endef
- define build-module-helper
- $(LINK.o) -shared -static-libgcc $(sysdep-LDFLAGS) $(rtld-LDFLAGS) \
- 	  $(if $($(@F)-no-z-defs)$(no-z-defs),,-Wl,-z,defs) \
-+	  $(if $($(@F)-no-dt-relr),$(no-dt-relr-ldflag),$(default-rt-relr-ldflag)) \
- 	  -B$(csu-objpfx) $(load-map-file) \
- 	  $(LDFLAGS.so) $(LDFLAGS-$(@F:%.so=%).so) \
- 	  $(link-test-modules-rpath-link) \
-diff --git a/configure b/configure
-index 9156e29fe9..ee4137a977 100755
---- a/configure
-+++ b/configure
-@@ -768,6 +768,7 @@ enable_sanity_checks
- enable_shared
- enable_profile
- enable_default_pie
-+enable_default_dt_relr
- enable_timezone_tools
- enable_hardcoded_path_in_tests
- enable_hidden_plt
-@@ -1425,6 +1426,7 @@ Optional Features:
-   --enable-profile        build profiled library [default=no]
-   --disable-default-pie   Do not build glibc programs and the testsuite as PIE
-                           [default=no]
-+  --disable-dt-relr       Do not enable DT_RELR in glibc[default=no]
-   --disable-timezone-tools
-                           do not install timezone tools [default=install]
-   --enable-hardcoded-path-in-tests
-@@ -3441,6 +3443,13 @@ else
-   default_pie=yes
- fi
- 
-+# Check whether --enable-default-dt-relr was given.
-+if test "${enable_default_dt_relr+set}" = set; then :
-+  enableval=$enable_default_dt_relr; default_dt_relr=$enableval
-+else
-+  default_dt_relr=yes
-+fi
-+
- # Check whether --enable-timezone-tools was given.
- if test "${enable_timezone_tools+set}" = set; then :
-   enableval=$enable_timezone_tools; enable_timezone_tools=$enableval
-@@ -7136,6 +7145,15 @@ fi
- config_vars="$config_vars
- enable-static-pie = $libc_cv_static_pie"
- 
-+# Disable build-dt-relr-default if linker does not support it or glibc is
-+# configured with --disable-default-dt-relr.
-+build_dt_relr_default=$default_dt_relr
-+if test "x$build_dt_relr_default" != xno; then
-+  build_dt_relr_default=$libc_cv_dt_relr
-+fi
-+config_vars="$config_vars
-+build-dt-relr-default = $build_dt_relr_default"
-+
- # Set the `multidir' variable by grabbing the variable from the compiler.
- # We do it once and save the result in a generated makefile.
- libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
-diff --git a/configure.ac b/configure.ac
-index 5c09871fee..680b036ffa 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -197,6 +197,11 @@ AC_ARG_ENABLE([default-pie],
- 			     [Do not build glibc programs and the testsuite as PIE @<:@default=no@:>@]),
- 	      [default_pie=$enableval],
- 	      [default_pie=yes])
-+AC_ARG_ENABLE([default-dt-relr],
-+	      AS_HELP_STRING([--disable-dt-relr],
-+			     [Do not enable DT_RELR in glibc@<:@default=no@:>@]),
-+	      [default_dt_relr=$enableval],
-+	      [default_dt_relr=yes])
- AC_ARG_ENABLE([timezone-tools],
- 	      AS_HELP_STRING([--disable-timezone-tools],
- 			     [do not install timezone tools @<:@default=install@:>@]),
-@@ -1914,6 +1919,14 @@ if test "$libc_cv_static_pie" = "yes"; then
- fi
- LIBC_CONFIG_VAR([enable-static-pie], [$libc_cv_static_pie])
- 
-+# Disable build-dt-relr-default if linker does not support it or glibc is
-+# configured with --disable-default-dt-relr.
-+build_dt_relr_default=$default_dt_relr
-+if test "x$build_dt_relr_default" != xno; then
-+  build_dt_relr_default=$libc_cv_dt_relr
-+fi
-+LIBC_CONFIG_VAR([build-dt-relr-default], [$build_dt_relr_default])
-+
- # Set the `multidir' variable by grabbing the variable from the compiler.
- # We do it once and save the result in a generated makefile.
- libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
-diff --git a/elf/Makefile b/elf/Makefile
-index f533d377fd..e6959faa25 100644
---- a/elf/Makefile
-+++ b/elf/Makefile
-@@ -1567,6 +1567,7 @@ $(objpfx)nodlopen2.out: $(objpfx)nodlopenmod2.so
- 
- $(objpfx)filtmod1.so: $(objpfx)filtmod1.os $(objpfx)filtmod2.so
- 	$(LINK.o) -shared -o $@ -B$(csu-objpfx) $(LDFLAGS.so) \
-+		  $(default-rt-relr-ldflag) \
- 		  -L$(subst :, -L,$(rpath-link)) \
- 		  -Wl,-rpath-link=$(rpath-link) \
- 		  $< -Wl,-F,$(objpfx)filtmod2.so
-@@ -2366,7 +2367,7 @@ $(objpfx)tst-big-note: $(objpfx)tst-big-note-lib.so
- # artificial, large note in tst-big-note-lib.o and invalidate the
- # test.
- $(objpfx)tst-big-note-lib.so: $(objpfx)tst-big-note-lib.o
--	$(LINK.o) -shared -o $@ $(LDFLAGS.so) $<
-+	$(LINK.o) -shared -o $@ $(LDFLAGS.so) $(default-rt-relr-ldflag) $<
- 
- $(objpfx)tst-unwind-ctor: $(objpfx)tst-unwind-ctor-lib.so
- 
-@@ -2672,6 +2673,7 @@ $(objpfx)tst-ro-dynamic: $(objpfx)tst-ro-dynamic-mod.so
- $(objpfx)tst-ro-dynamic-mod.so: $(objpfx)tst-ro-dynamic-mod.os \
-   tst-ro-dynamic-mod.map
- 	$(LINK.o) -nostdlib -nostartfiles -shared -o $@ \
-+		$(default-rt-relr-ldflag) \
- 		-Wl,--script=tst-ro-dynamic-mod.map \
- 		$(objpfx)tst-ro-dynamic-mod.os
- 
-diff --git a/manual/install.texi b/manual/install.texi
-index 29c52f2927..04ea996561 100644
---- a/manual/install.texi
-+++ b/manual/install.texi
-@@ -161,6 +161,11 @@ and architecture support it, static executables are built as static PIE and the
- resulting glibc can be used with the GCC option, -static-pie, which is
- available with GCC 8 or above, to create static PIE.
- 
-+@item --disable-default-dt-relr
-+Don't enable DT_RELR in glibc shared libraries and position independent
-+executables (PIE).  By default, DT_RELR is enabled in glibc shared
-+libraries and position independent executables on targets that support it.
-+
- @item --enable-cet
- @itemx --enable-cet=permissive
- Enable Intel Control-flow Enforcement Technology (CET) support.  When
---
-2.35.1
-
+2.27.0
