@@ -17,6 +17,7 @@ builddeps   :
     - gcc-32bit-devel
     - glibc-32bit
     - glibc-32bit-devel
+    - binutils-devel
     - ncurses-devel
     - cmake
     - ninja
@@ -46,6 +47,7 @@ environment : |
         -DCOMPILER_RT_USE_BUILTINS_LIBRARY=ON \
         -DCOMPILER_RT_USE_LIBCXX=ON \
         -DENABLE_LINKER_BUILD_ID=ON \
+        -DLLVM_BINUTILS_INCDIR=/usr/include \
         -DLLVM_BUILD_TOOLS=ON \
         -DLLVM_DEFAULT_TARGET_TRIPLE=%(build) \
         -DLLVM_ENABLE_FFI=ON \
