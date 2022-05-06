@@ -1,5 +1,5 @@
 name        : llvm-bolt
-version     : 1
+version     : 15.0.0
 release     : 1
 summary     : Binary Optimization and Layout Tool
 license     : Apache-2.0
@@ -7,24 +7,29 @@ homepage    : https://github.com/facebookincubator/BOLT
 description : |
     Binary Optimization and Layout Tool.
 upstreams   :
-    - https://github.com/facebookincubator/BOLT/archive/be94db47a9d82fc82d6e0f2fca3609ba4cdb2cb8.tar.gz : af374cf8893d9d5d8f0e4373bf21555db0a8403b003211b1114c23761ec782f4
+    - https://github.com/llvm/llvm-project/archive/0dfafa489230061cdde39d9e7294bb61d23f1064.tar.gz: aea0419796acf8c5cbace0a1c632bceef7dcda40c6f5ff3d2931377889522277
 builddeps   :
-    - make
+    - cmake
+    - ninja
     - clang
     - lld
     - llvm
     - libcxx-devel
-environment : |
-    cd llvm
+    - python
+    - ncurses-devel
+    - zlib-devel
 setup       : |
-    %cmake -DLLVM_ENABLE_ASSERTIONS=ON \
+    %cmake -S llvm -DLLVM_ENABLE_ASSERTIONS=ON \
         -DLLVM_ENABLE_PROJECTS='bolt;clang;lld' \
         -DLLVM_TARGETS_TO_BUILD='X86'
 install     : |
     DESTDIR="%(installroot)" %cmake_build install-llvm-bolt install-perf2bolt install-merge-fdata install-llvm-boltdiff install-bolt_rt
-    rm -rf %(installroot)/root
 tuning      :
     - icf: all
     - lto: thin
     - nosemantic
     - symbolic
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/libbolt_rt*.a
