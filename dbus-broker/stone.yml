@@ -9,11 +9,16 @@ description : |
 upstreams   :
     - https://github.com/bus1/dbus-broker/releases/download/v29/dbus-broker-29.tar.xz : 4eca425db52b7ab1027153e93fea9b3f11759db9e93ffbf88759b73ddfb8026a
 builddeps   :
-    - make
+    - meson
+    - python
+    - ninja
     - clang
     - lld
     - llvm
     - libcxx-devel
+    - expat
+    - expat-devel
+    - systemd-devel
 setup       : |
     %meson
 build       : |
