@@ -1,5 +1,5 @@
 name        : libxml2
-version     : 2.9.12
+version     : 2.9.14
 release     : 1
 summary     : XML parsing library
 license     : MIT
@@ -7,13 +7,16 @@ homepage    : http://www.xmlsoft.org/
 description : |
     XML parsing library
 upstreams   :
-    - ftp://xmlsoft.org/libxml2/libxml2-2.9.12.tar.gz: c8d6681e38c56f172892c85ddc0852e1fd4b53b4209e7f4ebf17f7e2eae71d92
+    - https://download.gnome.org/sources/libxml2/2.9/libxml2-2.9.14.tar.xz: 60d74a257d1ccec0475e749cba2f21559e48139efba6ff28224357c7c798dfee
 builddeps   :
     - make
     - clang
     - lld
     - llvm
     - libcxx-devel
+    - perl
+    - xz-devel
+    - zlib-devel
 setup       : |
     %configure --disable-static
 build       : |
