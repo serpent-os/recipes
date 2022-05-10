@@ -1,5 +1,5 @@
 name        : libxcrypt
-version     : 4.4.26
+version     : 4.4.28
 release     : 1
 summary     : Extended crypt library
 license     : LGPL-2.1-or-later
@@ -7,13 +7,14 @@ homepage    : https://github.com/besser82/libxcrypt
 description : |
     Extended crypt library for descrypt, md5crypt, bcrypt, and others.
 upstreams   :
-    - https://github.com/besser82/libxcrypt/releases/download/v4.4.26/libxcrypt-4.4.26.tar.xz : 8e6ab1e22b9d1dc40165ec767662a34773d22f766aae1f989328069e8a3aa99a
+    - https://github.com/besser82/libxcrypt/releases/download/v4.4.28/libxcrypt-4.4.28.tar.xz: 9e936811f9fad11dbca33ca19bd97c55c52eb3ca15901f27ade046cc79e69e87
 builddeps   :
     - make
     - clang
     - lld
     - llvm
     - libcxx-devel
+    - perl
 setup       : |
     %configure --disable-static
 build       : |
