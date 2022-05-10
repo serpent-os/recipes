@@ -14,6 +14,8 @@ builddeps   :
     - lld
     - llvm
     - libcxx-devel
+    - xz-devel
+    - zlib-devel
 setup       : |
     %configure --disable-static \
         --enable-shared
