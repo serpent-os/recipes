@@ -16,6 +16,7 @@ builddeps   :
     - lld
     - llvm
     - libcxx-devel
+    - ncurses-devel
 setup       : |
     %configure
 build       : |
