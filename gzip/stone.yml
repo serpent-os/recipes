@@ -1,5 +1,5 @@
 name        : gzip
-version     : 1.11
+version     : 1.12
 release     : 1
 summary     : GNU Zip Compression Utilities
 license     : GPL-3.0-or-later
@@ -7,13 +7,14 @@ homepage    : http://www.gnu.org/software/gzip
 description : |
     GNU Zip Compression Utilities
 upstreams   :
-    - https://ftp.gnu.org/gnu/gzip/gzip-1.11.tar.xz: 9b9a95d68fdcb936849a4d6fada8bf8686cddf58b9b26c9c4289ed0c92a77907
+    - https://ftp.gnu.org/gnu/gzip/gzip-1.12.tar.xz: ce5e03e519f637e1f814011ace35c4f87b33c0bbabeec35baf5fbd3479e91956
 builddeps   :
     - make
     - clang
     - lld
     - llvm
     - libcxx-devel
+    - perl
 setup       : |
     %configure
 build       : |
