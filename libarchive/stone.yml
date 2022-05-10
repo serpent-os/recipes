@@ -1,5 +1,5 @@
 name        : libarchive
-version     : 3.5.2
+version     : 3.6.1
 release     : 1
 summary     : Multi-format archive and compression library
 license     : BSD-2-Clause
@@ -7,13 +7,20 @@ homepage    : https://www.libarchive.org
 description : |
     Multi-format archive and compression library
 upstreams   :
-    - https://www.libarchive.org/downloads/libarchive-3.5.2.tar.gz: 5f245bd5176bc5f67428eb0aa497e09979264a153a074d35416521a5b8e86189
+    - https://www.libarchive.org/downloads/libarchive-3.6.1.tar.gz: c676146577d989189940f1959d9e3980d28513d74eedfbc6b7f15ea45fe54ee2
 builddeps   :
     - make
     - clang
     - lld
     - llvm
     - libcxx-devel
+    - acl-devel
+    - attr-devel
+    - openssl-devel
+    - xz-devel
+    - libxml2-devel
+    - zlib-devel
+    - zstd-devel
 setup       : |
     %configure --disable-hardlink \
         --disable-rpath \
