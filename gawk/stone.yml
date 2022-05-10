@@ -1,5 +1,5 @@
 name        : gawk
-version     : 5.1.0
+version     : 5.1.1
 release     : 1
 summary     : GNU awk pattern-matching language
 license     : GPL-3.0-or-later
@@ -7,7 +7,7 @@ homepage    : https://www.gnu.org/software/gawk/gawk.html
 description : |
     GNU awk pattern-matching language
 upstreams   :
-    - https://ftp.gnu.org/gnu/gawk/gawk-5.1.0.tar.xz: cf5fea4ac5665fd5171af4716baab2effc76306a9572988d5ba1078f196382bd
+    - https://ftp.gnu.org/gnu/gawk/gawk-5.1.1.tar.xz: d87629386e894bbea11a5e00515fc909dc9b7249529dad9e6a3a2c77085f7ea2
 builddeps   :
     - make
     - clang
