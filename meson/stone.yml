@@ -1,5 +1,5 @@
 name        : meson
-version     : 0.59.2
+version     : 0.62.1
 release     : 1
 summary     : Fast and user friendly build system
 license     : Apache-2.0
@@ -7,7 +7,7 @@ homepage    : https://mesonbuild.com/
 description : |
     Fast and user friendly build system
 upstreams   :
-    - https://github.com/mesonbuild/meson/releases/download/0.59.2/meson-0.59.2.tar.gz : 13dee549a7ba758b7e33ce7719f28d1d337a98d10d378a4779ccc996f5a2fc49
+    - https://github.com/mesonbuild/meson/releases/download/0.62.1/meson-0.62.1.tar.gz: a0f5caa1e70da12d5e63aa6a9504273759b891af36c8d87de381a4ed1380e845
 builddeps   :
     - python
 build       : |
