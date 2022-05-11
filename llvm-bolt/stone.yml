@@ -9,6 +9,9 @@ description : |
 upstreams   :
     - https://github.com/llvm/llvm-project/archive/0dfafa489230061cdde39d9e7294bb61d23f1064.tar.gz: aea0419796acf8c5cbace0a1c632bceef7dcda40c6f5ff3d2931377889522277
 builddeps   :
+    - gcc
+    - gcc-devel
+    - binutils
     - cmake
     - ninja
     - clang
@@ -26,10 +29,11 @@ install     : |
     DESTDIR="%(installroot)" %cmake_build install-llvm-bolt install-perf2bolt install-merge-fdata install-llvm-boltdiff install-bolt_rt
 tuning      :
     - icf: all
-    - lto: thin
+    #- lto: thin
     - nosemantic
     - symbolic
 packages    :
     - "%(name)":
         paths:
             - /usr/lib/libbolt_rt*.a
+toolchain   : gnu
