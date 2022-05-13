@@ -1,0 +1,52 @@
+name        : benchtest
+version     : 1
+release     : 1
+summary     : Run Benchmarks
+license     : GPL-3.0-or-later
+homepage    : https://serpentos.com
+description : |
+    Run benchmarks.
+upstreams   :
+    - https://mirrors.kernel.org/gnu/gettext/gettext-0.21.tar.xz:
+        hash: d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
+        unpack: false
+    - https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz:
+        hash: 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+        unpack: false
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/llvm-10.0.0.src.tar.xz:
+        hash: df83a44b3a9a71029049ec101fb0077ecbbdf5fe41e395215025779099a98fdf
+        unpack: false
+    - https://github.com/briandfoy/perlbench/archive/release-1.002.tar.gz:
+        hash: 0d7d8ecf578c1e45a9f4c3e5807d64bdd191dfbe43e077815db144d0d0a297f2
+        unpack: false
+    - https://www.phoronix-test-suite.com/benchmark-files/pybench-2018-02-16.tar.gz:
+        hash: 851b5051b7e9c39cd118532071b9530ffb50a3767b7382d6dbb762531c1480e5
+        unpack: false
+    - https://www.phoronix-test-suite.com/benchmark-files/rbenchmarks-20160105.tar.bz2:
+        hash: e6e5f6e6baa9884c294d51de8350f6fd67e2d58e428ff3a992a3eac1d965096c
+        unpack: false
+    - https://www.phoronix.net/downloads/phoronix-test-suite/benchmark-files/pts-trondheim-wav-3.tar.gz:
+        hash: dc76edcaf74d17476e74656dee0785b07f97be30e89c53cf1be0a86981232a6d
+        unpack: false
+builddeps   :
+    - benchmarking-tools
+    - python
+    - zstd
+    - which
+    - perf
+install     : |
+    # Make cached downloads accessible
+    mkdir -p .cache
+    ln -sf %(sourcedir) .cache/benchmark-tools
+
+    run-benchmark pybench repo
+    run-power-benchmark pybench repo
+
+    run-benchmark zstd repo
+    run-power-benchmark zstd repo
+
+    # Print results which can be copied/pasted for summation
+    for file in BT-Results/*; do
+        echo "##### ${file}"
+        cat ${file}
+    done
