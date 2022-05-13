@@ -9,6 +9,7 @@ description : |
 upstreams   :
     - https://github.com/sunnyflunk/benchmarking-tools/archive/refs/heads/main.tar.gz: 5e872f55914c9c5e59b4e31ad83d9f3009ee9b52fe49d2cc8a6eab9b0851dbf9
 install     : |
+    sed -i 's/~/${PWD}/' common/variables.sh
     %install_dir %(installroot)/usr/bin
     %install_dir %(installroot)/usr/share/benchmarking-tools
     cp -a * %(installroot)/usr/share/benchmarking-tools/
