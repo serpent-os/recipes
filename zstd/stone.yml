@@ -19,17 +19,27 @@ builddeps   :
     - zlib-devel
     - xz-devel
     - zlib-devel
+    - llvm-bolt
 build       : |
     %make
 install     : |
     %make_install PREFIX=/usr LIBDIR=/usr/lib
     rm %(installroot)/%(libdir)/*.a
+
+    %bolt_instr programs/zstd
+    for i in $(seq 1 22); do
+        cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
+        cat $(find lib -type f) | programs/zstd --ultra --long -${i} | programs/zstd -d > /dev/null
+    done
+    %bolt_merge programs/zstd
+    %bolt_opt programs/zstd
 workload    : |
     for i in $(seq 1 22); do
         cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
         cat $(find lib -type f) | programs/zstd --ultra --long -${i} | programs/zstd -d > /dev/null
     done
 tuning      :
+    - bolt
     - icf: all
     - lto
     - nosemantic
