@@ -1,5 +1,5 @@
 name        : perf
-version     : 5.14.9
+version     : 5.17.6
 release     : 1
 summary     : Linux profiling with performance counters
 license     : GPL-2.0-only
@@ -7,11 +7,21 @@ homepage    : https://perf.wiki.kernel.org/
 description : |
     Linux profiling with performance counters.
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.9.tar.xz : ba8f07db92d514a2636e882bcd646f79f1c8ab83f5ad82910732dd0ec83c87e6
+    - https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.17.6.tar.xz: 64ccf18380be5b5491322a3fd54904538b544e523e4bf86289dd8df7404cb10c
 builddeps   :
     - make
+    - gcc
     - gcc-devel
     - binutils
+    - bison
+    - flex
+    - m4
+    - libcap-devel
+    - xz-devel
+    - python
+    - python-devel
+    - zlib-devel
+    - zstd-devel
 build       : |
     %make -f Makefile.perf -C tools/perf \
         prefix=/usr \
