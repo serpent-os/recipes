@@ -40,7 +40,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-vendor/vendor/elf/elf-d/"
     - https://gitlab.com/serpent-os/dlang/rocksdb-binding/-/archive/v6.22.1/rocksdb-binding-v6.22.1.tar.gz:
-        hash: c9d05a5eef698baa7dc468fbff3fd4e4f94f1fdb5ddda13af40c429a25a0ede9 
+        hash: c9d05a5eef698baa7dc468fbff3fd4e4f94f1fdb5ddda13af40c429a25a0ede9
         stripdirs: 1
         unpackdir: "moss-vendor/vendor/rocksdb/rocksdb-binding/"
     - https://gitlab.com/serpent-os/dlang/xxhash-d/-/archive/main/xxhash-d-main.tar.gz:
@@ -60,6 +60,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-vendor/vendor/yaml/tinyendian/"
 builddeps   :
+    - patch
     - meson
     - ninja
     - python
@@ -76,6 +77,9 @@ builddeps   :
 environment : |
     cd %(buildroot)/boulder
 setup       : |
+    # Uncomment to test boulder patches in builds before committing to git
+    #%patch %(pkgdir)/testing.patch
+
     %meson
 build       : |
     %meson_build
