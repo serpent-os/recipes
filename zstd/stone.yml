@@ -23,9 +23,6 @@ builddeps   :
 build       : |
     %make
 install     : |
-    %make_install PREFIX=/usr LIBDIR=/usr/lib
-    rm %(installroot)/%(libdir)/*.a
-
     %bolt_instr programs/zstd
     for i in $(seq 1 22); do
         cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
@@ -33,6 +30,9 @@ install     : |
     done
     %bolt_merge programs/zstd
     %bolt_opt programs/zstd
+
+    %make_install PREFIX=/usr LIBDIR=/usr/lib
+    rm %(installroot)/%(libdir)/*.a
 workload    : |
     for i in $(seq 1 22); do
         cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
