@@ -7,7 +7,7 @@ homepage    : https://github.com/facebookincubator/BOLT
 description : |
     Binary Optimization and Layout Tool.
 upstreams   :
-    - https://github.com/llvm/llvm-project/archive/0dfafa489230061cdde39d9e7294bb61d23f1064.tar.gz: aea0419796acf8c5cbace0a1c632bceef7dcda40c6f5ff3d2931377889522277
+    - https://github.com/llvm/llvm-project/archive/18c70a7bd932d1259cd28b82f946bec5dc77bfc2.tar.gz: 9a4ad6aa9764073589a3c6c752722d27530ca9c7fd86f75f565a530dc3a2faab
 builddeps   :
     - gcc
     - gcc-devel
@@ -22,7 +22,7 @@ builddeps   :
     - ncurses-devel
     - zlib-devel
 setup       : |
-    %cmake -S llvm -DLLVM_ENABLE_ASSERTIONS=ON \
+    %cmake -S llvm -DLLVM_ENABLE_ASSERTIONS=OFF \
         -DLLVM_ENABLE_PROJECTS='bolt;clang;lld' \
         -DLLVM_TARGETS_TO_BUILD='X86'
 install     : |
