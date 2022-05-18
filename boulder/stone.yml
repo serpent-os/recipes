@@ -8,7 +8,7 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - https://gitlab.com/serpent-os/core/boulder/-/archive/main/boulder-main.tar.gz:
-        hash: 4ff372c4106b8057d6867f244c0e6ff92149a492625883800d855e3fbdc19527
+        hash: b712679c81dfb038966c298d5f200e181323b7dfcc3972162d8bceaef03b7a64
         stripdirs: 1
         unpackdir: "boulder/"
     - https://gitlab.com/serpent-os/core/moss-config/-/archive/main/moss-config-main.tar.gz:
