@@ -1,5 +1,5 @@
 name        : gcc
-version     : 11.3.0
+version     : 12.1.0
 release     : 1
 summary     : GNU C++ standard library and compiler
 license     : GPL-3.0-or-later
@@ -7,34 +7,34 @@ homepage    : https://gcc.gnu.org/
 description : |
     GNU C++ standard library and compiler
 upstreams   :
-    - https://ftp.gnu.org/gnu/gcc/gcc-11.3.0/gcc-11.3.0.tar.xz: b47cf2818691f5b1e21df2bb38c795fac2cfbd640ede2d0a5e1c89e338a3ac39
+    - https://github.com/gcc-mirror/gcc/archive/374cee99d01fceb89d0929da8b38051e6c9768f0.tar.gz: 8477c2774b057ba7620faa8e24eb3f47e443dcea59037be97e7d740a11e58f52
     - https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz:
         hash: fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2
         stripdirs: 1
-        unpackdir: "%(name)-%(version)/gmp/"
+        unpackdir: "%(name)-374cee99d01fceb89d0929da8b38051e6c9768f0/gmp/"
     - https://libisl.sourceforge.io/isl-0.24.tar.xz:
         hash: 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
         stripdirs: 1
-        unpackdir: "%(name)-%(version)/isl/"
+        unpackdir: "%(name)-374cee99d01fceb89d0929da8b38051e6c9768f0/isl/"
     - https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz:
         hash: 17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459
         stripdirs: 1
-        unpackdir: "%(name)-%(version)/mpc/"
+        unpackdir: "%(name)-374cee99d01fceb89d0929da8b38051e6c9768f0/mpc/"
     - https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.xz:
         hash: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
         stripdirs: 1
-        unpackdir: "%(name)-%(version)/mpfr/"
+        unpackdir: "%(name)-374cee99d01fceb89d0929da8b38051e6c9768f0/mpfr/"
 builddeps   :
     - patch
     - perl
     - make
     - python
-    - binutils
     - bison
     - m4
+    - flex
+    - texinfo
+    - file
     - gzip
-    - gcc
-    - gcc-devel
     - gcc-32bit
     - gcc-32bit-devel
     - glibc-32bit
@@ -43,6 +43,7 @@ builddeps   :
     - zlib-devel
     - zstd-devel
 setup       : |
+    %patch %(pkgdir)/perf/increase-vectorize-cost-model-to-cheap.patch
     %patch %(pkgdir)/perf/use-highest-optimize-value.patch
     %patch %(pkgdir)/serpent/0001-Use-modern-linker-locations-for-Serpent-OS.patch
     %patch %(pkgdir)/serpent/0001-Install-libraries-into-lib-rather-than-lib64.patch
@@ -62,6 +63,7 @@ setup       : |
         --enable-initfini-array \
         --enable-languages=c,c++,lto \
         --enable-linker-build-id \
+        --enable-linux-futex \
         --enable-lto \
         --enable-multilib \
         --enable-plugin \
