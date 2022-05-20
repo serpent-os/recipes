@@ -7,16 +7,13 @@ homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    - https://github.com/bminor/binutils-gdb/archive/c002554e789b8acc72688fa8225a68f5c00be46f.tar.gz: c74e19115670837ac34f2f1298e04d5c97cf85947f555d6ad2ea44eb83c04c0e
+    - https://github.com/bminor/binutils-gdb/archive/475549dc3acf0736c8e24b1ebe34968e99e2f20a.tar.gz: 232e0253394defeeed457fbb267cac4c1af796872670dccfb9a7be97e97b4ea9
 builddeps   :
     - patch
     - make
-    - binutils
     - bison
     - m4
     - gzip
-    - gcc
-    - gcc-devel
     - texinfo
     - perl
     - ncurses
