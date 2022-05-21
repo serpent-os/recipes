@@ -8,7 +8,7 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - https://gitlab.com/serpent-os/core/boulder/-/archive/main/boulder-main.tar.gz:
-        hash: dbaae6f4d116a562f41be2f0b8f14f811318444cd519459eee4d268cb8ccab9e
+        hash: 5af1a09bb5b69b388c5765f1b936a83170deec631b8ef19b171ec15c861b00e4
         stripdirs: 1
         unpackdir: "boulder/"
     - https://gitlab.com/serpent-os/core/moss-config/-/archive/main/moss-config-main.tar.gz:
@@ -20,7 +20,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-core/"
     - https://gitlab.com/serpent-os/core/moss-deps/-/archive/main/moss-deps-main.tar.gz:
-        hash: aa2fad8db3234045af5ea5799a54e6203c4379b9f03fb815c3baf6f408f7d586
+        hash: 2f67f1f9fcbe42ec801725dea7cad544733c52322892ed1b46c2d696a708b900
         stripdirs: 1
         unpackdir: "moss-deps/"
     - https://gitlab.com/serpent-os/core/moss-fetcher/-/archive/main/moss-fetcher-main.tar.gz:
@@ -28,7 +28,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://gitlab.com/serpent-os/core/moss-format/-/archive/main/moss-format-main.tar.gz:
-        hash: 51a5ecaa26f12d79a05e3d36d0d4a7a0cce6b2b734cb43c9222574d751831273
+        hash: b49a4048336dcf842b64a6af5bf403450556002594789384630d83b594c5f382
         stripdirs: 1
         unpackdir: "moss-format/"
     - https://gitlab.com/serpent-os/core/moss-vendor/-/archive/main/moss-vendor-main.tar.gz:
@@ -70,10 +70,6 @@ builddeps   :
     - zstd-devel
     - cmake
     - curl-devel
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
 environment : |
     cd %(buildroot)/boulder
 setup       : |
