@@ -27,7 +27,7 @@ index f8a1772..b34a4d0 100644
  
  BIGFILES=-D_FILE_OFFSET_BITS=64
 -CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)
-+CFLAGS ?= -Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS += -Wall -Winline $(BIGFILES)
  
  # Where you want it installed when you do 'make install'
  PREFIX=/usr/local
@@ -43,7 +43,7 @@ index fb0f230..6cc5e78 100644
 +CC ?= gcc
  BIGFILES=-D_FILE_OFFSET_BITS=64
 -CFLAGS=-fpic -fPIC -Wall -Winline -O2 -g $(BIGFILES)
-+CFLAGS ?= -fpic -fPIC -Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS += -fpic -fPIC -Wall -Winline $(BIGFILES)
  
  OBJS= blocksort.o  \
        huffman.o    \
