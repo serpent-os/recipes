@@ -13,7 +13,9 @@ builddeps   :
     - gmp-devel
     - binary(file)
 setup       : |
-    %configure
+    %configure \
+        --enable-thread-safe \
+        --disable-static
 build       : |
     %make
 install     : |
