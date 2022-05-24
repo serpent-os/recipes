@@ -10,10 +10,8 @@ upstreams   :
     - https://ftp.gnu.org/gnu/texinfo/texinfo-6.7.tar.xz: 988403c1542d15ad044600b909997ba3079b10e03224c61188117f3676b02caa
 builddeps   :
     - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - ncurses-devel
+    - perl
 setup       : |
     %configure
 build       : |
