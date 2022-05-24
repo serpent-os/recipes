@@ -1,5 +1,5 @@
 name        : systemd
-version     : 248.3
+version     : '248.10'
 release     : 1
 summary     : A System and Service Manager
 license     :
@@ -10,14 +10,27 @@ homepage    : http://www.freedesktop.org/wiki/Software/systemd
 description : |
     A System and Service Manager
 upstreams   :
-    - https://github.com/systemd/systemd-stable/archive/v248.3.tar.gz : cc372aeed563379a734901ed73d6fbb6b75c171251e1d69c0b5650aaf9c15d06
+    - https://github.com/systemd/systemd-stable/archive/v248.10.tar.gz: dab015c2ccd5cb0427b1c3ec85ac0f02974b38ca643de31932f198a8b60de8da
 builddeps   :
     - meson
     - ninja
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - acl-devel
+    - dbus-devel
+    - gettext-devel
+    - gperf
+    - libffi-devel
+    - zlib-devel
+    - zstd-devel
+    - util-linux-devel
+    - libcap-devel
+    - libxcrypt-devel
+    - openssl-devel
+    - curl-devel
+    - xz-devel
+    - linux-pam-devel
+    - zstd-devel
+    - binary(m4)
+    - binutils
 setup       : |
     %meson \
         -Defi=true \
