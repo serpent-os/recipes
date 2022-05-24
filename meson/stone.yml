@@ -10,6 +10,8 @@ upstreams   :
     - https://github.com/mesonbuild/meson/releases/download/0.62.1/meson-0.62.1.tar.gz: a0f5caa1e70da12d5e63aa6a9504273759b891af36c8d87de381a4ed1380e845
 builddeps   :
     - python
+rundeps     :
+    - binary(python3)
 build       : |
     %python
 install     : |
