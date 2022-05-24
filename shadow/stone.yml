@@ -10,10 +10,10 @@ upstreams   :
     - https://github.com/shadow-maint/shadow/releases/download/v4.9/shadow-4.9.tar.xz: feec1f2ce9c1b62798afd35a7d1b04cefdfa3a0a30ff3e75d6965ba8978c9144
 builddeps   :
     - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - acl-devel
+    - attr-devel
+    - libxcrypt-devel
+    - linux-pam-devel
 setup       : |
     %configure --enable-vendordir=%(vendordir) \
         --without-su
