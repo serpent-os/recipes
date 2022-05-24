@@ -1,5 +1,5 @@
 name        : openssl
-version     : 3.0.0
+version     : 3.0.3
 release     : 1
 summary     : OpenSSL cryptography library
 license     : Apache-2.0
@@ -7,13 +7,10 @@ homepage    : https://www.openssl.org
 description : |
     OpenSSL cryptography library.
 upstreams   :
-    - https://www.openssl.org/source/openssl-3.0.0.tar.gz: 59eedfcb46c25214c9bd37ed6078297b4df01d012267fe9e9eee31f61bc70536
+    - https://www.openssl.org/source/openssl-3.0.3.tar.gz: ee0078adcef1de5f003c62c80cc96527721609c6f3bb42b7795df31f8b558c0b
 builddeps   :
     - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - perl
 setup       : |
     ./Configure --prefix=/usr \
         --libdir=/usr/lib
