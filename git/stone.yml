@@ -1,5 +1,5 @@
 name        : git
-version     : 2.34.1
+version     : 2.36.1
 release     : 1
 summary     : Fast, scalable, distributed revision control system
 license     : GPL-2.0-only
@@ -7,16 +7,19 @@ homepage    : https://git-scm.com
 description : |
     Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.34.1.tar.xz : 3a0755dd1cfab71a24dd96df3498c29cd0acd13b04f3d08bf933e81286db802c
+    - https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.36.1.tar.xz: 405d4a0ff6e818d1f12b3e92e1ac060f612adcb454f6299f70583058cb508370
 builddeps   :
     - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - libxcrypt-devel
+    - curl-devel
+    - expat-devel
+    - openssl-devel
+    - zlib-devel
+    - binary(msgfmt)
 setup       : |
     %configure --disable-static \
-        --with-editor=/usr/bin/nano
+        --with-editor=/usr/bin/nano \
+        --without-tcltk
 build       : |
     %make
 install     : |
