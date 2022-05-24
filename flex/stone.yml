@@ -10,11 +10,16 @@ upstreams   :
     - https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz : e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995
 builddeps   :
     - make
+    - binary(file)
+    - binary(m4)
+environment : |
+    # Hack for lack of cc symlink
+    mkdir -p bin
+    ln -sf /usr/bin/clang bin/cc
+    export PATH="${PATH}:%(workdir)/bin"
 setup       : |
     %configure --disable-static
 build       : |
     %make
 install     : |
     %make_install
-# Only checks for gcc and cc, so need to create the cc symlink
-toolchain   : gnu
