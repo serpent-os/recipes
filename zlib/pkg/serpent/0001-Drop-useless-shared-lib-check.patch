@@ -1,0 +1,68 @@
+From e931f465e92faf11781f50a0b7c77d9970492153 Mon Sep 17 00:00:00 2001
+From: Peter O'Connor <sunnyflunk@serpentos.com>
+Date: Mon, 23 May 2022 19:02:28 +1000
+Subject: [PATCH] Drop useless shared lib check
+
+Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+---
+ configure | 19 -------------------
+ 1 file changed, 19 deletions(-)
+
+diff --git a/configure b/configure
+index 52ff4a0..facfe42 100755
+--- a/configure
++++ b/configure
+@@ -418,25 +418,6 @@ fi
+ 
+ echo >> configure.log
+ 
+-# see if shared library build supported
+-cat > $test.c <<EOF
+-extern int getchar();
+-int hello() {return getchar();}
+-EOF
+-if test $shared -eq 1; then
+-  echo Checking for shared library support... | tee -a configure.log
+-  # we must test in two steps (cc then ld), required at least on SunOS 4.x
+-  if try $CC -w -c $SFLAGS $test.c &&
+-     try $LDSHARED $SFLAGS -o $test$shared_ext $test.o; then
+-    echo Building shared library $SHAREDLIBV with $CC. | tee -a configure.log
+-  elif test -z "$old_cc" -a -z "$old_cflags"; then
+-    echo No shared library support. | tee -a configure.log
+-    shared=0;
+-  else
+-    echo 'No shared library support; try without defining CC and CFLAGS' | tee -a configure.log
+-    shared=0;
+-  fi
+-fi
+ if test $shared -eq 0; then
+   LDSHARED="$CC"
+   ALL="static"
+--
+2.36.1
+
+diff --git a/Makefile.in b/Makefile.in
+index 3d858aa..2413373 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -16,7 +16,7 @@
+ # To install in $HOME instead of /usr/local, use:
+ #    make install prefix=$HOME
+ 
+-CC=cc
++CC?=cc
+ 
+ CFLAGS=-O
+ #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
+@@ -36,9 +36,9 @@ SHAREDLIBV=libz.so.1.2.12
+ SHAREDLIBM=libz.so.1
+ LIBS=$(STATICLIB) $(SHAREDLIBV)
+ 
+-AR=ar
++AR?=ar
+ ARFLAGS=rc
+-RANLIB=ranlib
++RANLIB?=ranlib
+ LDCONFIG=ldconfig
+ LDSHAREDLIBC=-lc
+ TAR=tar
