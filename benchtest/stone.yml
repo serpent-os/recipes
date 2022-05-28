@@ -32,18 +32,27 @@ builddeps   :
     - benchmarking-tools
     - python
     - zstd
+    - cmake
     - which
     - perf
+    - ncurses-devel
+    - make
+    - libxml2-devel
+    - libffi-devel
+    - libxcrypt-devel
+    - patch
+    - zlib-devel
+environment : |
+    unset LDFLAGS CFLAGS CXXFLAGS
 install     : |
     # Make cached downloads accessible
     mkdir -p .cache
     ln -sf %(sourcedir) .cache/benchmark-tools
 
-    run-benchmark pybench repo
-    run-power-benchmark pybench repo
-
-    run-benchmark zstd repo
-    run-power-benchmark zstd repo
+    run-benchmark configure repo
+    run-benchmark cmake repo
+    analyze-benchmark configure repo
+    analyze-benchmark cmake repo
 
     # Print results which can be copied/pasted for summation
     for file in BT-Results/*; do
