@@ -1,5 +1,5 @@
 name        : glibc
-version     : 2.35
+version     : 2.36
 release     : 1
 summary     : The GNU libc libraries
 license     :
@@ -10,7 +10,7 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - https://github.com/bminor/glibc/archive/499a60179657d2945c6ad01bdac90e8427a6310e.tar.gz: a7db8b506b1438dd3ef83bc20bb1be0cbb4f32f18c8c62551fafb7285c833676
+    - https://github.com/bminor/glibc/archive/a8f62164b1d0ea6583c9c5d05aa4be9c946c2004.tar.gz: 08b50fddc96cda5e9dc0df0fd58cd23f91cdfe9bc0d0eb288c49ea1c0191a2e7
 builddeps   :
     - patch
     - make
@@ -20,7 +20,6 @@ builddeps   :
     - gzip
 setup       : |
     # Patches ahoy!
-    %patch %(pkgdir)/perf/relr.patch
     %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
     %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
     %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
