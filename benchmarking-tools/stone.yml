@@ -7,7 +7,7 @@ homepage    : https://github.com/sunnyflunk/benchmarking-tools
 description : |
     Scripts to easily facilitate benchmarking on Linux.
 upstreams   :
-    - https://github.com/sunnyflunk/benchmarking-tools/archive/refs/heads/main.tar.gz: 27a8fdd942e893fc980a3d36df03da974cd2ba2de66f5c2dc92d6a9498db609b
+    - https://github.com/sunnyflunk/benchmarking-tools/archive/refs/heads/main.tar.gz: 7d90fed44baa2c82370b5ca931fdd0258a33b0320ae1ac4ff0a1b4e8d9b96582
 install     : |
     sed -i 's/~/${PWD}/' common/variables.sh
     %install_dir %(installroot)/usr/bin
