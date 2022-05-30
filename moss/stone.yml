@@ -8,7 +8,7 @@ description : |
     Default package manager of Serpent OS.
 upstreams   :
     - https://gitlab.com/serpent-os/core/moss/-/archive/main/moss-main.tar.gz:
-        hash: 65d2b2f23ff99f1e3ca8f649ad6b8a2957c58324dbecf40a7b17f5dc242fd4f4
+        hash: 4dc9cbb93a789d36af5029fa3c7df2912b7f33336b7ba08d4fbb24dfa6a73c5b
         stripdirs: 1
         unpackdir: "moss/"
     - https://gitlab.com/serpent-os/core/moss-config/-/archive/main/moss-config-main.tar.gz:
@@ -32,7 +32,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://gitlab.com/serpent-os/core/moss-format/-/archive/main/moss-format-main.tar.gz:
-        hash: b49a4048336dcf842b64a6af5bf403450556002594789384630d83b594c5f382
+        hash: 16ee68bd0da7ca00feb6ea0e08dadd108da65ba8ca1663b643112c3fe6b4b14b
         stripdirs: 1
         unpackdir: "moss-format/"
     - https://gitlab.com/serpent-os/core/moss-vendor/-/archive/main/moss-vendor-main.tar.gz:
