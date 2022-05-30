@@ -8,7 +8,7 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - https://gitlab.com/serpent-os/core/boulder/-/archive/main/boulder-main.tar.gz:
-        hash: 5af1a09bb5b69b388c5765f1b936a83170deec631b8ef19b171ec15c861b00e4
+        hash: d1d3297988fa122819f2ccd4e76423d6954526e73217138d71f5ab2e4db5b6cf
         stripdirs: 1
         unpackdir: "boulder/"
     - https://gitlab.com/serpent-os/core/moss-config/-/archive/main/moss-config-main.tar.gz:
@@ -28,7 +28,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://gitlab.com/serpent-os/core/moss-format/-/archive/main/moss-format-main.tar.gz:
-        hash: b49a4048336dcf842b64a6af5bf403450556002594789384630d83b594c5f382
+        hash: 16ee68bd0da7ca00feb6ea0e08dadd108da65ba8ca1663b643112c3fe6b4b14b
         stripdirs: 1
         unpackdir: "moss-format/"
     - https://gitlab.com/serpent-os/core/moss-vendor/-/archive/main/moss-vendor-main.tar.gz:
@@ -60,7 +60,6 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-vendor/vendor/yaml/tinyendian/"
 builddeps   :
-    - patch
     - meson
     - ninja
     - python
@@ -73,9 +72,6 @@ builddeps   :
 environment : |
     cd %(buildroot)/boulder
 setup       : |
-    # Uncomment to test boulder patches in builds before committing to git
-    #%patch %(pkgdir)/testing.patch
-
     %meson
 build       : |
     %meson_build
