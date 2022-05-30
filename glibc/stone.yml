@@ -15,19 +15,9 @@ builddeps   :
     - patch
     - make
     - python
-    - binutils
     - bison
     - m4
     - gzip
-    - gcc
-    - gcc-devel
-    - gcc-32bit
-    - gcc-32bit-devel
-    - glibc-32bit
-    - glibc-32bit-devel
-environment : |
-    # Fix build to use actual flags for more tuned glibc
-    export CC="${CC} -B/usr/lib/gcc/x86_64-serpent-linux/11/%(libsuffix)"
 setup       : |
     # Patches ahoy!
     %patch %(pkgdir)/perf/relr.patch
@@ -42,10 +32,10 @@ setup       : |
 
     mkdir build && cd build
     echo "LD_SO_CACHE=/var/cache/ldconfig/ld.so.cache" >> configparms
-    echo "slibdir=/usr/lib%(libsuffix)" >> configparms
-    echo "rtlddir=/usr/lib%(libsuffix)" >> configparms
-    echo "sbindir=/usr/sbin" >> configparms
-    echo "rootsbindir=/usr/sbin" >> configparms
+    echo "slibdir=%(libdir)" >> configparms
+    echo "rtlddir=%(libdir)" >> configparms
+    echo "sbindir=%(sbindir)" >> configparms
+    echo "rootsbindir=%(sbindir)" >> configparms
     # Note this deliberately excludes libsuffix and is not an error
     echo "complocaledir=/usr/lib/locale" >> configparms
 
@@ -76,7 +66,7 @@ install     : |
 
     if [ -z "%(libsuffix)" ]; then
         # Make gconv cache
-        LD_LIBRARY_PATH=%(installroot)/usr/lib%(libsuffix) %(installroot)/usr/lib%(libsuffix)/ld-linux-x86-64.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
+        LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux-x86-64.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
 
         %make localedata/install-locales DESTDIR="%(installroot)" -C build
 
@@ -88,7 +78,7 @@ install     : |
         %install_dir %(installroot)/%(vendordir)/ld.so.conf.d
     else
         # Make gconv cache
-        LD_LIBRARY_PATH=%(installroot)/usr/lib%(libsuffix) %(installroot)/usr/lib%(libsuffix)/ld-linux.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
+        LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
 
         # Remove 32bit binary
         rm %(installroot)/usr/bin/lddlibc4
