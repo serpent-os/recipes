@@ -1,5 +1,5 @@
 name        : libcxx
-version     : 14.0.4
+version     : 14.0.5
 release     : 1
 summary     : LLVM's libcxx
 license     :
@@ -9,23 +9,14 @@ homepage    : https://www.llvm.org
 description : |
     LLVM's libcxx
 upstreams   :
-    - https://github.com/llvm/llvm-project/archive/52528806579b445f627cd93ff8201a59265795e8.tar.gz: 5df11e0b433468ce7d36e6d1df2ebd21f3be9c1b88faedca3ba7d7274c7b220d
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.5/llvm-project-14.0.5.src.tar.xz: c9d27903ba3883c476a83cd515e36e1e07b0585db55692835de11385d9e3c8fa
 builddeps   :
-    - glibc-32bit
-    - glibc-32bit-devel
     - cmake
     - gcc
     - gcc-devel
     - gcc-32bit
     - gcc-32bit-devel
     - ninja
-    - clang
-    - clang-32bit
-    - lld
-    - llvm
-    - libcxx-devel
-    - libcxx-32bit
-    - libcxx-32bit-devel
     - libxcrypt-devel
     - patch
     - python
@@ -75,7 +66,6 @@ environment : |
     "
 setup      : |
     %patch %(pkgdir)/llvm-libgcc.patch
-    touch llvm-libgcc/lib/blank.c
 
     %cmake ${llvmopts} -S runtimes \
         -DLLVM_LINK_LLVM_DYLIB=ON
