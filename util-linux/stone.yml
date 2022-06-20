@@ -17,10 +17,12 @@ upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-2.37.2.tar.xz : 6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9
 builddeps   :
     - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - ncurses-devel
+    - libxcrypt-devel
+    - linux-pam-devel
+    - python-devel
+    - systemd-devel
+    - zlib-devel
 setup       : |
     # Can fix these issues once fakeroot is implemented
     %configure --disable-makeinstall-chown \
