@@ -20,6 +20,7 @@ builddeps   :
     - gzip
 setup       : |
     # Patches ahoy!
+    %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
     %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
     %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
     %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
