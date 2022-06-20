@@ -1,5 +1,5 @@
 name        : llvm
-version     : 14.0.0
+version     : 14.0.4
 release     : 1
 summary     : Low Level Virtual Machine
 license     :
@@ -9,23 +9,14 @@ homepage    : https://www.llvm.org
 description : |
     Low Level Virtual Machine
 upstreams   :
-    - https://github.com/llvm/llvm-project/archive/23d08271a4b24f21a88bfe73a5ea31c1e2c6365c.tar.gz: 5d04a1362ccc4714c97da5149ffa9325f3264cbb84c42891e908221f1b731d52
+    - https://github.com/llvm/llvm-project/archive/52528806579b445f627cd93ff8201a59265795e8.tar.gz: 5df11e0b433468ce7d36e6d1df2ebd21f3be9c1b88faedca3ba7d7274c7b220d
 builddeps   :
-    - gcc
-    - gcc-devel
-    - gcc-32bit
     - gcc-32bit-devel
-    - glibc-32bit
     - glibc-32bit-devel
     - binutils-devel
     - ncurses-devel
     - cmake
     - ninja
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
-    - libcxx-32bit
     - libcxx-32bit-devel
     - libffi-devel
     - libxcrypt-devel
@@ -33,6 +24,7 @@ builddeps   :
     - python
     - libxml2-devel
     - zlib-devel
+    - llvm-bolt
 environment : |
     export BOOTSTRAP=TRUE
 
@@ -54,7 +46,7 @@ environment : |
         -DLLVM_ENABLE_LIBCXX=ON \
         -DLLVM_ENABLE_LIBXML2=ON \
         -DLLVM_ENABLE_LTO=Thin \
-        -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld;llvm' \
+        -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld;llvm;polly' \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_TESTS=ON \
         -DLLVM_INCLUDE_UTILS=ON \
@@ -80,9 +72,7 @@ environment : |
     # Without RPATH, we need help finding the right libraries to use
     export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib"
 setup       : |
-    # Patch doesn't make the empty file
     %patch %(pkgdir)/llvm-libgcc.patch
-    touch llvm-libgcc/lib/blank.c
 
     %patch %(pkgdir)/perf/0001-Reduce-GCC-startup-searches.patch
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
@@ -91,10 +81,10 @@ setup       : |
 
     # Build a bootstrap stage1 compiler if it doesn't exist already
     if [ ! -d "%(pkgdir)/bootstrap" ] && [ ! -z "${BOOTSTRAP}" ]; then
-        # Remove profile flags for bootstrap - this only works if this is last (it should be)
-        export CFLAGS="-march=native -fno-semantic-interposition -pipe -O3"
-        export CXXFLAGS="-march=native -fno-semantic-interposition -pipe -O3"
-        export LDFLAGS="-Wl,--icf=all -Wl,-Bsymbolic-functions -Wl,--as-needed -Wl,--pack-dyn-relocs=relr"
+        # Set basic bootstrap flags
+        export CFLAGS="-march=native -fno-semantic-interposition -pipe -O3 -mllvm -polly -mllvm -polly-vectorizer=stripmine"
+        export CXXFLAGS="-march=native -fno-semantic-interposition -pipe -O3 -mllvm -polly -mllvm -polly-vectorizer=stripmine"
+        export LDFLAGS="-Wl,--icf=all -Wl,--gc-sections -Wl,-Bsymbolic-functions -Wl,--as-needed -Wl,--pack-dyn-relocs=relr"
 
         mkdir -p %(pkgdir)/bootstrap
         cd %(pkgdir)/bootstrap
@@ -105,13 +95,13 @@ setup       : |
             -DENABLE_LINKER_BUILD_ID=ON \
             -DLLVM_DEFAULT_TARGET_TRIPLE='%(build)' \
             -DLLVM_ENABLE_LTO=Thin \
-            -DLLVM_ENABLE_PROJECTS='clang;lld;llvm' \
+            -DLLVM_ENABLE_PROJECTS='clang;lld;llvm;polly' \
             -DLLVM_ENABLE_RUNTIMES='compiler-rt' \
             -DLLVM_INCLUDE_TESTS=OFF \
             -DLLVM_TARGET_ARCH='X86_64' \
             -DLLVM_TARGETS_TO_BUILD='host' \
             -DLLVM_OPTIMIZED_TABLEGEN=ON
-        ninja -j "%(jobs)" clang compiler-rt lld llvm-profdata llvm-ar llvm-nm llvm-ranlib llvm-objcopy -v
+        ninja -j "%(jobs)" clang compiler-rt lld llvm-profdata llvm-ar llvm-nm llvm-ranlib llvm-objcopy Polly -v
     fi
 build       : |
     # Separate the cmake stage from bootstrap for clean FLAGS
@@ -130,19 +120,45 @@ install     : |
 
     # Relink lld and clang statically
     %cmake_build lld clang
-    %install_exe -t %(installroot)/usr/bin %(builddir)/bin/clang %(builddir)/bin/lld
+
+    # Major clang version
+    major_version=$(echo %(version) | cut -d. -f1)
+    %bolt_instr %(workdir)/%(builddir)/bin/clang-${major_version}
+
+    export PATH="%(workdir)/%(builddir)/bin:${PATH}"
+    mkdir profile
+    cd profile
+    %cmake ${llvmopts} -S ../runtimes \
+        -DCMAKE_C_COMPILER=%(workdir)/%(builddir)/bin/clang \
+        -DCMAKE_CXX_COMPILER=%(workdir)/%(builddir)/bin/clang++ \
+        -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
+        -DLLVM_ENABLE_LTO=Thin \
+        -DCOMPILER_RT_USE_LIBCXX=ON \
+        -DLIBCXXABI_USE_COMPILER_RT=ON \
+        -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
+        -DLIBCXX_USE_COMPILER_RT=ON \
+        -DLIBUNWIND_USE_COMPILER_RT=ON
+    %cmake_build
+    cd ..
+
+    %bolt_merge %(workdir)/%(builddir)/bin/clang-${major_version}
+    %bolt_opt %(workdir)/%(builddir)/bin/clang-${major_version}
+
+    %install_bin %(workdir)/%(builddir)/bin/clang %(workdir)/%(builddir)/bin/lld
 
     rm -rf %(installroot)/usr/lib/libclang*.a
 workload    : |
     # check-compiler-rt needs sanitizer changes
-    %cmake_build check-clang check-llvm check-lld -k 10000 ||:
+    %cmake_build check-clang check-llvm check-lld check-polly -k 10000 ||:
 # LTO needs to be set in LLVM cmake flags so it adds -fno-lto where needed
 tuning      :
+    - bolt
     - fortify: false
     - harden: false
     - icf: all
     - lto: false
     - nosemantic
+    - polly
     - symbolic
 cspgo       : false
 packages    :
@@ -195,6 +211,8 @@ packages    :
             - /usr/lib/cmake/clang
             - /usr/lib/libclang*.so
             - /usr/include/clang*
+        rundeps:
+            - clang
 
     - "clang-32bit":
         summary: "Provides 32-bit runtime libraries for clang"
@@ -220,3 +238,5 @@ packages    :
         paths:
             - /usr/lib/cmake/lld
             - /usr/lib/liblld*.a
+        rundeps:
+            - lld
