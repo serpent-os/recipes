@@ -11,14 +11,12 @@ upstreams   :
 builddeps   :
     - cmake
     - ninja
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
     - curl-devel
     - expat-devel
     - libarchive-devel
     - zlib-devel
+environment : |
+    export CXXFLAGS="${CXXFLAGS} -w"
 setup       : |
     %cmake -DBUILD_TESTING=OFF \
         -DCMAKE_USE_SYSTEM_CURL=ON \
@@ -33,6 +31,7 @@ tuning      :
     - icf: all
     - lto
     - nosemantic
+    - polly
     - symbolic
 packages    :
     - "%(name)":
