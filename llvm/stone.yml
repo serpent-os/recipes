@@ -1,5 +1,5 @@
 name        : llvm
-version     : 14.0.4
+version     : 14.0.5
 release     : 1
 summary     : Low Level Virtual Machine
 license     :
@@ -9,7 +9,7 @@ homepage    : https://www.llvm.org
 description : |
     Low Level Virtual Machine
 upstreams   :
-    - https://github.com/llvm/llvm-project/archive/52528806579b445f627cd93ff8201a59265795e8.tar.gz: 5df11e0b433468ce7d36e6d1df2ebd21f3be9c1b88faedca3ba7d7274c7b220d
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.5/llvm-project-14.0.5.src.tar.xz: c9d27903ba3883c476a83cd515e36e1e07b0585db55692835de11385d9e3c8fa
 builddeps   :
     - gcc-32bit-devel
     - glibc-32bit-devel
@@ -46,6 +46,7 @@ environment : |
         -DLLVM_ENABLE_LIBCXX=ON \
         -DLLVM_ENABLE_LIBXML2=ON \
         -DLLVM_ENABLE_LTO=Thin \
+        -DLLVM_ENABLE_MODULES=OFF \
         -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld;llvm;polly' \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_TESTS=ON \
@@ -78,6 +79,7 @@ setup       : |
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
     %patch %(pkgdir)/serpent/0001-Make-gnu-hash-the-default-for-lld-and-clang.patch
     %patch %(pkgdir)/serpent/0001-Update-binutils-version-to-match-Serpent-OS.patch
+    %patch %(pkgdir)/serpent/0001-Make-external-visibility-default.patch
 
     # Build a bootstrap stage1 compiler if it doesn't exist already
     if [ ! -d "%(pkgdir)/bootstrap" ] && [ ! -z "${BOOTSTRAP}" ]; then
@@ -121,31 +123,32 @@ install     : |
     # Relink lld and clang statically
     %cmake_build lld clang
 
-    # Major clang version
-    major_version=$(echo %(version) | cut -d. -f1)
-    %bolt_instr %(workdir)/%(builddir)/bin/clang-${major_version}
-
     export PATH="%(workdir)/%(builddir)/bin:${PATH}"
-    mkdir profile
-    cd profile
-    %cmake ${llvmopts} -S ../runtimes \
-        -DCMAKE_C_COMPILER=%(workdir)/%(builddir)/bin/clang \
-        -DCMAKE_CXX_COMPILER=%(workdir)/%(builddir)/bin/clang++ \
+    export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib:${LD_LIBRARY_PATH}"
+    cmake -G Ninja ${llvmopts} -B profile -S runtimes \
+        -DCMAKE_C_COMPILER="%(workdir)/%(builddir)/bin/clang" \
+        -DCMAKE_CXX_COMPILER="%(workdir)/%(builddir)/bin/clang++" \
         -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
-        -DLLVM_ENABLE_LTO=Thin \
+        -DLLVM_ENABLE_LTO=Full \
         -DCOMPILER_RT_USE_LIBCXX=ON \
         -DLIBCXXABI_USE_COMPILER_RT=ON \
         -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
         -DLIBCXX_USE_COMPILER_RT=ON \
         -DLIBUNWIND_USE_COMPILER_RT=ON
-    %cmake_build
-    cd ..
+
+    # Major clang version
+    major_version=$(echo %(version) | cut -d. -f1)
+    %bolt_instr %(workdir)/%(builddir)/bin/clang-${major_version}
+    #bolt_instr %(workdir)/%(builddir)/bin/lld
+
+    ninja -v -j "%(jobs)" -C profile
 
     %bolt_merge %(workdir)/%(builddir)/bin/clang-${major_version}
     %bolt_opt %(workdir)/%(builddir)/bin/clang-${major_version}
+    #bolt_merge %(workdir)/%(builddir)/bin/lld
+    #bolt_opt %(workdir)/%(builddir)/bin/lld
 
-    %install_bin %(workdir)/%(builddir)/bin/clang %(workdir)/%(builddir)/bin/lld
-
+    %install_bin %(workdir)/%(builddir)/bin/clang-${major_version} %(workdir)/%(builddir)/bin/lld
     rm -rf %(installroot)/usr/lib/libclang*.a
 workload    : |
     # check-compiler-rt needs sanitizer changes
