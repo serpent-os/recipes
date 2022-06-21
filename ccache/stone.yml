@@ -1,5 +1,5 @@
 name        : ccache
-version     : 4.6
+version     : 4.6.1
 release     : 1
 summary     : ccache - a fast C/C++ compiler cache
 license     : GPL-3.0-or-later
@@ -7,21 +7,19 @@ homepage    : https://ccache.dev/
 description : |
     Ccache is a compiler cache. It speeds up recompilation by caching previous compilations and detecting when the same compilation is being done again. Supported languages are C, C++, Objective-C and Objective-C++.
 upstreams   :
-    - https://github.com/ccache/ccache/releases/download/v4.6/ccache-4.6.tar.xz: 3d2bb860f4359169e640f60cf7cc11da5fab5fb9aed55230d78141e49c3945e9
+    - https://github.com/ccache/ccache/releases/download/v4.6.1/ccache-4.6.1.tar.xz: e5d47bd3cbb504ada864124690e7c0d28ecb1f9aeac22a9976025aed9633f3d1
 builddeps   :
     # pkgconfig(hiredis)
     - cmake
     - ninja
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
     - pkgconfig(libzstd)
+checkdeps   :
+    - perl
 setup       : |
     # avoid packaging hiredis for now...
     %cmake \
-      -DCMAKE_INSTALL_SYSCONFDIR="%(vendordir)/ccache" \
-      -DREDIS_STORAGE_BACKEND=OFF
+        -DCMAKE_INSTALL_SYSCONFDIR="%(vendordir)/ccache" \
+        -DREDIS_STORAGE_BACKEND=OFF
 build       : |
     %cmake_build
 install     : |
