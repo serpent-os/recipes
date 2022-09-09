@@ -1,0 +1,23 @@
+name        : lmdb
+version     : 0.9.29
+release     : 1
+homepage    : http://symas.com/mdb
+upstreams   :
+    - https://github.com/LMDB/lmdb/archive/refs/tags/LMDB_0.9.29.tar.gz : 22054926b426c66d8f2bc22071365df6e35f3aacf19ad943bc6167d4cae3bebb
+summary     : Symas Lightning Memory-Mapped Database
+description : |
+    Symas Lightning Memory-Mapped Database
+license     :
+    - OLDAP-2.8
+builddeps   :
+    - binutils
+    - make
+    - patch
+toolchain   : gnu
+setup       : |
+    %patch %(pkgdir)/lmdb-make.patch
+build       : |
+    %make -C libraries/liblmdb XCFLAGS="${CFLAGS}"
+install     : |
+    %make_install -C libraries/liblmdb XCFLAGS="${CFLAGS}" prefix=%(prefix) libdir=%(libdir) 
+    install -m 00644 -D %(pkgdir)/lmdb.pc %(installroot)/%(libdir)/lmdb.pc
