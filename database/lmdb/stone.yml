@@ -9,10 +9,6 @@ description : |
     Symas Lightning Memory-Mapped Database
 license     :
     - OLDAP-2.8
-builddeps   :
-    - binutils
-    - make
-    - patch
 toolchain   : gnu
 setup       : |
     %patch %(pkgdir)/lmdb-make.patch
