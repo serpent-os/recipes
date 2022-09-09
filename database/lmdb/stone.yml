@@ -16,4 +16,4 @@ build       : |
     %make -C libraries/liblmdb XCFLAGS="${CFLAGS}"
 install     : |
     %make_install -C libraries/liblmdb XCFLAGS="${CFLAGS}" prefix=%(prefix) libdir=%(libdir) 
-    install -m 00644 -D %(pkgdir)/lmdb.pc %(installroot)/%(libdir)/lmdb.pc
+    %install_file %(pkgdir)/lmdb.pc %(installroot)/%(libdir)/lmdb.pc
