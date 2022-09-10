@@ -26,7 +26,7 @@ install     : |
     %cmake_install
 
     # Setup ccache symlinks for gnu and clang compilers
-    install -d %(installroot)/%(libdir)%/ccache/bin
+    %install_dir %(installroot)/%(libdir)%/ccache/bin
     TGT="%(installroot)/%(libdir)%/ccache/bin"
     for compiler in gcc x86_64-serpent-linux-gcc g++ x86_64-serpent-linux-g++ c++ x86_64-serpent-linux-c++ clang clang++ ; do
         ln -sv /usr/bin/ccache "${TGT}/${compiler}"
