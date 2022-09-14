@@ -1,0 +1,38 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"lmdb": {
+			"files": [
+				"/usr/bin/mdb_copy",
+				"/usr/bin/mdb_dump",
+				"/usr/bin/mdb_load",
+				"/usr/bin/mdb_stat",
+				"/usr/lib/liblmdb.so.0.0.0",
+				"/usr/lib/lmdb.pc",
+				"/usr/share/man/man1/mdb_copy.1",
+				"/usr/share/man/man1/mdb_dump.1",
+				"/usr/share/man/man1/mdb_load.1",
+				"/usr/share/man/man1/mdb_stat.1"
+			]
+		},
+		"lmdb-dbginfo": {
+			"files": [
+				"/usr/lib/debug/.build-id/04/efc8744b250e6c.debug",
+				"/usr/lib/debug/.build-id/1f/8be78001c2a7ea.debug",
+				"/usr/lib/debug/.build-id/62/5e321cfd288526.debug",
+				"/usr/lib/debug/.build-id/c8/25c9c517489c35.debug",
+				"/usr/lib/debug/.build-id/d9/86caa5f765dc13.debug"
+			]
+		},
+		"lmdb-devel": {
+			"files": [
+				"/usr/include/lmdb.h",
+				"/usr/lib/liblmdb.so"
+			]
+		}
+	},
+	"source-name": "lmdb",
+	"source-release": "2",
+	"source-version": "0.9.29"
+}
