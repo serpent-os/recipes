@@ -1,5 +1,5 @@
 name        : ldc
-version     : 1.29.0
+version     : 1.30.0
 release     : 1
 summary     : The LLVM-based D Compiler
 license     :
@@ -10,7 +10,7 @@ homepage    : https://github.com/ldc-developers/ldc
 description : |
     The LLVM-based D Compiler
 upstreams   :
-    - https://github.com/ldc-developers/ldc/releases/download/v1.29.0/ldc-1.29.0-src.tar.gz: d0c066eb965467625d9c5e75c00c583451b9ffa363601f9e37275ca8a8aea140
+    - https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc-1.30.0-src.tar.gz: fdbb376f08242d917922a6a22a773980217fafa310046fc5d6459490af23dacd
     - https://s3.us-west-2.amazonaws.com/downloads.dlang.org/releases/2021/dmd.2.098.1.linux.tar.xz:
         hash: 19c28b0d306df56bbe9e053c929c56fdba2034685df092f26fc91c3abebcde63
         stripdirs: 1
