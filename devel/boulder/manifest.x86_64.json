@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"boulder": {
+			"files": [
+				"/usr/bin/boulder",
+				"/usr/bin/mason",
+				"/usr/share/boulder/licenses",
+				"/usr/share/boulder/macros/actions/autotools.yml",
+				"/usr/share/boulder/macros/actions/cmake.yml",
+				"/usr/share/boulder/macros/actions/meson.yml",
+				"/usr/share/boulder/macros/actions/misc.yml",
+				"/usr/share/boulder/macros/actions/pgo.yml",
+				"/usr/share/boulder/macros/actions/python.yml",
+				"/usr/share/boulder/macros/arch/aarch64.yml",
+				"/usr/share/boulder/macros/arch/base.yml",
+				"/usr/share/boulder/macros/arch/emul32/x86_64.yml",
+				"/usr/share/boulder/macros/arch/x86.yml",
+				"/usr/share/boulder/macros/arch/x86_64-stage1.yml",
+				"/usr/share/boulder/macros/arch/x86_64.yml",
+				"/usr/share/boulder/profiles.conf.d/default-x86_64.conf",
+				"/usr/share/moss/macros",
+				"/usr/share/moss/macros/actions",
+				"/usr/share/moss/macros/actions/autotools.yml",
+				"/usr/share/moss/macros/actions/cmake.yml",
+				"/usr/share/moss/macros/actions/meson.yml",
+				"/usr/share/moss/macros/actions/misc.yml",
+				"/usr/share/moss/macros/actions/pgo.yml",
+				"/usr/share/moss/macros/actions/python.yml",
+				"/usr/share/moss/macros/arch",
+				"/usr/share/moss/macros/arch/aarch64.yml",
+				"/usr/share/moss/macros/arch/base.yml",
+				"/usr/share/moss/macros/arch/emul32",
+				"/usr/share/moss/macros/arch/emul32/x86_64.yml",
+				"/usr/share/moss/macros/arch/x86.yml",
+				"/usr/share/moss/macros/arch/x86_64-stage1.yml",
+				"/usr/share/moss/macros/arch/x86_64.yml"
+			]
+		},
+		"boulder-dbginfo": {
+			"files": [
+				"/usr/lib/debug/.build-id/8f/d3b286374a05d9.debug"
+			]
+		}
+	},
+	"source-name": "boulder",
+	"source-release": "1",
+	"source-version": "0.1"
+}
