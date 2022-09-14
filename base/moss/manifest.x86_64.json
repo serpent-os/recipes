@@ -1,0 +1,19 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"moss": {
+			"files": [
+				"/usr/bin/moss"
+			]
+		},
+		"moss-dbginfo": {
+			"files": [
+				"/usr/lib/debug/.build-id/1c/abcb09c06d28e3.debug"
+			]
+		}
+	},
+	"source-name": "moss",
+	"source-release": "1",
+	"source-version": "0.1"
+}
