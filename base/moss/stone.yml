@@ -8,7 +8,7 @@ description : |
     Default package manager of Serpent OS.
 upstreams   :
     - https://github.com/serpent-os/moss/archive/refs/heads/main.tar.gz:
-        hash: 24ad167f9ac177e9af7bc8ffe385083d126fab9f23fbb410dd69a861cc31fc03
+        hash: 05dfc582889a87e37010c7f28cb5baf3a0f35c776b0002906c46ace4137669d5
         rename: moss.tar.gz
         stripdirs: 1
         unpackdir: "moss/"

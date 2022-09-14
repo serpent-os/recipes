@@ -6,11 +6,6 @@
 			"files": [
 				"/usr/bin/moss"
 			]
-		},
-		"moss-dbginfo": {
-			"files": [
-				"/usr/lib/debug/.build-id/1c/abcb09c06d28e3.debug"
-			]
 		}
 	},
 	"source-name": "moss",
