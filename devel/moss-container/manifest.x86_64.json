@@ -1,0 +1,14 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"moss-container": {
+			"files": [
+				"/usr/bin/moss-container"
+			]
+		}
+	},
+	"source-name": "moss-container",
+	"source-release": "1",
+	"source-version": "0.1"
+}
