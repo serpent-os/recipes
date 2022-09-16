@@ -1,6 +1,6 @@
 name        : boulder
 version     : 0.1
-release     : 1
+release     : 2
 summary     : Serpent OS builder tool
 license     : Zlib
 homepage    : https://gitlab.com/serpent-os/core/boulder
@@ -8,7 +8,7 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - https://github.com/serpent-os/boulder/archive/refs/heads/main.tar.gz:
-        hash: ec2867b3ed01cfffa8b8468823642e87e88bb9e3c4f0ba3e180f3820c877defd
+        hash: 0068bf9df73c9573ceefbfc370872db191b4b211119339521c99c05e658a3b06
         rename: boulder.tar.gz
         stripdirs: 1
         unpackdir: "boulder/"
@@ -18,7 +18,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-config/"
     - https://github.com/serpent-os/moss-core/archive/refs/heads/main.tar.gz:
-        hash: 2cdad9205637e4477da6cfc1ef4140d8dea661ddd03b4f3a36225a43a8475dd6
+        hash: 4c1224233d68464e9e185c59e8e51e596a9777f194bb3280f547a18641a7b11e
         rename: moss-core.tar.gz
         stripdirs: 1
         unpackdir: "moss-core/"
@@ -33,7 +33,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://github.com/serpent-os/moss-format/archive/refs/heads/main.tar.gz:
-        hash: 2605920066745bc378e03315d70dadf69d89aa6549caaa60a59f1208b0bb7ee1
+        hash: 63a851867868fea9343eda54ac88fc921b5d3f1eb9ef6f70ae8c3e49cc3c76d7
         rename: moss-format.tar.gz
         stripdirs: 1
         unpackdir: "moss-format/"
@@ -57,6 +57,7 @@ upstreams   :
         rename: xxhash-d.tar.gz
         stripdirs: 1
         unpackdir: "moss-vendor/subprojects/xxhash-d/"
+
     - https://github.com/repeatedly/zstd-d/archive/refs/heads/master.tar.gz:
         hash: 64ade7e5c9e737e84882efaecf92219b9e7253ff8f1c6758eadd91395c89b7e7
         stripdirs: 1

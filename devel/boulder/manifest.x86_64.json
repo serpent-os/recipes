@@ -37,14 +37,9 @@
 				"/usr/share/moss/macros/arch/x86_64-stage1.yml",
 				"/usr/share/moss/macros/arch/x86_64.yml"
 			]
-		},
-		"boulder-dbginfo": {
-			"files": [
-				"/usr/lib/debug/.build-id/8f/d3b286374a05d9.debug"
-			]
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1"
 }
