@@ -1,6 +1,6 @@
 name        : gzip
 version     : 1.12
-release     : 1
+release     : 2
 summary     : GNU Zip Compression Utilities
 license     : GPL-3.0-or-later
 homepage    : http://www.gnu.org/software/gzip

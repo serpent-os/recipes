@@ -1,0 +1,37 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"gzip": {
+			"files": [
+				"/usr/bin/gunzip",
+				"/usr/bin/gzexe",
+				"/usr/bin/gzip",
+				"/usr/bin/uncompress",
+				"/usr/bin/zcat",
+				"/usr/bin/zcmp",
+				"/usr/bin/zdiff",
+				"/usr/bin/zegrep",
+				"/usr/bin/zfgrep",
+				"/usr/bin/zforce",
+				"/usr/bin/zgrep",
+				"/usr/bin/zmore",
+				"/usr/bin/znew",
+				"/usr/share/info/gzip.info",
+				"/usr/share/man/man1/gunzip.1",
+				"/usr/share/man/man1/gzexe.1",
+				"/usr/share/man/man1/gzip.1",
+				"/usr/share/man/man1/zcat.1",
+				"/usr/share/man/man1/zcmp.1",
+				"/usr/share/man/man1/zdiff.1",
+				"/usr/share/man/man1/zforce.1",
+				"/usr/share/man/man1/zgrep.1",
+				"/usr/share/man/man1/zmore.1",
+				"/usr/share/man/man1/znew.1"
+			]
+		}
+	},
+	"source-name": "gzip",
+	"source-release": "2",
+	"source-version": "1.12"
+}
