@@ -16,15 +16,6 @@
 				"/usr/share/man/man1/mdb_stat.1"
 			]
 		},
-		"lmdb-dbginfo": {
-			"files": [
-				"/usr/lib/debug/.build-id/04/efc8744b250e6c.debug",
-				"/usr/lib/debug/.build-id/1f/8be78001c2a7ea.debug",
-				"/usr/lib/debug/.build-id/62/5e321cfd288526.debug",
-				"/usr/lib/debug/.build-id/c8/25c9c517489c35.debug",
-				"/usr/lib/debug/.build-id/d9/86caa5f765dc13.debug"
-			]
-		},
 		"lmdb-devel": {
 			"files": [
 				"/usr/include/lmdb.h",
@@ -33,6 +24,6 @@
 		}
 	},
 	"source-name": "lmdb",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.9.29"
 }
