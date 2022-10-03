@@ -1,6 +1,6 @@
 name        : boulder
 version     : 0.1
-release     : 4
+release     : 5
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -8,7 +8,7 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - https://github.com/serpent-os/boulder/archive/refs/heads/main.tar.gz:
-        hash: 5d98e855b9406635f97b0b391cfdbe5f86660518e37a350deb6d97340ca12b37
+        hash: f01b00a45b8b92116abea8481ea1671a044cf1cab0f74a5302a938dbc0df5d47
         rename: boulder.tar.gz
         stripdirs: 1
         unpackdir: "boulder/"

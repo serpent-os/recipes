@@ -3,6 +3,16 @@
 	"manifest-version": "0.1",
 	"packages": {
 		"boulder": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcurl.so.4(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libxxhash.so.0(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
 			"files": [
 				"/usr/bin/boulder",
 				"/usr/bin/mason",
@@ -36,10 +46,15 @@
 				"/usr/share/moss/macros/arch/x86.yml",
 				"/usr/share/moss/macros/arch/x86_64-stage1.yml",
 				"/usr/share/moss/macros/arch/x86_64.yml"
+			],
+			"name": "boulder",
+			"provides": [
+				"binary(boulder)",
+				"binary(mason)"
 			]
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "0.1"
 }
