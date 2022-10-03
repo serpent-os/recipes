@@ -1,6 +1,6 @@
 name        : boulder
 version     : 0.1
-release     : 5
+release     : 6
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -23,7 +23,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-core/"
     - https://github.com/serpent-os/moss-deps/archive/refs/heads/main.tar.gz:
-        hash: 04906408fcb0754a580652b5c3b4939c402b48dc2e47e2fe94065dbc3ae2babe
+        hash: 1d7b770916007c158b5824410b6a03181372c8524a720d5567b960174d23b7c8
         rename: moss-deps.tar.gz
         stripdirs: 1
         unpackdir: "moss-deps/"
