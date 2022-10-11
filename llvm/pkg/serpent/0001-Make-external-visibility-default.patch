@@ -1,0 +1,32 @@
+From e70883adeaae017f265299c7873d726cab68dafb Mon Sep 17 00:00:00 2001
+From: Peter O'Connor <sunnyflunk@serpentos.com>
+Date: Thu, 2 Jun 2022 09:26:39 +0300
+Subject: [PATCH] Make external visibility default
+
+This prevents rebuilding the entire LLVM to relink clang statically.
+
+Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+---
+ llvm/include/llvm/Support/Compiler.h | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/llvm/include/llvm/Support/Compiler.h b/llvm/include/llvm/Support/Compiler.h
+index 80b2dfaec427..f27f43d99cc0 100644
+--- a/llvm/include/llvm/Support/Compiler.h
++++ b/llvm/include/llvm/Support/Compiler.h
+@@ -130,12 +130,8 @@
+ #if __has_attribute(visibility) && !defined(__MINGW32__) &&                    \
+     !defined(__CYGWIN__) && !defined(_WIN32)
+ #define LLVM_LIBRARY_VISIBILITY __attribute__ ((visibility("hidden")))
+-#if defined(LLVM_BUILD_LLVM_DYLIB) || defined(LLVM_BUILD_SHARED_LIBS)
+ #define LLVM_EXTERNAL_VISIBILITY __attribute__((visibility("default")))
+ #else
+-#define LLVM_EXTERNAL_VISIBILITY
+-#endif
+-#else
+ #define LLVM_LIBRARY_VISIBILITY
+ #define LLVM_EXTERNAL_VISIBILITY
+ #endif
+-- 
+2.36.1
+
