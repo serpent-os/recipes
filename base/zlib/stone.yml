@@ -1,21 +1,14 @@
 name        : zlib
-version     : 1.2.12
-release     : 1
+version     : 1.2.13
+release     : 2
 summary     : Library implementing the DEFLATE compression algorithm
 license     : Zlib
 homepage    : https://zlib.net/
 description : |
     Library implementing the DEFLATE compression algorithm
 upstreams   :
-    - https://zlib.net/zlib-1.2.12.tar.gz: 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
-builddeps   :
-    - patch
-    - make
-    - bison
-    - m4
-    - gzip
-    - texinfo
-    - flex
+    - https://zlib.net/zlib-1.2.13.tar.gz: b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30
+emul32     : yes
 environment : |
     # Hack for lack of cc symlink
     mkdir -p bin
@@ -25,7 +18,7 @@ setup       : |
     %patch %(pkgdir)/serpent/0001-Drop-useless-shared-lib-check.patch
 
     CC=${CC} ./configure --prefix=/usr \
-        --libdir=/usr/lib \
+        --libdir=%(libdir) \
         --enable-shared
 build       : |
     %make
