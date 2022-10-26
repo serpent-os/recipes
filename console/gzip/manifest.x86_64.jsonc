@@ -3,6 +3,10 @@
 	"manifest-version": "0.1",
 	"packages": {
 		"gzip": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
 			"files": [
 				"/usr/bin/gunzip",
 				"/usr/bin/gzexe",
@@ -28,6 +32,22 @@
 				"/usr/share/man/man1/zgrep.1",
 				"/usr/share/man/man1/zmore.1",
 				"/usr/share/man/man1/znew.1"
+			],
+			"name": "gzip",
+			"provides": [
+				"binary(gunzip)",
+				"binary(gzexe)",
+				"binary(gzip)",
+				"binary(uncompress)",
+				"binary(zcat)",
+				"binary(zcmp)",
+				"binary(zdiff)",
+				"binary(zegrep)",
+				"binary(zfgrep)",
+				"binary(zforce)",
+				"binary(zgrep)",
+				"binary(zmore)",
+				"binary(znew)"
 			]
 		}
 	},
