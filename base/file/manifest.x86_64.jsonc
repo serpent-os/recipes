@@ -1,0 +1,43 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"file": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/file",
+				"/usr/lib/libmagic.so.1",
+				"/usr/lib/libmagic.so.1.0.0",
+				"/usr/share/man/man1/file.1",
+				"/usr/share/man/man3/libmagic.3",
+				"/usr/share/man/man4/magic.4",
+				"/usr/share/man/man5",
+				"/usr/share/misc/magic.mgc"
+			],
+			"name": "file",
+			"provides": [
+				"binary(file)",
+				"soname(libmagic.so.1(x86_64))"
+			]
+		},
+		"file-devel": {
+			"files": [
+				"/usr/include/magic.h",
+				"/usr/lib/libmagic.so",
+				"/usr/lib/pkgconfig/libmagic.pc"
+			],
+			"name": "file-devel",
+			"provides": [
+				"pkgconfig(libmagic)"
+			]
+		}
+	},
+	"source-name": "file",
+	"source-release": "1",
+	"source-version": "5.41"
+}
