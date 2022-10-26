@@ -1,0 +1,40 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"mimalloc": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libmimalloc.so.2",
+				"/usr/lib/libmimalloc.so.2.0",
+				"/usr/lib/mimalloc-2.0/mimalloc.o"
+			],
+			"name": "mimalloc",
+			"provides": [
+				"soname(libmimalloc.so.2(x86_64))"
+			]
+		},
+		"mimalloc-devel": {
+			"files": [
+				"/usr/include/mimalloc-2.0/mimalloc-new-delete.h",
+				"/usr/include/mimalloc-2.0/mimalloc-override.h",
+				"/usr/include/mimalloc-2.0/mimalloc.h",
+				"/usr/lib/cmake/mimalloc-2.0/mimalloc-config-version.cmake",
+				"/usr/lib/cmake/mimalloc-2.0/mimalloc-config.cmake",
+				"/usr/lib/cmake/mimalloc-2.0/mimalloc-release.cmake",
+				"/usr/lib/cmake/mimalloc-2.0/mimalloc.cmake",
+				"/usr/lib/libmimalloc.so",
+				"/usr/lib/mimalloc-2.0/libmimalloc.a"
+			],
+			"name": "mimalloc-devel",
+			"provides": [
+				"cmake(mimalloc)"
+			]
+		}
+	},
+	"source-name": "mimalloc",
+	"source-release": "1",
+	"source-version": "2.0.6"
+}
