@@ -1,0 +1,26 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"strace": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/strace",
+				"/usr/bin/strace-log-merge",
+				"/usr/share/man/man1/strace-log-merge.1",
+				"/usr/share/man/man1/strace.1"
+			],
+			"name": "strace",
+			"provides": [
+				"binary(strace)",
+				"binary(strace-log-merge)"
+			]
+		}
+	},
+	"source-name": "strace",
+	"source-release": "1",
+	"source-version": "5.15"
+}

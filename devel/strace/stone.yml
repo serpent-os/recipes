@@ -8,14 +8,11 @@ description : |
     strace is a diagnostic, debugging and instructional userspace utility for Linux.
 upstreams   :
     - https://github.com/strace/strace/releases/download/v5.15/strace-5.15.tar.xz : ebcac22f297335294dc654425cbc3ce013343bece6da2699e3aec86aee8d72dc
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+# Hopelessly locked to GNU paths
+toolchain   : gnu
 setup       : |
-    %configure
+    # Fix later for multiple personality (m32 wants GNU readelf)
+    %configure --enable-mpers=no
 build       : |
     %make
 install     : |
