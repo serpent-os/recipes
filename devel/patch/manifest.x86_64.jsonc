@@ -1,0 +1,23 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"patch": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/patch",
+				"/usr/share/man/man1/patch.1"
+			],
+			"name": "patch",
+			"provides": [
+				"binary(patch)"
+			]
+		}
+	},
+	"source-name": "patch",
+	"source-release": "1",
+	"source-version": "2.7.6"
+}
