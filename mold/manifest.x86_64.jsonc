@@ -1,0 +1,34 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"mold": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/ld.mold",
+				"/usr/bin/ld64.mold",
+				"/usr/bin/mold",
+				"/usr/lib/mold/mold-wrapper.so",
+				"/usr/libexec/mold",
+				"/usr/share/man/man1/mold.1"
+			],
+			"name": "mold",
+			"provides": [
+				"binary(ld.mold)",
+				"binary(ld64.mold)",
+				"binary(mold)"
+			]
+		}
+	},
+	"source-name": "mold",
+	"source-release": "1",
+	"source-version": "1.2.1"
+}
