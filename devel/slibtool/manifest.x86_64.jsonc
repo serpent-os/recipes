@@ -1,0 +1,48 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"slibtool": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/clibtool",
+				"/usr/bin/clibtool-shared",
+				"/usr/bin/clibtool-static",
+				"/usr/bin/dlibtool",
+				"/usr/bin/dlibtool-shared",
+				"/usr/bin/dlibtool-static",
+				"/usr/bin/libtool",
+				"/usr/bin/rclibtool",
+				"/usr/bin/rdclibtool",
+				"/usr/bin/rdlibtool",
+				"/usr/bin/rlibtool",
+				"/usr/bin/slibtool",
+				"/usr/bin/slibtool-shared",
+				"/usr/bin/slibtool-static"
+			],
+			"name": "slibtool",
+			"provides": [
+				"binary(clibtool)",
+				"binary(clibtool-shared)",
+				"binary(clibtool-static)",
+				"binary(dlibtool)",
+				"binary(dlibtool-shared)",
+				"binary(dlibtool-static)",
+				"binary(libtool)",
+				"binary(rclibtool)",
+				"binary(rdclibtool)",
+				"binary(rdlibtool)",
+				"binary(rlibtool)",
+				"binary(slibtool)",
+				"binary(slibtool-shared)",
+				"binary(slibtool-static)"
+			]
+		}
+	},
+	"source-name": "slibtool",
+	"source-release": "1",
+	"source-version": "0.5.31"
+}
