@@ -1,0 +1,39 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"libffi": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libffi.so.8",
+				"/usr/lib/libffi.so.8.1.0",
+				"/usr/share/info/libffi.info",
+				"/usr/share/man/man3/ffi.3",
+				"/usr/share/man/man3/ffi_call.3",
+				"/usr/share/man/man3/ffi_prep_cif.3",
+				"/usr/share/man/man3/ffi_prep_cif_var.3"
+			],
+			"name": "libffi",
+			"provides": [
+				"soname(libffi.so.8(x86_64))"
+			]
+		},
+		"libffi-devel": {
+			"files": [
+				"/usr/include/ffi.h",
+				"/usr/include/ffitarget.h",
+				"/usr/lib/libffi.so",
+				"/usr/lib/pkgconfig/libffi.pc"
+			],
+			"name": "libffi-devel",
+			"provides": [
+				"pkgconfig(libffi)"
+			]
+		}
+	},
+	"source-name": "libffi",
+	"source-release": "1",
+	"source-version": "3.4.2"
+}
