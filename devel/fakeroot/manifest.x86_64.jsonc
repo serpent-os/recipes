@@ -1,0 +1,54 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"fakeroot": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/faked",
+				"/usr/bin/fakeroot",
+				"/usr/lib/fakeroot/libfakeroot-0.so",
+				"/usr/lib/fakeroot/libfakeroot.so",
+				"/usr/share/man/de/man1/faked.1",
+				"/usr/share/man/de/man1/fakeroot.1",
+				"/usr/share/man/es/man1/faked.1",
+				"/usr/share/man/es/man1/fakeroot.1",
+				"/usr/share/man/fr/man1/faked.1",
+				"/usr/share/man/fr/man1/fakeroot.1",
+				"/usr/share/man/man1/faked.1",
+				"/usr/share/man/man1/fakeroot.1",
+				"/usr/share/man/nl/man1/faked.1",
+				"/usr/share/man/nl/man1/fakeroot.1",
+				"/usr/share/man/pt/man1/faked.1",
+				"/usr/share/man/pt/man1/fakeroot.1",
+				"/usr/share/man/sv/man1/faked.1",
+				"/usr/share/man/sv/man1/fakeroot.1"
+			],
+			"name": "fakeroot",
+			"provides": [
+				"binary(faked)",
+				"binary(fakeroot)",
+				"soname(libfakeroot-0.so(x86_64))"
+			]
+		},
+		"fakeroot-32bit": {
+			"depends": [
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/fakeroot/libfakeroot-0.so",
+				"/usr/lib32/fakeroot/libfakeroot.so"
+			],
+			"name": "fakeroot-32bit",
+			"provides": [
+				"soname(libfakeroot-0.so(x86))"
+			]
+		}
+	},
+	"source-name": "fakeroot",
+	"source-release": "1",
+	"source-version": "1.29"
+}
