@@ -1,0 +1,40 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"nghttp2": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libnghttp2.so.14",
+				"/usr/lib/libnghttp2.so.14.21.0",
+				"/usr/share/doc/nghttp2/README.rst",
+				"/usr/share/man/man1/h2load.1",
+				"/usr/share/man/man1/nghttp.1",
+				"/usr/share/man/man1/nghttpd.1",
+				"/usr/share/man/man1/nghttpx.1",
+				"/usr/share/nghttp2/fetch-ocsp-response"
+			],
+			"name": "nghttp2",
+			"provides": [
+				"soname(libnghttp2.so.14(x86_64))"
+			]
+		},
+		"nghttp2-devel": {
+			"files": [
+				"/usr/include/nghttp2/nghttp2.h",
+				"/usr/include/nghttp2/nghttp2ver.h",
+				"/usr/lib/libnghttp2.so",
+				"/usr/lib/pkgconfig/libnghttp2.pc"
+			],
+			"name": "nghttp2-devel",
+			"provides": [
+				"pkgconfig(libnghttp2)"
+			]
+		}
+	},
+	"source-name": "nghttp2",
+	"source-release": "1",
+	"source-version": "1.45.1"
+}
