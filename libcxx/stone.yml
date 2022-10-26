@@ -32,7 +32,7 @@ environment : |
     # This is a bit hacky till there's an export for all build stages
     export llvmopts="
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLLVM_DEFAULT_TARGET_TRIPLE=%(build) \
+        -DLLVM_DEFAULT_TARGET_TRIPLE=%(build_platform) \
         -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
         -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
         -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
