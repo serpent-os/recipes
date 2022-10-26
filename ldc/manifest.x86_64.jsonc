@@ -3,6 +3,20 @@
 	"manifest-version": "0.1",
 	"packages": {
 		"ldc": {
+			"depends": [
+				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))",
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libLLVM-14.so(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libdl.so.2(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpthread.so.0(x86_64))",
+				"soname(librt.so.1(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
 			"files": [
 				"/usr/bin/cc",
 				"/usr/bin/dub",
@@ -23,21 +37,20 @@
 				"/usr/lib/libphobos2-ldc-shared.so.100.1",
 				"/usr/share/bash-completion/completions/ldc2",
 				"/usr/share/defaults/etc/ldc2.conf"
-			]
-		},
-		"ldc-dbginfo": {
-			"files": [
-				"/usr/lib/debug/.build-id/57/c31a72fade586f.debug",
-				"/usr/lib/debug/.build-id/5b/bf10b6480d47a3.debug",
-				"/usr/lib/debug/.build-id/66/bf0a1b9c161695.debug",
-				"/usr/lib/debug/.build-id/8c/71aca00a9f4b4e.debug",
-				"/usr/lib/debug/.build-id/b5/8a7c2b71e55698.debug",
-				"/usr/lib/debug/.build-id/c1/c3bb421325d187.debug",
-				"/usr/lib/debug/.build-id/c5/ed4a0d0f32ebcb.debug",
-				"/usr/lib/debug/.build-id/dc/d2cb2b2421adf7.debug",
-				"/usr/lib/debug/.build-id/de/e2f0a80889b3c2.debug",
-				"/usr/lib/debug/.build-id/fb/0230a3feb835c8764042a3dc0719304d5539ad.debug",
-				"/usr/lib/debug/.build-id/fd/bfb5c32842cc20.debug"
+			],
+			"name": "ldc",
+			"provides": [
+				"binary(cc)",
+				"binary(dub)",
+				"binary(ldc-build-runtime)",
+				"binary(ldc-profdata)",
+				"binary(ldc-prune-cache)",
+				"binary(ldc2)",
+				"binary(ldmd2)",
+				"soname(libdruntime-ldc-debug-shared.so.100(x86_64))",
+				"soname(libdruntime-ldc-shared.so.100(x86_64))",
+				"soname(libphobos2-ldc-debug-shared.so.100(x86_64))",
+				"soname(libphobos2-ldc-shared.so.100(x86_64))"
 			]
 		},
 		"ldc-devel": {
@@ -748,7 +761,8 @@
 				"/usr/lib/libphobos2-ldc-lto.a",
 				"/usr/lib/libphobos2-ldc-shared.so",
 				"/usr/lib/libphobos2-ldc.a"
-			]
+			],
+			"name": "ldc-devel"
 		}
 	},
 	"source-name": "ldc",
