@@ -1,0 +1,35 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"ccache": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/ccache",
+				"/usr/lib/ccache/bin/c++",
+				"/usr/lib/ccache/bin/clang",
+				"/usr/lib/ccache/bin/clang++",
+				"/usr/lib/ccache/bin/g++",
+				"/usr/lib/ccache/bin/gcc",
+				"/usr/lib/ccache/bin/x86_64-serpent-linux-c++",
+				"/usr/lib/ccache/bin/x86_64-serpent-linux-g++",
+				"/usr/lib/ccache/bin/x86_64-serpent-linux-gcc",
+				"/usr/share/defaults/etc/ccache/ccache.conf"
+			],
+			"name": "ccache",
+			"provides": [
+				"binary(ccache)"
+			]
+		}
+	},
+	"source-name": "ccache",
+	"source-release": "1",
+	"source-version": "4.6.1"
+}
