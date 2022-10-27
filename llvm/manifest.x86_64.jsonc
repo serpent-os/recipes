@@ -3,6 +3,20 @@
 	"manifest-version": "0.1",
 	"packages": {
 		"clang": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libLLVM-14.so(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libclang-cpp.so.14(x86_64))",
+				"soname(libclang.so.13(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libxml2.so.2(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
 			"files": [
 				"/usr/bin/analyze-build",
 				"/usr/bin/c-index-test",
@@ -125,9 +139,54 @@
 				"/usr/share/scan-view/ScanView.py",
 				"/usr/share/scan-view/bugcatcher.ico",
 				"/usr/share/scan-view/startfile.py"
+			],
+			"name": "clang",
+			"provides": [
+				"binary(analyze-build)",
+				"binary(c-index-test)",
+				"binary(clang)",
+				"binary(clang++)",
+				"binary(clang-14)",
+				"binary(clang-check)",
+				"binary(clang-cl)",
+				"binary(clang-cpp)",
+				"binary(clang-extdef-mapping)",
+				"binary(clang-format)",
+				"binary(clang-linker-wrapper)",
+				"binary(clang-nvlink-wrapper)",
+				"binary(clang-offload-bundler)",
+				"binary(clang-offload-wrapper)",
+				"binary(clang-refactor)",
+				"binary(clang-rename)",
+				"binary(clang-repl)",
+				"binary(clang-scan-deps)",
+				"binary(diagtool)",
+				"binary(git-clang-format)",
+				"binary(hmaptool)",
+				"binary(intercept-build)",
+				"soname(libclang_rt.asan-x86_64.so(x86_64))",
+				"soname(libclang_rt.dyndd-x86_64.so(x86_64))",
+				"soname(libclang_rt.hwasan-x86_64.so(x86_64))",
+				"soname(libclang_rt.hwasan_aliases-x86_64.so(x86_64))",
+				"soname(libclang_rt.memprof-x86_64.so(x86_64))",
+				"soname(libclang_rt.scudo-x86_64.so(x86_64))",
+				"soname(libclang_rt.scudo_minimal-x86_64.so(x86_64))",
+				"soname(libclang_rt.scudo_standalone-x86_64.so(x86_64))",
+				"soname(libclang_rt.tsan-x86_64.so(x86_64))",
+				"soname(libclang_rt.ubsan_minimal-x86_64.so(x86_64))",
+				"soname(libclang_rt.ubsan_standalone-x86_64.so(x86_64))",
+				"binary(scan-build)",
+				"binary(scan-build-py)",
+				"binary(scan-view)"
 			]
 		},
 		"clang-32bit": {
+			"depends": [
+				"soname(ld-linux.so.2(x86))",
+				"soname(libc++.so.1(x86))",
+				"soname(libc.so.6(x86))",
+				"soname(libm.so.6(x86))"
+			],
 			"files": [
 				"/usr/lib/clang/14.0.5/lib/linux/clang_rt.crtbegin-i386.o",
 				"/usr/lib/clang/14.0.5/lib/linux/clang_rt.crtend-i386.o",
@@ -162,6 +221,15 @@
 				"/usr/lib/clang/14.0.5/lib/linux/libclang_rt.ubsan_standalone-i386.a",
 				"/usr/lib/clang/14.0.5/lib/linux/libclang_rt.ubsan_standalone-i386.so",
 				"/usr/lib/clang/14.0.5/lib/linux/libclang_rt.ubsan_standalone_cxx-i386.a"
+			],
+			"name": "clang-32bit",
+			"provides": [
+				"soname(libclang_rt.asan-i386.so(x86))",
+				"soname(libclang_rt.scudo-i386.so(x86))",
+				"soname(libclang_rt.scudo_minimal-i386.so(x86))",
+				"soname(libclang_rt.scudo_standalone-i386.so(x86))",
+				"soname(libclang_rt.ubsan_minimal-i386.so(x86))",
+				"soname(libclang_rt.ubsan_standalone-i386.so(x86))"
 			]
 		},
 		"clang-devel": {
@@ -843,22 +911,56 @@
 				"/usr/lib/cmake/clang/ClangTargets.cmake",
 				"/usr/lib/libclang-cpp.so",
 				"/usr/lib/libclang.so"
+			],
+			"name": "clang-devel",
+			"provides": [
+				"cmake(Clang)"
 			]
 		},
 		"clang-libs": {
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libLLVM-14.so(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
 			"files": [
 				"/usr/lib/libclang-cpp.so.14",
 				"/usr/lib/libclang.so.13",
 				"/usr/lib/libclang.so.14.0.5"
+			],
+			"name": "clang-libs",
+			"provides": [
+				"soname(libclang-cpp.so.14(x86_64))",
+				"soname(libclang.so.13(x86_64))"
 			]
 		},
 		"lld": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libxml2.so.2(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
 			"files": [
 				"/usr/bin/ld.lld",
 				"/usr/bin/ld64.lld",
 				"/usr/bin/lld",
 				"/usr/bin/lld-link",
 				"/usr/bin/wasm-ld"
+			],
+			"name": "lld",
+			"provides": [
+				"binary(ld.lld)",
+				"binary(ld64.lld)",
+				"binary(lld)",
+				"binary(lld-link)",
+				"binary(wasm-ld)"
 			]
 		},
 		"lld-devel": {
@@ -872,9 +974,23 @@
 				"/usr/lib/liblldMachO.a",
 				"/usr/lib/liblldMinGW.a",
 				"/usr/lib/liblldWasm.a"
+			],
+			"name": "lld-devel",
+			"provides": [
+				"cmake(LLD)"
 			]
 		},
 		"llvm": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libLLVM-14.so(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
 			"files": [
 				"/usr/bin/bugpoint",
 				"/usr/bin/dsymutil",
@@ -1158,116 +1274,84 @@
 				"/usr/share/opt-viewer/optpmap.py",
 				"/usr/share/opt-viewer/optrecord.py",
 				"/usr/share/opt-viewer/style.css"
-			]
-		},
-		"llvm-32bit-dbginfo": {
-			"files": [
-				"/usr/lib32/debug/.build-id/0b/ac208e7fd49aac.debug",
-				"/usr/lib32/debug/.build-id/2f/738418ee119ae7.debug",
-				"/usr/lib32/debug/.build-id/36/62d5bd5f4aadac.debug",
-				"/usr/lib32/debug/.build-id/84/f33473091c804d.debug",
-				"/usr/lib32/debug/.build-id/92/b4de3112c813d8.debug",
-				"/usr/lib32/debug/.build-id/e2/70202906c51cf8.debug"
-			]
-		},
-		"llvm-dbginfo": {
-			"files": [
-				"/usr/lib/debug/.build-id/01/28f2358038db30.debug",
-				"/usr/lib/debug/.build-id/04/84ae0a7b7f43d1.debug",
-				"/usr/lib/debug/.build-id/07/d3593dfbf5cd7e.debug",
-				"/usr/lib/debug/.build-id/07/ea4c5d6d62e24d.debug",
-				"/usr/lib/debug/.build-id/0e/039500c11defbd.debug",
-				"/usr/lib/debug/.build-id/0e/dc7f61cd45d2f6.debug",
-				"/usr/lib/debug/.build-id/0f/af1fa5cbdf8008.debug",
-				"/usr/lib/debug/.build-id/11/8e3de7f39ddb14.debug",
-				"/usr/lib/debug/.build-id/14/dab664269722b7.debug",
-				"/usr/lib/debug/.build-id/17/a2c4ad49d5f261.debug",
-				"/usr/lib/debug/.build-id/18/f08111424ed3fa.debug",
-				"/usr/lib/debug/.build-id/21/c45d02ef2210a1.debug",
-				"/usr/lib/debug/.build-id/22/4a99d872a15429.debug",
-				"/usr/lib/debug/.build-id/22/651ded0d6ad14c.debug",
-				"/usr/lib/debug/.build-id/25/58d989695507b1.debug",
-				"/usr/lib/debug/.build-id/27/73ec14627c75f2.debug",
-				"/usr/lib/debug/.build-id/27/85fafe6ce97f3e.debug",
-				"/usr/lib/debug/.build-id/2b/462cc0ab3d8841.debug",
-				"/usr/lib/debug/.build-id/2c/79572d3e136534.debug",
-				"/usr/lib/debug/.build-id/35/fc015d661054fd.debug",
-				"/usr/lib/debug/.build-id/38/998de84110ba47.debug",
-				"/usr/lib/debug/.build-id/3c/34d01b27b1ee34.debug",
-				"/usr/lib/debug/.build-id/3e/76432d71640e24.debug",
-				"/usr/lib/debug/.build-id/41/4d6efb846053e4.debug",
-				"/usr/lib/debug/.build-id/41/6120092f778725.debug",
-				"/usr/lib/debug/.build-id/43/7990d96449ff3c.debug",
-				"/usr/lib/debug/.build-id/46/693e408fb70e72.debug",
-				"/usr/lib/debug/.build-id/48/205d8f48dc4286.debug",
-				"/usr/lib/debug/.build-id/49/41b0ad133ef643.debug",
-				"/usr/lib/debug/.build-id/4f/ac8460c7299ef8.debug",
-				"/usr/lib/debug/.build-id/4f/af2d6d01fdead7.debug",
-				"/usr/lib/debug/.build-id/51/8026a7bd5116ab.debug",
-				"/usr/lib/debug/.build-id/54/96b5315e3cc912.debug",
-				"/usr/lib/debug/.build-id/58/0a2d7122e287d6.debug",
-				"/usr/lib/debug/.build-id/5b/38931bad3606f9.debug",
-				"/usr/lib/debug/.build-id/5b/bf10b6480d47a3.debug",
-				"/usr/lib/debug/.build-id/5d/e71e9a9aed4de7.debug",
-				"/usr/lib/debug/.build-id/5f/f5d9be2fca196b.debug",
-				"/usr/lib/debug/.build-id/60/81b8944140632b.debug",
-				"/usr/lib/debug/.build-id/62/cfa96c3c5258cd.debug",
-				"/usr/lib/debug/.build-id/69/d9f7f5eee76cd0.debug",
-				"/usr/lib/debug/.build-id/6c/3fc3185e2cd99b.debug",
-				"/usr/lib/debug/.build-id/71/aee89241095bde.debug",
-				"/usr/lib/debug/.build-id/77/8de82c8f0de37f.debug",
-				"/usr/lib/debug/.build-id/7a/1088dcd2fe2d77.debug",
-				"/usr/lib/debug/.build-id/7b/66038201b4ff30.debug",
-				"/usr/lib/debug/.build-id/7e/277ab94b623007.debug",
-				"/usr/lib/debug/.build-id/80/7edc8ebd21d250.debug",
-				"/usr/lib/debug/.build-id/81/2ba725f6c1c4ea.debug",
-				"/usr/lib/debug/.build-id/81/cb64b1b2130564.debug",
-				"/usr/lib/debug/.build-id/82/1fa7cde3c0daea.debug",
-				"/usr/lib/debug/.build-id/84/68e7535992440f.debug",
-				"/usr/lib/debug/.build-id/84/7fbfc02f0442c7.debug",
-				"/usr/lib/debug/.build-id/85/c144d37282806e.debug",
-				"/usr/lib/debug/.build-id/8a/1aee54fd6a3cc3.debug",
-				"/usr/lib/debug/.build-id/8c/f40924355f4214.debug",
-				"/usr/lib/debug/.build-id/9e/252985226bcc56.debug",
-				"/usr/lib/debug/.build-id/a1/52c91e01f7bf02.debug",
-				"/usr/lib/debug/.build-id/a4/9cce9801ad9723.debug",
-				"/usr/lib/debug/.build-id/a4/abab08018cbc7a.debug",
-				"/usr/lib/debug/.build-id/a4/ee2210fca66060.debug",
-				"/usr/lib/debug/.build-id/ad/8495aaf40b2c9a.debug",
-				"/usr/lib/debug/.build-id/b1/773ef0e5c186a9.debug",
-				"/usr/lib/debug/.build-id/b3/fdf9f35ef2d6b1.debug",
-				"/usr/lib/debug/.build-id/b6/3d1cd78b907572.debug",
-				"/usr/lib/debug/.build-id/b7/32988de13e4802.debug",
-				"/usr/lib/debug/.build-id/be/47dacaad247f29.debug",
-				"/usr/lib/debug/.build-id/c0/64cf94f56902a2.debug",
-				"/usr/lib/debug/.build-id/c4/5abba5ed7f4bc0.debug",
-				"/usr/lib/debug/.build-id/c5/e2e3771eabce6f.debug",
-				"/usr/lib/debug/.build-id/c6/cc063a426b346e.debug",
-				"/usr/lib/debug/.build-id/cc/3e66cbb1e215f7.debug",
-				"/usr/lib/debug/.build-id/cd/5cddb7309be9aa.debug",
-				"/usr/lib/debug/.build-id/cf/cf2cc4b342170e.debug",
-				"/usr/lib/debug/.build-id/d1/aae48cc5c6f183.debug",
-				"/usr/lib/debug/.build-id/d2/1126fc08b69e4b.debug",
-				"/usr/lib/debug/.build-id/d2/bd90469aa993af.debug",
-				"/usr/lib/debug/.build-id/d5/beb1b1c6891a37.debug",
-				"/usr/lib/debug/.build-id/db/be716c36fbd119.debug",
-				"/usr/lib/debug/.build-id/dd/8beff9c56b8387.debug",
-				"/usr/lib/debug/.build-id/e0/000c697acae348.debug",
-				"/usr/lib/debug/.build-id/e6/cb761c36fa0fc9.debug",
-				"/usr/lib/debug/.build-id/e8/14266b9fb49717.debug",
-				"/usr/lib/debug/.build-id/e9/8ecf47fc3ea96d.debug",
-				"/usr/lib/debug/.build-id/ea/c18a936905de1e.debug",
-				"/usr/lib/debug/.build-id/ec/4eab88762b6ec4.debug",
-				"/usr/lib/debug/.build-id/ee/bd0c07b78e55fa.debug",
-				"/usr/lib/debug/.build-id/f2/24a148db7727e6.debug",
-				"/usr/lib/debug/.build-id/f2/7d267d672e6007.debug",
-				"/usr/lib/debug/.build-id/f4/95ca2740f3a84e.debug",
-				"/usr/lib/debug/.build-id/f5/523bdb89ba76e3.debug",
-				"/usr/lib/debug/.build-id/f7/45d153e026a132.debug",
-				"/usr/lib/debug/.build-id/fa/5d7a523719f99a.debug",
-				"/usr/lib/debug/.build-id/fa/648ef86e8d153e.debug",
-				"/usr/lib/debug/.build-id/fa/95cfc240f9d38d.debug",
-				"/usr/lib/debug/.build-id/ff/1b0c999e0e5575.debug"
+			],
+			"name": "llvm",
+			"provides": [
+				"binary(bugpoint)",
+				"binary(dsymutil)",
+				"soname(libLTO.so.14(x86_64))",
+				"soname(libRemarks.so.14(x86_64))",
+				"binary(llc)",
+				"binary(lli)",
+				"binary(llvm-addr2line)",
+				"binary(llvm-ar)",
+				"binary(llvm-as)",
+				"binary(llvm-bcanalyzer)",
+				"binary(llvm-bitcode-strip)",
+				"binary(llvm-c-test)",
+				"binary(llvm-cat)",
+				"binary(llvm-cfi-verify)",
+				"binary(llvm-config)",
+				"binary(llvm-cov)",
+				"binary(llvm-cvtres)",
+				"binary(llvm-cxxdump)",
+				"binary(llvm-cxxfilt)",
+				"binary(llvm-cxxmap)",
+				"binary(llvm-debuginfod-find)",
+				"binary(llvm-diff)",
+				"binary(llvm-dis)",
+				"binary(llvm-dlltool)",
+				"binary(llvm-dwarfdump)",
+				"binary(llvm-dwp)",
+				"binary(llvm-exegesis)",
+				"binary(llvm-extract)",
+				"binary(llvm-gsymutil)",
+				"binary(llvm-ifs)",
+				"binary(llvm-install-name-tool)",
+				"binary(llvm-jitlink)",
+				"binary(llvm-lib)",
+				"binary(llvm-libtool-darwin)",
+				"binary(llvm-link)",
+				"binary(llvm-lipo)",
+				"binary(llvm-lto)",
+				"binary(llvm-lto2)",
+				"binary(llvm-mc)",
+				"binary(llvm-mca)",
+				"binary(llvm-ml)",
+				"binary(llvm-modextract)",
+				"binary(llvm-mt)",
+				"binary(llvm-nm)",
+				"binary(llvm-objcopy)",
+				"binary(llvm-objdump)",
+				"binary(llvm-opt-report)",
+				"binary(llvm-otool)",
+				"binary(llvm-pdbutil)",
+				"binary(llvm-profdata)",
+				"binary(llvm-profgen)",
+				"binary(llvm-ranlib)",
+				"binary(llvm-rc)",
+				"binary(llvm-readelf)",
+				"binary(llvm-readobj)",
+				"binary(llvm-reduce)",
+				"binary(llvm-rtdyld)",
+				"binary(llvm-sim)",
+				"binary(llvm-size)",
+				"binary(llvm-split)",
+				"binary(llvm-stress)",
+				"binary(llvm-strings)",
+				"binary(llvm-strip)",
+				"binary(llvm-symbolizer)",
+				"binary(llvm-tapi-diff)",
+				"binary(llvm-tblgen)",
+				"binary(llvm-tli-checker)",
+				"binary(llvm-undname)",
+				"binary(llvm-windres)",
+				"binary(llvm-xray)",
+				"binary(opt)",
+				"binary(sancov)",
+				"binary(sanstats)",
+				"binary(split-file)",
+				"binary(verify-uselistorder)"
 			]
 		},
 		"llvm-devel": {
@@ -3260,12 +3344,32 @@
 				"/usr/lib/libPolly.a",
 				"/usr/lib/libPollyISL.a",
 				"/usr/lib/libRemarks.so"
+			],
+			"name": "llvm-devel",
+			"provides": [
+				"cmake(LLVM)",
+				"cmake(Polly)"
 			]
 		},
 		"llvm-libs": {
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libffi.so.8(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libxml2.so.2(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
 			"files": [
 				"/usr/lib/libLLVM-14.0.5.so",
 				"/usr/lib/libLLVM-14.so"
+			],
+			"name": "llvm-libs",
+			"provides": [
+				"soname(libLLVM-14.so(x86_64))"
 			]
 		}
 	},
