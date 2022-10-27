@@ -15,12 +15,10 @@ builddeps   :
     - glibc-32bit-devel
     - binutils-devel
     - ncurses-devel
-    - cmake
-    - ninja
     - libcxx-32bit-devel
     - libffi-devel
     - libxcrypt-devel
-    - patch
+    - perl
     - python
     - libxml2-devel
     - zlib-devel
@@ -34,6 +32,7 @@ environment : |
         -DCLANG_DEFAULT_CXX_STDLIB=libc++ \
         -DCLANG_DEFAULT_LINKER=lld \
         -DCLANG_DEFAULT_OBJCOPY=llvm-objcopy \
+        -DCLANG_DEFAULT_PIE_ON_LINUX=OFF \
         -DCLANG_DEFAULT_RTLIB=compiler-rt \
         -DCLANG_DEFAULT_UNWINDLIB=libunwind \
         -DCOMPILER_RT_USE_BUILTINS_LIBRARY=ON \
@@ -41,12 +40,13 @@ environment : |
         -DENABLE_LINKER_BUILD_ID=ON \
         -DLLVM_BINUTILS_INCDIR=/usr/include \
         -DLLVM_BUILD_TOOLS=ON \
-        -DLLVM_DEFAULT_TARGET_TRIPLE=%(build) \
+        -DLLVM_DEFAULT_TARGET_TRIPLE=%(build_platform) \
         -DLLVM_ENABLE_FFI=ON \
         -DLLVM_ENABLE_LIBCXX=ON \
         -DLLVM_ENABLE_LIBXML2=ON \
         -DLLVM_ENABLE_LTO=Thin \
         -DLLVM_ENABLE_MODULES=OFF \
+        -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
         -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld;llvm;polly' \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_TESTS=ON \
@@ -67,14 +67,13 @@ environment : |
         -DCMAKE_CXX_COMPILER=%(pkgdir)/bootstrap/bin/clang++ \
         -DCLANG_TABLEGEN=%(pkgdir)/bootstrap/bin/clang-tblgen \
         -DLLVM_TABLEGEN=%(pkgdir)/bootstrap/bin/llvm-tblgen \
+        -DLLVM_USE_LINKER=%(pkgdir)/bootstrap/bin/ld.lld \
         "
     fi
 
     # Without RPATH, we need help finding the right libraries to use
     export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib"
 setup       : |
-    %patch %(pkgdir)/llvm-libgcc.patch
-
     %patch %(pkgdir)/perf/0001-Reduce-GCC-startup-searches.patch
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
     %patch %(pkgdir)/serpent/0001-Make-gnu-hash-the-default-for-lld-and-clang.patch
@@ -90,22 +89,85 @@ setup       : |
 
         mkdir -p %(pkgdir)/bootstrap
         cd %(pkgdir)/bootstrap
-        cmake -G Ninja %(workdir)/llvm \
-            -DCMAKE_BUILD_TYPE=Release \
+        %cmake -G Ninja -B . -S %(workdir)/llvm \
             -DCLANG_DEFAULT_LINKER=lld \
             -DCLANG_DEFAULT_OBJCOPY=llvm-objcopy \
+            -DCLANG_DEFAULT_PIE_ON_LINUX=OFF \
+            -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
+            -DCOMPILER_RT_BUILD_MEMPROF=OFF \
+            -DCOMPILER_RT_BUILD_XRAY=OFF \
+            -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
+            -DCOMPILER_RT_BUILD_ORC=OFF \
+            -DCOMPILER_RT_INCLUDE_TESTS=OFF \
             -DENABLE_LINKER_BUILD_ID=ON \
-            -DLLVM_DEFAULT_TARGET_TRIPLE='%(build)' \
-            -DLLVM_ENABLE_LTO=Thin \
+            -DLLVM_DEFAULT_TARGET_TRIPLE='%(build_platform)' \
+            -DLLVM_ENABLE_LTO=OFF \
             -DLLVM_ENABLE_PROJECTS='clang;lld;llvm;polly' \
             -DLLVM_ENABLE_RUNTIMES='compiler-rt' \
             -DLLVM_INCLUDE_TESTS=OFF \
             -DLLVM_TARGET_ARCH='X86_64' \
             -DLLVM_TARGETS_TO_BUILD='host' \
             -DLLVM_OPTIMIZED_TABLEGEN=ON
-        ninja -j "%(jobs)" clang compiler-rt lld llvm-profdata llvm-ar llvm-nm llvm-ranlib llvm-objcopy Polly -v
+        %cmake_build -C . clang compiler-rt lld llvm-profdata llvm-ar llvm-nm llvm-ranlib llvm-objcopy Polly
     fi
 build       : |
+    # Build llvm-libgcc (well need compiler-rt from it) for fresh compiler
+    #cmake -B build-runtimes -S runtimes \
+    #    -DCMAKE_AR=%(pkgdir)/bootstrap/bin/llvm-ar \
+    #    -DCMAKE_NM=%(pkgdir)/bootstrap/bin/llvm-nm \
+    #    -DCMAKE_RANLIB=%(pkgdir)/bootstrap/bin/llvm-ranlib \
+    #    -DCMAKE_C_COMPILER=%(pkgdir)/bootstrap/bin/clang \
+    #    -DCMAKE_CXX_COMPILER=%(pkgdir)/bootstrap/bin/clang++ \
+    #    -DCLANG_TABLEGEN=%(pkgdir)/bootstrap/bin/clang-tblgen \
+    #    -DLLVM_TABLEGEN=%(pkgdir)/bootstrap/bin/llvm-tblgen \
+    #    -DLLVM_USE_LINKER=%(pkgdir)/bootstrap/bin/ld.lld \
+    #    -DCMAKE_C_COMPILER_TARGET=%(build_platform) \
+    #    -DCMAKE_INSTALL_PREFIX= \
+    #    -DLLVM_DEFAULT_TARGET_TRIPLE=%(build_platform) \
+    #    -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
+    #    -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
+    #    -DLLVM_USE_SANITIZER=OFF \
+    #    -DLLVM_INCLUDE_TESTS=ON \
+    #    -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON \
+    #    -DLLVM_RUNTIMES_TARGET=%(build_platform) \
+    #    -DLLVM_TARGET_TRIPLE=%(build_platform) \
+    #    -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
+    #    -DCOMPILER_RT_USE_LLVM_UNWINDER=ON \
+    #    -DCOMPILER_RT_USE_LIBCXX=ON \
+    #    -DLIBCXX_ENABLE_ASSERTIONS=OFF \
+    #    -DLIBCXX_ENABLE_PARALLEL_ALGORITHMS=OFF \
+    #    -DLIBCXX_ENABLE_SHARED=ON \
+    #    -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
+    #    -DLIBCXX_ENABLE_STATIC=OFF \
+    #    -DLIBCXX_HAS_ATOMIC_LIB=ON \
+    #    -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
+    #    -DLIBCXX_STATICALLY_LINK_ABI_IN_SHARED_LIBRARY=ON \
+    #    -DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON \
+    #    -DLIBCXX_USE_COMPILER_RT=ON \
+    #    -DLIBCXXABI_ENABLE_SHARED=OFF \
+    #    -DLIBCXXABI_INSTALL_LIBRARY=OFF \
+    #    -DLIBCXXABI_USE_COMPILER_RT=ON \
+    #    -DLIBCXXABI_USE_LLVM_UNWINDER=OFF \
+    #    -DLIBUNWIND_INSTALL_HEADERS=ON \
+    #    -DLIBUNWIND_INSTALL_LIBRARY=ON \
+    #    -DLIBUNWIND_ENABLE_SHARED=ON \
+    #    -DLIBUNWIND_ENABLE_STATIC=OFF \
+    #    -DLIBUNWIND_INSTALL_LIBRARY=ON \
+    #    -DLIBUNWIND_USE_COMPILER_RT=ON \
+    #    -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;llvm-libgcc" \
+
+    #cmake_build -C build-runtimes
+    #DESTDIR="%(workdir)/%(builddir)" ninja install -v -j "%(jobs)" -C build-runtimes
+
+    # Create libgcc compatibility symlinks
+    #ln -sf libunwind.so.1 %(workdir)/%(builddir)/lib/libgcc_s.so
+    #ln -sf libunwind.so.1.0 %(workdir)/%(builddir)/lib/libgcc_s.so.1
+    #ln -sf libunwind.so.1.0 %(workdir)/%(builddir)/lib/libgcc_s.so.1.0
+    #ln -sf linux/libclang_rt.builtins-x86_64.a %(workdir)/%(builddir)/lib/libgcc.a
+    #ln -sf libunwind.a %(workdir)/%(builddir)/lib/libgcc_eh.a
+    #echo "INPUT(libc++.so.1)" > %(workdir)/%(builddir)/lib%(libsuffix)/libc++abi.so
+    #ln -svf libc++.so.1 %(workdir)/%(builddir)/lib%(libsuffix)/libc++abi.so.1
+
     # Separate the cmake stage from bootstrap for clean FLAGS
     %cmake ${llvmopts} -S llvm \
         -DLLVM_BUILD_LLVM_DYLIB=ON \
@@ -120,33 +182,26 @@ install     : |
         -DLLVM_LINK_LLVM_DYLIB=OFF \
         -DCLANG_LINK_CLANG_DYLIB=OFF
 
-    # Relink lld and clang statically
-    %cmake_build lld clang
-
-    export PATH="%(workdir)/%(builddir)/bin:${PATH}"
-    export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib:${LD_LIBRARY_PATH}"
-    cmake -G Ninja ${llvmopts} -B profile -S runtimes \
-        -DCMAKE_C_COMPILER="%(workdir)/%(builddir)/bin/clang" \
-        -DCMAKE_CXX_COMPILER="%(workdir)/%(builddir)/bin/clang++" \
-        -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
-        -DLLVM_ENABLE_LTO=Full \
-        -DCOMPILER_RT_USE_LIBCXX=ON \
-        -DLIBCXXABI_USE_COMPILER_RT=ON \
-        -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
-        -DLIBCXX_USE_COMPILER_RT=ON \
-        -DLIBUNWIND_USE_COMPILER_RT=ON
+    # Relink clang and lld statically
+    %cmake_build clang lld
 
     # Major clang version
     major_version=$(echo %(version) | cut -d. -f1)
+    export PATH="%(workdir)/%(builddir)/bin:${PATH}"
+    export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib:${LD_LIBRARY_PATH}"
     %bolt_instr %(workdir)/%(builddir)/bin/clang-${major_version}
-    #bolt_instr %(workdir)/%(builddir)/bin/lld
 
-    ninja -v -j "%(jobs)" -C profile
+    %cmake -G Ninja ${llvmopts} -B bolt-clang -S runtimes \
+        -DCMAKE_C_COMPILER="%(workdir)/%(builddir)/bin/clang" \
+        -DCMAKE_CXX_COMPILER="%(workdir)/%(builddir)/bin/clang++" \
+        -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi' \
+        -DLLVM_USE_LINKER="%(workdir)/%(builddir)/bin/ld.lld" \
+        -DLLVM_ENABLE_LTO=Full
+
+    %cmake_build -C bolt-clang
 
     %bolt_merge %(workdir)/%(builddir)/bin/clang-${major_version}
     %bolt_opt %(workdir)/%(builddir)/bin/clang-${major_version}
-    #bolt_merge %(workdir)/%(builddir)/bin/lld
-    #bolt_opt %(workdir)/%(builddir)/bin/lld
 
     %install_bin %(workdir)/%(builddir)/bin/clang-${major_version} %(workdir)/%(builddir)/bin/lld
     rm -rf %(installroot)/usr/lib/libclang*.a
@@ -161,9 +216,9 @@ tuning      :
     - icf: all
     - lto: false
     - nosemantic
+    - optimize: speed
     - polly
     - symbolic
-cspgo       : false
 packages    :
     - "%(name)-libs":
         summary: "Library files for %(name)"
