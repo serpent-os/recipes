@@ -87,7 +87,7 @@ install     : |
     # bfd needs to be able to find the LTO plugin
     major_version=$(echo %(version) | cut -d. -f1)
     %install_dir %(installroot)/%(libdir)/bfd-plugins
-    ln -sf %(libdir)/gcc/gcc/%(build)/${major_version}/liblto_plugin.so %(installroot)/%(libdir)/bfd-plugins/liblto_plugin.so
+    ln -sf %(libdir)/gcc/gcc/%(build_platform)/${major_version}/liblto_plugin.so %(installroot)/%(libdir)/bfd-plugins/liblto_plugin.so
 
     # gdb needs to autoload some files, maybe lldb piggy backs off this?
     %install_dir %(installroot)/%(datadir)/gdb/auto-load/%(libdir)
