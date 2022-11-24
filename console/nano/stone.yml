@@ -1,18 +1,17 @@
 name        : nano
-version     : 6.3
-release     : 1
+version     : 7.0
+release     : 2
 summary     : GNU Text Editor
 license     : GPL-3.0-or-later
 homepage    : https://www.nano-editor.org/
 description : |
     The GNU Text Editor
 upstreams   :
-    - https://www.nano-editor.org/dist/v6/nano-6.3.tar.xz: eb532da4985672730b500f685dbaab885a466d08fbbf7415832b95805e6f8687
+    - https://www.nano-editor.org/dist/v7/nano-7.0.tar.xz: 8dd6eac38b2b8786d82681f0e1afd84f6b75210d17391b6443c437e451552149
 builddeps   :
-    - make
     - file-devel
     - ncurses-devel
-    - zlib-devel
+    - pkgconfig(zlib)
 setup       : |
     %configure
 build       : |
