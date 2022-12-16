@@ -33,6 +33,7 @@
 				"/usr/share/locale/is/LC_MESSAGES/nano.mo",
 				"/usr/share/locale/it/LC_MESSAGES/nano.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/nano.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/nano.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/nano.mo",
 				"/usr/share/locale/ms/LC_MESSAGES/nano.mo",
 				"/usr/share/locale/nb/LC_MESSAGES/nano.mo",
@@ -109,6 +110,6 @@
 		}
 	},
 	"source-name": "nano",
-	"source-release": "2",
-	"source-version": "7"
+	"source-release": "3",
+	"source-version": "7.1"
 }
