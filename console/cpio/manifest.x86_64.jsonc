@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"cpio": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cpio",
+				"/usr/lib/cpio/rmt",
+				"/usr/share/info/cpio.info",
+				"/usr/share/locale/da/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/de/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/es/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/fi/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/ga/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/gl/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/hr/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/hu/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/id/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/it/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/ko/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/pt/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/pt_BR/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/ro/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/tr/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/vi/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/zh_CN/LC_MESSAGES/cpio.mo",
+				"/usr/share/locale/zh_TW/LC_MESSAGES/cpio.mo",
+				"/usr/share/man/man1/cpio.1",
+				"/usr/share/man/man8/rmt.8"
+			],
+			"name": "cpio",
+			"provides": [
+				"binary(cpio)"
+			]
+		}
+	},
+	"source-name": "cpio",
+	"source-release": "1",
+	"source-version": "2.13"
+}
