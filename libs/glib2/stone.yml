@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : glib2
+version     : 2.74.3
+release     : 1
+homepage    : https://download.gnome.org/sources/glib/2.74
+upstreams   :
+    - https://download.gnome.org/sources/glib/2.74/glib-2.74.3.tar.xz : e9bc41ecd9690d9bc6a970cc7380119b828e5b6a4b16c393c638b3dc2b87cbcb
+summary     : Low-level core library that forms the basis for projects such as GTK+ and GNOME
+description : |
+    GLib is the low-level core library that forms the basis for projects such
+    as GTK and GNOME. It provides data structure handling for C, portability
+    wrappers, and interfaces for such runtime functionality as an event loop,
+    threads, dynamic loading, and an object system.
+license     :
+    - Apache-2.0
+    - CC0-1.0
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+    - LLVM-exception
+    - MIT
+builddeps   :
+    - binary(xgettext)
+    - pkgconfig(bash-completion)
+    - pkgconfig(libffi)
+    - pkgconfig(libpcre2-8)
+    - pkgconfig(mount)
+    - pkgconfig(zlib)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
