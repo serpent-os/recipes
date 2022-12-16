@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : procps
+version     : 4.0.2
+release     : 1
+homepage    : https://sourceforge.net/projects/procps-ng/files/Production
+upstreams   :
+    - https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-4.0.2.tar.xz : ee3fcd2ea6ff94aa43a81ba5cc7912b7c9615acd2911c7a3d3ea081287fdf47a
+summary     : Utilities for monitoring your system and its processes
+description : |
+    Utilities for monitoring your system and its processes
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.0-or-later
+builddeps   :
+    - pkgconfig(libsystemd)
+    - pkgconfig(ncursesw)
+setup       : |
+    %configure \
+        --disable-static \
+        --disable-kill \
+        --disable-skill
+build       : |
+    %make
+install     : |
+    %make_install
