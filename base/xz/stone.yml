@@ -1,22 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : xz
-version     : 5.2.5
-release     : 1
-summary     : Library and command line tools for XZ and LZMA compressed files
-license     : 
-    - LGPL-2.1-or-later
-    - GPL-2.0-or-later
-    - Public-Domain
+version     : 5.4.0
+release     : 2
 homepage    : https://tukaani.org/xz
+upstreams   :
+    - https://tukaani.org/xz/xz-5.4.0.tar.xz : 5f260e3b43f75cf43ca43d107dd18209f7d516782956a74ddd53288e02a83a31
+summary     : Library and command line tools for XZ and LZMA compressed files
 description : |
     Library and command line tools for XZ and LZMA compressed files
-upstreams   :
-    - https://tukaani.org/xz/xz-5.2.5.tar.gz: f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+license     :
+    - GPL-2.0-or-later
+    - GPL-3.0-or-later
+    - LGPL-2.1-or-later
 setup       : |
     %configure --disable-static
 build       : |
