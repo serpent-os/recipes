@@ -1,6 +1,6 @@
 name        : zlib
 version     : 1.2.13
-release     : 2
+release     : 3
 summary     : Library implementing the DEFLATE compression algorithm
 license     : Zlib
 homepage    : https://zlib.net/
@@ -9,14 +9,8 @@ description : |
 upstreams   :
     - https://zlib.net/zlib-1.2.13.tar.gz: b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30
 emul32     : yes
-environment : |
-    # Hack for lack of cc symlink
-    mkdir -p bin
-    ln -sf /usr/bin/clang bin/cc
-    export PATH="${PATH}:%(workdir)/bin"
 setup       : |
     %patch %(pkgdir)/serpent/0001-Drop-useless-shared-lib-check.patch
-
     CC=${CC} ./configure --prefix=/usr \
         --libdir=%(libdir) \
         --enable-shared
