@@ -1,23 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : file
-version     : 5.41
-release     : 1
+version     : 5.43
+release     : 2
+homepage    : https://astron.com/pub/file
+upstreams   :
+    - https://astron.com/pub/file/file-5.43.tar.gz : 8c8015e91ae0e8d0321d94c78239892ef9dbc70c4ade0008c0e95894abfb1991
 summary     : File type identification utility
-license     : BSD-2-Clause
-homepage    : http://www.darwinsys.com/file
 description : |
     File type identification utility
-upstreams   :
-    - https://astron.com/pub/file/file-5.41.tar.gz: 13e532c7b364f7d57e23dfeea3147103150cb90593a57af86c10e4f6e411603f
+license     :
+    - BSD-2-Clause
 builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
-    - xz-devel
-    - zlib-devel
+    - bzip2-devel
+    - pkgconfig(liblzma)
+    - pkgconfig(zlib)
 setup       : |
-    %configure --disable-static \
+    %configure \
+        --disable-static \
         --enable-shared
 build       : |
     %make
