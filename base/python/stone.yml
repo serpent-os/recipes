@@ -1,27 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : python
-version     : 3.10.4
-release     : 1
+version     : 3.11.1
+release     : 2
 summary     : Python language interpreter
 license     : Python-2.0
 homepage    : https://www.python.org
 description : |
     Python language interpreter
 upstreams   :
-    - https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tar.xz: 80bf925f571da436b35210886cf79f6eb5fa5d6c571316b73568343451f77a19
+    - https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tar.xz: 85879192f2cffd56cb16c092905949ebf3e5e394b7f764723529637901dfb58f
 builddeps   :
-    - make
-    - patch
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
-    - libxcrypt-devel
-    - openssl-devel
-    - libffi-devel
-    - xz-devel
-    - ncurses-devel
-    - util-linux-devel
-    - zlib-devel
+    - pkgconfig(bzip2)
+    - pkgconfig(libffi)
+    - pkgconfig(liblzma)
+    - pkgconfig(uuid)
+    - pkgconfig(libcrypt)
+    - pkgconfig(ncursesw)
+    - pkgconfig(libssl)
+    - pkgconfig(zlib)
     - llvm-bolt
 setup       : |
     %patch %(pkgdir)/serpent/always-install-setuptools.patch
@@ -36,12 +36,16 @@ setup       : |
 build       : |
     %make
 install     : |
-    %bolt_instr libpython3.10.so.1.0
-    LD_LIBRARY_PATH=%(workdir) ./python -m test --pgo-extended -j%(jobs) --timeout=120 -x test_os -x test_asyncio -x test_httpservers -x test_importlib -x test_logging -x test_multiprocessing_main_handling -x test_xmlrpc -x test_multiprocessing_spawn -x test_compileall -x test_concurrent_futures -x test_multiprocessing_forkserver -x test_multiprocessing_fork ||:
-    %bolt_merge libpython3.10.so.1.0
-    %bolt_opt libpython3.10.so.1.0
-
+    # Bolt section removed until the reason why it segfaults the install is found
     %make_install
+
+    ln -s %(bindir)/python3 %(installroot)/%(bindir)/python
+packages    :
+    - "%(name)-devel":
+        rundeps:
+            # python3 /usr/lib/python*/config-*-x86_64-linux-gnu/python-config.py --ldflags
+            # returns "-lcrypt" among the other things. Make sure it's available.
+            - pkgconfig(libcrypt)
 tuning      :
     - bolt
     - icf: all
