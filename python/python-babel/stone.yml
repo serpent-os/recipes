@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-babel
+version     : 2.11.0
+release     : 1
+summary     : Internationalization utilities for Python
+license     : BSD-3-Clause
+homepage    : https://github.com/python-babel/babel
+description : |
+    A collection of tools for internationalizing Python applications.
+upstreams   :
+    - https://files.pythonhosted.org/packages/source/B/Babel/Babel-2.11.0.tar.gz: 5ef4b3226b0180dedded4229651c8b0e1a3a6a2837d45a073272f313e4cf97f6
+# checkdeps   :
+#     - python-freezegun
+#     - python-pytest
+#     - python-pytz
+rundeps     :
+    - python-pytz
+build       : |
+    %python
+install     : |
+    %python_install
+# check       : |
+#     %python_check
