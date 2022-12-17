@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libunistring
+version     : "1.1"
+release     : 1
+summary     : Library for manipulating Unicode strings and C strings
+license     : LGPL-3.0-or-later
+homepage    : https://www.gnu.org/software/libunistring/
+description : |
+    Library for manipulating Unicode strings and C strings
+upstreams   :
+    - https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.gz: a2252beeec830ac444b9f68d6b38ad883db19919db35b52222cf827c385bdb6a
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*
