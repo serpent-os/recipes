@@ -1,6 +1,6 @@
 name        : perl
 version     : 5.34.0
-release     : 1
+release     : 2
 summary     : Perl interpreter and modules
 license     :
     - Artistic-1.0
