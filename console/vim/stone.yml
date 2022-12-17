@@ -1,0 +1,48 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : vim
+version     : 9.0.1065
+release     : 1
+homepage    : https://github.com/vim/vim
+upstreams   :
+    - https://github.com/vim/vim/archive/refs/tags/v9.0.1065.tar.gz : f3db36c8ebe665ee750f6b729d6fe25de9dac202829f1f7390ceb62955750dc9
+summary     : Vi IMproved, an advanced text editor
+description : |
+    Vim, which stands for Vi IMproved, is an open-source, multiplatform text editor extended from vi. It was first released by Bram Moolenaar in 1991. Since then, numerous features have been added to Vim, many of which are helpful in editing program source code.
+license     :
+    - Vim
+builddeps   :
+    # For gVim, Vim's X11 and GTK-based front-end
+    # - pkgconfig(gtk+-3.0)
+    # - pkgconfig(xt)
+    # - gpm-devel
+
+    # Python provider support
+    # - pkgconfig(python3)
+
+    # Lua provider support
+    # - pkgconfig(lua)
+
+    # Ruby provider support
+    # - pkgconfig(ruby-3.0)
+
+    # Terminal UI support (required)
+    - pkgconfig(ncursesw)
+setup       : |
+    %patch %(pkgdir)/0001-Make-vim-stateless.patch
+    %patch %(pkgdir)/0001-Read-vimrc-from-etc-vim.patch
+
+    %configure --disable-netbeans \
+               --disable-perlinterp \
+               --enable-fail-if-missing \
+               --with-compiledby="Serpent" \
+               --with-features=huge \
+               --with-modified-by="Serpent"
+build       : |
+    %make
+install     : |
+    %make_install
+    %install_file %(pkgdir)/vimrc -t %(installroot)/%(vendordir)/vim
