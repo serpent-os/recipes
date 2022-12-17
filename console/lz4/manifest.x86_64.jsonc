@@ -1,0 +1,49 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"lz4": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/lz4",
+				"/usr/bin/lz4c",
+				"/usr/bin/lz4cat",
+				"/usr/bin/unlz4",
+				"/usr/lib/liblz4.so.1",
+				"/usr/lib/liblz4.so.1.9.4",
+				"/usr/share/man/man1/lz4.1",
+				"/usr/share/man/man1/lz4c.1",
+				"/usr/share/man/man1/lz4cat.1",
+				"/usr/share/man/man1/unlz4.1"
+			],
+			"name": "lz4",
+			"provides": [
+				"soname(liblz4.so.1(x86_64))",
+				"binary(lz4)",
+				"binary(lz4c)",
+				"binary(lz4cat)",
+				"binary(unlz4)"
+			]
+		},
+		"lz4-devel": {
+			"files": [
+				"/usr/include/lz4.h",
+				"/usr/include/lz4frame.h",
+				"/usr/include/lz4frame_static.h",
+				"/usr/include/lz4hc.h",
+				"/usr/lib/liblz4.so",
+				"/usr/lib/pkgconfig/liblz4.pc"
+			],
+			"name": "lz4-devel",
+			"provides": [
+				"pkgconfig(liblz4)"
+			]
+		}
+	},
+	"source-name": "lz4",
+	"source-release": "1",
+	"source-version": "1.9.4"
+}
