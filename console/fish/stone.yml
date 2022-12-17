@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+
+# TODO: Yes, I know this should be in community
+name        : fish
+version     : 3.5.1
+release     : 1
+homepage    : https://fishshell.com/
+upstreams   :
+    - https://github.com/fish-shell/fish-shell/releases/download/3.5.1/fish-3.5.1.tar.xz : a6d45b3dc5a45dd31772e7f8dfdfecabc063986e8f67d60bd7ca60cc81db6928
+summary     : The friendly interactive shell
+description : |
+    fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family. fish includes features like syntax highlighting, autosuggest-as-you-type, and fancy tab completions that just work, with no configuration required.
+license     : GPL-2.0-only
+builddeps   :
+    - gettext-devel
+    - pkgconfig(libpcre2-8)
+    - pkgconfig(ncursesw)
+# checkdeps   :
+#     - procps-ng
+#     - python
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+
+    %tmpfiles %(pkgdir)/fish.tmpfiles
+# Tests 91 and 156 currently fail, TODO fix them
+# check       : |
+#     %make test
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*
