@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-flit-core
+version     : 3.8.0
+release     : 1
+homepage    : https://github.com/pypa/flit
+upstreams   :
+    - https://pypi.io/packages/source/f/flit_core/flit_core-3.8.0.tar.gz : b305b30c99526df5e63d6022dd2310a0a941a187bd3884f4c8ef0418df6c39f3
+summary     : Provides a simple way to put Python packages and modules on PyPI
+description : |
+    Flit is a simple way to put Python packages and modules on PyPI. It tries to require less thought about packaging and help you avoid common mistakes.
+license     :
+    - BSD-3-Clause
+# [LATER] Rebootstrap using %pyproject_build, %pyproject_install.
+networking  : yes
+builddeps   :
+    - binary(pip3)
+install     : |
+    pip3 install flit_core==%(version) --root=%(installroot) --no-deps
