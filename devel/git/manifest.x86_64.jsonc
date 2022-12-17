@@ -9,6 +9,7 @@
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(libcurl.so.4(x86_64))",
 				"soname(libexpat.so.1(x86_64))",
+				"soname(libpcre2-8.so.0(x86_64))",
 				"soname(libssl.so.3(x86_64))",
 				"soname(libz.so.1(x86_64))"
 			],
@@ -19,6 +20,7 @@
 				"/usr/bin/git-shell",
 				"/usr/bin/git-upload-archive",
 				"/usr/bin/git-upload-pack",
+				"/usr/bin/scalar",
 				"/usr/lib/git/git-core/git",
 				"/usr/lib/git/git-core/git-add",
 				"/usr/lib/git/git-core/git-add--interactive",
@@ -60,6 +62,7 @@
 				"/usr/lib/git/git-core/git-cvsserver",
 				"/usr/lib/git/git-core/git-daemon",
 				"/usr/lib/git/git-core/git-describe",
+				"/usr/lib/git/git-core/git-diagnose",
 				"/usr/lib/git/git-core/git-diff",
 				"/usr/lib/git/git-core/git-diff-files",
 				"/usr/lib/git/git-core/git-diff-index",
@@ -185,6 +188,7 @@
 				"/usr/lib/git/git-core/git-verify-commit",
 				"/usr/lib/git/git-core/git-verify-pack",
 				"/usr/lib/git/git-core/git-verify-tag",
+				"/usr/lib/git/git-core/git-version",
 				"/usr/lib/git/git-core/git-web--browse",
 				"/usr/lib/git/git-core/git-whatchanged",
 				"/usr/lib/git/git-core/git-worktree",
@@ -212,6 +216,7 @@
 				"/usr/lib/git/git-core/mergetools/vimdiff",
 				"/usr/lib/git/git-core/mergetools/winmerge",
 				"/usr/lib/git/git-core/mergetools/xxdiff",
+				"/usr/lib/git/git-core/scalar",
 				"/usr/share/git-core/templates/branches",
 				"/usr/share/git-core/templates/description",
 				"/usr/share/git-core/templates/hooks/applypatch-msg.sample",
@@ -278,11 +283,12 @@
 				"binary(git-receive-pack)",
 				"binary(git-shell)",
 				"binary(git-upload-archive)",
-				"binary(git-upload-pack)"
+				"binary(git-upload-pack)",
+				"binary(scalar)"
 			]
 		}
 	},
 	"source-name": "git",
-	"source-release": "1",
-	"source-version": "2.36.1"
+	"source-release": "2",
+	"source-version": "2.39.0"
 }
