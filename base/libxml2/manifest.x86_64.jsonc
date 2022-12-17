@@ -17,13 +17,13 @@
 				"/usr/bin/xmllint",
 				"/usr/lib/libxml2.so.2",
 				"/usr/lib/libxml2.so.2.10.3",
-				"/usr/lib/python3.10/site-packages/__pycache__/drv_libxml2.cpython-310.opt-1.pyc",
-				"/usr/lib/python3.10/site-packages/__pycache__/drv_libxml2.cpython-310.pyc",
-				"/usr/lib/python3.10/site-packages/__pycache__/libxml2.cpython-310.opt-1.pyc",
-				"/usr/lib/python3.10/site-packages/__pycache__/libxml2.cpython-310.pyc",
-				"/usr/lib/python3.10/site-packages/drv_libxml2.py",
-				"/usr/lib/python3.10/site-packages/libxml2.py",
-				"/usr/lib/python3.10/site-packages/libxml2mod.so",
+				"/usr/lib/python3.11/site-packages/__pycache__/drv_libxml2.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/__pycache__/drv_libxml2.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/__pycache__/libxml2.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/__pycache__/libxml2.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/drv_libxml2.py",
+				"/usr/lib/python3.11/site-packages/libxml2.py",
+				"/usr/lib/python3.11/site-packages/libxml2mod.so",
 				"/usr/share/man/man1/xml2-config.1",
 				"/usr/share/man/man1/xmlcatalog.1",
 				"/usr/share/man/man1/xmllint.1"
@@ -277,6 +277,6 @@
 		}
 	},
 	"source-name": "libxml2",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.10.3"
 }
