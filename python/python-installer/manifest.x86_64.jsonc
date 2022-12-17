@@ -1,0 +1,49 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"python-installer": {
+			"files": [
+				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/INSTALLER",
+				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/REQUESTED",
+				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/installer/__init__.py",
+				"/usr/lib/python3.11/site-packages/installer/__main__.py",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/__main__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/_core.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/destinations.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/exceptions.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/records.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/scripts.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/sources.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/utils.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/_core.py",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/__init__.py",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/t32.exe",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/t64-arm.exe",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/t64.exe",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/t_arm.exe",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/w32.exe",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/w64-arm.exe",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/w64.exe",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/w_arm.exe",
+				"/usr/lib/python3.11/site-packages/installer/destinations.py",
+				"/usr/lib/python3.11/site-packages/installer/exceptions.py",
+				"/usr/lib/python3.11/site-packages/installer/py.typed",
+				"/usr/lib/python3.11/site-packages/installer/records.py",
+				"/usr/lib/python3.11/site-packages/installer/scripts.py",
+				"/usr/lib/python3.11/site-packages/installer/sources.py",
+				"/usr/lib/python3.11/site-packages/installer/utils.py"
+			],
+			"name": "python-installer"
+		}
+	},
+	"source-name": "python-installer",
+	"source-release": "1",
+	"source-version": "0.6.0"
+}
