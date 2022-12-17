@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : wget
+version     : 2.0.1
+release     : 1
+homepage    : https://www.gnu.org/software/wget
+upstreams   :
+    - https://ftp.gnu.org/gnu/wget/wget2-2.0.1.tar.gz : 0bb7fa03697bb5b8d05e1b5e15b863440826eb845874c4ffb5e32330f9845db1
+summary     : Retrieves files online supporting many known protocols
+description : |
+    GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS, the most widely used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, cron jobs, terminals without X-Windows support, etc.
+license     :
+    - GPL-3.0-or-later  # wget binary.
+    - LGPL-3.0-or-later # libwget.
+builddeps   :
+    - pkgconfig(libbrotlidec)
+    - pkgconfig(liblzma)
+    - pkgconfig(libnghttp2)
+    - pkgconfig(libzstd)
+    - pkgconfig(openssl)
+    - pkgconfig(zlib)
+    # pandoc for manpages
+setup       : |
+    %configure --disable-static --with-lzma
+build       : |
+    %make
+install     : |
+    %make_install
+    ln -s wget2 %(installroot)/%(bindir)/wget
