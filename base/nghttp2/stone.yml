@@ -1,22 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : nghttp2
-version     : 1.45.1
-release     : 1
-summary     : HTTP/2 C Library and tools
-license     : MIT
+version     : 1.51.0
+release     : 2
 homepage    : https://nghttp2.org
-description : |
-    HTTP/2 C Library and tools.
 upstreams   :
-    - https://github.com/nghttp2/nghttp2/releases/download/v1.45.1/nghttp2-1.45.1.tar.xz: abdc4addccadbc7d89abe27c4d6427d78e57d139f69c1f45749227393c68bf79
-builddeps   :
-    - cmake
-    - ninja
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - https://github.com/nghttp2/nghttp2/releases/download/v1.51.0/nghttp2-1.51.0.tar.xz : 66aa76d97c143f42295405a31413e5e7d157968dad9f957bb4b015b598882e6b
+summary     : C implementation of the HTTP/2.0 protocol
+description : |
+   nghttp2 is an implementation of the Hypertext Transfer Protocol version 2 in C.
+
+   The framing layer of HTTP/2 is implemented as a reusable C library. On top of that, we have implemented an HTTP/2 client, server and proxy. We have also developed load test and benchmarking tools for HTTP/2.
+license     : MIT
 setup       : |
-    %cmake
+    %cmake -DENABLE_STATIC_LIB=OFF
 build       : |
     %cmake_build
 install     : |
