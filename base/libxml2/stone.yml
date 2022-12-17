@@ -1,24 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : libxml2
-version     : 2.9.14
-release     : 1
+version     : 2.10.3
+release     : 2
 summary     : XML parsing library
 license     : MIT
 homepage    : http://www.xmlsoft.org/
 description : |
     XML parsing library
 upstreams   :
-    - https://download.gnome.org/sources/libxml2/2.9/libxml2-2.9.14.tar.xz: 60d74a257d1ccec0475e749cba2f21559e48139efba6ff28224357c7c798dfee
+    - https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.3.tar.xz: 5d2cc3d78bec3dbe212a9d7fa629ada25a7da928af432c93060ff5c17ee28a9c
 builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
     - perl
-    - xz-devel
-    - zlib-devel
+    - pkgconfig(liblzma)
+    - pkgconfig(ncursesw)
+    - pkgconfig(python3)
+    - pkgconfig(readline)
+    - pkgconfig(zlib)
 setup       : |
-    %configure --disable-static
+    %configure --disable-static \
+               --with-history
 build       : |
     %make
 install     : |
@@ -33,3 +37,7 @@ workload    : |
     ./xmllint --stream --valid test/valid/REC-xml-19980210.xml
 #For some reason libtool is stripping -fcs-profile-generate=%(pgo_dir)/CS from link flags
 cspgo       : false
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*
