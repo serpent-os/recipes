@@ -1,0 +1,80 @@
+From: Bruno Haible <bruno@clisp.org>
+Subject: Update after gnulib changed.
+Bug-Debian: https://bugs.debian.org/1005582
+
+--- a/gettext-tools/tests/msgcat-17
++++ b/gettext-tools/tests/msgcat-17
+@@ -39,9 +39,9 @@
+ #, c-format
+ msgid "write error of a big result on a too small disk% s% s"
+ msgstr ""
+-"Fehler beim Schreiben eines großen Ergebnisses auf eine zu kleine Platte% s"
+-"% smit der jederzeitigen Möglichkeit eines Fehlers in jedem Moment und an "
+-"jeder Stelle"
++"Fehler beim Schreiben eines großen Ergebnisses auf eine zu kleine "
++"Platte% s% smit der jederzeitigen Möglichkeit eines Fehlers in jedem Moment "
++"und an jeder Stelle"
+ EOF
+ 
+ : ${DIFF=diff}
+--- a/gettext-tools/tests/msgfilter-sr-latin-1
++++ b/gettext-tools/tests/msgfilter-sr-latin-1
+@@ -20,8 +20,8 @@
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=CP1251\n"
+ "Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :  (n%10>=2 && n"
+-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
++"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :  (n%10>=2 && "
++"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+ 
+ #: ../gettext-tools/lib/closeout.c:64
+ msgid "write error"
+@@ -332,8 +332,8 @@
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :  (n%10>=2 && n"
+-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
++"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :  (n%10>=2 && "
++"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+ 
+ #: ../gettext-tools/lib/closeout.c:64
+ msgid "write error"
+--- a/gettext-tools/tests/msgmerge-11
++++ b/gettext-tools/tests/msgmerge-11
+@@ -19,8 +19,8 @@
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+-"%100==4 ? 2 : 3);\n"
++"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
++"n%100==4 ? 2 : 3);\n"
+ 
+ #:foobar.c:29
+ #, c-format
+@@ -72,8 +72,8 @@
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+-"%100==4 ? 2 : 3);\n"
++"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
++"n%100==4 ? 2 : 3);\n"
+ 
+ #: foobar.c:32
+ #, fuzzy, c-format
+--- a/gettext-tools/tests/xgettext-python-1
++++ b/gettext-tools/tests/xgettext-python-1
+@@ -61,8 +61,8 @@
+ #. interpret_ansic = false, interpret_unicode = false
+ msgid ""
+ "abc\\\n"
+-"\\\\def\\'ghi\\\"jkl\\a\\b\\f\\n\\r\\t\\v x\\040x\\x7ey"
+-"\\u0142\\U00010123\\N{LATIN SMALL LETTER Z}"
++"\\\\def\\'ghi\\\"jkl\\a\\b\\f\\n\\r\\t\\v "
++"x\\040x\\x7ey\\u0142\\U00010123\\N{LATIN SMALL LETTER Z}"
+ msgstr ""
+ 
+ #. interpret_ansic = true, interpret_unicode = true
