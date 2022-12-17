@@ -1,0 +1,70 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"brotli": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/brotli",
+				"/usr/lib/libbrotlicommon.so.1",
+				"/usr/lib/libbrotlicommon.so.1.0.9",
+				"/usr/lib/libbrotlidec.so.1",
+				"/usr/lib/libbrotlidec.so.1.0.9",
+				"/usr/lib/libbrotlienc.so.1",
+				"/usr/lib/libbrotlienc.so.1.0.9"
+			],
+			"name": "brotli",
+			"provides": [
+				"binary(brotli)",
+				"soname(libbrotlicommon.so.1(x86_64))",
+				"soname(libbrotlidec.so.1(x86_64))",
+				"soname(libbrotlienc.so.1(x86_64))"
+			]
+		},
+		"brotli-devel": {
+			"files": [
+				"/usr/include/brotli/decode.h",
+				"/usr/include/brotli/encode.h",
+				"/usr/include/brotli/port.h",
+				"/usr/include/brotli/types.h",
+				"/usr/lib/libbrotlicommon.so",
+				"/usr/lib/libbrotlidec.so",
+				"/usr/lib/libbrotlienc.so",
+				"/usr/lib/pkgconfig/libbrotlicommon.pc",
+				"/usr/lib/pkgconfig/libbrotlidec.pc",
+				"/usr/lib/pkgconfig/libbrotlienc.pc"
+			],
+			"name": "brotli-devel",
+			"provides": [
+				"pkgconfig(libbrotlicommon)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libbrotlienc)"
+			]
+		},
+		"python-brotli": {
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/python3.10/site-packages/Brotli-1.0.9-py3.10.egg-info/PKG-INFO",
+				"/usr/lib/python3.10/site-packages/Brotli-1.0.9-py3.10.egg-info/SOURCES.txt",
+				"/usr/lib/python3.10/site-packages/Brotli-1.0.9-py3.10.egg-info/dependency_links.txt",
+				"/usr/lib/python3.10/site-packages/Brotli-1.0.9-py3.10.egg-info/top_level.txt",
+				"/usr/lib/python3.10/site-packages/__pycache__/brotli.cpython-310.pyc",
+				"/usr/lib/python3.10/site-packages/_brotli.cpython-310-x86_64-linux-gnu.so",
+				"/usr/lib/python3.10/site-packages/brotli.py"
+			],
+			"name": "python-brotli"
+		}
+	},
+	"source-name": "brotli",
+	"source-release": "1",
+	"source-version": "1.0.9"
+}
