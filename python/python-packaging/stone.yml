@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-packaging
+version     : 21.3
+release     : 1
+homepage    : https://packaging.pypa.io
+upstreams   :
+    - https://pypi.io/packages/source/p/packaging/packaging-21.3.tar.gz : dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb
+summary     : Core utilities for Python packages
+description : |
+    Reusable core utilities for various Python Packaging interoperability specifications.
+license     :
+    - Apache-2.0
+    - BSD-2-Clause
+rundeps     :
+    - python-pyparsing
+# [LATER] Rebootstrap with  %pyproject_build, %pyproject_install.
+build       : |
+    %python
+install     : |
+    %python_install
