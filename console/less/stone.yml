@@ -5,7 +5,7 @@
 #
 name        : less
 version     : 608
-release     : 2
+release     : 3
 homepage    : https://www.greenwoodsoftware.com/less
 upstreams   :
     - https://www.greenwoodsoftware.com/less/less-608.tar.gz : a69abe2e0a126777e021d3b73aa3222e1b261f10e64624d41ec079685a6ac209
@@ -16,9 +16,10 @@ license     :
     - BSD-2-Clause
     - GPL-3.0-or-later
 builddeps   :
+    - pkgconfig(libpcre2-8)
     - pkgconfig(ncursesw)
 setup       : |
-    %configure
+    %configure --with-regex=pcre2
 build       : |
     %make
 install     : |
