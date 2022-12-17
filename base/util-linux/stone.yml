@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : util-linux
 version     : 2.37.2
-release     : 1
+release     : 2
 summary     : Random collection of Linux utilities
 license     :
     - BSD-3-Clause
@@ -16,13 +21,12 @@ description : |
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-2.37.2.tar.xz : 6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9
 builddeps   :
-    - make
-    - ncurses-devel
-    - libxcrypt-devel
-    - linux-pam-devel
-    - python-devel
-    - systemd-devel
-    - zlib-devel
+    - pkgconfig(libcrypt)
+    - pkgconfig(libsystemd)
+    - pkgconfig(ncursesw)
+    - pkgconfig(pam)
+    - pkgconfig(python3)
+    - pkgconfig(zlib)
 setup       : |
     # Can fix these issues once fakeroot is implemented
     %configure --disable-makeinstall-chown \
