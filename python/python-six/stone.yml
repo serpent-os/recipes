@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-six
+version     : 1.16.0
+release     : 1
+homepage    : https://github.com/benjaminp/six
+upstreams   :
+    - https://pypi.io/packages/source/s/six/six-1.16.0.tar.gz : 1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926
+summary     : Python 2 and 3 compatibility library
+description : |
+    Six is a Python 2 and 3 compatibility library. It provides utility functions for smoothing over the differences between the Python versions with the goal of writing Python code that is compatible on both Python versions.
+license     :
+    - MIT
+builddeps   :
+# [LATER] These can be removed after https://github.com/serpent-os/boulder/pull/36 is merged.
+    - python-build
+    - python-installer
+    - python-wheel
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
