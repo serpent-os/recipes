@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-pep517
+version     : 0.12.0
+release     : 1
+homepage    : https://github.com/pypa/pep517
+upstreams   :
+    - https://pypi.io/packages/source/p/pep517/pep517-0.12.0.tar.gz : 931378d93d11b298cf511dd634cf5ea4cb249a28ef84160b3247ee9afb4e8ab0
+summary     : API to call PEP 517 hooks for building Python packages
+description : |
+    python-pep517 contains wrappers around the hooks specified by PEP 517 and PEP 660
+license     :
+    - MIT
+rundeps     :
+    - python-tomli
+build       : |
+    # [LATER] Update to 0.13.0 (or newer) and use %pyproject_build.
+    %python
+install     : |
+    %python_install
