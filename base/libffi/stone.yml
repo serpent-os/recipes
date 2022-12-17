@@ -1,19 +1,18 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : libffi
-version     : 3.4.2
-release     : 1
+version     : 3.4.4
+release     : 2
 summary     : A portable foreign function interface library
 license     : MIT
 homepage    : https://sourceware.org/libffi
 description : |
     A portable foreign function interface library
 upstreams   :
-    - https://github.com/libffi/libffi/releases/download/v3.4.2/libffi-3.4.2.tar.gz: 540fb721619a6aba3bdeef7d940d8e9e0e6d2c193595bc243241b77ff9e93620
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - https://github.com/libffi/libffi/releases/download/v3.4.4/libffi-3.4.4.tar.gz: d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676
 setup       : |
     %configure --disable-static
 build       : |
