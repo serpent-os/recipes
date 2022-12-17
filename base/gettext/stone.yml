@@ -5,14 +5,14 @@
 #
 name        : gettext
 version     : 0.21.1
-release     : 2
+release     : 3
 summary     : GNU locale utilities
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org/software/gettext/gettext.html
 description : |
     GNU locale utilities.
 upstreams   :
-    - https://mirrors.kernel.org/gnu/gettext/gettext-0.21.1.tar.xz : d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
+    - https://mirrors.kernel.org/gnu/gettext/gettext-0.21.1.tar.gz : e8c3650e1d8cee875c4f355642382c1df83058bd5a11ee8555c0cf276d646d45
 builddeps   :
     - pkgconfig(libxml-2.0)
     - pkgconfig(ncursesw)
@@ -20,9 +20,7 @@ builddeps   :
 checkdeps   :
     - binary(gzip)
 setup       : |
-    # Fixes make check
-    %patch %(pkgdir)/update-after-gnulib-changed.patch
-    
+    # Drop components requiring unmaintained pkgs 
     %patch %(pkgdir)/disable-libtextstyle.patch
 
     %reconfigure --disable-static

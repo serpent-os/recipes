@@ -7,8 +7,8 @@
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libgettextlib-0.21.so(x86_64))",
-				"soname(libgettextsrc-0.21.so(x86_64))",
+				"soname(libgettextlib-0.21.1.so(x86_64))",
+				"soname(libgettextsrc-0.21.1.so(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libunistring.so.5(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
@@ -45,16 +45,16 @@
 				"/usr/lib/libasprintf.so.0",
 				"/usr/lib/libasprintf.so.0.0.0",
 				"/usr/lib/libgettextpo.so.0",
-				"/usr/lib/libgettextpo.so.0.5.7",
+				"/usr/lib/libgettextpo.so.0.5.8",
 				"/usr/lib/preloadable_libintl.so",
-				"/usr/share/gettext-0.21/its/glade.loc",
-				"/usr/share/gettext-0.21/its/glade1.its",
-				"/usr/share/gettext-0.21/its/glade2.its",
-				"/usr/share/gettext-0.21/its/gsettings.its",
-				"/usr/share/gettext-0.21/its/gsettings.loc",
-				"/usr/share/gettext-0.21/its/gtkbuilder.its",
-				"/usr/share/gettext-0.21/its/metainfo.its",
-				"/usr/share/gettext-0.21/its/metainfo.loc",
+				"/usr/share/gettext-0.21.1/its/glade.loc",
+				"/usr/share/gettext-0.21.1/its/glade1.its",
+				"/usr/share/gettext-0.21.1/its/glade2.its",
+				"/usr/share/gettext-0.21.1/its/gsettings.its",
+				"/usr/share/gettext-0.21.1/its/gsettings.loc",
+				"/usr/share/gettext-0.21.1/its/gtkbuilder.its",
+				"/usr/share/gettext-0.21.1/its/metainfo.its",
+				"/usr/share/gettext-0.21.1/its/metainfo.loc",
 				"/usr/share/gettext/ABOUT-NLS",
 				"/usr/share/gettext/archive.dir.tar.xz",
 				"/usr/share/gettext/config.rpath",
@@ -241,10 +241,10 @@
 				"/usr/include/autosprintf.h",
 				"/usr/include/gettext-po.h",
 				"/usr/lib/libasprintf.so",
-				"/usr/lib/libgettextlib-0.21.so",
+				"/usr/lib/libgettextlib-0.21.1.so",
 				"/usr/lib/libgettextlib.so",
 				"/usr/lib/libgettextpo.so",
-				"/usr/lib/libgettextsrc-0.21.so",
+				"/usr/lib/libgettextsrc-0.21.1.so",
 				"/usr/lib/libgettextsrc.so",
 				"/usr/share/aclocal/gettext.m4",
 				"/usr/share/aclocal/host-cpu-c-abi.m4",
@@ -259,8 +259,8 @@
 			],
 			"name": "gettext-devel",
 			"provides": [
-				"soname(libgettextlib-0.21.so(x86_64))",
-				"soname(libgettextsrc-0.21.so(x86_64))"
+				"soname(libgettextlib-0.21.1.so(x86_64))",
+				"soname(libgettextsrc-0.21.1.so(x86_64))"
 			]
 		},
 		"gettext-docs": {
@@ -352,6 +352,6 @@
 		}
 	},
 	"source-name": "gettext",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.21.1"
 }
