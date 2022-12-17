@@ -15,13 +15,15 @@
 				"/usr/bin/dlibtool-shared",
 				"/usr/bin/dlibtool-static",
 				"/usr/bin/libtool",
+				"/usr/bin/libtoolize",
 				"/usr/bin/rclibtool",
 				"/usr/bin/rdclibtool",
 				"/usr/bin/rdlibtool",
 				"/usr/bin/rlibtool",
 				"/usr/bin/slibtool",
 				"/usr/bin/slibtool-shared",
-				"/usr/bin/slibtool-static"
+				"/usr/bin/slibtool-static",
+				"/usr/share/libtoolize/AC_CONFIG_AUX_DIR/ltmain.sh"
 			],
 			"name": "slibtool",
 			"provides": [
@@ -32,6 +34,7 @@
 				"binary(dlibtool-shared)",
 				"binary(dlibtool-static)",
 				"binary(libtool)",
+				"binary(libtoolize)",
 				"binary(rclibtool)",
 				"binary(rdclibtool)",
 				"binary(rdlibtool)",
@@ -43,6 +46,6 @@
 		}
 	},
 	"source-name": "slibtool",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.5.34"
 }
