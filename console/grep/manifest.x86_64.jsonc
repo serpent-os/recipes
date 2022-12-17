@@ -5,7 +5,8 @@
 		"grep": {
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libc.so.6(x86_64))"
+				"soname(libc.so.6(x86_64))",
+				"soname(libpcre2-8.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/egrep",
@@ -34,6 +35,7 @@
 				"/usr/share/locale/id/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/it/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/grep.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/ky/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/grep.mo",
@@ -49,14 +51,13 @@
 				"/usr/share/locale/sl/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/grep.mo",
+				"/usr/share/locale/ta/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/th/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/vi/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/grep.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/grep.mo",
-				"/usr/share/man/man1/egrep.1",
-				"/usr/share/man/man1/fgrep.1",
 				"/usr/share/man/man1/grep.1"
 			],
 			"name": "grep",
@@ -68,6 +69,6 @@
 		}
 	},
 	"source-name": "grep",
-	"source-release": "1",
-	"source-version": "3.7"
+	"source-release": "2",
+	"source-version": "3.8"
 }
