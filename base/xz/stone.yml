@@ -5,7 +5,7 @@
 #
 name        : xz
 version     : 5.4.0
-release     : 2
+release     : 3
 homepage    : https://tukaani.org/xz
 upstreams   :
     - https://tukaani.org/xz/xz-5.4.0.tar.xz : 5f260e3b43f75cf43ca43d107dd18209f7d516782956a74ddd53288e02a83a31
@@ -17,7 +17,8 @@ license     :
     - GPL-3.0-or-later
     - LGPL-2.1-or-later
 setup       : |
-    %configure --disable-static
+    %configure --disable-static \
+               --disable-rpath
 build       : |
     %make
 install     : |
@@ -27,3 +28,7 @@ workload    : |
 check       : |
     %make check
 cspgo       : false
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*

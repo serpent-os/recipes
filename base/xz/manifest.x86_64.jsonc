@@ -33,25 +33,6 @@
 				"/usr/bin/xzmore",
 				"/usr/lib/liblzma.so.5",
 				"/usr/lib/liblzma.so.5.4.0",
-				"/usr/share/doc/xz/AUTHORS",
-				"/usr/share/doc/xz/COPYING",
-				"/usr/share/doc/xz/COPYING.GPLv2",
-				"/usr/share/doc/xz/NEWS",
-				"/usr/share/doc/xz/README",
-				"/usr/share/doc/xz/THANKS",
-				"/usr/share/doc/xz/TODO",
-				"/usr/share/doc/xz/examples/00_README.txt",
-				"/usr/share/doc/xz/examples/01_compress_easy.c",
-				"/usr/share/doc/xz/examples/02_decompress.c",
-				"/usr/share/doc/xz/examples/03_compress_custom.c",
-				"/usr/share/doc/xz/examples/04_compress_easy_mt.c",
-				"/usr/share/doc/xz/examples/Makefile",
-				"/usr/share/doc/xz/examples_old/xz_pipe_comp.c",
-				"/usr/share/doc/xz/examples_old/xz_pipe_decomp.c",
-				"/usr/share/doc/xz/faq.txt",
-				"/usr/share/doc/xz/history.txt",
-				"/usr/share/doc/xz/lzma-file-format.txt",
-				"/usr/share/doc/xz/xz-file-format.txt",
 				"/usr/share/locale/ca/LC_MESSAGES/xz.mo",
 				"/usr/share/locale/cs/LC_MESSAGES/xz.mo",
 				"/usr/share/locale/da/LC_MESSAGES/xz.mo",
@@ -211,9 +192,33 @@
 			"provides": [
 				"pkgconfig(liblzma)"
 			]
+		},
+		"xz-docs": {
+			"files": [
+				"/usr/share/doc/xz/AUTHORS",
+				"/usr/share/doc/xz/COPYING",
+				"/usr/share/doc/xz/COPYING.GPLv2",
+				"/usr/share/doc/xz/NEWS",
+				"/usr/share/doc/xz/README",
+				"/usr/share/doc/xz/THANKS",
+				"/usr/share/doc/xz/TODO",
+				"/usr/share/doc/xz/examples/00_README.txt",
+				"/usr/share/doc/xz/examples/01_compress_easy.c",
+				"/usr/share/doc/xz/examples/02_decompress.c",
+				"/usr/share/doc/xz/examples/03_compress_custom.c",
+				"/usr/share/doc/xz/examples/04_compress_easy_mt.c",
+				"/usr/share/doc/xz/examples/Makefile",
+				"/usr/share/doc/xz/examples_old/xz_pipe_comp.c",
+				"/usr/share/doc/xz/examples_old/xz_pipe_decomp.c",
+				"/usr/share/doc/xz/faq.txt",
+				"/usr/share/doc/xz/history.txt",
+				"/usr/share/doc/xz/lzma-file-format.txt",
+				"/usr/share/doc/xz/xz-file-format.txt"
+			],
+			"name": "xz-docs"
 		}
 	},
 	"source-name": "xz",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "5.4.0"
 }
