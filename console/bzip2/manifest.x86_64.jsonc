@@ -37,12 +37,16 @@
 		"bzip2-devel": {
 			"files": [
 				"/usr/include/bzlib.h",
-				"/usr/lib/libbz2.so"
+				"/usr/lib/libbz2.so",
+				"/usr/lib/pkgconfig/bzip2.pc"
 			],
-			"name": "bzip2-devel"
+			"name": "bzip2-devel",
+			"provides": [
+				"pkgconfig(bzip2)"
+			]
 		}
 	},
 	"source-name": "bzip2",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.0.8"
 }
