@@ -17,7 +17,7 @@ description : |
 license     : GPL-2.0-only
 builddeps   :
     - gettext-devel
-    - pkgconfig(libpcre2-8)
+    - pkgconfig(libpcre2-32)
     - pkgconfig(ncursesw)
 # checkdeps   :
 #     - procps-ng
