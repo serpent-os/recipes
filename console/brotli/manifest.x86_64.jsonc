@@ -53,18 +53,18 @@
 				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/python3.10/site-packages/Brotli-1.0.9-py3.10.egg-info/PKG-INFO",
-				"/usr/lib/python3.10/site-packages/Brotli-1.0.9-py3.10.egg-info/SOURCES.txt",
-				"/usr/lib/python3.10/site-packages/Brotli-1.0.9-py3.10.egg-info/dependency_links.txt",
-				"/usr/lib/python3.10/site-packages/Brotli-1.0.9-py3.10.egg-info/top_level.txt",
-				"/usr/lib/python3.10/site-packages/__pycache__/brotli.cpython-310.pyc",
-				"/usr/lib/python3.10/site-packages/_brotli.cpython-310-x86_64-linux-gnu.so",
-				"/usr/lib/python3.10/site-packages/brotli.py"
+				"/usr/lib/python3.11/site-packages/Brotli-1.0.9-py3.11.egg-info/PKG-INFO",
+				"/usr/lib/python3.11/site-packages/Brotli-1.0.9-py3.11.egg-info/SOURCES.txt",
+				"/usr/lib/python3.11/site-packages/Brotli-1.0.9-py3.11.egg-info/dependency_links.txt",
+				"/usr/lib/python3.11/site-packages/Brotli-1.0.9-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/__pycache__/brotli.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/_brotli.cpython-311-x86_64-linux-gnu.so",
+				"/usr/lib/python3.11/site-packages/brotli.py"
 			],
 			"name": "python-brotli"
 		}
 	},
 	"source-name": "brotli",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.0.9"
 }
