@@ -5,7 +5,7 @@
 #
 name        : shadow
 version     : 4.12.3
-release     : 2
+release     : 3
 summary     : PAM-using login and passwd utilities
 license     : BSD-3-Clause
 homepage    : https://github.com/shadow-maint/shadow
@@ -18,10 +18,13 @@ builddeps   :
     - pkgconfig(libattr)
     - pkgconfig(libcrypt)
     - pkgconfig(pam)
+    # Needed for man pages
+    # - xsltproc
 setup       : |
     %patch %(pkgdir)/stateless/0001-Stateless-useradd-support.patch
 
     %configure --enable-vendordir=%(vendordir) \
+               --with-yescrypt \
                --without-su \
                --disable-static
 build       : |
