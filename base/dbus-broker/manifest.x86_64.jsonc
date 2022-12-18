@@ -26,6 +26,6 @@
 		}
 	},
 	"source-name": "dbus-broker",
-	"source-release": "1",
-	"source-version": "30"
+	"source-release": "2",
+	"source-version": "32"
 }
