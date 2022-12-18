@@ -5,7 +5,7 @@
 #
 name        : bash
 version     : 5.2.15
-release     : 2
+release     : 3
 homepage    : http://www.gnu.org/software/bash/bash.html
 upstreams   :
     - https://ftp.gnu.org/gnu/bash/bash-5.2.tar.gz : a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb
@@ -22,6 +22,7 @@ license     :
 builddeps   :
     - bison
     - pkgconfig(ncursesw)
+    - pkgconfig(readline)
 setup       : |
     %patch %(pkgdir)/stateless/0001-Use-a-stateless-profile-by-default.patch
     for patch in $(seq 1 9); do %patch %(pkgdir)/bash52-00${patch} -p0; done
@@ -29,6 +30,9 @@ setup       : |
 
     %configure \
         --without-bash-malloc \
+        --with-installed-readline \
+        --with-ncurses \
+        --enable-readline \
         --enable-nls
 build       : |
     %make
