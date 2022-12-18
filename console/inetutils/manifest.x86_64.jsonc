@@ -1,0 +1,65 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"inetutils": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dnsdomainname",
+				"/usr/bin/ftp",
+				"/usr/bin/hostname",
+				"/usr/bin/logger",
+				"/usr/bin/ping",
+				"/usr/bin/ping6",
+				"/usr/bin/rcp",
+				"/usr/bin/rexec",
+				"/usr/bin/rlogin",
+				"/usr/bin/rsh",
+				"/usr/bin/telnet",
+				"/usr/bin/tftp",
+				"/usr/bin/traceroute",
+				"/usr/bin/whois",
+				"/usr/lib/inetutils",
+				"/usr/share/info/inetutils.info",
+				"/usr/share/man/man1/dnsdomainname.1",
+				"/usr/share/man/man1/ftp.1",
+				"/usr/share/man/man1/hostname.1",
+				"/usr/share/man/man1/logger.1",
+				"/usr/share/man/man1/ping.1",
+				"/usr/share/man/man1/ping6.1",
+				"/usr/share/man/man1/rcp.1",
+				"/usr/share/man/man1/rexec.1",
+				"/usr/share/man/man1/rlogin.1",
+				"/usr/share/man/man1/rsh.1",
+				"/usr/share/man/man1/telnet.1",
+				"/usr/share/man/man1/tftp.1",
+				"/usr/share/man/man1/traceroute.1",
+				"/usr/share/man/man1/whois.1",
+				"/usr/share/man/man8"
+			],
+			"name": "inetutils",
+			"provides": [
+				"binary(dnsdomainname)",
+				"binary(ftp)",
+				"binary(hostname)",
+				"binary(logger)",
+				"binary(ping)",
+				"binary(ping6)",
+				"binary(rcp)",
+				"binary(rexec)",
+				"binary(rlogin)",
+				"binary(rsh)",
+				"binary(telnet)",
+				"binary(tftp)",
+				"binary(traceroute)",
+				"binary(whois)"
+			]
+		}
+	},
+	"source-name": "inetutils",
+	"source-release": "1",
+	"source-version": "2.4"
+}
