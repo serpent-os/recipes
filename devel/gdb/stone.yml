@@ -1,0 +1,40 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : gdb
+version     : 12.1
+release     : 1
+homepage    : https://www.sourceware.org/gdb
+upstreams   :
+    - https://ftp.gnu.org/gnu/gdb/gdb-12.1.tar.xz : 0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed
+summary     : The GNU debugger
+description : |
+    GDB, the GNU Project debugger, allows you to see what is going on "inside" another program while it executes - or what another program was doing at the moment it crashed.
+license     :
+    - GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(expat)
+    - pkgconfig(liblzma)
+    - pkgconfig(libxxhash)
+    - pkgconfig(gmp)
+    - pkgconfig(ncursesw)
+    - pkgconfig(python3)
+    - pkgconfig(readline)
+    - pkgconfig(zlib)
+    # libguile
+    # libipt
+    # source-highlight
+setup       : |
+    %patch %(pkgdir)/readline-8.2.patch
+
+    %configure \
+        --with-python=%(bindir)/python3 \
+        --with-system-readline \
+        --with-system-zlib
+build       : |
+    %make
+install     : |
+    %make_install -C gdb
+    %make_install -C gdbserver
