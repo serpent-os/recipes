@@ -6,8 +6,10 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libacl.so.1(x86_64))",
+				"soname(libattr.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcrypto.so.3(x86_64))",
+				"soname(liblz4.so.1(x86_64))",
 				"soname(liblzma.so.5(x86_64))",
 				"soname(libxml2.so.2(x86_64))",
 				"soname(libz.so.1(x86_64))",
@@ -20,7 +22,7 @@
 				"/usr/bin/cpio",
 				"/usr/bin/tar",
 				"/usr/lib/libarchive.so.13",
-				"/usr/lib/libarchive.so.13.6.1",
+				"/usr/lib/libarchive.so.13.6.2",
 				"/usr/share/man/man1/bsdcat.1",
 				"/usr/share/man/man1/bsdcpio.1",
 				"/usr/share/man/man1/bsdtar.1",
@@ -90,6 +92,6 @@
 		}
 	},
 	"source-name": "libarchive",
-	"source-release": "1",
-	"source-version": "3.6.1"
+	"source-release": "2",
+	"source-version": "3.6.2"
 }
