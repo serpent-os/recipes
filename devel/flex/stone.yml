@@ -1,22 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : flex
 version     : 2.6.4
-release     : 1
-summary     : The Fast Lexical Analyzer
-license     : BSD-2-Clause
+release     : 2
 homepage    : https://github.com/westes/flex
-description : |
-    The Fast Lexical Analyzer
 upstreams   :
     - https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz : e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995
+summary     : The Fast Lexical Analyzer
+description : |
+    The Fast Lexical Analyzer
+license     :
+    - BSD-2-Clause
 builddeps   :
-    - make
     - binary(file)
+rundeps     :
     - binary(m4)
-environment : |
-    # Hack for lack of cc symlink
-    mkdir -p bin
-    ln -sf /usr/bin/clang bin/cc
-    export PATH="${PATH}:%(workdir)/bin"
 setup       : |
     %configure --disable-static
 build       : |
