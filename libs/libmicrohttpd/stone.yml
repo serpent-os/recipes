@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libmicrohttpd
+version     : 0.9.75
+release     : 1
+homepage    : https://www.gnu.org/software/libmicrohttpd
+upstreams   :
+    - https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.75.tar.gz : 9278907a6f571b391aab9644fd646a5108ed97311ec66f6359cebbedb0a4e3bb
+summary     : C library supposed to make it easy to run an embedded HTTP server
+description : |
+    GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application. GNU Libmicrohttpd is free software and part of the GNU project.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(gnutls)
+#checkdeps   :
+#    - pkgconfig(libcurl)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+#check       : |
+#    %make check
+# Fails because "network is unreachable"
