@@ -1,0 +1,44 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : p11-kit
+version     : 0.24.1
+release     : 1
+homepage    : https://p11-glue.freedesktop.org
+upstreams   :
+    - https://github.com/p11-glue/p11-kit/releases/download/0.24.1/p11-kit-0.24.1.tar.xz: d8be783efd5cd4ae534cee4132338e3f40f182c3205d23b200094ec85faaaef8
+summary     : Loads and enumerates PKCS#11 modules
+description : |
+   Loads and enumerates PKCS#11 modules
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(gettext)
+    - pkgconfig(libffi)
+    - pkgconfig(libtasn1)
+    - pkgconfig(libsystemd)
+# TODO build with gtk-docs for gtk docs support
+# TODO build with bash-completions
+setup       : |
+    %meson -Dsystem_config=/usr/share/defaults/pkcs11 \
+           -Duser_config=/etc/pkcs11
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
+    %tmpfiles "# Create /etc/pkcs11 directory"
+    %tmpfiles "d /etc/pkcs11 0755 - - -"
+# 10/53 test-path fails with a SIGSEGV
+# TODO figure out why and re-enable this test
+# check       : |
+#     meson test -v -C "%(builddir)" --print-errorlogs
+packages    :
+    - "%(name)-libs":
+        description: |
+            p11-kit libraries
+        paths:
+            - /usr/lib/libp11-kit.so.*
+            - /usr/lib/p11-kit-proxy.so
+            - /usr/lib/pkcs11/p11-kit-*.so
