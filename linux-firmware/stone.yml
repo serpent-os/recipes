@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : linux-firmware
+version     : 20221214
+release     : 1
+homepage    : https://kernel.org
+upstreams   :
+    - https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20221214.tar.gz : 22575ee6749d9fb460dc003391dfa2f75275c700de73b431dad196a1005623b9
+summary     : Firmware to allow devices to function correctly
+description : |
+    Firmware to allow devices to function correctly
+license     :
+    - GPL-2.0-or-later
+    - Distributable
+setup       : |
+    %patch %(pkgdir)/0001-Add-support-for-compressing-firmware-in-copy-firmwar.patch
+install     : |
+    %make installcompress FIRMWAREDIR=/usr/lib/firmware DESTDIR=%(installroot)
+    # Remove conflicting and/or forbidden assets
+    for forbidden in carl9170fw netronome liquidio qed Makefile GPL-3 ; do
+        rm -rvf "%(installroot)/%(libdir)/firmware/${forbidden}"
+    done
