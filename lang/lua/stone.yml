@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : lua
+version     : 5.4.4
+release     : 1
+homepage    : https://www.lua.org
+upstreams   :
+    - https://www.lua.org/ftp/lua-5.4.4.tar.gz : 164c7849653b80ae67bec4b7473b884bf5cc8d2dca05653475ec2ed27b9ebf61
+summary     : Lightweight and embeddable language
+description : |
+    Lua is a powerful, efficient, lightweight, embeddable scripting language. It supports procedural programming, object-oriented programming, functional programming, data-driven programming, and data description.
+
+    Lua combines simple procedural syntax with powerful data description constructs based on associative arrays and extensible semantics. Lua is dynamically typed, runs by interpreting bytecode with a register-based virtual machine, and has automatic memory management with incremental garbage collection, making it ideal for configuration, scripting, and rapid prototyping.
+license     : MIT
+setup       : |
+    %patch %(pkgdir)/serpent/soname.patch
+build       : |
+    %make \
+        CC="$CC" \
+        CFLAGS="$CFLAGS -DLUA_USE_LINUX" \
+        LDFLAGS="$LDFLAGS" \
+        AR="$AR rcu" \
+        RANLIB="$RANLIB"
+install     : |
+    %make_install \
+        INSTALL_TOP=%(installroot) \
+        INSTALL_BIN=%(installroot)/%(bindir) \
+        INSTALL_INC=%(installroot)/%(includedir) \
+        INSTALL_LIB=%(installroot)/%(libdir) \
+        INSTALL_MAN=%(installroot)/%(mandir)
+    rm %(installroot)/%(libdir)/liblua.a
