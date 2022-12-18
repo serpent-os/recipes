@@ -1,0 +1,80 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"openssh": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libedit.so.0(x86_64))",
+				"soname(libldns.so.3(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/scp",
+				"/usr/bin/sftp",
+				"/usr/bin/ssh",
+				"/usr/bin/ssh-add",
+				"/usr/bin/ssh-agent",
+				"/usr/bin/ssh-keygen",
+				"/usr/bin/ssh-keyscan",
+				"/usr/lib/openssh/ssh-keysign",
+				"/usr/lib/openssh/ssh-pkcs11-helper",
+				"/usr/lib/openssh/ssh-sk-helper",
+				"/usr/lib/tmpfiles.d/openssh.conf",
+				"/usr/share/defaults/etc/ssh/ssh_config",
+				"/usr/share/man/cat1/scp.1",
+				"/usr/share/man/cat1/sftp.1",
+				"/usr/share/man/cat1/ssh-add.1",
+				"/usr/share/man/cat1/ssh-agent.1",
+				"/usr/share/man/cat1/ssh-keygen.1",
+				"/usr/share/man/cat1/ssh-keyscan.1",
+				"/usr/share/man/cat1/ssh.1",
+				"/usr/share/man/cat5/ssh_config.5",
+				"/usr/share/man/cat8/ssh-keysign.8",
+				"/usr/share/man/cat8/ssh-pkcs11-helper.8",
+				"/usr/share/man/cat8/ssh-sk-helper.8"
+			],
+			"name": "openssh",
+			"provides": [
+				"binary(scp)",
+				"binary(sftp)",
+				"binary(ssh)",
+				"binary(ssh-add)",
+				"binary(ssh-agent)",
+				"binary(ssh-keygen)",
+				"binary(ssh-keyscan)"
+			]
+		},
+		"openssh-server": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypt.so.1(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libpam.so.0(x86_64))",
+				"soname(libsystemd.so.0(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/openssh/sftp-server",
+				"/usr/lib/systemd/system/sshd-keygen.service",
+				"/usr/lib/systemd/system/sshd.service",
+				"/usr/lib/sysusers.d/openssh.conf",
+				"/usr/sbin/sshd",
+				"/usr/share/defaults/etc/pam.d/sshd",
+				"/usr/share/defaults/etc/ssh/moduli",
+				"/usr/share/defaults/etc/ssh/sshd_config",
+				"/usr/share/man/cat5/moduli.5",
+				"/usr/share/man/cat5/sshd_config.5",
+				"/usr/share/man/cat8/sftp-server.8",
+				"/usr/share/man/cat8/sshd.8"
+			],
+			"name": "openssh-server"
+		}
+	},
+	"source-name": "openssh",
+	"source-release": "1",
+	"source-version": "9.1_p1"
+}
