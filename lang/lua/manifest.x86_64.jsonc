@@ -13,6 +13,8 @@
 				"/usr/bin/luac",
 				"/usr/lib/liblua.so.1",
 				"/usr/lib/liblua.so.1.4",
+				"/usr/lib/lua/1",
+				"/usr/share/lua/1",
 				"/usr/share/man/lua.1",
 				"/usr/share/man/luac.1"
 			],
@@ -43,6 +45,6 @@
 		}
 	},
 	"source-name": "lua",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "5.4.4"
 }
