@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : ed
+version     : 1.18
+release     : 1
+homepage    : https://ftp.gnu.org/gnu/ed
+upstreams   :
+    - https://ftp.gnu.org/gnu/ed/ed-1.18.tar.lz : aca8efad9800c587724a20b97aa8fc47e6b5a47df81606feaba831b074462b4f
+summary     : A POSIX-compliant line-oriented text editor
+description : |
+    GNU ed is a line-oriented text editor. It is used to create, display, modify and otherwise manipulate text files, both interactively and via shell scripts. A restricted version of ed, red,
+    can only edit files in the current directory and cannot execute shell commands. Ed is the "standard" text editor in the sense that it is the original editor for Unix, and thus widely
+    available.
+license     :
+    - GPL-2.0-or-later
+toolchain   : gnu
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
