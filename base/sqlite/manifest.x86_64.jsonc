@@ -1,0 +1,39 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"sqlite": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/sqlite3",
+				"/usr/lib/libsqlite3.so.0",
+				"/usr/lib/libsqlite3.so.0.8.6",
+				"/usr/share/man/man1/sqlite3.1"
+			],
+			"name": "sqlite",
+			"provides": [
+				"soname(libsqlite3.so.0(x86_64))",
+				"binary(sqlite3)"
+			]
+		},
+		"sqlite-devel": {
+			"files": [
+				"/usr/include/sqlite3.h",
+				"/usr/include/sqlite3ext.h",
+				"/usr/lib/libsqlite3.so",
+				"/usr/lib/pkgconfig/sqlite3.pc"
+			],
+			"name": "sqlite-devel",
+			"provides": [
+				"pkgconfig(sqlite3)"
+			]
+		}
+	},
+	"source-name": "sqlite",
+	"source-release": "1",
+	"source-version": "3.40.0"
+}
