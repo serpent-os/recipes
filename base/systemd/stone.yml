@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : systemd
-version     : '248.10'
-release     : 1
+version     : '251.9'
+release     : 2
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -10,32 +15,39 @@ homepage    : http://www.freedesktop.org/wiki/Software/systemd
 description : |
     A System and Service Manager
 upstreams   :
-    - https://github.com/systemd/systemd-stable/archive/v248.10.tar.gz: dab015c2ccd5cb0427b1c3ec85ac0f02974b38ca643de31932f198a8b60de8da
+    - https://github.com/systemd/systemd-stable/archive/v251.9.tar.gz: 1a59b8d0382b54be0fc0f8e95d79f5785feef1a2c43f317e31eb8ebf94244dd5
 builddeps   :
-    - meson
-    - ninja
-    - acl-devel
-    - dbus-devel
-    - gettext-devel
-    - gperf
-    - libffi-devel
-    - zlib-devel
-    - zstd-devel
-    - util-linux-devel
-    - libcap-devel
-    - libxcrypt-devel
-    - openssl-devel
-    - curl-devel
-    - xz-devel
-    - linux-pam-devel
-    - zstd-devel
     - binary(m4)
+    - gcc-devel
+    - gettext-devel
+    - gnu-efi-devel
+    - gperf
     - binutils
+    - python-jinja
+    - pkgconfig(libacl)
+    - pkgconfig(blkid)
+    - pkgconfig(dbus-1)
+    - pkgconfig(fdisk)
+    - pkgconfig(libcap)
+    - pkgconfig(libcurl)
+    - pkgconfig(libffi)
+    - pkgconfig(liblz4)
+    - pkgconfig(liblzma)
+    - pkgconfig(libpcre2-8)
+    - pkgconfig(libxcrypt)
+    - pkgconfig(libzstd)
+    - pkgconfig(mount)
+    - pkgconfig(openssl)
+    - pkgconfig(pam)
+    - pkgconfig(zlib)
 setup       : |
     %meson \
+        -Dbpf-framework=false \
         -Defi=true \
         -Dfuzz-tests=false \
+        -Dgnu-efi=true \
         -Dinstall-tests=false \
+        -Dmode=release \
         -Dslow-tests=false \
         -Dsplit-bin=true \
         -Dsplit-usr=false \
@@ -47,7 +59,6 @@ install     : |
     %meson_install
 
     # Stateless: Clean up /var directories, they are created via tmpfiles already
-    rm %(installroot)/var/log/README
     rmdir %(installroot)/var/lib/systemd %(installroot)/var/lib
     rmdir %(installroot)/var/log/journal %(installroot)/var/log %(installroot)/var
 
