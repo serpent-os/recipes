@@ -1,0 +1,105 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"libidn2": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunistring.so.5(x86_64))"
+			],
+			"files": [
+				"/usr/bin/idn2",
+				"/usr/lib/libidn2.so.0",
+				"/usr/lib/libidn2.so.0.3.8",
+				"/usr/share/info/libidn2.info",
+				"/usr/share/locale/cs/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/da/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/de/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/eo/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/es/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/fi/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/fur/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/hr/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/hu/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/id/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/it/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/ko/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/pt_BR/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/ro/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/vi/LC_MESSAGES/libidn2.mo",
+				"/usr/share/locale/zh_CN/LC_MESSAGES/libidn2.mo",
+				"/usr/share/man/man1/idn2.1",
+				"/usr/share/man/man3/idn2_check_version.3",
+				"/usr/share/man/man3/idn2_free.3",
+				"/usr/share/man/man3/idn2_lookup_u8.3",
+				"/usr/share/man/man3/idn2_lookup_ul.3",
+				"/usr/share/man/man3/idn2_register_u8.3",
+				"/usr/share/man/man3/idn2_register_ul.3",
+				"/usr/share/man/man3/idn2_strerror.3",
+				"/usr/share/man/man3/idn2_strerror_name.3",
+				"/usr/share/man/man3/idn2_to_ascii_4i.3",
+				"/usr/share/man/man3/idn2_to_ascii_4i2.3",
+				"/usr/share/man/man3/idn2_to_ascii_4z.3",
+				"/usr/share/man/man3/idn2_to_ascii_8z.3",
+				"/usr/share/man/man3/idn2_to_ascii_lz.3",
+				"/usr/share/man/man3/idn2_to_unicode_44i.3",
+				"/usr/share/man/man3/idn2_to_unicode_4z4z.3",
+				"/usr/share/man/man3/idn2_to_unicode_8z4z.3",
+				"/usr/share/man/man3/idn2_to_unicode_8z8z.3",
+				"/usr/share/man/man3/idn2_to_unicode_8zlz.3",
+				"/usr/share/man/man3/idn2_to_unicode_lzlz.3"
+			],
+			"name": "libidn2",
+			"provides": [
+				"binary(idn2)",
+				"soname(libidn2.so.0(x86_64))"
+			]
+		},
+		"libidn2-devel": {
+			"files": [
+				"/usr/include/idn2.h",
+				"/usr/lib/libidn2.so",
+				"/usr/lib/pkgconfig/libidn2.pc"
+			],
+			"name": "libidn2-devel",
+			"provides": [
+				"pkgconfig(libidn2)"
+			]
+		},
+		"libidn2-docs": {
+			"files": [
+				"/usr/share/gtk-doc/html/libidn2/api-index-0.1.html",
+				"/usr/share/gtk-doc/html/libidn2/api-index-2.0.0.html",
+				"/usr/share/gtk-doc/html/libidn2/api-index-2.1.1.html",
+				"/usr/share/gtk-doc/html/libidn2/api-index-deprecated.html",
+				"/usr/share/gtk-doc/html/libidn2/api-index-full.html",
+				"/usr/share/gtk-doc/html/libidn2/home.png",
+				"/usr/share/gtk-doc/html/libidn2/index.html",
+				"/usr/share/gtk-doc/html/libidn2/left-insensitive.png",
+				"/usr/share/gtk-doc/html/libidn2/left.png",
+				"/usr/share/gtk-doc/html/libidn2/libidn2-idn2.h.html",
+				"/usr/share/gtk-doc/html/libidn2/libidn2.devhelp2",
+				"/usr/share/gtk-doc/html/libidn2/libidn2.html",
+				"/usr/share/gtk-doc/html/libidn2/right-insensitive.png",
+				"/usr/share/gtk-doc/html/libidn2/right.png",
+				"/usr/share/gtk-doc/html/libidn2/style.css",
+				"/usr/share/gtk-doc/html/libidn2/up-insensitive.png",
+				"/usr/share/gtk-doc/html/libidn2/up.png"
+			],
+			"name": "libidn2-docs"
+		}
+	},
+	"source-name": "libidn2",
+	"source-release": "1",
+	"source-version": "2.3.4"
+}
