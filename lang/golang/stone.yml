@@ -1,0 +1,40 @@
+name        : golang
+version     : 1.19.4
+release     : 1
+homepage    : https://golang.org
+upstreams   :
+    - https://golang.org/dl/go1.19.4.src.tar.gz : eda74db4ac494800a3e66ee784e495bfbb9b8e535df924a8b01b1a8028b7f368
+    - https://go.dev/dl/go1.19.4.linux-amd64.tar.gz :
+        hash: c9c08f783325c4cf840a94333159cc937f05f75d36a8b307951d5bd959cf2ab8
+        unpack: false
+summary     : The Go programming language
+description : |
+    Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
+license     : BSD-3-Clause
+builddeps   :
+    - bash
+    # - golang [LATER] after bootstrapping.
+environment : |
+    export GOROOT_BOOTSTRAP="%(workdir)/go" # Remove after bootstrapping.
+    export GOROOT_FINAL="%(libdir)/%(name)"
+
+    # Should this be set by boulder automatically?
+    export XDG_CACHE_HOME="%(workdir)/.cache"
+setup       : |
+    tar xf %(sourcedir)/go1.19.4.linux-amd64.tar.gz
+    %patch %(pkgdir)/stateless/x509-certificate-path.patch
+build       : |
+    cd src && ./make.bash -v
+# TODO: Properly filter unwanted content to achieve a clean package.
+install     : |
+    rm -rf .cache go
+    # Testdata searches for /libexec/ld-elf.so.1.
+    # This is just data fed into tests, but boulder scans it regardless.
+    find -type d -name testdata -exec rm -rf {} +
+
+    install -Dm00755 bin/* -t %(installroot)/%(bindir)
+    %install_dir %(installroot)/%(libdir)/%(name)
+    find -mindepth 1 -maxdepth 1 -type d -not -name bin -exec cp -a {} %(installroot)/%(libdir)/%(name) \;
+# check      : |
+# Fails because there is no network.
+#     cd src && ./run.bash -v -v -v -k
