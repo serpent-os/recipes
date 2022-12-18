@@ -1,19 +1,18 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : pkgconf
-version     : 1.8.0
-release     : 1
+version     : 1.9.3
+release     : 2
 summary     : Package compiler and linker metadata toolkit
 license     : ISC
 homepage    : http://pkgconf.org/
 description : |
     Package compiler and linker metadata toolkit
 upstreams   :
-    - https://distfiles.dereferenced.org/pkgconf/pkgconf-1.8.0.tar.xz: ef9c7e61822b7cb8356e6e9e1dca58d9556f3200d78acab35e4347e9d4c2bbaf
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - https://distfiles.dereferenced.org/pkgconf/pkgconf-1.9.3.tar.xz: 5fb355b487d54fb6d341e4f18d4e2f7e813a6622cf03a9e87affa6a40565699d
 setup       : |
     %configure --disable-static
 build       : |

@@ -8,10 +8,11 @@
 				"soname(libc.so.6(x86_64))"
 			],
 			"files": [
+				"/usr/bin/bomtool",
 				"/usr/bin/pkg-config",
 				"/usr/bin/pkgconf",
-				"/usr/lib/libpkgconf.so.3",
-				"/usr/lib/libpkgconf.so.3.0.0",
+				"/usr/lib/libpkgconf.so.4",
+				"/usr/lib/libpkgconf.so.4.0.0",
 				"/usr/share/doc/pkgconf/AUTHORS",
 				"/usr/share/doc/pkgconf/README.md",
 				"/usr/share/man/man1/pkgconf.1",
@@ -21,7 +22,8 @@
 			],
 			"name": "pkgconf",
 			"provides": [
-				"soname(libpkgconf.so.3(x86_64))",
+				"binary(bomtool)",
+				"soname(libpkgconf.so.4(x86_64))",
 				"binary(pkg-config)",
 				"binary(pkgconf)"
 			]
@@ -44,6 +46,6 @@
 		}
 	},
 	"source-name": "pkgconf",
-	"source-release": "1",
-	"source-version": "1.8.0"
+	"source-release": "2",
+	"source-version": "1.9.3"
 }
