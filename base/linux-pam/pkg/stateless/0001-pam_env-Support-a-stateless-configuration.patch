@@ -9,20 +9,6 @@ Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
  modules/pam_env/pam_env.c   | 7 +++++++
  2 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/modules/pam_env/Makefile.am b/modules/pam_env/Makefile.am
-index c66112d..2bb7d30 100644
---- a/modules/pam_env/Makefile.am
-+++ b/modules/pam_env/Makefile.am
-@@ -28,7 +28,8 @@ securelib_LTLIBRARIES = pam_env.la
- pam_env_la_LIBADD = $(top_builddir)/libpam/libpam.la
- 
- dist_secureconf_DATA = pam_env.conf
--dist_sysconf_DATA = environment
-+dist_defaultsdir = $(datadir)/defaults/etc
-+dist_defaults_DATA = environment
- 
- if ENABLE_REGENERATE_MAN
- dist_noinst_DATA = README
 diff --git a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
 index f5f8cea..6f56ed3 100644
 --- a/modules/pam_env/pam_env.c

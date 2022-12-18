@@ -57,6 +57,7 @@
 				"/usr/lib/security/pam_wheel.so",
 				"/usr/lib/security/pam_xauth.so",
 				"/usr/lib/systemd/system/pam_namespace.service",
+				"/usr/lib/tmpfiles.d/linux-pam.conf",
 				"/usr/sbin/faillock",
 				"/usr/sbin/mkhomedir_helper",
 				"/usr/sbin/pam_namespace_helper",
@@ -65,6 +66,12 @@
 				"/usr/sbin/unix_chkpwd",
 				"/usr/sbin/unix_update",
 				"/usr/share/defaults/etc/environment",
+				"/usr/share/defaults/etc/pam.d/other",
+				"/usr/share/defaults/etc/pam.d/system-auth",
+				"/usr/share/defaults/etc/pam.d/system-local-login",
+				"/usr/share/defaults/etc/pam.d/system-login",
+				"/usr/share/defaults/etc/pam.d/system-remote-login",
+				"/usr/share/defaults/etc/pam.d/system-services",
 				"/usr/share/defaults/etc/security/access.conf",
 				"/usr/share/defaults/etc/security/faillock.conf",
 				"/usr/share/defaults/etc/security/group.conf",
@@ -75,6 +82,7 @@
 				"/usr/share/defaults/etc/security/namespace.init",
 				"/usr/share/defaults/etc/security/pam_env.conf",
 				"/usr/share/defaults/etc/security/time.conf",
+				"/usr/share/defaults/etc/shells",
 				"/usr/share/doc/Linux-PAM/draft-morgan-pam-current.txt",
 				"/usr/share/doc/Linux-PAM/index.html",
 				"/usr/share/doc/Linux-PAM/rfc86.0.txt",
@@ -337,6 +345,6 @@
 		}
 	},
 	"source-name": "linux-pam",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.5.2"
 }
