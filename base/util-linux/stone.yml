@@ -5,7 +5,7 @@
 #
 name        : util-linux
 version     : 2.37.2
-release     : 2
+release     : 3
 summary     : Random collection of Linux utilities
 license     :
     - BSD-3-Clause
@@ -37,3 +37,13 @@ build       : |
     %make
 install     : |
     %make_install
+
+    # PAM configuration
+    %install_dir %(installroot)/%(vendordir)/pam.d
+    %install_file %(pkgdir)/pam.d/pam-common %(installroot)/%(vendordir)/pam.d/chfn
+    %install_file %(pkgdir)/pam.d/pam-common %(installroot)/%(vendordir)/pam.d/chsh
+    %install_file %(pkgdir)/pam.d/pam-login %(installroot)/%(vendordir)/pam.d/login
+    %install_file %(pkgdir)/pam.d/pam-runuser %(installroot)/%(vendordir)/pam.d/runuser
+    %install_file %(pkgdir)/pam.d/pam-runuser %(installroot)/%(vendordir)/pam.d/runuser-l
+    %install_file %(pkgdir)/pam.d/pam-su %(installroot)/%(vendordir)/pam.d/su
+    %install_file %(pkgdir)/pam.d/pam-su %(installroot)/%(vendordir)/pam.d/su-l
