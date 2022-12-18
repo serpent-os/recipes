@@ -1,0 +1,142 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"elfutils": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libasm.so.1(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libdebuginfod.so.1(x86_64))",
+				"soname(libdw.so.1(x86_64))",
+				"soname(libelf.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/debuginfod-find",
+				"/usr/bin/eu-addr2line",
+				"/usr/bin/eu-ar",
+				"/usr/bin/eu-elfclassify",
+				"/usr/bin/eu-elfcmp",
+				"/usr/bin/eu-elfcompress",
+				"/usr/bin/eu-elflint",
+				"/usr/bin/eu-findtextrel",
+				"/usr/bin/eu-make-debug-archive",
+				"/usr/bin/eu-nm",
+				"/usr/bin/eu-objdump",
+				"/usr/bin/eu-ranlib",
+				"/usr/bin/eu-readelf",
+				"/usr/bin/eu-size",
+				"/usr/bin/eu-stack",
+				"/usr/bin/eu-strings",
+				"/usr/bin/eu-strip",
+				"/usr/bin/eu-unstrip",
+				"/usr/share/locale/de/LC_MESSAGES/elfutils.mo",
+				"/usr/share/locale/en@boldquot/LC_MESSAGES/elfutils.mo",
+				"/usr/share/locale/en@quot/LC_MESSAGES/elfutils.mo",
+				"/usr/share/locale/es/LC_MESSAGES/elfutils.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/elfutils.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/elfutils.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/elfutils.mo",
+				"/usr/share/man/man1/debuginfod-find.1",
+				"/usr/share/man/man1/eu-elfclassify.1",
+				"/usr/share/man/man1/eu-readelf.1",
+				"/usr/share/man/man3/debuginfod_add_http_header.3",
+				"/usr/share/man/man3/debuginfod_begin.3",
+				"/usr/share/man/man3/debuginfod_end.3",
+				"/usr/share/man/man3/debuginfod_find_debuginfo.3",
+				"/usr/share/man/man3/debuginfod_find_executable.3",
+				"/usr/share/man/man3/debuginfod_find_section.3",
+				"/usr/share/man/man3/debuginfod_find_source.3",
+				"/usr/share/man/man3/debuginfod_get_url.3",
+				"/usr/share/man/man3/debuginfod_get_user_data.3",
+				"/usr/share/man/man3/debuginfod_set_progressfn.3",
+				"/usr/share/man/man3/debuginfod_set_user_data.3",
+				"/usr/share/man/man3/elf_begin.3",
+				"/usr/share/man/man3/elf_clone.3",
+				"/usr/share/man/man3/elf_getdata.3",
+				"/usr/share/man/man3/elf_update.3",
+				"/usr/share/man/man7/debuginfod-client-config.7"
+			],
+			"name": "elfutils",
+			"provides": [
+				"binary(debuginfod-find)",
+				"binary(eu-addr2line)",
+				"binary(eu-ar)",
+				"binary(eu-elfclassify)",
+				"binary(eu-elfcmp)",
+				"binary(eu-elfcompress)",
+				"binary(eu-elflint)",
+				"binary(eu-findtextrel)",
+				"binary(eu-make-debug-archive)",
+				"binary(eu-nm)",
+				"binary(eu-objdump)",
+				"binary(eu-ranlib)",
+				"binary(eu-readelf)",
+				"binary(eu-size)",
+				"binary(eu-stack)",
+				"binary(eu-strings)",
+				"binary(eu-strip)",
+				"binary(eu-unstrip)"
+			]
+		},
+		"elfutils-devel": {
+			"files": [
+				"/usr/include/dwarf.h",
+				"/usr/include/elfutils/debuginfod.h",
+				"/usr/include/elfutils/elf-knowledge.h",
+				"/usr/include/elfutils/known-dwarf.h",
+				"/usr/include/elfutils/libasm.h",
+				"/usr/include/elfutils/libdw.h",
+				"/usr/include/elfutils/libdwelf.h",
+				"/usr/include/elfutils/libdwfl.h",
+				"/usr/include/elfutils/version.h",
+				"/usr/include/gelf.h",
+				"/usr/include/libelf.h",
+				"/usr/include/nlist.h",
+				"/usr/lib/libasm.so",
+				"/usr/lib/libdebuginfod.so",
+				"/usr/lib/libdw.so",
+				"/usr/lib/libelf.so",
+				"/usr/lib/pkgconfig/libdebuginfod.pc",
+				"/usr/lib/pkgconfig/libdw.pc",
+				"/usr/lib/pkgconfig/libelf.pc"
+			],
+			"name": "elfutils-devel",
+			"provides": [
+				"pkgconfig(libdebuginfod)",
+				"pkgconfig(libdw)",
+				"pkgconfig(libelf)"
+			]
+		},
+		"elfutils-libs": {
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcurl.so.4(x86_64))",
+				"soname(libz.so.1(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libasm-0.188.so",
+				"/usr/lib/libasm.so.1",
+				"/usr/lib/libdebuginfod-0.188.so",
+				"/usr/lib/libdebuginfod.so.1",
+				"/usr/lib/libdw-0.188.so",
+				"/usr/lib/libdw.so.1",
+				"/usr/lib/libelf-0.188.so",
+				"/usr/lib/libelf.so.1"
+			],
+			"name": "elfutils-libs",
+			"provides": [
+				"soname(libasm.so.1(x86_64))",
+				"soname(libdebuginfod.so.1(x86_64))",
+				"soname(libdw.so.1(x86_64))",
+				"soname(libelf.so.1(x86_64))"
+			]
+		}
+	},
+	"source-name": "elfutils",
+	"source-release": "1",
+	"source-version": "0.188"
+}
