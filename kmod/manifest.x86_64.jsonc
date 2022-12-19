@@ -15,6 +15,12 @@
 				"/usr/bin/kmod",
 				"/usr/lib/libkmod.so.2",
 				"/usr/lib/libkmod.so.2.4.0",
+				"/usr/sbin/depmod",
+				"/usr/sbin/insmod",
+				"/usr/sbin/lsmod",
+				"/usr/sbin/modinfo",
+				"/usr/sbin/modprobe",
+				"/usr/sbin/rmmod",
 				"/usr/share/bash-completion/completions/kmod",
 				"/usr/share/man/man5/depmod.d.5",
 				"/usr/share/man/man5/modprobe.d.5",
@@ -47,6 +53,6 @@
 		}
 	},
 	"source-name": "kmod",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "30"
 }

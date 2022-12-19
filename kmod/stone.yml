@@ -1,6 +1,6 @@
 name        : kmod
 version     : 30
-release     : 1
+release     : 2
 homepage    : https://github.com/kmod-project/kmod
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-30.tar.xz : f897dd72698dc6ac1ef03255cd0a5734ad932318e4adbaebc7338ef2f5202f9f
@@ -27,3 +27,7 @@ build       : |
     %make
 install     : |
     %make_install
+    %install_dir %(installroot)%(sbindir)
+    for tool in modprobe modinfo insmod rmmod depmod lsmod ; do
+        ln -sf ../bin/${tool} %(installroot)/usr/sbin/${tool}
+    done
