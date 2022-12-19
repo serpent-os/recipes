@@ -12,8 +12,10 @@ license     :
 builddeps   :
     - binary(bc)
     - binary(bison)
+    - binary(dracut)
     - binary(flex)
     - binary(gzip)
+    - binary(kmod)
     - binary(m4)
     - binary(perl)
     - pkgconfig(gmp)
@@ -29,5 +31,24 @@ build       : |
     %make ARCH=x86_64 CONFIG_DEBUG_SECTION_MISMATCH=y VERBOSE=0 V=0
     %make ARCH=x86_64 -C tools/objtool VERBOSE=0 V=0
 install     : |
-    echo Not yet implemented..
-    exit 1
+    kernelVersion="%(version)-%(release).kvm"
+    kernelID="com.serpentos.kvm"
+    %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelID.%(version)-%(release)
+
+    %install_file .config %(installroot)%(libdir)/kernel/config-$kernelVersion
+    %install_file System.map %(installroot)%(libdir)/kernel/System.map-$kernelVersion
+
+    # Modules please
+    %install_dir %(installroot)%(libdir)/modules/$kernelVersion
+    %make ARCH=x86_64 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
+    /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
+    
+    # TODO: Include early microcode
+    LD_PRELOAD='' dracut --strip --tmpdir /tmp -N -f \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd" \
+        --strip --hardlink --nomdadmconf \
+        %(installroot)%(libdir)/kernel/initrd-$kernelID.%(version)-%(release)
+
+    # No building against this kernel pls.
+    rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/build
+    rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/source

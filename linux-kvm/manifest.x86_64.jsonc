@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"linux-kvm": {
+			"files": [
+				"/usr/lib/kernel/System.map-6.1-1.kvm",
+				"/usr/lib/kernel/com.serpentos.kvm.6.1-1",
+				"/usr/lib/kernel/config-6.1-1.kvm",
+				"/usr/lib/kernel/initrd-com.serpentos.kvm.6.1-1",
+				"/usr/lib/modules/6.1-1.kvm/kernel/arch/x86/kvm/kvm-amd.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/arch/x86/kvm/kvm-intel.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/arch/x86/kvm/kvm.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/block/bfq.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/drivers/cpufreq/pcc-cpufreq.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/drivers/thermal/intel/x86_pkg_temp_thermal.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/drivers/virtio/virtio_balloon.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/drivers/virtio/virtio_input.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/drivers/virtio/virtio_mmio.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/fs/efivarfs/efivarfs.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/kernel/configs.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/net/ipv4/netfilter/iptable_nat.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/net/netfilter/nf_log_syslog.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/net/netfilter/xt_LOG.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/net/netfilter/xt_MASQUERADE.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/net/netfilter/xt_addrtype.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/net/netfilter/xt_mark.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/net/netfilter/xt_nat.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/kernel/virt/lib/irqbypass.ko.zst",
+				"/usr/lib/modules/6.1-1.kvm/modules.alias",
+				"/usr/lib/modules/6.1-1.kvm/modules.alias.bin",
+				"/usr/lib/modules/6.1-1.kvm/modules.builtin",
+				"/usr/lib/modules/6.1-1.kvm/modules.builtin.alias.bin",
+				"/usr/lib/modules/6.1-1.kvm/modules.builtin.bin",
+				"/usr/lib/modules/6.1-1.kvm/modules.builtin.modinfo",
+				"/usr/lib/modules/6.1-1.kvm/modules.dep",
+				"/usr/lib/modules/6.1-1.kvm/modules.dep.bin",
+				"/usr/lib/modules/6.1-1.kvm/modules.devname",
+				"/usr/lib/modules/6.1-1.kvm/modules.order",
+				"/usr/lib/modules/6.1-1.kvm/modules.softdep",
+				"/usr/lib/modules/6.1-1.kvm/modules.symbols",
+				"/usr/lib/modules/6.1-1.kvm/modules.symbols.bin"
+			],
+			"name": "linux-kvm"
+		}
+	},
+	"source-name": "linux-kvm",
+	"source-release": "1",
+	"source-version": "6.1"
+}
