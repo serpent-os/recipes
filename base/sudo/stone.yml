@@ -1,0 +1,60 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : sudo
+version     : 1.9.12p1
+release     : 1
+summary     : Run commands as a privileged user
+license     :
+    - ISC
+homepage    : https://www.sudo.ws/
+description : |
+    The Sudo package allows a system administrator to give certain users (or groups of users) the ability to run some (or all) commands as root or another user while logging the commands and arguments.
+upstreams   :
+    - https://www.sudo.ws/dist/sudo-1.9.12p1.tar.gz: 475a18a8eb3da8b2917ceab063a6baf51ea09128c3c47e3e0e33ab7497bab7d8
+builddeps   :
+    - pkgconfig(libssl)
+    - pkgconfig(zlib)
+    - pkgconfig(pam)
+setup       : |
+    %patch %(pkgdir)/stateless/0001-stateless.patch
+    %patch %(pkgdir)/stateless/0002-visudo-Use-sane-default-file.patch
+
+    %configure --with-vardir=/var/db/sudo \
+               --with-rundir=/run/sudo \
+               --with-insults \
+               --with-all-insults \
+               --with-editor=/usr/bin/nano \
+               --with-env-editor \
+               --with-passprompt="[sudo] password for p: " \
+               --with-tty-tickets
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # PAM
+    %install_file %(pkgdir)/sudo.pam %(installroot)/%(vendordir)/pam.d/sudo
+
+    # Default sudoers
+    rm -fv %(installroot)/%(vendordir)/sudo/sudoers
+    %install_file %(pkgdir)/sudoers %(installroot)/%(vendordir)/sudo/sudoers
+
+    # Cleanup
+    rm -rfv %(installroot)/usr/share/doc
+
+    # Tmpfiles. Note that sudo already ships a tmpfiles, we're just adding onto it.
+    %tmpfiles "d /var/db/sudo/ 0700 root root -"
+    %tmpfiles "d /var/db/sudo/lectured 0700 root root -"
+
+    # Stateless
+    rm -fv %(installroot)/etc
+    rmdir %(installroot)/run/sudo
+    rmdir %(installroot)/run/
+    rmdir %(installroot)/var/db/sudo/lectured
+    rmdir %(installroot)/var/db/sudo
+    rmdir %(installroot)/var/db
+    rmdir %(installroot)/var
+toolchain   : gnu

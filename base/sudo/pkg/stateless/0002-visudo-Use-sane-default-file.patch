@@ -1,0 +1,46 @@
+From cad9b2cd48c336d632158f4380006f457607dc1f Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <michael.i.doherty@intel.com>
+Date: Mon, 18 May 2015 16:52:05 +0100
+Subject: [PATCH] visudo: Use sane default file
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ plugins/sudoers/visudo.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/plugins/sudoers/visudo.c b/plugins/sudoers/visudo.c
+index 734118b..0daf0f1 100644
+--- a/plugins/sudoers/visudo.c
++++ b/plugins/sudoers/visudo.c
+@@ -137,6 +137,7 @@ main(int argc, char *argv[])
+     int ch, oldlocale, editor_argc, exitcode = 0;
+     bool use_perms, use_owner, quiet, strict, fflag;
+     debug_decl(main, SUDOERS_DEBUG_MAIN);
++	__attribute__ ((unused)) struct stat st = {0};
+ 
+ #if defined(SUDO_DEVEL) && defined(__OpenBSD__)
+     {
+@@ -155,6 +156,10 @@ main(int argc, char *argv[])
+     if (argc < 1)
+ 	usage();
+ 
++    if (stat("/etc/sudoers.d", &st) < 0) {
++        (void)mkdir("/etc/sudoers.d", 00755);
++    }
++
+     /* Register fatal/fatalx callback. */
+     sudo_fatal_callback_register(visudo_cleanup);
+ 
+@@ -172,6 +177,9 @@ main(int argc, char *argv[])
+     /* Parse sudoers plugin options, if any. */
+     parse_sudoers_options();
+ 
++    /* Set default sudoers file, can be overriden with -f, --file */
++    sudoers_file = "/etc/sudoers.d/visudo";
++
+     /*
+      * Arg handling.
+      */
+-- 
+2.39.0
+
