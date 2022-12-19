@@ -14,5 +14,7 @@ description : |
     Command-line system information tool
 license     :
     - MIT
+setup       : |
+    %patch %(pkgdir)/serpent_os.patch
 install     : |
     %make_install
