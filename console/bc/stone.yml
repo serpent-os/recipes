@@ -5,7 +5,7 @@
 #
 name        : bc
 version     : 1.07
-release     : 1
+release     : 2
 homepage    : https://ftp.gnu.org/gnu/bc
 upstreams   :
     - https://ftp.gnu.org/gnu/bc/bc-1.07.tar.gz : 55cf1fc33a728d7c3d386cc7b0cb556eb5bacf8e0cb5a3fcca7f109fc61205ad
@@ -20,6 +20,9 @@ builddeps   :
     - binary(makeinfo)
     - pkgconfig(readline)
 setup       : |
+    %patch %(pkgdir)/fedora/bc-1.06.95-doc.patch
+    %patch %(pkgdir)/fedora/bc-1.06-dc_ibase.patch
+    %patch %(pkgdir)/fedora/bc-1.07.1-readline-echo-empty.diff
     %configure --with-readline
 build       : |
     %make -j1
