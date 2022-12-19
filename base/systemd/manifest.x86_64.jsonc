@@ -86,7 +86,6 @@
 				"/usr/lib/libudev.so.1.7.4",
 				"/usr/lib/modprobe.d/README",
 				"/usr/lib/modprobe.d/systemd.conf",
-				"/usr/lib/pam.d/systemd-user",
 				"/usr/lib/rpm/macros.d/macros.systemd",
 				"/usr/lib/security/pam_systemd.so",
 				"/usr/lib/sysctl.d/50-coredump.conf",
@@ -657,6 +656,7 @@
 				"/usr/share/dbus-1/system.d/org.freedesktop.systemd1.conf",
 				"/usr/share/dbus-1/system.d/org.freedesktop.timedate1.conf",
 				"/usr/share/dbus-1/system.d/org.freedesktop.timesync1.conf",
+				"/usr/share/defaults/etc/pam.d/systemd-user",
 				"/usr/share/doc/systemd/CODING_STYLE.md",
 				"/usr/share/doc/systemd/DISTRO_PORTING.md",
 				"/usr/share/doc/systemd/ENVIRONMENT.md",
@@ -683,8 +683,6 @@
 				"/usr/share/factory/etc/issue",
 				"/usr/share/factory/etc/locale.conf",
 				"/usr/share/factory/etc/nsswitch.conf",
-				"/usr/share/factory/etc/pam.d/other",
-				"/usr/share/factory/etc/pam.d/system-auth",
 				"/usr/share/locale/be/LC_MESSAGES/systemd.mo",
 				"/usr/share/locale/be@latin/LC_MESSAGES/systemd.mo",
 				"/usr/share/locale/bg/LC_MESSAGES/systemd.mo",
@@ -855,6 +853,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "251.9"
 }

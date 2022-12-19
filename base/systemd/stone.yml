@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '251.9'
-release     : 2
+release     : 3
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -41,6 +41,8 @@ builddeps   :
     - pkgconfig(pam)
     - pkgconfig(zlib)
 setup       : |
+    %patch %(pkgdir)/stateless/0001-Remove-default-pam.d-folder.patch
+
     %meson \
         -Dbpf-framework=false \
         -Defi=true \
@@ -48,6 +50,7 @@ setup       : |
         -Dgnu-efi=true \
         -Dinstall-tests=false \
         -Dmode=release \
+        -Dpamconfdir="%(vendordir)/pam.d" \
         -Dslow-tests=false \
         -Dsplit-bin=true \
         -Dsplit-usr=false \
@@ -65,4 +68,4 @@ install     : |
     # Stateless: Clean up /etc, contains mostly example configs to learn from that we should put somewhere
     # Actual vendor files can go in /usr/lib/systemd/journald.conf.d for example
     # Test via systemd-analyze cat-config systemd/journald.conf
-    rm -rf %(installroot)/etc
+    rm -rfv %(installroot)/etc
