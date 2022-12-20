@@ -15,7 +15,7 @@ description : |
 license     :
     - BSD-2-Clause
 builddeps   :
-    - bzip2-devel
+    - pkgconfig(bzip2)
     - pkgconfig(liblzma)
     - pkgconfig(zlib)
 setup       : |
