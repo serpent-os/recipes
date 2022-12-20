@@ -1,0 +1,5 @@
+[Match]
+Name=enp*
+
+[Network]
+DHCP=yes
