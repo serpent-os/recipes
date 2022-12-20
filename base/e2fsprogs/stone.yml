@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : e2fsprogs
+version     : 1.46.5
+release     : 1
+homepage    : https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.46.5
+upstreams   :
+    - https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.46.5/e2fsprogs-1.46.5.tar.xz : 2f16c9176704cf645dc69d5b15ff704ae722d665df38b2ed3cfc249757d8d81e
+summary     : Filesystem utilities for ext2/3/4 filesystems
+description : |
+    Filesystem utilities for ext2/3/4 filesystems
+license     :
+    - BSD-3-Clause
+builddeps   :
+    - acl-devel
+    - attr-devel
+    - pkgconfig(systemd)
+    - pkgconfig(udev)
+    - pkgconfig(uuid)
+setup       : |
+    %configure \
+        --disable-static \
+        --disable-libuuid \
+        --disable-libblkid
+build       : |
+    %make
+install     : |
+    %make_install
