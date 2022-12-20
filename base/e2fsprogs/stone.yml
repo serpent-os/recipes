@@ -15,10 +15,10 @@ description : |
 license     :
     - BSD-3-Clause
 builddeps   :
-    - acl-devel
-    - attr-devel
-    - pkgconfig(systemd)
-    - pkgconfig(udev)
+    - pkgconfig(libacl)
+    - pkgconfig(libattr)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libudev)
     - pkgconfig(uuid)
 setup       : |
     %configure \
