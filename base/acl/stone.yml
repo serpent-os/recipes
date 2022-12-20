@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : acl
 version     : 2.3.1
-release     : 1
+release     : 2
 summary     : Access control list utilities
 license     :
     - GPL-2.0-or-later
@@ -11,15 +16,10 @@ description : |
 upstreams   :
     - https://download.savannah.gnu.org/releases/acl/acl-2.3.1.tar.xz : c0234042e17f11306c23c038b08e5e070edb7be44bef6697fb8734dcff1c66b1
 builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
     - pkgconfig(libattr)
 setup       : |
     %configure --enable-shared \
-        --disable-static
+               --disable-static
 build       : |
     %make
 install     : |
