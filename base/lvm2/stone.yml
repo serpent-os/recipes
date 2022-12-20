@@ -1,0 +1,91 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : lvm2
+version     : 2.03.17
+release     : 1
+homepage    : https://sourceware.org/lvm2/
+upstreams   :
+    - https://sourceware.org/pub/lvm2/LVM2.2.03.17.tgz : 7286cfa9651828c589389509546333b8da965dfa84a1a4c8ab3e681a47fabae7
+summary     : Linux logical volume management userspace tools
+description : |
+    LVM2 is a logical volume management facility for the Linux kernel:
+
+    It includes all of the necessary support for handling read/write operations
+    on physical volumes (hard disks, RAID devices etc.),  creating volume groups
+    (kind of virtual disks) from one or more physical volumes and creating one or
+    more logical volumes (kind of logical partitions) in volume groups.
+license     :
+    - BSD-2-Clause
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - bash
+    - coreutils
+    - libaio-devel
+    - pkgconf
+    - pkgconfig(readline)
+    - pkgconfig(systemd)
+    - util-linux-devel
+rundeps     :
+    - libaio
+    - systemd
+    - util-linux
+setup       : |
+    # /bin is a symlink to /usr/bin and in /usr/bin/, sh is a symlink to dash
+    # by default.
+    # The lvm2 build purports to use /bin/sh, but it uses the set -o pipefail
+    # bashism.
+    # Therefore, the most reasonable workaround is to change the shebang in the
+    # offending scripts to use /usr/bin/bash instead.
+    
+    # unfortunately, it is necessary to export env vars, because they get ignored
+    # otherwise, due to a particular (but sensible enough) quirk of how the
+    # %%configure action is written to test for ./configure before executing
+    export CONFIG_SHELL=/usr/bin/bash
+    export RUN_DIR=/run
+    %configure \
+        --enable-app-machineid \
+        --enable-blkid_wiping \
+        --enable-blkzeroout \
+        --enable-cmdlib \
+        --enable-pkgconfig \
+        --enable-lvmimportvdo \
+        --enable-lvmpolld \
+        --enable-readline \
+        --enable-systemd-journal \
+        --enable-udev_rules \
+        --enable-udev_sync \
+        --enable-udev-systemd-background-jobs \
+        --disable-dbus-service \
+        --disable-editline \
+        --disable-lvmlockd-idm \
+        --disable-lvmlockd-dlm \
+        --disable-lvmlockd-dlmcontrol \
+        --disable-lvmlockd-sanlock \
+        --disable-nls \
+        --disable-notify-dbus \
+        --disable-readline \
+        --disable-selinux \
+        --disable-static_link \
+        --with-cache=none \
+        --with-cmirrord-pidfile=/run/cmirrord.pid \
+        --with-dmeventd-pidfile=/run/dmeventd.pid \
+        --with-default-locking-dir=/run/lock/lvm \
+        --with-default-run-dir=/run/lvm \
+        --with-integrity=internal \
+        --with-mirrors=internal \
+        --with-thin=none \
+        --with-tmpfilesdir=%(tmpfilesdir) \
+        --with-snapshots=internal \
+        --with-udevdir=%(udevrulesdir) \
+        --with-vdo=none \
+        --with-writecache=internal
+        # $(option_enable dmeventd)
+        # $(option_enable fsadm)
+build       : |
+    %make 
+install     : |
+    %make_install
