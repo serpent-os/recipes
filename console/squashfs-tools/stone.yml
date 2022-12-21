@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : squashfs-tools
+version     : 4.5.1
+release     : 1
+homepage    : https://github.com/plougher/squashfs-tools
+upstreams   :
+    - https://github.com/plougher/squashfs-tools/archive/refs/tags/4.5.1.tar.gz : 277b6e7f75a4a57f72191295ae62766a10d627a4f5e5f19eadfbc861378deea7
+summary     : Manipulate SquashFS images
+description : |
+    Manipulate SquashFS images
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - pkgconfig(liblzma)
+    - pkgconfig(libzstd)
+    - pkgconfig(liblz4)
+    - pkgconfig(zlib)
+build       : |
+    %make -C squashfs-tools LZMA_XZ_SUPPORT=1 XZ_SUPPORT=1 LZ4_SUPPORT=1 ZSTD_SUPPORT=1
+install     : |
+    %install_bin squashfs-tools/mksquashfs
+    %install_bin squashfs-tools/unsquashfs
