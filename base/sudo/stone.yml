@@ -5,7 +5,7 @@
 #
 name        : sudo
 version     : 1.9.12p1
-release     : 1
+release     : 2
 summary     : Run commands as a privileged user
 license     :
     - ISC
@@ -16,8 +16,8 @@ upstreams   :
     - https://www.sudo.ws/dist/sudo-1.9.12p1.tar.gz: 475a18a8eb3da8b2917ceab063a6baf51ea09128c3c47e3e0e33ab7497bab7d8
 builddeps   :
     - pkgconfig(libssl)
-    - pkgconfig(zlib)
     - pkgconfig(pam)
+    - pkgconfig(zlib)
 setup       : |
     %patch %(pkgdir)/stateless/0001-stateless.patch
     %patch %(pkgdir)/stateless/0002-visudo-Use-sane-default-file.patch
@@ -28,7 +28,7 @@ setup       : |
                --with-all-insults \
                --with-editor=/usr/bin/nano \
                --with-env-editor \
-               --with-passprompt="[sudo] password for p: " \
+               --with-passprompt="[sudo] password for %%p: " \
                --with-tty-tickets
 build       : |
     %make
