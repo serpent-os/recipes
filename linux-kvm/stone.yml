@@ -1,6 +1,6 @@
 name        : linux-kvm
 version     : 6.1.1
-release     : 7
+release     : 8
 homepage    : https://cdn.kernel.org/pub/linux/kernel/v6.x
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.1.tar.xz : a3e61377cf4435a9e2966b409a37a1056f6aaa59e561add9125a88e3c0971dfb
@@ -49,7 +49,7 @@ install     : |
     # TODO: Include early microcode
     LD_PRELOAD='' dracut --strip --tmpdir /tmp -N -f \
         --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs" \
-        --strip --hardlink --nomdadmconf --add-drivers "qxl virtio-gpu" --zstd \
+        --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd \
         %(installroot)%(libdir)/kernel/initrd-$kernelID.%(version)-%(release)
 
     # No building against this kernel pls.
