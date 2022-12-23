@@ -187,6 +187,12 @@
 			]
 		},
 		"glib2-devel": {
+			"depends": [
+				"pkgconfig(libffi)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(mount)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h",
 				"/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h",
@@ -494,6 +500,6 @@
 		}
 	},
 	"source-name": "glib2",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.74.3"
 }
