@@ -5,7 +5,7 @@
 #
 name        : bash-completion
 version     : 2.11
-release     : 1
+release     : 2
 homepage    : https://github.com/scop/bash-completion
 upstreams   :
     - https://github.com/scop/bash-completion/releases/download/2.11/bash-completion-2.11.tar.xz : 73a8894bad94dee83ab468fa09f628daffd567e8bef1a24277f1e9a0daf911ac
@@ -15,7 +15,8 @@ description : |
 license     :
     - GPL-2.0-or-later
 setup       : |
-    %configure
+    %patch %(pkgdir)/0001-Use-a-stateless-configuration.patch
+    %reconfigure
 build       : |
     %make
 install     : |

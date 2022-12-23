@@ -748,7 +748,8 @@
 				"/usr/share/bash-completion/helpers/perl",
 				"/usr/share/bash-completion/helpers/python",
 				"/usr/share/cmake/bash-completion/bash-completion-config-version.cmake",
-				"/usr/share/cmake/bash-completion/bash-completion-config.cmake"
+				"/usr/share/cmake/bash-completion/bash-completion-config.cmake",
+				"/usr/share/defaults/etc/profile.d/bash_completion.sh"
 			],
 			"name": "bash-completion",
 			"provides": [
@@ -766,6 +767,6 @@
 		}
 	},
 	"source-name": "bash-completion",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.11"
 }
