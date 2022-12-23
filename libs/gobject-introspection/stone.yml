@@ -5,7 +5,7 @@
 #
 name        : gobject-introspection
 version     : 1.74.0
-release     : 1
+release     : 2
 homepage    : https://download.gnome.org/sources/gobject-introspection/1.74
 upstreams   :
     - https://download.gnome.org/sources/gobject-introspection/1.74/gobject-introspection-1.74.0.tar.xz : 347b3a719e68ba4c69ff2d57ee2689233ea8c07fc492205e573386779e42d653
@@ -17,12 +17,8 @@ license     :
     - GPL-2.0-or-later
     - LGPL-2.0-or-later
 builddeps   :
-    - pkgconfig(libpcre2-8)
-    - pkgconfig(gio-unix-2.0)
     - pkgconfig(glib-2.0)
     - pkgconfig(libffi)
-    - pkgconfig(zlib)
-    - pkgconfig(mount)
     - pkgconfig(python3)
     - binary(flex)
     - binary(bison)
