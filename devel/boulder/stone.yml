@@ -1,6 +1,6 @@
 name        : boulder
 version     : 0.1
-release     : 6
+release     : 7
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -8,22 +8,22 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - https://github.com/serpent-os/boulder/archive/refs/heads/main.tar.gz:
-        hash: f01b00a45b8b92116abea8481ea1671a044cf1cab0f74a5302a938dbc0df5d47
+        hash: f43a2695f19574874c952a8695635eb31dbd4bd1ffce7004fa237616df605adf
         rename: boulder.tar.gz
         stripdirs: 1
         unpackdir: "boulder/"
     - https://github.com/serpent-os/moss-config/archive/refs/heads/main.tar.gz:
-        hash: 7c1997671748dceee0fabaa5b06e0437fb94d7b330a3bb8e34fc36f089fcc4af
+        hash: 3ff0c472ff78001648e2560fa230abed92abe0fddf7f535bac1fa292c3eecd5c
         rename: moss-config.tar.gz
         stripdirs: 1
         unpackdir: "moss-config/"
     - https://github.com/serpent-os/moss-core/archive/refs/heads/main.tar.gz:
-        hash: 08763d2124f6bbfc40adc8c6aae95d68c2298b8227e7691548091546eb5d51e2
+        hash: 15f5c8f47cd009525c4c29e567e1418e25fed1a7e6cf1ec4804c8e6da89eb7da
         rename: moss-core.tar.gz
         stripdirs: 1
         unpackdir: "moss-core/"
     - https://github.com/serpent-os/moss-deps/archive/refs/heads/main.tar.gz:
-        hash: 1d7b770916007c158b5824410b6a03181372c8524a720d5567b960174d23b7c8
+        hash: 264437213fa3155e126ef45c25c3b8ce4e9c2dd2d843b30c5d8789994259e3d8
         rename: moss-deps.tar.gz
         stripdirs: 1
         unpackdir: "moss-deps/"
@@ -33,7 +33,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://github.com/serpent-os/moss-format/archive/refs/heads/main.tar.gz:
-        hash: 6ae0c9bd30e308366c7cff6447e16a799a9a62e8f360a281e179bd166e6b2562
+        hash: 2f3e48051c9c3fb8b4ac84750d4a44df56d3ef106219b8d40ba74e2be19b71a0
         rename: moss-format.tar.gz
         stripdirs: 1
         unpackdir: "moss-format/"
@@ -70,12 +70,14 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-vendor/vendor/yaml/tinyendian/"
 builddeps   :
+    - cmake
     - ldc
     - ldc-devel
-    - xxhash-devel
-    - zstd-devel
-    - cmake
-    - curl-devel
+    - pkgconfig(libcurl)
+    - pkgconfig(libxxhash)
+    - pkgconfig(libzstd)
+rundeps     :
+    - binary(moss-container)
 environment : |
     cd %(buildroot)/boulder
     find .. -type d
