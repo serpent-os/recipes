@@ -5,7 +5,7 @@
 #
 name        : openssh
 version     : "9.1_p1"
-release     : 1
+release     : 2
 summary     : OpenSSH (OpenBSD Secure Shell)
 license     : 
     - BSD-2-Clause
@@ -73,18 +73,24 @@ install     : |
     %sysusers '# SSHD privilege separation user'
     %sysusers 'g sshd 50 -'
     %sysusers 'u sshd 50 "SSH Daemon" /var/empty'
+    mv %(installroot)/%(sysusersdir)/openssh.conf %(installroot)/%(sysusersdir)/openssh-server.conf
 
     # tmpfiles configuration
     %tmpfiles "# Create SSH directories directory"
     %tmpfiles "d /etc/ssh - - - -"
     %tmpfiles "D /var/empty - - - -"
+    mv %(installroot)/%(tmpfilesdir)/openssh.conf %(installroot)/%(tmpfilesdir)/openssh-server.conf
 packages    :
     - "%(name)-server":
+        summary: OpenSSH - Server daemon
+        description: |
+            OpenSSH - Server daemon
         paths:
             - /usr/sbin/
             - /usr/lib/openssh/sftp-server
             - /usr/lib/systemd/
-            - /usr/lib/sysusers.d/
+            - /usr/lib/sysusers.d/openssh-server
+            - /usr/lib/tmpfiles.d/openssh-server
             - /usr/share/defaults/etc/pam.d/
             - /usr/share/defaults/etc/ssh/moduli
             - /usr/share/defaults/etc/ssh/sshd_config

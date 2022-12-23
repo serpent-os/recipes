@@ -22,7 +22,6 @@
 				"/usr/lib/openssh/ssh-keysign",
 				"/usr/lib/openssh/ssh-pkcs11-helper",
 				"/usr/lib/openssh/ssh-sk-helper",
-				"/usr/lib/tmpfiles.d/openssh.conf",
 				"/usr/share/defaults/etc/ssh/ssh_config",
 				"/usr/share/man/cat1/scp.1",
 				"/usr/share/man/cat1/sftp.1",
@@ -61,7 +60,8 @@
 				"/usr/lib/openssh/sftp-server",
 				"/usr/lib/systemd/system/sshd-keygen.service",
 				"/usr/lib/systemd/system/sshd.service",
-				"/usr/lib/sysusers.d/openssh.conf",
+				"/usr/lib/sysusers.d/openssh-server.conf",
+				"/usr/lib/tmpfiles.d/openssh-server.conf",
 				"/usr/sbin/sshd",
 				"/usr/share/defaults/etc/pam.d/sshd",
 				"/usr/share/defaults/etc/ssh/moduli",
@@ -75,6 +75,6 @@
 		}
 	},
 	"source-name": "openssh",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "9.1_p1"
 }
