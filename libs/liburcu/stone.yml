@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : liburcu
+version     : 0.13.2
+release     : 1
+homepage    : https://liburcu.org/
+upstreams   :
+    - https://lttng.org/files/urcu/userspace-rcu-0.13.2.tar.bz2 : 1213fd9f1b0b74da7de2bb74335b76098db9738fec5d3cdc07c0c524f34fc032
+summary     : liburcu is a LGPLv2.1 userspace RCU (read-copy-update) library
+description : |
+    liburcu is a LGPLv2.1 userspace RCU (read-copy-update) library
+license     : LGPL-2.1-or-later
+binary      :
+    - binary(grep)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check
+tuning      :
+    - lto
+    - optimize: speed
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/userspace-rcu/examples/*
