@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : lzo
+version     : '2.10'
+release     : 1
+homepage    : https://www.oberhumer.com/opensource/lzo/
+upstreams   :
+    - https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz : c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072
+summary     : Compression library implementing the LZO algorithm
+description : |
+    Compression library implementing the LZO algorithm
+license     :
+    - GPL-2.0-or-later
+setup       : |
+    %configure --enable-shared \
+               --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make test # Exhaustive tests, you can disable this if needed
+    %make check
