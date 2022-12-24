@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libpciaccess
+version     : '0.17'
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libpciaccess
+upstreams   :
+    - https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/archive/libpciaccess-0.17/libpciaccess-libpciaccess-0.17.tar.bz2 : 6e6d69d3cf5ee294dcb38ccfb360f1895a263df5dd8058563cdee62d9b9c17fd
+summary     : Generic PCI access library
+description : |
+    libpciaccess provides a facilitated way to access the PCI bus.
+license     : MIT
+builddeps   :
+    - pkgconfig(zlib)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
