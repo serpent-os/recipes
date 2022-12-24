@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libdrm
+version     : '2.4.114'
+release     : 1
+homepage    : https://gitlab.freedesktop.org/mesa/drm
+upstreams   :
+    - https://gitlab.freedesktop.org/mesa/drm/-/archive/libdrm-2.4.114/drm-libdrm-2.4.114.tar.bz2 : f4325de3f98c13d589f4d0159f8508768049778dac4698c9238778b838e0700c
+summary     : Simplifies the interaction with the Linux DRM subsystem
+description : |
+    libdrm provides wrapper functions for the ioctls to avoid exposing the kernel interface directly.
+license     : MIT
+builddeps   :
+    - binary(nm)
+    - pkgconfig(pciaccess) # For Intel support.
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

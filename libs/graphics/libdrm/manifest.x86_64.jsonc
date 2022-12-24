@@ -1,0 +1,101 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"libdrm": {
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libpciaccess.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libdrm.so.2",
+				"/usr/lib/libdrm.so.2.4.0",
+				"/usr/lib/libdrm_amdgpu.so.1",
+				"/usr/lib/libdrm_amdgpu.so.1.0.0",
+				"/usr/lib/libdrm_intel.so.1",
+				"/usr/lib/libdrm_intel.so.1.0.0",
+				"/usr/lib/libdrm_nouveau.so.2",
+				"/usr/lib/libdrm_nouveau.so.2.0.0",
+				"/usr/lib/libdrm_radeon.so.1",
+				"/usr/lib/libdrm_radeon.so.1.0.1",
+				"/usr/share/libdrm/amdgpu.ids"
+			],
+			"name": "libdrm",
+			"provides": [
+				"soname(libdrm.so.2(x86_64))",
+				"soname(libdrm_amdgpu.so.1(x86_64))",
+				"soname(libdrm_intel.so.1(x86_64))",
+				"soname(libdrm_nouveau.so.2(x86_64))",
+				"soname(libdrm_radeon.so.1(x86_64))"
+			]
+		},
+		"libdrm-devel": {
+			"files": [
+				"/usr/include/libdrm/amdgpu.h",
+				"/usr/include/libdrm/amdgpu_drm.h",
+				"/usr/include/libdrm/drm.h",
+				"/usr/include/libdrm/drm_fourcc.h",
+				"/usr/include/libdrm/drm_mode.h",
+				"/usr/include/libdrm/drm_sarea.h",
+				"/usr/include/libdrm/i915_drm.h",
+				"/usr/include/libdrm/intel_aub.h",
+				"/usr/include/libdrm/intel_bufmgr.h",
+				"/usr/include/libdrm/intel_debug.h",
+				"/usr/include/libdrm/mach64_drm.h",
+				"/usr/include/libdrm/mga_drm.h",
+				"/usr/include/libdrm/msm_drm.h",
+				"/usr/include/libdrm/nouveau/nouveau.h",
+				"/usr/include/libdrm/nouveau/nvif/cl0080.h",
+				"/usr/include/libdrm/nouveau/nvif/cl9097.h",
+				"/usr/include/libdrm/nouveau/nvif/class.h",
+				"/usr/include/libdrm/nouveau/nvif/if0002.h",
+				"/usr/include/libdrm/nouveau/nvif/if0003.h",
+				"/usr/include/libdrm/nouveau/nvif/ioctl.h",
+				"/usr/include/libdrm/nouveau/nvif/unpack.h",
+				"/usr/include/libdrm/nouveau_drm.h",
+				"/usr/include/libdrm/qxl_drm.h",
+				"/usr/include/libdrm/r128_drm.h",
+				"/usr/include/libdrm/r600_pci_ids.h",
+				"/usr/include/libdrm/radeon_bo.h",
+				"/usr/include/libdrm/radeon_bo_gem.h",
+				"/usr/include/libdrm/radeon_bo_int.h",
+				"/usr/include/libdrm/radeon_cs.h",
+				"/usr/include/libdrm/radeon_cs_gem.h",
+				"/usr/include/libdrm/radeon_cs_int.h",
+				"/usr/include/libdrm/radeon_drm.h",
+				"/usr/include/libdrm/radeon_surface.h",
+				"/usr/include/libdrm/savage_drm.h",
+				"/usr/include/libdrm/sis_drm.h",
+				"/usr/include/libdrm/tegra_drm.h",
+				"/usr/include/libdrm/vc4_drm.h",
+				"/usr/include/libdrm/via_drm.h",
+				"/usr/include/libdrm/virtgpu_drm.h",
+				"/usr/include/libdrm/vmwgfx_drm.h",
+				"/usr/include/libsync.h",
+				"/usr/include/xf86drm.h",
+				"/usr/include/xf86drmMode.h",
+				"/usr/lib/libdrm.so",
+				"/usr/lib/libdrm_amdgpu.so",
+				"/usr/lib/libdrm_intel.so",
+				"/usr/lib/libdrm_nouveau.so",
+				"/usr/lib/libdrm_radeon.so",
+				"/usr/lib/pkgconfig/libdrm.pc",
+				"/usr/lib/pkgconfig/libdrm_amdgpu.pc",
+				"/usr/lib/pkgconfig/libdrm_intel.pc",
+				"/usr/lib/pkgconfig/libdrm_nouveau.pc",
+				"/usr/lib/pkgconfig/libdrm_radeon.pc"
+			],
+			"name": "libdrm-devel",
+			"provides": [
+				"pkgconfig(libdrm)",
+				"pkgconfig(libdrm_amdgpu)",
+				"pkgconfig(libdrm_intel)",
+				"pkgconfig(libdrm_nouveau)",
+				"pkgconfig(libdrm_radeon)"
+			]
+		}
+	},
+	"source-name": "libdrm",
+	"source-release": "1",
+	"source-version": "2.4.114"
+}
