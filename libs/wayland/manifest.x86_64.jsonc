@@ -1,0 +1,76 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"wayland": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libexpat.so.1(x86_64))",
+				"soname(libffi.so.8(x86_64))",
+				"soname(libxml2.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/bin/wayland-scanner",
+				"/usr/lib/libwayland-client.so.0",
+				"/usr/lib/libwayland-client.so.0.21.0",
+				"/usr/lib/libwayland-cursor.so.0",
+				"/usr/lib/libwayland-cursor.so.0.21.0",
+				"/usr/lib/libwayland-egl.so.1",
+				"/usr/lib/libwayland-egl.so.1.21.0",
+				"/usr/lib/libwayland-server.so.0",
+				"/usr/lib/libwayland-server.so.0.21.0",
+				"/usr/share/wayland/wayland-scanner.mk",
+				"/usr/share/wayland/wayland.dtd",
+				"/usr/share/wayland/wayland.xml"
+			],
+			"name": "wayland",
+			"provides": [
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libwayland-cursor.so.0(x86_64))",
+				"soname(libwayland-egl.so.1(x86_64))",
+				"soname(libwayland-server.so.0(x86_64))",
+				"binary(wayland-scanner)"
+			]
+		},
+		"wayland-devel": {
+			"files": [
+				"/usr/include/wayland-client-core.h",
+				"/usr/include/wayland-client-protocol.h",
+				"/usr/include/wayland-client.h",
+				"/usr/include/wayland-cursor.h",
+				"/usr/include/wayland-egl-backend.h",
+				"/usr/include/wayland-egl-core.h",
+				"/usr/include/wayland-egl.h",
+				"/usr/include/wayland-server-core.h",
+				"/usr/include/wayland-server-protocol.h",
+				"/usr/include/wayland-server.h",
+				"/usr/include/wayland-util.h",
+				"/usr/include/wayland-version.h",
+				"/usr/lib/libwayland-client.so",
+				"/usr/lib/libwayland-cursor.so",
+				"/usr/lib/libwayland-egl.so",
+				"/usr/lib/libwayland-server.so",
+				"/usr/lib/pkgconfig/wayland-client.pc",
+				"/usr/lib/pkgconfig/wayland-cursor.pc",
+				"/usr/lib/pkgconfig/wayland-egl-backend.pc",
+				"/usr/lib/pkgconfig/wayland-egl.pc",
+				"/usr/lib/pkgconfig/wayland-scanner.pc",
+				"/usr/lib/pkgconfig/wayland-server.pc",
+				"/usr/share/aclocal/wayland-scanner.m4"
+			],
+			"name": "wayland-devel",
+			"provides": [
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-cursor)",
+				"pkgconfig(wayland-egl)",
+				"pkgconfig(wayland-egl-backend)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(wayland-server)"
+			]
+		}
+	},
+	"source-name": "wayland",
+	"source-release": "1",
+	"source-version": "1.21.0"
+}

@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : wayland
+version     : '1.21.0'
+release     : 1
+homepage    : https://wayland.freedesktop.org
+upstreams   :
+    - https://gitlab.freedesktop.org/wayland/wayland/-/archive/1.21.0/wayland-1.21.0.tar.bz2 : e92985abc4eee91b730046a373fdc122c96adb4a3b6757afa07b8a540a8db4fc
+summary     : Modern protocol which replaces X11
+description : |
+    Wayland is a replacement for the X11 window system protocol and architecture with the aim to be easier to develop, extend, and maintain.
+
+    Wayland is the language (protocol) that applications can use to talk to a display server in order to make themselves visible and get input from the user (a person). A Wayland server is called a "compositor". Applications are Wayland clients.
+license     : MIT
+builddeps   :
+    - binary(cmake)
+    - binary(nm)
+    - pkgconfig(expat)
+    - pkgconfig(libffi)
+    - pkgconfig(libxml-2.0)
+setup       : |
+    %meson -Ddocumentation=false -Dtests=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install

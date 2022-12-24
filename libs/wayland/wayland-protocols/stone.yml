@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : wayland-protocols
+version     : '1.31'
+release     : 1
+homepage    : https://gitlab.freedesktop.org/wayland/wayland-protocols
+upstreams   :
+    - https://gitlab.freedesktop.org/wayland/wayland-protocols/-/archive/1.31/wayland-protocols-1.31.tar.bz2 : 3d7fa65a6f3c86747f780a628df04d3c7a981776dee2b6a492cc112b3bbe2820
+summary     : Contains Wayland protocols that add functionality not available in the Wayland core protocol
+description : |
+    %(name) contains Wayland protocols that add functionality not available in the Wayland core protocol. Such protocols either add completely new functionality, or extend the functionality of some other protocol either in Wayland core, or some other protocol in wayland-protocols.
+license     : MIT
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
