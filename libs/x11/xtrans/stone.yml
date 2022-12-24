@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xtrans
+version     : '1.4.0'
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxtrans
+upstreams   :
+    - https://xorg.freedesktop.org/releases/individual/lib/xtrans-1.4.0.tar.bz2 : 377c4491593c417946efcd2c7600d1e62639f7a8bbca391887e2c4679807d773
+summary     : Shared code of the X network transport layer
+description : |
+    xtrans is a library of code that is shared among various X packages to handle network protocol transport in a modular fashion, allowing a single place to add new transport types.
+license     : MIT
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+packages    :
+    # xtrans is technically *all* -devel since it contains
+    # header files and protocol documentation.
+    - "%(name)-devel":
+        paths:
+            # Use a macro when https://github.com/serpent-os/moss-format/issues/2 is fixed.
+            - /usr/share/doc
