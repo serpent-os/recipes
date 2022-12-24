@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libx11
+version     : '1.8.3'
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libx11
+upstreams   :
+    - https://xorg.freedesktop.org/releases/individual/lib/libX11-1.8.3.tar.xz : e31565c84006b6b8e01dc9399c806085739710bc2db2e0930f1511ed9d6585bd
+summary     : Core X11 protocol client library
+description : |
+    %(name) is a library to build X11 client applications to interact with an X11 server.
+license     : MIT
+builddeps   :
+    - pkgconfig(xau)
+    - pkgconfig(xcb)
+    - pkgconfig(xproto)
+    - pkgconfig(xtrans)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+packages    :
+    - "%(name)-devel":
+        paths:
+            # Use macros when https://github.com/serpent-os/moss-format/issues/2 is closed.
+            - "/usr/share/doc"
+            # Maybe https://github.com/serpent-os/boulder/issues/47 ?
+            - "/usr/share/man/man3"
