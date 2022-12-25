@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxfixes
+version     : '6.0.0'
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxfixes
+upstreams   :
+    - https://xorg.freedesktop.org/releases/individual/lib/libXfixes-6.0.0.tar.bz2 : a7c1a24da53e0b46cac5aea79094b4b2257321c621b258729bc3139149245b4c
+summary     : XFIXES Extension library
+description : |
+    %(name) is the XFIXES Extension library.
+license     : MIT
+builddeps:
+    - pkgconfig(x11)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+packages    :
+    - "%(name)-devel":
+        paths:
+            # Use macros when https://github.com/serpent-os/moss-format/issues/2 is closed.
+            # Maybe https://github.com/serpent-os/boulder/issues/47 ?
+            - "/usr/share/man/man3"
