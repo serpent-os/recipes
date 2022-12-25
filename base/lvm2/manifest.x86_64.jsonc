@@ -9,12 +9,27 @@
 				"soname(libblkid.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
+				"soname(libreadline.so.8(x86_64))",
 				"soname(libsystemd.so.0(x86_64))",
 				"soname(libudev.so.1(x86_64))"
 			],
 			"files": [
+				"/usr/lib/device-mapper/libdevmapper-event-lvm2mirror.so",
+				"/usr/lib/device-mapper/libdevmapper-event-lvm2raid.so",
+				"/usr/lib/device-mapper/libdevmapper-event-lvm2snapshot.so",
+				"/usr/lib/device-mapper/libdevmapper-event-lvm2thin.so",
+				"/usr/lib/device-mapper/libdevmapper-event-lvm2vdo.so",
+				"/usr/lib/libdevmapper-event-lvm2.so.2.03",
+				"/usr/lib/libdevmapper-event.so.1.02",
 				"/usr/lib/libdevmapper.so.1.02",
 				"/usr/lib/liblvm2cmd.so.2.03",
+				"/usr/lib/systemd/system/blk-availability.service",
+				"/usr/lib/systemd/system/dm-event.service",
+				"/usr/lib/systemd/system/dm-event.socket",
+				"/usr/lib/systemd/system/lvm2-lvmpolld.service",
+				"/usr/lib/systemd/system/lvm2-lvmpolld.socket",
+				"/usr/lib/systemd/system/lvm2-monitor.service",
+				"/usr/lib/tmpfiles.d/lvm2.conf",
 				"/usr/lib/udev/rules.d/10-dm.rules",
 				"/usr/lib/udev/rules.d/11-dm-lvm.rules",
 				"/usr/lib/udev/rules.d/13-dm-disk.rules",
@@ -22,6 +37,7 @@
 				"/usr/lib/udev/rules.d/95-dm-notify.rules",
 				"/usr/libexec/lvresize_fs_helper",
 				"/usr/sbin/blkdeactivate",
+				"/usr/sbin/dmeventd",
 				"/usr/sbin/dmsetup",
 				"/usr/sbin/dmstats",
 				"/usr/sbin/fsadm",
@@ -80,7 +96,10 @@
 				"/usr/share/man/man7/lvmraid.7",
 				"/usr/share/man/man7/lvmreport.7",
 				"/usr/share/man/man7/lvmsystemid.7",
+				"/usr/share/man/man7/lvmthin.7",
+				"/usr/share/man/man7/lvmvdo.7",
 				"/usr/share/man/man8/blkdeactivate.8",
+				"/usr/share/man/man8/dmeventd.8",
 				"/usr/share/man/man8/dmsetup.8",
 				"/usr/share/man/man8/dmstats.8",
 				"/usr/share/man/man8/fsadm.8",
@@ -140,25 +159,45 @@
 			],
 			"name": "lvm2",
 			"provides": [
+				"soname(libdevmapper-event-lvm2.so.2.03(x86_64))",
+				"soname(libdevmapper-event-lvm2mirror.so.2.03(x86_64))",
+				"soname(libdevmapper-event-lvm2raid.so.2.03(x86_64))",
+				"soname(libdevmapper-event-lvm2snapshot.so.2.03(x86_64))",
+				"soname(libdevmapper-event-lvm2thin.so.2.03(x86_64))",
+				"soname(libdevmapper-event-lvm2vdo.so.2.03(x86_64))",
+				"soname(libdevmapper-event.so.1.02(x86_64))",
 				"soname(libdevmapper.so.1.02(x86_64))",
 				"soname(liblvm2cmd.so.2.03(x86_64))"
 			]
 		},
 		"lvm2-devel": {
+			"depends": [
+				"pkgconfig(libudev)"
+			],
 			"files": [
+				"/usr/include/libdevmapper-event.h",
 				"/usr/include/libdevmapper.h",
 				"/usr/include/lvm2cmd.h",
+				"/usr/lib/libdevmapper-event-lvm2.so",
+				"/usr/lib/libdevmapper-event-lvm2mirror.so",
+				"/usr/lib/libdevmapper-event-lvm2raid.so",
+				"/usr/lib/libdevmapper-event-lvm2snapshot.so",
+				"/usr/lib/libdevmapper-event-lvm2thin.so",
+				"/usr/lib/libdevmapper-event-lvm2vdo.so",
+				"/usr/lib/libdevmapper-event.so",
 				"/usr/lib/libdevmapper.so",
 				"/usr/lib/liblvm2cmd.so",
+				"/usr/lib/pkgconfig/devmapper-event.pc",
 				"/usr/lib/pkgconfig/devmapper.pc"
 			],
 			"name": "lvm2-devel",
 			"provides": [
-				"pkgconfig(devmapper)"
+				"pkgconfig(devmapper)",
+				"pkgconfig(devmapper-event)"
 			]
 		}
 	},
 	"source-name": "lvm2",
-	"source-release": "2",
-	"source-version": "2.03.17"
+	"source-release": "3",
+	"source-version": "2.03.18"
 }
