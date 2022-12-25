@@ -1,0 +1,46 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : runc
+version     : 1.1.4
+release     : 1
+homepage    : https://runc.io/
+upstreams   :
+    - https://github.com/opencontainers/runc/archive/refs/tags/v1.1.4.tar.gz : 4f02077432642eebd768fc857318ae7929290b3a3511eb1be338005e360cfa34
+summary     : CLI tool for managing OCI compliant containers
+description : |
+    CLI tool for managing OCI compliant containers
+license     :
+    - Apache-2.0
+networking  : yes
+builddeps   :
+    - binary(go)
+    - binary(go-md2man)
+    - pkgconfig(libseccomp)
+environment : |
+    export GOPATH="`pwd`"
+    export BUILDTAGS='seccomp' # TODO enable apparmor
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+
+    # Git SHA corresponding to the release tag
+    export COMMIT=5fd4c4d144137e991c4acebb2146ab1483a97925
+setup       : |
+    mkdir -p src/github.com/opencontainers/runc
+    find ./* -prune ! -name src -exec mv {} src/github.com/opencontainers/runc/ \;
+build      : |
+    cd src/github.com/opencontainers/runc
+    %make runc man
+install     : |
+    cd src/github.com/opencontainers/runc/
+    %install_bin runc
+
+    %install_file contrib/completions/bash/runc -t %(installroot)/%(completionsdir)
+
+    %install_dir %(installroot)/%(mandir)/man8
+    %install_file man/man8/*.8 -t %(installroot)/%(mandir)/man8
