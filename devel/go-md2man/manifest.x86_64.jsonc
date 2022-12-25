@@ -1,0 +1,22 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"go-md2man": {
+			"depends": [
+				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/bin/go-md2man",
+				"/usr/share/man/man1/go-md2man.1"
+			],
+			"name": "go-md2man",
+			"provides": [
+				"binary(go-md2man)"
+			]
+		}
+	},
+	"source-name": "go-md2man",
+	"source-release": "1",
+	"source-version": "2.0.2"
+}
