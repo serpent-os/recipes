@@ -1,0 +1,18 @@
+diff -up systemd-249.20210625/units/systemd-fsck-root.service.in.5~ systemd-249.20210625/units/systemd-fsck-root.service.in
+--- systemd-249.20210625/units/systemd-fsck-root.service.in.5~	2021-06-25 17:23:58.109102881 +0200
++++ systemd-249.20210625/units/systemd-fsck-root.service.in	2021-06-25 17:24:49.382822264 +0200
+@@ -20,3 +20,5 @@ Type=oneshot
+ RemainAfterExit=yes
+ ExecStart={{ROOTLIBEXECDIR}}/systemd-fsck
+ TimeoutSec=0
++StandardOutput=null
++StandardError=journal+console
+diff -up systemd-249.20210625/units/systemd-fsck@.service.in.5~ systemd-249.20210625/units/systemd-fsck@.service.in
+--- systemd-249.20210625/units/systemd-fsck@.service.in.5~	2021-06-25 17:23:58.110102855 +0200
++++ systemd-249.20210625/units/systemd-fsck@.service.in	2021-06-25 17:25:12.435293826 +0200
+@@ -21,3 +21,5 @@ Type=oneshot
+ RemainAfterExit=yes
+ ExecStart={{ROOTLIBEXECDIR}}/systemd-fsck %f
+ TimeoutSec=0
++StandardOutput=null
++StandardError=journal+console

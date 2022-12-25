@@ -1,0 +1,11 @@
+diff -Naur systemd-252.20221101/src/libsystemd/sd-daemon/sd-daemon.c systemd-252.20221101.tpg/src/libsystemd/sd-daemon/sd-daemon.c
+--- systemd-252.20221101/src/libsystemd/sd-daemon/sd-daemon.c	2022-11-01 16:54:59.204101888 +0000
++++ systemd-252.20221101.tpg/src/libsystemd/sd-daemon/sd-daemon.c	2022-11-01 16:55:57.863861851 +0000
+@@ -12,6 +12,7 @@
+ #include <sys/stat.h>
+ #include <sys/un.h>
+ #include <unistd.h>
++#include <asm/unistd.h> // for __NR_mq_getsetattr
+ 
+ #include "sd-daemon.h"
+ 

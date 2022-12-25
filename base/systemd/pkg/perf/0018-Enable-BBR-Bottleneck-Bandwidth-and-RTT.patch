@@ -1,0 +1,26 @@
+From cdd0bd97068526663649e09468241fdfe7dddbfe Mon Sep 17 00:00:00 2001
+From: Auke Kok <auke-jan.h.kok@intel.com>
+Date: Fri, 31 Mar 2017 10:14:16 -0700
+Subject: [PATCH 18/38] Enable BBR - Bottleneck Bandwidth and RTT
+
+Enable the `fq` qdisc.
+---
+ sysctl.d/50-default.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sysctl.d/50-default.conf b/sysctl.d/50-default.conf
+index f41e24bcbc..cf6e165e46 100644
+--- a/sysctl.d/50-default.conf
++++ b/sysctl.d/50-default.conf
+@@ -45,7 +45,7 @@ net.ipv4.conf.*.promote_secondaries = 1
+ -net.ipv4.ping_group_range = 0 2147483647
+ 
+ # Fair Queue CoDel packet scheduler to fight bufferbloat
+--net.core.default_qdisc = fq_codel
++-net.core.default_qdisc = fq
+ 
+ # Enable hard and soft link protection
+ fs.protected_hardlinks = 1
+-- 
+2.36.1
+

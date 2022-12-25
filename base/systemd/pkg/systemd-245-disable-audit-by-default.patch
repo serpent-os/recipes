@@ -1,0 +1,21 @@
+diff -up systemd-248.20210409/src/journal/journald.conf.4~ systemd-248.20210409/src/journal/journald.conf
+--- systemd-248.20210409/src/journal/journald.conf.4~	2021-04-09 21:16:50.633183415 +0200
++++ systemd-248.20210409/src/journal/journald.conf	2021-04-09 21:16:50.633183415 +0200
+@@ -44,4 +44,4 @@ RuntimeMaxUse=150M
+ #MaxLevelWall=emerg
+ #LineMax=48K
+ #ReadKMsg=yes
+-#Audit=yes
++Audit=no
+diff -up systemd-248.20210409/src/journal/journald-server.c.4~ systemd-248.20210409/src/journal/journald-server.c
+--- systemd-248.20210409/src/journal/journald-server.c.4~	2021-04-09 21:16:50.633183415 +0200
++++ systemd-248.20210409/src/journal/journald-server.c	2021-04-09 22:00:09.425123839 +0200
+@@ -2190,7 +2190,7 @@ int server_init(Server *s, const char *n
+                 .compress.threshold_bytes = UINT64_MAX,
+                 .seal = true,
+ 
+-                .set_audit = true,
++                .set_audit = false,
+ 
+                 .watchdog_usec = USEC_INFINITY,
+ 

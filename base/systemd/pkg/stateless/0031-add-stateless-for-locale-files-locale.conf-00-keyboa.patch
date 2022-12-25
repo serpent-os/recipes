@@ -1,0 +1,136 @@
+From 571068982800b2848fe5c9632776bc290dabcc16 Mon Sep 17 00:00:00 2001
+From: Josue David Hernandez Gutierrez <josue.d.hernandez.gutierrez@intel.com>
+Date: Fri, 26 Oct 2018 16:46:37 -0500
+Subject: [PATCH 31/38] add stateless for locale files locale.conf
+ 00-keyboard.conf
+
+systemd must take this files from /etc and in case there are not files
+there /usr/share/defaults/etc
+
+Signed-off-by: Josue David Hernandez Gutierrez <josue.d.hernandez.gutierrez@intel.com>
+---
+ src/locale/keymap-util.c | 43 ++++++++++++++++++++++++++++++----------
+ 1 file changed, 33 insertions(+), 10 deletions(-)
+
+diff --git a/src/locale/keymap-util.c b/src/locale/keymap-util.c
+index 9759f46163..e2cdd0ee91 100644
+--- a/src/locale/keymap-util.c
++++ b/src/locale/keymap-util.c
+@@ -91,6 +91,7 @@ void locale_simplify(char *locale[_VARIABLE_LC_MAX]) {
+ int locale_read_data(Context *c, sd_bus_message *m) {
+         struct stat st;
+         int r;
++        bool etc_conf = false;
+ 
+         /* Do not try to re-read the file within single bus operation. */
+         if (m) {
+@@ -102,6 +103,11 @@ int locale_read_data(Context *c, sd_bus_message *m) {
+         }
+ 
+         r = stat("/etc/locale.conf", &st);
++        if (r >= 0)
++                etc_conf = true;
++        else if (errno == ENOENT)
++                r = stat("/usr/share/defaults/etc/locale.conf", &st);
++
+         if (r < 0 && errno != ENOENT)
+                 return -errno;
+ 
+@@ -116,7 +122,9 @@ int locale_read_data(Context *c, sd_bus_message *m) {
+                 c->locale_mtime = t;
+                 context_free_locale(c);
+ 
+-                r = parse_env_file(NULL, "/etc/locale.conf",
++                r = parse_env_file(NULL,
++                                   (etc_conf)?"/etc/locale.conf":
++                                              "/usr/share/defaults/etc/locale.conf",
+                                    "LANG",              &c->locale[VARIABLE_LANG],
+                                    "LANGUAGE",          &c->locale[VARIABLE_LANGUAGE],
+                                    "LC_CTYPE",          &c->locale[VARIABLE_LC_CTYPE],
+@@ -157,6 +165,8 @@ int locale_read_data(Context *c, sd_bus_message *m) {
+ int vconsole_read_data(Context *c, sd_bus_message *m) {
+         struct stat st;
+         usec_t t;
++        int r;
++        bool etc_conf = false;
+ 
+         /* Do not try to re-read the file within single bus operation. */
+         if (m) {
+@@ -167,14 +177,19 @@ int vconsole_read_data(Context *c, sd_bus_message *m) {
+                 c->vc_cache = sd_bus_message_ref(m);
+         }
+ 
+-        if (stat("/etc/vconsole.conf", &st) < 0) {
+-                if (errno != ENOENT)
+-                        return -errno;
++        r = stat("/etc/vconsole.conf", &st);
++        if (r >= 0) {
++                etc_conf = true;
++        } else if (errno == ENOENT)
++                r = stat("/usr/share/defaults/etc/vconsole.conf", &st);
+ 
++        if (r < 0 && errno == ENOENT) {
+                 c->vc_mtime = USEC_INFINITY;
+                 context_free_vconsole(c);
+                 return 0;
+         }
++        else if (r < 0)
++                return -errno;
+ 
+         /* If mtime is not changed, then we do not need to re-read */
+         t = timespec_load(&st.st_mtim);
+@@ -184,7 +199,9 @@ int vconsole_read_data(Context *c, sd_bus_message *m) {
+         c->vc_mtime = t;
+         context_free_vconsole(c);
+ 
+-        return parse_env_file(NULL, "/etc/vconsole.conf",
++        return parse_env_file(NULL, (etc_conf)?
++                           "/etc/vconsole.conf":
++                               "/usr/share/defaults/etc/vconsole.conf",
+                               "KEYMAP",        &c->vc_keymap,
+                               "KEYMAP_TOGGLE", &c->vc_keymap_toggle);
+ }
+@@ -195,6 +212,7 @@ int x11_read_data(Context *c, sd_bus_message *m) {
+         struct stat st;
+         usec_t t;
+         int r;
++        bool etc_conf = false;
+ 
+         /* Do not try to re-read the file within single bus operation. */
+         if (m) {
+@@ -205,14 +223,18 @@ int x11_read_data(Context *c, sd_bus_message *m) {
+                 c->x11_cache = sd_bus_message_ref(m);
+         }
+ 
+-        if (stat("/etc/X11/xorg.conf.d/00-keyboard.conf", &st) < 0) {
+-                if (errno != ENOENT)
+-                        return -errno;
++        r = stat("/etc/X11/xorg.conf.d/00-keyboard.conf", &st);
++        if (r >= 0) {
++                etc_conf = true;
++        } else if (errno == ENOENT)
++                r = stat("/usr/share/defaults/etc/X11/xorg.conf.d/00-keyboard.conf", &st);
+ 
++        if (r < 0 && errno == ENOENT) {
+                 c->x11_mtime = USEC_INFINITY;
+                 context_free_x11(c);
+                 return 0;
+-        }
++        } else if (r < 0)
++                return -errno;
+ 
+         /* If mtime is not changed, then we do not need to re-read */
+         t = timespec_load(&st.st_mtim);
+@@ -222,7 +244,8 @@ int x11_read_data(Context *c, sd_bus_message *m) {
+         c->x11_mtime = t;
+         context_free_x11(c);
+ 
+-        f = fopen("/etc/X11/xorg.conf.d/00-keyboard.conf", "re");
++        f = fopen((etc_conf)?"/etc/X11/xorg.conf.d/00-keyboard.conf":
++                             "/usr/share/defaults/etc/X11/xorg.conf.d/00-keyboard.conf", "re");
+         if (!f)
+                 return -errno;
+ 
+-- 
+2.36.1
+
