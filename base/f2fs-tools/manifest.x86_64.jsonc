@@ -1,0 +1,57 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"f2fs-tools": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libf2fs.so.9",
+				"/usr/lib/libf2fs.so.9.0.0",
+				"/usr/lib/libf2fs_format.so.8",
+				"/usr/lib/libf2fs_format.so.8.0.0",
+				"/usr/sbin/defrag.f2fs",
+				"/usr/sbin/dump.f2fs",
+				"/usr/sbin/f2fs_io",
+				"/usr/sbin/f2fscrypt",
+				"/usr/sbin/f2fslabel",
+				"/usr/sbin/f2fstat",
+				"/usr/sbin/fibmap.f2fs",
+				"/usr/sbin/fsck.f2fs",
+				"/usr/sbin/mkfs.f2fs",
+				"/usr/sbin/parse.f2fs",
+				"/usr/sbin/resize.f2fs",
+				"/usr/sbin/sg_write_buffer",
+				"/usr/sbin/sload.f2fs",
+				"/usr/share/man/man8/defrag.f2fs.8",
+				"/usr/share/man/man8/dump.f2fs.8",
+				"/usr/share/man/man8/f2fs_io.8",
+				"/usr/share/man/man8/f2fscrypt.8",
+				"/usr/share/man/man8/f2fslabel.8",
+				"/usr/share/man/man8/fsck.f2fs.8",
+				"/usr/share/man/man8/mkfs.f2fs.8",
+				"/usr/share/man/man8/resize.f2fs.8",
+				"/usr/share/man/man8/sload.f2fs.8"
+			],
+			"name": "f2fs-tools",
+			"provides": [
+				"soname(libf2fs.so.9(x86_64))",
+				"soname(libf2fs_format.so.8(x86_64))"
+			]
+		},
+		"f2fs-tools-devel": {
+			"files": [
+				"/usr/include/f2fs_fs.h",
+				"/usr/include/quota.h",
+				"/usr/lib/libf2fs.so",
+				"/usr/lib/libf2fs_format.so"
+			],
+			"name": "f2fs-tools-devel"
+		}
+	},
+	"source-name": "f2fs-tools",
+	"source-release": "1",
+	"source-version": "1.15.0"
+}
