@@ -1,0 +1,29 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"htop": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/htop",
+				"/usr/share/applications/htop.desktop",
+				"/usr/share/icons/hicolor/scalable/apps/htop.svg",
+				"/usr/share/man/man1/htop.1",
+				"/usr/share/pixmaps/htop.png"
+			],
+			"name": "htop",
+			"provides": [
+				"binary(htop)"
+			]
+		}
+	},
+	"source-name": "htop",
+	"source-release": "1",
+	"source-version": "3.2.1"
+}
