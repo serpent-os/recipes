@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"json-c": {
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libjson-c.so.5",
+				"/usr/lib/libjson-c.so.5.2.0"
+			],
+			"name": "json-c",
+			"provides": [
+				"soname(libjson-c.so.5(x86_64))"
+			]
+		},
+		"json-c-devel": {
+			"files": [
+				"/usr/include/json-c/arraylist.h",
+				"/usr/include/json-c/debug.h",
+				"/usr/include/json-c/json.h",
+				"/usr/include/json-c/json_c_version.h",
+				"/usr/include/json-c/json_config.h",
+				"/usr/include/json-c/json_inttypes.h",
+				"/usr/include/json-c/json_object.h",
+				"/usr/include/json-c/json_object_iterator.h",
+				"/usr/include/json-c/json_pointer.h",
+				"/usr/include/json-c/json_tokener.h",
+				"/usr/include/json-c/json_types.h",
+				"/usr/include/json-c/json_util.h",
+				"/usr/include/json-c/json_visit.h",
+				"/usr/include/json-c/linkhash.h",
+				"/usr/include/json-c/printbuf.h",
+				"/usr/lib/cmake/json-c/json-c-config.cmake",
+				"/usr/lib/cmake/json-c/json-c-targets-release.cmake",
+				"/usr/lib/cmake/json-c/json-c-targets.cmake",
+				"/usr/lib/libjson-c.so",
+				"/usr/lib/pkgconfig/json-c.pc"
+			],
+			"name": "json-c-devel",
+			"provides": [
+				"pkgconfig(json-c)",
+				"cmake(json-c)"
+			]
+		}
+	},
+	"source-name": "json-c",
+	"source-release": "1",
+	"source-version": "0.16"
+}
