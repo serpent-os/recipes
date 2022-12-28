@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"pciutils": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libudev.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/lspci",
+				"/usr/lib/libpci.so.3",
+				"/usr/lib/libpci.so.3.9.0",
+				"/usr/sbin/setpci",
+				"/usr/sbin/update-pciids",
+				"/usr/share/man/man5/pci.ids.5",
+				"/usr/share/man/man7/pcilib.7",
+				"/usr/share/man/man8/lspci.8",
+				"/usr/share/man/man8/setpci.8",
+				"/usr/share/man/man8/update-pciids.8"
+			],
+			"name": "pciutils",
+			"provides": [
+				"soname(libpci.so.3(x86_64))",
+				"binary(lspci)"
+			]
+		},
+		"pciutils-devel": {
+			"files": [
+				"/usr/include/pci/config.h",
+				"/usr/include/pci/header.h",
+				"/usr/include/pci/pci.h",
+				"/usr/include/pci/types.h",
+				"/usr/lib/libpci.so",
+				"/usr/lib/pkgconfig/libpci.pc"
+			],
+			"name": "pciutils-devel",
+			"provides": [
+				"pkgconfig(libpci)"
+			]
+		}
+	},
+	"source-name": "pciutils",
+	"source-release": "1",
+	"source-version": "3.9.0"
+}
