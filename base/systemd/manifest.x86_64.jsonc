@@ -88,7 +88,6 @@
 				"/usr/lib/modprobe.d/README",
 				"/usr/lib/modprobe.d/systemd.conf",
 				"/usr/lib/modules-load.d",
-				"/usr/lib/rpm/macros.d/macros.systemd",
 				"/usr/lib/security/pam_systemd.so",
 				"/usr/lib/sysctl.d/50-coredump.conf",
 				"/usr/lib/sysctl.d/50-default.conf",
@@ -439,7 +438,6 @@
 				"/usr/lib/systemd/systemd-timesyncd",
 				"/usr/lib/systemd/systemd-udevd",
 				"/usr/lib/systemd/systemd-update-done",
-				"/usr/lib/systemd/systemd-update-helper",
 				"/usr/lib/systemd/systemd-update-utmp",
 				"/usr/lib/systemd/systemd-user-runtime-dir",
 				"/usr/lib/systemd/systemd-user-sessions",
@@ -689,9 +687,6 @@
 				"/usr/share/doc/systemd/TRANSIENT-SETTINGS.md",
 				"/usr/share/doc/systemd/TRANSLATORS.md",
 				"/usr/share/doc/systemd/UIDS-GIDS.md",
-				"/usr/share/factory/etc/issue",
-				"/usr/share/factory/etc/locale.conf",
-				"/usr/share/factory/etc/nsswitch.conf",
 				"/usr/share/locale/be/LC_MESSAGES/systemd.mo",
 				"/usr/share/locale/be@latin/LC_MESSAGES/systemd.mo",
 				"/usr/share/locale/bg/LC_MESSAGES/systemd.mo",
@@ -862,6 +857,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "4",
-	"source-version": "251.9"
+	"source-release": "5",
+	"source-version": "251.10"
 }

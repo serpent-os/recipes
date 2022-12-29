@@ -1,0 +1,37 @@
+From cd072886994e810d391a9a1bf2ee0f2a21491bfb Mon Sep 17 00:00:00 2001
+From: Arjan van de Ven <arjan@linux.intel.com>
+Date: Mon, 14 Jan 2019 09:50:38 -0800
+Subject: [PATCH 38/45] Localize 1 symbol.
+
+Otherwise we pull in an entire library.
+---
+ src/libsystemd/sd-daemon/sd-daemon.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/libsystemd/sd-daemon/sd-daemon.c b/src/libsystemd/sd-daemon/sd-daemon.c
+index 4cd71cb2d3..68594dcb3c 100644
+--- a/src/libsystemd/sd-daemon/sd-daemon.c
++++ b/src/libsystemd/sd-daemon/sd-daemon.c
+@@ -400,13 +400,18 @@ _public_ int sd_is_socket_unix(int fd, int type, int listening, const char *path
+         return 1;
+ }
+ 
++static inline mq_getattr_local(int fd, struct mq_attr *data)
++{
++        return syscall(__NR_mq_getsetattr, fd, NULL, data);
++}
++
+ _public_ int sd_is_mq(int fd, const char *path) {
+         struct mq_attr attr;
+ 
+         /* Check that the fd is valid */
+         assert_return(fcntl(fd, F_GETFD) >= 0, -errno);
+ 
+-        if (mq_getattr(fd, &attr) < 0) {
++        if (mq_getattr_local(fd, &attr) < 0) {
+                 if (errno == EBADF)
+                         /* A non-mq fd (or an invalid one, but we ruled that out above) */
+                         return 0;
+-- 
+2.26.0
+

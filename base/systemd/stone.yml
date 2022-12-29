@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : systemd
-version     : '251.9'
-release     : 4
+version     : '251.10'
+release     : 5
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -15,15 +15,9 @@ homepage    : http://www.freedesktop.org/wiki/Software/systemd
 description : |
     A System and Service Manager
 upstreams   :
-    - https://github.com/systemd/systemd-stable/archive/v251.9.tar.gz: 1a59b8d0382b54be0fc0f8e95d79f5785feef1a2c43f317e31eb8ebf94244dd5
+    - https://github.com/systemd/systemd-stable/archive/v251.10.tar.gz: 2f56d31fc9134f65136c1658ef557198d69bf105d45ef781e77c9d71be0fb77e
 builddeps   :
     - binary(m4)
-    - gcc-devel
-    - gettext-devel
-    - gnu-efi-devel
-    - gperf
-    - binutils
-    - python-jinja
     - pkgconfig(libacl)
     - pkgconfig(blkid)
     - pkgconfig(dbus-1)
@@ -41,8 +35,42 @@ builddeps   :
     - pkgconfig(openssl)
     - pkgconfig(pam)
     - pkgconfig(zlib)
+    - binutils
+    - gcc-devel
+    - gettext-devel
+    - gnu-efi-devel
+    - gperf
+    - python-jinja
+    # TODO xsltproc for man pages
 setup       : |
     %patch %(pkgdir)/stateless/0001-Remove-default-pam.d-folder.patch
+    %patch %(pkgdir)/stateless/0004-Build-drop-pam-nsswitch-ship-legacy-tmpfiles-disable.patch
+    %patch %(pkgdir)/stateless/0031-add-stateless-for-locale-files-locale.conf-00-keyboa.patch
+    %patch %(pkgdir)/stateless/0515-Add-path-to-locale-search.patch
+    %patch %(pkgdir)/perf/0001-journal-raise-compression-threshold.patch
+    %patch %(pkgdir)/perf/0003-core-use-mmap-to-load-files.patch
+    %patch %(pkgdir)/perf/0007-sd-event-return-malloc-memory-reserves-when-main-loo.patch
+    %patch %(pkgdir)/perf/0015-more-udev-children-workers.patch
+    %patch %(pkgdir)/perf/0018-Enable-BBR-Bottleneck-Bandwidth-and-RTT.patch
+    %patch %(pkgdir)/perf/0019-network-online-complete-once-one-link-is-online-not-.patch
+    %patch %(pkgdir)/perf/0023-DHCP-retry-faster.patch
+    %patch %(pkgdir)/perf/0024-Remove-libm-memory-overhead.patch
+    %patch %(pkgdir)/perf/0025-skip-not-present-ACPI-devices.patch
+    %patch %(pkgdir)/perf/0027-Make-timesyncd-a-simple-service.patch
+    %patch %(pkgdir)/perf/0028-Compile-udev-with-O3.patch
+    %patch %(pkgdir)/perf/0030-Don-t-wait-for-utmp-at-shutdown.patch
+    %patch %(pkgdir)/perf/0032-don-t-use-libm-just-for-integer-exp10.patch
+    %patch %(pkgdir)/perf/0033-Notify-systemd-earlier-that-resolved-is-ready.patch
+    %patch %(pkgdir)/perf/0036-Disable-LLDP-listening-by-default.patch
+    %patch %(pkgdir)/perf/0038-Localize-1-symbol.patch
+    %patch %(pkgdir)/perf/systemd-243-random-seed-no-insane-timeouts.patch
+    %patch %(pkgdir)/bugs/rules-add-missing-line-continuation.patch
+    %patch %(pkgdir)/bugs/systemd-250-compile.patch
+    %patch %(pkgdir)/0001-Set-DefaultTimeoutStopSec-to-5s.patch
+    %patch %(pkgdir)/0008-efi-boot-generator-Do-not-automount-boot-partition.patch
+    %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
+    %patch %(pkgdir)/systemd-220-silent-fsck-on-boot.patch
+    %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
 
     %meson \
         -Dbpf-framework=false \
@@ -53,11 +81,11 @@ setup       : |
         -Dmode=release \
         -Dpamconfdir="%(vendordir)/pam.d" \
         -Dpcre2=true \
+        -Drpmmacrosdir=no \
         -Dslow-tests=false \
         -Dsplit-bin=true \
         -Dsplit-usr=false \
-        -Dtests=false \
-        -Dzstd=true
+        -Dtests=false
 build       : |
     %meson_build
 install     : |
