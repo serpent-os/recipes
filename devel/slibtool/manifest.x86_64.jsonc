@@ -23,6 +23,7 @@
 				"/usr/bin/slibtool",
 				"/usr/bin/slibtool-shared",
 				"/usr/bin/slibtool-static",
+				"/usr/share/aclocal/slibtool.m4",
 				"/usr/share/libtoolize/AC_CONFIG_AUX_DIR/ltmain.sh"
 			],
 			"name": "slibtool",
@@ -46,6 +47,6 @@
 		}
 	},
 	"source-name": "slibtool",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "0.5.34"
 }
