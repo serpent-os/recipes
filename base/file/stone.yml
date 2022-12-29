@@ -5,7 +5,7 @@
 #
 name        : file
 version     : 5.43
-release     : 2
+release     : 3
 homepage    : https://astron.com/pub/file
 upstreams   :
     - https://astron.com/pub/file/file-5.43.tar.gz : 8c8015e91ae0e8d0321d94c78239892ef9dbc70c4ade0008c0e95894abfb1991
@@ -17,12 +17,21 @@ license     :
 builddeps   :
     - pkgconfig(bzip2)
     - pkgconfig(liblzma)
+    - pkgconfig(libseccomp)
     - pkgconfig(zlib)
 setup       : |
+    # Fix linking libmagic
+    export CFLAGS="$CFLAGS -pthread"
     %configure \
         --disable-static \
-        --enable-shared
-build       : |
+        --enable-shared \
+        --enable-libseccomp
+
+    # remove hardcoded library paths from local libtool
+    sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+    sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+build      : |
+    export LD_LIBRARY_PATH=$PWD/src/.libs
     %make
 install     : |
     %make_install
