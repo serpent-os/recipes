@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : json-c
+version     : '0.16'
+release     : 1
+homepage    : https://github.com/json-c/json-c
+upstreams   :
+    - https://s3.amazonaws.com/json-c_releases/releases/json-c-0.16.tar.gz : 8e45ac8f96ec7791eaf3bb7ee50e9c2100bbbc87b8d0f1d030c5ba8a0288d96b
+summary     : A JSON implementation in C
+description : |
+    JSON-C implements a reference counting object model that allows you to easily
+    construct JSON objects in C, output them as JSON formatted strings and parse
+    JSON formatted strings back into the C representation of JSON objects.
+license     : MIT
+setup       : |
+    %cmake -DBUILD_STATIC_LIBS=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
