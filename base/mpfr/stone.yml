@@ -1,17 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : mpfr
-version     : 4.1.0
-release     : 1
+version     : 4.1.1
+release     : 2
 summary     : Multiple-precision floating-point library
 license     : LGPL-3.0-or-later
 homepage    : https://www.mpfr.org/
 description : |
     Multiple-precision floating-point library.
 upstreams   :
-    - https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.xz: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
+    - https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.1.tar.xz: ffd195bd567dbaffc3b98b23fd00aad0537680c9896171e44fe3ff79e28ac33d
 builddeps   :
-    - make
-    - gmp-devel
     - binary(file)
+    - pkgconfig(gmp)
 setup       : |
     %configure \
         --enable-thread-safe \
@@ -20,3 +24,9 @@ build       : |
     %make
 install     : |
     %make_install
+check       : |
+    %make check
+tuning      :
+    - lto
+    - nosemantic
+    - optimize: speed
