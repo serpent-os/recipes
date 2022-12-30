@@ -1,8 +1,16 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"boulder": {
+			"build-depends": [
+				"cmake",
+				"ldc",
+				"ldc-devel",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libxxhash)",
+				"pkgconfig(libzstd)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -55,6 +63,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "0.1"
 }
