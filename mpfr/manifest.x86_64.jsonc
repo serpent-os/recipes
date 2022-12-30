@@ -1,0 +1,59 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"mpfr": {
+			"build-depends": [
+				"binary(file)",
+				"pkgconfig(gmp)"
+			],
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgmp.so.10(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libmpfr.so.6",
+				"/usr/lib/libmpfr.so.6.1.1",
+				"/usr/share/doc/mpfr/AUTHORS",
+				"/usr/share/doc/mpfr/BUGS",
+				"/usr/share/doc/mpfr/COPYING",
+				"/usr/share/doc/mpfr/COPYING.LESSER",
+				"/usr/share/doc/mpfr/FAQ.html",
+				"/usr/share/doc/mpfr/NEWS",
+				"/usr/share/doc/mpfr/TODO",
+				"/usr/share/doc/mpfr/examples/ReadMe",
+				"/usr/share/doc/mpfr/examples/can_round.c",
+				"/usr/share/doc/mpfr/examples/divworst.c",
+				"/usr/share/doc/mpfr/examples/rndo-add.c",
+				"/usr/share/doc/mpfr/examples/sample.c",
+				"/usr/share/doc/mpfr/examples/threads.c",
+				"/usr/share/doc/mpfr/examples/version.c",
+				"/usr/share/info/mpfr.info"
+			],
+			"name": "mpfr",
+			"provides": [
+				"soname(libmpfr.so.6(x86_64))"
+			]
+		},
+		"mpfr-devel": {
+			"build-depends": [
+				"binary(file)",
+				"pkgconfig(gmp)"
+			],
+			"files": [
+				"/usr/include/mpf2mpfr.h",
+				"/usr/include/mpfr.h",
+				"/usr/lib/libmpfr.so",
+				"/usr/lib/pkgconfig/mpfr.pc"
+			],
+			"name": "mpfr-devel",
+			"provides": [
+				"pkgconfig(mpfr)"
+			]
+		}
+	},
+	"source-name": "mpfr",
+	"source-release": "2",
+	"source-version": "4.1.1"
+}
