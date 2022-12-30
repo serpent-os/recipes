@@ -1,8 +1,12 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"mpfr": {
+			"build-depends": [
+				"binary(file)",
+				"pkgconfig(gmp)"
+			],
 			"depends": [
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -10,7 +14,7 @@
 			],
 			"files": [
 				"/usr/lib/libmpfr.so.6",
-				"/usr/lib/libmpfr.so.6.1.0",
+				"/usr/lib/libmpfr.so.6.1.1",
 				"/usr/share/doc/mpfr/AUTHORS",
 				"/usr/share/doc/mpfr/BUGS",
 				"/usr/share/doc/mpfr/COPYING",
@@ -33,6 +37,10 @@
 			]
 		},
 		"mpfr-devel": {
+			"build-depends": [
+				"binary(file)",
+				"pkgconfig(gmp)"
+			],
 			"files": [
 				"/usr/include/mpf2mpfr.h",
 				"/usr/include/mpfr.h",
@@ -46,6 +54,6 @@
 		}
 	},
 	"source-name": "mpfr",
-	"source-release": "1",
-	"source-version": "4.1.0"
+	"source-release": "2",
+	"source-version": "4.1.1"
 }
