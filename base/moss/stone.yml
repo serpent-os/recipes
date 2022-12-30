@@ -1,6 +1,6 @@
 name        : moss
 version     : 0.1
-release     : 2
+release     : 3
 summary     : Default package manager of Serpent OS
 license     : Zlib
 homepage    : https://gitlab.com/serpent-os/core/moss
@@ -8,7 +8,7 @@ description : |
     Default package manager of Serpent OS.
 upstreams   :
     - https://github.com/serpent-os/moss/archive/refs/heads/main.tar.gz:
-        hash: b5e0cb6f0a5b70ec48a921957348874fded2aac89dfae29c0c4ab8beb9b94f96
+        hash: 0deef179254f1e30b05ee009fec34e4fa6f6d24775703b9d473fb3ee3594bc7b
         rename: moss.tar.gz
         stripdirs: 1
         unpackdir: "moss/"
@@ -18,7 +18,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-config/"
     - https://github.com/serpent-os/moss-core/archive/refs/heads/main.tar.gz:
-        hash: 63d46855aeae425a3fad120f700cef3ea9a139d5754799279d9c35ce6cb1f5f9
+        hash: 15f5c8f47cd009525c4c29e567e1418e25fed1a7e6cf1ec4804c8e6da89eb7da
         rename: moss-core.tar.gz
         stripdirs: 1
         unpackdir: "moss-core/"
@@ -28,7 +28,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-db/"
     - https://github.com/serpent-os/moss-deps/archive/refs/heads/main.tar.gz:
-        hash: 264437213fa3155e126ef45c25c3b8ce4e9c2dd2d843b30c5d8789994259e3d8
+        hash: 5620a02b42115e9784bc19dedded13f61420f65cdf683fcec1fddbd85c99ea88
         rename: moss-deps.tar.gz
         stripdirs: 1
         unpackdir: "moss-deps/"
@@ -38,7 +38,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://github.com/serpent-os/moss-format/archive/refs/heads/main.tar.gz:
-        hash: b6adad08b5ffd6c8bd3cee20a396eefe87b0dcc76f14758d68acd6c7e6e3ce1a
+        hash: ae48a6a9a4456dbaa423cec8fd737d9b2a144750fd93c7010eb80ff83da727f6
         rename: moss-format.tar.gz
         stripdirs: 1
         unpackdir: "moss-format/"
@@ -48,7 +48,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-vendor/"
     - https://github.com/serpent-os/elf-d/archive/refs/heads/dynamiclinking.tar.gz:
-        hash: 430387e0c523c4b30ac20220f8f47a98a13b94a4adb506186744135bbf50c4d1
+        hash: c864ae8225aae3cafd2a6e2da9eff040d2828c4fe14b5635e05375d226130203
         rename: elf-d.tar.gz
         stripdirs: 1
         unpackdir: "moss-vendor/vendor/elf/elf-d/"
@@ -78,9 +78,9 @@ builddeps   :
     - ldc
     - ldc-devel
     - lmdb-devel
-    - curl-devel
-    - xxhash-devel
-    - zstd-devel
+    - pkgconfig(libcurl)
+    - pkgconfig(libxxhash)
+    - pkgconfig(libzstd)
 environment : |
     cd %(buildroot)/moss
 setup       : |
