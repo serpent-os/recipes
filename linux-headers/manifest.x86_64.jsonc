@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"linux-headers": {
 			"files": [
@@ -250,7 +250,6 @@
 				"/usr/include/linux/dm-log-userspace.h",
 				"/usr/include/linux/dma-buf.h",
 				"/usr/include/linux/dma-heap.h",
-				"/usr/include/linux/dn.h",
 				"/usr/include/linux/dns_resolver.h",
 				"/usr/include/linux/dqblk_xfs.h",
 				"/usr/include/linux/dvb/audio.h",
@@ -261,6 +260,7 @@
 				"/usr/include/linux/dvb/osd.h",
 				"/usr/include/linux/dvb/version.h",
 				"/usr/include/linux/dvb/video.h",
+				"/usr/include/linux/dw100.h",
 				"/usr/include/linux/edd.h",
 				"/usr/include/linux/efs_fs_sb.h",
 				"/usr/include/linux/elf-em.h",
@@ -579,7 +579,6 @@
 				"/usr/include/linux/netfilter_bridge/ebt_stp.h",
 				"/usr/include/linux/netfilter_bridge/ebt_vlan.h",
 				"/usr/include/linux/netfilter_bridge/ebtables.h",
-				"/usr/include/linux/netfilter_decnet.h",
 				"/usr/include/linux/netfilter_ipv4.h",
 				"/usr/include/linux/netfilter_ipv4/ip_tables.h",
 				"/usr/include/linux/netfilter_ipv4/ipt_CLUSTERIP.h",
@@ -983,6 +982,6 @@
 		}
 	},
 	"source-name": "linux-headers",
-	"source-release": "2",
-	"source-version": "6.0.13"
+	"source-release": "3",
+	"source-version": "6.1.1"
 }
