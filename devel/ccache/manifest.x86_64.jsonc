@@ -1,8 +1,14 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"ccache": {
+			"build-depends": [
+				"cmake",
+				"ninja",
+				"perl",
+				"pkgconfig(libzstd)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc++.so.1(x86_64))",
@@ -30,6 +36,6 @@
 		}
 	},
 	"source-name": "ccache",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "4.6.1"
 }
