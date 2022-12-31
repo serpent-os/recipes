@@ -1,26 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : binutils
-version     : 2.38
-release     : 1
+version     : 2.39
+release     : 2
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    - https://github.com/bminor/binutils-gdb/archive/475549dc3acf0736c8e24b1ebe34968e99e2f20a.tar.gz: 232e0253394defeeed457fbb267cac4c1af796872670dccfb9a7be97e97b4ea9
+    - https://github.com/bminor/binutils-gdb/archive/d961e165eec8dcc01cec5b86d96971d830df6dc4.tar.gz: 1041e26c84b0d609a2ce7d47dc15641dcd84986653891c221be83bb43e9b3e0a
 builddeps   :
-    - patch
-    - make
-    - bison
-    - m4
-    - gzip
-    - texinfo
-    - perl
-    - ncurses
-    - zlib-devel
-    - flex
+    - binary(bison)
+    - binary(flex)
+    - binary(m4)
+    - binary(makeinfo)
+    - binary(perl)
+    - binary(yacc)
+    - pkgconfig(jansson)
+    - pkgconfig(ncursesw)
+    - pkgconfig(readline)
+    - pkgconfig(zlib)
 setup       : |
     %patch %(pkgdir)/0001-Don-t-add-GLIBC_PRIVATE_DT_RELR-symbol-for-RELR.patch
+    %patch %(pkgdir)/zlib-level.patch
+    %patch %(pkgdir)/compilespeed.patch
+
     # Non release builds mess up the sonames
     sed -i '/^development=/s/true/false/' bfd/development.sh
 
@@ -29,9 +37,9 @@ setup       : |
         --disable-gdb \
         --disable-gdbserver \
         --disable-libdecnumber \
-        --disable-readline \
         --disable-sim \
-        --disable-shared \
+        --disable-static \
+        --enable-shared \
         --enable-64-bit-bfd \
         --enable-deterministic-archives \
         --enable-ld=default \
@@ -40,10 +48,10 @@ setup       : |
         --enable-pgo-build=lto \
         --enable-plugins \
         --enable-secureplt \
-        --enable-static \
         --enable-targets="x86_64-pep,bpf-unknown-none" \
         --enable-threads \
         --with-lib-path="/usr/lib:/usr/lib32" \
+        --with-system-readline \
         --with-system-zlib \
         --without-debuginfod
 build       : |
@@ -52,6 +60,7 @@ install     : |
     %make_install tooldir=/usr -C %(builddir)
 toolchain   : gnu
 tuning      :
+    - lto
     - nosemantic
     - optimize: speed
     - symbolic

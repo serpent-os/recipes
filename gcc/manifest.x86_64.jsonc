@@ -1,13 +1,33 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"gcc": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(flex)",
+				"binary(m4)",
+				"binary(makeinfo)",
+				"binary(python3)",
+				"gcc-32bit",
+				"gcc-32bit-devel",
+				"glibc-32bit",
+				"glibc-32bit-devel",
+				"mpc-devel",
+				"pkgconfig(gmp)",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(mpfr)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
+				"soname(libgmp.so.10(x86_64))",
 				"soname(libm.so.6(x86_64))",
+				"soname(libmpc.so.3(x86_64))",
+				"soname(libmpfr.so.6(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
 			],
@@ -697,15 +717,7 @@
 				"/usr/share/gcc-12/python/libstdcxx/v6/xmethods.py",
 				"/usr/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.30-gdb.py",
 				"/usr/share/gdb/auto-load/usr/lib32/libstdc++.so.6.0.30-gdb.py",
-				"/usr/share/info/cpp.info",
-				"/usr/share/info/cppinternals.info",
 				"/usr/share/info/dir",
-				"/usr/share/info/gcc.info",
-				"/usr/share/info/gccinstall.info",
-				"/usr/share/info/gccint.info",
-				"/usr/share/info/libgomp.info",
-				"/usr/share/info/libitm.info",
-				"/usr/share/info/libquadmath.info",
 				"/usr/share/man/man1/cpp.1",
 				"/usr/share/man/man1/g++.1",
 				"/usr/share/man/man1/gcc.1",
@@ -754,6 +766,23 @@
 			]
 		},
 		"gcc-32bit": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(flex)",
+				"binary(m4)",
+				"binary(makeinfo)",
+				"binary(python3)",
+				"gcc-32bit",
+				"gcc-32bit-devel",
+				"glibc-32bit",
+				"glibc-32bit-devel",
+				"mpc-devel",
+				"pkgconfig(gmp)",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(mpfr)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"soname(ld-linux.so.2(x86))",
 				"soname(libc.so.6(x86))",
@@ -793,6 +822,23 @@
 			]
 		},
 		"gcc-32bit-devel": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(flex)",
+				"binary(m4)",
+				"binary(makeinfo)",
+				"binary(python3)",
+				"gcc-32bit",
+				"gcc-32bit-devel",
+				"glibc-32bit",
+				"glibc-32bit-devel",
+				"mpc-devel",
+				"pkgconfig(gmp)",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(mpfr)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/lib32/libasan.a",
 				"/usr/lib32/libasan.so",
@@ -815,6 +861,23 @@
 			"name": "gcc-32bit-devel"
 		},
 		"gcc-devel": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(flex)",
+				"binary(m4)",
+				"binary(makeinfo)",
+				"binary(python3)",
+				"gcc-32bit",
+				"gcc-32bit-devel",
+				"glibc-32bit",
+				"glibc-32bit-devel",
+				"mpc-devel",
+				"pkgconfig(gmp)",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(mpfr)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/c++/12/algorithm",
 				"/usr/include/c++/12/any",
@@ -1678,6 +1741,6 @@
 		}
 	},
 	"source-name": "gcc",
-	"source-release": "1",
-	"source-version": "12.1.0"
+	"source-release": "2",
+	"source-version": "12.2.0"
 }

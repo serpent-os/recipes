@@ -1,47 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : gcc
-version     : 12.1.0
-release     : 1
+version     : 12.2.0
+release     : 2
 summary     : GNU C++ standard library and compiler
 license     : GPL-3.0-or-later
 homepage    : https://gcc.gnu.org/
 description : |
     GNU C++ standard library and compiler
 upstreams   :
-    - https://github.com/gcc-mirror/gcc/archive/374cee99d01fceb89d0929da8b38051e6c9768f0.tar.gz: 8477c2774b057ba7620faa8e24eb3f47e443dcea59037be97e7d740a11e58f52
-    - https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz:
-        hash: fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2
-        stripdirs: 1
-        unpackdir: "%(name)-374cee99d01fceb89d0929da8b38051e6c9768f0/gmp/"
+    - https://github.com/gcc-mirror/gcc/archive/2ee5e4300186a92ad73f1a1a64cb918dc76c8d67.tar.gz: 89c4ffb9aac6e10e4896529f608a02171e5b528b7ad91a69710d4e5b151175d1
     - https://libisl.sourceforge.io/isl-0.24.tar.xz:
         hash: 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
         stripdirs: 1
-        unpackdir: "%(name)-374cee99d01fceb89d0929da8b38051e6c9768f0/isl/"
-    - https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz:
-        hash: 17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459
-        stripdirs: 1
-        unpackdir: "%(name)-374cee99d01fceb89d0929da8b38051e6c9768f0/mpc/"
-    - https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.xz:
-        hash: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
-        stripdirs: 1
-        unpackdir: "%(name)-374cee99d01fceb89d0929da8b38051e6c9768f0/mpfr/"
+        unpackdir: "%(name)-2ee5e4300186a92ad73f1a1a64cb918dc76c8d67/isl/"
 builddeps   :
-    - patch
-    - perl
-    - make
-    - python
-    - bison
-    - m4
-    - flex
-    - texinfo
-    - file
-    - gzip
+    - binary(bison)
+    - binary(flex)
+    - binary(m4)
+    - binary(makeinfo)
+    - binary(python3)
+    - pkgconfig(gmp)
+    - pkgconfig(libxcrypt)
+    - pkgconfig(libzstd)
+    - pkgconfig(mpfr)
+    - pkgconfig(zlib)
     - gcc-32bit
     - gcc-32bit-devel
     - glibc-32bit
     - glibc-32bit-devel
-    - libxcrypt-devel
-    - zlib-devel
-    - zstd-devel
+    - mpc-devel
 setup       : |
     %patch %(pkgdir)/perf/increase-vectorize-cost-model-to-cheap.patch
     %patch %(pkgdir)/perf/use-highest-optimize-value.patch
