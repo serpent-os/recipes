@@ -1,19 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : m4
 version     : 1.4.19
-release     : 1
-summary     : GNU macro processor
-license     : GPL-3.0-or-later
-homepage    : https://www.gnu.org/software/m4
-description : |
-    GNU macro processor
+release     : 2
+homepage    : https://www.gnu.org/software/m4/
 upstreams   :
-    - https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz: 63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz : 63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96
+summary     : GNU macro processor
+description : |
+    GNU M4 is an implementation of the traditional Unix macro processor. It is mostly SVR4 compatible although it has some extensions (for example, handling more than 9 positional parameters to macros). GNU M4 also has built-in functions for including files, running shell commands, doing arithmetic, etc.
+    
+    GNU M4 is a macro processor in the sense that it copies its input to the output expanding macros as it goes. Macros are either builtin or user-defined and can take any number of arguments. Besides just doing macro expansion, m4 has builtin functions for including named files, running UNIX commands, doing integer arithmetic, manipulating text in various ways, recursion etc... m4 can be used either as a front-end to a compiler or as a macro processor in its own right.
+license     :
+    - GPL-3.0-or-later
 setup       : |
     %configure
 build       : |
