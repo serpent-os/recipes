@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"patch": {
 			"depends": [
@@ -18,6 +18,6 @@
 		}
 	},
 	"source-name": "patch",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.7.6"
 }

@@ -1,19 +1,19 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : patch
 version     : 2.7.6
-release     : 1
-summary     : A utility to apply patch files
-license     : GPL-3.0-or-later
-homepage    : https://www.gnu.org/software/patch
-description : |
-    A utility to apply patch files
+release     : 2
+homepage    : https://savannah.gnu.org/projects/patch/
 upstreams   :
-    - https://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.xz: ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - https://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.xz : ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd
+summary     : Produce and apply diff and patch files
+description : |
+    Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.
+license     :
+    - GPL-3.0-or-later
 setup       : |
     %configure
 build       : |
