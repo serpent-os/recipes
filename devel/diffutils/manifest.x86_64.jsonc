@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"diffutils": {
 			"depends": [
@@ -62,6 +62,6 @@
 		}
 	},
 	"source-name": "diffutils",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.8"
 }
