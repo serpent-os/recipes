@@ -1,8 +1,20 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"binutils": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(flex)",
+				"binary(m4)",
+				"binary(makeinfo)",
+				"binary(perl)",
+				"binary(yacc)",
+				"pkgconfig(jansson)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(readline)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libbfd-2.39.0.so(x86_64))",
@@ -256,6 +268,18 @@
 			]
 		},
 		"binutils-devel": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(flex)",
+				"binary(m4)",
+				"binary(makeinfo)",
+				"binary(perl)",
+				"binary(yacc)",
+				"pkgconfig(jansson)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(readline)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"soname(libc.so.6(x86_64))",
 				"soname(libz.so.1(x86_64))"
@@ -288,6 +312,6 @@
 		}
 	},
 	"source-name": "binutils",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.39"
 }
