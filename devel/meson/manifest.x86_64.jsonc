@@ -1,16 +1,16 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"meson": {
 			"files": [
 				"/usr/bin/meson",
-				"/usr/lib/python3.11/site-packages/meson-0.64.1-py3.11.egg-info/PKG-INFO",
-				"/usr/lib/python3.11/site-packages/meson-0.64.1-py3.11.egg-info/SOURCES.txt",
-				"/usr/lib/python3.11/site-packages/meson-0.64.1-py3.11.egg-info/dependency_links.txt",
-				"/usr/lib/python3.11/site-packages/meson-0.64.1-py3.11.egg-info/entry_points.txt",
-				"/usr/lib/python3.11/site-packages/meson-0.64.1-py3.11.egg-info/requires.txt",
-				"/usr/lib/python3.11/site-packages/meson-0.64.1-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.0.0-py3.11.egg-info/PKG-INFO",
+				"/usr/lib/python3.11/site-packages/meson-1.0.0-py3.11.egg-info/SOURCES.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.0.0-py3.11.egg-info/dependency_links.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.0.0-py3.11.egg-info/entry_points.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.0.0-py3.11.egg-info/requires.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.0.0-py3.11.egg-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/mesonbuild/__init__.py",
 				"/usr/lib/python3.11/site-packages/mesonbuild/__pycache__/__init__.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/mesonbuild/__pycache__/_pathlib.cpython-311.pyc",
@@ -454,6 +454,6 @@
 		}
 	},
 	"source-name": "meson",
-	"source-release": "4",
-	"source-version": "0.64.1"
+	"source-release": "5",
+	"source-version": "1.0.0"
 }
