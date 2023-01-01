@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"make": {
 			"depends": [
@@ -9,9 +9,11 @@
 			],
 			"files": [
 				"/usr/bin/make",
+				"/usr/include/gnumake.h",
 				"/usr/share/info/make.info",
 				"/usr/share/info/make.info-1",
 				"/usr/share/info/make.info-2",
+				"/usr/share/info/make.info-3",
 				"/usr/share/locale/be/LC_MESSAGES/make.mo",
 				"/usr/share/locale/bg/LC_MESSAGES/make.mo",
 				"/usr/share/locale/cs/LC_MESSAGES/make.mo",
@@ -33,6 +35,7 @@
 				"/usr/share/locale/pl/LC_MESSAGES/make.mo",
 				"/usr/share/locale/pt/LC_MESSAGES/make.mo",
 				"/usr/share/locale/pt_BR/LC_MESSAGES/make.mo",
+				"/usr/share/locale/ro/LC_MESSAGES/make.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/make.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/make.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/make.mo",
@@ -47,15 +50,9 @@
 			"provides": [
 				"binary(make)"
 			]
-		},
-		"make-devel": {
-			"files": [
-				"/usr/include/gnumake.h"
-			],
-			"name": "make-devel"
 		}
 	},
 	"source-name": "make",
-	"source-release": "1",
-	"source-version": "4.3"
+	"source-release": "2",
+	"source-version": "4.4"
 }

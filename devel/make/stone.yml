@@ -1,19 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : make
-version     : 4.3
-release     : 1
-summary     : GNU make utility to maintain groups of programs
-license     : GPL-3.0-or-later
+version     : 4.4
+release     : 2
 homepage    : https://www.gnu.org/software/make
-description : |
-    GNU make utility to maintain groups of programs
 upstreams   :
-    - https://ftp.gnu.org/gnu/make/make-4.3.tar.gz: e05fdde47c5f7ca45cb697e973894ff4f5d79e13b750ed57d7b66d8defc78e19
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - https://ftp.gnu.org/gnu/make/make-4.4.tar.gz : 581f4d4e872da74b3941c874215898a7d35802f03732bdccee1d4a7979105d18
+summary     : GNU make utility for controlling software builds
+description : |
+    GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.
+
+    Make gets its knowledge of how to build your program from a file called the makefile, which lists each of the non-source files and how to compute it from other files. When you write a program, you should write a makefile for it, so that it is possible to use Make to build and install the program.
+license     :
+    - GPL-3.0-or-later
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/include
 setup       : |
     %configure
 build       : |
