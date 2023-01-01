@@ -1,25 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : findutils
 version     : 4.9.0
-release     : 1
-summary     : GNU utilities for finding files
-license     : GPL-3.0-or-later
-homepage    : https://www.gnu.org/software/findutils
-description : |
-    GNU utilities for finding files
+release     : 2
+homepage    : https://www.gnu.org/software/findutils/
 upstreams   :
-    - https://ftp.gnu.org/pub/gnu/findutils/findutils-4.9.0.tar.xz: a2bfb8c09d436770edc59f50fa483e785b161a3b7b9d547573cb08065fd462fe
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - https://ftp.gnu.org/gnu/findutils/findutils-4.9.0.tar.xz : a2bfb8c09d436770edc59f50fa483e785b161a3b7b9d547573cb08065fd462fe
+summary     : GNU utilities to find files
+description : |
+    The GNU Find Utilities are the basic directory searching utilities of the GNU operating system. These programs are typically used in conjunction with other programs to provide modular and powerful directory search and file locating capabilities to other commands.
+license     :
+    - GPL-3.0-or-later
 setup       : |
     %configure
 build       : |
     %make
 install     : |
     %make_install
-
     rmdir %(installroot)/var
+    # TODO: Handle with moss-triggers
     %tmpfiles "d /var/db/locate 0755 - - -"
