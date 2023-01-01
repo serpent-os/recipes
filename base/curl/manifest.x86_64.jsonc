@@ -1,8 +1,16 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"curl": {
+			"build-depends": [
+				"pkgconfig(jansson)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libnghttp2)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(openssl)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libbrotlidec.so.1(x86_64))",
@@ -118,6 +126,7 @@
 				"/usr/share/man/man3/CURLOPT_CAINFO.3",
 				"/usr/share/man/man3/CURLOPT_CAINFO_BLOB.3",
 				"/usr/share/man/man3/CURLOPT_CAPATH.3",
+				"/usr/share/man/man3/CURLOPT_CA_CACHE_TIMEOUT.3",
 				"/usr/share/man/man3/CURLOPT_CERTINFO.3",
 				"/usr/share/man/man3/CURLOPT_CHUNK_BGN_FUNCTION.3",
 				"/usr/share/man/man3/CURLOPT_CHUNK_DATA.3",
@@ -509,6 +518,14 @@
 			]
 		},
 		"curl-devel": {
+			"build-depends": [
+				"pkgconfig(jansson)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libnghttp2)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(openssl)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/curl/curl.h",
 				"/usr/include/curl/curlver.h",
@@ -533,6 +550,6 @@
 		}
 	},
 	"source-name": "curl",
-	"source-release": "2",
-	"source-version": "7.86.0"
+	"source-release": "3",
+	"source-version": "7.87.0"
 }
