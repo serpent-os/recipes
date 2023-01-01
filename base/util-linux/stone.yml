@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : util-linux
-version     : 2.37.2
-release     : 3
+version     : 2.38.1
+release     : 4
 summary     : Random collection of Linux utilities
 license     :
     - BSD-3-Clause
@@ -19,7 +19,7 @@ homepage    : https://www.kernel.org/pub/linux/utils/util-linux
 description : |
     Random collection of Linux utilities
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-2.37.2.tar.xz : 6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9
+    - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.1.tar.xz : 60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f
 builddeps   :
     - pkgconfig(libcrypt)
     - pkgconfig(libsystemd)
