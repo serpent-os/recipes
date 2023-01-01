@@ -1,6 +1,6 @@
 name        : linux-kvm
 version     : 6.1.2
-release     : 10
+release     : 11
 homepage    : https://cdn.kernel.org/pub/linux/kernel/v6.x
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz : ee41f3c4f599b2f46f08aae428c9243db403e7292eb2c9f04ee34909b038d1ae
@@ -23,16 +23,16 @@ builddeps   :
     - pkgconfig(libelf)
     - pkgconfig(libssl)
     - pkgconfig(libzstd)
-toolchain   : gnu
 setup       : |
     extraVersion="-%(release).kvm"
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
     %install_file %(pkgdir)/config-x86_64 .config
-    %make ARCH=x86_64 oldconfig || exit 1
+    %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 oldconfig || exit 1
 build       : |
-    %make ARCH=x86_64 CONFIG_DEBUG_SECTION_MISMATCH=y VERBOSE=0 V=0
-    %make ARCH=x86_64 -C tools/objtool VERBOSE=0 V=0
+    # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
+    %make VERBOSE=0 V=0 CC=clang ARCH=x86_64 LLVM=1 WERROR=0
+    %make -C tools/objtool VERBOSE=0 V=0 CC=clang ARCH=x86_64 LLVM=1 WERROR=0
 install     : |
     kernelVersion="%(version)-%(release).kvm"
     kernelID="com.serpentos.kvm"
@@ -43,7 +43,7 @@ install     : |
 
     # Modules please
     %install_dir %(installroot)%(libdir)/modules/$kernelVersion
-    %make ARCH=x86_64 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
+    %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
     /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
     
     # TODO: Include early microcode
