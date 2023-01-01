@@ -1,6 +1,6 @@
 name        : glibc
 version     : 2.36
-release     : 1
+release     : 2
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -12,12 +12,24 @@ description : |
 upstreams   :
     - https://github.com/bminor/glibc/archive/a8f62164b1d0ea6583c9c5d05aa4be9c946c2004.tar.gz: 08b50fddc96cda5e9dc0df0fd58cd23f91cdfe9bc0d0eb288c49ea1c0191a2e7
 builddeps   :
-    - patch
-    - make
+    - binary(bison)
+    - binary(gzip)
+    - binary(m4)
     - python
-    - bison
-    - m4
-    - gzip
+packages    :
+    - "%(name)-32bit":
+        paths:
+            - /usr/lib/ld-linux.so.2
+toolchain   : gnu
+emul32      : true
+tuning      :
+    - asneeded: false
+    #- avxwidth: false
+    - base: false
+    - bindnow: false
+    - fortify: false
+    - harden: false
+    - optimize: speed
 setup       : |
     # Patches ahoy!
     %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
@@ -48,7 +60,7 @@ setup       : |
         --enable-bind-now \
         --enable-cet \
         --enable-gnu-indirect-function \
-        --enable-kernel=5.12 \
+        --enable-kernel=6.0.1 \
         --enable-lock-elision \
         --enable-multi-arch \
         --enable-plugin \
@@ -61,50 +73,39 @@ setup       : |
         libc_cv_include_x86_isa_level=no
 build       : |
     %make -C build
-install     : |
-    %make_install build DESTDIR="%(installroot)" -C build
+profiles    :
+    - x86_64:
+        install: |
+            %make_install build DESTDIR="%(installroot)" -C build
+            
+            # Make gconv cache
+            LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux-x86-64.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
 
-    if [ -z "%(libsuffix)" ]; then
-        # Make gconv cache
-        LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux-x86-64.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
+            %make localedata/install-locales DESTDIR="%(installroot)" -C build
 
-        %make localedata/install-locales DESTDIR="%(installroot)" -C build
+            # Stateless: Remove obsolete rpc
+            rm %(installroot)/var/db/Makefile %(installroot)/etc/rpc
+            rmdir %(installroot)/var/db %(installroot)/var %(installroot)/etc
 
-        # Stateless: Remove obsolete rpc
-        rm %(installroot)/var/db/Makefile %(installroot)/etc/rpc
-        rmdir %(installroot)/var/db %(installroot)/var %(installroot)/etc
+            %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)/ld.so.conf
+            %install_dir %(installroot)/%(vendordir)/ld.so.conf.d
+            
+            # Stateless: We need these directories to exist without including them
+            %tmpfiles "# Create stateless directories"
+            %tmpfiles "d /etc/ld.so.conf.d 0755 - - -"
+            %tmpfiles "d /var/cache/ldconfig 0755 - - -"
+            %tmpfiles "d /var/cache/locale 0755 - - -"
+            %tmpfiles "d /var/db 0755 - - -"
+    - emul32:
+        install: |
+            %make_install build DESTDIR="%(installroot)" -C build
+            
+            # Make gconv cache
+            LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
 
-        %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)/ld.so.conf
-        %install_dir %(installroot)/%(vendordir)/ld.so.conf.d
-    else
-        # Make gconv cache
-        LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
+            # Remove 32bit binary
+            rm %(installroot)/usr/bin/lddlibc4
 
-        # Remove 32bit binary
-        rm %(installroot)/usr/bin/lddlibc4
-
-        # Support old compiled 32bit binaries
-        %install_dir %(installroot)/usr/lib
-        ln -sv ../lib32/ld-linux.so.2 %(installroot)/usr/lib/ld-linux.so.2
-    fi
-
-    # Stateless: We need these directories to exist without including them
-    %tmpfiles "# Create stateless directories"
-    %tmpfiles "d /etc/ld.so.conf.d 0755 - - -"
-    %tmpfiles "d /var/cache/ldconfig 0755 - - -"
-    %tmpfiles "d /var/cache/locale 0755 - - -"
-    %tmpfiles "d /var/db 0755 - - -"
-toolchain   : gnu
-emul32      : true
-tuning      :
-    - asneeded: false
-    #- avxwidth: false
-    - base: false
-    - bindnow: false
-    - fortify: false
-    - harden: false
-    - optimize: speed
-packages    :
-    - "%(name)-32bit":
-        paths:
-            - /usr/lib/ld-linux.so.2
+            # Support old compiled 32bit binaries
+            %install_dir %(installroot)/usr/lib
+            ln -sv ../lib32/ld-linux.so.2 %(installroot)/usr/lib/ld-linux.so.2

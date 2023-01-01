@@ -1,8 +1,14 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"glibc": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(gzip)",
+				"binary(m4)",
+				"python"
+			],
 			"files": [
 				"/usr/bin/gencat",
 				"/usr/bin/getconf",
@@ -961,8 +967,10 @@
 				"binary(getconf)",
 				"binary(getent)",
 				"binary(iconv)",
+				"sysbinary(iconvconfig)",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"binary(ld.so)",
+				"sysbinary(ldconfig)",
 				"binary(ldd)",
 				"soname(libBrokenLocale.so.1(x86_64))",
 				"soname(libCNS.so(x86_64))",
@@ -991,16 +999,25 @@
 				"binary(locale)",
 				"binary(localedef)",
 				"binary(makedb)",
+				"sysbinary(nscd)",
 				"binary(pcprofiledump)",
 				"binary(pldd)",
+				"sysbinary(sln)",
 				"binary(sotruss)",
 				"binary(sprof)",
 				"binary(tzselect)",
 				"binary(xtrace)",
-				"binary(zdump)"
+				"binary(zdump)",
+				"sysbinary(zic)"
 			]
 		},
 		"glibc-32bit": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(gzip)",
+				"binary(m4)",
+				"python"
+			],
 			"files": [
 				"/usr/lib/ld-linux.so.2",
 				"/usr/lib32/Mcrt1.o",
@@ -1330,6 +1347,12 @@
 			]
 		},
 		"glibc-32bit-devel": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(gzip)",
+				"binary(m4)",
+				"python"
+			],
 			"depends": [
 				"soname(ld-linux.so.2(x86))",
 				"soname(libc.so.6(x86))"
@@ -1367,6 +1390,12 @@
 			]
 		},
 		"glibc-devel": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(gzip)",
+				"binary(m4)",
+				"python"
+			],
 			"depends": [
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
@@ -1877,6 +1906,6 @@
 		}
 	},
 	"source-name": "glibc",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.36"
 }
