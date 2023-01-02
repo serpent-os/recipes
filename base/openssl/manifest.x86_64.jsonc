@@ -1,8 +1,12 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"openssl": {
+			"build-depends": [
+				"perl",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
@@ -5544,6 +5548,10 @@
 			]
 		},
 		"openssl-devel": {
+			"build-depends": [
+				"perl",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/openssl/aes.h",
 				"/usr/include/openssl/asn1.h",
@@ -5694,6 +5702,10 @@
 			]
 		},
 		"openssl-docs": {
+			"build-depends": [
+				"perl",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/share/doc/openssl/html/man1/CA.pl.html",
 				"/usr/share/doc/openssl/html/man1/openssl-asn1parse.html",
@@ -6488,6 +6500,6 @@
 		}
 	},
 	"source-name": "openssl",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "3.0.7"
 }
