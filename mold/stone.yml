@@ -1,26 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : mold
-version     : 1.2.1
-release     : 1
+version     : 1.8.0
+release     : 2
 summary     : A Modern Linker
 license     : BSD-3-Clause
 homepage    : https://github.com/rui314/mold
 description : |
     mold is a faster drop-in replacement for existing Unix linkers.
 upstreams   :
-    - https://github.com/rui314/mold/archive/refs/tags/v1.2.1.tar.gz: 41868663ff18afee3fa35e5e3fdf3d9575eb2e4ff49967b8f42f479c61c1ec34
+    - https://github.com/rui314/mold/archive/refs/tags/v1.8.0.tar.gz: 7210225478796c2528aae30320232a5a3b93a640292575a8c55aa2b140041b5c
 builddeps   :
-    - cmake
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
-    - openssl-devel
-    - zlib-devel
+    - pkgconfig(libcrypto)
+    - pkgconfig(libzstd)
+    - pkgconfig(mimalloc)
+    - pkgconfig(zlib)
+setup       : |
+    %cmake -DMOLD_USE_SYSTEM_MIMALLOC=ON \
+           -DMOLD_LTO=ON
 build       : |
-    %make
+    %cmake_build
 install     : |
-    %make_install STRIP=/usr/bin/true PREFIX=/usr
+    %cmake_install
 tuning      :
     - icf: all
     - lto
