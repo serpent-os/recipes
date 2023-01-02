@@ -1,8 +1,34 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"systemd": {
+			"build-depends": [
+				"binary(m4)",
+				"binutils",
+				"gcc-devel",
+				"gettext-devel",
+				"gnu-efi-devel",
+				"gperf",
+				"pkgconfig(blkid)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(fdisk)",
+				"pkgconfig(libacl)",
+				"pkgconfig(libcap)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libffi)",
+				"pkgconfig(libkmod)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(mount)",
+				"pkgconfig(openssl)",
+				"pkgconfig(pam)",
+				"pkgconfig(zlib)",
+				"python-jinja"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -770,7 +796,9 @@
 				"binary(bootctl)",
 				"binary(busctl)",
 				"binary(coredumpctl)",
+				"sysbinary(halt)",
 				"binary(hostnamectl)",
+				"sysbinary(init)",
 				"binary(journalctl)",
 				"binary(kernel-install)",
 				"soname(libnss_myhostname.so.2(x86_64))",
@@ -788,7 +816,12 @@
 				"binary(oomctl)",
 				"soname(pam_systemd.so(x86_64))",
 				"binary(portablectl)",
+				"sysbinary(poweroff)",
+				"sysbinary(reboot)",
+				"sysbinary(resolvconf)",
 				"binary(resolvectl)",
+				"sysbinary(runlevel)",
+				"sysbinary(shutdown)",
 				"binary(systemctl)",
 				"binary(systemd-analyze)",
 				"binary(systemd-ask-password)",
@@ -819,12 +852,39 @@
 				"binary(systemd-tmpfiles)",
 				"binary(systemd-tty-ask-password-agent)",
 				"binary(systemd-umount)",
+				"sysbinary(telinit)",
 				"binary(timedatectl)",
 				"binary(udevadm)",
 				"binary(userdbctl)"
 			]
 		},
 		"systemd-devel": {
+			"build-depends": [
+				"binary(m4)",
+				"binutils",
+				"gcc-devel",
+				"gettext-devel",
+				"gnu-efi-devel",
+				"gperf",
+				"pkgconfig(blkid)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(fdisk)",
+				"pkgconfig(libacl)",
+				"pkgconfig(libcap)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libffi)",
+				"pkgconfig(libkmod)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(mount)",
+				"pkgconfig(openssl)",
+				"pkgconfig(pam)",
+				"pkgconfig(zlib)",
+				"python-jinja"
+			],
 			"files": [
 				"/usr/include/libudev.h",
 				"/usr/include/systemd/_sd-common.h",
@@ -857,6 +917,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "251.10"
 }
