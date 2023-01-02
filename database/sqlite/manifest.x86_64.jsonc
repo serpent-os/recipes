@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"sqlite": {
 			"depends": [
@@ -34,6 +34,6 @@
 		}
 	},
 	"source-name": "sqlite",
-	"source-release": "1",
-	"source-version": "3.40.0"
+	"source-release": "2",
+	"source-version": "3.40.1"
 }
