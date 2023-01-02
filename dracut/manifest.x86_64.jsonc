@@ -1,8 +1,11 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"dracut": {
+			"build-depends": [
+				"pkgconfig(libkmod)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -69,6 +72,12 @@
 				"/usr/lib/dracut/modules.d/01systemd-modules-load/module-setup.sh",
 				"/usr/lib/dracut/modules.d/01systemd-networkd",
 				"/usr/lib/dracut/modules.d/01systemd-networkd/module-setup.sh",
+				"/usr/lib/dracut/modules.d/01systemd-pcrphase",
+				"/usr/lib/dracut/modules.d/01systemd-pcrphase/module-setup.sh",
+				"/usr/lib/dracut/modules.d/01systemd-portabled",
+				"/usr/lib/dracut/modules.d/01systemd-portabled/module-setup.sh",
+				"/usr/lib/dracut/modules.d/01systemd-pstore",
+				"/usr/lib/dracut/modules.d/01systemd-pstore/module-setup.sh",
 				"/usr/lib/dracut/modules.d/01systemd-repart",
 				"/usr/lib/dracut/modules.d/01systemd-repart/module-setup.sh",
 				"/usr/lib/dracut/modules.d/01systemd-resolved",
@@ -200,6 +209,14 @@
 				"/usr/lib/dracut/modules.d/80lvmthinpool-monitor/module-setup.sh",
 				"/usr/lib/dracut/modules.d/80lvmthinpool-monitor/start-thinpool-monitor.service",
 				"/usr/lib/dracut/modules.d/80lvmthinpool-monitor/start-thinpool-monitor.sh",
+				"/usr/lib/dracut/modules.d/80test",
+				"/usr/lib/dracut/modules.d/80test-makeroot",
+				"/usr/lib/dracut/modules.d/80test-makeroot/finished-false.sh",
+				"/usr/lib/dracut/modules.d/80test-makeroot/module-setup.sh",
+				"/usr/lib/dracut/modules.d/80test-root",
+				"/usr/lib/dracut/modules.d/80test-root/module-setup.sh",
+				"/usr/lib/dracut/modules.d/80test/hard-off.sh",
+				"/usr/lib/dracut/modules.d/80test/module-setup.sh",
 				"/usr/lib/dracut/modules.d/81cio_ignore",
 				"/usr/lib/dracut/modules.d/81cio_ignore/module-setup.sh",
 				"/usr/lib/dracut/modules.d/81cio_ignore/parse-cio_accept.sh",
@@ -230,8 +247,13 @@
 				"/usr/lib/dracut/modules.d/90dmraid/module-setup.sh",
 				"/usr/lib/dracut/modules.d/90dmraid/parse-dm.sh",
 				"/usr/lib/dracut/modules.d/90dmsquash-live",
+				"/usr/lib/dracut/modules.d/90dmsquash-live-autooverlay",
+				"/usr/lib/dracut/modules.d/90dmsquash-live-autooverlay/create-overlay-genrules.sh",
+				"/usr/lib/dracut/modules.d/90dmsquash-live-autooverlay/create-overlay.sh",
+				"/usr/lib/dracut/modules.d/90dmsquash-live-autooverlay/module-setup.sh",
 				"/usr/lib/dracut/modules.d/90dmsquash-live-ntfs",
 				"/usr/lib/dracut/modules.d/90dmsquash-live-ntfs/module-setup.sh",
+				"/usr/lib/dracut/modules.d/90dmsquash-live-ntfs/mount-ntfs-3g.sh",
 				"/usr/lib/dracut/modules.d/90dmsquash-live/apply-live-updates.sh",
 				"/usr/lib/dracut/modules.d/90dmsquash-live/checkisomd5@.service",
 				"/usr/lib/dracut/modules.d/90dmsquash-live/dmsquash-generator.sh",
@@ -283,6 +305,9 @@
 				"/usr/lib/dracut/modules.d/90multipath/multipathd.sh",
 				"/usr/lib/dracut/modules.d/90nvdimm",
 				"/usr/lib/dracut/modules.d/90nvdimm/module-setup.sh",
+				"/usr/lib/dracut/modules.d/90overlayfs",
+				"/usr/lib/dracut/modules.d/90overlayfs/module-setup.sh",
+				"/usr/lib/dracut/modules.d/90overlayfs/mount-overlayfs.sh",
 				"/usr/lib/dracut/modules.d/90ppcmac",
 				"/usr/lib/dracut/modules.d/90ppcmac/load-thermal.sh",
 				"/usr/lib/dracut/modules.d/90ppcmac/module-setup.sh",
@@ -391,7 +416,6 @@
 				"/usr/lib/dracut/modules.d/95udev-rules",
 				"/usr/lib/dracut/modules.d/95udev-rules/59-persistent-storage.rules",
 				"/usr/lib/dracut/modules.d/95udev-rules/61-persistent-storage.rules",
-				"/usr/lib/dracut/modules.d/95udev-rules/load-modules.sh",
 				"/usr/lib/dracut/modules.d/95udev-rules/module-setup.sh",
 				"/usr/lib/dracut/modules.d/95virtfs",
 				"/usr/lib/dracut/modules.d/95virtfs/module-setup.sh",
@@ -527,6 +551,9 @@
 			]
 		},
 		"dracut-devel": {
+			"build-depends": [
+				"pkgconfig(libkmod)"
+			],
 			"files": [
 				"/usr/share/pkgconfig/dracut.pc"
 			],
@@ -537,6 +564,6 @@
 		}
 	},
 	"source-name": "dracut",
-	"source-release": "1",
-	"source-version": "47"
+	"source-release": "2",
+	"source-version": "059"
 }
