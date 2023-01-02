@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : lmdb
 version     : 0.9.29
-release     : 4
+release     : 5
 homepage    : http://symas.com/mdb
 upstreams   :
     - https://github.com/LMDB/lmdb/archive/refs/tags/LMDB_0.9.29.tar.gz : 22054926b426c66d8f2bc22071365df6e35f3aacf19ad943bc6167d4cae3bebb
@@ -20,3 +25,6 @@ check       : |
     cd libraries/liblmdb
     export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:."
     %make XCFLAGS="${CFLAGS}" CC=clang AR=llvm-ar test
+tuning      :
+    - lto
+    - optimize: speed
