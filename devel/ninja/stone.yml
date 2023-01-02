@@ -1,20 +1,19 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : ninja
-version     : 1.10.2
+version     : 1.11.1
 release     : 1
-summary     : Small build system with a focus on speed
-license     : Apache-2.0
 homepage    : https://ninja-build.org
+upstreams   :
+    - https://github.com/ninja-build/ninja/archive/refs/tags/v1.11.1.tar.gz : 31747ae633213f1eda3842686f83c2aa1412e0f5691d1c14dbbcc67fe7400cea
+summary     : Small build system with a focus on speed
 description : |
     Small build system with a focus on speed
-upstreams   :
-    - https://github.com/ninja-build/ninja/archive/v1.10.2.tar.gz: ce35865411f0490368a8fc383f29071de6690cbadc27704734978221f25e2bed
-builddeps   :
-    - cmake
-    - ninja
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+license     :
+    - Apache-2.0
 setup       : |
     %cmake
 build       : |
