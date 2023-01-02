@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : glibc
 version     : 2.36
-release     : 2
+release     : 3
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -10,12 +15,12 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - https://github.com/bminor/glibc/archive/a8f62164b1d0ea6583c9c5d05aa4be9c946c2004.tar.gz: 08b50fddc96cda5e9dc0df0fd58cd23f91cdfe9bc0d0eb288c49ea1c0191a2e7
+    - https://github.com/bminor/glibc/archive/4f4d7a13edfd2fdc57c9d76e1fd6d017fb47550c.tar.gz: 666482e657c319f7e139121121a0d97d303c65207b9f9730f42a3ee83c79f686
 builddeps   :
     - binary(bison)
     - binary(gzip)
     - binary(m4)
-    - python
+    - binary(python3)
 packages    :
     - "%(name)-32bit":
         paths:
