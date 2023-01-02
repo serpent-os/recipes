@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : perl
-version     : 5.34.0
-release     : 2
+version     : 5.36.0
+release     : 3
 summary     : Perl interpreter and modules
 license     :
     - Artistic-1.0
@@ -9,16 +14,10 @@ homepage    : https://www.perl.org/
 description : |
     Perl interpreter and modules
 upstreams   :
-    - https://www.cpan.org/src/5.0/perl-5.34.0.tar.xz: 82c2e5e5c71b0e10487a80d79140469ab1f8056349ca8545140a224dbbed7ded
+    - https://www.cpan.org/src/5.0/perl-5.36.0.tar.xz: 0f386dccbee8e26286404b2cca144e1005be65477979beb9b1ba272d4819bcf0
 builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - gdbm-devel
 setup       : |
-    %patch %(pkgdir)/serpent/soname.patch
-
     ./Configure -des \
         -Dprefix=/usr \
         -Dscriptdir=/usr/bin \
