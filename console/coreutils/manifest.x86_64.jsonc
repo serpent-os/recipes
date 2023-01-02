@@ -1,8 +1,13 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"coreutils": {
+			"build-depends": [
+				"pkgconfig(libacl)",
+				"pkgconfig(libattr)",
+				"pkgconfig(libcap)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libacl.so.1(x86_64))",
@@ -416,6 +421,6 @@
 		}
 	},
 	"source-name": "coreutils",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "9.1"
 }
