@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"sed": {
 			"depends": [
@@ -32,6 +32,7 @@
 				"/usr/share/locale/id/LC_MESSAGES/sed.mo",
 				"/usr/share/locale/it/LC_MESSAGES/sed.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/sed.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/sed.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/sed.mo",
 				"/usr/share/locale/nb/LC_MESSAGES/sed.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/sed.mo",
@@ -58,6 +59,6 @@
 		}
 	},
 	"source-name": "sed",
-	"source-release": "1",
-	"source-version": "4.8"
+	"source-release": "2",
+	"source-version": "4.9"
 }

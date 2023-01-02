@@ -1,22 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : sed
-version     : 4.8
-release     : 1
+version     : 4.9
+release     : 2
 summary     : GNU stream editor
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org/software/sed
 description : |
     GNU stream editor
 upstreams   :
-    - https://ftp.gnu.org/gnu/sed/sed-4.8.tar.xz: f79b0cfea71b37a8eeec8490db6c5f7ae7719c35587f21edb0617f370eeff633
-builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
+    - https://ftp.gnu.org/gnu/sed/sed-4.9.tar.xz: 6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181
 setup       : |
     %configure
 build       : |
     %make
 install     : |
     %make_install
+tuning      :
+    - lto
+    - nosemantic
+    - optimize: speed
+    - sections
