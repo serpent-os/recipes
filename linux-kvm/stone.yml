@@ -1,6 +1,6 @@
 name        : linux-kvm
 version     : 6.1.2
-release     : 11
+release     : 12
 homepage    : https://cdn.kernel.org/pub/linux/kernel/v6.x
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz : ee41f3c4f599b2f46f08aae428c9243db403e7292eb2c9f04ee34909b038d1ae
@@ -18,6 +18,7 @@ builddeps   :
     - binary(kmod)
     - binary(m4)
     - binary(perl)
+    - binary(python3)
     - pkgconfig(gmp)
     - pkgconfig(mpfr)
     - pkgconfig(libelf)
@@ -28,6 +29,7 @@ setup       : |
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
     %install_file %(pkgdir)/config-x86_64 .config
+    %patch %(pkgdir)/more-uarches-for-kernel-5.17+.patch
     %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 oldconfig || exit 1
 build       : |
     # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
