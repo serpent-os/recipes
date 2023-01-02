@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"strace": {
 			"depends": [
@@ -21,6 +21,6 @@
 		}
 	},
 	"source-name": "strace",
-	"source-release": "1",
-	"source-version": "5.15"
+	"source-release": "2",
+	"source-version": "6.1"
 }
