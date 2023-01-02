@@ -1,8 +1,11 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"gdbm": {
+			"build-depends": [
+				"pkgconfig(readline)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -15,8 +18,6 @@
 				"/usr/bin/gdbmtool",
 				"/usr/lib/libgdbm.so.6",
 				"/usr/lib/libgdbm.so.6.0.0",
-				"/usr/lib/libgdbm_compat.so.4",
-				"/usr/lib/libgdbm_compat.so.4.0.0",
 				"/usr/share/info/gdbm.info",
 				"/usr/share/locale/da/LC_MESSAGES/gdbm.mo",
 				"/usr/share/locale/de/LC_MESSAGES/gdbm.mo",
@@ -42,22 +43,21 @@
 				"binary(gdbm_dump)",
 				"binary(gdbm_load)",
 				"binary(gdbmtool)",
-				"soname(libgdbm.so.6(x86_64))",
-				"soname(libgdbm_compat.so.4(x86_64))"
+				"soname(libgdbm.so.6(x86_64))"
 			]
 		},
 		"gdbm-devel": {
+			"build-depends": [
+				"pkgconfig(readline)"
+			],
 			"files": [
-				"/usr/include/dbm.h",
 				"/usr/include/gdbm.h",
-				"/usr/include/ndbm.h",
-				"/usr/lib/libgdbm.so",
-				"/usr/lib/libgdbm_compat.so"
+				"/usr/lib/libgdbm.so"
 			],
 			"name": "gdbm-devel"
 		}
 	},
 	"source-name": "gdbm",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.23"
 }

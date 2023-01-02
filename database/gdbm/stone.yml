@@ -5,7 +5,7 @@
 #
 name        : gdbm
 version     : 1.23
-release     : 1
+release     : 2
 summary     : GNU database library
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org.ua/software/gdbm/
@@ -17,10 +17,13 @@ builddeps   :
     - pkgconfig(readline)
 setup       : |
     %configure --disable-static \
-               --enable-libgdbm-compat
+               --disable-libgdbm-compat
 build       : |
     %make
 install     : |
     %make_install
 check       : |
     %make check
+tuning      :
+    - lto
+    - optimize: speed
