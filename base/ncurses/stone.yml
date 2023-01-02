@@ -4,14 +4,14 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : ncurses
-version     : 6.3
-release     : 2
+version     : 6.4
+release     : 3
 homepage    : https://ftp.gnu.org/gnu/ncurses
 upstreams   :
-    - https://ftp.gnu.org/gnu/ncurses/ncurses-6.3.tar.gz : 97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059
+    - https://ftp.gnu.org/gnu/ncurses/ncurses-6.4.tar.gz : 6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
 summary     : Console display library
 description : |
-    Console display library
+    The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. It uses terminfo format, supports pads and color and multiple highlights and forms characters and function-key mapping, and has all the other SVr4-curses enhancements over BSD curses. SVr4 curses became the basis of X/Open Curses.
 license     :
     - MIT
 setup       : |
