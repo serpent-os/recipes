@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : ldc
 version     : 1.30.0
-release     : 1
+release     : 2
 summary     : The LLVM-based D Compiler
 license     :
     - Apache-2.0
@@ -16,16 +21,9 @@ upstreams   :
         stripdirs: 1
         unpackdir: "%(name)-%(version)-src/dmd2/"
 builddeps   :
-    - cmake
-    - ninja
-    - patch
-    - gcc
+    - binary(make)
     - lld-devel
     - llvm-devel
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
 setup       : |
     %patch %(pkgdir)/stateless/0001-Fixups-for-packaging-and-stateless-config.patch
 

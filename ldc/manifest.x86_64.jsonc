@@ -1,8 +1,13 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"ldc": {
+			"build-depends": [
+				"binary(make)",
+				"lld-devel",
+				"llvm-devel"
+			],
 			"depends": [
 				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -54,6 +59,11 @@
 			]
 		},
 		"ldc-devel": {
+			"build-depends": [
+				"binary(make)",
+				"lld-devel",
+				"llvm-devel"
+			],
 			"files": [
 				"/usr/include/d/__builtins.di",
 				"/usr/include/d/core/atomic.d",
@@ -766,6 +776,6 @@
 		}
 	},
 	"source-name": "ldc",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.30.0"
 }
