@@ -1,8 +1,12 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"autoconf": {
+			"build-depends": [
+				"binary(m4)",
+				"binary(perl)"
+			],
 			"files": [
 				"/usr/bin/autoconf",
 				"/usr/bin/autoheader",
@@ -80,6 +84,6 @@
 		}
 	},
 	"source-name": "autoconf",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.71"
 }
