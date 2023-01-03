@@ -11,8 +11,7 @@
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgdbm.so.6(x86_64))",
-				"soname(libm.so.6(x86_64))",
-				"soname(libperl.so(x86_64))"
+				"soname(libm.so.6(x86_64))"
 			],
 			"files": [
 				"/usr/bin/corelist",
@@ -2507,6 +2506,7 @@
 				"binary(instmodsh)",
 				"binary(json_pp)",
 				"binary(libnetcfg)",
+				"soname(libperl.so(x86_64))",
 				"binary(perl)",
 				"binary(perl5.36.0)",
 				"binary(perlbug)",
@@ -2533,6 +2533,6 @@
 		}
 	},
 	"source-name": "perl",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "5.36.0"
 }
