@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : zstd
 version     : 1.5.2
-release     : 1
+release     : 2
 summary     : Fast real-time compression algorithm
 license     :
     - BSD-3-Clause
@@ -11,15 +16,9 @@ description : |
 upstreams   :
     - https://github.com/facebook/zstd/releases/download/v1.5.2/zstd-1.5.2.tar.gz: 7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0
 builddeps   :
-    - make
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
-    - zlib-devel
-    - xz-devel
-    - zlib-devel
-    - llvm-bolt
+    - pkgconfig(liblz4)
+    - pkgconfig(liblzma)
+    - pkgconfig(zlib)
 build       : |
     %make
 install     : |
