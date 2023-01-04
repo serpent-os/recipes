@@ -1,8 +1,17 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"openssh": {
+			"build-depends": [
+				"pkgconfig(libcrypt)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(libedit)",
+				"pkgconfig(libldns)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(pam)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -47,6 +56,15 @@
 			]
 		},
 		"openssh-server": {
+			"build-depends": [
+				"pkgconfig(libcrypt)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(libedit)",
+				"pkgconfig(libldns)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(pam)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -71,10 +89,13 @@
 				"/usr/share/man/cat8/sftp-server.8",
 				"/usr/share/man/cat8/sshd.8"
 			],
-			"name": "openssh-server"
+			"name": "openssh-server",
+			"provides": [
+				"sysbinary(sshd)"
+			]
 		}
 	},
 	"source-name": "openssh",
-	"source-release": "2",
-	"source-version": "9.1_p1"
+	"source-release": "3",
+	"source-version": "9.1p1"
 }
