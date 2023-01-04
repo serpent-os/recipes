@@ -1,8 +1,17 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"btrfs-progs": {
+			"build-depends": [
+				"pkgconfig(blkid)",
+				"pkgconfig(ext2fs)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(lzo2)",
+				"pkgconfig(uuid)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -52,6 +61,15 @@
 			]
 		},
 		"btrfs-progs-devel": {
+			"build-depends": [
+				"pkgconfig(blkid)",
+				"pkgconfig(ext2fs)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(lzo2)",
+				"pkgconfig(uuid)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/btrfs/ctree.h",
 				"/usr/include/btrfs/ioctl.h",
@@ -75,6 +93,6 @@
 		}
 	},
 	"source-name": "btrfs-progs",
-	"source-release": "1",
-	"source-version": "6.1"
+	"source-release": "2",
+	"source-version": "6.1.1"
 }
