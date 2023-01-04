@@ -1,0 +1,44 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dosfstools": {
+			"build-depends": [
+				"binary(xxd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/sbin/fatlabel",
+				"/usr/sbin/fsck.fat",
+				"/usr/sbin/mkfs.fat",
+				"/usr/share/doc/dosfstools/ANNOUNCE.mkdosfs",
+				"/usr/share/doc/dosfstools/COPYING",
+				"/usr/share/doc/dosfstools/ChangeLog",
+				"/usr/share/doc/dosfstools/ChangeLog.dosfsck",
+				"/usr/share/doc/dosfstools/ChangeLog.dosfstools-2.x",
+				"/usr/share/doc/dosfstools/ChangeLog.mkdosfs",
+				"/usr/share/doc/dosfstools/NEWS",
+				"/usr/share/doc/dosfstools/README",
+				"/usr/share/doc/dosfstools/README.dosfsck",
+				"/usr/share/doc/dosfstools/README.dosfstools-2.x",
+				"/usr/share/doc/dosfstools/README.mkdosfs",
+				"/usr/share/doc/dosfstools/TODO.dosfstools-2.x",
+				"/usr/share/man/man8/fatlabel.8",
+				"/usr/share/man/man8/fsck.fat.8",
+				"/usr/share/man/man8/mkfs.fat.8"
+			],
+			"name": "dosfstools",
+			"provides": [
+				"sysbinary(fatlabel)",
+				"sysbinary(fsck.fat)",
+				"sysbinary(mkfs.fat)"
+			]
+		}
+	},
+	"source-name": "dosfstools",
+	"source-release": "1",
+	"source-version": "4.2"
+}
