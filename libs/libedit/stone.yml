@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libedit
-version     : 20221030.3.1
-release     : 1
+version     : 20221030-3.1
+release     : 2
 summary     : Command line editor library providing generic line editing, history, and tokenization functions
 license     : BSD-3-Clause
 homepage    : https://thrysoee.dk/editline/
@@ -24,3 +24,6 @@ install     : |
 
     # Conflicts with readline
     rm %(installroot)/usr/share/man/man3/history.3
+tuning      :
+    - lto
+    - optimize: speed

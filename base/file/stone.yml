@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : file
-version     : 5.43
-release     : 3
+version     : 5.44
+release     : 4
 homepage    : https://astron.com/pub/file
 upstreams   :
-    - https://astron.com/pub/file/file-5.43.tar.gz : 8c8015e91ae0e8d0321d94c78239892ef9dbc70c4ade0008c0e95894abfb1991
+    - https://astron.com/pub/file/file-5.44.tar.gz : 3751c7fba8dbc831cb8d7cc8aff21035459b8ce5155ef8b0880a27d028475f3b
 summary     : File type identification utility
 description : |
     File type identification utility
@@ -18,6 +18,7 @@ builddeps   :
     - pkgconfig(bzip2)
     - pkgconfig(liblzma)
     - pkgconfig(libseccomp)
+    - pkgconfig(libzstd)
     - pkgconfig(zlib)
 setup       : |
     # Fix linking libmagic

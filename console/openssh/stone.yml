@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : openssh
-version     : "9.1_p1"
-release     : 2
+version     : "9.1p1"
+release     : 3
 summary     : OpenSSH (OpenBSD Secure Shell)
 license     : 
     - BSD-2-Clause

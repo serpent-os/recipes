@@ -1,2 +1,4 @@
 releases:
   id: 2565
+security:
+  cpe: cpe:2.3:a:openbsd:openssh:*:*:*:*:*:*:*:*

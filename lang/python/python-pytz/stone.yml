@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : python-pytz
-version     : 2022.6
-release     : 1
+version     : 2022.7
+release     : 2
 summary     : World timezone definitions, modern and historical
 license     : MIT
 homepage    : https://pythonhosted.org/pytz/
 description : |
     World timezone definitions, modern and historical
 upstreams   :
-    - https://files.pythonhosted.org/packages/source/p/pytz/pytz-2022.6.tar.gz: e89512406b793ca39f5971bc999cc538ce125c0e51c27941bef4568b460095e2
+    - https://files.pythonhosted.org/packages/source/p/pytz/pytz-2022.7.tar.gz: 7ccfae7b4b2c067464a6733c6261673fdb8fd1be905460396b97a073e9fa683a
 # checkdeps   :
 #     - python-pytest
 build       : |

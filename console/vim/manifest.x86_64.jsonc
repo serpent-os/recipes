@@ -1,8 +1,11 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"vim": {
+			"build-depends": [
+				"pkgconfig(ncursesw)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -10,12 +13,7 @@
 				"soname(libncursesw.so.6(x86_64))"
 			],
 			"files": [
-				"/usr/bin/ex",
-				"/usr/bin/rview",
-				"/usr/bin/rvim",
-				"/usr/bin/view",
 				"/usr/bin/vim",
-				"/usr/bin/vimdiff",
 				"/usr/bin/vimtutor",
 				"/usr/bin/xxd",
 				"/usr/share/applications/gvim.desktop",
@@ -1834,6 +1832,7 @@
 				"/usr/share/vim/vim90/syntax/shared/context-data-interfaces.vim",
 				"/usr/share/vim/vim90/syntax/shared/context-data-metafun.vim",
 				"/usr/share/vim/vim90/syntax/shared/context-data-tex.vim",
+				"/usr/share/vim/vim90/syntax/shared/hgcommitDiff.vim",
 				"/usr/share/vim/vim90/syntax/shared/typescriptcommon.vim",
 				"/usr/share/vim/vim90/syntax/sicad.vim",
 				"/usr/share/vim/vim90/syntax/sieve.vim",
@@ -2103,18 +2102,13 @@
 			],
 			"name": "vim",
 			"provides": [
-				"binary(ex)",
-				"binary(rview)",
-				"binary(rvim)",
-				"binary(view)",
 				"binary(vim)",
-				"binary(vimdiff)",
 				"binary(vimtutor)",
 				"binary(xxd)"
 			]
 		}
 	},
 	"source-name": "vim",
-	"source-release": "1",
-	"source-version": "9.0.1065"
+	"source-release": "2",
+	"source-version": "9.0.1140"
 }
