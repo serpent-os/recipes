@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libuv
+version     : '1.44.2'
+release     : 1
+homepage    : https://libuv.org/
+upstreams   :
+    - https://dist.libuv.org/dist/v1.44.2/libuv-v1.44.2.tar.gz : ccfcdc968c55673c6526d8270a9c8655a806ea92468afcbcabc2b16040f03cb4
+summary     : Cross-platform asynchronous I/O library
+description : |
+    libuv is a multi-platform support library with a focus on asynchronous I/O.
+license     :
+    - BSD-2-Clause
+    - ISC
+    - MIT
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+    rm -v %(installroot)%(libdir)/pkgconfig/libuv-static.pc
+    rm -v %(installroot)%(libdir)/libuv_a.a
+tuning      :
+    - lto
+    - optimize: speed

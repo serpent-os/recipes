@@ -1,0 +1,6 @@
+releases:
+  id: 10784
+security:
+  cpe:
+  - vendor: libuv_project
+    product: libuv
