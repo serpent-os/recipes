@@ -1,0 +1,57 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : bind-utils
+version     : '9.19.11'
+release     : 1
+homepage    : https://www.isc.org/bind/
+upstreams   :
+    - https://downloads.isc.org/isc/bind9/9.19.11/bind-9.19.11.tar.xz : 35c00e8047d069a148e87066250090e9aa56c2b98f0de0e1d03a2e3edf18dabc
+summary     : Tools to interact with DNS services
+description : |
+    BIND (Berkeley Internet Name Domain) is a complete, highly portable
+    implementation of the Domain Name System (DNS) protocol. This package
+    includes client tools like dig & nslookup.
+license     :
+    - BSD-3-Clause
+    - MIT
+    - MPL-2.0-no-copyleft-exception
+builddeps   :
+    - pkgconfig(json-c)
+    - pkgconfig(libcap)
+    - pkgconfig(libidn2)
+    - pkgconfig(libnghttp2)
+    - pkgconfig(libuv)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(openssl)
+    - pkgconfig(zlib)
+    - lmdb-devel
+setup       : |
+    %configure --disable-geoip \
+               --with-json-c \
+               --with-libidn2 \
+               --with-libxml2 \
+               --with-zlib
+build       : |
+    %make -C lib
+    %make bind.keys.h
+    %make -C bin/delv
+    %make -C bin/dig
+    %make -C bin/nsupdate
+    %make -C doc/man
+install     : |
+    %make_install -C lib
+    %make_install -C bin/delv
+    %make_install -C bin/dig
+    %make_install -C bin/nsupdate
+    rm -rvf %(installroot)/usr/include
+    install -dm00755 %(installroot)/%(mandir)/man1
+    install -Dm00644 doc/man/delv.1 doc/man/dig.1 doc/man/host.1 doc/man/nslookup.1 doc/man/nsupdate.1 -t %(installroot)/%(mandir)/man1
+# TODO Checks
+toolchain   : gnu
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/*.so
