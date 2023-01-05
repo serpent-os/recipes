@@ -1,6 +1,6 @@
 name        : moss
 version     : 0.1
-release     : 3
+release     : 4
 summary     : Default package manager of Serpent OS
 license     : Zlib
 homepage    : https://gitlab.com/serpent-os/core/moss
@@ -8,37 +8,37 @@ description : |
     Default package manager of Serpent OS.
 upstreams   :
     - https://github.com/serpent-os/moss/archive/refs/heads/main.tar.gz:
-        hash: 0deef179254f1e30b05ee009fec34e4fa6f6d24775703b9d473fb3ee3594bc7b
+        hash: a6281925309dec14944dec14e21b2728f938b4cc6063f6a2cd0fcbccd80982fc
         rename: moss.tar.gz
         stripdirs: 1
         unpackdir: "moss/"
     - https://github.com/serpent-os/moss-config/archive/refs/heads/main.tar.gz:
-        hash: 3ff0c472ff78001648e2560fa230abed92abe0fddf7f535bac1fa292c3eecd5c
+        hash: 9b1fe1999bf315c4fd2fb3c6a478da4725e83bedd218695d68b9bd7d14003715
         rename: moss-config.tar.gz
         stripdirs: 1
         unpackdir: "moss-config/"
     - https://github.com/serpent-os/moss-core/archive/refs/heads/main.tar.gz:
-        hash: 15f5c8f47cd009525c4c29e567e1418e25fed1a7e6cf1ec4804c8e6da89eb7da
+        hash: 25991541c334bf1d463574cc601ae623a6e2336d755f57b2c49925a0aabf4dd1
         rename: moss-core.tar.gz
         stripdirs: 1
         unpackdir: "moss-core/"
     - https://github.com/serpent-os/moss-db/archive/refs/heads/main.tar.gz:
-        hash: fb3488a39df6a52934a3db8ccaed14cbd7dcf10cab05a51dcbc32e6fd505c3e9
+        hash: 7758f0bf39951e1820d4141ba435c17dc1e622b330c2f74bb00a6a8d070d081a
         rename: moss-db.tar.gz
         stripdirs: 1
         unpackdir: "moss-db/"
     - https://github.com/serpent-os/moss-deps/archive/refs/heads/main.tar.gz:
-        hash: 5620a02b42115e9784bc19dedded13f61420f65cdf683fcec1fddbd85c99ea88
+        hash: 9bae4e573406d8b2f437297557b2cd468f27394ca74238e7a0928b4d3f3f14d9
         rename: moss-deps.tar.gz
         stripdirs: 1
         unpackdir: "moss-deps/"
     - https://github.com/serpent-os/moss-fetcher/archive/refs/heads/main.tar.gz:
-        hash: 7f95ab94cf4a302eeb2140c955308725625ef0c04d69b53c056bce49271c6ae9
+        hash: e7aa98b1e441f563bef2b8780057d16d2848e11cdef1adc02d21215bd968a206
         rename: moss-fetcher.tar.gz
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://github.com/serpent-os/moss-format/archive/refs/heads/main.tar.gz:
-        hash: ae48a6a9a4456dbaa423cec8fd737d9b2a144750fd93c7010eb80ff83da727f6
+        hash: 9b6bedd735c2dbac154e08720f702dc1180dcf9099802a2e0d4ae3f792bdf267
         rename: moss-format.tar.gz
         stripdirs: 1
         unpackdir: "moss-format/"
