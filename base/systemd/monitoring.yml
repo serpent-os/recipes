@@ -3,3 +3,7 @@ releases:
   ignore:
     # We only update to the n-1 stable release. So for now we're only interested in 251.x updates
     - 252.*
+security:
+  cpe:
+  - vendor: systemd_project
+    product: systemd

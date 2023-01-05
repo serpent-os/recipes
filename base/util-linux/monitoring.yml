@@ -1,2 +1,6 @@
 releases:
   id: 8179
+security:
+  cpe:
+  - vendor: util-linux_project
+    product: util-linux

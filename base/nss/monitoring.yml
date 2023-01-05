@@ -1,2 +1,6 @@
 releases:
   id: 2503
+security:
+  cpe:
+  - vendor: mozilla
+    product: nss

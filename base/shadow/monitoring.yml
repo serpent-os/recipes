@@ -4,4 +4,6 @@ releases:
     # Give 4.13 a few bugfix releases to stabilize first
     - 4\.13
 security:
-  cpe: cpe:2.3:a:shadow_project:shadow:*:*:*:*:*:*:*:*
+  cpe:
+  - vendor: shadow_project
+    product: shadow

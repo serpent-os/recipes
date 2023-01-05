@@ -1,2 +1,6 @@
 releases:
   id: 284961
+security:
+  cpe:
+  - vendor: python
+    product: python

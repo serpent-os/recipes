@@ -1,2 +1,6 @@
 releases:
   id: 1221
+security:
+  cpe:
+  - vendor: gnu
+    product: gnutls

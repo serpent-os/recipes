@@ -1,2 +1,6 @@
 releases:
   id: 1558
+security:
+  cpe:
+  - vendor: libarchive
+    product: libarchive

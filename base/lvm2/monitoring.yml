@@ -1,2 +1,6 @@
 releases:
   id: 5354
+security:
+  cpe:
+  - vendor: redhat
+    product: lvm2

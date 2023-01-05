@@ -1,2 +1,6 @@
 releases:
   id: 1783
+security:
+  cpe:
+  - vendor: xmlsoft
+    product: libxml2
