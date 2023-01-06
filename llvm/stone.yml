@@ -1,6 +1,6 @@
 name        : llvm
-version     : 14.0.5
-release     : 1
+version     : 14.0.6
+release     : 2
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -9,20 +9,19 @@ homepage    : https://www.llvm.org
 description : |
     Low Level Virtual Machine
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.5/llvm-project-14.0.5.src.tar.xz: c9d27903ba3883c476a83cd515e36e1e07b0585db55692835de11385d9e3c8fa
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-project-14.0.6.src.tar.xz: 8b3cfd7bc695bd6cea0f37f53f0981f34f87496e79e2529874fd03a2f9dd3a8a
 builddeps   :
+    - binary(perl)
+    - binary(python3)
+    - pkgconfig(libffi)
+    - pkgconfig(libxcrypt)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(ncursesw)
+    - pkgconfig(zlib)
+    - binutils-devel
     - gcc-32bit-devel
     - glibc-32bit-devel
-    - binutils-devel
-    - ncurses-devel
     - libcxx-32bit-devel
-    - libffi-devel
-    - libxcrypt-devel
-    - perl
-    - python
-    - libxml2-devel
-    - zlib-devel
-    - llvm-bolt
 environment : |
     export BOOTSTRAP=TRUE
 
@@ -76,6 +75,7 @@ environment : |
 setup       : |
     %patch %(pkgdir)/perf/0001-Reduce-GCC-startup-searches.patch
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
+    %patch %(pkgdir)/serpent/0001-Support-serpent-as-a-distro.patch
     %patch %(pkgdir)/serpent/0001-Make-gnu-hash-the-default-for-lld-and-clang.patch
     %patch %(pkgdir)/serpent/0001-Update-binutils-version-to-match-Serpent-OS.patch
     %patch %(pkgdir)/serpent/0001-Make-external-visibility-default.patch
@@ -111,7 +111,7 @@ setup       : |
         %cmake_build -C . clang compiler-rt lld llvm-profdata llvm-ar llvm-nm llvm-ranlib llvm-objcopy Polly
     fi
 build       : |
-    # Build llvm-libgcc (well need compiler-rt from it) for fresh compiler
+    # Build llvm-libgcc (we'll need compiler-rt from it) for fresh compiler
     #cmake -B build-runtimes -S runtimes \
     #    -DCMAKE_AR=%(pkgdir)/bootstrap/bin/llvm-ar \
     #    -DCMAKE_NM=%(pkgdir)/bootstrap/bin/llvm-nm \

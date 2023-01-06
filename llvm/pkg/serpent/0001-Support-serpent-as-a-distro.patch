@@ -1,0 +1,46 @@
+From 78605cea876278e9d9decfe74d0cd9871331af35 Mon Sep 17 00:00:00 2001
+From: Joey Riches <josephriches@gmail.com>
+Date: Fri, 8 Jul 2022 17:39:54 +0100
+Subject: [PATCH] Support serpent as a distro
+
+---
+ clang/include/clang/Driver/Distro.h | 3 +++
+ clang/lib/Driver/Distro.cpp         | 1 +
+ 2 files changed, 4 insertions(+)
+
+diff --git a/clang/include/clang/Driver/Distro.h b/clang/include/clang/Driver/Distro.h
+index 2723f75e8945..0a06c4ccc1d4 100644
+--- a/clang/include/clang/Driver/Distro.h
++++ b/clang/include/clang/Driver/Distro.h
+@@ -45,6 +45,7 @@ public:
+     Fedora,
+     Gentoo,
+     OpenSUSE,
++    SerpentOS,
+     UbuntuHardy,
+     UbuntuIntrepid,
+     UbuntuJaunty,
+@@ -120,6 +121,8 @@ public:
+ 
+   bool IsOpenSUSE() const { return DistroVal == OpenSUSE; }
+ 
++  bool IsSerpentOS() const { return DistroVal == SerpentOS; }
++
+   bool IsDebian() const {
+     return DistroVal >= DebianLenny && DistroVal <= DebianBookworm;
+   }
+diff --git a/clang/lib/Driver/Distro.cpp b/clang/lib/Driver/Distro.cpp
+index 5ac38c34d112..89336f00c89b 100644
+--- a/clang/lib/Driver/Distro.cpp
++++ b/clang/lib/Driver/Distro.cpp
+@@ -43,6 +43,7 @@ static Distro::DistroType DetectOsRelease(llvm::vfs::FileSystem &VFS) {
+                     // On SLES, /etc/os-release was introduced in SLES 11.
+                     .Case("sles", Distro::OpenSUSE)
+                     .Case("opensuse", Distro::OpenSUSE)
++                    .Case("serpentos", Distro::SerpentOS)
+                     .Case("exherbo", Distro::Exherbo)
+                     .Default(Distro::UnknownDistro);
+   return Version;
+-- 
+2.39.0
+
