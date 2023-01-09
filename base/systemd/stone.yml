@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '251.10'
-release     : 6
+release     : 7
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -66,6 +66,7 @@ setup       : |
     %patch %(pkgdir)/perf/systemd-243-random-seed-no-insane-timeouts.patch
     %patch %(pkgdir)/bugs/rules-add-missing-line-continuation.patch
     %patch %(pkgdir)/bugs/systemd-250-compile.patch
+    %patch %(pkgdir)/bugs/gpg-auto-without-cryptsetup.patch
     %patch %(pkgdir)/0001-Set-DefaultTimeoutStopSec-to-5s.patch
     %patch %(pkgdir)/0008-efi-boot-generator-Do-not-automount-boot-partition.patch
     %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
