@@ -1,2 +1,6 @@
 releases:
   id: 5356
+security:
+  cpe:
+  - vendor: freedesktop
+    product: dbus

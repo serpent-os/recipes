@@ -1,2 +1,6 @@
 releases:
   id: 234776
+security:
+  cpe:
+  - vendor: gnu
+    product: ncurses

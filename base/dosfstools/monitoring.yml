@@ -1,2 +1,6 @@
 releases:
   id: 455
+security:
+  cpe:
+  - vendor: dosfstools_project
+    product: dosfstools
