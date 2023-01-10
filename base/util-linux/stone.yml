@@ -5,7 +5,7 @@
 #
 name        : util-linux
 version     : 2.38.1
-release     : 4
+release     : 5
 summary     : Random collection of Linux utilities
 license     :
     - BSD-3-Clause
@@ -21,6 +21,7 @@ description : |
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.1.tar.xz : 60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f
 builddeps   :
+    - pkgconfig(libcap-ng)
     - pkgconfig(libcrypt)
     - pkgconfig(libsystemd)
     - pkgconfig(ncursesw)
@@ -30,9 +31,9 @@ builddeps   :
 setup       : |
     # Can fix these issues once fakeroot is implemented
     %configure --disable-makeinstall-chown \
-        --disable-makeinstall-setuid \
-        --disable-static \
-        --with-vendordir=%(vendordir)
+               --disable-makeinstall-setuid \
+               --disable-static \
+               --with-vendordir=%(vendordir)
 build       : |
     %make
 install     : |

@@ -1,0 +1,105 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libcap-ng": {
+			"build-depends": [
+				"binary(swig)",
+				"pkgconfig(libattr)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/captest",
+				"/usr/bin/filecap",
+				"/usr/bin/netcap",
+				"/usr/bin/pscap",
+				"/usr/lib/libcap-ng.so.0",
+				"/usr/lib/libcap-ng.so.0.0.0",
+				"/usr/lib/libdrop_ambient.so.0",
+				"/usr/lib/libdrop_ambient.so.0.0.0",
+				"/usr/share/man/man7/libdrop_ambient.7",
+				"/usr/share/man/man8/captest.8",
+				"/usr/share/man/man8/filecap.8",
+				"/usr/share/man/man8/netcap.8",
+				"/usr/share/man/man8/pscap.8"
+			],
+			"name": "libcap-ng",
+			"provides": [
+				"binary(captest)",
+				"binary(filecap)",
+				"soname(libcap-ng.so.0(x86_64))",
+				"soname(libdrop_ambient.so.0(x86_64))",
+				"binary(netcap)",
+				"binary(pscap)"
+			]
+		},
+		"libcap-ng-devel": {
+			"build-depends": [
+				"binary(swig)",
+				"pkgconfig(libattr)",
+				"pkgconfig(python3)"
+			],
+			"files": [
+				"/usr/include/cap-ng.h",
+				"/usr/lib/libcap-ng.so",
+				"/usr/lib/libdrop_ambient.so",
+				"/usr/lib/pkgconfig/libcap-ng.pc",
+				"/usr/share/aclocal/cap-ng.m4",
+				"/usr/share/man/man3/capng_apply.3",
+				"/usr/share/man/man3/capng_apply_caps_fd.3",
+				"/usr/share/man/man3/capng_capability_to_name.3",
+				"/usr/share/man/man3/capng_change_id.3",
+				"/usr/share/man/man3/capng_clear.3",
+				"/usr/share/man/man3/capng_fill.3",
+				"/usr/share/man/man3/capng_get_caps_fd.3",
+				"/usr/share/man/man3/capng_get_caps_process.3",
+				"/usr/share/man/man3/capng_get_rootid.3",
+				"/usr/share/man/man3/capng_have_capabilities.3",
+				"/usr/share/man/man3/capng_have_capability.3",
+				"/usr/share/man/man3/capng_lock.3",
+				"/usr/share/man/man3/capng_name_to_capability.3",
+				"/usr/share/man/man3/capng_print_caps_numeric.3",
+				"/usr/share/man/man3/capng_print_caps_text.3",
+				"/usr/share/man/man3/capng_restore_state.3",
+				"/usr/share/man/man3/capng_save_state.3",
+				"/usr/share/man/man3/capng_set_rootid.3",
+				"/usr/share/man/man3/capng_setpid.3",
+				"/usr/share/man/man3/capng_update.3",
+				"/usr/share/man/man3/capng_updatev.3"
+			],
+			"name": "libcap-ng-devel",
+			"provides": [
+				"pkgconfig(libcap-ng)"
+			]
+		},
+		"python-libcap-ng": {
+			"build-depends": [
+				"binary(swig)",
+				"pkgconfig(libattr)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libcap-ng.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/python3.11/site-packages/__pycache__/capng.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/__pycache__/capng.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/_capng.so",
+				"/usr/lib/python3.11/site-packages/capng.py"
+			],
+			"name": "python-libcap-ng",
+			"provides": [
+				"soname(_capng.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "libcap-ng",
+	"source-release": "1",
+	"source-version": "0.8.3"
+}

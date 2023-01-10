@@ -1,0 +1,46 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libcap-ng
+version     : 0.8.3
+release     : 1
+summary     : Libcap-ng is a library that makes using posix capabilities easier
+license     : LGPL-2.1-or-later
+homepage    : http://people.redhat.com/sgrubb/libcap-ng/ 
+description : |
+    The libcap-ng library should make programming with posix capabilities easier. The library has some utilities to help you analyse a system for apps that may have too much privileges.
+upstreams   :
+    - https://people.redhat.com/sgrubb/libcap-ng/libcap-ng-0.8.3.tar.gz: bed6f6848e22bb2f83b5f764b2aef0ed393054e803a8e3a8711cb2a39e6b492d
+builddeps   :
+    - pkgconfig(libattr)
+    - pkgconfig(python3)
+    - binary(swig)
+setup       : |
+    %configure --disable-static \
+               --without-python \
+               --with-python3
+build       : |
+    %make 
+install     : |
+    %make_install
+# Note that these will fail if ran in a host that does not match the version of the kernel headers
+check       : |
+    %make check
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/man/man3/*
+    - "python-%(name)":
+        summary: "Libcap-ng is a library that makes using posix capabilities easier - Python library"
+        description: |
+            The libcap-ng library should make programming with posix capabilities easier. The library has some 
+            utilities to help you analyse a system for apps that may have too much privileges - Python Library
+        rundeps:
+            - python
+        paths:
+            - /usr/lib/python*
+tune        :
+    - nosemantic
+    - optimize: size

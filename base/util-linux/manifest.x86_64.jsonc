@@ -4,6 +4,7 @@
 	"packages": {
 		"util-linux": {
 			"build-depends": [
+				"pkgconfig(libcap-ng)",
 				"pkgconfig(libcrypt)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(ncursesw)",
@@ -15,6 +16,7 @@
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
+				"soname(libcap-ng.so.0(x86_64))",
 				"soname(libcrypt.so.1(x86_64))",
 				"soname(libncursesw.so.6(x86_64))",
 				"soname(libpam.so.0(x86_64))",
@@ -82,6 +84,7 @@
 				"/usr/bin/scriptlive",
 				"/usr/bin/scriptreplay",
 				"/usr/bin/setarch",
+				"/usr/bin/setpriv",
 				"/usr/bin/setsid",
 				"/usr/bin/setterm",
 				"/usr/bin/su",
@@ -240,6 +243,7 @@
 				"/usr/share/bash-completion/completions/scriptlive",
 				"/usr/share/bash-completion/completions/scriptreplay",
 				"/usr/share/bash-completion/completions/setarch",
+				"/usr/share/bash-completion/completions/setpriv",
 				"/usr/share/bash-completion/completions/setsid",
 				"/usr/share/bash-completion/completions/setterm",
 				"/usr/share/bash-completion/completions/sfdisk",
@@ -345,6 +349,7 @@
 				"/usr/share/man/man1/script.1",
 				"/usr/share/man/man1/scriptlive.1",
 				"/usr/share/man/man1/scriptreplay.1",
+				"/usr/share/man/man1/setpriv.1",
 				"/usr/share/man/man1/setsid.1",
 				"/usr/share/man/man1/setterm.1",
 				"/usr/share/man/man1/su.1",
@@ -524,6 +529,7 @@
 				"binary(scriptlive)",
 				"binary(scriptreplay)",
 				"binary(setarch)",
+				"binary(setpriv)",
 				"binary(setsid)",
 				"binary(setterm)",
 				"sysbinary(sfdisk)",
@@ -553,6 +559,7 @@
 		},
 		"util-linux-devel": {
 			"build-depends": [
+				"pkgconfig(libcap-ng)",
 				"pkgconfig(libcrypt)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(ncursesw)",
@@ -588,6 +595,6 @@
 		}
 	},
 	"source-name": "util-linux",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "2.38.1"
 }
