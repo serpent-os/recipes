@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : valgrind
+version     : '3.20.0'
+release     : 1
+homepage    : https://valgrind.org/
+upstreams   :
+    - https://sourceware.org/pub/valgrind/valgrind-3.20.0.tar.bz2 : 8536c031dbe078d342f121fa881a9ecd205cb5a78e639005ad570011bdb9f3c6
+summary     : Instrumentation framework for testing & debugging
+description : |
+    Valgrind is an instrumentation framework for building dynamic analysis tools.
+    There are Valgrind tools that can automatically detect many memory management
+    and threading bugs, and profile your programs in detail.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - gcc-devel
+rundeps     :
+    - glibc-dbginfo
+setup       : |
+    %configure CFLAGS="$CFLAGS -fno-stack-protector"
+build       : |
+    %make
+install     : |
+    %make_install
