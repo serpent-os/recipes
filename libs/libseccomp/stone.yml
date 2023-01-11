@@ -15,14 +15,14 @@ description : |
 license     : LGPL-2.1-only
 builddeps   :
     - binary(gperf)
-#checkdeps   :
-#    - valgrind
+checkdeps   :
+    - binary(which) # make check uses 'which' to test if 'head' is available
+    - pkgconfig(valgrind)
 setup       : |
     %configure --disable-static
 build       : |
     %make
 install     : |
     %make_install
-#check       : |
-# TODO enable checks after packaging valgrind
-#    %make check
+check       : |
+    %make check
