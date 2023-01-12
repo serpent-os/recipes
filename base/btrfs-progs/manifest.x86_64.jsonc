@@ -93,6 +93,6 @@
 		}
 	},
 	"source-name": "btrfs-progs",
-	"source-release": "2",
-	"source-version": "6.1.1"
+	"source-release": "3",
+	"source-version": "6.1.2"
 }
