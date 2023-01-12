@@ -5,7 +5,7 @@
 #
 name        : brotli
 version     : 1.0.9
-release     : 2
+release     : 3
 summary     : Generic-purpose lossless compression algorithm
 license     : MIT
 homepage    : https://github.com/google/brotli
@@ -42,6 +42,6 @@ packages    :
         description: |
             Generic-purpose lossless compression algorithm - Python Library
         rundeps:
-            - python
+            - binary(python3)
         paths:
             - /usr/lib/python*

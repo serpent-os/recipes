@@ -1,8 +1,11 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"brotli": {
+			"build-depends": [
+				"pkgconfig(python3)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -26,6 +29,9 @@
 			]
 		},
 		"brotli-devel": {
+			"build-depends": [
+				"pkgconfig(python3)"
+			],
 			"files": [
 				"/usr/include/brotli/decode.h",
 				"/usr/include/brotli/encode.h",
@@ -46,6 +52,9 @@
 			]
 		},
 		"python-brotli": {
+			"build-depends": [
+				"pkgconfig(python3)"
+			],
 			"depends": [
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -65,6 +74,6 @@
 		}
 	},
 	"source-name": "brotli",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.0.9"
 }
