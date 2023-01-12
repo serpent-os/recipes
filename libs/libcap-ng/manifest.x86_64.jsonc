@@ -77,7 +77,7 @@
 				"pkgconfig(libcap-ng)"
 			]
 		},
-		"python-libcap-ng": {
+		"python-capng": {
 			"build-depends": [
 				"binary(swig)",
 				"pkgconfig(libattr)",
@@ -93,13 +93,13 @@
 				"/usr/lib/python3.11/site-packages/_capng.so",
 				"/usr/lib/python3.11/site-packages/capng.py"
 			],
-			"name": "python-libcap-ng",
+			"name": "python-capng",
 			"provides": [
 				"soname(_capng.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "libcap-ng",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.8.3"
 }

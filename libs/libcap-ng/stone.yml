@@ -5,7 +5,7 @@
 #
 name        : libcap-ng
 version     : 0.8.3
-release     : 1
+release     : 2
 summary     : Libcap-ng is a library that makes using posix capabilities easier
 license     : LGPL-2.1-or-later
 homepage    : http://people.redhat.com/sgrubb/libcap-ng/ 
@@ -32,13 +32,13 @@ packages    :
     - "%(name)-devel":
         paths:
             - /usr/share/man/man3/*
-    - "python-%(name)":
+    - "python-capng":
         summary: "Libcap-ng is a library that makes using posix capabilities easier - Python library"
         description: |
             The libcap-ng library should make programming with posix capabilities easier. The library has some 
             utilities to help you analyse a system for apps that may have too much privileges - Python Library
         rundeps:
-            - python
+            - binary(python3)
         paths:
             - /usr/lib/python*
 tune        :
