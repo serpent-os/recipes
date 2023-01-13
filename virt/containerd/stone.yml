@@ -1,0 +1,56 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : containerd
+version     : 1.6.15
+release     : 1
+homepage    : https://containerd.io/
+upstreams   :
+    - https://github.com/containerd/containerd/archive/refs/tags/v1.6.15.tar.gz : ee170fa73b258e448f9b6729440d38c77d19cd9bec46e45cd195d4670cd8b004
+summary     : An open and reliable container runtime
+description : |
+    An open and reliable container runtime
+license     :
+    - Apache-2.0
+networking  : yes
+builddeps   :
+    - binary(go)
+    - binary(go-md2man)
+    - binary(sed)
+    - pkgconfig(libbtrfsutil)
+rundeps     :
+    - binary(runc)
+environment : |
+    # This can probably be removed after golang reboostrap.
+    export GOMODCACHE="%(workdir)/.cache"
+
+    export GO111MODULE=auto
+    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+
+    # Git commit corresponding to the version tag
+    export COMMIT="5b842e528e99d4d4c1686467debf2bd4b88ecd86"
+setup       : |
+    sed -i 's|/usr/local/bin/containerd|/usr/bin/containerd|' containerd.service
+build      : |
+    mkdir -p src/github.com/containerd
+    ln -s `pwd` src/github.com/containerd/containerd
+    cd src/github.com/containerd/containerd
+    %make V=1 VERSION=v%(version) REVISION=$COMMIT GO_BUILD_FLAGS="$GOFLAGS" BUILDTAGS=no_aufs binaries man
+install     : |
+    %make_install V=1 VERSION=v%(version) REVISION=$COMMIT PREFIX=/usr/
+    rm -fv %(installroot)/%(bindir)/containerd-shim-runc-v1
+
+    # Install the service file, but disable it by default
+    %install_file containerd.service %(installroot)/%(libdir)/systemd/system/containerd.service
+    %install_file %(pkgdir)/containerd.preset %(installroot)/%(libdir)/systemd/system-preset/containerd.preset
+
+    %install_file man/*.8 -t %(installroot)/%(mandir)/man8
+    %install_file man/*.5 -t %(installroot)/%(mandir)/man5
+check       : |
+    # Needs true root
+    GOFLAGS="-trimpath" make test || true
+tune        :
+    - lto
+    - optimize: speed

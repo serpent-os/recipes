@@ -1,6 +1,6 @@
 releases:
-  id: 7462
+  id: 16460
 security:
   cpe:
     vendor: linuxfoundation
-    product: runc
+    product: containerd

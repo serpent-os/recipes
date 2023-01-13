@@ -1,8 +1,11 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"golang": {
+			"build-depends": [
+				"binary(bash)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
@@ -3075,6 +3078,7 @@
 				"/usr/lib/golang/src/internal/poll/sendfile_solaris.go",
 				"/usr/lib/golang/src/internal/poll/sendfile_windows.go",
 				"/usr/lib/golang/src/internal/poll/sock_cloexec.go",
+				"/usr/lib/golang/src/internal/poll/sock_cloexec_accept.go",
 				"/usr/lib/golang/src/internal/poll/sockopt.go",
 				"/usr/lib/golang/src/internal/poll/sockopt_linux.go",
 				"/usr/lib/golang/src/internal/poll/sockopt_unix.go",
@@ -5158,6 +5162,8 @@
 				"/usr/lib/golang/src/syscall/syscall_js.go",
 				"/usr/lib/golang/src/syscall/syscall_linux.go",
 				"/usr/lib/golang/src/syscall/syscall_linux_386.go",
+				"/usr/lib/golang/src/syscall/syscall_linux_accept.go",
+				"/usr/lib/golang/src/syscall/syscall_linux_accept4.go",
 				"/usr/lib/golang/src/syscall/syscall_linux_amd64.go",
 				"/usr/lib/golang/src/syscall/syscall_linux_arm.go",
 				"/usr/lib/golang/src/syscall/syscall_linux_arm64.go",
@@ -7791,8 +7797,11 @@
 				"/usr/lib/golang/test/fixedbugs/issue5614.dir/y.go",
 				"/usr/lib/golang/test/fixedbugs/issue5614.go",
 				"/usr/lib/golang/test/fixedbugs/issue56141.go",
+				"/usr/lib/golang/test/fixedbugs/issue56727.go",
+				"/usr/lib/golang/test/fixedbugs/issue56768.go",
 				"/usr/lib/golang/test/fixedbugs/issue5698.go",
 				"/usr/lib/golang/test/fixedbugs/issue5704.go",
+				"/usr/lib/golang/test/fixedbugs/issue57184.go",
 				"/usr/lib/golang/test/fixedbugs/issue5753.go",
 				"/usr/lib/golang/test/fixedbugs/issue5755.dir/a.go",
 				"/usr/lib/golang/test/fixedbugs/issue5755.dir/main.go",
@@ -8790,6 +8799,9 @@
 			]
 		},
 		"golang-devel": {
+			"build-depends": [
+				"binary(bash)"
+			],
 			"files": [
 				"/usr/lib/golang/pkg/linux_amd64/archive/tar.a",
 				"/usr/lib/golang/pkg/linux_amd64/archive/zip.a",
@@ -9249,6 +9261,6 @@
 		}
 	},
 	"source-name": "golang",
-	"source-release": "1",
-	"source-version": "1.19.4"
+	"source-release": "2",
+	"source-version": "1.19.5"
 }
