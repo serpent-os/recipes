@@ -1,6 +1,6 @@
 name        : boulder
 version     : 0.1
-release     : 17
+release     : 18
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -8,7 +8,7 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - https://github.com/serpent-os/boulder/archive/refs/heads/main.tar.gz:
-        hash: 0100818d8c1423fb1ea4c81ae3c2cfeaa479875fbd5a538afd31e4b79a0bcdbe
+        hash: 21b464720fce0f1cdf35f1d8079552bfa6d0a425e7924aec9d8e042ea93d5ec4
         rename: boulder.tar.gz
         stripdirs: 1
         unpackdir: "boulder/"
@@ -23,7 +23,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-core/"
     - https://github.com/serpent-os/moss-deps/archive/refs/heads/main.tar.gz:
-        hash: 33fe81e61f4919f99d85e26339a0022d9cc02a061d6baf063e72afc764687c9a
+        hash: 9bae4e573406d8b2f437297557b2cd468f27394ca74238e7a0928b4d3f3f14d9
         rename: moss-deps.tar.gz
         stripdirs: 1
         unpackdir: "moss-deps/"
@@ -43,7 +43,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-vendor/"
     - https://github.com/serpent-os/elf-d/archive/refs/heads/dynamiclinking.tar.gz:
-        hash: c864ae8225aae3cafd2a6e2da9eff040d2828c4fe14b5635e05375d226130203
+        hash: 16042f909ec2dca21581752582e8ded86073c364f564182c85c642a93075d3aa
         rename: elf-d.tar.gz
         stripdirs: 1
         unpackdir: "moss-vendor/vendor/elf/elf-d/"
