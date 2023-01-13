@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : tini
+version     : 0.19.0
+release     : 1
+homepage    : https://github.com/krallin/tini 
+upstreams   :
+    - https://github.com/krallin/tini/archive/refs/tags/v0.19.0.tar.gz : 0fd35a7030052acd9f58948d1d900fe1e432ee37103c5561554408bdac6bbf0d
+summary     : A tiny but valid init for containers
+description : |
+    A tiny but valid init for containers
+license     : MIT
+builddeps   :
+    # Note that this build needs static libraries
+    - gcc-devel
+setup       : |
+    %patch %(pkgdir)/0001-Remove-strip-option-to-linker.patch
+    %cmake
+build      : |
+    %cmake_build
+install     : |
+    %cmake_install
+# TODO fix this build with clang, which will probably need to wait until after llvm-libgcc
+toolchain   : gnu

@@ -1,0 +1,27 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"tini": {
+			"build-depends": [
+				"gcc-devel"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/tini",
+				"/usr/bin/tini-static"
+			],
+			"name": "tini",
+			"provides": [
+				"binary(tini)",
+				"binary(tini-static)"
+			]
+		}
+	},
+	"source-name": "tini",
+	"source-release": "1",
+	"source-version": "0.19.0"
+}
