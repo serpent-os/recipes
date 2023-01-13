@@ -1,8 +1,13 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"llvm-bolt": {
+			"build-depends": [
+				"binary(python)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -31,6 +36,6 @@
 		}
 	},
 	"source-name": "llvm-bolt",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "15.0.0"
 }

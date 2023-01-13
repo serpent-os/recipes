@@ -1,6 +1,6 @@
 name        : llvm-bolt
 version     : 15.0.0
-release     : 1
+release     : 2
 summary     : Binary Optimization and Layout Tool
 license     : Apache-2.0
 homepage    : https://github.com/facebookincubator/BOLT
@@ -9,18 +9,9 @@ description : |
 upstreams   :
     - https://github.com/llvm/llvm-project/archive/18c70a7bd932d1259cd28b82f946bec5dc77bfc2.tar.gz: 9a4ad6aa9764073589a3c6c752722d27530ca9c7fd86f75f565a530dc3a2faab
 builddeps   :
-    - gcc
-    - gcc-devel
-    - binutils
-    - cmake
-    - ninja
-    - clang
-    - lld
-    - llvm
-    - libcxx-devel
-    - python
-    - ncurses-devel
-    - zlib-devel
+    - binary(python)
+    - pkgconfig(ncursesw)
+    - pkgconfig(zlib)
 setup       : |
     %cmake -S llvm -DLLVM_ENABLE_ASSERTIONS=OFF \
         -DLLVM_ENABLE_PROJECTS='bolt;clang;lld' \
