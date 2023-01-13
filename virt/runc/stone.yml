@@ -5,7 +5,7 @@
 #
 name        : runc
 version     : 1.1.4
-release     : 1
+release     : 2
 homepage    : https://runc.io/
 upstreams   :
     - https://github.com/opencontainers/runc/archive/refs/tags/v1.1.4.tar.gz : 4f02077432642eebd768fc857318ae7929290b3a3511eb1be338005e360cfa34
@@ -21,10 +21,10 @@ builddeps   :
     - pkgconfig(libseccomp)
 environment : |
     export GOPATH="`pwd`"
-    export BUILDTAGS='seccomp' # TODO enable apparmor
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export BUILDTAGS='seccomp'
+    export CGO_CPPFLAGS="${CPPFLAGS} -Qunused-arguments"
+    export CGO_CFLAGS="${CFLAGS} -Qunused-arguments"
+    export CGO_CXXFLAGS="${CXXFLAGS} -Qunused-arguments"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-trimpath -mod=readonly -modcacherw"
 
@@ -44,3 +44,6 @@ install     : |
 
     %install_dir %(installroot)/%(mandir)/man8
     %install_file man/man8/*.8 -t %(installroot)/%(mandir)/man8
+tune        :
+    - lto
+    - optimize: speed
