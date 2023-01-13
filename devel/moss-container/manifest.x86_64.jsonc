@@ -1,8 +1,12 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"moss-container": {
+			"build-depends": [
+				"ldc",
+				"ldc-devel"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -21,5 +25,5 @@
 	},
 	"source-name": "moss-container",
 	"source-release": "2",
-	"source-version": "0.1"
+	"source-version": "0.2"
 }

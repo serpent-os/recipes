@@ -1,5 +1,5 @@
 name        : moss-container
-version     : 0.1
+version     : 0.2
 release     : 2
 summary     : Containerisation for boulder
 license     : Zlib
@@ -8,12 +8,12 @@ description : |
     Serpent OS builder tool.
 upstreams   :
     - https://github.com/serpent-os/moss-container/archive/refs/heads/main.tar.gz:
-        hash: 3d290e245ec7d8fbc1494cfa283ece195ab0b978e40e1f4e6ebc35bbcd02ace5
+        hash: 50e33502fcbbc1197f2e7d6399a31041bd31c744814c8c4a5d43b298b984ccc4
         rename: moss-container.tar.gz
         stripdirs: 1
         unpackdir: "moss-container/"
     - https://github.com/serpent-os/moss-core/archive/refs/heads/main.tar.gz:
-        hash: 63d46855aeae425a3fad120f700cef3ea9a139d5754799279d9c35ce6cb1f5f9
+        hash: 25991541c334bf1d463574cc601ae623a6e2336d755f57b2c49925a0aabf4dd1
         rename: moss-core.tar.gz
         stripdirs: 1
         unpackdir: "moss-core/"
