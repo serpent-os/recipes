@@ -1,0 +1,55 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libnftnl": {
+			"build-depends": [
+				"pkgconfig(libmnl)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libmnl.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libnftnl.so.11",
+				"/usr/lib/libnftnl.so.11.6.0"
+			],
+			"name": "libnftnl",
+			"provides": [
+				"soname(libnftnl.so.11(x86_64))"
+			]
+		},
+		"libnftnl-devel": {
+			"build-depends": [
+				"pkgconfig(libmnl)"
+			],
+			"depends": [
+				"pkgconfig(libmnl)"
+			],
+			"files": [
+				"/usr/include/libnftnl/batch.h",
+				"/usr/include/libnftnl/chain.h",
+				"/usr/include/libnftnl/common.h",
+				"/usr/include/libnftnl/expr.h",
+				"/usr/include/libnftnl/flowtable.h",
+				"/usr/include/libnftnl/gen.h",
+				"/usr/include/libnftnl/object.h",
+				"/usr/include/libnftnl/rule.h",
+				"/usr/include/libnftnl/ruleset.h",
+				"/usr/include/libnftnl/set.h",
+				"/usr/include/libnftnl/table.h",
+				"/usr/include/libnftnl/trace.h",
+				"/usr/include/libnftnl/udata.h",
+				"/usr/lib/libnftnl.so",
+				"/usr/lib/pkgconfig/libnftnl.pc"
+			],
+			"name": "libnftnl-devel",
+			"provides": [
+				"pkgconfig(libnftnl)"
+			]
+		}
+	},
+	"source-name": "libnftnl",
+	"source-release": "1",
+	"source-version": "1.2.4"
+}

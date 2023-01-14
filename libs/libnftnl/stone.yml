@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libnftnl
+version     : 1.2.4
+release     : 1
+homepage    : https://www.netfilter.org/projects/libnftnl/ 
+upstreams   :
+    - https://netfilter.org/pub/libnftnl/libnftnl-1.2.4.tar.bz2 : c0fe233be4cdfd703e7d5977ef8eb63fcbf1d0052b6044e1b23d47ca3562477f
+summary     : Netfilter nf_tables infrastructure library
+description : |
+    Netfilter nf_tables infrastructure library
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - pkgconfig(libmnl)
+# TODO build with doxygen for documentationQ
+#     - doxygen
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+tuning      :
+    - lto
+    - optimize: speed

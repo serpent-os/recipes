@@ -1,0 +1,6 @@
+releases:
+  id: 1675
+security:
+  cpe:
+  - vendor: netfilter
+    product: libnetfilter_conntrack
