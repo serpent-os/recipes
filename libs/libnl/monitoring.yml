@@ -1,0 +1,6 @@
+releases:
+  id: 1684
+security:
+  cpe:
+  - vendor: libnl_project
+    product: libnl
