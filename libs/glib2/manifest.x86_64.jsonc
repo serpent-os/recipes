@@ -1,8 +1,16 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"glib2": {
+			"build-depends": [
+				"binary(xgettext)",
+				"pkgconfig(bash-completion)",
+				"pkgconfig(libffi)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(mount)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -30,22 +38,22 @@
 				"/usr/lib/glib-2.0/include/glibconfig.h",
 				"/usr/lib/glib2/gio-launch-desktop",
 				"/usr/lib/libgio-2.0.so.0",
-				"/usr/lib/libgio-2.0.so.0.7400.3",
+				"/usr/lib/libgio-2.0.so.0.7400.4",
 				"/usr/lib/libglib-2.0.so.0",
-				"/usr/lib/libglib-2.0.so.0.7400.3",
+				"/usr/lib/libglib-2.0.so.0.7400.4",
 				"/usr/lib/libgmodule-2.0.so.0",
-				"/usr/lib/libgmodule-2.0.so.0.7400.3",
+				"/usr/lib/libgmodule-2.0.so.0.7400.4",
 				"/usr/lib/libgobject-2.0.so.0",
-				"/usr/lib/libgobject-2.0.so.0.7400.3",
+				"/usr/lib/libgobject-2.0.so.0.7400.4",
 				"/usr/lib/libgthread-2.0.so.0",
-				"/usr/lib/libgthread-2.0.so.0.7400.3",
+				"/usr/lib/libgthread-2.0.so.0.7400.4",
 				"/usr/share/bash-completion/completions/gapplication",
 				"/usr/share/bash-completion/completions/gdbus",
 				"/usr/share/bash-completion/completions/gio",
 				"/usr/share/bash-completion/completions/gresource",
 				"/usr/share/bash-completion/completions/gsettings",
-				"/usr/share/gdb/auto-load/usr/lib/libglib-2.0.so.0.7400.3-gdb.py",
-				"/usr/share/gdb/auto-load/usr/lib/libgobject-2.0.so.0.7400.3-gdb.py",
+				"/usr/share/gdb/auto-load/usr/lib/libglib-2.0.so.0.7400.4-gdb.py",
+				"/usr/share/gdb/auto-load/usr/lib/libgobject-2.0.so.0.7400.4-gdb.py",
 				"/usr/share/gettext/its/gschema.its",
 				"/usr/share/gettext/its/gschema.loc",
 				"/usr/share/glib-2.0/codegen/__init__.py",
@@ -105,6 +113,7 @@
 				"/usr/share/locale/hu/LC_MESSAGES/glib20.mo",
 				"/usr/share/locale/hy/LC_MESSAGES/glib20.mo",
 				"/usr/share/locale/id/LC_MESSAGES/glib20.mo",
+				"/usr/share/locale/ie/LC_MESSAGES/glib20.mo",
 				"/usr/share/locale/is/LC_MESSAGES/glib20.mo",
 				"/usr/share/locale/it/LC_MESSAGES/glib20.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/glib20.mo",
@@ -187,6 +196,14 @@
 			]
 		},
 		"glib2-devel": {
+			"build-depends": [
+				"binary(xgettext)",
+				"pkgconfig(bash-completion)",
+				"pkgconfig(libffi)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(mount)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"pkgconfig(libffi)",
 				"pkgconfig(libpcre2-8)",
@@ -500,6 +517,6 @@
 		}
 	},
 	"source-name": "glib2",
-	"source-release": "2",
-	"source-version": "2.74.3"
+	"source-release": "3",
+	"source-version": "2.74.4"
 }

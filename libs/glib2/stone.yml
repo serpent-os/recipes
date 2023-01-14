@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : glib2
-version     : 2.74.3
-release     : 2
-homepage    : https://download.gnome.org/sources/glib/2.74
+version     : 2.74.4
+release     : 3
+homepage    : https://gitlab.gnome.org/GNOME/glib
 upstreams   :
-    - https://download.gnome.org/sources/glib/2.74/glib-2.74.3.tar.xz : e9bc41ecd9690d9bc6a970cc7380119b828e5b6a4b16c393c638b3dc2b87cbcb
+    - https://download.gnome.org/sources/glib/2.74/glib-2.74.4.tar.xz : 0e82da5ea129b4444227c7e4a9e598f7288d1994bf63f129c44b90cfd2432172
 summary     : Low-level core library that forms the basis for projects such as GTK+ and GNOME
 description : |
     GLib is the low-level core library that forms the basis for projects such
