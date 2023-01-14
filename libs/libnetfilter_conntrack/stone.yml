@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libnetfilter_conntrack
+version     : 1.0.2
+release     : 1
+homepage    : https://www.netfilter.org/projects/libnetfilter_conntrack/
+upstreams   :
+    - https://netfilter.org/pub/libnetfilter_conntrack/libnetfilter_conntrack-1.0.9.tar.bz2 : 67bd9df49fe34e8b82144f6dfb93b320f384a8ea59727e92ff8d18b5f4b579a8
+summary     : Netfilter userspace conntrack access library
+description : |
+    Library providing an API to the in-kernel connection tracking state table
+license     :
+    - GPL-2.0-or-later
+
+builddeps   :
+    - pkgconfig(libmnl)
+    - pkgconfig(libnfnetlink)
+# TODO build with doxygen for documentationQ
+#     - doxygen
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+tuning      :
+    - lto
+    - nosemantic
+    - optimize: speed
+    - sections
