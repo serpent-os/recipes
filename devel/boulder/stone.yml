@@ -1,6 +1,6 @@
 name        : boulder
 version     : 0.1
-release     : 18
+release     : 19
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -18,7 +18,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-config/"
     - https://github.com/serpent-os/moss-core/archive/refs/heads/main.tar.gz:
-        hash: 25991541c334bf1d463574cc601ae623a6e2336d755f57b2c49925a0aabf4dd1
+        hash: d0fac5054be60bb3b2e64a5e163023277fa4bfebc71666a54db1627f9aca749f
         rename: moss-core.tar.gz
         stripdirs: 1
         unpackdir: "moss-core/"
@@ -28,17 +28,17 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-deps/"
     - https://github.com/serpent-os/moss-fetcher/archive/refs/heads/main.tar.gz:
-        hash: e7aa98b1e441f563bef2b8780057d16d2848e11cdef1adc02d21215bd968a206
+        hash: e0dc159b179fc70706466dc8559bce5d04fa668ef81d3f0682f1169bac32fa9a
         rename: moss-fetcher.tar.gz
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://github.com/serpent-os/moss-format/archive/refs/heads/main.tar.gz:
-        hash: 9b6bedd735c2dbac154e08720f702dc1180dcf9099802a2e0d4ae3f792bdf267
+        hash: 2d414f4ebbef1c5806c5148a2905fea9c1bd88b49b3c19e7fbc7ae4d3a844189
         rename: moss-format.tar.gz
         stripdirs: 1
         unpackdir: "moss-format/"
     - https://github.com/serpent-os/moss-vendor/archive/refs/heads/main.tar.gz:
-        hash: 8faf9c0854208dbe1c08ff9a995d71e2a84065359fe5d2881b61c579f5a06ec7
+        hash: c6d2d88b54e272377ccd01db253604b3980d3f3b044eac6fa7eb5777cf7fe894
         rename: moss-vendor.tar.gz
         stripdirs: 1
         unpackdir: "moss-vendor/"
@@ -57,10 +57,11 @@ upstreams   :
         rename: xxhash-d.tar.gz
         stripdirs: 1
         unpackdir: "moss-vendor/subprojects/xxhash-d/"
-    - https://github.com/repeatedly/zstd-d/archive/refs/heads/master.tar.gz:
-        hash: 64ade7e5c9e737e84882efaecf92219b9e7253ff8f1c6758eadd91395c89b7e7
+    - https://github.com/serpent-os/zstdoubledee/archive/refs/heads/main.tar.gz:
+        hash: dfeba89215d4dafd6efc37e7b0c683cc799b50f74b7e60693300c997f0987c0a
+        rename: zstdoubledee.tar.gz
         stripdirs: 1
-        unpackdir: "moss-vendor/vendor/zstd/zstd/"
+        unpackdir: "moss-vendor/subprojects/zstdoubledee/"
     - https://github.com/dlang-community/D-YAML/archive/da75f590dedf18cddfcba2003f72c1ec47bb2d8e.tar.gz:
         hash: f5b210ee2a50629f50ab6dd803c00b8c8baae03182220bb7075349def42b6b93
         stripdirs: 1

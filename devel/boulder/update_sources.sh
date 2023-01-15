@@ -16,3 +16,4 @@ done
 pu elf-d dynamiclinking moss-vendor/vendor/elf/elf-d; rm /tmp/tmp-dwnld
 pu lmdb-d main moss-vendor/subprojects/lmdb-d; rm /tmp/tmp-dwnld
 pu xxhash-d main moss-vendor/subprojects/xxhash-d; rm /tmp/tmp-dwnld
+pu zstdoubledee main moss-vendor/subprojects/zstdoubledee; rm /tmp/tmp-dwnld
