@@ -1,6 +1,6 @@
 name        : boulder
 version     : 0.1
-release     : 22
+release     : 23
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -33,7 +33,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://github.com/serpent-os/moss-format/archive/refs/heads/main.tar.gz:
-        hash: 11dae4b2e18b0749dfb518a65dd53222e37cd659e1a7133325ed55dd62800f8b
+        hash: 695e078873a791bd8e603df54cb5188bcae6a000c813d11d9e4a48ba76d19af9
         rename: moss-format.tar.gz
         stripdirs: 1
         unpackdir: "moss-format/"
