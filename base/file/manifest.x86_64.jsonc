@@ -25,7 +25,6 @@
 				"/usr/lib/libmagic.so.1",
 				"/usr/lib/libmagic.so.1.0.0",
 				"/usr/share/man/man1/file.1",
-				"/usr/share/man/man3/libmagic.3",
 				"/usr/share/man/man4/magic.4",
 				"/usr/share/man/man5",
 				"/usr/share/misc/magic.mgc"
@@ -47,7 +46,8 @@
 			"files": [
 				"/usr/include/magic.h",
 				"/usr/lib/libmagic.so",
-				"/usr/lib/pkgconfig/libmagic.pc"
+				"/usr/lib/pkgconfig/libmagic.pc",
+				"/usr/share/man/man3/libmagic.3"
 			],
 			"name": "file-devel",
 			"provides": [
@@ -56,6 +56,6 @@
 		}
 	},
 	"source-name": "file",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "5.44"
 }
