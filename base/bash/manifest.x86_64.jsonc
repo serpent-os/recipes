@@ -1,8 +1,13 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"bash": {
+			"build-depends": [
+				"bison",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(readline)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -111,6 +116,11 @@
 			]
 		},
 		"bash-devel": {
+			"build-depends": [
+				"bison",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(readline)"
+			],
 			"files": [
 				"/usr/include/bash/alias.h",
 				"/usr/include/bash/array.h",
@@ -180,6 +190,6 @@
 		}
 	},
 	"source-name": "bash",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "5.2.15"
 }
