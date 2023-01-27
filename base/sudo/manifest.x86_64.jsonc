@@ -1,8 +1,13 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"sudo": {
+			"build-depends": [
+				"pkgconfig(libssl)",
+				"pkgconfig(pam)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -124,14 +129,22 @@
 				"soname(libsudo_util.so.0(x86_64))",
 				"binary(sudo)",
 				"soname(sudo_intercept.so(x86_64))",
+				"sysbinary(sudo_logsrvd)",
 				"soname(sudo_noexec.so(x86_64))",
+				"sysbinary(sudo_sendlog)",
 				"binary(sudoedit)",
 				"soname(sudoers.so(x86_64))",
 				"binary(sudoreplay)",
-				"soname(system_group.so(x86_64))"
+				"soname(system_group.so(x86_64))",
+				"sysbinary(visudo)"
 			]
 		},
 		"sudo-devel": {
+			"build-depends": [
+				"pkgconfig(libssl)",
+				"pkgconfig(pam)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/sudo_plugin.h"
 			],
@@ -139,6 +152,6 @@
 		}
 	},
 	"source-name": "sudo",
-	"source-release": "2",
-	"source-version": "1.9.12p1"
+	"source-release": "3",
+	"source-version": "1.9.12p2"
 }
