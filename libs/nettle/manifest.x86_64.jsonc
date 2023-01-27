@@ -1,8 +1,12 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"nettle": {
+			"build-depends": [
+				"binary(valgrind)",
+				"pkgconfig(gmp)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -27,6 +31,10 @@
 			]
 		},
 		"nettle-devel": {
+			"build-depends": [
+				"binary(valgrind)",
+				"pkgconfig(gmp)"
+			],
 			"files": [
 				"/usr/include/nettle/aes.h",
 				"/usr/include/nettle/arcfour.h",
@@ -108,6 +116,10 @@
 			]
 		},
 		"nettle-libs": {
+			"build-depends": [
+				"binary(valgrind)",
+				"pkgconfig(gmp)"
+			],
 			"depends": [
 				"soname(libc.so.6(x86_64))",
 				"soname(libgmp.so.10(x86_64))"
@@ -126,6 +138,6 @@
 		}
 	},
 	"source-name": "nettle",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.8.1"
 }
