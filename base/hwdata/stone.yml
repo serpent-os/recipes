@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : hwdata
-version     : 0.365
-release     : 1
+version     : 0.366
+release     : 2
 homepage    : https://github.com/vcrhonek/hwdata
 upstreams   :
-    - https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.365.tar.gz : d6ae2436a69c6f5e04d926f5d753a99d90deb864065a2e2f8a8eda87b70dcdd5
+    - https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.366.tar.gz : bdc91561ec210877e6d1e3ec3abf0305389d7bcc3bf616bcecb2bdf74e3a7696
 summary     : Hardware identification + configuration data
 description : |
     hwdata contains various hardware identification and configuration data, such as the pci.ids and usb.ids databases.
