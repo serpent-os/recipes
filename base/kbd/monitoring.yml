@@ -1,0 +1,6 @@
+releases:
+  id: 1492
+security:
+  cpe:
+  - vendor: kbd-project
+    product: kbd
