@@ -1,13 +1,13 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"python-markupsafe": {
 			"files": [
-				"/usr/lib/python3.11/site-packages/MarkupSafe-2.1.1-py3.11.egg-info/PKG-INFO",
-				"/usr/lib/python3.11/site-packages/MarkupSafe-2.1.1-py3.11.egg-info/SOURCES.txt",
-				"/usr/lib/python3.11/site-packages/MarkupSafe-2.1.1-py3.11.egg-info/dependency_links.txt",
-				"/usr/lib/python3.11/site-packages/MarkupSafe-2.1.1-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/MarkupSafe-2.1.2-py3.11.egg-info/PKG-INFO",
+				"/usr/lib/python3.11/site-packages/MarkupSafe-2.1.2-py3.11.egg-info/SOURCES.txt",
+				"/usr/lib/python3.11/site-packages/MarkupSafe-2.1.2-py3.11.egg-info/dependency_links.txt",
+				"/usr/lib/python3.11/site-packages/MarkupSafe-2.1.2-py3.11.egg-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/markupsafe/__init__.py",
 				"/usr/lib/python3.11/site-packages/markupsafe/__pycache__/__init__.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/markupsafe/__pycache__/_native.cpython-311.pyc",
@@ -20,6 +20,6 @@
 		}
 	},
 	"source-name": "python-markupsafe",
-	"source-release": "1",
-	"source-version": "2.1.1"
+	"source-release": "2",
+	"source-version": "2.1.2"
 }
