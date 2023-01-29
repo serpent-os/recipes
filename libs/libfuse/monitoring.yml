@@ -1,0 +1,6 @@
+releases:
+  id: 861
+security:
+  cpe:
+  - vendor: libfuse_project
+    product: libfuse
