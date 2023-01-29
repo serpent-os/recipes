@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"restic": {
+			"build-depends": [
+				"binary(go)",
+				"nss"
+			],
+			"files": [
+				"/usr/bin/restic",
+				"/usr/share/bash-completion/completions/restic",
+				"/usr/share/man/restic-backup.1",
+				"/usr/share/man/restic-cache.1",
+				"/usr/share/man/restic-cat.1",
+				"/usr/share/man/restic-check.1",
+				"/usr/share/man/restic-copy.1",
+				"/usr/share/man/restic-diff.1",
+				"/usr/share/man/restic-dump.1",
+				"/usr/share/man/restic-find.1",
+				"/usr/share/man/restic-forget.1",
+				"/usr/share/man/restic-generate.1",
+				"/usr/share/man/restic-init.1",
+				"/usr/share/man/restic-key.1",
+				"/usr/share/man/restic-list.1",
+				"/usr/share/man/restic-ls.1",
+				"/usr/share/man/restic-migrate.1",
+				"/usr/share/man/restic-mount.1",
+				"/usr/share/man/restic-prune.1",
+				"/usr/share/man/restic-rebuild-index.1",
+				"/usr/share/man/restic-recover.1",
+				"/usr/share/man/restic-restore.1",
+				"/usr/share/man/restic-rewrite.1",
+				"/usr/share/man/restic-self-update.1",
+				"/usr/share/man/restic-snapshots.1",
+				"/usr/share/man/restic-stats.1",
+				"/usr/share/man/restic-tag.1",
+				"/usr/share/man/restic-unlock.1",
+				"/usr/share/man/restic-version.1",
+				"/usr/share/man/restic.1",
+				"/usr/share/zsh/site-functions/_restic"
+			],
+			"name": "restic",
+			"provides": [
+				"binary(restic)"
+			]
+		}
+	},
+	"source-name": "restic",
+	"source-release": "1",
+	"source-version": "0.15.0"
+}
