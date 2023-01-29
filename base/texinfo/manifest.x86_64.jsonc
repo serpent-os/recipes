@@ -9,6 +9,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libncursesw.so.6(x86_64))"
 			],
@@ -75,6 +76,8 @@
 				"/usr/share/locale/ro/LC_MESSAGES/texinfo_document.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/texinfo.mo",
 				"/usr/share/locale/rw/LC_MESSAGES/texinfo.mo",
+				"/usr/share/locale/sk/LC_MESSAGES/texinfo.mo",
+				"/usr/share/locale/sk/LC_MESSAGES/texinfo_document.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/texinfo.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/texinfo.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/texinfo_document.mo",
@@ -496,6 +499,6 @@
 		}
 	},
 	"source-name": "texinfo",
-	"source-release": "2",
-	"source-version": "7.0.1"
+	"source-release": "3",
+	"source-version": "7.0.2"
 }
