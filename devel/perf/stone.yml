@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : perf
-version     : 6.1.2
-release     : 2
+version     : 6.1.8
+release     : 3
 summary     : Linux profiling with performance counters
 license     : GPL-2.0-only
 homepage    : https://perf.wiki.kernel.org/
 description : |
     Linux profiling with performance counters.
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.2.tar.xz: ee41f3c4f599b2f46f08aae428c9243db403e7292eb2c9f04ee34909b038d1ae
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.8.tar.xz: b60bb53ab8ba370a270454b11e93d41af29126fc72bd6ede517673e2e57b816d
 builddeps   :
     - binary(bison)
     - binary(flex)
