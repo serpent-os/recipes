@@ -3,5 +3,5 @@ releases:
   ignore:
     # This ignores a couple of broken releases
     - 9\.0\.0814436.*
-    # Should ignore everything up to 9.0.1400
-    - 9\.0\.(114[1-9]|11[5-9][0-9]|1[23][0-9]{2}|1400)
+    # Should ignore everything up to 9.0.1500
+    - 9\.0\.(126[1-9]|12[7-9][0-9]|1[34][0-9]{2}|1500)
