@@ -1,0 +1,40 @@
+From 21c69edcd2666e7a1aeb7d74a435b18df263d5ca Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 31 Jan 2023 20:37:52 -0600
+Subject: [PATCH] Use serpent paths
+
+---
+ cmd/dockerd/config_unix.go    | 2 +-
+ daemon/config/config_linux.go | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/cmd/dockerd/config_unix.go b/cmd/dockerd/config_unix.go
+index e76c962422..14c8f9d3f3 100644
+--- a/cmd/dockerd/config_unix.go
++++ b/cmd/dockerd/config_unix.go
+@@ -48,7 +48,7 @@ func installConfigFlags(conf *config.Config, flags *pflag.FlagSet) error {
+ 	flags.BoolVar(&conf.LiveRestoreEnabled, "live-restore", false, "Enable live restore of docker when containers are still running")
+ 	flags.IntVar(&conf.OOMScoreAdjust, "oom-score-adjust", 0, "Set the oom_score_adj for the daemon")
+ 	flags.BoolVar(&conf.Init, "init", false, "Run an init in the container to forward signals and reap processes")
+-	flags.StringVar(&conf.InitPath, "init-path", "", "Path to the docker-init binary")
++	flags.StringVar(&conf.InitPath, "init-path", "/usr/lib/moby/docker-init", "Path to the docker-init binary")
+ 	flags.Int64Var(&conf.CPURealtimePeriod, "cpu-rt-period", 0, "Limit the CPU real-time period in microseconds for the parent cgroup for all containers (not supported with cgroups v2)")
+ 	flags.Int64Var(&conf.CPURealtimeRuntime, "cpu-rt-runtime", 0, "Limit the CPU real-time runtime in microseconds for the parent cgroup for all containers (not supported with cgroups v2)")
+ 	flags.StringVar(&conf.SeccompProfile, "seccomp-profile", conf.SeccompProfile, `Path to seccomp profile. Use "unconfined" to disable the default seccomp profile`)
+diff --git a/daemon/config/config_linux.go b/daemon/config/config_linux.go
+index 13b06752bc..9cfef8b958 100644
+--- a/daemon/config/config_linux.go
++++ b/daemon/config/config_linux.go
+@@ -181,6 +181,9 @@ func setPlatformDefaults(cfg *Config) error {
+ 		cfg.CgroupNamespaceMode = string(DefaultCgroupNamespaceMode)
+ 	}
+ 
++	// Default path on SerpentOS
++	cfg.BridgeConfig.UserlandProxyPath = "/usr/lib/moby/docker-proxy"
++
+ 	if rootless.RunningWithRootlessKit() {
+ 		cfg.Rootless = true
+ 
+-- 
+2.39.0
+
