@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : containerd
-version     : 1.6.15
-release     : 1
+version     : 1.6.16
+release     : 2
 homepage    : https://containerd.io/
 upstreams   :
-    - https://github.com/containerd/containerd/archive/refs/tags/v1.6.15.tar.gz : ee170fa73b258e448f9b6729440d38c77d19cd9bec46e45cd195d4670cd8b004
+    - https://github.com/containerd/containerd/archive/refs/tags/v1.6.16.tar.gz : e0a893cf67df9dfaecbcde2ba4e896efb3a86ffe48dcfe0d2b26f7cf19b5af3a
 summary     : An open and reliable container runtime
 description : |
     An open and reliable container runtime
@@ -30,21 +30,17 @@ environment : |
     export GOFLAGS="-trimpath -mod=readonly -modcacherw"
 
     # Git commit corresponding to the version tag
-    export COMMIT="5b842e528e99d4d4c1686467debf2bd4b88ecd86"
+    export COMMIT="31aa4358a36870b21a992d3ad2bef29e1d693bec"
 setup       : |
     sed -i 's|/usr/local/bin/containerd|/usr/bin/containerd|' containerd.service
 build      : |
-    mkdir -p src/github.com/containerd
-    ln -s `pwd` src/github.com/containerd/containerd
-    cd src/github.com/containerd/containerd
-    %make V=1 VERSION=v%(version) REVISION=$COMMIT GO_BUILD_FLAGS="$GOFLAGS" BUILDTAGS=no_aufs binaries man
+    %make GOPATH=`pwd`/src/github.com/containerd V=1 VERSION=%(version) REVISION=$COMMIT GO_BUILD_FLAGS="$GOFLAGS" BUILDTAGS=no_aufs binaries man
 install     : |
     %make_install V=1 VERSION=v%(version) REVISION=$COMMIT PREFIX=/usr/
     rm -fv %(installroot)/%(bindir)/containerd-shim-runc-v1
 
-    # Install the service file, but disable it by default
+    # systemd
     %install_file containerd.service %(installroot)/%(libdir)/systemd/system/containerd.service
-    %install_file %(pkgdir)/containerd.preset %(installroot)/%(libdir)/systemd/system-preset/containerd.preset
 
     %install_file man/*.8 -t %(installroot)/%(mandir)/man8
     %install_file man/*.5 -t %(installroot)/%(mandir)/man5
