@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : cmake
-version     : 3.25.1
-release     : 2
+version     : 3.25.2
+release     : 3
 homepage    : https://cmake.org/
 upstreams   :
-    - https://github.com/Kitware/CMake/releases/download/v3.25.1/cmake-3.25.1.tar.gz : 1c511d09516af493694ed9baf13c55947a36389674d657a2d5e0ccedc6b291d8
+    - https://www.cmake.org/files/v3.25/cmake-3.25.2.tar.gz : c026f22cb931dd532f648f087d587f07a1843c6e66a3dfca4fb0ea21944ed33c
 summary     : Cross-platform build system
 description : |
     CMake is an open-source, cross-platform family of tools designed to build, test and package software. CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice.

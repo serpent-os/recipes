@@ -13,10 +13,6 @@
 				"soname(libncursesw.so.6(x86_64))"
 			],
 			"files": [
-				"/usr/bin/ex",
-				"/usr/bin/rview",
-				"/usr/bin/rvim",
-				"/usr/bin/view",
 				"/usr/bin/vim",
 				"/usr/bin/vimdiff",
 				"/usr/bin/vimtutor",
@@ -1484,6 +1480,7 @@
 				"/usr/share/vim/vim90/syntax/dylanlid.vim",
 				"/usr/share/vim/vim90/syntax/ecd.vim",
 				"/usr/share/vim/vim90/syntax/edif.vim",
+				"/usr/share/vim/vim90/syntax/editorconfig.vim",
 				"/usr/share/vim/vim90/syntax/eiffel.vim",
 				"/usr/share/vim/vim90/syntax/elf.vim",
 				"/usr/share/vim/vim90/syntax/elinks.vim",
@@ -2107,10 +2104,6 @@
 			],
 			"name": "vim",
 			"provides": [
-				"binary(ex)",
-				"binary(rview)",
-				"binary(rvim)",
-				"binary(view)",
 				"binary(vim)",
 				"binary(vimdiff)",
 				"binary(vimtutor)",
@@ -2119,6 +2112,6 @@
 		}
 	},
 	"source-name": "vim",
-	"source-release": "2",
-	"source-version": "9.0.1140"
+	"source-release": "3",
+	"source-version": "9.0.1261"
 }

@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : restic
+version     : 0.15.0
+release     : 1
+homepage    : https://restic.net
+upstreams   :
+    - https://github.com/restic/restic/archive/refs/tags/v0.15.0.tar.gz : 85a6408cfb0798dab52335bcb00ac32066376c32daaa75461d43081499bc7de8
+summary     : Fast, secure, efficient backup program
+description : |
+    Restic is a program that does backups right and was designed with the following principles in mind: easy, fast, verifiable, secure and efficient.
+license     :
+    - BSD-2-Clause
+networking  : yes
+builddeps   :
+    - binary(go)
+    # [LATER] Remove when https://github.com/serpent-os/boulder/issues/28 is closed.
+    - nss
+build       : |
+    # This can probably be removed after golang reboostrap.
+    export GOMODCACHE="%(workdir)/.cache"
+
+    %make
+install     : |
+    install -Dm00755 restic -t %(installroot)/%(bindir)
+
+    install -Dm00644 doc/man/*.1 -t %(installroot)/%(mandir)
+    install -Dm00644 doc/bash-completion.sh %(installroot)/%(completionsdir)/restic
+    install -Dm00644 doc/zsh-completion.zsh %(installroot)/%(datadir)/zsh/site-functions/_restic

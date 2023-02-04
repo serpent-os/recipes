@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : wireguard-tools
+version     : 1.0.20210914
+release     : 1
+homepage    : https://www.wireguard.com
+upstreams   :
+    - https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-1.0.20210914.tar.xz : 97ff31489217bb265b7ae850d3d0f335ab07d2652ba1feec88b734bc96bd05ac
+summary     : Collection of command line tools for Wireguard tunnels
+description : |
+    wireguard-tools is a collection of command line tools for Wireguard tunnels, namely wg and wg-quick.
+license     :
+    - GPL-2.0-or-later
+build       : |
+    %make -C src
+install     : |
+    %make_install -C src \
+        WITH_BASHCOMPLETION=yes \
+        WITH_SYSTEMDUNITS=yes \
+        WITH_WGQUICK=yes

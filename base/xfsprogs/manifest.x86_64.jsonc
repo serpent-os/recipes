@@ -1,8 +1,19 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"xfsprogs": {
+			"build-depends": [
+				"binary(file)",
+				"binary(msgfmt)",
+				"pkgconfig(devmapper)",
+				"pkgconfig(inih)",
+				"pkgconfig(libattr)",
+				"pkgconfig(libedit)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(liburcu)",
+				"pkgconfig(uuid)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -51,23 +62,6 @@
 				"/usr/share/doc/xfsprogs/README",
 				"/usr/share/locale/de/LC_MESSAGES/xfsprogs.mo",
 				"/usr/share/locale/pl/LC_MESSAGES/xfsprogs.mo",
-				"/usr/share/man/man2/ioctl_xfs_ag_geometry.2",
-				"/usr/share/man/man2/ioctl_xfs_bulkstat.2",
-				"/usr/share/man/man2/ioctl_xfs_fsbulkstat.2",
-				"/usr/share/man/man2/ioctl_xfs_fscounts.2",
-				"/usr/share/man/man2/ioctl_xfs_fsgeometry.2",
-				"/usr/share/man/man2/ioctl_xfs_fsgetxattr.2",
-				"/usr/share/man/man2/ioctl_xfs_fsgetxattra.2",
-				"/usr/share/man/man2/ioctl_xfs_fsinumbers.2",
-				"/usr/share/man/man2/ioctl_xfs_fssetxattr.2",
-				"/usr/share/man/man2/ioctl_xfs_getbmap.2",
-				"/usr/share/man/man2/ioctl_xfs_getbmapa.2",
-				"/usr/share/man/man2/ioctl_xfs_getbmapx.2",
-				"/usr/share/man/man2/ioctl_xfs_getresblks.2",
-				"/usr/share/man/man2/ioctl_xfs_goingdown.2",
-				"/usr/share/man/man2/ioctl_xfs_inumbers.2",
-				"/usr/share/man/man2/ioctl_xfs_scrub_metadata.2",
-				"/usr/share/man/man2/ioctl_xfs_setresblks.2",
 				"/usr/share/man/man5/projects.5",
 				"/usr/share/man/man5/projid.5",
 				"/usr/share/man/man5/xfs.5",
@@ -98,14 +92,49 @@
 				"/usr/share/xfsprogs/mkfs/lts_4.19.conf",
 				"/usr/share/xfsprogs/mkfs/lts_5.10.conf",
 				"/usr/share/xfsprogs/mkfs/lts_5.15.conf",
-				"/usr/share/xfsprogs/mkfs/lts_5.4.conf"
+				"/usr/share/xfsprogs/mkfs/lts_5.4.conf",
+				"/usr/share/xfsprogs/mkfs/lts_6.1.conf"
 			],
 			"name": "xfsprogs",
 			"provides": [
-				"soname(libhandle.so.1(x86_64))"
+				"sysbinary(fsck.xfs)",
+				"soname(libhandle.so.1(x86_64))",
+				"sysbinary(mkfs.xfs)",
+				"sysbinary(xfs_admin)",
+				"sysbinary(xfs_bmap)",
+				"sysbinary(xfs_copy)",
+				"sysbinary(xfs_db)",
+				"sysbinary(xfs_estimate)",
+				"sysbinary(xfs_freeze)",
+				"sysbinary(xfs_fsr)",
+				"sysbinary(xfs_growfs)",
+				"sysbinary(xfs_info)",
+				"sysbinary(xfs_io)",
+				"sysbinary(xfs_logprint)",
+				"sysbinary(xfs_mdrestore)",
+				"sysbinary(xfs_metadump)",
+				"sysbinary(xfs_mkfile)",
+				"sysbinary(xfs_ncheck)",
+				"sysbinary(xfs_quota)",
+				"sysbinary(xfs_repair)",
+				"sysbinary(xfs_rtcp)",
+				"sysbinary(xfs_scrub)",
+				"sysbinary(xfs_scrub_all)",
+				"sysbinary(xfs_spaceman)"
 			]
 		},
 		"xfsprogs-devel": {
+			"build-depends": [
+				"binary(file)",
+				"binary(msgfmt)",
+				"pkgconfig(devmapper)",
+				"pkgconfig(inih)",
+				"pkgconfig(libattr)",
+				"pkgconfig(libedit)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(liburcu)",
+				"pkgconfig(uuid)"
+			],
 			"files": [
 				"/usr/include/xfs/handle.h",
 				"/usr/include/xfs/jdm.h",
@@ -120,6 +149,23 @@
 				"/usr/include/xfs/xfs_types.h",
 				"/usr/include/xfs/xqm.h",
 				"/usr/lib/libhandle.so",
+				"/usr/share/man/man2/ioctl_xfs_ag_geometry.2",
+				"/usr/share/man/man2/ioctl_xfs_bulkstat.2",
+				"/usr/share/man/man2/ioctl_xfs_fsbulkstat.2",
+				"/usr/share/man/man2/ioctl_xfs_fscounts.2",
+				"/usr/share/man/man2/ioctl_xfs_fsgeometry.2",
+				"/usr/share/man/man2/ioctl_xfs_fsgetxattr.2",
+				"/usr/share/man/man2/ioctl_xfs_fsgetxattra.2",
+				"/usr/share/man/man2/ioctl_xfs_fsinumbers.2",
+				"/usr/share/man/man2/ioctl_xfs_fssetxattr.2",
+				"/usr/share/man/man2/ioctl_xfs_getbmap.2",
+				"/usr/share/man/man2/ioctl_xfs_getbmapa.2",
+				"/usr/share/man/man2/ioctl_xfs_getbmapx.2",
+				"/usr/share/man/man2/ioctl_xfs_getresblks.2",
+				"/usr/share/man/man2/ioctl_xfs_goingdown.2",
+				"/usr/share/man/man2/ioctl_xfs_inumbers.2",
+				"/usr/share/man/man2/ioctl_xfs_scrub_metadata.2",
+				"/usr/share/man/man2/ioctl_xfs_setresblks.2",
 				"/usr/share/man/man3/attr_list_by_handle.3",
 				"/usr/share/man/man3/attr_multi_by_handle.3",
 				"/usr/share/man/man3/fd_to_handle.3",
@@ -138,6 +184,6 @@
 		}
 	},
 	"source-name": "xfsprogs",
-	"source-release": "1",
-	"source-version": "6.0.0"
+	"source-release": "2",
+	"source-version": "6.1.1"
 }

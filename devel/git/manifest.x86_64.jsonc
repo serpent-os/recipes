@@ -1,8 +1,17 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"git": {
+			"build-depends": [
+				"binary(msgfmt)",
+				"pkgconfig(expat)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig(openssl)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -289,6 +298,6 @@
 		}
 	},
 	"source-name": "git",
-	"source-release": "2",
-	"source-version": "2.39.0"
+	"source-release": "3",
+	"source-version": "2.39.1"
 }

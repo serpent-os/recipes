@@ -1,0 +1,28 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"micro": {
+			"build-depends": [
+				"binary(go)",
+				"nss"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/micro",
+				"/usr/share/man/applications/micro.desktop",
+				"/usr/share/man/man1/micro.1"
+			],
+			"name": "micro",
+			"provides": [
+				"binary(micro)"
+			]
+		}
+	},
+	"source-name": "micro",
+	"source-release": "1",
+	"source-version": "2.0.11"
+}
