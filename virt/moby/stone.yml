@@ -1,0 +1,83 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : moby
+version     : 23.0.0
+release     : 1
+homepage    : https://www.docker.com
+upstreams   :
+    - https://github.com/moby/moby/archive/refs/tags/v23.0.0.tar.gz : 94492508260e57eb93399257d53435cd5308ca6330e173ca6e6f3dbf4c6e12f3
+    - https://github.com/docker/cli/archive/refs/tags/v23.0.0.tar.gz:
+        hash: 3379d06cd6177832b91f4796c680b6bf15c7895773448716b4c3c5253f611d1b
+        rename: cli.tar.gz
+        stripdirs: 1
+        unpackdir: "%(name)-%(version)/docker-cli/"
+summary     : The open-source application container engine
+description : |
+    The open-source application container engine. This package contains the Docker server.
+license     :
+    - Apache-2.0
+networking  : yes
+builddeps   :
+    - binary(go)
+    - binary(go-md2man)
+    - pkgconfig(libsystemd)
+    - linux-headers
+rundeps     :
+    - binary(containerd)
+    - binary(tini-static)
+    - sysbinary(iptables)
+environment : |
+    export AUTO_GOPATH=1
+    export GO111MODULE=auto
+    # This can probably be removed after golang reboostrap.
+    export GOMODCACHE="%(workdir)/.cache"
+
+    export CGO_CPPFLAGS="${CPPFLAGS} -Qunused-arguments"
+    export CGO_CFLAGS="${CFLAGS} -Qunused-arguments"
+    export CGO_CXXFLAGS="${CXXFLAGS} -Qunused-arguments"
+    # --gc-sections breaks the cgo linker
+    export CGO_LDFLAGS="${LDFLAGS} -Wl,--no-gc-sections"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
+
+    # Git commit corresponding to the version tag
+    export GITCOMMIT="d7573ab8672555762688f4c7ab8cc69ae8ec1a47"
+    export DOCKER_GITCOMMIT=$GITCOMMIT
+setup       : |
+    %patch %(pkgdir)/0001-Use-serpent-paths.patch
+build      : |
+    # dockerd
+    PLATFORM="Docker Engine - Community" \
+    VERSION=%(version) \
+    DOCKER_BUILDTAGS="journald exclude_graphdriver_aufs exclude_graphdriver_devicemapper exclude_graphdriver_overlay" \
+    DISABLE_WARN_OUTSIDE_CONTAINER=1 \
+        ./hack/make.sh dynbinary
+    
+    # man pages
+    cd docker-cli/
+    ./scripts/docs/generate-man.sh
+install    : |
+    # dockerd
+    %install_bin bundles/dynbinary-daemon/dockerd
+
+    # docker-proxy/libnetwork
+    %install_exe bundles/dynbinary-daemon/docker-proxy -t %(installroot)/%(libexecdir)
+
+    # docker-init
+    ln -s %(bindir)/tini-static %(installroot)/%(libexecdir)/docker-init
+
+    # systemd
+    %install_file %(pkgdir)/docker.service -t %(installroot)/%(libdir)/systemd/system
+    %install_file contrib/init/systemd/docker.socket -t %(installroot)/%(libdir)/systemd/system
+
+    # sysusers configuration
+    %sysusers '# Docker daemon user'
+    %sysusers 'g docker - -'
+
+    # udev rules
+    %install_file contrib/udev/80-docker.rules -t %(installroot)/%(udevrulesdir)
+
+    # man pages
+    %install_file docker-cli/man/man8/dockerd.8 -t %(installroot)/%(mandir)/man8/

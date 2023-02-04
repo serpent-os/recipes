@@ -19,7 +19,6 @@
 				"/usr/bin/containerd-shim-runc-v2",
 				"/usr/bin/containerd-stress",
 				"/usr/bin/ctr",
-				"/usr/lib/systemd/system-preset/containerd.preset",
 				"/usr/lib/systemd/system/containerd.service",
 				"/usr/share/man/man5/containerd-config.toml.5",
 				"/usr/share/man/man8/containerd-config.8",
@@ -37,6 +36,6 @@
 		}
 	},
 	"source-name": "containerd",
-	"source-release": "1",
-	"source-version": "1.6.15"
+	"source-release": "2",
+	"source-version": "1.6.16"
 }
