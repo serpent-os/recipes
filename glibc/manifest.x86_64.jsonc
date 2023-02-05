@@ -933,6 +933,7 @@
 				"/usr/share/locale/id/LC_MESSAGES",
 				"/usr/share/locale/it/LC_MESSAGES",
 				"/usr/share/locale/ja/LC_MESSAGES",
+				"/usr/share/locale/ka/LC_MESSAGES",
 				"/usr/share/locale/ko/LC_MESSAGES",
 				"/usr/share/locale/locale.alias",
 				"/usr/share/locale/lt/LC_MESSAGES",
@@ -1883,7 +1884,7 @@
 				"/usr/lib/libc_nonshared.a",
 				"/usr/lib/libdl.a",
 				"/usr/lib/libg.a",
-				"/usr/lib/libm-2.36.a",
+				"/usr/lib/libm-2.37.a",
 				"/usr/lib/libm.a",
 				"/usr/lib/libm.so",
 				"/usr/lib/libmcheck.a",
@@ -1909,6 +1910,6 @@
 		}
 	},
 	"source-name": "glibc",
-	"source-release": "3",
-	"source-version": "2.36"
+	"source-release": "4",
+	"source-version": "2.37"
 }

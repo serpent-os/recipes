@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : glibc
-version     : 2.36
-release     : 3
+version     : 2.37
+release     : 4
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -15,7 +15,7 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - https://github.com/bminor/glibc/archive/4f4d7a13edfd2fdc57c9d76e1fd6d017fb47550c.tar.gz: 666482e657c319f7e139121121a0d97d303c65207b9f9730f42a3ee83c79f686
+    - https://ftp.gnu.org/gnu/glibc/glibc-2.37.tar.xz: 2257eff111a1815d74f46856daaf40b019c1e553156c69d48ba0cbfc1bb91a43
 builddeps   :
     - binary(bison)
     - binary(gzip)
@@ -107,9 +107,6 @@ profiles    :
             
             # Make gconv cache
             LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
-
-            # Remove 32bit binary
-            rm %(installroot)/usr/bin/lddlibc4
 
             # Support old compiled 32bit binaries
             %install_dir %(installroot)/usr/lib
