@@ -5,7 +5,7 @@
 #
 name        : libseccomp
 version     : 2.5.4
-release     : 1
+release     : 2
 homepage    : https://github.com/seccomp/libseccomp
 upstreams   :
     - https://github.com/seccomp/libseccomp/releases/download/v2.5.4/libseccomp-2.5.4.tar.gz : d82902400405cf0068574ef3dc1fe5f5926207543ba1ae6f8e7a1576351dcbdb
