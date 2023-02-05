@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : binutils
-version     : 2.39
-release     : 3
+version     : 2.40
+release     : 4
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    - https://github.com/bminor/binutils-gdb/archive/d961e165eec8dcc01cec5b86d96971d830df6dc4.tar.gz: 1041e26c84b0d609a2ce7d47dc15641dcd84986653891c221be83bb43e9b3e0a
+    - https://ftp.gnu.org/gnu/binutils/binutils-2.40.tar.xz: 0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1
 builddeps   :
     - binary(bison)
     - binary(flex)
