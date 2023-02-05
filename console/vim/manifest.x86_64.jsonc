@@ -13,6 +13,10 @@
 				"soname(libncursesw.so.6(x86_64))"
 			],
 			"files": [
+				"/usr/bin/ex",
+				"/usr/bin/rview",
+				"/usr/bin/rvim",
+				"/usr/bin/view",
 				"/usr/bin/vim",
 				"/usr/bin/vimdiff",
 				"/usr/bin/vimtutor",
@@ -2104,6 +2108,10 @@
 			],
 			"name": "vim",
 			"provides": [
+				"binary(ex)",
+				"binary(rview)",
+				"binary(rvim)",
+				"binary(view)",
 				"binary(vim)",
 				"binary(vimdiff)",
 				"binary(vimtutor)",
