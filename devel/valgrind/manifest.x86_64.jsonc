@@ -3,9 +3,6 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"valgrind": {
-			"build-depends": [
-				"gcc-devel"
-			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
@@ -222,9 +219,6 @@
 			]
 		},
 		"valgrind-devel": {
-			"build-depends": [
-				"gcc-devel"
-			],
 			"files": [
 				"/usr/include/valgrind/callgrind.h",
 				"/usr/include/valgrind/config.h",
@@ -367,6 +361,6 @@
 		}
 	},
 	"source-name": "valgrind",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.20.0"
 }
