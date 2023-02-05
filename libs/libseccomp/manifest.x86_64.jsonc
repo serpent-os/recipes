@@ -1,8 +1,13 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"libseccomp": {
+			"build-depends": [
+				"binary(gperf)",
+				"binary(which)",
+				"pkgconfig(valgrind)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
@@ -52,6 +57,11 @@
 			]
 		},
 		"libseccomp-devel": {
+			"build-depends": [
+				"binary(gperf)",
+				"binary(which)",
+				"pkgconfig(valgrind)"
+			],
 			"files": [
 				"/usr/include/seccomp-syscalls.h",
 				"/usr/include/seccomp.h",
