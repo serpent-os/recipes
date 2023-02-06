@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : binutils
-version     : 2.40
-release     : 4
+version     : "2.40"
+release     : 5
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
