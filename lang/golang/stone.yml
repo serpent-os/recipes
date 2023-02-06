@@ -5,28 +5,28 @@
 #
 name        : golang
 version     : "1.20"
-release     : 3
+release     : 4
 homepage    : https://golang.org
 upstreams   :
     - https://golang.org/dl/go1.20.src.tar.gz : 3a29ff0421beaf6329292b8a46311c9fbf06c800077ceddef5fb7f8d5b1ace33
-    - https://go.dev/dl/go1.19.5.linux-amd64.tar.gz :
-        hash: 36519702ae2fd573c9869461990ae550c8c0d955cd28d2827a6b159fda81ff95
-        unpack: false
 summary     : The Go programming language
 description : |
     Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
 license     : BSD-3-Clause
 builddeps   :
     - binary(bash)
-    # - golang [LATER] after bootstrapping.
+    - binary(go)
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/*.a
 environment : |
-    export GOROOT_BOOTSTRAP="%(workdir)/go" # Remove after bootstrapping.
     export GOROOT_FINAL="%(libdir)/%(name)"
+    export GOROOT_BOOTSTRAP="%(libdir)/%(name)"
 
     # Should this be set by boulder automatically?
     export XDG_CACHE_HOME="%(workdir)/.cache"
 setup       : |
-    tar xf %(sourcedir)/go1.19.5.linux-amd64.tar.gz
     %patch %(pkgdir)/stateless/x509-certificate-path.patch
 build       : |
     cd src && ./make.bash -v
@@ -50,5 +50,4 @@ install     : |
     # needed assets
     find -mindepth 1 -maxdepth 1 -type d -not -name bin -exec cp -a {} %(installroot)/%(libdir)/%(name) \;
 # check      : |
-# Fails because there is no network.
 #     cd src && ./run.bash -v -v -v -k
