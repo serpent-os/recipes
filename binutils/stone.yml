@@ -5,7 +5,7 @@
 #
 name        : binutils
 version     : "2.40"
-release     : 5
+release     : 6
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
@@ -20,6 +20,7 @@ builddeps   :
     - binary(makeinfo)
     - binary(perl)
     - binary(yacc)
+    - pkgconfig(libzstd)
     - pkgconfig(jansson)
     - pkgconfig(ncursesw)
     - pkgconfig(readline)
