@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : golang
-version     : 1.19.5
-release     : 2
+version     : "1.20"
+release     : 3
 homepage    : https://golang.org
 upstreams   :
-    - https://golang.org/dl/go1.19.5.src.tar.gz : 8e486e8e85a281fc5ce3f0bedc5b9d2dbf6276d7db0b25d3ec034f313da0375f
+    - https://golang.org/dl/go1.20.src.tar.gz : 3a29ff0421beaf6329292b8a46311c9fbf06c800077ceddef5fb7f8d5b1ace33
     - https://go.dev/dl/go1.19.5.linux-amd64.tar.gz :
         hash: 36519702ae2fd573c9869461990ae550c8c0d955cd28d2827a6b159fda81ff95
         unpack: false
@@ -32,13 +32,22 @@ build       : |
     cd src && ./make.bash -v
 # TODO: Properly filter unwanted content to achieve a clean package.
 install     : |
+    GOROOT=$(pwd) PATH=$(pwd)/bin:$PATH go install -buildmode=shared std
     rm -rf .cache go
     # Testdata searches for /libexec/ld-elf.so.1.
     # This is just data fed into tests, but boulder scans it regardless.
     find -type d -name testdata -exec rm -rf {} +
 
-    install -Dm00755 bin/* -t %(installroot)/%(bindir)
-    %install_dir %(installroot)/%(libdir)/%(name)
+    # install the tooling
+    %install_dir %(installroot)%(libdir)/%(name)/bin
+    %install_exe bin/gofmt %(installroot)%(libdir)/%(name)/bin/gofmt
+    %install_exe bin/go %(installroot)%(libdir)/%(name)/bin/go
+
+    # do it again (dedupes)
+    %install_bin bin/go
+    %install_bin bin/gofmt
+
+    # needed assets
     find -mindepth 1 -maxdepth 1 -type d -not -name bin -exec cp -a {} %(installroot)/%(libdir)/%(name) \;
 # check      : |
 # Fails because there is no network.
