@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"docker-compose": {
+			"build-depends": [
+				"binary(go)"
+			],
+			"files": [
+				"/usr/lib/docker/cli-plugins/docker-compose"
+			],
+			"name": "docker-compose"
+		}
+	},
+	"source-name": "docker-compose",
+	"source-release": "1",
+	"source-version": "2.16.0"
+}
