@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : tree
+version     : 2.1.0
+release     : 1
+homepage    : http://mama.indstate.edu/users/ice/tree/ 
+upstreams   :
+    - https://mama.indstate.edu/users/ice/tree/src/tree-2.1.0.tgz : 0160c535bff2b0dc6a830b9944e981e3427380f63e748da96ced7071faebabf6
+summary     : Recursive directory listing command that produces a depth indented listing of files
+description : |
+    recursive directory listing command that produces a depth indented listing of files
+license     :
+    - GPL-2.0-or-later
+build       : |
+    %make
+install     : |
+    %install_bin %(workdir)/tree
+    %install_file %(workdir)/doc/tree.1 %(installroot)/usr/share/man/man1/tree.1
+toolchain: gnu
