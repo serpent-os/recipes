@@ -1,8 +1,12 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"libcap": {
+			"build-depends": [
+				"linux-headers",
+				"pkgconfig(pam)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -10,15 +14,42 @@
 			],
 			"files": [
 				"/usr/lib/libcap.so.2",
-				"/usr/lib/libcap.so.2.66",
+				"/usr/lib/libcap.so.2.67",
 				"/usr/lib/libpsx.so.2",
-				"/usr/lib/libpsx.so.2.66",
+				"/usr/lib/libpsx.so.2.67",
 				"/usr/lib/security/pam_cap.so",
 				"/usr/sbin/capsh",
 				"/usr/sbin/getcap",
 				"/usr/sbin/getpcaps",
 				"/usr/sbin/setcap",
 				"/usr/share/man/man1/capsh.1",
+				"/usr/share/man/man8/captree.8",
+				"/usr/share/man/man8/getcap.8",
+				"/usr/share/man/man8/getpcaps.8",
+				"/usr/share/man/man8/setcap.8"
+			],
+			"name": "libcap",
+			"provides": [
+				"sysbinary(capsh)",
+				"sysbinary(getcap)",
+				"sysbinary(getpcaps)",
+				"soname(libcap.so.2(x86_64))",
+				"soname(libpsx.so.2(x86_64))",
+				"sysbinary(setcap)"
+			]
+		},
+		"libcap-devel": {
+			"build-depends": [
+				"linux-headers",
+				"pkgconfig(pam)"
+			],
+			"files": [
+				"/usr/include/sys/capability.h",
+				"/usr/include/sys/psx_syscall.h",
+				"/usr/lib/libcap.so",
+				"/usr/lib/libpsx.so",
+				"/usr/lib/pkgconfig/libcap.pc",
+				"/usr/lib/pkgconfig/libpsx.pc",
 				"/usr/share/man/man3/cap_clear.3",
 				"/usr/share/man/man3/cap_clear_flag.3",
 				"/usr/share/man/man3/cap_compare.3",
@@ -37,6 +68,7 @@
 				"/usr/share/man/man3/cap_get_file.3",
 				"/usr/share/man/man3/cap_get_flag.3",
 				"/usr/share/man/man3/cap_get_mode.3",
+				"/usr/share/man/man3/cap_get_nsowner.3",
 				"/usr/share/man/man3/cap_get_pid.3",
 				"/usr/share/man/man3/cap_get_proc.3",
 				"/usr/share/man/man3/cap_get_secbits.3",
@@ -64,10 +96,14 @@
 				"/usr/share/man/man3/cap_mode.3",
 				"/usr/share/man/man3/cap_mode_name.3",
 				"/usr/share/man/man3/cap_new_launcher.3",
+				"/usr/share/man/man3/cap_prctl.3",
+				"/usr/share/man/man3/cap_prctlw.3",
+				"/usr/share/man/man3/cap_proc_root.3",
 				"/usr/share/man/man3/cap_set_fd.3",
 				"/usr/share/man/man3/cap_set_file.3",
 				"/usr/share/man/man3/cap_set_flag.3",
 				"/usr/share/man/man3/cap_set_mode.3",
+				"/usr/share/man/man3/cap_set_nsowner.3",
 				"/usr/share/man/man3/cap_set_proc.3",
 				"/usr/share/man/man3/cap_set_secbits.3",
 				"/usr/share/man/man3/cap_setgroups.3",
@@ -82,26 +118,7 @@
 				"/usr/share/man/man3/psx_set_sensitivity.3",
 				"/usr/share/man/man3/psx_syscall.3",
 				"/usr/share/man/man3/psx_syscall3.3",
-				"/usr/share/man/man3/psx_syscall6.3",
-				"/usr/share/man/man8/captree.8",
-				"/usr/share/man/man8/getcap.8",
-				"/usr/share/man/man8/getpcaps.8",
-				"/usr/share/man/man8/setcap.8"
-			],
-			"name": "libcap",
-			"provides": [
-				"soname(libcap.so.2(x86_64))",
-				"soname(libpsx.so.2(x86_64))"
-			]
-		},
-		"libcap-devel": {
-			"files": [
-				"/usr/include/sys/capability.h",
-				"/usr/include/sys/psx_syscall.h",
-				"/usr/lib/libcap.so",
-				"/usr/lib/libpsx.so",
-				"/usr/lib/pkgconfig/libcap.pc",
-				"/usr/lib/pkgconfig/libpsx.pc"
+				"/usr/share/man/man3/psx_syscall6.3"
 			],
 			"name": "libcap-devel",
 			"provides": [
@@ -111,6 +128,6 @@
 		}
 	},
 	"source-name": "libcap",
-	"source-release": "2",
-	"source-version": "2.66"
+	"source-release": "3",
+	"source-version": "2.67"
 }

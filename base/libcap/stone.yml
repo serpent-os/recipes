@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libcap
-version     : 2.66
-release     : 2
+version     : 2.67
+release     : 3
 summary     : Library for getting and setting POSIX.1e capabilities
 license     : GPL-3.0-or-later
 homepage    : https://sites.google.com/site/fullycapable
 description : |
     Library for getting and setting POSIX.1e capabilities
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.66.tar.xz: 15c40ededb3003d70a283fe587a36b7d19c8b3b554e33f86129c059a4bb466b2
+    - https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.67.tar.xz: ce9b22fdc271beb6dae7543da5f74cf24cb82e6848cfd088a5a069dec5ea5198
 builddeps   :
     - pkgconfig(pam)
     - linux-headers
