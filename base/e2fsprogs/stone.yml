@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : e2fsprogs
-version     : 1.46.5
-release     : 1
-homepage    : https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.46.5
+version     : 1.47.0
+release     : 2
+homepage    : https://e2fsprogs.sourceforge.net 
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.46.5/e2fsprogs-1.46.5.tar.xz : 2f16c9176704cf645dc69d5b15ff704ae722d665df38b2ed3cfc249757d8d81e
+    - https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.47.0/e2fsprogs-1.47.0.tar.xz : 144af53f2bbd921cef6f8bea88bb9faddca865da3fbc657cc9b4d2001097d5db
 summary     : Filesystem utilities for ext2/3/4 filesystems
 description : |
     Filesystem utilities for ext2/3/4 filesystems
