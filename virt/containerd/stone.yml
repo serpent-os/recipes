@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : containerd
-version     : 1.6.16
-release     : 2
+version     : 1.6.17
+release     : 3
 homepage    : https://containerd.io/
 upstreams   :
-    - https://github.com/containerd/containerd/archive/refs/tags/v1.6.16.tar.gz : e0a893cf67df9dfaecbcde2ba4e896efb3a86ffe48dcfe0d2b26f7cf19b5af3a
+    - https://github.com/containerd/containerd/archive/refs/tags/v1.6.17.tar.gz : bec250ddbcfd69bd8f6f68907f589be94eb8debd82980097de0f993451ad8d61
 summary     : An open and reliable container runtime
 description : |
     An open and reliable container runtime
