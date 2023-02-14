@@ -1,8 +1,12 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"dbus": {
+			"build-depends": [
+				"pkgconfig(expat)",
+				"pkgconfig(libsystemd)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -22,7 +26,7 @@
 				"/usr/lib/dbus-1.0/include/dbus/dbus-arch-deps.h",
 				"/usr/lib/dbus/dbus-daemon-launch-helper",
 				"/usr/lib/libdbus-1.so.3",
-				"/usr/lib/libdbus-1.so.3.32.1",
+				"/usr/lib/libdbus-1.so.3.32.2",
 				"/usr/lib/systemd/system/dbus.service",
 				"/usr/lib/systemd/system/dbus.socket",
 				"/usr/lib/systemd/system/multi-user.target.wants/dbus.service",
@@ -64,6 +68,10 @@
 			]
 		},
 		"dbus-devel": {
+			"build-depends": [
+				"pkgconfig(expat)",
+				"pkgconfig(libsystemd)"
+			],
 			"files": [
 				"/usr/include/dbus-1.0/dbus/dbus-address.h",
 				"/usr/include/dbus-1.0/dbus/dbus-bus.h",
@@ -95,6 +103,6 @@
 		}
 	},
 	"source-name": "dbus",
-	"source-release": "2",
-	"source-version": "1.14.4"
+	"source-release": "3",
+	"source-version": "1.14.6"
 }
