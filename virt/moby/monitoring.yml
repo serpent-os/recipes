@@ -2,5 +2,5 @@ releases:
   id: 11719
 security:
   cpe:
-    vendor: mobyproject
+  - vendor: mobyproject
     product: moby
