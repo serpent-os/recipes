@@ -1,8 +1,12 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"dbus-broker": {
+			"build-depends": [
+				"pkgconfig(expat)",
+				"pkgconfig(libsystemd)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -26,6 +30,6 @@
 		}
 	},
 	"source-name": "dbus-broker",
-	"source-release": "2",
-	"source-version": "32"
+	"source-release": "3",
+	"source-version": "33"
 }
