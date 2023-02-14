@@ -1,0 +1,6 @@
+releases:
+  id: 1253
+security:
+  cpe:
+  - vendor: gnu
+    product: groff
