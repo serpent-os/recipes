@@ -1,2 +1,6 @@
 releases:
   id: 1186
+security:
+  cpe:
+  - vendor: gmplib
+    product: gmp
