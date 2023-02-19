@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : python
-version     : 3.11.1
-release     : 2
+version     : 3.11.2
+release     : 3
 summary     : Python language interpreter
 license     : Python-2.0
 homepage    : https://www.python.org
 description : |
     Python language interpreter
 upstreams   :
-    - https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tar.xz: 85879192f2cffd56cb16c092905949ebf3e5e394b7f764723529637901dfb58f
+    - https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz: 29e4b8f5f1658542a8c13e2dd277358c9c48f2b2f7318652ef1675e402b9d2af
 builddeps   :
     - pkgconfig(bzip2)
     - pkgconfig(libffi)

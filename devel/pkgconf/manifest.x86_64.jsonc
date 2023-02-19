@@ -13,6 +13,7 @@
 				"/usr/bin/pkgconf",
 				"/usr/lib/libpkgconf.so.4",
 				"/usr/lib/libpkgconf.so.4.0.0",
+				"/usr/share/aclocal/pkg.m4",
 				"/usr/share/doc/pkgconf/AUTHORS",
 				"/usr/share/doc/pkgconf/README.md",
 				"/usr/share/man/man1/pkgconf.1",
@@ -36,8 +37,7 @@
 				"/usr/include/pkgconf/libpkgconf/libpkgconf.h",
 				"/usr/include/pkgconf/libpkgconf/stdinc.h",
 				"/usr/lib/libpkgconf.so",
-				"/usr/lib/pkgconfig/libpkgconf.pc",
-				"/usr/share/aclocal/pkg.m4"
+				"/usr/lib/pkgconfig/libpkgconf.pc"
 			],
 			"name": "pkgconf-devel",
 			"provides": [
@@ -46,6 +46,6 @@
 		}
 	},
 	"source-name": "pkgconf",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.9.4"
 }

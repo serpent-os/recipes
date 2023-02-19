@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : docker-scan
+version     : 0.25.0
+release     : 1
+homepage    : https://github.com/docker/buildx 
+upstreams   :
+    - https://github.com/docker/scan-cli-plugin/archive/refs/tags/v0.25.0.tar.gz : e08964c3be512c085002feefd979fcd9dca6cf23c4b5e71eede56e8b6623afed
+summary     : Docker CLI plugin for scanning container images
+description : |
+    Docker Scan is a Command Line Interface to run vulnerability detection on your Dockerfiles and Docker images 
+license     :
+    - Apache-2.0
+networking  : yes
+builddeps   :
+    - binary(go)
+    - binary(make)
+environment : |
+    export _cli_plugins_dir=%(libdir)/docker/cli-plugins
+    export GO111MODULE=auto
+
+    # This can probably be removed after golang reboostrap.
+    export GOMODCACHE="%(workdir)/.cache"
+
+    export CGO_CPPFLAGS="${CPPFLAGS} -Qunused-arguments"
+    export CGO_CFLAGS="${CFLAGS} -Qunused-arguments"
+    export CGO_CXXFLAGS="${CXXFLAGS} -Qunused-arguments"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+build      : |
+    make -f builder.Makefile build
+install    : |
+    %install_exe bin/docker-scan_linux_amd64 %(installroot)/$_cli_plugins_dir/docker-scan

@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : zstd
-version     : 1.5.2
-release     : 2
+version     : 1.5.4
+release     : 3
 summary     : Fast real-time compression algorithm
 license     :
     - BSD-3-Clause
@@ -14,7 +14,7 @@ homepage    : https://facebook.github.io/zstd
 description : |
     Fast real-time compression algorithm
 upstreams   :
-    - https://github.com/facebook/zstd/releases/download/v1.5.2/zstd-1.5.2.tar.gz: 7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0
+    - https://github.com/facebook/zstd/releases/download/v1.5.4/zstd-1.5.4.tar.gz: 0f470992aedad543126d06efab344dc5f3e171893810455787d38347343a4424
 builddeps   :
     - pkgconfig(liblz4)
     - pkgconfig(liblzma)

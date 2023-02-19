@@ -42,7 +42,7 @@
 				"/usr/bin/ruby",
 				"/usr/bin/typeprof",
 				"/usr/lib/libruby.so.3.2",
-				"/usr/lib/libruby.so.3.2.0",
+				"/usr/lib/libruby.so.3.2.1",
 				"/usr/lib/ruby/3.2.0/English.rb",
 				"/usr/lib/ruby/3.2.0/abbrev.rb",
 				"/usr/lib/ruby/3.2.0/base64.rb",
@@ -535,7 +535,6 @@
 				"/usr/lib/ruby/3.2.0/logger/period.rb",
 				"/usr/lib/ruby/3.2.0/logger/severity.rb",
 				"/usr/lib/ruby/3.2.0/logger/version.rb",
-				"/usr/lib/ruby/3.2.0/mjit/instruction.rb",
 				"/usr/lib/ruby/3.2.0/mkmf.rb",
 				"/usr/lib/ruby/3.2.0/monitor.rb",
 				"/usr/lib/ruby/3.2.0/mutex_m.rb",
@@ -1222,8 +1221,8 @@
 				"/usr/lib/ruby/gems/3.2.0/gems/base64-0.1.1",
 				"/usr/lib/ruby/gems/3.2.0/gems/benchmark-0.2.1",
 				"/usr/lib/ruby/gems/3.2.0/gems/bigdecimal-3.1.3",
-				"/usr/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/libexec/bundle",
-				"/usr/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/libexec/bundler",
+				"/usr/lib/ruby/gems/3.2.0/gems/bundler-2.4.6/libexec/bundle",
+				"/usr/lib/ruby/gems/3.2.0/gems/bundler-2.4.6/libexec/bundler",
 				"/usr/lib/ruby/gems/3.2.0/gems/cgi-0.3.6",
 				"/usr/lib/ruby/gems/3.2.0/gems/csv-3.2.6",
 				"/usr/lib/ruby/gems/3.2.0/gems/date-3.3.3",
@@ -2125,7 +2124,7 @@
 				"/usr/lib/ruby/gems/3.2.0/specifications/default/base64-0.1.1.gemspec",
 				"/usr/lib/ruby/gems/3.2.0/specifications/default/benchmark-0.2.1.gemspec",
 				"/usr/lib/ruby/gems/3.2.0/specifications/default/bigdecimal-3.1.3.gemspec",
-				"/usr/lib/ruby/gems/3.2.0/specifications/default/bundler-2.4.1.gemspec",
+				"/usr/lib/ruby/gems/3.2.0/specifications/default/bundler-2.4.6.gemspec",
 				"/usr/lib/ruby/gems/3.2.0/specifications/default/cgi-0.3.6.gemspec",
 				"/usr/lib/ruby/gems/3.2.0/specifications/default/csv-3.2.6.gemspec",
 				"/usr/lib/ruby/gems/3.2.0/specifications/default/date-3.3.3.gemspec",
@@ -2434,7 +2433,7 @@
 				"/usr/include/ruby-3.2.0/ruby/util.h",
 				"/usr/include/ruby-3.2.0/ruby/version.h",
 				"/usr/include/ruby-3.2.0/ruby/vm.h",
-				"/usr/include/ruby-3.2.0/x86_64-linux/rb_mjit_min_header-3.2.0.h",
+				"/usr/include/ruby-3.2.0/x86_64-linux/rb_mjit_min_header-3.2.1.h",
 				"/usr/include/ruby-3.2.0/x86_64-linux/ruby/config.h",
 				"/usr/lib/libruby.so",
 				"/usr/lib/pkgconfig/ruby-3.2.pc"
@@ -2446,6 +2445,6 @@
 		}
 	},
 	"source-name": "ruby",
-	"source-release": "2",
-	"source-version": "3.2.0"
+	"source-release": "3",
+	"source-version": "3.2.1"
 }

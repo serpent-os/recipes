@@ -2,5 +2,5 @@ releases:
   id: 16460
 security:
   cpe:
-    vendor: linuxfoundation
+  - vendor: linuxfoundation
     product: containerd

@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : docker-compose
+version     : 2.16.0
+release     : 1
+homepage    : https://github.com/docker/compose
+upstreams   :
+    - https://github.com/docker/compose/archive/refs/tags/v2.16.0.tar.gz : 556dc59075280442128f5b45a8ff37638fb357c2a956bd751dd0ba747c93e71d
+summary     : Define and run multi-container applications with Docker 
+description : |
+    Define and run multi-container applications with Docker 
+license     :
+    - Apache-2.0
+networking  : yes
+builddeps   :
+    - binary(go)
+environment : |
+    export _compose_r=github.com/docker/compose
+    export _cli_plugins_dir=%(libdir)/docker/cli-plugins
+    export GO111MODULE=auto
+
+    # This can probably be removed after golang reboostrap.
+    export GOMODCACHE="%(workdir)/.cache"
+
+    export CGO_CPPFLAGS="${CPPFLAGS} -Qunused-arguments"
+    export CGO_CFLAGS="${CFLAGS} -Qunused-arguments"
+    export CGO_CXXFLAGS="${CXXFLAGS} -Qunused-arguments"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-X=$_compose_r/v2/internal.Version=v%(version)"
+
+    # Git commit corresponding to the version tag
+    export GITCOMMIT="e6e2f7839f59d6e8df03411f366413520dcac126"
+build      : |
+    go build -o docker-compose ./cmd/compose
+install    : |
+    %install_exe docker-compose -t %(installroot)/$_cli_plugins_dir

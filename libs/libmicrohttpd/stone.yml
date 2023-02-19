@@ -5,7 +5,7 @@
 #
 name        : libmicrohttpd
 version     : 0.9.75
-release     : 1
+release     : 2
 homepage    : https://www.gnu.org/software/libmicrohttpd
 upstreams   :
     - https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.75.tar.gz : 9278907a6f571b391aab9644fd646a5108ed97311ec66f6359cebbedb0a4e3bb

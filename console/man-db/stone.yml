@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : man-db
+version     : 2.11.2
+release     : 1
+homepage    : https://man-db.nongnu.org/
+upstreams   :
+    - https://mirror.hostiran.ir/gnu/releases/man-db/man-db-2.11.2.tar.xz : cffa1ee4e974be78646c46508e6dd2f37e7c589aaab2938cc1064f058fef9f8d
+summary     : Application to read Linux man pages
+description : |
+    man-db is an implementation of the standard Unix documentation system accessed using the man command. It uses a Berkeley DB database in place of the traditional flat-text whatis databases.
+license     :
+    - GPL-2.0-or-later
+    - GPL-3.0-or-later
+    - LGPL-2.1-or-later
+toolchain   : gnu # slibtool issues
+builddeps   :
+    - binary(autopoint)
+    - binary(groff)
+    - binary(gzip)
+    - pkgconfig(libmagic)
+    - pkgconfig(libpipeline)
+    - pkgconfig(libpkgconf)
+    - pkgconfig(libseccomp)
+    - pkgconfig(libzstd)
+    - pkgconfig(zlib)
+    - flex-devel
+    - gdbm-devel
+    - slibtool
+rundeps     :
+    - binary(groff)
+setup       : |
+    %patch %(pkgdir)/stateless.patch
+    %reconfigure \
+         --disable-setuid \
+         --enable-cache-owner=root \
+         --with-db=gdbm \
+         --with-systemdsystemunitdir=%(libdir)/systemd/system
+build       : |
+    %make
+install     : |
+    %make_install
+
+    rm %(installroot)/%(libdir)/man-db/*.a

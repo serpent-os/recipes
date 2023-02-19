@@ -1,8 +1,19 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"python": {
+			"build-depends": [
+				"llvm-bolt",
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcrypt)",
+				"pkgconfig(libffi)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libssl)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(uuid)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libbz2.so.1.0(x86_64))",
@@ -2796,6 +2807,7 @@
 				"/usr/lib/python3.11/lib-dynload/_struct.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_testbuffer.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_testcapi.cpython-311-x86_64-linux-gnu.so",
+				"/usr/lib/python3.11/lib-dynload/_testclinic.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_testimportmultiple.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_testinternalcapi.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_testmultiphase.cpython-311-x86_64-linux-gnu.so",
@@ -2824,9 +2836,9 @@
 				"/usr/lib/python3.11/lib-dynload/xxlimited_35.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/zlib.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib2to3/Grammar.txt",
-				"/usr/lib/python3.11/lib2to3/Grammar3.11.1.final.0.pickle",
+				"/usr/lib/python3.11/lib2to3/Grammar3.11.2.final.0.pickle",
 				"/usr/lib/python3.11/lib2to3/PatternGrammar.txt",
-				"/usr/lib/python3.11/lib2to3/PatternGrammar3.11.1.final.0.pickle",
+				"/usr/lib/python3.11/lib2to3/PatternGrammar3.11.2.final.0.pickle",
 				"/usr/lib/python3.11/lib2to3/__init__.py",
 				"/usr/lib/python3.11/lib2to3/__main__.py",
 				"/usr/lib/python3.11/lib2to3/__pycache__/__init__.cpython-311.opt-1.pyc",
@@ -8964,6 +8976,17 @@
 			]
 		},
 		"python-devel": {
+			"build-depends": [
+				"llvm-bolt",
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcrypt)",
+				"pkgconfig(libffi)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libssl)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(uuid)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"soname(libc.so.6(x86_64))"
 			],
@@ -9176,6 +9199,6 @@
 		}
 	},
 	"source-name": "python",
-	"source-release": "2",
-	"source-version": "3.11.1"
+	"source-release": "3",
+	"source-version": "3.11.2"
 }

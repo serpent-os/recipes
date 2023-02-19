@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : restic
-version     : 0.15.0
-release     : 1
+version     : 0.15.1
+release     : 2
 homepage    : https://restic.net
 upstreams   :
-    - https://github.com/restic/restic/archive/refs/tags/v0.15.0.tar.gz : 85a6408cfb0798dab52335bcb00ac32066376c32daaa75461d43081499bc7de8
+    - https://github.com/restic/restic/archive/refs/tags/v0.15.1.tar.gz : fce382fdcdac0158a35daa640766d5e8a6e7b342ae2b0b84f2aacdff13990c52
 summary     : Fast, secure, efficient backup program
 description : |
     Restic is a program that does backups right and was designed with the following principles in mind: easy, fast, verifiable, secure and efficient.
@@ -23,7 +23,7 @@ build       : |
     # This can probably be removed after golang reboostrap.
     export GOMODCACHE="%(workdir)/.cache"
 
-    %make
+    %make GO_BUILD_FLAGS="-trimpath -mod=readonly -modcacherw"
 install     : |
     install -Dm00755 restic -t %(installroot)/%(bindir)
 

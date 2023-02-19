@@ -11,7 +11,8 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libc.so.6(x86_64))"
+				"soname(libc.so.6(x86_64))",
+				"soname(libresolv.so.2(x86_64))"
 			],
 			"files": [
 				"/usr/bin/containerd",
@@ -36,6 +37,6 @@
 		}
 	},
 	"source-name": "containerd",
-	"source-release": "2",
-	"source-version": "1.6.16"
+	"source-release": "3",
+	"source-version": "1.6.17"
 }
