@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : ldc
-version     : 1.30.0
-release     : 2
+version     : 1.31.0
+release     : 3
 summary     : The LLVM-based D Compiler
 license     :
     - Apache-2.0
@@ -15,12 +15,9 @@ homepage    : https://github.com/ldc-developers/ldc
 description : |
     The LLVM-based D Compiler
 upstreams   :
-    - https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc-1.30.0-src.tar.gz: fdbb376f08242d917922a6a22a773980217fafa310046fc5d6459490af23dacd
-    - https://s3.us-west-2.amazonaws.com/downloads.dlang.org/releases/2021/dmd.2.098.1.linux.tar.xz:
-        hash: 19c28b0d306df56bbe9e053c929c56fdba2034685df092f26fc91c3abebcde63
-        stripdirs: 1
-        unpackdir: "%(name)-%(version)-src/dmd2/"
+    - https://github.com/ldc-developers/ldc/releases/download/v1.31.0/ldc-1.31.0-src.tar.gz: f1c8ece9e1e35806c3441bf24fbe666cddd8eef375592c19cd8fee4701cd5458
 builddeps   :
+    - ldc-devel
     - binary(make)
     - lld-devel
     - llvm-devel
@@ -35,16 +32,12 @@ setup       : |
         -DLDC_INSTALL_LTOPLUGIN=ON \
         -DLDC_INSTALL_LLVM_RUNTIME_LIBS=ON \
         -DLDC_WITH_LLD=ON \
-        -DD_COMPILER=%(buildroot)/%(name)-%(version)-src/dmd2/linux/bin64/dmd \
-        -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
+        -DLDC_DYNAMIC_COMPILE=ON \
+        -DD_COMPILER="/usr/bin/ldmd2"
 build       : |
     %cmake_build
 install     : |
     %cmake_install
-    %install_exe "dmd2/linux/bin64/dub" "%(installroot)/usr/bin/"
-    # Allow ldc to work before this is resolved properly
-    ln -sf clang "%(installroot)/usr/bin/cc"
-
     # Stateless: Put file in patched stateless location
     %install_file %(installroot)/etc/ldc2.conf %(installroot)/%(vendordir)/ldc2.conf
     rm %(installroot)/etc/ldc2.conf
