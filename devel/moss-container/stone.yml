@@ -1,11 +1,12 @@
 name        : moss-container
 version     : 0.2
-release     : 2
+release     : 3
 summary     : Containerisation for boulder
 license     : Zlib
 homepage    : https://github.com/serpent-os/moss-container
 description : |
-    Serpent OS builder tool.
+    Tool to assist in build container management, specifically designed
+    for boulder.
 upstreams   :
     - https://github.com/serpent-os/moss-container/archive/refs/heads/main.tar.gz:
         hash: 50e33502fcbbc1197f2e7d6399a31041bd31c744814c8c4a5d43b298b984ccc4
@@ -13,7 +14,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-container/"
     - https://github.com/serpent-os/moss-core/archive/refs/heads/main.tar.gz:
-        hash: 25991541c334bf1d463574cc601ae623a6e2336d755f57b2c49925a0aabf4dd1
+        hash: 2857f6e7aa44e18740a40f84ba6159e9917dce298f9b401053f28324663b8c86
         rename: moss-core.tar.gz
         stripdirs: 1
         unpackdir: "moss-core/"
@@ -23,7 +24,9 @@ builddeps   :
 environment : |
     cd %(buildroot)/moss-container
 setup       : |
-    %meson
+    # TODO: Unset buildtype here when moss-format supports DFLAGS
+    export DFLAGS="$DFLAGS -flto=thin -O3 -g"
+    %meson --buildtype debugoptimized
 build       : |
     %meson_build
 install     : |
