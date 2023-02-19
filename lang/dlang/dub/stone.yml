@@ -5,8 +5,8 @@
 #
 name        : dub
 version     : 1.30.0
-release     : 1
-homepage    : https://github.com/dlang/dub
+release     : 2
+homepage    : https://dub.pm/
 upstreams   :
     - https://github.com/dlang/dub/archive/refs/tags/v1.30.0.tar.gz : 840cd65bf5f0dd06ca688f63b94d71fccd92b526bbf1d3892fe5535b1e85c10e
 summary     : The DLang package manager
@@ -17,10 +17,11 @@ license     :
     - MIT
 builddeps   :
     - ldc-devel
+    - binary(dub)
     - pkgconfig(libcurl)
 rundeps     :
     - binary(ldc2)
 setup       : |
-    DFLAGS="-O3 -g -v" ldmd2 -run build.d
+    dub build -b release-debug --skip-registry=all --parallel
 install     : |
     %install_bin bin/dub
