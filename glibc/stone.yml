@@ -5,7 +5,7 @@
 #
 name        : glibc
 version     : 2.37
-release     : 4
+release     : 5
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -15,7 +15,7 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - https://ftp.gnu.org/gnu/glibc/glibc-2.37.tar.xz: 2257eff111a1815d74f46856daaf40b019c1e553156c69d48ba0cbfc1bb91a43
+    - git|https://sourceware.org/git/glibc.git : 590d0e089b06f158ded713f5e5600eaa66dcea44 # release/2.37/master
 builddeps   :
     - binary(bison)
     - binary(gzip)
