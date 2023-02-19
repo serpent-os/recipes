@@ -1,14 +1,15 @@
 name        : boulder
 version     : 0.1
-release     : 23
+release     : 24
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
 description : |
-    Serpent OS builder tool.
+    Extremely flexible and powerful, yet simple to use, package build
+    tool for the Serpent OS project.
 upstreams   :
     - https://github.com/serpent-os/boulder/archive/refs/heads/main.tar.gz:
-        hash: 26ee8b3175fdb5177a07cd71271dcb6ba5422d38b56c8eae3cb0f44d7735df30
+        hash: 8aff404f3df2a83f32e5f6b50bf6ec69274c435a9de9cfb0a1908fa92995f291
         rename: boulder.tar.gz
         stripdirs: 1
         unpackdir: "boulder/"
@@ -18,22 +19,22 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-config/"
     - https://github.com/serpent-os/moss-core/archive/refs/heads/main.tar.gz:
-        hash: d0fac5054be60bb3b2e64a5e163023277fa4bfebc71666a54db1627f9aca749f
+        hash: 2857f6e7aa44e18740a40f84ba6159e9917dce298f9b401053f28324663b8c86
         rename: moss-core.tar.gz
         stripdirs: 1
         unpackdir: "moss-core/"
     - https://github.com/serpent-os/moss-deps/archive/refs/heads/main.tar.gz:
-        hash: 9bae4e573406d8b2f437297557b2cd468f27394ca74238e7a0928b4d3f3f14d9
+        hash: 688239f669fa259d3c9d3d570a50b086785e92d63b84732dd7de86b7fb1ce950
         rename: moss-deps.tar.gz
         stripdirs: 1
         unpackdir: "moss-deps/"
     - https://github.com/serpent-os/moss-fetcher/archive/refs/heads/main.tar.gz:
-        hash: e0dc159b179fc70706466dc8559bce5d04fa668ef81d3f0682f1169bac32fa9a
+        hash: 115110a843df59bc2691a858ca26bf0f8ea11e94986c8560169575d8a1ad4bf6
         rename: moss-fetcher.tar.gz
         stripdirs: 1
         unpackdir: "moss-fetcher/"
     - https://github.com/serpent-os/moss-format/archive/refs/heads/main.tar.gz:
-        hash: 695e078873a791bd8e603df54cb5188bcae6a000c813d11d9e4a48ba76d19af9
+        hash: 2f64af8ba6b8d633878dc8203d70e594372ebe1ff9f02815422f3ac3aa2777fe
         rename: moss-format.tar.gz
         stripdirs: 1
         unpackdir: "moss-format/"
@@ -48,7 +49,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-vendor/vendor/elf/elf-d/"
     - https://github.com/serpent-os/lmdb-d/archive/refs/heads/main.tar.gz:
-        hash: 0204dfde3c4b98836df384128be44ae558a12724886ceccce3a96d4004d6d98f
+        hash: 5f94251882952fa5de0c4680afef3e95b84d73407e2dc86a8c78853ef81f6636
         rename: lmdb-d.tar.gz
         stripdirs: 1
         unpackdir: "moss-vendor/subprojects/lmdb-d/"
@@ -58,7 +59,7 @@ upstreams   :
         stripdirs: 1
         unpackdir: "moss-vendor/subprojects/xxhash-d/"
     - https://github.com/serpent-os/zstdoubledee/archive/refs/heads/main.tar.gz:
-        hash: 4f87366e92f2a0adbf00308b45da13c76af8ab267adc4394d051b7f1d34ae329
+        hash: 0430bf649d77d547989a9e834edba37642257c2d9a1f612bdd028ad62b599c04
         rename: zstdoubledee.tar.gz
         stripdirs: 1
         unpackdir: "moss-vendor/subprojects/zstdoubledee/"
@@ -81,9 +82,10 @@ rundeps     :
     - binary(moss-container)
 environment : |
     cd %(buildroot)/boulder
-    find .. -type d
 setup       : |
-    %meson
+    # TODO: Unset buildtype here when moss-format supports DFLAGS
+    export DFLAGS="$DFLAGS -flto=thin -O3 -g"
+    %meson --buildtype debugoptimized
 build       : |
     %meson_build
 install     : |
