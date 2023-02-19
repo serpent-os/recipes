@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : dub
+version     : 1.30.0
+release     : 1
+homepage    : https://github.com/dlang/dub
+upstreams   :
+    - https://github.com/dlang/dub/archive/refs/tags/v1.30.0.tar.gz : 840cd65bf5f0dd06ca688f63b94d71fccd92b526bbf1d3892fe5535b1e85c10e
+summary     : The DLang package manager
+description : |
+    DUB emerged as a more general replacement for vibe.d's package manager. It does not imply a dependency to vibe.d for packages and was extended to not only directly build projects, but also to generate project files (currently VisualD). Mono-D also supports the use of dub.json (dub's package description) as the project file.
+    The project's philosophy is to keep things as simple as possible. All that is needed to make a project a dub package is to write a short dub.json file and put the source code into a source subfolder. It can then be registered on the public package registry to be made available for everyone. Any dependencies specified in dub.json are automatically downloaded and made available to the project during the build process.
+license     :
+    - MIT
+builddeps   :
+    - ldc-devel
+    - pkgconfig(libcurl)
+rundeps     :
+    - binary(ldc2)
+setup       : |
+    DFLAGS="-O3 -g -v" ldmd2 -run build.d
+install     : |
+    %install_bin bin/dub
