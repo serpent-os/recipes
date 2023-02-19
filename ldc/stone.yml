@@ -5,7 +5,7 @@
 #
 name        : ldc
 version     : 1.31.0
-release     : 3
+release     : 4
 summary     : The LLVM-based D Compiler
 license     :
     - Apache-2.0
@@ -32,7 +32,7 @@ setup       : |
         -DLDC_INSTALL_LTOPLUGIN=ON \
         -DLDC_INSTALL_LLVM_RUNTIME_LIBS=ON \
         -DLDC_WITH_LLD=ON \
-        -DLDC_DYNAMIC_COMPILE=ON \
+        -DLDC_DYNAMIC_COMPILE=OFF \
         -DD_COMPILER="/usr/bin/ldmd2"
 build       : |
     %cmake_build
