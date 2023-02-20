@@ -1,0 +1,45 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libksba": {
+			"build-depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgpg-error.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libksba.so.8",
+				"/usr/lib/libksba.so.8.14.3",
+				"/usr/share/info/ksba.info"
+			],
+			"name": "libksba",
+			"provides": [
+				"soname(libksba.so.8(x86_64))"
+			]
+		},
+		"libksba-devel": {
+			"build-depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"files": [
+				"/usr/include/ksba.h",
+				"/usr/lib/libksba.so",
+				"/usr/lib/pkgconfig/ksba.pc",
+				"/usr/share/aclocal/ksba.m4"
+			],
+			"name": "libksba-devel",
+			"provides": [
+				"pkgconfig(ksba)"
+			]
+		}
+	},
+	"source-name": "libksba",
+	"source-release": "1",
+	"source-version": "1.6.3"
+}
