@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libassuan
+version     : 2.5.5
+release     : 1
+homepage    : https://gnupg.org/software/libassuan/index.html
+upstreams   :
+    - https://gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.5.tar.bz2 : 8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
+summary     : Implements the so-called Assuan protocol
+description : |
+    %(name) is a small library implementing the so-called Assuan protocol. This protocol is used for IPC between most newer GnuPG components. Both, server and client side functions are provided.
+license     :
+    - GPL-3.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(gpg-error)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
