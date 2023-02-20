@@ -1,2 +1,6 @@
 releases:
   id: 2019
+security:
+  cpe:
+  - vendor: mpfr
+    product: gnu_mpfr
