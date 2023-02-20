@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : less
-version     : 608
-release     : 3
+version     : 627
+release     : 4
 homepage    : https://www.greenwoodsoftware.com/less
 upstreams   :
-    - https://www.greenwoodsoftware.com/less/less-608.tar.gz : a69abe2e0a126777e021d3b73aa3222e1b261f10e64624d41ec079685a6ac209
+    - https://github.com/gwsw/less/archive/refs/tags/v627.tar.gz : a4de21fa614dde0fc5a1e88bbb9f44e45520ecb8927006b41a2b8c706448329c
 summary     : Text file browser and pager
 description : |
     Text file browser and pager
@@ -16,9 +16,11 @@ license     :
     - BSD-2-Clause
     - GPL-3.0-or-later
 builddeps   :
+    - binary(nroff)
     - pkgconfig(libpcre2-8)
     - pkgconfig(ncursesw)
 setup       : |
+    make -f Makefile.aut distfiles
     %configure --with-regex=pcre2
 build       : |
     %make

@@ -1,8 +1,13 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"less": {
+			"build-depends": [
+				"binary(nroff)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(ncursesw)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -26,6 +31,6 @@
 		}
 	},
 	"source-name": "less",
-	"source-release": "3",
-	"source-version": "608"
+	"source-release": "4",
+	"source-version": "627"
 }
