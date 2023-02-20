@@ -1,0 +1,57 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libgcrypt": {
+			"build-depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgpg-error.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dumpsexp",
+				"/usr/bin/hmac256",
+				"/usr/bin/libgcrypt-config",
+				"/usr/bin/mpicalc",
+				"/usr/lib/libgcrypt.so.20",
+				"/usr/lib/libgcrypt.so.20.4.1",
+				"/usr/share/info/gcrypt.info",
+				"/usr/share/info/gcrypt.info-1",
+				"/usr/share/info/gcrypt.info-2",
+				"/usr/share/man/man1/hmac256.1"
+			],
+			"name": "libgcrypt",
+			"provides": [
+				"binary(dumpsexp)",
+				"binary(hmac256)",
+				"binary(libgcrypt-config)",
+				"soname(libgcrypt.so.20(x86_64))",
+				"binary(mpicalc)"
+			]
+		},
+		"libgcrypt-devel": {
+			"build-depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"files": [
+				"/usr/include/gcrypt.h",
+				"/usr/lib/libgcrypt.so",
+				"/usr/lib/pkgconfig/libgcrypt.pc",
+				"/usr/share/aclocal/libgcrypt.m4"
+			],
+			"name": "libgcrypt-devel",
+			"provides": [
+				"pkgconfig(libgcrypt)"
+			]
+		}
+	},
+	"source-name": "libgcrypt",
+	"source-release": "1",
+	"source-version": "1.10.1"
+}
