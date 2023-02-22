@@ -1,2 +1,6 @@
 releases:
   id: 186936
+security:
+  cpe:
+  - vendor: linux
+    product: kernel
