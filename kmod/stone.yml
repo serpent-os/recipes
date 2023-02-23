@@ -1,6 +1,6 @@
 name        : kmod
 version     : 30
-release     : 4
+release     : 5
 homepage    : https://github.com/kmod-project/kmod
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-30.tar.xz : f897dd72698dc6ac1ef03255cd0a5734ad932318e4adbaebc7338ef2f5202f9f
