@@ -12,7 +12,6 @@
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libcurl.so.4(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))"
 			],
@@ -26,6 +25,6 @@
 		}
 	},
 	"source-name": "dub",
-	"source-release": "2",
-	"source-version": "1.30.0"
+	"source-release": "3",
+	"source-version": "1.31.1"
 }
