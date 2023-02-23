@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : less
-version     : 627
-release     : 4
+version     : 628
+release     : 5
 homepage    : https://www.greenwoodsoftware.com/less
 upstreams   :
-    - https://github.com/gwsw/less/archive/refs/tags/v627.tar.gz : a4de21fa614dde0fc5a1e88bbb9f44e45520ecb8927006b41a2b8c706448329c
+    - https://github.com/gwsw/less/archive/refs/tags/v628.tar.gz : c58785e71cf579b84d7379d8ce9518856eb7b55bd92ea6d9b5414f51792be4e8
 summary     : Text file browser and pager
 description : |
     Text file browser and pager
