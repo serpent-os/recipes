@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : nss
-version     : 3.88
-release     : 5
+version     : "3.88.1"
+release     : 6
 summary     : Network Security Services
 license     : MPL-2.0
 homepage    : 
