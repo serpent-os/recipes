@@ -1,0 +1,49 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : docbook
+version     : 4.5
+release     : 1
+homepage    : https://docbook.org
+upstreams   :
+    - https://docbook.org/xml/4.5/docbook-xml-4.5.zip : 4e4e037a2b83c98c6c94818390d4bdd3f6e10f6ec62dd79188594e26190dc7b4
+    - https://github.com/docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-nons-1.79.2.tar.bz2 : ee8b9eca0b7a8f89075832a2da7534bce8c5478fc8fc2676f512d5d87d832102
+summary     : Markup schema, suitable for writing technical books and documentation
+description : |
+    %(name) is a schema (available in several languages including RELAX NG, W3C XML Schemas, and XML DTDs) maintained by the DocBook Technical Committee of OASIS. It is particularly well suited to books and papers about computer hardware and software (though it is by no means limited to these applications).
+license     : Copyright
+builddeps   :
+    - binary(xmlcatalog)
+# Technically the XML catalog isn't for docbook only,
+# but it collects all the XML schemas installed. We shouldn't
+# be shipping a catalog file with this package.
+# If a different requirement arises, we should develop
+# a post-install trigger to populate the existing vendored catalog.
+environment : |
+    # Why does boulder `cd` into /ent directory by itself?
+    cd ..
+    export xslVersion=1.79.2
+setup       : |
+    ls -lah
+    cd docbook-xsl-nons-${xslVersion}
+    %patch %(pkgdir)/no-stack-overflow.patch
+install     : |
+    # [LATER] shouldn't boulder preserve attributes?
+    chmod a+x %(pkgdir)/populate-catalog.sh
+
+    install -Dm00644 docbook.cat *.dtd *.mod -t %(installroot)/%(datadir)/xml/docbook/xml-dtd-%(version)
+    cp -a ent %(installroot)/%(datadir)/xml/docbook/xml-dtd-%(version)
+    rm %(installroot)/%(datadir)/xml/docbook/xml-dtd-%(version)/ent/README
+    %(pkgdir)/populate-catalog.sh xml %(version) %(datadir) %(vendordir) %(installroot)
+
+    cd docbook-xsl-nons-${xslVersion}
+    install -v -dm00755 %(installroot)/%(datadir)/xml/docbook/xsl-stylesheets-nons-${xslVersion}
+    cp -a VERSION assembly common eclipse epub epub3 extensions fo      \
+        highlighting html htmlhelp images javahelp lib manpages params  \
+        profiling roundtrip slides template tests tools webhelp website \
+        xhtml xhtml-1_1 xhtml5                                          \
+        %(installroot)/%(datadir)/xml/docbook/xsl-stylesheets-nons-${xslVersion}
+    ln -s VERSION %(installroot)/%(datadir)/xml/docbook/xsl-stylesheets-nons-${xslVersion}/VERSION.xsl
+    %(pkgdir)/populate-catalog.sh xsl ${xslVersion} %(datadir) %(vendordir) %(installroot)
