@@ -21,6 +21,7 @@ builddeps   :
     - pkgconfig(readline)
     - pkgconfig(zlib)
 setup       : |
+    %patch %(pkgdir)/stateless/0001-Make-it-stateless.patch
     %configure --disable-static \
                --with-history
 build       : |

@@ -1,8 +1,16 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"libxml2": {
+			"build-depends": [
+				"perl",
+				"pkgconfig(liblzma)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(python3)",
+				"pkgconfig(readline)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -38,6 +46,14 @@
 			]
 		},
 		"libxml2-devel": {
+			"build-depends": [
+				"perl",
+				"pkgconfig(liblzma)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(python3)",
+				"pkgconfig(readline)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/libxml2/libxml/HTMLparser.h",
 				"/usr/include/libxml2/libxml/HTMLtree.h",
@@ -97,6 +113,14 @@
 			]
 		},
 		"libxml2-docs": {
+			"build-depends": [
+				"perl",
+				"pkgconfig(liblzma)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(python3)",
+				"pkgconfig(readline)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/share/doc/libxml2/examples/index.html",
 				"/usr/share/doc/libxml2/examples/io1.c",

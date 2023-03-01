@@ -1,0 +1,25 @@
+From e72700d6f23332adcfd4610fef90b97e073b2008 Mon Sep 17 00:00:00 2001
+From: Fabio Forni <development@redaril.me>
+Date: Wed, 1 Mar 2023 15:49:53 +0100
+Subject: [PATCH] Make it stateless
+
+---
+ catalog.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/catalog.c b/catalog.c
+index b7837e3..b551f36 100644
+--- a/catalog.c
++++ b/catalog.c
+@@ -68,7 +68,7 @@
+ #define XML_URN_PUBID "urn:publicid:"
+ #define XML_CATAL_BREAK ((xmlChar *) -1)
+ #ifndef XML_XML_DEFAULT_CATALOG
+-#define XML_XML_DEFAULT_CATALOG "file://" SYSCONFDIR "/xml/catalog"
++#define XML_XML_DEFAULT_CATALOG "file://" SYSCONFDIR "/xml/catalog" " " "file:///usr/share/defaults/etc/xml/catalog"
+ #endif
+ #ifndef XML_SGML_DEFAULT_CATALOG
+ #define XML_SGML_DEFAULT_CATALOG "file://" SYSCONFDIR "/sgml/catalog"
+-- 
+2.39.2
+
