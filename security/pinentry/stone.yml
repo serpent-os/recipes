@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : pinentry
+version     : 1.2.1
+release     : 1
+homepage    : https://gnupg.org/related_software/pinentry
+upstreams   :
+    - https://gnupg.org/ftp/gcrypt/pinentry/pinentry-1.2.1.tar.bz2 : 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
+summary     : Collection of dialog programs that allow GnuPG to read passphrases and PINs
+description : |
+    %(name) is a small collection of dialog programs that allow GnuPG to read passphrases and PIN numbers in a secure manner.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    # [LATER] Add GNOME 3 and Qt 5 backends.
+    - pkgconfig(libassuan)
+    - pkgconfig(libsecret-1)
+    - pkgconfig(ncursesw)
+setup       : |
+    %configure \
+        --enable-fallback-curses \
+        --enable-libsecret
+build       : |
+    %make AR=%(ar)
+install     : |
+    %make_install
