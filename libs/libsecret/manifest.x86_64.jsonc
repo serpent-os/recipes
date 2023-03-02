@@ -1,0 +1,90 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libsecret": {
+			"build-depends": [
+				"binary(xsltproc)",
+				"docbook",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(libgcrypt)",
+				"pkgconfig(tss2-esys)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcrypt.so.20(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libtss2-esys.so.0(x86_64))",
+				"soname(libtss2-mu.so.0(x86_64))",
+				"soname(libtss2-rc.so.0(x86_64))",
+				"soname(libtss2-tctildr.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/secret-tool",
+				"/usr/lib/girepository-1.0/Secret-1.typelib",
+				"/usr/lib/libsecret-1.so.0",
+				"/usr/lib/libsecret-1.so.0.0.0",
+				"/usr/share/gir-1.0/Secret-1.gir",
+				"/usr/share/man/man1/secret-tool.1"
+			],
+			"name": "libsecret",
+			"provides": [
+				"soname(libsecret-1.so.0(x86_64))",
+				"binary(secret-tool)"
+			]
+		},
+		"libsecret-devel": {
+			"build-depends": [
+				"binary(xsltproc)",
+				"docbook",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(libgcrypt)",
+				"pkgconfig(tss2-esys)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(libgcrypt)",
+				"pkgconfig(tss2-esys)",
+				"pkgconfig(tss2-mu)",
+				"pkgconfig(tss2-rc)",
+				"pkgconfig(tss2-tctildr)"
+			],
+			"files": [
+				"/usr/include/libsecret-1/libsecret/secret-attributes.h",
+				"/usr/include/libsecret-1/libsecret/secret-backend.h",
+				"/usr/include/libsecret-1/libsecret/secret-collection.h",
+				"/usr/include/libsecret-1/libsecret/secret-enum-types.h",
+				"/usr/include/libsecret-1/libsecret/secret-item.h",
+				"/usr/include/libsecret-1/libsecret/secret-password.h",
+				"/usr/include/libsecret-1/libsecret/secret-paths.h",
+				"/usr/include/libsecret-1/libsecret/secret-prompt.h",
+				"/usr/include/libsecret-1/libsecret/secret-retrievable.h",
+				"/usr/include/libsecret-1/libsecret/secret-schema.h",
+				"/usr/include/libsecret-1/libsecret/secret-schemas.h",
+				"/usr/include/libsecret-1/libsecret/secret-service.h",
+				"/usr/include/libsecret-1/libsecret/secret-types.h",
+				"/usr/include/libsecret-1/libsecret/secret-value.h",
+				"/usr/include/libsecret-1/libsecret/secret-version.h",
+				"/usr/include/libsecret-1/libsecret/secret.h",
+				"/usr/lib/libsecret-1.so",
+				"/usr/lib/pkgconfig/libsecret-1.pc",
+				"/usr/lib/pkgconfig/libsecret-unstable.pc"
+			],
+			"name": "libsecret-devel",
+			"provides": [
+				"pkgconfig(libsecret-1)",
+				"pkgconfig(libsecret-unstable)"
+			]
+		}
+	},
+	"source-name": "libsecret",
+	"source-release": "1",
+	"source-version": "0.20.5"
+}
