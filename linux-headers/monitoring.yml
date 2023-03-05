@@ -1,2 +1,9 @@
 releases:
   id: 186936
+  ignore:
+    # Keeping this on 6.1 LTS for now
+    - "6\.2.*"
+security:
+  cpe:
+  - vendor: linux
+    product: kernel

@@ -14,7 +14,7 @@
 			],
 			"files": [
 				"/usr/lib/libmpfr.so.6",
-				"/usr/lib/libmpfr.so.6.1.1",
+				"/usr/lib/libmpfr.so.6.2.0",
 				"/usr/share/doc/mpfr/AUTHORS",
 				"/usr/share/doc/mpfr/BUGS",
 				"/usr/share/doc/mpfr/COPYING",
@@ -54,6 +54,6 @@
 		}
 	},
 	"source-name": "mpfr",
-	"source-release": "2",
-	"source-version": "4.1.1"
+	"source-release": "3",
+	"source-version": "4.2.0"
 }
