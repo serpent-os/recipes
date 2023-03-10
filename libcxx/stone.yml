@@ -1,30 +1,27 @@
 name        : libcxx
-version     : 14.0.6
-release     : 2
-summary     : LLVM's libcxx
+version     : 15.0.7
+release     : 3
+summary     : Modern C++ standard library
 license     :
     - Apache-2.0 WITH LLVM-exception
     - NCSA
 homepage    : https://www.llvm.org
 description : |
-    LLVM's libcxx
+    A modern C++ standard library from the LLVM project, aiming for minimal overhead
+    and compilation times. Targets the C++11 standard.
+    This is the default C++ library in Serpent OS used in conjunction with the LLVM
+    toolchain.
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-project-14.0.6.src.tar.xz: 8b3cfd7bc695bd6cea0f37f53f0981f34f87496e79e2529874fd03a2f9dd3a8a
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-project-15.0.7.src.tar.xz: 8b5fcb24b4128cf04df1b0b9410ce8b1a729cb3c544e6da885d234280dedeac6
 builddeps   :
     - binary(python3)
     - pkgconfig(libxcrypt)
     - gcc-32bit-devel
-environment : |
-    if [ -z "%(libsuffix)" ]; then
-        BIT32=OFF
-        BIT64=ON
-    else
-        BIT32=ON
-        BIT64=OFF
-    fi
-
-    # This is a bit hacky till there's an export for all build stages
-    export llvmopts="
+    - clang-32bit
+emul32     : yes
+setup      : |
+    # Context on CMAKE_ vars: https://reviews.llvm.org/D112155#3353869
+    %cmake -S runtimes \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLLVM_DEFAULT_TARGET_TRIPLE=%(build_platform) \
         -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
@@ -57,20 +54,17 @@ environment : |
         -DLIBUNWIND_ENABLE_STATIC=OFF \
         -DLIBUNWIND_INSTALL_LIBRARY=ON \
         -DLIBUNWIND_USE_COMPILER_RT=ON \
-    "
-setup      : |
-    %patch %(pkgdir)/llvm-libgcc.patch
-
-    %cmake ${llvmopts} -S runtimes \
-        -DLLVM_LINK_LLVM_DYLIB=ON
+        -DLIBUNWIND_LIBDIR_SUFFIX=%(libsuffix) \
+        -DLLVM_LINK_LLVM_DYLIB=ON \
+        -DCMAKE_CXX_COMPILER_TARGET=%(build_platform) \
+        -DCMAKE_ASM_COMPILER_TARGET=%(build_platform)
 build       : |
     %cmake_build cxx cxxabi unwind
 install     : |
     DESTDIR="%(installroot)" %cmake_build install-cxx install-unwind
 
     # Set some support symlinks
-    echo "INPUT(libc++.so.1)" > "%(installroot)/usr/lib%(libsuffix)/libc++abi.so"
-    ln -svf libc++.so.1 "%(installroot)/usr/lib%(libsuffix)/libc++abi.so.1"
+    echo "INPUT(libc++.so.1)" > "%(installroot)/%(libdir)/libc++abi.so"
+    ln -svf libc++.so.1 "%(installroot)/%(libdir)/libc++abi.so.1"
 #workload    : |
 #    %cmake_build check-runtimes -k 10000 ||:
-emul32      : true
