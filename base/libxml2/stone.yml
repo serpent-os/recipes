@@ -5,7 +5,7 @@
 #
 name        : libxml2
 version     : 2.10.3
-release     : 3
+release     : 4
 summary     : XML parsing library
 license     : MIT
 homepage    : http://www.xmlsoft.org/
@@ -20,6 +20,20 @@ builddeps   :
     - pkgconfig(python3)
     - pkgconfig(readline)
     - pkgconfig(zlib)
+    # 32bit deps
+    - pkgconfig32(liblzma)
+    - pkgconfig32(ncursesw)
+    - pkgconfig32(readline)
+    - pkgconfig32(zlib)
+emul32      : yes
+profiles    :
+    - emul32:
+        setup: |
+            %patch %(pkgdir)/stateless/0001-Make-it-stateless.patch
+            %configure --disable-static \
+                       --with-history \
+                       --without-python
+
 setup       : |
     %patch %(pkgdir)/stateless/0001-Make-it-stateless.patch
     %configure --disable-static \
