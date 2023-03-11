@@ -5802,6 +5802,7 @@
 				"/usr/lib32/pkgconfig/formw.pc",
 				"/usr/lib32/pkgconfig/menuw.pc",
 				"/usr/lib32/pkgconfig/ncurses++w.pc",
+				"/usr/lib32/pkgconfig/ncurses.pc",
 				"/usr/lib32/pkgconfig/ncursesw.pc",
 				"/usr/lib32/pkgconfig/panelw.pc"
 			],
@@ -5809,6 +5810,7 @@
 			"provides": [
 				"pkgconfig32(formw)",
 				"pkgconfig32(menuw)",
+				"pkgconfig32(ncurses)",
 				"pkgconfig32(ncurses++w)",
 				"pkgconfig32(ncursesw)",
 				"pkgconfig32(panelw)"
@@ -5845,6 +5847,7 @@
 				"/usr/lib/pkgconfig/formw.pc",
 				"/usr/lib/pkgconfig/menuw.pc",
 				"/usr/lib/pkgconfig/ncurses++w.pc",
+				"/usr/lib/pkgconfig/ncurses.pc",
 				"/usr/lib/pkgconfig/ncursesw.pc",
 				"/usr/lib/pkgconfig/panelw.pc",
 				"/usr/share/man/man3/BC.3x",
@@ -6734,6 +6737,7 @@
 			"provides": [
 				"pkgconfig(formw)",
 				"pkgconfig(menuw)",
+				"pkgconfig(ncurses)",
 				"pkgconfig(ncurses++w)",
 				"pkgconfig(ncursesw)",
 				"pkgconfig(panelw)"
@@ -6741,6 +6745,6 @@
 		}
 	},
 	"source-name": "ncurses",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "6.4"
 }
