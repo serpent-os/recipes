@@ -5769,6 +5769,51 @@
 				"binary(tset)"
 			]
 		},
+		"ncurses-32bit": {
+			"depends": [
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libformw.so.6",
+				"/usr/lib32/libformw.so.6.4",
+				"/usr/lib32/libmenuw.so.6",
+				"/usr/lib32/libmenuw.so.6.4",
+				"/usr/lib32/libncursesw.so.6",
+				"/usr/lib32/libncursesw.so.6.4",
+				"/usr/lib32/libpanelw.so.6",
+				"/usr/lib32/libpanelw.so.6.4"
+			],
+			"name": "ncurses-32bit",
+			"provides": [
+				"soname(libformw.so.6(x86))",
+				"soname(libmenuw.so.6(x86))",
+				"soname(libncursesw.so.6(x86))",
+				"soname(libpanelw.so.6(x86))"
+			]
+		},
+		"ncurses-32bit-devel": {
+			"files": [
+				"/usr/lib32/libformw.so",
+				"/usr/lib32/libmenuw.so",
+				"/usr/lib32/libncurses++w.a",
+				"/usr/lib32/libncurses.so",
+				"/usr/lib32/libncursesw.so",
+				"/usr/lib32/libpanelw.so",
+				"/usr/lib32/pkgconfig/formw.pc",
+				"/usr/lib32/pkgconfig/menuw.pc",
+				"/usr/lib32/pkgconfig/ncurses++w.pc",
+				"/usr/lib32/pkgconfig/ncursesw.pc",
+				"/usr/lib32/pkgconfig/panelw.pc"
+			],
+			"name": "ncurses-32bit-devel",
+			"provides": [
+				"pkgconfig32(formw)",
+				"pkgconfig32(menuw)",
+				"pkgconfig32(ncurses++w)",
+				"pkgconfig32(ncursesw)",
+				"pkgconfig32(panelw)"
+			]
+		},
 		"ncurses-devel": {
 			"files": [
 				"/usr/include/curses.h",
@@ -6696,6 +6741,6 @@
 		}
 	},
 	"source-name": "ncurses",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "6.4"
 }
