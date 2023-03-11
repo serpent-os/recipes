@@ -1,6 +1,6 @@
 name        : moss
 version     : 0.1
-release     : 7
+release     : 8
 summary     : Default package manager of Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/moss
@@ -10,8 +10,8 @@ description : |
     caching, compression, deduplication and atomic updates.
 upstreams   :
     - git|https://github.com/serpent-os/moss : bfc64a2b12a907cc35261ce85afe6235db0f0f7b
-    - https://github.com/serpent-os/libmoss/releases/download/v1.1.0/libmoss-1.1.0.tar.xz:
-        hash: 5f953f3f07479f6e9e0f709e441f9fa2cda3425e669c18cd6c4bcf6f48b1b5d7
+    - https://github.com/serpent-os/libmoss/releases/download/v1.1.1/libmoss-1.1.1.tar.xz:
+        hash: a72f8d83a72a05f19218c29c8fc3060d1b7d718a456589179dc4d62d25a41212
         unpackdir: libmoss
         stripdirs: 1
 builddeps   :
