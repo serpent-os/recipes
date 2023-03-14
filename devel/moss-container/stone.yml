@@ -1,6 +1,6 @@
 name        : moss-container
 version     : 0.2
-release     : 4
+release     : 5
 summary     : Containerisation for boulder
 license     : Zlib
 homepage    : https://github.com/serpent-os/moss-container
