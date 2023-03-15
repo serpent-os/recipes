@@ -57,6 +57,7 @@
 			],
 			"files": [
 				"/usr/lib32/libc++.so",
+				"/usr/lib32/libc++abi.a",
 				"/usr/lib32/libc++abi.so",
 				"/usr/lib32/libc++experimental.a",
 				"/usr/lib32/libunwind.so"
@@ -335,6 +336,7 @@
 				"/usr/include/c++/v1/__coroutine/coroutine_traits.h",
 				"/usr/include/c++/v1/__coroutine/noop_coroutine_handle.h",
 				"/usr/include/c++/v1/__coroutine/trivial_awaitables.h",
+				"/usr/include/c++/v1/__cxxabi_config.h",
 				"/usr/include/c++/v1/__debug",
 				"/usr/include/c++/v1/__debug_utils/randomize_range.h",
 				"/usr/include/c++/v1/__errc",
@@ -760,6 +762,7 @@
 				"/usr/include/c++/v1/cuchar",
 				"/usr/include/c++/v1/cwchar",
 				"/usr/include/c++/v1/cwctype",
+				"/usr/include/c++/v1/cxxabi.h",
 				"/usr/include/c++/v1/deque",
 				"/usr/include/c++/v1/errno.h",
 				"/usr/include/c++/v1/exception",
@@ -868,6 +871,7 @@
 				"/usr/include/unwind_arm_ehabi.h",
 				"/usr/include/unwind_itanium.h",
 				"/usr/lib/libc++.so",
+				"/usr/lib/libc++abi.a",
 				"/usr/lib/libc++abi.so",
 				"/usr/lib/libc++experimental.a",
 				"/usr/lib/libunwind.so"
@@ -876,6 +880,6 @@
 		}
 	},
 	"source-name": "libcxx",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "15.0.7"
 }

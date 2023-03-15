@@ -1,6 +1,6 @@
 name        : libcxx
 version     : 15.0.7
-release     : 3
+release     : 4
 summary     : Modern C++ standard library
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -43,7 +43,6 @@ setup      : |
         -DLIBCXX_USE_COMPILER_RT=ON \
         -DLIBCXXABI_ENABLE_SHARED=OFF \
         -DLIBCXXABI_ENABLE_STATIC_UNWINDER=ON \
-        -DLIBCXXABI_INSTALL_LIBRARY=OFF \
         -DLIBCXXABI_USE_COMPILER_RT=ON \
         -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
         -DLIBCXXABI_STATICALLY_LINK_UNWINDER_IN_SHARED_LIBRARY=OFF \
@@ -61,7 +60,7 @@ setup      : |
 build       : |
     %cmake_build cxx cxxabi unwind
 install     : |
-    DESTDIR="%(installroot)" %cmake_build install-cxx install-unwind
+    DESTDIR="%(installroot)" %cmake_build install-cxx install-cxxabi install-unwind
 
     # Set some support symlinks
     echo "INPUT(libc++.so.1)" > "%(installroot)/%(libdir)/libc++abi.so"
