@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : mold
-version     : 1.10.1
-release     : 3
+version     : 1.11.0
+release     : 4
 summary     : A Modern Linker
 license     : BSD-3-Clause
 homepage    : https://github.com/rui314/mold
 description : |
     mold is a faster drop-in replacement for existing Unix linkers.
 upstreams   :
-    - https://github.com/rui314/mold/archive/refs/tags/v1.10.1.tar.gz: 19e4aa16b249b7e6d2e0897aa1843a048a0780f5c76d8d7e643ab3a4be1e4787
+    - https://github.com/rui314/mold/archive/refs/tags/v1.11.0.tar.gz: 99318eced81b09a77e4c657011076cc8ec3d4b6867bd324b8677974545bc4d6f
 builddeps   :
     - pkgconfig(libcrypto)
     - pkgconfig(libzstd)
