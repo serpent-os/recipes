@@ -5,7 +5,7 @@
 #
 name        : glib2
 version     : 2.76.0
-release     : 4
+release     : 5
 homepage    : https://gitlab.gnome.org/GNOME/glib
 upstreams   :
     - https://download.gnome.org/sources/glib/2.76/glib-2.76.0.tar.xz : 525bb703b807142e1aee5ccf222c344e8064b21c0c45677ef594e587874c6797
