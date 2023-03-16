@@ -247,6 +247,6 @@
 		}
 	},
 	"source-name": "gobject-introspection",
-	"source-release": "3",
-	"source-version": "1.74.0"
+	"source-release": "4",
+	"source-version": "1.76.0"
 }
