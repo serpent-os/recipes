@@ -151,6 +151,7 @@
 				"/usr/include/linux/arm_sdei.h",
 				"/usr/include/linux/aspeed-lpc-ctrl.h",
 				"/usr/include/linux/aspeed-p2a-ctrl.h",
+				"/usr/include/linux/aspeed-video.h",
 				"/usr/include/linux/atalk.h",
 				"/usr/include/linux/atm.h",
 				"/usr/include/linux/atm_eni.h",
@@ -375,6 +376,7 @@
 				"/usr/include/linux/ioam6_iptunnel.h",
 				"/usr/include/linux/ioctl.h",
 				"/usr/include/linux/iommu.h",
+				"/usr/include/linux/iommufd.h",
 				"/usr/include/linux/ioprio.h",
 				"/usr/include/linux/ip.h",
 				"/usr/include/linux/ip6_tunnel.h",
@@ -383,6 +385,7 @@
 				"/usr/include/linux/ipmi.h",
 				"/usr/include/linux/ipmi_bmc.h",
 				"/usr/include/linux/ipmi_msgdefs.h",
+				"/usr/include/linux/ipmi_ssif_bmc.h",
 				"/usr/include/linux/ipsec.h",
 				"/usr/include/linux/ipv6.h",
 				"/usr/include/linux/ipv6_route.h",
@@ -779,6 +782,7 @@
 				"/usr/include/linux/tc_ematch/tc_em_text.h",
 				"/usr/include/linux/tcp.h",
 				"/usr/include/linux/tcp_metrics.h",
+				"/usr/include/linux/tdx-guest.h",
 				"/usr/include/linux/tee.h",
 				"/usr/include/linux/termios.h",
 				"/usr/include/linux/thermal.h",
@@ -923,6 +927,7 @@
 				"/usr/include/rdma/ib_user_sa.h",
 				"/usr/include/rdma/ib_user_verbs.h",
 				"/usr/include/rdma/irdma-abi.h",
+				"/usr/include/rdma/mana-abi.h",
 				"/usr/include/rdma/mlx4-abi.h",
 				"/usr/include/rdma/mlx5-abi.h",
 				"/usr/include/rdma/mlx5_user_ioctl_cmds.h",
@@ -982,6 +987,6 @@
 		}
 	},
 	"source-name": "linux-headers",
-	"source-release": "6",
-	"source-version": "6.1.10"
+	"source-release": "7",
+	"source-version": "6.2.6"
 }
