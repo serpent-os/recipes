@@ -1,13 +1,18 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
 name        : llvm-bolt
-version     : 15.0.0
-release     : 2
+version     : 15.0.7
+release     : 3
 summary     : Binary Optimization and Layout Tool
 license     : Apache-2.0
 homepage    : https://github.com/facebookincubator/BOLT
 description : |
     Binary Optimization and Layout Tool.
 upstreams   :
-    - https://github.com/llvm/llvm-project/archive/18c70a7bd932d1259cd28b82f946bec5dc77bfc2.tar.gz: 9a4ad6aa9764073589a3c6c752722d27530ca9c7fd86f75f565a530dc3a2faab
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-project-15.0.7.src.tar.xz: 8b5fcb24b4128cf04df1b0b9410ce8b1a729cb3c544e6da885d234280dedeac6
 builddeps   :
     - binary(python)
     - pkgconfig(ncursesw)

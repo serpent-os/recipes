@@ -36,6 +36,6 @@
 		}
 	},
 	"source-name": "llvm-bolt",
-	"source-release": "2",
-	"source-version": "15.0.0"
+	"source-release": "3",
+	"source-version": "15.0.7"
 }
