@@ -1,4 +1,4 @@
-## gnome
+## GNOME
 
 GNOME (platform, applications) packaging recipes for the Serpent OS collection.
 
