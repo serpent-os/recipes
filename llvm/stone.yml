@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
 version     : 15.0.7
-release     : 3
+release     : 4
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -50,6 +50,7 @@ environment : |
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_TESTS=ON \
         -DLLVM_INCLUDE_UTILS=ON \
+        -DLLVM_INSTALL_UTILS=ON \
         -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
         -DLLVM_TARGET_ARCH=X86_64 \
         -DLLVM_TARGETS_TO_BUILD=X86 \
@@ -60,9 +61,9 @@ environment : |
     export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib"
 setup       : |
     unset LD_PRELOAD
+    %patch %(pkgdir)/serpent/0001-Support-serpent-as-a-distro.patch
     %patch %(pkgdir)/perf/0001-Reduce-GCC-startup-searches.patch
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
-    %patch %(pkgdir)/serpent/0001-Support-serpent-as-a-distro.patch
     %patch %(pkgdir)/serpent/0001-Make-gnu-hash-the-default-for-lld-and-clang.patch
     %patch %(pkgdir)/serpent/0001-Update-binutils-version-to-match-Serpent-OS.patch
     %patch %(pkgdir)/serpent/0001-Make-external-visibility-default.patch
@@ -127,6 +128,19 @@ packages    :
             Library files for %(name), typically pulled in as a dependency of another package.
         paths:
             - /usr/lib/libLLVM-*.so
+
+    - "%(name)-devel":
+        paths:
+            - /usr/bin/FileCheck
+            - /usr/bin/UnicodeNameMappingGenerator
+            - /usr/bin/count
+            - /usr/bin/lli-child-target
+            - /usr/bin/llvm-PerfectShuffle
+            - /usr/bin/llvm-jitlink-executor
+            - /usr/bin/not
+            - /usr/bin/obj2yaml
+            - /usr/bin/yaml-bench
+            - /usr/bin/yaml2obj
 
     - "clang":
         summary: "Clang compiler front-end (LLVM)"

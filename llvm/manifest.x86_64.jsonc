@@ -1518,7 +1518,26 @@
 				"pkgconfig(ncursesw)",
 				"pkgconfig(zlib)"
 			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
 			"files": [
+				"/usr/bin/FileCheck",
+				"/usr/bin/UnicodeNameMappingGenerator",
+				"/usr/bin/count",
+				"/usr/bin/lli-child-target",
+				"/usr/bin/llvm-PerfectShuffle",
+				"/usr/bin/llvm-jitlink-executor",
+				"/usr/bin/not",
+				"/usr/bin/obj2yaml",
+				"/usr/bin/yaml-bench",
+				"/usr/bin/yaml2obj",
 				"/usr/include/lld/Common/Args.h",
 				"/usr/include/lld/Common/Arrays.h",
 				"/usr/include/lld/Common/CommonLinkerContext.h",
@@ -3570,8 +3589,18 @@
 			],
 			"name": "llvm-devel",
 			"provides": [
+				"binary(FileCheck)",
 				"cmake(LLVM)",
-				"cmake(Polly)"
+				"cmake(Polly)",
+				"binary(UnicodeNameMappingGenerator)",
+				"binary(count)",
+				"binary(lli-child-target)",
+				"binary(llvm-PerfectShuffle)",
+				"binary(llvm-jitlink-executor)",
+				"binary(not)",
+				"binary(obj2yaml)",
+				"binary(yaml-bench)",
+				"binary(yaml2obj)"
 			]
 		},
 		"llvm-libs": {
@@ -3611,6 +3640,6 @@
 		}
 	},
 	"source-name": "llvm",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "15.0.7"
 }
