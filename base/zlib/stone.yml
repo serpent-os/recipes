@@ -1,6 +1,6 @@
 name        : zlib
 version     : 1.2.13
-release     : 4
+release     : 5
 summary     : Library implementing the DEFLATE compression algorithm
 license     : Zlib
 homepage    : https://zlib.net/
