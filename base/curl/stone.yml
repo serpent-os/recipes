@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : curl
-version     : 7.87.0
-release     : 4
+version     : 7.88.1
+release     : 5
 summary     : A utility for fetching files from remote servers
 license     : MIT
 homepage    : https://curl.se/
 description : |
     A utility for fetching files from remote servers.
 upstreams   :
-    - https://curl.se/download/curl-7.87.0.tar.gz: 8a063d664d1c23d35526b87a2bf15514962ffdd8ef7fd40519191b3c23e39548
+    - https://curl.se/download/curl-7.88.1.tar.xz: 1dae31b2a7c1fe269de99c0c31bb488346aab3459b5ffca909d6938249ae415f
 builddeps   :
     - pkgconfig(jansson)
     - pkgconfig(libbrotlidec)

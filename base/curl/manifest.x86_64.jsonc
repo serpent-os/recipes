@@ -27,7 +27,40 @@
 				"/usr/lib/libcurl.so.4",
 				"/usr/lib/libcurl.so.4.8.0",
 				"/usr/share/man/man1/curl-config.1",
-				"/usr/share/man/man1/curl.1",
+				"/usr/share/man/man1/curl.1"
+			],
+			"name": "curl",
+			"provides": [
+				"binary(curl)",
+				"binary(curl-config)",
+				"soname(libcurl.so.4(x86_64))"
+			]
+		},
+		"curl-devel": {
+			"build-depends": [
+				"pkgconfig(jansson)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libnghttp2)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(openssl)",
+				"pkgconfig(zlib)"
+			],
+			"files": [
+				"/usr/include/curl/curl.h",
+				"/usr/include/curl/curlver.h",
+				"/usr/include/curl/easy.h",
+				"/usr/include/curl/header.h",
+				"/usr/include/curl/mprintf.h",
+				"/usr/include/curl/multi.h",
+				"/usr/include/curl/options.h",
+				"/usr/include/curl/stdcheaders.h",
+				"/usr/include/curl/system.h",
+				"/usr/include/curl/typecheck-gcc.h",
+				"/usr/include/curl/urlapi.h",
+				"/usr/include/curl/websockets.h",
+				"/usr/lib/libcurl.so",
+				"/usr/lib/pkgconfig/libcurl.pc",
+				"/usr/share/aclocal/libcurl.m4",
 				"/usr/share/man/man3/CURLINFO_ACTIVESOCKET.3",
 				"/usr/share/man/man3/CURLINFO_APPCONNECT_TIME.3",
 				"/usr/share/man/man3/CURLINFO_APPCONNECT_TIME_T.3",
@@ -510,39 +543,6 @@
 				"/usr/share/man/man3/libcurl-url.3",
 				"/usr/share/man/man3/libcurl.3"
 			],
-			"name": "curl",
-			"provides": [
-				"binary(curl)",
-				"binary(curl-config)",
-				"soname(libcurl.so.4(x86_64))"
-			]
-		},
-		"curl-devel": {
-			"build-depends": [
-				"pkgconfig(jansson)",
-				"pkgconfig(libbrotlidec)",
-				"pkgconfig(libnghttp2)",
-				"pkgconfig(libzstd)",
-				"pkgconfig(openssl)",
-				"pkgconfig(zlib)"
-			],
-			"files": [
-				"/usr/include/curl/curl.h",
-				"/usr/include/curl/curlver.h",
-				"/usr/include/curl/easy.h",
-				"/usr/include/curl/header.h",
-				"/usr/include/curl/mprintf.h",
-				"/usr/include/curl/multi.h",
-				"/usr/include/curl/options.h",
-				"/usr/include/curl/stdcheaders.h",
-				"/usr/include/curl/system.h",
-				"/usr/include/curl/typecheck-gcc.h",
-				"/usr/include/curl/urlapi.h",
-				"/usr/include/curl/websockets.h",
-				"/usr/lib/libcurl.so",
-				"/usr/lib/pkgconfig/libcurl.pc",
-				"/usr/share/aclocal/libcurl.m4"
-			],
 			"name": "curl-devel",
 			"provides": [
 				"pkgconfig(libcurl)"
@@ -550,6 +550,6 @@
 		}
 	},
 	"source-name": "curl",
-	"source-release": "4",
-	"source-version": "7.87.0"
+	"source-release": "5",
+	"source-version": "7.88.1"
 }
