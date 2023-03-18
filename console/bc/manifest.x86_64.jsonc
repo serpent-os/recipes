@@ -1,8 +1,14 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"bc": {
+			"build-depends": [
+				"binary(ed)",
+				"binary(flex)",
+				"binary(makeinfo)",
+				"pkgconfig(readline)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
