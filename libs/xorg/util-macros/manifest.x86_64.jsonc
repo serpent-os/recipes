@@ -1,0 +1,20 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"util-macros": {
+			"files": [
+				"/usr/share/aclocal/xorg-macros.m4",
+				"/usr/share/pkgconfig/xorg-macros.pc",
+				"/usr/share/util-macros/INSTALL"
+			],
+			"name": "util-macros",
+			"provides": [
+				"pkgconfig(xorg-macros)"
+			]
+		}
+	},
+	"source-name": "util-macros",
+	"source-release": "1",
+	"source-version": "1.20.0"
+}

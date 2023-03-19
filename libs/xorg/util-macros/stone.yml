@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : util-macros
+version     : 1.20.0
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/util/macros
+upstreams   :
+    - https://www.x.org/pub/individual/util/util-macros-1.20.0.tar.xz : 0b86b262dbe971edb4ff233bc370dfad9f241d09f078a3f6d5b7f4b8ea4430db
+summary     : GNU autoconf macros shared across X.Org projects
+description : |
+    This is a set of autoconf macros used by the configure.ac scripts in
+    other Xorg modular packages, and is needed to generate new versions
+    of their configure scripts with autoconf.
+license     :
+    - X11
+packages    :
+    - "%(name)":
+        paths:
+            - /*
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
