@@ -5,7 +5,7 @@
 #
 name        : kbd
 version     : 2.5.1
-release     : 3
+release     : 4
 homepage    : https://kbd-project.org/
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/kbd/kbd-2.5.1.tar.xz : ccdf452387a6380973d2927363e9cbb939fa2068915a6f937ff9d24522024683
