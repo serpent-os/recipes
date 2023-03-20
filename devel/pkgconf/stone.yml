@@ -5,7 +5,7 @@
 #
 name        : pkgconf
 version     : 1.9.4
-release     : 4
+release     : 5
 summary     : Package compiler and linker metadata toolkit
 license     : ISC
 homepage    : http://pkgconf.org/
@@ -14,7 +14,10 @@ description : |
 upstreams   :
     - https://distfiles.dereferenced.org/pkgconf/pkgconf-1.9.4.tar.xz: daccf1bbe5a30d149b556c7d2ffffeafd76d7b514e249271abdd501533c1d8ae
 setup       : |
-    %configure --disable-static
+    %configure \
+        --disable-static \
+        --with-system-libdir=%(libdir) \
+        --with-pkg-config-dir=/usr/lib32/pkgconfig:%(libdir)/pkgconfig:/usr/share/pkgconfig
 build       : |
     %make
 install     : |
