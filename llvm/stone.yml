@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
 version     : 15.0.7
-release     : 4
+release     : 5
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -53,7 +53,7 @@ environment : |
         -DLLVM_INSTALL_UTILS=ON \
         -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
         -DLLVM_TARGET_ARCH=X86_64 \
-        -DLLVM_TARGETS_TO_BUILD=X86 \
+        -DLLVM_TARGETS_TO_BUILD='X86;AMDGPU' \
         -DLLVM_USE_SANITIZER=OFF \
         "
 
@@ -105,7 +105,6 @@ install     : |
     %bolt_opt %(workdir)/%(builddir)/bin/clang-${major_version}
 
     %install_bin %(workdir)/%(builddir)/bin/clang-${major_version} %(workdir)/%(builddir)/bin/lld
-    rm -rf %(installroot)/usr/lib/libclang*.a
 # workload    : |
 #    unset LD_PRELOAD
 #    # check-compiler-rt needs sanitizer changes
@@ -183,6 +182,7 @@ packages    :
         paths:
             - /usr/lib/cmake/clang
             - /usr/lib/libclang*.so
+            - /usr/lib/libclang*.a
             - /usr/include/clang*
         rundeps:
             - clang
