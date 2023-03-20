@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : terminus-font
+version     : 4.49.1
+release     : 1
+homepage    : https://sourceforge.net/projects/terminus-font/files/terminus-font-4.49
+upstreams   :
+    - https://sourceforge.net/projects/terminus-font/files/terminus-font-4.49/terminus-font-4.49.1.tar.gz : d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79
+summary     : Monospaced font design for long work with computers
+description : |
+  Monospaced font designed for long (8+ hours per day) work with computers. Contains 1326 characters, supports about 120 language sets, many IBM, Windows and Macintosh code pages, IBM VGA / vt100 / xterm pseudographic characters and Esperanto.
+license     :
+  - GPL-2.0
+  - OFL-1.1
+builddeps   :
+  - binary(bdftopcf)
+  - binary(python3)
+setup       : |
+    %configure --psfdir=%(datadir)/kbd/consolefonts
+build       : |
+    %make
+install     : |
+    %make_install
