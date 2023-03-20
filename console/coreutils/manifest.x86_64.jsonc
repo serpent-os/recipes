@@ -95,6 +95,7 @@
 				"/usr/bin/sort",
 				"/usr/bin/split",
 				"/usr/bin/stat",
+				"/usr/bin/stdbuf",
 				"/usr/bin/stty",
 				"/usr/bin/sum",
 				"/usr/bin/sync",
@@ -120,6 +121,7 @@
 				"/usr/bin/who",
 				"/usr/bin/whoami",
 				"/usr/bin/yes",
+				"/usr/lib/coreutils/coreutils/libstdbuf.so",
 				"/usr/share/info/coreutils.info",
 				"/usr/share/locale/af/LC_MESSAGES/coreutils.mo",
 				"/usr/share/locale/af/LC_TIME/coreutils.mo",
@@ -165,6 +167,8 @@
 				"/usr/share/locale/it/LC_TIME/coreutils.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/coreutils.mo",
 				"/usr/share/locale/ja/LC_TIME/coreutils.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/coreutils.mo",
+				"/usr/share/locale/ka/LC_TIME/coreutils.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/coreutils.mo",
 				"/usr/share/locale/kk/LC_TIME/coreutils.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/coreutils.mo",
@@ -285,6 +289,7 @@
 				"/usr/share/man/man1/sort.1",
 				"/usr/share/man/man1/split.1",
 				"/usr/share/man/man1/stat.1",
+				"/usr/share/man/man1/stdbuf.1",
 				"/usr/share/man/man1/stty.1",
 				"/usr/share/man/man1/sum.1",
 				"/usr/share/man/man1/sync.1",
@@ -392,6 +397,7 @@
 				"binary(sort)",
 				"binary(split)",
 				"binary(stat)",
+				"binary(stdbuf)",
 				"binary(stty)",
 				"binary(sum)",
 				"binary(sync)",
@@ -421,6 +427,6 @@
 		}
 	},
 	"source-name": "coreutils",
-	"source-release": "2",
-	"source-version": "9.1"
+	"source-release": "3",
+	"source-version": "9.2"
 }
