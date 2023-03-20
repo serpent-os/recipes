@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxau
+version     : 1.0.11
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxau
+upstreams   :
+    - https://www.x.org/pub/individual/lib/libXau-1.0.11.tar.xz : f3fa3282f5570c3f6bd620244438dbfbdd580fc80f02f549587a0f8ab329bbeb
+summary     : X11 Authorization Protocol
+description : |
+    The libxau package contains a library implementing the X11 Authorization Protocol.
+    This is useful for restricting client access to the display.
+license     :
+    - X11
+builddeps   :
+    - pkgconfig(xproto)
+emul32      : yes
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
