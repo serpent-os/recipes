@@ -20,7 +20,7 @@ rundeps     :
     - binary(gzip)
     - terminus-font
 setup       : |
-    %configure
+    %configure --datadir=%(datadir)/kdb
 build       : |
     %make
 install     : |
