@@ -1,0 +1,108 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libpng": {
+			"build-depends": [
+				"pkgconfig(zlib)",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libpng16.so.16",
+				"/usr/lib/libpng16.so.16.39.0",
+				"/usr/share/man/man5/png.5"
+			],
+			"name": "libpng",
+			"provides": [
+				"soname(libpng16.so.16(x86_64))"
+			]
+		},
+		"libpng-32bit": {
+			"build-depends": [
+				"pkgconfig(zlib)",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86))",
+				"soname(libm.so.6(x86))",
+				"soname(libz.so.1(x86))"
+			],
+			"files": [
+				"/usr/lib32/libpng16.so.16",
+				"/usr/lib32/libpng16.so.16.39.0"
+			],
+			"name": "libpng-32bit",
+			"provides": [
+				"soname(libpng16.so.16(x86))"
+			]
+		},
+		"libpng-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(zlib)",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"pkgconfig32(zlib)"
+			],
+			"files": [
+				"/usr/lib32/libpng.so",
+				"/usr/lib32/libpng16.so",
+				"/usr/lib32/pkgconfig/libpng.pc",
+				"/usr/lib32/pkgconfig/libpng16.pc"
+			],
+			"name": "libpng-32bit-devel",
+			"provides": [
+				"pkgconfig32(libpng)",
+				"pkgconfig32(libpng16)"
+			]
+		},
+		"libpng-devel": {
+			"build-depends": [
+				"pkgconfig(zlib)",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libpng16.so.16(x86_64))",
+				"soname(libz.so.1(x86_64))",
+				"pkgconfig(zlib)"
+			],
+			"files": [
+				"/usr/bin/libpng-config",
+				"/usr/bin/libpng16-config",
+				"/usr/bin/png-fix-itxt",
+				"/usr/bin/pngfix",
+				"/usr/include/libpng16/png.h",
+				"/usr/include/libpng16/pngconf.h",
+				"/usr/include/libpng16/pnglibconf.h",
+				"/usr/include/png.h",
+				"/usr/include/pngconf.h",
+				"/usr/include/pnglibconf.h",
+				"/usr/lib/libpng.so",
+				"/usr/lib/libpng16.so",
+				"/usr/lib/pkgconfig/libpng.pc",
+				"/usr/lib/pkgconfig/libpng16.pc",
+				"/usr/share/man/man3/libpng.3",
+				"/usr/share/man/man3/libpngpf.3"
+			],
+			"name": "libpng-devel",
+			"provides": [
+				"pkgconfig(libpng)",
+				"binary(libpng-config)",
+				"pkgconfig(libpng16)",
+				"binary(libpng16-config)",
+				"binary(png-fix-itxt)",
+				"binary(pngfix)"
+			]
+		}
+	},
+	"source-name": "libpng",
+	"source-release": "1",
+	"source-version": "1.6.39"
+}

@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libpng
+version     : 1.6.39
+release     : 1
+homepage    : http://www.libpng.org/pub/png/libpng.html
+upstreams   :
+    - https://download.sourceforge.net/libpng/libpng-1.6.39.tar.xz : 1f4696ce70b4ee5f85f1e1623dc1229b210029fa4b7aee573df3e2ba7b036937
+summary     : Official reference implementation of PNG
+description : |
+    libpng is the official PNG reference library. It supports almost all PNG features, is extensible,
+    and has been extensively tested for over 23 years.
+license     :
+    - GPL-2.0-or-later
+    - JSON
+    - libpng-2.0
+emul32      : yes
+packages    :
+    - "%(name)-devel":
+        paths:
+            # libpng-config, etc.
+            - /usr/bin
+builddeps   :
+    - pkgconfig(zlib)
+    - pkgconfig32(zlib)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
