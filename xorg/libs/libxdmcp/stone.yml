@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxdmcp
+version     : 1.1.4
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxdmcp
+upstreams   :
+    - https://www.x.org/pub/individual/lib/libXdmcp-1.1.4.tar.xz : 2dce5cc317f8f0b484ec347d87d81d552cdbebb178bd13c5d8193b6b7cd6ad00
+summary     : X Display Manager Control Protocol library
+description : |
+    X Display Manager Control Protocol library
+license     :
+    - X11
+builddeps   :
+    - pkgconfig(xproto)
+emul32      : yes
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
