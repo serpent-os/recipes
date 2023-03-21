@@ -5,19 +5,21 @@
 #
 name        : libpciaccess
 version     : '0.17'
-release     : 1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libpciaccess
 upstreams   :
-    - https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/archive/libpciaccess-0.17/libpciaccess-libpciaccess-0.17.tar.bz2 : 6e6d69d3cf5ee294dcb38ccfb360f1895a263df5dd8058563cdee62d9b9c17fd
+    - https://www.x.org/archive/individual/lib/libpciaccess-0.17.tar.xz: 74283ba3c974913029e7a547496a29145b07ec51732bbb5b5c58d5025ad95b73
 summary     : Generic PCI access library
 description : |
     libpciaccess provides a facilitated way to access the PCI bus.
 license     : MIT
+emul32      : yes
 builddeps   :
     - pkgconfig(zlib)
+    - pkgconfig32(zlib)
 setup       : |
-    %meson
+    %configure --disable-static
 build       : |
-    %meson_build
+    %make
 install     : |
-    %meson_install
+    %make_install
