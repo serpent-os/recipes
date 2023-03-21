@@ -1,0 +1,127 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"glslang": {
+			"build-depends": [
+				"cmake(SPIRV-Tools)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/glslangValidator",
+				"/usr/bin/spirv-remap"
+			],
+			"name": "glslang",
+			"provides": [
+				"binary(glslangValidator)",
+				"binary(spirv-remap)"
+			]
+		},
+		"glslang-devel": {
+			"build-depends": [
+				"cmake(SPIRV-Tools)",
+				"pkgconfig(python3)"
+			],
+			"files": [
+				"/usr/include/glslang/HLSL/hlslAttributes.h",
+				"/usr/include/glslang/HLSL/hlslGrammar.h",
+				"/usr/include/glslang/HLSL/hlslOpMap.h",
+				"/usr/include/glslang/HLSL/hlslParseHelper.h",
+				"/usr/include/glslang/HLSL/hlslParseables.h",
+				"/usr/include/glslang/HLSL/hlslScanContext.h",
+				"/usr/include/glslang/HLSL/hlslTokenStream.h",
+				"/usr/include/glslang/HLSL/hlslTokens.h",
+				"/usr/include/glslang/Include/BaseTypes.h",
+				"/usr/include/glslang/Include/Common.h",
+				"/usr/include/glslang/Include/ConstantUnion.h",
+				"/usr/include/glslang/Include/InfoSink.h",
+				"/usr/include/glslang/Include/InitializeGlobals.h",
+				"/usr/include/glslang/Include/PoolAlloc.h",
+				"/usr/include/glslang/Include/ResourceLimits.h",
+				"/usr/include/glslang/Include/ShHandle.h",
+				"/usr/include/glslang/Include/SpirvIntrinsics.h",
+				"/usr/include/glslang/Include/Types.h",
+				"/usr/include/glslang/Include/arrays.h",
+				"/usr/include/glslang/Include/glslang_c_interface.h",
+				"/usr/include/glslang/Include/glslang_c_shader_types.h",
+				"/usr/include/glslang/Include/intermediate.h",
+				"/usr/include/glslang/MachineIndependent/Initialize.h",
+				"/usr/include/glslang/MachineIndependent/LiveTraverser.h",
+				"/usr/include/glslang/MachineIndependent/ParseHelper.h",
+				"/usr/include/glslang/MachineIndependent/RemoveTree.h",
+				"/usr/include/glslang/MachineIndependent/Scan.h",
+				"/usr/include/glslang/MachineIndependent/ScanContext.h",
+				"/usr/include/glslang/MachineIndependent/SymbolTable.h",
+				"/usr/include/glslang/MachineIndependent/Versions.h",
+				"/usr/include/glslang/MachineIndependent/attribute.h",
+				"/usr/include/glslang/MachineIndependent/gl_types.h",
+				"/usr/include/glslang/MachineIndependent/glslang_tab.cpp.h",
+				"/usr/include/glslang/MachineIndependent/iomapper.h",
+				"/usr/include/glslang/MachineIndependent/localintermediate.h",
+				"/usr/include/glslang/MachineIndependent/parseVersions.h",
+				"/usr/include/glslang/MachineIndependent/preprocessor/PpContext.h",
+				"/usr/include/glslang/MachineIndependent/preprocessor/PpTokens.h",
+				"/usr/include/glslang/MachineIndependent/propagateNoContraction.h",
+				"/usr/include/glslang/MachineIndependent/reflection.h",
+				"/usr/include/glslang/Public/ResourceLimits.h",
+				"/usr/include/glslang/Public/ShaderLang.h",
+				"/usr/include/glslang/Public/resource_limits_c.h",
+				"/usr/include/glslang/SPIRV/GLSL.ext.AMD.h",
+				"/usr/include/glslang/SPIRV/GLSL.ext.ARM.h",
+				"/usr/include/glslang/SPIRV/GLSL.ext.EXT.h",
+				"/usr/include/glslang/SPIRV/GLSL.ext.KHR.h",
+				"/usr/include/glslang/SPIRV/GLSL.ext.NV.h",
+				"/usr/include/glslang/SPIRV/GLSL.std.450.h",
+				"/usr/include/glslang/SPIRV/GlslangToSpv.h",
+				"/usr/include/glslang/SPIRV/Logger.h",
+				"/usr/include/glslang/SPIRV/NonSemanticDebugPrintf.h",
+				"/usr/include/glslang/SPIRV/NonSemanticShaderDebugInfo100.h",
+				"/usr/include/glslang/SPIRV/SPVRemapper.h",
+				"/usr/include/glslang/SPIRV/SpvBuilder.h",
+				"/usr/include/glslang/SPIRV/SpvTools.h",
+				"/usr/include/glslang/SPIRV/bitutils.h",
+				"/usr/include/glslang/SPIRV/disassemble.h",
+				"/usr/include/glslang/SPIRV/doc.h",
+				"/usr/include/glslang/SPIRV/hex_float.h",
+				"/usr/include/glslang/SPIRV/spirv.hpp",
+				"/usr/include/glslang/SPIRV/spvIR.h",
+				"/usr/include/glslang/build_info.h",
+				"/usr/lib/cmake/HLSLTargets.cmake",
+				"/usr/lib/cmake/OGLCompilerTargets.cmake",
+				"/usr/lib/cmake/OSDependentTargets.cmake",
+				"/usr/lib/cmake/SPIRVTargets.cmake",
+				"/usr/lib/cmake/SPVRemapperTargets.cmake",
+				"/usr/lib/cmake/glslang-default-resource-limitsTargets.cmake",
+				"/usr/lib/cmake/glslang/glslang-config-version.cmake",
+				"/usr/lib/cmake/glslang/glslang-config.cmake",
+				"/usr/lib/cmake/glslang/glslang-targets-release.cmake",
+				"/usr/lib/cmake/glslang/glslang-targets.cmake",
+				"/usr/lib/cmake/glslangTargets.cmake",
+				"/usr/lib/cmake/glslangValidatorTargets.cmake",
+				"/usr/lib/cmake/spirv-remapTargets.cmake",
+				"/usr/lib/libGenericCodeGen.a",
+				"/usr/lib/libHLSL.a",
+				"/usr/lib/libMachineIndependent.a",
+				"/usr/lib/libOGLCompiler.a",
+				"/usr/lib/libOSDependent.a",
+				"/usr/lib/libSPIRV.a",
+				"/usr/lib/libSPVRemapper.a",
+				"/usr/lib/libglslang-default-resource-limits.a",
+				"/usr/lib/libglslang.a"
+			],
+			"name": "glslang-devel",
+			"provides": [
+				"cmake(glslang)"
+			]
+		}
+	},
+	"source-name": "glslang",
+	"source-release": "1",
+	"source-version": "12.0.0"
+}
