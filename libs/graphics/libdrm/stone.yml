@@ -4,20 +4,23 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libdrm
-version     : '2.4.114'
-release     : 1
+version     : '2.4.115'
+release     : 2
 homepage    : https://gitlab.freedesktop.org/mesa/drm
 upstreams   :
-    - https://gitlab.freedesktop.org/mesa/drm/-/archive/libdrm-2.4.114/drm-libdrm-2.4.114.tar.bz2 : f4325de3f98c13d589f4d0159f8508768049778dac4698c9238778b838e0700c
+    - https://dri.freedesktop.org/libdrm/libdrm-2.4.115.tar.xz : 554cfbfe0542bddb391b4e3e05bfbbfc3e282b955bd56218d21c0616481f65eb
 summary     : Simplifies the interaction with the Linux DRM subsystem
 description : |
     libdrm provides wrapper functions for the ioctls to avoid exposing the kernel interface directly.
 license     : MIT
 builddeps   :
     - binary(nm)
-    - pkgconfig(pciaccess) # For Intel support.
+    # Intel support
+    - pkgconfig(pciaccess)
+    - pkgconfig32(pciaccess)
+emul32      : yes
 setup       : |
-    %meson
+    %meson -Dudev=true
 build       : |
     %meson_build
 install     : |
