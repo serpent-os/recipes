@@ -1,6 +1,3 @@
 releases:
-  id: 230542
-  ignore:
-    # Old tags that predate sdk-* versioning
-    - "^1.*"
+  id: 14894
 security: {}

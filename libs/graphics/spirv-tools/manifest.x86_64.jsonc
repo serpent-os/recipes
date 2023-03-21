@@ -1,0 +1,115 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"spirv-tools": {
+			"build-depends": [
+				"pkgconfig(SPIRV-Headers)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libSPIRV-Tools-link.so(x86_64))",
+				"soname(libSPIRV-Tools-lint.so(x86_64))",
+				"soname(libSPIRV-Tools-opt.so(x86_64))",
+				"soname(libSPIRV-Tools-reduce.so(x86_64))",
+				"soname(libSPIRV-Tools.so(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/spirv-as",
+				"/usr/bin/spirv-cfg",
+				"/usr/bin/spirv-dis",
+				"/usr/bin/spirv-lesspipe.sh",
+				"/usr/bin/spirv-link",
+				"/usr/bin/spirv-lint",
+				"/usr/bin/spirv-opt",
+				"/usr/bin/spirv-reduce",
+				"/usr/bin/spirv-val"
+			],
+			"name": "spirv-tools",
+			"provides": [
+				"binary(spirv-as)",
+				"binary(spirv-cfg)",
+				"binary(spirv-dis)",
+				"binary(spirv-lesspipe.sh)",
+				"binary(spirv-link)",
+				"binary(spirv-lint)",
+				"binary(spirv-opt)",
+				"binary(spirv-reduce)",
+				"binary(spirv-val)"
+			]
+		},
+		"spirv-tools-devel": {
+			"build-depends": [
+				"pkgconfig(SPIRV-Headers)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/include/spirv-tools/instrument.hpp",
+				"/usr/include/spirv-tools/libspirv.h",
+				"/usr/include/spirv-tools/libspirv.hpp",
+				"/usr/include/spirv-tools/linker.hpp",
+				"/usr/include/spirv-tools/optimizer.hpp",
+				"/usr/lib/cmake/SPIRV-Tools-diff/SPIRV-Tools-diffConfig.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-diff/SPIRV-Tools-diffTargets-release.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-diff/SPIRV-Tools-diffTargets.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-link/SPIRV-Tools-linkConfig.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-link/SPIRV-Tools-linkTargets-release.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-link/SPIRV-Tools-linkTargets.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-lint/SPIRV-Tools-lintConfig.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-lint/SPIRV-Tools-lintTargets-release.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-lint/SPIRV-Tools-lintTargets.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-opt/SPIRV-Tools-optConfig.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-opt/SPIRV-Tools-optTargets-release.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-opt/SPIRV-Tools-optTargets.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-reduce/SPIRV-Tools-reduceConfig.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-reduce/SPIRV-Tools-reduceTarget-release.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-reduce/SPIRV-Tools-reduceTarget.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-tools/SPIRV-Tools-toolsConfig.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-tools/SPIRV-Tools-toolsTargets-release.cmake",
+				"/usr/lib/cmake/SPIRV-Tools-tools/SPIRV-Tools-toolsTargets.cmake",
+				"/usr/lib/cmake/SPIRV-Tools/SPIRV-ToolsConfig.cmake",
+				"/usr/lib/cmake/SPIRV-Tools/SPIRV-ToolsTarget-release.cmake",
+				"/usr/lib/cmake/SPIRV-Tools/SPIRV-ToolsTarget.cmake",
+				"/usr/lib/libSPIRV-Tools-diff.so",
+				"/usr/lib/libSPIRV-Tools-link.so",
+				"/usr/lib/libSPIRV-Tools-lint.so",
+				"/usr/lib/libSPIRV-Tools-opt.so",
+				"/usr/lib/libSPIRV-Tools-reduce.so",
+				"/usr/lib/libSPIRV-Tools-shared.so",
+				"/usr/lib/libSPIRV-Tools.so",
+				"/usr/lib/pkgconfig/SPIRV-Tools-shared.pc",
+				"/usr/lib/pkgconfig/SPIRV-Tools.pc"
+			],
+			"name": "spirv-tools-devel",
+			"provides": [
+				"pkgconfig(SPIRV-Tools)",
+				"cmake(SPIRV-Tools)",
+				"cmake(SPIRV-Tools-diff)",
+				"cmake(SPIRV-Tools-link)",
+				"cmake(SPIRV-Tools-lint)",
+				"cmake(SPIRV-Tools-opt)",
+				"cmake(SPIRV-Tools-reduce)",
+				"pkgconfig(SPIRV-Tools-shared)",
+				"cmake(SPIRV-Tools-tools)",
+				"soname(libSPIRV-Tools-diff.so(x86_64))",
+				"soname(libSPIRV-Tools-link.so(x86_64))",
+				"soname(libSPIRV-Tools-lint.so(x86_64))",
+				"soname(libSPIRV-Tools-opt.so(x86_64))",
+				"soname(libSPIRV-Tools-reduce.so(x86_64))",
+				"soname(libSPIRV-Tools-shared.so(x86_64))",
+				"soname(libSPIRV-Tools.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "spirv-tools",
+	"source-release": "1",
+	"source-version": "2023.1"
+}
