@@ -1,8 +1,11 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"libxcrypt": {
+			"build-depends": [
+				"binary(perl)"
+			],
 			"depends": [
 				"soname(libc.so.6(x86_64))"
 			],
@@ -10,6 +13,59 @@
 				"/usr/lib/libcrypt.so.1",
 				"/usr/lib/libcrypt.so.1.1.0",
 				"/usr/lib/libowcrypt.so.1",
+				"/usr/share/man/man5/crypt.5"
+			],
+			"name": "libxcrypt",
+			"provides": [
+				"soname(libcrypt.so.1(x86_64))"
+			]
+		},
+		"libxcrypt-32bit": {
+			"build-depends": [
+				"binary(perl)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libcrypt.so.1",
+				"/usr/lib32/libcrypt.so.1.1.0",
+				"/usr/lib32/libowcrypt.so.1"
+			],
+			"name": "libxcrypt-32bit",
+			"provides": [
+				"soname(libcrypt.so.1(x86))"
+			]
+		},
+		"libxcrypt-32bit-devel": {
+			"build-depends": [
+				"binary(perl)"
+			],
+			"files": [
+				"/usr/lib32/libcrypt.so",
+				"/usr/lib32/libowcrypt.so",
+				"/usr/lib32/libxcrypt.so",
+				"/usr/lib32/pkgconfig/libcrypt.pc",
+				"/usr/lib32/pkgconfig/libxcrypt.pc"
+			],
+			"name": "libxcrypt-32bit-devel",
+			"provides": [
+				"pkgconfig32(libcrypt)",
+				"pkgconfig32(libxcrypt)"
+			]
+		},
+		"libxcrypt-devel": {
+			"build-depends": [
+				"binary(perl)"
+			],
+			"files": [
+				"/usr/include/crypt.h",
+				"/usr/include/xcrypt.h",
+				"/usr/lib/libcrypt.so",
+				"/usr/lib/libowcrypt.so",
+				"/usr/lib/libxcrypt.so",
+				"/usr/lib/pkgconfig/libcrypt.pc",
+				"/usr/lib/pkgconfig/libxcrypt.pc",
 				"/usr/share/man/man3/crypt.3",
 				"/usr/share/man/man3/crypt_checksalt.3",
 				"/usr/share/man/man3/crypt_gensalt.3",
@@ -18,23 +74,7 @@
 				"/usr/share/man/man3/crypt_preferred_method.3",
 				"/usr/share/man/man3/crypt_r.3",
 				"/usr/share/man/man3/crypt_ra.3",
-				"/usr/share/man/man3/crypt_rn.3",
-				"/usr/share/man/man5/crypt.5"
-			],
-			"name": "libxcrypt",
-			"provides": [
-				"soname(libcrypt.so.1(x86_64))"
-			]
-		},
-		"libxcrypt-devel": {
-			"files": [
-				"/usr/include/crypt.h",
-				"/usr/include/xcrypt.h",
-				"/usr/lib/libcrypt.so",
-				"/usr/lib/libowcrypt.so",
-				"/usr/lib/libxcrypt.so",
-				"/usr/lib/pkgconfig/libcrypt.pc",
-				"/usr/lib/pkgconfig/libxcrypt.pc"
+				"/usr/share/man/man3/crypt_rn.3"
 			],
 			"name": "libxcrypt-devel",
 			"provides": [
@@ -44,6 +84,6 @@
 		}
 	},
 	"source-name": "libxcrypt",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "4.4.33"
 }
