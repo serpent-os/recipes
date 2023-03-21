@@ -5,7 +5,7 @@
 #
 name        : wayland
 version     : '1.21.0'
-release     : 1
+release     : 2
 homepage    : https://wayland.freedesktop.org
 upstreams   :
     - https://gitlab.freedesktop.org/wayland/wayland/-/archive/1.21.0/wayland-1.21.0.tar.bz2 : e92985abc4eee91b730046a373fdc122c96adb4a3b6757afa07b8a540a8db4fc
@@ -21,6 +21,15 @@ builddeps   :
     - pkgconfig(expat)
     - pkgconfig(libffi)
     - pkgconfig(libxml-2.0)
+    - pkgconfig32(expat)
+    - pkgconfig32(libffi)
+    - pkgconfig32(libxml-2.0)
+emul32      : yes
+packages    :
+    - "%(name)-devel":
+        paths:
+            # Development tools
+            - /usr/bin
 setup       : |
     %meson -Ddocumentation=false -Dtests=false
 build       : |
