@@ -1,8 +1,8 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
-		"xtrans-devel": {
+		"xtrans": {
 			"files": [
 				"/usr/include/X11/Xtrans/Xtrans.c",
 				"/usr/include/X11/Xtrans/Xtrans.h",
@@ -15,13 +15,13 @@
 				"/usr/share/doc/xtrans/xtrans.xml",
 				"/usr/share/pkgconfig/xtrans.pc"
 			],
-			"name": "xtrans-devel",
+			"name": "xtrans",
 			"provides": [
 				"pkgconfig(xtrans)"
 			]
 		}
 	},
 	"source-name": "xtrans",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.4.0"
 }
