@@ -5,7 +5,7 @@
 #
 name        : libxfixes
 version     : '6.0.0'
-release     : 2
+release     : 3
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxfixes
 upstreams   :
     - https://xorg.freedesktop.org/releases/individual/lib/libXfixes-6.0.0.tar.bz2 : a7c1a24da53e0b46cac5aea79094b4b2257321c621b258729bc3139149245b4c
