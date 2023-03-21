@@ -5,7 +5,7 @@
 #
 name        : wayland-protocols
 version     : '1.31'
-release     : 1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/wayland/wayland-protocols
 upstreams   :
     - https://gitlab.freedesktop.org/wayland/wayland-protocols/-/archive/1.31/wayland-protocols-1.31.tar.bz2 : 3d7fa65a6f3c86747f780a628df04d3c7a981776dee2b6a492cc112b3bbe2820
@@ -18,7 +18,7 @@ builddeps   :
 packages    :
     - "%(name)":
         paths:
-            - /*
+            - /usr/share/pkgconfig
 setup       : |
     %meson
 build       : |
