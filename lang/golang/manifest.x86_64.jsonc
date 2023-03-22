@@ -9,8 +9,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libc.so.6(x86_64))",
-				"soname(libresolv.so.2(x86_64))"
+				"soname(libc.so.6(x86_64))"
 			],
 			"files": [
 				"/usr/bin/go",
@@ -1615,6 +1614,8 @@
 				"/usr/lib/golang/src/cmd/go/internal/robustio/robustio_windows.go",
 				"/usr/lib/golang/src/cmd/go/internal/run/run.go",
 				"/usr/lib/golang/src/cmd/go/internal/script/cmds.go",
+				"/usr/lib/golang/src/cmd/go/internal/script/cmds_other.go",
+				"/usr/lib/golang/src/cmd/go/internal/script/cmds_posix.go",
 				"/usr/lib/golang/src/cmd/go/internal/script/conds.go",
 				"/usr/lib/golang/src/cmd/go/internal/script/engine.go",
 				"/usr/lib/golang/src/cmd/go/internal/script/errors.go",
@@ -1710,6 +1711,7 @@
 				"/usr/lib/golang/src/cmd/internal/buildid/rewrite.go",
 				"/usr/lib/golang/src/cmd/internal/codesign/codesign.go",
 				"/usr/lib/golang/src/cmd/internal/cov/mreader.go",
+				"/usr/lib/golang/src/cmd/internal/cov/read_test.go",
 				"/usr/lib/golang/src/cmd/internal/cov/readcovdata.go",
 				"/usr/lib/golang/src/cmd/internal/dwarf/dwarf.go",
 				"/usr/lib/golang/src/cmd/internal/dwarf/dwarf_defs.go",
@@ -4208,6 +4210,7 @@
 				"/usr/lib/golang/src/mime/multipart/formdata_test.go",
 				"/usr/lib/golang/src/mime/multipart/multipart.go",
 				"/usr/lib/golang/src/mime/multipart/multipart_test.go",
+				"/usr/lib/golang/src/mime/multipart/readmimeheader.go",
 				"/usr/lib/golang/src/mime/multipart/writer.go",
 				"/usr/lib/golang/src/mime/multipart/writer_test.go",
 				"/usr/lib/golang/src/mime/quotedprintable/example_test.go",
@@ -8663,8 +8666,14 @@
 				"/usr/lib/golang/test/fixedbugs/issue5793.go",
 				"/usr/lib/golang/test/fixedbugs/issue5809.go",
 				"/usr/lib/golang/test/fixedbugs/issue5820.go",
+				"/usr/lib/golang/test/fixedbugs/issue58293.go",
+				"/usr/lib/golang/test/fixedbugs/issue58325.go",
+				"/usr/lib/golang/test/fixedbugs/issue58341.go",
 				"/usr/lib/golang/test/fixedbugs/issue5841.go",
 				"/usr/lib/golang/test/fixedbugs/issue5856.go",
+				"/usr/lib/golang/test/fixedbugs/issue58563.dir/a.go",
+				"/usr/lib/golang/test/fixedbugs/issue58563.dir/main.go",
+				"/usr/lib/golang/test/fixedbugs/issue58563.go",
 				"/usr/lib/golang/test/fixedbugs/issue5910.dir/a.go",
 				"/usr/lib/golang/test/fixedbugs/issue5910.dir/main.go",
 				"/usr/lib/golang/test/fixedbugs/issue5910.go",
@@ -9509,6 +9518,7 @@
 				"/usr/lib/golang/test/typeparam/issue54537.go",
 				"/usr/lib/golang/test/typeparam/issue54765.go",
 				"/usr/lib/golang/test/typeparam/issue55101.go",
+				"/usr/lib/golang/test/typeparam/issue58513.go",
 				"/usr/lib/golang/test/typeparam/list.go",
 				"/usr/lib/golang/test/typeparam/list2.go",
 				"/usr/lib/golang/test/typeparam/listimp.dir/a.go",
@@ -9668,6 +9678,6 @@
 		}
 	},
 	"source-name": "golang",
-	"source-release": "4",
-	"source-version": "1.20"
+	"source-release": "5",
+	"source-version": "1.20.2"
 }

@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : golang
-version     : "1.20"
-release     : 4
+version     : 1.20.2
+release     : 5
 homepage    : https://golang.org
 upstreams   :
-    - https://golang.org/dl/go1.20.src.tar.gz : 3a29ff0421beaf6329292b8a46311c9fbf06c800077ceddef5fb7f8d5b1ace33
+    - https://golang.org/dl/go1.20.2.src.tar.gz : 4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab
 summary     : The Go programming language
 description : |
     Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
@@ -26,6 +26,12 @@ environment : |
 
     # Should this be set by boulder automatically?
     export XDG_CACHE_HOME="%(workdir)/.cache"
+
+    # https://github.com/serpent-os/boulder/issues/74
+    export CGO_CFLAGS="${CGO_CFLAGS} -Wno-error=unused-command-line-argument"
+
+    # https://github.com/serpent-os/boulder/issues/75
+    export CGO_LDFLAGS="${CGO_LDFLAGS} -Wl,--no-gc-sections"
 setup       : |
     %patch %(pkgdir)/stateless/x509-certificate-path.patch
 build       : |
