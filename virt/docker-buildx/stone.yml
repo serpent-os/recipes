@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : docker-buildx
-version     : 0.10.2
-release     : 1
-homepage    : https://github.com/docker/buildx 
+version     : 0.10.4
+release     : 2
+homepage    : https://github.com/docker/buildx
 upstreams   :
-    - https://github.com/docker/buildx/archive/refs/tags/v0.10.2.tar.gz : cdb1d4a5249b96aaf29129b32c4a5b33a54f1fe8a827e890744c504d8dc029db
+    - https://github.com/docker/buildx/archive/refs/tags/v0.10.4.tar.gz : 171d383133d7a040a4058160d4bdb6a5416e29a6b9cf3c6470f84e7a1663e8a2
 summary     : Docker CLI plugin for extended build capabilities with BuildKit 
 description : |
     Docker CLI plugin for extended build capabilities with BuildKit 
@@ -25,14 +25,13 @@ environment : |
     # This can probably be removed after golang reboostrap.
     export GOMODCACHE="%(workdir)/.cache"
 
-    export CGO_CPPFLAGS="${CPPFLAGS} -Qunused-arguments"
-    export CGO_CFLAGS="${CFLAGS} -Qunused-arguments"
-    export CGO_CXXFLAGS="${CXXFLAGS} -Qunused-arguments"
-    export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
     # Git commit corresponding to the version tag
     export GITCOMMIT="00ed17df6d20f3ca4553d45789264cdb78506e5f"
+    
+    # https://github.com/serpent-os/boulder/issues/74
+    export CGO_CFLAGS="${CFLAGS} -Wno-error=unused-command-line-argument"
 setup       : |
     mkdir -p src/$_buildx_r
     ln -s `pwd` src/$_buildx_r/buildx
