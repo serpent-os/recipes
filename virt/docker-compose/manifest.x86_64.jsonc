@@ -13,6 +13,6 @@
 		}
 	},
 	"source-name": "docker-compose",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.16.0"
 }
