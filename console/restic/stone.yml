@@ -5,7 +5,7 @@
 #
 name        : restic
 version     : 0.15.1
-release     : 2
+release     : 3
 homepage    : https://restic.net
 upstreams   :
     - https://github.com/restic/restic/archive/refs/tags/v0.15.1.tar.gz : fce382fdcdac0158a35daa640766d5e8a6e7b342ae2b0b84f2aacdff13990c52
