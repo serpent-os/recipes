@@ -5,7 +5,7 @@
 #
 name        : docker-scan
 version     : 0.25.0
-release     : 1
+release     : 2
 homepage    : https://github.com/docker/buildx 
 upstreams   :
     - https://github.com/docker/scan-cli-plugin/archive/refs/tags/v0.25.0.tar.gz : e08964c3be512c085002feefd979fcd9dca6cf23c4b5e71eede56e8b6623afed
@@ -25,11 +25,10 @@ environment : |
     # This can probably be removed after golang reboostrap.
     export GOMODCACHE="%(workdir)/.cache"
 
-    export CGO_CPPFLAGS="${CPPFLAGS} -Qunused-arguments"
-    export CGO_CFLAGS="${CFLAGS} -Qunused-arguments"
-    export CGO_CXXFLAGS="${CXXFLAGS} -Qunused-arguments"
-    export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    
+    # https://github.com/serpent-os/boulder/issues/74
+    export CGO_CFLAGS="${CFLAGS} -Wno-error=unused-command-line-argument"
 build      : |
     make -f builder.Makefile build
 install    : |
