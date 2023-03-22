@@ -5,7 +5,7 @@
 #
 name        : moby
 version     : 23.0.1
-release     : 2
+release     : 3
 homepage    : https://www.docker.com
 upstreams   :
     - https://github.com/moby/moby/archive/refs/tags/v23.0.1.tar.gz : c8e6c0ac5f0c772023e3430f80190e0f86644b6d94cac63118b03561385f7b56
@@ -36,16 +36,19 @@ environment : |
     # This can probably be removed after golang reboostrap.
     export GOMODCACHE="%(workdir)/.cache"
 
-    export CGO_CPPFLAGS="${CPPFLAGS} -Qunused-arguments"
-    export CGO_CFLAGS="${CFLAGS} -Qunused-arguments"
-    export CGO_CXXFLAGS="${CXXFLAGS} -Qunused-arguments"
     # --gc-sections breaks the cgo linker
-    export CGO_LDFLAGS="${LDFLAGS} -Wl,--no-gc-sections"
+    # export CGO_LDFLAGS="${CGO_LDFLAGS} -Wl,--no-gc-sections"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
 
     # Git commit corresponding to the version tag
     export GITCOMMIT="bc3805a0a0d3b5bd3f0e6c69f46ac08dd53377c7"
     export DOCKER_GITCOMMIT=$GITCOMMIT
+    
+    # https://github.com/serpent-os/boulder/issues/74
+    export CGO_CFLAGS="${CFLAGS} -Wno-error=unused-command-line-argument"
+
+    # https://github.com/serpent-os/boulder/issues/75
+    export CGO_LDFLAGS="${CGO_LDFLAGS} -Wl,--no-gc-sections"
 setup       : |
     %patch %(pkgdir)/0001-Use-serpent-paths.patch
 build      : |
