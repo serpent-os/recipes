@@ -5,7 +5,7 @@
 #
 name        : docker
 version     : 23.0.1
-release     : 2
+release     : 3
 homepage    : https://www.docker.com
 upstreams   :
     - https://github.com/docker/cli/archive/refs/tags/v23.0.1.tar.gz : 37bc1c71a782fc10d35aa6708c1b3c90a71f3947c33665cb0de68df25dc14d94
@@ -28,10 +28,6 @@ environment : |
     # This can probably be removed after golang reboostrap.
     export GOMODCACHE="%(workdir)/.cache"
 
-    export CGO_CPPFLAGS="${CPPFLAGS} -Qunused-arguments"
-    export CGO_CFLAGS="${CFLAGS} -Qunused-arguments"
-    export CGO_CXXFLAGS="${CXXFLAGS} -Qunused-arguments"
-    export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
 
     # Git commit corresponding to the version tag
@@ -40,6 +36,9 @@ environment : |
 
     # Docker is meant to be built inside a container and will exit with an error if this isn't set.
     export DISABLE_WARN_OUTSIDE_CONTAINER=1
+
+    # https://github.com/serpent-os/boulder/issues/74
+    export CGO_CFLAGS="${CGO_CFLAGS} -Wno-error=unused-command-line-argument"
 setup       : |
     mkdir -p src/github.com/docker/
     ln -s `pwd` src/github.com/docker/cli
