@@ -5,7 +5,7 @@
 #
 name        : libxrandr
 version     : 1.5.3
-release     : 1
+release     : 2
 homepage    : https://www.x.org/wiki/libraries/libxrandr/
 upstreams   :
     - https://www.x.org/releases/individual/lib/libXrandr-1.5.3.tar.gz : 3ad316c1781fe2fe22574b819e81f0eff087a8560377f521ba932238b41b251f
