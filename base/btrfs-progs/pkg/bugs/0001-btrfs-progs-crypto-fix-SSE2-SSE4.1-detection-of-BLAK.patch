@@ -1,0 +1,84 @@
+From 0da635fd1b6ab491e2f4dd6668aa7906b675d61f Mon Sep 17 00:00:00 2001
+From: Tino Mai <mai.tino@gmail.com>
+Date: Sun, 5 Mar 2023 18:15:52 +0100
+Subject: [PATCH] btrfs-progs: crypto: fix SSE2/SSE4.1 detection of BLAKE2
+
+On recent x86-64 system with march=native|<cpu>|<microarchitecture
+level> gcc/clang will automatically define all the available vector
+extensions macros. crypto/blake2-config.h then correctly set all the
+HAVE_<EXTENSION> macros.
+
+crypto/blake2-round.h then checks the HAVE_<EXTENSION> macros for
+including further headers:
+
+    #if defined(HAVE_SSE41)
+    #include "blake2b-load-sse41.h"
+    #else
+    #include "blake2b-load-sse2.h"
+    #endif
+
+which is wrong. On recent systems it always results in including
+blake2b-load-sse41.h. crypto/blake2-round.h itself is included by
+crypto/blake2b-sse2.c and now we have a SSE2/SSE4.1 code mixing
+resulting in the incompatible type for argument build errors described
+in #589.
+
+The idea is to remove the lines above from crypto/blake2-round.h and put
+the includes directly into crypto/blake2b-sse2.c and
+crypto/blake2b-sse41.c respectively.
+
+Note this slightly diverges from the upstream BLAKE2 sources.
+
+Pull-request: #591
+Author: Tino Mai <mai.tino@gmail.com>
+Signed-off-by: David Sterba <dsterba@suse.com>
+---
+ crypto/blake2b-round.h | 6 ------
+ crypto/blake2b-sse2.c  | 1 +
+ crypto/blake2b-sse41.c | 1 +
+ 3 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/crypto/blake2b-round.h b/crypto/blake2b-round.h
+index 6537fff3..d62a8aa8 100644
+--- a/crypto/blake2b-round.h
++++ b/crypto/blake2b-round.h
+@@ -136,12 +136,6 @@
+ 
+ #endif
+ 
+-#if defined(HAVE_SSE41)
+-#include "blake2b-load-sse41.h"
+-#else
+-#include "blake2b-load-sse2.h"
+-#endif
+-
+ #define ROUND(r) \
+   LOAD_MSG_ ##r ##_1(b0, b1); \
+   G1(row1l,row2l,row3l,row4l,row1h,row2h,row3h,row4h,b0,b1); \
+diff --git a/crypto/blake2b-sse2.c b/crypto/blake2b-sse2.c
+index 546eec9c..9e5d31a1 100644
+--- a/crypto/blake2b-sse2.c
++++ b/crypto/blake2b-sse2.c
+@@ -30,6 +30,7 @@
+ #include <x86intrin.h>
+ #endif
+ 
++#include "blake2b-load-sse2.h"
+ #include "blake2b-round.h"
+ 
+ static const uint64_t blake2b_IV[8] =
+diff --git a/crypto/blake2b-sse41.c b/crypto/blake2b-sse41.c
+index 2dfc2849..45a93d0e 100644
+--- a/crypto/blake2b-sse41.c
++++ b/crypto/blake2b-sse41.c
+@@ -34,6 +34,7 @@
+ #include <x86intrin.h>
+ #endif
+ 
++#include "blake2b-load-sse41.h"
+ #include "blake2b-round.h"
+ 
+ static const uint64_t blake2b_IV[8] =
+-- 
+2.39.0
+

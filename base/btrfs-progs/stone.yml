@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : btrfs-progs
-version     : 6.1.3
-release     : 4
+version     : 6.2.1
+release     : 5
 homepage    : https://github.com/kdave/btrfs-progs
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v6.1.3.tar.xz : d37fc9ec4fa5778b20aa7548fe706eb3a300338c1473318271ae54024dac7167
+    - https://mirrors.edge.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v6.2.1.tar.xz : af55e3104cf5e52252bb940a291ed34852916224a50206600c94134664273299
 summary     : Filesystem utilities for btrfs filesystems
 description : |
     Filesystem utilities for btrfs filesystems
@@ -28,6 +28,9 @@ builddeps   :
 rundeps    :
     - gcc # Temporary until libgcc issue is fixed
 setup      : |
+    # Compile error
+    %patch %(pkgdir)/bugs/0001-btrfs-progs-crypto-fix-SSE2-SSE4.1-detection-of-BLAK.patch
+
     %configure --disable-static \
                --disable-documentation \
                --disable-python
