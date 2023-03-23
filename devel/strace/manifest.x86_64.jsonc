@@ -3,9 +3,15 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"strace": {
+			"build-depends": [
+				"binutils",
+				"gcc-devel",
+				"pkgconfig(libdw)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libc.so.6(x86_64))"
+				"soname(libc.so.6(x86_64))",
+				"soname(libdw.so.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/strace",
