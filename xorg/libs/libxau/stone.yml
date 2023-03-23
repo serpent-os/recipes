@@ -5,7 +5,7 @@
 #
 name        : libxau
 version     : 1.0.11
-release     : 1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxau
 upstreams   :
     - https://www.x.org/pub/individual/lib/libXau-1.0.11.tar.xz : f3fa3282f5570c3f6bd620244438dbfbdd580fc80f02f549587a0f8ab329bbeb
