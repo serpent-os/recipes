@@ -1,0 +1,26 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"python-typing_extensions": {
+			"build-depends": [
+				"binary(python3)",
+				"python-flit-core",
+				"python-installer"
+			],
+			"files": [
+				"/usr/lib/python3.11/site-packages/__pycache__/typing_extensions.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/__pycache__/typing_extensions.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/typing_extensions-4.5.0.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/typing_extensions-4.5.0.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/typing_extensions-4.5.0.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/typing_extensions-4.5.0.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/typing_extensions.py"
+			],
+			"name": "python-typing_extensions"
+		}
+	},
+	"source-name": "python-typing_extensions",
+	"source-release": "1",
+	"source-version": "4.5.0"
+}
