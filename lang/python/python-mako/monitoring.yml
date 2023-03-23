@@ -1,3 +1,6 @@
 releases:
     id: 3915
-security: {}
+security:
+  cpe:
+  - vendor: sqlalchemy
+    product: mako
