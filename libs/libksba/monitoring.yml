@@ -1,2 +1,6 @@
 releases:
   id: 1649
+security:
+  cpe:
+  - vendor: libksba_project
+    product: libksba

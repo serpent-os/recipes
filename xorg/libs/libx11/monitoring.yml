@@ -1,2 +1,8 @@
 releases:
   id: 1764
+security:
+  cpe:
+  - vendor: x
+    product: libx11
+  - vendor: x.org
+    product: libx11

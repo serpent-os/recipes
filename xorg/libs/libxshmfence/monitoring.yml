@@ -1,4 +1,4 @@
 releases :
   id: 1792
-# no cpe found
+# No known CPE. Checked 20230323
 security : {}

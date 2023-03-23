@@ -1,2 +1,6 @@
 releases:
   id: 1774
+security:
+  cpe:
+  - vendor: x
+    product: libxext

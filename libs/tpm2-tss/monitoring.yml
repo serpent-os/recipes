@@ -1,2 +1,6 @@
 releases:
   id: 12683
+security:
+  cpe:
+  - vendor: tpm2_software_stack_project
+    product: tpm2_software_stack

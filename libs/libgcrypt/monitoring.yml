@@ -1,2 +1,6 @@
 releases:
   id: 1623
+security:
+  cpe:
+  - vendor: gnupg
+    product: libgcrypt

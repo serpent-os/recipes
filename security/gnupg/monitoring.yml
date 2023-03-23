@@ -1,2 +1,6 @@
 releases:
-  id: 1214
+  id: 1215
+security:
+  cpe:
+  - vendor: gnupg
+    product: gnupg

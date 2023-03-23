@@ -1,3 +1,6 @@
 releases:
-  id: 92033
-security: {}
+  id: 1799
+security:
+  cpe:
+  - vendor: x.org
+    product: libxxf86vm

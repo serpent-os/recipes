@@ -1,3 +1,6 @@
 releases:
-  id: 93613
-security: {}
+  id: 1789
+security:
+  cpe:
+  - vendor: x.org
+    product: libxrender

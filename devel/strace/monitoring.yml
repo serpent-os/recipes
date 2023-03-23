@@ -1,2 +1,6 @@
 releases:
   id: 4897
+security:
+  cpe:
+  - vendor: strace_project
+    product: strace

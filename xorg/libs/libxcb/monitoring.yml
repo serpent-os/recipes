@@ -1,2 +1,6 @@
 releases:
   id: 1767
+security:
+  cpe:
+  - vendor: x
+    product: libxcb
