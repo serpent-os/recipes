@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libnftnl
-version     : 1.2.4
-release     : 1
+version     : 1.2.5
+release     : 2
 homepage    : https://www.netfilter.org/projects/libnftnl/ 
 upstreams   :
-    - https://netfilter.org/pub/libnftnl/libnftnl-1.2.4.tar.bz2 : c0fe233be4cdfd703e7d5977ef8eb63fcbf1d0052b6044e1b23d47ca3562477f
+    - https://netfilter.org/pub/libnftnl/libnftnl-1.2.5.tar.xz : 966de0a8120c8a53db859889749368bfb2cba0c4f0b4c1a30d264eccc45f1226
 summary     : Netfilter nf_tables infrastructure library
 description : |
     Netfilter nf_tables infrastructure library
