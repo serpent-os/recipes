@@ -1,2 +1,6 @@
 releases:
   id: 1877
+security:
+  cpe:
+  - vendor: gnu
+    product: make

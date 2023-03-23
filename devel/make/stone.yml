@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : make
-version     : 4.4
-release     : 2
+version     : 4.4.1
+release     : 3
 homepage    : https://www.gnu.org/software/make
 upstreams   :
-    - https://ftp.gnu.org/gnu/make/make-4.4.tar.gz : 581f4d4e872da74b3941c874215898a7d35802f03732bdccee1d4a7979105d18
+    - https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz : dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3
 summary     : GNU make utility for controlling software builds
 description : |
     GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.
