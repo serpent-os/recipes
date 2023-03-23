@@ -32,14 +32,12 @@
 				"/usr/bin/scalar",
 				"/usr/lib/git/git-core/git",
 				"/usr/lib/git/git-core/git-add",
-				"/usr/lib/git/git-core/git-add--interactive",
 				"/usr/lib/git/git-core/git-am",
 				"/usr/lib/git/git-core/git-annotate",
 				"/usr/lib/git/git-core/git-apply",
 				"/usr/lib/git/git-core/git-archimport",
 				"/usr/lib/git/git-core/git-archive",
 				"/usr/lib/git/git-core/git-bisect",
-				"/usr/lib/git/git-core/git-bisect--helper",
 				"/usr/lib/git/git-core/git-blame",
 				"/usr/lib/git/git-core/git-branch",
 				"/usr/lib/git/git-core/git-bugreport",
@@ -78,7 +76,6 @@
 				"/usr/lib/git/git-core/git-diff-tree",
 				"/usr/lib/git/git-core/git-difftool",
 				"/usr/lib/git/git-core/git-difftool--helper",
-				"/usr/lib/git/git-core/git-env--helper",
 				"/usr/lib/git/git-core/git-fast-export",
 				"/usr/lib/git/git-core/git-fast-import",
 				"/usr/lib/git/git-core/git-fetch",
@@ -298,6 +295,6 @@
 		}
 	},
 	"source-name": "git",
-	"source-release": "3",
-	"source-version": "2.39.1"
+	"source-release": "4",
+	"source-version": "2.40.0"
 }
