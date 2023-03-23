@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : meson
-version     : 1.0.0
-release     : 5
+version     : 1.0.1
+release     : 6
 homepage    : https://github.com/mesonbuild/meson
 upstreams   :
-    - https://github.com/mesonbuild/meson/releases/download/1.0.0/meson-1.0.0.tar.gz : aa50a4ba4557c25e7d48446abfde857957dcdf58385fffbe670ba0e8efacce05
+    - https://github.com/mesonbuild/meson/releases/download/1.0.1/meson-1.0.1.tar.gz : d926b730de6f518728cc7c57bc5e701667bae0c3522f9e369427b2cc7839d3c1
 summary     : The Meson Build System
 description : |
     Meson® is a project to create the best possible next-generation build system.
