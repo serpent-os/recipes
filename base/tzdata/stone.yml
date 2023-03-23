@@ -4,18 +4,18 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : tzdata
-version     : 2022g
-release     : 1
+version     : 2023a
+release     : 2
 summary     : Sources for time zone and daylight saving time data
 license     : Public-Domain
 homepage    : https://www.iana.org/time-zones
 description : |
     Sources for time zone and daylight saving time data
 upstreams   :
-    - https://data.iana.org/time-zones/releases/tzdata2022g.tar.gz: 4491db8281ae94a84d939e427bdd83dc389f26764d27d9a5c52d782c16764478
-    - https://data.iana.org/time-zones/releases/tzcode2022g.tar.gz: 9610bb0b9656ff404c361a41f3286da53064b5469d84f00c9cb2314c8614da74
+    - https://data.iana.org/time-zones/releases/tzdata2023a.tar.gz: a2a27edb7af5a384cfcefdae9defad6a7ed23f3f2cfdaf3d5394c1e8299710bc
+    - https://data.iana.org/time-zones/releases/tzcode2023a.tar.gz: 6dcccd26a13a4b71c53e573a0bf32b98de467aa3316b82dfd25fffdb6c9fc46a
 builddeps   :
-    - make
+    - binary(make)
 environment : |
     export PATH=$PATH:/usr/sbin
 setup       : |

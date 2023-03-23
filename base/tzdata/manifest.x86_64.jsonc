@@ -1,8 +1,11 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"tzdata": {
+			"build-depends": [
+				"binary(make)"
+			],
 			"files": [
 				"/usr/share/zoneinfo/Africa/Abidjan",
 				"/usr/share/zoneinfo/Africa/Accra",
@@ -1805,6 +1808,6 @@
 		}
 	},
 	"source-name": "tzdata",
-	"source-release": "1",
-	"source-version": "2022g"
+	"source-release": "2",
+	"source-version": "2023a"
 }
