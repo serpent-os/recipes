@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xcb-util": {
+			"build-depends": [
+				"pkgconfig(xcb)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libxcb.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libxcb-util.so.1",
+				"/usr/lib/libxcb-util.so.1.0.0"
+			],
+			"name": "xcb-util",
+			"provides": [
+				"soname(libxcb-util.so.1(x86_64))"
+			]
+		},
+		"xcb-util-devel": {
+			"build-depends": [
+				"pkgconfig(xcb)"
+			],
+			"depends": [
+				"pkgconfig(xcb)"
+			],
+			"files": [
+				"/usr/include/xcb/xcb_atom.h",
+				"/usr/include/xcb/xcb_aux.h",
+				"/usr/include/xcb/xcb_event.h",
+				"/usr/include/xcb/xcb_util.h",
+				"/usr/lib/libxcb-util.so",
+				"/usr/lib/pkgconfig/xcb-atom.pc",
+				"/usr/lib/pkgconfig/xcb-aux.pc",
+				"/usr/lib/pkgconfig/xcb-event.pc",
+				"/usr/lib/pkgconfig/xcb-util.pc"
+			],
+			"name": "xcb-util-devel",
+			"provides": [
+				"pkgconfig(xcb-atom)",
+				"pkgconfig(xcb-aux)",
+				"pkgconfig(xcb-event)",
+				"pkgconfig(xcb-util)"
+			]
+		}
+	},
+	"source-name": "xcb-util",
+	"source-release": "1",
+	"source-version": "0.4.1"
+}

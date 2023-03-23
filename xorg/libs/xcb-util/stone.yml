@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xcb-util
+version     : 0.4.1
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxcb-util
+upstreams   :
+    - https://www.x.org/releases/individual/lib/xcb-util-0.4.1.tar.xz : 5abe3bbbd8e54f0fa3ec945291b7e8fa8cfd3cccc43718f8758430f94126e512
+summary     : XCB utility libraries
+description : |
+    The XCB util modules provides a number of libraries which sit on top of libxcb, the core X protocol library, and some of the extension libraries. These experimental libraries provide convenience functions and interfaces which make the raw X protocol more usable. Some of the libraries also provide client-side code which is not strictly part of the X protocol but which have traditionally been provided by Xlib.
+license     : MIT
+builddeps   :
+    - pkgconfig(xcb)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
