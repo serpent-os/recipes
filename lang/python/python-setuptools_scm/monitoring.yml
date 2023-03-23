@@ -1,6 +1,4 @@
 releases:
     id: 7874
-security:
-  cpe:
-  - vendor: sqlalchemy
-    product: mako
+# No known CPE. Checked 20230323
+security : {}
