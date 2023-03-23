@@ -5,7 +5,7 @@
 #
 name        : libxcb
 version     : 1.15
-release     : 1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxcb
 upstreams   :
     - https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.15.tar.xz : cc38744f817cf6814c847e2df37fcb8997357d72fa4bcbc228ae0fe47219a059
