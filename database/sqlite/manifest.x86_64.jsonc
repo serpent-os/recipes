@@ -34,6 +34,6 @@
 		}
 	},
 	"source-name": "sqlite",
-	"source-release": "2",
-	"source-version": "3.40.1"
+	"source-release": "3",
+	"source-version": "3.41.2"
 }
