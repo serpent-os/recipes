@@ -9,12 +9,11 @@
 			],
 			"files": [
 				"/usr/bin/codespell",
-				"/usr/lib/python3.11/site-packages/bin/codespell",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.2.dist-info/METADATA",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.2.dist-info/RECORD",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.2.dist-info/WHEEL",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.2.dist-info/entry_points.txt",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.2.dist-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/entry_points.txt",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/codespell_lib/__init__.py",
 				"/usr/lib/python3.11/site-packages/codespell_lib/__main__.py",
 				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/__init__.cpython-311.opt-1.pyc",
@@ -38,6 +37,7 @@
 				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary_rare.txt",
 				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary_usage.txt",
 				"/usr/lib/python3.11/site-packages/codespell_lib/data/linux-kernel.exclude",
+				"/usr/lib/python3.11/site-packages/codespell_lib/py.typed",
 				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__init__.py",
 				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/__init__.cpython-311.pyc",
@@ -55,6 +55,6 @@
 		}
 	},
 	"source-name": "codespell",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.2.4"
 }
