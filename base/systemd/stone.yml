@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : systemd
-version     : '251.11'
-release     : 8
+version     : '252.7'
+release     : 9
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -15,7 +15,7 @@ homepage    : http://www.freedesktop.org/wiki/Software/systemd
 description : |
     A System and Service Manager
 upstreams   :
-    - https://github.com/systemd/systemd-stable/archive/v251.11.tar.gz: e218c56f4f7200bf7c53aa39d1fa3965d0fce66437caba5783b770ae469795c3
+    - https://github.com/systemd/systemd-stable/archive/v252.7.tar.gz: 043c58c2b8a9ab8a2b18fec3d7e3441cc41f1dea35e39f0cd755bf22557b0939
 builddeps   :
     - binary(m4)
     - pkgconfig(libacl)
@@ -64,9 +64,7 @@ setup       : |
     %patch %(pkgdir)/perf/0036-Disable-LLDP-listening-by-default.patch
     %patch %(pkgdir)/perf/0038-Localize-1-symbol.patch
     %patch %(pkgdir)/perf/systemd-243-random-seed-no-insane-timeouts.patch
-    %patch %(pkgdir)/bugs/rules-add-missing-line-continuation.patch
     %patch %(pkgdir)/bugs/systemd-250-compile.patch
-    %patch %(pkgdir)/bugs/gpg-auto-without-cryptsetup.patch
     %patch %(pkgdir)/0001-Set-DefaultTimeoutStopSec-to-5s.patch
     %patch %(pkgdir)/0008-efi-boot-generator-Do-not-automount-boot-partition.patch
     %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
