@@ -4,21 +4,27 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : codespell
-version     : 2.2.2
-release     : 2
+version     : 2.2.4
+release     : 3
 summary     : Check code for common misspellings
 license     : GPL-2.0-only
 homepage    : https://github.com/codespell-project/codespell
 description : |
     Check code for common misspellings.
 upstreams   :
-    - https://files.pythonhosted.org/packages/source/c/codespell/codespell-2.2.2.tar.gz: c4d00c02b5a2a55661f00d5b4b3b5a710fa803ced9a9d7e45438268b099c319c
+    - https://files.pythonhosted.org/packages/source/c/codespell/codespell-2.2.4.tar.gz: c4d00c02b5a2a55661f00d5b4b3b5a710fa803ced9a9d7e45438268b099c319c
+builddeps   :
+    - binary(python3)
+    - python-setuptools_scm
+rundeps     :
+    - binary(python3)
 # checkdeps   :
 #     - python-nose
 #     - python-pytest
 build       : |
-    %python
+    %pyproject_build
 install     : |
-    %python_install
+    %pyproject_install
+# TODO get checks working
 # check       : |
 #     %python_check
