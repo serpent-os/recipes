@@ -1,0 +1,6 @@
+releases:
+    id: 1648
+security:
+    cpe:
+    - vendor: libjpeg-turbo
+        product: libjpeg-turbo
