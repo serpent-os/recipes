@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : grep
-version     : 3.10
-release     : 3
+version     : "3.10"
+release     : 4
 summary     : Pattern matching utilities
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org/software/grep/grep.html
