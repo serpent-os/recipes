@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : lvm2
-version     : 2.03.18
-release     : 3
+version     : 2.03.20
+release     : 4
 homepage    : https://sourceware.org/lvm2/
 upstreams   :
-    - https://sourceware.org/pub/lvm2/LVM2.2.03.18.tgz : 9f683e2980d95c0dcebbd25c7c177032c5615d7267bfc885eabfce59280f4769
+    - https://sourceware.org/pub/lvm2/LVM2.2.03.20.tgz : 90a1879b3675aea9784543581ccd2128c265ec67ac046b1856e706fc0af5c3c7
 summary     : Linux logical volume management userspace tools
 description : |
     LVM2 is a logical volume management facility for the Linux kernel:

@@ -1,8 +1,16 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"lvm2": {
+			"build-depends": [
+				"binary(bash)",
+				"libaio-devel",
+				"pkgconfig(blkid)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(readline)",
+				"pkgconfig(systemd)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libaio.so.1(x86_64))",
@@ -159,6 +167,11 @@
 			],
 			"name": "lvm2",
 			"provides": [
+				"sysbinary(blkdeactivate)",
+				"sysbinary(dmeventd)",
+				"sysbinary(dmsetup)",
+				"sysbinary(dmstats)",
+				"sysbinary(fsadm)",
 				"soname(libdevmapper-event-lvm2.so.2.03(x86_64))",
 				"soname(libdevmapper-event-lvm2mirror.so.2.03(x86_64))",
 				"soname(libdevmapper-event-lvm2raid.so.2.03(x86_64))",
@@ -167,10 +180,67 @@
 				"soname(libdevmapper-event-lvm2vdo.so.2.03(x86_64))",
 				"soname(libdevmapper-event.so.1.02(x86_64))",
 				"soname(libdevmapper.so.1.02(x86_64))",
-				"soname(liblvm2cmd.so.2.03(x86_64))"
+				"soname(liblvm2cmd.so.2.03(x86_64))",
+				"sysbinary(lvchange)",
+				"sysbinary(lvconvert)",
+				"sysbinary(lvcreate)",
+				"sysbinary(lvdisplay)",
+				"sysbinary(lvextend)",
+				"sysbinary(lvm)",
+				"sysbinary(lvm_import_vdo)",
+				"sysbinary(lvmconfig)",
+				"sysbinary(lvmdevices)",
+				"sysbinary(lvmdiskscan)",
+				"sysbinary(lvmdump)",
+				"sysbinary(lvmpolld)",
+				"sysbinary(lvmsadc)",
+				"sysbinary(lvmsar)",
+				"sysbinary(lvreduce)",
+				"sysbinary(lvremove)",
+				"sysbinary(lvrename)",
+				"sysbinary(lvresize)",
+				"sysbinary(lvs)",
+				"sysbinary(lvscan)",
+				"sysbinary(pvchange)",
+				"sysbinary(pvck)",
+				"sysbinary(pvcreate)",
+				"sysbinary(pvdisplay)",
+				"sysbinary(pvmove)",
+				"sysbinary(pvremove)",
+				"sysbinary(pvresize)",
+				"sysbinary(pvs)",
+				"sysbinary(pvscan)",
+				"sysbinary(vgcfgbackup)",
+				"sysbinary(vgcfgrestore)",
+				"sysbinary(vgchange)",
+				"sysbinary(vgck)",
+				"sysbinary(vgconvert)",
+				"sysbinary(vgcreate)",
+				"sysbinary(vgdisplay)",
+				"sysbinary(vgexport)",
+				"sysbinary(vgextend)",
+				"sysbinary(vgimport)",
+				"sysbinary(vgimportclone)",
+				"sysbinary(vgimportdevices)",
+				"sysbinary(vgmerge)",
+				"sysbinary(vgmknodes)",
+				"sysbinary(vgreduce)",
+				"sysbinary(vgremove)",
+				"sysbinary(vgrename)",
+				"sysbinary(vgs)",
+				"sysbinary(vgscan)",
+				"sysbinary(vgsplit)"
 			]
 		},
 		"lvm2-devel": {
+			"build-depends": [
+				"binary(bash)",
+				"libaio-devel",
+				"pkgconfig(blkid)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(readline)",
+				"pkgconfig(systemd)"
+			],
 			"depends": [
 				"pkgconfig(libudev)"
 			],
@@ -198,6 +268,6 @@
 		}
 	},
 	"source-name": "lvm2",
-	"source-release": "3",
-	"source-version": "2.03.18"
+	"source-release": "4",
+	"source-version": "2.03.20"
 }
