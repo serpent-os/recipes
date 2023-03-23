@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-setuptools_scm
+version     : 7.1.0
+release     : 1
+homepage    : https://pypi.org/project/setuptools_scm/
+upstreams   :
+    - https://pypi.io/packages/source/s/setuptools_scm/setuptools_scm-7.1.0.tar.gz : 6c508345a771aad7d56ebff0e70628bf2b0ec7573762be9960214730de278f27
+summary     : Handles managing your python package versions in scm metadata
+description : |
+    Handles managing your python package versions in scm metadata
+license     :
+    - MIT
+builddeps   :
+    - binary(python3)
+    - python-installer
+    - python-typing_extensions
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
+# TODO Checks
