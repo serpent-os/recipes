@@ -7,7 +7,9 @@
 				"binary(python3)",
 				"clang-32bit",
 				"gcc-32bit-devel",
-				"pkgconfig(libxcrypt)"
+				"libcxx-32bit-devel",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig32(libxcrypt)"
 			],
 			"depends": [
 				"soname(libc.so.6(x86_64))"
@@ -30,7 +32,9 @@
 				"binary(python3)",
 				"clang-32bit",
 				"gcc-32bit-devel",
-				"pkgconfig(libxcrypt)"
+				"libcxx-32bit-devel",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig32(libxcrypt)"
 			],
 			"depends": [
 				"soname(libc.so.6(x86))"
@@ -53,23 +57,31 @@
 				"binary(python3)",
 				"clang-32bit",
 				"gcc-32bit-devel",
-				"pkgconfig(libxcrypt)"
+				"libcxx-32bit-devel",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig32(libxcrypt)"
 			],
 			"files": [
 				"/usr/lib32/libc++.so",
 				"/usr/lib32/libc++abi.a",
 				"/usr/lib32/libc++abi.so",
 				"/usr/lib32/libc++experimental.a",
-				"/usr/lib32/libunwind.so"
+				"/usr/lib32/libunwind.so",
+				"/usr/lib32/pkgconfig/libunwind.pc"
 			],
-			"name": "libcxx-32bit-devel"
+			"name": "libcxx-32bit-devel",
+			"provides": [
+				"pkgconfig32(libunwind)"
+			]
 		},
 		"libcxx-devel": {
 			"build-depends": [
 				"binary(python3)",
 				"clang-32bit",
 				"gcc-32bit-devel",
-				"pkgconfig(libxcrypt)"
+				"libcxx-32bit-devel",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig32(libxcrypt)"
 			],
 			"files": [
 				"/usr/include/__libunwind_config.h",
@@ -874,12 +886,16 @@
 				"/usr/lib/libc++abi.a",
 				"/usr/lib/libc++abi.so",
 				"/usr/lib/libc++experimental.a",
-				"/usr/lib/libunwind.so"
+				"/usr/lib/libunwind.so",
+				"/usr/lib/pkgconfig/libunwind.pc"
 			],
-			"name": "libcxx-devel"
+			"name": "libcxx-devel",
+			"provides": [
+				"pkgconfig(libunwind)"
+			]
 		}
 	},
 	"source-name": "libcxx",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "15.0.7"
 }
