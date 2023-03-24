@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
 version     : 15.0.7
-release     : 5
+release     : 6
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -55,6 +55,7 @@ environment : |
         -DLLVM_TARGET_ARCH=X86_64 \
         -DLLVM_TARGETS_TO_BUILD='X86;AMDGPU' \
         -DLLVM_USE_SANITIZER=OFF \
+        -DLLVM_ENABLE_RTTI=ON
         "
 
     # Without RPATH, we need help finding the right libraries to use
