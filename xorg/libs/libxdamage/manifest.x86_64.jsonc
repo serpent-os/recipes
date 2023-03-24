@@ -1,0 +1,96 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxdamage": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xfixes)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86_64))",
+				"soname(libXfixes.so.3(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libXdamage.so.1",
+				"/usr/lib/libXdamage.so.1.1.0"
+			],
+			"name": "libxdamage",
+			"provides": [
+				"soname(libXdamage.so.1(x86_64))"
+			]
+		},
+		"libxdamage-32bit": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xfixes)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86))",
+				"soname(libXfixes.so.3(x86))",
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libXdamage.so.1",
+				"/usr/lib32/libXdamage.so.1.1.0"
+			],
+			"name": "libxdamage-32bit",
+			"provides": [
+				"soname(libXdamage.so.1(x86))"
+			]
+		},
+		"libxdamage-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xfixes)"
+			],
+			"depends": [
+				"pkgconfig(damageproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xfixes)",
+				"pkgconfig(xproto)"
+			],
+			"files": [
+				"/usr/lib32/libXdamage.so",
+				"/usr/lib32/pkgconfig/xdamage.pc"
+			],
+			"name": "libxdamage-32bit-devel",
+			"provides": [
+				"pkgconfig32(xdamage)"
+			]
+		},
+		"libxdamage-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xfixes)"
+			],
+			"depends": [
+				"pkgconfig(damageproto)",
+				"pkgconfig(x11)",
+				"pkgconfig(xfixes)",
+				"pkgconfig(xproto)"
+			],
+			"files": [
+				"/usr/include/X11/extensions/Xdamage.h",
+				"/usr/lib/libXdamage.so",
+				"/usr/lib/pkgconfig/xdamage.pc"
+			],
+			"name": "libxdamage-devel",
+			"provides": [
+				"pkgconfig(xdamage)"
+			]
+		}
+	},
+	"source-name": "libxdamage",
+	"source-release": "1",
+	"source-version": "1.1.6"
+}
