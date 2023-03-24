@@ -5,14 +5,14 @@
 #
 name        : binutils
 version     : "2.40"
-release     : 7
+release     : 8
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    - https://ftp.gnu.org/gnu/binutils/binutils-2.40.tar.xz: 0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1
+    - http://ftp.nluug.nl/ftp/gnu/binutils/binutils-2.40.tar.xz: 0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1
 builddeps   :
     - binary(bison)
     - binary(flex)
