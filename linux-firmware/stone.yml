@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : linux-firmware
-version     : 20230210
-release     : 4
+version     : 20230310
+release     : 5
 homepage    : https://kernel.org
 upstreams   :
-    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : bf4115c1aa2bee686ec675595271da50611684b5 # 20230210
+    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : 702b0c7025cf59e0bdd447d585f5491e38bb10ba # 20230310
 summary     : Firmware to allow devices to function correctly
 description : |
     Firmware to allow devices to function correctly
