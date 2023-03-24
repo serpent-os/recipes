@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : atk
+version     : 2.38.0
+release     : 1
+homepage    : https://wiki.gnome.org/Accessibility
+upstreams   :
+    - https://download.gnome.org/sources/atk/2.38/atk-2.38.0.tar.xz : ac4de2a4ef4bd5665052952fe169657e65e895c5057dffb3c2a810f6191a0c36
+summary     : GNOME Accessibility Toolkit
+description : |
+    GNOME provides support for accessibility devices using the ATK framework. This framework defines a set of interfaces to which graphical interface components adhere. This allows, for instance, screen readers to read the text of an interface and interact with its controls. ATK support is built into GTK+ and the rest of the GNOME platform, so any application using GTK+ will have reasonable accessibility support for free.
+license     :
+    - LGPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
