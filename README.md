@@ -2,6 +2,9 @@
 
 Official kernel recipes in the Serpent OS collection.
 
+Currently we only focus on KVM target until we reach later stages of
+development.
+
 ### License
 
 Unless otherwise specified, all packaging recipes are available under
