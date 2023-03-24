@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : at-spi2-core
+version     : 2.48.0
+release     : 1
+homepage    : https://wiki.gnome.org/Accessibility
+upstreams   :
+    - https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.0.tar.xz : 905a5b6f1790b68ee803bffa9f5fab4ceb591fb4fae0b2f8c612c54f1d4e8a30
+summary     : Base DBus XML interfaces for accessibility, the accessibility registry daemon, and atspi library.
+description : |
+    This repository contains the DBus interface definitions for AT-SPI (Assistive Technology Service Provider Interface) — the core of an accessibility stack for free software systems.  It also contains the basic daemons of the accessibility stack, the ATK library to make applications and GUI toolkits accessible, and the internal hooks between AT-SPI and ATK.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(dbus-broker-launch)
+    - binary(g-ir-scanner)
+    - binary(xgettext)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(x11)
+    - pkgconfig(xi)
+    - pkgconfig(xtst)
+setup       : |
+    %patch %(pkgdir)/0001-at-spi2-core-Stateless-XDG-autostart-directories.patch
+    %meson -Ddefault_bus=dbus-broker
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
