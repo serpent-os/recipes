@@ -1,0 +1,54 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xcb-util-cursor": {
+			"build-depends": [
+				"pkgconfig(xcb-image)",
+				"pkgconfig(xcb-render)",
+				"pkgconfig(xcb-renderutil)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libxcb-image.so.0(x86_64))",
+				"soname(libxcb-render-util.so.0(x86_64))",
+				"soname(libxcb-render.so.0(x86_64))",
+				"soname(libxcb-shm.so.0(x86_64))",
+				"soname(libxcb.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libxcb-cursor.so.0",
+				"/usr/lib/libxcb-cursor.so.0.0.0"
+			],
+			"name": "xcb-util-cursor",
+			"provides": [
+				"soname(libxcb-cursor.so.0(x86_64))"
+			]
+		},
+		"xcb-util-cursor-devel": {
+			"build-depends": [
+				"pkgconfig(xcb-image)",
+				"pkgconfig(xcb-render)",
+				"pkgconfig(xcb-renderutil)"
+			],
+			"depends": [
+				"pkgconfig(xcb)",
+				"pkgconfig(xcb-image)",
+				"pkgconfig(xcb-render)",
+				"pkgconfig(xcb-renderutil)"
+			],
+			"files": [
+				"/usr/include/xcb/xcb_cursor.h",
+				"/usr/lib/libxcb-cursor.so",
+				"/usr/lib/pkgconfig/xcb-cursor.pc"
+			],
+			"name": "xcb-util-cursor-devel",
+			"provides": [
+				"pkgconfig(xcb-cursor)"
+			]
+		}
+	},
+	"source-name": "xcb-util-cursor",
+	"source-release": "1",
+	"source-version": "0.1.4"
+}

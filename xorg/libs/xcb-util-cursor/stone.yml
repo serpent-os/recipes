@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xcb-util-cursor
+version     : 0.1.4
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor
+upstreams   :
+    - https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.4.tar.xz : 28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb
+summary     : XCB port of libXcursor
+description : |
+    The XCB util modules provides a number of libraries which sit on top of libxcb, the core X protocol library, and some of the extension libraries. These experimental libraries provide convenience functions and interfaces which make the raw X protocol more usable. Some of the libraries also provide client-side code which is not strictly part of the X protocol but which have traditionally been provided by Xlib.
+license     : X11
+builddeps   :
+    - pkgconfig(xcb-image)
+    - pkgconfig(xcb-render)
+    - pkgconfig(xcb-renderutil)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

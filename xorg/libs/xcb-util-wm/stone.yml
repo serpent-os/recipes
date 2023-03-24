@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xcb-util-wm
+version     : 0.4.2
+release     : 1
+homepage    : https://xcb.freedesktop.org/dist
+upstreams   :
+    - https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.2.tar.xz : 62c34e21d06264687faea7edbf63632c9f04d55e72114aa4a57bb95e4f888a0b
+summary     : XCB client and window-manager helpers for ICCCM & EWMH.
+description : |
+    The XCB util modules provides a number of libraries which sit on top of libxcb, the core X protocol library, and some of the extension libraries. These experimental libraries provide convenience functions and interfaces which make the raw X protocol more usable. Some of the libraries also provide client-side code which is not strictly part of the X protocol but which have traditionally been provided by Xlib.
+license     :
+    - X11-distribute-modifications-variant
+builddeps   :
+    - pkgconfig(xcb)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xcb-util-keysyms
+version     : 0.4.1
+release     : 1
+homepage    : https://xcb.freedesktop.org/dist
+upstreams   :
+    - https://xcb.freedesktop.org/dist/xcb-util-keysyms-0.4.1.tar.xz : 7c260a5294412aed429df1da2f8afd3bd07b7cba3fec772fba15a613a6d5c638
+summary     : Standard X key constants and conversion to/from keycodes
+description : |
+    The XCB util modules provides a number of libraries which sit on top of libxcb, the core X protocol library, and some of the extension libraries. These experimental libraries provide convenience functions and interfaces which make the raw X protocol more usable. Some of the libraries also provide client-side code which is not strictly part of the X protocol but which have traditionally been provided by Xlib.
+license     : MIT
+builddeps   :
+    - pkgconfig32(xcb)
+    - pkgconfig(xproto)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

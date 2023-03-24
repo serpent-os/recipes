@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xcb-util-wm": {
+			"build-depends": [
+				"pkgconfig(xcb)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libxcb.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libxcb-ewmh.so.2",
+				"/usr/lib/libxcb-ewmh.so.2.0.0",
+				"/usr/lib/libxcb-icccm.so.4",
+				"/usr/lib/libxcb-icccm.so.4.0.0"
+			],
+			"name": "xcb-util-wm",
+			"provides": [
+				"soname(libxcb-ewmh.so.2(x86_64))",
+				"soname(libxcb-icccm.so.4(x86_64))"
+			]
+		},
+		"xcb-util-wm-devel": {
+			"build-depends": [
+				"pkgconfig(xcb)"
+			],
+			"depends": [
+				"pkgconfig(xcb)"
+			],
+			"files": [
+				"/usr/include/xcb/xcb_ewmh.h",
+				"/usr/include/xcb/xcb_icccm.h",
+				"/usr/lib/libxcb-ewmh.so",
+				"/usr/lib/libxcb-icccm.so",
+				"/usr/lib/pkgconfig/xcb-ewmh.pc",
+				"/usr/lib/pkgconfig/xcb-icccm.pc"
+			],
+			"name": "xcb-util-wm-devel",
+			"provides": [
+				"pkgconfig(xcb-ewmh)",
+				"pkgconfig(xcb-icccm)"
+			]
+		}
+	},
+	"source-name": "xcb-util-wm",
+	"source-release": "1",
+	"source-version": "0.4.2"
+}
