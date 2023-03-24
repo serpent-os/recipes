@@ -1,0 +1,6 @@
+releases:
+    id: 7840
+security:
+    cpe:
+    vendor: gnome
+        - product: at-spi2-atk

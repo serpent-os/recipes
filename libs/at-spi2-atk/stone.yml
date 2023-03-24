@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : at-spi2-atk
+version     : 2.38.0
+release     : 1
+homepage    : https://wiki.gnome.org/Accessibility
+upstreams   :
+    - https://download.gnome.org/sources/at-spi2-atk/2.38/at-spi2-atk-2.38.0.tar.xz : cfa008a5af822b36ae6287f18182c40c91dd699c55faa38605881ed175ca464f
+summary     : Implementation of the ATK interfaces in terms of the libatspi2 API
+description : |
+    ATK is the Accessibility Toolkit, a set of GObject interfaces that can be implemented to communicate with assistive technologies (ATs). at-spi2-core is the Assistive Technology Service Provider Interface, which provides two things: a set of DBus interfaces for accessibility, and a C language binding to use those interfaces. Applications that provide accessibility through the ATK interfaces need a way to translate those interfaces to AT-SPI2 DBus calls. This module, at-spi2-atk, provides that translation bridge.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(atk)
+    - pkgconfig(atspi-2)
+    - pkgconfig(dbus-1)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(libxml-2.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
