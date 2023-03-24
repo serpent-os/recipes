@@ -5,7 +5,7 @@
 #
 name        : binutils
 version     : "2.40"
-release     : 6
+release     : 7
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
@@ -26,7 +26,6 @@ builddeps   :
     - pkgconfig(readline)
     - pkgconfig(zlib)
 setup       : |
-    %patch %(pkgdir)/0001-Don-t-add-GLIBC_PRIVATE_DT_RELR-symbol-for-RELR.patch
     %patch %(pkgdir)/zlib-level.patch
     %patch %(pkgdir)/compilespeed.patch
 
