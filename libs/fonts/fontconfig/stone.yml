@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : fontconfig
+version     : 2.14.1
+release     : 1
+homepage    : https://www.freedesktop.org/wiki/Software/fontconfig
+upstreams   :
+    - https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.14.1.tar.xz : 298e883f6e11d2c5e6d53c8a8394de58d563902cfab934e6be12fb5a5f361ef0
+summary     : Library for configuring and customizing font access
+description : |
+    Fontconfig can:
+        - discover new fonts when installed automatically, removing a common source of configuration problems.
+        - perform font name substitution, so that appropriate alternative fonts can be selected if fonts are missing.
+        - identify the set of fonts required to completely cover a set of languages.
+        - have GUI configuration tools built as it uses an XML-based configuration file (though with autodiscovery, we believe this need is minimized).
+        - efficiently and quickly find the fonts you need among the set of fonts you have installed, even if you have installed thousands of fonts, while minimzing memory usage.
+        - be used in concert with the X Render Extension and FreeType to implement high quality, anti-aliased and subpixel rendered text on a display.
+license     :
+builddeps   :
+    - pkgconfig(expat)
+    - pkgconfig(freetype2)
+    - gperf
+setup       : |
+    %patch %(pkgdir)/stateless/Support-user-config.patch
+    %meson \
+        --sysconfdir=%(vendordir) \
+        -Ddoc=disabled \
+        -Dtests=disabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install
