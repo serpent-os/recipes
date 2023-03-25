@@ -6,11 +6,11 @@
 
 # TODO: Yes, I know this should be in community
 name        : fish
-version     : 3.6.0
-release     : 3
+version     : 3.6.1
+release     : 4
 homepage    : https://fishshell.com/
 upstreams   :
-    - https://github.com/fish-shell/fish-shell/releases/download/3.6.0/fish-3.6.0.tar.xz : 97044d57773ee7ca15634f693d917ed1c3dc0fa7fde1017f1626d60b83ea6181
+    - https://github.com/fish-shell/fish-shell/releases/download/3.6.1/fish-3.6.1.tar.xz : 55402bb47ca6739d8aba25e41780905b5ce1bce0a5e0dd17dca908b5bc0b49b2
 summary     : The friendly interactive shell
 description : |
     fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family. fish includes features like syntax highlighting, autosuggest-as-you-type, and fancy tab completions that just work, with no configuration required.
