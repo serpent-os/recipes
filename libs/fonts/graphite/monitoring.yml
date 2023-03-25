@@ -1,0 +1,6 @@
+releases:
+  id: 15637
+security:
+  cpe:
+  - vendor: graphite_project
+    product: graphite
