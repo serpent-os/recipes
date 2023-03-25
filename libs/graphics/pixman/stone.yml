@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : pixman
+version     : '0.42.2'
+release     : 1
+homepage    : http://www.pixman.org
+upstreams   :
+    - https://www.cairographics.org/releases/pixman-0.42.2.tar.gz : ea1480efada2fd948bc75366f7c349e1c96d3297d09a3fe62626e38e234a625e
+summary     : Low-level library for pixel manipulation
+description : |
+    Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.
+license     : MIT
+setup       : |
+    %meson -Dtests=enabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+check       : |
+    ninja -C %(builddir) test
