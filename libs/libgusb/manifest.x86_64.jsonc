@@ -1,0 +1,76 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libgusb": {
+			"build-depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libjson-glib-1.0.so.0(x86_64))",
+				"soname(libusb-1.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/gusbcmd",
+				"/usr/lib/girepository-1.0/GUsb-1.0.typelib",
+				"/usr/lib/libgusb.so.2",
+				"/usr/lib/libgusb.so.2.0.10",
+				"/usr/share/gir-1.0/GUsb-1.0.gir"
+			],
+			"name": "libgusb",
+			"provides": [
+				"binary(gusbcmd)",
+				"soname(libgusb.so.2(x86_64))"
+			]
+		},
+		"libgusb-devel": {
+			"build-depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"files": [
+				"/usr/include/gusb-1/gusb.h",
+				"/usr/include/gusb-1/gusb/gusb-bos-descriptor-private.h",
+				"/usr/include/gusb-1/gusb/gusb-bos-descriptor.h",
+				"/usr/include/gusb-1/gusb/gusb-context-private.h",
+				"/usr/include/gusb-1/gusb/gusb-context.h",
+				"/usr/include/gusb-1/gusb/gusb-device-event.h",
+				"/usr/include/gusb-1/gusb/gusb-device-list.h",
+				"/usr/include/gusb-1/gusb/gusb-device-private.h",
+				"/usr/include/gusb-1/gusb/gusb-device.h",
+				"/usr/include/gusb-1/gusb/gusb-endpoint-private.h",
+				"/usr/include/gusb-1/gusb/gusb-endpoint.h",
+				"/usr/include/gusb-1/gusb/gusb-interface-private.h",
+				"/usr/include/gusb-1/gusb/gusb-interface.h",
+				"/usr/include/gusb-1/gusb/gusb-source.h",
+				"/usr/include/gusb-1/gusb/gusb-util.h",
+				"/usr/include/gusb-1/gusb/gusb-version.h",
+				"/usr/lib/libgusb.so",
+				"/usr/lib/pkgconfig/gusb.pc"
+			],
+			"name": "libgusb-devel",
+			"provides": [
+				"pkgconfig(gusb)"
+			]
+		}
+	},
+	"source-name": "libgusb",
+	"source-release": "1",
+	"source-version": "0.4.5"
+}
