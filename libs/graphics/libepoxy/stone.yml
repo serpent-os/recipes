@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libepoxy
+version     : 1.5.10
+release     : 1
+homepage    : https://github.com/anholt/libepoxy
+upstreams   :
+    - https://github.com/anholt/libepoxy/archive/refs/tags/1.5.10.tar.gz : a7ced37f4102b745ac86d6a70a9da399cc139ff168ba6b8002b4d8d43c900c15
+summary     : Library for handling OpenGL function pointer management for you
+description : |
+    libepoxy hides the complexity of dlopen(), dlsym(), glXGetProcAddress(), eglGetProcAddress(), etc. from the app developer, with very little knowledge needed on their part. They get to read GL specs and write code using undecorated function names like glCompileShader().
+license     : MIT
+builddeps   :
+    - pkgconfig(gl)
+    - pkgconfig(x11)
+setup       : |
+    %meson -Dtests=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
