@@ -1,0 +1,60 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"lcms2": {
+			"build-depends": [
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libtiff-4)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libjpeg.so.8(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libtiff.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/jpgicc",
+				"/usr/bin/linkicc",
+				"/usr/bin/psicc",
+				"/usr/bin/tificc",
+				"/usr/bin/transicc",
+				"/usr/lib/liblcms2.so.2",
+				"/usr/lib/liblcms2.so.2.0.15",
+				"/usr/share/man/man1/jpgicc.1",
+				"/usr/share/man/man1/linkicc.1",
+				"/usr/share/man/man1/tificc.1",
+				"/usr/share/man/man1/transicc.1"
+			],
+			"name": "lcms2",
+			"provides": [
+				"binary(jpgicc)",
+				"soname(liblcms2.so.2(x86_64))",
+				"binary(linkicc)",
+				"binary(psicc)",
+				"binary(tificc)",
+				"binary(transicc)"
+			]
+		},
+		"lcms2-devel": {
+			"build-depends": [
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libtiff-4)"
+			],
+			"files": [
+				"/usr/include/lcms2.h",
+				"/usr/include/lcms2_plugin.h",
+				"/usr/lib/liblcms2.so",
+				"/usr/lib/pkgconfig/lcms2.pc"
+			],
+			"name": "lcms2-devel",
+			"provides": [
+				"pkgconfig(lcms2)"
+			]
+		}
+	},
+	"source-name": "lcms2",
+	"source-release": "1",
+	"source-version": "2.15"
+}
