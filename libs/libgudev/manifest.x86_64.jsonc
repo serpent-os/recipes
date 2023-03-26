@@ -1,0 +1,57 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libgudev": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(libudev)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libudev.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libgudev-1.0.so.0",
+				"/usr/lib/libgudev-1.0.so.0.3.0"
+			],
+			"name": "libgudev",
+			"provides": [
+				"soname(libgudev-1.0.so.0(x86_64))"
+			]
+		},
+		"libgudev-devel": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(libudev)"
+			],
+			"depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(libudev)"
+			],
+			"files": [
+				"/usr/include/gudev-1.0/gudev/gudev.h",
+				"/usr/include/gudev-1.0/gudev/gudevclient.h",
+				"/usr/include/gudev-1.0/gudev/gudevdevice.h",
+				"/usr/include/gudev-1.0/gudev/gudevenumerator.h",
+				"/usr/include/gudev-1.0/gudev/gudevenums.h",
+				"/usr/include/gudev-1.0/gudev/gudevenumtypes.h",
+				"/usr/include/gudev-1.0/gudev/gudevtypes.h",
+				"/usr/lib/libgudev-1.0.so",
+				"/usr/lib/pkgconfig/gudev-1.0.pc"
+			],
+			"name": "libgudev-devel",
+			"provides": [
+				"pkgconfig(gudev-1.0)"
+			]
+		}
+	},
+	"source-name": "libgudev",
+	"source-release": "1",
+	"source-version": "237"
+}
