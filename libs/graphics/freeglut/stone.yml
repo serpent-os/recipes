@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : freeglut
+version     : 3.4.0
+release     : 1
+homepage    : https://freeglut.sourceforge.net/
+upstreams   :
+    - https://github.com/FreeGLUTProject/freeglut/releases/download/v3.4.0/freeglut-3.4.0.tar.gz : 3c0bcb915d9b180a97edaebd011b7a1de54583a838644dcd42bb0ea0c6f3eaec
+summary     : Free implementation of the OpenGL Utility Toolkit (GLUT)
+description : |
+    Freeglut, the Free OpenGL Utility Toolkit, is meant to be a free alternative to Mark Kilgard's GLUT library. In short, freeglut can be used by OpenGL programs to perform those tasks which would normally require platform-specific code. Tasks like creating a window, creating an OpenGL context and binding it to the window, and processing input events. Freeglut provides a concise and elegant API to handle those tasks, in a platform-independent manner, keeping the application simple and portable. One of the main goals of freeglut, is maximum compatibility. Freeglut is both source and binary-compatible with the original GLUT, and can be used as a drop-in replacement for it. We take great care to maintain a stable API and ABI, and to introduce any new features and improvements in a way which does not compromise compatibility.
+license     :
+    - MIT
+    - X11
+builddeps   :
+    - pkgconfig(gl)
+    - pkgconfig(glu)
+    - pkgconfig(x11)
+    - pkgconfig(xi)
+    - pkgconfig(xxf86vm)
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
