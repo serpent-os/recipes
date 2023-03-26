@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libpng
-version     : 1.6.39
+version     : '1.6.39'
 release     : 1
 homepage    : http://www.libpng.org/pub/png/libpng.html
 upstreams   :
