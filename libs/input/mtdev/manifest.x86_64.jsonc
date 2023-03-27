@@ -1,0 +1,38 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"mtdev": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/mtdev-test",
+				"/usr/lib/libmtdev.so.1",
+				"/usr/lib/libmtdev.so.1.0.0"
+			],
+			"name": "mtdev",
+			"provides": [
+				"soname(libmtdev.so.1(x86_64))",
+				"binary(mtdev-test)"
+			]
+		},
+		"mtdev-devel": {
+			"files": [
+				"/usr/include/mtdev-mapping.h",
+				"/usr/include/mtdev-plumbing.h",
+				"/usr/include/mtdev.h",
+				"/usr/lib/libmtdev.so",
+				"/usr/lib/pkgconfig/mtdev.pc"
+			],
+			"name": "mtdev-devel",
+			"provides": [
+				"pkgconfig(mtdev)"
+			]
+		}
+	},
+	"source-name": "mtdev",
+	"source-release": "1",
+	"source-version": "1.1.6"
+}
