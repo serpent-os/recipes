@@ -1,0 +1,45 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libevdev": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/libevdev-tweak-device",
+				"/usr/bin/mouse-dpi-tool",
+				"/usr/bin/touchpad-edge-detector",
+				"/usr/lib/libevdev.so.2",
+				"/usr/lib/libevdev.so.2.3.0",
+				"/usr/share/man/man1/libevdev-tweak-device.1",
+				"/usr/share/man/man1/mouse-dpi-tool.1",
+				"/usr/share/man/man1/touchpad-edge-detector.1"
+			],
+			"name": "libevdev",
+			"provides": [
+				"binary(libevdev-tweak-device)",
+				"soname(libevdev.so.2(x86_64))",
+				"binary(mouse-dpi-tool)",
+				"binary(touchpad-edge-detector)"
+			]
+		},
+		"libevdev-devel": {
+			"files": [
+				"/usr/include/libevdev-1.0/libevdev/libevdev-uinput.h",
+				"/usr/include/libevdev-1.0/libevdev/libevdev.h",
+				"/usr/lib/libevdev.so",
+				"/usr/lib/pkgconfig/libevdev.pc",
+				"/usr/share/man/man3/libevdev.3"
+			],
+			"name": "libevdev-devel",
+			"provides": [
+				"pkgconfig(libevdev)"
+			]
+		}
+	},
+	"source-name": "libevdev",
+	"source-release": "1",
+	"source-version": "1.13.0"
+}
