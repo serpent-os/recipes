@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libwacom
+version     : 2.6.0
+release     : 1
+homepage    : https://linuxwacom.github.io
+upstreams   :
+    - https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.6.0/libwacom-2.6.0.tar.xz : 2376cca99475235b75053a2cfbc7ed40fd8763d5a516941a664870ff1f3aa98f
+summary     : Tablet description library
+description : |
+    %(name) is a library to identify graphics tablets and their model-specific features. It provides easy access to information such as "is this a built-in on-screen tablet", "what is the size of this model", etc.
+license     : MIT
+builddeps   :
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(libxml-2.0)
+setup       : |
+    %meson -Dtests=disabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install
