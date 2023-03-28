@@ -3,4 +3,4 @@ releases:
 security:
     cpe:
     - vendor: littlecms
-        product: little_cms
+      product: little_cms
