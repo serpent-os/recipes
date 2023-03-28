@@ -1,0 +1,45 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : cairo
+version     : 1.17.8
+release     : 1
+homepage    : https://cairographics.org
+upstreams   :
+    - https://cairographics.org/snapshots/cairo-1.17.8.tar.xz : 5b10c8892d1b58d70d3f0ba5b47863a061262fa56b9dc7944161f8c8b783bc64
+summary     : Cairo is a 2D graphics library with support for multiple output devices.
+description : |
+    Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available (eg. through the X Render Extension).
+license     :
+    - GPL-3.0-or-later
+    - LGPL-2.1-or-later
+    - MPL-1.1
+builddeps   :
+    - pkgconfig(fontconfig)
+    - pkgconfig(freetype2)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(libpng)
+    # pkgconfig(librsvg-2.0)
+    - pkgconfig(lzo2)
+    - pkgconfig(pixman-1)
+    # pkgconfig(poppler-glib)
+    - pkgconfig(x11)
+    - pkgconfig(xcb-render)
+    - pkgconfig(xcb-shm)
+    - pkgconfig(xext)
+    - pkgconfig(xrender)
+    - pkgconfig(zlib)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/bin
+            - /usr/lib/cairo/libcairo-trace.so
