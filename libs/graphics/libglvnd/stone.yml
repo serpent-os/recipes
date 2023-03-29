@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libglvnd
-version     : '1.2.0'
-release     : 1
-homepage    : https://github.com/NVIDIA/libglvnd
+version     : '1.6.0'
+release     : 2
+homepage    : https://gitlab.freedesktop.org/glvnd/libglvnd
 upstreams   :
-    - https://github.com/NVIDIA/libglvnd/releases/download/v1.2.0/libglvnd-1.2.0.tar.gz : 2dacbcfa47b7ffb722cbddc0a4f1bc3ecd71d2d7bb461bceb8e396dc6b81dc6d
+    - https://gitlab.freedesktop.org/glvnd/libglvnd/uploads/2ea903100818cb7703dbabc9a11bc025/libglvnd-1.6.0.tar.gz : ecf095405c5be15ecaec5edc7df7d52cd283aec66cb3811b5df88ec3e563af1c
 summary     : GL Vendor-Neutral Dispatch library
 description : |
     %(name) is a vendor-neutral dispatch layer for arbitrating OpenGL API calls between multiple vendors. It allows multiple drivers from different vendors to coexist on the same filesystem, and determines which vendor to dispatch each API call to at runtime.
@@ -18,8 +18,8 @@ builddeps   :
     - pkgconfig32(xext)
 emul32      : yes
 setup       : |
-    %configure
+    %meson
 build       : |
-    %make
+    %meson_build
 install     : |
-    %make_install
+    %meson_install
