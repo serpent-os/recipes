@@ -1,0 +1,6 @@
+releases:
+    id: 857
+security:
+    cpe:
+    - vendor: gnu
+      product: fribidi
