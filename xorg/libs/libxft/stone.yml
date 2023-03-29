@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxft
+version     : 2.3.7
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxft
+upstreams   :
+    - https://xorg.freedesktop.org/releases/individual/lib/libXft-2.3.7.tar.xz : 79f0b37c45007381c371a790c2754644ad955166dbf2a48e3625032e9bdd4f71
+summary     : X FreeType library
+description : |
+    libXft is the client side font rendering library, using libfreetype, libX11, and the X Render extension to display anti-aliased text.
+license     :
+    - HPND-sell-variant
+builddeps   :
+    - pkgconfig(fontconfig)
+    - pkgconfig(freetype2)
+    - pkgconfig(xrender)
+    - pkgconfig(xorg-macros)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
