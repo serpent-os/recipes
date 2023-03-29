@@ -1,0 +1,130 @@
+From 4f047ce2d67a2123175b0c4cbcff0153a1bc063b Mon Sep 17 00:00:00 2001
+From: Gavin Zhao <git@gzgz.dev>
+Date: Tue, 28 Mar 2023 20:44:48 -0400
+Subject: [PATCH] moss/format/source: make staging dirs optional for Git
+ sources
+
+Signed-off-by: Gavin Zhao <git@gzgz.dev>
+---
+ source/moss/core/fetchcontext.d               |  7 +++-
+ source/moss/fetcher/worker.d                  | 34 +++++++++++++++----
+ .../moss/format/source/upstream_definition.d  |  9 +++++
+ 3 files changed, 42 insertions(+), 8 deletions(-)
+
+diff --git a/source/moss/core/fetchcontext.d b/source/moss/core/fetchcontext.d
+index ba8d285..6ee55af 100644
+--- a/source/moss/core/fetchcontext.d
++++ b/source/moss/core/fetchcontext.d
+@@ -34,9 +34,14 @@ public enum FetchType
+     TemporaryFile,
+ 
+     /**
+-     * Mirror cloning (`git clone --mirror`) a Git repository.
++     * Cloning a non-bare repository.
+      */
+     GitRepository,
++
++    /**
++     * Mirror cloning (`git clone --mirror`) a Git repository.
++     */
++    GitRepositoryMirror,
+ }
+ 
+ /**
+diff --git a/source/moss/fetcher/worker.d b/source/moss/fetcher/worker.d
+index 1160dd4..7de9729 100644
+--- a/source/moss/fetcher/worker.d
++++ b/source/moss/fetcher/worker.d
+@@ -216,6 +216,7 @@ private:
+             }, (err) { foundError = err; return -1; });
+             break;
+         case FetchType.GitRepository:
++        case FetchType.GitRepositoryMirror:
+             if (!fetchable.destinationPath.dirName.exists())
+             {
+                 fetchable.destinationPath.dirName.mkdirRecurse();
+@@ -223,8 +224,11 @@ private:
+             break;
+         }
+ 
++        bool isGitType = fetchable.type == FetchType.GitRepository
++            || fetchable.type == FetchType.GitRepositoryMirror;
++
+         /* Make sure we can continue now */
+-        if (fetchable.type != FetchType.GitRepository && outputFD < 0)
++        if (!isGitType && outputFD < 0)
+         {
+             return FetchResult(FetchError(foundError.errorCode,
+                     FetchErrorDomain.CStdlib, fetchable.destinationPath));
+@@ -233,7 +237,7 @@ private:
+         /* Ensure we close the file again */
+         scope (exit)
+         {
+-            if (fetchable.type != FetchType.GitRepository)
++            if (isGitType)
+             {
+                 cstdlib.close(outputFD);
+                 outputFD = -1;
+@@ -243,7 +247,7 @@ private:
+         long statusCode = 0;
+ 
+         /* Use the git command-line to mirror clone requested the repository. */
+-        if (fetchable.type == FetchType.GitRepository)
++        if (isGitType)
+         {
+             import std.process;
+ 
+@@ -264,10 +268,26 @@ private:
+             }
+             else
+             {
+-                cmd = [
+-                    "git", "clone", "--mirror", "--", fetchable.sourceURI,
+-                    fetchable.destinationPath,
+-                ];
++                /**
++                 * Who knows, maybe we'll add another FetchType (hopefully not).
++                 */
++                final switch (fetchable.type)
++                {
++                case FetchType.GitRepository:
++                    cmd = [
++                        "git", "clone", "--", fetchable.sourceURI,
++                        fetchable.destinationPath,
++                    ];
++                    break;
++                case FetchType.GitRepositoryMirror:
++                    cmd = [
++                        "git", "clone", "--mirror", "--", fetchable.sourceURI,
++                        fetchable.destinationPath,
++                    ];
++                    break;
++                case FetchType.RegularFile:
++                case FetchType.TemporaryFile:
++                }
+             }
+ 
+             auto p = spawnProcess(cmd, env, Config.none, workdir);
+diff --git a/source/moss/format/source/upstream_definition.d b/source/moss/format/source/upstream_definition.d
+index 2968a53..aa0ffcb 100644
+--- a/source/moss/format/source/upstream_definition.d
++++ b/source/moss/format/source/upstream_definition.d
+@@ -60,6 +60,15 @@ struct GitUpstreamDefinition
+ 
+     /** Directory to clone the git source to */
+     @YamlSchema("clonedir") string clonedir;
++
++    /**
++     * Whether to first clone the git repository into staging
++     * directory or not. This is often set to `false` when git
++     * submodules are defined using relative paths or urls, so that
++     * they can be resolved correctly instead of resolving to a local
++     * path.
++     */
++    @YamlSchema("staging") bool staging = true;
+ }
+ 
+ /**
+-- 
+2.39.2
+
