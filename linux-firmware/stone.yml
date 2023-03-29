@@ -5,7 +5,7 @@
 #
 name        : linux-firmware
 version     : 20230310
-release     : 5
+release     : 6
 homepage    : https://kernel.org
 upstreams   :
     - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : 702b0c7025cf59e0bdd447d585f5491e38bb10ba # 20230310
