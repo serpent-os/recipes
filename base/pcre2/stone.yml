@@ -5,7 +5,7 @@
 #
 name        : pcre2
 version     : 10.42
-release     : 2
+release     : 3
 homepage    : https://github.com/PCRE2Project/pcre2
 upstreams   :
     - https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz : c33b418e3b936ee3153de2c61cc638e7e4fe3156022a5c77d0711bcbb9d64f1f
@@ -20,6 +20,7 @@ license     :
     - BSD-3-Clause
 # checkdeps   :
 #    - valgrind
+emul32      : yes
 setup       : |
     %configure --disable-static \
                --enable-pcre2-16 \
