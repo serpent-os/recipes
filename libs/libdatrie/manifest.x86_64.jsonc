@@ -1,0 +1,43 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libdatrie": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/trietool",
+				"/usr/bin/trietool-0.2",
+				"/usr/lib/libdatrie.so.1",
+				"/usr/lib/libdatrie.so.1.4.0",
+				"/usr/share/man/man1/trietool-0.2.1",
+				"/usr/share/man/man1/trietool.1"
+			],
+			"name": "libdatrie",
+			"provides": [
+				"soname(libdatrie.so.1(x86_64))",
+				"binary(trietool)",
+				"binary(trietool-0.2)"
+			]
+		},
+		"libdatrie-devel": {
+			"files": [
+				"/usr/include/datrie/alpha-map.h",
+				"/usr/include/datrie/trie.h",
+				"/usr/include/datrie/triedefs.h",
+				"/usr/include/datrie/typedefs.h",
+				"/usr/lib/libdatrie.so",
+				"/usr/lib/pkgconfig/datrie-0.2.pc"
+			],
+			"name": "libdatrie-devel",
+			"provides": [
+				"pkgconfig(datrie-0.2)"
+			]
+		}
+	},
+	"source-name": "libdatrie",
+	"source-release": "1",
+	"source-version": "0.2.13"
+}
