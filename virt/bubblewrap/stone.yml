@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : bubblewrap
+version     : 0.8.0
+release     : 1
+homepage    : https://github.com/containers/bubblewrap
+upstreams   :
+    - https://github.com/containers/bubblewrap/releases/download/v0.8.0/bubblewrap-0.8.0.tar.xz : 957ad1149db9033db88e988b12bcebe349a445e1efc8a9b59ad2939a113d333a
+summary     : Low-level unprivileged sandboxing tool used by Flatpak and similar projects
+description : |
+    Low-level unprivileged sandboxing tool used by Flatpak and similar projects
+license     :
+    - LGPL-2.0-or-later
+builddeps   :
+    - binary(bash)
+    - binary(python3)
+    - binary(xsltproc)
+    - pkgconfig(libcap)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
