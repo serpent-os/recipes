@@ -987,6 +987,6 @@
 		}
 	},
 	"source-name": "linux-headers",
-	"source-release": "7",
-	"source-version": "6.2.6"
+	"source-release": "8",
+	"source-version": "6.2.8"
 }
