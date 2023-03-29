@@ -14,12 +14,6 @@
 				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/icu/72.1/Makefile.inc",
-				"/usr/lib/icu/72.1/pkgdata.inc",
-				"/usr/lib/icu/Makefile.inc",
-				"/usr/lib/icu/current/Makefile.inc",
-				"/usr/lib/icu/current/pkgdata.inc",
-				"/usr/lib/icu/pkgdata.inc",
 				"/usr/lib/libicudata.so.72",
 				"/usr/lib/libicudata.so.72.1",
 				"/usr/lib/libicui18n.so.72",
@@ -72,6 +66,68 @@
 				"soname(libicutest.so.72(x86_64))",
 				"soname(libicutu.so.72(x86_64))",
 				"soname(libicuuc.so.72(x86_64))"
+			]
+		},
+		"icu-32bit": {
+			"build-depends": [
+				"binary(python3)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86))",
+				"soname(libc.so.6(x86))",
+				"soname(libm.so.6(x86))",
+				"soname(libunwind.so.1(x86))"
+			],
+			"files": [
+				"/usr/lib32/libicudata.so.72",
+				"/usr/lib32/libicudata.so.72.1",
+				"/usr/lib32/libicui18n.so.72",
+				"/usr/lib32/libicui18n.so.72.1",
+				"/usr/lib32/libicuio.so.72",
+				"/usr/lib32/libicuio.so.72.1",
+				"/usr/lib32/libicutest.so.72",
+				"/usr/lib32/libicutest.so.72.1",
+				"/usr/lib32/libicutu.so.72",
+				"/usr/lib32/libicutu.so.72.1",
+				"/usr/lib32/libicuuc.so.72",
+				"/usr/lib32/libicuuc.so.72.1"
+			],
+			"name": "icu-32bit",
+			"provides": [
+				"soname(libicudata.so.72(x86))",
+				"soname(libicui18n.so.72(x86))",
+				"soname(libicuio.so.72(x86))",
+				"soname(libicutest.so.72(x86))",
+				"soname(libicutu.so.72(x86))",
+				"soname(libicuuc.so.72(x86))"
+			]
+		},
+		"icu-32bit-devel": {
+			"build-depends": [
+				"binary(python3)"
+			],
+			"files": [
+				"/usr/lib32/icu/72.1/Makefile.inc",
+				"/usr/lib32/icu/72.1/pkgdata.inc",
+				"/usr/lib32/icu/Makefile.inc",
+				"/usr/lib32/icu/current/Makefile.inc",
+				"/usr/lib32/icu/current/pkgdata.inc",
+				"/usr/lib32/icu/pkgdata.inc",
+				"/usr/lib32/libicudata.so",
+				"/usr/lib32/libicui18n.so",
+				"/usr/lib32/libicuio.so",
+				"/usr/lib32/libicutest.so",
+				"/usr/lib32/libicutu.so",
+				"/usr/lib32/libicuuc.so",
+				"/usr/lib32/pkgconfig/icu-i18n.pc",
+				"/usr/lib32/pkgconfig/icu-io.pc",
+				"/usr/lib32/pkgconfig/icu-uc.pc"
+			],
+			"name": "icu-32bit-devel",
+			"provides": [
+				"pkgconfig32(icu-i18n)",
+				"pkgconfig32(icu-io)",
+				"pkgconfig32(icu-uc)"
 			]
 		},
 		"icu-devel": {
@@ -291,6 +347,12 @@
 				"/usr/include/unicode/uvernum.h",
 				"/usr/include/unicode/uversion.h",
 				"/usr/include/unicode/vtzone.h",
+				"/usr/lib/icu/72.1/Makefile.inc",
+				"/usr/lib/icu/72.1/pkgdata.inc",
+				"/usr/lib/icu/Makefile.inc",
+				"/usr/lib/icu/current/Makefile.inc",
+				"/usr/lib/icu/current/pkgdata.inc",
+				"/usr/lib/icu/pkgdata.inc",
 				"/usr/lib/libicudata.so",
 				"/usr/lib/libicui18n.so",
 				"/usr/lib/libicuio.so",
@@ -322,6 +384,6 @@
 		}
 	},
 	"source-name": "icu",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "72.1"
 }
