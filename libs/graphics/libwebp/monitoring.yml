@@ -1,0 +1,6 @@
+releases:
+    id: 1761
+security:
+    cpe:
+    - vendor: webmproject
+      product: libwebp
