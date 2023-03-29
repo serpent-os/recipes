@@ -5,7 +5,7 @@
 #
 name        : fontconfig
 version     : 2.14.1
-release     : 1
+release     : 2
 homepage    : https://www.freedesktop.org/wiki/Software/fontconfig
 upstreams   :
     - https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.14.1.tar.xz : 298e883f6e11d2c5e6d53c8a8394de58d563902cfab934e6be12fb5a5f361ef0
@@ -20,9 +20,12 @@ description : |
         - be used in concert with the X Render Extension and FreeType to implement high quality, anti-aliased and subpixel rendered text on a display.
 license     :
 builddeps   :
+    - binary(gperf)
     - pkgconfig(expat)
     - pkgconfig(freetype2)
-    - gperf
+    - pkgconfig32(expat)
+    - pkgconfig32(freetype2)
+emul32      : yes
 setup       : |
     %patch %(pkgdir)/stateless/Support-user-config.patch
     %meson \

@@ -4,9 +4,11 @@
 	"packages": {
 		"fontconfig": {
 			"build-depends": [
-				"gperf",
+				"binary(gperf)",
 				"pkgconfig(expat)",
-				"pkgconfig(freetype2)"
+				"pkgconfig(freetype2)",
+				"pkgconfig32(expat)",
+				"pkgconfig32(freetype2)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -107,11 +109,56 @@
 				"soname(libfontconfig.so.1(x86_64))"
 			]
 		},
+		"fontconfig-32bit": {
+			"build-depends": [
+				"binary(gperf)",
+				"pkgconfig(expat)",
+				"pkgconfig(freetype2)",
+				"pkgconfig32(expat)",
+				"pkgconfig32(freetype2)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86))",
+				"soname(libexpat.so.1(x86))",
+				"soname(libfreetype.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libfontconfig.so.1",
+				"/usr/lib32/libfontconfig.so.1.13.0"
+			],
+			"name": "fontconfig-32bit",
+			"provides": [
+				"soname(libfontconfig.so.1(x86))"
+			]
+		},
+		"fontconfig-32bit-devel": {
+			"build-depends": [
+				"binary(gperf)",
+				"pkgconfig(expat)",
+				"pkgconfig(freetype2)",
+				"pkgconfig32(expat)",
+				"pkgconfig32(freetype2)"
+			],
+			"depends": [
+				"pkgconfig32(expat)",
+				"pkgconfig32(freetype2)"
+			],
+			"files": [
+				"/usr/lib32/libfontconfig.so",
+				"/usr/lib32/pkgconfig/fontconfig.pc"
+			],
+			"name": "fontconfig-32bit-devel",
+			"provides": [
+				"pkgconfig32(fontconfig)"
+			]
+		},
 		"fontconfig-devel": {
 			"build-depends": [
-				"gperf",
+				"binary(gperf)",
 				"pkgconfig(expat)",
-				"pkgconfig(freetype2)"
+				"pkgconfig(freetype2)",
+				"pkgconfig32(expat)",
+				"pkgconfig32(freetype2)"
 			],
 			"depends": [
 				"pkgconfig(expat)",
@@ -131,6 +178,6 @@
 		}
 	},
 	"source-name": "fontconfig",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.14.1"
 }
