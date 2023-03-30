@@ -26,43 +26,43 @@ populate_xml_docbook() {
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "public" \
         "-//OASIS//DTD DocBook XML CALS Table Model V${version}//EN" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}/calstblx.dtd" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}/calstblx.dtd" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "public" \
         "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}/soextblx.dtd" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}/soextblx.dtd" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "public" \
         "-//OASIS//ELEMENTS DocBook XML Information Pool V${version}//EN" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}/dbpoolx.mod" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}/dbpoolx.mod" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "public" \
         "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V${version}//EN" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}/dbhierx.mod" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}/dbhierx.mod" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "public" \
         "-//OASIS//ELEMENTS DocBook XML HTML Tables V${version}//EN" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}/htmltblx.mod" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}/htmltblx.mod" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "public" \
         "-//OASIS//ENTITIES DocBook XML Notations V${version}//EN" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}/dbnotnx.mod" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}/dbnotnx.mod" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "public" \
         "-//OASIS//ENTITIES DocBook XML Character Entities V${version}//EN" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}/dbcentx.mod" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}/dbcentx.mod" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "public" \
         "-//OASIS//ENTITIES DocBook XML Additional General Entities V${version}//EN" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}/dbgenent.mod" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}/dbgenent.mod" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "rewriteSystem" \
         "http://www.oasis-open.org/docbook/xml/${version}" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}" \
         ${installroot}/${vendordir}/xml/docbook
     xmlcatalog --noout --add "rewriteURI" \
         "http://www.oasis-open.org/docbook/xml/${version}" \
-        "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}" \
+        "file://${datadir}/xml/docbook/xml-dtd-${version}" \
         ${installroot}/${vendordir}/xml/docbook
 }
 
@@ -70,19 +70,19 @@ populate_xml_catalog() {
     xmlcatalog --noout --create ${installroot}/${vendordir}/xml/catalog
     xmlcatalog --noout --add "delegatePublic" \
         "-//OASIS//ENTITIES DocBook XML" \
-        "file://${installroot}/${vendordir}/xml/docbook" \
+        "file://${vendordir}/xml/docbook" \
         ${installroot}/${vendordir}/xml/catalog
     xmlcatalog --noout --add "delegatePublic" \
         "-//OASIS//DTD DocBook XML" \
-        "file://${installroot}/${vendordir}/xml/docbook" \
+        "file://${vendordir}/xml/docbook" \
         ${installroot}/${vendordir}/xml/catalog
     xmlcatalog --noout --add "delegateSystem" \
         "http://www.oasis-open.org/docbook/" \
-        "file://${installroot}/${vendordir}/xml/docbook" \
+        "file://${vendordir}/xml/docbook" \
         ${installroot}/${vendordir}/xml/catalog
     xmlcatalog --noout --add "delegateURI" \
         "http://www.oasis-open.org/docbook/" \
-        "file://${installroot}/${vendordir}/xml/docbook" \
+        "file://${vendordir}/xml/docbook" \
         ${installroot}/${vendordir}/xml/catalog
 }
 
@@ -94,19 +94,19 @@ populate_xml_retrocompatibility() {
             ${installroot}/${vendordir}/xml/docbook
         xmlcatalog --noout --add "rewriteSystem" \
             "http://www.oasis-open.org/docbook/xml/$DTDVERSION" \
-            "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}" \
+            "file://${datadir}/xml/docbook/xml-dtd-${version}" \
             ${installroot}/${vendordir}/xml/docbook
         xmlcatalog --noout --add "rewriteURI" \
             "http://www.oasis-open.org/docbook/xml/$DTDVERSION" \
-            "file://${installroot}/${datadir}/xml/docbook/xml-dtd-${version}" \
+            "file://${datadir}/xml/docbook/xml-dtd-${version}" \
             ${installroot}/${vendordir}/xml/docbook
         xmlcatalog --noout --add "delegateSystem" \
             "http://www.oasis-open.org/docbook/xml/$DTDVERSION/" \
-            "file://${installroot}/${vendordir}/xml/docbook" \
+            "file://${vendordir}/xml/docbook" \
             ${installroot}/${vendordir}/xml/catalog
         xmlcatalog --noout --add "delegateURI" \
             "http://www.oasis-open.org/docbook/xml/$DTDVERSION/" \
-            "file://${installroot}/${vendordir}/xml/docbook" \
+            "file://${vendordir}/xml/docbook" \
             ${installroot}/${vendordir}/xml/catalog
     done
 }
@@ -147,12 +147,12 @@ populate_xsl_retrocompatibility() {
     for RELEASE in 1.67.2; do
         xmlcatalog --noout --add "rewriteSystem" \
             "http://docbook.sourceforge.net/release/xsl/${RELEASE}" \
-            "${installroot}/${datadir}/xml/docbook/xsl-stylesheets-${RELEASE}" \
-            ${installroot}/${vendordir}/xml/catalog &&
+            "${datadir}/xml/docbook/xsl-stylesheets-${RELEASE}" \
+            ${installroot}/${vendordir}/xml/catalog
 
         xmlcatalog --noout --add "rewriteURI" \
             "http://docbook.sourceforge.net/release/xsl/${RELEASE}" \
-            "${installroot}/${datadir}/xml/docbook/xsl-stylesheets-${RELEASE}" \
+            "${datadir}/xml/docbook/xsl-stylesheets-${RELEASE}" \
             ${installroot}/${vendordir}/xml/catalog
     done
 }
