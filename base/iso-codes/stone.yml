@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : iso-codes
+version     : 4.13.0
+release     : 1
+homepage    : https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.13.0
+upstreams   :
+    - https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.13.0/iso-codes-v4.13.0.tar.gz : 1925a2fe7d4b7aa2805ea7059cbede5c0788da2cc0f1a6fae17ae2b2b03337b6
+summary     : ISO standards (countries, languages, language scripts, and currency names)
+description : |
+    This project provides lists of various ISO standards (countries, languages, language scripts, and currency names) in one place. It also provides their translations in gettext .po format.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(python3)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+packages    :
+    - "%(name)":
+        paths:
+            - /*
