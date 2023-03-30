@@ -1,0 +1,111 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gdk-pixbuf": {
+			"build-depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmodule-no-export-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libpng)",
+				"pkgconfig(libtiff-4)",
+				"pkgconfig(shared-mime-info)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgmodule-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libjpeg.so.8(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpng16.so.16(x86_64))",
+				"soname(libtiff.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/gdk-pixbuf-csource",
+				"/usr/bin/gdk-pixbuf-pixdata",
+				"/usr/bin/gdk-pixbuf-query-loaders",
+				"/usr/bin/gdk-pixbuf-thumbnailer",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ani.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-bmp.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-icns.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ico.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-pnm.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-qtif.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tga.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tiff.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xbm.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xpm.so",
+				"/usr/lib/girepository-1.0/GdkPixbuf-2.0.typelib",
+				"/usr/lib/girepository-1.0/GdkPixdata-2.0.typelib",
+				"/usr/lib/libgdk_pixbuf-2.0.so.0",
+				"/usr/lib/libgdk_pixbuf-2.0.so.0.4200.10",
+				"/usr/share/gir-1.0/GdkPixbuf-2.0.gir",
+				"/usr/share/gir-1.0/GdkPixdata-2.0.gir",
+				"/usr/share/thumbnailers/gdk-pixbuf-thumbnailer.thumbnailer"
+			],
+			"name": "gdk-pixbuf",
+			"provides": [
+				"binary(gdk-pixbuf-csource)",
+				"binary(gdk-pixbuf-pixdata)",
+				"binary(gdk-pixbuf-query-loaders)",
+				"binary(gdk-pixbuf-thumbnailer)",
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))"
+			]
+		},
+		"gdk-pixbuf-devel": {
+			"build-depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmodule-no-export-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libpng)",
+				"pkgconfig(libtiff-4)",
+				"pkgconfig(shared-mime-info)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmodule-no-export-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libpng)",
+				"pkgconfig(libtiff-4)",
+				"pkgconfig(shared-mime-info)"
+			],
+			"files": [
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-animation.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-autocleanups.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-core.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-enum-types.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-features.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-io.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-loader.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-macros.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-marshal.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-simple-anim.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-transform.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf.h",
+				"/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixdata.h",
+				"/usr/lib/libgdk_pixbuf-2.0.so",
+				"/usr/lib/pkgconfig/gdk-pixbuf-2.0.pc"
+			],
+			"name": "gdk-pixbuf-devel",
+			"provides": [
+				"pkgconfig(gdk-pixbuf-2.0)"
+			]
+		}
+	},
+	"source-name": "gdk-pixbuf",
+	"source-release": "1",
+	"source-version": "2.42.10"
+}
