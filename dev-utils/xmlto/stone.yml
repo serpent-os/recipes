@@ -5,7 +5,7 @@
 #
 name        : xmlto
 version     : 0.0.28
-release     : 1
+release     : 2
 homepage    : https://releases.pagure.org/xmlto
 upstreams   :
     - https://releases.pagure.org/xmlto/xmlto-0.0.28.tar.gz : 2f986b7c9a0e9ac6728147668e776d405465284e13c74d4146c9cbc51fd8aad3
@@ -16,6 +16,8 @@ license     :
     - GPL-2.0-or-later
 builddeps   :
     - binary(flex)
+rundeps     :
+    - docbook
 setup       : |
     %configure
 build       : |
