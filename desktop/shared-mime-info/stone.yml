@@ -5,7 +5,7 @@
 #
 name        : shared-mime-info
 version     : "2.2"
-release     : 1
+release     : 2
 homepage    : https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/
 upstreams   :
     - https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-info-2.2.tar.gz : bcf5d552318136cf7b3ae259975f414fbcdc9ebce000c87cf1f0901ff14e619f
@@ -22,7 +22,6 @@ builddeps   :
     - pkgconfig(gio-2.0)
     - pkgconfig(glib-2.0)
     - pkgconfig(libxml-2.0)
-    - docbook
 toolchain   : gnu
 setup       : |
     %meson

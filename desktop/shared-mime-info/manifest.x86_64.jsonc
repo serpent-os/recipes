@@ -8,7 +8,6 @@
 				"binary(xmllint)",
 				"binary(xmlto)",
 				"binary(xsltproc)",
-				"docbook",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(libxml-2.0)"
@@ -110,6 +109,6 @@
 		}
 	},
 	"source-name": "shared-mime-info",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.2"
 }
