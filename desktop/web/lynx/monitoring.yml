@@ -1,0 +1,8 @@
+releases:
+    id: 1863
+security:
+    cpe:
+        - vendor: lynx_project
+          product: lynx
+        - vendor: lynx
+          product: lynx

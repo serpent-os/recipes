@@ -1,0 +1,58 @@
+From aa2818acef13e7a9c0e0a7a7fcf772318ed00be8 Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Mon, 16 Sep 2019 13:09:41 -0700
+Subject: [PATCH] Try to load stateless path for lynx configs
+
+---
+ src/LYMain.c  | 12 ++++++++----
+ src/LYStyle.c | 11 ++++++++---
+ 2 files changed, 16 insertions(+), 7 deletions(-)
+
+diff --git a/src/LYMain.c b/src/LYMain.c
+index 36c22ed..7f7bde0 100644
+--- a/src/LYMain.c
++++ b/src/LYMain.c
+@@ -1520,10 +1520,14 @@ int main(int argc,
+      * If the configuration file is not available, inform the user and exit.
+      */
+     if (!LYCanReadFile(lynx_cfg_file)) {
+-	fprintf(stderr,
+-		gettext("\nConfiguration file \"%s\" is not available.\n\n"),
+-		lynx_cfg_file);
+-	exit_immediately(EXIT_FAILURE);
++	FREE(lynx_cfg_file);
++	StrAllocCopy(lynx_cfg_file, "/usr/share/defaults/lynx/lynx.cfg");
++	if (!LYCanReadFile(lynx_cfg_file)) {
++		fprintf(stderr,
++			gettext("\nConfiguration file \"%s\" is not available.\n\n"),
++			lynx_cfg_file);
++		exit_immediately(EXIT_FAILURE);
++	}
+     }
+ 
+     /*
+diff --git a/src/LYStyle.c b/src/LYStyle.c
+index c73b789..c9dc3fc 100644
+--- a/src/LYStyle.c
++++ b/src/LYStyle.c
+@@ -936,9 +936,14 @@ void init_color_styles(char **from_cmdline, const char *default_styles)
+      * If the lynx-style file is not available, inform the user and exit.
+      */
+     if (isEmpty(lynx_lss_file) || !LYCanReadFile(lynx_lss_file)) {
+-	fprintf(stderr, gettext("\nLynx file \"%s\" is not available.\n\n"),
+-		NonNull(cp));
+-	exit_immediately(EXIT_FAILURE);
++	FREE(lynx_lss_file);
++	StrAllocCopy(lynx_lss_file, "/usr/share/defaults/lynx/lynx.lss");
++	cp = lynx_lss_file;
++	if (isEmpty(lynx_lss_file) || !LYCanReadFile(lynx_lss_file)) {
++		fprintf(stderr, gettext("\nLynx file \"%s\" is not available.\n\n"),
++			NonNull(cp));
++		exit_immediately(EXIT_FAILURE);
++	}
+     }
+ 
+     /*
+-- 
+2.22.0
+
