@@ -4,48 +4,48 @@ set: [pipefail]
 shopt: [globstar]
 
 tasks:
-  build:
-    desc: Build a stone recipe
-    dir: '{{.USER_WORKING_DIR}}'
-    cmds:
-      - sudo boulder build ./stone.yml -p local-x86_64
+    build:
+        desc: Build a stone recipe
+        dir: '{{.USER_WORKING_DIR}}'
+        cmds:
+            - sudo boulder build ./stone.yml -p local-x86_64
 
-  build-and-copy:
-    desc: Builds the stone recipe and then copies it to the local profile
-    cmds:
-      - task: build
-      - task: copy-profile
-  
-  clean:
-    desc: Clean all .stones in the local directory
-    dir: '{{.USER_WORKING_DIR}}'
-    cmds:
-      - rm -fv *.stone
-  
-  clean-repo:
-    desc: Clean all .stones in this repository
-    cmds:
-      - rm -fv **/*.stone
-      - rm -fv *.stone
-  
-  clean-profile:
-    desc: Cleans the local profile and reindexes it
-    cmds:
-      - sudo rm -fv /var/cache/boulder/collections/local-x86_64/*.stone
-      - task: reindex-profile
-  
-  clean-all:
-    desc: Cleans local profile and the repo
-    deps: [clean-repo, clean-profile]
+    build-and-copy:
+        desc: Builds the stone recipe and then copies it to the local profile
+        cmds:
+            - task: build
+            - task: copy-profile
+    
+    clean:
+        desc: Clean all .stones in the local directory
+        dir: '{{.USER_WORKING_DIR}}'
+        cmds:
+            - rm -fv *.stone
+    
+    clean-repo:
+        desc: Clean all .stones in this repository
+        cmds:
+            - rm -fv **/*.stone
+            - rm -fv *.stone
+    
+    clean-profile:
+        desc: Cleans the local profile and reindexes it
+        cmds:
+            - sudo rm -fv /var/cache/boulder/collections/local-x86_64/*.stone
+            - task: reindex-profile
+    
+    clean-all:
+        desc: Cleans local profile and the repo
+        deps: [clean-repo, clean-profile]
 
-  copy-profile:
-    desc: Copies .stones in this folder to local profile and reindexes it
-    dir: '{{.USER_WORKING_DIR}}'
-    cmds:
-      - sudo cp -v *.stone /var/cache/boulder/collections/local-x86_64/
-      - task: reindex-profile
+    copy-profile:
+        desc: Copies .stones in this folder to local profile and reindexes it
+        dir: '{{.USER_WORKING_DIR}}'
+        cmds:
+            - sudo cp -v *.stone /var/cache/boulder/collections/local-x86_64/
+            - task: reindex-profile
 
-  reindex-profile:
-    desc: Re-creates moss index for local profile
-    cmds:
-      - sudo moss idx /var/cache/boulder/collections/local-x86_64/
+    reindex-profile:
+        desc: Re-creates moss index for local profile
+        cmds:
+            - sudo moss idx /var/cache/boulder/collections/local-x86_64/
