@@ -2,7 +2,7 @@ releases:
     id: 7927
     ignore:
     # This packages is only for qt 5.15
-    - "^6\..*"
+    - '^6\..*'
 security:
     cpe:
     - vendor: qt
