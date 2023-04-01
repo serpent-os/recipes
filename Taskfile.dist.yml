@@ -11,7 +11,12 @@ tasks:
         desc: Build a stone recipe
         dir: '{{ .USER_WORKING_DIR }}'
         cmds:
+            - task: reindex-profile
             - sudo boulder build ./stone.yml -p {{ .BOULDER_PROFILE }}
+        preconditions:
+            -
+                sh: "test -f stone.yml"
+                msg: "Create a new stone.yml first to build it"
 
     build-and-copy:
         desc: Builds the stone recipe and then copies it to the local profile
@@ -47,6 +52,10 @@ tasks:
         cmds:
             - sudo cp -v *.stone /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/
             - task: reindex-profile
+        preconditions:
+            -
+                sh: "test -f *.stone"
+                msg: "You must first build the package to copy artefacts to your profile"
 
     reindex-profile:
         desc: Re-creates moss index for local profile
