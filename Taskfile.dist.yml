@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 set: [pipefail]
 shopt: [globstar]
@@ -9,55 +9,67 @@ vars:
 tasks:
     build:
         desc: Build a stone recipe
-        dir: '{{ .USER_WORKING_DIR }}'
-        cmds:
-            - task: reindex-profile
-            - sudo boulder build ./stone.yml -p {{ .BOULDER_PROFILE }}
+        dir: "{{ .USER_WORKING_DIR }}"
+        deps: [profile-exists]
         preconditions:
-            -
-                sh: "test -f stone.yml"
-                msg: "Create a new stone.yml first to build it"
+            - sh: "test -f stone.yml"
+              msg: "Create a new stone.yml first to build it"
+        cmds:
+            - sudo boulder build ./stone.yml -p {{ .BOULDER_PROFILE }}
 
     build-and-copy:
         desc: Builds the stone recipe and then copies it to the local profile
         cmds:
             - task: build
             - task: copy-profile
-    
+
     clean:
         desc: Clean all .stones in the local directory
-        dir: '{{ .USER_WORKING_DIR }}'
+        dir: "{{ .USER_WORKING_DIR }}"
         cmds:
             - rm -fv *.stone
-    
+
     clean-repo:
         desc: Clean all .stones in this repository
         cmds:
             - rm -fv **/*.stone
             - rm -fv *.stone
-    
+
     clean-profile:
         desc: Cleans the local profile and reindexes it
         cmds:
             - sudo rm -fv /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/*.stone
-            - task: reindex-profile
-    
+            - task: index-profile
+
     clean-all:
         desc: Cleans local profile and the repo
         deps: [clean-repo, clean-profile]
 
     copy-profile:
         desc: Copies .stones in this folder to local profile and reindexes it
-        dir: '{{ .USER_WORKING_DIR }}'
+        dir: "{{ .USER_WORKING_DIR }}"
+        preconditions:
+            - sh: "test -f *.stone"
+              msg: "You must first build the package to copy artefacts to your profile"
         cmds:
             - sudo cp -v *.stone /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/
-            - task: reindex-profile
-        preconditions:
-            -
-                sh: "test -f *.stone"
-                msg: "You must first build the package to copy artefacts to your profile"
+            - task: index-profile
 
-    reindex-profile:
+    profile-exists:
+        internal: true
+        desc: Checks if a profile exists and if it has an index file. If not it creates it
+        status:
+            - test -f /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/stone.index
+        cmds:
+            - task: create-profile
+
+    create-profile:
+        desc: Creates local profile and the initial index
+        cmds:
+            - sudo mkdir -p /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/
+            - task: index-profile
+
+    index-profile:
         desc: Re-creates moss index for local profile
         cmds:
             - sudo moss idx /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/
