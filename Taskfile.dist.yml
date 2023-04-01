@@ -49,7 +49,7 @@ tasks:
         desc: Copies .stones in this folder to local profile and reindexes it
         dir: "{{ .USER_WORKING_DIR }}"
         preconditions:
-            - sh: "test -f *.stone"
+            - sh: pattern="*.stone"; files=( $pattern ); test -f "${files[0]}"
               msg: "You must first build the package to copy artefacts to your profile"
         cmds:
             - sudo cp -v *.stone /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/
