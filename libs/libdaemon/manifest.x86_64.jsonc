@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libdaemon": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libdaemon.so.0",
+				"/usr/lib/libdaemon.so.0.5.0"
+			],
+			"name": "libdaemon",
+			"provides": [
+				"soname(libdaemon.so.0(x86_64))"
+			]
+		},
+		"libdaemon-devel": {
+			"files": [
+				"/usr/include/libdaemon/daemon.h",
+				"/usr/include/libdaemon/dexec.h",
+				"/usr/include/libdaemon/dfork.h",
+				"/usr/include/libdaemon/dlog.h",
+				"/usr/include/libdaemon/dnonblock.h",
+				"/usr/include/libdaemon/dpid.h",
+				"/usr/include/libdaemon/dsignal.h",
+				"/usr/lib/libdaemon.so",
+				"/usr/lib/pkgconfig/libdaemon.pc",
+				"/usr/share/doc/libdaemon/README.html",
+				"/usr/share/doc/libdaemon/style.css"
+			],
+			"name": "libdaemon-devel",
+			"provides": [
+				"pkgconfig(libdaemon)"
+			]
+		}
+	},
+	"source-name": "libdaemon",
+	"source-release": "1",
+	"source-version": "0.14"
+}
