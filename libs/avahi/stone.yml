@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : avahi
+version     : 0.8
+release     : 1
+homepage    : https://www.avahi.org/
+upstreams   :
+    - https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz : 060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda
+summary     : Avahi - Service Discovery for Linux using mDNS/DNS-SD
+description : |
+    Avahi is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite. This enables you to plug your laptop or computer into a network and instantly be able to view other people who you can chat with, find printers to print to or find files being shared.
+license     :
+    - LGPL-2.1-or-later
+builddeps  :
+    - binary(gettextize)
+    - binary(python3)
+    - pkgconfig(dbus-1)
+    - pkgconfig(expat)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libevent)
+    - pkgconfig(libdaemon)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(liblzma)
+    - pkgconfig(libzstd)
+    - gdbm-devel
+setup       : |
+    %reconfigure \
+        --disable-static \
+        --disable-gtk3 \
+        --disable-mono \
+        --disable-qt5 \
+        --disable-python \
+        --with-distro=none \
+build       : |
+    %make
+install     : |
+    %make_install
