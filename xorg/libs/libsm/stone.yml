@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libsm
+version     : 1.2.4
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libsm
+upstreams   :
+    - https://xorg.freedesktop.org/releases/individual/lib/libSM-1.2.4.tar.xz : fdcbe51e4d1276b1183da77a8a4e74a137ca203e0bcfb20972dd5f3347e97b84
+summary     : X Session Management Library
+description : |
+    libSM - X Session Management Library
+license     : X11
+builddeps   :
+    - binary(xsltproc)
+    - pkgconfig(ice)
+    - pkgconfig(x11)
+    - pkgconfig(uuid)
+    - pkgconfig(xorg-macros)
+    - pkgconfig(xproto)
+    - pkgconfig(xtrans)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/doc/
