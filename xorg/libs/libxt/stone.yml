@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxt
+version     : 1.2.1
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxt
+upstreams   :
+    - https://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.1.tar.gz : 6da1bfa9dd0ed87430a5ce95b129485086394df308998ebe34d98e378e3dfb33
+summary     : X Toolkit Intrinsics library
+description : |
+    X Toolkit Intrinsics library
+license     : X11
+builddeps   :
+    - binary(file)
+    - binary(xsltproc)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(ice)
+    - pkgconfig(sm)
+    - pkgconfig(x11)
+    - pkgconfig(xorg-macros)
+    - pkgconfig(xproto)
+environment : |
+    # FIXME: hack for llvm toolchain build. stdin madness???
+    export CPP='clang -E -'
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/doc/

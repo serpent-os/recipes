@@ -1,0 +1,6 @@
+releases:
+    id: 1793
+security:
+    cpe:
+        - vendor: x
+          product: libxt
