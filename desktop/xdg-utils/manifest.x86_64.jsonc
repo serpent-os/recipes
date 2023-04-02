@@ -1,0 +1,45 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xdg-utils": {
+			"build-depends": [
+				"binary(lynx)",
+				"binary(xmlto)",
+				"binary(xsltproc)"
+			],
+			"files": [
+				"/usr/bin/xdg-desktop-icon",
+				"/usr/bin/xdg-desktop-menu",
+				"/usr/bin/xdg-email",
+				"/usr/bin/xdg-icon-resource",
+				"/usr/bin/xdg-mime",
+				"/usr/bin/xdg-open",
+				"/usr/bin/xdg-screensaver",
+				"/usr/bin/xdg-settings",
+				"/usr/share/man/man1/xdg-desktop-icon.1",
+				"/usr/share/man/man1/xdg-desktop-menu.1",
+				"/usr/share/man/man1/xdg-email.1",
+				"/usr/share/man/man1/xdg-icon-resource.1",
+				"/usr/share/man/man1/xdg-mime.1",
+				"/usr/share/man/man1/xdg-open.1",
+				"/usr/share/man/man1/xdg-screensaver.1",
+				"/usr/share/man/man1/xdg-settings.1"
+			],
+			"name": "xdg-utils",
+			"provides": [
+				"binary(xdg-desktop-icon)",
+				"binary(xdg-desktop-menu)",
+				"binary(xdg-email)",
+				"binary(xdg-icon-resource)",
+				"binary(xdg-mime)",
+				"binary(xdg-open)",
+				"binary(xdg-screensaver)",
+				"binary(xdg-settings)"
+			]
+		}
+	},
+	"source-name": "xdg-utils",
+	"source-release": "1",
+	"source-version": "1.1.3"
+}
