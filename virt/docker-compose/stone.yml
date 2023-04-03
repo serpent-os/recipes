@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : docker-compose
-version     : 2.16.0
-release     : 2
+version     : 2.17.2
+release     : 3
 homepage    : https://github.com/docker/compose
 upstreams   :
-    - https://github.com/docker/compose/archive/refs/tags/v2.16.0.tar.gz : 556dc59075280442128f5b45a8ff37638fb357c2a956bd751dd0ba747c93e71d
+    - https://github.com/docker/compose/archive/refs/tags/v2.17.2.tar.gz : d6e6de858ecdb0104991c86c66dde5dd4fb6a1160d707308d8ad3167450c8094
 summary     : Define and run multi-container applications with Docker 
 description : |
     Define and run multi-container applications with Docker 
@@ -28,7 +28,7 @@ environment : |
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-X=$_compose_r/v2/internal.Version=v%(version)"
 
     # Git commit corresponding to the version tag
-    export GITCOMMIT="e6e2f7839f59d6e8df03411f366413520dcac126"
+    export GITCOMMIT="0b6133f75b1678413a588a80440a3b239e686467"
     
     # https://github.com/serpent-os/boulder/issues/74
     export CGO_CFLAGS="${CFLAGS} -Wno-error=unused-command-line-argument"
