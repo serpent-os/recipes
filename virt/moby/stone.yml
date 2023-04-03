@@ -4,14 +4,14 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : moby
-version     : 23.0.1
-release     : 3
+version     : 23.0.2
+release     : 4
 homepage    : https://www.docker.com
 upstreams   :
-    - https://github.com/moby/moby/archive/refs/tags/v23.0.1.tar.gz : c8e6c0ac5f0c772023e3430f80190e0f86644b6d94cac63118b03561385f7b56
+    - https://github.com/moby/moby/archive/refs/tags/v23.0.2.tar.gz : 4caca59c774445a5aad6114d89c97c88d9705f048704fecdd3f5712cb369dc39
     # Used for the man pages
-    - https://github.com/docker/cli/archive/refs/tags/v23.0.1.tar.gz:
-        hash: 37bc1c71a782fc10d35aa6708c1b3c90a71f3947c33665cb0de68df25dc14d94
+    - https://github.com/docker/cli/archive/refs/tags/v23.0.2.tar.gz:
+        hash: bef4fc68b9f81ab2ae8bb2605e16a0965a3c4a82f0c0cf9d9f5d2cee8e95415d
         rename: cli.tar.gz
         stripdirs: 1
         unpackdir: "%(name)-%(version)/docker-cli/"
@@ -41,7 +41,7 @@ environment : |
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
 
     # Git commit corresponding to the version tag
-    export GITCOMMIT="bc3805a0a0d3b5bd3f0e6c69f46ac08dd53377c7"
+    export GITCOMMIT="219f21bf07502b447095649b5a2764661737f164"
     export DOCKER_GITCOMMIT=$GITCOMMIT
     
     # https://github.com/serpent-os/boulder/issues/74
