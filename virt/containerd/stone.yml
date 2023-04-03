@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : containerd
-version     : 1.6.19
-release     : 4
+version     : 1.6.20
+release     : 5
 homepage    : https://containerd.io/
 upstreams   :
-    - https://github.com/containerd/containerd/archive/refs/tags/v1.6.19.tar.gz : 7a90dc72f44e230eb5228ebac23b37e91f7d26d175d563099a8e1c0592047a28
+    - https://github.com/containerd/containerd/archive/refs/tags/v1.6.20.tar.gz : 819086ccdca44cfc5f108e226c7a9294d8fad3eb32031a621623da80dedbfb11
 summary     : An open and reliable container runtime
 description : |
     An open and reliable container runtime
@@ -30,7 +30,7 @@ environment : |
     export GOFLAGS="-trimpath -mod=readonly -modcacherw"
 
     # Git commit corresponding to the version tag
-    export COMMIT="31aa4358a36870b21a992d3ad2bef29e1d693bec"
+    export COMMIT="2806fc1057397dbaeefbea0e4e17bddfbd388f38"
 
     # https://github.com/serpent-os/boulder/issues/74
     export CGO_CFLAGS="${CGO_CFLAGS} -Wno-error=unused-command-line-argument"
