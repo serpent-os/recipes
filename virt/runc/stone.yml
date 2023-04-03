@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : runc
-version     : 1.1.4
-release     : 3
+version     : 1.1.5
+release     : 4
 homepage    : https://runc.io/
 upstreams   :
-    - https://github.com/opencontainers/runc/archive/refs/tags/v1.1.4.tar.gz : 4f02077432642eebd768fc857318ae7929290b3a3511eb1be338005e360cfa34
+    - https://github.com/opencontainers/runc/archive/refs/tags/v1.1.5.tar.gz : 76cbf30637cbb828794d72d32fb3fd6ff3139cd9743b8b44790fd110f43d96b2
 summary     : CLI tool for managing OCI compliant containers
 description : |
     CLI tool for managing OCI compliant containers
@@ -25,7 +25,7 @@ environment : |
     export GOFLAGS="-trimpath -mod=readonly -modcacherw"
 
     # Git SHA corresponding to the release tag
-    export COMMIT=5fd4c4d144137e991c4acebb2146ab1483a97925
+    export COMMIT=f19387a6bec4944c770f7668ab51c4348d9c2f38
     
     # https://github.com/serpent-os/boulder/issues/74
     export CGO_CFLAGS="${CFLAGS} -Wno-error=unused-command-line-argument"
