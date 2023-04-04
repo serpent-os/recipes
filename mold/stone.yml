@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : mold
-version     : 1.11.0
-release     : 4
+version     : '1.11.0'
+release     : 5
 summary     : A Modern Linker
 license     : BSD-3-Clause
 homepage    : https://github.com/rui314/mold
