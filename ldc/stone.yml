@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : ldc
-version     : 1.31.0
-release     : 5
+version     : 1.32.0
+release     : 6
 summary     : The LLVM-based D Compiler
 license     :
     - Apache-2.0
@@ -15,7 +15,7 @@ homepage    : https://github.com/ldc-developers/ldc
 description : |
     The LLVM-based D Compiler
 upstreams   :
-    - https://github.com/ldc-developers/ldc/releases/download/v1.31.0/ldc-1.31.0-src.tar.gz: f1c8ece9e1e35806c3441bf24fbe666cddd8eef375592c19cd8fee4701cd5458
+    - https://github.com/ldc-developers/ldc/releases/download/v1.32.0/ldc-1.32.0-src.tar.gz: c4ee0bf91b416dd5641353d9b267b6a48600c499c782beb112d2e460e329beac
 builddeps   :
     - ldc-devel
     - binary(make)
