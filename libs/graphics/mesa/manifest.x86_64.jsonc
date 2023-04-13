@@ -80,6 +80,7 @@
 				"/usr/lib/dri/virtio_gpu_dri.so",
 				"/usr/lib/dri/virtio_gpu_drv_video.so",
 				"/usr/lib/dri/vmwgfx_dri.so",
+				"/usr/lib/dri/zink_dri.so",
 				"/usr/lib/libEGL_mesa.so.0",
 				"/usr/lib/libEGL_mesa.so.0.0.0",
 				"/usr/lib/libGLX_mesa.so.0",
@@ -204,6 +205,6 @@
 		}
 	},
 	"source-name": "mesa",
-	"source-release": "2",
-	"source-version": "23.0.0"
+	"source-release": "3",
+	"source-version": "23.0.2"
 }
