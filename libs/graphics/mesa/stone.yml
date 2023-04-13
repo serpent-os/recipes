@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : mesa
-version     : 23.0.0
+version     : 23.0.2
 release     : 3
 homepage    : https://mesa3d.org/
 upstreams   :
-    - https://archive.mesa3d.org/mesa-23.0.0.tar.xz : 01f3cff3763f09e0adabcb8011e4aebc6ad48f6a4dd4bae904fe918707d253e4
+    - https://archive.mesa3d.org/mesa-23.0.2.tar.xz : 1b7d3399fc6f16f030361f925d33ebc7600cbf98094582f54775b6a1180529e7
 summary     : Mesa 3D graphics library
 description : |
     The Mesa project began as an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics. Over the years the project has grown to implement more graphics APIs, including OpenGL ES, OpenCL, OpenMAX, VDPAU, VA-API, Vulkan and EGL. A variety of device drivers allows the Mesa libraries to be used in many different environments ranging from software emulation to complete hardware acceleration for modern GPUs. Mesa ties into several other open-source projects: the Direct Rendering Infrastructure, X.org, and Wayland to provide OpenGL support on Linux, FreeBSD, and other operating systems.
