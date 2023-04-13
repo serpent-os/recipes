@@ -5,7 +5,7 @@
 #
 name        : mesa
 version     : 23.0.0
-release     : 2
+release     : 3
 homepage    : https://mesa3d.org/
 upstreams   :
     - https://archive.mesa3d.org/mesa-23.0.0.tar.xz : 01f3cff3763f09e0adabcb8011e4aebc6ad48f6a4dd4bae904fe918707d253e4
@@ -49,6 +49,7 @@ setup       : |
         -Dvideo-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
         -Dglvnd=true \
         -Dllvm=true \
+        -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
         -Dshared-llvm=true \
         -Dplatforms=x11,wayland
 build       : |
