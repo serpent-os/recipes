@@ -3,6 +3,9 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"linux-firmware": {
+			"build-depends": [
+				"binary(unzstd)"
+			],
 			"files": [
 				"/usr/lib/firmware/3com/typhoon.bin.zst",
 				"/usr/lib/firmware/RTL8192E/boot.img.zst",
@@ -1261,13 +1264,16 @@
 			"name": "linux-firmware"
 		},
 		"linux-firmware-amd": {
+			"build-depends": [
+				"binary(unzstd)"
+			],
 			"files": [
-				"/usr/lib/firmware/amd-ucode/README.zst",
-				"/usr/lib/firmware/amd-ucode/microcode_amd.bin.zst",
-				"/usr/lib/firmware/amd-ucode/microcode_amd_fam15h.bin.zst",
-				"/usr/lib/firmware/amd-ucode/microcode_amd_fam16h.bin.zst",
-				"/usr/lib/firmware/amd-ucode/microcode_amd_fam17h.bin.zst",
-				"/usr/lib/firmware/amd-ucode/microcode_amd_fam19h.bin.zst",
+				"/usr/lib/firmware/amd-ucode/README",
+				"/usr/lib/firmware/amd-ucode/microcode_amd.bin",
+				"/usr/lib/firmware/amd-ucode/microcode_amd_fam15h.bin",
+				"/usr/lib/firmware/amd-ucode/microcode_amd_fam16h.bin",
+				"/usr/lib/firmware/amd-ucode/microcode_amd_fam17h.bin",
+				"/usr/lib/firmware/amd-ucode/microcode_amd_fam19h.bin",
 				"/usr/lib/firmware/amd/amd_sev_fam17h_model0xh.sbin.zst",
 				"/usr/lib/firmware/amd/amd_sev_fam17h_model3xh.sbin.zst",
 				"/usr/lib/firmware/amd/amd_sev_fam19h_model0xh.sbin.zst",
@@ -2061,6 +2067,9 @@
 			"name": "linux-firmware-amd"
 		},
 		"linux-firmware-intel": {
+			"build-depends": [
+				"binary(unzstd)"
+			],
 			"files": [
 				"/usr/lib/firmware/i915/adlp_dmc.bin.zst",
 				"/usr/lib/firmware/i915/adlp_dmc_ver2_09.bin.zst",
@@ -2299,6 +2308,9 @@
 			"name": "linux-firmware-intel"
 		},
 		"linux-firmware-iwlwifi": {
+			"build-depends": [
+				"binary(unzstd)"
+			],
 			"files": [
 				"/usr/lib/firmware/iwlwifi-100-5.ucode.zst",
 				"/usr/lib/firmware/iwlwifi-1000-5.ucode.zst",
@@ -2418,6 +2430,9 @@
 			"name": "linux-firmware-iwlwifi"
 		},
 		"linux-firmware-nvidia": {
+			"build-depends": [
+				"binary(unzstd)"
+			],
 			"files": [
 				"/usr/lib/firmware/nvidia/ga102/acr/ucode_ahesasc.bin.zst",
 				"/usr/lib/firmware/nvidia/ga102/acr/ucode_asb.bin.zst",
@@ -2845,6 +2860,6 @@
 		}
 	},
 	"source-name": "linux-firmware",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "20230404"
 }

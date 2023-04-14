@@ -5,7 +5,7 @@
 #
 name        : linux-firmware
 version     : 20230404
-release     : 7
+release     : 8
 homepage    : https://kernel.org
 upstreams   :
     - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : 2e92a49f90f73c8edc44b25c6e669d5e70893c90 # 20230404
@@ -15,6 +15,8 @@ description : |
 license     :
     - GPL-2.0-or-later
     - Distributable
+builddeps   :
+    - binary(unzstd)
 packages    :
     - "%(name)-amd":
         summary: Support for AMD devices
@@ -41,4 +43,8 @@ install     : |
     # Remove conflicting and/or forbidden assets
     for forbidden in carl9170fw netronome liquidio qed Makefile GPL-3 ; do
         rm -rvf "%(installroot)/%(libdir)/firmware/${forbidden}"
+    done
+    # unzstd the amd microcode to unfudge dracut
+    for file in %(installroot)%(libdir)/firmware/amd-ucode/*.zst ; do
+        unzstd --rm $file
     done
