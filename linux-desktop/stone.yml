@@ -1,6 +1,6 @@
 name        : linux-desktop
 version     : 6.2.11
-release     : 4
+release     : 5
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.11.tar.xz : 0d236784e60b87c7953535aeb148dd9e773b26495dfa9c6d69615f54fe00dd47
@@ -25,6 +25,8 @@ builddeps   :
     - pkgconfig(libssl)
     - pkgconfig(libzstd)
     - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
+    - intel-microcode
+    - linux-firmware-amd
 setup       : |
     extraVersion="-%(release).desktop"
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
@@ -49,10 +51,10 @@ install     : |
     %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
     /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
     
-    # TODO: Include early microcode
+    # Include early microcode
     LD_PRELOAD='' dracut --strip --tmpdir /tmp -N -f \
         --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs" \
-        --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd \
+        --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode \
         %(installroot)%(libdir)/kernel/initrd-$kernelID.%(version)-%(release)
 
     # No building against this kernel pls.
