@@ -30,7 +30,7 @@
 				"/usr/lib/libfontconfig.so.1.13.0",
 				"/usr/share/defaults/etc/fonts/conf.d/10-hinting-slight.conf",
 				"/usr/share/defaults/etc/fonts/conf.d/10-scale-bitmap-fonts.conf",
-				"/usr/share/defaults/etc/fonts/conf.d/10-sub-pixel-rgb.conf",
+				"/usr/share/defaults/etc/fonts/conf.d/10-sub-pixel-none.conf",
 				"/usr/share/defaults/etc/fonts/conf.d/10-yes-antialias.conf",
 				"/usr/share/defaults/etc/fonts/conf.d/11-lcdfilter-default.conf",
 				"/usr/share/defaults/etc/fonts/conf.d/20-unhint-small-vera.conf",
@@ -59,9 +59,9 @@
 				"/usr/share/fontconfig/conf.avail/10-hinting-none.conf",
 				"/usr/share/fontconfig/conf.avail/10-hinting-slight.conf",
 				"/usr/share/fontconfig/conf.avail/10-no-antialias.conf",
-				"/usr/share/fontconfig/conf.avail/10-no-sub-pixel.conf",
 				"/usr/share/fontconfig/conf.avail/10-scale-bitmap-fonts.conf",
 				"/usr/share/fontconfig/conf.avail/10-sub-pixel-bgr.conf",
+				"/usr/share/fontconfig/conf.avail/10-sub-pixel-none.conf",
 				"/usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf",
 				"/usr/share/fontconfig/conf.avail/10-sub-pixel-vbgr.conf",
 				"/usr/share/fontconfig/conf.avail/10-sub-pixel-vrgb.conf",
@@ -178,6 +178,6 @@
 		}
 	},
 	"source-name": "fontconfig",
-	"source-release": "2",
-	"source-version": "2.14.1"
+	"source-release": "3",
+	"source-version": "2.14.2"
 }
