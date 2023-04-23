@@ -19,8 +19,9 @@
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgraphite2.so.3(x86_64))",
-				"soname(libicuuc.so.72(x86_64))",
-				"soname(libm.so.6(x86_64))"
+				"soname(libicuuc.so.73(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
 			],
 			"files": [
 				"/usr/lib/girepository-1.0/HarfBuzz-0.0.typelib",
@@ -150,6 +151,6 @@
 		}
 	},
 	"source-name": "harfbuzz",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "7.1.0"
 }
