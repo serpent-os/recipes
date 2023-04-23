@@ -23,7 +23,7 @@
 				"/usr/bin/zstdless",
 				"/usr/bin/zstdmt",
 				"/usr/lib/libzstd.so.1",
-				"/usr/lib/libzstd.so.1.5.4",
+				"/usr/lib/libzstd.so.1.5.5",
 				"/usr/share/man/man1/unzstd.1",
 				"/usr/share/man/man1/zstd.1",
 				"/usr/share/man/man1/zstdcat.1",
@@ -61,6 +61,6 @@
 		}
 	},
 	"source-name": "zstd",
-	"source-release": "3",
-	"source-version": "1.5.4"
+	"source-release": "4",
+	"source-version": "1.5.5"
 }
