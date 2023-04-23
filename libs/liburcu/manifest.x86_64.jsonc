@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"liburcu": {
 			"depends": [
@@ -9,21 +9,21 @@
 			],
 			"files": [
 				"/usr/lib/liburcu-bp.so.8",
-				"/usr/lib/liburcu-bp.so.8.0.0",
+				"/usr/lib/liburcu-bp.so.8.1.0",
 				"/usr/lib/liburcu-cds.so.8",
-				"/usr/lib/liburcu-cds.so.8.0.0",
+				"/usr/lib/liburcu-cds.so.8.1.0",
 				"/usr/lib/liburcu-common.so.8",
-				"/usr/lib/liburcu-common.so.8.0.0",
+				"/usr/lib/liburcu-common.so.8.1.0",
 				"/usr/lib/liburcu-mb.so.8",
-				"/usr/lib/liburcu-mb.so.8.0.0",
+				"/usr/lib/liburcu-mb.so.8.1.0",
 				"/usr/lib/liburcu-memb.so.8",
-				"/usr/lib/liburcu-memb.so.8.0.0",
+				"/usr/lib/liburcu-memb.so.8.1.0",
 				"/usr/lib/liburcu-qsbr.so.8",
-				"/usr/lib/liburcu-qsbr.so.8.0.0",
+				"/usr/lib/liburcu-qsbr.so.8.1.0",
 				"/usr/lib/liburcu-signal.so.8",
-				"/usr/lib/liburcu-signal.so.8.0.0",
+				"/usr/lib/liburcu-signal.so.8.1.0",
 				"/usr/lib/liburcu.so.8",
-				"/usr/lib/liburcu.so.8.0.0",
+				"/usr/lib/liburcu.so.8.1.0",
 				"/usr/share/doc/userspace-rcu/LICENSE",
 				"/usr/share/doc/userspace-rcu/README.md",
 				"/usr/share/doc/userspace-rcu/cds-api.md",
@@ -69,6 +69,7 @@
 				"/usr/include/urcu/arch/sparc64.h",
 				"/usr/include/urcu/arch/tile.h",
 				"/usr/include/urcu/arch/x86.h",
+				"/usr/include/urcu/assert.h",
 				"/usr/include/urcu/call-rcu.h",
 				"/usr/include/urcu/cds.h",
 				"/usr/include/urcu/compiler.h",
@@ -134,6 +135,7 @@
 				"/usr/include/urcu/urcu-futex.h",
 				"/usr/include/urcu/urcu-mb.h",
 				"/usr/include/urcu/urcu-memb.h",
+				"/usr/include/urcu/urcu-poll.h",
 				"/usr/include/urcu/urcu-qsbr.h",
 				"/usr/include/urcu/urcu-signal.h",
 				"/usr/include/urcu/urcu.h",
@@ -252,6 +254,6 @@
 		}
 	},
 	"source-name": "liburcu",
-	"source-release": "1",
-	"source-version": "0.13.2"
+	"source-release": "2",
+	"source-version": "0.14.0"
 }
