@@ -28,7 +28,7 @@
 				"/usr/bin/xmlcatalog",
 				"/usr/bin/xmllint",
 				"/usr/lib/libxml2.so.2",
-				"/usr/lib/libxml2.so.2.10.3",
+				"/usr/lib/libxml2.so.2.10.4",
 				"/usr/lib/python3.11/site-packages/__pycache__/drv_libxml2.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/__pycache__/drv_libxml2.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/__pycache__/libxml2.cpython-311.opt-1.pyc",
@@ -70,7 +70,7 @@
 			],
 			"files": [
 				"/usr/lib32/libxml2.so.2",
-				"/usr/lib32/libxml2.so.2.10.3"
+				"/usr/lib32/libxml2.so.2.10.4"
 			],
 			"name": "libxml2-32bit",
 			"provides": [
@@ -365,6 +365,6 @@
 		}
 	},
 	"source-name": "libxml2",
-	"source-release": "4",
-	"source-version": "2.10.3"
+	"source-release": "5",
+	"source-version": "2.10.4"
 }
