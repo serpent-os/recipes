@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libxfixes
-version     : '6.0.0'
-release     : 5
+version     : '6.0.1'
+release     : 6
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxfixes
 upstreams   :
-    - https://xorg.freedesktop.org/releases/individual/lib/libXfixes-6.0.0.tar.bz2 : a7c1a24da53e0b46cac5aea79094b4b2257321c621b258729bc3139149245b4c
+    - https://xorg.freedesktop.org/releases/individual/lib/libXfixes-6.0.1.tar.xz : b695f93cd2499421ab02d22744458e650ccc88c1d4c8130d60200213abc02d58
 summary     : XFIXES Extension library
 description : |
     %(name) is the XFIXES Extension library.
