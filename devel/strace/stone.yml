@@ -5,7 +5,7 @@
 #
 name        : strace
 version     : 6.2
-release     : 4
+release     : 5
 homepage    : https://strace.io
 upstreams   :
     - https://github.com/strace/strace/releases/download/v6.2/strace-6.2.tar.xz : 0c7d38a449416268d3004029a220a15a77c2206a03cc88120f37f46e949177e8
