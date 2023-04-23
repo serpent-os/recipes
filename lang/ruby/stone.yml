@@ -4,16 +4,17 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : ruby
-version     : 3.2.1
-release     : 3
+version     : 3.2.2
+release     : 4
 summary     : An object-oriented language for quick and easy programming
 license     : Ruby
 homepage    : https://www.ruby-lang.org/en/
 description : |
     An object-oriented language for quick and easy programming
 upstreams   :
-    - https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.1.tar.gz: 13d67901660ee3217dbd9dd56059346bd4212ce64a69c306ef52df64935f8dbd
+    - https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz: 96c57558871a6748de5bc9f274e93f4b5aad06cd8f37befa0e8d94e7b8a423bc
 builddeps   :
+    - gdbm-devel
     - pkgconfig(gmp)
     - pkgconfig(libcrypt)
     - pkgconfig(libffi)
@@ -21,7 +22,6 @@ builddeps   :
     - pkgconfig(readline)
     - pkgconfig(yaml-0.1)
     - pkgconfig(zlib)
-    - gdbm-devel
     # TODO needs rust for YJIT support
 setup       : |
     export LDFLAGS="$(echo ${LDFLAGS} | sed --expression='s/-Wl,--icf=safe //')"
