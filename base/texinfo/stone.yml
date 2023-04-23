@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : texinfo
-version     : 7.0.2
-release     : 3
+version     : 7.0.3
+release     : 4
 summary     : GNU software documentation system
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org/software/texinfo
 description : |
     Texinfo is a documentation system that uses a single source to produce many forms of output.
 upstreams   :
-    - https://ftp.gnu.org/gnu/texinfo/texinfo-7.0.2.tar.xz: f211ec3261383e1a89e4555a93b9d017fe807b9c3992fb2dff4871dae6da54ad
+    - https://ftp.gnu.org/gnu/texinfo/texinfo-7.0.3.tar.xz: 74b420d09d7f528e84f97aa330f0dd69a98a6053e7a4e01767eed115038807bf
 builddeps   :
     - binary(perl)
     - pkgconfig(ncursesw)
