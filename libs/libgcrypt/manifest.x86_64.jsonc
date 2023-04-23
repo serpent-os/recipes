@@ -17,7 +17,7 @@
 				"/usr/bin/libgcrypt-config",
 				"/usr/bin/mpicalc",
 				"/usr/lib/libgcrypt.so.20",
-				"/usr/lib/libgcrypt.so.20.4.1",
+				"/usr/lib/libgcrypt.so.20.4.2",
 				"/usr/share/info/gcrypt.info",
 				"/usr/share/info/gcrypt.info-1",
 				"/usr/share/info/gcrypt.info-2",
@@ -52,6 +52,6 @@
 		}
 	},
 	"source-name": "libgcrypt",
-	"source-release": "1",
-	"source-version": "1.10.1"
+	"source-release": "2",
+	"source-version": "1.10.2"
 }
