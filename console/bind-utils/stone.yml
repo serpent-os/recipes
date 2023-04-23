@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : bind-utils
-version     : '9.19.11'
-release     : 1
+version     : '9.19.12'
+release     : 2
 homepage    : https://www.isc.org/bind/
 upstreams   :
-    - https://downloads.isc.org/isc/bind9/9.19.11/bind-9.19.11.tar.xz : 35c00e8047d069a148e87066250090e9aa56c2b98f0de0e1d03a2e3edf18dabc
+    - https://downloads.isc.org/isc/bind9/9.19.12/bind-9.19.12.tar.xz : 2e831fecd012be3e57b2aebaa4f83462b8c4f37aed260fbd68ca083f7589a15a
 summary     : Tools to interact with DNS services
 description : |
     BIND (Berkeley Internet Name Domain) is a complete, highly portable
@@ -19,6 +19,7 @@ license     :
     - MIT
     - MPL-2.0-no-copyleft-exception
 builddeps   :
+    - lmdb-devel
     - pkgconfig(json-c)
     - pkgconfig(libcap)
     - pkgconfig(libidn2)
@@ -26,8 +27,8 @@ builddeps   :
     - pkgconfig(libuv)
     - pkgconfig(libxml-2.0)
     - pkgconfig(openssl)
+    - pkgconfig(liburcu-qsbr)
     - pkgconfig(zlib)
-    - lmdb-devel
 setup       : |
     %configure --disable-geoip \
                --with-json-c \
