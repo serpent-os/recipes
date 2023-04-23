@@ -4,25 +4,32 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : elfutils
-version     : 0.188
-release     : 1
+version     : 0.189
+release     : 2
 homepage    : https://sourceware.org/elfutils
 upstreams   :
-    - https://sourceware.org/elfutils/ftp/0.188/elfutils-0.188.tar.bz2 : fb8b0e8d0802005b9a309c60c1d8de32dd2951b56f0c3a3cb56d21ce01595dff
+    - https://sourceware.org/elfutils/ftp/0.189/elfutils-0.189.tar.bz2 : 39bd8f1a338e2b7cd4abc3ff11a0eddc6e690f69578a57478d8179b4148708c8
 summary     : Collection of utilities and libraries to read, create and modify ELF binary files
 description : |
     elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.
 license     :
     - GPL-2.0-or-later
 builddeps   :
-    - binary(bzip2)
+    - binary(makeinfo)
+    - pkgconfig(bzip2)
     - pkgconfig(libcurl)
+    - pkgconfig(liblzma)
     - pkgconfig(libzstd)
     - pkgconfig(sqlite3)
     - pkgconfig(zlib)
 setup       : |
     %configure --disable-static \
-               --disable-debuginfod
+               --disable-debuginfod \
+               --enable-libdebuginfod \
+               --with-zlib \
+               --with-bzlib \
+               --with-lzma \
+               --with-zstd
 build       : |
     %make
 install     : |

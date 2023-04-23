@@ -1,12 +1,20 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"elfutils": {
+			"build-depends": [
+				"binary(makeinfo)",
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(sqlite3)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libasm.so.1(x86_64))",
-				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libdebuginfod.so.1(x86_64))",
 				"soname(libdw.so.1(x86_64))",
@@ -41,21 +49,6 @@
 				"/usr/share/man/man1/debuginfod-find.1",
 				"/usr/share/man/man1/eu-elfclassify.1",
 				"/usr/share/man/man1/eu-readelf.1",
-				"/usr/share/man/man3/debuginfod_add_http_header.3",
-				"/usr/share/man/man3/debuginfod_begin.3",
-				"/usr/share/man/man3/debuginfod_end.3",
-				"/usr/share/man/man3/debuginfod_find_debuginfo.3",
-				"/usr/share/man/man3/debuginfod_find_executable.3",
-				"/usr/share/man/man3/debuginfod_find_section.3",
-				"/usr/share/man/man3/debuginfod_find_source.3",
-				"/usr/share/man/man3/debuginfod_get_url.3",
-				"/usr/share/man/man3/debuginfod_get_user_data.3",
-				"/usr/share/man/man3/debuginfod_set_progressfn.3",
-				"/usr/share/man/man3/debuginfod_set_user_data.3",
-				"/usr/share/man/man3/elf_begin.3",
-				"/usr/share/man/man3/elf_clone.3",
-				"/usr/share/man/man3/elf_getdata.3",
-				"/usr/share/man/man3/elf_update.3",
 				"/usr/share/man/man7/debuginfod-client-config.7"
 			],
 			"name": "elfutils",
@@ -81,6 +74,20 @@
 			]
 		},
 		"elfutils-devel": {
+			"build-depends": [
+				"binary(makeinfo)",
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(sqlite3)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"pkgconfig(liblzma)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/dwarf.h",
 				"/usr/include/elfutils/debuginfod.h",
@@ -100,7 +107,22 @@
 				"/usr/lib/libelf.so",
 				"/usr/lib/pkgconfig/libdebuginfod.pc",
 				"/usr/lib/pkgconfig/libdw.pc",
-				"/usr/lib/pkgconfig/libelf.pc"
+				"/usr/lib/pkgconfig/libelf.pc",
+				"/usr/share/man/man3/debuginfod_add_http_header.3",
+				"/usr/share/man/man3/debuginfod_begin.3",
+				"/usr/share/man/man3/debuginfod_end.3",
+				"/usr/share/man/man3/debuginfod_find_debuginfo.3",
+				"/usr/share/man/man3/debuginfod_find_executable.3",
+				"/usr/share/man/man3/debuginfod_find_section.3",
+				"/usr/share/man/man3/debuginfod_find_source.3",
+				"/usr/share/man/man3/debuginfod_get_url.3",
+				"/usr/share/man/man3/debuginfod_get_user_data.3",
+				"/usr/share/man/man3/debuginfod_set_progressfn.3",
+				"/usr/share/man/man3/debuginfod_set_user_data.3",
+				"/usr/share/man/man3/elf_begin.3",
+				"/usr/share/man/man3/elf_clone.3",
+				"/usr/share/man/man3/elf_getdata.3",
+				"/usr/share/man/man3/elf_update.3"
 			],
 			"name": "elfutils-devel",
 			"provides": [
@@ -110,21 +132,32 @@
 			]
 		},
 		"elfutils-libs": {
+			"build-depends": [
+				"binary(makeinfo)",
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(sqlite3)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libbz2.so.1.0(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcurl.so.4(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libasm-0.188.so",
+				"/usr/lib/libasm-0.189.so",
 				"/usr/lib/libasm.so.1",
-				"/usr/lib/libdebuginfod-0.188.so",
+				"/usr/lib/libdebuginfod-0.189.so",
 				"/usr/lib/libdebuginfod.so.1",
-				"/usr/lib/libdw-0.188.so",
+				"/usr/lib/libdw-0.189.so",
 				"/usr/lib/libdw.so.1",
-				"/usr/lib/libelf-0.188.so",
+				"/usr/lib/libelf-0.189.so",
 				"/usr/lib/libelf.so.1"
 			],
 			"name": "elfutils-libs",
@@ -137,6 +170,6 @@
 		}
 	},
 	"source-name": "elfutils",
-	"source-release": "1",
-	"source-version": "0.188"
+	"source-release": "2",
+	"source-version": "0.189"
 }
