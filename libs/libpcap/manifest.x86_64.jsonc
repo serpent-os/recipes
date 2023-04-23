@@ -16,7 +16,7 @@
 			"files": [
 				"/usr/bin/pcap-config",
 				"/usr/lib/libpcap.so.1",
-				"/usr/lib/libpcap.so.1.10.3",
+				"/usr/lib/libpcap.so.1.10.4",
 				"/usr/share/man/man1/pcap-config.1",
 				"/usr/share/man/man5/pcap-savefile.5",
 				"/usr/share/man/man7/pcap-filter.7",
@@ -143,5 +143,5 @@
 	},
 	"source-name": "libpcap",
 	"source-release": "1",
-	"source-version": "1.10.3"
+	"source-version": "1.10.4"
 }

@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libpcap
-version     : 1.10.3
+version     : 1.10.4
 release     : 1
 homepage    : https://www.tcpdump.org/ 
 upstreams   :
-    - https://www.tcpdump.org/release/libpcap-1.10.3.tar.gz : 2a8885c403516cf7b0933ed4b14d6caa30e02052489ebd414dc75ac52e7559e6
+    - https://www.tcpdump.org/release/libpcap-1.10.4.tar.gz : ed19a0383fad72e3ad435fd239d7cd80d64916b87269550159d20e47160ebe5f
 summary     : Platform-independent network traffic capture library
 description : |
     Platform-independent network traffic capture library
