@@ -13,7 +13,7 @@
 			"files": [
 				"/usr/bin/fusermount3",
 				"/usr/lib/libfuse3.so.3",
-				"/usr/lib/libfuse3.so.3.13.1",
+				"/usr/lib/libfuse3.so.3.14.1",
 				"/usr/lib/udev/rules.d/99-fuse3.rules",
 				"/usr/sbin/mount.fuse3",
 				"/usr/share/man/man1/fusermount3.1",
@@ -34,10 +34,10 @@
 				"/usr/include/fuse3/cuse_lowlevel.h",
 				"/usr/include/fuse3/fuse.h",
 				"/usr/include/fuse3/fuse_common.h",
-				"/usr/include/fuse3/fuse_config.h",
 				"/usr/include/fuse3/fuse_log.h",
 				"/usr/include/fuse3/fuse_lowlevel.h",
 				"/usr/include/fuse3/fuse_opt.h",
+				"/usr/include/fuse3/libfuse_config.h",
 				"/usr/lib/libfuse3.so",
 				"/usr/lib/pkgconfig/fuse3.pc"
 			],
@@ -48,6 +48,6 @@
 		}
 	},
 	"source-name": "libfuse",
-	"source-release": "2",
-	"source-version": "3.13.1"
+	"source-release": "3",
+	"source-version": "3.14.1"
 }
