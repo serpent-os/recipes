@@ -1,6 +1,6 @@
 name        : boulder
-version     : 0.1
-release     : 33
+version     : 1.0.1
+release     : 34
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -8,9 +8,9 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/boulder : 6732c5e07291b148598e01b5d84846df725f03ff
-    - https://github.com/serpent-os/libmoss/releases/download/v1.1.2/libmoss-1.1.2.tar.xz:
-        hash: 4430b2eddd1f35520d6bdae287961343f5c249eb77d1b0ad82b879335d577c92
+    - git|https://github.com/serpent-os/boulder : v1.0.1
+    - https://github.com/serpent-os/libmoss/releases/download/v1.2.0/libmoss-1.2.0.tar.xz:
+        hash: cbf684b5a37a3a433e0526beb04a7b3419b71e81b3709c3b0d7ed6a1987d3dcb
         unpackdir: libmoss
         stripdirs: 1
 builddeps   :
@@ -26,11 +26,6 @@ rundeps     :
 environment : |
     cd %(buildroot)/boulder
 setup       : |
-    # Update libmoss for git problems
-    (
-        cd ../libmoss
-        %patch %(pkgdir)/0001-moss-format-source-make-staging-dirs-optional-for-Gi.patch
-    )
     # TODO: Unset buildtype here when moss-format supports DFLAGS
     export DFLAGS="$DFLAGS -flto=thin -O3 -g"
     %meson --buildtype debugoptimized
