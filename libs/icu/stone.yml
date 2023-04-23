@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : icu
-version     : 72.1
-release     : 2
+version     : "73-1"
+release     : 3
 homepage    : https://icu.unicode.org/
 upstreams   :
-    - https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz : a2d2d38217092a7ed56635e34467f92f976b370e20182ad325edea6681a71d68
+    - https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-src.tgz : a457431de164b4aa7eca00ed134d00dfbf88a77c6986a10ae7774fc076bb8c45
 summary     : International Components for Unicode
 description : |
     The International Components for Unicode (ICU) package is a mature, widely used set of C/C++ libraries providing Unicode and Globalization support for software applications. ICU is widely portable and gives applications the same results on all platforms.
