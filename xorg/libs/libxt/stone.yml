@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libxt
-version     : 1.2.1
+version     : 1.3.0
 release     : 1
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxt
 upstreams   :
-    - https://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.1.tar.gz : 6da1bfa9dd0ed87430a5ce95b129485086394df308998ebe34d98e378e3dfb33
+    - https://xorg.freedesktop.org/releases/individual/lib/libXt-1.3.0.tar.gz : de4a80c4cc7785b9620e572de71026805f68e85a2bf16c386009ef0e50be3f77
 summary     : X Toolkit Intrinsics library
 description : |
     X Toolkit Intrinsics library
@@ -22,9 +22,6 @@ builddeps   :
     - pkgconfig(x11)
     - pkgconfig(xorg-macros)
     - pkgconfig(xproto)
-environment : |
-    # FIXME: hack for llvm toolchain build. stdin madness???
-    export CPP='clang -E -'
 setup       : |
     %configure --disable-static
 build       : |
