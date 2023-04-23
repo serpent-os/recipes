@@ -18,7 +18,7 @@
 			],
 			"files": [
 				"/usr/lib/libXft.so.2",
-				"/usr/lib/libXft.so.2.3.7"
+				"/usr/lib/libXft.so.2.3.8"
 			],
 			"name": "libxft",
 			"provides": [
@@ -129,6 +129,6 @@
 		}
 	},
 	"source-name": "libxft",
-	"source-release": "1",
-	"source-version": "2.3.7"
+	"source-release": "2",
+	"source-version": "2.3.8"
 }
