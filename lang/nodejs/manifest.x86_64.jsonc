@@ -22,8 +22,8 @@
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcrypto.so.3(x86_64))",
-				"soname(libicui18n.so.72(x86_64))",
-				"soname(libicuuc.so.72(x86_64))",
+				"soname(libicui18n.so.73(x86_64))",
+				"soname(libicuuc.so.73(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libnghttp2.so.14(x86_64))",
 				"soname(libssl.so.3(x86_64))",
@@ -43,8 +43,6 @@
 				"/usr/lib/node_modules/corepack/dist/npx.js",
 				"/usr/lib/node_modules/corepack/dist/pnpm.js",
 				"/usr/lib/node_modules/corepack/dist/pnpx.js",
-				"/usr/lib/node_modules/corepack/dist/vcc.js",
-				"/usr/lib/node_modules/corepack/dist/vendors-_yarn_berry_cache_proxy-agent-npm-5_0_0-41772f4b01-9_zip_node_modules_proxy-agent_index_js.js",
 				"/usr/lib/node_modules/corepack/dist/yarn.js",
 				"/usr/lib/node_modules/corepack/dist/yarnpkg.js",
 				"/usr/lib/node_modules/corepack/package.json",
@@ -1231,6 +1229,7 @@
 				"/usr/lib/node_modules/npm/node_modules/lru-cache/LICENSE",
 				"/usr/lib/node_modules/npm/node_modules/lru-cache/index.d.ts",
 				"/usr/lib/node_modules/npm/node_modules/lru-cache/index.js",
+				"/usr/lib/node_modules/npm/node_modules/lru-cache/index.mjs",
 				"/usr/lib/node_modules/npm/node_modules/lru-cache/package.json",
 				"/usr/lib/node_modules/npm/node_modules/make-fetch-happen/LICENSE",
 				"/usr/lib/node_modules/npm/node_modules/make-fetch-happen/lib/agent.js",
@@ -2393,6 +2392,6 @@
 		}
 	},
 	"source-name": "nodejs",
-	"source-release": "1",
-	"source-version": "18.15.0"
+	"source-release": "2",
+	"source-version": "18.16.0"
 }
