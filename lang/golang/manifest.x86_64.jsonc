@@ -8677,6 +8677,7 @@
 				"/usr/lib/golang/test/fixedbugs/issue5910.dir/a.go",
 				"/usr/lib/golang/test/fixedbugs/issue5910.dir/main.go",
 				"/usr/lib/golang/test/fixedbugs/issue5910.go",
+				"/usr/lib/golang/test/fixedbugs/issue59293.go",
 				"/usr/lib/golang/test/fixedbugs/issue5957.dir/a.go",
 				"/usr/lib/golang/test/fixedbugs/issue5957.dir/b.go",
 				"/usr/lib/golang/test/fixedbugs/issue5957.dir/c.go",
@@ -9678,6 +9679,6 @@
 		}
 	},
 	"source-name": "golang",
-	"source-release": "5",
-	"source-version": "1.20.2"
+	"source-release": "6",
+	"source-version": "1.20.3"
 }
