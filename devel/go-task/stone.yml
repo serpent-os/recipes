@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : go-task
-version     : 3.0.23
+version     : 3.24.0
 release     : 1
 homepage    : https://taskfile.dev/
 upstreams   :
-    - https://github.com/go-task/task/archive/refs/tags/v3.23.0.tar.gz : c027a9dacb586e4b168300039629b3572a7050d699780624dbfe31ab15ba4b89
+    - https://github.com/go-task/task/archive/refs/tags/v3.24.0.tar.gz : e1ab3c92299ad5741b8b0e9dc18593db80efaca449b8ccc318a6ff1848b44338
 summary     : A task runner / simpler Make alternative written in Go 
 description : |
     A task runner / simpler Make alternative written in Go 
