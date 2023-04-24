@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : f2fs-tools
-version     : 1.15.0
-release     : 1
+version     : 1.16.0
+release     : 2
 homepage    : https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/about/
 upstreams   :
-    - https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-1.15.0.tar.gz : 147d471040b44900283ce2c935f1d35d13d7f40008e7cb8fab2b69f54da01a4f
+    - https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-1.16.0.tar.gz : 208c7a07e95383fbd7b466b5681590789dcb41f41bf197369c41a95383b57c5e
 summary     : Userland tools for the f2fs filesystem
 description : |
     f2fs-tools are a collection of tools for Flash-Friendly File System (F2FS).
@@ -17,12 +17,7 @@ license     :
     - GPL-2.0-or-later
     - LGPL-2.1-or-later
 setup      : |
-    ./autogen.sh
-    # I have no idea where the configure script picks up /lib/cpp but it's obviously wrong
-    # This is also why we can't use the autogen macro
-    sed -i 's|/lib/cpp|clang-cpp|g' configure
-
-    %configure --disable-static
+    %autogen --disable-static
 build       : |
     %make
 install     : |
