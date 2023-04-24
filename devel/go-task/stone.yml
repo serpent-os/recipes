@@ -5,7 +5,7 @@
 #
 name        : go-task
 version     : 3.24.0
-release     : 1
+release     : 2
 homepage    : https://taskfile.dev/
 upstreams   :
     - https://github.com/go-task/task/archive/refs/tags/v3.24.0.tar.gz : e1ab3c92299ad5741b8b0e9dc18593db80efaca449b8ccc318a6ff1848b44338
