@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : wayland
-version     : '1.21.0'
-release     : 2
+version     : '1.22.0'
+release     : 3
 homepage    : https://wayland.freedesktop.org
 upstreams   :
-    - https://gitlab.freedesktop.org/wayland/wayland/-/archive/1.21.0/wayland-1.21.0.tar.bz2 : e92985abc4eee91b730046a373fdc122c96adb4a3b6757afa07b8a540a8db4fc
+    - https://gitlab.freedesktop.org/wayland/wayland/-/archive/1.22.0/wayland-1.22.0.tar.bz2 : 1a681f14071d12c6263a7f7ac44e64ea85f2d39d177e69d0354d82860532e6b0
 summary     : Modern protocol which replaces X11
 description : |
     Wayland is a replacement for the X11 window system protocol and architecture with the aim to be easier to develop, extend, and maintain.
