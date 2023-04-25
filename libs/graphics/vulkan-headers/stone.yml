@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : vulkan-headers
-version     : 1.3.245
-release     : 1
+version     : 1.3.248
+release     : 2
 homepage    : https://www.vulkan.org/
 upstreams   :
-    - https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.3.245.tar.gz : ccd84342df20a7dfe98943064c5c7cc41bc902021d9eb0a8722f299b0e1e4dbe
+    - https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.3.248.tar.gz : 8db01a812b244e8e1073dce3d0d5ba94fc4ebb71c6c5e6640f94644aec79e510
 summary     : Vulkan Header files and API registry
 description : |
     Vulkan header files and API registry. Vulkan-Headers are shipped as part of the official Vulkan-SDK.

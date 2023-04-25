@@ -21,6 +21,7 @@
 				"/usr/include/vulkan/vulkan_core.h",
 				"/usr/include/vulkan/vulkan_directfb.h",
 				"/usr/include/vulkan/vulkan_enums.hpp",
+				"/usr/include/vulkan/vulkan_extension_inspection.hpp",
 				"/usr/include/vulkan/vulkan_format_traits.hpp",
 				"/usr/include/vulkan/vulkan_fuchsia.h",
 				"/usr/include/vulkan/vulkan_funcs.hpp",
@@ -69,6 +70,6 @@
 		}
 	},
 	"source-name": "vulkan-headers",
-	"source-release": "1",
-	"source-version": "1.3.245"
+	"source-release": "2",
+	"source-version": "1.3.248"
 }
