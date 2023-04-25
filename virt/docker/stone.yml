@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : docker
-version     : 23.0.2
-release     : 4
+version     : 23.0.4
+release     : 5
 homepage    : https://www.docker.com
 upstreams   :
-    - https://github.com/docker/cli/archive/refs/tags/v23.0.2.tar.gz : bef4fc68b9f81ab2ae8bb2605e16a0965a3c4a82f0c0cf9d9f5d2cee8e95415d
+    - https://github.com/docker/cli/archive/refs/tags/v23.0.4.tar.gz : 477c37f128db7bb6926dc410f337cb525af4f26ea9719d38dc2978460dbe2de8
 summary     : The open-source application container engine
 description : |
     The open-source application container engine. This contains the docker cli.
@@ -31,7 +31,7 @@ environment : |
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
 
     # Git commit corresponding to the version tag
-    export GITCOMMIT="569dd73db13099a7c3104d73aa15117b359045bc"
+    export GITCOMMIT="f480fb1e374b16c8a1419e84f465f2562456145e"
     export DOCKER_GITCOMMIT=$GITCOMMIT
 
     # Docker is meant to be built inside a container and will exit with an error if this isn't set.
