@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libva
-version     : '2.16.0'
-release     : 1
+version     : '2.18.0'
+release     : 2
 homepage    : https://github.com/intel/libva
 upstreams   :
-    - https://github.com/intel/libva/archive/refs/tags/2.16.0.tar.gz : 766edf51fd86efe9e836a4467d4ec7c3af690a3c601b3c717237cee856302279
+    - https://github.com/intel/libva/archive/refs/tags/2.18.0.tar.gz : 9d666c70c12dfefcdd27ae7dea771557f75e24961d0ed4cb050d96fb6136f438
 summary     : Implementation of the Video Acceleration API
 description : |
     VA-API is an open-source library and API specification, which provides access to graphics hardware acceleration capabilities for video processing. It consists of a main library and driver-specific acceleration backends for each supported hardware vendor.
