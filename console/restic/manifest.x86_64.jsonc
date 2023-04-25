@@ -47,6 +47,6 @@
 		}
 	},
 	"source-name": "restic",
-	"source-release": "3",
-	"source-version": "0.15.1"
+	"source-release": "4",
+	"source-version": "0.15.2"
 }

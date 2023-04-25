@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : restic
-version     : 0.15.1
-release     : 3
+version     : 0.15.2
+release     : 4
 homepage    : https://restic.net
 upstreams   :
-    - https://github.com/restic/restic/archive/refs/tags/v0.15.1.tar.gz : fce382fdcdac0158a35daa640766d5e8a6e7b342ae2b0b84f2aacdff13990c52
+    - https://github.com/restic/restic/archive/refs/tags/v0.15.2.tar.gz : 52aca841486eaf4fe6422b059aa05bbf20db94b957de1d3fca019ed2af8192b7
 summary     : Fast, secure, efficient backup program
 description : |
     Restic is a program that does backups right and was designed with the following principles in mind: easy, fast, verifiable, secure and efficient.
