@@ -36,6 +36,6 @@
 		}
 	},
 	"source-name": "containerd",
-	"source-release": "5",
-	"source-version": "1.6.20"
+	"source-release": "6",
+	"source-version": "1.7.0"
 }
