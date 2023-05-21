@@ -5,7 +5,7 @@
 #
 name        : ldc
 version     : 1.32.2
-release     : 8
+release     : 9
 summary     : The LLVM-based D Compiler
 license     :
     - Apache-2.0
@@ -16,12 +16,17 @@ description : |
     The LLVM-based D Compiler
 upstreams   :
     - git|https://github.com/ikeycode/ldc.git: b9355158d700cf8613b982775614371ae037e538
+    - https://downloads.dlang.org/releases/2.x/2.103.1/dmd.2.103.1.linux.tar.xz:
+        hash: b77619f0f6b103467efb3b546cd63e7d3078c515ee6ebefbe1a0083f6fdd72fc
+        stripdirs: 1
+        unpackdir: "%(name)-%(version)-src/dmd2/"
 builddeps   :
-    - ldc-devel
     - binary(make)
     - lld-devel
     - llvm-devel
+    - gcc # dmd upstream built against GCC
 setup       : |
+    cd ../ldc.git
     %patch %(pkgdir)/stateless/0001-Fixups-for-packaging-and-stateless-config.patch
 
     %cmake -DBUILD_SHARED_LIBS=BOTH \
@@ -33,10 +38,13 @@ setup       : |
         -DLDC_INSTALL_LLVM_RUNTIME_LIBS=ON \
         -DLDC_WITH_LLD=ON \
         -DLDC_DYNAMIC_COMPILE=OFF \
-        -DD_COMPILER="/usr/bin/ldmd2"
+        -DD_COMPILER=%(buildroot)/%(name)-%(version)-src/dmd2/linux/bin64/dmd \
+        -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
 build       : |
+    cd ../ldc.git
     %cmake_build
 install     : |
+    cd ../ldc.git
     %cmake_install
     # Stateless: Put file in patched stateless location
     %install_file %(installroot)/etc/ldc2.conf %(installroot)/%(vendordir)/ldc2/ldc2.conf

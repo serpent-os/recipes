@@ -5,7 +5,7 @@
 		"ldc": {
 			"build-depends": [
 				"binary(make)",
-				"ldc-devel",
+				"gcc",
 				"lld-devel",
 				"llvm-devel"
 			],
@@ -53,7 +53,7 @@
 		"ldc-devel": {
 			"build-depends": [
 				"binary(make)",
-				"ldc-devel",
+				"gcc",
 				"lld-devel",
 				"llvm-devel"
 			],
@@ -766,6 +766,6 @@
 		}
 	},
 	"source-name": "ldc",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "1.32.2"
 }
