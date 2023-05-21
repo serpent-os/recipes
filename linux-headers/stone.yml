@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : linux-headers
-version     : 6.2.12
-release     : 11
+version     : 6.3.3
+release     : 12
 homepage    : https://www.kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.12.tar.xz : c7e146b52737adfa4c724bfa41bf4721c5ee3cf220c074fbc60eb3ea62b0ccc8
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.3.3.tar.xz : 8975216a6cee827390586758ed69d19743367098d1fc5dd5694987bb529e44e5
 summary     : Linux kernel libc headers
 description : |
     Headers for the kernel libc interface
