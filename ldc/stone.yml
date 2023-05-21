@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : ldc
-version     : 1.32.1
-release     : 7
+version     : 1.32.2
+release     : 8
 summary     : The LLVM-based D Compiler
 license     :
     - Apache-2.0
@@ -15,7 +15,7 @@ homepage    : https://github.com/ldc-developers/ldc
 description : |
     The LLVM-based D Compiler
 upstreams   :
-    - https://github.com/ldc-developers/ldc/releases/download/v1.32.1/ldc-1.32.1-src.tar.gz: b3553bfaa89524317ecd21eb2c63c6ea0f9a7080a16275e46fda7e3ab357ea0f
+    - git|https://github.com/ikeycode/ldc.git: b9355158d700cf8613b982775614371ae037e538
 builddeps   :
     - ldc-devel
     - binary(make)
@@ -39,6 +39,4 @@ build       : |
 install     : |
     %cmake_install
     # Stateless: Put file in patched stateless location
-    %install_file %(installroot)/etc/ldc2.conf %(installroot)/%(vendordir)/ldc2.conf
-    rm %(installroot)/etc/ldc2.conf
-    rmdir  %(installroot)/etc
+    %install_file %(installroot)/etc/ldc2.conf %(installroot)/%(vendordir)/ldc2/ldc2.conf

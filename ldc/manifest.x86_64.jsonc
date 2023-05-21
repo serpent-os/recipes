@@ -12,7 +12,7 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
-				"soname(libLLVM-15.so(x86_64))",
+				"soname(libLLVM-16.so(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
@@ -20,35 +20,33 @@
 			],
 			"files": [
 				"/usr/bin/ldc-build-runtime",
-				"/usr/bin/ldc-profdata",
 				"/usr/bin/ldc-prune-cache",
 				"/usr/bin/ldc2",
 				"/usr/bin/ldmd2",
 				"/usr/bin/timetrace2txt",
 				"/usr/lib/LLVMgold-ldc.so",
 				"/usr/lib/ldc_rt.dso.o",
-				"/usr/lib/libdruntime-ldc-debug-shared.so.102",
-				"/usr/lib/libdruntime-ldc-debug-shared.so.102.2",
-				"/usr/lib/libdruntime-ldc-shared.so.102",
-				"/usr/lib/libdruntime-ldc-shared.so.102.2",
-				"/usr/lib/libphobos2-ldc-debug-shared.so.102",
-				"/usr/lib/libphobos2-ldc-debug-shared.so.102.2",
-				"/usr/lib/libphobos2-ldc-shared.so.102",
-				"/usr/lib/libphobos2-ldc-shared.so.102.2",
+				"/usr/lib/libdruntime-ldc-debug-shared.so.103",
+				"/usr/lib/libdruntime-ldc-debug-shared.so.103.1",
+				"/usr/lib/libdruntime-ldc-shared.so.103",
+				"/usr/lib/libdruntime-ldc-shared.so.103.1",
+				"/usr/lib/libphobos2-ldc-debug-shared.so.103",
+				"/usr/lib/libphobos2-ldc-debug-shared.so.103.1",
+				"/usr/lib/libphobos2-ldc-shared.so.103",
+				"/usr/lib/libphobos2-ldc-shared.so.103.1",
 				"/usr/share/bash-completion/completions/ldc2",
-				"/usr/share/defaults/etc/ldc2.conf"
+				"/usr/share/defaults/ldc2/ldc2.conf"
 			],
 			"name": "ldc",
 			"provides": [
 				"binary(ldc-build-runtime)",
-				"binary(ldc-profdata)",
 				"binary(ldc-prune-cache)",
 				"binary(ldc2)",
 				"binary(ldmd2)",
-				"soname(libdruntime-ldc-debug-shared.so.102(x86_64))",
-				"soname(libdruntime-ldc-shared.so.102(x86_64))",
-				"soname(libphobos2-ldc-debug-shared.so.102(x86_64))",
-				"soname(libphobos2-ldc-shared.so.102(x86_64))",
+				"soname(libdruntime-ldc-debug-shared.so.103(x86_64))",
+				"soname(libdruntime-ldc-shared.so.103(x86_64))",
+				"soname(libphobos2-ldc-debug-shared.so.103(x86_64))",
+				"soname(libphobos2-ldc-shared.so.103(x86_64))",
 				"binary(timetrace2txt)"
 			]
 		},
@@ -69,6 +67,7 @@
 				"/usr/include/d/core/cpuid.d",
 				"/usr/include/d/core/demangle.d",
 				"/usr/include/d/core/exception.d",
+				"/usr/include/d/core/factory.d",
 				"/usr/include/d/core/gc/config.d",
 				"/usr/include/d/core/gc/gcinterface.d",
 				"/usr/include/d/core/gc/registry.d",
@@ -767,6 +766,6 @@
 		}
 	},
 	"source-name": "ldc",
-	"source-release": "7",
-	"source-version": "1.32.1"
+	"source-release": "8",
+	"source-version": "1.32.2"
 }
