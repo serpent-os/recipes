@@ -1,9 +1,9 @@
 name        : linux-kvm
-version     : 6.3.1
-release     : 43
+version     : 6.3.3
+release     : 44
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.3.1.tar.xz : 78620fb4a7d5e0db1d4eb8d5b1c6e207ba5d19564efa63967a59b6daf89b3f2a
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.3.3.tar.xz : 8975216a6cee827390586758ed69d19743367098d1fc5dd5694987bb529e44e5
 summary     : Linux Kernel - KVM Guest build
 description : |
     Minimalist kernel configuration supporting KVM host and not much else
@@ -16,14 +16,17 @@ builddeps   :
     - binary(flex)
     - binary(gzip)
     - binary(kmod)
+    - binary(less)
     - binary(m4)
     - binary(perl)
     - binary(python3)
+    - binary(which)
     - pkgconfig(gmp)
-    - pkgconfig(mpfr)
     - pkgconfig(libelf)
     - pkgconfig(libssl)
     - pkgconfig(libzstd)
+    - pkgconfig(mpfr)
+    - binary(grep)
     - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
 setup       : |
     extraVersion="-%(release).kvm"
