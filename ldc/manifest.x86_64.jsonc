@@ -20,6 +20,7 @@
 			],
 			"files": [
 				"/usr/bin/ldc-build-runtime",
+				"/usr/bin/ldc-profdata",
 				"/usr/bin/ldc-prune-cache",
 				"/usr/bin/ldc2",
 				"/usr/bin/ldmd2",
@@ -40,6 +41,7 @@
 			"name": "ldc",
 			"provides": [
 				"binary(ldc-build-runtime)",
+				"binary(ldc-profdata)",
 				"binary(ldc-prune-cache)",
 				"binary(ldc2)",
 				"binary(ldmd2)",
@@ -766,6 +768,6 @@
 		}
 	},
 	"source-name": "ldc",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "1.32.2"
 }
