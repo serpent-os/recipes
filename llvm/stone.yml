@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
-version     : 16.0.3
-release     : 7
+version     : 16.0.4
+release     : 8
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -10,7 +10,7 @@ homepage    : https://www.llvm.org
 description : |
     Low Level Virtual Machine
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.3/llvm-project-16.0.3.src.tar.xz: 3b12e35332e10cf650578ae18247b91b04926d5427e1a6ae9a51d170a47cfbb2
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.4/llvm-project-16.0.4.src.tar.xz: cf3c2a1152ed7a99866bd7f12c24528ada6d9f6336afb7a08416938762004c9f
 builddeps   :
     - binary(perl)
     - binary(python3)
