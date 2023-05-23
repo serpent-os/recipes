@@ -1,6 +1,6 @@
 name        : libcxx
-version     : 16.0.3
-release     : 6
+version     : 16.0.4
+release     : 7
 summary     : Modern C++ standard library
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -12,7 +12,7 @@ description : |
     This is the default C++ library in Serpent OS used in conjunction with the LLVM
     toolchain.
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.3/llvm-project-16.0.3.src.tar.xz: 3b12e35332e10cf650578ae18247b91b04926d5427e1a6ae9a51d170a47cfbb2
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.4/llvm-project-16.0.4.src.tar.xz: cf3c2a1152ed7a99866bd7f12c24528ada6d9f6336afb7a08416938762004c9f
 builddeps   :
     - binary(python3)
     - clang-32bit
