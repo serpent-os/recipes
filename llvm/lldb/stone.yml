@@ -1,0 +1,36 @@
+name        : lldb
+version     : 16.0.4
+release     : 1
+summary     : LLVM Debugger
+license     :
+    - Apache-2.0 WITH LLVM-exception
+    - NCSA
+homepage    : https://www.llvm.org
+description : |
+    LLDB is a next generation, high-performance debugger. It is built as a set of reusable components which highly leverage existing libraries in the larger LLVM Project, such as the Clang expression parser and LLVM disassembler.
+upstreams   :
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.4/llvm-project-16.0.4.src.tar.xz: cf3c2a1152ed7a99866bd7f12c24528ada6d9f6336afb7a08416938762004c9f
+builddeps  :
+  - binary(swig)
+  - cmake(Clang)
+  - cmake(LLVM)
+  - pkgconfig(libedit)
+  - pkgconfig(liblzma)
+  - pkgconfig(libxml-2.0)
+  - pkgconfig(ncurses)
+  - pkgconfig(python3)
+  - pkgconfig(zlib)
+setup      : |
+    %cmake -S lldb \
+        -DLLVM_DEFAULT_TARGET_TRIPLE=%(build_platform) \
+        -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
+        -DLLDB_ENABLE_LIBEDIT:BOOL=True \
+        -DLLDB_ENABLE_CURSES:BOOL=True \
+        -DLLDB_ENABLE_LZMA:BOOL=True \
+        -DLLDB_ENABLE_LIBXML2:BOOL=True \
+        -DLLDB_ENABLE_PYTHON:BOOL=True \
+        -DLLDB_ENABLE_LUA:BOOL=False
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
