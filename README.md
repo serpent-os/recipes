@@ -1,6 +1,15 @@
 ## toolchain
 
-Core toolchain and OSABI repository for the Serpent OS collection.
+Managed toolchain recipes for Serpent OS.
+
+Note that Serpent OS uses LLVM/Clang toolchain with `libc++` / `libc++abi`
+by default. We are gradually weeding out `libgcc_s.so.1` but packages can
+optionally be built with the GNU toolchain:
+
+```yaml
+# stone.yml
+toolchain: gnu
+```
 
 ### License
 
