@@ -138,6 +138,8 @@
 				"/usr/lib/valgrind/valgrind/s390x-linux64.xml",
 				"/usr/lib/valgrind/valgrind/s390x-vx-linux-valgrind.xml",
 				"/usr/lib/valgrind/valgrind/s390x-vx-linux.xml",
+				"/usr/lib/valgrind/valgrind/valgrind-monitor-def.py",
+				"/usr/lib/valgrind/valgrind/valgrind-monitor.py",
 				"/usr/lib/valgrind/valgrind/vgpreload_core-amd64-linux.so",
 				"/usr/lib/valgrind/valgrind/vgpreload_dhat-amd64-linux.so",
 				"/usr/lib/valgrind/valgrind/vgpreload_drd-amd64-linux.so",
@@ -361,6 +363,6 @@
 		}
 	},
 	"source-name": "valgrind",
-	"source-release": "2",
-	"source-version": "3.20.0"
+	"source-release": "3",
+	"source-version": "3.21.0"
 }
