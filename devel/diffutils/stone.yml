@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : diffutils
-version     : 3.9
-release     : 3
+version     : "3.10"
+release     : 4
 homepage    : https://www.gnu.org/software/diffutils/
 upstreams   :
-    - https://ftp.gnu.org/gnu/diffutils/diffutils-3.9.tar.xz : d80d3be90a201868de83d78dad3413ad88160cc53bcc36eb9eaf7c20dbf023f1
+    - https://ftp.gnu.org/gnu/diffutils/diffutils-3.10.tar.xz : 90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e
 summary     : GNU utilities to compute and compare difference between files
 description : |
     GNU Diffutils is a package of several programs related to finding differences between files.
