@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : openssl
-version     : 3.1.0
-release     : 5
+version     : 3.1.1
+release     : 6
 summary     : OpenSSL cryptography library
 license     : Apache-2.0
 homepage    : https://www.openssl.org
 description : |
     OpenSSL cryptography library.
 upstreams   :
-    - https://www.openssl.org/source/openssl-3.1.0.tar.gz: aaa925ad9828745c4cad9d9efeb273deca820f2cdcf2c3ac7d7c1212b7c497b4
+    - https://www.openssl.org/source/openssl-3.1.1.tar.gz: b3aa61334233b852b63ddb048df181177c2c659eb9d4376008118f9c08d07674
 builddeps   :
     - pkgconfig(zlib)
     - perl
@@ -32,11 +32,11 @@ install     : |
     rm %(installroot)/%(libdir)/*.a
 
     # Stateless
-    %install_dir %(installroot)/%(vendordir)
-    mv %(installroot)/etc/ssl %(installroot)/%(vendordir)/
+    %install_dir %(installroot)/%(vendordir)/etc
+    mv %(installroot)/etc/ssl %(installroot)/%(vendordir)/etc/
     rmdir %(installroot)/etc
-    rmdir %(installroot)/%(vendordir)/ssl/certs
-    rmdir %(installroot)/%(vendordir)/ssl/private
+    rmdir %(installroot)/%(vendordir)/etc/ssl/certs
+    rmdir %(installroot)/%(vendordir)/etc/ssl/private
 packages    :
     - "%(name)-docs":
         paths:
