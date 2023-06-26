@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : pkgconf
-version     : 1.9.4
-release     : 6
+version     : 1.9.5
+release     : 7
 summary     : Package compiler and linker metadata toolkit
 license     : ISC
 homepage    : http://pkgconf.org/
 description : |
     Package compiler and linker metadata toolkit
 upstreams   :
-    - https://distfiles.dereferenced.org/pkgconf/pkgconf-1.9.4.tar.xz: daccf1bbe5a30d149b556c7d2ffffeafd76d7b514e249271abdd501533c1d8ae
+    - https://distfiles.dereferenced.org/pkgconf/pkgconf-1.9.5.tar.xz: 1ac1656debb27497563036f7bffc281490f83f9b8457c0d60bcfb638fb6b6171
 setup       : |
     %configure --disable-static
 build       : |
