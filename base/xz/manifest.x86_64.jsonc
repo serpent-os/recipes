@@ -32,7 +32,7 @@
 				"/usr/bin/xzless",
 				"/usr/bin/xzmore",
 				"/usr/lib/liblzma.so.5",
-				"/usr/lib/liblzma.so.5.4.2",
+				"/usr/lib/liblzma.so.5.4.3",
 				"/usr/share/locale/ca/LC_MESSAGES/xz.mo",
 				"/usr/share/locale/cs/LC_MESSAGES/xz.mo",
 				"/usr/share/locale/da/LC_MESSAGES/xz.mo",
@@ -240,7 +240,7 @@
 			],
 			"files": [
 				"/usr/lib32/liblzma.so.5",
-				"/usr/lib32/liblzma.so.5.4.2"
+				"/usr/lib32/liblzma.so.5.4.3"
 			],
 			"name": "xz-32bit",
 			"provides": [
@@ -375,6 +375,6 @@
 		}
 	},
 	"source-name": "xz",
-	"source-release": "6",
-	"source-version": "5.4.2"
+	"source-release": "7",
+	"source-version": "5.4.3"
 }

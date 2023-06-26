@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : xz
-version     : 5.4.2
-release     : 6
+version     : 5.4.3
+release     : 7
 homepage    : https://tukaani.org/xz
 upstreams   :
-    - https://tukaani.org/xz/xz-5.4.2.tar.xz : 3ee13d0f40148625306b90f9622f8c9660b8082884051b0cfe46f18492f88955
+    - https://tukaani.org/xz/xz-5.4.3.tar.xz : 92177bef62c3824b4badc524f8abcce54a20b7dbcfb84cde0a2eb8b49159518c
 summary     : Library and command line tools for XZ and LZMA compressed files
 description : |
     Library and command line tools for XZ and LZMA compressed files
