@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : libxcrypt
-version     : 4.4.33
-release     : 3
+version     : 4.4.35
+release     : 4
 homepage    : https://github.com/besser82/libxcrypt
 upstreams   :
-    - https://github.com/besser82/libxcrypt/releases/download/v4.4.33/libxcrypt-4.4.33.tar.xz : e87acf9c652c573a4713d5582159f98f305d56ed5f754ce64f57d4194d6b3a6f
+    - https://github.com/besser82/libxcrypt/releases/download/v4.4.35/libxcrypt-4.4.35.tar.xz : a8c935505b55f1df0d17f8bfd59468c7c6709a1d31831b0f8e3e045ab8fd455d
 summary     : Extended crypt library
 description : |
     libxcrypt is a modern library for one-way hashing of passwords. It supports a wide variety of both modern and historical hashing methods: yescrypt, gost-yescrypt, scrypt, bcrypt, sha512crypt, sha256crypt, md5crypt, SunMD5, sha1crypt, NT, bsdicrypt, bigcrypt, and descrypt. It provides the traditional Unix crypt and crypt_r interfaces, as well as a set of extended interfaces pioneered by Openwall Linux, crypt_rn, crypt_ra, crypt_gensalt, crypt_gensalt_rn, and crypt_gensalt_ra.
