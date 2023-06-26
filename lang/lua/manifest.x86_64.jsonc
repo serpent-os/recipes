@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"lua": {
 			"depends": [
@@ -11,16 +11,16 @@
 			"files": [
 				"/usr/bin/lua",
 				"/usr/bin/luac",
-				"/usr/lib/liblua.so.1",
-				"/usr/lib/liblua.so.1.4",
-				"/usr/lib/lua/1",
-				"/usr/share/lua/1",
+				"/usr/lib/liblua.so.5.4",
+				"/usr/lib/liblua.so.5.4.6",
+				"/usr/lib/lua/5.4",
+				"/usr/share/lua/5.4",
 				"/usr/share/man/lua.1",
 				"/usr/share/man/luac.1"
 			],
 			"name": "lua",
 			"provides": [
-				"soname(liblua.so.1(x86_64))",
+				"soname(liblua.so.5.4(x86_64))",
 				"binary(lua)",
 				"binary(luac)"
 			]
@@ -40,11 +40,11 @@
 			],
 			"name": "lua-devel",
 			"provides": [
-				"soname(liblua.so.1(x86_64))"
+				"soname(liblua.so.5.4(x86_64))"
 			]
 		}
 	},
 	"source-name": "lua",
-	"source-release": "2",
-	"source-version": "5.4.4"
+	"source-release": "3",
+	"source-version": "5.4.6"
 }
