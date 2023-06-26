@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : kbd
-version     : 2.5.1
-release     : 4
+version     : 2.6.0
+release     : 5
 homepage    : https://kbd-project.org/
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/utils/kbd/kbd-2.5.1.tar.xz : ccdf452387a6380973d2927363e9cbb939fa2068915a6f937ff9d24522024683
+    - https://mirrors.edge.kernel.org/pub/linux/utils/kbd/kbd-2.6.0.tar.xz : 9c159433db5df8ef31d86b42f5b09d32311bdda2ed35107fb1926243da60b28a
 summary     : Linux keyboard tools
 description : |
     The kbd project contains utilities for managing Linux console (Linux console, virtual terminals, keyboard, etc.)
@@ -27,4 +27,4 @@ install     : |
     %make_install
 
     # PAM configuration
-    %install_file %(pkgdir)/vlock.pam %(installroot)/%(vendordir)/pam.d/vlock
+    %install_file %(pkgdir)/vlock.pam %(installroot)/%(vendordir)/etc/pam.d/vlock

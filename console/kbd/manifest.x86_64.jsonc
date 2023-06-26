@@ -362,6 +362,7 @@
 				"/usr/share/kdb/keymaps/i386/colemak/en-latin9.map.gz",
 				"/usr/share/kdb/keymaps/i386/dvorak/ANSI-dvorak.map.gz",
 				"/usr/share/kdb/keymaps/i386/dvorak/dvorak-ca-fr.map.gz",
+				"/usr/share/kdb/keymaps/i386/dvorak/dvorak-de.map.gz",
 				"/usr/share/kdb/keymaps/i386/dvorak/dvorak-es.map.gz",
 				"/usr/share/kdb/keymaps/i386/dvorak/dvorak-fr.map.gz",
 				"/usr/share/kdb/keymaps/i386/dvorak/dvorak-l.map.gz",
@@ -784,6 +785,6 @@
 		}
 	},
 	"source-name": "kbd",
-	"source-release": "4",
-	"source-version": "2.5.1"
+	"source-release": "5",
+	"source-version": "2.6.0"
 }
