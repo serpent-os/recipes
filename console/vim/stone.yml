@@ -4,33 +4,20 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : vim
-version     : 9.0.1261
-release     : 3
+version     : 9.0.1665
+release     : 4
 homepage    : https://github.com/vim/vim
 upstreams   :
-    - https://github.com/vim/vim/archive/refs/tags/v9.0.1261.tar.gz : fcfedf0c05b98a895bc7c412a05ed57eb35ab11fe37259cd45f3c6a8ecb53ed7
+    - https://github.com/vim/vim/archive/refs/tags/v9.0.1665.tar.gz : eda541361f9fd47d84d7e3ab1f9ebee4db06ed13bfca95c54d5bab2b3b97809a
 summary     : Vi IMproved, an advanced text editor
 description : |
     Vim, which stands for Vi IMproved, is an open-source, multiplatform text editor extended from vi. It was first released by Bram Moolenaar in 1991. Since then, numerous features have been added to Vim, many of which are helpful in editing program source code.
 license     :
     - Vim
 builddeps   :
-    # For gVim, Vim's X11 and GTK-based front-end
-    # - pkgconfig(gtk+-3.0)
-    # - pkgconfig(xt)
-    # - gpm-devel
-
-    # Python provider support
-    # - pkgconfig(python3)
-
-    # Lua provider support
-    # - pkgconfig(lua)
-
-    # Ruby provider support
-    # - pkgconfig(ruby-3.0)
-
-    # Terminal UI support (required)
+    - pkgconfig(python3)
     - pkgconfig(ncursesw)
+    - lua-devel
 setup       : |
     %patch %(pkgdir)/0001-Make-vim-stateless.patch
     %patch %(pkgdir)/0001-Read-vimrc-from-etc-vim.patch
@@ -40,7 +27,8 @@ setup       : |
                --enable-fail-if-missing \
                --with-compiledby="Serpent" \
                --with-features=huge \
-               --with-modified-by="Serpent"
+               --with-modified-by="Serpent" \
+               --with-tlib=ncurses
 build       : |
     %make
 install     : |
