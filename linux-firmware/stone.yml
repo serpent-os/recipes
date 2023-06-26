@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : linux-firmware
-version     : 20230515
-release     : 9
+version     : 20230625
+release     : 10
 homepage    : https://kernel.org
 upstreams   :
-    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : 512909428e46953e4ade391387aef1305f52029c # 20230515
+    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : a5ff502cc5cca8db3c0cbc05650f7065a7ef1180 # 20230625
 summary     : Firmware to allow devices to function correctly
 description : |
     Firmware to allow devices to function correctly
@@ -36,10 +36,8 @@ packages    :
         summary: Support for Intel WiFi devices
         paths:
             - /usr/lib/firmware/iwlwifi
-setup       : |
-    %patch %(pkgdir)/0001-Add-support-for-compressing-firmware-in-copy-firmwar.patch
 install     : |
-    %make installcompress FIRMWAREDIR=/usr/lib/firmware DESTDIR=%(installroot)
+    %make install-zst FIRMWAREDIR=/usr/lib/firmware DESTDIR=%(installroot)
     # Remove conflicting and/or forbidden assets
     for forbidden in carl9170fw netronome liquidio qed Makefile GPL-3 ; do
         rm -rvf "%(installroot)/%(libdir)/firmware/${forbidden}"
