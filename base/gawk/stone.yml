@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : gawk
-version     : 5.2.1
-release     : 2
+version     : 5.2.2
+release     : 3
 summary     : GNU awk pattern-matching language
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org/software/gawk/gawk.html
 description : |
     GNU awk pattern-matching language
 upstreams   :
-    - https://ftp.gnu.org/gnu/gawk/gawk-5.2.1.tar.xz: 673553b91f9e18cc5792ed51075df8d510c9040f550a6f74e09c9add243a7e4f
+    - https://ftp.gnu.org/gnu/gawk/gawk-5.2.2.tar.xz: 3c1fce1446b4cbee1cd273bd7ec64bc87d89f61537471cd3e05e33a965a250e9
 builddeps   :
     - pkgconfig(gmp)
     - pkgconfig(mpfr)
@@ -24,7 +24,7 @@ install     : |
     %make_install
 
     # Stateless: Move profile.d dir to stateless default path
-    %install_file %(installroot)/etc/profile.d/* -t %(installroot)/%(vendordir)/profile.d/
+    %install_file %(installroot)/etc/profile.d/* -t %(installroot)/%(vendordir)/etc/profile.d/
     rm %(installroot)/etc/profile.d/*
     rmdir %(installroot)/etc/profile.d %(installroot)/etc
 workload    : |
