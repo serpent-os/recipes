@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : git
-version     : 2.40.0
-release     : 4
+version     : 2.41.0
+release     : 5
 summary     : Fast, scalable, distributed revision control system
 license     : GPL-2.0-only
 homepage    : https://git-scm.com
 description : |
     Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.40.0.tar.xz: b17a598fbf58729ef13b577465eb93b2d484df1201518b708b5044ff623bf46d
+    - https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.41.0.tar.xz: e748bafd424cfe80b212cbc6f1bbccc3a47d4862fb1eb7988877750478568040
 builddeps   :
     - binary(msgfmt)
     - pkgconfig(expat)

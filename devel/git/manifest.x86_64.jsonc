@@ -237,6 +237,7 @@
 				"/usr/share/git-core/templates/hooks/pre-receive.sample",
 				"/usr/share/git-core/templates/hooks/prepare-commit-msg.sample",
 				"/usr/share/git-core/templates/hooks/push-to-checkout.sample",
+				"/usr/share/git-core/templates/hooks/sendemail-validate.sample",
 				"/usr/share/git-core/templates/hooks/update.sample",
 				"/usr/share/git-core/templates/info/exclude",
 				"/usr/share/gitweb/gitweb.cgi",
@@ -259,6 +260,7 @@
 				"/usr/share/locale/ru/LC_MESSAGES/git.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/git.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/git.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/git.mo",
 				"/usr/share/locale/vi/LC_MESSAGES/git.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/git.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/git.mo",
@@ -295,6 +297,6 @@
 		}
 	},
 	"source-name": "git",
-	"source-release": "4",
-	"source-version": "2.40.0"
+	"source-release": "5",
+	"source-version": "2.41.0"
 }
