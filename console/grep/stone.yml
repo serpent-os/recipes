@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : grep
-version     : "3.10"
-release     : 4
+version     : "3.11"
+release     : 5
 summary     : Pattern matching utilities
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org/software/grep/grep.html
 description : |
     Pattern matching utilities
 upstreams   :
-    - https://ftp.gnu.org/gnu/grep/grep-3.10.tar.xz: 24efa5b595fb5a7100879b51b8868a0bb87a71c183d02c4c602633b88af6855b
+    - https://ftp.gnu.org/gnu/grep/grep-3.11.tar.xz: 1db2aedde89d0dea42b16d9528f894c8d15dae4e190b59aecc78f5a951276eab
 builddeps   :
     - pkgconfig(libpcre2-8)
 setup       : |
