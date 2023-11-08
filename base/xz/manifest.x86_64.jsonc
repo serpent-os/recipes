@@ -32,7 +32,7 @@
 				"/usr/bin/xzless",
 				"/usr/bin/xzmore",
 				"/usr/lib/liblzma.so.5",
-				"/usr/lib/liblzma.so.5.4.3",
+				"/usr/lib/liblzma.so.5.4.5",
 				"/usr/share/locale/ca/LC_MESSAGES/xz.mo",
 				"/usr/share/locale/cs/LC_MESSAGES/xz.mo",
 				"/usr/share/locale/da/LC_MESSAGES/xz.mo",
@@ -240,7 +240,7 @@
 			],
 			"files": [
 				"/usr/lib32/liblzma.so.5",
-				"/usr/lib32/liblzma.so.5.4.3"
+				"/usr/lib32/liblzma.so.5.4.5"
 			],
 			"name": "xz-32bit",
 			"provides": [
@@ -296,7 +296,6 @@
 				"/usr/share/doc/xz/api/bc_s.png",
 				"/usr/share/doc/xz/api/bc_sd.png",
 				"/usr/share/doc/xz/api/bcj_8h.html",
-				"/usr/share/doc/xz/api/bdwn.png",
 				"/usr/share/doc/xz/api/block_8h.html",
 				"/usr/share/doc/xz/api/check_8h.html",
 				"/usr/share/doc/xz/api/classes.html",
@@ -304,14 +303,16 @@
 				"/usr/share/doc/xz/api/container_8h.html",
 				"/usr/share/doc/xz/api/delta_8h.html",
 				"/usr/share/doc/xz/api/dir_b17a1d403082bd69a703ed987cf158fb.html",
-				"/usr/share/doc/xz/api/doc.png",
-				"/usr/share/doc/xz/api/docd.png",
+				"/usr/share/doc/xz/api/doc.svg",
+				"/usr/share/doc/xz/api/docd.svg",
 				"/usr/share/doc/xz/api/doxygen.css",
 				"/usr/share/doc/xz/api/doxygen.svg",
 				"/usr/share/doc/xz/api/files.html",
 				"/usr/share/doc/xz/api/filter_8h.html",
-				"/usr/share/doc/xz/api/folderclosed.png",
-				"/usr/share/doc/xz/api/folderopen.png",
+				"/usr/share/doc/xz/api/folderclosed.svg",
+				"/usr/share/doc/xz/api/folderclosedd.svg",
+				"/usr/share/doc/xz/api/folderopen.svg",
+				"/usr/share/doc/xz/api/folderopend.svg",
 				"/usr/share/doc/xz/api/functions.html",
 				"/usr/share/doc/xz/api/functions_vars.html",
 				"/usr/share/doc/xz/api/globals.html",
@@ -375,6 +376,6 @@
 		}
 	},
 	"source-name": "xz",
-	"source-release": "7",
-	"source-version": "5.4.3"
+	"source-release": "8",
+	"source-version": "5.4.5"
 }
