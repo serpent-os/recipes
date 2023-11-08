@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : nss
-version     : "3.90"
-release     : 8
+version     : "3.94"
+release     : 9
 summary     : Network Security Services
 license     : MPL-2.0
 homepage    : 
 description : |
     Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.
 upstreams   :
-    - https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_90_RTM/src/nss-3.90.tar.gz : 9acd6534c41d8ead19fca6fcb3fffed2f9f09c437c3d79fee6a4ee668aaa93b6
+    - https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_94_RTM/src/nss-3.94.tar.gz : 463ae180ee9e5ee9e3ad4f629326657e236780cc865572a930a16520abad9dd8
 builddeps   :
     - binary(python3)
 build       : |
