@@ -37,6 +37,6 @@
 		}
 	},
 	"source-name": "lmdb",
-	"source-release": "6",
-	"source-version": "0.9.30"
+	"source-release": "7",
+	"source-version": "0.9.31"
 }
