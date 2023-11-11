@@ -1,6 +1,6 @@
 name        : moss
 version     : "0.1.0"
-release     : 11
+release     : 12
 summary     : Default package manager of Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/moss-rs
@@ -10,6 +10,8 @@ description : |
     caching, compression, deduplication and atomic updates.
 builddeps   :
     - binary(unzstd)
+rundeps     :
+    - layout
 setup       : |
     unzstd %(pkgdir)/moss.zst -o moss
 install     : |
