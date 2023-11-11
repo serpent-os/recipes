@@ -4,12 +4,13 @@
 	"packages": {
 		"layout": {
 			"files": [
-				"/usr/lib64"
+				"/usr/lib64",
+				"/usr/share/doc/layout/README"
 			],
 			"name": "layout"
 		}
 	},
 	"source-name": "layout",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.0"
 }
