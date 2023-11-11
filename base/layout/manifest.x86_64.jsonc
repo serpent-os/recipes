@@ -1,0 +1,15 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"layout": {
+			"files": [
+				"/usr/lib64"
+			],
+			"name": "layout"
+		}
+	},
+	"source-name": "layout",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}

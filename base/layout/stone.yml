@@ -1,0 +1,11 @@
+name        : layout
+version     : "0.1.0"
+release     : 1
+summary     : Support filesystem layout
+license     : MPL-2.0
+homepage    : https://github.com/serpent-os
+description : |
+    Support filesystem layout
+install     : |
+    install -d -m 00755 %(installroot)/usr/
+    ln -sv lib %(installroot)/usr/lib64
