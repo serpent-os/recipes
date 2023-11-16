@@ -4040,6 +4040,7 @@
 				"/usr/share/man/man3/SSL_COMP_get_compression_methods.3openssl",
 				"/usr/share/man/man3/SSL_COMP_get_id.3openssl",
 				"/usr/share/man/man3/SSL_CONF_CTX_clear_flags.3openssl",
+				"/usr/share/man/man3/SSL_CONF_CTX_finish.3openssl",
 				"/usr/share/man/man3/SSL_CONF_CTX_free.3openssl",
 				"/usr/share/man/man3/SSL_CONF_CTX_new.3openssl",
 				"/usr/share/man/man3/SSL_CONF_CTX_set1_prefix.3openssl",
@@ -6541,6 +6542,6 @@
 		}
 	},
 	"source-name": "openssl",
-	"source-release": "6",
-	"source-version": "3.1.1"
+	"source-release": "7",
+	"source-version": "3.1.3"
 }
