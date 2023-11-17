@@ -72,4 +72,4 @@ tasks:
     index-profile:
         desc: Re-creates moss index for local profile
         cmds:
-            - sudo moss idx /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/
+            - sudo moss index /var/cache/boulder/collections/{{ .BOULDER_PROFILE }}/
