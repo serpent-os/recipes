@@ -1,6 +1,6 @@
 name        : boulder
 version     : 1.0.1
-release     : 34
+release     : 35
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -14,10 +14,10 @@ upstreams   :
         unpackdir: libmoss
         stripdirs: 1
 builddeps   :
-    - cmake
-    - lmdb-devel
+    - binary(cmake)
     - ldc
     - ldc-devel
+    - lmdb-devel
     - pkgconfig(libcurl)
     - pkgconfig(libxxhash)
     - pkgconfig(libzstd)
@@ -26,6 +26,11 @@ rundeps     :
 environment : |
     cd %(buildroot)/boulder
 setup       : |
+    # Fix libmoss
+    cd ../libmoss
+    %patch %(pkgdir)/0001-deps-analysis-elves-In-absence-of-soname.-make-one-u.patch
+    cd ../boulder
+
     # TODO: Unset buildtype here when moss-format supports DFLAGS
     export DFLAGS="$DFLAGS -flto=thin -O3 -g"
     %meson --buildtype debugoptimized

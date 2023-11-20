@@ -4,7 +4,7 @@
 	"packages": {
 		"boulder": {
 			"build-depends": [
-				"cmake",
+				"binary(cmake)",
 				"ldc",
 				"ldc-devel",
 				"lmdb-devel",
@@ -650,6 +650,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "34",
+	"source-release": "35",
 	"source-version": "1.0.1"
 }
