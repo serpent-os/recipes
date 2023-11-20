@@ -4,13 +4,13 @@
 	"packages": {
 		"moss": {
 			"build-depends": [
-				"binary(unzstd)"
+				"binary(cargo)"
 			],
 			"depends": [
-				"interpreter(/usr/lib64/ld-linux-x86-64.so.2(x86_64))",
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libgcc_s.so.1(x86_64))",
-				"soname(libm.so.6(x86_64))"
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/moss"
@@ -22,6 +22,6 @@
 		}
 	},
 	"source-name": "moss",
-	"source-release": "14",
+	"source-release": "15",
 	"source-version": "0.1.0"
 }
