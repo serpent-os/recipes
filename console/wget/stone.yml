@@ -5,7 +5,7 @@
 #
 name        : wget
 version     : 2.0.1
-release     : 1
+release     : 2
 homepage    : https://www.gnu.org/software/wget
 upstreams   :
     - https://ftp.gnu.org/gnu/wget/wget2-2.0.1.tar.gz : 0bb7fa03697bb5b8d05e1b5e15b863440826eb845874c4ffb5e32330f9845db1
@@ -24,9 +24,12 @@ builddeps   :
     - pkgconfig(zlib)
     # pandoc for manpages
 setup       : |
+    %patch %(pkgdir)/0001-libwget-openssl-Use-vendor-SSL-certs-for-now.patch
     %configure --disable-static --with-lzma
 build       : |
     %make
 install     : |
     %make_install
     ln -s wget2 %(installroot)/%(bindir)/wget
+check       : |
+    %make check

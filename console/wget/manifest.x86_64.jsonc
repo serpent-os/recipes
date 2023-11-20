@@ -1,8 +1,16 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"wget": {
+			"build-depends": [
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libnghttp2)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(openssl)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libbrotlidec.so.1(x86_64))",
@@ -57,6 +65,14 @@
 			]
 		},
 		"wget-devel": {
+			"build-depends": [
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libnghttp2)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(openssl)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/wget.h",
 				"/usr/include/wgetver.h",
@@ -70,6 +86,6 @@
 		}
 	},
 	"source-name": "wget",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.0.1"
 }
