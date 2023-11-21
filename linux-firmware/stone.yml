@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : linux-firmware
-version     : 20230625
-release     : 10
+version     : 20231111
+release     : 11
 homepage    : https://kernel.org
 upstreams   :
-    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : a5ff502cc5cca8db3c0cbc05650f7065a7ef1180 # 20230625
+    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : 74158e7ac86dfaae97a04811434f8425b1a50ff1 # 20231111
 summary     : Firmware to allow devices to function correctly
 description : |
     Firmware to allow devices to function correctly
@@ -16,6 +16,8 @@ license     :
     - GPL-2.0-or-later
     - Distributable
 builddeps   :
+    - binary(rdfind)
+    - binary(which)
     - binary(unzstd)
 packages    :
     - "%(name)-amd":
