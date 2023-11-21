@@ -1,12 +1,15 @@
 name        : layout
 version     : "0.1.0"
-release     : 2
+release     : 3
 summary     : Support filesystem layout
 license     : MPL-2.0
-homepage    : https://github.com/serpent-os
+homepage    : https://serpentos.com
 description : |
     Support filesystem layout
 install     : |
     install -d -m 00755 %(installroot)/usr/
     ln -sv lib %(installroot)/usr/lib64
     install -D -m 00644 %(pkgdir)/README %(installroot)/usr/share/doc/layout/README
+    
+    # Make /usr/local available
+    ln -s /var/local %(installroot)/usr/local
