@@ -5,7 +5,7 @@
 #
 name        : gdk-pixbuf
 version     : 2.42.10
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/gdk-pixbuf
 upstreams   :
     - https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.xz : ee9b6c75d13ba096907a2e3c6b27b61bcd17f5c7ebeab5a5b439d2f2e39fe44b
@@ -17,13 +17,13 @@ license     :
 builddeps   :
     - pkgconfig(gio-2.0)
     - pkgconfig(glib-2.0)
-    - pkgconfig(gmodule-no-export-2.0)
     - pkgconfig(gobject-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(libjpeg)
     - pkgconfig(libpng)
     - pkgconfig(libtiff-4)
     - pkgconfig(shared-mime-info)
+toolchain   : gnu
 setup       : |
     # FIXME: Add missing loaders, svg, webp, avif, etc.
     %meson \
@@ -35,5 +35,5 @@ build       : |
 install     : |
     %meson_install
     # FIXME: Need triggers here
-    LD_LIBRARY_PATH=%(installroot)/usr/lib %(installroot)/usr/bin/gdk-pixbuf-query-loaders %(installroot)/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/lib*.so | sed "s@%(installroot)/@@g" > %(installroot)/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+    LD_LIBRARY_PATH=%(installroot)/usr/lib %(installroot)/usr/bin/gdk-pixbuf-query-loaders %(installroot)/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/lib*.so | sed "s@%(installroot)/@@g" | sed "s@usr/@/usr/@g" > %(installroot)/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
 

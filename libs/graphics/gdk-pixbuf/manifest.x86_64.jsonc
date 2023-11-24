@@ -6,7 +6,6 @@
 			"build-depends": [
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
-				"pkgconfig(gmodule-no-export-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libjpeg)",
@@ -57,14 +56,24 @@
 				"binary(gdk-pixbuf-pixdata)",
 				"binary(gdk-pixbuf-query-loaders)",
 				"binary(gdk-pixbuf-thumbnailer)",
-				"soname(libgdk_pixbuf-2.0.so.0(x86_64))"
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
+				"soname(libpixbufloader-ani.so(x86_64))",
+				"soname(libpixbufloader-bmp.so(x86_64))",
+				"soname(libpixbufloader-gif.so(x86_64))",
+				"soname(libpixbufloader-icns.so(x86_64))",
+				"soname(libpixbufloader-ico.so(x86_64))",
+				"soname(libpixbufloader-pnm.so(x86_64))",
+				"soname(libpixbufloader-qtif.so(x86_64))",
+				"soname(libpixbufloader-tga.so(x86_64))",
+				"soname(libpixbufloader-tiff.so(x86_64))",
+				"soname(libpixbufloader-xbm.so(x86_64))",
+				"soname(libpixbufloader-xpm.so(x86_64))"
 			]
 		},
 		"gdk-pixbuf-devel": {
 			"build-depends": [
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
-				"pkgconfig(gmodule-no-export-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libjpeg)",
@@ -106,6 +115,6 @@
 		}
 	},
 	"source-name": "gdk-pixbuf",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.42.10"
 }
