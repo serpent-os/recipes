@@ -236,6 +236,7 @@
 			],
 			"name": "gobject-introspection-devel",
 			"provides": [
+				"soname(_giscanner.cpython-311-x86_64-linux-gnu.so(x86_64))",
 				"binary(g-ir-annotation-tool)",
 				"binary(g-ir-compiler)",
 				"binary(g-ir-generate)",
@@ -247,6 +248,6 @@
 		}
 	},
 	"source-name": "gobject-introspection",
-	"source-release": "4",
-	"source-version": "1.76.0"
+	"source-release": "5",
+	"source-version": "1.78.1"
 }

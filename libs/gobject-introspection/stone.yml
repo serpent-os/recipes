@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : gobject-introspection
-version     : 1.76.0
-release     : 4
+version     : 1.78.1
+release     : 5
 homepage    : https://gitlab.gnome.org/GNOME/gobject-introspection
 upstreams   :
-    - https://download.gnome.org/sources/gobject-introspection/1.76/gobject-introspection-1.76.0.tar.xz : 8552ff3a56758b8dba21d421795a52b9a9fbf984565907b83f1c64f4deb8380c
+    - https://download.gnome.org/sources/gobject-introspection/1.78/gobject-introspection-1.78.1.tar.xz : bd7babd99af7258e76819e45ba4a6bc399608fe762d83fde3cac033c50841bb4
 summary     : GObject Introspection
 description : |
     Describe C/GObject APIs and expose them to other programming languages
@@ -22,6 +22,7 @@ builddeps   :
     - pkgconfig(python3)
     - binary(flex)
     - binary(bison)
+toolchain   : gnu
 packages    :
     - "%(name)-devel":
         paths:
