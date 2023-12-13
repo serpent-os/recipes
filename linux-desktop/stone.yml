@@ -1,9 +1,9 @@
 name        : linux-desktop
-version     : 6.6.2
-release     : 12
+version     : 6.6.6
+release     : 13
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.2.tar.xz : 73d4f6ad8dd6ac2a41ed52c2928898b7c3f2519ed5dbdb11920209a36999b77e
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.6.tar.xz : ebf70a917934b13169e1be5b95c3b6c2fea5bc14e6dc144f1efb8a0016b224c8
 summary     : Linux Kernel - Default Desktop Build
 description : |
     Work in progress build for desktop enabling
