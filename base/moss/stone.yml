@@ -1,6 +1,6 @@
 name        : moss
 version     : "0.1.0"
-release     : 16
+release     : 17
 summary     : Ridiculously fast atomic package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/moss-rs
