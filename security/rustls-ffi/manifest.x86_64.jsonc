@@ -1,0 +1,19 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"rustls-ffi": {
+			"build-depends": [
+				"binary(cargo)"
+			],
+			"files": [
+				"/usr/include/rustls.h",
+				"/usr/lib/librustls.a"
+			],
+			"name": "rustls-ffi"
+		}
+	},
+	"source-name": "rustls-ffi",
+	"source-release": "1",
+	"source-version": "0.11.0"
+}
