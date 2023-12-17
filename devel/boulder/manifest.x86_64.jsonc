@@ -8,6 +8,7 @@
 				"ldc",
 				"ldc-devel",
 				"lmdb-devel",
+				"pkgconfig(dbus-1)",
 				"pkgconfig(libcurl)",
 				"pkgconfig(libxxhash)",
 				"pkgconfig(libzstd)"
@@ -17,6 +18,7 @@
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcurl.so.4(x86_64))",
+				"soname(libdbus-1.so.3(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
 				"soname(libxxhash.so.0(x86_64))",
@@ -650,6 +652,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "35",
+	"source-release": "36",
 	"source-version": "1.0.1"
 }
