@@ -1,6 +1,6 @@
 name        : boulder
 version     : 1.0.1
-release     : 36
+release     : 37
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -8,9 +8,9 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/boulder : ff85ed1bdd9c0a7398daf65d779640930ee867a9
-    - https://github.com/serpent-os/libmoss/archive/refs/tags/v1.2.1.tar.gz :
-        hash: cafae1ed6f225cde5961ee70378fee289bea80aedc4cd3b5b043b7f32d163f51
+    - git|https://github.com/serpent-os/boulder : 4376a22b346dbdc58c43c8e66c0f5a08a623523e
+    - https://github.com/serpent-os/libmoss/archive/refs/tags/v1.2.2.tar.gz :
+        hash: 782a2a899a754746ac6dc4184fa720bd5075968921e9e16f82b4fd4025513569
         unpackdir: libmoss
         stripdirs: 1
 builddeps   :
@@ -33,7 +33,8 @@ setup       : |
 build       : |
     %meson_build
 install     : |
-    %meson_install
+    # FIXME, change back to macro!
+    DESTDIR=/mason/build/install meson install --no-rebuild -C serpent_builddir
     ln -sf boulder %(installroot)/usr/bin/mason
 
     %install_dir %(installroot)/usr/share/moss
