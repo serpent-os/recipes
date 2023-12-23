@@ -33,8 +33,7 @@ setup       : |
 build       : |
     %meson_build
 install     : |
-    # FIXME, change back to macro!
-    DESTDIR=/mason/build/install meson install --no-rebuild -C serpent_builddir
+    %meson_install
     ln -sf boulder %(installroot)/usr/bin/mason
 
     %install_dir %(installroot)/usr/share/moss
