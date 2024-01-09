@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : json-glib
+version     : 1.6.6
+release     : 1
+homepage    : https://wiki.gnome.org/action/show/Projects/JsonGlib
+upstreams   :
+    - https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.6.tar.xz : 96ec98be7a91f6dde33636720e3da2ff6ecbb90e76ccaa49497f31a6855a490e
+summary     : JSON-GLib is a library providing serialization and deserialization support for the JavaScript Object Notation (JSON) format described by RFC 4627
+description : |
+    JSON-GLib uses GLib native data types and the generic value container GValue for ease of development. It also provides integration with the GObject classes for direct serialization into, and deserialization from, JSON data streams.
+license     :
+    - Apache-2.0
+    - CC-BY-SA-3.0
+    - CC0-1.0
+    - GPL-3.0-or-later
+    - LGPL-2.1-or-later
+    - MIT
+    - OFL-1.1
+builddeps   :
+    - binary(g-ir-scanner)
+    - binary(msgfmt)
+    - pkgconfig(gio-2.0)
+    # xsltproc for man pages
+setup       : |
+    %meson -Dtests=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/bin

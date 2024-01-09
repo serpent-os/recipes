@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : graphene
+version     : 1.10.8
+release     : 1
+homepage    : https://github.com/ebassi/graphene
+upstreams   :
+    - https://github.com/ebassi/graphene/archive/refs/tags/1.10.8.tar.gz : 922dc109d2dc5dc56617a29bd716c79dd84db31721a8493a13a5f79109a4a4ed
+summary     : A thin layer of types for graphic libraries
+description : |
+    A thin layer of types for graphic libraries
+license     :
+    - MIT
+toolchain   : gnu
+builddeps   :
+    - binary(g-ir-scanner)
+    - pkgconfig(gobject-2.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

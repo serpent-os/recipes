@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : gobject-introspection
+version     : 1.78.1
+release     : 5
+homepage    : https://gitlab.gnome.org/GNOME/gobject-introspection
+upstreams   :
+    - https://download.gnome.org/sources/gobject-introspection/1.78/gobject-introspection-1.78.1.tar.xz : bd7babd99af7258e76819e45ba4a6bc399608fe762d83fde3cac033c50841bb4
+summary     : GObject Introspection
+description : |
+    Describe C/GObject APIs and expose them to other programming languages
+    such as Python and Vala.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.0-or-later
+builddeps   :
+    - pkgconfig(glib-2.0)
+    - pkgconfig(libffi)
+    - pkgconfig(python3)
+    - binary(flex)
+    - binary(bison)
+toolchain   : gnu
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/bin
+            - /usr/lib/gobject-introspection/giscanner
+            - /usr/share/gobject-introspection-1.0
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

@@ -1,0 +1,41 @@
+From f33ea122828d359404e4142dca6858da25d652a0 Mon Sep 17 00:00:00 2001
+From: Joey Riches <josephriches@gmail.com>
+Date: Fri, 24 Mar 2023 11:07:53 +0000
+Subject: [PATCH 1/1] at-spi2-core: Stateless XDG autostart directories
+
+---
+ bus/meson.build | 4 ++--
+ meson.build     | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bus/meson.build b/bus/meson.build
+index 22a1bce6..18b98e5d 100644
+--- a/bus/meson.build
++++ b/bus/meson.build
+@@ -11,8 +11,8 @@ else
+ endif
+ 
+ busconfig_dir = join_paths(atspi_datadir, 'defaults/at-spi2')
+-session_dir = join_paths(atspi_sysconfdir, 'xdg/autostart')
+-xwayland_session_dir = join_paths(atspi_sysconfdir, 'xdg/Xwayland-session.d')
++session_dir = join_paths(atspi_datadir, 'xdg/autostart')
++xwayland_session_dir = join_paths(atspi_datadir, 'xdg/Xwayland-session.d')
+ 
+ configure_file(input: 'accessibility.conf.in',
+                output: 'accessibility.conf',
+diff --git a/meson.build b/meson.build
+index aff697b3..f1bf9396 100644
+--- a/meson.build
++++ b/meson.build
+@@ -104,7 +104,7 @@ registryd_inc = include_directories('registryd')
+ 
+ atspi_prefix = get_option('prefix')
+ atspi_datadir = join_paths(atspi_prefix, get_option('datadir'))
+-atspi_libexecdir = join_paths(atspi_prefix, get_option('libexecdir'))
++atspi_libexecdir = join_paths(atspi_prefix, get_option('libexecdir'), 'core')
+ atspi_sysconfdir = join_paths(atspi_prefix, get_option('sysconfdir'))
+ 
+ if get_option('dbus_services_dir') != 'default'
+-- 
+2.39.0
+

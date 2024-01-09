@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libgusb
+version     : 0.4.5
+release     : 1
+homepage    : https://github.com/hughsie/libgusb
+upstreams   :
+    - https://github.com/hughsie/libgusb/releases/download/0.4.5/libgusb-0.4.5.tar.xz : bc8c6328289f057c8f73b07c1ba6251de96029787309f2672ca252ca90ace1b2
+summary     : GUsb is a GObject wrapper for libusb1
+description : |
+    GUsb is a GObject wrapper for libusb1 that makes it easy to do asynchronous control, bulk and interrupt transfers with proper cancellation and integration into a mainloop. This makes it easy to integrate low level USB transfers with your high-level application or system daemon.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libusb-1.0)
+setup       : |
+    # TODO tests and docs
+    %meson -Dvapi=false -Ddocs=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
