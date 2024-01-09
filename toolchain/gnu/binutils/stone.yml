@@ -1,0 +1,66 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : binutils
+version     : "2.40"
+release     : 8
+summary     : A GNU collection of binary utilities
+license     : GPL-3.0-or-later
+homepage    : https://sourceware.org/binutils
+description : |
+    A GNU collection of binary utilities
+upstreams   :
+    - http://ftp.nluug.nl/ftp/gnu/binutils/binutils-2.40.tar.xz: 0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - binary(m4)
+    - binary(makeinfo)
+    - binary(perl)
+    - binary(yacc)
+    - pkgconfig(libzstd)
+    - pkgconfig(jansson)
+    - pkgconfig(ncursesw)
+    - pkgconfig(readline)
+    - pkgconfig(zlib)
+setup       : |
+    %patch %(pkgdir)/zlib-level.patch
+    %patch %(pkgdir)/compilespeed.patch
+
+    # Non release builds mess up the sonames
+    sed -i '/^development=/s/true/false/' bfd/development.sh
+
+    mkdir %(builddir) && cd %(builddir)
+    ../configure %(options_configure) \
+        --disable-gdb \
+        --disable-gdbserver \
+        --disable-libdecnumber \
+        --disable-sim \
+        --disable-static \
+        --enable-shared \
+        --enable-64-bit-bfd \
+        --enable-deterministic-archives \
+        --enable-ld=default \
+        --enable-lto \
+        --enable-multilib \
+        --enable-pgo-build=lto \
+        --enable-plugins \
+        --enable-secureplt \
+        --enable-targets="x86_64-pep,bpf-unknown-none" \
+        --enable-threads \
+        --with-lib-path="/usr/lib:/usr/lib32" \
+        --with-system-readline \
+        --with-system-zlib \
+        --without-debuginfod
+build       : |
+    %make tooldir=/usr -C %(builddir)
+install     : |
+    %make_install tooldir=/usr -C %(builddir)
+toolchain   : gnu
+tuning      :
+    - lto
+    - nosemantic
+    - optimize: speed
+    - symbolic

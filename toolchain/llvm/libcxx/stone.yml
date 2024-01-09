@@ -1,0 +1,75 @@
+name        : libcxx
+version     : 16.0.4
+release     : 7
+summary     : Modern C++ standard library
+license     :
+    - Apache-2.0 WITH LLVM-exception
+    - NCSA
+homepage    : https://www.llvm.org
+description : |
+    A modern C++ standard library from the LLVM project, aiming for minimal overhead
+    and compilation times. Targets the C++11 standard.
+    This is the default C++ library in Serpent OS used in conjunction with the LLVM
+    toolchain.
+upstreams   :
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.4/llvm-project-16.0.4.src.tar.xz: cf3c2a1152ed7a99866bd7f12c24528ada6d9f6336afb7a08416938762004c9f
+builddeps   :
+    - binary(python3)
+    - clang-32bit
+    - gcc-32bit-devel
+    - libcxx-32bit-devel
+    - pkgconfig(libxcrypt)
+    - pkgconfig32(libxcrypt)
+emul32     : yes
+setup      : |
+    # Context on CMAKE_ vars: https://reviews.llvm.org/D112155#3353869
+    %cmake -S runtimes \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLLVM_DEFAULT_TARGET_TRIPLE=%(build_platform) \
+        -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
+        -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
+        -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
+        -DLLVM_USE_SANITIZER=OFF \
+        -DLLVM_INCLUDE_TESTS=ON \
+        -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON \
+        -DCOMPILER_RT_USE_LIBCXX=ON \
+        -DLIBCXX_ENABLE_ASSERTIONS=OFF \
+        -DLIBCXX_ENABLE_PARALLEL_ALGORITHMS=OFF \
+        -DLIBCXX_ENABLE_SHARED=ON \
+        -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
+        -DLIBCXX_ENABLE_STATIC=OFF \
+        -DLIBCXX_HAS_ATOMIC_LIB=ON \
+        -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
+        -DLIBCXX_STATICALLY_LINK_ABI_IN_SHARED_LIBRARY=ON \
+        -DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON \
+        -DLIBCXX_USE_COMPILER_RT=ON \
+        -DLIBCXXABI_ENABLE_SHARED=OFF \
+        -DLIBCXXABI_ENABLE_STATIC_UNWINDER=ON \
+        -DLIBCXXABI_USE_COMPILER_RT=ON \
+        -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
+        -DLIBCXXABI_STATICALLY_LINK_UNWINDER_IN_SHARED_LIBRARY=OFF \
+        -DLIBCXXABI_STATICALLY_LINK_UNWINDER_IN_STATIC_LIBRARY=OFF \
+        -DLIBUNWIND_INSTALL_HEADERS=ON \
+        -DLIBUNWIND_INSTALL_LIBRARY=ON \
+        -DLIBUNWIND_ENABLE_SHARED=ON \
+        -DLIBUNWIND_ENABLE_STATIC=OFF \
+        -DLIBUNWIND_INSTALL_LIBRARY=ON \
+        -DLIBUNWIND_USE_COMPILER_RT=ON \
+        -DLIBUNWIND_LIBDIR_SUFFIX=%(libsuffix) \
+        -DLLVM_LINK_LLVM_DYLIB=ON \
+        -DCMAKE_CXX_COMPILER_TARGET=%(build_platform) \
+        -DCMAKE_ASM_COMPILER_TARGET=%(build_platform)
+build       : |
+    %cmake_build cxx cxxabi unwind
+install     : |
+    DESTDIR="%(installroot)" %cmake_build install-cxx install-cxxabi install-unwind
+
+    # Set some support symlinks
+    echo "INPUT(libc++.so.1)" > "%(installroot)/%(libdir)/libc++abi.so"
+    ln -svf libc++.so.1 "%(installroot)/%(libdir)/libc++abi.so.1"
+
+    # Origin: https://raw.githubusercontent.com/kraj/meta-clang/master/recipes-devtools/clang/clang/libunwind.pc.in
+    %install_dir %(installroot)%(libdir)/pkgconfig
+    sed -e 's@\@LIBDIR\@@%(libdir)@g' -e 's/@VERSION@/%(version)/g' %(pkgdir)/libunwind.pc.in > %(installroot)%(libdir)/pkgconfig/libunwind.pc
+#workload    : |
+#    %cmake_build check-runtimes -k 10000 ||:

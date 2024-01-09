@@ -1,0 +1,43 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"mold": {
+			"build-depends": [
+				"pkgconfig(libcrypto)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(mimalloc)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libmimalloc.so.2(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libz.so.1(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/ld.mold",
+				"/usr/bin/mold",
+				"/usr/lib/mold/mold-wrapper.so",
+				"/usr/libexec/mold/ld",
+				"/usr/share/doc/mold/LICENSE",
+				"/usr/share/man/man1/ld.mold.1",
+				"/usr/share/man/man1/mold.1"
+			],
+			"name": "mold",
+			"provides": [
+				"binary(ld.mold)",
+				"binary(mold)",
+				"soname(mold-wrapper.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "mold",
+	"source-release": "5",
+	"source-version": "1.11.0"
+}

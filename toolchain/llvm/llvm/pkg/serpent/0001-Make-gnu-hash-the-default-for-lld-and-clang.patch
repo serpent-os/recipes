@@ -1,0 +1,41 @@
+From fc9319ffb650ee5ef1be8a617ce441205a3a85b3 Mon Sep 17 00:00:00 2001
+From: Peter O'Connor <sunnyflunk@serpentos.com>
+Date: Mon, 5 Jul 2021 14:22:14 +1000
+Subject: [PATCH] Make gnu hash the default for lld and clang
+
+Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+---
+ clang/lib/Driver/ToolChains/Linux.cpp | 3 +++
+ lld/ELF/Driver.cpp                    | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/clang/lib/Driver/ToolChains/Linux.cpp b/clang/lib/Driver/ToolChains/Linux.cpp
+index f2f72681f..09ee512e9 100644
+--- a/clang/lib/Driver/ToolChains/Linux.cpp
++++ b/clang/lib/Driver/ToolChains/Linux.cpp
+@@ -245,6 +245,9 @@ Linux::Linux(const Driver &D, const llvm::Triple &Triple, const ArgList &Args)
+       ExtraOpts.push_back("--hash-style=both");
+   }
+ 
++    // Serpent OS defaults to GNU hash style
++    ExtraOpts.push_back("--hash-style=gnu");
++
+ #ifdef ENABLE_LINKER_BUILD_ID
+   ExtraOpts.push_back("--build-id");
+ #endif
+diff --git a/lld/ELF/Driver.cpp b/lld/ELF/Driver.cpp
+index cb08516f7..81a09e505 100644
+--- a/lld/ELF/Driver.cpp
++++ b/lld/ELF/Driver.cpp
+@@ -2097,7 +2097,7 @@ template <class ELFT> void LinkerDriver::link(opt::InputArgList &args) {
+     if (config->emachine == EM_MIPS)
+       config->sysvHash = true;
+     else
+-      config->sysvHash = config->gnuHash = true;
++      config->gnuHash = true;
+   }
+ 
+   // Default output filename is "a.out" by the Unix tradition.
+-- 
+2.31.1
+

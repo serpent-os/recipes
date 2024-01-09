@@ -1,0 +1,6 @@
+releases:
+  id: 7981
+security:
+  cpe:
+  - vendor: gnu
+    product: binutils

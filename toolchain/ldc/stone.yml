@@ -1,0 +1,50 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : ldc
+version     : 1.32.2
+release     : 10
+summary     : The LLVM-based D Compiler
+license     :
+    - Apache-2.0
+    - BSD-3-Clause
+    - BSL-1.0
+homepage    : https://github.com/ldc-developers/ldc
+description : |
+    The LLVM-based D Compiler
+upstreams   :
+    - git|https://github.com/ikeycode/ldc.git: 3713607636f887883eb31285ec52eaa7bd26a744
+    - https://downloads.dlang.org/releases/2.x/2.103.1/dmd.2.103.1.linux.tar.xz:
+        hash: b77619f0f6b103467efb3b546cd63e7d3078c515ee6ebefbe1a0083f6fdd72fc
+        stripdirs: 1
+        unpackdir: "%(name)-%(version)-src/dmd2/"
+builddeps   :
+    - binary(make)
+    - lld-devel
+    - llvm-devel
+    - gcc # dmd upstream built against GCC
+setup       : |
+    cd ../ldc.git
+    %patch %(pkgdir)/stateless/0001-Fixups-for-packaging-and-stateless-config.patch
+
+    %cmake -DBUILD_SHARED_LIBS=BOTH \
+        -DBUILD_LTO_LIBS=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_SKIP_RPATH=ON \
+        -DBASH_COMPLETION_COMPLETIONSDIR="%(completionsdir)" \
+        -DLDC_INSTALL_LTOPLUGIN=ON \
+        -DLDC_INSTALL_LLVM_RUNTIME_LIBS=ON \
+        -DLDC_WITH_LLD=ON \
+        -DLDC_DYNAMIC_COMPILE=OFF \
+        -DD_COMPILER=%(buildroot)/%(name)-%(version)-src/dmd2/linux/bin64/dmd \
+        -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
+build       : |
+    cd ../ldc.git
+    %cmake_build
+install     : |
+    cd ../ldc.git
+    %cmake_install
+    # Stateless: Put file in patched stateless location
+    %install_file %(installroot)/etc/ldc2.conf %(installroot)/%(vendordir)/ldc2/ldc2.conf

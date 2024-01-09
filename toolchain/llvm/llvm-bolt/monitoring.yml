@@ -1,0 +1,6 @@
+releases:
+  id: 1830
+security:
+  cpe:
+  - vendor: llvm
+    product: llvm

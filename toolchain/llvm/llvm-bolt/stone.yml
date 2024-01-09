@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : llvm-bolt
+version     : 16.0.1
+release     : 4
+summary     : Binary Optimization and Layout Tool
+license     : Apache-2.0
+homepage    : https://github.com/facebookincubator/BOLT
+description : |
+    Binary Optimization and Layout Tool.
+upstreams   :
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.4/llvm-project-16.0.4.src.tar.xz: cf3c2a1152ed7a99866bd7f12c24528ada6d9f6336afb7a08416938762004c9f
+builddeps   :
+    - binary(python)
+    - cmake(LLVM)
+    - pkgconfig(ncursesw)
+    - pkgconfig(zlib)
+setup       : |
+    %cmake -S llvm -DLLVM_ENABLE_ASSERTIONS=OFF \
+        -DLLVM_ENABLE_PROJECTS='bolt;' \
+        -DLLVM_TARGETS_TO_BUILD='X86'
+install     : |
+    DESTDIR="%(installroot)" %cmake_build install-llvm-bolt install-perf2bolt install-merge-fdata install-llvm-boltdiff install-bolt_rt
+tuning      :
+    - icf: all
+    #- lto: thin
+    - nosemantic
+    - symbolic
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/libbolt_rt*.a
