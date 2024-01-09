@@ -1,0 +1,50 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : linux-firmware
+version     : 20231211
+release     : 12
+homepage    : https://kernel.org
+upstreams   :
+    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : f2e52a1c5861fde69aee517ffaf798b630bdf36b # 20231211
+summary     : Firmware to allow devices to function correctly
+description : |
+    Firmware to allow devices to function correctly
+license     :
+    - GPL-2.0-or-later
+    - Distributable
+builddeps   :
+    - binary(rdfind)
+    - binary(which)
+    - binary(unzstd)
+packages    :
+    - "%(name)-amd":
+        summary: Support for AMD devices
+        paths:
+            - /usr/lib/firmware/amd*
+            - /usr/lib/firmware/radeon
+    - "%(name)-nvidia":
+        summary: Support for NVIDIA devices
+        paths:
+            - /usr/lib/firmware/nvidia
+    - "%(name)-intel":
+        summary: Support for Intel devices
+        paths:
+            - /usr/lib/firmware/intel
+            - /usr/lib/firmware/i915
+    - "%(name)-iwlwifi":
+        summary: Support for Intel WiFi devices
+        paths:
+            - /usr/lib/firmware/iwlwifi
+install     : |
+    %make install-zst FIRMWAREDIR=/usr/lib/firmware DESTDIR=%(installroot)
+    # Remove conflicting and/or forbidden assets
+    for forbidden in carl9170fw netronome liquidio qed Makefile GPL-3 ; do
+        rm -rvf "%(installroot)/%(libdir)/firmware/${forbidden}"
+    done
+    # unzstd the amd microcode to unfudge dracut
+    for file in %(installroot)%(libdir)/firmware/amd-ucode/*.zst ; do
+        unzstd --rm $file
+    done

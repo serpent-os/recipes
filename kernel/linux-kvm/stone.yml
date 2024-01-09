@@ -1,0 +1,67 @@
+name        : linux-kvm
+version     : 6.6.67
+release     : 50
+homepage    : https://kernel.org/
+upstreams   :
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.7.tar.xz : 0ce68ec6019019140043263520955ecd04839e55a1baab2fa9155b42bb6fd841
+summary     : Linux Kernel - KVM Guest build
+description : |
+    Minimalist kernel configuration supporting KVM host and not much else
+license     :
+    - GPL-2.0-only
+builddeps   :
+    - binary(bc)
+    - binary(bison)
+    - binary(dracut)
+    - binary(flex)
+    - binary(gzip)
+    - binary(kmod)
+    - binary(less)
+    - binary(m4)
+    - binary(perl)
+    - binary(python3)
+    - binary(which)
+    - pkgconfig(gmp)
+    - pkgconfig(libelf)
+    - pkgconfig(libssl)
+    - pkgconfig(libzstd)
+    - pkgconfig(mpfr)
+    - binary(grep)
+    - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
+setup       : |
+    extraVersion="-%(release).kvm"
+    sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
+
+    %install_file %(pkgdir)/config-x86_64 .config
+    %patch %(pkgdir)/more-uarches-for-kernel-5.17+.patch
+    %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 oldconfig || exit 1
+build       : |
+    # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
+    %make VERBOSE=0 V=0 CC=clang ARCH=x86_64 LLVM=1 WERROR=0
+    %make -C tools/objtool VERBOSE=0 V=0 CC=clang ARCH=x86_64 LLVM=1 WERROR=0
+install     : |
+    kernelVersion="%(version)-%(release).kvm"
+    kernelID="com.serpentos.kvm"
+    %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelID.%(version)-%(release)
+
+    %install_file .config %(installroot)%(libdir)/kernel/config-$kernelVersion
+    %install_file System.map %(installroot)%(libdir)/kernel/System.map-$kernelVersion
+
+    # Modules please
+    %install_dir %(installroot)%(libdir)/modules/$kernelVersion
+    %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
+    /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
+    
+    # TODO: Include early microcode
+    LD_PRELOAD='' dracut --strip --tmpdir /tmp -N -f \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs" \
+        --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd \
+        %(installroot)%(libdir)/kernel/initrd-$kernelID.%(version)-%(release)
+
+    # No building against this kernel pls.
+    rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/build
+    rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/source
+
+    # Temporary: Help with VMs
+    ln -s initrd-$kernelID.%(version)-%(release) %(installroot)%(libdir)/kernel/current.initrd
+    ln -s $kernelID.%(version)-%(release) %(installroot)%(libdir)/kernel/current.kernel

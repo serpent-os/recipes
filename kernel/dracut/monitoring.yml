@@ -1,0 +1,6 @@
+releases:
+  id: 10627
+security:
+  cpe:
+  - vendor: dracut_project
+    product: dracut

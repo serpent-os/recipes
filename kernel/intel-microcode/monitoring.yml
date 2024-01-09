@@ -1,0 +1,6 @@
+releases:
+  id: 20614
+security:
+  cpe:
+  - vendor: intel
+    product: microcode

@@ -1,0 +1,6 @@
+releases:
+  id: 1517
+security:
+  cpe:
+  - vendor: kernel
+    product: kmod

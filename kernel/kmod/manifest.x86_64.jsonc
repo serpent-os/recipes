@@ -1,0 +1,76 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"kmod": {
+			"build-depends": [
+				"pkgconfig(liblzma)",
+				"pkgconfig(libssl)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
+				"soname(libz.so.1(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/kmod",
+				"/usr/lib/libkmod.so.2",
+				"/usr/lib/libkmod.so.2.4.0",
+				"/usr/sbin/depmod",
+				"/usr/sbin/insmod",
+				"/usr/sbin/lsmod",
+				"/usr/sbin/modinfo",
+				"/usr/sbin/modprobe",
+				"/usr/sbin/rmmod",
+				"/usr/share/bash-completion/completions/kmod",
+				"/usr/share/man/man5/depmod.d.5",
+				"/usr/share/man/man5/modprobe.d.5",
+				"/usr/share/man/man5/modules.dep.5",
+				"/usr/share/man/man5/modules.dep.bin.5",
+				"/usr/share/man/man8/depmod.8",
+				"/usr/share/man/man8/insmod.8",
+				"/usr/share/man/man8/kmod.8",
+				"/usr/share/man/man8/lsmod.8",
+				"/usr/share/man/man8/modinfo.8",
+				"/usr/share/man/man8/modprobe.8",
+				"/usr/share/man/man8/rmmod.8"
+			],
+			"name": "kmod",
+			"provides": [
+				"sysbinary(depmod)",
+				"sysbinary(insmod)",
+				"binary(kmod)",
+				"soname(libkmod.so.2(x86_64))",
+				"sysbinary(lsmod)",
+				"sysbinary(modinfo)",
+				"sysbinary(modprobe)",
+				"sysbinary(rmmod)"
+			]
+		},
+		"kmod-devel": {
+			"build-depends": [
+				"pkgconfig(liblzma)",
+				"pkgconfig(libssl)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib)"
+			],
+			"files": [
+				"/usr/include/libkmod.h",
+				"/usr/lib/libkmod.so",
+				"/usr/lib/pkgconfig/libkmod.pc"
+			],
+			"name": "kmod-devel",
+			"provides": [
+				"pkgconfig(libkmod)"
+			]
+		}
+	},
+	"source-name": "kmod",
+	"source-release": "5",
+	"source-version": "30"
+}
