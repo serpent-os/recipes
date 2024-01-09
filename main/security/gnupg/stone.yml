@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : gnupg
+version     : 2.4.0
+release     : 1
+homepage    : https://gnupg.org/software/index.html
+upstreams   :
+    - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2 : 1d79158dd01d992431dd2e3facb89fdac97127f89784ea2cb610c600fb0c1483
+summary     : Complete and free implementation of the OpenPGP standard to encrypt communications and files
+description : |
+    %(name) is a complete and free implementation of the OpenPGP standard as defined by RFC4880, also known as PGP. GnuPG allows you to encrypt and sign your data and communications; it features a versatile key management system, along with access modules for all kinds of public key directories. GnuPG, also known as GPG, is a command line tool with features for easy integration with other applications. A wealth of frontend applications and libraries are available. GnuPG also provides support for S/MIME and SSH.
+license     :
+    - GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(bzip2)
+    - pkgconfig(gnutls)
+    - pkgconfig(gpg-error)
+    - pkgconfig(ksba)
+    - pkgconfig(libassuan)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(readline)
+    - pkgconfig(sqlite3)
+    - npth-devel
+rundeps     :
+    - pinentry
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libusb": {
+			"build-depends": [
+				"pkgconfig(libudev)"
+			],
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libudev.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libusb-1.0.so.0",
+				"/usr/lib/libusb-1.0.so.0.3.0"
+			],
+			"name": "libusb",
+			"provides": [
+				"soname(libusb-1.0.so.0(x86_64))"
+			]
+		},
+		"libusb-devel": {
+			"build-depends": [
+				"pkgconfig(libudev)"
+			],
+			"files": [
+				"/usr/include/libusb-1.0/libusb.h",
+				"/usr/lib/libusb-1.0.so",
+				"/usr/lib/pkgconfig/libusb-1.0.pc"
+			],
+			"name": "libusb-devel",
+			"provides": [
+				"pkgconfig(libusb-1.0)"
+			]
+		}
+	},
+	"source-name": "libusb",
+	"source-release": "1",
+	"source-version": "1.0.26"
+}

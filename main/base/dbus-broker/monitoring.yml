@@ -1,0 +1,6 @@
+releases:
+  id: 271475
+security:
+  cpe:
+  - vendor: dbus-broker_project
+    product: dbus-broker

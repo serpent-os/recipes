@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-pytz
+version     : 2022.7.1
+release     : 3
+summary     : World timezone definitions, modern and historical
+license     : MIT
+homepage    : https://pythonhosted.org/pytz/
+description : |
+    World timezone definitions, modern and historical
+upstreams   :
+    - https://files.pythonhosted.org/packages/source/p/pytz/pytz-2022.7.1.tar.gz: 01a0681c4b9684a28304615eba55d1ab31ae00bf68ec157ec3708a8182dbbcd0
+# checkdeps   :
+#     - python-pytest
+build       : |
+    %python
+install     : |
+    %python_install
+# check       : |
+#     %python_check

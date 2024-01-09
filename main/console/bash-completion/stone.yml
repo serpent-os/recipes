@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : bash-completion
+version     : 2.11
+release     : 2
+homepage    : https://github.com/scop/bash-completion
+upstreams   :
+    - https://github.com/scop/bash-completion/releases/download/2.11/bash-completion-2.11.tar.xz : 73a8894bad94dee83ab468fa09f628daffd567e8bef1a24277f1e9a0daf911ac
+summary     : Programmable completion functions for bash
+description : |
+    bash-completion is a collection of command line command completions for the Bash shell, collection of helper functions to assist in creating new completions, and set of facilities for loading completions automatically on demand, as well as installing them.
+license     :
+    - GPL-2.0-or-later
+setup       : |
+    %patch %(pkgdir)/0001-Use-a-stateless-configuration.patch
+    %reconfigure
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : zsh
+version     : 5.9
+release     : 1
+homepage    : https://zsh.sourceforge.io
+upstreams   :
+    - https://sourceforge.net/projects/zsh/files/zsh/5.9/zsh-5.9.tar.xz/download : 9b8d1ecedd5b5e81fbf1918e876752a7dd948e05c1a0dba10ab863842d45acd5
+summary     : Extensible shell designed for interactive use
+description : |
+    Zsh is a shell designed for interactive use, although it is also a powerful scripting language. Many of the useful features of bash, ksh, and tcsh were incorporated into zsh; many original features were added.
+license     : MIT
+builddeps   :
+    - gdbm-devel
+    - pkgconfig(libcap)
+    - pkgconfig(ncursesw)
+setup       : |
+    %configure \
+        --enable-cap \
+        --enable-etcdir=%(vendordir)/zsh \
+        --enable-fndir=%(prefix)/share/zsh/functions \
+        --enable-gdbm \
+        --enable-pcre \
+        --enable-scriptdir=%(prefix)/share/zsh/scripts \
+        --enable-zlogin=%(vendordir)/zsh/zlogin \
+        --enable-zlogout=%(vendordir)/zsh/zlogout \
+        --enable-zprofile=%(vendordir)/zsh/zprofile \
+        --enable-zshenv=%(vendordir)/zsh/zshenv
+build       : |
+    %make
+install     : |
+    %make_install
+    install -Dm00644 %(pkgdir)/z* -t %(installroot)/%(vendordir)/zsh

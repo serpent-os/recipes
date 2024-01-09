@@ -1,0 +1,6 @@
+releases:
+  id: 1772
+security:
+  cpe:
+  - vendor: x.org
+    product: libxdmcp

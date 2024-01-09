@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libglvnd
+version     : '1.6.0'
+release     : 2
+homepage    : https://gitlab.freedesktop.org/glvnd/libglvnd
+upstreams   :
+    - https://gitlab.freedesktop.org/glvnd/libglvnd/uploads/2ea903100818cb7703dbabc9a11bc025/libglvnd-1.6.0.tar.gz : ecf095405c5be15ecaec5edc7df7d52cd283aec66cb3811b5df88ec3e563af1c
+summary     : GL Vendor-Neutral Dispatch library
+description : |
+    %(name) is a vendor-neutral dispatch layer for arbitrating OpenGL API calls between multiple vendors. It allows multiple drivers from different vendors to coexist on the same filesystem, and determines which vendor to dispatch each API call to at runtime.
+license     : MIT
+builddeps   :
+    - pkgconfig32(x11)
+    - pkgconfig32(xext)
+emul32      : yes
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

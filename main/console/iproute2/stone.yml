@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : iproute2
+version     : 6.2.0
+release     : 2
+homepage    : https://wiki.linuxfoundation.org/networking/iproute2
+upstreams   :
+    - https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.2.0.tar.xz : 4d72730200ec5b2aabaa1a2f20553c6748292f065d9a154c7d5e22559df9fd62
+summary     : Utility collection to control networking and traffic
+description : |
+    Iproute2 is a collection of utilities for controlling TCP/IP networking and traffic control in Linux. It supersedes ifconfig and route commands.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - binutils
+    - bison
+    - flex-devel
+    - gcc-devel
+setup       : |
+    %patch %(pkgdir)/stateless/serpent.patch
+    %configure
+build       : |
+    %make
+install     : |
+    SBINDIR=%(sbindir) %make_install
+    %install_file %(pkgdir)/%(name).tmpfiles %(installroot)/%(tmpfilesdir)/%(name).conf

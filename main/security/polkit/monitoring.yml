@@ -1,0 +1,8 @@
+releases:
+  id: 3682
+security:
+  cpe:
+  - vendor: freedesktop
+    product: polkit
+  - vendor: polkit_project
+    product: polkit

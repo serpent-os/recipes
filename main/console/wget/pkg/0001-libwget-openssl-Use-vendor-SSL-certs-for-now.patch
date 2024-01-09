@@ -1,0 +1,29 @@
+From f530797eb43393e889b3012ec384bfa481ff5d0f Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Mon, 20 Nov 2023 13:28:04 +0000
+Subject: [PATCH] libwget/openssl: Use vendor SSL certs for now
+
+Until we have a functioning trigger system for cert authority, we must
+rely exclusively on the OS provided store.
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ libwget/ssl_openssl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libwget/ssl_openssl.c b/libwget/ssl_openssl.c
+index 343c2d8..04e8ab9 100644
+--- a/libwget/ssl_openssl.c
++++ b/libwget/ssl_openssl.c
+@@ -462,7 +462,7 @@ static int openssl_load_trust_files(SSL_CTX *ctx, const char *dir)
+ 			goto end;
+ 		}
+ 
+-		dir = "/etc/ssl/certs";
++		dir = "/usr/share/defaults/etc/ssl/certs";
+ 		info_printf(_("OpenSSL: Could not load certificates from default paths. Falling back to '%s'."), dir);
+ 	}
+ 
+-- 
+2.42.0
+

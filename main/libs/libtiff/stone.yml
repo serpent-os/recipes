@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libtiff
+version     : 4.5.0
+release     : 1
+homepage    : https://download.osgeo.org/libtiff
+upstreams   :
+    - https://download.osgeo.org/libtiff/tiff-4.5.0.tar.xz : dafac979c5e7b6c650025569c5a4e720995ba5f17bc17e6276d1f12427be267c
+summary     : TIFF Library and Utilities
+description : |
+    The LibTIFF software provides support for the Tag Image File Format (TIFF), a widely used format for storing image data. The latest version of the TIFF specification is TIFF File Format Specification. Included in this software distribution are: a library, libtiff, for reading and writing TIFF images, a small collection of tools for performing simple manipulations of TIFF images, and, documentation for the library and tools.
+license     :
+    - libtiff
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

@@ -1,0 +1,14 @@
+diff --git a/Makefile.SH b/Makefile.SH
+index efeb8d6..3933d68 100755
+--- a/Makefile.SH
++++ b/Makefile.SH
+@@ -127,6 +127,9 @@ true)
+ 	           ;;
+             esac
+             ;;
++	linux*)
++		shrpldflags="$shrpldflags -Wl,-soname -Wl,libperl.so"
++		;;
+ 	esac
+ 	case "$ldlibpthname" in
+ 	'') ;;

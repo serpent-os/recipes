@@ -1,0 +1,29 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"rdfind": {
+			"build-depends": [
+				"pkgconfig(nettle)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libnettle.so.8(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/rdfind",
+				"/usr/share/man/man1/rdfind.1"
+			],
+			"name": "rdfind",
+			"provides": [
+				"binary(rdfind)"
+			]
+		}
+	},
+	"source-name": "rdfind",
+	"source-release": "1",
+	"source-version": "1.6.0"
+}

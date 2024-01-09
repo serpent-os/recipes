@@ -1,0 +1,135 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gdb": {
+			"build-depends": [
+				"pkgconfig(expat)",
+				"pkgconfig(gmp)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libxxhash)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(python3)",
+				"pkgconfig(readline)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libexpat.so.1(x86_64))",
+				"soname(libgmp.so.10(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libpython3.11.so.1.0(x86_64))",
+				"soname(libreadline.so.8(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libxxhash.so.0(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/gcore",
+				"/usr/bin/gdb",
+				"/usr/bin/gdb-add-index",
+				"/usr/bin/gdbserver",
+				"/usr/share/gdb/python/gdb/FrameDecorator.py",
+				"/usr/share/gdb/python/gdb/FrameIterator.py",
+				"/usr/share/gdb/python/gdb/__init__.py",
+				"/usr/share/gdb/python/gdb/command/__init__.py",
+				"/usr/share/gdb/python/gdb/command/explore.py",
+				"/usr/share/gdb/python/gdb/command/frame_filters.py",
+				"/usr/share/gdb/python/gdb/command/pretty_printers.py",
+				"/usr/share/gdb/python/gdb/command/prompt.py",
+				"/usr/share/gdb/python/gdb/command/type_printers.py",
+				"/usr/share/gdb/python/gdb/command/unwinders.py",
+				"/usr/share/gdb/python/gdb/command/xmethods.py",
+				"/usr/share/gdb/python/gdb/disassembler.py",
+				"/usr/share/gdb/python/gdb/frames.py",
+				"/usr/share/gdb/python/gdb/function/__init__.py",
+				"/usr/share/gdb/python/gdb/function/as_string.py",
+				"/usr/share/gdb/python/gdb/function/caller_is.py",
+				"/usr/share/gdb/python/gdb/function/strfns.py",
+				"/usr/share/gdb/python/gdb/printer/__init__.py",
+				"/usr/share/gdb/python/gdb/printer/bound_registers.py",
+				"/usr/share/gdb/python/gdb/printing.py",
+				"/usr/share/gdb/python/gdb/prompt.py",
+				"/usr/share/gdb/python/gdb/styling.py",
+				"/usr/share/gdb/python/gdb/types.py",
+				"/usr/share/gdb/python/gdb/unwinder.py",
+				"/usr/share/gdb/python/gdb/xmethod.py",
+				"/usr/share/gdb/syscalls/aarch64-linux.xml",
+				"/usr/share/gdb/syscalls/amd64-linux.xml",
+				"/usr/share/gdb/syscalls/arm-linux.xml",
+				"/usr/share/gdb/syscalls/freebsd.xml",
+				"/usr/share/gdb/syscalls/gdb-syscalls.dtd",
+				"/usr/share/gdb/syscalls/i386-linux.xml",
+				"/usr/share/gdb/syscalls/mips-n32-linux.xml",
+				"/usr/share/gdb/syscalls/mips-n64-linux.xml",
+				"/usr/share/gdb/syscalls/mips-o32-linux.xml",
+				"/usr/share/gdb/syscalls/netbsd.xml",
+				"/usr/share/gdb/syscalls/ppc-linux.xml",
+				"/usr/share/gdb/syscalls/ppc64-linux.xml",
+				"/usr/share/gdb/syscalls/s390-linux.xml",
+				"/usr/share/gdb/syscalls/s390x-linux.xml",
+				"/usr/share/gdb/syscalls/sparc-linux.xml",
+				"/usr/share/gdb/syscalls/sparc64-linux.xml",
+				"/usr/share/gdb/system-gdbinit/elinos.py",
+				"/usr/share/gdb/system-gdbinit/wrs-linux.py",
+				"/usr/share/info/annotate.info",
+				"/usr/share/info/gdb.info",
+				"/usr/share/info/gdb.info-1",
+				"/usr/share/info/gdb.info-2",
+				"/usr/share/info/gdb.info-3",
+				"/usr/share/info/gdb.info-4",
+				"/usr/share/info/gdb.info-5",
+				"/usr/share/info/gdb.info-6",
+				"/usr/share/info/gdb.info-7",
+				"/usr/share/info/gdb.info-8",
+				"/usr/share/info/stabs.info",
+				"/usr/share/man/man1/gcore.1",
+				"/usr/share/man/man1/gdb-add-index.1",
+				"/usr/share/man/man1/gdb.1",
+				"/usr/share/man/man1/gdbserver.1",
+				"/usr/share/man/man5/gdbinit.5"
+			],
+			"name": "gdb",
+			"provides": [
+				"binary(gcore)",
+				"binary(gdb)",
+				"binary(gdb-add-index)",
+				"binary(gdbserver)"
+			]
+		},
+		"gdb-devel": {
+			"build-depends": [
+				"pkgconfig(expat)",
+				"pkgconfig(gmp)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libxxhash)",
+				"pkgconfig(ncursesw)",
+				"pkgconfig(python3)",
+				"pkgconfig(readline)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/include/gdb/jit-reader.h",
+				"/usr/lib/libinproctrace.so"
+			],
+			"name": "gdb-devel",
+			"provides": [
+				"soname(libinproctrace.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "gdb",
+	"source-release": "2",
+	"source-version": "13.1"
+}

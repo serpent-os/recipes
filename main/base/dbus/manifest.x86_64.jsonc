@@ -1,0 +1,108 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dbus": {
+			"build-depends": [
+				"pkgconfig(expat)",
+				"pkgconfig(libsystemd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libexpat.so.1(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dbus-cleanup-sockets",
+				"/usr/bin/dbus-daemon",
+				"/usr/bin/dbus-launch",
+				"/usr/bin/dbus-monitor",
+				"/usr/bin/dbus-run-session",
+				"/usr/bin/dbus-send",
+				"/usr/bin/dbus-test-tool",
+				"/usr/bin/dbus-update-activation-environment",
+				"/usr/bin/dbus-uuidgen",
+				"/usr/lib/dbus-1.0/include/dbus/dbus-arch-deps.h",
+				"/usr/lib/dbus/dbus-daemon-launch-helper",
+				"/usr/lib/libdbus-1.so.3",
+				"/usr/lib/libdbus-1.so.3.32.2",
+				"/usr/lib/systemd/system/dbus.service",
+				"/usr/lib/systemd/system/dbus.socket",
+				"/usr/lib/systemd/system/multi-user.target.wants/dbus.service",
+				"/usr/lib/systemd/system/sockets.target.wants/dbus.socket",
+				"/usr/lib/systemd/user/dbus.service",
+				"/usr/lib/systemd/user/dbus.socket",
+				"/usr/lib/systemd/user/sockets.target.wants/dbus.socket",
+				"/usr/lib/sysusers.d/dbus.conf",
+				"/usr/lib/tmpfiles.d/dbus.conf",
+				"/usr/share/dbus-1/services",
+				"/usr/share/dbus-1/session.conf",
+				"/usr/share/dbus-1/session.d",
+				"/usr/share/dbus-1/system-services",
+				"/usr/share/dbus-1/system.conf",
+				"/usr/share/dbus-1/system.d",
+				"/usr/share/doc/dbus/diagram.png",
+				"/usr/share/doc/dbus/diagram.svg",
+				"/usr/share/doc/dbus/examples/GetAllMatchRules.py",
+				"/usr/share/doc/dbus/examples/example-session-disable-stats.conf",
+				"/usr/share/doc/dbus/examples/example-system-enable-stats.conf",
+				"/usr/share/doc/dbus/examples/example-system-hardening-without-traditional-activation.conf",
+				"/usr/share/doc/dbus/system-activation.txt",
+				"/usr/share/xml/dbus-1/busconfig.dtd",
+				"/usr/share/xml/dbus-1/catalog.xml",
+				"/usr/share/xml/dbus-1/introspect.dtd"
+			],
+			"name": "dbus",
+			"provides": [
+				"binary(dbus-cleanup-sockets)",
+				"binary(dbus-daemon)",
+				"binary(dbus-launch)",
+				"binary(dbus-monitor)",
+				"binary(dbus-run-session)",
+				"binary(dbus-send)",
+				"binary(dbus-test-tool)",
+				"binary(dbus-update-activation-environment)",
+				"binary(dbus-uuidgen)",
+				"soname(libdbus-1.so.3(x86_64))"
+			]
+		},
+		"dbus-devel": {
+			"build-depends": [
+				"pkgconfig(expat)",
+				"pkgconfig(libsystemd)"
+			],
+			"files": [
+				"/usr/include/dbus-1.0/dbus/dbus-address.h",
+				"/usr/include/dbus-1.0/dbus/dbus-bus.h",
+				"/usr/include/dbus-1.0/dbus/dbus-connection.h",
+				"/usr/include/dbus-1.0/dbus/dbus-errors.h",
+				"/usr/include/dbus-1.0/dbus/dbus-macros.h",
+				"/usr/include/dbus-1.0/dbus/dbus-memory.h",
+				"/usr/include/dbus-1.0/dbus/dbus-message.h",
+				"/usr/include/dbus-1.0/dbus/dbus-misc.h",
+				"/usr/include/dbus-1.0/dbus/dbus-pending-call.h",
+				"/usr/include/dbus-1.0/dbus/dbus-protocol.h",
+				"/usr/include/dbus-1.0/dbus/dbus-server.h",
+				"/usr/include/dbus-1.0/dbus/dbus-shared.h",
+				"/usr/include/dbus-1.0/dbus/dbus-signature.h",
+				"/usr/include/dbus-1.0/dbus/dbus-syntax.h",
+				"/usr/include/dbus-1.0/dbus/dbus-threads.h",
+				"/usr/include/dbus-1.0/dbus/dbus-types.h",
+				"/usr/include/dbus-1.0/dbus/dbus.h",
+				"/usr/lib/cmake/DBus1/DBus1Config.cmake",
+				"/usr/lib/cmake/DBus1/DBus1ConfigVersion.cmake",
+				"/usr/lib/libdbus-1.so",
+				"/usr/lib/pkgconfig/dbus-1.pc"
+			],
+			"name": "dbus-devel",
+			"provides": [
+				"cmake(DBus1)",
+				"pkgconfig(dbus-1)"
+			]
+		}
+	},
+	"source-name": "dbus",
+	"source-release": "3",
+	"source-version": "1.14.6"
+}

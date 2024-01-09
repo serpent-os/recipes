@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libmicrohttpd": {
+			"build-depends": [
+				"pkgconfig(gnutls)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgnutls.so.30(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libmicrohttpd.so.12",
+				"/usr/lib/libmicrohttpd.so.12.60.0",
+				"/usr/share/info/libmicrohttpd-tutorial.info",
+				"/usr/share/info/libmicrohttpd.info",
+				"/usr/share/info/libmicrohttpd_performance_data.png"
+			],
+			"name": "libmicrohttpd",
+			"provides": [
+				"soname(libmicrohttpd.so.12(x86_64))"
+			]
+		},
+		"libmicrohttpd-devel": {
+			"build-depends": [
+				"pkgconfig(gnutls)"
+			],
+			"depends": [
+				"pkgconfig(gnutls)"
+			],
+			"files": [
+				"/usr/include/microhttpd.h",
+				"/usr/lib/libmicrohttpd.so",
+				"/usr/lib/pkgconfig/libmicrohttpd.pc",
+				"/usr/share/man/man3/libmicrohttpd.3"
+			],
+			"name": "libmicrohttpd-devel",
+			"provides": [
+				"pkgconfig(libmicrohttpd)"
+			]
+		}
+	},
+	"source-name": "libmicrohttpd",
+	"source-release": "3",
+	"source-version": "0.9.76"
+}

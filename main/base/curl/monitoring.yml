@@ -1,0 +1,6 @@
+releases:
+  id: 381
+security:
+  cpe:
+  - vendor: curl
+    product: curl

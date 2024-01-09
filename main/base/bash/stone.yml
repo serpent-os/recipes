@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : bash
+version     : 5.2.15
+release     : 5
+homepage    : http://www.gnu.org/software/bash/bash.html
+upstreams   :
+    - https://ftp.gnu.org/gnu/bash/bash-5.2.tar.gz : a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb
+summary     : GNU Bourne-Again Shell
+description : |
+    Bash is a sh-compatible command interpreter that executes
+    commands read from the standard input or from a file. 
+    Bash also incorporates useful features from the Korn and
+    C shells (ksh and csh).  Bash is ultimately intended to
+    be a conformant implementation of the IEEE Posix Shell
+    and Tools specification (IEEE Working Group 1003.2)
+license     :
+    - GPL-3.0-or-later
+builddeps   :
+    - bison
+    - pkgconfig(ncursesw)
+    - pkgconfig(readline)
+setup       : |
+    %patch %(pkgdir)/stateless/0001-Use-a-stateless-profile-by-default.patch
+    for patch in $(seq 1 9); do %patch %(pkgdir)/bash52-00${patch} -p0; done
+    for patch in $(seq 10 15); do %patch %(pkgdir)/bash52-0${patch} -p0; done
+
+    %configure \
+        --without-bash-malloc \
+        --with-installed-readline \
+        --with-ncurses \
+        --enable-readline \
+        --enable-nls
+build       : |
+    %make
+install     : |
+    %make_install
+    %install_file %(pkgdir)/profile %(installroot)/%(vendordir)/profile

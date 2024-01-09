@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : dbus-broker
+version     : 33
+release     : 3
+summary     : Linux D-Bus Message Broker
+license     : Apache-2.0
+homepage    : https://github.com/bus1/dbus-broker
+description : |
+    Linux D-Bus Message Broker
+upstreams   :
+    - https://github.com/bus1/dbus-broker/releases/download/v33/dbus-broker-33.tar.xz: 23713f25624749fdb274907e429080fa2d8f4dbe76acd87bb6d21a3c818c7841
+builddeps   :
+    # TODO Build with audit
+    - pkgconfig(expat)
+    - pkgconfig(libsystemd)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

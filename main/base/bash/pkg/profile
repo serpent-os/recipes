@@ -1,0 +1,29 @@
+# Begin /usr/share/defaults/etc/profile
+
+alias ls="ls --color=auto -F"
+
+e="\$"
+if [ "$UID" = "0" ]; then
+    e="#"
+fi
+
+PS1="\[\033[01;35m\]\u@\h\[\033[00m\] $e \[\033[01;34m\]\w\[\033[00m\] "
+unset e
+
+if [ -d /usr/share/defaults/etc/profile.d ] ; then
+    for script in /usr/share/defaults/etc/profile.d/*.sh
+    do
+      source $script
+    done
+    unset script
+fi
+
+if [ -d /etc/profile.d ] ; then
+    for script in /etc/profile.d/*.sh
+    do
+      source $script
+    done
+    unset script
+fi
+
+# End /usr/share/defaults/etc/profile

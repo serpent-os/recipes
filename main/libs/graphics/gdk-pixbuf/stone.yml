@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : gdk-pixbuf
+version     : 2.42.10
+release     : 2
+homepage    : https://gitlab.gnome.org/GNOME/gdk-pixbuf
+upstreams   :
+    - https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.xz : ee9b6c75d13ba096907a2e3c6b27b61bcd17f5c7ebeab5a5b439d2f2e39fe44b
+summary     : Image loading library
+description : |
+    GdkPixbuf is a library that loads image data in various formats and stores it as linear buffers in memory. The buffers can then be scaled, composited, modified, saved, or rendered.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpng)
+    - pkgconfig(libtiff-4)
+    - pkgconfig(shared-mime-info)
+toolchain   : gnu
+setup       : |
+    # FIXME: Add missing loaders, svg, webp, avif, etc.
+    %meson \
+        -Dman=false \
+        -Dtests=false \
+        -Dinstalled_tests=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+    # FIXME: Need triggers here
+    LD_LIBRARY_PATH=%(installroot)/usr/lib %(installroot)/usr/bin/gdk-pixbuf-query-loaders %(installroot)/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/lib*.so | sed "s@%(installroot)/@@g" | sed "s@usr/@/usr/@g" > %(installroot)/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+

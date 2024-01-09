@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-tomli
+version     : 2.0.1
+release     : 1
+homepage    : https://pypi.io/packages/source/t/tomli
+upstreams   :
+    - https://pypi.io/packages/source/t/tomli/tomli-2.0.1.tar.gz : de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
+summary     : Lil' TOML parser
+description : |
+    Tomli is a Python library for parsing TOML. It is fully compatible with TOML v1.0.0.
+license     :
+    - MIT
+# [LATER] Reboostrap against python-build.
+builddeps   :
+    - binary(pip3)
+networking  : yes
+install     : |
+    pip3 install tomli==%(version) --root=%(installroot)

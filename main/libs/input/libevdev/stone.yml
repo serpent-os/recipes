@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libevdev
+version     : '1.13.1'
+release     : 2
+homepage    : https://www.freedesktop.org/wiki/Software/libevdev
+upstreams   :
+    - https://www.freedesktop.org/software/libevdev/libevdev-1.13.1.tar.xz : 06a77bf2ac5c993305882bc1641017f5bec1592d6d1b64787bad492ab34f2f36
+summary     : Wrapper library for evdev devices
+description : |
+    %(name) is a wrapper library for evdev devices. it moves the common tasks when dealing with evdev devices into a library and provides a library interface to the callers, thus avoiding erroneous ioctls, etc.
+license     : MIT
+setup       : |
+    %meson -Ddocumentation=disabled -Dtests=disabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install

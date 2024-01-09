@@ -1,0 +1,35 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"pinentry": {
+			"build-depends": [
+				"pkgconfig(libassuan)",
+				"pkgconfig(libsecret-1)",
+				"pkgconfig(ncursesw)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libassuan.so.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgpg-error.so.0(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libsecret-1.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/pinentry",
+				"/usr/bin/pinentry-curses",
+				"/usr/share/info/pinentry.info"
+			],
+			"name": "pinentry",
+			"provides": [
+				"binary(pinentry)",
+				"binary(pinentry-curses)"
+			]
+		}
+	},
+	"source-name": "pinentry",
+	"source-release": "1",
+	"source-version": "1.2.1"
+}

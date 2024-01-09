@@ -1,0 +1,43 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : perl
+version     : 5.36.0
+release     : 4
+summary     : Perl interpreter and modules
+license     :
+    - Artistic-1.0
+    - GPL-2.0-or-later
+homepage    : https://www.perl.org/
+description : |
+    Perl interpreter and modules
+upstreams   :
+    - https://www.cpan.org/src/5.0/perl-5.36.0.tar.xz: 0f386dccbee8e26286404b2cca144e1005be65477979beb9b1ba272d4819bcf0
+builddeps   :
+    - gdbm-devel
+setup       : |
+    %patch %(pkgdir)/serpent/soname.patch
+    ./Configure -des \
+        -Dprefix=/usr \
+        -Dscriptdir=/usr/bin \
+        -Dvendorprefix=/usr \
+        -Dcc="$CC" \
+        -Dldflags="$LDFLAGS" \
+        -Dlddflags="$LDFLAGS" \
+        -Dman1dir=/usr/share/man/man1 \
+        -Dman3dir=/usr/share/man/man3 \
+        -Duseshrplib \
+        -Dusethreads \
+        -Adefine:optimize="-O3 " \
+        -Aappend:optimize="$CFLAGS" \
+        -Adefine:ccflags="$CFLAGS" \
+        -Adefine:ldflags="$LDFLAGS" \
+        -Adefine:lddflags="$LDFLAGS"
+build       : |
+    %make
+install     : |
+    %make_install
+#workload    : |
+#    TEST_JOBS="%(jobs)" make test_harness ||:

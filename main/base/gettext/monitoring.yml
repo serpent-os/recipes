@@ -1,0 +1,6 @@
+releases:
+  id: 898
+security:
+  cpe:
+  - vendor: gnu
+    product: gettext

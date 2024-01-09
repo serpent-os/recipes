@@ -1,0 +1,28 @@
+diff --git a/Makefile b/Makefile
+index 651d2a5..0327edd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,7 +15,7 @@ endif
+ PREFIX?=/usr
+ LIBDIR?=$(PREFIX)/lib
+ SBINDIR?=/sbin
+-CONFDIR?=/etc/iproute2
++CONFDIR?=$(DATADIR)/defaults/iproute2
+ NETNS_RUN_DIR?=/var/run/netns
+ NETNS_ETC_DIR?=/etc/netns
+ DATADIR?=$(PREFIX)/share
+diff --git a/tc/m_ematch.c b/tc/m_ematch.c
+index 4c3acf8..8ebd1e8 100644
+--- a/tc/m_ematch.c
++++ b/tc/m_ematch.c
+@@ -26,7 +26,7 @@
+ #include "tc_util.h"
+ #include "m_ematch.h"
+ 
+-#define EMATCH_MAP "/etc/iproute2/ematch_map"
++#define EMATCH_MAP "/usr/share/defaults/iproute2/ematch_map"
+ 
+ static struct ematch_util *ematch_list;
+ 
+
+

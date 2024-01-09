@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : dash
+version     : 0.5.12
+release     : 2
+summary     : Small and fast POSIX-compliant shell
+license     : BSD-3-Clause
+homepage    : http://gondor.apana.org.au/~herbert/dash
+description : |
+    Small and fast POSIX-compliant shell
+upstreams   :
+    - http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.12.tar.gz: 6a474ac46e8b0b32916c4c60df694c82058d3297d8b385b74508030ca4a8f28a
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Make dash the default sh
+    %install_dir "%(installroot)/usr/bin"
+    ln -svf dash "%(installroot)/usr/bin/sh"
+tuning      :
+    - icf: all
+    - lto
+    - nosemantic

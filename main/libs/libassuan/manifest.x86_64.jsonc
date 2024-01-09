@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libassuan": {
+			"build-depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgpg-error.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/libassuan-config",
+				"/usr/lib/libassuan.so.0",
+				"/usr/lib/libassuan.so.0.8.5",
+				"/usr/share/info/assuan.info"
+			],
+			"name": "libassuan",
+			"provides": [
+				"binary(libassuan-config)",
+				"soname(libassuan.so.0(x86_64))"
+			]
+		},
+		"libassuan-devel": {
+			"build-depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"depends": [
+				"pkgconfig(gpg-error)"
+			],
+			"files": [
+				"/usr/include/assuan.h",
+				"/usr/lib/libassuan.so",
+				"/usr/lib/pkgconfig/libassuan.pc",
+				"/usr/share/aclocal/libassuan.m4"
+			],
+			"name": "libassuan-devel",
+			"provides": [
+				"pkgconfig(libassuan)"
+			]
+		}
+	},
+	"source-name": "libassuan",
+	"source-release": "1",
+	"source-version": "2.5.5"
+}

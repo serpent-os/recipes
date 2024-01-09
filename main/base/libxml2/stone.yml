@@ -1,0 +1,58 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxml2
+version     : 2.10.4
+release     : 5
+summary     : XML parsing library
+license     : MIT
+homepage    : http://www.xmlsoft.org/
+description : |
+    XML parsing library
+upstreams   :
+    - https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.4.tar.xz: ed0c91c5845008f1936739e4eee2035531c1c94742c6541f44ee66d885948d45
+builddeps   :
+    - perl
+    - pkgconfig(liblzma)
+    - pkgconfig(ncursesw)
+    - pkgconfig(python3)
+    - pkgconfig(readline)
+    - pkgconfig(zlib)
+    # 32bit deps
+    - pkgconfig32(liblzma)
+    - pkgconfig32(ncursesw)
+    - pkgconfig32(readline)
+    - pkgconfig32(zlib)
+emul32      : yes
+profiles    :
+    - emul32:
+        setup: |
+            %patch %(pkgdir)/stateless/0001-Make-it-stateless.patch
+            %configure --disable-static \
+                       --with-history \
+                       --without-python
+
+setup       : |
+    %patch %(pkgdir)/stateless/0001-Make-it-stateless.patch
+    %configure --disable-static \
+               --with-history
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check
+workload    : |
+    %make dba100000.xml
+    ./xmllint --noout  dba100000.xml
+    ./xmllint --stream  dba100000.xml
+    ./xmllint --noout --valid test/valid/REC-xml-19980210.xml
+    ./xmllint --stream --valid test/valid/REC-xml-19980210.xml
+#For some reason libtool is stripping -fcs-profile-generate=%(pgo_dir)/CS from link flags
+cspgo       : false
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*

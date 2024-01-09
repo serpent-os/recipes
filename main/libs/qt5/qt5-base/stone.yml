@@ -1,0 +1,89 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : qt5-base
+version     : 5.15.8-lts-lgpl
+release     : 1
+homepage    : https://www.qt.io
+upstreams   :
+    - git|https://invent.kde.org/qt/qt/qtbase.git : 6c09620dc84900c31a2d307a8640dbc15b1fcfdd
+summary     : Cross platform application and UI framework
+description : |
+    Cross platform application and UI framework
+license     : 
+    - GPL-2.0
+    - LGPL-2.1-or-later
+    - LGPL-3.0-or-later
+builddeps   :
+    - binary(perl)
+    - binary(which)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gl)
+    - pkgconfig(egl)
+    - pkgconfig(glesv2)
+    - pkgconfig(dri)
+    - pkgconfig(fontconfig)
+    - pkgconfig(freetype2)
+    - pkgconfig(gbm)
+    - pkgconfig(libdrm)
+    - pkgconfig(libinput)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpcre2-8)
+    - pkgconfig(libpng)
+    - pkgconfig(libssl)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libzstd)
+    - pkgconfig(sqlite3)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(zlib)
+    - vulkan-headers
+setup       : |
+    # TODO build with CUPS, MariaDB/Mysql, Postgresql
+    # TODO harfbuzz, system DoubleConversion, gtk
+    # TODO figure out proper ccache/sccache support
+
+    %patch %(pkgdir)/qmake-cflags.patch
+    %patch %(pkgdir)/stateless/0001-Support-stateless-config-directories.patch
+
+    ./configure -confirm-license -opensource -release \
+                -prefix %(prefix) \
+                -libdir %(libdir) \
+                -archdatadir %(libdir)/qt5 \
+                -bindir %(bindir) \
+                -datadir %(datadir)/qt5 \
+                -examplesdir %(libdir)/qt5/examples \
+                -headerdir %(includedir) \
+                -sysconfdir /etc/xdg \
+                -journald \
+                -ltcg \
+                -no-mimetype-database \
+                -no-rpath \
+                -no-static \
+                -no-strip \
+                -no-use-gold-linker \
+                -openssl-linked \
+                -platform linux-clang \
+                -system-freetype \
+                -system-libjpeg \
+                -system-libpng \
+                -system-pcre \
+                -system-sqlite \
+                -system-zlib
+build       : |
+    %make
+install     : |
+    %make_install INSTALL_ROOT="%(installroot)"
+
+    # We have the dedicated qt5-docs package for that.
+    rm -rfv %(installroot)/usr/share/qt5/doc
+    rmdir -p %(installroot)/usr/share/qt5 || :
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/bin
+            - /usr/lib/qt5/mkspecs
+    - "%(name)-demos" :
+        paths:
+            - /usr/lib/qt5/examples

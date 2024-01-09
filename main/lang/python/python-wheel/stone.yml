@@ -1,0 +1,20 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-wheel
+version     : 0.38.4
+release     : 1
+homepage    : https://github.com/pypa/wheel
+upstreams   :
+    - https://pypi.io/packages/source/w/wheel/wheel-0.38.4.tar.gz : 965f5259b566725405b05e7cf774052044b1ed30119b5d586b2703aafe8719ac
+summary     : The official binary distribution format for Python
+description : |
+    python-wheel is the reference implementation of the Python wheel packaging standard, as defined in PEP 427.
+license     :
+    - MIT
+build       : |
+    %python
+install     : |
+    %python_install

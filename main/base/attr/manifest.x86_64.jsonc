@@ -1,0 +1,70 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"attr": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/attr",
+				"/usr/bin/getfattr",
+				"/usr/bin/setfattr",
+				"/usr/lib/libattr.so.1",
+				"/usr/lib/libattr.so.1.1.2501",
+				"/usr/share/defaults/etc/xattr.conf",
+				"/usr/share/doc/attr/CHANGES",
+				"/usr/share/doc/attr/COPYING",
+				"/usr/share/doc/attr/COPYING.LGPL",
+				"/usr/share/doc/attr/PORTING",
+				"/usr/share/locale/cs/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/de/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/en@boldquot/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/en@quot/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/es/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/gl/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/attr.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/attr.mo",
+				"/usr/share/man/man1/attr.1",
+				"/usr/share/man/man1/getfattr.1",
+				"/usr/share/man/man1/setfattr.1",
+				"/usr/share/man/man3/attr_get.3",
+				"/usr/share/man/man3/attr_getf.3",
+				"/usr/share/man/man3/attr_list.3",
+				"/usr/share/man/man3/attr_listf.3",
+				"/usr/share/man/man3/attr_multi.3",
+				"/usr/share/man/man3/attr_multif.3",
+				"/usr/share/man/man3/attr_remove.3",
+				"/usr/share/man/man3/attr_removef.3",
+				"/usr/share/man/man3/attr_set.3",
+				"/usr/share/man/man3/attr_setf.3"
+			],
+			"name": "attr",
+			"provides": [
+				"binary(attr)",
+				"binary(getfattr)",
+				"soname(libattr.so.1(x86_64))",
+				"binary(setfattr)"
+			]
+		},
+		"attr-devel": {
+			"files": [
+				"/usr/include/attr/attributes.h",
+				"/usr/include/attr/error_context.h",
+				"/usr/include/attr/libattr.h",
+				"/usr/lib/libattr.so",
+				"/usr/lib/pkgconfig/libattr.pc"
+			],
+			"name": "attr-devel",
+			"provides": [
+				"pkgconfig(libattr)"
+			]
+		}
+	},
+	"source-name": "attr",
+	"source-release": "2",
+	"source-version": "2.5.1"
+}

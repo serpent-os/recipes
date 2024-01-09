@@ -1,0 +1,45 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xcb-util-renderutil": {
+			"build-depends": [
+				"pkgconfig(xcb-render)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libxcb-render.so.0(x86_64))",
+				"soname(libxcb.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libxcb-render-util.so.0",
+				"/usr/lib/libxcb-render-util.so.0.0.0"
+			],
+			"name": "xcb-util-renderutil",
+			"provides": [
+				"soname(libxcb-render-util.so.0(x86_64))"
+			]
+		},
+		"xcb-util-renderutil-devel": {
+			"build-depends": [
+				"pkgconfig(xcb-render)"
+			],
+			"depends": [
+				"pkgconfig(xcb)",
+				"pkgconfig(xcb-render)"
+			],
+			"files": [
+				"/usr/include/xcb/xcb_renderutil.h",
+				"/usr/lib/libxcb-render-util.so",
+				"/usr/lib/pkgconfig/xcb-renderutil.pc"
+			],
+			"name": "xcb-util-renderutil-devel",
+			"provides": [
+				"pkgconfig(xcb-renderutil)"
+			]
+		}
+	},
+	"source-name": "xcb-util-renderutil",
+	"source-release": "1",
+	"source-version": "0.3.10"
+}

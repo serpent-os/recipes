@@ -1,0 +1,6 @@
+releases:
+  id: 1417
+security:
+  cpe:
+  - vendor: jansson_project
+    product: jansson

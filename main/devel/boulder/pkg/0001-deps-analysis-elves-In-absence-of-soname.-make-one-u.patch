@@ -1,0 +1,40 @@
+From 525afdba2b45a24aa18d1cfffd48358dfb3d12a4 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Mon, 20 Nov 2023 01:29:16 +0000
+Subject: [PATCH] deps/analysis/elves: In absence of soname... make one up
+
+Certain build systems generate `.so` files within `usr/lib` that
+don't actually contain a SONAME, yet also link to them from their
+binaries, such as those seen in Rust.
+
+To alleviate that, when within the `/usr/lib` tree (and no descendents)
+we'll export the soname as the `.so` basename.
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ source/moss/deps/analysis/elves.d | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/source/moss/deps/analysis/elves.d b/source/moss/deps/analysis/elves.d
+index 5966b374..dd8a5632 100644
+--- a/source/moss/deps/analysis/elves.d
++++ b/source/moss/deps/analysis/elves.d
+@@ -146,10 +146,14 @@ public AnalysisReturn scanElfFiles(scope Analyser analyser, ref FileInfo fileInf
+             /* Soname exposed? Lets share it. */
+             /* TODO: Only expose ACTUAL libraries */
+             auto soname = dynTable.soname;
+-            if (soname == "" || !fileInfo.fullPath.canFind(".so"))
++            if (!fileInfo.fullPath.canFind(".so"))
+             {
+                 break;
+             }
++            if (soname == "")
++            {
++                soname = fileInfo.fullPath.baseName;
++            }
+             auto sonameProvider = "%s(%s)".format(soname, fi.header.machineISA);
+             auto p = Provider(sonameProvider, ProviderType.SharedLibraryName);
+             analyser.bucket(fileInfo).addProvider(p);
+-- 
+2.42.0
+

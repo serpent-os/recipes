@@ -1,0 +1,67 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : rust
+version     : "1.74.0"
+release     : 1
+homepage    : https://www.rust-lang.org/
+upstreams   :
+    - https://static.rust-lang.org/dist/rustc-1.74.0-src.tar.gz : 882b584bc321c5dcfe77cdaa69f277906b936255ef7808fcd5c7492925cf1049
+summary     : Rust programming language compiler + tools
+description : |
+    Rust programming language compiler + tools
+license     :
+    - Apache-2.0
+    - BSL-1.0
+    - CC-BY-4.0
+    - CC-BY-NC-SA-3.0
+    - CC0-1.0
+    - GCC-exception-3.1
+    - GPL-2.0-or-later
+    - GPL-3.0-or-later
+    - MIT
+    - Zlib
+networking  : true
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/lib*.so
+            - /usr/lib/rustlib
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
+builddeps   :
+    - binary(cmake)
+    - binary(FileCheck)
+    - binary(llvm-config)
+    - binary(ln)
+    - binary(ninja)
+    - binary(python)
+    - binary(strip)
+    - binary(which)
+    - gcc-devel # Bootstrap cargo linked to libgcc.
+    - pkgconfig(libffi)
+    - pkgconfig(libunwind)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(ncurses)
+    - pkgconfig(openssl)
+    - pkgconfig(zlib)
+environment : |
+    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
+    export PATH=$(pwd)/BOOT:${PATH}
+setup       : |
+    mkdir BOOT
+    ln -s $(which clang) BOOT/cc
+    %install_file %(pkgdir)/config.toml config.toml
+build       : |
+    python ./x.py build
+install     : |
+    DESTDIR="%(installroot)" python x.py install
+
+    # undesirable:
+    rm %(installroot)%(libdir)/rustlib/uninstall.sh
+    rm %(installroot)%(libdir)/rustlib/install.log
+    rm %(installroot)%(bindir)/*.old -v
+    rm %(installroot)%(datadir)/doc/rust/*.old -v

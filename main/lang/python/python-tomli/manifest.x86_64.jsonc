@@ -1,0 +1,29 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"python-tomli": {
+			"files": [
+				"/usr/lib/python3.11/site-packages/tomli-2.0.1.dist-info/INSTALLER",
+				"/usr/lib/python3.11/site-packages/tomli-2.0.1.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/tomli-2.0.1.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/tomli-2.0.1.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/tomli-2.0.1.dist-info/REQUESTED",
+				"/usr/lib/python3.11/site-packages/tomli-2.0.1.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/tomli/__init__.py",
+				"/usr/lib/python3.11/site-packages/tomli/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/tomli/__pycache__/_parser.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/tomli/__pycache__/_re.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/tomli/__pycache__/_types.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/tomli/_parser.py",
+				"/usr/lib/python3.11/site-packages/tomli/_re.py",
+				"/usr/lib/python3.11/site-packages/tomli/_types.py",
+				"/usr/lib/python3.11/site-packages/tomli/py.typed"
+			],
+			"name": "python-tomli"
+		}
+	},
+	"source-name": "python-tomli",
+	"source-release": "1",
+	"source-version": "2.0.1"
+}

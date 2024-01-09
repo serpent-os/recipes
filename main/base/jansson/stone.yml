@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : jansson
+version     : 2.14
+release     : 2
+summary     : C library for encoding, decoding and manipulating JSON data
+license     : MIT
+homepage    : https://digip.org/jansson/
+description : |
+    C library for encoding, decoding and manipulating JSON data.
+upstreams   :
+    - https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.gz: 5798d010e41cf8d76b66236cfb2f2543c8d082181d16bc3085ab49538d4b9929
+setup       : |
+    %cmake -DJANSSON_BUILD_SHARED_LIBS=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

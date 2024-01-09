@@ -1,0 +1,48 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : docker-buildx
+version     : 0.10.4
+release     : 2
+homepage    : https://github.com/docker/buildx
+upstreams   :
+    - https://github.com/docker/buildx/archive/refs/tags/v0.10.4.tar.gz : 171d383133d7a040a4058160d4bdb6a5416e29a6b9cf3c6470f84e7a1663e8a2
+summary     : Docker CLI plugin for extended build capabilities with BuildKit 
+description : |
+    Docker CLI plugin for extended build capabilities with BuildKit 
+license     :
+    - Apache-2.0
+networking  : yes
+builddeps   :
+    - binary(go)
+environment : |
+    export _buildx_r=github.com/docker/buildx
+    export _cli_plugins_dir=%(libdir)/docker/cli-plugins
+    export GO111MODULE=auto
+
+    # This can probably be removed after golang reboostrap.
+    export GOMODCACHE="%(workdir)/.cache"
+
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+    # Git commit corresponding to the version tag
+    export GITCOMMIT="00ed17df6d20f3ca4553d45789264cdb78506e5f"
+    
+    # https://github.com/serpent-os/boulder/issues/74
+    export CGO_CFLAGS="${CFLAGS} -Wno-error=unused-command-line-argument"
+setup       : |
+    mkdir -p src/$_buildx_r
+    ln -s `pwd` src/$_buildx_r/buildx
+build      : |
+    cd src/$_buildx_r/buildx
+    
+    go build -o docker-buildx \
+        -ldflags "-linkmode=external \
+        -X $_buildx_r/version.Version=v%(version) \
+        -X $_buildx_r/version.Revision=$GITCOMMIT \
+        -X $_buildx_r/version.Package=$_buildx_r" \
+        ./cmd/buildx
+install    : |
+    %install_exe docker-buildx -t %(installroot)/$_cli_plugins_dir

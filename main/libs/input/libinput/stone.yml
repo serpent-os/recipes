@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libinput
+version     : '1.23.0'
+release     : 1
+homepage    : https://www.freedesktop.org/wiki/Software/libinput
+upstreams   :
+    - https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.23.0/libinput-1.23.0.tar.bz2 : fad7011705a21f500229199f789f3e3e794b4c9826b70073745cdaec23bc1d0b
+summary     : Library to handle input devices in Wayland and provides a generic X.Org input driver
+description : |
+    %(name) is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver. It provides device detection, device handling, input device event processing and abstraction so minimize the amount of custom input code compositors need to provide the common set of functionality that users expect.
+license     : MIT
+builddeps   :
+    - pkgconfig(libevdev)
+    - pkgconfig(libudev)
+    - pkgconfig(libwacom)
+    - pkgconfig(mtdev)
+setup       : |
+    %meson \
+        --libexecdir=$(dirname %(libexecdir)) \
+        -Ddebug-gui=false \
+        -Dtests=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install

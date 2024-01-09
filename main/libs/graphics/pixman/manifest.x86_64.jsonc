@@ -1,0 +1,36 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"pixman": {
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libpixman-1.so.0",
+				"/usr/lib/libpixman-1.so.0.42.2"
+			],
+			"name": "pixman",
+			"provides": [
+				"soname(libpixman-1.so.0(x86_64))"
+			]
+		},
+		"pixman-devel": {
+			"files": [
+				"/usr/include/pixman-1/pixman-version.h",
+				"/usr/include/pixman-1/pixman.h",
+				"/usr/lib/libpixman-1.so",
+				"/usr/lib/pkgconfig/pixman-1.pc"
+			],
+			"name": "pixman-devel",
+			"provides": [
+				"pkgconfig(pixman-1)"
+			]
+		}
+	},
+	"source-name": "pixman",
+	"source-release": "1",
+	"source-version": "0.42.2"
+}

@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"containerd": {
+			"build-depends": [
+				"binary(go)",
+				"binary(go-md2man)",
+				"binary(sed)",
+				"pkgconfig(libbtrfsutil)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/containerd",
+				"/usr/bin/containerd-shim",
+				"/usr/bin/containerd-shim-runc-v2",
+				"/usr/bin/containerd-stress",
+				"/usr/bin/ctr",
+				"/usr/lib/systemd/system/containerd.service",
+				"/usr/share/man/man5/containerd-config.toml.5",
+				"/usr/share/man/man8/containerd-config.8",
+				"/usr/share/man/man8/containerd.8",
+				"/usr/share/man/man8/ctr.8"
+			],
+			"name": "containerd",
+			"provides": [
+				"binary(containerd)",
+				"binary(containerd-shim)",
+				"binary(containerd-shim-runc-v2)",
+				"binary(containerd-stress)",
+				"binary(ctr)"
+			]
+		}
+	},
+	"source-name": "containerd",
+	"source-release": "6",
+	"source-version": "1.7.0"
+}

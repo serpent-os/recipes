@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : rdfind
+version     : 1.6.0
+release     : 1
+homepage    : https://github.com/pauldreik/rdfind
+upstreams   :
+    - https://rdfind.pauldreik.se/rdfind-1.6.0.tar.gz : 7a406e8ef1886a5869655604618dd98f672f12c6a6be4926d053be65070f3279
+summary     : Tool to find duplicate files
+description : |
+    A tool to find duplicate files, based on their content rather than their identity
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - pkgconfig(nettle)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python-pyparsing
+version     : 3.0.9
+release     : 1
+homepage    : https://github.com/pyparsing/pyparsing
+upstreams   :
+    - https://pypi.io/packages/source/p/pyparsing/pyparsing-3.0.9.tar.gz : 2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb
+summary     : Library for creating PEG parsers
+description : |
+    The pyparsing module is an alternative approach to creating and executing simple grammars, vs. the traditional lex/yacc approach, or the use of regular expressions. The pyparsing module provides a library of classes that client code uses to construct the grammar directly in Python code.
+license     :
+    - MIT
+# [LATER] Rebootstrap using %pyproject_build, %pyproject_install.
+networking  : yes
+builddeps   :
+    - binary(pip3)
+install     : |
+    pip3 install pyparsing==%(version) --root=%(installroot) --no-deps

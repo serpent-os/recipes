@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xcb-proto
+version     : 1.15.2
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/proto/xcbproto
+upstreams   :
+    - https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.15.2.tar.xz : 7072beb1f680a2fe3f9e535b797c146d22528990c72f63ddb49d2f350a3653ed
+summary     : XML-XCB protocol descriptions used by libxcb for the X11 protocol & extensions
+description : |
+    xcb-proto provides the XML-XCB protocol descriptions that libxcb uses to
+    generate the majority of its code and API. We provide them separately
+    from libxcb to allow reuse by other projects, such as additional
+    language bindings, protocol dissectors, or documentation generators.
+license     :
+    - X11
+builddeps   :
+    - binary(python3)
+packages    :
+    - "%(name)":
+        paths:
+            - /*
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

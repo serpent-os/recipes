@@ -1,0 +1,6 @@
+releases:
+  id: 807
+security:
+  cpe:
+  - vendor: file_project
+    product: file

@@ -1,0 +1,6 @@
+releases:
+    id: 9815
+security:
+    cpe:
+    - vendor: littlecms
+      product: little_cms

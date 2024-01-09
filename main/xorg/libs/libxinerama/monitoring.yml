@@ -1,0 +1,6 @@
+releases:
+  id: 1779
+security:
+  cpe:
+  - vendor: x
+    product: libxinerama

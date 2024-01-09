@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : pkgconf
+version     : 1.9.5
+release     : 7
+summary     : Package compiler and linker metadata toolkit
+license     : ISC
+homepage    : http://pkgconf.org/
+description : |
+    Package compiler and linker metadata toolkit
+upstreams   :
+    - https://distfiles.dereferenced.org/pkgconf/pkgconf-1.9.5.tar.xz: 1ac1656debb27497563036f7bffc281490f83f9b8457c0d60bcfb638fb6b6171
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+    ln -sf pkgconf %(installroot)/usr/bin/pkg-config
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/share/aclocal/pkg.m4

@@ -1,0 +1,30 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"libaio": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libaio.so.1",
+				"/usr/lib/libaio.so.1.0.2"
+			],
+			"name": "libaio",
+			"provides": [
+				"soname(libaio.so.1(x86_64))"
+			]
+		},
+		"libaio-devel": {
+			"files": [
+				"/usr/include/libaio.h",
+				"/usr/lib/libaio.a",
+				"/usr/lib/libaio.so"
+			],
+			"name": "libaio-devel"
+		}
+	},
+	"source-name": "libaio",
+	"source-release": "1",
+	"source-version": "0.3.113"
+}

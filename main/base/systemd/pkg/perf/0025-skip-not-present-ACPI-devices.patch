@@ -1,0 +1,37 @@
+diff -up systemd-251.20220617/src/libsystemd/sd-device/device-enumerator.c.24~ systemd-251.20220617/src/libsystemd/sd-device/device-enumerator.c
+--- systemd-251.20220617/src/libsystemd/sd-device/device-enumerator.c.24~	2022-06-09 17:51:57.000000000 +0200
++++ systemd-251.20220617/src/libsystemd/sd-device/device-enumerator.c	2022-06-17 12:51:53.840688821 +0200
+@@ -665,6 +665,23 @@ static bool relevant_sysfs_subdir(const
+         return IN_SET(de->d_type, DT_DIR, DT_LNK);
+ }
+ 
++static int acpi_status_disabled(char *sysfspath)
++{
++        FILE *file;
++        unsigned int i;
++        char newpath[4096];
++        char line[128];
++        sprintf(newpath, "%s/status", sysfspath);
++        file = fopen(newpath, "r");
++        if (!file)
++                return 0;
++        fclose(file);
++
++        if (strstr(sysfspath, "acpi") && strstr(sysfspath, "device:"))
++                return 1;
++        return 0;
++}
++
+ static int enumerator_scan_dir_and_add_devices(
+                 sd_device_enumerator *enumerator,
+                 const char *basedir,
+@@ -703,6 +720,9 @@ static int enumerator_scan_dir_and_add_d
+ 
+                 (void) sprintf(syspath, "%s%s", path, de->d_name);
+ 
++		if (acpi_status_disabled(syspath))
++			continue;
++
+                 k = sd_device_new_from_syspath(&device, syspath);
+                 if (k < 0) {
+                         if (k != -ENODEV)

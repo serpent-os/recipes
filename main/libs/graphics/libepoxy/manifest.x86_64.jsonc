@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libepoxy": {
+			"build-depends": [
+				"pkgconfig(gl)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libepoxy.so.0",
+				"/usr/lib/libepoxy.so.0.0.0"
+			],
+			"name": "libepoxy",
+			"provides": [
+				"soname(libepoxy.so.0(x86_64))"
+			]
+		},
+		"libepoxy-devel": {
+			"build-depends": [
+				"pkgconfig(gl)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"pkgconfig(egl)",
+				"pkgconfig(gl)",
+				"pkgconfig(x11)"
+			],
+			"files": [
+				"/usr/include/epoxy/common.h",
+				"/usr/include/epoxy/egl.h",
+				"/usr/include/epoxy/egl_generated.h",
+				"/usr/include/epoxy/gl.h",
+				"/usr/include/epoxy/gl_generated.h",
+				"/usr/include/epoxy/glx.h",
+				"/usr/include/epoxy/glx_generated.h",
+				"/usr/lib/libepoxy.so",
+				"/usr/lib/pkgconfig/epoxy.pc"
+			],
+			"name": "libepoxy-devel",
+			"provides": [
+				"pkgconfig(epoxy)"
+			]
+		}
+	},
+	"source-name": "libepoxy",
+	"source-release": "1",
+	"source-version": "1.5.10"
+}

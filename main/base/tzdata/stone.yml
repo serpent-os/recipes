@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : tzdata
+version     : 2023c
+release     : 3
+summary     : Sources for time zone and daylight saving time data
+license     : Public-Domain
+homepage    : https://www.iana.org/time-zones
+description : |
+    Sources for time zone and daylight saving time data
+upstreams   :
+    - https://data.iana.org/time-zones/releases/tzdata2023c.tar.gz: 3f510b5d1b4ae9bb38e485aa302a776b317fb3637bdb6404c4adf7b6cadd965c
+    - https://data.iana.org/time-zones/releases/tzcode2023c.tar.gz: 46d17f2bb19ad73290f03a203006152e0fa0d7b11e5b71467c4a823811b214e7
+builddeps   :
+    - binary(make)
+environment : |
+    export PATH=$PATH:/usr/sbin
+setup       : |
+    tar xf %(sourcedir)/tzcode*.tar.gz
+build       : |
+    make tzdata.zi
+install     : |
+    tz="africa antarctica asia australasia backward etcetera europe factory northamerica southamerica"
+
+    zic -y ./yearistype -d %(installroot)/usr/share/zoneinfo -L /dev/null $tz
+    zic -y ./yearistype -d %(installroot)/usr/share/zoneinfo/posix -L /dev/null $tz
+    zic -y ./yearistype -d %(installroot)/usr/share/zoneinfo/right -L leapseconds $tz
+    # Default DST
+    zic -y ./yearistype -d %(installroot)/usr/share/zoneinfo -L /dev/null -p America/New_York $tz
+
+    install -m00644 iso3166.tab zone.tab leapseconds tzdata.zi %(installroot)/usr/share/zoneinfo

@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : inxi
+version     : 3.3.26-1
+release     : 4
+homepage    : https://smxi.org/docs/inxi.htm
+upstreams   :
+    - https://github.com/smxi/inxi/archive/refs/tags/3.3.26-1.tar.gz : 9c76b90044a5840d9e32fd83d1b3c1bb0d7c39c89904ac387cf6be339785451e
+summary     : System information tool via command line
+description : |
+    %(name) is a full featured CLI system information tool.
+license     :
+    - GPL-3.0-or-later
+rundeps     :
+    - binary(lspci)
+    - binary(perl)
+    - binary(ps)
+    # More optional dependencies will be added later in time.
+    # Run `inxi --recommends` for a list.
+install     : |
+    install -Dm00755 inxi -t %(installroot)/%(bindir)
+    install -Dm00644 inxi.1 -t %(installroot)/%(mandir)/man1

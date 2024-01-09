@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : expat
+version     : 2.5.0
+release     : 3
+summary     : An XML parser library
+license     : MIT
+homepage    : https://libexpat.github.io
+description : |
+    An XML parser library
+upstreams   :
+    - https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.xz: ef2420f0232c087801abf705e89ae65f6257df6b7931d37846a193ef2e8cdcbe
+emul32      : yes
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

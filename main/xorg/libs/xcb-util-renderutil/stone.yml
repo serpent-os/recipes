@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xcb-util-renderutil
+version     : 0.3.10
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxcb-render-util
+upstreams   :
+    - https://xcb.freedesktop.org/dist/xcb-util-renderutil-0.3.10.tar.xz : 3e15d4f0e22d8ddbfbb9f5d77db43eacd7a304029bf25a6166cc63caa96d04ba
+summary     : XCB convenience functions for the Render extension.
+description : |
+    The XCB util modules provides a number of libraries which sit on top of libxcb, the core X protocol library, and some of the extension libraries. These experimental libraries provide convenience functions and interfaces which make the raw X protocol more usable. Some of the libraries also provide client-side code which is not strictly part of the X protocol but which have traditionally been provided by Xlib.
+license     : X11
+builddeps   :
+    - pkgconfig(xcb-render)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

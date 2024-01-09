@@ -1,0 +1,22 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"docker-scan": {
+			"build-depends": [
+				"binary(go)",
+				"binary(make)"
+			],
+			"depends": [
+				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/lib/docker/cli-plugins/docker-scan"
+			],
+			"name": "docker-scan"
+		}
+	},
+	"source-name": "docker-scan",
+	"source-release": "2",
+	"source-version": "0.25.0"
+}

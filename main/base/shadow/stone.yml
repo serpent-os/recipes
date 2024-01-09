@@ -1,0 +1,58 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : shadow
+version     : 4.12.3
+release     : 3
+summary     : PAM-using login and passwd utilities
+license     : BSD-3-Clause
+homepage    : https://github.com/shadow-maint/shadow
+description : |
+    PAM-using login and passwd utilities
+upstreams   :
+    - https://github.com/shadow-maint/shadow/releases/download/4.12.3/shadow-4.12.3.tar.xz: 3d3ec447cfdd11ab5f0486ebc47d15718349d13fea41fc8584568bc118083ccd
+builddeps   :
+    - pkgconfig(libacl)
+    - pkgconfig(libattr)
+    - pkgconfig(libcrypt)
+    - pkgconfig(pam)
+    # Needed for man pages
+    # - xsltproc
+setup       : |
+    %patch %(pkgdir)/stateless/0001-Stateless-useradd-support.patch
+
+    %configure --enable-vendordir=%(vendordir) \
+               --with-yescrypt \
+               --without-su \
+               --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Stateless: Move files into the vendordir
+    # environment file can be cleaned up with gettext and running reconfigure
+
+    #rmdir %(installroot)/etc
+    
+    # Stateless PAM
+    %install_dir %(installroot)/%(vendordir)
+    mv %(installroot)/etc/pam.d %(installroot)/%(vendordir)/
+    # Replace with ours
+    rm -v %(installroot)/%(vendordir)/pam.d/passwd
+    for i in passwd chgpasswd chpasswd newusers; do
+        %install_file %(pkgdir)/pam.d/$i %(installroot)/%(vendordir)/pam.d/
+    done
+    for i in groupadd groupdel groupmod useradd usermod userdel; do
+        %install_file %(pkgdir)/pam.d/defaults %(installroot)/%(vendordir)/pam.d/$i
+    done
+
+    # Remove files that conflict with util-linux
+    # Expect logoutd, vipw, vigr, newgrp, sg to conflict also at a later point
+    for file in login nologin chfn chsh; do
+        find %(installroot)/usr -wholename "*bin/${file}*" -type f -exec rm {} \; # binaries
+        find %(installroot)/%(vendordir) -name "${file}" -type f -exec rm {} \; # pam files
+        #find %(installroot)/usr/share/man -name "*${file}*" -type f -exec rm {} \; # man pages
+    done

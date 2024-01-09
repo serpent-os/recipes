@@ -1,0 +1,8 @@
+releases:
+  id: 12594
+security:
+  cpe:
+  - vendor: nodejs
+    product: node.js
+  - vendor: nodejs
+    product: nodejs

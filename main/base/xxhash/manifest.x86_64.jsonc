@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xxhash": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/xxh128sum",
+				"/usr/bin/xxh32sum",
+				"/usr/bin/xxh64sum",
+				"/usr/bin/xxhsum",
+				"/usr/lib/libxxhash.so.0",
+				"/usr/lib/libxxhash.so.0.8.1",
+				"/usr/share/man/man1/xxh128sum.1",
+				"/usr/share/man/man1/xxh32sum.1",
+				"/usr/share/man/man1/xxh64sum.1",
+				"/usr/share/man/man1/xxhsum.1"
+			],
+			"name": "xxhash",
+			"provides": [
+				"soname(libxxhash.so.0(x86_64))",
+				"binary(xxh128sum)",
+				"binary(xxh32sum)",
+				"binary(xxh64sum)",
+				"binary(xxhsum)"
+			]
+		},
+		"xxhash-devel": {
+			"files": [
+				"/usr/include/xxh3.h",
+				"/usr/include/xxhash.h",
+				"/usr/lib/libxxhash.so",
+				"/usr/lib/pkgconfig/libxxhash.pc"
+			],
+			"name": "xxhash-devel",
+			"provides": [
+				"pkgconfig(libxxhash)"
+			]
+		}
+	},
+	"source-name": "xxhash",
+	"source-release": "5",
+	"source-version": "0.8.1"
+}

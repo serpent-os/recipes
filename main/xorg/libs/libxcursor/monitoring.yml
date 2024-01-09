@@ -1,0 +1,6 @@
+releases:
+    id: 1770
+security:
+  cpe:
+  - vendor: x
+    product: libxcursor

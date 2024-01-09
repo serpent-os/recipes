@@ -1,0 +1,80 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libseccomp": {
+			"build-depends": [
+				"binary(gperf)",
+				"binary(which)",
+				"pkgconfig(valgrind)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/scmp_sys_resolver",
+				"/usr/lib/libseccomp.so.2",
+				"/usr/lib/libseccomp.so.2.5.4",
+				"/usr/share/man/man1/scmp_sys_resolver.1"
+			],
+			"name": "libseccomp",
+			"provides": [
+				"soname(libseccomp.so.2(x86_64))",
+				"binary(scmp_sys_resolver)"
+			]
+		},
+		"libseccomp-devel": {
+			"build-depends": [
+				"binary(gperf)",
+				"binary(which)",
+				"pkgconfig(valgrind)"
+			],
+			"files": [
+				"/usr/include/seccomp-syscalls.h",
+				"/usr/include/seccomp.h",
+				"/usr/lib/libseccomp.so",
+				"/usr/lib/pkgconfig/libseccomp.pc",
+				"/usr/share/man/man3/seccomp_api_get.3",
+				"/usr/share/man/man3/seccomp_api_set.3",
+				"/usr/share/man/man3/seccomp_arch_add.3",
+				"/usr/share/man/man3/seccomp_arch_exist.3",
+				"/usr/share/man/man3/seccomp_arch_native.3",
+				"/usr/share/man/man3/seccomp_arch_remove.3",
+				"/usr/share/man/man3/seccomp_arch_resolve_name.3",
+				"/usr/share/man/man3/seccomp_attr_get.3",
+				"/usr/share/man/man3/seccomp_attr_set.3",
+				"/usr/share/man/man3/seccomp_export_bpf.3",
+				"/usr/share/man/man3/seccomp_export_pfc.3",
+				"/usr/share/man/man3/seccomp_init.3",
+				"/usr/share/man/man3/seccomp_load.3",
+				"/usr/share/man/man3/seccomp_merge.3",
+				"/usr/share/man/man3/seccomp_notify_alloc.3",
+				"/usr/share/man/man3/seccomp_notify_fd.3",
+				"/usr/share/man/man3/seccomp_notify_free.3",
+				"/usr/share/man/man3/seccomp_notify_id_valid.3",
+				"/usr/share/man/man3/seccomp_notify_receive.3",
+				"/usr/share/man/man3/seccomp_notify_respond.3",
+				"/usr/share/man/man3/seccomp_release.3",
+				"/usr/share/man/man3/seccomp_reset.3",
+				"/usr/share/man/man3/seccomp_rule_add.3",
+				"/usr/share/man/man3/seccomp_rule_add_array.3",
+				"/usr/share/man/man3/seccomp_rule_add_exact.3",
+				"/usr/share/man/man3/seccomp_rule_add_exact_array.3",
+				"/usr/share/man/man3/seccomp_syscall_priority.3",
+				"/usr/share/man/man3/seccomp_syscall_resolve_name.3",
+				"/usr/share/man/man3/seccomp_syscall_resolve_name_arch.3",
+				"/usr/share/man/man3/seccomp_syscall_resolve_name_rewrite.3",
+				"/usr/share/man/man3/seccomp_syscall_resolve_num_arch.3",
+				"/usr/share/man/man3/seccomp_version.3"
+			],
+			"name": "libseccomp-devel",
+			"provides": [
+				"pkgconfig(libseccomp)"
+			]
+		}
+	},
+	"source-name": "libseccomp",
+	"source-release": "2",
+	"source-version": "2.5.4"
+}

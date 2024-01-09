@@ -1,0 +1,35 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dbus-broker": {
+			"build-depends": [
+				"pkgconfig(expat)",
+				"pkgconfig(libsystemd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libexpat.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dbus-broker",
+				"/usr/bin/dbus-broker-launch",
+				"/usr/lib/systemd/catalog/dbus-broker-launch.catalog",
+				"/usr/lib/systemd/catalog/dbus-broker.catalog",
+				"/usr/lib/systemd/system/dbus-broker.service",
+				"/usr/lib/systemd/user/dbus-broker.service"
+			],
+			"name": "dbus-broker",
+			"provides": [
+				"binary(dbus-broker)",
+				"binary(dbus-broker-launch)"
+			]
+		}
+	},
+	"source-name": "dbus-broker",
+	"source-release": "3",
+	"source-version": "33"
+}

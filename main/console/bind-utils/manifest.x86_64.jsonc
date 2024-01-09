@@ -1,0 +1,76 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"bind-utils": {
+			"build-depends": [
+				"lmdb-devel",
+				"pkgconfig(json-c)",
+				"pkgconfig(libcap)",
+				"pkgconfig(libidn2)",
+				"pkgconfig(libnghttp2)",
+				"pkgconfig(liburcu-qsbr)",
+				"pkgconfig(libuv)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(openssl)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libidn2.so.0(x86_64))",
+				"soname(libjson-c.so.5(x86_64))",
+				"soname(liblmdb.so.0.0.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libnghttp2.so.14(x86_64))",
+				"soname(libssl.so.3(x86_64))",
+				"soname(liburcu-cds.so.8(x86_64))",
+				"soname(liburcu-common.so.8(x86_64))",
+				"soname(liburcu-qsbr.so.8(x86_64))",
+				"soname(libuv.so.1(x86_64))",
+				"soname(libxml2.so.2(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/delv",
+				"/usr/bin/dig",
+				"/usr/bin/host",
+				"/usr/bin/nslookup",
+				"/usr/bin/nsupdate",
+				"/usr/lib/libdns-9.19.12.so",
+				"/usr/lib/libdns.so",
+				"/usr/lib/libisc-9.19.12.so",
+				"/usr/lib/libisc.so",
+				"/usr/lib/libisccc-9.19.12.so",
+				"/usr/lib/libisccc.so",
+				"/usr/lib/libisccfg-9.19.12.so",
+				"/usr/lib/libisccfg.so",
+				"/usr/lib/libns-9.19.12.so",
+				"/usr/lib/libns.so",
+				"/usr/share/man/man1/delv.1",
+				"/usr/share/man/man1/dig.1",
+				"/usr/share/man/man1/host.1",
+				"/usr/share/man/man1/nslookup.1",
+				"/usr/share/man/man1/nsupdate.1"
+			],
+			"name": "bind-utils",
+			"provides": [
+				"binary(delv)",
+				"binary(dig)",
+				"binary(host)",
+				"soname(libdns-9.19.12.so(x86_64))",
+				"soname(libisc-9.19.12.so(x86_64))",
+				"soname(libisccc-9.19.12.so(x86_64))",
+				"soname(libisccfg-9.19.12.so(x86_64))",
+				"soname(libns-9.19.12.so(x86_64))",
+				"binary(nslookup)",
+				"binary(nsupdate)"
+			]
+		}
+	},
+	"source-name": "bind-utils",
+	"source-release": "2",
+	"source-version": "9.19.12"
+}

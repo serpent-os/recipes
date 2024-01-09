@@ -1,0 +1,180 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxslt": {
+			"build-depends": [
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libxml2.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/bin/xsltproc",
+				"/usr/lib/libexslt.so.0",
+				"/usr/lib/libexslt.so.0.8.20",
+				"/usr/lib/libxslt-plugins",
+				"/usr/lib/libxslt.so.1",
+				"/usr/lib/libxslt.so.1.1.37",
+				"/usr/lib/xsltConf.sh",
+				"/usr/share/man/man1/xsltproc.1"
+			],
+			"name": "libxslt",
+			"provides": [
+				"soname(libexslt.so.0(x86_64))",
+				"soname(libxslt.so.1(x86_64))",
+				"binary(xsltproc)"
+			]
+		},
+		"libxslt-devel": {
+			"build-depends": [
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"pkgconfig(libxml-2.0)"
+			],
+			"files": [
+				"/usr/bin/xslt-config",
+				"/usr/include/libexslt/exslt.h",
+				"/usr/include/libexslt/exsltconfig.h",
+				"/usr/include/libexslt/exsltexports.h",
+				"/usr/include/libxslt/attributes.h",
+				"/usr/include/libxslt/documents.h",
+				"/usr/include/libxslt/extensions.h",
+				"/usr/include/libxslt/extra.h",
+				"/usr/include/libxslt/functions.h",
+				"/usr/include/libxslt/imports.h",
+				"/usr/include/libxslt/keys.h",
+				"/usr/include/libxslt/namespaces.h",
+				"/usr/include/libxslt/numbersInternals.h",
+				"/usr/include/libxslt/pattern.h",
+				"/usr/include/libxslt/preproc.h",
+				"/usr/include/libxslt/security.h",
+				"/usr/include/libxslt/templates.h",
+				"/usr/include/libxslt/transform.h",
+				"/usr/include/libxslt/variables.h",
+				"/usr/include/libxslt/xslt.h",
+				"/usr/include/libxslt/xsltInternals.h",
+				"/usr/include/libxslt/xsltconfig.h",
+				"/usr/include/libxslt/xsltexports.h",
+				"/usr/include/libxslt/xsltlocale.h",
+				"/usr/include/libxslt/xsltutils.h",
+				"/usr/lib/cmake/libxslt/FindGcrypt.cmake",
+				"/usr/lib/cmake/libxslt/libxslt-config.cmake",
+				"/usr/lib/libexslt.so",
+				"/usr/lib/libxslt.so",
+				"/usr/lib/pkgconfig/libexslt.pc",
+				"/usr/lib/pkgconfig/libxslt.pc",
+				"/usr/share/aclocal/libxslt.m4",
+				"/usr/share/man/man3/libexslt.3",
+				"/usr/share/man/man3/libxslt.3"
+			],
+			"name": "libxslt-devel",
+			"provides": [
+				"pkgconfig(libexslt)",
+				"pkgconfig(libxslt)",
+				"cmake(libxslt)",
+				"binary(xslt-config)"
+			]
+		},
+		"libxslt-docs": {
+			"build-depends": [
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(python3)"
+			],
+			"files": [
+				"/usr/share/doc/libxslt/python/examples/basic.py",
+				"/usr/share/doc/libxslt/python/examples/exslt.py",
+				"/usr/share/doc/libxslt/python/examples/extelem.py",
+				"/usr/share/doc/libxslt/python/examples/extfunc.py",
+				"/usr/share/doc/libxslt/python/examples/pyxsltproc.py",
+				"/usr/share/doc/libxslt/python/examples/test.xml",
+				"/usr/share/doc/libxslt/python/examples/test.xsl",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/1.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/10.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/2.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/3.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/4.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/5.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/6.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/7.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/8.png",
+				"/usr/share/doc/libxslt/tutorial/images/callouts/9.png",
+				"/usr/share/doc/libxslt/tutorial/libxslt_tutorial.c",
+				"/usr/share/doc/libxslt/tutorial/libxslttutorial.html",
+				"/usr/share/doc/libxslt/tutorial2/libxslt_pipes.c",
+				"/usr/share/doc/libxslt/tutorial2/libxslt_pipes.html",
+				"/usr/share/doc/libxslt/xsltproc.html",
+				"/usr/share/gtk-doc/html/libexslt/general.html",
+				"/usr/share/gtk-doc/html/libexslt/home.png",
+				"/usr/share/gtk-doc/html/libexslt/index.html",
+				"/usr/share/gtk-doc/html/libexslt/left.png",
+				"/usr/share/gtk-doc/html/libexslt/libexslt-exslt.html",
+				"/usr/share/gtk-doc/html/libexslt/libexslt-exsltexports.html",
+				"/usr/share/gtk-doc/html/libexslt/libexslt.devhelp2",
+				"/usr/share/gtk-doc/html/libexslt/right.png",
+				"/usr/share/gtk-doc/html/libexslt/style.css",
+				"/usr/share/gtk-doc/html/libexslt/up.png",
+				"/usr/share/gtk-doc/html/libxslt/general.html",
+				"/usr/share/gtk-doc/html/libxslt/home.png",
+				"/usr/share/gtk-doc/html/libxslt/index.html",
+				"/usr/share/gtk-doc/html/libxslt/left.png",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-attributes.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-documents.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-extensions.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-extra.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-functions.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-imports.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-keys.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-namespaces.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-numbersInternals.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-pattern.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-preproc.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-security.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-templates.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-transform.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-variables.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-xslt.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-xsltInternals.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-xsltexports.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-xsltlocale.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt-xsltutils.html",
+				"/usr/share/gtk-doc/html/libxslt/libxslt.devhelp2",
+				"/usr/share/gtk-doc/html/libxslt/right.png",
+				"/usr/share/gtk-doc/html/libxslt/style.css",
+				"/usr/share/gtk-doc/html/libxslt/up.png"
+			],
+			"name": "libxslt-docs"
+		},
+		"python-libxslt": {
+			"build-depends": [
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libexslt.so.0(x86_64))",
+				"soname(libxml2.so.2(x86_64))",
+				"soname(libxslt.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/python3.11/site-packages/__pycache__/libxslt.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/__pycache__/libxslt.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/libxslt.py",
+				"/usr/lib/python3.11/site-packages/libxsltmod.so"
+			],
+			"name": "python-libxslt",
+			"provides": [
+				"soname(libxsltmod.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "libxslt",
+	"source-release": "2",
+	"source-version": "1.1.37"
+}

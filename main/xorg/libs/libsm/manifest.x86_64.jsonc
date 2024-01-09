@@ -1,0 +1,62 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libsm": {
+			"build-depends": [
+				"binary(xsltproc)",
+				"pkgconfig(ice)",
+				"pkgconfig(uuid)",
+				"pkgconfig(x11)",
+				"pkgconfig(xorg-macros)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xtrans)"
+			],
+			"depends": [
+				"soname(libICE.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libuuid.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libSM.so.6",
+				"/usr/lib/libSM.so.6.0.1"
+			],
+			"name": "libsm",
+			"provides": [
+				"soname(libSM.so.6(x86_64))"
+			]
+		},
+		"libsm-devel": {
+			"build-depends": [
+				"binary(xsltproc)",
+				"pkgconfig(ice)",
+				"pkgconfig(uuid)",
+				"pkgconfig(x11)",
+				"pkgconfig(xorg-macros)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xtrans)"
+			],
+			"depends": [
+				"pkgconfig(ice)",
+				"pkgconfig(uuid)",
+				"pkgconfig(xproto)"
+			],
+			"files": [
+				"/usr/include/X11/SM/SM.h",
+				"/usr/include/X11/SM/SMlib.h",
+				"/usr/include/X11/SM/SMproto.h",
+				"/usr/lib/libSM.so",
+				"/usr/lib/pkgconfig/sm.pc",
+				"/usr/share/doc/libSM/SMlib.xml",
+				"/usr/share/doc/libSM/xsmp.xml"
+			],
+			"name": "libsm-devel",
+			"provides": [
+				"pkgconfig(sm)"
+			]
+		}
+	},
+	"source-name": "libsm",
+	"source-release": "1",
+	"source-version": "1.2.4"
+}

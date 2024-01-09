@@ -1,0 +1,8 @@
+releases:
+  id: 1788
+security:
+  cpe:
+  - vendor: x
+    product: libxrandr
+  - vendor: x.org
+    product: libxrandr

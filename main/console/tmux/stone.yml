@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : tmux
+version     : 3.3a
+release     : 2
+homepage    : https://github.com/tmux/tmux
+upstreams   :
+    - https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz : e4fd347843bd0772c4f48d6dde625b0b109b7a380ff15db21e97c11a4dcdf93f
+summary     : Terminal multiplexer
+description : |
+    tmux enables a number of terminals to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.
+license     :
+    - ISC
+builddeps   :
+   - binary(bison)
+   - pkgconfig(libevent)
+   - pkgconfig(ncursesw)
+setup       : |
+    %patch %(pkgdir)/security/CVE-2022-47016.patch
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+    %install_file %(pkgdir)/bash_completion_tmux.sh %(installroot)/usr/share/bash-completion/completions/tmux

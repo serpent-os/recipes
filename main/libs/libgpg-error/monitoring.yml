@@ -1,0 +1,6 @@
+releases:
+  id: 1628
+security:
+  cpe:
+  - vendor: gnupg
+    product: libgpg-error

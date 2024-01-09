@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : diffutils
+version     : "3.10"
+release     : 4
+homepage    : https://www.gnu.org/software/diffutils/
+upstreams   :
+    - https://ftp.gnu.org/gnu/diffutils/diffutils-3.10.tar.xz : 90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e
+summary     : GNU utilities to compute and compare difference between files
+description : |
+    GNU Diffutils is a package of several programs related to finding differences between files.
+    
+    Computer users often find occasion to ask how two files differ. Perhaps one file is a newer version of the other file. Or maybe the two files started out as identical copies but were changed by different people.
+license     :
+    - GPL-3.0-or-later
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

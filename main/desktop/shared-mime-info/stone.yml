@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : shared-mime-info
+version     : "2.2"
+release     : 2
+homepage    : https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/
+upstreams   :
+    - https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-info-2.2.tar.gz : bcf5d552318136cf7b3ae259975f414fbcdc9ebce000c87cf1f0901ff14e619f
+summary     : Shared MIME Info
+description : |
+    The shared-mime-info package contains: The core database of common MIME types, their file extensions and icon names. The update-mime-database command, used to extend the DB and install a new MIME data. The freedesktop.org shared MIME database spec.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(xmllint)
+    - binary(xmlto)
+    - binary(xsltproc)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(libxml-2.0)
+toolchain   : gnu
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+packages    :
+    - "%(name)":
+        paths:
+            - /*
+    - "%(name)-dbginfo":
+        paths:
+            - /usr/lib/debug/

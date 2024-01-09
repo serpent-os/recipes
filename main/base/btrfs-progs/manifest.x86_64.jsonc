@@ -1,0 +1,98 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"btrfs-progs": {
+			"build-depends": [
+				"pkgconfig(blkid)",
+				"pkgconfig(ext2fs)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(lzo2)",
+				"pkgconfig(uuid)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libblkid.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(liblzo2.so.2(x86_64))",
+				"soname(libudev.so.1(x86_64))",
+				"soname(libuuid.so.1(x86_64))",
+				"soname(libz.so.1(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/btrfs",
+				"/usr/bin/btrfs-convert",
+				"/usr/bin/btrfs-find-root",
+				"/usr/bin/btrfs-image",
+				"/usr/bin/btrfs-map-logical",
+				"/usr/bin/btrfs-select-super",
+				"/usr/bin/btrfsck",
+				"/usr/bin/btrfstune",
+				"/usr/bin/fsck.btrfs",
+				"/usr/bin/mkfs.btrfs",
+				"/usr/lib/libbtrfs.so.0",
+				"/usr/lib/libbtrfs.so.0.1",
+				"/usr/lib/libbtrfsutil.so.1",
+				"/usr/lib/libbtrfsutil.so.1.2.0",
+				"/usr/lib/systemd/system/btrfs-scrub@.service",
+				"/usr/lib/systemd/system/btrfs-scrub@.timer",
+				"/usr/lib/udev/rules.d/64-btrfs-dm.rules",
+				"/usr/lib/udev/rules.d/64-btrfs-zoned.rules",
+				"/usr/share/bash-completion/completions/btrfs"
+			],
+			"name": "btrfs-progs",
+			"provides": [
+				"binary(btrfs)",
+				"binary(btrfs-convert)",
+				"binary(btrfs-find-root)",
+				"binary(btrfs-image)",
+				"binary(btrfs-map-logical)",
+				"binary(btrfs-select-super)",
+				"binary(btrfsck)",
+				"binary(btrfstune)",
+				"binary(fsck.btrfs)",
+				"soname(libbtrfs.so.0(x86_64))",
+				"soname(libbtrfsutil.so.1(x86_64))",
+				"binary(mkfs.btrfs)"
+			]
+		},
+		"btrfs-progs-devel": {
+			"build-depends": [
+				"pkgconfig(blkid)",
+				"pkgconfig(ext2fs)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(lzo2)",
+				"pkgconfig(uuid)",
+				"pkgconfig(zlib)"
+			],
+			"files": [
+				"/usr/include/btrfs/ctree.h",
+				"/usr/include/btrfs/ioctl.h",
+				"/usr/include/btrfs/kerncompat.h",
+				"/usr/include/btrfs/list.h",
+				"/usr/include/btrfs/rbtree.h",
+				"/usr/include/btrfs/rbtree_types.h",
+				"/usr/include/btrfs/send-stream.h",
+				"/usr/include/btrfs/send-utils.h",
+				"/usr/include/btrfs/send.h",
+				"/usr/include/btrfs/version.h",
+				"/usr/include/btrfsutil.h",
+				"/usr/lib/libbtrfs.so",
+				"/usr/lib/libbtrfsutil.so",
+				"/usr/lib/pkgconfig/libbtrfsutil.pc"
+			],
+			"name": "btrfs-progs-devel",
+			"provides": [
+				"pkgconfig(libbtrfsutil)"
+			]
+		}
+	},
+	"source-name": "btrfs-progs",
+	"source-release": "6",
+	"source-version": "6.2.2"
+}

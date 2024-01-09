@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libpcap
+version     : 1.10.4
+release     : 2
+homepage    : https://www.tcpdump.org/ 
+upstreams   :
+    - https://www.tcpdump.org/release/libpcap-1.10.4.tar.gz : ed19a0383fad72e3ad435fd239d7cd80d64916b87269550159d20e47160ebe5f
+summary     : Platform-independent network traffic capture library
+description : |
+    Platform-independent network traffic capture library
+license     :
+    - BSD-3-Clause
+builddeps   :
+    - binary(flex)
+    - binary(yacc)
+    - pkgconfig(libnl-3.0)
+setup       : |
+    # TODO support bluetooth and usb
+    %configure --disable-static \
+               --enable-ipv6 \
+               --with-libnl
+build       : |
+    %make
+install     : |
+    %make_install
+    rm -v %(installroot)/%(libdir)/libpcap.a

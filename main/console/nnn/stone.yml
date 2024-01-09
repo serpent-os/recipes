@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : nnn
+version     : 4.8
+release     : 2
+homepage    : https://github.com/jarun/nnn
+upstreams   :
+    - https://github.com/jarun/nnn/archive/refs/tags/v4.8.tar.gz : 0a744e67a0ce8b5e1e04961f542d2c33ddb6ceed46ba760dd35c4922b21f1146
+summary     : The unorthodox terminal file manager
+description : |
+     Full-featured terminal file manager. It's tiny, nearly 0-config and incredibly fast. 
+     It is designed to be unobtrusive with smart workflows to match the trains of thought.
+license     : BSD-2-Clause
+builddeps   :
+   - pkgconfig(ncursesw)
+   - pkgconfig(readline)
+rundeps     :
+   - libarchive
+build       : |
+    %make
+install     : |
+    %make_install PREFIX=/usr

@@ -1,0 +1,36 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"moby": {
+			"build-depends": [
+				"binary(go)",
+				"binary(go-md2man)",
+				"linux-headers",
+				"pkgconfig(libsystemd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dockerd",
+				"/usr/lib/moby/docker-init",
+				"/usr/lib/moby/docker-proxy",
+				"/usr/lib/systemd/system/docker.service",
+				"/usr/lib/systemd/system/docker.socket",
+				"/usr/lib/sysusers.d/moby.conf",
+				"/usr/lib/udev/rules.d/80-docker.rules",
+				"/usr/share/man/man8/dockerd.8"
+			],
+			"name": "moby",
+			"provides": [
+				"binary(dockerd)"
+			]
+		}
+	},
+	"source-name": "moby",
+	"source-release": "4",
+	"source-version": "23.0.2"
+}

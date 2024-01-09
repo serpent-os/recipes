@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : fakeroot
+version     : 1.31
+release     : 2
+homepage    : https://packages.debian.org/fakeroot
+upstreams   :
+    - https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.31.orig.tar.gz : 63886d41e11c56c7170b9d9331cca086421b350d257338ef14daad98f77e202f
+summary     : Tool for simulating super-user privileges
+description : |
+    Tool for simulating super-user privileges
+license     :
+    - GPL-3.0-or-later
+emul32      : true
+builddeps   :
+    - pkgconfig(libacl)
+    - pkgconfig(libattr)
+    - pkgconfig(libcap)
+setup       : |
+    %configure \
+        --disable-static \
+        --libdir=%(libdir)/fakeroot \
+        --with-ipc=sysv
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,60 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : sudo
+version     : 1.9.13_p3
+release     : 4
+summary     : Run commands as a privileged user
+license     :
+    - ISC
+homepage    : https://www.sudo.ws/
+description : |
+    The Sudo package allows a system administrator to give certain users (or groups of users) the ability to run some (or all) commands as root or another user while logging the commands and arguments.
+upstreams   :
+    - https://www.sudo.ws/dist/sudo-1.9.13p3.tar.gz: 92334a12bb93e0c056b09f53e255ccb7d6f67c6350e2813cd9593ceeca78560b
+builddeps   :
+    - pkgconfig(libssl)
+    - pkgconfig(pam)
+    - pkgconfig(zlib)
+setup       : |
+    %patch %(pkgdir)/stateless/0001-stateless.patch
+    %patch %(pkgdir)/stateless/0002-visudo-Use-sane-default-file.patch
+
+    %configure --with-vardir=/var/db/sudo \
+               --with-rundir=/run/sudo \
+               --with-insults \
+               --with-all-insults \
+               --with-editor=/usr/bin/nano \
+               --with-env-editor \
+               --with-passprompt="[sudo] password for %%p: " \
+               --with-tty-tickets
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # PAM
+    %install_file %(pkgdir)/sudo.pam %(installroot)/%(vendordir)/pam.d/sudo
+
+    # Default sudoers
+    rm -fv %(installroot)/%(vendordir)/sudo/sudoers
+    %install_file %(pkgdir)/sudoers %(installroot)/%(vendordir)/sudo/sudoers
+
+    # Cleanup
+    rm -rfv %(installroot)/usr/share/doc
+
+    # Tmpfiles. Note that sudo already ships a tmpfiles, we're just adding onto it.
+    %tmpfiles "d /var/db/sudo/ 0700 root root -"
+    %tmpfiles "d /var/db/sudo/lectured 0700 root root -"
+
+    # Stateless
+    rm -fv %(installroot)/etc
+    rmdir %(installroot)/run/sudo
+    rmdir %(installroot)/run/
+    rmdir %(installroot)/var/db/sudo/lectured
+    rmdir %(installroot)/var/db/sudo
+    rmdir %(installroot)/var/db
+    rmdir %(installroot)/var
+toolchain   : gnu

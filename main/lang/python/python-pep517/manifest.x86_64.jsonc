@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"python-pep517": {
+			"files": [
+				"/usr/lib/python3.11/site-packages/pep517-0.12.0-py3.11.egg-info/PKG-INFO",
+				"/usr/lib/python3.11/site-packages/pep517-0.12.0-py3.11.egg-info/SOURCES.txt",
+				"/usr/lib/python3.11/site-packages/pep517-0.12.0-py3.11.egg-info/dependency_links.txt",
+				"/usr/lib/python3.11/site-packages/pep517-0.12.0-py3.11.egg-info/requires.txt",
+				"/usr/lib/python3.11/site-packages/pep517-0.12.0-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/pep517/__init__.py",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/build.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/check.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/colorlog.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/compat.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/dirtools.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/envbuild.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/meta.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/__pycache__/wrappers.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/build.py",
+				"/usr/lib/python3.11/site-packages/pep517/check.py",
+				"/usr/lib/python3.11/site-packages/pep517/colorlog.py",
+				"/usr/lib/python3.11/site-packages/pep517/compat.py",
+				"/usr/lib/python3.11/site-packages/pep517/dirtools.py",
+				"/usr/lib/python3.11/site-packages/pep517/envbuild.py",
+				"/usr/lib/python3.11/site-packages/pep517/in_process/__init__.py",
+				"/usr/lib/python3.11/site-packages/pep517/in_process/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/in_process/__pycache__/_in_process.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pep517/in_process/_in_process.py",
+				"/usr/lib/python3.11/site-packages/pep517/meta.py",
+				"/usr/lib/python3.11/site-packages/pep517/wrappers.py"
+			],
+			"name": "python-pep517"
+		}
+	},
+	"source-name": "python-pep517",
+	"source-release": "1",
+	"source-version": "0.12.0"
+}

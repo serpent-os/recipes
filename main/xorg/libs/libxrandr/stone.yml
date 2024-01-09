@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxrandr
+version     : 1.5.3
+release     : 3
+homepage    : https://www.x.org/wiki/libraries/libxrandr/
+upstreams   :
+    - https://www.x.org/releases/individual/lib/libXrandr-1.5.3.tar.gz : 3ad316c1781fe2fe22574b819e81f0eff087a8560377f521ba932238b41b251f
+summary     : X11 RandR extension library
+description : |
+    libXrandr provides an X Window System client interface to the RandR extension to the X protocol. The RandR extension allows for run-time configuration of display attributes such as resolution, rotation, and reflection.
+license     : X11
+builddeps   :
+    - pkgconfig32(xext)
+    - pkgconfig32(xrender)
+    - pkgconfig32(x11)
+    - pkgconfig(xproto)
+emul32      : yes
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

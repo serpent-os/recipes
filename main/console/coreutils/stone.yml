@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : coreutils
+version     : 9.3
+release     : 4
+homepage    : https://www.gnu.org/software/coreutils/
+upstreams   :
+    - https://ftp.gnu.org/gnu/coreutils/coreutils-9.3.tar.xz : adbcfcfe899235b71e8768dcf07cd532520b7f54f9a8064843f8d199a904bbaa
+summary     : Basic file, shell, and text manipulation utilities
+description : |
+    The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system.
+license     :
+    - GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(libacl)
+    - pkgconfig(libattr)
+    - pkgconfig(libcap)
+setup       : |
+    export FORCE_UNSAFE_CONFIGURE=1
+    %configure \
+        --enable-single-binary \
+        --with-openssl=no \
+        --enable-no-install-program=kill,groups
+build       : |
+    %make
+install     : |
+    %make_install

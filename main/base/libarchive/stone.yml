@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libarchive
+version     : 3.6.2
+release     : 2
+summary     : Multi-format archive and compression library
+license     : BSD-2-Clause
+homepage    : https://www.libarchive.org
+description : |
+    Multi-format archive and compression library
+upstreams   :
+    - https://www.libarchive.org/downloads/libarchive-3.6.2.tar.gz: ba6d02f15ba04aba9c23fd5f236bb234eab9d5209e95d1c4df85c44d5f19b9b3
+builddeps   :
+    - pkgconfig(libacl)
+    - pkgconfig(libattr)
+    - pkgconfig(libcrypto)
+    - pkgconfig(liblz4)
+    - pkgconfig(liblzma)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(libzstd)
+    - pkgconfig(zlib)
+environment : |
+    unset LDFLAGS
+    unset CFLAGS
+setup       : |
+    %configure --disable-rpath \
+               --disable-static \
+               --enable-bsdcpio=static \
+               --enable-bsdtar=static \
+               --enable-shared
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Make libarchive default provider of cpio + tar
+    ln -svf bsdtar "%(installroot)/usr/bin/tar"
+    ln -svf bsdcpio "%(installroot)/usr/bin/cpio"

@@ -1,0 +1,68 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxshmfence": {
+			"build-depends": [
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libxshmfence.so.1",
+				"/usr/lib/libxshmfence.so.1.0.0"
+			],
+			"name": "libxshmfence",
+			"provides": [
+				"soname(libxshmfence.so.1(x86_64))"
+			]
+		},
+		"libxshmfence-32bit": {
+			"build-depends": [
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libxshmfence.so.1",
+				"/usr/lib32/libxshmfence.so.1.0.0"
+			],
+			"name": "libxshmfence-32bit",
+			"provides": [
+				"soname(libxshmfence.so.1(x86))"
+			]
+		},
+		"libxshmfence-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)"
+			],
+			"files": [
+				"/usr/lib32/libxshmfence.so",
+				"/usr/lib32/pkgconfig/xshmfence.pc"
+			],
+			"name": "libxshmfence-32bit-devel",
+			"provides": [
+				"pkgconfig32(xshmfence)"
+			]
+		},
+		"libxshmfence-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)"
+			],
+			"files": [
+				"/usr/include/X11/xshmfence.h",
+				"/usr/lib/libxshmfence.so",
+				"/usr/lib/pkgconfig/xshmfence.pc"
+			],
+			"name": "libxshmfence-devel",
+			"provides": [
+				"pkgconfig(xshmfence)"
+			]
+		}
+	},
+	"source-name": "libxshmfence",
+	"source-release": "1",
+	"source-version": "1.3.2"
+}

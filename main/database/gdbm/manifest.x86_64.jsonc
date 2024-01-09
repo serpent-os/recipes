@@ -1,0 +1,63 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gdbm": {
+			"build-depends": [
+				"pkgconfig(readline)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libreadline.so.8(x86_64))"
+			],
+			"files": [
+				"/usr/bin/gdbm_dump",
+				"/usr/bin/gdbm_load",
+				"/usr/bin/gdbmtool",
+				"/usr/lib/libgdbm.so.6",
+				"/usr/lib/libgdbm.so.6.0.0",
+				"/usr/share/info/gdbm.info",
+				"/usr/share/locale/da/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/de/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/eo/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/es/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/fi/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/pt_BR/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/vi/LC_MESSAGES/gdbm.mo",
+				"/usr/share/man/man1/gdbm_dump.1",
+				"/usr/share/man/man1/gdbm_load.1",
+				"/usr/share/man/man1/gdbmtool.1",
+				"/usr/share/man/man3/gdbm.3"
+			],
+			"name": "gdbm",
+			"provides": [
+				"binary(gdbm_dump)",
+				"binary(gdbm_load)",
+				"binary(gdbmtool)",
+				"soname(libgdbm.so.6(x86_64))"
+			]
+		},
+		"gdbm-devel": {
+			"build-depends": [
+				"pkgconfig(readline)"
+			],
+			"files": [
+				"/usr/include/gdbm.h",
+				"/usr/lib/libgdbm.so"
+			],
+			"name": "gdbm-devel"
+		}
+	},
+	"source-name": "gdbm",
+	"source-release": "2",
+	"source-version": "1.23"
+}

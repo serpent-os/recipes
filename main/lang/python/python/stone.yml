@@ -1,0 +1,55 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : python
+version     : 3.11.2
+release     : 3
+summary     : Python language interpreter
+license     : Python-2.0
+homepage    : https://www.python.org
+description : |
+    Python language interpreter
+upstreams   :
+    - https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz: 29e4b8f5f1658542a8c13e2dd277358c9c48f2b2f7318652ef1675e402b9d2af
+builddeps   :
+    - pkgconfig(bzip2)
+    - pkgconfig(libffi)
+    - pkgconfig(liblzma)
+    - pkgconfig(uuid)
+    - pkgconfig(libcrypt)
+    - pkgconfig(ncursesw)
+    - pkgconfig(libssl)
+    - pkgconfig(zlib)
+    - llvm-bolt
+setup       : |
+    %patch %(pkgdir)/serpent/always-install-setuptools.patch
+
+    %configure --disable-ipv6 \
+        --enable-lto \
+        --enable-optimizations \
+        --enable-shared \
+        --with-computed-gotos \
+        --without-cxx-main \
+        ax_cv_c_float_words_bigendian=no
+build       : |
+    %make
+install     : |
+    # Bolt section removed until the reason why it segfaults the install is found
+    %make_install
+
+    ln -s %(bindir)/python3 %(installroot)/%(bindir)/python
+packages    :
+    - "%(name)-devel":
+        rundeps:
+            # python3 /usr/lib/python*/config-*-x86_64-linux-gnu/python-config.py --ldflags
+            # returns "-lcrypt" among the other things. Make sure it's available.
+            - pkgconfig(libcrypt)
+tuning      :
+    - bolt
+    - icf: all
+    - lto
+    - nosemantic
+    - optimize: speed
+    - symbolic

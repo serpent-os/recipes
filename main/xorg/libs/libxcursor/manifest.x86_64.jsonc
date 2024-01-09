@@ -1,0 +1,160 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxcursor": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xfixes)",
+				"pkgconfig32(xrender)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86_64))",
+				"soname(libXfixes.so.3(x86_64))",
+				"soname(libXrender.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libXcursor.so.1",
+				"/usr/lib/libXcursor.so.1.0.2"
+			],
+			"name": "libxcursor",
+			"provides": [
+				"soname(libXcursor.so.1(x86_64))"
+			]
+		},
+		"libxcursor-32bit": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xfixes)",
+				"pkgconfig32(xrender)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86))",
+				"soname(libXfixes.so.3(x86))",
+				"soname(libXrender.so.1(x86))",
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libXcursor.so.1",
+				"/usr/lib32/libXcursor.so.1.0.2"
+			],
+			"name": "libxcursor-32bit",
+			"provides": [
+				"soname(libXcursor.so.1(x86))"
+			]
+		},
+		"libxcursor-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xfixes)",
+				"pkgconfig32(xrender)"
+			],
+			"depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xfixes)",
+				"pkgconfig(xproto)",
+				"pkgconfig32(xrender)"
+			],
+			"files": [
+				"/usr/lib32/libXcursor.a",
+				"/usr/lib32/libXcursor.so",
+				"/usr/lib32/pkgconfig/xcursor.pc"
+			],
+			"name": "libxcursor-32bit-devel",
+			"provides": [
+				"pkgconfig32(xcursor)"
+			]
+		},
+		"libxcursor-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xfixes)",
+				"pkgconfig32(xrender)"
+			],
+			"depends": [
+				"pkgconfig(x11)",
+				"pkgconfig(xfixes)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xrender)"
+			],
+			"files": [
+				"/usr/include/X11/Xcursor/Xcursor.h",
+				"/usr/lib/libXcursor.a",
+				"/usr/lib/libXcursor.so",
+				"/usr/lib/pkgconfig/xcursor.pc",
+				"/usr/share/man/man3/Xcursor.3",
+				"/usr/share/man/man3/XcursorAnimateCreate.3",
+				"/usr/share/man/man3/XcursorAnimateDestroy.3",
+				"/usr/share/man/man3/XcursorAnimateNext.3",
+				"/usr/share/man/man3/XcursorCommentCreate.3",
+				"/usr/share/man/man3/XcursorCommentDestroy.3",
+				"/usr/share/man/man3/XcursorCommentsCreate.3",
+				"/usr/share/man/man3/XcursorCommentsDestroy.3",
+				"/usr/share/man/man3/XcursorCursorsCreate.3",
+				"/usr/share/man/man3/XcursorCursorsDestroy.3",
+				"/usr/share/man/man3/XcursorFileLoad.3",
+				"/usr/share/man/man3/XcursorFileLoadAllImages.3",
+				"/usr/share/man/man3/XcursorFileLoadImage.3",
+				"/usr/share/man/man3/XcursorFileLoadImages.3",
+				"/usr/share/man/man3/XcursorFileSave.3",
+				"/usr/share/man/man3/XcursorFileSaveImages.3",
+				"/usr/share/man/man3/XcursorFilenameLoad.3",
+				"/usr/share/man/man3/XcursorFilenameLoadAllImages.3",
+				"/usr/share/man/man3/XcursorFilenameLoadCursor.3",
+				"/usr/share/man/man3/XcursorFilenameLoadCursors.3",
+				"/usr/share/man/man3/XcursorFilenameLoadImage.3",
+				"/usr/share/man/man3/XcursorFilenameLoadImages.3",
+				"/usr/share/man/man3/XcursorFilenameSave.3",
+				"/usr/share/man/man3/XcursorFilenameSaveImages.3",
+				"/usr/share/man/man3/XcursorGetDefaultSize.3",
+				"/usr/share/man/man3/XcursorGetTheme.3",
+				"/usr/share/man/man3/XcursorGetThemeCore.3",
+				"/usr/share/man/man3/XcursorImageCreate.3",
+				"/usr/share/man/man3/XcursorImageDestroy.3",
+				"/usr/share/man/man3/XcursorImageHash.3",
+				"/usr/share/man/man3/XcursorImageLoadCursor.3",
+				"/usr/share/man/man3/XcursorImagesCreate.3",
+				"/usr/share/man/man3/XcursorImagesDestroy.3",
+				"/usr/share/man/man3/XcursorImagesLoadCursor.3",
+				"/usr/share/man/man3/XcursorImagesLoadCursors.3",
+				"/usr/share/man/man3/XcursorImagesSetName.3",
+				"/usr/share/man/man3/XcursorLibraryLoadCursor.3",
+				"/usr/share/man/man3/XcursorLibraryLoadCursors.3",
+				"/usr/share/man/man3/XcursorLibraryLoadImage.3",
+				"/usr/share/man/man3/XcursorLibraryLoadImages.3",
+				"/usr/share/man/man3/XcursorLibraryPath.3",
+				"/usr/share/man/man3/XcursorLibraryShape.3",
+				"/usr/share/man/man3/XcursorNoticeCreateBitmap.3",
+				"/usr/share/man/man3/XcursorNoticePutBitmap.3",
+				"/usr/share/man/man3/XcursorSetDefaultSize.3",
+				"/usr/share/man/man3/XcursorSetTheme.3",
+				"/usr/share/man/man3/XcursorSetThemeCore.3",
+				"/usr/share/man/man3/XcursorShapeLoadCursor.3",
+				"/usr/share/man/man3/XcursorShapeLoadCursors.3",
+				"/usr/share/man/man3/XcursorShapeLoadImage.3",
+				"/usr/share/man/man3/XcursorShapeLoadImages.3",
+				"/usr/share/man/man3/XcursorSupportsARGB.3",
+				"/usr/share/man/man3/XcursorSupportsAnim.3",
+				"/usr/share/man/man3/XcursorTryShapeBitmapCursor.3",
+				"/usr/share/man/man3/XcursorTryShapeCursor.3",
+				"/usr/share/man/man3/XcursorXcFileLoad.3",
+				"/usr/share/man/man3/XcursorXcFileLoadAllImages.3",
+				"/usr/share/man/man3/XcursorXcFileLoadImage.3",
+				"/usr/share/man/man3/XcursorXcFileLoadImages.3",
+				"/usr/share/man/man3/XcursorXcFileSave.3"
+			],
+			"name": "libxcursor-devel",
+			"provides": [
+				"pkgconfig(xcursor)"
+			]
+		}
+	},
+	"source-name": "libxcursor",
+	"source-release": "1",
+	"source-version": "1.2.1"
+}

@@ -1,0 +1,6 @@
+releases:
+  id: 1780
+security:
+  cpe:
+  - vendor: xkbcommon
+    product: libxkbcommon

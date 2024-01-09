@@ -1,0 +1,35 @@
+From d58565a27564fda7aa2662057a772f9894fed4b9 Mon Sep 17 00:00:00 2001
+From: Fabio Forni <development@redaril.me>
+Date: Mon, 27 Feb 2023 19:29:16 +0100
+Subject: [PATCH] Support stateless config file
+
+---
+ src/tss2-fapi/ifapi_config.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/tss2-fapi/ifapi_config.c b/src/tss2-fapi/ifapi_config.c
+index 09343f4..8d5c1e0 100644
+--- a/src/tss2-fapi/ifapi_config.c
++++ b/src/tss2-fapi/ifapi_config.c
+@@ -26,6 +26,7 @@
+  * The path of the default config file
+  */
+ #define DEFAULT_CONFIG_FILE (SYSCONFDIR "/tpm2-tss/fapi-config.json")
++#define STATELESS_CONFIG_FILE "/usr/share/defaults/etc/tpm2-tss/fapi-config.json"
+ 
+ /** Deserializes a configuration JSON object.
+  *
+@@ -149,6 +150,10 @@ ifapi_config_initialize_async(IFAPI_IO *io)
+ 
+     /* Start reading the config file */
+     TSS2_RC r = ifapi_io_read_async(io, configFile);
++    if (r == TSS2_FAPI_RC_IO_ERROR) {
++        LOG_ERROR("Could not read config file at default location. Using stateless config file instead");
++        r = ifapi_io_read_async(io, STATELESS_CONFIG_FILE);
++    }
+     return_if_error(r, "Could not read config file ");
+     return TSS2_RC_SUCCESS;
+ }
+-- 
+2.39.2
+

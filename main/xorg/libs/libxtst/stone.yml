@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxtst
+version     : 1.2.4
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxtst
+upstreams   :
+    - https://www.x.org/releases/individual/lib/libXtst-1.2.4.tar.xz : 84f5f30b9254b4ffee14b5b0940e2622153b0d3aed8286a3c5b7eeb340ca33c8
+summary     : Xlib-based library for XTEST & RECORD extensions
+description : |
+    libXtst provides the Xlib-based client API for the XTEST & RECORD extensions. The XTEST extension is a minimal set of client and server extensions required to completely test the X11 server with no user intervention. This extension is not intended to support general journaling and playback of user actions. The RECORD extension supports the recording and reporting of all core X protocol and arbitrary X extension protocol.
+license     : X11
+builddeps   :
+    - pkgconfig32(x11)
+    - pkgconfig32(xext)
+    - pkgconfig32(xi)
+    - pkgconfig(xproto)
+emul32      : yes
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

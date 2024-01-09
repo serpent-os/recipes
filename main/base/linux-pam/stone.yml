@@ -1,0 +1,50 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : linux-pam
+version     : 1.5.2
+release     : 6
+summary     : Pluggable Authentication Modules
+license     :
+    - BSD-3-Clause
+    - GPL-3.0-or-later
+homepage    : http://www.linux-pam.org/
+description : |
+    Pluggable Authentication Modules
+upstreams   :
+    - https://github.com/linux-pam/linux-pam/releases/download/v1.5.2/Linux-PAM-1.5.2.tar.xz: e4ec7131a91da44512574268f493c6d8ca105c87091691b8e9b56ca685d4f94d
+builddeps   :
+    - pkgconfig(libxcrypt)
+setup       : |
+    %patch %(pkgdir)/stateless/0001-pam_env-Support-a-stateless-configuration.patch
+    %patch %(pkgdir)/stateless/0002-pam_shells-Support-stateless-shells-file.patch
+    %patch %(pkgdir)/stateless/0003-pam_env-Only-report-non-ENOENT-errors-for-env-file.patch
+    %patch %(pkgdir)/stateless/0004-Stateless-pam_env-config-file.patch
+    %patch %(pkgdir)/stateless/0005-Stateless-pam_time-config-file.patch
+    %patch %(pkgdir)/stateless/0006-Stateless-pam_limits-config-file.patch
+    %patch %(pkgdir)/stateless/0007-Stateless-pam_access-config-file.patch
+
+    %configure --disable-static \
+               --disable-nis \
+               --disable-econf \
+               --enable-vendordir="%(vendordir)" \
+               --with-kernel-overflow-uid=65534
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Stateless: Move files into the vendordir
+    # environment file can be cleaned up with gettext and running reconfigure
+    %install_dir %(installroot)/%(vendordir)/security
+    mv %(installroot)/etc/security %(installroot)/%(vendordir)/
+    mv %(installroot)/etc/environment %(installroot)/%(vendordir)/
+    rmdir %(installroot)/etc
+
+    %install_file %(pkgdir)/pam.d/* -t %(installroot)/%(vendordir)/pam.d/
+    %install_file %(pkgdir)/shells -t %(installroot)/%(vendordir)/
+
+    %tmpfiles "# Create run/faillock directory"
+    %tmpfiles "d /run/faillock 0755 root root -"

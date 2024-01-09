@@ -1,0 +1,6 @@
+releases:
+  id: 1392
+security:
+  cpe:
+  - vendor: iproute2_project
+    product: iproute2

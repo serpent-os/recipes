@@ -1,0 +1,96 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxkbcommon": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(m4)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(xcb)",
+				"pkgconfig(xcb-xkb)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libxcb-xkb.so.1(x86_64))",
+				"soname(libxcb.so.1(x86_64))",
+				"soname(libxml2.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/bin/xkbcli",
+				"/usr/lib/libxkbcommon-x11.so.0",
+				"/usr/lib/libxkbcommon-x11.so.0.0.0",
+				"/usr/lib/libxkbcommon.so.0",
+				"/usr/lib/libxkbcommon.so.0.0.0",
+				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-compile-keymap",
+				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-how-to-type",
+				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-interactive-evdev",
+				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-interactive-wayland",
+				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-interactive-x11",
+				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-list",
+				"/usr/lib/libxkbregistry.so.0",
+				"/usr/lib/libxkbregistry.so.0.0.0",
+				"/usr/share/man/man1/xkbcli-compile-keymap.1",
+				"/usr/share/man/man1/xkbcli-how-to-type.1",
+				"/usr/share/man/man1/xkbcli-interactive-evdev.1",
+				"/usr/share/man/man1/xkbcli-interactive-wayland.1",
+				"/usr/share/man/man1/xkbcli-interactive-x11.1",
+				"/usr/share/man/man1/xkbcli-list.1",
+				"/usr/share/man/man1/xkbcli.1"
+			],
+			"name": "libxkbcommon",
+			"provides": [
+				"soname(libxkbcommon-x11.so.0(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))",
+				"soname(libxkbregistry.so.0(x86_64))",
+				"binary(xkbcli)"
+			]
+		},
+		"libxkbcommon-devel": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(m4)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(xcb)",
+				"pkgconfig(xcb-xkb)"
+			],
+			"depends": [
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(xcb)",
+				"pkgconfig(xcb-xkb)"
+			],
+			"files": [
+				"/usr/include/xkbcommon/xkbcommon-compat.h",
+				"/usr/include/xkbcommon/xkbcommon-compose.h",
+				"/usr/include/xkbcommon/xkbcommon-keysyms.h",
+				"/usr/include/xkbcommon/xkbcommon-names.h",
+				"/usr/include/xkbcommon/xkbcommon-x11.h",
+				"/usr/include/xkbcommon/xkbcommon.h",
+				"/usr/include/xkbcommon/xkbregistry.h",
+				"/usr/lib/libxkbcommon-x11.so",
+				"/usr/lib/libxkbcommon.so",
+				"/usr/lib/libxkbregistry.so",
+				"/usr/lib/pkgconfig/xkbcommon-x11.pc",
+				"/usr/lib/pkgconfig/xkbcommon.pc",
+				"/usr/lib/pkgconfig/xkbregistry.pc"
+			],
+			"name": "libxkbcommon-devel",
+			"provides": [
+				"pkgconfig(xkbcommon)",
+				"pkgconfig(xkbcommon-x11)",
+				"pkgconfig(xkbregistry)"
+			]
+		}
+	},
+	"source-name": "libxkbcommon",
+	"source-release": "1",
+	"source-version": "1.5.0"
+}

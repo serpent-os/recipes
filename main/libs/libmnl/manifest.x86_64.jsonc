@@ -1,0 +1,33 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libmnl": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libmnl.so.0",
+				"/usr/lib/libmnl.so.0.2.0"
+			],
+			"name": "libmnl",
+			"provides": [
+				"soname(libmnl.so.0(x86_64))"
+			]
+		},
+		"libmnl-devel": {
+			"files": [
+				"/usr/include/libmnl/libmnl.h",
+				"/usr/lib/libmnl.so",
+				"/usr/lib/pkgconfig/libmnl.pc"
+			],
+			"name": "libmnl-devel",
+			"provides": [
+				"pkgconfig(libmnl)"
+			]
+		}
+	},
+	"source-name": "libmnl",
+	"source-release": "1",
+	"source-version": "1.0.5"
+}

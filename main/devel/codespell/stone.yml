@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : codespell
+version     : 2.2.4
+release     : 4
+summary     : Check code for common misspellings
+license     : GPL-2.0-only
+homepage    : https://github.com/codespell-project/codespell
+description : |
+    Check code for common misspellings.
+upstreams   :
+    - https://pypi.io/packages/source/c/codespell/codespell-2.2.4.tar.gz : 0b4620473c257d9cde1ff8998b26b2bb209a35c2b7489f5dc3436024298ce83a
+builddeps   :
+    - binary(python3)
+    - python-setuptools_scm
+rundeps     :
+    - binary(python3)
+# checkdeps   :
+#     - python-nose
+#     - python-pytest
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
+# TODO get checks working
+# check       : |
+#     %python_check

@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : gnutls
+version     : 3.8.0
+release     : 2
+homepage    : https://www.gnutls.org/
+upstreams   :
+    - https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.0.tar.xz: 0ea0d11a1660a1e63f960f157b197abe6d0c8cb3255be24e1fb3815930b9bdc5
+summary     : The GnuTLS package contains libraries and userspace tools which provide a secure layer over a reliable transport layer
+description : |
+    GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them. It provides a simple C language application programming interface (API) to access the secure communications protocols as well as APIs to parse and write X.509, PKCS #12, OpenPGP and other required structures.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - libunistring-devel
+    - pkgconfig(gmp)
+    - pkgconfig(libbrotlienc)
+    - pkgconfig(libidn2)
+    - pkgconfig(libtasn1)
+    - pkgconfig(libzstd)
+    - pkgconfig(nettle)
+    - pkgconfig(p11-kit-1)
+    - pkgconfig(zlib)
+# TODO gtk-docs support?
+# TODO guile support?
+setup       : |
+    %configure --disable-static \
+               --with-default-trust-store-file=/%(vendordir)/etc/ssl/ca-certificates.crt
+build       : |
+    %make
+install     : |
+    %make_install
+# This takes forever. Reenable if you dare.
+# check       : |
+#     make -j1 check
+# TODO maybe split out binaries and docs?

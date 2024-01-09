@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libgcrypt
+version     : 1.10.2
+release     : 2
+homepage    : https://gnupg.org/software/libgcrypt
+upstreams   :
+    - https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.2.tar.bz2 : 3b9c02a004b68c256add99701de00b383accccf37177e0d6c58289664cce0c03
+summary     : General purpose cryptographic library originally based on code from GnuPG
+description : |
+    %(name) is a general purpose cryptographic library originally based on code from GnuPG. It provides functions for all cryptograhic building blocks.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(gpg-error)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

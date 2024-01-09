@@ -1,0 +1,24 @@
+name        : moss
+version     : "0.1.0"
+release     : 18
+summary     : Ridiculously fast atomic package manager
+license     : MPL-2.0
+homepage    : https://github.com/serpent-os/moss-rs
+upstreams   :
+    - git|https://github.com/serpent-os/moss-rs.git : 2388cbc4486191227b326d7a577b9cc4b52b722a
+description : |
+    The new package manager with an old school feel. Traditional interaction
+    and management whilst using brand new technologies, including efficient
+    caching, compression, deduplication and atomic updates.
+builddeps   :
+    - binary(cargo)
+networking  : yes
+rundeps     :
+    - layout
+environment : |
+    export HOME=$(pwd)
+build       : |
+    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
+    RUST_BACKTRACE=1 cargo build --target=x86_64-unknown-linux-gnu --profile packaging -p moss
+install     : |
+    %install_bin target/*/packaging/moss

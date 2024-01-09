@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : gettext
+version     : 0.21.1
+release     : 3
+summary     : GNU locale utilities
+license     : GPL-3.0-or-later
+homepage    : https://www.gnu.org/software/gettext/gettext.html
+description : |
+    GNU locale utilities.
+upstreams   :
+    - https://mirrors.kernel.org/gnu/gettext/gettext-0.21.1.tar.gz : e8c3650e1d8cee875c4f355642382c1df83058bd5a11ee8555c0cf276d646d45
+builddeps   :
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(ncursesw)
+    - libunistring-devel
+checkdeps   :
+    - binary(gzip)
+setup       : |
+    # Drop components requiring unmaintained pkgs 
+    %patch %(pkgdir)/disable-libtextstyle.patch
+
+    %reconfigure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Clean up examples which aren't particularly helpful
+    rm -rf %(installroot)/usr/share/doc/gettext/examples
+check       : |
+    %make check
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*

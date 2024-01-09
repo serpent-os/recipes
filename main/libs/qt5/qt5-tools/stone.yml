@@ -1,0 +1,65 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : qt5-tools
+version     : 5.15.8-lts-lgpl
+release     : 1
+homepage    : https://www.qt.io
+upstreams   :
+    - git|https://invent.kde.org/qt/qt/qttools.git:
+        ref: 090e526e713d01eac34c64e4a09ad961c612febf
+        # Relative submodules
+        staging: no
+summary     : Qt5 QtTools Module
+description : |
+    Qt is a set of libraries for developing applications.  This package contains base tools, like string, xml, and network handling.
+license     : 
+    - LGPL-3.0-or-later
+    - LGPL-3.0-or-later
+    - GFDL-1.3-or-later
+    - GPL-3.0-or-later
+builddeps   :
+    - binary(qmake)
+    - binary(perl)
+    - pkgconfig(gl)
+    - clang-devel
+    - vulkan-headers
+setup       : |
+    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}"
+build       : |
+    %make
+install     : |
+    %make_install INSTALL_ROOT="%(installroot)"
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/bin/qdbus
+            - /usr/bin/qtpaths
+    - "%(name)-devel":
+        paths:
+            # Can't use /usr/bin here due to some binaries going to the main package
+            - /usr/bin/assistant
+            - /usr/bin/designer
+            - /usr/bin/lconvert
+            - /usr/bin/linguist
+            - /usr/bin/lprodump
+            - /usr/bin/lrelease
+            - /usr/bin/lrelease-pro
+            - /usr/bin/lupdate
+            - /usr/bin/lupdate-pro
+            - /usr/bin/pixeltool
+            - /usr/bin/qdbusviewer
+            - /usr/bin/qcollectiongenerator
+            - /usr/bin/qdoc
+            - /usr/bin/qhelpgenerator
+            - /usr/bin/qtattributionsscanner
+            - /usr/bin/qtdiag
+            - /usr/bin/qtplugininfo
+            - /usr/lib/qt5/mkspecs
+    - "%(name)-demos" :
+        paths:
+            - /usr/lib/qt5/examples
+
+# TODO there are some desktop applications that we may want to include in -devel

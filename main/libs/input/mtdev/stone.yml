@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : mtdev
+version     : '1.1.6'
+release     : 1
+homepage    : https://bitmath.org/code/mtdev
+upstreams   :
+    - https://bitmath.org/code/mtdev/mtdev-1.1.6.tar.gz : 1325f389a2f25cd5f5a8ea4d29aad24aa7c3ec30401d679400dd79eb9c0a8dbb
+summary     : Stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol
+description : |
+    %(name) is a stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol. The events put into mtdev may be from any MT device, specifically type A without contact tracking, type A with contact tracking, or type B with contact tracking.
+license     : MIT
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,19 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"inxi": {
+			"files": [
+				"/usr/bin/inxi",
+				"/usr/share/man/man1/inxi.1"
+			],
+			"name": "inxi",
+			"provides": [
+				"binary(inxi)"
+			]
+		}
+	},
+	"source-name": "inxi",
+	"source-release": "4",
+	"source-version": "3.3.26-1"
+}

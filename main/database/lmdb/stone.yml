@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : lmdb
+version     : 0.9.31
+release     : 7
+homepage    : http://symas.com/mdb
+upstreams   :
+    - https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.31/openldap-LMDB_0.9.31.tar.gz : d35d4f6f46313d62fd342c9dcbf574432919ce5e802d2b6cbe2ebd549821e5c4
+summary     : Symas Lightning Memory-Mapped Database
+description : |
+    Symas Lightning Memory-Mapped Database
+license     :
+    - OLDAP-2.8
+setup       : |
+    %patch %(pkgdir)/lmdb-make.patch
+build       : |
+    %make -C libraries/liblmdb XCFLAGS="${CFLAGS}" CC=clang AR=llvm-ar
+install     : |
+    %make_install -C libraries/liblmdb XCFLAGS="${CFLAGS}" prefix=%(prefix) libdir=%(libdir) CC=clang AR=llvm-ar
+    %install_file %(pkgdir)/lmdb.pc %(installroot)/%(libdir)/lmdb.pc
+check       : |
+    cd libraries/liblmdb
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:."
+    %make XCFLAGS="${CFLAGS}" CC=clang AR=llvm-ar test
+tuning      :
+    - lto
+    - optimize: speed

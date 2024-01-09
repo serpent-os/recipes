@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : less
+version     : 629
+release     : 6
+homepage    : https://www.greenwoodsoftware.com/less
+upstreams   :
+    - https://github.com/gwsw/less/archive/refs/tags/v629.tar.gz : 0259e16854b5417a14eaef3d766e265aa4da3c3d75e0bd76d37791ba90d908e8
+summary     : Text file browser and pager
+description : |
+    Text file browser and pager
+license     :
+    - BSD-2-Clause
+    - GPL-3.0-or-later
+builddeps   :
+    - binary(nroff)
+    - pkgconfig(libpcre2-8)
+    - pkgconfig(ncursesw)
+setup       : |
+    make -f Makefile.aut distfiles
+    %configure --with-regex=pcre2
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"glu": {
+			"build-depends": [
+				"pkgconfig(opengl)"
+			],
+			"depends": [
+				"soname(libOpenGL.so.0(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libGLU.so.1",
+				"/usr/lib/libGLU.so.1.3.1"
+			],
+			"name": "glu",
+			"provides": [
+				"soname(libGLU.so.1(x86_64))"
+			]
+		},
+		"glu-devel": {
+			"build-depends": [
+				"pkgconfig(opengl)"
+			],
+			"depends": [
+				"pkgconfig(opengl)"
+			],
+			"files": [
+				"/usr/include/GL/glu.h",
+				"/usr/lib/libGLU.a",
+				"/usr/lib/libGLU.so",
+				"/usr/lib/pkgconfig/glu.pc"
+			],
+			"name": "glu-devel",
+			"provides": [
+				"pkgconfig(glu)"
+			]
+		}
+	},
+	"source-name": "glu",
+	"source-release": "1",
+	"source-version": "9.0.2"
+}

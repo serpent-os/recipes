@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xcb-util-image": {
+			"build-depends": [
+				"pkgconfig(xcb-shm)",
+				"pkgconfig(xcb-util)",
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libxcb-shm.so.0(x86_64))",
+				"soname(libxcb-util.so.1(x86_64))",
+				"soname(libxcb.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libxcb-image.so.0",
+				"/usr/lib/libxcb-image.so.0.0.0"
+			],
+			"name": "xcb-util-image",
+			"provides": [
+				"soname(libxcb-image.so.0(x86_64))"
+			]
+		},
+		"xcb-util-image-devel": {
+			"build-depends": [
+				"pkgconfig(xcb-shm)",
+				"pkgconfig(xcb-util)",
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"pkgconfig(xcb)",
+				"pkgconfig(xcb-shm)"
+			],
+			"files": [
+				"/usr/include/xcb/xcb_bitops.h",
+				"/usr/include/xcb/xcb_image.h",
+				"/usr/include/xcb/xcb_pixel.h",
+				"/usr/lib/libxcb-image.so",
+				"/usr/lib/pkgconfig/xcb-image.pc"
+			],
+			"name": "xcb-util-image-devel",
+			"provides": [
+				"pkgconfig(xcb-image)"
+			]
+		}
+	},
+	"source-name": "xcb-util-image",
+	"source-release": "1",
+	"source-version": "0.4.1"
+}

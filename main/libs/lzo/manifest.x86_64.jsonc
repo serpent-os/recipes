@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"lzo": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/liblzo2.so.2",
+				"/usr/lib/liblzo2.so.2.0.0",
+				"/usr/share/doc/lzo/AUTHORS",
+				"/usr/share/doc/lzo/COPYING",
+				"/usr/share/doc/lzo/LZO.FAQ",
+				"/usr/share/doc/lzo/LZO.TXT",
+				"/usr/share/doc/lzo/LZOAPI.TXT",
+				"/usr/share/doc/lzo/NEWS",
+				"/usr/share/doc/lzo/THANKS"
+			],
+			"name": "lzo",
+			"provides": [
+				"soname(liblzo2.so.2(x86_64))"
+			]
+		},
+		"lzo-devel": {
+			"files": [
+				"/usr/include/lzo/lzo1.h",
+				"/usr/include/lzo/lzo1a.h",
+				"/usr/include/lzo/lzo1b.h",
+				"/usr/include/lzo/lzo1c.h",
+				"/usr/include/lzo/lzo1f.h",
+				"/usr/include/lzo/lzo1x.h",
+				"/usr/include/lzo/lzo1y.h",
+				"/usr/include/lzo/lzo1z.h",
+				"/usr/include/lzo/lzo2a.h",
+				"/usr/include/lzo/lzo_asm.h",
+				"/usr/include/lzo/lzoconf.h",
+				"/usr/include/lzo/lzodefs.h",
+				"/usr/include/lzo/lzoutil.h",
+				"/usr/lib/liblzo2.so",
+				"/usr/lib/pkgconfig/lzo2.pc"
+			],
+			"name": "lzo-devel",
+			"provides": [
+				"pkgconfig(lzo2)"
+			]
+		}
+	},
+	"source-name": "lzo",
+	"source-release": "1",
+	"source-version": "2.10"
+}

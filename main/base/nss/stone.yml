@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : nss
+version     : "3.94"
+release     : 9
+summary     : Network Security Services
+license     : MPL-2.0
+homepage    : 
+description : |
+    Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.
+upstreams   :
+    - https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_94_RTM/src/nss-3.94.tar.gz : 463ae180ee9e5ee9e3ad4f629326657e236780cc865572a930a16520abad9dd8
+builddeps   :
+    - binary(python3)
+build       : |
+    mkdir certs
+    cd certs
+    cp %(workdir)/nss/lib/ckfw/builtins/certdata.txt .
+    python3 %(pkgdir)/certdata2pem.py certdata.txt
+install     : |
+    %install_dir %(installroot)/%(vendordir)/etc/ssl/certs
+    %install_file -t %(installroot)/%(vendordir)/etc/ssl/certs/ certs/*
+    cat certs/* > %(installroot)/%(vendordir)/etc/ssl/certs/ca-certificates.crt 

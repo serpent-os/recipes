@@ -1,0 +1,6 @@
+releases:
+  id: 1569
+security:
+  cpe:
+  - vendor: libcap_project
+    product: libcap

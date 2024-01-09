@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : rustls-ffi
+version     : 0.11.0
+release     : 1
+homepage    : https://github.com/rustls/rustls-ffi
+upstreams   :
+    - https://github.com/rustls/rustls-ffi/archive/refs/tags/v0.11.0.tar.gz : 0eeac3b916286cce35a3f32f3fd11f54ad2584a32bb67ac41c0c563c7c62c98b
+summary     : Access rustls from any language
+description : |
+    Encapsulation of the rustls crate for non-memory-safe languages to take advantage.
+license     :
+    - Apache-2.0
+    - MIT
+builddeps   :
+    - binary(cargo)
+networking  : true
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib
+            - /usr/include
+setup       : |
+    # asan issues.
+    %patch %(pkgdir)/clang-asan.patch
+environment : |
+    export HOME=$(pwd)
+    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
+build       : |
+    %make PROFILE=release
+install     : |
+    %make PROFILE=release install DESTDIR=%(installroot)/usr

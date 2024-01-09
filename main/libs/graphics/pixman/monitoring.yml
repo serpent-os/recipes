@@ -1,0 +1,6 @@
+releases:
+  id: 3648
+security:
+  cpe:
+  - vendor: pixman
+    product: pixman

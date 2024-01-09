@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : bdftopcf
+version     : 1.1.1
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/util/bdftopcf/
+upstreams   :
+    - https://www.x.org/archive/individual/util/bdftopcf-1.1.1.tar.xz : 11c953d53c0f3ed349d0198dfb0a40000b5121df7eef09f2615a262892fed908
+summary     : Convert X font from Bitmap Distribution Format to Portable Compiled Format
+description : |
+    bdftopcf is a font compiler for the X server and font server.  Fonts
+    in Portable Compiled Format can be read by any architecture, although
+    the file is structured to allow one particular architecture to read
+    them directly without reformatting.  This allows fast reading on the
+    appropriate machine, but the files are still portable (but read more
+    slowly) on other machines.
+license     :
+    - X11
+builddeps   :
+    - pkgconfig(fontsproto)
+    - pkgconfig(xproto)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

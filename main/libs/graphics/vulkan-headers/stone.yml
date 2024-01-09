@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : vulkan-headers
+version     : 1.3.255
+release     : 4
+homepage    : https://www.vulkan.org/
+upstreams   :
+    - https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.3.255.tar.gz : 8e1db7041ad6dbaf4f3326a297b4aee17f3178a0d1cf9cd76a3f934c855357b5
+summary     : Vulkan Header files and API registry
+description : |
+    Vulkan header files and API registry. Vulkan-Headers are shipped as part of the official Vulkan-SDK.
+license     :
+    - Apache-2.0
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    # Headers only package
+    - "%(name)" :
+        paths :
+            - /*

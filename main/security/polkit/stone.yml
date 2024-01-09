@@ -1,0 +1,55 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : polkit
+version     : 122
+release     : 1
+summary     : Application-level authorization toolkit
+license     : GPL-2.0-or-later
+homepage    : https://gitlab.freedesktop.org/polkit/polkit
+description : |
+    polkit is an application-level toolkit for defining and handling the policy that allows unprivileged processes to speak to privileged processes: It is a framework for centralizing the decision making process with respect to granting access to privileged operations for unprivileged applications. See the polkit(8) manual page for more detailed information.
+upstreams   :
+    - https://gitlab.freedesktop.org/polkit/polkit/-/archive/122/polkit-122.tar.gz: 0d69656d60800835c3d7d1f0a8362b32e1ae3ace2875a35bb624296fc52d5dc4
+builddeps   :
+    - binary(msgfmt)
+    - binary(perl)
+    - binary(xsltproc)
+    - pkgconfig(duktape)
+    - pkgconfig(expat)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libsystemd)
+    - pkgconfig(pam)
+    - docbook
+setup       : |
+    %patch %(pkgdir)/stateless/0001-pkexec-Support-a-stateless-configuration.patch
+
+    %meson -Dos_type=redhat \
+           -Dsession_tracking=libsystemd-login \
+           -Dexamples=false \
+           -Dman=true \
+           -Dgtk_doc=false \
+           -Dtests=false
+    # TODO build gtk_docs
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
+    # tmpfiles
+    %tmpfiles "d /var/empty 0755 - - -"
+    %tmpfiles "d /etc/polkit-1/rules.d 0755 - - -"
+
+    # sysusers configuration
+    %sysusers 'u polkitd 27 "PolicyKit Daemon" /var/empty'
+
+    # Statelessness
+    %install_dir %(installroot)/%(vendordir)/
+    mv %(installroot)/etc/pam.d %(installroot)/%(vendordir)/
+    rmdir %(installroot)/etc/polkit-1/rules.d
+    rmdir %(installroot)/etc/polkit-1
+    rmdir %(installroot)/etc
+# TODO checks (needs python-dbusmock)

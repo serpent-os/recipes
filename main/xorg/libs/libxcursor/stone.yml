@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxcursor
+version     : 1.2.1
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxcursor
+upstreams   :
+    - https://www.x.org/releases/individual/lib/libXcursor-1.2.1.tar.xz : 46c143731610bafd2070159a844571b287ac26192537d047a39df06155492104
+summary     : Xlib-based Cursor management library
+description : |
+    libXcursor - X Window System Cursor management library
+license     : X11
+builddeps   :
+    - pkgconfig32(x11)
+    - pkgconfig32(xfixes)
+    - pkgconfig32(xrender)
+    - pkgconfig(xproto)
+emul32      : yes
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

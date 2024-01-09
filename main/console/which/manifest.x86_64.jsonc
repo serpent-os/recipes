@@ -1,0 +1,24 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"which": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/which",
+				"/usr/share/info/which.info",
+				"/usr/share/man/man1/which.1"
+			],
+			"name": "which",
+			"provides": [
+				"binary(which)"
+			]
+		}
+	},
+	"source-name": "which",
+	"source-release": "2",
+	"source-version": "2.21"
+}

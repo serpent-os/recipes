@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libyaml
+version     : 0.2.5
+release     : 1
+homepage    : https://pyyaml.org/wiki/LibYAML
+upstreams   :
+    - https://pyyaml.org/download/libyaml/yaml-0.2.5.tar.gz : c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
+summary     : YAML 1.1 library
+description : |
+    YAML 1.1 library
+license     :
+    - MIT
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

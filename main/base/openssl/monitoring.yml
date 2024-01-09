@@ -1,0 +1,6 @@
+releases:
+  id: 2566
+security:
+  cpe:
+  - vendor: openssl
+    product: openssl

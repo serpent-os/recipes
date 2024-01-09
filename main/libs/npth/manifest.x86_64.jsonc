@@ -1,0 +1,34 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"npth": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libnpth.so.0",
+				"/usr/lib/libnpth.so.0.1.2"
+			],
+			"name": "npth",
+			"provides": [
+				"soname(libnpth.so.0(x86_64))"
+			]
+		},
+		"npth-devel": {
+			"files": [
+				"/usr/bin/npth-config",
+				"/usr/include/npth.h",
+				"/usr/lib/libnpth.so",
+				"/usr/share/aclocal/npth.m4"
+			],
+			"name": "npth-devel",
+			"provides": [
+				"binary(npth-config)"
+			]
+		}
+	},
+	"source-name": "npth",
+	"source-release": "1",
+	"source-version": "1.6"
+}

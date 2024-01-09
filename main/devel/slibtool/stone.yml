@@ -1,0 +1,48 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : slibtool
+version     : 0.5.34
+release     : 4
+homepage    : https://github.com/midipix-project/slibtool
+upstreams   :
+    - https://github.com/midipix-project/slibtool/archive/refs/tags/v0.5.34.tar.gz : 5967569d472afe7490adbc22d6d8cb2352c48568c1628fd999f7ab9137ee017a
+summary     : a surrogate libtool implementation, written in C
+description : |
+    `slibtool` is an independent reimplementation of the widely used libtool,
+    written in C. `slibtool` is designed to be a clean, fast, easy-to-use
+    libtool drop-in replacement, and is accordingly aimed at package authors,
+    distro developers, and system integrators. `slibtool` maintains compatibility
+    with libtool in nearly every aspect of the tool's functionality as well as
+    semantics, leaving out (or turning into a no-op) only a small number of
+    features that are no longer needed on modern systems.
+    
+    Being a compiled binary, and although not primarily written for the sake of
+    performance, building a package with `slibtool` is often faster than with its
+    script-based counterpart. The resulting performance gain would normally vary
+    between packages, and is most noticeable in builds that invoke libtool a large
+    number of times, and which are characterized by the short compilation duration
+    of individual translation units.
+license     :
+    - MIT
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Use slibtool for all libtool purposes
+    ln -svf slibtool "%(installroot)/usr/bin/libtool"
+
+    # Future versions of slibtool should support libtoolize automatically
+    %install_bin %(pkgdir)/libtoolize
+    %install_exe %(pkgdir)/ltmain.sh -t %(installroot)/usr/share/libtoolize/AC_CONFIG_AUX_DIR
+
+    %install_file m4/slibtool.m4 -t %(installroot)/usr/share/aclocal/
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/share/aclocal

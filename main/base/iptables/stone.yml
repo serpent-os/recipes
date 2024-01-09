@@ -1,0 +1,40 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : iptables
+version     : 1.8.9
+release     : 1
+homepage    : https://www.netfilter.org/projects/iptables/ 
+upstreams   :
+    - https://netfilter.org/pub/iptables/iptables-1.8.9.tar.xz : ef6639a43be8325a4f8ea68123ffac236cb696e8c78501b64e8106afb008c87f
+summary     : Linux kernel packet control tool (using nft interface)
+description : |
+    Linux kernel packet control tool (using nft interface)
+license     :
+    - GPL-2.0-only
+builddeps   :
+    - pkgconfig(libpcap)
+    - pkgconfig(libmnl)
+    - pkgconfig(libnftnl)
+    - linux-headers
+setup       : |
+    %configure --sysconfdir=%(vendordir) \
+               --disable-static \
+               --enable-bpf-compiler \
+               --enable-ipv6 \
+               --enable-libipq \
+               --enable-shared
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Use NFT kernel interface
+    for i in iptables iptables-restore iptables-save ip6tables ip6tables-restore ip6tables-save; do
+        rm -v %(installroot)/%(sbindir)/$i
+        ln -s xtables-nft-multi %(installroot)/%(sbindir)/$i
+    done
+tune        :
+    - optimize: size

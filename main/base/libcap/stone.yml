@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libcap
+version     : 2.68
+release     : 4
+summary     : Library for getting and setting POSIX.1e capabilities
+license     : GPL-3.0-or-later
+homepage    : https://sites.google.com/site/fullycapable
+description : |
+    Library for getting and setting POSIX.1e capabilities
+upstreams   :
+    - https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.68.tar.xz: 90be3b6d41be5f81ae4b03ec76012b0d27c829293684f6c05b65d5f9cce724b2
+builddeps   :
+    - pkgconfig(pam)
+    - linux-headers
+setup       : |
+    # Static linking broken
+    sed -i Makefile -e '/\-C tests/d'
+build       : |
+    %make BUILD_CC=clang CC=clang AR=llvm-ar RANLIB=llvm-ranlib OBJCOPY=llvm-objcopy DYNAMIC=yes KERNEL_HEADERS=/usr/include
+install     : |
+    %make_install RAISE_SETFCAP=no prefix=/usr lib=lib
+    rm %(installroot)/%(libdir)/lib*.a

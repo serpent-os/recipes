@@ -1,0 +1,62 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"freeglut": {
+			"build-depends": [
+				"pkgconfig(gl)",
+				"pkgconfig(glu)",
+				"pkgconfig(x11)",
+				"pkgconfig(xi)",
+				"pkgconfig(xxf86vm)"
+			],
+			"depends": [
+				"soname(libGL.so.1(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libXi.so.6(x86_64))",
+				"soname(libXxf86vm.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libglut.so.3",
+				"/usr/lib/libglut.so.3.12.0"
+			],
+			"name": "freeglut",
+			"provides": [
+				"soname(libglut.so.3(x86_64))"
+			]
+		},
+		"freeglut-devel": {
+			"build-depends": [
+				"pkgconfig(gl)",
+				"pkgconfig(glu)",
+				"pkgconfig(x11)",
+				"pkgconfig(xi)",
+				"pkgconfig(xxf86vm)"
+			],
+			"files": [
+				"/usr/include/GL/freeglut.h",
+				"/usr/include/GL/freeglut_ext.h",
+				"/usr/include/GL/freeglut_std.h",
+				"/usr/include/GL/freeglut_ucall.h",
+				"/usr/include/GL/glut.h",
+				"/usr/lib/cmake/FreeGLUT/FreeGLUTConfig.cmake",
+				"/usr/lib/cmake/FreeGLUT/FreeGLUTConfigVersion.cmake",
+				"/usr/lib/cmake/FreeGLUT/FreeGLUTTargets-release.cmake",
+				"/usr/lib/cmake/FreeGLUT/FreeGLUTTargets.cmake",
+				"/usr/lib/libglut.a",
+				"/usr/lib/libglut.so",
+				"/usr/lib/pkgconfig/glut.pc"
+			],
+			"name": "freeglut-devel",
+			"provides": [
+				"cmake(FreeGLUT)",
+				"pkgconfig(glut)"
+			]
+		}
+	},
+	"source-name": "freeglut",
+	"source-release": "1",
+	"source-version": "3.4.0"
+}

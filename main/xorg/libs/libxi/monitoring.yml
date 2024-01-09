@@ -1,0 +1,6 @@
+releases:
+  id: 1778
+security:
+  cpe:
+  - vendor: x.org
+    product: libxi

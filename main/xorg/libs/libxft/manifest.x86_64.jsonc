@@ -1,0 +1,134 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxft": {
+			"build-depends": [
+				"pkgconfig(fontconfig)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(xorg-macros)",
+				"pkgconfig(xrender)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86_64))",
+				"soname(libXrender.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libfontconfig.so.1(x86_64))",
+				"soname(libfreetype.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libXft.so.2",
+				"/usr/lib/libXft.so.2.3.8"
+			],
+			"name": "libxft",
+			"provides": [
+				"soname(libXft.so.2(x86_64))"
+			]
+		},
+		"libxft-devel": {
+			"build-depends": [
+				"pkgconfig(fontconfig)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(xorg-macros)",
+				"pkgconfig(xrender)"
+			],
+			"depends": [
+				"pkgconfig(fontconfig)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xrender)"
+			],
+			"files": [
+				"/usr/include/X11/Xft/Xft.h",
+				"/usr/include/X11/Xft/XftCompat.h",
+				"/usr/lib/libXft.so",
+				"/usr/lib/pkgconfig/xft.pc",
+				"/usr/share/man/man3/Xft.3",
+				"/usr/share/man/man3/XftCharExists.3",
+				"/usr/share/man/man3/XftCharFontSpecRender.3",
+				"/usr/share/man/man3/XftCharIndex.3",
+				"/usr/share/man/man3/XftCharSpecRender.3",
+				"/usr/share/man/man3/XftColorAllocName.3",
+				"/usr/share/man/man3/XftColorAllocValue.3",
+				"/usr/share/man/man3/XftColorFree.3",
+				"/usr/share/man/man3/XftDefaultHasRender.3",
+				"/usr/share/man/man3/XftDefaultSet.3",
+				"/usr/share/man/man3/XftDefaultSubstitute.3",
+				"/usr/share/man/man3/XftDrawChange.3",
+				"/usr/share/man/man3/XftDrawCharFontSpec.3",
+				"/usr/share/man/man3/XftDrawCharSpec.3",
+				"/usr/share/man/man3/XftDrawColormap.3",
+				"/usr/share/man/man3/XftDrawCreate.3",
+				"/usr/share/man/man3/XftDrawCreateAlpha.3",
+				"/usr/share/man/man3/XftDrawCreateBitmap.3",
+				"/usr/share/man/man3/XftDrawDestroy.3",
+				"/usr/share/man/man3/XftDrawDisplay.3",
+				"/usr/share/man/man3/XftDrawDrawable.3",
+				"/usr/share/man/man3/XftDrawGlyphFontSpec.3",
+				"/usr/share/man/man3/XftDrawGlyphSpec.3",
+				"/usr/share/man/man3/XftDrawGlyphs.3",
+				"/usr/share/man/man3/XftDrawPicture.3",
+				"/usr/share/man/man3/XftDrawRect.3",
+				"/usr/share/man/man3/XftDrawSetClip.3",
+				"/usr/share/man/man3/XftDrawSetClipRectangles.3",
+				"/usr/share/man/man3/XftDrawSetSubwindowMode.3",
+				"/usr/share/man/man3/XftDrawSrcPicture.3",
+				"/usr/share/man/man3/XftDrawString16.3",
+				"/usr/share/man/man3/XftDrawString32.3",
+				"/usr/share/man/man3/XftDrawString8.3",
+				"/usr/share/man/man3/XftDrawStringUtf16.3",
+				"/usr/share/man/man3/XftDrawStringUtf8.3",
+				"/usr/share/man/man3/XftDrawVisual.3",
+				"/usr/share/man/man3/XftFontCheckGlyph.3",
+				"/usr/share/man/man3/XftFontClose.3",
+				"/usr/share/man/man3/XftFontCopy.3",
+				"/usr/share/man/man3/XftFontInfoCreate.3",
+				"/usr/share/man/man3/XftFontInfoDestroy.3",
+				"/usr/share/man/man3/XftFontInfoEqual.3",
+				"/usr/share/man/man3/XftFontInfoHash.3",
+				"/usr/share/man/man3/XftFontLoadGlyphs.3",
+				"/usr/share/man/man3/XftFontMatch.3",
+				"/usr/share/man/man3/XftFontOpen.3",
+				"/usr/share/man/man3/XftFontOpenInfo.3",
+				"/usr/share/man/man3/XftFontOpenName.3",
+				"/usr/share/man/man3/XftFontOpenPattern.3",
+				"/usr/share/man/man3/XftFontOpenXlfd.3",
+				"/usr/share/man/man3/XftFontUnloadGlyphs.3",
+				"/usr/share/man/man3/XftGetVersion.3",
+				"/usr/share/man/man3/XftGlyphExtents.3",
+				"/usr/share/man/man3/XftGlyphFontSpecRender.3",
+				"/usr/share/man/man3/XftGlyphRender.3",
+				"/usr/share/man/man3/XftGlyphSpecRender.3",
+				"/usr/share/man/man3/XftInit.3",
+				"/usr/share/man/man3/XftInitFtLibrary.3",
+				"/usr/share/man/man3/XftListFonts.3",
+				"/usr/share/man/man3/XftLockFace.3",
+				"/usr/share/man/man3/XftNameParse.3",
+				"/usr/share/man/man3/XftNameUnparse.3",
+				"/usr/share/man/man3/XftTextExtents16.3",
+				"/usr/share/man/man3/XftTextExtents32.3",
+				"/usr/share/man/man3/XftTextExtents8.3",
+				"/usr/share/man/man3/XftTextExtentsUtf16.3",
+				"/usr/share/man/man3/XftTextExtentsUtf8.3",
+				"/usr/share/man/man3/XftTextRender16.3",
+				"/usr/share/man/man3/XftTextRender16BE.3",
+				"/usr/share/man/man3/XftTextRender16LE.3",
+				"/usr/share/man/man3/XftTextRender32.3",
+				"/usr/share/man/man3/XftTextRender32BE.3",
+				"/usr/share/man/man3/XftTextRender32LE.3",
+				"/usr/share/man/man3/XftTextRender8.3",
+				"/usr/share/man/man3/XftTextRenderUtf16.3",
+				"/usr/share/man/man3/XftTextRenderUtf8.3",
+				"/usr/share/man/man3/XftUnlockFace.3",
+				"/usr/share/man/man3/XftXlfdParse.3"
+			],
+			"name": "libxft-devel",
+			"provides": [
+				"pkgconfig(xft)"
+			]
+		}
+	},
+	"source-name": "libxft",
+	"source-release": "3",
+	"source-version": "2.3.8"
+}

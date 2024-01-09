@@ -1,0 +1,6 @@
+releases:
+  id: 5277
+security:
+  cpe:
+  - vendor: tukaani
+    product: xz

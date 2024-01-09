@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : file
+version     : 5.45
+release     : 6
+homepage    : https://astron.com/pub/file
+upstreams   :
+    - https://astron.com/pub/file/file-5.45.tar.gz : fc97f51029bb0e2c9f4e3bffefdaf678f0e039ee872b9de5c002a6d09c784d82
+summary     : File type identification utility
+description : |
+    File type identification utility
+license     :
+    - BSD-2-Clause
+builddeps   :
+    - pkgconfig(bzip2)
+    - pkgconfig(liblzma)
+    - pkgconfig(libseccomp)
+    - pkgconfig(libzstd)
+    - pkgconfig(zlib)
+setup       : |
+    # Fix linking libmagic
+    export CFLAGS="$CFLAGS -pthread"
+    %configure \
+        --disable-static \
+        --enable-shared \
+        --enable-libseccomp
+
+    # remove hardcoded library paths from local libtool
+    sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+    sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+build      : |
+    export LD_LIBRARY_PATH=$PWD/src/.libs
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : automake
+version     : 1.16.5
+release     : 3
+homepage    : https://ftp.gnu.org/gnu/automake
+upstreams   :
+    - https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.xz : f01d58cd6d9d77fbdca9eb4bbd5ead1988228fdb73d6f7a201f5f8d6b118b469
+summary     : Generate Makefile.in files
+description : |
+    GNU Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards. Automake requires the use of GNU Autoconf.
+license     :
+    - GPL-2.0-or-later
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/share/aclocal
+rundeps     :
+    - binary(autoconf)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+tuning      :
+    - lto
+    - optimize: speed

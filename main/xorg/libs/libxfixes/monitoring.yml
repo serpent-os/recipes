@@ -1,0 +1,8 @@
+releases:
+  id: 1775
+security:
+  cpe:
+  - vendor: x
+    product: libxfixes
+  - vendor: x.org
+    product: libxfixes

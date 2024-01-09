@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : btrfs-progs
+version     : 6.2.2
+release     : 6
+homepage    : https://github.com/kdave/btrfs-progs
+upstreams   :
+    - https://mirrors.edge.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v6.2.2.tar.xz : e4888db8637d92e667448386992d0856b954cf2515b98d39b667da43c482d693
+summary     : Filesystem utilities for btrfs filesystems
+description : |
+    Filesystem utilities for btrfs filesystems
+license     :
+    - GPL-2.0-or-later # libbtrfs
+    - LGPL-2.1-or-later # libbtrfsutil
+builddeps   :
+    - pkgconfig(blkid)
+    - pkgconfig(ext2fs)
+    - pkgconfig(libudev)
+    - pkgconfig(libzstd)
+    - pkgconfig(lzo2)
+    - pkgconfig(uuid)
+    - pkgconfig(zlib)
+    # TODO needs python-sphinx for docs
+    # TODO needs libgcrypt or libsodium as a crypto provider
+rundeps    :
+    - gcc # Temporary until libgcc issue is fixed
+setup      : |
+    %configure --disable-static \
+               --disable-documentation \
+               --disable-python
+build       : |
+    %make
+install     : |
+    %make_install
+    %install_file btrfs-completion %(installroot)/%(completionsdir)/btrfs
+
+    # Systemd integration
+    %install_file %(pkgdir)/btrfs-scrub@.service -t %(installroot)/%(libdir)/systemd/system/
+    %install_file %(pkgdir)/btrfs-scrub@.timer -t %(installroot)/%(libdir)/systemd/system/
+check       : |
+    ./btrfs filesystem show
+tuning      :
+    - lto
+    - optimize: speed

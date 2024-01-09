@@ -1,0 +1,36 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"bc": {
+			"build-depends": [
+				"binary(ed)",
+				"binary(flex)",
+				"binary(makeinfo)",
+				"pkgconfig(readline)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libreadline.so.8(x86_64))"
+			],
+			"files": [
+				"/usr/bin/bc",
+				"/usr/bin/dc",
+				"/usr/share/info/bc.info",
+				"/usr/share/info/dc.info",
+				"/usr/share/info/dir",
+				"/usr/share/man/man1/bc.1",
+				"/usr/share/man/man1/dc.1"
+			],
+			"name": "bc",
+			"provides": [
+				"binary(bc)",
+				"binary(dc)"
+			]
+		}
+	},
+	"source-name": "bc",
+	"source-release": "4",
+	"source-version": "1.07.1"
+}

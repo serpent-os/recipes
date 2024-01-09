@@ -1,0 +1,60 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libthai": {
+			"build-depends": [
+				"pkgconfig(datrie-0.2)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libdatrie.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libthai.so.0",
+				"/usr/lib/libthai.so.0.3.1",
+				"/usr/share/libthai/thbrk.tri"
+			],
+			"name": "libthai",
+			"provides": [
+				"soname(libthai.so.0(x86_64))"
+			]
+		},
+		"libthai-devel": {
+			"build-depends": [
+				"pkgconfig(datrie-0.2)"
+			],
+			"depends": [
+				"pkgconfig(datrie-0.2)"
+			],
+			"files": [
+				"/usr/include/thai/thailib.h",
+				"/usr/include/thai/thbrk.h",
+				"/usr/include/thai/thcell.h",
+				"/usr/include/thai/thcoll.h",
+				"/usr/include/thai/thctype.h",
+				"/usr/include/thai/thinp.h",
+				"/usr/include/thai/thrend.h",
+				"/usr/include/thai/thstr.h",
+				"/usr/include/thai/thwbrk.h",
+				"/usr/include/thai/thwchar.h",
+				"/usr/include/thai/thwcoll.h",
+				"/usr/include/thai/thwctype.h",
+				"/usr/include/thai/thwinp.h",
+				"/usr/include/thai/thwrend.h",
+				"/usr/include/thai/thwstr.h",
+				"/usr/include/thai/tis.h",
+				"/usr/include/thai/wtt.h",
+				"/usr/lib/libthai.so",
+				"/usr/lib/pkgconfig/libthai.pc"
+			],
+			"name": "libthai-devel",
+			"provides": [
+				"pkgconfig(libthai)"
+			]
+		}
+	},
+	"source-name": "libthai",
+	"source-release": "1",
+	"source-version": "0.1.29"
+}

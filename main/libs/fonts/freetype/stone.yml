@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : freetype
+version     : '2.13.0'
+release     : 3
+homepage    : http://freetype.org
+upstreams   :
+    - https://download.savannah.gnu.org/releases/freetype/freetype-2.13.0.tar.xz : 5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c
+summary     : Library to rasterize glyphs from font files
+description : |
+    freetype is a font rasterizer library written in C, designed to be small, efficient, highly customizable, and portable while capable of producing high-quality output (glyph images) of most vector and bitmap font formats.
+license     :
+    - FTL OR GPL-2.0-only
+builddeps   :
+    - binary(python3)
+    - pkgconfig(harfbuzz)
+    - pkgconfig(libpng)
+    - pkgconfig(zlib)
+    - pkgconfig32(libpng)
+    - pkgconfig32(zlib)
+emul32      : yes
+profiles    :
+    - emul32:
+        setup: |
+            # Currently the emul32 chain for harfbuzz is on the large side. Revisit
+            %meson -Dharfbuzz=disabled
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

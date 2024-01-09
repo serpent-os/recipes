@@ -1,0 +1,6 @@
+releases:
+  id: 5350
+security:
+  cpe:
+  - vendor: git
+    product: git

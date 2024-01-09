@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xcb-util-image
+version     : 0.4.1
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxcb-image
+upstreams   :
+    - https://xcb.freedesktop.org/dist/xcb-util-image-0.4.1.tar.xz : ccad8ee5dadb1271fd4727ad14d9bd77a64e505608766c4e98267d9aede40d3d
+summary     : XCB port of Xlib's XImage and XShmImage functions.
+description : |
+    The XCB util modules provides a number of libraries which sit on top of libxcb, the core X protocol library, and some of the extension libraries. These experimental libraries provide convenience functions and interfaces which make the raw X protocol more usable. Some of the libraries also provide client-side code which is not strictly part of the X protocol but which have traditionally been provided by Xlib.
+license     : MIT
+builddeps   :
+    - pkgconfig(xcb-shm)
+    - pkgconfig(xproto)
+    - pkgconfig(xcb-util)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

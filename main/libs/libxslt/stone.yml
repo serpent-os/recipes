@@ -1,0 +1,48 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxslt
+version     : '1.1.37'
+release     : 2
+homepage    : https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home
+upstreams   :
+    - https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.37.tar.xz : 3a4b27dc8027ccd6146725950336f1ec520928f320f144eb5fa7990ae6123ab4
+summary     : XSLT processor based on libxml2
+description : |
+    libxslt provides bindings to interact with XSLT files and
+    is based on GNOME's libxml2.
+license     :
+    - X11
+builddeps:
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(python3)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/libxslt/*
+    - "%(name)-devel":
+        paths:
+            - /usr/share/man/man3/*
+            - /usr/bin/xslt-config
+    - "python-%(name)":
+        summary: "XSLT processor based on libxml2 - Python library"
+        description: |
+            libxslt provides bindings to interact with XSLT files and
+            is based on GNOME's libxml2 - Python Library
+        rundeps:
+            - binary(python3)
+        paths:
+            - /usr/lib/python*
+tuning      :
+    - lto
+    - optimize: speed

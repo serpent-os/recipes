@@ -1,0 +1,6 @@
+releases:
+  id: 13599
+security:
+  cpe:
+  - vendor: perl
+    product: perl

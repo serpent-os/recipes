@@ -1,0 +1,6 @@
+releases:
+    id: 1638
+security:
+    cpe:
+        - vendor: freedesktop
+          product: libice

@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : xxhash
+version     : 0.8.1
+release     : 5
+homepage    : https://github.com/Cyan4973/xxHash
+upstreams   :
+    - https://github.com/Cyan4973/xxHash/archive/refs/tags/v0.8.1.tar.gz : 3bb6b7d6f30c591dd65aaaff1c8b7a5b94d81687998ca9400082c739a690436c
+summary     : Extremely fast non-cryptographic hash function
+description : |
+    xxHash is an Extremely fast Hash algorithm, processing at RAM speed limits. Code is highly portable, and produces hashes identical across all platforms (little / big endian).
+license     :
+    - BSD-2-Clause
+    - GPL-2.0-or-later
+tuning      :
+    - icf: all
+    - lto
+    - nosemantic
+    - symbolic
+build       : |
+    DISPATCH=1 %make
+install     : |
+    %make_install PREFIX=/usr
+    # no static
+    rm %(installroot)%(libdir)/*.a -v

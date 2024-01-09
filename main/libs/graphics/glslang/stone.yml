@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : glslang
+version     : 12.2.0
+release     : 3
+homepage    : https://github.com/KhronosGroup/glslang
+upstreams   :
+    - https://github.com/KhronosGroup/glslang/archive/refs/tags/12.2.0.tar.gz : 870d17030fda7308c1521fb2e01a9e93cbe4b130bc8274e90d00e127432ab6f6
+summary     : Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
+description : |
+    Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
+license     :
+    - Apache-2.0
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - GPL-3.0-with-bison-exception
+    - MIT
+builddeps   :
+    - cmake(SPIRV-Tools)
+    - pkgconfig(python3)
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

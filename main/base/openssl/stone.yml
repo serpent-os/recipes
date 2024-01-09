@@ -1,0 +1,43 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : openssl
+version     : 3.1.3
+release     : 7
+summary     : OpenSSL cryptography library
+license     : Apache-2.0
+homepage    : https://www.openssl.org
+description : |
+    OpenSSL cryptography library.
+upstreams   :
+    - https://www.openssl.org/source/openssl-3.1.4.tar.gz: 840af5366ab9b522bde525826be3ef0fb0af81c6a9ebd84caa600fea1731eee3
+builddeps   :
+    - pkgconfig(zlib)
+    - perl
+rundeps     :
+    - nss
+setup       : |
+    %patch %(pkgdir)/stateless/0001-Use-OS-provided-copy-of-openssl.cnf-as-fallback.patch
+
+    ./Configure shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 enable-ktls \
+                --prefix=/usr \
+                --openssldir=/etc/ssl \
+                --libdir=/usr/lib
+build       : |
+    %make
+install     : |
+    %make_install MANSUFFIX=openssl
+    rm %(installroot)/%(libdir)/*.a
+
+    # Stateless
+    %install_dir %(installroot)/%(vendordir)/etc
+    mv %(installroot)/etc/ssl %(installroot)/%(vendordir)/etc/
+    rmdir %(installroot)/etc
+    rmdir %(installroot)/%(vendordir)/etc/ssl/certs
+    rmdir %(installroot)/%(vendordir)/etc/ssl/private
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*

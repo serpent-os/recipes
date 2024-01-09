@@ -1,0 +1,48 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : pango
+version     : 1.50.14
+release     : 1
+homepage    : https://pango.gnome.org/
+upstreams   :
+    - https://download.gnome.org/sources/pango/1.50/pango-1.50.14.tar.xz : 1d67f205bfc318c27a29cfdfb6828568df566795df0cb51d2189cde7f2d581e8
+summary     : Pango is a library for layout and rendering of text, with an emphasis on internationalization
+description : |
+    Pango is a library for layout and rendering of text, with an emphasis on internationalization. Pango can be used anywhere that text layout is needed; however, most of the work on Pango so far has been done using the GTK widget toolkit as a test platform. Pango forms the core of text and font handling for GTK.
+license     :
+    - Apache-2.0
+    - CC-BY-SA-3.0
+    - CC0-1.0
+    - GPL-2.0-or-later
+    - GPL-3.0-or-later
+    - LGPL-2.0-or-later
+    - MIT
+    - MPL-1.1
+    - OFL-1.1
+builddeps   :
+    - pkgconfig(cairo)
+    - pkgconfig(fontconfig)
+    - pkgconfig(freetype2)
+    - pkgconfig(fribidi)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(harfbuzz)
+    - pkgconfig(libthai)
+    # pkgconfig(sysprof-capture-4)
+    - pkgconfig(xft)
+    - pkgconfig(xrender)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/bin/*

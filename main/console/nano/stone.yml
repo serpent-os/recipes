@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : nano
+version     : 7.2
+release     : 18
+homepage    : https://www.nano-editor.org/dist/v7
+upstreams   :
+    - https://www.nano-editor.org/dist/v7/nano-7.2.tar.xz : 86f3442768bd2873cec693f83cdf80b4b444ad3cc14760b74361474fc87a4526
+summary     : GNU Text Editor
+description : |
+    Nano is a small and simple text editor for use on the terminal.
+    It copied the interface and key bindings of the Pico editor but
+    added several missing features: undo/redo, syntax highlighting,
+    line numbers, softwrapping, multiple buffers, selecting text by
+    holding Shift, search-and-replace with regular expressions, and
+    several other conveniences.
+license     :
+    - GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(libmagic)
+    - pkgconfig(ncursesw)
+    - pkgconfig(zlib)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : tpm2-tss
+version     : 3.2.2
+release     : 1
+homepage    : https://tpm2-software.github.io
+upstreams   :
+    - https://github.com/tpm2-software/tpm2-tss/releases/download/3.2.2/tpm2-tss-3.2.2.tar.gz : ba9e52117f254f357ff502e7d60fce652b3bfb26327d236bbf5ab634235e40f1
+summary     : OSS implementation of the TCG TPM2 Software Stack
+description : |
+    %(name) is an OSS implementation of the TCG TPM2 Software Stack.
+license     :
+    - BSD-2-Clause
+builddeps   :
+    - pkgconfig(json-c)
+    - pkgconfig(libcrypto)
+    - pkgconfig(libcurl)
+    - shadow
+setup       : |
+    %patch %(pkgdir)/stateless/0001-Support-stateless-config-file.patch
+    # It wants groupadd for whatever reason.
+    export PATH="$PATH:/usr/sbin"
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+
+    mv %(installroot)/etc/sysusers.d %(installroot)/%(libdir)
+    mv %(installroot)/etc/tmpfiles.d %(installroot)/%(libdir)
+    install -dm00755 %(installroot)/%(vendordir)
+    mv %(installroot)/etc/tpm2-tss %(installroot)/%(vendordir)
+    rmdir %(installroot)/etc

@@ -1,0 +1,50 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : util-linux
+version     : 2.38.1
+release     : 5
+summary     : Random collection of Linux utilities
+license     :
+    - BSD-3-Clause
+    - BSD-4-Clause-UC
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-or-later
+    - LGPL-2.1-or-later
+    - Public-Domain
+homepage    : https://www.kernel.org/pub/linux/utils/util-linux
+description : |
+    Random collection of Linux utilities
+upstreams   :
+    - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.1.tar.xz : 60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f
+builddeps   :
+    - pkgconfig(libcap-ng)
+    - pkgconfig(libcrypt)
+    - pkgconfig(libsystemd)
+    - pkgconfig(ncursesw)
+    - pkgconfig(pam)
+    - pkgconfig(python3)
+    - pkgconfig(zlib)
+setup       : |
+    # Can fix these issues once fakeroot is implemented
+    %configure --disable-makeinstall-chown \
+               --disable-makeinstall-setuid \
+               --disable-static \
+               --with-vendordir=%(vendordir)
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # PAM configuration
+    %install_dir %(installroot)/%(vendordir)/pam.d
+    %install_file %(pkgdir)/pam.d/pam-common %(installroot)/%(vendordir)/pam.d/chfn
+    %install_file %(pkgdir)/pam.d/pam-common %(installroot)/%(vendordir)/pam.d/chsh
+    %install_file %(pkgdir)/pam.d/pam-login %(installroot)/%(vendordir)/pam.d/login
+    %install_file %(pkgdir)/pam.d/pam-runuser %(installroot)/%(vendordir)/pam.d/runuser
+    %install_file %(pkgdir)/pam.d/pam-runuser %(installroot)/%(vendordir)/pam.d/runuser-l
+    %install_file %(pkgdir)/pam.d/pam-su %(installroot)/%(vendordir)/pam.d/su
+    %install_file %(pkgdir)/pam.d/pam-su %(installroot)/%(vendordir)/pam.d/su-l

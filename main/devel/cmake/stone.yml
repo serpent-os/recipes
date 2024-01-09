@@ -1,0 +1,42 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : cmake
+version     : 3.26.3
+release     : 5
+homepage    : https://cmake.org/
+upstreams   :
+    - https://www.cmake.org/files/v3.26/cmake-3.26.3.tar.gz : bbd8d39217509d163cb544a40d6428ac666ddc83e22905d3e52c925781f0f659
+summary     : Cross-platform build system
+description : |
+    CMake is an open-source, cross-platform family of tools designed to build, test and package software. CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice.
+license     :
+    - BSD-3-Clause
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/share/aclocal
+builddeps   :
+    - pkgconfig(expat)
+    - pkgconfig(libcurl)
+    - pkgconfig(libarchive)
+    - pkgconfig(zlib)
+tuning      :
+    - icf: all
+    - lto
+    - nosemantic
+    - polly
+    - symbolic
+setup       : |
+    %cmake \
+        -DBUILD_TESTING=OFF \
+        -DCMAKE_USE_SYSTEM_CURL=ON \
+        -DCMAKE_USE_SYSTEM_EXPAT=ON \
+        -DCMAKE_USE_SYSTEM_LIBARCHIVE=ON \
+        -DCMAKE_USE_SYSTEM_ZLIB=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

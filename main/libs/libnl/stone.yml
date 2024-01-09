@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libnl
+version     : 3.7.0
+release     : 1
+homepage    : https://github.com/thom311/libnl/
+upstreams   :
+    - https://github.com/thom311/libnl/releases/download/libnl3_7_0/libnl-3.7.0.tar.gz : 9fe43ccbeeea72c653bdcf8c93332583135cda46a79507bfd0a483bb57f65939
+summary     : Library for applications dealing with netlink sockets
+description : |
+    Library for applications dealing with netlink sockets
+license     :
+    - LGPL-2.1
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+setup       : |
+    %configure --disable-static \
+               --sysconfdir=%(vendordir)
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check
+tune        :
+    - lto
+    - optimize: speed

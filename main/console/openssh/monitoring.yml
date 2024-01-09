@@ -1,0 +1,6 @@
+releases:
+  id: 2565
+security:
+  cpe:
+  - vendor: openbsd
+    product: openssh

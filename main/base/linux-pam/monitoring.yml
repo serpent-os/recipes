@@ -1,0 +1,6 @@
+releases:
+  id: 12244
+security:
+  cpe:
+  - vendor: linux-pam
+    product: linux-pam

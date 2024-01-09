@@ -1,0 +1,53 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : colord
+version     : 1.4.6
+release     : 1
+homepage    : https://www.freedesktop.org/software/colord/releases
+upstreams   :
+    - https://www.freedesktop.org/software/colord/releases/colord-1.4.6.tar.xz : 7407631a27bfe5d1b672e7ae42777001c105d860b7b7392283c8c6300de88e6f
+summary     : Making color management just work
+description : |
+    colord is a system service that makes it easy to manage, install and generate color profiles to accurately color manage input and output devices. This functionality is implemented as a system activated daemon called colord. Being system activated means that it's only started when the user is using a text mode or graphical tool.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    # binary(spotread) argyllcms
+    - binary(vapigen)
+    - pkgconfig(bash-completion)
+    # pkgconfig(colord-gtk)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    # pkgconfig(gnome-desktop-3.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(gusb)
+    - pkgconfig(lcms2)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libudev)
+    - pkgconfig(polkit-gobject-1)
+    # pkgconfig(sane-backends)
+    - pkgconfig(sqlite3)
+    - pkgconfig(systemd)
+    - pkgconfig(udev)
+setup       : |
+    %meson \
+        -Ddocs=false \
+        -Dman=false \
+        -Ddaemon_user=colord
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
+    # Based on the meson_post_install file
+    # FIXME: TRIGGERS MOFO
+    %tmpfiles "d /var/lib/colord/icc 0755 colord colord -"
+    %sysusers 'u colord 124 "Color Daemon" /var/empty'

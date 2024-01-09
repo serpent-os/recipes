@@ -1,0 +1,96 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxinerama": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86_64))",
+				"soname(libXext.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libXinerama.so.1",
+				"/usr/lib/libXinerama.so.1.0.0"
+			],
+			"name": "libxinerama",
+			"provides": [
+				"soname(libXinerama.so.1(x86_64))"
+			]
+		},
+		"libxinerama-32bit": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86))",
+				"soname(libXext.so.6(x86))",
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libXinerama.so.1",
+				"/usr/lib32/libXinerama.so.1.0.0"
+			],
+			"name": "libxinerama-32bit",
+			"provides": [
+				"soname(libXinerama.so.1(x86))"
+			]
+		},
+		"libxinerama-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)"
+			],
+			"depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig(xineramaproto)"
+			],
+			"files": [
+				"/usr/lib32/libXinerama.so",
+				"/usr/lib32/pkgconfig/xinerama.pc"
+			],
+			"name": "libxinerama-32bit-devel",
+			"provides": [
+				"pkgconfig32(xinerama)"
+			]
+		},
+		"libxinerama-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)"
+			],
+			"depends": [
+				"pkgconfig(x11)",
+				"pkgconfig(xext)",
+				"pkgconfig(xineramaproto)"
+			],
+			"files": [
+				"/usr/include/X11/extensions/Xinerama.h",
+				"/usr/include/X11/extensions/panoramiXext.h",
+				"/usr/lib/libXinerama.so",
+				"/usr/lib/pkgconfig/xinerama.pc",
+				"/usr/share/man/man3/Xinerama.3",
+				"/usr/share/man/man3/XineramaIsActive.3",
+				"/usr/share/man/man3/XineramaQueryExtension.3",
+				"/usr/share/man/man3/XineramaQueryScreens.3",
+				"/usr/share/man/man3/XineramaQueryVersion.3"
+			],
+			"name": "libxinerama-devel",
+			"provides": [
+				"pkgconfig(xinerama)"
+			]
+		}
+	},
+	"source-name": "libxinerama",
+	"source-release": "1",
+	"source-version": "1.1.5"
+}

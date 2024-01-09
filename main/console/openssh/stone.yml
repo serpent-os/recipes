@@ -1,0 +1,99 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : openssh
+version     : "9.3p1"
+release     : 5
+summary     : OpenSSH (OpenBSD Secure Shell)
+license     : 
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - ISC
+    - MIT
+homepage    : https://www.openssh.com/
+description : |
+    OpenSSH is a free version of secure shell tools developed by the OpenBSD project to help facilitate secure connections and communications.
+upstreams   :
+    - https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.3p1.tar.gz: e9baba7701a76a51f3d85a62c383a3c9dcd97fa900b859bc7db114c1868af8a8
+builddeps   :
+    - pkgconfig(libcrypt)
+    - pkgconfig(libcrypto)
+    - pkgconfig(libedit)
+    - pkgconfig(libldns)
+    - pkgconfig(libsystemd)
+    - pkgconfig(pam)
+    - pkgconfig(zlib)
+# TODO Kerberos support (krb5)
+# TODO FIDO support (libfido)
+setup       : |
+    %patch %(pkgdir)/openssh-7.4p1-systemd.patch
+    %patch %(pkgdir)/stateless/0001-Make-SSH-stateless.patch
+    %patch %(pkgdir)/stateless/0002-Stateless-moduli.patch
+    %patch %(pkgdir)/security/0003-Increase-ECDSA-default-length-to-521.patch
+    %patch %(pkgdir)/stateless/0004-Default-default-secure-ciphers.patch
+    %patch %(pkgdir)/stateless/0005-Always-use-PAM-by-default.patch
+    %patch %(pkgdir)/stateless/0006-Set-default-server-keep-alive.patch
+    %patch %(pkgdir)/stateless/0007-Make-OpenSSH-print-a-MOTD-file-in-usr-share-defaults.patch
+    %patch %(pkgdir)/stateless/0008-Update-sshd_config-to-reflect-UsePAM-yes-default.patch
+    %patch %(pkgdir)/stateless/statelessconfig.patch
+
+    # --disable-strip is specified because we want the build toolchain to do it instead
+    %reconfigure --sysconfdir=/etc/ssh \
+                 --with-pid-dir=/run \
+                 --with-ldns \
+                 --with-libedit \
+                 --with-pam \
+                 --with-ssl-engine \
+                 --with-systemd \
+                 --disable-lastlog \
+                 --disable-strip
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # TODO ssh-copy-id
+
+    # systemd unit files (enabled by default)
+    %install_file %(pkgdir)/sshd*.service -t %(installroot)/%(libdir)/systemd/system/
+
+    # PAM configuration
+    %install_file %(pkgdir)/sshd.pam %(installroot)/%(vendordir)/pam.d/sshd
+
+    # Statelessness
+    %install_dir %(installroot)/%(vendordir)/
+    mv %(installroot)/etc/ssh %(installroot)/%(vendordir)/
+    rmdir %(installroot)/etc
+    rmdir %(installroot)/var/empty
+    rmdir %(installroot)/var/
+
+    # sysusers configuration
+    %sysusers '# SSHD privilege separation user'
+    %sysusers 'g sshd 50 -'
+    %sysusers 'u sshd 50 "SSH Daemon" /var/empty'
+    mv %(installroot)/%(sysusersdir)/openssh.conf %(installroot)/%(sysusersdir)/openssh-server.conf
+
+    # tmpfiles configuration
+    %tmpfiles "# Create SSH directories directory"
+    %tmpfiles "d /etc/ssh - - - -"
+    %tmpfiles "D /var/empty - - - -"
+    mv %(installroot)/%(tmpfilesdir)/openssh.conf %(installroot)/%(tmpfilesdir)/openssh-server.conf
+packages    :
+    - "%(name)-server":
+        summary: OpenSSH - Server daemon
+        description: |
+            OpenSSH - Server daemon
+        paths:
+            - /usr/sbin/
+            - /usr/lib/openssh/sftp-server
+            - /usr/lib/systemd/
+            - /usr/lib/sysusers.d/openssh-server
+            - /usr/lib/tmpfiles.d/openssh-server
+            - /usr/share/defaults/etc/pam.d/
+            - /usr/share/defaults/etc/ssh/moduli
+            - /usr/share/defaults/etc/ssh/sshd_config
+            - /usr/share/man/*/moduli*
+            - /usr/share/man/*/sshd*
+            - /usr/share/man/*/sftp-*

@@ -1,0 +1,70 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libgpg-error": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/gpg-error",
+				"/usr/bin/gpgrt-config",
+				"/usr/bin/yat2m",
+				"/usr/lib/libgpg-error.so.0",
+				"/usr/lib/libgpg-error.so.0.33.1",
+				"/usr/share/common-lisp/source/gpg-error/gpg-error-codes.lisp",
+				"/usr/share/common-lisp/source/gpg-error/gpg-error-package.lisp",
+				"/usr/share/common-lisp/source/gpg-error/gpg-error.asd",
+				"/usr/share/common-lisp/source/gpg-error/gpg-error.lisp",
+				"/usr/share/info/gpgrt.info",
+				"/usr/share/libgpg-error/errorref.txt",
+				"/usr/share/locale/cs/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/da/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/de/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/eo/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/es/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/hu/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/it/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/pt/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/ro/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/tr/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/vi/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/zh_CN/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/locale/zh_TW/LC_MESSAGES/libgpg-error.mo"
+			],
+			"name": "libgpg-error",
+			"provides": [
+				"binary(gpg-error)",
+				"binary(gpgrt-config)",
+				"soname(libgpg-error.so.0(x86_64))",
+				"binary(yat2m)"
+			]
+		},
+		"libgpg-error-devel": {
+			"files": [
+				"/usr/include/gpg-error.h",
+				"/usr/include/gpgrt.h",
+				"/usr/lib/libgpg-error.so",
+				"/usr/lib/pkgconfig/gpg-error.pc",
+				"/usr/share/aclocal/gpg-error.m4",
+				"/usr/share/aclocal/gpgrt.m4"
+			],
+			"name": "libgpg-error-devel",
+			"provides": [
+				"pkgconfig(gpg-error)"
+			]
+		}
+	},
+	"source-name": "libgpg-error",
+	"source-release": "1",
+	"source-version": "1.46"
+}

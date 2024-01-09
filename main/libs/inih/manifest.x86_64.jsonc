@@ -1,0 +1,40 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"inih": {
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libINIReader.so.0",
+				"/usr/lib/libinih.so.0"
+			],
+			"name": "inih",
+			"provides": [
+				"soname(libINIReader.so.0(x86_64))",
+				"soname(libinih.so.0(x86_64))"
+			]
+		},
+		"inih-devel": {
+			"files": [
+				"/usr/include/INIReader.h",
+				"/usr/include/ini.h",
+				"/usr/lib/libINIReader.so",
+				"/usr/lib/libinih.so",
+				"/usr/lib/pkgconfig/INIReader.pc",
+				"/usr/lib/pkgconfig/inih.pc"
+			],
+			"name": "inih-devel",
+			"provides": [
+				"pkgconfig(INIReader)",
+				"pkgconfig(inih)"
+			]
+		}
+	},
+	"source-name": "inih",
+	"source-release": "1",
+	"source-version": "56"
+}

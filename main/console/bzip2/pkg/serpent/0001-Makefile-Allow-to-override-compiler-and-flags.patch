@@ -1,0 +1,52 @@
+From 87bb9d80832be73c761bfd0883cc648abd54ea80 Mon Sep 17 00:00:00 2001
+From: Fabio Forni <fabio@redaril.me>
+Date: Sat, 21 May 2022 01:37:17 +0200
+Subject: [PATCH] Makefile: Allow to override compiler and flags
+
+---
+ Makefile           | 10 +++++-----
+ Makefile-libbz2_so |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index f8a1772..b34a4d0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,13 +15,13 @@
+ SHELL=/bin/sh
+ 
+ # To assist in cross-compiling
+-CC=gcc
+-AR=ar
+-RANLIB=ranlib
+-LDFLAGS=
++CC ?= gcc
++AR ?= ar
++RANLIB ?= ranlib
++LDFLAGS ?=
+ 
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS += -Wall -Winline $(BIGFILES)
+ 
+ # Where you want it installed when you do 'make install'
+ PREFIX=/usr/local
+diff --git a/Makefile-libbz2_so b/Makefile-libbz2_so
+index fb0f230..6cc5e78 100644
+--- a/Makefile-libbz2_so
++++ b/Makefile-libbz2_so
+@@ -22,9 +22,9 @@
+ 
+ 
+ SHELL=/bin/sh
+-CC=gcc
++CC ?= gcc
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-fpic -fPIC -Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS += -fpic -fPIC -Wall -Winline $(BIGFILES)
+ 
+ OBJS= blocksort.o  \
+       huffman.o    \
+-- 
+2.35.3
+

@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libfuse
+version     : 3.14.1
+release     : 3
+homepage    : https://github.com/libfuse/libfuse
+upstreams   :
+    - https://github.com/libfuse/libfuse/releases/download/fuse-3.14.1/fuse-3.14.1.tar.xz : 126919d72b46b3e0eb58a9c6933a2a50c36f2ea69f61fe9e78bdba9f463ffa20
+summary     : Reference implementation of Filesystem in Userspace interface
+description : |
+    FUSE (Filesystem in Userspace) is an interface for userspace programs to export a filesystem to the Linux kernel. The FUSE project consists of two components: the fuse kernel module (maintained in the regular kernel repositories) and the libfuse userspace library (maintained in this repository). libfuse provides the reference implementation for communicating with the FUSE kernel module.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(libudev)
+setup       : |
+    %patch %(pkgdir)/stateless/stateless.patch
+    %meson \
+        -Dexamples=false \
+        -Dinitscriptdir="" \
+        -Duseroot=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+    # Commented out config file. Not useful.
+    rm -rf %(installroot)/etc

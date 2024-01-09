@@ -1,0 +1,55 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : containerd
+version     : 1.7.0
+release     : 6
+homepage    : https://containerd.io/
+upstreams   :
+    - https://github.com/containerd/containerd/archive/refs/tags/v1.7.0.tar.gz : c80b1c7f04057108059fdec9c936fc1ec0dccafa45c00a1d54f14dceb6500552
+summary     : An open and reliable container runtime
+description : |
+    An open and reliable container runtime
+license     :
+    - Apache-2.0
+networking  : yes
+builddeps   :
+    - binary(go)
+    - binary(go-md2man)
+    - binary(sed)
+    - pkgconfig(libbtrfsutil)
+rundeps     :
+    - binary(runc)
+environment : |
+    # This can probably be removed after golang reboostrap.
+    export GOMODCACHE="%(workdir)/.cache"
+
+    export GO111MODULE=auto
+    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+
+    # Git commit corresponding to the version tag
+    export COMMIT="1fbd70374134b891f97ce19c70b6e50c7b9f4e0d"
+
+    # https://github.com/serpent-os/boulder/issues/74
+    export CGO_CFLAGS="${CGO_CFLAGS} -Wno-error=unused-command-line-argument"
+setup       : |
+    sed -i 's|/usr/local/bin/containerd|/usr/bin/containerd|' containerd.service
+build      : |
+    %make GOPATH=`pwd`/src/github.com/containerd V=1 VERSION=%(version) REVISION=$COMMIT GO_BUILD_FLAGS="$GOFLAGS" BUILDTAGS=no_aufs binaries man
+install     : |
+    %make_install V=1 VERSION=v%(version) REVISION=$COMMIT PREFIX=/usr/
+    rm -fv %(installroot)/%(bindir)/containerd-shim-runc-v1
+
+    # systemd
+    %install_file containerd.service %(installroot)/%(libdir)/systemd/system/containerd.service
+
+    %install_file man/*.8 -t %(installroot)/%(mandir)/man8
+    %install_file man/*.5 -t %(installroot)/%(mandir)/man5
+check       : |
+    # Needs true root
+    GOFLAGS="-trimpath" make test || true
+tune        :
+    - lto
+    - optimize: speed

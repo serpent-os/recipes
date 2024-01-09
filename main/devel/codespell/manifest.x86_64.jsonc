@@ -1,0 +1,60 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"codespell": {
+			"build-depends": [
+				"binary(python3)",
+				"python-setuptools_scm"
+			],
+			"files": [
+				"/usr/bin/codespell",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/entry_points.txt",
+				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__init__.py",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__main__.py",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/__init__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/__main__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/__main__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/_codespell.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/_codespell.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/_version.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/_version.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/_codespell.py",
+				"/usr/lib/python3.11/site-packages/codespell_lib/_version.py",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/__init__.py",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/__pycache__/__init__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary.txt",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary_code.txt",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary_en-GB_to_en-US.txt",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary_informal.txt",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary_names.txt",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary_rare.txt",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/dictionary_usage.txt",
+				"/usr/lib/python3.11/site-packages/codespell_lib/data/linux-kernel.exclude",
+				"/usr/lib/python3.11/site-packages/codespell_lib/py.typed",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__init__.py",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/__init__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/test_basic.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/test_basic.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/test_dictionary.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/test_dictionary.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/test_basic.py",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/test_dictionary.py"
+			],
+			"name": "codespell",
+			"provides": [
+				"binary(codespell)"
+			]
+		}
+	},
+	"source-name": "codespell",
+	"source-release": "4",
+	"source-version": "2.2.4"
+}

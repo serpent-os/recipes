@@ -1,0 +1,97 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"libarchive": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libacl.so.1(x86_64))",
+				"soname(libattr.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(liblz4.so.1(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
+				"soname(libxml2.so.2(x86_64))",
+				"soname(libz.so.1(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/bsdcat",
+				"/usr/bin/bsdcpio",
+				"/usr/bin/bsdtar",
+				"/usr/bin/cpio",
+				"/usr/bin/tar",
+				"/usr/lib/libarchive.so.13",
+				"/usr/lib/libarchive.so.13.6.2",
+				"/usr/share/man/man1/bsdcat.1",
+				"/usr/share/man/man1/bsdcpio.1",
+				"/usr/share/man/man1/bsdtar.1",
+				"/usr/share/man/man3/archive_entry.3",
+				"/usr/share/man/man3/archive_entry_acl.3",
+				"/usr/share/man/man3/archive_entry_linkify.3",
+				"/usr/share/man/man3/archive_entry_misc.3",
+				"/usr/share/man/man3/archive_entry_paths.3",
+				"/usr/share/man/man3/archive_entry_perms.3",
+				"/usr/share/man/man3/archive_entry_stat.3",
+				"/usr/share/man/man3/archive_entry_time.3",
+				"/usr/share/man/man3/archive_read.3",
+				"/usr/share/man/man3/archive_read_add_passphrase.3",
+				"/usr/share/man/man3/archive_read_data.3",
+				"/usr/share/man/man3/archive_read_disk.3",
+				"/usr/share/man/man3/archive_read_extract.3",
+				"/usr/share/man/man3/archive_read_filter.3",
+				"/usr/share/man/man3/archive_read_format.3",
+				"/usr/share/man/man3/archive_read_free.3",
+				"/usr/share/man/man3/archive_read_header.3",
+				"/usr/share/man/man3/archive_read_new.3",
+				"/usr/share/man/man3/archive_read_open.3",
+				"/usr/share/man/man3/archive_read_set_options.3",
+				"/usr/share/man/man3/archive_util.3",
+				"/usr/share/man/man3/archive_write.3",
+				"/usr/share/man/man3/archive_write_blocksize.3",
+				"/usr/share/man/man3/archive_write_data.3",
+				"/usr/share/man/man3/archive_write_disk.3",
+				"/usr/share/man/man3/archive_write_filter.3",
+				"/usr/share/man/man3/archive_write_finish_entry.3",
+				"/usr/share/man/man3/archive_write_format.3",
+				"/usr/share/man/man3/archive_write_free.3",
+				"/usr/share/man/man3/archive_write_header.3",
+				"/usr/share/man/man3/archive_write_new.3",
+				"/usr/share/man/man3/archive_write_open.3",
+				"/usr/share/man/man3/archive_write_set_options.3",
+				"/usr/share/man/man3/archive_write_set_passphrase.3",
+				"/usr/share/man/man3/libarchive.3",
+				"/usr/share/man/man3/libarchive_changes.3",
+				"/usr/share/man/man3/libarchive_internals.3",
+				"/usr/share/man/man5/cpio.5",
+				"/usr/share/man/man5/libarchive-formats.5",
+				"/usr/share/man/man5/mtree.5",
+				"/usr/share/man/man5/tar.5"
+			],
+			"name": "libarchive",
+			"provides": [
+				"binary(bsdcat)",
+				"binary(bsdcpio)",
+				"binary(bsdtar)",
+				"binary(cpio)",
+				"soname(libarchive.so.13(x86_64))",
+				"binary(tar)"
+			]
+		},
+		"libarchive-devel": {
+			"files": [
+				"/usr/include/archive.h",
+				"/usr/include/archive_entry.h",
+				"/usr/lib/libarchive.so",
+				"/usr/lib/pkgconfig/libarchive.pc"
+			],
+			"name": "libarchive-devel",
+			"provides": [
+				"pkgconfig(libarchive)"
+			]
+		}
+	},
+	"source-name": "libarchive",
+	"source-release": "2",
+	"source-version": "3.6.2"
+}

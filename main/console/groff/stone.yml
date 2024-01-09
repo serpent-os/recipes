@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : groff
+version     : 1.22.4
+release     : 1
+homepage    : https://www.gnu.org/software/groff/
+upstreams   :
+    - https://mirrors.rit.edu/gnu/groff/groff-1.22.4.tar.gz : e78e7b4cb7dec310849004fa88847c44701e8d133b5d4c13057d876c1bad0293
+summary     : groff (Typesetting package to read formatted files)
+description : |
+    groff (GNU troff) is a typesetting package which reads plain text mixed with formatting commands and produces formatted output
+license     :
+    - GPL-3.0-or-later
+builddeps   :
+    - binary(makeinfo)
+setup       : |
+    %configure
+build       : |
+    %make AR=llvm-ar
+install     : |
+    %make_install

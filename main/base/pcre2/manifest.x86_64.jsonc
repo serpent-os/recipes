@@ -1,0 +1,96 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"pcre2": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libpcre2-16.so.0",
+				"/usr/lib/libpcre2-16.so.0.11.2",
+				"/usr/lib/libpcre2-32.so.0",
+				"/usr/lib/libpcre2-32.so.0.11.2",
+				"/usr/lib/libpcre2-8.so.0",
+				"/usr/lib/libpcre2-8.so.0.11.2",
+				"/usr/lib/libpcre2-posix.so.3",
+				"/usr/lib/libpcre2-posix.so.3.0.4"
+			],
+			"name": "pcre2",
+			"provides": [
+				"soname(libpcre2-16.so.0(x86_64))",
+				"soname(libpcre2-32.so.0(x86_64))",
+				"soname(libpcre2-8.so.0(x86_64))",
+				"soname(libpcre2-posix.so.3(x86_64))"
+			]
+		},
+		"pcre2-32bit": {
+			"depends": [
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libpcre2-16.so.0",
+				"/usr/lib32/libpcre2-16.so.0.11.2",
+				"/usr/lib32/libpcre2-32.so.0",
+				"/usr/lib32/libpcre2-32.so.0.11.2",
+				"/usr/lib32/libpcre2-8.so.0",
+				"/usr/lib32/libpcre2-8.so.0.11.2",
+				"/usr/lib32/libpcre2-posix.so.3",
+				"/usr/lib32/libpcre2-posix.so.3.0.4"
+			],
+			"name": "pcre2-32bit",
+			"provides": [
+				"soname(libpcre2-16.so.0(x86))",
+				"soname(libpcre2-32.so.0(x86))",
+				"soname(libpcre2-8.so.0(x86))",
+				"soname(libpcre2-posix.so.3(x86))"
+			]
+		},
+		"pcre2-32bit-devel": {
+			"files": [
+				"/usr/lib32/libpcre2-16.so",
+				"/usr/lib32/libpcre2-32.so",
+				"/usr/lib32/libpcre2-8.so",
+				"/usr/lib32/libpcre2-posix.so",
+				"/usr/lib32/pkgconfig/libpcre2-16.pc",
+				"/usr/lib32/pkgconfig/libpcre2-32.pc",
+				"/usr/lib32/pkgconfig/libpcre2-8.pc",
+				"/usr/lib32/pkgconfig/libpcre2-posix.pc"
+			],
+			"name": "pcre2-32bit-devel",
+			"provides": [
+				"pkgconfig32(libpcre2-16)",
+				"pkgconfig32(libpcre2-32)",
+				"pkgconfig32(libpcre2-8)",
+				"pkgconfig32(libpcre2-posix)"
+			]
+		},
+		"pcre2-devel": {
+			"files": [
+				"/usr/bin/pcre2-config",
+				"/usr/include/pcre2.h",
+				"/usr/include/pcre2posix.h",
+				"/usr/lib/libpcre2-16.so",
+				"/usr/lib/libpcre2-32.so",
+				"/usr/lib/libpcre2-8.so",
+				"/usr/lib/libpcre2-posix.so",
+				"/usr/lib/pkgconfig/libpcre2-16.pc",
+				"/usr/lib/pkgconfig/libpcre2-32.pc",
+				"/usr/lib/pkgconfig/libpcre2-8.pc",
+				"/usr/lib/pkgconfig/libpcre2-posix.pc",
+				"/usr/share/man/man1/pcre2-config.1"
+			],
+			"name": "pcre2-devel",
+			"provides": [
+				"pkgconfig(libpcre2-16)",
+				"pkgconfig(libpcre2-32)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(libpcre2-posix)",
+				"binary(pcre2-config)"
+			]
+		}
+	},
+	"source-name": "pcre2",
+	"source-release": "3",
+	"source-version": "10.42"
+}

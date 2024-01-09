@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : gzip
+version     : 1.12
+release     : 3
+homepage    : https://www.gnu.org/software/gzip/
+upstreams   :
+    - https://ftp.gnu.org/gnu/gzip/gzip-1.12.tar.xz : ce5e03e519f637e1f814011ace35c4f87b33c0bbabeec35baf5fbd3479e91956
+summary     : GNU Zip Compression Utilities
+description : |
+    GNU Gzip is a popular data compression program originally written by Jean-loup Gailly for the GNU project. Mark Adler wrote the decompression part.
+license     :
+    - GPL-3.0-or-later
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+workload   : |
+    %make check
+check      : |
+    %make check

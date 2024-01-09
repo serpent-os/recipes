@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : nodejs
+version     : '18.16.0'
+release     : 2
+homepage    : https://nodejs.org/
+upstreams   :
+    - https://nodejs.org/dist/v18.16.0/node-v18.16.0.tar.gz : 6a4f5c5d76e5c50cef673099e56f19bc3266ae363f56ca0ab77dd2f3c5088c6d
+summary     : A JavaScript runtime environment.
+description : |
+    Node.js is an open-source, cross-platform JavaScript runtime environment.
+license     : MIT
+builddeps   :
+    - binary(python)
+    - pkgconfig(bzip2)
+    - pkgconfig(icu-i18n)
+    - pkgconfig(libbrotlicommon)
+    - pkgconfig(libnghttp2)
+    - pkgconfig(libuv)
+    - pkgconfig(openssl)
+    - pkgconfig(zlib)
+    - gcc-devel # needed for libatomic
+    # TODO: c-ares
+setup       : |
+    ./configure \
+        --prefix=%(prefix) \
+        --shared-brotli \
+        --shared-libuv \
+        --shared-nghttp2 \
+        --shared-openssl \
+        --shared-zlib \
+        --with-intl=system-icu
+build       : |
+    %make
+install     : |
+    %make_install

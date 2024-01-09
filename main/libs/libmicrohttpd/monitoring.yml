@@ -1,0 +1,6 @@
+releases:
+  id: 1658
+security:
+  cpe:
+  - vendor: gnu
+    product: libmicrohttpd

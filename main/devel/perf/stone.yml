@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : perf
+version     : 6.2.12
+release     : 7
+summary     : Linux profiling with performance counters
+license     : GPL-2.0-only
+homepage    : https://perf.wiki.kernel.org/
+description : |
+    Linux profiling with performance counters.
+upstreams   :
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.12.tar.xz: c7e146b52737adfa4c724bfa41bf4721c5ee3cf220c074fbc60eb3ea62b0ccc8
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - pkgconfig(libcap)
+    - pkgconfig(libelf)
+    - pkgconfig(liblzma)
+    - pkgconfig(libzstd)
+    - pkgconfig(python3)
+    - pkgconfig(zlib)
+    - binutils-devel
+build       : |
+    %make -f Makefile.perf -C tools/perf \
+        prefix=/usr \
+        lib=lib/perf \
+        perfexecdir=lib/perf \
+        CC=clang \
+        LLVM=1
+install     : |
+    %make_install -C tools/perf \
+        prefix=/usr \
+        lib=lib/perf \
+        perfexecdir=lib/perf \
+        CC=clang \
+        LLVM=1
+
+    %install_file %(installroot)/etc/bash_completion.d/perf %(installroot)/%(completionsdir)/perf
+    rm %(installroot)/etc/bash_completion.d/perf
+    rmdir %(installroot)/etc/bash_completion.d %(installroot)/etc
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/include

@@ -1,0 +1,61 @@
+From d754a33469596a242bb51e93fa52762167b427f6 Mon Sep 17 00:00:00 2001
+From: Auke Kok <auke-jan.h.kok@intel.com>
+Date: Thu, 5 Apr 2018 10:02:14 -0700
+Subject: [PATCH] Build: drop pam/nsswitch, ship legacy tmpfiles, disable
+ resolved as default resolver at boot.
+
+Adapted from Makefile.am patch by Dimitri John Ledkov.
+
+Write the resolv.conf at boot immediately.
+
+Let docker, etc, use the direct nameserver information in
+/etc/resolv.conf, instead of redirecting to the stub resolver in
+systemd-resolved. The stub resolver fails on CNAME resolution and
+breaks various applications.
+
+Ref: https://github.com/coreos/coreos-overlay/pull/2129/commits/76830bedf02a8c54e1d2ce30796046b86bb00b94
+---
+ meson.build            | 5 -----
+ tmpfiles.d/etc.conf.in | 6 +++---
+ 2 files changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 1e49d52718..bea2008d38 100644
+--- a/meson.build
++++ b/meson.build
+@@ -190,7 +190,6 @@ udevhwdbdir = udevlibexecdir / 'hwdb.d'
+ catalogdir = prefixdir / 'lib/systemd/catalog'
+ kerneldir = prefixdir / 'lib/kernel'
+ kernelinstalldir = kerneldir / 'install.d'
+-factorydir = datadir / 'factory'
+ bootlibdir = prefixdir / 'lib/systemd/boot/efi'
+ testsdir = prefixdir / 'lib/systemd/tests'
+ systemdstatedir = localstatedir / 'lib/systemd'
+@@ -3929,10 +3928,6 @@ subdir('shell-completion/zsh')
+ subdir('docs/sysvinit')
+ subdir('docs/var-log')
+ 
+-install_subdir('factory/etc',
+-               install_dir : factorydir)
+-subdir('factory/templates')
+-
+ if install_sysconfdir
+         install_data('xorg/50-systemd-user.sh',
+                      install_dir : xinitrcdir)
+diff --git a/tmpfiles.d/etc.conf.in b/tmpfiles.d/etc.conf.in
+index b8f6287080..d90bcc43e0 100644
+--- a/tmpfiles.d/etc.conf.in
++++ b/tmpfiles.d/etc.conf.in
+@@ -12,6 +12,6 @@ L+ /etc/mtab - - - - ../proc/self/mounts
+ {% if HAVE_SMACK_RUN_LABEL %}
+ t /etc/mtab - - - - security.SMACK64=_
+ {% endif %}
+-C! /etc/locale.conf - - - -
+-C! /etc/nsswitch.conf - - - -
+-C! /etc/issue - - - -
++{% if ENABLE_RESOLVE %}
++L+! /etc/resolv.conf - - - - ../run/systemd/resolve/resolv.conf
++{% endif %}
+-- 
+2.39.0
+

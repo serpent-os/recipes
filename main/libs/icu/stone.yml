@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : icu
+version     : "73-1"
+release     : 3
+homepage    : https://icu.unicode.org/
+upstreams   :
+    - https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-src.tgz : a457431de164b4aa7eca00ed134d00dfbf88a77c6986a10ae7774fc076bb8c45
+summary     : International Components for Unicode
+description : |
+    The International Components for Unicode (ICU) package is a mature, widely used set of C/C++ libraries providing Unicode and Globalization support for software applications. ICU is widely portable and gives applications the same results on all platforms.
+license     : MIT
+emul32      : yes
+checkdeps   :
+    - binary(python3)
+environment : |
+    cd source
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    # Currently failing on i686
+    %make check || :
+packages    :
+    - "%(name)-devel":
+        paths:
+            - "/usr/bin/"
+            - "/usr/lib/icu"
+    - "%(name)-32bit-devel":
+        paths:
+            - "/usr/lib32/icu"

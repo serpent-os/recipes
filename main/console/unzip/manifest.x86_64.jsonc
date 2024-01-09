@@ -1,0 +1,36 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.1",
+	"packages": {
+		"unzip": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libbz2.so.1.0(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/funzip",
+				"/usr/bin/unzip",
+				"/usr/bin/unzipsfx",
+				"/usr/bin/zipgrep",
+				"/usr/bin/zipinfo",
+				"/usr/share/man/man1/funzip.1",
+				"/usr/share/man/man1/unzip.1",
+				"/usr/share/man/man1/unzipsfx.1",
+				"/usr/share/man/man1/zipgrep.1",
+				"/usr/share/man/man1/zipinfo.1"
+			],
+			"name": "unzip",
+			"provides": [
+				"binary(funzip)",
+				"binary(unzip)",
+				"binary(unzipsfx)",
+				"binary(zipgrep)",
+				"binary(zipinfo)"
+			]
+		}
+	},
+	"source-name": "unzip",
+	"source-release": "1",
+	"source-version": "6.0"
+}

@@ -1,0 +1,6 @@
+releases:
+  id: 12753
+security:
+  cpe:
+  - vendor: pkgconf
+    product: pkgconf

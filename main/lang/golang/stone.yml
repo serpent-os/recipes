@@ -1,0 +1,56 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : golang
+version     : 1.20.3
+release     : 6
+homepage    : https://golang.org
+upstreams   :
+    - https://golang.org/dl/go1.20.3.src.tar.gz : e447b498cde50215c4f7619e5124b0fc4e25fb5d16ea47271c47f278e7aa763a
+summary     : The Go programming language
+description : |
+    Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
+license     : BSD-3-Clause
+builddeps   :
+    - binary(bash)
+    - binary(go)
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/*.a
+environment : |
+    export GOROOT_FINAL="%(libdir)/%(name)"
+    export GOROOT_BOOTSTRAP="%(libdir)/%(name)"
+
+    # Should this be set by boulder automatically?
+    export XDG_CACHE_HOME="%(workdir)/.cache"
+
+    # https://github.com/serpent-os/boulder/issues/74
+    export CGO_CFLAGS="${CGO_CFLAGS} -Wno-error=unused-command-line-argument"
+setup       : |
+    %patch %(pkgdir)/stateless/x509-certificate-path.patch
+build       : |
+    cd src && ./make.bash -v
+# TODO: Properly filter unwanted content to achieve a clean package.
+install     : |
+    GOROOT=$(pwd) PATH=$(pwd)/bin:$PATH go install -buildmode=shared std
+    rm -rf .cache go
+    # Testdata searches for /libexec/ld-elf.so.1.
+    # This is just data fed into tests, but boulder scans it regardless.
+    find -type d -name testdata -exec rm -rf {} +
+
+    # install the tooling
+    %install_dir %(installroot)%(libdir)/%(name)/bin
+    %install_exe bin/gofmt %(installroot)%(libdir)/%(name)/bin/gofmt
+    %install_exe bin/go %(installroot)%(libdir)/%(name)/bin/go
+
+    # do it again (dedupes)
+    %install_bin bin/go
+    %install_bin bin/gofmt
+
+    # needed assets
+    find -mindepth 1 -maxdepth 1 -type d -not -name bin -exec cp -a {} %(installroot)/%(libdir)/%(name) \;
+# check      : |
+#     cd src && ./run.bash -v -v -v -k

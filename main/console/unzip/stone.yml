@@ -1,0 +1,69 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : unzip
+version     : "6.0"
+release     : 1
+summary     : For extracting and viewing files in .zip archives
+license     : Info-ZIP
+homepage    : http://www.info-zip.org/UnZip.html
+description : |
+    For extracting and viewing files in .zip archives
+upstreams   :
+    - https://jaist.dl.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/UnZip%206.0/unzip60.tar.gz: 036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
+builddeps   :
+    - binary(bash)
+    - pkgconfig(bzip2)
+checkdeps   :
+    - grep
+setup       : |
+    %patch %(pkgdir)/unzip-6.0-exec-shield.patch
+    %patch %(pkgdir)/unzip-6.0-close.patch
+    %patch %(pkgdir)/unzip-6.0-attribs-overflow.patch
+    %patch %(pkgdir)/unzip-6.0-symlink.patch
+    %patch %(pkgdir)/unzip-6.0-format-secure.patch
+    %patch %(pkgdir)/unzip-6.0-valgrind.patch
+    %patch %(pkgdir)/unzip-6.0-x-option.patch
+    %patch %(pkgdir)/security/cve-2014-8139.patch
+    %patch %(pkgdir)/security/cve-2014-8140.patch
+    %patch %(pkgdir)/security/cve-2014-8141.patch
+    %patch %(pkgdir)/security/cve-2014-9636.patch
+    %patch %(pkgdir)/security/cve-2014-9913.patch
+    %patch %(pkgdir)/security/cve-2015-7696.patch
+    %patch %(pkgdir)/security/cve-2015-7697.patch
+    %patch %(pkgdir)/unzip-6.0-alt-iconv-utf8.patch
+    %patch %(pkgdir)/unzip-6.0-alt-iconv-utf8-print.patch
+    %patch %(pkgdir)/security/cve-2016-9844.patch
+    %patch %(pkgdir)/security/cve-2018-18384.patch
+    %patch %(pkgdir)/security/cve-2018-1000035.patch
+    %patch %(pkgdir)/unzip-6.0-timestamp.patch
+    %patch %(pkgdir)/unzip-6.0-COVSCAN-fix-unterminated-string.patch
+    %patch %(pkgdir)/unzip-6.0-bzip2-configure.patch
+    %patch %(pkgdir)/unzip-zipbomb-manpage.patch
+    %patch %(pkgdir)/unzip-zipbomb-part1.patch
+    %patch %(pkgdir)/unzip-zipbomb-part2.patch
+    %patch %(pkgdir)/unzip-zipbomb-part3.patch
+    %patch %(pkgdir)/unzip-zipbomb-part4.patch
+    %patch %(pkgdir)/unzip-zipbomb-part5.patch
+    %patch %(pkgdir)/unzip-zipbomb-part6.patch
+    %patch %(pkgdir)/unzip-zipbomb-switch.patch
+    %patch %(pkgdir)/security/cve-2021-4217.patch
+    %patch %(pkgdir)/security/cve-2022-0529-and-cve-2022-0530.patch
+build       : |
+    # DEFINES, make, and install args from Debian
+    DEFINES='-DACORN_FTYPE_NFS -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT \
+      -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DNO_LCHMOD \
+      -DDATE_FORMAT=DF_YMD -DUSE_BZIP2 -DNOMEMCPY -DNO_WORKING_ISPRINT'
+    
+    %make -f unix/Makefile \
+      D_USE_BZ2=-DUSE_BZIP2 L_BZ2=-lbz2 \
+      LF2="$LDFLAGS" CF="$CFLAGS $CPPFLAGS -I. $DEFINES" \
+      generic_gcc
+install     : |
+    %make_install prefix=%(installroot)/usr MANDIR=%(installroot)/usr/share/man/man1 -f unix/Makefile
+check       : |
+    ./unzip testmake.zip -d test
+    grep -q "This file is part of testmake.zip" test/notes
+toolchain   : gnu

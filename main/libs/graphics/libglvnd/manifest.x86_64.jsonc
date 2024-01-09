@@ -1,0 +1,169 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libglvnd": {
+			"build-depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libEGL.so.1",
+				"/usr/lib/libEGL.so.1.1.0",
+				"/usr/lib/libGL.so.1",
+				"/usr/lib/libGL.so.1.7.0",
+				"/usr/lib/libGLESv1_CM.so.1",
+				"/usr/lib/libGLESv1_CM.so.1.2.0",
+				"/usr/lib/libGLESv2.so.2",
+				"/usr/lib/libGLESv2.so.2.1.0",
+				"/usr/lib/libGLX.so.0",
+				"/usr/lib/libGLX.so.0.0.0",
+				"/usr/lib/libGLdispatch.so.0",
+				"/usr/lib/libGLdispatch.so.0.0.0",
+				"/usr/lib/libOpenGL.so.0",
+				"/usr/lib/libOpenGL.so.0.0.0"
+			],
+			"name": "libglvnd",
+			"provides": [
+				"soname(libEGL.so.1(x86_64))",
+				"soname(libGL.so.1(x86_64))",
+				"soname(libGLESv1_CM.so.1(x86_64))",
+				"soname(libGLESv2.so.2(x86_64))",
+				"soname(libGLX.so.0(x86_64))",
+				"soname(libGLdispatch.so.0(x86_64))",
+				"soname(libOpenGL.so.0(x86_64))"
+			]
+		},
+		"libglvnd-32bit": {
+			"build-depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86))",
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libEGL.so.1",
+				"/usr/lib32/libEGL.so.1.1.0",
+				"/usr/lib32/libGL.so.1",
+				"/usr/lib32/libGL.so.1.7.0",
+				"/usr/lib32/libGLESv1_CM.so.1",
+				"/usr/lib32/libGLESv1_CM.so.1.2.0",
+				"/usr/lib32/libGLESv2.so.2",
+				"/usr/lib32/libGLESv2.so.2.1.0",
+				"/usr/lib32/libGLX.so.0",
+				"/usr/lib32/libGLX.so.0.0.0",
+				"/usr/lib32/libGLdispatch.so.0",
+				"/usr/lib32/libGLdispatch.so.0.0.0",
+				"/usr/lib32/libOpenGL.so.0",
+				"/usr/lib32/libOpenGL.so.0.0.0"
+			],
+			"name": "libglvnd-32bit",
+			"provides": [
+				"soname(libEGL.so.1(x86))",
+				"soname(libGL.so.1(x86))",
+				"soname(libGLESv1_CM.so.1(x86))",
+				"soname(libGLESv2.so.2(x86))",
+				"soname(libGLX.so.0(x86))",
+				"soname(libGLdispatch.so.0(x86))",
+				"soname(libOpenGL.so.0(x86))"
+			]
+		},
+		"libglvnd-32bit-devel": {
+			"build-depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)"
+			],
+			"files": [
+				"/usr/lib32/libEGL.so",
+				"/usr/lib32/libGL.so",
+				"/usr/lib32/libGLESv1_CM.so",
+				"/usr/lib32/libGLESv2.so",
+				"/usr/lib32/libGLX.so",
+				"/usr/lib32/libGLdispatch.so",
+				"/usr/lib32/libOpenGL.so",
+				"/usr/lib32/pkgconfig/egl.pc",
+				"/usr/lib32/pkgconfig/gl.pc",
+				"/usr/lib32/pkgconfig/glesv1_cm.pc",
+				"/usr/lib32/pkgconfig/glesv2.pc",
+				"/usr/lib32/pkgconfig/glx.pc",
+				"/usr/lib32/pkgconfig/libglvnd.pc",
+				"/usr/lib32/pkgconfig/opengl.pc"
+			],
+			"name": "libglvnd-32bit-devel",
+			"provides": [
+				"pkgconfig32(egl)",
+				"pkgconfig32(gl)",
+				"pkgconfig32(glesv1_cm)",
+				"pkgconfig32(glesv2)",
+				"pkgconfig32(glx)",
+				"pkgconfig32(libglvnd)",
+				"pkgconfig32(opengl)"
+			]
+		},
+		"libglvnd-devel": {
+			"build-depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)"
+			],
+			"files": [
+				"/usr/include/EGL/egl.h",
+				"/usr/include/EGL/eglext.h",
+				"/usr/include/EGL/eglplatform.h",
+				"/usr/include/GL/gl.h",
+				"/usr/include/GL/glcorearb.h",
+				"/usr/include/GL/glext.h",
+				"/usr/include/GL/glx.h",
+				"/usr/include/GL/glxext.h",
+				"/usr/include/GLES/egl.h",
+				"/usr/include/GLES/gl.h",
+				"/usr/include/GLES/glext.h",
+				"/usr/include/GLES/glplatform.h",
+				"/usr/include/GLES2/gl2.h",
+				"/usr/include/GLES2/gl2ext.h",
+				"/usr/include/GLES2/gl2platform.h",
+				"/usr/include/GLES3/gl3.h",
+				"/usr/include/GLES3/gl31.h",
+				"/usr/include/GLES3/gl32.h",
+				"/usr/include/GLES3/gl3ext.h",
+				"/usr/include/GLES3/gl3platform.h",
+				"/usr/include/KHR/khrplatform.h",
+				"/usr/include/glvnd/GLdispatchABI.h",
+				"/usr/include/glvnd/libeglabi.h",
+				"/usr/include/glvnd/libglxabi.h",
+				"/usr/lib/libEGL.so",
+				"/usr/lib/libGL.so",
+				"/usr/lib/libGLESv1_CM.so",
+				"/usr/lib/libGLESv2.so",
+				"/usr/lib/libGLX.so",
+				"/usr/lib/libGLdispatch.so",
+				"/usr/lib/libOpenGL.so",
+				"/usr/lib/pkgconfig/egl.pc",
+				"/usr/lib/pkgconfig/gl.pc",
+				"/usr/lib/pkgconfig/glesv1_cm.pc",
+				"/usr/lib/pkgconfig/glesv2.pc",
+				"/usr/lib/pkgconfig/glx.pc",
+				"/usr/lib/pkgconfig/libglvnd.pc",
+				"/usr/lib/pkgconfig/opengl.pc"
+			],
+			"name": "libglvnd-devel",
+			"provides": [
+				"pkgconfig(egl)",
+				"pkgconfig(gl)",
+				"pkgconfig(glesv1_cm)",
+				"pkgconfig(glesv2)",
+				"pkgconfig(glx)",
+				"pkgconfig(libglvnd)",
+				"pkgconfig(opengl)"
+			]
+		}
+	},
+	"source-name": "libglvnd",
+	"source-release": "2",
+	"source-version": "1.6.0"
+}

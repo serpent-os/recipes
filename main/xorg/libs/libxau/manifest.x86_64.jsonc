@@ -1,0 +1,83 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxau": {
+			"build-depends": [
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libXau.so.6",
+				"/usr/lib/libXau.so.6.0.0"
+			],
+			"name": "libxau",
+			"provides": [
+				"soname(libXau.so.6(x86_64))"
+			]
+		},
+		"libxau-32bit": {
+			"build-depends": [
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libXau.so.6",
+				"/usr/lib32/libXau.so.6.0.0"
+			],
+			"name": "libxau-32bit",
+			"provides": [
+				"soname(libXau.so.6(x86))"
+			]
+		},
+		"libxau-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"pkgconfig(xproto)"
+			],
+			"files": [
+				"/usr/lib32/libXau.so",
+				"/usr/lib32/pkgconfig/xau.pc"
+			],
+			"name": "libxau-32bit-devel",
+			"provides": [
+				"pkgconfig32(xau)"
+			]
+		},
+		"libxau-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"pkgconfig(xproto)"
+			],
+			"files": [
+				"/usr/include/X11/Xauth.h",
+				"/usr/lib/libXau.so",
+				"/usr/lib/pkgconfig/xau.pc",
+				"/usr/share/man/man3/Xau.3",
+				"/usr/share/man/man3/XauDisposeAuth.3",
+				"/usr/share/man/man3/XauFileName.3",
+				"/usr/share/man/man3/XauGetAuthByAddr.3",
+				"/usr/share/man/man3/XauGetBestAuthByAddr.3",
+				"/usr/share/man/man3/XauLockAuth.3",
+				"/usr/share/man/man3/XauReadAuth.3",
+				"/usr/share/man/man3/XauUnlockAuth.3",
+				"/usr/share/man/man3/XauWriteAuth.3"
+			],
+			"name": "libxau-devel",
+			"provides": [
+				"pkgconfig(xau)"
+			]
+		}
+	},
+	"source-name": "libxau",
+	"source-release": "2",
+	"source-version": "1.0.11"
+}

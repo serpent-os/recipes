@@ -1,0 +1,108 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"readline": {
+			"build-depends": [
+				"pkgconfig(ncursesw)",
+				"pkgconfig32(ncursesw)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin",
+				"/usr/lib/libhistory.so.8",
+				"/usr/lib/libhistory.so.8.2",
+				"/usr/lib/libreadline.so.8",
+				"/usr/lib/libreadline.so.8.2",
+				"/usr/share/doc/readline/CHANGES",
+				"/usr/share/doc/readline/INSTALL",
+				"/usr/share/doc/readline/README",
+				"/usr/share/info/history.info",
+				"/usr/share/info/readline.info",
+				"/usr/share/info/rluserman.info"
+			],
+			"name": "readline",
+			"provides": [
+				"soname(libhistory.so.8(x86_64))",
+				"soname(libreadline.so.8(x86_64))"
+			]
+		},
+		"readline-32bit": {
+			"build-depends": [
+				"pkgconfig(ncursesw)",
+				"pkgconfig32(ncursesw)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86))",
+				"soname(libncursesw.so.6(x86))"
+			],
+			"files": [
+				"/usr/lib32/libhistory.so.8",
+				"/usr/lib32/libhistory.so.8.2",
+				"/usr/lib32/libreadline.so.8",
+				"/usr/lib32/libreadline.so.8.2"
+			],
+			"name": "readline-32bit",
+			"provides": [
+				"soname(libhistory.so.8(x86))",
+				"soname(libreadline.so.8(x86))"
+			]
+		},
+		"readline-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(ncursesw)",
+				"pkgconfig32(ncursesw)"
+			],
+			"depends": [
+				"pkgconfig32(ncurses)"
+			],
+			"files": [
+				"/usr/lib32/libhistory.so",
+				"/usr/lib32/libreadline.so",
+				"/usr/lib32/pkgconfig/history.pc",
+				"/usr/lib32/pkgconfig/readline.pc"
+			],
+			"name": "readline-32bit-devel",
+			"provides": [
+				"pkgconfig32(history)",
+				"pkgconfig32(readline)"
+			]
+		},
+		"readline-devel": {
+			"build-depends": [
+				"pkgconfig(ncursesw)",
+				"pkgconfig32(ncursesw)"
+			],
+			"depends": [
+				"pkgconfig(ncurses)"
+			],
+			"files": [
+				"/usr/include/readline/chardefs.h",
+				"/usr/include/readline/history.h",
+				"/usr/include/readline/keymaps.h",
+				"/usr/include/readline/readline.h",
+				"/usr/include/readline/rlconf.h",
+				"/usr/include/readline/rlstdc.h",
+				"/usr/include/readline/rltypedefs.h",
+				"/usr/include/readline/tilde.h",
+				"/usr/lib/libhistory.so",
+				"/usr/lib/libreadline.so",
+				"/usr/lib/pkgconfig/history.pc",
+				"/usr/lib/pkgconfig/readline.pc",
+				"/usr/share/man/man3/history.3",
+				"/usr/share/man/man3/readline.3"
+			],
+			"name": "readline-devel",
+			"provides": [
+				"pkgconfig(history)",
+				"pkgconfig(readline)"
+			]
+		}
+	},
+	"source-name": "readline",
+	"source-release": "3",
+	"source-version": "8.2"
+}

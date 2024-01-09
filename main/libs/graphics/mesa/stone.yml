@@ -1,0 +1,58 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : mesa
+version     : 23.1.3
+release     : 7
+homepage    : https://mesa3d.org/
+upstreams   :
+    - https://archive.mesa3d.org/mesa-23.1.3.tar.xz : 2f6d7381bc10fbd2d6263ad1022785b8b511046c1a904162f8f7da18eea8aed9
+summary     : Mesa 3D graphics library
+description : |
+    The Mesa project began as an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics. Over the years the project has grown to implement more graphics APIs, including OpenGL ES, OpenCL, OpenMAX, VDPAU, VA-API, Vulkan and EGL. A variety of device drivers allows the Mesa libraries to be used in many different environments ranging from software emulation to complete hardware acceleration for modern GPUs. Mesa ties into several other open-source projects: the Direct Rendering Infrastructure, X.org, and Wayland to provide OpenGL support on Linux, FreeBSD, and other operating systems.
+license     :
+    - BSD-2-Clause
+    - MIT
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - binary(python3)
+    - cmake(glslang)
+    - cmake(LLVM)
+    - pkgconfig(expat)
+    - pkgconfig(glproto)
+    - pkgconfig(libdrm)
+    - pkgconfig(libelf)
+    - pkgconfig(libglvnd)
+    - pkgconfig(libudev)
+    - pkgconfig(libunwind)
+    - pkgconfig(libva)
+    - pkgconfig(libzstd)
+    - pkgconfig(wayland-egl-backend)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(x11)
+    - pkgconfig(xcb)
+    - pkgconfig(xext)
+    - pkgconfig(xfixes)
+    - pkgconfig(xrandr)
+    - pkgconfig(xshmfence)
+    - pkgconfig(xxf86vm)
+    - pkgconfig(zlib)
+    - python-mako
+setup       : |
+    # TODO: Add vdpau support
+    #        intel ray-tracing support
+    %meson \
+        -Dosmesa=true \
+        -Dvideo-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
+        -Dglvnd=true \
+        -Dllvm=true \
+        -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
+        -Dshared-llvm=true \
+        -Dplatforms=x11,wayland
+build       : |
+    %meson_build
+install     : |
+    %meson_install

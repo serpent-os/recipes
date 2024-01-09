@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : libxinerama
+version     : 1.1.5
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxinerama
+upstreams   :
+    - https://www.x.org/releases/individual/lib/libXinerama-1.1.5.tar.xz : 5094d1f0fcc1828cb1696d0d39d9e866ae32520c54d01f618f1a3c1e30c2085c
+summary     : Xlib API for Xinerama extension to X11 Protocol
+description : |
+    libXinerama - API for Xinerama extension to X11 Protocol
+license     : X11
+builddeps   :
+    - pkgconfig32(x11)
+    - pkgconfig32(xext)
+    - pkgconfig(xproto)
+emul32      : yes
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

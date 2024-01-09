@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : htop
+version     : 3.2.2
+release     : 2
+homepage    : https://htop.dev/
+upstreams   :
+    - https://github.com/htop-dev/htop/releases/download/3.2.2/htop-3.2.2.tar.xz : bac9e9ab7198256b8802d2e3b327a54804dc2a19b77a5f103645b11c12473dc8
+summary     : Interactive process viewer
+description : |
+    htop is an interactive process viewer that can show detailed information
+    about CPU & memory usage on the console
+license     : GPL-2.0-or-later
+builddeps   :
+   - pkgconfig(ncursesw)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

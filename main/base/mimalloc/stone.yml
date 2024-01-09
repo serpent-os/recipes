@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : mimalloc
+version     : 2.1.2
+release     : 4
+summary     : Compact general purpose allocator
+license     : MIT
+homepage    : https://github.com/microsoft/mimalloc
+description : |
+    mimalloc is a compact general purpose allocator with excellent performance.
+upstreams   :
+    - https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz: 2b1bff6f717f9725c70bf8d79e4786da13de8a270059e4ba0bdd262ae7be46eb
+setup       : |
+    %cmake -DMI_BUILD_STATIC=OFF \
+           -DMI_BUILD_OBJECT=OFF \
+           -DMI_INSTALL_TOPLEVEL=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
