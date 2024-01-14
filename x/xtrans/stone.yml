@@ -1,7 +1,7 @@
 #
 # SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
 #
-# SPDX-License-Identifier: Zlib
+# SPDX-License-Identifier: MPL-2.0
 #
 name        : xtrans
 version     : '1.4.0'

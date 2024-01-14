@@ -1,7 +1,7 @@
 #
 # SPDX-FileCopyrightText: © 2020-2022 Serpent OS Developers
 #
-# SPDX-License-Identifier: Zlib
+# SPDX-License-Identifier: MPL-2.0
 #
 name        : wireguard-tools
 version     : 1.0.20210914

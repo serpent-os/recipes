@@ -6,7 +6,7 @@ from source.
 ### License
 
 Unless otherwise specified, all packaging recipes are available under
-the terms of the [Zlib](https://spdx.org/licenses/Zlib.html) license.
+the terms of the [MPL-2.0](https://spdx.org/licenses/MPL-2.0.html) license.
 
 Individual software releases are available under the terms specified
 upstream, collected in each `stone.yml` recipe. Any patches against
