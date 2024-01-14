@@ -5,7 +5,7 @@
 #
 name        : libjpeg-turbo
 version     : 2.1.5.1
-release     : 1
+release     : 2
 homepage    : https://libjpeg-turbo.org/
 upstreams   :
     - https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/2.1.5.1.tar.gz : 61846251941e5791005fb7face196eec24541fce04f12570c308557529e92c75
@@ -16,6 +16,8 @@ license     :
     - BSD-3-Clause
     - IJG
     - Zlib
+builddeps   :
+    - binary(nasm)
 setup       : |
     %cmake \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -26,6 +28,10 @@ build       : |
 install     : |
     %cmake_install
     rm -fr %(installroot)/usr/share/doc/
+check       : |
+    %cmake_test
+tuning      :
+    - lto : thin
 packages    :
     - "%(name)-devel":
         paths:
