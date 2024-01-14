@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: Zlib
 #
 name        : pciutils
-version     : '3.9.0'
-release     : 1
+version     : '3.10.0'
+release     : 2
 homepage    : https://mirrors.edge.kernel.org/pub/software/utils/pciutils
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/software/utils/pciutils/pciutils-3.9.0.tar.xz : cdea7ae97239dee23249a09c68a19a287a3f109fbeb2c232ebb616cb38599012
+    - https://mirrors.edge.kernel.org/pub/software/utils/pciutils/pciutils-3.10.0.tar.xz : 238a2e27166730e53a17fe07bfad229e07fa39b618117e5944b6d7eda9fbb0e9
 summary     : Utilities to access the PCI bus configuration registers
 description : |
     The PCI Utilities package contains a library for portable access to PCI bus
