@@ -1,0 +1,26 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"nasm": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/nasm",
+				"/usr/bin/ndisasm",
+				"/usr/share/man/man1/nasm.1",
+				"/usr/share/man/man1/ndisasm.1"
+			],
+			"name": "nasm",
+			"provides": [
+				"binary(nasm)",
+				"binary(ndisasm)"
+			]
+		}
+	},
+	"source-name": "nasm",
+	"source-release": "18",
+	"source-version": "2.16.01"
+}

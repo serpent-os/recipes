@@ -1,0 +1,17 @@
+name        : nasm
+version     : 2.16.01
+release     : 18
+upstreams   :
+    - https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.xz : c77745f4802375efeee2ec5c0ad6b7f037ea9c87c92b149a9637ff099f162558
+homepage    : https://www.nasm.us/
+license     :
+    - BSD-2-Clause
+summary     : Netwide Assembler, an asssembler for the x86 CPU architecture.
+description : |
+    Netwide Assembler (NASM), an asssembler for the x86 CPU architecture portable to nearly every modern platform, and with code generation for many platforms old and new.
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
