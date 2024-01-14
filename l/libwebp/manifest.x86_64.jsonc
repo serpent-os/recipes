@@ -5,7 +5,8 @@
 		"libwebp": {
 			"build-depends": [
 				"pkgconfig(libjpeg)",
-				"pkgconfig(libpng)"
+				"pkgconfig(libpng)",
+				"pkgconfig(libtiff-4)"
 			],
 			"depends": [
 				"soname(libc.so.6(x86_64))",
@@ -13,13 +14,13 @@
 			],
 			"files": [
 				"/usr/lib/libsharpyuv.so.0",
-				"/usr/lib/libsharpyuv.so.0.0.0",
+				"/usr/lib/libsharpyuv.so.0.0.1",
 				"/usr/lib/libwebp.so.7",
-				"/usr/lib/libwebp.so.7.1.6",
+				"/usr/lib/libwebp.so.7.1.8",
 				"/usr/lib/libwebpdemux.so.2",
-				"/usr/lib/libwebpdemux.so.2.0.12",
+				"/usr/lib/libwebpdemux.so.2.0.14",
 				"/usr/lib/libwebpmux.so.3",
-				"/usr/lib/libwebpmux.so.3.0.11"
+				"/usr/lib/libwebpmux.so.3.0.13"
 			],
 			"name": "libwebp",
 			"provides": [
@@ -32,7 +33,8 @@
 		"libwebp-devel": {
 			"build-depends": [
 				"pkgconfig(libjpeg)",
-				"pkgconfig(libpng)"
+				"pkgconfig(libpng)",
+				"pkgconfig(libtiff-4)"
 			],
 			"files": [
 				"/usr/include/webp/decode.h",
@@ -63,7 +65,8 @@
 		"libwebp-tools": {
 			"build-depends": [
 				"pkgconfig(libjpeg)",
-				"pkgconfig(libpng)"
+				"pkgconfig(libpng)",
+				"pkgconfig(libtiff-4)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -71,6 +74,7 @@
 				"soname(libjpeg.so.8(x86_64))",
 				"soname(libpng16.so.16(x86_64))",
 				"soname(libsharpyuv.so.0(x86_64))",
+				"soname(libtiff.so.6(x86_64))",
 				"soname(libwebp.so.7(x86_64))",
 				"soname(libwebpdemux.so.2(x86_64))",
 				"soname(libwebpmux.so.3(x86_64))"
@@ -98,6 +102,6 @@
 		}
 	},
 	"source-name": "libwebp",
-	"source-release": "1",
-	"source-version": "1.3.0"
+	"source-release": "2",
+	"source-version": "1.3.2"
 }
