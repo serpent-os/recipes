@@ -8,22 +8,22 @@ rely exclusively on the OS provided store.
 
 Signed-off-by: Ikey Doherty <ikey@serpentos.com>
 ---
- libwget/ssl_openssl.c | 2 +-
+ libwget/ssl.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/libwget/ssl_openssl.c b/libwget/ssl_openssl.c
+diff --git a/libwget/ssl.c b/libwget/ssl.c
 index 343c2d8..04e8ab9 100644
---- a/libwget/ssl_openssl.c
-+++ b/libwget/ssl_openssl.c
-@@ -462,7 +462,7 @@ static int openssl_load_trust_files(SSL_CTX *ctx, const char *dir)
- 			goto end;
- 		}
+--- a/libwget/ssl.c
++++ b/libwget/ssl.c
+@@ -28,7 +28,7 @@
  
--		dir = "/etc/ssl/certs";
-+		dir = "/usr/share/defaults/etc/ssl/certs";
- 		info_printf(_("OpenSSL: Could not load certificates from default paths. Falling back to '%s'."), dir);
- 	}
+ const char *wget_ssl_default_cert_dir(void)
+ {
+-	return "/etc/ssl/certs";
++	return "/usr/share/defaults/etc/ssl/certs";
+ }
+ 
+ const char *wget_ssl_default_ca_bundle_path(void)
  
 -- 
 2.42.0
-
