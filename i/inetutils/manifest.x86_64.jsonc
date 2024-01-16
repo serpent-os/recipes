@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"inetutils": {
 			"depends": [
@@ -11,7 +11,6 @@
 				"/usr/bin/dnsdomainname",
 				"/usr/bin/ftp",
 				"/usr/bin/hostname",
-				"/usr/bin/logger",
 				"/usr/bin/ping",
 				"/usr/bin/ping6",
 				"/usr/bin/rcp",
@@ -27,7 +26,6 @@
 				"/usr/share/man/man1/dnsdomainname.1",
 				"/usr/share/man/man1/ftp.1",
 				"/usr/share/man/man1/hostname.1",
-				"/usr/share/man/man1/logger.1",
 				"/usr/share/man/man1/ping.1",
 				"/usr/share/man/man1/ping6.1",
 				"/usr/share/man/man1/rcp.1",
@@ -45,7 +43,6 @@
 				"binary(dnsdomainname)",
 				"binary(ftp)",
 				"binary(hostname)",
-				"binary(logger)",
 				"binary(ping)",
 				"binary(ping6)",
 				"binary(rcp)",
@@ -60,6 +57,6 @@
 		}
 	},
 	"source-name": "inetutils",
-	"source-release": "1",
-	"source-version": "2.4"
+	"source-release": "2",
+	"source-version": "2.5"
 }
