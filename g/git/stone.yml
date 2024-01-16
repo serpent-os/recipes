@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : git
-version     : 2.42.1
-release     : 6
+version     : 2.43.0
+release     : 7
 summary     : Fast, scalable, distributed revision control system
 license     : GPL-2.0-only
 homepage    : https://git-scm.com
 description : |
     Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.
 upstreams   :
-    - https://www.kernel.org/pub/software/scm/git/git-2.42.1.tar.gz: 839d75c91ddfa9f7534f7b0888e462e3ad1422bb8ef12ec35f6261cea18efe33
+    - https://www.kernel.org/pub/software/scm/git/git-2.43.0.tar.gz: ed238f5c72a014f238cc49fe7df4c6883732a3881111b381c105e2c5be77302f
 builddeps   :
     - binary(msgfmt)
     - pkgconfig(expat)
