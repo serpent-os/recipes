@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : vim
-version     : 9.0.1665
-release     : 4
+version     : 9.1.0031
+release     : 5
 homepage    : https://github.com/vim/vim
 upstreams   :
-    - https://github.com/vim/vim/archive/refs/tags/v9.0.1665.tar.gz : eda541361f9fd47d84d7e3ab1f9ebee4db06ed13bfca95c54d5bab2b3b97809a
+    - https://github.com/vim/vim/archive/refs/tags/v9.1.0031.tar.gz : da27c73792e670e7ab0046de5dd2a898b91e1d238377aacebfbf05563a7fc457
 summary     : Vi IMproved, an advanced text editor
 description : |
     Vim, which stands for Vi IMproved, is an open-source, multiplatform text editor extended from vi. It was first released by Bram Moolenaar in 1991. Since then, numerous features have been added to Vim, many of which are helpful in editing program source code.
