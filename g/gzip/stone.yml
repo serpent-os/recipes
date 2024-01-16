@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gzip
-version     : 1.12
-release     : 3
+version     : '1.13'
+release     : 4
 homepage    : https://www.gnu.org/software/gzip/
 upstreams   :
-    - https://ftp.gnu.org/gnu/gzip/gzip-1.12.tar.xz : ce5e03e519f637e1f814011ace35c4f87b33c0bbabeec35baf5fbd3479e91956
+    - https://mirrors.kernel.org/gnu/gzip/gzip-1.13.tar.xz : 7454eb6935db17c6655576c2e1b0fabefd38b4d0936e0f87f48cd062ce91a057
 summary     : GNU Zip Compression Utilities
 description : |
     GNU Gzip is a popular data compression program originally written by Jean-loup Gailly for the GNU project. Mark Adler wrote the decompression part.
