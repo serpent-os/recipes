@@ -5,7 +5,7 @@
 #
 name        : libpng
 version     : '1.6.40'
-release     : 2
+release     : 3
 homepage    : http://www.libpng.org/pub/png/libpng.html
 upstreams   :
     - https://download.sourceforge.net/libpng/libpng-1.6.40.tar.xz : 535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1
@@ -29,9 +29,13 @@ builddeps   :
 setup       : |
     # breaks libpng
     unset CPP
-    %configure --disable-static
+    %configure --disable-static --enable-intel-sse
 build       : |
     %make
 install     : |
     # sometimes install silently fails o_O
     %make_install -j1
+check       : |
+    %make check
+tuning      :
+    - lto : thin
