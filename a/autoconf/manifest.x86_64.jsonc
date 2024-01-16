@@ -61,7 +61,7 @@
 				"/usr/share/autoconf/m4sugar/m4sh.m4f",
 				"/usr/share/autoconf/m4sugar/m4sugar.m4",
 				"/usr/share/autoconf/m4sugar/m4sugar.m4f",
-				"/usr/share/autoconf/m4sugar/version.m4",
+				"/usr/share/autoconf/version.m4",
 				"/usr/share/info/autoconf.info",
 				"/usr/share/man/man1/autoconf.1",
 				"/usr/share/man/man1/autoheader.1",
@@ -84,6 +84,6 @@
 		}
 	},
 	"source-name": "autoconf",
-	"source-release": "3",
-	"source-version": "2.71"
+	"source-release": "4",
+	"source-version": "2.72"
 }
