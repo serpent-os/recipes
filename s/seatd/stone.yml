@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : seatd
+version     : '0.8.0'
+release     : 1
+homepage    : https://git.sr.ht/~kennylevinsen/seatd
+upstreams   :
+    - https://git.sr.ht/~kennylevinsen/seatd/archive/0.8.0.tar.gz : a562a44ee33ccb20954a1c1ec9a90ecb2db7a07ad6b18d0ac904328efbcf65a0
+summary     : Seat management daemon and library
+description : |
+    A minimal seat management daemon, and a universal seat management library.
+license     :
+    - MIT
+builddeps   :
+    - pkgconfig(libsystemd)
+setup       : |
+    %meson -Dlibseat-logind=systemd
+build       : |
+    %meson_build
+install     : |
+    %meson_install
