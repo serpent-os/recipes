@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : sway
+version     : '1.8.1'
+release     : 1
+homepage    : https://github.com/swaywm/sway
+upstreams   :
+    - https://github.com/swaywm/sway/releases/download/1.8.1/sway-1.8.1.tar.gz : 73f08fd2cf7948e8af900709efe44eae412ae11c5773960e25c9aa09f73bad41
+summary     : i3-compatible Wayland compositor 
+description : |
+    sway is an i3-compatible Wayland compositor.
+license     :
+    - MIT
+builddeps   :
+    - binary(cmake)
+    - pkgconfig(bash-completion)
+    - pkgconfig(cairo)
+    - pkgconfig(fish)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(json-c)
+    - pkgconfig(libevdev)
+    - pkgconfig(libpcre2-8)
+    - pkgconfig(pango)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(wayland-server)
+    - pkgconfig(wlroots)
+    - pkgconfig(xcb-icccm)
+rundeps     :
+    # Let's make sure we have at least one terminal
+    - binary(alacritty)
+    # sway needs /usr/share/X11/xkb
+    - xkeyboard-config
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
