@@ -4,25 +4,18 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : brotli
-version     : 1.0.9
-release     : 3
+version     : '1.1.0'
+release     : 4
 summary     : Generic-purpose lossless compression algorithm
 license     : MIT
 homepage    : https://github.com/google/brotli
 description : |
     Generic-purpose lossless compression algorithm
 upstreams   :
-    # TODO: Switch to git source and release tag when Boulder supports git upstreams (and remove corresponding patch)
-    - https://github.com/google/brotli/archive/refs/tags/v1.0.9.tar.gz: f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46
+    - git|https://github.com/google/brotli: v1.1.0
 builddeps   :
     - pkgconfig(python3)
 setup       : |
-    %patch %(pkgdir)/0001-Strip-out-building-of-static-libraries.patch
-    %patch %(pkgdir)/0001-Revert-Add-runtime-linker-path.patch
-
-    # Can be removed after switching to git source
-    %patch %(pkgdir)/0001-remove-missing-test-files-reference.patch
-
     %cmake -DBUILD_SHARED_LIBS=True \
            -DCMAKE_C_FLAGS="$CFLAGS"
 build       : |
@@ -31,10 +24,9 @@ build       : |
 install     : |
     %cmake_install
     %python_install
+    install -Dm00644 docs/brotli.1 %(installroot)/%(mandir)/man1/brotli.1
 check       : |
-    %make test
-    ## The test data for this is not retrieved unless we pull the full git source and checkout the release commit.
-    # IE this is not possible until Boulder supports git URIs
+    ninja -C %(builddir) test
     python3 setup.py test
 packages    :
     - "python-%(name)":
