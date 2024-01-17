@@ -4,16 +4,16 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cpio
-version     : 2.13
-release     : 1
+version     : '2.15'
+release     : 2
 homepage    : https://ftp.gnu.org/gnu/cpio
 upstreams   :
-    - https://ftp.gnu.org/gnu/cpio/cpio-2.13.tar.gz : e87470d9c984317f658567c03bfefb6b0c829ff17dbf6b0de48d71a4c8f3db88
+    - https://ftp.gnu.org/gnu/cpio/cpio-2.15.tar.gz : efa50ef983137eefc0a02fdb51509d624b5e3295c980aa127ceee4183455499e
 summary     : Manage CPIO archives
 description : |
     GNU cpio is a program to manage archives of files GNU
     cpio is a tool for creating and extracting archives, or
-    copying files from one place to another.  It handles a
+    copying files from one place to another. It handles a
     number of cpio formats as well as reading and writing tar
     files.
 license     :
