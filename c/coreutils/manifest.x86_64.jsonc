@@ -114,7 +114,6 @@
 				"/usr/bin/unexpand",
 				"/usr/bin/uniq",
 				"/usr/bin/unlink",
-				"/usr/bin/uptime",
 				"/usr/bin/users",
 				"/usr/bin/vdir",
 				"/usr/bin/wc",
@@ -201,6 +200,8 @@
 				"/usr/share/locale/sr/LC_TIME/coreutils.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/coreutils.mo",
 				"/usr/share/locale/sv/LC_TIME/coreutils.mo",
+				"/usr/share/locale/ta/LC_MESSAGES/coreutils.mo",
+				"/usr/share/locale/ta/LC_TIME/coreutils.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/coreutils.mo",
 				"/usr/share/locale/tr/LC_TIME/coreutils.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/coreutils.mo",
@@ -308,7 +309,6 @@
 				"/usr/share/man/man1/unexpand.1",
 				"/usr/share/man/man1/uniq.1",
 				"/usr/share/man/man1/unlink.1",
-				"/usr/share/man/man1/uptime.1",
 				"/usr/share/man/man1/users.1",
 				"/usr/share/man/man1/vdir.1",
 				"/usr/share/man/man1/wc.1",
@@ -356,6 +356,7 @@
 				"binary(id)",
 				"binary(install)",
 				"binary(join)",
+				"soname(libstdbuf.so(x86_64))",
 				"binary(link)",
 				"binary(ln)",
 				"binary(logname)",
@@ -416,7 +417,6 @@
 				"binary(unexpand)",
 				"binary(uniq)",
 				"binary(unlink)",
-				"binary(uptime)",
 				"binary(users)",
 				"binary(vdir)",
 				"binary(wc)",
@@ -427,6 +427,6 @@
 		}
 	},
 	"source-name": "coreutils",
-	"source-release": "4",
-	"source-version": "9.3"
+	"source-release": "5",
+	"source-version": "9.4"
 }
