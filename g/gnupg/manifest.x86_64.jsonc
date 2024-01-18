@@ -64,24 +64,13 @@
 				"/usr/share/doc/gnupg/OpenPGP",
 				"/usr/share/doc/gnupg/README",
 				"/usr/share/doc/gnupg/TRANSLATE",
-				"/usr/share/doc/gnupg/examples/Automatic.prf",
 				"/usr/share/doc/gnupg/examples/README",
-				"/usr/share/doc/gnupg/examples/VS-NfD.prf",
 				"/usr/share/doc/gnupg/examples/common.conf",
-				"/usr/share/doc/gnupg/examples/debug.prf",
 				"/usr/share/doc/gnupg/examples/gpgconf.conf",
 				"/usr/share/doc/gnupg/examples/gpgconf.rnames",
 				"/usr/share/doc/gnupg/examples/pwpattern.list",
 				"/usr/share/doc/gnupg/examples/qualified.txt",
 				"/usr/share/doc/gnupg/examples/scd-event",
-				"/usr/share/doc/gnupg/examples/systemd-user/README",
-				"/usr/share/doc/gnupg/examples/systemd-user/dirmngr.service",
-				"/usr/share/doc/gnupg/examples/systemd-user/dirmngr.socket",
-				"/usr/share/doc/gnupg/examples/systemd-user/gpg-agent-browser.socket",
-				"/usr/share/doc/gnupg/examples/systemd-user/gpg-agent-extra.socket",
-				"/usr/share/doc/gnupg/examples/systemd-user/gpg-agent-ssh.socket",
-				"/usr/share/doc/gnupg/examples/systemd-user/gpg-agent.service",
-				"/usr/share/doc/gnupg/examples/systemd-user/gpg-agent.socket",
 				"/usr/share/doc/gnupg/examples/trustlist.txt",
 				"/usr/share/gnupg/distsigkey.gpg",
 				"/usr/share/gnupg/help.be.txt",
@@ -191,6 +180,6 @@
 		}
 	},
 	"source-name": "gnupg",
-	"source-release": "1",
-	"source-version": "2.4.0"
+	"source-release": "2",
+	"source-version": "2.4.3"
 }
