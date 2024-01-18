@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : dbus-broker
-version     : 33
-release     : 3
+version     : '35'
+release     : 4
 summary     : Linux D-Bus Message Broker
 license     : Apache-2.0
 homepage    : https://github.com/bus1/dbus-broker
 description : |
     Linux D-Bus Message Broker
 upstreams   :
-    - https://github.com/bus1/dbus-broker/releases/download/v33/dbus-broker-33.tar.xz: 23713f25624749fdb274907e429080fa2d8f4dbe76acd87bb6d21a3c818c7841
+    - https://github.com/bus1/dbus-broker/releases/download/v35/dbus-broker-35.tar.xz: d50daa31ff33f48693194596ea2aeb1a925183b59cdc82a550774e5c43982252
 builddeps   :
     # TODO Build with audit
     - pkgconfig(expat)
