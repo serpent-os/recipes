@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : dbus
-version     : 1.14.6
-release     : 3
+version     : '1.14.10'
+release     : 4
 summary     : D-Bus Message Bus System
 license     :
     - AFL-2.1
@@ -14,7 +14,7 @@ homepage    : https://www.freedesktop.org/wiki/Software/dbus
 description : |
     D-Bus Message Bus System
 upstreams   :
-    - https://dbus.freedesktop.org/releases/dbus/dbus-1.14.6.tar.xz: fd2bdf1bb89dc365a46531bff631536f22b0d1c6d5ce2c5c5e59b55265b3d66b
+    - https://dbus.freedesktop.org/releases/dbus/dbus-1.14.10.tar.xz: ba1f21d2bd9d339da2d4aa8780c09df32fea87998b73da24f49ab9df1e36a50f
 builddeps   :
     # TODO build with audit
     - pkgconfig(expat)
