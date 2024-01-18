@@ -27,7 +27,7 @@
 				"/usr/bin/fc-scan",
 				"/usr/bin/fc-validate",
 				"/usr/lib/libfontconfig.so.1",
-				"/usr/lib/libfontconfig.so.1.13.0",
+				"/usr/lib/libfontconfig.so.1.14.0",
 				"/usr/share/defaults/etc/fonts/conf.d/10-hinting-slight.conf",
 				"/usr/share/defaults/etc/fonts/conf.d/10-scale-bitmap-fonts.conf",
 				"/usr/share/defaults/etc/fonts/conf.d/10-sub-pixel-none.conf",
@@ -70,6 +70,7 @@
 				"/usr/share/fontconfig/conf.avail/11-lcdfilter-default.conf",
 				"/usr/share/fontconfig/conf.avail/11-lcdfilter-legacy.conf",
 				"/usr/share/fontconfig/conf.avail/11-lcdfilter-light.conf",
+				"/usr/share/fontconfig/conf.avail/11-lcdfilter-none.conf",
 				"/usr/share/fontconfig/conf.avail/20-unhint-small-vera.conf",
 				"/usr/share/fontconfig/conf.avail/25-unhint-nonlatin.conf",
 				"/usr/share/fontconfig/conf.avail/30-metric-aliases.conf",
@@ -124,7 +125,7 @@
 			],
 			"files": [
 				"/usr/lib32/libfontconfig.so.1",
-				"/usr/lib32/libfontconfig.so.1.13.0"
+				"/usr/lib32/libfontconfig.so.1.14.0"
 			],
 			"name": "fontconfig-32bit",
 			"provides": [
@@ -178,6 +179,6 @@
 		}
 	},
 	"source-name": "fontconfig",
-	"source-release": "3",
-	"source-version": "2.14.2"
+	"source-release": "4",
+	"source-version": "2.15.0"
 }
