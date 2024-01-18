@@ -17,7 +17,7 @@
 			"files": [
 				"/usr/bin/awk",
 				"/usr/bin/gawk",
-				"/usr/bin/gawk-5.2.2",
+				"/usr/bin/gawk-5.3.0",
 				"/usr/bin/gawkbug",
 				"/usr/lib/gawk/awk/grcat",
 				"/usr/lib/gawk/awk/pwcat",
@@ -59,6 +59,7 @@
 				"/usr/share/awk/round.awk",
 				"/usr/share/awk/shellquote.awk",
 				"/usr/share/awk/strtonum.awk",
+				"/usr/share/awk/tocsv.awk",
 				"/usr/share/awk/walkarray.awk",
 				"/usr/share/awk/zerofile.awk",
 				"/usr/share/defaults/etc/profile.d/gawk.csh",
@@ -93,6 +94,7 @@
 				"/usr/share/locale/ro/LC_MESSAGES/gawk.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/gawk.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/gawk.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/gawk.mo",
 				"/usr/share/locale/vi/LC_MESSAGES/gawk.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/gawk.mo",
 				"/usr/share/man/man1/gawk.1",
@@ -106,7 +108,7 @@
 				"soname(fnmatch.so(x86_64))",
 				"soname(fork.so(x86_64))",
 				"binary(gawk)",
-				"binary(gawk-5.2.2)",
+				"binary(gawk-5.3.0)",
 				"binary(gawkbug)",
 				"soname(inplace.so(x86_64))",
 				"soname(intdiv.so(x86_64))",
@@ -142,6 +144,6 @@
 		}
 	},
 	"source-name": "gawk",
-	"source-release": "3",
-	"source-version": "5.2.2"
+	"source-release": "4",
+	"source-version": "5.3.0"
 }
