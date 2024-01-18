@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cmake
-version     : 3.26.3
-release     : 5
+version     : '3.28.1'
+release     : 6
 homepage    : https://cmake.org/
 upstreams   :
-    - https://www.cmake.org/files/v3.26/cmake-3.26.3.tar.gz : bbd8d39217509d163cb544a40d6428ac666ddc83e22905d3e52c925781f0f659
+    - https://www.cmake.org/files/v3.28/cmake-3.28.1.tar.gz : 15e94f83e647f7d620a140a7a5da76349fc47a1bfed66d0f5cdee8e7344079ad
 summary     : Cross-platform build system
 description : |
     CMake is an open-source, cross-platform family of tools designed to build, test and package software. CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice.
