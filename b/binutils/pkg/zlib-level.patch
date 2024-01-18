@@ -1,9 +1,9 @@
---- binutils-2.39/gas/compress-debug.c~	2022-07-08 09:46:47.000000000 +0000
-+++ binutils-2.39/gas/compress-debug.c	2022-12-21 17:57:01.570519662 +0000
-@@ -34,7 +34,7 @@
-   strm.zalloc = NULL;
-   strm.zfree = NULL;
-   strm.opaque = NULL;
+--- binutils-2.41/gas/compress-debug.c~	2023-07-03 01:00:00.000000000 +0200
++++ binutils-2.41/gas/compress-debug.c	2023-07-03 01:00:00.000000000 +0200
+@@ -41,7 +41,7 @@
+ 
+   static struct z_stream_s strm;
+   memset (&strm, 0, sizeof (strm));
 -  deflateInit (&strm, Z_DEFAULT_COMPRESSION);
 +  deflateInit (&strm, Z_BEST_COMPRESSION);
    return &strm;

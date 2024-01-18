@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : binutils
-version     : "2.40"
-release     : 8
+version     : "2.41"
+release     : 9
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    - http://ftp.nluug.nl/ftp/gnu/binutils/binutils-2.40.tar.xz: 0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1
+    - http://ftp.nluug.nl/ftp/gnu/binutils/binutils-2.41.tar.xz: ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450
 builddeps   :
     - binary(bison)
     - binary(flex)
@@ -58,6 +58,7 @@ build       : |
     %make tooldir=/usr -C %(builddir)
 install     : |
     %make_install tooldir=/usr -C %(builddir)
+    rm -f %(installroot)/usr/share/info/dir
 toolchain   : gnu
 tuning      :
     - lto
