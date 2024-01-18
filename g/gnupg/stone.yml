@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnupg
-version     : 2.4.0
-release     : 1
+version     : '2.4.3'
+release     : 2
 homepage    : https://gnupg.org/software/index.html
 upstreams   :
-    - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2 : 1d79158dd01d992431dd2e3facb89fdac97127f89784ea2cb610c600fb0c1483
+    - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.3.tar.bz2 : a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d
 summary     : Complete and free implementation of the OpenPGP standard to encrypt communications and files
 description : |
     %(name) is a complete and free implementation of the OpenPGP standard as defined by RFC4880, also known as PGP. GnuPG allows you to encrypt and sign your data and communications; it features a versatile key management system, along with access modules for all kinds of public key directories. GnuPG, also known as GPG, is a command line tool with features for easy integration with other applications. A wealth of frontend applications and libraries are available. GnuPG also provides support for S/MIME and SSH.
@@ -27,6 +27,8 @@ builddeps   :
 rundeps     :
     - pinentry
 setup       : |
+    # can be removed when building with LDAP
+    %patch %(pkgdir)/0001-dirmngr-Enable-the-call-of-ks_ldap_help_variables-wh.patch
     %configure
 build       : |
     %make
