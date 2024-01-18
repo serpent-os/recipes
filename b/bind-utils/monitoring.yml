@@ -1,7 +1,7 @@
 releases:
-  id: 14923
+  id: 242117
 security:
-  cpe: 
+  cpe:
   - vendor: isc
     product: bind
 # Most CVEs will probably affect the bind-server only, so
