@@ -1,5 +1,5 @@
 releases:
-    id: 7927
+    id: 320206
     ignore:
     # This packages is only for qt 5.15
     - '^6\..*'
