@@ -16,7 +16,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libbfd-2.40.so(x86_64))",
+				"soname(libbfd-2.41.so(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcap.so.2(x86_64))",
 				"soname(libdebuginfod.so.1(x86_64))",
@@ -24,7 +24,7 @@
 				"soname(libelf.so.1(x86_64))",
 				"soname(liblzma.so.5(x86_64))",
 				"soname(libm.so.6(x86_64))",
-				"soname(libopcodes-2.40.so(x86_64))",
+				"soname(libopcodes-2.41.so(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
 			],
@@ -200,12 +200,14 @@
 			],
 			"name": "perf",
 			"provides": [
+				"soname(dlfilter-show-cycles.so(x86_64))",
+				"soname(dlfilter-test-api-v0.so(x86_64))",
 				"binary(perf)",
 				"binary(trace)"
 			]
 		}
 	},
 	"source-name": "perf",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "6.2.12"
 }
