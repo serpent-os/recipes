@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : btrfs-progs
-version     : 6.2.2
-release     : 6
+version     : '6.6.3'
+release     : 7
 homepage    : https://github.com/kdave/btrfs-progs
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v6.2.2.tar.xz : e4888db8637d92e667448386992d0856b954cf2515b98d39b667da43c482d693
+    - https://mirrors.edge.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v6.6.3.tar.xz : f41ce53f6673ff551ee4a3fe7dc9601e5a0dde6b6d09177d1fab62718abc6d9a
 summary     : Filesystem utilities for btrfs filesystems
 description : |
     Filesystem utilities for btrfs filesystems
@@ -18,19 +18,20 @@ license     :
 builddeps   :
     - pkgconfig(blkid)
     - pkgconfig(ext2fs)
+    - pkgconfig(libgcrypt)
     - pkgconfig(libudev)
     - pkgconfig(libzstd)
     - pkgconfig(lzo2)
     - pkgconfig(uuid)
     - pkgconfig(zlib)
     # TODO needs python-sphinx for docs
-    # TODO needs libgcrypt or libsodium as a crypto provider
 rundeps    :
     - gcc # Temporary until libgcc issue is fixed
 setup      : |
     %configure --disable-static \
                --disable-documentation \
-               --disable-python
+               --disable-python \
+               --with-crypto=libgcrypt
 build       : |
     %make
 install     : |

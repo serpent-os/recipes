@@ -6,6 +6,7 @@
 			"build-depends": [
 				"pkgconfig(blkid)",
 				"pkgconfig(ext2fs)",
+				"pkgconfig(libgcrypt)",
 				"pkgconfig(libudev)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(lzo2)",
@@ -17,6 +18,7 @@
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libblkid.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
+				"soname(libgcrypt.so.20(x86_64))",
 				"soname(liblzo2.so.2(x86_64))",
 				"soname(libudev.so.1(x86_64))",
 				"soname(libuuid.so.1(x86_64))",
@@ -64,6 +66,7 @@
 			"build-depends": [
 				"pkgconfig(blkid)",
 				"pkgconfig(ext2fs)",
+				"pkgconfig(libgcrypt)",
 				"pkgconfig(libudev)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(lzo2)",
@@ -93,6 +96,6 @@
 		}
 	},
 	"source-name": "btrfs-progs",
-	"source-release": "6",
-	"source-version": "6.2.2"
+	"source-release": "7",
+	"source-version": "6.6.3"
 }
