@@ -1,0 +1,33 @@
+name: Check packages for file conflicts
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  detect_conflicts:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    name: Detect file conflicts in packages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run detection script
+        uses: serpent-os/check-for-file-conflicts@main
+        id: conflicts
+      - uses: mshick/add-pr-comment@v2
+        if: failure() && github.event_name == 'pull_request'
+        with:
+          message: |
+              ```
+              ${{ steps.conflicts.outputs.packages }}
+              ```
+      - uses: mshick/add-pr-comment@v2
+        if: success() && github.event_name == 'pull_request'
+        with:
+          update-only: true
+          message: |
+              No duplicate files detected anymore!
