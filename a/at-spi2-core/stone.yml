@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : at-spi2-core
-version     : 2.48.0
-release     : 1
+version     : '2.51.0'
+release     : 2
 homepage    : https://wiki.gnome.org/Accessibility
 upstreams   :
-    - https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.0.tar.xz : 905a5b6f1790b68ee803bffa9f5fab4ceb591fb4fae0b2f8c612c54f1d4e8a30
+    - https://download.gnome.org/sources/at-spi2-core/2.51/at-spi2-core-2.51.0.tar.xz : 8dd07c6160e3115f4f77e2205963449def6822a3dc85d495c5db389f56663037
 summary     : Base DBus XML interfaces for accessibility, the accessibility registry daemon, and atspi library.
 description : |
     This repository contains the DBus interface definitions for AT-SPI (Assistive Technology Service Provider Interface) — the core of an accessibility stack for free software systems.  It also contains the basic daemons of the accessibility stack, the ATK library to make applications and GUI toolkits accessible, and the internal hooks between AT-SPI and ATK.
@@ -28,6 +28,7 @@ builddeps   :
     - pkgconfig(x11)
     - pkgconfig(xi)
     - pkgconfig(xtst)
+toolchain   : gnu
 setup       : |
     %patch %(pkgdir)/0001-at-spi2-core-Stateless-XDG-autostart-directories.patch
     %meson -Ddefault_bus=dbus-broker
@@ -35,4 +36,3 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-
