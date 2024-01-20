@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : pkgconf
-version     : 1.9.5
-release     : 7
+version     : '2.1.0'
+release     : 8
 summary     : Package compiler and linker metadata toolkit
 license     : ISC
-homepage    : http://pkgconf.org/
+homepage    : https://github.com/pkgconf/pkgconf
 description : |
     Package compiler and linker metadata toolkit
 upstreams   :
-    - https://distfiles.dereferenced.org/pkgconf/pkgconf-1.9.5.tar.xz: 1ac1656debb27497563036f7bffc281490f83f9b8457c0d60bcfb638fb6b6171
+    - https://distfiles.dereferenced.org/pkgconf/pkgconf-2.1.0.tar.xz: 266d5861ee51c52bc710293a1d36622ae16d048d71ec56034a02eb9cf9677761
 setup       : |
     %configure --disable-static
 build       : |
