@@ -15,10 +15,12 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libasm.so.1(x86_64))",
+				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libdebuginfod.so.1(x86_64))",
 				"soname(libdw.so.1(x86_64))",
-				"soname(libelf.so.1(x86_64))"
+				"soname(libelf.so.1(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/debuginfod-find",
@@ -35,6 +37,7 @@
 				"/usr/bin/eu-ranlib",
 				"/usr/bin/eu-readelf",
 				"/usr/bin/eu-size",
+				"/usr/bin/eu-srcfiles",
 				"/usr/bin/eu-stack",
 				"/usr/bin/eu-strings",
 				"/usr/bin/eu-strip",
@@ -49,6 +52,7 @@
 				"/usr/share/man/man1/debuginfod-find.1",
 				"/usr/share/man/man1/eu-elfclassify.1",
 				"/usr/share/man/man1/eu-readelf.1",
+				"/usr/share/man/man1/eu-srcfiles.1",
 				"/usr/share/man/man7/debuginfod-client-config.7"
 			],
 			"name": "elfutils",
@@ -67,6 +71,7 @@
 				"binary(eu-ranlib)",
 				"binary(eu-readelf)",
 				"binary(eu-size)",
+				"binary(eu-srcfiles)",
 				"binary(eu-stack)",
 				"binary(eu-strings)",
 				"binary(eu-strip)",
@@ -151,13 +156,13 @@
 				"soname(libzstd.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libasm-0.189.so",
+				"/usr/lib/libasm-0.190.so",
 				"/usr/lib/libasm.so.1",
-				"/usr/lib/libdebuginfod-0.189.so",
+				"/usr/lib/libdebuginfod-0.190.so",
 				"/usr/lib/libdebuginfod.so.1",
-				"/usr/lib/libdw-0.189.so",
+				"/usr/lib/libdw-0.190.so",
 				"/usr/lib/libdw.so.1",
-				"/usr/lib/libelf-0.189.so",
+				"/usr/lib/libelf-0.190.so",
 				"/usr/lib/libelf.so.1"
 			],
 			"name": "elfutils-libs",
@@ -170,6 +175,6 @@
 		}
 	},
 	"source-name": "elfutils",
-	"source-release": "2",
-	"source-version": "0.189"
+	"source-release": "3",
+	"source-version": "0.190"
 }
