@@ -346,6 +346,8 @@
 				"/usr/share/vala-0.56/vapi/webkitgtk-6.0.vapi",
 				"/usr/share/vala-0.56/vapi/webkitgtk-web-extension-6.0.deps",
 				"/usr/share/vala-0.56/vapi/webkitgtk-web-extension-6.0.vapi",
+				"/usr/share/vala-0.56/vapi/webkitgtk-web-process-extension-6.0.deps",
+				"/usr/share/vala-0.56/vapi/webkitgtk-web-process-extension-6.0.vapi",
 				"/usr/share/vala-0.56/vapi/x11.vapi",
 				"/usr/share/vala-0.56/vapi/xcb-icccm.deps",
 				"/usr/share/vala-0.56/vapi/xcb-icccm.vapi",
@@ -400,6 +402,6 @@
 		}
 	},
 	"source-name": "vala",
-	"source-release": "1",
-	"source-version": "0.56.5"
+	"source-release": "2",
+	"source-version": "0.56.14"
 }
