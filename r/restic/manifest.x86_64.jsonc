@@ -27,8 +27,11 @@
 				"/usr/share/man/restic-migrate.1",
 				"/usr/share/man/restic-mount.1",
 				"/usr/share/man/restic-prune.1",
-				"/usr/share/man/restic-rebuild-index.1",
 				"/usr/share/man/restic-recover.1",
+				"/usr/share/man/restic-repair-index.1",
+				"/usr/share/man/restic-repair-packs.1",
+				"/usr/share/man/restic-repair-snapshots.1",
+				"/usr/share/man/restic-repair.1",
 				"/usr/share/man/restic-restore.1",
 				"/usr/share/man/restic-rewrite.1",
 				"/usr/share/man/restic-self-update.1",
@@ -47,6 +50,6 @@
 		}
 	},
 	"source-name": "restic",
-	"source-release": "4",
-	"source-version": "0.15.2"
+	"source-release": "5",
+	"source-version": "0.16.3"
 }

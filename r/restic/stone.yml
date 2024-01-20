@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : restic
-version     : 0.15.2
-release     : 4
+version     : '0.16.3'
+release     : 5
 homepage    : https://restic.net
 upstreams   :
-    - https://github.com/restic/restic/archive/refs/tags/v0.15.2.tar.gz : 52aca841486eaf4fe6422b059aa05bbf20db94b957de1d3fca019ed2af8192b7
+    - https://github.com/restic/restic/archive/refs/tags/v0.16.3.tar.gz : a94d6c1feb0034fcff3e8b4f2d65c0678f906fc21a1cf2d435341f69e7e7af52
 summary     : Fast, secure, efficient backup program
 description : |
     Restic is a program that does backups right and was designed with the following principles in mind: easy, fast, verifiable, secure and efficient.
