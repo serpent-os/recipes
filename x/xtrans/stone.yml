@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : xtrans
-version     : '1.4.0'
-release     : 2
+version     : '1.5.0'
+release     : 3
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxtrans
 upstreams   :
-    - https://xorg.freedesktop.org/releases/individual/lib/xtrans-1.4.0.tar.bz2 : 377c4491593c417946efcd2c7600d1e62639f7a8bbca391887e2c4679807d773
+    - https://xorg.freedesktop.org/releases/individual/lib/xtrans-1.5.0.tar.xz : 1ba4b703696bfddbf40bacf25bce4e3efb2a0088878f017a50e9884b0c8fb1bd
 summary     : Shared code of the X network transport layer
 description : |
     xtrans is a library of code that is shared among various X packages to handle network protocol transport in a modular fashion, allowing a single place to add new transport types.
