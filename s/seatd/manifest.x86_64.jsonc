@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"seatd": {
+			"build-depends": [
+				"pkgconfig(libsystemd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/seatd",
+				"/usr/bin/seatd-launch",
+				"/usr/lib/libseat.so.1"
+			],
+			"name": "seatd",
+			"provides": [
+				"soname(libseat.so.1(x86_64))",
+				"binary(seatd)",
+				"binary(seatd-launch)"
+			]
+		},
+		"seatd-devel": {
+			"build-depends": [
+				"pkgconfig(libsystemd)"
+			],
+			"depends": [
+				"pkgconfig(libsystemd)"
+			],
+			"files": [
+				"/usr/include/libseat.h",
+				"/usr/lib/libseat.so",
+				"/usr/lib/pkgconfig/libseat.pc"
+			],
+			"name": "seatd-devel",
+			"provides": [
+				"pkgconfig(libseat)"
+			]
+		}
+	},
+	"source-name": "seatd",
+	"source-release": "1",
+	"source-version": "0.8.0"
+}
