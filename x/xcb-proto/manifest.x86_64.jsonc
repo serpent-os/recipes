@@ -77,6 +77,6 @@
 		}
 	},
 	"source-name": "xcb-proto",
-	"source-release": "1",
-	"source-version": "1.15.2"
+	"source-release": "2",
+	"source-version": "1.16.0"
 }
