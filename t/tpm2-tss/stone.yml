@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : tpm2-tss
-version     : 3.2.2
-release     : 1
+version     : '4.0.1'
+release     : 2
 homepage    : https://tpm2-software.github.io
 upstreams   :
-    - https://github.com/tpm2-software/tpm2-tss/releases/download/3.2.2/tpm2-tss-3.2.2.tar.gz : ba9e52117f254f357ff502e7d60fce652b3bfb26327d236bbf5ab634235e40f1
+    - https://github.com/tpm2-software/tpm2-tss/releases/download/4.0.1/tpm2-tss-4.0.1.tar.gz : 532a70133910b6bd842289915b3f9423c0205c0ea009d65294ca18a74087c950
 summary     : OSS implementation of the TCG TPM2 Software Stack
 description : |
     %(name) is an OSS implementation of the TCG TPM2 Software Stack.
@@ -18,6 +18,7 @@ builddeps   :
     - pkgconfig(json-c)
     - pkgconfig(libcrypto)
     - pkgconfig(libcurl)
+    - pkgconfig(uuid)
     - shadow
 setup       : |
     %patch %(pkgdir)/stateless/0001-Support-stateless-config-file.patch
@@ -29,8 +30,8 @@ build       : |
 install     : |
     %make_install
 
-    mv %(installroot)/etc/sysusers.d %(installroot)/%(libdir)
-    mv %(installroot)/etc/tmpfiles.d %(installroot)/%(libdir)
-    install -dm00755 %(installroot)/%(vendordir)
-    mv %(installroot)/etc/tpm2-tss %(installroot)/%(vendordir)
+    mv %(installroot)/etc/sysusers.d %(installroot)%(libdir)
+    mv %(installroot)/etc/tmpfiles.d %(installroot)%(libdir)
+    install -dm00755 %(installroot)%(vendordir)%(sysconfdir)
+    mv %(installroot)/etc/tpm2-tss %(installroot)%(vendordir)%(sysconfdir)
     rmdir %(installroot)/etc
