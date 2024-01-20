@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libarchive
-version     : 3.6.2
-release     : 2
+version     : '3.6.2'
+release     : 3
 summary     : Multi-format archive and compression library
 license     : BSD-2-Clause
 homepage    : https://www.libarchive.org
@@ -15,7 +15,6 @@ upstreams   :
     - https://www.libarchive.org/downloads/libarchive-3.6.2.tar.gz: ba6d02f15ba04aba9c23fd5f236bb234eab9d5209e95d1c4df85c44d5f19b9b3
 builddeps   :
     - pkgconfig(libacl)
-    - pkgconfig(libattr)
     - pkgconfig(libcrypto)
     - pkgconfig(liblz4)
     - pkgconfig(liblzma)
@@ -36,6 +35,5 @@ build       : |
 install     : |
     %make_install
 
-    # Make libarchive default provider of cpio + tar
+    # Make libarchive default provider of tar
     ln -svf bsdtar "%(installroot)/usr/bin/tar"
-    ln -svf bsdcpio "%(installroot)/usr/bin/cpio"
