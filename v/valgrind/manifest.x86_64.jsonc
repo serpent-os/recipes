@@ -217,11 +217,18 @@
 				"binary(valgrind)",
 				"binary(valgrind-di-server)",
 				"binary(valgrind-listener)",
-				"binary(vgdb)"
+				"binary(vgdb)",
+				"soname(vgpreload_core-amd64-linux.so(x86_64))",
+				"soname(vgpreload_dhat-amd64-linux.so(x86_64))",
+				"soname(vgpreload_drd-amd64-linux.so(x86_64))",
+				"soname(vgpreload_helgrind-amd64-linux.so(x86_64))",
+				"soname(vgpreload_massif-amd64-linux.so(x86_64))",
+				"soname(vgpreload_memcheck-amd64-linux.so(x86_64))"
 			]
 		},
 		"valgrind-devel": {
 			"files": [
+				"/usr/include/valgrind/cachegrind.h",
 				"/usr/include/valgrind/callgrind.h",
 				"/usr/include/valgrind/config.h",
 				"/usr/include/valgrind/dhat.h",
@@ -363,6 +370,6 @@
 		}
 	},
 	"source-name": "valgrind",
-	"source-release": "3",
-	"source-version": "3.21.0"
+	"source-release": "4",
+	"source-version": "3.22.0"
 }
