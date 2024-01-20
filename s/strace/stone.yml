@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : strace
-version     : 6.2
-release     : 5
+version     : '6.6'
+release     : 6
 homepage    : https://strace.io
 upstreams   :
-    - https://github.com/strace/strace/releases/download/v6.2/strace-6.2.tar.xz : 0c7d38a449416268d3004029a220a15a77c2206a03cc88120f37f46e949177e8
+    - https://github.com/strace/strace/releases/download/v6.6/strace-6.6.tar.xz : 421b4186c06b705163e64dc85f271ebdcf67660af8667283147d5e859fc8a96c
 summary     : Diagnostic, debugging and instructional userspace utility
 description : |
     strace is a diagnostic, debugging and instructional userspace utility with a traditional command-line interface for Linux. It is used to monitor and tamper with interactions between processes and the Linux kernel, which include system calls, signal deliveries, and changes of process state. The operation of strace is made possible by the kernel feature known as ptrace.
@@ -18,6 +18,7 @@ builddeps   :
     - pkgconfig(libdw)
     - binutils
     - gcc-devel
+toolchain   : gnu
 setup       : |
     # Once llvm-libgcc is enabled we can use ld.bfd to link with it.
     %configure
