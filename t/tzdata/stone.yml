@@ -4,16 +4,16 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : tzdata
-version     : 2023c
-release     : 3
+version     : 2023d
+release     : 4
 summary     : Sources for time zone and daylight saving time data
 license     : Public-Domain
 homepage    : https://www.iana.org/time-zones
 description : |
     Sources for time zone and daylight saving time data
 upstreams   :
-    - https://data.iana.org/time-zones/releases/tzdata2023c.tar.gz: 3f510b5d1b4ae9bb38e485aa302a776b317fb3637bdb6404c4adf7b6cadd965c
-    - https://data.iana.org/time-zones/releases/tzcode2023c.tar.gz: 46d17f2bb19ad73290f03a203006152e0fa0d7b11e5b71467c4a823811b214e7
+    - https://data.iana.org/time-zones/releases/tzdata2023d.tar.gz: dbca21970b0a8b8c0ceceec1d7b91fa903be0f6eca5ae732b5329672232a08f3
+    - https://data.iana.org/time-zones/releases/tzcode2023d.tar.gz: e9a5f9e118886d2de92b62bb05510a28cc6c058d791c93bd6b84d3292c3c161e
 builddeps   :
     - binary(make)
 environment : |
