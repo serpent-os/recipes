@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : e2fsprogs
-version     : 1.47.0
-release     : 2
+version     : '1.47.0'
+release     : 3
 homepage    : https://e2fsprogs.sourceforge.net 
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.47.0/e2fsprogs-1.47.0.tar.xz : 144af53f2bbd921cef6f8bea88bb9faddca865da3fbc657cc9b4d2001097d5db
@@ -20,12 +20,21 @@ builddeps   :
     - pkgconfig(libsystemd)
     - pkgconfig(libudev)
     - pkgconfig(uuid)
+    # Needed for /usr/share/info file generation
+    - binary(info)
+    - binary(gzip)
 setup       : |
     %configure \
-        --disable-static \
+        --enable-elf-shlibs \
         --disable-libuuid \
-        --disable-libblkid
+        --disable-libblkid \
+        --disable-fsck
 build       : |
     %make
 install     : |
     %make_install
+    # remove static libs
+    rm -vf %(installroot)%(libdir)/libcom_err.a
+    rm -vf %(installroot)%(libdir)/libe2p.a
+    rm -vf %(installroot)%(libdir)/libext2fs.a
+    rm -vf %(installroot)%(libdir)/libss.a
