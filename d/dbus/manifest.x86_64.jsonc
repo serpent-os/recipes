@@ -26,7 +26,7 @@
 				"/usr/lib/dbus-1.0/include/dbus/dbus-arch-deps.h",
 				"/usr/lib/dbus/dbus-daemon-launch-helper",
 				"/usr/lib/libdbus-1.so.3",
-				"/usr/lib/libdbus-1.so.3.32.2",
+				"/usr/lib/libdbus-1.so.3.32.4",
 				"/usr/lib/systemd/system/dbus.service",
 				"/usr/lib/systemd/system/dbus.socket",
 				"/usr/lib/systemd/system/multi-user.target.wants/dbus.service",
@@ -103,6 +103,6 @@
 		}
 	},
 	"source-name": "dbus",
-	"source-release": "3",
-	"source-version": "1.14.6"
+	"source-release": "4",
+	"source-version": "1.14.10"
 }
