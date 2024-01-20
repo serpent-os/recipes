@@ -15,6 +15,7 @@ description : |
 license     :
     - GPL-3.0-or-later
 builddeps   :
+    # TODO: Remove /usr/share/info or enable info generation
     - pkgconfig(libcrypt)
     - pkgconfig(ncursesw)
     - pkgconfig(pam)
