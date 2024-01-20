@@ -18,11 +18,11 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libbfd-2.40.so(x86_64))",
+				"soname(libbfd-2.41.so(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libm.so.6(x86_64))",
-				"soname(libopcodes-2.40.so(x86_64))",
+				"soname(libopcodes-2.41.so(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
@@ -56,9 +56,6 @@
 				"/usr/lib/gprofng/libgp-heap.so",
 				"/usr/lib/gprofng/libgp-iotrace.so",
 				"/usr/lib/gprofng/libgp-sync.so",
-				"/usr/lib/gprofng/libgprofng.so",
-				"/usr/lib/gprofng/libgprofng.so.0",
-				"/usr/lib/gprofng/libgprofng.so.0.0.0",
 				"/usr/lib/ldscripts/elf32_x86_64.x",
 				"/usr/lib/ldscripts/elf32_x86_64.xbn",
 				"/usr/lib/ldscripts/elf32_x86_64.xc",
@@ -171,16 +168,18 @@
 				"/usr/lib/libctf-nobfd.so.0.0.0",
 				"/usr/lib/libctf.so.0",
 				"/usr/lib/libctf.so.0.0.0",
-				"/usr/lib/libsframe.so.0",
-				"/usr/lib/libsframe.so.0.0.0",
+				"/usr/lib/libgprofng.so.0",
+				"/usr/lib/libgprofng.so.0.0.0",
+				"/usr/lib/libsframe.so.1",
+				"/usr/lib/libsframe.so.1.0.0",
 				"/usr/share/info/as.info",
 				"/usr/share/info/bfd.info",
 				"/usr/share/info/binutils.info",
 				"/usr/share/info/ctf-spec.info",
-				"/usr/share/info/dir",
 				"/usr/share/info/gprof.info",
 				"/usr/share/info/gprofng.info",
 				"/usr/share/info/ld.info",
+				"/usr/share/info/ldint.info",
 				"/usr/share/info/sframe-spec.info",
 				"/usr/share/locale/bg/LC_MESSAGES/binutils.mo",
 				"/usr/share/locale/bg/LC_MESSAGES/gprof.mo",
@@ -234,6 +233,7 @@
 				"/usr/share/locale/ja/LC_MESSAGES/gas.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/gprof.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/ld.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/bfd.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/gprof.mo",
 				"/usr/share/locale/ms/LC_MESSAGES/gprof.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/gprof.mo",
@@ -342,7 +342,7 @@
 				"soname(libgp-iotrace.so(x86_64))",
 				"soname(libgp-sync.so(x86_64))",
 				"soname(libgprofng.so.0(x86_64))",
-				"soname(libsframe.so.0(x86_64))",
+				"soname(libsframe.so.1(x86_64))",
 				"binary(nm)",
 				"binary(objcopy)",
 				"binary(objdump)",
@@ -369,7 +369,7 @@
 			],
 			"depends": [
 				"soname(libc.so.6(x86_64))",
-				"soname(libsframe.so.0(x86_64))",
+				"soname(libsframe.so.1(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
 			],
@@ -388,22 +388,23 @@
 				"/usr/include/sframe-api.h",
 				"/usr/include/sframe.h",
 				"/usr/include/symcat.h",
-				"/usr/lib/libbfd-2.40.so",
+				"/usr/lib/libbfd-2.41.so",
 				"/usr/lib/libbfd.so",
 				"/usr/lib/libctf-nobfd.so",
 				"/usr/lib/libctf.so",
-				"/usr/lib/libopcodes-2.40.so",
+				"/usr/lib/libgprofng.so",
+				"/usr/lib/libopcodes-2.41.so",
 				"/usr/lib/libopcodes.so",
 				"/usr/lib/libsframe.so"
 			],
 			"name": "binutils-devel",
 			"provides": [
-				"soname(libbfd-2.40.so(x86_64))",
-				"soname(libopcodes-2.40.so(x86_64))"
+				"soname(libbfd-2.41.so(x86_64))",
+				"soname(libopcodes-2.41.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "binutils",
-	"source-release": "8",
-	"source-version": "2.40"
+	"source-release": "9",
+	"source-version": "2.41"
 }

@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : perf
-version     : 6.2.12
-release     : 7
+version     : '6.2.12'
+release     : 8
 summary     : Linux profiling with performance counters
 license     : GPL-2.0-only
 homepage    : https://perf.wiki.kernel.org/
