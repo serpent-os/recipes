@@ -4,25 +4,24 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ruby
-version     : 3.2.2
-release     : 4
+version     : '3.3.0'
+release     : 5
 summary     : An object-oriented language for quick and easy programming
 license     : Ruby
 homepage    : https://www.ruby-lang.org/en/
 description : |
     An object-oriented language for quick and easy programming
 upstreams   :
-    - https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz: 96c57558871a6748de5bc9f274e93f4b5aad06cd8f37befa0e8d94e7b8a423bc
+    - https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz: 96518814d9832bece92a85415a819d4893b307db5921ae1f0f751a9a89a56b7d
 builddeps   :
     - gdbm-devel
+    - binary(rustc) # for yjit compiler
     - pkgconfig(gmp)
     - pkgconfig(libcrypt)
     - pkgconfig(libffi)
     - pkgconfig(libssl)
-    - pkgconfig(readline)
     - pkgconfig(yaml-0.1)
     - pkgconfig(zlib)
-    # TODO needs rust for YJIT support
 setup       : |
     export LDFLAGS="$(echo ${LDFLAGS} | sed --expression='s/-Wl,--icf=safe //')"
     %configure --disable-rpath \
