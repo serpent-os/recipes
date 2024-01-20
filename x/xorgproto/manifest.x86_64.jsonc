@@ -133,7 +133,6 @@
 				"/usr/include/X11/fonts/fsmasks.h",
 				"/usr/include/X11/keysym.h",
 				"/usr/include/X11/keysymdef.h",
-				"/usr/share/doc/xorgproto/PM_spec",
 				"/usr/share/doc/xorgproto/compositeproto.txt",
 				"/usr/share/doc/xorgproto/damageproto.txt",
 				"/usr/share/doc/xorgproto/dri2proto.txt",
@@ -210,6 +209,6 @@
 		}
 	},
 	"source-name": "xorgproto",
-	"source-release": "1",
-	"source-version": "2022.2"
+	"source-release": "2",
+	"source-version": "2023.2"
 }
