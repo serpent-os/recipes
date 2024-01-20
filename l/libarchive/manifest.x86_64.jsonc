@@ -1,12 +1,20 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"libarchive": {
+			"build-depends": [
+				"pkgconfig(libacl)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libacl.so.1(x86_64))",
-				"soname(libattr.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(liblz4.so.1(x86_64))",
@@ -19,13 +27,46 @@
 				"/usr/bin/bsdcat",
 				"/usr/bin/bsdcpio",
 				"/usr/bin/bsdtar",
-				"/usr/bin/cpio",
 				"/usr/bin/tar",
 				"/usr/lib/libarchive.so.13",
 				"/usr/lib/libarchive.so.13.6.2",
 				"/usr/share/man/man1/bsdcat.1",
 				"/usr/share/man/man1/bsdcpio.1",
 				"/usr/share/man/man1/bsdtar.1",
+				"/usr/share/man/man5/cpio.5",
+				"/usr/share/man/man5/libarchive-formats.5",
+				"/usr/share/man/man5/mtree.5",
+				"/usr/share/man/man5/tar.5"
+			],
+			"name": "libarchive",
+			"provides": [
+				"binary(bsdcat)",
+				"binary(bsdcpio)",
+				"binary(bsdtar)",
+				"soname(libarchive.so.13(x86_64))",
+				"binary(tar)"
+			]
+		},
+		"libarchive-devel": {
+			"build-depends": [
+				"pkgconfig(libacl)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"pkgconfig(iconv)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(libssl)"
+			],
+			"files": [
+				"/usr/include/archive.h",
+				"/usr/include/archive_entry.h",
+				"/usr/lib/libarchive.so",
+				"/usr/lib/pkgconfig/libarchive.pc",
 				"/usr/share/man/man3/archive_entry.3",
 				"/usr/share/man/man3/archive_entry_acl.3",
 				"/usr/share/man/man3/archive_entry_linkify.3",
@@ -62,28 +103,7 @@
 				"/usr/share/man/man3/archive_write_set_passphrase.3",
 				"/usr/share/man/man3/libarchive.3",
 				"/usr/share/man/man3/libarchive_changes.3",
-				"/usr/share/man/man3/libarchive_internals.3",
-				"/usr/share/man/man5/cpio.5",
-				"/usr/share/man/man5/libarchive-formats.5",
-				"/usr/share/man/man5/mtree.5",
-				"/usr/share/man/man5/tar.5"
-			],
-			"name": "libarchive",
-			"provides": [
-				"binary(bsdcat)",
-				"binary(bsdcpio)",
-				"binary(bsdtar)",
-				"binary(cpio)",
-				"soname(libarchive.so.13(x86_64))",
-				"binary(tar)"
-			]
-		},
-		"libarchive-devel": {
-			"files": [
-				"/usr/include/archive.h",
-				"/usr/include/archive_entry.h",
-				"/usr/lib/libarchive.so",
-				"/usr/lib/pkgconfig/libarchive.pc"
+				"/usr/share/man/man3/libarchive_internals.3"
 			],
 			"name": "libarchive-devel",
 			"provides": [
@@ -92,6 +112,6 @@
 		}
 	},
 	"source-name": "libarchive",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "3.6.2"
 }

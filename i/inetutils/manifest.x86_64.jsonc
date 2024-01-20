@@ -35,8 +35,7 @@
 				"/usr/share/man/man1/telnet.1",
 				"/usr/share/man/man1/tftp.1",
 				"/usr/share/man/man1/traceroute.1",
-				"/usr/share/man/man1/whois.1",
-				"/usr/share/man/man8"
+				"/usr/share/man/man1/whois.1"
 			],
 			"name": "inetutils",
 			"provides": [
@@ -57,6 +56,6 @@
 		}
 	},
 	"source-name": "inetutils",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.5"
 }

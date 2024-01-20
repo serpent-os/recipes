@@ -26,7 +26,6 @@
 				"/usr/lib/libmagic.so.1.0.0",
 				"/usr/share/man/man1/file.1",
 				"/usr/share/man/man4/magic.4",
-				"/usr/share/man/man5",
 				"/usr/share/misc/magic.mgc"
 			],
 			"name": "file",
@@ -56,6 +55,6 @@
 		}
 	},
 	"source-name": "file",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "5.45"
 }

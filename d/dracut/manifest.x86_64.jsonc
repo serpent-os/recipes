@@ -537,11 +537,7 @@
 				"/usr/lib/kernel/install.d/50-dracut.install",
 				"/usr/lib/kernel/install.d/51-dracut-rescue.install",
 				"/usr/share/bash-completion/completions/dracut",
-				"/usr/share/bash-completion/completions/lsinitrd",
-				"/usr/share/man/man1",
-				"/usr/share/man/man5",
-				"/usr/share/man/man7",
-				"/usr/share/man/man8"
+				"/usr/share/bash-completion/completions/lsinitrd"
 			],
 			"name": "dracut",
 			"provides": [
@@ -564,6 +560,6 @@
 		}
 	},
 	"source-name": "dracut",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "059"
 }
