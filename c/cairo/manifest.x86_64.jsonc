@@ -37,15 +37,17 @@
 				"soname(libz.so.1(x86_64))"
 			],
 			"files": [
+				"/usr/lib/cairo/libcairo-fdr.so",
 				"/usr/lib/libcairo-gobject.so.2",
-				"/usr/lib/libcairo-gobject.so.2.11708.0",
+				"/usr/lib/libcairo-gobject.so.2.11800.0",
 				"/usr/lib/libcairo-script-interpreter.so.2",
-				"/usr/lib/libcairo-script-interpreter.so.2.11708.0",
+				"/usr/lib/libcairo-script-interpreter.so.2.11800.0",
 				"/usr/lib/libcairo.so.2",
-				"/usr/lib/libcairo.so.2.11708.0"
+				"/usr/lib/libcairo.so.2.11800.0"
 			],
 			"name": "cairo",
 			"provides": [
+				"soname(libcairo-fdr.so(x86_64))",
 				"soname(libcairo-gobject.so.2(x86_64))",
 				"soname(libcairo-script-interpreter.so.2(x86_64))",
 				"soname(libcairo.so.2(x86_64))"
@@ -96,6 +98,7 @@
 				"/usr/include/cairo/cairo-script-interpreter.h",
 				"/usr/include/cairo/cairo-script.h",
 				"/usr/include/cairo/cairo-svg.h",
+				"/usr/include/cairo/cairo-tee.h",
 				"/usr/include/cairo/cairo-version.h",
 				"/usr/include/cairo/cairo-xcb.h",
 				"/usr/include/cairo/cairo-xlib-xrender.h",
@@ -114,6 +117,7 @@
 				"/usr/lib/pkgconfig/cairo-script-interpreter.pc",
 				"/usr/lib/pkgconfig/cairo-script.pc",
 				"/usr/lib/pkgconfig/cairo-svg.pc",
+				"/usr/lib/pkgconfig/cairo-tee.pc",
 				"/usr/lib/pkgconfig/cairo-xcb-shm.pc",
 				"/usr/lib/pkgconfig/cairo-xcb.pc",
 				"/usr/lib/pkgconfig/cairo-xlib-xrender.pc",
@@ -132,6 +136,7 @@
 				"pkgconfig(cairo-script)",
 				"pkgconfig(cairo-script-interpreter)",
 				"pkgconfig(cairo-svg)",
+				"pkgconfig(cairo-tee)",
 				"binary(cairo-trace)",
 				"pkgconfig(cairo-xcb)",
 				"pkgconfig(cairo-xcb-shm)",
@@ -142,6 +147,6 @@
 		}
 	},
 	"source-name": "cairo",
-	"source-release": "1",
-	"source-version": "1.17.8"
+	"source-release": "2",
+	"source-version": "1.18.0"
 }
