@@ -1,0 +1,42 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : wlroots
+version     : 0.16.2
+release     : 1
+homepage    : https://gitlab.freedesktop.org/wlroots/wlroots/
+upstreams   :
+    - https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.16.2/downloads/wlroots-0.16.2.tar.gz : 83e9a11605f23d4bf781ab1947089483d9ec3f7e9ba65398e0609593b77d44aa
+summary     : A modular Wayland compositor library
+description : |
+    Pluggable, composable, unopinionated modules for building a Wayland compositor.
+license     :
+    - MIT
+builddeps   :
+    # TODO: xcb-errors, xwayland
+    - binary(cmake)
+    - binary(glslangValidator)
+    - cmake(VulkanHeaders)
+    - pkgconfig(cairo)
+    - pkgconfig(egl)
+    - pkgconfig(gbm)
+    - pkgconfig(glesv2)
+    - pkgconfig(hwdata)
+    - pkgconfig(libdrm)
+    - pkgconfig(libinput)
+    - pkgconfig(libseat)
+    - pkgconfig(libudev)
+    - pkgconfig(pixman-1)
+    - pkgconfig(vulkan)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(wayland-server)
+    - pkgconfig(xcb-renderutil)
+    - pkgconfig(xkbcommon)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
