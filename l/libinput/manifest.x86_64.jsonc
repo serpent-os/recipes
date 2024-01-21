@@ -60,12 +60,13 @@
 				"/usr/share/libinput/30-vendor-logitech.quirks",
 				"/usr/share/libinput/30-vendor-madcatz.quirks",
 				"/usr/share/libinput/30-vendor-microsoft.quirks",
+				"/usr/share/libinput/30-vendor-oracle.quirks",
+				"/usr/share/libinput/30-vendor-qemu.quirks",
 				"/usr/share/libinput/30-vendor-razer.quirks",
 				"/usr/share/libinput/30-vendor-synaptics.quirks",
 				"/usr/share/libinput/30-vendor-trust.quirks",
 				"/usr/share/libinput/30-vendor-vmware.quirks",
 				"/usr/share/libinput/30-vendor-wacom.quirks",
-				"/usr/share/libinput/50-framework.quirks",
 				"/usr/share/libinput/50-system-acer.quirks",
 				"/usr/share/libinput/50-system-apple.quirks",
 				"/usr/share/libinput/50-system-asus.quirks",
@@ -73,9 +74,11 @@
 				"/usr/share/libinput/50-system-chuwi.quirks",
 				"/usr/share/libinput/50-system-cyborg.quirks",
 				"/usr/share/libinput/50-system-dell.quirks",
+				"/usr/share/libinput/50-system-framework.quirks",
 				"/usr/share/libinput/50-system-gigabyte.quirks",
 				"/usr/share/libinput/50-system-google.quirks",
 				"/usr/share/libinput/50-system-gpd.quirks",
+				"/usr/share/libinput/50-system-graviton.quirks",
 				"/usr/share/libinput/50-system-hp.quirks",
 				"/usr/share/libinput/50-system-huawei.quirks",
 				"/usr/share/libinput/50-system-lenovo.quirks",
@@ -133,6 +136,6 @@
 		}
 	},
 	"source-name": "libinput",
-	"source-release": "1",
-	"source-version": "1.23.0"
+	"source-release": "2",
+	"source-version": "1.25.0"
 }
