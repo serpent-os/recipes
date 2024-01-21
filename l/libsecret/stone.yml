@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libsecret
-version     : 0.20.5
-release     : 1
+version     : '0.21.2'
+release     : 2
 homepage    : https://wiki.gnome.org/Projects/Libsecret
 upstreams   :
-    - https://download.gnome.org/sources/libsecret/0.20/libsecret-0.20.5.tar.xz : 3fb3ce340fcd7db54d87c893e69bfc2b1f6e4d4b279065ffe66dac9f0fd12b4d
+    - https://download.gnome.org/sources/libsecret/0.21/libsecret-0.21.2.tar.xz : e4a341496a0815e64c8d3b8fabab33d7bae7efdeab77b843669731d5b181dcee
 summary     : Library for storing and retrieving passwords and other secrets
 description : |
     %(name) is a library for storing and retrieving passwords and other secrets. It communicates with the "Secret Service" using D-Bus.
@@ -21,6 +21,7 @@ builddeps   :
     - pkgconfig(libgcrypt)
     - pkgconfig(tss2-esys)
     - docbook
+toolchain   : gnu
 setup       : |
     # [LATER] Generate VALA bindings.
     %meson \
