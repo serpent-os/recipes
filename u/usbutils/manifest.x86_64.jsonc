@@ -1,0 +1,56 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"usbutils": {
+			"build-depends": [
+				"pkgconfig(hwdata)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libudev.so.1(x86_64))",
+				"soname(libusb-1.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/lsusb",
+				"/usr/bin/lsusb.py",
+				"/usr/bin/usb-devices",
+				"/usr/bin/usbhid-dump",
+				"/usr/share/man/man1/usb-devices.1",
+				"/usr/share/man/man8/lsusb.8",
+				"/usr/share/man/man8/usbhid-dump.8"
+			],
+			"name": "usbutils",
+			"provides": [
+				"binary(lsusb)",
+				"binary(lsusb.py)",
+				"binary(usb-devices)",
+				"binary(usbhid-dump)"
+			]
+		},
+		"usbutils-devel": {
+			"build-depends": [
+				"pkgconfig(hwdata)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"pkgconfig(libudev)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"files": [
+				"/usr/lib/pkgconfig/usbutils.pc"
+			],
+			"name": "usbutils-devel",
+			"provides": [
+				"pkgconfig(usbutils)"
+			]
+		}
+	},
+	"source-name": "usbutils",
+	"source-release": "1",
+	"source-version": "017"
+}

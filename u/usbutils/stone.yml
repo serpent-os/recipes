@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
+#
+name        : usbutils
+version     : '017'
+release     : 1
+homepage    : https://github.com/gregkh/usbutils
+upstreams   :
+    - https://mirrors.edge.kernel.org/pub/linux/utils/usb/usbutils/usbutils-017.tar.xz : a6a25ffdcf9103e38d7a44732aca17073f4e602b92e4ae55625231a82702e05b
+summary     : USB utilities for Linux, including lsusb
+description : |
+    This is a collection of USB tools for use on Linux systems to query what type of USB devices are connected to the system.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - pkgconfig(libudev)
+    - pkgconfig(libusb-1.0)
+rundeps     :
+    - hwdata
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
