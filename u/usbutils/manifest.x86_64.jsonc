@@ -4,7 +4,6 @@
 	"packages": {
 		"usbutils": {
 			"build-depends": [
-				"pkgconfig(hwdata)",
 				"pkgconfig(libudev)",
 				"pkgconfig(libusb-1.0)"
 			],
@@ -33,7 +32,6 @@
 		},
 		"usbutils-devel": {
 			"build-depends": [
-				"pkgconfig(hwdata)",
 				"pkgconfig(libudev)",
 				"pkgconfig(libusb-1.0)"
 			],
