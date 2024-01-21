@@ -5,7 +5,7 @@
 #
 name        : dbus-broker
 version     : '35'
-release     : 5
+release     : 6
 summary     : Linux D-Bus Message Broker
 license     : Apache-2.0
 homepage    : https://github.com/bus1/dbus-broker
@@ -17,7 +17,7 @@ builddeps   :
     # TODO Build with audit
     - pkgconfig(expat)
     - pkgconfig(libsystemd)
-rundeps     : |
+rundeps     :
     - dbus
 setup       : |
     %meson
