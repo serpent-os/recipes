@@ -5,7 +5,7 @@
 #
 name        : dbus
 version     : '1.14.10'
-release     : 4
+release     : 5
 summary     : D-Bus Message Bus System
 license     :
     - AFL-2.1
@@ -45,3 +45,8 @@ install     : |
     # Need to ensure /var/run becomes a symlink to /run for compatibility
     %tmpfiles "# Create run/dbus directory"
     %tmpfiles "d /run/dbus 0755 - - -"
+
+    # Kill dbus default enabling
+    rm -rf %(installroot)/usr/lib/systemd/system/multi-user.target.wants
+    rm %(installroot)/usr/lib/systemd/system/dbus.service
+    rm %(installroot)/usr/lib/systemd/user/dbus.service

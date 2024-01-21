@@ -20,7 +20,10 @@
 				"/usr/lib/systemd/catalog/dbus-broker-launch.catalog",
 				"/usr/lib/systemd/catalog/dbus-broker.catalog",
 				"/usr/lib/systemd/system/dbus-broker.service",
-				"/usr/lib/systemd/user/dbus-broker.service"
+				"/usr/lib/systemd/system/dbus.service",
+				"/usr/lib/systemd/system/multi-user.target.wants/dbus.service",
+				"/usr/lib/systemd/user/dbus-broker.service",
+				"/usr/lib/systemd/user/dbus.service"
 			],
 			"name": "dbus-broker",
 			"provides": [
@@ -30,6 +33,6 @@
 		}
 	},
 	"source-name": "dbus-broker",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "35"
 }
