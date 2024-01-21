@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libjpeg-turbo
-version     : 2.1.5.1
-release     : 2
+version     : '3.0.1'
+release     : 3
 homepage    : https://libjpeg-turbo.org/
 upstreams   :
-    - https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/2.1.5.1.tar.gz : 61846251941e5791005fb7face196eec24541fce04f12570c308557529e92c75
+    - https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.0.1.tar.gz : 5b9bbca2b2a87c6632c821799438d358e27004ab528abf798533c15d50b39f82
 summary     : libjpeg-turbo is a JPEG image codec that uses SIMD instructions to accelerate baseline JPEG compression and decompression
 description : |
     libjpeg-turbo implements both the traditional libjpeg API as well as the less powerful but more straightforward TurboJPEG API. libjpeg-turbo also features colorspace extensions that allow it to compress from/decompress to 32-bit and big-endian pixel buffers (RGBX, XBGR, etc.), as well as a full-featured Java interface.
