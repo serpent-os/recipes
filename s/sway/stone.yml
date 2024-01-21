@@ -5,7 +5,7 @@
 #
 name        : sway
 version     : '1.8.1'
-release     : 1
+release     : 2
 homepage    : https://github.com/swaywm/sway
 upstreams   :
     - https://github.com/swaywm/sway/releases/download/1.8.1/sway-1.8.1.tar.gz : 73f08fd2cf7948e8af900709efe44eae412ae11c5773960e25c9aa09f73bad41
@@ -31,6 +31,8 @@ builddeps   :
 rundeps     :
     # Let's make sure we have at least one terminal
     - binary(alacritty)
+    - liberation-fonts-ttf
+    - swaybg
     # sway needs /usr/share/X11/xkb
     - xkeyboard-config
 setup       : |
