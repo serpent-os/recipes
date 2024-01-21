@@ -9,7 +9,7 @@
 			],
 			"files": [
 				"/usr/lib/libjson-c.so.5",
-				"/usr/lib/libjson-c.so.5.2.0"
+				"/usr/lib/libjson-c.so.5.3.0"
 			],
 			"name": "json-c",
 			"provides": [
@@ -26,6 +26,7 @@
 				"/usr/include/json-c/json_inttypes.h",
 				"/usr/include/json-c/json_object.h",
 				"/usr/include/json-c/json_object_iterator.h",
+				"/usr/include/json-c/json_patch.h",
 				"/usr/include/json-c/json_pointer.h",
 				"/usr/include/json-c/json_tokener.h",
 				"/usr/include/json-c/json_types.h",
@@ -47,6 +48,6 @@
 		}
 	},
 	"source-name": "json-c",
-	"source-release": "1",
-	"source-version": "0.16"
+	"source-release": "2",
+	"source-version": "0.17"
 }
