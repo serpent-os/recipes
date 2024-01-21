@@ -27,12 +27,14 @@
 				"/usr/bin/bsdcat",
 				"/usr/bin/bsdcpio",
 				"/usr/bin/bsdtar",
+				"/usr/bin/bsdunzip",
 				"/usr/bin/tar",
 				"/usr/lib/libarchive.so.13",
-				"/usr/lib/libarchive.so.13.6.2",
+				"/usr/lib/libarchive.so.13.7.2",
 				"/usr/share/man/man1/bsdcat.1",
 				"/usr/share/man/man1/bsdcpio.1",
 				"/usr/share/man/man1/bsdtar.1",
+				"/usr/share/man/man1/bsdunzip.1",
 				"/usr/share/man/man5/cpio.5",
 				"/usr/share/man/man5/libarchive-formats.5",
 				"/usr/share/man/man5/mtree.5",
@@ -43,6 +45,7 @@
 				"binary(bsdcat)",
 				"binary(bsdcpio)",
 				"binary(bsdtar)",
+				"binary(bsdunzip)",
 				"soname(libarchive.so.13(x86_64))",
 				"binary(tar)"
 			]
@@ -58,9 +61,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
-				"pkgconfig(iconv)",
-				"pkgconfig(libcrypto)",
-				"pkgconfig(libssl)"
+				"pkgconfig(libcrypto)"
 			],
 			"files": [
 				"/usr/include/archive.h",
@@ -112,6 +113,6 @@
 		}
 	},
 	"source-name": "libarchive",
-	"source-release": "3",
-	"source-version": "3.6.2"
+	"source-release": "4",
+	"source-version": "3.7.2"
 }
