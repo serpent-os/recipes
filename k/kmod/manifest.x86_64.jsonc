@@ -20,7 +20,7 @@
 			"files": [
 				"/usr/bin/kmod",
 				"/usr/lib/libkmod.so.2",
-				"/usr/lib/libkmod.so.2.4.0",
+				"/usr/lib/libkmod.so.2.4.1",
 				"/usr/sbin/depmod",
 				"/usr/sbin/insmod",
 				"/usr/sbin/lsmod",
@@ -71,6 +71,6 @@
 		}
 	},
 	"source-name": "kmod",
-	"source-release": "5",
-	"source-version": "30"
+	"source-release": "6",
+	"source-version": "31"
 }

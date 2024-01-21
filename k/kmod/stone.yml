@@ -1,9 +1,9 @@
 name        : kmod
-version     : 30
-release     : 5
+version     : '31'
+release     : 6
 homepage    : https://github.com/kmod-project/kmod
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-30.tar.xz : f897dd72698dc6ac1ef03255cd0a5734ad932318e4adbaebc7338ef2f5202f9f
+    - https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-31.tar.xz : f5a6949043cc72c001b728d8c218609c5a15f3c33d75614b78c79418fcf00d80
 summary     : Linux kernel module handling
 description : |
     kmod is a set of tools to handle common tasks with Linux kernel modules like insert, remove, list, check properties, resolve dependencies and aliases.
