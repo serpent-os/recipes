@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : kbd
-version     : 2.6.0
-release     : 5
+version     : '2.6.4'
+release     : 6
 homepage    : https://kbd-project.org/
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/utils/kbd/kbd-2.6.0.tar.xz : 9c159433db5df8ef31d86b42f5b09d32311bdda2ed35107fb1926243da60b28a
+    - https://mirrors.edge.kernel.org/pub/linux/utils/kbd/kbd-2.6.4.tar.xz : 519f8d087aecca7e0a33cd084bef92c066eb19731666653dcc70c9d71aa40926
 summary     : Linux keyboard tools
 description : |
     The kbd project contains utilities for managing Linux console (Linux console, virtual terminals, keyboard, etc.)
@@ -20,7 +20,7 @@ rundeps     :
     - binary(gzip)
     - terminus-font
 setup       : |
-    %configure --datadir=%(datadir)/kdb
+    %configure --datadir=%(datadir)/kbd
 build       : |
     %make
 install     : |
