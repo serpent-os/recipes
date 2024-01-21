@@ -26,15 +26,15 @@
 			"files": [
 				"/usr/lib/girepository-1.0/HarfBuzz-0.0.typelib",
 				"/usr/lib/libharfbuzz-cairo.so.0",
-				"/usr/lib/libharfbuzz-cairo.so.0.60710.0",
+				"/usr/lib/libharfbuzz-cairo.so.0.60830.0",
 				"/usr/lib/libharfbuzz-gobject.so.0",
-				"/usr/lib/libharfbuzz-gobject.so.0.60710.0",
+				"/usr/lib/libharfbuzz-gobject.so.0.60830.0",
 				"/usr/lib/libharfbuzz-icu.so.0",
-				"/usr/lib/libharfbuzz-icu.so.0.60710.0",
+				"/usr/lib/libharfbuzz-icu.so.0.60830.0",
 				"/usr/lib/libharfbuzz-subset.so.0",
-				"/usr/lib/libharfbuzz-subset.so.0.60710.0",
+				"/usr/lib/libharfbuzz-subset.so.0.60830.0",
 				"/usr/lib/libharfbuzz.so.0",
-				"/usr/lib/libharfbuzz.so.0.60710.0",
+				"/usr/lib/libharfbuzz.so.0.60830.0",
 				"/usr/share/gir-1.0/HarfBuzz-0.0.gir"
 			],
 			"name": "harfbuzz",
@@ -151,6 +151,6 @@
 		}
 	},
 	"source-name": "harfbuzz",
-	"source-release": "5",
-	"source-version": "7.1.0"
+	"source-release": "6",
+	"source-version": "8.3.0"
 }
