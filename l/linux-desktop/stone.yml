@@ -1,9 +1,9 @@
 name        : linux-desktop
-version     : 6.6.6
-release     : 13
+version     : 6.7.1
+release     : 14
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.6.tar.xz : ebf70a917934b13169e1be5b95c3b6c2fea5bc14e6dc144f1efb8a0016b224c8
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.1.tar.xz : 1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3
 summary     : Linux Kernel - Default Desktop Build
 description : |
     Work in progress build for desktop enabling
@@ -12,6 +12,7 @@ license     :
 builddeps   :
     - binary(bc)
     - binary(bison)
+    - binary(dbus-broker)
     - binary(dracut)
     - binary(flex)
     - binary(gzip)
