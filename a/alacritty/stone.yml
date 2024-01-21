@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : alacritty
+version     : '0.13.1'
+release     : 1
+homepage    : https://alacritty.org/
+upstreams   :
+    - https://github.com/alacritty/alacritty/archive/refs/tags/v0.13.1.tar.gz : 38a42e23e1e6faaa9e300347df3f7b58b6182908a701517aac6e296fbdf37451
+summary     : A cross-platform, OpenGL terminal emulator.
+description : |
+    Alacritty is a modern terminal emulator that comes with sensible defaults, but allows for extensive configuration.
+networking  : yes
+license     :
+    - Apache-2.0
+    - MIT
+environment : |
+    export HOME=$(pwd)
+builddeps   :
+    - binary(cargo)
+    - binary(make)
+    - binary(cmake)
+    #- nss
+    - pkgconfig(fontconfig)
+build       : |
+    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
+    make binary
+install     : |
+    install -Dm00755 target/release/alacritty -t %(installroot)/usr/bin

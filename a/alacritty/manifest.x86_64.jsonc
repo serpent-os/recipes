@@ -1,0 +1,33 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"alacritty": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(cmake)",
+				"binary(make)",
+				"pkgconfig(fontconfig)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libfontconfig.so.1(x86_64))",
+				"soname(libfreetype.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/alacritty"
+			],
+			"name": "alacritty",
+			"provides": [
+				"binary(alacritty)"
+			]
+		}
+	},
+	"source-name": "alacritty",
+	"source-release": "1",
+	"source-version": "0.13.1"
+}
