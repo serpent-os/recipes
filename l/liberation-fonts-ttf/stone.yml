@@ -1,0 +1,18 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : liberation-fonts-ttf
+version     : '2.1.5'
+release     : 1
+homepage    : https://github.com/liberationfonts/liberation-fonts
+upstreams   :
+    - https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz : 7191c669bf38899f73a2094ed00f7b800553364f90e2637010a69c0e268f25d0
+summary     : Liberation Font Pack
+description : |
+    The Liberation Fonts is a font family which aims at metric compatibility with Arial, Times New Roman, and Courier New.
+license     : OFL-1.1
+install     : |
+    install -dm00755 %(installroot)/usr/share/fonts/truetype/liberation
+    install -m00644 *.ttf %(installroot)/usr/share/fonts/truetype/liberation

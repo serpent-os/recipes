@@ -1,0 +1,26 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"liberation-fonts-ttf": {
+			"files": [
+				"/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationMono-Italic.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf",
+				"/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"
+			],
+			"name": "liberation-fonts-ttf"
+		}
+	},
+	"source-name": "liberation-fonts-ttf",
+	"source-release": "1",
+	"source-version": "2.1.5"
+}
