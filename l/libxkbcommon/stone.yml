@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxkbcommon
-version     : '1.5.0'
-release     : 1
-homepage    : https://xkbcommon.org/download
+version     : '1.6.0'
+release     : 2
+homepage    : https://xkbcommon.org
 upstreams   :
-    - https://xkbcommon.org/download/libxkbcommon-1.5.0.tar.xz : 560f11c4bbbca10f495f3ef7d3a6aa4ca62b4f8fb0b52e7d459d18a26e46e017
+    - https://xkbcommon.org/download/libxkbcommon-1.6.0.tar.xz : 0edc14eccdd391514458bc5f5a4b99863ed2d651e4dd761a90abf4f46ef99c2b
 summary     : Library for handling of keyboard descriptions
 description : |
     xkbcommon is a library for handling of keyboard descriptions, including
@@ -25,6 +25,7 @@ builddeps   :
     - pkgconfig(xcb)
     - pkgconfig(xcb-xkb)
     # TODO: Docs require doxygen
+toolchain   : gnu
 setup       : |
     %meson -Denable-docs=false
 build       : |

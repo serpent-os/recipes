@@ -35,6 +35,7 @@
 				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-list",
 				"/usr/lib/libxkbregistry.so.0",
 				"/usr/lib/libxkbregistry.so.0.0.0",
+				"/usr/share/bash-completion/completions/xkbcli",
 				"/usr/share/man/man1/xkbcli-compile-keymap.1",
 				"/usr/share/man/man1/xkbcli-how-to-type.1",
 				"/usr/share/man/man1/xkbcli-interactive-evdev.1",
@@ -91,6 +92,6 @@
 		}
 	},
 	"source-name": "libxkbcommon",
-	"source-release": "1",
-	"source-version": "1.5.0"
+	"source-release": "2",
+	"source-version": "1.6.0"
 }
