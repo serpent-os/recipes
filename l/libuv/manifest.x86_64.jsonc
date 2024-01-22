@@ -9,7 +9,8 @@
 			"files": [
 				"/usr/lib/libuv.so.1",
 				"/usr/lib/libuv.so.1.0.0",
-				"/usr/share/doc/libuv/LICENSE"
+				"/usr/share/doc/libuv/LICENSE",
+				"/usr/share/doc/libuv/LICENSE-extra"
 			],
 			"name": "libuv",
 			"provides": [
@@ -26,7 +27,6 @@
 				"/usr/include/uv/linux.h",
 				"/usr/include/uv/os390.h",
 				"/usr/include/uv/posix.h",
-				"/usr/include/uv/stdint-msvc2008.h",
 				"/usr/include/uv/sunos.h",
 				"/usr/include/uv/threadpool.h",
 				"/usr/include/uv/tree.h",
@@ -46,6 +46,6 @@
 		}
 	},
 	"source-name": "libuv",
-	"source-release": "1",
-	"source-version": "1.44.2"
+	"source-release": "2",
+	"source-version": "1.47.0"
 }
