@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxi
-version     : 1.8
-release     : 1
+version     : '1.8.1'
+release     : 2
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxi
 upstreams   :
-    - https://www.x.org/releases/individual/lib/libXi-1.8.tar.gz : c80fd200a1190e4406bb4cc6958839d9651638cb47fa546a595d4bebcd3b9e2d
+    - https://www.x.org/releases/individual/lib/libXi-1.8.1.tar.gz : 3b5f47c223e4b63d7f7fe758886b8bf665b20a7edb6962c423892fd150e326ea
 summary     : Xlib library for the X Input Extension
 description : |
     Xlib library for the X Input Extension
