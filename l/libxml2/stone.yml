@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxml2
-version     : 2.10.4
-release     : 5
+version     : '2.12.4'
+release     : 6
 summary     : XML parsing library
 license     : MIT
 homepage    : http://www.xmlsoft.org/
 description : |
     XML parsing library
 upstreams   :
-    - https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.4.tar.xz: ed0c91c5845008f1936739e4eee2035531c1c94742c6541f44ee66d885948d45
+    - https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.4.tar.xz: 497360e423cf0bd99eacdb7c6215dea92e6d6e89ee940393c2bae0e77cb9b7d0
 builddeps   :
     - perl
     - pkgconfig(liblzma)
