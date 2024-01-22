@@ -48,6 +48,7 @@
 				"/usr/bin/nl-neigh-delete",
 				"/usr/bin/nl-neigh-list",
 				"/usr/bin/nl-neightbl-list",
+				"/usr/bin/nl-nh-list",
 				"/usr/bin/nl-pktloc-lookup",
 				"/usr/bin/nl-qdisc-add",
 				"/usr/bin/nl-qdisc-delete",
@@ -127,6 +128,7 @@
 				"binary(nl-neigh-delete)",
 				"binary(nl-neigh-list)",
 				"binary(nl-neightbl-list)",
+				"binary(nl-nh-list)",
 				"binary(nl-pktloc-lookup)",
 				"binary(nl-qdisc-add)",
 				"binary(nl-qdisc-delete)",
@@ -161,6 +163,7 @@
 				"/usr/include/libnl3/netlink/cli/link.h",
 				"/usr/include/libnl3/netlink/cli/mdb.h",
 				"/usr/include/libnl3/netlink/cli/neigh.h",
+				"/usr/include/libnl3/netlink/cli/nh.h",
 				"/usr/include/libnl3/netlink/cli/qdisc.h",
 				"/usr/include/libnl3/netlink/cli/route.h",
 				"/usr/include/libnl3/netlink/cli/rule.h",
@@ -222,6 +225,7 @@
 				"/usr/include/libnl3/netlink/route/link/api.h",
 				"/usr/include/libnl3/netlink/route/link/bonding.h",
 				"/usr/include/libnl3/netlink/route/link/bridge.h",
+				"/usr/include/libnl3/netlink/route/link/bridge_info.h",
 				"/usr/include/libnl3/netlink/route/link/can.h",
 				"/usr/include/libnl3/netlink/route/link/geneve.h",
 				"/usr/include/libnl3/netlink/route/link/inet.h",
@@ -251,6 +255,7 @@
 				"/usr/include/libnl3/netlink/route/neightbl.h",
 				"/usr/include/libnl3/netlink/route/netconf.h",
 				"/usr/include/libnl3/netlink/route/nexthop.h",
+				"/usr/include/libnl3/netlink/route/nh.h",
 				"/usr/include/libnl3/netlink/route/pktloc.h",
 				"/usr/include/libnl3/netlink/route/qdisc.h",
 				"/usr/include/libnl3/netlink/route/qdisc/cbq.h",
@@ -329,6 +334,6 @@
 		}
 	},
 	"source-name": "libnl",
-	"source-release": "1",
-	"source-version": "3.7.0"
+	"source-release": "2",
+	"source-version": "3.9.0"
 }
