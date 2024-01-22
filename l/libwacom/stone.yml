@@ -4,16 +4,17 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libwacom
-version     : 2.6.0
-release     : 2
+version     : '2.9.0'
+release     : 3
 homepage    : https://linuxwacom.github.io
 upstreams   :
-    - https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.6.0/libwacom-2.6.0.tar.xz : 2376cca99475235b75053a2cfbc7ed40fd8763d5a516941a664870ff1f3aa98f
+    - https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.9.0/libwacom-2.9.0.tar.xz : 6f678156797becc4f1537a19aadcc48ed7a54e1ff3cbf591d1233f8a2d82e242
 summary     : Tablet description library
 description : |
     %(name) is a library to identify graphics tablets and their model-specific features. It provides easy access to information such as "is this a built-in on-screen tablet", "what is the size of this model", etc.
 license     : MIT
 builddeps   :
+    - pkgconfig(libevdev)
     - pkgconfig(glib-2.0)
     - pkgconfig(gudev-1.0)
     - pkgconfig(libxml-2.0)
