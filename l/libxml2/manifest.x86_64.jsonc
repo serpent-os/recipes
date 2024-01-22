@@ -28,7 +28,7 @@
 				"/usr/bin/xmlcatalog",
 				"/usr/bin/xmllint",
 				"/usr/lib/libxml2.so.2",
-				"/usr/lib/libxml2.so.2.10.4",
+				"/usr/lib/libxml2.so.2.12.4",
 				"/usr/lib/python3.11/site-packages/__pycache__/drv_libxml2.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/__pycache__/drv_libxml2.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/__pycache__/libxml2.cpython-311.opt-1.pyc",
@@ -70,7 +70,7 @@
 			],
 			"files": [
 				"/usr/lib32/libxml2.so.2",
-				"/usr/lib32/libxml2.so.2.10.4"
+				"/usr/lib32/libxml2.so.2.12.4"
 			],
 			"name": "libxml2-32bit",
 			"provides": [
@@ -88,6 +88,10 @@
 				"pkgconfig32(liblzma)",
 				"pkgconfig32(ncursesw)",
 				"pkgconfig32(readline)",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"pkgconfig32(liblzma)",
 				"pkgconfig32(zlib)"
 			],
 			"files": [
@@ -113,6 +117,10 @@
 				"pkgconfig32(ncursesw)",
 				"pkgconfig32(readline)",
 				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"pkgconfig(liblzma)",
+				"pkgconfig(zlib)"
 			],
 			"files": [
 				"/usr/include/libxml2/libxml/HTMLparser.h",
@@ -203,7 +211,6 @@
 				"/usr/share/doc/libxml2/examples/xmllint.c",
 				"/usr/share/doc/libxml2/examples/xpath1.c",
 				"/usr/share/doc/libxml2/examples/xpath2.c",
-				"/usr/share/doc/libxml2/python/TODO",
 				"/usr/share/doc/libxml2/python/examples/attribs.py",
 				"/usr/share/doc/libxml2/python/examples/build.py",
 				"/usr/share/doc/libxml2/python/examples/compareNodes.py",
@@ -235,6 +242,7 @@
 				"/usr/share/doc/libxml2/python/examples/resolver.py",
 				"/usr/share/doc/libxml2/python/examples/schema.py",
 				"/usr/share/doc/libxml2/python/examples/serialize.py",
+				"/usr/share/doc/libxml2/python/examples/setup_test.py",
 				"/usr/share/doc/libxml2/python/examples/sync.py",
 				"/usr/share/doc/libxml2/python/examples/test.dtd",
 				"/usr/share/doc/libxml2/python/examples/thread2.py",
@@ -365,6 +373,6 @@
 		}
 	},
 	"source-name": "libxml2",
-	"source-release": "5",
-	"source-version": "2.10.4"
+	"source-release": "6",
+	"source-version": "2.12.4"
 }
