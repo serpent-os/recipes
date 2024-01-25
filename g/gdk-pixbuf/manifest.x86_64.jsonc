@@ -30,7 +30,6 @@
 				"/usr/bin/gdk-pixbuf-pixdata",
 				"/usr/bin/gdk-pixbuf-query-loaders",
 				"/usr/bin/gdk-pixbuf-thumbnailer",
-				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache",
 				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ani.so",
 				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-bmp.so",
 				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.so",
@@ -48,6 +47,7 @@
 				"/usr/lib/libgdk_pixbuf-2.0.so.0.4200.10",
 				"/usr/share/gir-1.0/GdkPixbuf-2.0.gir",
 				"/usr/share/gir-1.0/GdkPixdata-2.0.gir",
+				"/usr/share/moss/triggers/pre.d/gdk_pixbuf.yaml",
 				"/usr/share/thumbnailers/gdk-pixbuf-thumbnailer.thumbnailer"
 			],
 			"name": "gdk-pixbuf",
@@ -115,6 +115,6 @@
 		}
 	},
 	"source-name": "gdk-pixbuf",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.42.10"
 }

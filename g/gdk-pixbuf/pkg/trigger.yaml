@@ -1,0 +1,13 @@
+name: gdk-pixbuf
+description: |
+    Update the gdk-pixfbuf loader cache
+
+handlers:
+    gdk_pixbuf:
+        run: /usr/bin/gdk-pixbuf-query-loaders
+        args: ["--update-cache"]
+
+paths:
+    "/usr/lib*/gdk-pixbuf-2.0/*/loaders/lib*.so" :
+        handlers:
+            - gdk_pixbuf
