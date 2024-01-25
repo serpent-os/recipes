@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : shared-mime-info
-version     : "2.2"
-release     : 2
+version     : "2.4"
+release     : 3
 homepage    : https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/
 upstreams   :
-    - https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-info-2.2.tar.gz : bcf5d552318136cf7b3ae259975f414fbcdc9ebce000c87cf1f0901ff14e619f
+    - https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.4/shared-mime-info-2.4.tar.gz : 531291d0387eb94e16e775d7e73788d06d2b2fdd8cd2ac6b6b15287593b6a2de
 summary     : Shared MIME Info
 description : |
     The shared-mime-info package contains: The core database of common MIME types, their file extensions and icon names. The update-mime-database command, used to extend the DB and install a new MIME data. The freedesktop.org shared MIME database spec.
@@ -23,16 +23,14 @@ builddeps   :
     - pkgconfig(glib-2.0)
     - pkgconfig(libxml-2.0)
 toolchain   : gnu
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/share/pkgconfig
 setup       : |
     %meson
 build       : |
     %meson_build
 install     : |
     %meson_install
-packages    :
-    - "%(name)":
-        paths:
-            - /*
-    - "%(name)-dbginfo":
-        paths:
-            - /usr/lib/debug/
+    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/pre.d/shared_mime_info.yaml

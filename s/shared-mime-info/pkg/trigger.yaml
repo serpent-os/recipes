@@ -1,0 +1,13 @@
+name: mimedb
+description: |
+    Update the mime database
+
+handlers:
+    mimedb:
+        run: /usr/bin/update-mime-database
+        args: ["-n", "/usr/share/mime"]
+
+paths:
+    "/usr/share/mime/*" :
+        handlers:
+            - mimedb
