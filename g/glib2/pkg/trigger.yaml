@@ -1,0 +1,13 @@
+name: glib2
+description: |
+    Triggers for glib2
+
+handlers:
+    gio_modules:
+        run: /usr/bin/gio-query-loaders
+        args: ["--update-cache"]
+
+paths:
+    "/usr/lib*/gio/modules/lib*.so" :
+        handlers:
+            - gio_modules
