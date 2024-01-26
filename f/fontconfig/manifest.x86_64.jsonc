@@ -94,6 +94,7 @@
 				"/usr/share/fontconfig/conf.avail/90-synthetic.conf",
 				"/usr/share/gettext/its/fontconfig.its",
 				"/usr/share/gettext/its/fontconfig.loc",
+				"/usr/share/moss/triggers/pre.d/fonts-cache.yaml",
 				"/usr/share/xml/fontconfig/fonts.dtd"
 			],
 			"name": "fontconfig",
@@ -179,6 +180,6 @@
 		}
 	},
 	"source-name": "fontconfig",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "2.15.0"
 }
