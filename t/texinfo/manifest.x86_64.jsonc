@@ -102,6 +102,7 @@
 				"/usr/share/man/man1/texindex.1",
 				"/usr/share/man/man5/info.5",
 				"/usr/share/man/man5/texinfo.5",
+				"/usr/share/moss/triggers/pre.d/texinfo.yaml",
 				"/usr/share/texinfo/DebugTexinfo/DebugTree.pm",
 				"/usr/share/texinfo/Pod-Simple-Texinfo/Pod/Simple/Texinfo.pm",
 				"/usr/share/texinfo/Texinfo/Commands.pm",
@@ -577,6 +578,6 @@
 		}
 	},
 	"source-name": "texinfo",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "7.1"
 }
