@@ -4,7 +4,7 @@ description: |
 
 handlers:
     gio_modules:
-        run: /usr/bin/gio-query-loaders
+        run: /usr/bin/gio-querymodules
         args: ["--update-cache"]
 
 paths:
