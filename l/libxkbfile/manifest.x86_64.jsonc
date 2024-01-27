@@ -1,0 +1,54 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxkbfile": {
+			"build-depends": [
+				"pkgconfig(x11)",
+				"pkgconfig(xorg-macros)",
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libxkbfile.so.1",
+				"/usr/lib/libxkbfile.so.1.0.2"
+			],
+			"name": "libxkbfile",
+			"provides": [
+				"soname(libxkbfile.so.1(x86_64))"
+			]
+		},
+		"libxkbfile-devel": {
+			"build-depends": [
+				"pkgconfig(x11)",
+				"pkgconfig(xorg-macros)",
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"pkgconfig(kbproto)",
+				"pkgconfig(x11)"
+			],
+			"files": [
+				"/usr/include/X11/extensions/XKBbells.h",
+				"/usr/include/X11/extensions/XKBconfig.h",
+				"/usr/include/X11/extensions/XKBfile.h",
+				"/usr/include/X11/extensions/XKBrules.h",
+				"/usr/include/X11/extensions/XKM.h",
+				"/usr/include/X11/extensions/XKMformat.h",
+				"/usr/lib/libxkbfile.a",
+				"/usr/lib/libxkbfile.so",
+				"/usr/lib/pkgconfig/xkbfile.pc"
+			],
+			"name": "libxkbfile-devel",
+			"provides": [
+				"pkgconfig(xkbfile)"
+			]
+		}
+	},
+	"source-name": "libxkbfile",
+	"source-release": "1",
+	"source-version": "1.1.2"
+}
