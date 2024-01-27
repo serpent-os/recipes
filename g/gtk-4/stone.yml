@@ -5,7 +5,7 @@
 #
 name        : gtk-4
 version     : 4.12.4
-release     : 1
+release     : 2
 homepage    : https://download.gnome.org/sources/gtk/4.12
 upstreams   :
     - https://download.gnome.org/sources/gtk/4.12/gtk-4.12.4.tar.xz : ba67c6498e5599f928edafb9e08a320adfaa50ab2f0da6fc6ab2252fc2d57520
@@ -17,12 +17,7 @@ license     :
     - LGPL-2.0-or-later
     - LGPL-2.1-or-later
 builddeps   :
-    - binary(g-ir-scanner)
-    - binary(glib-compile-resources)
-    - binary(cmake)
     - pkgconfig(cairo)
-    - pkgconfig(cairo-gobject)
-    - pkgconfig(cairo-script-interpreter)
     # - pkgconfig(cloudproviders)
     - pkgconfig(colord)
     # - pkgconfig(cpdb-frontend)
@@ -30,28 +25,24 @@ builddeps   :
     - pkgconfig(epoxy)
     - pkgconfig(fribidi)
     - pkgconfig(gdk-pixbuf-2.0)
-    - pkgconfig(gio-unix-2.0)
     - pkgconfig(glib-2.0)
-    - pkgconfig(gmodule-2.0)
-    - pkgconfig(gobject-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(graphene-gobject-1.0)
     - pkgconfig(harfbuzz)
     - pkgconfig(iso-codes)
     - pkgconfig(libjpeg)
     - pkgconfig(libpng)
+    # - pkgconfig(librsvg-2.0)
     - pkgconfig(libtiff-4)
     - pkgconfig(pango)
-    - pkgconfig(pangocairo)
-    - pkgconfig(pangoft2)
+    # - pkgconfig(shaderc) # for vulkan
     # - pkgconfig(sysprof-4)
-    # - pkgconfig(sysprof-capture-4)
-    # - pkgconfig(tracker-sparql-3.0)
     - pkgconfig(vulkan)
     - pkgconfig(wayland-client)
     - pkgconfig(wayland-egl)
     - pkgconfig(wayland-protocols)
     - pkgconfig(xkbcommon)
+    - gettext
 packages    :
     - "%(name)-demos":
         summary: Demonstrations of GTK4 toolkit
@@ -68,8 +59,13 @@ packages    :
             - /usr/bin/gtk4-update-icon-cache
             - /usr/bin/gtk4-launch
 setup       : |
-    %meson -Dmedia-gstreamer=disabled -Dx11-backend=false
+    %meson -Dmedia-gstreamer=disabled \
+            -Dx11-backend=false \
+            -Dintrospection=enabled
 build       : |
     %meson_build
 install     : |
     %meson_install
+# error running g-ir-scanner on files with clang
+# clang-16: error: cannot specify -o when generating multiple output files
+toolchain   : gnu
