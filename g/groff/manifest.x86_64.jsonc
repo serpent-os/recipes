@@ -907,7 +907,6 @@
 				"/usr/share/groff/site-font",
 				"/usr/share/groff/site-tmac/man.local",
 				"/usr/share/groff/site-tmac/mdoc.local",
-				"/usr/share/info/dir",
 				"/usr/share/info/groff.info",
 				"/usr/share/info/groff.info-1",
 				"/usr/share/info/groff.info-2",
@@ -1015,6 +1014,6 @@
 		}
 	},
 	"source-name": "groff",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.23.0"
 }
