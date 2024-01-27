@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libcanberra
+version     : 0.30
+release     : 1
+homepage    : http://0pointer.de/lennart/projects/libcanberra
+upstreams   :
+    - http://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz : c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72
+summary     : Freedesktop sound theme specification implementation
+description : |
+    Freedesktop sound theme specification implementation
+license     :
+    - LGPL-2.1
+builddeps   :
+    - binary(file)
+    - libtool-ltldl-devel
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(systemd)
+    - pkgconfig(udev)
+    - pkgconfig(vorbisfile)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+setup       : |
+    # TODO: Enable alsa/pulse/etc
+    %configure --disable-static \
+               --with-builtin=dso
+build       : |
+    %make
+install     : |
+    %make_install -j1

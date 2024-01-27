@@ -1,0 +1,125 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libcanberra": {
+			"build-depends": [
+				"binary(file)",
+				"libtool-ltldl-devel",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(systemd)",
+				"pkgconfig(udev)",
+				"pkgconfig(vorbisfile)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libatk-1.0.so.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcairo-gobject.so.2(x86_64))",
+				"soname(libcairo.so.2(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgthread-2.0.so.0(x86_64))",
+				"soname(libgtk-3.so.0(x86_64))",
+				"soname(libharfbuzz.so.0(x86_64))",
+				"soname(libltdl.so.7(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpango-1.0.so.0(x86_64))",
+				"soname(libpangocairo-1.0.so.0(x86_64))",
+				"soname(libvorbisfile.so.3(x86_64))"
+			],
+			"files": [
+				"/usr/bin/canberra-gtk-play",
+				"/usr/lib/gnome-settings-daemon-3.0/gtk-modules/canberra-gtk-module.desktop",
+				"/usr/lib/gtk-3.0/modules/libcanberra-gtk-module.so",
+				"/usr/lib/gtk-3.0/modules/libcanberra-gtk3-module.so",
+				"/usr/lib/libcanberra-gtk3.so.0",
+				"/usr/lib/libcanberra-gtk3.so.0.1.9",
+				"/usr/lib/libcanberra.so.0",
+				"/usr/lib/libcanberra.so.0.2.5",
+				"/usr/share/doc/libcanberra/README",
+				"/usr/share/gdm/autostart/LoginWindow/libcanberra-ready-sound.desktop",
+				"/usr/share/gnome/autostart/libcanberra-login-sound.desktop",
+				"/usr/share/gnome/shutdown/libcanberra-logout-sound.sh"
+			],
+			"name": "libcanberra",
+			"provides": [
+				"binary(canberra-gtk-play)",
+				"soname(libcanberra-gtk3-module.so(x86_64))",
+				"soname(libcanberra-gtk3.so.0(x86_64))",
+				"soname(libcanberra.so.0(x86_64))"
+			]
+		},
+		"libcanberra-devel": {
+			"build-depends": [
+				"binary(file)",
+				"libtool-ltldl-devel",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(systemd)",
+				"pkgconfig(udev)",
+				"pkgconfig(vorbisfile)"
+			],
+			"depends": [
+				"pkgconfig(gdk-3.0)",
+				"pkgconfig(gtk+-3.0)",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcanberra.so.0(x86_64))",
+				"soname(libltdl.so.7(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libvorbisfile.so.3(x86_64))"
+			],
+			"files": [
+				"/usr/include/canberra-gtk.h",
+				"/usr/include/canberra.h",
+				"/usr/lib/libcanberra-0.30/libcanberra-multi.so",
+				"/usr/lib/libcanberra-0.30/libcanberra-null.so",
+				"/usr/lib/libcanberra-0.30/libcanberra-oss.so",
+				"/usr/lib/libcanberra-gtk3.so",
+				"/usr/lib/libcanberra.so",
+				"/usr/lib/pkgconfig/libcanberra-gtk3.pc",
+				"/usr/lib/pkgconfig/libcanberra.pc",
+				"/usr/share/vala/vapi/libcanberra-gtk.vapi",
+				"/usr/share/vala/vapi/libcanberra.vapi"
+			],
+			"name": "libcanberra-devel",
+			"provides": [
+				"pkgconfig(libcanberra)",
+				"pkgconfig(libcanberra-gtk3)",
+				"soname(libcanberra-multi.so(x86_64))",
+				"soname(libcanberra-null.so(x86_64))",
+				"soname(libcanberra-oss.so(x86_64))"
+			]
+		},
+		"libcanberra-docs": {
+			"build-depends": [
+				"binary(file)",
+				"libtool-ltldl-devel",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(systemd)",
+				"pkgconfig(udev)",
+				"pkgconfig(vorbisfile)"
+			],
+			"files": [
+				"/usr/share/gtk-doc/html/libcanberra/ch01.html",
+				"/usr/share/gtk-doc/html/libcanberra/home.png",
+				"/usr/share/gtk-doc/html/libcanberra/index.html",
+				"/usr/share/gtk-doc/html/libcanberra/index.sgml",
+				"/usr/share/gtk-doc/html/libcanberra/left.png",
+				"/usr/share/gtk-doc/html/libcanberra/libcanberra-canberra-gtk.html",
+				"/usr/share/gtk-doc/html/libcanberra/libcanberra-canberra.html",
+				"/usr/share/gtk-doc/html/libcanberra/libcanberra.devhelp2",
+				"/usr/share/gtk-doc/html/libcanberra/right.png",
+				"/usr/share/gtk-doc/html/libcanberra/style.css",
+				"/usr/share/gtk-doc/html/libcanberra/up.png"
+			],
+			"name": "libcanberra-docs"
+		}
+	},
+	"source-name": "libcanberra",
+	"source-release": "1",
+	"source-version": "0.3"
+}
