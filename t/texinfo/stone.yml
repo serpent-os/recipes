@@ -5,7 +5,7 @@
 #
 name        : texinfo
 version     : '7.1'
-release     : 5
+release     : 6
 summary     : GNU software documentation system
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org/software/texinfo
@@ -22,3 +22,5 @@ build       : |
     %make
 install     : |
     %make_install
+
+    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/pre.d/texinfo.yaml

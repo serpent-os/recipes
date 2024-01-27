@@ -1,0 +1,13 @@
+name: texinfo
+description: |
+    Triggers for texinfo
+
+handlers:
+    install_info:
+        run: /bin/install-info
+        args: ["/usr/share/info/$(item)", "/usr/share/info/dir"]
+
+paths:
+    "/usr/share/info/(item:*.info*)" :
+        handlers:
+            - install_info
