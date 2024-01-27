@@ -1,0 +1,79 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dconf": {
+			"build-depends": [
+				"binary(xsltproc)",
+				"docbook",
+				"pkgconfig(bash-completion)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(systemd)",
+				"pkgconfig(vapigen)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dconf",
+				"/usr/lib/dconf/dconf-service",
+				"/usr/lib/gio/modules/libdconfsettings.so",
+				"/usr/lib/libdconf.so.1",
+				"/usr/lib/libdconf.so.1.0.0",
+				"/usr/lib/systemd/user/dconf.service",
+				"/usr/share/bash-completion/completions/dconf",
+				"/usr/share/dbus-1/services/ca.desrt.dconf.service",
+				"/usr/share/man/man1/dconf-service.1",
+				"/usr/share/man/man1/dconf.1",
+				"/usr/share/man/man7/dconf.7"
+			],
+			"name": "dconf",
+			"provides": [
+				"binary(dconf)",
+				"soname(libdconf.so.1(x86_64))",
+				"soname(libdconfsettings.so(x86_64))"
+			]
+		},
+		"dconf-devel": {
+			"build-depends": [
+				"binary(xsltproc)",
+				"docbook",
+				"pkgconfig(bash-completion)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(systemd)",
+				"pkgconfig(vapigen)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)"
+			],
+			"files": [
+				"/usr/include/dconf/client/dconf-client.h",
+				"/usr/include/dconf/common/dconf-changeset.h",
+				"/usr/include/dconf/common/dconf-enums.h",
+				"/usr/include/dconf/common/dconf-paths.h",
+				"/usr/include/dconf/dconf.h",
+				"/usr/lib/libdconf.so",
+				"/usr/lib/pkgconfig/dconf.pc",
+				"/usr/share/vala/vapi/dconf.deps",
+				"/usr/share/vala/vapi/dconf.vapi"
+			],
+			"name": "dconf-devel",
+			"provides": [
+				"pkgconfig(dconf)"
+			]
+		}
+	},
+	"source-name": "dconf",
+	"source-release": "1",
+	"source-version": "0.40.0"
+}

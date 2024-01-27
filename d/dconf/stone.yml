@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : dconf
+version     : 0.40.0
+release     : 1
+homepage    : https://wiki.gnome.org/Projects/dconf
+upstreams   :
+    - https://download.gnome.org/sources/dconf/0.40/dconf-0.40.0.tar.xz : cf7f22a4c9200421d8d3325c5c1b8b93a36843650c9f95d6451e20f0bcb24533
+summary     : Configuration settings backend for GNOME
+description : |
+    dconf is a low-level configuration system. Its main purpose is to provide a backend to GSettings on platforms that don't already have configuration storage systems.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(xsltproc)
+    - pkgconfig(bash-completion)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(systemd)
+    - pkgconfig(vapigen)
+    - docbook
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
