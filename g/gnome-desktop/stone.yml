@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-desktop
+version     : '44.0'
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-desktop
+upstreams   :
+    - https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.0.tar.xz : 42c773745d84ba14bc1cf1c4c6f4606148803a5cd337941c63964795f3c59d42
+summary     : libgnome-desktop is an unstable backend library for sharing code between GNOME desktop components.
+description : |
+    gnome-desktop contains the libgnome-desktop library as well as a data file that exports the "GNOME" version to the Settings Details panel. The libgnome-desktop library provides API shared by several applications on the desktop, but that cannot live in the platform for various reasons. There is no API or ABI guarantee, although we are doing our best to provide stability. Documentation for the API is available with gtk-doc.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(itstool)
+    - binary(msgfmt)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(libseccomp)
+    - pkgconfig(iso-codes)
+    - pkgconfig(udev)
+    - pkgconfig(xkbfile)
+    - pkgconfig(xkeyboard-config)
+rundeps     :
+    - bubblewrap
+setup       : |
+    %meson -Dbuild_gtk4=true \
+           -Dlegacy_library=true \
+           -Dgtk_doc=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# error running g-ir-scanner on files with clang
+# clang-16: error: cannot specify -o when generating multiple output files
+toolchain   : gnu
