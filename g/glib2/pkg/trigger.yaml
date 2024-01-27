@@ -6,8 +6,14 @@ handlers:
     gio_modules:
         run: /usr/bin/gio-querymodules
         args: ["--update-cache"]
+    gsettings_schemas:
+        run: /usr/bin/glib-compile-schemas
+        args: ["/usr/share/glib-2.0/schemas"]
 
 paths:
     "/usr/lib*/gio/modules/lib*.so" :
         handlers:
             - gio_modules
+    "/usr/share/glib-2.0/schemas/*" :
+        handlers:
+            - gsettings_schemas
