@@ -1,0 +1,12 @@
+name: fonts-cache
+description: |
+    Update the fonts cache
+
+handlers:
+    fonts:
+        run: /usr/bin/fc-cache
+
+paths:
+    "/usr/share/fonts/*" :
+        handlers:
+            - fonts
