@@ -1,0 +1,76 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gtk-3
+version     : 3.24.41
+release     : 1
+homepage    : https://gtk.org
+upstreams   :
+    - https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.41.tar.xz : 47da61487af3087a94bc49296fd025ca0bc02f96ef06c556e7c8988bd651b6fa
+summary     : Develop applications and user interfaces with GTK+
+description : |
+    Develop applications and user interfaces with GTK+
+license     :
+    - LGPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(libpng)
+    - binary(cmake)
+    - binary(wayland-scanner)
+    - pkgconfig(atk)
+    - pkgconfig(atk-bridge-2.0)
+    - pkgconfig(cairo)
+    - pkgconfig(cairo-gobject)
+    - pkgconfig(epoxy)
+    - pkgconfig(fontconfig)
+    - pkgconfig(freetype2)
+    - pkgconfig(fribidi)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(harfbuzz)
+    - pkgconfig(iso-codes)
+    - pkgconfig(pango)
+    - pkgconfig(pangocairo)
+    - pkgconfig(pangoft2)
+    - pkgconfig(shared-mime-info)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-cursor)
+    - pkgconfig(wayland-egl)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(x11)
+    - pkgconfig(xcomposite)
+    - pkgconfig(xcursor)
+    - pkgconfig(xdamage)
+    - pkgconfig(xext)
+    - pkgconfig(xfixes)
+    - pkgconfig(xi)
+    - pkgconfig(xinerama)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(xrandr)
+    - pkgconfig(xrender)
+packages    :
+    - "%(name)-demos":
+        summary: Demonstrations of GTK3 toolkit
+        description: Demonstration of GTK3 toolkit
+        paths:
+            - /usr/bin/*
+    - "%(name)-devel":
+        paths:
+            - /usr/bin/gtk-encode-symbolic-svg
+    - "%(name)":
+        paths:
+            - /usr/bin/gtk-update-icon-cache
+            - /usr/bin/gtk-launch
+toolchain   : gnu
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
