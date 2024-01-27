@@ -309,10 +309,15 @@
 			],
 			"name": "openssl",
 			"provides": [
+				"soname(afalg.so(x86_64))",
 				"binary(c_rehash)",
+				"soname(capi.so(x86_64))",
+				"soname(legacy.so(x86_64))",
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(libssl.so.3(x86_64))",
-				"binary(openssl)"
+				"soname(loader_attic.so(x86_64))",
+				"binary(openssl)",
+				"soname(padlock.so(x86_64))"
 			]
 		},
 		"openssl-devel": {
@@ -6542,6 +6547,6 @@
 		}
 	},
 	"source-name": "openssl",
-	"source-release": "7",
-	"source-version": "3.1.3"
+	"source-release": "8",
+	"source-version": "3.1.4"
 }
