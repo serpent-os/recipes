@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libtool-ltldl
+version     : 2.4.7
+release     : 1
+homepage    : https://ftp.gnu.org/gnu/libtool
+upstreams   :
+    - https://ftp.gnu.org/gnu/libtool/libtool-2.4.7.tar.xz : 4f7f217f057ce655ff22559ad221a0fd8ef84ad1fc5fcb6990cecc333aa1635d
+summary     : Provides libtool ltldl. Use slibtool for libtool itself
+description : |
+    Provides the libtool ltldl implementation. Use slibtool.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+setup       : |
+    %configure --disable-static \
+               --enable-ltdl-install
+build       : |
+    %make
+install     : |
+    %make_install
+    rm -rf %(installroot)/usr/bin
+    %install_file %(installroot)/usr/share/libtool/COPYING.LIB %(installroot)/usr/share/doc/libtool/COPYING.lib
+    rm -rf %(installroot)/usr/share/libtool
+    rm -rf %(installroot)/usr/share/man
+    rm -rf %(installroot)/usr/share/info
+    rm -rf %(installroot)/usr/share/aclocal
