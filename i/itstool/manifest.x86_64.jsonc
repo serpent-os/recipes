@@ -1,0 +1,28 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"itstool": {
+			"build-depends": [
+				"binary(python3)"
+			],
+			"files": [
+				"/usr/bin/itstool",
+				"/usr/share/itstool/its/docbook.its",
+				"/usr/share/itstool/its/docbook5.its",
+				"/usr/share/itstool/its/its.its",
+				"/usr/share/itstool/its/mallard.its",
+				"/usr/share/itstool/its/ttml.its",
+				"/usr/share/itstool/its/xhtml.its",
+				"/usr/share/man/man1/itstool.1"
+			],
+			"name": "itstool",
+			"provides": [
+				"binary(itstool)"
+			]
+		}
+	},
+	"source-name": "itstool",
+	"source-release": "1",
+	"source-version": "2.0.7"
+}

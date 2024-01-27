@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : itstool
+version     : 2.0.7
+release     : 1
+homepage    : https://itstool.org/
+upstreams   :
+    - https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2 : 6b9a7cd29a12bb95598f5750e8763cee78836a1a207f85b74d8b3275b27e87ca
+summary     : Translate XML documents using PO files
+description : |
+    ITS Tool allows you to translate your XML documents with PO files, using rules from the W3C Internationalization Tag Set (ITS) to determine what to translate and how to separate it into PO file messages.
+license     :
+    - GPL-3.0-or-later
+builddeps   :
+    - binary(python3)
+rundeps     :
+    - binary(python3)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
