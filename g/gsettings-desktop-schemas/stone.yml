@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gsettings-desktop-schemas
+version     : '45.0'
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
+upstreams   :
+    - https://download.gnome.org/sources/gsettings-desktop-schemas/45/gsettings-desktop-schemas-45.0.tar.xz : 365c8d04daf79b38c8b3dc9626349a024f9e4befdd31fede74b42f7a9fbe0ae2
+summary     : A collection of GSettings schemas for settings shared by various components of a GNOME Desktop.
+description : |
+    A collection of GSettings schemas for settings shared by various components of a GNOME Desktop.
+license     :
+    - GPL-2.0-only
+builddeps   :
+    - binary(msgfmt)
+    - pkgconfig(gobject-introspection-1.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# error running g-ir-scanner on files with clang
+# clang-16: error: cannot specify -o when generating multiple output files
+toolchain   : gnu
+
