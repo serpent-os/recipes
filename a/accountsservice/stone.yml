@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : accountsservice
+version     : 23.13.9
+release     : 1
+homepage    : https://www.freedesktop.org/wiki/Software/AccountsService/
+upstreams   :
+    - https://www.freedesktop.org/software/accountsservice/accountsservice-23.13.9.tar.xz : adda4cdeae24fa0992e7df3ffff9effa7090be3ac233a3edfdf69d5a9c9b924f
+summary     : D-BUS encapsulation for user and account management
+description : |
+    AccountsService is a D-Bus service for accessing the list of user accounts and information attached to those accounts.
+license     :
+    - GPL-3.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(vapigen)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libxcrypt)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(systemd)
+toolchain   : gnu
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+    # TODO: Add tmpfiles / sysusers for the /var/lib bits
