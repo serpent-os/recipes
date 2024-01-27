@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-session
+version     : '45.0'
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-session
+upstreams   :
+    - https://download.gnome.org/sources/gnome-session/45/gnome-session-45.0.tar.xz : 706d2ffcacac38553a3c0185793f5a2b4aac940bb5e789d953c9808163bef2f1
+summary     : GNOME session manager
+description : |
+    gnome-session contains the GNOME session manager, as well as a configuration program to choose applications starting on login.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(xmlto)
+    - binary(xsltproc)
+    - pkgconfig(gl)
+    - pkgconfig(gnome-desktop-3.0)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(sm)
+    - pkgconfig(upower-glib)
+    - pkgconfig(xtrans)
+    - pkgconfig(xtst)
+    - docbook
+setup      : |
+    %meson -Dsystemd=true \
+           -Dsystemd_journal=true \
+           -Dsystemd_session="default"
+build      : |
+    %meson_build
+install    : |
+    %meson_install
