@@ -5,7 +5,7 @@
 #
 name        : groff
 version     : '1.23.0'
-release     : 2
+release     : 3
 homepage    : https://www.gnu.org/software/groff/
 upstreams   :
     - https://mirrors.rit.edu/gnu/groff/groff-1.23.0.tar.gz : 6b9757f592b7518b4902eb6af7e54570bdccba37a871fddb2d30ae3863511c13
@@ -22,3 +22,4 @@ build       : |
     %make AR=llvm-ar
 install     : |
     %make_install
+    rm -rf %(installroot)/usr/share/info/dir

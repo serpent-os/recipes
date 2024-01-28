@@ -4,7 +4,7 @@ description: |
 
 handlers:
     install_info:
-        run: /bin/install-info
+        run: /usr/bin/install-info
         args: ["/usr/share/info/$(item)", "/usr/share/info/dir"]
 
 paths:

@@ -85,6 +85,8 @@ install     : |
     %install_dir %(installroot)/%(datadir)/gdb/auto-load/%(libdir)32
     mv %(installroot)/%(libdir)/libstdc++.so.*-gdb.py %(installroot)/%(datadir)/gdb/auto-load/%(libdir)/.
     mv %(installroot)/%(libdir)32/libstdc++.so.*-gdb.py %(installroot)/%(datadir)/gdb/auto-load/%(libdir)32/.
+    # TODO: Remove /usr/share/info/dir, don't want to rebuild gcc now
+    # rm -rf %(installroot)/usr/share/info/dir
 toolchain   : gnu
 tuning      :
     - fortify: false
