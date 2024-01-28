@@ -1,0 +1,58 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"tofi": {
+			"build-depends": [
+				"binary(cmake)",
+				"binary(scdoc)",
+				"pkgconfig(cairo)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(harfbuzz)",
+				"pkgconfig(pangocairo)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcairo.so.2(x86_64))",
+				"soname(libfreetype.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libharfbuzz.so.0(x86_64))",
+				"soname(libpango-1.0.so.0(x86_64))",
+				"soname(libpangocairo-1.0.so.0(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/tofi",
+				"/usr/bin/tofi-drun",
+				"/usr/bin/tofi-run",
+				"/usr/share/bash-completion/completions/tofi",
+				"/usr/share/bash-completion/completions/tofi-drun",
+				"/usr/share/bash-completion/completions/tofi-run",
+				"/usr/share/licenses/tofi/LICENSE",
+				"/usr/share/man/man1/tofi-drun.1",
+				"/usr/share/man/man1/tofi-run.1",
+				"/usr/share/man/man1/tofi.1",
+				"/usr/share/man/man5/tofi.5"
+			],
+			"name": "tofi",
+			"provides": [
+				"binary(tofi)",
+				"binary(tofi-drun)",
+				"binary(tofi-run)"
+			]
+		}
+	},
+	"source-name": "tofi",
+	"source-release": "1",
+	"source-version": "0.9.1"
+}
