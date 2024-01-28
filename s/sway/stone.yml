@@ -5,7 +5,7 @@
 #
 name        : sway
 version     : '1.8.1'
-release     : 3
+release     : 4
 homepage    : https://github.com/swaywm/sway
 upstreams   :
     - https://github.com/swaywm/sway/releases/download/1.8.1/sway-1.8.1.tar.gz : 73f08fd2cf7948e8af900709efe44eae412ae11c5773960e25c9aa09f73bad41
@@ -30,18 +30,17 @@ builddeps   :
     - pkgconfig(wlroots)
     - pkgconfig(xcb-icccm)
 rundeps     :
-    # Let's make sure we have at least one terminal
-    - binary(alacritty)
+    - binary(alacritty) # Let's make sure we have at least one terminal
     - binary(swaybg)
     - binary(tofi)
-    # For tofi-drun
-    - binary(xargs)
-    - liberation-fonts-ttf
-    # sway needs /usr/share/X11/xkb
-    - xkeyboard-config
+    - binary(xargs) # For tofi-drun
+    - liberation-fonts-ttf # need fonts
+    - shared-mime-info # needed for png background
+    - xkeyboard-config # sway needs /usr/share/X11/xkb
 setup       : |
     %patch %(pkgdir)/enhance-config.patch
-    %meson
+    %patch %(pkgdir)/0001-Make-sway-stateless.patch
+    %meson -Ddefault_sysconfdir=%(vendordir)%(sysconfdir)
 build       : |
     %meson_build
 install     : |

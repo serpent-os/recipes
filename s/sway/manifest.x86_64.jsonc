@@ -58,6 +58,7 @@
 				"/usr/share/bash-completion/completions/sway",
 				"/usr/share/bash-completion/completions/swaybar",
 				"/usr/share/bash-completion/completions/swaymsg",
+				"/usr/share/defaults/etc/sway/config",
 				"/usr/share/fish/vendor_completions.d/sway.fish",
 				"/usr/share/fish/vendor_completions.d/swaymsg.fish",
 				"/usr/share/fish/vendor_completions.d/swaynag.fish",
@@ -85,6 +86,6 @@
 		}
 	},
 	"source-name": "sway",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.8.1"
 }
