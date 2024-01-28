@@ -5,6 +5,7 @@
 		"sway": {
 			"build-depends": [
 				"binary(cmake)",
+				"binary(scdoc)",
 				"pkgconfig(bash-completion)",
 				"pkgconfig(cairo)",
 				"pkgconfig(fish)",
@@ -60,6 +61,16 @@
 				"/usr/share/fish/vendor_completions.d/sway.fish",
 				"/usr/share/fish/vendor_completions.d/swaymsg.fish",
 				"/usr/share/fish/vendor_completions.d/swaynag.fish",
+				"/usr/share/man/man1/sway.1",
+				"/usr/share/man/man1/swaymsg.1",
+				"/usr/share/man/man1/swaynag.1",
+				"/usr/share/man/man5/sway-bar.5",
+				"/usr/share/man/man5/sway-input.5",
+				"/usr/share/man/man5/sway-output.5",
+				"/usr/share/man/man5/sway.5",
+				"/usr/share/man/man5/swaynag.5",
+				"/usr/share/man/man7/sway-ipc.7",
+				"/usr/share/man/man7/swaybar-protocol.7",
 				"/usr/share/wayland-sessions/sway.desktop",
 				"/usr/share/zsh/site-functions/_sway",
 				"/usr/share/zsh/site-functions/_swaymsg"
@@ -74,6 +85,6 @@
 		}
 	},
 	"source-name": "sway",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.8.1"
 }
