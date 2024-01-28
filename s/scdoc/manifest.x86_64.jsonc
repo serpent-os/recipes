@@ -1,0 +1,22 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"scdoc": {
+			"files": [
+				"/usr/bin/scdoc",
+				"/usr/share/man/man1/scdoc.1",
+				"/usr/share/man/man5/scdoc.5",
+				"/usr/share/pkgconfig/scdoc.pc"
+			],
+			"name": "scdoc",
+			"provides": [
+				"pkgconfig(scdoc)",
+				"binary(scdoc)"
+			]
+		}
+	},
+	"source-name": "scdoc",
+	"source-release": "1",
+	"source-version": "1.11.2"
+}

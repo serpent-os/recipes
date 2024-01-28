@@ -7,6 +7,7 @@
 				"binary(cargo)",
 				"binary(cmake)",
 				"binary(make)",
+				"binary(scdoc)",
 				"pkgconfig(fontconfig)"
 			],
 			"depends": [
@@ -19,7 +20,16 @@
 				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/bin/alacritty"
+				"/usr/bin/alacritty",
+				"/usr/share/applications/alacritty.desktop",
+				"/usr/share/bash-completion/completions/alacritty",
+				"/usr/share/fish/vendor_completions.d/alacritty.fish",
+				"/usr/share/icons/hicolor/scalable/apps/Alacritty.svg",
+				"/usr/share/man/man1/alacritty-msg.1",
+				"/usr/share/man/man1/alacritty.1",
+				"/usr/share/man/man5/alacritty-bindings.5",
+				"/usr/share/man/man5/alacritty.5",
+				"/usr/share/zsh/site-functions/_alacritty"
 			],
 			"name": "alacritty",
 			"provides": [
@@ -28,6 +38,6 @@
 		}
 	},
 	"source-name": "alacritty",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.13.1"
 }

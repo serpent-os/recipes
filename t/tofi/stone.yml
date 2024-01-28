@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : tofi
+version     : '0.9.1'
+release     : 1
+homepage    : https://github.com/philj56/tofi
+upstreams   :
+    - https://github.com/philj56/tofi/archive/refs/tags/v0.9.1.tar.gz : dd55347b509af786f133def64f3a86f1db258b5e196de80e53d62827bdcc37bc
+summary     : Fast and simple application launcher
+description : |
+    An extremely fast and simple dmenu / rofi replacement for wlroots-based Wayland compositors such as Sway.
+license     :
+    - MIT
+builddeps   :
+    - binary(cmake)
+    - binary(scdoc)
+    - pkgconfig(cairo)
+    - pkgconfig(freetype2)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(harfbuzz)
+    - pkgconfig(pangocairo)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(wayland-scanner)
+    - pkgconfig(xkbcommon)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
