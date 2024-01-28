@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : scdoc
+version     : '1.11.2'
+release     : 1
+homepage    : https://git.sr.ht/~sircmpwn/scdoc
+upstreams   :
+    - https://git.sr.ht/~sircmpwn/scdoc/archive/1.11.2.tar.gz : e9ff9981b5854301789a6778ee64ef1f6d1e5f4829a9dd3e58a9a63eacc2e6f0
+summary     : Simple man page generator
+description : |
+    scdoc is a simple man page generator for POSIX systems written in C99.
+license     :
+    - MIT
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/share/pkgconfig/scdoc.pc
+toolchain   : gnu
+build       : |
+    %make PREFIX=/usr
+install     : |
+    %make_install PREFIX=/usr
