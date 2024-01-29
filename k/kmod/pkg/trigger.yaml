@@ -1,0 +1,14 @@
+name: depmod
+description: |
+    Update kernel module dependencies
+
+handlers:
+    depmod:
+        run: /usr/sbin/depmod
+        args: ["-a", "$(version)"]
+
+paths:
+    "/usr/lib/modules/(version:*)/*" :
+        handlers:
+            - depmod
+        type: directory
