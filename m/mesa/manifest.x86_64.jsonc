@@ -65,6 +65,7 @@
 				"soname(libzstd.so.1(x86_64))"
 			],
 			"files": [
+				"/usr/bin/mesa-overlay-control.py",
 				"/usr/lib/dri/crocus_dri.so",
 				"/usr/lib/dri/i915_dri.so",
 				"/usr/lib/dri/iris_dri.so",
@@ -96,10 +97,13 @@
 				"/usr/share/drirc.d/00-mesa-defaults.conf",
 				"/usr/share/drirc.d/00-radv-defaults.conf",
 				"/usr/share/glvnd/egl_vendor.d/50_mesa.json",
+				"/usr/share/vulkan/explicit_layer.d/VkLayer_MESA_overlay.json",
 				"/usr/share/vulkan/icd.d/intel_hasvk_icd.x86_64.json",
 				"/usr/share/vulkan/icd.d/intel_icd.x86_64.json",
 				"/usr/share/vulkan/icd.d/lvp_icd.x86_64.json",
-				"/usr/share/vulkan/icd.d/radeon_icd.x86_64.json"
+				"/usr/share/vulkan/icd.d/radeon_icd.x86_64.json",
+				"/usr/share/vulkan/icd.d/virtio_icd.x86_64.json",
+				"/usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json"
 			],
 			"name": "mesa",
 			"provides": [
@@ -110,7 +114,8 @@
 				"soname(libgallium_drv_video.so(x86_64))",
 				"soname(libgbm.so.1(x86_64))",
 				"soname(libglapi.so.0(x86_64))",
-				"soname(libxatracker.so.2(x86_64))"
+				"soname(libxatracker.so.2(x86_64))",
+				"binary(mesa-overlay-control.py)"
 			]
 		},
 		"mesa-devel": {
@@ -179,12 +184,15 @@
 				"/usr/lib/libEGL_mesa.so",
 				"/usr/lib/libGLX_mesa.so",
 				"/usr/lib/libOSMesa.so",
+				"/usr/lib/libVkLayer_MESA_device_select.so",
+				"/usr/lib/libVkLayer_MESA_overlay.so",
 				"/usr/lib/libgbm.so",
 				"/usr/lib/libglapi.so",
 				"/usr/lib/libvulkan_intel.so",
 				"/usr/lib/libvulkan_intel_hasvk.so",
 				"/usr/lib/libvulkan_lvp.so",
 				"/usr/lib/libvulkan_radeon.so",
+				"/usr/lib/libvulkan_virtio.so",
 				"/usr/lib/libxatracker.so",
 				"/usr/lib/pkgconfig/dri.pc",
 				"/usr/lib/pkgconfig/gbm.pc",
@@ -195,16 +203,19 @@
 			"provides": [
 				"pkgconfig(dri)",
 				"pkgconfig(gbm)",
+				"soname(libVkLayer_MESA_device_select.so(x86_64))",
+				"soname(libVkLayer_MESA_overlay.so(x86_64))",
 				"soname(libvulkan_intel.so(x86_64))",
 				"soname(libvulkan_intel_hasvk.so(x86_64))",
 				"soname(libvulkan_lvp.so(x86_64))",
 				"soname(libvulkan_radeon.so(x86_64))",
+				"soname(libvulkan_virtio.so(x86_64))",
 				"pkgconfig(osmesa)",
 				"pkgconfig(xatracker)"
 			]
 		}
 	},
 	"source-name": "mesa",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "23.1.3"
 }
