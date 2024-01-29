@@ -16,6 +16,7 @@
 				"/usr/share/kak/autoload/detection/editorconfig.kak",
 				"/usr/share/kak/autoload/detection/file.kak",
 				"/usr/share/kak/autoload/detection/modeline.kak",
+				"/usr/share/kak/autoload/filetype/apl.kak",
 				"/usr/share/kak/autoload/filetype/arch-linux.kak",
 				"/usr/share/kak/autoload/filetype/asciidoc.kak",
 				"/usr/share/kak/autoload/filetype/awk.kak",
@@ -151,7 +152,9 @@
 				"/usr/share/kak/autoload/windowing/sway.kak",
 				"/usr/share/kak/autoload/windowing/tmux.kak",
 				"/usr/share/kak/autoload/windowing/wayland.kak",
+				"/usr/share/kak/autoload/windowing/wezterm.kak",
 				"/usr/share/kak/autoload/windowing/x11.kak",
+				"/usr/share/kak/autoload/windowing/zellij.kak",
 				"/usr/share/kak/colors/base16.kak",
 				"/usr/share/kak/colors/black-on-white.kak",
 				"/usr/share/kak/colors/default.kak",
@@ -195,6 +198,7 @@
 				"/usr/share/kak/rc/detection/editorconfig.kak",
 				"/usr/share/kak/rc/detection/file.kak",
 				"/usr/share/kak/rc/detection/modeline.kak",
+				"/usr/share/kak/rc/filetype/apl.kak",
 				"/usr/share/kak/rc/filetype/arch-linux.kak",
 				"/usr/share/kak/rc/filetype/asciidoc.kak",
 				"/usr/share/kak/rc/filetype/awk.kak",
@@ -330,7 +334,9 @@
 				"/usr/share/kak/rc/windowing/sway.kak",
 				"/usr/share/kak/rc/windowing/tmux.kak",
 				"/usr/share/kak/rc/windowing/wayland.kak",
+				"/usr/share/kak/rc/windowing/wezterm.kak",
 				"/usr/share/kak/rc/windowing/x11.kak",
+				"/usr/share/kak/rc/windowing/zellij.kak",
 				"/usr/share/man/man1/kak.1.gz"
 			],
 			"name": "kakoune",
@@ -340,6 +346,6 @@
 		}
 	},
 	"source-name": "kakoune",
-	"source-release": "1",
-	"source-version": "2022.10.31"
+	"source-release": "2",
+	"source-version": "2023.08.05"
 }
