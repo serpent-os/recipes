@@ -1,18 +1,14 @@
-From e931f465e92faf11781f50a0b7c77d9970492153 Mon Sep 17 00:00:00 2001
-From: Peter O'Connor <sunnyflunk@serpentos.com>
-Date: Mon, 23 May 2022 19:02:28 +1000
-Subject: [PATCH] Drop useless shared lib check
+* Remove an useless test in configure
+* Respect ${AR}, ${CC} and ${RANLIB} in Makefile
+
+Originally written by Peter O'Connor.
 
 Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
----
- configure | 19 -------------------
- 1 file changed, 19 deletions(-)
 
-diff --git a/configure b/configure
-index 52ff4a0..facfe42 100755
---- a/configure
-+++ b/configure
-@@ -418,25 +418,6 @@ fi
+diff -ru zlib-1.3.1.orig/configure zlib-1.3.1/configure
+--- zlib-1.3.1.orig/configure	2024-01-21 11:29:31.000000000 +0900
++++ zlib-1.3.1/configure	2024-01-28 18:07:13.089250431 +0900
+@@ -434,25 +434,6 @@
  
  echo >> configure.log
  
@@ -24,7 +20,7 @@ index 52ff4a0..facfe42 100755
 -if test $shared -eq 1; then
 -  echo Checking for shared library support... | tee -a configure.log
 -  # we must test in two steps (cc then ld), required at least on SunOS 4.x
--  if try $CC -w -c $SFLAGS $test.c &&
+-  if try $CC -c $SFLAGS $test.c &&
 -     try $LDSHARED $SFLAGS -o $test$shared_ext $test.o; then
 -    echo Building shared library $SHAREDLIBV with $CC. | tee -a configure.log
 -  elif test -z "$old_cc" -a -z "$old_cflags"; then
@@ -38,14 +34,10 @@ index 52ff4a0..facfe42 100755
  if test $shared -eq 0; then
    LDSHARED="$CC"
    ALL="static"
---
-2.36.1
-
-diff --git a/Makefile.in b/Makefile.in
-index 3d858aa..2413373 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -16,7 +16,7 @@
+diff -ru zlib-1.3.1.orig/Makefile.in zlib-1.3.1/Makefile.in
+--- zlib-1.3.1.orig/Makefile.in	2024-01-23 03:32:37.000000000 +0900
++++ zlib-1.3.1/Makefile.in	2024-01-28 18:05:40.725650461 +0900
+@@ -12,7 +12,7 @@
  # To install in $HOME instead of /usr/local, use:
  #    make install prefix=$HOME
  
@@ -54,7 +46,7 @@ index 3d858aa..2413373 100644
  
  CFLAGS=-O
  #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
-@@ -36,9 +36,9 @@ SHAREDLIBV=libz.so.1.2.12
+@@ -32,9 +32,9 @@
  SHAREDLIBM=libz.so.1
  LIBS=$(STATICLIB) $(SHAREDLIBV)
  
