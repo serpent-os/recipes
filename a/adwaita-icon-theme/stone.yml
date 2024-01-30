@@ -1,7 +1,7 @@
 #
-# SPDX-FileCopyrightText: © 2020-2023 Serpent OS Developers
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
 #
-# SPDX-License-Identifier: Zlib
+# SPDX-License-Identifier: MPL-2.0
 #
 name        : adwaita-icon-theme
 version     : 45.0
