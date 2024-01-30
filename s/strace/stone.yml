@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : strace
-version     : '6.6'
-release     : 6
+version     : '6.7'
+release     : 7
 homepage    : https://strace.io
 upstreams   :
-    - https://github.com/strace/strace/releases/download/v6.6/strace-6.6.tar.xz : 421b4186c06b705163e64dc85f271ebdcf67660af8667283147d5e859fc8a96c
+    - https://github.com/strace/strace/releases/download/v6.7/strace-6.7.tar.xz : 2090201e1a3ff32846f4fe421c1163b15f440bb38e31355d09f82d3949922af7
 summary     : Diagnostic, debugging and instructional userspace utility
 description : |
     strace is a diagnostic, debugging and instructional userspace utility with a traditional command-line interface for Linux. It is used to monitor and tamper with interactions between processes and the Linux kernel, which include system calls, signal deliveries, and changes of process state. The operation of strace is made possible by the kernel feature known as ptrace.
