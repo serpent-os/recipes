@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : pixman
-version     : '0.43.0'
-release     : 2
+version     : '0.43.2'
+release     : 3
 homepage    : http://www.pixman.org
 upstreams   :
-    - https://www.cairographics.org/releases/pixman-0.43.0.tar.gz : a65c28209858fb16bee50d809c80f90a8e415c0e4fd8321078a1822785a5560a
+    - https://www.cairographics.org/releases/pixman-0.43.2.tar.gz : ea79297e5418fb528d0466e8b5b91d1be88857fa3706f49777b2925a72ae9924
 summary     : Low-level library for pixel manipulation
 description : |
     Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.
