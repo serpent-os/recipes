@@ -79,7 +79,6 @@
 			],
 			"files": [
 				"/usr/bin/gtk-launch",
-				"/usr/bin/gtk-update-icon-cache",
 				"/usr/lib/girepository-1.0/Gdk-3.0.typelib",
 				"/usr/lib/girepository-1.0/GdkX11-3.0.typelib",
 				"/usr/lib/girepository-1.0/Gtk-3.0.typelib",
@@ -172,7 +171,6 @@
 			"name": "gtk-3",
 			"provides": [
 				"binary(gtk-launch)",
-				"binary(gtk-update-icon-cache)",
 				"soname(im-am-et.so(x86_64))",
 				"soname(im-cedilla.so(x86_64))",
 				"soname(im-cyrillic-translit.so(x86_64))",
@@ -777,9 +775,65 @@
 				"pkgconfig(gtk+-x11-3.0)",
 				"binary(gtk-encode-symbolic-svg)"
 			]
+		},
+		"gtk-3-update-icon-cache": {
+			"build-depends": [
+				"binary(cmake)",
+				"binary(wayland-scanner)",
+				"pkgconfig(atk)",
+				"pkgconfig(atk-bridge-2.0)",
+				"pkgconfig(cairo)",
+				"pkgconfig(cairo-gobject)",
+				"pkgconfig(epoxy)",
+				"pkgconfig(fontconfig)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(fribidi)",
+				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmodule-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(harfbuzz)",
+				"pkgconfig(iso-codes)",
+				"pkgconfig(libpng)",
+				"pkgconfig(pango)",
+				"pkgconfig(pangocairo)",
+				"pkgconfig(pangoft2)",
+				"pkgconfig(shared-mime-info)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-cursor)",
+				"pkgconfig(wayland-egl)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig(x11)",
+				"pkgconfig(xcomposite)",
+				"pkgconfig(xcursor)",
+				"pkgconfig(xdamage)",
+				"pkgconfig(xext)",
+				"pkgconfig(xfixes)",
+				"pkgconfig(xi)",
+				"pkgconfig(xinerama)",
+				"pkgconfig(xkbcommon)",
+				"pkgconfig(xrandr)",
+				"pkgconfig(xrender)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/gtk-update-icon-cache",
+				"/usr/share/moss/triggers/pre.d/gtk3_update_icon_cache.yaml"
+			],
+			"name": "gtk-3-update-icon-cache",
+			"provides": [
+				"binary(gtk-update-icon-cache)"
+			]
 		}
 	},
 	"source-name": "gtk-3",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.24.41"
 }

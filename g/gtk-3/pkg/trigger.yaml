@@ -1,0 +1,13 @@
+name: gtk3_update_icon_cache
+description: |
+    Update the icon theme caches
+
+handlers:
+    gtk3_update_icon_cache:
+        run: /usr/bin/gtk-update-icon-cache
+        args: ["-ftq", "/usr/share/icons/$(icon_theme)"]
+
+paths:
+    "/usr/share/icons/(icon_theme:*)/*/*" :
+        handlers:
+            - gtk3_update_icon_cache
