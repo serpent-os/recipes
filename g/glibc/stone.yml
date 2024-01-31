@@ -5,7 +5,7 @@
 #
 name        : glibc
 version     : 2.37
-release     : 6
+release     : 7
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -47,6 +47,11 @@ setup       : |
     #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
     %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
     cp %(pkgdir)/SUPPORTED localedata/SUPPORTED
+
+    # security
+    %patch %(pkgdir)/security/CVE-2023-6246.patch
+    %patch %(pkgdir)/security/CVE-2023-6779.patch
+    %patch %(pkgdir)/security/CVE-2023-6780.patch
 
     mkdir build && cd build
     echo "LD_SO_CACHE=/var/cache/ldconfig/ld.so.cache" >> configparms
