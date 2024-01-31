@@ -5,7 +5,7 @@
 #
 name        : adwaita-icon-theme
 version     : 45.0
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 upstreams   :
     - https://download.gnome.org/sources/adwaita-icon-theme/45/adwaita-icon-theme-45.0.tar.xz : 2442bfb06f4e6cc95bf6e2682fdff98fa5eddc688751b9d6215c623cb4e42ff1
@@ -15,18 +15,21 @@ description : |
 license     :
     - CC-BY-SA-3.0
     - LGPL-3.0-or-later
+# Dump it all in one package
+packages:
+    - "%(name)":
+        paths:
+            - /usr/share/icons/Adwaita
+            - /usr/share/pkgconfig
 builddeps   :
     - binary(gtk-update-icon-cache)
+rundeps     :
+    - binary(gtk-update-icon-cache)
+    - hicolor-icon-theme
 setup       : |
-    ## ??
-    rm %(workdir)/Adwaita/.icon-theme.cache
     %meson
 build       : |
     %meson_build
 install     : |
     %meson_install
-# Dump it all in one package
-packages:
-    - "%(name)":
-        paths:
-            - /*
+    rm %(installroot)%(datadir)/icons/Adwaita/.icon-theme.cache
