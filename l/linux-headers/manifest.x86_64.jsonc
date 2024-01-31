@@ -267,6 +267,7 @@
 				"/usr/include/linux/erspan.h",
 				"/usr/include/linux/ethtool.h",
 				"/usr/include/linux/ethtool_netlink.h",
+				"/usr/include/linux/eventfd.h",
 				"/usr/include/linux/eventpoll.h",
 				"/usr/include/linux/ext4.h",
 				"/usr/include/linux/f2fs.h",
@@ -668,6 +669,7 @@
 				"/usr/include/linux/prctl.h",
 				"/usr/include/linux/psample.h",
 				"/usr/include/linux/psci.h",
+				"/usr/include/linux/psp-dbc.h",
 				"/usr/include/linux/psp-sev.h",
 				"/usr/include/linux/ptp_clock.h",
 				"/usr/include/linux/ptrace.h",
@@ -796,6 +798,7 @@
 				"/usr/include/linux/tipc_sockets_diag.h",
 				"/usr/include/linux/tls.h",
 				"/usr/include/linux/toshiba.h",
+				"/usr/include/linux/tps6594_pfsm.h",
 				"/usr/include/linux/tty.h",
 				"/usr/include/linux/tty_flags.h",
 				"/usr/include/linux/types.h",
@@ -985,6 +988,6 @@
 		}
 	},
 	"source-name": "linux-headers",
-	"source-release": "13",
-	"source-version": "6.4.0"
+	"source-release": "14",
+	"source-version": "6.6.14"
 }
