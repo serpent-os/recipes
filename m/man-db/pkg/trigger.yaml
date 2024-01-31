@@ -1,0 +1,13 @@
+name: mandb
+description: |
+    Rebuild the man page database
+
+handlers:
+    mandb:
+        run: /usr/bin/mandb
+        args: ["-q"]
+
+paths:
+    "/usr/share/man/man*/*" :
+        handlers:
+            - mandb

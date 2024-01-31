@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : man-db
-version     : 2.11.2
-release     : 1
+version     : 2.12.0
+release     : 2
 homepage    : https://man-db.nongnu.org/
 upstreams   :
-    - https://mirror.hostiran.ir/gnu/releases/man-db/man-db-2.11.2.tar.xz : cffa1ee4e974be78646c46508e6dd2f37e7c589aaab2938cc1064f058fef9f8d
+    - https://download.savannah.nongnu.org/releases/man-db/man-db-2.12.0.tar.xz : 415a6284a22764ad22ff0f66710d853be7790dd451cd71436e3d25c74d996a95
 summary     : Application to read Linux man pages
 description : |
     man-db is an implementation of the standard Unix documentation system accessed using the man command. It uses a Berkeley DB database in place of the traditional flat-text whatis databases.
@@ -16,14 +16,11 @@ license     :
     - GPL-2.0-or-later
     - GPL-3.0-or-later
     - LGPL-2.1-or-later
-toolchain   : gnu # slibtool issues
 builddeps   :
-    - binary(autopoint)
     - binary(groff)
     - binary(gzip)
     - pkgconfig(libmagic)
     - pkgconfig(libpipeline)
-    - pkgconfig(libpkgconf)
     - pkgconfig(libseccomp)
     - pkgconfig(libzstd)
     - pkgconfig(zlib)
@@ -34,7 +31,7 @@ rundeps     :
     - binary(groff)
 setup       : |
     %patch %(pkgdir)/stateless.patch
-    %reconfigure \
+    %configure \
          --disable-setuid \
          --enable-cache-owner=root \
          --with-db=gdbm \
@@ -43,5 +40,4 @@ build       : |
     %make
 install     : |
     %make_install
-
-    rm %(installroot)/%(libdir)/man-db/*.a
+    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/pre.d/mandb.yaml
