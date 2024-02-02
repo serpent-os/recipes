@@ -1,0 +1,99 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"geocode-glib": {
+			"build-depends": [
+				"binary(glib-mkenums)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libsoup-3.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libjson-glib-1.0.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libsoup-3.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/geocode-glib/geocode-glib-2/geo-uri",
+				"/usr/lib/geocode-glib/geocode-glib-2/geocode-glib",
+				"/usr/lib/geocode-glib/geocode-glib-2/mock-backend",
+				"/usr/lib/libgeocode-glib-2.so.0",
+				"/usr/lib/libgeocode-glib-2.so.0.0.0",
+				"/usr/share/icons/hicolor/scalable/places/poi-airport.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-bar.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-building.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-bus-stop.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-car.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-light-rail-station.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-marker.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-place-of-worship.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-railway-station.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-restaurant.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-school.svg",
+				"/usr/share/icons/hicolor/scalable/places/poi-town.svg",
+				"/usr/share/installed-tests/geocode-glib-2/geo-uri.test",
+				"/usr/share/installed-tests/geocode-glib-2/geocode-glib.test",
+				"/usr/share/installed-tests/geocode-glib-2/locale_format.json",
+				"/usr/share/installed-tests/geocode-glib-2/locale_name.json",
+				"/usr/share/installed-tests/geocode-glib-2/locale_name2.json",
+				"/usr/share/installed-tests/geocode-glib-2/mock-backend.test",
+				"/usr/share/installed-tests/geocode-glib-2/nominatim-area.json",
+				"/usr/share/installed-tests/geocode-glib-2/nominatim-data-type-change.json",
+				"/usr/share/installed-tests/geocode-glib-2/nominatim-no-results.json",
+				"/usr/share/installed-tests/geocode-glib-2/nominatim-place_rank.json",
+				"/usr/share/installed-tests/geocode-glib-2/nominatim-rio.json",
+				"/usr/share/installed-tests/geocode-glib-2/osm_type0.json",
+				"/usr/share/installed-tests/geocode-glib-2/osm_type1.json",
+				"/usr/share/installed-tests/geocode-glib-2/osm_type2.json",
+				"/usr/share/installed-tests/geocode-glib-2/pi.json",
+				"/usr/share/installed-tests/geocode-glib-2/pub.json",
+				"/usr/share/installed-tests/geocode-glib-2/rev.json",
+				"/usr/share/installed-tests/geocode-glib-2/rev_fail.json",
+				"/usr/share/installed-tests/geocode-glib-2/search.json",
+				"/usr/share/installed-tests/geocode-glib-2/search_lat_long.json",
+				"/usr/share/installed-tests/geocode-glib-2/xep.json"
+			],
+			"name": "geocode-glib",
+			"provides": [
+				"soname(libgeocode-glib-2.so.0(x86_64))"
+			]
+		},
+		"geocode-glib-devel": {
+			"build-depends": [
+				"binary(glib-mkenums)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libsoup-3.0)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)"
+			],
+			"files": [
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-backend.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-bounding-box.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-enum-types.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-error.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-forward.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-glib.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-location.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-mock-backend.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-nominatim.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-place.h",
+				"/usr/include/geocode-glib-2.0/geocode-glib/geocode-reverse.h",
+				"/usr/lib/libgeocode-glib-2.so",
+				"/usr/lib/pkgconfig/geocode-glib-2.0.pc"
+			],
+			"name": "geocode-glib-devel",
+			"provides": [
+				"pkgconfig(geocode-glib-2.0)"
+			]
+		}
+	},
+	"source-name": "geocode-glib",
+	"source-release": "1",
+	"source-version": "3.26.4"
+}
