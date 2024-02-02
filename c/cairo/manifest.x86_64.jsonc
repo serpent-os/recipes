@@ -9,6 +9,7 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(libpng)",
+				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(lzo2)",
 				"pkgconfig(pixman-1)",
 				"pkgconfig(x11)",
@@ -60,6 +61,7 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(libpng)",
+				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(lzo2)",
 				"pkgconfig(pixman-1)",
 				"pkgconfig(x11)",
@@ -147,6 +149,6 @@
 		}
 	},
 	"source-name": "cairo",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.18.0"
 }

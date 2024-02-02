@@ -5,7 +5,7 @@
 #
 name        : gtk-4
 version     : 4.12.4
-release     : 2
+release     : 3
 homepage    : https://download.gnome.org/sources/gtk/4.12
 upstreams   :
     - https://download.gnome.org/sources/gtk/4.12/gtk-4.12.4.tar.xz : ba67c6498e5599f928edafb9e08a320adfaa50ab2f0da6fc6ab2252fc2d57520
@@ -32,7 +32,7 @@ builddeps   :
     - pkgconfig(iso-codes)
     - pkgconfig(libjpeg)
     - pkgconfig(libpng)
-    # - pkgconfig(librsvg-2.0)
+    - pkgconfig(librsvg-2.0)
     - pkgconfig(libtiff-4)
     - pkgconfig(pango)
     # - pkgconfig(shaderc) # for vulkan
