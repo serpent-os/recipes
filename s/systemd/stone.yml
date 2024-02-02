@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : systemd
-version     : '252.7'
-release     : 9
+version     : '252.22'
+release     : 10
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -15,60 +15,52 @@ homepage    : http://www.freedesktop.org/wiki/Software/systemd
 description : |
     A System and Service Manager
 upstreams   :
-    - https://github.com/systemd/systemd-stable/archive/v252.7.tar.gz: 043c58c2b8a9ab8a2b18fec3d7e3441cc41f1dea35e39f0cd755bf22557b0939
+    - https://github.com/systemd/systemd-stable/archive/v252.22.tar.gz: a01a6a483858701cb7b6c727132efa1173f63d4306602653baa0c7080bc861a8
 builddeps   :
+    - acl-devel
+    - attr-devel
+    - binary(gperf)
     - binary(m4)
-    - pkgconfig(libacl)
+    - binary(xsltproc)
+    - docbook
+    - gettext-devel
+    - gnu-efi-devel
     - pkgconfig(blkid)
+    - pkgconfig(bzip2)
     - pkgconfig(dbus-1)
     - pkgconfig(fdisk)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gnutls)
+    - pkgconfig(gpg-error)
+    - pkgconfig(libacl)
     - pkgconfig(libcap)
+    - pkgconfig(libcryptsetup)
     - pkgconfig(libcurl)
+    - pkgconfig(libdw)
     - pkgconfig(libffi)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(libidn2)
     - pkgconfig(libkmod)
     - pkgconfig(liblz4)
     - pkgconfig(liblzma)
     - pkgconfig(libpcre2-8)
+    - pkgconfig(libseccomp)
     - pkgconfig(libxcrypt)
     - pkgconfig(libzstd)
     - pkgconfig(mount)
     - pkgconfig(openssl)
     - pkgconfig(pam)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(pwquality)
+    - pkgconfig(pwquality)
+    - pkgconfig(tss2-esys)
+    - pkgconfig(xkbcommon)
     - pkgconfig(zlib)
-    - binutils
-    - gcc-devel
-    - gettext-devel
-    - gnu-efi-devel
-    - gperf
     - python-jinja
-    # TODO xsltproc for man pages
+toolchain   : gnu
 setup       : |
-    %patch %(pkgdir)/stateless/0001-Remove-default-pam.d-folder.patch
-    %patch %(pkgdir)/stateless/0004-Build-drop-pam-nsswitch-ship-legacy-tmpfiles-disable.patch
-    %patch %(pkgdir)/stateless/0031-add-stateless-for-locale-files-locale.conf-00-keyboa.patch
-    %patch %(pkgdir)/stateless/0515-Add-path-to-locale-search.patch
-    %patch %(pkgdir)/perf/0001-journal-raise-compression-threshold.patch
-    %patch %(pkgdir)/perf/0003-core-use-mmap-to-load-files.patch
-    %patch %(pkgdir)/perf/0007-sd-event-return-malloc-memory-reserves-when-main-loo.patch
-    %patch %(pkgdir)/perf/0015-more-udev-children-workers.patch
-    %patch %(pkgdir)/perf/0018-Enable-BBR-Bottleneck-Bandwidth-and-RTT.patch
-    %patch %(pkgdir)/perf/0019-network-online-complete-once-one-link-is-online-not-.patch
-    %patch %(pkgdir)/perf/0023-DHCP-retry-faster.patch
-    %patch %(pkgdir)/perf/0024-Remove-libm-memory-overhead.patch
-    %patch %(pkgdir)/perf/0025-skip-not-present-ACPI-devices.patch
-    %patch %(pkgdir)/perf/0027-Make-timesyncd-a-simple-service.patch
-    %patch %(pkgdir)/perf/0028-Compile-udev-with-O3.patch
-    %patch %(pkgdir)/perf/0030-Don-t-wait-for-utmp-at-shutdown.patch
-    %patch %(pkgdir)/perf/0032-don-t-use-libm-just-for-integer-exp10.patch
-    %patch %(pkgdir)/perf/0033-Notify-systemd-earlier-that-resolved-is-ready.patch
-    %patch %(pkgdir)/perf/0036-Disable-LLDP-listening-by-default.patch
-    %patch %(pkgdir)/perf/0038-Localize-1-symbol.patch
-    %patch %(pkgdir)/perf/systemd-243-random-seed-no-insane-timeouts.patch
-    %patch %(pkgdir)/bugs/systemd-250-compile.patch
     %patch %(pkgdir)/0001-Set-DefaultTimeoutStopSec-to-5s.patch
-    %patch %(pkgdir)/0008-efi-boot-generator-Do-not-automount-boot-partition.patch
     %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
-    %patch %(pkgdir)/systemd-220-silent-fsck-on-boot.patch
     %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
 
     %meson \
@@ -78,13 +70,24 @@ setup       : |
         -Dgnu-efi=true \
         -Dinstall-tests=false \
         -Dmode=release \
-        -Dpamconfdir="%(vendordir)/pam.d" \
+        -Dpamconfdir="%(vendordir)/etc/pam.d" \
         -Dpcre2=true \
         -Drpmmacrosdir=no \
         -Dslow-tests=false \
         -Dsplit-bin=true \
         -Dsplit-usr=false \
-        -Dtests=false
+        -Dtests=false \
+        -Drepart=true \
+        -Dsysupdate=false \
+        -Duserdb=true \
+        -Dhomed=true \
+        -Dinstall-sysconfdir=false \
+        -Dnss-systemd=true \
+        -Dman=true \
+        -Dxdg-autostart=true \
+        -Ddefault-compression=zstd \
+        -Dkmod=true \
+        -Dpwquality=true
 build       : |
     %meson_build
 install     : |
@@ -94,11 +97,9 @@ install     : |
     rmdir %(installroot)/var/lib/systemd %(installroot)/var/lib
     rmdir %(installroot)/var/log/journal %(installroot)/var/log %(installroot)/var
 
-    # Stateless: Clean up /etc, contains mostly example configs to learn from that we should put somewhere
-    # Actual vendor files can go in /usr/lib/systemd/journald.conf.d for example
-    # Test via systemd-analyze cat-config systemd/journald.conf
-    rm -rfv %(installroot)/etc
-
     # VERY temporary file to cause systemd-networkd to start DHCP on any enp interfaces.
     # This is a temporary fix until something like NetworkManager is put into place
     %install_file %(pkgdir)/temporary.network %(installroot)/%(libdir)/systemd/network/70-temporary.network
+
+    # Don't clobber pam!
+    rm -rf %(installroot)%(datadir)/factory/etc/pam.d
