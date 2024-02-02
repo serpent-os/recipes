@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gcr
+version     : 4.1.0
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gcr
+upstreams   :
+    - https://download.gnome.org/sources/gcr/4.1/gcr-4.1.0.tar.xz : 9ceaad29284ba919b9216e2888c18ec67240c2c93b3a4856bc5488bbc1f3a383
+summary     : GCR is a library for displaying certificates and crypto UI, accessing key stores
+description : |
+    GCR is a library for displaying certificates and crypto UI, accessing key stores. It also provides the viewer for crypto files on the GNOME desktop. GCK is a library for accessing PKCS#11 modules like smart cards, in a (G)object oriented way.
+license     :
+    - LGPL-2.0-or-later
+builddeps   :
+    - binary(gpg)
+    - binary(msgfmt)
+    - binary(ssh-add)
+    - binary(ssh-agent)
+    - binary(vapigen)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(libsecret-1)
+    - pkgconfig(libsystemd)
+    - pkgconfig(p11-kit-1)
+    - pkgconfig(systemd)
+setup       : |
+    %meson -Dgtk_doc=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+toolchain   : gnu
