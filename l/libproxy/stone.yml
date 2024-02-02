@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libproxy
+version     : 0.5.3
+release     : 1
+homepage    : https://libproxy.github.io/libproxy/
+upstreams   :
+    - https://github.com/libproxy/libproxy/archive/refs/tags/0.5.3.tar.gz : 0d8d8e4dd96239ba173c2b18905c0bb6e161fd5000e1e0aeace16f754e9a9108
+summary     : Simplifyed proxy handling
+description : |
+    libproxy is a library that provides automatic proxy configuration management.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(vapigen)
+    - pkgconfig(duktape)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(libcurl)
+setup       : |
+    # Don't force werror thingies please
+    sed -i '/missing-include-dirs/d' meson.build
+    %meson -Ddocs=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# g-ir-compiler crap
+toolchain   : gnu
