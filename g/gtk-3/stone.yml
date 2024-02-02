@@ -5,7 +5,7 @@
 #
 name        : gtk-3
 version     : 3.24.41
-release     : 2
+release     : 3
 homepage    : https://gtk.org
 upstreams   :
     - https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.41.tar.xz : 47da61487af3087a94bc49296fd025ca0bc02f96ef06c556e7c8988bd651b6fa
@@ -54,6 +54,8 @@ builddeps   :
     - pkgconfig(xkbcommon)
     - pkgconfig(xrandr)
     - pkgconfig(xrender)
+rundeps     :
+    - gsettings-desktop-schemas
 packages    :
     - "%(name)-demos":
         summary: Demonstrations of GTK3 toolkit
