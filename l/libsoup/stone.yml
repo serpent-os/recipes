@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libsoup
+version     : 3.4.4
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/libsoup
+upstreams   :
+    - https://download.gnome.org/sources/libsoup/3.4/libsoup-3.4.4.tar.xz : 291c67725f36ed90ea43efff25064b69c5a2d1981488477c05c481a3b4b0c5aa
+summary     : libsoup is an HTTP client/server library for GNOME.
+description : |
+    libsoup is an HTTP client/server library for GNOME. It uses GObjects and the glib main loop, to integrate well with GNOME applications.
+license     :
+    - LGPL-2.0-or-later
+builddeps   :
+    # binary(apachectl)
+    - binary(g-ir-scanner)
+    # binary(httpd2)
+    # binary(wstest)
+    - binary(xgettext)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gnutls)
+    - pkgconfig(libbrotlidec)
+    - pkgconfig(libnghttp2)
+    - pkgconfig(libpsl)
+    - pkgconfig(sqlite3)
+    # pkgconfig(sysprof-capture-4)
+    - pkgconfig(zlib)
+    - glib-networking
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# g-ir-compiler crap
+toolchain   : gnu
