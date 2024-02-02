@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libadwaita
+version     : '1.4.2'
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/libadwaita
+upstreams   :
+    - https://download.gnome.org/sources/libadwaita/1.4/libadwaita-1.4.2.tar.xz : 33fa16754e7370c841767298b3ff5f23003ee1d2515cc2ff255e65ef3d4e8713
+summary     : Building blocks for modern GNOME applications
+description : |
+    Building blocks for modern GNOME applications
+license     :
+    - LGPL-2.1-only
+builddeps   :
+    - binary(cmake)
+    - binary(msgfmt)
+    - binary(vapigen)
+    - pkgconfig(appstream)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk4)
+toolchain   : gnu
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
