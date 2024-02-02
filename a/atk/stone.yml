@@ -5,7 +5,7 @@
 #
 name        : atk
 version     : 2.38.0
-release     : 2
+release     : 3
 homepage    : https://wiki.gnome.org/Accessibility
 upstreams   :
     - https://download.gnome.org/sources/atk/2.38/atk-2.38.0.tar.xz : ac4de2a4ef4bd5665052952fe169657e65e895c5057dffb3c2a810f6191a0c36
