@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : glib-networking
+version     : 2.78.0
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/glib-networking
+upstreams   :
+    - https://download.gnome.org/sources/glib-networking/2.78/glib-networking-2.78.0.tar.xz : 52fe4ce93f7dc51334b102894599858d23c8a65ac4a1110b30920565d68d3aba
+summary     : Network extensions for GLib
+description : |
+    glib-networking contains the implementations of certain GLib networking features that cannot be implemented directly in GLib itself because of their dependencies.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gnutls)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(libproxy-1.0)
+    - pkgconfig(openssl)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
