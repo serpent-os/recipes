@@ -1,0 +1,56 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libssh": {
+			"build-depends": [
+				"pkgconfig(libgcrypt)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcrypt.so.20(x86_64))",
+				"soname(libgpg-error.so.0(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libssh.so.4",
+				"/usr/lib/libssh.so.4.9.6"
+			],
+			"name": "libssh",
+			"provides": [
+				"soname(libssh.so.4(x86_64))"
+			]
+		},
+		"libssh-devel": {
+			"build-depends": [
+				"pkgconfig(libgcrypt)",
+				"pkgconfig(zlib)"
+			],
+			"files": [
+				"/usr/include/libssh/callbacks.h",
+				"/usr/include/libssh/legacy.h",
+				"/usr/include/libssh/libssh.h",
+				"/usr/include/libssh/libssh_version.h",
+				"/usr/include/libssh/libsshpp.hpp",
+				"/usr/include/libssh/server.h",
+				"/usr/include/libssh/sftp.h",
+				"/usr/include/libssh/ssh2.h",
+				"/usr/lib/cmake/libssh/libssh-config-release.cmake",
+				"/usr/lib/cmake/libssh/libssh-config-version.cmake",
+				"/usr/lib/cmake/libssh/libssh-config.cmake",
+				"/usr/lib/libssh.so",
+				"/usr/lib/pkgconfig/libssh.pc"
+			],
+			"name": "libssh-devel",
+			"provides": [
+				"pkgconfig(libssh)",
+				"cmake(libssh)"
+			]
+		}
+	},
+	"source-name": "libssh",
+	"source-release": "1",
+	"source-version": "0.10.6"
+}

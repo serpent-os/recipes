@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libssh
+version     : 0.10.6
+release     : 1
+homepage    : https://www.libssh.org/
+upstreams   :
+    - https://www.libssh.org/files/0.10/libssh-0.10.6.tar.xz : 1861d498f5b6f1741b6abc73e608478491edcf9c9d4b6630eef6e74596de9dc1
+summary     : C library for SSHv2 protocol support
+description : |
+    libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side. With libssh, you can remotely execute programs, transfer files, use a secure and transparent tunnel, manage public keys and much more
+license     :
+    - BSD-3-Clause
+    - LGPL-2.1-or-later
+    - MIT
+builddeps   :
+    - pkgconfig(libgcrypt)
+    - pkgconfig(zlib)
+setup       : |
+    %cmake -DWITH_GCRYPT:BOOL=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
