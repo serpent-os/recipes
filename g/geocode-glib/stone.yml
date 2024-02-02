@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : geocode-glib
+version     : 3.26.4
+release     : 1
+homepage    : https://download.gnome.org/sources/geocode-glib/3.26
+upstreams   :
+    - https://download.gnome.org/sources/geocode-glib/3.26/geocode-glib-3.26.4.tar.xz : 2d9a6826d158470449a173871221596da0f83ebdcff98b90c7049089056a37aa
+summary     : geocode-glib is a convenience library for the geocoding
+description : |
+    geocode-glib is a convenience library for the geocoding (finding longitude, and latitude from an address) and reverse geocoding (finding an address from coordinates). It uses Nominatim service to achieve that. It also caches (reverse-)geocoding requests for faster results and to avoid unnecessary server load.
+license     :
+    - BSD-3-Clause-No-Military-License
+    - LGPL-2.0-or-later
+builddeps   :
+    - binary(glib-mkenums)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libsoup-3.0)
+setup       : |
+    %meson -Dsoup2=false -Denable-gtk-doc=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
