@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cryptsetup
+version     : 2.7.0
+release     : 1
+homepage    : https://gitlab.com/cryptsetup/cryptsetup
+upstreams   :
+    - https://gitlab.com/cryptsetup/cryptsetup/-/archive/v2.7.0/cryptsetup-v2.7.0.tar.gz : 3fc7ef847202a3ad839a8dd5807c256192f41aa8d443eb08b54714258a9b9767
+summary     : cryptsetup + LUKS
+description : |
+    cryptsetup + LUKS - open source disk encryption
+license     :
+    - CC0-1.0
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(gettext)
+    - pkgconfig(blkid)
+    - pkgconfig(devmapper)
+    - pkgconfig(json-c)
+    - pkgconfig(libcrypto)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(libssh)
+    - pkgconfig(nettle)
+    - pkgconfig(popt)
+    - pkgconfig(pwquality)
+    - pkgconfig(systemd)
+    - pkgconfig(uuid)
+setup       : |
+    %meson -Dasciidoc=disabled \
+           -Dargon-implementation=internal
+build       : |
+    %meson_build
+install     : |
+    %meson_install
