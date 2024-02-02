@@ -60,6 +60,10 @@
 				"/usr/lib/systemd/system/gdm.service",
 				"/usr/lib/systemd/user/gnome-session@gnome-login.target.d/session.conf",
 				"/usr/lib/udev/rules.d/61-gdm.rules",
+				"/usr/lib/userdb/21.group",
+				"/usr/lib/userdb/21.user",
+				"/usr/lib/userdb/gdm.group",
+				"/usr/lib/userdb/gdm.user",
 				"/usr/sbin/gdm",
 				"/usr/share/dbus-1/system.d/gdm.conf",
 				"/usr/share/dconf/profile/gdm",
@@ -237,11 +241,7 @@
 				"/usr/share/locale/zh_CN/LC_MESSAGES/gdm.mo",
 				"/usr/share/locale/zh_HK/LC_MESSAGES/gdm.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/gdm.mo",
-				"/usr/share/locale/zu/LC_MESSAGES/gdm.mo",
-				"/usr/share/userdb/21.group",
-				"/usr/share/userdb/21.user",
-				"/usr/share/userdb/gdm.group",
-				"/usr/share/userdb/gdm.user"
+				"/usr/share/locale/zu/LC_MESSAGES/gdm.mo"
 			],
 			"name": "gdm",
 			"provides": [
@@ -299,6 +299,6 @@
 		}
 	},
 	"source-name": "gdm",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "45.0.1"
 }
