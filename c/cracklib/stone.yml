@@ -1,0 +1,40 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cracklib
+version     : 2.9.11
+release     : 1
+homepage    : https://github.com/cracklib/cracklib
+upstreams   :
+    - https://github.com/cracklib/cracklib/releases/download/v2.9.11/cracklib-2.9.11.tar.xz: 2c83a91dd21d035eab98bded764eb4579b73fd837b683e1a447b11ef604ee130
+    - https://github.com/cracklib/cracklib/releases/download/v2.9.11/cracklib-words-2.9.11.xz:
+        hash: b3d1e0e0ae9bc7ffed65c0042d7c68bdb903368aa6b918f94572453c6ea874dc
+        unpack: false
+summary     : CrackLib library and dictionaries
+description : |
+    CrackLib library and dictionaries
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(file)
+    - binary(gzip)
+setup       : |
+    unxz -d %(sourcedir)/cracklib-words-%(version).xz -c > cracklib-words
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+    %install_file cracklib-words %(installroot)%(datadir)/cracklib/.
+    %install_dir %(installroot)%(datadir)/dict
+    ln -s ../cracklib/cracklib-words %(installroot)%(datadir)/dict/.
+    ln -s ../cracklib/cracklib-words %(installroot)%(datadir)/dict/words
+    ln -s ../cracklib/cracklib-words %(installroot)%(datadir)/dict/cracklib-small
+    PATH="%(installroot)%(sbindir):${PATH}" \
+        LD_PRELOAD='' \
+        LD_LIBRARY_PATH="%(installroot)%(libdir)" \
+        %(installroot)%(sbindir)/create-cracklib-dict  \
+        -o %(installroot)%(datadir)/cracklib/pw_dict  \
+        %(installroot)%(datadir)/cracklib/cracklib-words
