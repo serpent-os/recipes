@@ -5,7 +5,7 @@
 #
 name        : gtk-4
 version     : 4.12.4
-release     : 3
+release     : 4
 homepage    : https://download.gnome.org/sources/gtk/4.12
 upstreams   :
     - https://download.gnome.org/sources/gtk/4.12/gtk-4.12.4.tar.xz : ba67c6498e5599f928edafb9e08a320adfaa50ab2f0da6fc6ab2252fc2d57520
@@ -43,6 +43,8 @@ builddeps   :
     - pkgconfig(wayland-protocols)
     - pkgconfig(xkbcommon)
     - gettext
+rundeps     :
+    - gsettings-desktop-schemas
 packages    :
     - "%(name)-demos":
         summary: Demonstrations of GTK4 toolkit
