@@ -5,7 +5,7 @@
 #
 name        : cryptsetup
 version     : 2.7.0
-release     : 1
+release     : 2
 homepage    : https://gitlab.com/cryptsetup/cryptsetup
 upstreams   :
     - https://gitlab.com/cryptsetup/cryptsetup/-/archive/v2.7.0/cryptsetup-v2.7.0.tar.gz : 3fc7ef847202a3ad839a8dd5807c256192f41aa8d443eb08b54714258a9b9767
@@ -36,3 +36,4 @@ build       : |
     %meson_build
 install     : |
     %meson_install
+    rm -v %(installroot)%(libdir)/tmpfiles.d -rf

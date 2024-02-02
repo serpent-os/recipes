@@ -28,7 +28,6 @@
 			"files": [
 				"/usr/lib/libcryptsetup.so.12",
 				"/usr/lib/libcryptsetup.so.12.10.0",
-				"/usr/lib/tmpfiles.d/cryptsetup.conf",
 				"/usr/share/locale/cs/LC_MESSAGES/cryptsetup.mo",
 				"/usr/share/locale/da/LC_MESSAGES/cryptsetup.mo",
 				"/usr/share/locale/de/LC_MESSAGES/cryptsetup.mo",
@@ -89,6 +88,6 @@
 		}
 	},
 	"source-name": "cryptsetup",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.7.0"
 }
