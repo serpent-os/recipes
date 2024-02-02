@@ -1,0 +1,116 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libpwquality": {
+			"build-depends": [
+				"binary(autopoint)",
+				"cracklib-devel",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrack.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/bin/pwmake",
+				"/usr/bin/pwscore",
+				"/usr/lib/libpwquality.so.1",
+				"/usr/lib/libpwquality.so.1.0.2",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/EGG-INFO/PKG-INFO",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/EGG-INFO/SOURCES.txt",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/EGG-INFO/dependency_links.txt",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/EGG-INFO/native_libs.txt",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/EGG-INFO/not-zip-safe",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/EGG-INFO/top_level.txt",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/__pycache__/pwquality.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/pwquality.cpython-311-x86_64-linux-gnu.so",
+				"/usr/lib/python3.11/site-packages/pwquality-1.4.5-py3.11-linux-x86_64.egg/pwquality.py",
+				"/usr/share/locale/ar/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/as/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/az/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/bg/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/bn_IN/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/ca/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/cs/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/da/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/de/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/es/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/eu/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/fa/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/fi/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/fur/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/gu/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/he/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/hi/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/hu/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/id/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/it/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/kk/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/km/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/kn/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/ko/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/ml/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/mr/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/nb/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/or/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/pa/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/pt/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/pt_BR/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/si/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/sk/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/sq/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/ta/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/te/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/tr/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/ur/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/vi/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/zh_CN/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/zh_TW/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/locale/zu/LC_MESSAGES/libpwquality.mo",
+				"/usr/share/man/man1/pwmake.1",
+				"/usr/share/man/man1/pwscore.1",
+				"/usr/share/man/man5/pwquality.conf.5",
+				"/usr/share/man/man8"
+			],
+			"name": "libpwquality",
+			"provides": [
+				"soname(libpwquality.so.1(x86_64))",
+				"binary(pwmake)",
+				"soname(pwquality.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"binary(pwscore)"
+			]
+		},
+		"libpwquality-devel": {
+			"build-depends": [
+				"binary(autopoint)",
+				"cracklib-devel",
+				"pkgconfig(python3)"
+			],
+			"files": [
+				"/usr/include/pwquality.h",
+				"/usr/lib/libpwquality.so",
+				"/usr/lib/pkgconfig/pwquality.pc",
+				"/usr/share/man/man3/pwquality.3"
+			],
+			"name": "libpwquality-devel",
+			"provides": [
+				"pkgconfig(pwquality)"
+			]
+		}
+	},
+	"source-name": "libpwquality",
+	"source-release": "1",
+	"source-version": "1.4.5"
+}
