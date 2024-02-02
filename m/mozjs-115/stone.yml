@@ -1,0 +1,48 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : mozjs-115
+version     : "115.7.0esr"
+release     : 1
+homepage    : https://mozilla.org
+upstreams   :
+    - https://archive.mozilla.org/pub/firefox/releases/115.7.0esr/source/firefox-115.7.0esr.source.tar.xz : 13edffcd3ce9ff485eafe84ad256794a8ca3ca91fe06e5ed4df8e008c157a429
+summary     : Mozilla's Spidermonkey JS Engine
+description : |
+    Mozilla's Spidermonkey JS Engine (From Firefox)
+license     :
+    - MPL-2.0
+packages    :
+    - "%(name)":
+        paths:
+            # No actual soname, force it back into main package
+            - /usr/lib/lib*.so
+builddeps   :
+    - binary(cargo)
+    - binary(m4)
+    - binary(python3)
+    - binary(which)
+    - pkgconfig(icu-i18n)
+    - pkgconfig(zlib)
+environment : |
+    export CARGO_HTTP_CAINFO=%(vendordir)/etc/ssl/certs/ca-certificates.crt
+    export HOME=%(workdir)
+setup       : |
+    mkdir obj && cd obj
+    ../js/src/configure --prefix=%(prefix) \
+                --libdir=%(libdir) \
+                --enable-rust-simd \
+                --disable-jemalloc \
+                --with-intl-api \
+                --with-system-icu \
+                --with-system-zlib
+build       : |
+    cd obj
+    %make
+install     : |
+    cd obj
+    %make_install
+    # Remove honkin great big library nobody asked for
+    rm -v %(installroot)%(libdir)/*static.ajs
