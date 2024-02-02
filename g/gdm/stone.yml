@@ -5,7 +5,7 @@
 #
 name        : gdm
 version     : 45.0.1
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/gdm
 upstreams   :
     - https://download.gnome.org/sources/gdm/45/gdm-45.0.1.tar.xz : 6572578c05e3c6569d6ed269f7de2aaf3a035657654586d8243907bb7a6ffa85
@@ -40,9 +40,13 @@ builddeps   :
     # - pkgconfig(xorg-server)
 toolchain   : gnu
 setup       : |
-    %meson
+    %meson -Ddbus-sys=%(datadir)/dbus-1/system.d
 build       : |
     %meson_build
 install     : |
     %meson_install
     # TODO: Finish stateless + dependencies
+    %install_file %(pkgdir)/gdm.group %(installroot)%(datadir)/userdb/gdm.group
+    ln -s gdm.group %(installroot)%(datadir)/userdb/21.group
+    %install_file %(pkgdir)/gdm.user %(installroot)%(datadir)/userdb/gdm.user
+    ln -s gdm.user %(installroot)%(datadir)/userdb/21.user
