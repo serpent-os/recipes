@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 10
+release     : 11
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -87,7 +87,8 @@ setup       : |
         -Dxdg-autostart=true \
         -Ddefault-compression=zstd \
         -Dkmod=true \
-        -Dpwquality=true
+        -Dpwquality=true \
+        -Ddefault-dnssec=no
 build       : |
     %meson_build
 install     : |
