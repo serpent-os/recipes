@@ -5,7 +5,7 @@
 #
 name        : nss
 version     : "3.96.1"
-release     : 10
+release     : 11
 summary     : Network Security Services
 license     : MPL-2.0
 homepage    : 
@@ -49,6 +49,7 @@ install     : |
     for i in certutil nss-config pk12util; do
         %install_file dist/Linux*/bin/${i} %(installroot)%(bindir)/${i}
     done
+    %install_file dist/Linux*/lib/pkgconfig/nss.pc %(installroot)%(libdir)/pkgconfig/nss.pc
 
     # Certs
     %install_dir %(installroot)/%(vendordir)/etc/ssl/certs

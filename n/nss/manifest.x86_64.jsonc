@@ -726,6 +726,9 @@
 				"pkgconfig(sqlite3)",
 				"pkgconfig(zlib)"
 			],
+			"depends": [
+				"pkgconfig(nspr)"
+			],
 			"files": [
 				"/usr/include/nss/alghmac.h",
 				"/usr/include/nss/base.h",
@@ -982,12 +985,16 @@
 				"/usr/include/nss/utilparst.h",
 				"/usr/include/nss/utilrename.h",
 				"/usr/include/nss/verref.h",
-				"/usr/include/nss/xconst.h"
+				"/usr/include/nss/xconst.h",
+				"/usr/lib/pkgconfig/nss.pc"
 			],
-			"name": "nss-devel"
+			"name": "nss-devel",
+			"provides": [
+				"pkgconfig(nss)"
+			]
 		}
 	},
 	"source-name": "nss",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "3.96.1"
 }
