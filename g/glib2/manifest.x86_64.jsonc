@@ -173,7 +173,7 @@
 				"/usr/share/locale/zh_CN/LC_MESSAGES/glib20.mo",
 				"/usr/share/locale/zh_HK/LC_MESSAGES/glib20.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/glib20.mo",
-				"/usr/share/moss/triggers/pre.d/glib2.yaml"
+				"/usr/share/moss/triggers/tx.d/glib2.yaml"
 			],
 			"name": "glib2",
 			"provides": [
@@ -526,6 +526,6 @@
 		}
 	},
 	"source-name": "glib2",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "2.78.1"
 }
