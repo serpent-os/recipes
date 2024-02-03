@@ -47,7 +47,7 @@
 				"/usr/lib/libgdk_pixbuf-2.0.so.0.4200.10",
 				"/usr/share/gir-1.0/GdkPixbuf-2.0.gir",
 				"/usr/share/gir-1.0/GdkPixdata-2.0.gir",
-				"/usr/share/moss/triggers/pre.d/gdk_pixbuf.yaml",
+				"/usr/share/moss/triggers/tx.d/gdk_pixbuf.yaml",
 				"/usr/share/thumbnailers/gdk-pixbuf-thumbnailer.thumbnailer"
 			],
 			"name": "gdk-pixbuf",
@@ -115,6 +115,6 @@
 		}
 	},
 	"source-name": "gdk-pixbuf",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.42.10"
 }

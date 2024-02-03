@@ -5,7 +5,7 @@
 #
 name        : gdk-pixbuf
 version     : 2.42.10
-release     : 3
+release     : 4
 homepage    : https://gitlab.gnome.org/GNOME/gdk-pixbuf
 upstreams   :
     - https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.xz : ee9b6c75d13ba096907a2e3c6b27b61bcd17f5c7ebeab5a5b439d2f2e39fe44b
@@ -35,4 +35,4 @@ build       : |
 install     : |
     %meson_install
 
-    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/pre.d/gdk_pixbuf.yaml
+    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/tx.d/gdk_pixbuf.yaml
