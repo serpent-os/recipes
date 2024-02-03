@@ -103,7 +103,7 @@
 				"/usr/share/locale/zh_TW/LC_MESSAGES/shared-mime-info.mo",
 				"/usr/share/man/man1/update-mime-database.1",
 				"/usr/share/mime/packages/freedesktop.org.xml",
-				"/usr/share/moss/triggers/pre.d/shared_mime_info.yaml",
+				"/usr/share/moss/triggers/tx.d/shared_mime_info.yaml",
 				"/usr/share/pkgconfig/shared-mime-info.pc"
 			],
 			"name": "shared-mime-info",
@@ -114,6 +114,6 @@
 		}
 	},
 	"source-name": "shared-mime-info",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.4"
 }
