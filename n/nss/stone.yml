@@ -4,23 +4,53 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nss
-version     : "3.94"
-release     : 9
+version     : "3.96.1"
+release     : 10
 summary     : Network Security Services
 license     : MPL-2.0
 homepage    : 
 description : |
     Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.
 upstreams   :
-    - https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_94_RTM/src/nss-3.94.tar.gz : 463ae180ee9e5ee9e3ad4f629326657e236780cc865572a930a16520abad9dd8
+    - https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_96_1_RTM/src/nss-3.96.1.tar.gz : c51e89f6fbb06163f4302e368eeb672d748b52d583948bdb15ef1b069237a496
 builddeps   :
+    - binary(perl)
     - binary(python3)
-build       : |
+    - pkgconfig(nspr)
+    - pkgconfig(sqlite3)
+    - pkgconfig(zlib)
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/*.so
+toolchain   : gnu
+setup       : |
+    %patch %(pkgdir)/nss-3.97-standalone-1.patch
     mkdir certs
     cd certs
     cp %(workdir)/nss/lib/ckfw/builtins/certdata.txt .
     python3 %(pkgdir)/certdata2pem.py certdata.txt
+build       : |
+    cd nss
+    %make BUILT_OPT=1 \
+          USE_SYSTEM_ZLIB=1 \
+          NSS_ENABLE_WERROR=0 \
+          NSS_USE_SYSTEM_SQLITE=1 \
+          NSPR_INCLUDE_DIR=%(includedir)/nspr \
+          USE_64=1 \
+          NSS_DISABLE_GTESTS=1
 install     : |
+    # NSS
+    %install_dir %(installroot)%(libdir)
+    %install_exe dist/Linux*/lib/*.so %(installroot)%(libdir)/.
+    %install_dir %(installroot)%(includedir)/nss
+    cp -Rv dist/public/nss/* %(installroot)%(includedir)/nss/.
+    cp -Rv dist/private/nss/* %(installroot)%(includedir)/nss/.
+    for i in certutil nss-config pk12util; do
+        %install_file dist/Linux*/bin/${i} %(installroot)%(bindir)/${i}
+    done
+
+    # Certs
     %install_dir %(installroot)/%(vendordir)/etc/ssl/certs
     %install_file -t %(installroot)/%(vendordir)/etc/ssl/certs/ certs/*
     cat certs/* > %(installroot)/%(vendordir)/etc/ssl/certs/ca-certificates.crt 
