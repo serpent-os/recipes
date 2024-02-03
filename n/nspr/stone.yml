@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : nspr
+version     : 4.35
+release     : 1
+homepage    : https://firefox-source-docs.mozilla.org/nspr/index.html
+upstreams   :
+    - https://archive.mozilla.org/pub/nspr/releases/v4.35/src/nspr-4.35.tar.gz : 7ea3297ea5969b5d25a5dd8d47f2443cda88e9ee746301f6e1e1426f8a6abc8f
+summary     : Netscape Portable Runtime Libraries
+description : |
+    Portable runtime functions for Firefox and similar projects
+license     :
+    - MPL-2.0-no-copyleft-exception
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/*.so*
+    - "%(name)-32bit":
+        paths:
+            - /usr/lib32/*.so*
+    - "%(name)-devel":
+        paths:
+            - /usr/bin
+environment : |
+    cd nspr
+emul32      : yes
+profiles    :
+    - emul32:
+        setup: |
+            sed -i 's#$(LIBRARY) ##' config/rules.mk
+            %configure --with-mozilla --with-pthreads --disable-static
+setup: |
+    sed -i 's#$(LIBRARY) ##' config/rules.mk
+    %configure --with-mozilla --with-pthreads --enable-64bit 
+build       : |
+    %make
+install     : |
+    %make_install
