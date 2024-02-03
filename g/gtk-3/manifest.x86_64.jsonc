@@ -825,7 +825,7 @@
 			],
 			"files": [
 				"/usr/bin/gtk-update-icon-cache",
-				"/usr/share/moss/triggers/pre.d/gtk3_update_icon_cache.yaml"
+				"/usr/share/moss/triggers/tx.d/gtk3_update_icon_cache.yaml"
 			],
 			"name": "gtk-3-update-icon-cache",
 			"provides": [
@@ -834,6 +834,6 @@
 		}
 	},
 	"source-name": "gtk-3",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "3.24.41"
 }
