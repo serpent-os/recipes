@@ -5,7 +5,7 @@
 #
 name        : appstream
 version     : '1.0.1'
-release     : 1
+release     : 2
 homepage    : https://www.freedesktop.org/wiki/Distributions/AppStream/
 upstreams   :
     - https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.1.tar.xz : fa4d5994e5c6f22e9b66cb0b52e8b5f5d96e7353ea5528b56436e0150829203b
@@ -17,7 +17,7 @@ description : |
 license     :
     - LGPL-2.1-or-later
 builddeps   :
-    # TODO: SVG, steamming, docs
+    # TODO: steamming, docs
     - docbook
     - binary(cmake)
     - binary(gperf)
@@ -25,11 +25,10 @@ builddeps   :
     - binary(msgfmt)
     - binary(vapigen)
     - binary(xsltproc)
-    - pkgconfig(gio-2.0)
     - pkgconfig(glib-2.0)
-    - pkgconfig(gobject-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(libcurl)
+    - pkgconfig(librsvg-2.0)
     - pkgconfig(libsystemd)
     - pkgconfig(libxml-2.0)
     - pkgconfig(libzstd)
@@ -38,7 +37,7 @@ builddeps   :
 toolchain   : gnu
 setup       : |
     sed -i '/missing-include-dirs/d' meson.build
-    %meson -Dstemming=false -Dvapi=true -Dsvg-support=false -Dapidocs=false -Dinstall-docs=false --sysconfdir=%(datadir)/appstream
+    %meson -Dstemming=false -Dvapi=true -Dapidocs=false -Dinstall-docs=false --sysconfdir=%(datadir)/appstream
 build       : |
     %meson_build
 install     : |
