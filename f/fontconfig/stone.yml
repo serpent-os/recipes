@@ -5,7 +5,7 @@
 #
 name        : fontconfig
 version     : '2.15.0'
-release     : 5
+release     : 6
 homepage    : https://www.freedesktop.org/wiki/Software/fontconfig
 upstreams   :
     - https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.15.0.tar.xz : 63a0658d0e06e0fa886106452b58ef04f21f58202ea02a94c39de0d3335d7c0e
@@ -37,4 +37,4 @@ build       : |
 install     : |
     %meson_install
 
-    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/pre.d/fonts-cache.yaml
+    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/tx.d/fonts-cache.yaml
