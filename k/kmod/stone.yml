@@ -1,6 +1,6 @@
 name        : kmod
 version     : '31'
-release     : 7
+release     : 8
 homepage    : https://github.com/kmod-project/kmod
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-31.tar.xz : f5a6949043cc72c001b728d8c218609c5a15f3c33d75614b78c79418fcf00d80
@@ -34,4 +34,4 @@ install     : |
         ln -sf ../bin/kmod %(installroot)/usr/sbin/${tool}
     done
 
-    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/pre.d/kmod.yaml
+    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/tx.d/kmod.yaml

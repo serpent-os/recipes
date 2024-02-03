@@ -39,7 +39,7 @@
 				"/usr/share/man/man8/modinfo.8",
 				"/usr/share/man/man8/modprobe.8",
 				"/usr/share/man/man8/rmmod.8",
-				"/usr/share/moss/triggers/pre.d/kmod.yaml"
+				"/usr/share/moss/triggers/tx.d/kmod.yaml"
 			],
 			"name": "kmod",
 			"provides": [
@@ -72,6 +72,6 @@
 		}
 	},
 	"source-name": "kmod",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "31"
 }
