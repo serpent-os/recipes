@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-calver
+version     : 2022.6.26
+release     : 1
+homepage    : https://pypi.org/project/calver
+upstreams   :
+    - https://files.pythonhosted.org/packages/b5/00/96cbed7c019c49ee04b8a08357a981983db7698ae6de402e57097cefc9ad/calver-2022.6.26.tar.gz : e05493a3b17517ef1748fbe610da11f10485faa7c416b9d33fd4a52d74894f8b
+summary     : Calendar-based versionining for Python packages
+description : |
+    The calver package is a setuptools extension for automatically defining your Python package version as a calendar version.
+license     :
+    - Apache-2.0
+builddeps   :
+    - binary(python3)
+    - python-installer
+    - python-packaging
+    - python-wheel
+rundeps     :
+    - binary(python3)
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install

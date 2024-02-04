@@ -1,0 +1,32 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"python-calver": {
+			"build-depends": [
+				"binary(python3)",
+				"python-installer",
+				"python-packaging",
+				"python-wheel"
+			],
+			"files": [
+				"/usr/lib/python3.11/site-packages/calver-2022.6.26.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/calver-2022.6.26.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/calver-2022.6.26.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/calver-2022.6.26.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/calver-2022.6.26.dist-info/entry_points.txt",
+				"/usr/lib/python3.11/site-packages/calver-2022.6.26.dist-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/calver/__init__.py",
+				"/usr/lib/python3.11/site-packages/calver/__pycache__/__init__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/calver/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/calver/__pycache__/integration.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/calver/__pycache__/integration.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/calver/integration.py"
+			],
+			"name": "python-calver"
+		}
+	},
+	"source-name": "python-calver",
+	"source-release": "1",
+	"source-version": "2022.6.26"
+}
