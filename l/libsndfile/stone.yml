@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libsndfile
+version     : 1.2.2
+release     : 1
+homepage    : https://github.com/libsndfile/libsndfile
+upstreams   :
+    - https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz : 3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e
+summary     : A C library for reading and writing sound files containing sampled audio data.
+description : |
+    A C library for reading and writing sound files containing sampled audio data.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(python3)
+    - pkgconfig(alsa)
+    - pkgconfig(ogg)
+    - pkgconfig(sqlite3)
+    - pkgconfig(vorbis)
+setup       : |
+    # TODO: Enable flac + opus
+    %configure --disable-static \
+               --enable-external-libs \
+               --enable-alsa \
+               --enable-sqlite \
+               --enable-largefile
+build       : |
+    %make
+install     : |
+    %make_install

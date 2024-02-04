@@ -1,0 +1,97 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libsndfile": {
+			"build-depends": [
+				"binary(python3)",
+				"pkgconfig(alsa)",
+				"pkgconfig(ogg)",
+				"pkgconfig(sqlite3)",
+				"pkgconfig(vorbis)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libasound.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/sndfile-cmp",
+				"/usr/bin/sndfile-concat",
+				"/usr/bin/sndfile-convert",
+				"/usr/bin/sndfile-deinterleave",
+				"/usr/bin/sndfile-info",
+				"/usr/bin/sndfile-interleave",
+				"/usr/bin/sndfile-metadata-get",
+				"/usr/bin/sndfile-metadata-set",
+				"/usr/bin/sndfile-play",
+				"/usr/bin/sndfile-salvage",
+				"/usr/lib/libsndfile.so.1",
+				"/usr/lib/libsndfile.so.1.0.37",
+				"/usr/share/doc/libsndfile/FAQ.md",
+				"/usr/share/doc/libsndfile/api.md",
+				"/usr/share/doc/libsndfile/bugs.md",
+				"/usr/share/doc/libsndfile/command.md",
+				"/usr/share/doc/libsndfile/embedded_files.md",
+				"/usr/share/doc/libsndfile/formats.md",
+				"/usr/share/doc/libsndfile/index.md",
+				"/usr/share/doc/libsndfile/libsndfile.css",
+				"/usr/share/doc/libsndfile/libsndfile.jpg",
+				"/usr/share/doc/libsndfile/lists.md",
+				"/usr/share/doc/libsndfile/new_file_type_howto.md",
+				"/usr/share/doc/libsndfile/octave.md",
+				"/usr/share/doc/libsndfile/print.css",
+				"/usr/share/doc/libsndfile/sndfile_info.md",
+				"/usr/share/doc/libsndfile/tutorial.md",
+				"/usr/share/doc/libsndfile/win32.md",
+				"/usr/share/man/man1/sndfile-cmp.1",
+				"/usr/share/man/man1/sndfile-concat.1",
+				"/usr/share/man/man1/sndfile-convert.1",
+				"/usr/share/man/man1/sndfile-deinterleave.1",
+				"/usr/share/man/man1/sndfile-info.1",
+				"/usr/share/man/man1/sndfile-interleave.1",
+				"/usr/share/man/man1/sndfile-metadata-get.1",
+				"/usr/share/man/man1/sndfile-metadata-set.1",
+				"/usr/share/man/man1/sndfile-play.1",
+				"/usr/share/man/man1/sndfile-salvage.1"
+			],
+			"name": "libsndfile",
+			"provides": [
+				"soname(libsndfile.so.1(x86_64))",
+				"binary(sndfile-cmp)",
+				"binary(sndfile-concat)",
+				"binary(sndfile-convert)",
+				"binary(sndfile-deinterleave)",
+				"binary(sndfile-info)",
+				"binary(sndfile-interleave)",
+				"binary(sndfile-metadata-get)",
+				"binary(sndfile-metadata-set)",
+				"binary(sndfile-play)",
+				"binary(sndfile-salvage)"
+			]
+		},
+		"libsndfile-devel": {
+			"build-depends": [
+				"binary(python3)",
+				"pkgconfig(alsa)",
+				"pkgconfig(ogg)",
+				"pkgconfig(sqlite3)",
+				"pkgconfig(vorbis)"
+			],
+			"files": [
+				"/usr/include/sndfile.h",
+				"/usr/include/sndfile.hh",
+				"/usr/lib/libsndfile.so",
+				"/usr/lib/pkgconfig/sndfile.pc"
+			],
+			"name": "libsndfile-devel",
+			"provides": [
+				"pkgconfig(sndfile)"
+			]
+		}
+	},
+	"source-name": "libsndfile",
+	"source-release": "1",
+	"source-version": "1.2.2"
+}
