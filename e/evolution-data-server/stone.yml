@@ -1,0 +1,64 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : evolution-data-server
+version     : 3.48.4
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/evolution-data-server
+upstreams   :
+    - https://download.gnome.org/sources/evolution-data-server/3.48/evolution-data-server-3.48.4.tar.xz : 997e3f93b17efb0affcc017bee8780ba5fa2c009e36551bbc91a08ae552d6d60
+summary     : Calendar, contacts and task backend management
+description : |
+    The Evolution Data Server provides a single database for common, desktop-wide information,
+    such as a user's address book or calendar events.
+license     :
+    - LGPL-2.0-or-later
+builddeps   :
+    - binary(gettext)
+    - binary(gperf)
+    - binary(gtk-update-icon-cache)
+    - binary(perl)
+    - binary(python3)
+    - binary(vapigen)
+    - pkgconfig(com_err)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(icu-i18n)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libcanberra-gtk3)
+    - pkgconfig(libical-glib)
+    - pkgconfig(libical-glib)
+    - pkgconfig(libsecret-unstable)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(nss)
+    # - pkgconfig(goa-1.0)
+    # - pkgconfig(gweather4)
+    # - pkgconfig(krb5)
+    # - pkgconfig(webkit2gtk-4.1)
+    # - pkgconfig(webkitgtk-6.0)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+
+toolchain   : gnu
+setup       : |
+    %cmake -DWITH_KRB5=OFF \
+           -DWITH_OPENLDAP=OFF \
+           -DENABLE_OAUTH2_WEBKITGTK=OFF -DENABLE_OAUTH2_WEBKITGTK4=OFF -DENABLE_GOA=OFF \
+           -DWITH_LIBDB=OFF \
+           -DENABLE_WEATHER=OFF \
+           -DENABLE_INTROSPECTION=ON \
+           -DENABLE_VALA_BINDINGS=ON \
+           -DSYSCONF_INSTALL_DIR="%(datadir)"
+           
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
