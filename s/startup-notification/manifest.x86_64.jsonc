@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"startup-notification": {
+			"build-depends": [
+				"pkgconfig(ice)",
+				"pkgconfig(x11)",
+				"pkgconfig(xcb-aux)"
+			],
+			"depends": [
+				"soname(libX11-xcb.so.1(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libxcb-util.so.1(x86_64))",
+				"soname(libxcb.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libstartup-notification-1.so.0",
+				"/usr/lib/libstartup-notification-1.so.0.0.0"
+			],
+			"name": "startup-notification",
+			"provides": [
+				"soname(libstartup-notification-1.so.0(x86_64))"
+			]
+		},
+		"startup-notification-devel": {
+			"build-depends": [
+				"pkgconfig(ice)",
+				"pkgconfig(x11)",
+				"pkgconfig(xcb-aux)"
+			],
+			"files": [
+				"/usr/include/startup-notification-1.0/libsn/sn-common.h",
+				"/usr/include/startup-notification-1.0/libsn/sn-launchee.h",
+				"/usr/include/startup-notification-1.0/libsn/sn-launcher.h",
+				"/usr/include/startup-notification-1.0/libsn/sn-monitor.h",
+				"/usr/include/startup-notification-1.0/libsn/sn-util.h",
+				"/usr/include/startup-notification-1.0/libsn/sn.h",
+				"/usr/lib/libstartup-notification-1.so",
+				"/usr/lib/pkgconfig/libstartup-notification-1.0.pc"
+			],
+			"name": "startup-notification-devel",
+			"provides": [
+				"pkgconfig(libstartup-notification-1.0)"
+			]
+		}
+	},
+	"source-name": "startup-notification",
+	"source-release": "1",
+	"source-version": "0.12"
+}

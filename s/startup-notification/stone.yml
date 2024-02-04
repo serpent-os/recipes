@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : startup-notification
+version     : 0.12
+release     : 1
+homepage    : https://www.freedesktop.org/wiki/Specifications/startup-notification-spec/
+upstreams   :
+    - https://www.freedesktop.org/software/startup-notification/releases/startup-notification-0.12.tar.gz : 3c391f7e930c583095045cd2d10eb73a64f085c7fde9d260f2652c7cb3cfbe4a
+summary     : Legacy startup notification library for X11 applications
+description : |
+    Legacy startup notification library for X11 applications
+license     :
+    - MIT
+builddeps   :
+    - pkgconfig(ice)
+    - pkgconfig(x11)
+    - pkgconfig(xcb-aux)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
