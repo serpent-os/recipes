@@ -797,7 +797,6 @@
 				"/usr/include/nss/nssb64t.h",
 				"/usr/include/nss/nssbase.h",
 				"/usr/include/nss/nssbaset.h",
-				"/usr/include/nss/nssck.api",
 				"/usr/include/nss/nssckbi.h",
 				"/usr/include/nss/nssckepv.h",
 				"/usr/include/nss/nssckft.h",
@@ -979,7 +978,6 @@
 				"/usr/include/nss/sslexp.h",
 				"/usr/include/nss/sslproto.h",
 				"/usr/include/nss/sslt.h",
-				"/usr/include/nss/templates.c",
 				"/usr/include/nss/utilmodt.h",
 				"/usr/include/nss/utilpars.h",
 				"/usr/include/nss/utilparst.h",
@@ -995,6 +993,6 @@
 		}
 	},
 	"source-name": "nss",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "3.96.1"
 }

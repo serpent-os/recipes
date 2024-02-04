@@ -5,7 +5,7 @@
 #
 name        : nss
 version     : "3.96.1"
-release     : 11
+release     : 12
 summary     : Network Security Services
 license     : MPL-2.0
 homepage    : 
@@ -44,8 +44,9 @@ install     : |
     %install_dir %(installroot)%(libdir)
     %install_exe dist/Linux*/lib/*.so %(installroot)%(libdir)/.
     %install_dir %(installroot)%(includedir)/nss
-    cp -Rv dist/public/nss/* %(installroot)%(includedir)/nss/.
-    cp -Rv dist/private/nss/* %(installroot)%(includedir)/nss/.
+    for f in dist/public/nss/*.h dist/private/nss/*.h; do
+        %install_file $f %(installroot)%(includedir)/nss/.
+    done
     for i in certutil nss-config pk12util; do
         %install_file dist/Linux*/bin/${i} %(installroot)%(bindir)/${i}
     done
