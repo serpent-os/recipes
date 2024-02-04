@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"python-pathspec": {
+			"build-depends": [
+				"binary(python3)",
+				"python-flit-core",
+				"python-installer",
+				"python-packaging",
+				"python-wheel"
+			],
+			"files": [
+				"/usr/lib/python3.11/site-packages/pathspec-0.12.1.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/pathspec-0.12.1.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/pathspec-0.12.1.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/pathspec-0.12.1.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/pathspec/__init__.py",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/__init__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/_meta.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/_meta.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/gitignore.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/gitignore.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/pathspec.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/pathspec.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/pattern.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/pattern.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/util.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/__pycache__/util.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/_meta.py",
+				"/usr/lib/python3.11/site-packages/pathspec/gitignore.py",
+				"/usr/lib/python3.11/site-packages/pathspec/pathspec.py",
+				"/usr/lib/python3.11/site-packages/pathspec/pattern.py",
+				"/usr/lib/python3.11/site-packages/pathspec/patterns/__init__.py",
+				"/usr/lib/python3.11/site-packages/pathspec/patterns/__pycache__/__init__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/patterns/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/patterns/__pycache__/gitwildmatch.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/patterns/__pycache__/gitwildmatch.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pathspec/patterns/gitwildmatch.py",
+				"/usr/lib/python3.11/site-packages/pathspec/py.typed",
+				"/usr/lib/python3.11/site-packages/pathspec/util.py"
+			],
+			"name": "python-pathspec"
+		}
+	},
+	"source-name": "python-pathspec",
+	"source-release": "1",
+	"source-version": "0.12.1"
+}
