@@ -1,0 +1,46 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : pulseaudio
+version     : 17.0
+release     : 1
+homepage    : https://freedesktop.org/software/pulseaudio/releases
+upstreams   :
+    - https://freedesktop.org/software/pulseaudio/releases/pulseaudio-17.0.tar.xz : 053794d6671a3e397d849e478a80b82a63cb9d8ca296bd35b73317bb5ceb87b5
+summary     : PulseAudio client libraries
+description : |
+    Providing just the client libraries, as the daemon is provided by PipeWire.
+license     :
+    - BSD-3-Clause
+builddeps   :
+    - binary(gettext)
+    - binary(m4)
+    - binary(msgfmt)
+    - binary(perl)
+    - pkgconfig(dbus-1)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libudev)
+    - pkgconfig(sndfile)
+    - pkgconfig(x11-xcb)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+setup       : |
+    %meson -Ddaemon=false \
+           -Dclient=true \
+           -Dgsettings=enabled \
+           -Dgstreamer=disabled \
+           -Dglib=enabled \
+           -Dsystemd=enabled \
+           -Dtests=false \
+           -Ddoxygen=false \
+           -Dman=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
