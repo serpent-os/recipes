@@ -1,0 +1,40 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libical
+version     : 3.0.17
+release     : 1
+homepage    : https://github.com/libical/libical
+upstreams   :
+    - https://github.com/libical/libical/releases/download/v3.0.17/libical-3.0.17.tar.gz : bcda9a6db6870240328752854d1ea475af9bbc6356e6771018200e475e5f781b
+summary     : iCalendar support library
+description : |
+    Libical is an Open Source implementation of the iCalendar protocols and protocol data units.
+license     :
+    - MPL-2.0-no-copyleft-exception
+    - LGPL-2.1
+builddeps   :
+    - binary(perl)
+    - binary(python3)
+    - binary(vapigen)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libxml-2.0)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+            - /usr/lib/cmake
+toolchain   : gnu
+setup       : |
+    %cmake -DENABLE_GTK_DOC=OFF \
+           -DSHARED_ONLY=TRUE \
+           -DGOBJECT_INTROSPECTION=TRUE \
+           -DICAL_GLIB_VAPI=TRUE \
+           -DICAL_GLIB=TRUE
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
