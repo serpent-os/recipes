@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-attrs
+version     : 23.2.0
+release     : 1
+homepage    : https://pypi.org/project/attrs
+upstreams   :
+    - https://files.pythonhosted.org/packages/e3/fc/f800d51204003fa8ae392c4e8278f256206e7a919b708eef054f5f4b650d/attrs-23.2.0.tar.gz : 935dc3b529c262f6cf76e50877d35a4bd3c1de194fd41f47a2b7ae8f19971f30
+summary     : Classes Without Boilerplate
+description : |
+    Classes Without Boilerplate
+license     :
+    - JSON
+builddeps   :
+    - binary(python3)
+    - python-installer
+    - python-packaging
+    - python-wheel
+    - python-hatchling
+    - python-hatch-vcs
+    - python-setuptools_scm
+    - python-hatch-fancy-pypi-readme
+rundeps     :
+    - binary(python3)
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
