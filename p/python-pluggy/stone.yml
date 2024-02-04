@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-pluggy
+version     : 1.4.0
+release     : 1
+homepage    : https://pypi.org/project/pluggy
+upstreams   :
+    - https://files.pythonhosted.org/packages/54/c6/43f9d44d92aed815e781ca25ba8c174257e27253a94630d21be8725a2b59/pluggy-1.4.0.tar.gz : 8c85c2876142a764e5b7548e7d9a0e0ddb46f5185161049a79b7e974454223be
+summary     : This is the core framework used by the pytest, tox, and devpi projects.
+description : |
+    This is the core framework used by the pytest, tox, and devpi projects.
+license     :
+    - JSON
+builddeps   :
+    - binary(python3)
+    - python-pep517
+    - python-setuptools_scm
+    - python-wheel
+rundeps     :
+    - binary(python3)
+build       : |
+    %python
+install     : |
+    %python_install
