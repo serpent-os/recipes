@@ -1,0 +1,73 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libei": {
+			"build-depends": [
+				"binary(python3)",
+				"binary(xmllint)",
+				"pkgconfig(libevdev)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(xkbcommon)",
+				"python-attrs",
+				"python-jinja"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libevdev.so.2(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/ei-debug-events",
+				"/usr/lib/libei.so.1",
+				"/usr/lib/libei.so.1.2.0",
+				"/usr/lib/libeis.so.1",
+				"/usr/lib/libeis.so.1.2.0",
+				"/usr/lib/liboeffis.so.1",
+				"/usr/lib/liboeffis.so.1.2.0"
+			],
+			"name": "libei",
+			"provides": [
+				"binary(ei-debug-events)",
+				"soname(libei.so.1(x86_64))",
+				"soname(libeis.so.1(x86_64))",
+				"soname(liboeffis.so.1(x86_64))"
+			]
+		},
+		"libei-devel": {
+			"build-depends": [
+				"binary(python3)",
+				"binary(xmllint)",
+				"pkgconfig(libevdev)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(xkbcommon)",
+				"python-attrs",
+				"python-jinja"
+			],
+			"depends": [
+				"pkgconfig(libsystemd)"
+			],
+			"files": [
+				"/usr/include/libei-1.0/libei.h",
+				"/usr/include/libei-1.0/libeis.h",
+				"/usr/include/libei-1.0/liboeffis.h",
+				"/usr/lib/libei.so",
+				"/usr/lib/libeis.so",
+				"/usr/lib/liboeffis.so",
+				"/usr/lib/pkgconfig/libei-1.0.pc",
+				"/usr/lib/pkgconfig/libeis-1.0.pc",
+				"/usr/lib/pkgconfig/liboeffis-1.0.pc"
+			],
+			"name": "libei-devel",
+			"provides": [
+				"pkgconfig(libei-1.0)",
+				"pkgconfig(libeis-1.0)",
+				"pkgconfig(liboeffis-1.0)"
+			]
+		}
+	},
+	"source-name": "libei",
+	"source-release": "1",
+	"source-version": "1.2.0"
+}

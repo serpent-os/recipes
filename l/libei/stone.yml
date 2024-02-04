@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libei
+version     : 1.2.0
+release     : 1
+homepage    : https://gitlab.freedesktop.org/libinput/libei
+upstreams   :
+    - https://gitlab.freedesktop.org/libinput/libei/-/archive/1.2.0/libei-1.2.0.tar.gz : 680f85d49968dd96dff6e4b97340669d4e04a8b6248fbe223cdf192e8fc9e3e8
+summary     : Library for emulated input
+description : |
+    libei is a library for Emulated Input, primarily aimed at the Wayland
+    stack. It provides three parts:
+
+    🥚 EI (Emulated Input) for the client side (libei)
+    🍦 EIS (Emulated Input Server) for the server side (libeis)
+    🚌 oeffis is an optional helper library for DBus communication with the XDG RemoteDesktop portal (liboeffis)
+license     :
+    - MIT
+builddeps   :
+    - binary(python3)
+    - binary(xmllint)
+    - pkgconfig(libevdev)
+    - pkgconfig(libsystemd)
+    - pkgconfig(xkbcommon)
+    - python-attrs
+    - python-jinja
+setup       : |
+    %meson -Dtests=disabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install
