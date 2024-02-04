@@ -169,7 +169,7 @@
 			"depends": [
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
-				"pkgconfig(libevent-2.1.5)"
+				"pkgconfig(libevent)"
 			],
 			"files": [
 				"/usr/include/avahi-client/client.h",
@@ -228,6 +228,6 @@
 		}
 	},
 	"source-name": "avahi",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.8"
 }
