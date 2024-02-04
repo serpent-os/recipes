@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : alsa-lib
+version     : 1.2.11
+release     : 1
+homepage    : https://www.alsa-project.org/wiki/Main_Page
+upstreams   :
+    - http://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.11.tar.bz2 : 9f3f2f69b995f9ad37359072fbc69a3a88bfba081fc83e9be30e14662795bb4d
+summary     : ALSA Libraries
+description : |
+    Advanced Linux Sound Architecture client libraries
+license     :
+    - LGPL-2.1-or-later
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
