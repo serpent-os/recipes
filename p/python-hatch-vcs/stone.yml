@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-hatch-vcs
+version     : 0.4.0
+release     : 1
+homepage    : https://pypi.org/project/hatch-vcs
+upstreams   :
+    - https://files.pythonhosted.org/packages/f5/c9/54bb4fa27b4e4a014ef3bb17710cdf692b3aa2cbc7953da885f1bf7e06ea/hatch_vcs-0.4.0.tar.gz : 093810748fe01db0d451fabcf2c1ac2688caefd232d4ede967090b1c1b07d9f7
+summary     : Hatch plugin for versioning with your preferred VCS
+description : |
+    Hatch plugin for versioning with your preferred VCS
+license     :
+    - MIT
+builddeps   :
+    - binary(python3)
+    - python-installer
+    - python-packaging
+    - python-wheel
+    - python-hatchling
+rundeps     :
+    - binary(python3)
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
