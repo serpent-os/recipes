@@ -1,0 +1,59 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : pipewire
+version     : 1.0.3
+release     : 1
+homepage    : https://pipewire.org/
+upstreams   :
+    - https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.0.3/pipewire-1.0.3.tar.gz : bddb29b9310c344ca069df410f6f02b7f3d8c518811c0505c7fe62d8428fd767
+summary     : Linux audio + video multiplexing 
+description : |
+    PipeWire is a project that aims to greatly improve handling of audio and video under Linux. It provides a low-latency, graph-based processing engine on top of audio and video devices that can be used to support the use cases currently handled by both PulseAudio and JACK. PipeWire was designed with a powerful security model that makes interacting with audio and video devices from containerized applications easy, with support for Flatpak applications being the primary goal.
+license     :
+    - MIT
+builddeps   :
+    - binary(gettext)
+    - cmake(VulkanHeaders)
+    - pkgconfig(alsa)
+    - pkgconfig(avahi-client)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(libcanberra)
+    - pkgconfig(libcap)
+    - pkgconfig(libdrm)
+    - pkgconfig(libpulse)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(ncursesw)
+    - pkgconfig(openssl)
+    - pkgconfig(readline)
+    - pkgconfig(sndfile)
+    - pkgconfig(systemd)
+    - pkgconfig(vulkan)
+    - pkgconfig(x11-xcb)
+    - pkgconfig(xfixes)
+    # - pkgconfig(intl)
+    # - pkgconfig(libavcodec)
+    # - pkgconfig(libavformat)
+    # - pkgconfig(libavutil)
+    # - pkgconfig(libffado)
+    # - pkgconfig(libinotify)
+    # - pkgconfig(libmysofa)
+    # - pkgconfig(lilv-0)
+    # - pkgconfig(opus)
+    # - pkgconfig(sdl2)
+    # - pkgconfig(webrtc-audio-processing-1)
+    # - pkgconfig(webrtc-audio-processing)
+setup       : |
+    %meson -Dsession-managers=[] \
+           -Dvulkan=enabled \
+           -Dudev=enabled \
+           -Dudevrulesdir=%(libdir)/udev/rules.d
+build       : |
+    %meson_build
+install     : |
+    %meson_install
