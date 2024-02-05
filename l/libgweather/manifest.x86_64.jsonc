@@ -1,0 +1,76 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libgweather": {
+			"build-depends": [
+				"binary(g-ir-scanner)",
+				"pkgconfig(geocode-glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libxml-2.0)",
+				"python-pygobject-devel"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgeocode-glib-2.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libjson-glib-1.0.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libsoup-3.0.so.0(x86_64))",
+				"soname(libxml2.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libgweather-4.so.0",
+				"/usr/lib/libgweather-4.so.0.400.0",
+				"/usr/lib/libgweather-4/Locations.bin",
+				"/usr/share/glib-2.0/schemas/org.gnome.GWeather4.enums.xml",
+				"/usr/share/glib-2.0/schemas/org.gnome.GWeather4.gschema.xml",
+				"/usr/share/libgweather-4/Locations.xml",
+				"/usr/share/libgweather-4/locations.dtd"
+			],
+			"name": "libgweather",
+			"provides": [
+				"soname(libgweather-4.so.0(x86_64))"
+			]
+		},
+		"libgweather-devel": {
+			"build-depends": [
+				"binary(g-ir-scanner)",
+				"pkgconfig(geocode-glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libxml-2.0)",
+				"python-pygobject-devel"
+			],
+			"depends": [
+				"pkgconfig(geocode-glib-2.0)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"files": [
+				"/usr/include/libgweather-4.0/libgweather/gweather-enum-types.h",
+				"/usr/include/libgweather-4.0/libgweather/gweather-enums.h",
+				"/usr/include/libgweather-4.0/libgweather/gweather-info.h",
+				"/usr/include/libgweather-4.0/libgweather/gweather-location.h",
+				"/usr/include/libgweather-4.0/libgweather/gweather-version.h",
+				"/usr/include/libgweather-4.0/libgweather/gweather.h",
+				"/usr/lib/libgweather-4.so",
+				"/usr/lib/pkgconfig/gweather4.pc"
+			],
+			"name": "libgweather-devel",
+			"provides": [
+				"pkgconfig(gweather4)"
+			]
+		}
+	},
+	"source-name": "libgweather",
+	"source-release": "1",
+	"source-version": "4.4.0"
+}
