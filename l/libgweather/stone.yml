@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libgweather
+version     : 4.4.0
+release     : 1
+homepage    : https://wiki.gnome.org/Projects/LibGWeather
+upstreams   :
+    - https://download.gnome.org/sources/libgweather/4.4/libgweather-4.4.0.tar.xz : 366e866ff2a708b894cfea9475b8e8ff54cb3e2b477ea72a8ade0dabee5f48a4
+summary     : Location and time zone database, and weather-lookup library
+description : |
+    libgweather is a library to access weather information from online services for numerous locations.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - binary(g-ir-scanner)
+    - pkgconfig(geocode-glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(libxml-2.0)
+    - python-pygobject-devel
+setup       : |
+    %meson -Dintrospection=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
