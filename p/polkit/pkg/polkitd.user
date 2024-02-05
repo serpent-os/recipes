@@ -1,5 +1,5 @@
 {
-    "userName" : "polkit",
+    "userName" : "polkitd",
     "realName" : "PolicyKit Daemon",
     "homeDirectory" : "/var/empty",
     "uid" : 27,

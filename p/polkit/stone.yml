@@ -5,7 +5,7 @@
 #
 name        : polkit
 version     : 122
-release     : 2
+release     : 3
 summary     : Application-level authorization toolkit
 license     : GPL-2.0-or-later
 homepage    : https://gitlab.freedesktop.org/polkit/polkit
@@ -52,9 +52,9 @@ install     : |
     rmdir %(installroot)/etc
 
     # userdb
-    %install_file %(pkgdir)/polkit.group %(installroot)%(libdir)/userdb/polkit.group
-    ln -s polkit.group %(installroot)%(libdir)/userdb/27.group
-    %install_file %(pkgdir)/polkit.user %(installroot)%(libdir)/userdb/polkit.user
-    ln -s polkit.user %(installroot)%(libdir)/userdb/27.user
+    %install_file %(pkgdir)/polkitd.group %(installroot)%(libdir)/userdb/polkitd.group
+    ln -s polkitd.group %(installroot)%(libdir)/userdb/27.group
+    %install_file %(pkgdir)/polkitd.user %(installroot)%(libdir)/userdb/polkitd.user
+    ln -s polkitd.user %(installroot)%(libdir)/userdb/27.user
 
 # TODO checks (needs python-dbusmock)

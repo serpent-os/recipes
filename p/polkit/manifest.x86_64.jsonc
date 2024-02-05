@@ -43,8 +43,8 @@
 				"/usr/lib/tmpfiles.d/polkit.conf",
 				"/usr/lib/userdb/27.group",
 				"/usr/lib/userdb/27.user",
-				"/usr/lib/userdb/polkit.group",
-				"/usr/lib/userdb/polkit.user",
+				"/usr/lib/userdb/polkitd.group",
+				"/usr/lib/userdb/polkitd.user",
 				"/usr/share/dbus-1/system-services/org.freedesktop.PolicyKit1.service",
 				"/usr/share/dbus-1/system.d/org.freedesktop.PolicyKit1.conf",
 				"/usr/share/defaults/etc/pam.d/polkit-1",
@@ -151,6 +151,6 @@
 		}
 	},
 	"source-name": "polkit",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "122"
 }
