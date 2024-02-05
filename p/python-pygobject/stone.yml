@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-pygobject
+version     : 3.46.0
+release     : 1
+homepage    : https://wiki.gnome.org/Projects/PyGObject
+upstreams   :
+    - https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz : 426008b2dad548c9af1c7b03b59df0440fde5c33f38fb5406b103a43d653cafc
+summary     : PyGObject is a Python package which provides bindings for GObject based libraries
+description : |
+    PyGObject is a Python package which provides bindings for GObject based libraries such as GTK, GStreamer, WebKitGTK, GLib, GIO and many more.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(cairo)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libffi)
+    - pkgconfig(py3cairo)
+    - pkgconfig(python3)
+    - python-build
+    - python-installer
+    - python-packaging
+    - python-wheel
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
