@@ -40,8 +40,11 @@
 				"/usr/lib/polkit-1/polkit-agent-helper-1",
 				"/usr/lib/polkit-1/polkitd",
 				"/usr/lib/systemd/system/polkit.service",
-				"/usr/lib/sysusers.d/polkit.conf",
 				"/usr/lib/tmpfiles.d/polkit.conf",
+				"/usr/lib/userdb/27.group",
+				"/usr/lib/userdb/27.user",
+				"/usr/lib/userdb/polkit.group",
+				"/usr/lib/userdb/polkit.user",
 				"/usr/share/dbus-1/system-services/org.freedesktop.PolicyKit1.service",
 				"/usr/share/dbus-1/system.d/org.freedesktop.PolicyKit1.conf",
 				"/usr/share/defaults/etc/pam.d/polkit-1",
@@ -148,6 +151,6 @@
 		}
 	},
 	"source-name": "polkit",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "122"
 }

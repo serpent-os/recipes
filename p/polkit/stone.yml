@@ -5,7 +5,7 @@
 #
 name        : polkit
 version     : 122
-release     : 1
+release     : 2
 summary     : Application-level authorization toolkit
 license     : GPL-2.0-or-later
 homepage    : https://gitlab.freedesktop.org/polkit/polkit
@@ -17,13 +17,14 @@ builddeps   :
     - binary(msgfmt)
     - binary(perl)
     - binary(xsltproc)
+    - docbook
     - pkgconfig(duktape)
     - pkgconfig(expat)
     - pkgconfig(gio-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(libsystemd)
     - pkgconfig(pam)
-    - docbook
+toolchain   : gnu
 setup       : |
     %patch %(pkgdir)/stateless/0001-pkexec-Support-a-stateless-configuration.patch
 
@@ -43,13 +44,17 @@ install     : |
     %tmpfiles "d /var/empty 0755 - - -"
     %tmpfiles "d /etc/polkit-1/rules.d 0755 - - -"
 
-    # sysusers configuration
-    %sysusers 'u polkitd 27 "PolicyKit Daemon" /var/empty'
-
     # Statelessness
-    %install_dir %(installroot)/%(vendordir)/
-    mv %(installroot)/etc/pam.d %(installroot)/%(vendordir)/
+    %install_dir %(installroot)/%(vendordir)/etc
+    mv %(installroot)/etc/pam.d %(installroot)/%(vendordir)/etc
     rmdir %(installroot)/etc/polkit-1/rules.d
     rmdir %(installroot)/etc/polkit-1
     rmdir %(installroot)/etc
+
+    # userdb
+    %install_file %(pkgdir)/polkit.group %(installroot)%(libdir)/userdb/polkit.group
+    ln -s polkit.group %(installroot)%(libdir)/userdb/27.group
+    %install_file %(pkgdir)/polkit.user %(installroot)%(libdir)/userdb/polkit.user
+    ln -s polkit.user %(installroot)%(libdir)/userdb/27.user
+
 # TODO checks (needs python-dbusmock)

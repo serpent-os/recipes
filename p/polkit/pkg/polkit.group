@@ -1,0 +1,5 @@
+{
+    "groupName" : "polkit",
+    "gid" : 27,
+    "disposition" : "system"
+}

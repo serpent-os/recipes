@@ -1,0 +1,9 @@
+{
+    "userName" : "polkit",
+    "realName" : "PolicyKit Daemon",
+    "homeDirectory" : "/var/empty",
+    "uid" : 27,
+    "gid" : 27,
+    "disposition" : "system",
+    "locked" : true
+}
