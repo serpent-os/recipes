@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-text-editor
+version     : 45.3
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-text-editor
+upstreams   :
+    - https://download.gnome.org/sources/gnome-text-editor/45/gnome-text-editor-45.3.tar.xz : f3ffcb11a92dfd04ba3c3b3d0e667847d4449a21e012ae36f07dda05ac7d3a52
+summary     : A simple text editor
+description : |
+    Text Editor is a simple text editor that focuses on session management.
+license     :
+    - GPL-3.0-only
+builddeps   :
+    - binary(msgfmt)
+    - binary(cmake)
+    - binary(itstool)
+    - pkgconfig(cairo)
+    - pkgconfig(editorconfig)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(gtksourceview-5)
+    - pkgconfig(libadwaita-1)
+setup       : |
+    sed -i '/update_desktop_database/d' meson.build
+    %meson -Denchant=disabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install

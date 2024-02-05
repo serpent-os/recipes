@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : editorconfig-core-c
+version     : 0.12.6
+release     : 1
+homepage    : https://editorconfig.org/
+upstreams   :
+    - https://github.com/editorconfig/editorconfig-core-c/archive/refs/tags/v0.12.6.tar.gz : 36052a5371731d915b53d9c7a24a11c4032585ccacb392ec9d58656eef4c0edf
+summary     : EditorConfig core library written in C
+description : |
+    EditorConfig makes it easy to maintain the correct coding style when switching
+    between different text editors and between different projects.
+license     : BSD-2-Clause
+builddeps   :
+    - pkgconfig(libpcre2-8)
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+    rm -f %(installroot)/usr/lib/libeditorconfig_static.a
