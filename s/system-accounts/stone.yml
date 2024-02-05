@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : system-accounts
+version     : "0.1.0"
+release     : 3
+license     : MPL-2.0
+homepage    : https://serpentos.com
+summary     : Core system account definitions
+description : |
+    System account definitions via userdb
+builddeps   :
+    - binary(jq)
+install     : |
+    %install_dir %(installroot)%(libdir)/userdb
+
+    for group in \
+        audio \
+        cdrom \
+        dialout \
+        disk \
+        input \
+        kmem \
+        kvm \
+        lp \
+        render \
+        tape \
+        tty \
+        users \
+        utmp \
+        video \
+        wheel \
+    ; do
+        %install_file "%(pkgdir)/${group}.group" %(installroot)%(libdir)/userdb/${group}.group
+        gid=`jq .gid "%(pkgdir)/${group}.group"`
+        ln -s ${group}.group %(installroot)%(libdir)/userdb/${gid}.group
+    done

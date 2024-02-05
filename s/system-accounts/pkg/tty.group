@@ -1,0 +1,5 @@
+{
+    "groupName" : "tty",
+    "gid" : 5,
+    "disposition" : "system"
+}
