@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libqmi
+version     : 1.34.0
+release     : 1
+homepage    : https://gitlab.freedesktop.org/mobile-broadband/libqmi
+upstreams   :
+    - https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/archive/1.34.0/libqmi-1.34.0.tar.bz2 : 87be6e07b48e1429c3688cc547730c9a2389f9dd5bbe5fdf2b33280ef886e37e
+summary     : QMI modem protocol helper library
+description : |
+    libqmi is a glib-based library for talking to WWAN modems and devices which speak the Qualcomm MSM Interface (QMI) protocol.
+license     :
+    - BSD-3-Clause
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(bash-completion)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(mbim-glib)
+    - pkgconfig(qrtr-glib)
+    - pkgconfig(udev)
+setup       : |
+    # needs help2man
+    %meson -Dman=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# g-ir-scanner/compilers woes
+toolchain   : gnu

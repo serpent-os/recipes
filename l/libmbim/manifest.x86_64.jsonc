@@ -1,0 +1,106 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libmbim": {
+			"build-depends": [
+				"pkgconfig(bash-completion)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(udev)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/mbim-network",
+				"/usr/bin/mbimcli",
+				"/usr/lib/girepository-1.0/Mbim-1.0.typelib",
+				"/usr/lib/libmbim-glib.so.4",
+				"/usr/lib/libmbim-glib.so.4.8.0",
+				"/usr/lib/libmbim/mbim-proxy",
+				"/usr/share/bash-completion/completions/mbimcli",
+				"/usr/share/gir-1.0/Mbim-1.0.gir"
+			],
+			"name": "libmbim",
+			"provides": [
+				"soname(libmbim-glib.so.4(x86_64))",
+				"binary(mbim-network)",
+				"binary(mbimcli)"
+			]
+		},
+		"libmbim-devel": {
+			"build-depends": [
+				"pkgconfig(bash-completion)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(udev)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)"
+			],
+			"files": [
+				"/usr/include/libmbim-glib/libmbim-glib.h",
+				"/usr/include/libmbim-glib/mbim-atds.h",
+				"/usr/include/libmbim-glib/mbim-auth.h",
+				"/usr/include/libmbim-glib/mbim-basic-connect.h",
+				"/usr/include/libmbim-glib/mbim-cid.h",
+				"/usr/include/libmbim-glib/mbim-compat.h",
+				"/usr/include/libmbim-glib/mbim-device.h",
+				"/usr/include/libmbim-glib/mbim-dss.h",
+				"/usr/include/libmbim-glib/mbim-enum-types.h",
+				"/usr/include/libmbim-glib/mbim-enums.h",
+				"/usr/include/libmbim-glib/mbim-error-types.h",
+				"/usr/include/libmbim-glib/mbim-errors.h",
+				"/usr/include/libmbim-glib/mbim-flag-types.h",
+				"/usr/include/libmbim-glib/mbim-google.h",
+				"/usr/include/libmbim-glib/mbim-intel-firmware-update.h",
+				"/usr/include/libmbim-glib/mbim-intel-mutual-authentication.h",
+				"/usr/include/libmbim-glib/mbim-intel-thermal-rf.h",
+				"/usr/include/libmbim-glib/mbim-intel-tools.h",
+				"/usr/include/libmbim-glib/mbim-message.h",
+				"/usr/include/libmbim-glib/mbim-ms-basic-connect-extensions.h",
+				"/usr/include/libmbim-glib/mbim-ms-firmware-id.h",
+				"/usr/include/libmbim-glib/mbim-ms-host-shutdown.h",
+				"/usr/include/libmbim-glib/mbim-ms-sar.h",
+				"/usr/include/libmbim-glib/mbim-ms-uicc-low-level-access.h",
+				"/usr/include/libmbim-glib/mbim-ms-voice-extensions.h",
+				"/usr/include/libmbim-glib/mbim-phonebook.h",
+				"/usr/include/libmbim-glib/mbim-proxy-control.h",
+				"/usr/include/libmbim-glib/mbim-proxy.h",
+				"/usr/include/libmbim-glib/mbim-qdu.h",
+				"/usr/include/libmbim-glib/mbim-qmi.h",
+				"/usr/include/libmbim-glib/mbim-quectel.h",
+				"/usr/include/libmbim-glib/mbim-sms.h",
+				"/usr/include/libmbim-glib/mbim-stk.h",
+				"/usr/include/libmbim-glib/mbim-tlv.h",
+				"/usr/include/libmbim-glib/mbim-ussd.h",
+				"/usr/include/libmbim-glib/mbim-utils.h",
+				"/usr/include/libmbim-glib/mbim-uuid.h",
+				"/usr/include/libmbim-glib/mbim-version.h",
+				"/usr/lib/libmbim-glib.so",
+				"/usr/lib/pkgconfig/mbim-glib.pc"
+			],
+			"name": "libmbim-devel",
+			"provides": [
+				"pkgconfig(mbim-glib)"
+			]
+		}
+	},
+	"source-name": "libmbim",
+	"source-release": "1",
+	"source-version": "1.30.0"
+}
