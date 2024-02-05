@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : jq
+version     : 1.7.1
+release     : 1
+homepage    : https://github.com/jqlang/jq
+upstreams   :
+    - https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-1.7.1.tar.gz : 478c9ca129fd2e3443fe27314b455e211e0d8c60bc8ff7df703873deeee580c2
+summary     : Command line JSON processor
+description : |
+    jq is a lightweight and flexible command-line JSON processor akin to sed,awk,grep, and friends for JSON data. It's written in portable C and has zero runtime dependencies, allowing you to easily slice, filter, map, and transform structured data.
+license     :
+    - BSD-2-Clause
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
