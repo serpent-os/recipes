@@ -1,0 +1,51 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"editorconfig-core-c": {
+			"build-depends": [
+				"pkgconfig(libpcre2-8)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libpcre2-8.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/editorconfig",
+				"/usr/bin/editorconfig-0.12.6",
+				"/usr/lib/libeditorconfig.so.0",
+				"/usr/lib/libeditorconfig.so.0.12.6"
+			],
+			"name": "editorconfig-core-c",
+			"provides": [
+				"binary(editorconfig)",
+				"binary(editorconfig-0.12.6)",
+				"soname(libeditorconfig.so.0(x86_64))"
+			]
+		},
+		"editorconfig-core-c-devel": {
+			"build-depends": [
+				"pkgconfig(libpcre2-8)"
+			],
+			"files": [
+				"/usr/include/editorconfig/editorconfig.h",
+				"/usr/include/editorconfig/editorconfig_handle.h",
+				"/usr/lib/cmake/EditorConfig/EditorConfigConfig.cmake",
+				"/usr/lib/cmake/EditorConfig/EditorConfigConfigVersion.cmake",
+				"/usr/lib/cmake/EditorConfig/EditorConfigTargets-release.cmake",
+				"/usr/lib/cmake/EditorConfig/EditorConfigTargets.cmake",
+				"/usr/lib/libeditorconfig.so",
+				"/usr/lib/pkgconfig/editorconfig.pc"
+			],
+			"name": "editorconfig-core-c-devel",
+			"provides": [
+				"cmake(EditorConfig)",
+				"pkgconfig(editorconfig)"
+			]
+		}
+	},
+	"source-name": "editorconfig-core-c",
+	"source-release": "1",
+	"source-version": "0.12.6"
+}
