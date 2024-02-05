@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : geoclue
+version     : 2.7.1
+release     : 1
+homepage    : https://gitlab.freedesktop.org/geoclue/geoclue/-/wikis/home
+upstreams   :
+    - https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.7.1/geoclue-2.7.1.tar.gz : 58de0c6f16fee4972ec6e250c9fc2f9d35d13cb83f9cca8ac7cbd976d8d6a1d1
+summary     : Geolocation service library
+description : |
+    Geoclue is a D-Bus service that provides location information. The goal of the Geoclue project is to make creating location-aware applications as simple as possible.
+license     :
+    - AGPL-1.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(g-ir-scanner)
+    - binary(msgfmt)
+    - binary(vapigen)
+    - pkgconfig(avahi-client)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libnotify)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(mm-glib)
+setup       : |
+    %meson -Dgtk-doc=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# g-ir-scanner/compiler woes
+toolchain   : gnu
