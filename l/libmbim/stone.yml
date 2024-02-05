@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libmbim
+version     : 1.30.0
+release     : 1
+homepage    : https://gitlab.freedesktop.org/mobile-broadband/libmbim
+upstreams   :
+    - https://gitlab.freedesktop.org/mobile-broadband/libmbim/-/archive/1.30.0/libmbim-1.30.0.tar.bz2 : caea8fe12909fa92642936b0ab3c107ad40126c19f953180a320f7402500bd7b
+summary     : MBIM modem protocol helper library
+description : |
+    libmbim is a glib-based library for talking to WWAN modems and devices which speak the Mobile Broadband Interface Model (MBIM) protocol.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(bash-completion)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(udev)
+setup       : |
+    # Man pages need help2man
+    %meson -Dman=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# g-ir-scanner/compiler woes
+toolchain   : gnu
