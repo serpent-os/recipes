@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 11
+release     : 12
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -88,7 +88,28 @@ setup       : |
         -Ddefault-compression=zstd \
         -Dkmod=true \
         -Dpwquality=true \
-        -Ddefault-dnssec=no
+        -Ddefault-dnssec=no \
+        -Dadm-group=true \
+        -Dwheel-group=true \
+        -Dnobody-user=nobody \
+        -Dnobody-group=nobody \
+        -Dadm-gid=16 \
+        -Daudio-gid=11 \
+        -Dcdrom-gid=15 \
+        -Ddialout-gid=10 \
+        -Ddisk-gid=8 \
+        -Dinput-gid=97 \
+        -Dkmem-gid=3 \
+        -Dkvm-gid=61 \
+        -Dlp-gid=9 \
+        -Drender-gid=30 \
+        -Dsgx-gid=405 \
+        -Dtape-gid=4 \
+        -Dtty-gid=5 \
+        -Dusers-gid=100 \
+        -Dutmp-gid=13 \
+        -Dvideo-gid=12 \
+        -Dwheel-gid=28 # formally the "sudo" group in Solus..
 build       : |
     %meson_build
 install     : |
