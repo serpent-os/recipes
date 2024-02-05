@@ -1,0 +1,63 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libqrtr-glib": {
+			"build-depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/Qrtr-1.0.typelib",
+				"/usr/lib/libqrtr-glib.so.0",
+				"/usr/lib/libqrtr-glib.so.0.0.0",
+				"/usr/share/gir-1.0/Qrtr-1.0.gir"
+			],
+			"name": "libqrtr-glib",
+			"provides": [
+				"soname(libqrtr-glib.so.0(x86_64))"
+			]
+		},
+		"libqrtr-glib-devel": {
+			"build-depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)"
+			],
+			"files": [
+				"/usr/include/libqrtr-glib/libqrtr-glib.h",
+				"/usr/include/libqrtr-glib/qrtr-bus.h",
+				"/usr/include/libqrtr-glib/qrtr-client.h",
+				"/usr/include/libqrtr-glib/qrtr-node.h",
+				"/usr/include/libqrtr-glib/qrtr-types.h",
+				"/usr/include/libqrtr-glib/qrtr-utils.h",
+				"/usr/include/libqrtr-glib/qrtr-version.h",
+				"/usr/lib/libqrtr-glib.so",
+				"/usr/lib/pkgconfig/qrtr-glib.pc"
+			],
+			"name": "libqrtr-glib-devel",
+			"provides": [
+				"pkgconfig(qrtr-glib)"
+			]
+		}
+	},
+	"source-name": "libqrtr-glib",
+	"source-release": "1",
+	"source-version": "1.2.2"
+}
