@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : mobile-broadband-provider-info
+version     : 20230416
+release     : 1
+homepage    : https://wiki.gnome.org/Projects/NetworkManager/MobileBroadband/ServiceProviders
+upstreams   :
+    - https://download.gnome.org/sources/mobile-broadband-provider-info/20230416/mobile-broadband-provider-info-20230416.tar.xz : e3e140aa2db769b299d1df86a890e948ab99d4d38831302c452d1fb7f8568aec
+summary     : Service Provider Database
+description : |
+    Mobile Broadband Configuration Assistant has its own database. This database is constructed by volunteers from different countries. The volunteers gather service provider specific information of all providers in their country and then add it to the database. After the information is added by even a single contributor all the users of the given country will benefit from that contribution and they will get their connections up and running with ease.
+license     :
+    - CC-PDDC
+builddeps   :
+    - binary(xsltproc)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

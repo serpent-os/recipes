@@ -1,0 +1,32 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"mobile-broadband-provider-info": {
+			"build-depends": [
+				"binary(xsltproc)"
+			],
+			"files": [
+				"/usr/share/mobile-broadband-provider-info/apns-conf.xml",
+				"/usr/share/mobile-broadband-provider-info/serviceproviders.2.dtd",
+				"/usr/share/mobile-broadband-provider-info/serviceproviders.xml"
+			],
+			"name": "mobile-broadband-provider-info"
+		},
+		"mobile-broadband-provider-info-devel": {
+			"build-depends": [
+				"binary(xsltproc)"
+			],
+			"files": [
+				"/usr/share/pkgconfig/mobile-broadband-provider-info.pc"
+			],
+			"name": "mobile-broadband-provider-info-devel",
+			"provides": [
+				"pkgconfig(mobile-broadband-provider-info)"
+			]
+		}
+	},
+	"source-name": "mobile-broadband-provider-info",
+	"source-release": "1",
+	"source-version": "20230416"
+}
