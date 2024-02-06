@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libxcvt
+version     : 0.1.2
+release     : 1
+homepage    : https://www.x.org/archive//individual/lib
+upstreams   :
+    - https://www.x.org/archive//individual/lib/libxcvt-0.1.2.tar.xz : 0561690544796e25cfbd71806ba1b0d797ffe464e9796411123e79450f71db38
+summary     : VESA CVT standard timing modeline generation library & utility.
+description : |
+    VESA CVT standard timing modeline generation library & utility.
+license     :
+    - X11
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

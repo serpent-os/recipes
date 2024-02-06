@@ -1,0 +1,38 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxcvt": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cvt",
+				"/usr/lib/libxcvt.so.0",
+				"/usr/lib/libxcvt.so.0.1.2",
+				"/usr/share/man/man1/cvt.1"
+			],
+			"name": "libxcvt",
+			"provides": [
+				"binary(cvt)",
+				"soname(libxcvt.so.0(x86_64))"
+			]
+		},
+		"libxcvt-devel": {
+			"files": [
+				"/usr/include/libxcvt/libxcvt.h",
+				"/usr/include/libxcvt/libxcvt_mode.h",
+				"/usr/lib/libxcvt.so",
+				"/usr/lib/pkgconfig/libxcvt.pc"
+			],
+			"name": "libxcvt-devel",
+			"provides": [
+				"pkgconfig(libxcvt)"
+			]
+		}
+	},
+	"source-name": "libxcvt",
+	"source-release": "1",
+	"source-version": "0.1.2"
+}
