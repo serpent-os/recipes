@@ -67,6 +67,11 @@
 				"/usr/sbin/gdm",
 				"/usr/share/dbus-1/system.d/gdm.conf",
 				"/usr/share/dconf/profile/gdm",
+				"/usr/share/defaults/etc/pam.d/gdm-autologin",
+				"/usr/share/defaults/etc/pam.d/gdm-fingerprint",
+				"/usr/share/defaults/etc/pam.d/gdm-launch-environment",
+				"/usr/share/defaults/etc/pam.d/gdm-password",
+				"/usr/share/defaults/etc/pam.d/gdm-smartcard",
 				"/usr/share/gdm/gdb-cmd",
 				"/usr/share/gdm/gdm.schemas",
 				"/usr/share/gdm/greeter-dconf-defaults",
@@ -299,6 +304,6 @@
 		}
 	},
 	"source-name": "gdm",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "45.0.1"
 }
