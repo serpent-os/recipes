@@ -1,0 +1,118 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gpgme": {
+			"build-depends": [
+				"binary(gpg)",
+				"binary(swig)",
+				"pkgconfig(gpg-error)",
+				"pkgconfig(libassuan)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libassuan.so.0(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgpg-error.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/gpgme-json",
+				"/usr/bin/gpgme-tool",
+				"/usr/lib/libgpgme.so.11",
+				"/usr/lib/libgpgme.so.11.32.1",
+				"/usr/lib/libgpgmepp.so.6",
+				"/usr/lib/libgpgmepp.so.6.20.1",
+				"/usr/share/info/gpgme.info",
+				"/usr/share/info/gpgme.info-1",
+				"/usr/share/info/gpgme.info-2"
+			],
+			"name": "gpgme",
+			"provides": [
+				"binary(gpgme-json)",
+				"binary(gpgme-tool)",
+				"soname(libgpgme.so.11(x86_64))",
+				"soname(libgpgmepp.so.6(x86_64))"
+			]
+		},
+		"gpgme-devel": {
+			"build-depends": [
+				"binary(gpg)",
+				"binary(swig)",
+				"pkgconfig(gpg-error)",
+				"pkgconfig(libassuan)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gpg-error)",
+				"pkgconfig(libassuan)"
+			],
+			"files": [
+				"/usr/include/gpgme++/configuration.h",
+				"/usr/include/gpgme++/context.h",
+				"/usr/include/gpgme++/data.h",
+				"/usr/include/gpgme++/decryptionresult.h",
+				"/usr/include/gpgme++/defaultassuantransaction.h",
+				"/usr/include/gpgme++/editinteractor.h",
+				"/usr/include/gpgme++/encryptionresult.h",
+				"/usr/include/gpgme++/engineinfo.h",
+				"/usr/include/gpgme++/error.h",
+				"/usr/include/gpgme++/eventloopinteractor.h",
+				"/usr/include/gpgme++/exception.h",
+				"/usr/include/gpgme++/global.h",
+				"/usr/include/gpgme++/gpgaddexistingsubkeyeditinteractor.h",
+				"/usr/include/gpgme++/gpgadduserideditinteractor.h",
+				"/usr/include/gpgme++/gpgagentgetinfoassuantransaction.h",
+				"/usr/include/gpgme++/gpggencardkeyinteractor.h",
+				"/usr/include/gpgme++/gpgmefw.h",
+				"/usr/include/gpgme++/gpgmepp_export.h",
+				"/usr/include/gpgme++/gpgmepp_version.h",
+				"/usr/include/gpgme++/gpgrevokekeyeditinteractor.h",
+				"/usr/include/gpgme++/gpgsetexpirytimeeditinteractor.h",
+				"/usr/include/gpgme++/gpgsetownertrusteditinteractor.h",
+				"/usr/include/gpgme++/gpgsignkeyeditinteractor.h",
+				"/usr/include/gpgme++/importresult.h",
+				"/usr/include/gpgme++/interfaces/assuantransaction.h",
+				"/usr/include/gpgme++/interfaces/dataprovider.h",
+				"/usr/include/gpgme++/interfaces/passphraseprovider.h",
+				"/usr/include/gpgme++/interfaces/progressprovider.h",
+				"/usr/include/gpgme++/interfaces/statusconsumer.h",
+				"/usr/include/gpgme++/key.h",
+				"/usr/include/gpgme++/keygenerationresult.h",
+				"/usr/include/gpgme++/keylistresult.h",
+				"/usr/include/gpgme++/notation.h",
+				"/usr/include/gpgme++/result.h",
+				"/usr/include/gpgme++/scdgetinfoassuantransaction.h",
+				"/usr/include/gpgme++/signingresult.h",
+				"/usr/include/gpgme++/statusconsumerassuantransaction.h",
+				"/usr/include/gpgme++/swdbresult.h",
+				"/usr/include/gpgme++/tofuinfo.h",
+				"/usr/include/gpgme++/trustitem.h",
+				"/usr/include/gpgme++/verificationresult.h",
+				"/usr/include/gpgme++/vfsmountresult.h",
+				"/usr/include/gpgme.h",
+				"/usr/lib/cmake/Gpgmepp/GpgmeppConfig.cmake",
+				"/usr/lib/cmake/Gpgmepp/GpgmeppConfigVersion.cmake",
+				"/usr/lib/libgpgme.so",
+				"/usr/lib/libgpgmepp.so",
+				"/usr/lib/pkgconfig/gpgme-glib.pc",
+				"/usr/lib/pkgconfig/gpgme.pc",
+				"/usr/share/aclocal/gpgme.m4"
+			],
+			"name": "gpgme-devel",
+			"provides": [
+				"cmake(Gpgmepp)",
+				"pkgconfig(gpgme)",
+				"pkgconfig(gpgme-glib)"
+			]
+		}
+	},
+	"source-name": "gpgme",
+	"source-release": "1",
+	"source-version": "1.23.2"
+}
