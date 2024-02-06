@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ibus
+version     : "1.5.29-rc2"
+release     : 1
+homepage    : https://github.com/ibus/ibus
+upstreams   :
+    - https://github.com/ibus/ibus/releases/download/1.5.29/ibus-1.5.29-rc2.tar.gz : 3a27ed120485b2077c62e36e788c302f34544ceac3b3b9cda28b7418e8051415
+summary     : Intelligent Input Bus for Linux/Unix
+description : |
+    Intelligent Input Bus for Linux/Unix
+license     :
+    - LGPL-2.1-or-later
+toolchain   : gnu
+builddeps   :
+    - binary(python3)
+    - pkgconfig(dbus-1)
+    - pkgconfig(dconf)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(iso-codes)
+    - pkgconfig(libnotify)
+    - pkgconfig(shared-mime-info)
+    - pkgconfig(systemd)
+    - pkgconfig(x11)
+    - pkgconfig(xfixes)
+    - pkgconfig(xtst)
+setup       : |
+    # NOTEL Super trashy autotools setup
+    # TODO: Enable client integrations!
+    %configure --disable-gtk2 \
+               --disable-gtk3 \
+               --disable-wayland \
+               --disable-engine \
+               --disable-appindicator \
+               --disable-emoji-dict \
+               --disable-unicode-dict \
+               --disable-xim \
+               --disable-setup
+build       : |
+    %make
+install     : |
+    %make_install
