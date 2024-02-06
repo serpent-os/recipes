@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-autoar
+version     : 0.4.4
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-autoar
+upstreams   :
+    - https://download.gnome.org/sources/gnome-autoar/0.4/gnome-autoar-0.4.4.tar.xz : c0afbe333bcf3cb1441a1f574cc8ec7b1b8197779145d4edeee2896fdacfc3c2
+summary     : Automatic archive functions for GNOME apps
+description : |
+    Automatic archive functions for GNOME apps
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libarchive)
+    - pkgconfig(gtk+-3.0)
+    - binary(vapigen)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+toolchain   : gnu
+setup       : |
+    %meson -Dintrospection=enabled \
+           -Dvapi=true
+build       : |
+    %meson_build
+install     : |
+    %meson_install
