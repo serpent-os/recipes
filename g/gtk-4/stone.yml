@@ -5,7 +5,7 @@
 #
 name        : gtk-4
 version     : 4.12.4
-release     : 4
+release     : 5
 homepage    : https://download.gnome.org/sources/gtk/4.12
 upstreams   :
     - https://download.gnome.org/sources/gtk/4.12/gtk-4.12.4.tar.xz : ba67c6498e5599f928edafb9e08a320adfaa50ab2f0da6fc6ab2252fc2d57520
@@ -17,11 +17,9 @@ license     :
     - LGPL-2.0-or-later
     - LGPL-2.1-or-later
 builddeps   :
+    - gettext
     - pkgconfig(cairo)
-    # - pkgconfig(cloudproviders)
     - pkgconfig(colord)
-    # - pkgconfig(cpdb-frontend)
-    # - pkgconfig(cups)
     - pkgconfig(epoxy)
     - pkgconfig(fribidi)
     - pkgconfig(gdk-pixbuf-2.0)
@@ -35,14 +33,22 @@ builddeps   :
     - pkgconfig(librsvg-2.0)
     - pkgconfig(libtiff-4)
     - pkgconfig(pango)
-    # - pkgconfig(shaderc) # for vulkan
-    # - pkgconfig(sysprof-4)
     - pkgconfig(vulkan)
     - pkgconfig(wayland-client)
     - pkgconfig(wayland-egl)
     - pkgconfig(wayland-protocols)
+    - pkgconfig(xcursor)
+    - pkgconfig(xdamage)
+    - pkgconfig(xext)
+    - pkgconfig(xi)
+    - pkgconfig(xinerama)
     - pkgconfig(xkbcommon)
-    - gettext
+    - pkgconfig(xrandr)
+    # - pkgconfig(cloudproviders)
+    # - pkgconfig(cpdb-frontend)
+    # - pkgconfig(cups)
+    # - pkgconfig(shaderc) # for vulkan
+    # - pkgconfig(sysprof-4)
 rundeps     :
     - gsettings-desktop-schemas
 packages    :
@@ -62,8 +68,7 @@ packages    :
             - /usr/bin/gtk4-launch
 setup       : |
     %meson -Dmedia-gstreamer=disabled \
-            -Dx11-backend=false \
-            -Dintrospection=enabled
+           -Dintrospection=enabled
 build       : |
     %meson_build
 install     : |
