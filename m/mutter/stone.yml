@@ -1,0 +1,104 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : mutter
+version     : 45.3
+release     : 1
+homepage    : https://gnome.org
+upstreams   :
+    - https://download.gnome.org/sources/mutter/45/mutter-45.3.tar.xz : b78aea7f3e2bec8322a2af0404716be2269905c7d50c04b0b2a71a38814fcd01
+summary     : A Wayland display server and X11 window manager and compositor library.
+description : |
+    A Wayland display server and X11 window manager and compositor library.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    # - binary(Xwayland)
+    #-  binary(catch)
+    # - binary(xvfb-run)
+    - binary(msgfmt)
+    - pkgconfig(atk)
+    - pkgconfig(cairo)
+    - pkgconfig(cairo-gobject)
+    - pkgconfig(colord)
+    - pkgconfig(dbus-1)
+    - pkgconfig(egl)
+    - pkgconfig(fribidi)
+    - pkgconfig(gbm)
+    - pkgconfig(gdk-pixbuf-2.0)
+    # - pkgconfig(gi-docgen)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(gl)
+    - pkgconfig(glesv2)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-no-export-2.0)
+    - pkgconfig(gnome-desktop-4)
+    # - pkgconfig(gnome-settings-daemon)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(graphene-gobject-1.0)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(gtk4-x11)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(harfbuzz)
+    - pkgconfig(ice)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(lcms2)
+    - pkgconfig(libcanberra)
+    # - pkgconfig(libdisplay-info)
+    - pkgconfig(libdrm)
+    - pkgconfig(libei-1.0)
+    - pkgconfig(libeis-1.0)
+    - pkgconfig(libinput)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libstartup-notification-1.0)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libudev)
+    - pkgconfig(libwacom)
+    - pkgconfig(pango)
+    - pkgconfig(pangocairo)
+    - pkgconfig(pangoft2)
+    - pkgconfig(sm)
+    # - pkgconfig(sysprof-6)
+    # - pkgconfig(sysprof-capture-4)
+    - pkgconfig(udev)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-cursor)
+    - pkgconfig(wayland-egl)
+    # - pkgconfig(wayland-eglstream-protocols)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(wayland-server)
+    - pkgconfig(x11)
+    - pkgconfig(x11-xcb)
+    - pkgconfig(xau)
+    - pkgconfig(xcb-randr)
+    - pkgconfig(xcb-res)
+    - pkgconfig(xcomposite)
+    - pkgconfig(xcursor)
+    - pkgconfig(xdamage)
+    - pkgconfig(xext)
+    - pkgconfig(xfixes)
+    - pkgconfig(xi)
+    - pkgconfig(xinerama)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(xkbcommon-x11)
+    - pkgconfig(xkbfile)
+    - pkgconfig(xkeyboard-config)
+    - pkgconfig(xrandr)
+    - pkgconfig(xrender)
+    - pkgconfig(xtst)
+    - binary(cvt)
+    # - pkgconfig(xwayland)
+toolchain   : gnu
+setup       : |
+    %meson -Dtests=false \
+           -Dprofiler=false \
+           -Dxwayland=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
