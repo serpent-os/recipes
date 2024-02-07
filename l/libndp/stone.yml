@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libndp
+version     : 1.8
+release     : 1
+homepage    : https://github.com/jpirko/libndp
+upstreams   :
+    # NOTE: using the debian source on purpose here as it has pre-generated ./configure files. When running autoreconf on the source we get a shitted to fuck configure checks
+    #       for reasons currently only known to god because fuck autoconf.
+    - https://salsa.debian.org/debian/libndp/-/archive/debian/1.8-1/libndp-debian-1.8-1.tar.gz : 4cd1f57b44602137a18da8cd2bbdc198205bbe9ec3e0835ff21e93ab4d8f1084
+summary     : Neighbor Discovery library
+description : |
+    This package contains a library which provides a wrapper for IPv6 Neighbor Discovery Protocol.  It also provides a tool named ndptool for sending and receiving NDP messages.
+license     :
+    - LGPL-2.1-or-later
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
