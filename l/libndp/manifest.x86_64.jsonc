@@ -23,7 +23,6 @@
 		"libndp-devel": {
 			"files": [
 				"/usr/include/ndp.h",
-				"/usr/lib/libndp.a",
 				"/usr/lib/libndp.so",
 				"/usr/lib/pkgconfig/libndp.pc"
 			],
@@ -34,6 +33,6 @@
 		}
 	},
 	"source-name": "libndp",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.8"
 }
