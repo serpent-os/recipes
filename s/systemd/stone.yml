@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 13
+release     : 14
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -52,7 +52,6 @@ builddeps   :
     - pkgconfig(pam)
     - pkgconfig(polkit-gobject-1)
     - pkgconfig(pwquality)
-    - pkgconfig(pwquality)
     - pkgconfig(tss2-esys)
     - pkgconfig(xkbcommon)
     - pkgconfig(zlib)
@@ -72,6 +71,7 @@ setup       : |
         -Dgnu-efi=true \
         -Dinstall-tests=false \
         -Dmode=release \
+        -Dpamlibdir="%(libdir)/security" \
         -Dpamconfdir="%(vendordir)/etc/pam.d" \
         -Dpcre2=true \
         -Drpmmacrosdir=no \
@@ -90,6 +90,11 @@ setup       : |
         -Ddefault-compression=zstd \
         -Dkmod=true \
         -Dpwquality=true \
+        -Dacl=true \
+        -Dfdisk=true \
+        -Dblkid=true \
+        -Dkernel-install=false \
+        -Dok-color=highlight-blue \
         -Ddefault-dnssec=no \
         -Dadm-group=true \
         -Dwheel-group=true \
@@ -127,3 +132,6 @@ install     : |
 
     # Don't clobber pam!
     rm -rf %(installroot)%(datadir)/factory/etc/pam.d
+
+    # config.
+    %install_file %(pkgdir)/config/00-journald.conf %(installroot)%(libdir)/systemd/journald.conf.d/00-journald.conf
