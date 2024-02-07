@@ -1,0 +1,56 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-settings-daemon
+version     : 45.1
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-settings-daemon
+upstreams   :
+    - https://download.gnome.org/sources/gnome-settings-daemon/45/gnome-settings-daemon-45.1.tar.xz : c62bfec9817eee5b83ebe901a9286189a67eb5ff033c5dd41506574f822bf090
+summary     : Configures parameters of a GNOME session.
+description : |
+    The GNOME Settings Daemon is responsible for setting various parameters of a GNOME Session and the applications that run under it.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(perl)
+    - pkgconfig(alsa)
+    - pkgconfig(colord)
+    # pkgconfig(cups)
+    # pkgconfig(gck-2)
+    - pkgconfig(gcr-4)
+    - pkgconfig(gdk-wayland-3.0)
+    - pkgconfig(geocode-glib-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gnome-desktop-3.0)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(gweather4)
+    - pkgconfig(libcanberra-gtk3)
+    - pkgconfig(libgeoclue-2.0)
+    - pkgconfig(libnm)
+    - pkgconfig(libnotify)
+    - pkgconfig(libpulse-mainloop-glib)
+    - pkgconfig(libwacom)
+    - pkgconfig(mm-glib)
+    - pkgconfig(pango)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(systemd)
+    - pkgconfig(upower-glib)
+    - pkgconfig(wayland-client)
+    - pkgconfig(x11)
+    - pkgconfig(xfixes)
+setup       : |
+    %meson -Dcups=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
+    install -dm00755 %(installroot)/usr/share/xdg/
+    mv %(installroot)/etc/xdg/* %(installroot)/usr/share/xdg/
