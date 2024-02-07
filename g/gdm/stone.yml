@@ -5,7 +5,7 @@
 #
 name        : gdm
 version     : 45.0.1
-release     : 4
+release     : 5
 homepage    : https://gitlab.gnome.org/GNOME/gdm
 upstreams   :
     - https://download.gnome.org/sources/gdm/45/gdm-45.0.1.tar.xz : 6572578c05e3c6569d6ed269f7de2aaf3a035657654586d8243907bb7a6ffa85
@@ -38,6 +38,10 @@ builddeps   :
     # - pkgconfig(check)
     # - pkgconfig(libkeyutils)
     # - pkgconfig(xorg-server)
+rundeps     :
+    - binary(gnome-session)
+    - binary(gnome-shell)
+    - gnome-settings-daemon
 toolchain   : gnu
 setup       : |
     %meson -Ddbus-sys=%(datadir)/dbus-1/system.d \
@@ -56,3 +60,5 @@ install     : |
     ln -s gdm.group %(installroot)%(libdir)/userdb/21.group
     %install_file %(pkgdir)/gdm.user %(installroot)%(libdir)/userdb/gdm.user
     ln -s gdm.user %(installroot)%(libdir)/userdb/21.user
+    rm -v %(installroot)%(vendordir)/etc/pam.d/*
+    %install_file %(pkgdir)/pam/gdm-* %(installroot)%(vendordir)/etc/pam.d/.

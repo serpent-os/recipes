@@ -4,5 +4,5 @@
     "uid" : 21,
     "gid" : 21,
     "disposition" : "system",
-    "locked" : true
+    "locked" : false
 }
