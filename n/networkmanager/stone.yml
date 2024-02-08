@@ -5,7 +5,7 @@
 #
 name        : networkmanager
 version     : 1.44.2
-release     : 1
+release     : 2 
 homepage    : https://wiki.gnome.org/Projects/NetworkManager
 upstreams   :
     - https://download.gnome.org/sources/NetworkManager/1.44/NetworkManager-1.44.2.tar.xz : 4b58bf3ac57e2cefb5652efd0945eb0b4bc36a63d92a61ab471d8bb2c9a420e1
@@ -20,18 +20,17 @@ builddeps   :
     - binary(eu-readelf)
     - binary(msgfmt)
     - binary(perl)
+    - binary(vapigen)
     - binary(xsltproc)
-    # pkgconfig(bluez)
     - pkgconfig(dbus-1)
     - pkgconfig(gio-unix-2.0)
-    - pkgconfig(gnutls)
     - pkgconfig(gmodule-2.0)
+    - pkgconfig(gnutls)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(jansson)
     - pkgconfig(libcurl)
     - pkgconfig(libedit)
     - pkgconfig(libndp)
-    # pkgconfig(libnewt)
     - pkgconfig(libpsl)
     - pkgconfig(libsystemd)
     - pkgconfig(libudev)
@@ -42,12 +41,19 @@ builddeps   :
     - pkgconfig(systemd)
     - pkgconfig(uuid)
     - ppp-devel
+    # pkgconfig(bluez)
+    # pkgconfig(libnewt)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
 setup       : |
     %meson \
         -Dselinux=false \
         -Dlibaudit=no \
         -Dnmtui=false \
-        -Dqt=false
+        -Dqt=false \
+        -Dvapi=true
 build       : |
     %meson_build
 install     : |

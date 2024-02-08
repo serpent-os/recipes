@@ -7,6 +7,7 @@
 				"binary(eu-readelf)",
 				"binary(msgfmt)",
 				"binary(perl)",
+				"binary(vapigen)",
 				"binary(xsltproc)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gio-unix-2.0)",
@@ -235,6 +236,7 @@
 				"binary(eu-readelf)",
 				"binary(msgfmt)",
 				"binary(perl)",
+				"binary(vapigen)",
 				"binary(xsltproc)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gio-unix-2.0)",
@@ -382,7 +384,9 @@
 				"/usr/include/libnm/nm-wifi-p2p-peer.h",
 				"/usr/include/libnm/nm-wimax-nsp.h",
 				"/usr/lib/libnm.so",
-				"/usr/lib/pkgconfig/libnm.pc"
+				"/usr/lib/pkgconfig/libnm.pc",
+				"/usr/share/vala/vapi/libnm.deps",
+				"/usr/share/vala/vapi/libnm.vapi"
 			],
 			"name": "networkmanager-devel",
 			"provides": [
@@ -391,6 +395,6 @@
 		}
 	},
 	"source-name": "networkmanager",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.44.2"
 }
