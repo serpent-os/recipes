@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-backgrounds
+version     : 45.0
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-backgrounds
+upstreams   :
+    - https://download.gnome.org/sources/gnome-backgrounds/45/gnome-backgrounds-45.0.tar.xz : cee0e688fbae5ef7a75f335ada2d10779e08ebca9445f1586de32c5a9b6dee2d
+summary     : Default backgrounds for the GNOME Desktop
+description : |
+    Default backgrounds for the GNOME Desktop
+license     :
+    - CC-BY-SA-3.0
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
