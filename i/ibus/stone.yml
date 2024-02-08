@@ -5,7 +5,7 @@
 #
 name        : ibus
 version     : "1.5.29-rc2"
-release     : 1
+release     : 2
 homepage    : https://github.com/ibus/ibus
 upstreams   :
     - https://github.com/ibus/ibus/releases/download/1.5.29/ibus-1.5.29-rc2.tar.gz : 3a27ed120485b2077c62e36e788c302f34544ceac3b3b9cda28b7418e8051415
@@ -20,6 +20,7 @@ builddeps   :
     - pkgconfig(dbus-1)
     - pkgconfig(dconf)
     - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gtk+-3.0)
     - pkgconfig(gtk4)
     - pkgconfig(iso-codes)

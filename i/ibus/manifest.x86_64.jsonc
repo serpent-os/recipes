@@ -8,6 +8,7 @@
 				"pkgconfig(dbus-1)",
 				"pkgconfig(dconf)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(gtk4)",
 				"pkgconfig(iso-codes)",
@@ -29,6 +30,7 @@
 			"files": [
 				"/usr/bin/ibus",
 				"/usr/bin/ibus-daemon",
+				"/usr/lib/girepository-1.0/IBus-1.0.typelib",
 				"/usr/lib/ibus/ibus-dconf",
 				"/usr/lib/ibus/ibus-portal",
 				"/usr/lib/libibus-1.0.so.5",
@@ -42,6 +44,7 @@
 				"/usr/share/dbus-1/services/org.freedesktop.portal.IBus.service",
 				"/usr/share/gettext/its/ibus.its",
 				"/usr/share/gettext/its/ibus.loc",
+				"/usr/share/gir-1.0/IBus-1.0.gir",
 				"/usr/share/glib-2.0/schemas/org.freedesktop.ibus.gschema.xml",
 				"/usr/share/ibus/component/dconf.xml",
 				"/usr/share/ibus/engine",
@@ -132,6 +135,7 @@
 				"pkgconfig(dbus-1)",
 				"pkgconfig(dconf)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(gtk4)",
 				"pkgconfig(iso-codes)",
@@ -201,6 +205,7 @@
 				"pkgconfig(dbus-1)",
 				"pkgconfig(dconf)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(gtk4)",
 				"pkgconfig(iso-codes)",
@@ -269,6 +274,6 @@
 		}
 	},
 	"source-name": "ibus",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.5.29-rc2"
 }
