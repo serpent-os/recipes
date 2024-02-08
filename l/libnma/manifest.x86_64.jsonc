@@ -1,0 +1,101 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libnma": {
+			"build-depends": [
+				"binary(valac)",
+				"pkgconfig(gcr-4)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(iso-codes)",
+				"pkgconfig(libnm)",
+				"pkgconfig(mobile-broadband-provider-info)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libcairo.so.2(x86_64))",
+				"soname(libgck-2.so.2(x86_64))",
+				"soname(libgcr-4.so.4(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-3.so.0(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libnm.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/NMA-1.0.typelib",
+				"/usr/lib/girepository-1.0/NMA4-1.0.typelib",
+				"/usr/lib/libnma-gtk4.so.0",
+				"/usr/lib/libnma-gtk4.so.0.0.0",
+				"/usr/lib/libnma.so.0",
+				"/usr/lib/libnma.so.0.0.0",
+				"/usr/share/gir-1.0/NMA-1.0.gir",
+				"/usr/share/gir-1.0/NMA4-1.0.gir",
+				"/usr/share/glib-2.0/schemas/org.gnome.nm-applet.eap.gschema.xml",
+				"/usr/share/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml",
+				"/usr/share/vala/vapi/libnma-gtk4.deps",
+				"/usr/share/vala/vapi/libnma-gtk4.vapi",
+				"/usr/share/vala/vapi/libnma.deps",
+				"/usr/share/vala/vapi/libnma.vapi"
+			],
+			"name": "libnma",
+			"provides": [
+				"soname(libnma-gtk4.so.0(x86_64))",
+				"soname(libnma.so.0(x86_64))"
+			]
+		},
+		"libnma-devel": {
+			"build-depends": [
+				"binary(valac)",
+				"pkgconfig(gcr-4)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(iso-codes)",
+				"pkgconfig(libnm)",
+				"pkgconfig(mobile-broadband-provider-info)"
+			],
+			"depends": [
+				"pkgconfig(libnm)"
+			],
+			"files": [
+				"/usr/include/libnma/nma-bar-code-widget.h",
+				"/usr/include/libnma/nma-bar-code.h",
+				"/usr/include/libnma/nma-cert-chooser.h",
+				"/usr/include/libnma/nma-mobile-providers.h",
+				"/usr/include/libnma/nma-mobile-wizard.h",
+				"/usr/include/libnma/nma-ui-utils.h",
+				"/usr/include/libnma/nma-version.h",
+				"/usr/include/libnma/nma-vpn-password-dialog.h",
+				"/usr/include/libnma/nma-wifi-dialog.h",
+				"/usr/include/libnma/nma-ws-802-1x.h",
+				"/usr/include/libnma/nma-ws-dynamic-wep.h",
+				"/usr/include/libnma/nma-ws-leap.h",
+				"/usr/include/libnma/nma-ws-owe.h",
+				"/usr/include/libnma/nma-ws-sae.h",
+				"/usr/include/libnma/nma-ws-wep-key.h",
+				"/usr/include/libnma/nma-ws-wpa-eap.h",
+				"/usr/include/libnma/nma-ws-wpa-psk.h",
+				"/usr/include/libnma/nma-ws.h",
+				"/usr/lib/libnma-gtk4.so",
+				"/usr/lib/libnma.so",
+				"/usr/lib/pkgconfig/libnma-gtk4.pc",
+				"/usr/lib/pkgconfig/libnma.pc"
+			],
+			"name": "libnma-devel",
+			"provides": [
+				"pkgconfig(libnma)",
+				"pkgconfig(libnma-gtk4)"
+			]
+		}
+	},
+	"source-name": "libnma",
+	"source-release": "1",
+	"source-version": "1.10.6"
+}

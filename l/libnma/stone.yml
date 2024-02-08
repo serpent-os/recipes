@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libnma
+version     : 1.10.6
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/libnma
+upstreams   :
+    - https://download.gnome.org/sources/libnma/1.10/libnma-1.10.6.tar.xz : 53a6fb2b190ad37c5986caed3e98bede7c3c602399ee4f93c8fc054303d76dab
+summary     : GUI implementations for libnm
+description : |
+    GUI implementations for libnm
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+toolchain   : gnu
+builddeps   :
+    - binary(valac)
+    - pkgconfig(gcr-4)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(iso-codes)
+    - pkgconfig(libnm)
+    - pkgconfig(mobile-broadband-provider-info)
+setup       : |
+    %meson -Dgtk_doc=false \
+           -Dlibnma_gtk4=true 
+build       : |
+    %meson_build
+install     : |
+    %meson_install
