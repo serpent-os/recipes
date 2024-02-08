@@ -10,6 +10,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libsoup-3.0)",
 				"pkgconfig(libxml-2.0)",
+				"pkgconfig(vapigen)",
 				"python-pygobject-devel"
 			],
 			"depends": [
@@ -24,9 +25,11 @@
 				"soname(libxml2.so.2(x86_64))"
 			],
 			"files": [
+				"/usr/lib/girepository-1.0/GWeather-4.0.typelib",
 				"/usr/lib/libgweather-4.so.0",
 				"/usr/lib/libgweather-4.so.0.400.0",
 				"/usr/lib/libgweather-4/Locations.bin",
+				"/usr/share/gir-1.0/GWeather-4.0.gir",
 				"/usr/share/glib-2.0/schemas/org.gnome.GWeather4.enums.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.GWeather4.gschema.xml",
 				"/usr/share/libgweather-4/Locations.xml",
@@ -45,6 +48,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libsoup-3.0)",
 				"pkgconfig(libxml-2.0)",
+				"pkgconfig(vapigen)",
 				"python-pygobject-devel"
 			],
 			"depends": [
@@ -62,7 +66,9 @@
 				"/usr/include/libgweather-4.0/libgweather/gweather-version.h",
 				"/usr/include/libgweather-4.0/libgweather/gweather.h",
 				"/usr/lib/libgweather-4.so",
-				"/usr/lib/pkgconfig/gweather4.pc"
+				"/usr/lib/pkgconfig/gweather4.pc",
+				"/usr/share/vala/vapi/gweather4.deps",
+				"/usr/share/vala/vapi/gweather4.vapi"
 			],
 			"name": "libgweather-devel",
 			"provides": [
@@ -71,6 +77,6 @@
 		}
 	},
 	"source-name": "libgweather",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "4.4.0"
 }

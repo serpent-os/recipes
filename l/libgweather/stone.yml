@@ -5,7 +5,7 @@
 #
 name        : libgweather
 version     : 4.4.0
-release     : 1
+release     : 2
 homepage    : https://wiki.gnome.org/Projects/LibGWeather
 upstreams   :
     - https://download.gnome.org/sources/libgweather/4.4/libgweather-4.4.0.tar.xz : 366e866ff2a708b894cfea9475b8e8ff54cb3e2b477ea72a8ade0dabee5f48a4
@@ -21,9 +21,17 @@ builddeps   :
     - pkgconfig(json-glib-1.0)
     - pkgconfig(libsoup-3.0)
     - pkgconfig(libxml-2.0)
+    - pkgconfig(vapigen)
     - python-pygobject-devel
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+toolchain   : gnu
 setup       : |
-    %meson -Dintrospection=false
+    %meson -Dintrospection=true \
+           -Dgtk_doc=false \
+           -Denable_vala=true
 build       : |
     %meson_build
 install     : |
