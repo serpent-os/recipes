@@ -5,7 +5,7 @@
 #
 name        : gdm
 version     : 45.0.1
-release     : 5
+release     : 6
 homepage    : https://gitlab.gnome.org/GNOME/gdm
 upstreams   :
     - https://download.gnome.org/sources/gdm/45/gdm-45.0.1.tar.xz : 6572578c05e3c6569d6ed269f7de2aaf3a035657654586d8243907bb7a6ffa85
@@ -44,13 +44,16 @@ rundeps     :
     - gnome-settings-daemon
 toolchain   : gnu
 setup       : |
+    # active vt detection
+    %patch %(pkgdir)/3b94726faf2ecac47af110715a2d10e4fcfa7a9f.patch
     %meson -Ddbus-sys=%(datadir)/dbus-1/system.d \
            -Ddefault-pam-config=lfs \
            -Dgdm-xsession=true \
            -Dpam-mod-dir=%(libdir)/security \
            -Dwayland-support=true \
            -Dudev-dir=%(libdir)/udev/rules.d \
-           -Dpam-prefix=%(vendordir)/etc
+           -Dpam-prefix=%(vendordir)/etc \
+           -Duser-display-server=true
 build       : |
     %meson_build
 install     : |
