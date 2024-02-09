@@ -1,0 +1,44 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xkbcomp": {
+			"build-depends": [
+				"pkgconfig(x11)",
+				"pkgconfig(xkbfile)",
+				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libxkbfile.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/xkbcomp",
+				"/usr/share/man/man1/xkbcomp.1"
+			],
+			"name": "xkbcomp",
+			"provides": [
+				"binary(xkbcomp)"
+			]
+		},
+		"xkbcomp-devel": {
+			"build-depends": [
+				"pkgconfig(x11)",
+				"pkgconfig(xkbfile)",
+				"pkgconfig(xproto)"
+			],
+			"files": [
+				"/usr/lib/pkgconfig/xkbcomp.pc"
+			],
+			"name": "xkbcomp-devel",
+			"provides": [
+				"pkgconfig(xkbcomp)"
+			]
+		}
+	},
+	"source-name": "xkbcomp",
+	"source-release": "1",
+	"source-version": "1.4.7"
+}
