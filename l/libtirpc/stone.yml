@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libtirpc
+version     : 1.3.4
+release     : 1
+homepage    : https://sourceforge.net/projects/libtirpc/
+upstreams   :
+    - https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.4.tar.bz2 : 1e0b0c7231c5fa122e06c0609a76723664d068b0dba3b8219b63e6340b347860
+summary     : Transport-independent secure RPC library
+description : |
+    Transport-independent secure RPC libary
+license     :
+    - BSD-3-Clause
+setup       : |
+    %configure --disable-static \
+               --disable-gssapi
+build       : |
+    %make
+install     : |
+    %make_install
