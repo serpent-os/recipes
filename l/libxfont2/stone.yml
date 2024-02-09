@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libxfont2
+version     : 2.0.6
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxfont
+upstreams   :
+    - https://www.x.org/archive//individual/lib/libXfont2-2.0.6.tar.xz : 74ca20017eb0fb3f56d8d5e60685f560fc85e5ff3d84c61c4cb891e40c27aef4
+summary     : X font handling library for server & utilities
+description : |
+    X font handling library for server & utilities
+license     :
+    - MIT
+builddeps   :
+    - pkgconfig(fontenc)
+    - pkgconfig(fontsproto)
+    - pkgconfig(freetype2)
+    - pkgconfig(x11)
+    - pkgconfig(xproto)
+    - pkgconfig(xtrans)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

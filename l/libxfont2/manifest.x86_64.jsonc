@@ -1,0 +1,60 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxfont2": {
+			"build-depends": [
+				"pkgconfig(fontenc)",
+				"pkgconfig(fontsproto)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(x11)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xtrans)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libfontenc.so.1(x86_64))",
+				"soname(libfreetype.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libXfont2.so.2",
+				"/usr/lib/libXfont2.so.2.0.0"
+			],
+			"name": "libxfont2",
+			"provides": [
+				"soname(libXfont2.so.2(x86_64))"
+			]
+		},
+		"libxfont2-devel": {
+			"build-depends": [
+				"pkgconfig(fontenc)",
+				"pkgconfig(fontsproto)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(x11)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xtrans)"
+			],
+			"depends": [
+				"pkgconfig(fontenc)",
+				"pkgconfig(fontsproto)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(xproto)",
+				"pkgconfig(zlib)"
+			],
+			"files": [
+				"/usr/include/X11/fonts/libxfont2.h",
+				"/usr/lib/libXfont2.so",
+				"/usr/lib/pkgconfig/xfont2.pc"
+			],
+			"name": "libxfont2-devel",
+			"provides": [
+				"pkgconfig(xfont2)"
+			]
+		}
+	},
+	"source-name": "libxfont2",
+	"source-release": "1",
+	"source-version": "2.0.6"
+}
