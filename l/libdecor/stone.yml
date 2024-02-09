@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libdecor
+version     : 0.2.2
+release     : 1
+homepage    : https://gitlab.freedesktop.org/libdecor/
+upstreams   :
+    - https://gitlab.freedesktop.org/libdecor/libdecor/-/releases/0.2.2/downloads/libdecor-0.2.2.tar.xz : 16a288e24354d461b20dda9cf38e68543569134f04e4b7fa2914aa647907dfac
+summary     : A client-side decorations library for Wayland clients
+description : |
+    libdecor is a library that can help Wayland clients draw window decorations for them. It aims to provide multiple backends that implements the decoration drawing.
+license     :
+    - MIT
+builddeps   :
+    - pkgconfig(dbus-1)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-protocols)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
