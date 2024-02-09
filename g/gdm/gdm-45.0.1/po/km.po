@@ -1,0 +1,569 @@
+# translation of gdm.master.po to Khmer
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2012.
+# Morn Met <mornmet@khmeros.info>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: gdm.master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-27 15:41-0400\n"
+"PO-Revision-Date: 2012-02-17 10:53+0700\n"
+"Last-Translator: Morn Met <mornmet@khmeros.info>\n"
+"Language-Team: Khmer <support@khmeros.info>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: WordForge 0.8 RC1\n"
+"X-Language: km-KH\n"
+
+#: ../common/gdm-common.c:298
+#, c-format
+msgid "/dev/urandom is not a character device"
+msgstr "/dev/urandom មិនមែន​ជា​ឧបករណ៍​តួអក្សរ​ទេ"
+
+#: ../common/gdm-common.c:468 ../libgdm/gdm-user-switching.c:209
+#, c-format
+msgid "Could not identify the current session."
+msgstr "មិន​អាច​កំណត់​អត្តសញ្ញាណ​សម័យ​បច្ចុប្បន្ន ។"
+
+#: ../common/gdm-common.c:477 ../libgdm/gdm-user-switching.c:218
+#, c-format
+msgid "Could not identify the current seat."
+msgstr "មិន​អាច​កំណត់​អត្តសញ្ញាណ​​កន្លែង​បច្ចុប្បន្ន។"
+
+#: ../common/gdm-common.c:487 ../libgdm/gdm-user-switching.c:228
+#, c-format
+msgid ""
+"The system is unable to determine whether to switch to an existing login "
+"screen or start up a new login screen."
+msgstr "ប្រព័ន្ធ​មិន​អាច​កំណត់​ថាតើត្រូវ​ប្ដូរ​ទៅ​អេក្រង់​ចូល​មាន​ស្រាប់ ឬ​ចាប់​ផ្ដើម​អេក្រង់ចូល​ថ្មី។"
+
+#: ../common/gdm-common.c:495 ../libgdm/gdm-user-switching.c:236
+#, c-format
+msgid "The system is unable to start up a new login screen."
+msgstr "ប្រព័ន្ធ​មិន​អាច​ចាប់ផ្ដើម​អេក្រង់​ចូល​ថ្មី។"
+
+#: ../daemon/gdm-display-access-file.c:300
+#, c-format
+msgid "could not find user \"%s\" on system"
+msgstr "រក​មិន​ឃើញ​អ្នកប្រើ \"%s\" នៅ​លើ​ប្រព័ន្ធ​"
+
+#: ../daemon/gdm-legacy-display.c:235
+msgid ""
+"Could not start the X server (your graphical environment) due to an internal "
+"error. Please contact your system administrator or check your syslog to "
+"diagnose. In the meantime this display will be disabled.  Please restart GDM "
+"when the problem is corrected."
+msgstr ""
+
+#: ../daemon/gdm-manager.c:766
+#, fuzzy
+msgid "No display available"
+msgstr "មិនមាន​សម័យ"
+
+#: ../daemon/gdm-manager.c:833 ../daemon/gdm-manager.c:1088
+msgid "No session available"
+msgstr "មិនមាន​សម័យ"
+
+#: ../daemon/gdm-manager.c:844
+msgid "Can only be called before user is logged in"
+msgstr "អាច​ត្រូវ​បាន​ហៅតែ​មុន​ពេល​អ្នកប្រើ​បាន​ចូល​ប៉ុណ្ណោះ"
+
+#: ../daemon/gdm-manager.c:854
+msgid "Caller not GDM"
+msgstr "អ្នកហៅ​មិនមែន GDM"
+
+#: ../daemon/gdm-manager.c:864
+msgid "Unable to open private communication channel"
+msgstr ""
+
+#: ../daemon/gdm-server.c:378
+#, c-format
+msgid "Server was to be spawned by user %s but that user doesn't exist"
+msgstr "ម៉ាស៊ីន​បម្រើ​ត្រូវ​បាន​បង្កើត​ដោយ​អ្នកប្រើ %s ប៉ុន្តែ​មិន​មាន​អ្នកប្រើ​នោះ​ទេ"
+
+#: ../daemon/gdm-server.c:389 ../daemon/gdm-server.c:409
+#, c-format
+msgid "Couldn't set groupid to %d"
+msgstr "មិន​អាច​កំណត់ groupid ទៅជា %d"
+
+#: ../daemon/gdm-server.c:395
+#, c-format
+msgid "initgroups () failed for %s"
+msgstr "initgroups () បាន​បរាជ័យ​សម្រាប់ %s"
+
+#: ../daemon/gdm-server.c:401
+#, c-format
+msgid "Couldn't set userid to %d"
+msgstr "មិន​អាច​កំណត់ userid ទៅជា %d"
+
+#: ../daemon/gdm-server.c:479
+#, c-format
+msgid "%s: Could not open log file for display %s!"
+msgstr "%s ៖ មិន​អាច​បើក​ឯកសារ​កំណត់​ហេតុ​សម្រាប់​ការ​បង្ហាញ​ %s !"
+
+#: ../daemon/gdm-server.c:500 ../daemon/gdm-server.c:506
+#: ../daemon/gdm-server.c:512
+#, c-format
+msgid "%s: Error setting %s to %s"
+msgstr "%s ៖ កំហុស​ក្នុង​ការ​កំណត់ %s ទៅជា %s"
+
+#: ../daemon/gdm-server.c:532
+#, c-format
+msgid "%s: Server priority couldn't be set to %d: %s"
+msgstr "%s ៖ មិន​អាច​កំណត់​អាទិភាព​ម៉ាស៊ីន​បម្រើ​ទៅជា %d ៖ %s"
+
+#: ../daemon/gdm-server.c:684
+#, c-format
+msgid "%s: Empty server command for display %s"
+msgstr "%s ៖ ពាក្យ​បញ្ជា​ម៉ាស៊ីន​បម្រើ​ទទេ​សម្រាប់​ការ​បង្ហាញ %s"
+
+#: ../daemon/gdm-session-auditor.c:90
+msgid "Username"
+msgstr "ឈ្មោះ​អ្នកប្រើ"
+
+#: ../daemon/gdm-session-auditor.c:91
+msgid "The username"
+msgstr "ឈ្មោះ​អ្នកប្រើ"
+
+#: ../daemon/gdm-session-auditor.c:95
+msgid "Hostname"
+msgstr "ឈ្មោះ​ម៉ាស៊ីន"
+
+#: ../daemon/gdm-session-auditor.c:96
+msgid "The hostname"
+msgstr "ឈ្មោះ​ម៉ាស៊ីន"
+
+#: ../daemon/gdm-session-auditor.c:101
+msgid "Display Device"
+msgstr "ឧបករណ៍​បង្ហាញ"
+
+#: ../daemon/gdm-session-auditor.c:102
+msgid "The display device"
+msgstr "ឧបករណ៍​បង្ហាញ"
+
+#: ../daemon/gdm-session.c:1193
+msgid "Could not create authentication helper process"
+msgstr "មិន​អាច​ផ្ទៀងផ្ទាត់​ដំណើរការ​ជំនួយ"
+
+#: ../daemon/gdm-session-worker.c:642
+msgid "Your account was given a time limit that's now passed."
+msgstr "គណនី​របស់​អ្នកត្រូវ​បាន​ផ្ដល់​មាន​ពេល​​កំណត់​​ដែលឥឡូវ​​បាន​ហួស​ហើយ។"
+
+#: ../daemon/gdm-session-worker.c:649
+msgid "Sorry, that didn't work. Please try again."
+msgstr "សូម​ទោស មិន​ដំណើរការ​ទេ។ សូម​ព្យាយាមម្ដងទៀត។"
+
+#: ../daemon/gdm-session-worker.c:1010
+msgid "Username:"
+msgstr "ឈ្មោះ​អ្នកប្រើ ៖"
+
+#: ../daemon/gdm-session-worker.c:1142
+msgid "Your password has expired, please change it now."
+msgstr "ពាក្យ​សម្ងាត់​របស់​អ្នក​ផុត​កំណត់ សូម​ប្ដូរ​វា​ឥឡូវ។"
+
+#: ../daemon/gdm-session-worker.c:1505 ../daemon/gdm-session-worker.c:1522
+#, c-format
+msgid "no user account available"
+msgstr "គ្មាន​គណនី​អ្នកប្រើ"
+
+#: ../daemon/gdm-session-worker.c:1549
+msgid "Unable to change to user"
+msgstr "មិន​អាច​ផ្លាស់ប្ដូរ​អ្នកប្រើ"
+
+#: ../daemon/gdm-wayland-session.c:385
+#, fuzzy
+msgid "GNOME Display Manager Wayland Session Launcher"
+msgstr "កម្មវិធី​ដំណើរការ​សម័យ​របស់​កម្មវិធី​គ្រប់គ្រង​ការ​បង្ហាញ GNOME"
+
+#: ../daemon/gdm-xdmcp-display-factory.c:609
+msgid "Could not create socket!"
+msgstr "មិន​អាច​បង្កើត​រន្ធ​បាន​ទេ !"
+
+#: ../daemon/gdm-x-session.c:686
+msgid "Run program through /etc/gdm/Xsession wrapper script"
+msgstr ""
+
+#: ../daemon/gdm-x-session.c:687
+msgid "Listen on TCP socket"
+msgstr ""
+
+#: ../daemon/gdm-x-session.c:698
+#, fuzzy
+msgid "GNOME Display Manager X Session Launcher"
+msgstr "កម្មវិធី​ដំណើរការ​សម័យ​របស់​កម្មវិធី​គ្រប់គ្រង​ការ​បង្ហាញ GNOME"
+
+#: ../daemon/main.c:125 ../daemon/main.c:138
+#, c-format
+msgid "Cannot write PID file %s: possibly out of disk space: %s"
+msgstr "មិន​អាច​សរសេរ​ឯកសារ PID %s ៖ ប្រហែល​ជា​អស់​ទំហំ​ថាស ៖ %s"
+
+#: ../daemon/main.c:182
+#, c-format
+msgid "Failed to create ran once marker dir %s: %s"
+msgstr "បាន​បរាជ័យ​ក្នុង​ការ​បង្កើត​ ran once marker dir %s: %s"
+
+#: ../daemon/main.c:188
+#, c-format
+msgid "Failed to create LogDir %s: %s"
+msgstr "បាន​បរាជ័យ​ក្នុង​ការ​បង្កើត LogDir %s: %s"
+
+#: ../daemon/main.c:223
+#, c-format
+msgid "Can't find the GDM user '%s'. Aborting!"
+msgstr "រក​មិន​ឃើញ​អ្នកប្រើ GDM  '%s' ។ បោះបង់ !"
+
+#: ../daemon/main.c:229
+msgid "The GDM user should not be root. Aborting!"
+msgstr "អ្នកប្រើ GDM មិន​គួរ​ជា root ទេ ។ បោះបង់ !"
+
+#: ../daemon/main.c:235
+#, c-format
+msgid "Can't find the GDM group '%s'. Aborting!"
+msgstr "រក​មិន​ឃើញ​ក្រុម GDM ទេ '%s' ។ បោះបង់ !"
+
+#: ../daemon/main.c:241
+msgid "The GDM group should not be root. Aborting!"
+msgstr "ក្រុម GDM មិន​គួរ​ជា root ទេ ។ បោះបង់ !"
+
+#: ../daemon/main.c:318
+msgid "Make all warnings fatal"
+msgstr "ធ្វើឲ្យ​ការ​ព្រមាន​ទាំងអស់​មាន​លក្ខណៈ​ធ្ងន់ធ្ងរ"
+
+#: ../daemon/main.c:319
+msgid "Exit after a time (for debugging)"
+msgstr "បន្ទាប់​ពី​នោះ​មក ចាកចេញ (សម្រាប់​ការ​បំបាត់​កំហុស)"
+
+#: ../daemon/main.c:320
+msgid "Print GDM version"
+msgstr "បោះពុម្ព​កំណែ GDM"
+
+#: ../daemon/main.c:333
+msgid "GNOME Display Manager"
+msgstr "កម្មវិធី​គ្រប់គ្រង​ការ​បង្ហាញ GNOME"
+
+#. make sure the pid file doesn't get wiped
+#: ../daemon/main.c:381
+msgid "Only the root user can run GDM"
+msgstr "មាន​តែ​អ្នកប្រើ​ជា root ប៉ុណ្ណោះ​ដែល​អាច​ដំណើរការ GDM"
+
+#. Translators: worker is a helper process that does the work
+#. of starting up a session
+#: ../daemon/session-worker-main.c:95
+msgid "GNOME Display Manager Session Worker"
+msgstr "កម្មវិធី​ដំណើរការ​សម័យ​របស់​កម្មវិធី​គ្រប់គ្រង​ការ​បង្ហាញ GNOME"
+
+#: ../data/applications/gnome-shell.desktop.in.h:1
+#: ../data/applications/gnome-shell-wayland.desktop.in.h:1
+msgid "GNOME Shell"
+msgstr "សែល​របស់ GNOME"
+
+#: ../data/applications/gnome-shell.desktop.in.h:2
+#: ../data/applications/gnome-shell-wayland.desktop.in.h:2
+msgid "Window management and compositing"
+msgstr "សមាសភាគ និង​ការ​គ្រប់គ្រង​បង្អួច"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:1
+msgid "Whether or not to allow fingerprint readers for login"
+msgstr "ថា​តើ​ត្រូវ​អនុញ្ញាត​ឲ្យ​កម្មវិធី​អាន​ស្នាម​ផ្ដិត​​ម្រាមដៃ​ចូល​ដែរ​ឬទេ"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:2
+msgid ""
+"The login screen can optionally allow users who have enrolled their "
+"fingerprints to log in using those prints."
+msgstr "ជា​ជម្រើស អេក្រង់​ចូល​អាច​​អនុញ្ញាត​ឲ្យ​អ្នកប្រើ​ចូល​ដោយ​ប្រើ​ស្នាម​ផ្ដិត​ម្រាមដៃ​ដែល​បាន​ចុះ​ឈ្មោះ ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:3
+msgid "Whether or not to allow smartcard readers for login"
+msgstr "ថា​តើ​ត្រូវ​អនុញ្ញាត​ឲ្យ​កម្មវិធី​អាន smartcard ចូល​ដែរ​ឬ​ទេ"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:4
+msgid ""
+"The login screen can optionally allow users who have smartcards to log in "
+"using those smartcards."
+msgstr ""
+"ជា​ជម្រើស អេក្រង់​ចូល​អាច​អនុញ្ញាត​ឲ្យ​អ្នកប្រើ​ដែល​មាន smartcards ចូល​ដោយ​ប្រើ smartcards  ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:5
+msgid "Whether or not to allow passwords for login"
+msgstr "ថាតើ​ ឬ​មិន​អនុញ្ញាត​ពាក្យ​សម្ងាត់​សម្រាប់​ចូល"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:6
+msgid ""
+"The login screen can be configured to disallow password authentication, "
+"forcing the user to use smartcard or fingerprint authentication."
+msgstr ""
+"អេក្រង់ចូល​អាច​ត្រូវ​បាន​កំណត់​រចនាសម្ព័ន្ធ​ ដើម្បី​មិន​អនុញ្ញាត​ឲ្យ​ផ្ទៀងផ្ទាត់​ពាក្យ​សម្ងាត់ ដោយ​បង្ខំ​អ្នកប្រើ​ឲ្យ​"
+"ប្រើប្រាស់ការ​ផ្ទៀងផ្ទាត់​ដោយ​​ស្មាតកាត ឬ​ស្នាម​ម្រាមដៃ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:7
+msgid "Path to small image at top of user list"
+msgstr "ផ្លូវ​ទៅកាន់​រូបភាព​តូច​នៅ​ខាងលើ​បញ្ជី​អ្នកប្រើ"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:8
+msgid ""
+"The login screen can optionally show a small image at the top of its user "
+"list to provide site administrators and distributions a way to provide "
+"branding."
+msgstr ""
+"ជា​ជម្រើស អេក្រង់​ចូល​អាច​បង្ហាញ​រូបភាព​តូច​នៅ​ខាងលើ​បញ្ជី​អ្នកប្រើ​របស់​វា ដើម្បី​ផ្ដល់​អ្នក​គ្រប់គ្រង​​តំបន់បណ្ដាញ "
+"និង​ការ​ចែកចាយដើម្បី​ផ្ដល់  branding ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:9
+msgid ""
+"The fallback login screen can optionally show a small image at the top of "
+"its user list to provide site administrators and distributions a way to "
+"provide branding."
+msgstr ""
+"ជា​ជម្រើស អេក្រង់​ចូល​អាច​បង្ហាញ​រូបភាព​តូច​នៅ​ខាងលើ​បញ្ជី​អ្នកប្រើ​របស់​វា ដើម្បី​ផ្ដល់​អ្នក​គ្រប់គ្រង​​តំបន់បណ្ដាញ "
+"និង​ការ​ចែកចាយដើម្បី​ផ្ដល់ម៉ាកយីហើ ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:10
+msgid "Avoid showing user list"
+msgstr "កុំ​បង្ហាញ​​បញ្ជី​អ្នកប្រើ"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:11
+msgid ""
+"The login screen normally shows a list of available users to log in as. This "
+"setting can be toggled to disable showing the user list."
+msgstr ""
+"ជា​ធម្មតា អេក្រង់​ចូល​បង្ហាញ​បញ្ជី​ដែល​មាន​អ្នកប្រើ​ត្រូវ​ចូល ។ ការ​កំណត់​នេះ​អាច​ត្រូវ​បាន​បិទ/បើក ដើម្បី​បិទ​ការ​"
+"បង្ហាញ​បញ្ជី​អ្នកប្រើ ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:12
+msgid "Enable showing the banner message"
+msgstr "បើក​ការ​បង្ហាញ​សារ​លើ​បដា"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:13
+msgid "Set to true to show the banner message text."
+msgstr "កំណត់​ទៅជា​ពិត ដើម្បី​បង្ហាញ​អត្ថបទ​សារ​លើ​បដា ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:14
+msgid "Banner message text"
+msgstr "អត្ថបទ​សារ​លើ​បដា"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:15
+msgid "Text banner message to show in the login window."
+msgstr "សារ​អត្ថបទ​លើ​បដា​នឹង​ត្រូវ​ប្រើ​នៅ​ក្នុង​បង្អួច​ចូល ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:16
+msgid "Disable showing the restart buttons"
+msgstr "បិទ​ការ​បង្ហាញ​ប៊ូតុង​ចាប់ផ្ដើម​ឡើងវិញ"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:17
+msgid "Set to true to disable showing the restart buttons in the login window."
+msgstr "កំណត់​ទៅជា​ពិត ដើម្បី​បិទ​ការ​បង្ហាញ​ប៊ូតុង​ចាប់ផ្ដើម​ឡើងវិញ​នៅ​ក្នុង​បង្អួច​ចូល ។"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:18
+msgid "Number of allowed authentication failures"
+msgstr "ចំនួន​បរាជ័យ​​នៃ​ការ​ផ្ទៀងផ្ទាត់​បាន​អនុញ្ញាត"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:19
+msgid ""
+"The number of times a user is allowed to attempt authentication, before "
+"giving up and going back to user selection."
+msgstr ""
+"ចំនួន​ដង​ដែលអ្នកប្រើ​ត្រូវ​បាន​អនុញ្ញាត​ព្យាយាម​ផ្ទៀងផ្ទាត់ មុន​នឹង​បោះបង់​ ហើយ​ត្រឡប់ទៅ​ជម្រើស​អ្នកប្រើ។"
+
+#: ../gui/simple-chooser/gdm-host-chooser-dialog.c:147
+msgid "Select System"
+msgstr "ជ្រើស​ប្រព័ន្ធ"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:215
+msgid "XDMCP: Could not create XDMCP buffer!"
+msgstr "XDMCP ៖ មិន​អាច​បង្កើត​អង្គ​ចងចាំ​បណ្ដោះអាសន្ន XDMCP បាន​ទេ !"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:221
+msgid "XDMCP: Could not read XDMCP header!"
+msgstr "XDMCP ៖ មិន​អាច​អាន​បឋមកថា​របស់ XDMCP បាន​ទេ !"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:227
+msgid "XDMCP: Incorrect XDMCP version!"
+msgstr "XDMCP ៖ កំណែ XDMCP មិន​ត្រឹមត្រូវ!"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:233
+msgid "XDMCP: Unable to parse address"
+msgstr "XDMCP ៖ មិន​អាច​ញែកអាសយដ្ឋាន"
+
+#: ../libgdm/gdm-user-switching.c:59
+msgid "Unable to create transient display: "
+msgstr "មិន​អាច​បង្កើត​ការ​បង្ហាញថ្លា៖"
+
+#: ../libgdm/gdm-user-switching.c:90
+msgid "Unable to activate session: "
+msgstr "មិន​អាច​ធ្វើ​ឲ្យ​សម័យ​សកម្ម៖"
+
+#: ../utils/gdmflexiserver.c:45
+msgid "Only the VERSION command is supported"
+msgstr "មានតែ​ពាក្យ​បញ្ជា VERSION ប៉ុណ្ណោះ​ត្រូវ​បាន​គាំទ្រ"
+
+#: ../utils/gdmflexiserver.c:45
+msgid "COMMAND"
+msgstr "ពាក្យ​បញ្ជា"
+
+#: ../utils/gdmflexiserver.c:46 ../utils/gdmflexiserver.c:47
+#: ../utils/gdmflexiserver.c:49 ../utils/gdmflexiserver.c:50
+msgid "Ignored — retained for compatibility"
+msgstr "មិន​អើពើ — រក្សាទុក​ភាព​ឆបគ្នា"
+
+#: ../utils/gdmflexiserver.c:48 ../utils/gdm-screenshot.c:43
+msgid "Debugging output"
+msgstr "បំបាត់​កំហុស​ទិន្នន័យ"
+
+#: ../utils/gdmflexiserver.c:52
+msgid "Version of this application"
+msgstr "កំណែ​របស់​កម្មវិធី​នេះ"
+
+#. Option parsing
+#: ../utils/gdmflexiserver.c:137
+msgid "- New GDM login"
+msgstr "- ចូល​ជា GDM ថ្មី"
+
+#: ../utils/gdm-screenshot.c:212
+msgid "Screenshot taken"
+msgstr "រូប​អេក្រង់​ត្រូវ​បាន​ថត"
+
+#. Option parsing
+#: ../utils/gdm-screenshot.c:279
+msgid "Take a picture of the screen"
+msgstr "ថត​រូបភាព​អេក្រង់"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,628 @@
+# translation of mr.po to Marathi
+# translation of gdm-2.4.po in Marathi
+# This file is distributed under GPL
+# Copyright (C) 2003 Jitendra Shah.
+#
+# <indictrans@fastmail.fm>, 2003.
+# Pradeep Deshpande <npdeshpande@vsnl.net>, 2003.
+# Rahul Bhalerao <rbhalera@redhat.com>, 2006.
+# Rahul Bhalerao <b.rahul.pm@gmail.com>, 2006.
+# Sandeep Shedmake <sshedmak@redhat.com>, 2008, 2009.
+# Sandeep Shedmake <sshedmak@redhat.com>, 2009, 2010, 2011, 2012, 2013, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: mr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-27 15:41-0400\n"
+"PO-Revision-Date: 2014-09-12 19:29+0530\n"
+"Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
+"Language-Team: Marathi <maajhe-sanganak@freelists.org>\n"
+"Language: mr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: ../common/gdm-common.c:298
+#, c-format
+msgid "/dev/urandom is not a character device"
+msgstr "/dev/urandom अक्षर साधन नाही"
+
+#: ../common/gdm-common.c:468 ../libgdm/gdm-user-switching.c:209
+#, c-format
+msgid "Could not identify the current session."
+msgstr "वर्तमान सत्र ओळखू शकले नाही."
+
+#: ../common/gdm-common.c:477 ../libgdm/gdm-user-switching.c:218
+#, c-format
+msgid "Could not identify the current seat."
+msgstr "वर्तमान सिट ओळखणे अशक्य."
+
+#: ../common/gdm-common.c:487 ../libgdm/gdm-user-switching.c:228
+#, c-format
+msgid ""
+"The system is unable to determine whether to switch to an existing login "
+"screen or start up a new login screen."
+msgstr ""
+"सध्याचे प्रवेश पडद्याचा वापर करायचा किंवा नवीन प्रवेश पडदा सुरू करायचे, असे प्रणाली ओळखू "
+"शकत नाही."
+
+#: ../common/gdm-common.c:495 ../libgdm/gdm-user-switching.c:236
+#, c-format
+msgid "The system is unable to start up a new login screen."
+msgstr "प्रणाली नवीन प्रवेश पडदा सुरू करण्यास अशक्य आहे."
+
+#: ../daemon/gdm-display-access-file.c:300
+#, c-format
+msgid "could not find user \"%s\" on system"
+msgstr "प्रणालीवरील वापरकर्ता \"%s\" आढळले नाही"
+
+#: ../daemon/gdm-legacy-display.c:235
+msgid ""
+"Could not start the X server (your graphical environment) due to an internal "
+"error. Please contact your system administrator or check your syslog to "
+"diagnose. In the meantime this display will be disabled.  Please restart GDM "
+"when the problem is corrected."
+msgstr ""
+"काही अंतर्गत त्रुटींमुळे X (तुमचे चित्रलेखीय कार्यक्षेत्र) सर्वर चालू करु शकले नाही. कृपया तुमच्या "
+"संगणक व्यवस्थापकाशी संपर्क साधा किंवा syslog तपासून पहा. दरम्यान हे दृश्य खंडीत राहील. "
+"समस्या सुटल्यावर कृपया, GDM पुन्हा सुरू करा."
+
+#: ../daemon/gdm-manager.c:766
+#, fuzzy
+msgid "No display available"
+msgstr "सत्र उपलब्ध नाही"
+
+#: ../daemon/gdm-manager.c:833 ../daemon/gdm-manager.c:1088
+msgid "No session available"
+msgstr "सत्र उपलब्ध नाही"
+
+#: ../daemon/gdm-manager.c:844
+msgid "Can only be called before user is logged in"
+msgstr "वापरकर्त्याचा प्रवेश होण्यापूर्वीच त्यास कॉल केले जाईल"
+
+#: ../daemon/gdm-manager.c:854
+msgid "Caller not GDM"
+msgstr "कॉलर GDM नाही"
+
+#: ../daemon/gdm-manager.c:864
+msgid "Unable to open private communication channel"
+msgstr ""
+
+#: ../daemon/gdm-server.c:378
+#, c-format
+msgid "Server was to be spawned by user %s but that user doesn't exist"
+msgstr "सर्वर चालु करायचा होता पण %s वापरकर्ताच अस्तित्वात नाहीय़"
+
+#: ../daemon/gdm-server.c:389 ../daemon/gdm-server.c:409
+#, c-format
+msgid "Couldn't set groupid to %d"
+msgstr "groupid %d करीता निश्चित करू शकले नाही"
+
+#: ../daemon/gdm-server.c:395
+#, c-format
+msgid "initgroups () failed for %s"
+msgstr "%s साठी initgroups() अयशस्वी झाले"
+
+#: ../daemon/gdm-server.c:401
+#, c-format
+msgid "Couldn't set userid to %d"
+msgstr "userid ला %d हे मुल्य देता आले नाही"
+
+#: ../daemon/gdm-server.c:479
+#, c-format
+msgid "%s: Could not open log file for display %s!"
+msgstr "%s: डिस्पले %s करीता लॉग फाइल उघडणे अशक्य!"
+
+#: ../daemon/gdm-server.c:500 ../daemon/gdm-server.c:506
+#: ../daemon/gdm-server.c:512
+#, c-format
+msgid "%s: Error setting %s to %s"
+msgstr "%1s: %2s ते %3s पर्यंत संयोजन करताना चुक झाली"
+
+#: ../daemon/gdm-server.c:532
+#, c-format
+msgid "%s: Server priority couldn't be set to %d: %s"
+msgstr "%s: सर्वर प्राधन्यता %d शी स्थापीत करू शकले नाही: %s"
+
+#: ../daemon/gdm-server.c:684
+#, c-format
+msgid "%s: Empty server command for display %s"
+msgstr "%1s: %2s या प्रदर्शकासाठी दिलेली सर्वरची आज्ञा रिक्त आहे"
+
+#: ../daemon/gdm-session-auditor.c:90
+msgid "Username"
+msgstr "वापरकर्तानाव"
+
+#: ../daemon/gdm-session-auditor.c:91
+msgid "The username"
+msgstr "वापरकर्तानाव"
+
+#: ../daemon/gdm-session-auditor.c:95
+msgid "Hostname"
+msgstr "यजमाननाव"
+
+#: ../daemon/gdm-session-auditor.c:96
+msgid "The hostname"
+msgstr "यजमाननाव"
+
+#: ../daemon/gdm-session-auditor.c:101
+msgid "Display Device"
+msgstr "दृश्य साधन"
+
+#: ../daemon/gdm-session-auditor.c:102
+msgid "The display device"
+msgstr "दृश्य साधन"
+
+#: ../daemon/gdm-session.c:1193
+msgid "Could not create authentication helper process"
+msgstr "ओळख पटवण्याची हेल्पर प्रोसेस् निर्माण करणे अशक्य"
+
+#: ../daemon/gdm-session-worker.c:642
+msgid "Your account was given a time limit that's now passed."
+msgstr "तुमच्या खात्याला वेळ मर्यादा देण्यात आली होती जी आत्ता पार केली."
+
+#: ../daemon/gdm-session-worker.c:649
+msgid "Sorry, that didn't work. Please try again."
+msgstr "माफ करा, ते काम करत नाही. कृपया पुन्हा प्रयत्न करा."
+
+#: ../daemon/gdm-session-worker.c:1010
+msgid "Username:"
+msgstr "वापरकर्त्याचे नाव:"
+
+#: ../daemon/gdm-session-worker.c:1142
+msgid "Your password has expired, please change it now."
+msgstr "तुमच्या पासवर्डची वेळ समाप्ति झाली, कृपया आत्ता बदलवा."
+
+#: ../daemon/gdm-session-worker.c:1505 ../daemon/gdm-session-worker.c:1522
+#, c-format
+msgid "no user account available"
+msgstr "वापरकर्ता खाते उपलब्ध नाही"
+
+#: ../daemon/gdm-session-worker.c:1549
+msgid "Unable to change to user"
+msgstr "वापरकर्ता बदलविण्यास अपयशी"
+
+#: ../daemon/gdm-wayland-session.c:385
+#, fuzzy
+msgid "GNOME Display Manager Wayland Session Launcher"
+msgstr "GNOME दृश्य व्यवस्थापन सत्र कार्यकर्ता"
+
+#: ../daemon/gdm-xdmcp-display-factory.c:609
+msgid "Could not create socket!"
+msgstr "सॉकेट तयार करता आला नाही!"
+
+#: ../daemon/gdm-x-session.c:686
+msgid "Run program through /etc/gdm/Xsession wrapper script"
+msgstr ""
+
+#: ../daemon/gdm-x-session.c:687
+msgid "Listen on TCP socket"
+msgstr ""
+
+#: ../daemon/gdm-x-session.c:698
+#, fuzzy
+msgid "GNOME Display Manager X Session Launcher"
+msgstr "GNOME दृश्य व्यवस्थापन सत्र कार्यकर्ता"
+
+#: ../daemon/main.c:125 ../daemon/main.c:138
+#, c-format
+msgid "Cannot write PID file %s: possibly out of disk space: %s"
+msgstr "PID फाइल %s लिहणे अशक्य: संभाव्यतया डिस्कवर जागा कमी आहे: %s"
+
+#: ../daemon/main.c:182
+#, c-format
+msgid "Failed to create ran once marker dir %s: %s"
+msgstr "मार्कर डिरेक्ट्री %s: %s निर्माण करण्यास अपयशी"
+
+#: ../daemon/main.c:188
+#, c-format
+msgid "Failed to create LogDir %s: %s"
+msgstr "LogDir %s: %s निर्माण करण्यास अपयशी"
+
+#: ../daemon/main.c:223
+#, c-format
+msgid "Can't find the GDM user '%s'. Aborting!"
+msgstr "GDM वापरकर्ता %s आढळले नाही. खंडीत करीत आहोत!"
+
+#: ../daemon/main.c:229
+msgid "The GDM user should not be root. Aborting!"
+msgstr "GDM वापरकर्ता रूट नसावा . खंडीत करीत आहोत!"
+
+#: ../daemon/main.c:235
+#, c-format
+msgid "Can't find the GDM group '%s'. Aborting!"
+msgstr "GDM समुह '%s' आढळला नाही. खंडीत करीत आहोत !"
+
+#: ../daemon/main.c:241
+msgid "The GDM group should not be root. Aborting!"
+msgstr "GDM समुह रूट नसावा. खंडीत करीत आहोत!"
+
+#: ../daemon/main.c:318
+msgid "Make all warnings fatal"
+msgstr "सर्व धोकादायक सावधानता सूचना चिन्हाकृत करा"
+
+#: ../daemon/main.c:319
+msgid "Exit after a time (for debugging)"
+msgstr "ठराविक वेळनंतर बाहेर पडा (डिबगिंग करीता)"
+
+#: ../daemon/main.c:320
+msgid "Print GDM version"
+msgstr "GDM आवृत्ती छापा"
+
+#: ../daemon/main.c:333
+msgid "GNOME Display Manager"
+msgstr "GNOME दृश्य व्यवस्थापक"
+
+#. make sure the pid file doesn't get wiped
+#: ../daemon/main.c:381
+msgid "Only the root user can run GDM"
+msgstr "फक्त रूट वापरकर्ता GDM चालवू शकतो"
+
+#. Translators: worker is a helper process that does the work
+#. of starting up a session
+#: ../daemon/session-worker-main.c:95
+msgid "GNOME Display Manager Session Worker"
+msgstr "GNOME दृश्य व्यवस्थापन सत्र कार्यकर्ता"
+
+#: ../data/applications/gnome-shell.desktop.in.h:1
+#: ../data/applications/gnome-shell-wayland.desktop.in.h:1
+msgid "GNOME Shell"
+msgstr "GNOME शेल"
+
+#: ../data/applications/gnome-shell.desktop.in.h:2
+#: ../data/applications/gnome-shell-wayland.desktop.in.h:2
+msgid "Window management and compositing"
+msgstr "पटल व्यवस्थापन व आयोजन"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:1
+msgid "Whether or not to allow fingerprint readers for login"
+msgstr "प्रवेशकरीता फिंगरप्रिंट रिडर्सकरीता स्वीकारायचे किंवा नाही"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:2
+msgid ""
+"The login screen can optionally allow users who have enrolled their "
+"fingerprints to log in using those prints."
+msgstr ""
+"प्रवेश पडदा वैकल्पिकरित्या वापरकर्त्यांना फिंगरप्रिंटचा वापर करून प्रवेश करायची परवानगी "
+"देतो."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:3
+msgid "Whether or not to allow smartcard readers for login"
+msgstr "प्रवेशकरीता स्मार्टकार्ड रिडर्स् स्वीकारायचे किंवा नाही"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:4
+msgid ""
+"The login screen can optionally allow users who have smartcards to log in "
+"using those smartcards."
+msgstr ""
+"प्रवेश पडदा वैकल्पिकरित्या वापरकर्त्यांना स्मार्टकार्डस्चा वापर करून प्रवेश करायची परवानगी "
+"देतो."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:5
+msgid "Whether or not to allow passwords for login"
+msgstr "प्रवेशकरीता पासवर्डज स्वीकारायचे किंवा नाही"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:6
+msgid ""
+"The login screen can be configured to disallow password authentication, "
+"forcing the user to use smartcard or fingerprint authentication."
+msgstr ""
+"पासवर्ड ओळख पटवणे अस्वीकार करण्यासाठी प्रवेश स्क्रीनला संरचीत करणे शक्य आहे, ज्यामुळे "
+"वापरकर्त्याला स्मार्टकार्ड किंवा फिंगरप्रिंटद्वारे ओळख पटवण्याची सक्ती शक्य होते."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:7
+msgid "Path to small image at top of user list"
+msgstr "वापरकर्ता सूचीच्या शीर्षकास लहान प्रतिमाकरीता मार्ग"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:8
+msgid ""
+"The login screen can optionally show a small image at the top of its user "
+"list to provide site administrators and distributions a way to provide "
+"branding."
+msgstr ""
+"साइट ॲडमिनिस्ट्रेटर्स् व डिस्ट्रिब्युटर्स् करीता ब्रँडिंग पुरवण्यासाठी फॉलबॅक प्रवेश पडदा "
+"वैकल्पिकरित्या वापरकर्त्याच्या सूचीकरीता लहान प्रतिमा दाखवू शकतो."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:9
+msgid ""
+"The fallback login screen can optionally show a small image at the top of "
+"its user list to provide site administrators and distributions a way to "
+"provide branding."
+msgstr ""
+"साइट ॲडमिनिस्ट्रेटर्स् व डिस्ट्रिब्युटर्स् करीता ब्रँडिंग पुरवण्यासाठी फॉलबॅक प्रवेश पडदा "
+"वैकल्पिकरित्या वापरकर्त्याच्या सूचीकरीता लहान प्रतिमा दाखवू शकतो."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:10
+msgid "Avoid showing user list"
+msgstr "वापरकर्ता सूची दाखवणे टाळा"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:11
+msgid ""
+"The login screen normally shows a list of available users to log in as. This "
+"setting can be toggled to disable showing the user list."
+msgstr ""
+"प्रवेश पडदा सहसा उपलब्ध वापरकर्त्यांची सूची दाखवतो. वापरकर्ता सूची दाखवण्यापासून "
+"थांबवायचे असल्यास ह्या सेटिंगला बदलणे शक्य आहे."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:12
+msgid "Enable showing the banner message"
+msgstr "बॅनर संदेश दर्शविणे कार्यान्वीत करा"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:13
+msgid "Set to true to show the banner message text."
+msgstr "बॅनर संदेश पाठ्य दर्शविण्याकरीता true सेट करा."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:14
+msgid "Banner message text"
+msgstr "बॅनर संदेश मजकूर"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:15
+msgid "Text banner message to show in the login window."
+msgstr "प्रवेश पटलात दाखवण्याजोगी मजकूर बॅनर संदेश."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:16
+msgid "Disable showing the restart buttons"
+msgstr "पुन्हा सुरू करा बटन दर्शविणे अकार्यान्वीत करा"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:17
+msgid "Set to true to disable showing the restart buttons in the login window."
+msgstr "प्रवेश पटलात रिस्टार्ट बटने दाखवण्यापासून असुरू करण्यासाठी true सेट करा."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:18
+msgid "Number of allowed authentication failures"
+msgstr "अपयशी स्वीकार्य ओळख पटवण्याच्या पद्धतिंची संख्या"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:19
+msgid ""
+"The number of times a user is allowed to attempt authentication, before "
+"giving up and going back to user selection."
+msgstr ""
+"वापरकर्ता नीवड त्याग करण्यापूर्वी व वापर करण्यापूर्वी, वापरकर्ताने ओळख पटवण्यासाठी "
+"स्वीकार्य संख्या."
+
+#: ../gui/simple-chooser/gdm-host-chooser-dialog.c:147
+msgid "Select System"
+msgstr "प्रणाली नीवडा"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:215
+msgid "XDMCP: Could not create XDMCP buffer!"
+msgstr "XDMCP: XDMCP बफर निर्माण करण्यास अशक्य!"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:221
+msgid "XDMCP: Could not read XDMCP header!"
+msgstr "XDMCP: XDMCP हेड्डर वाचू शकले नाही!"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:227
+msgid "XDMCP: Incorrect XDMCP version!"
+msgstr "XDMCP: अयोग्य XDMCP आवृत्ती!"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:233
+msgid "XDMCP: Unable to parse address"
+msgstr "XDMCP: पत्ता वाचणे अशक्य"
+
+#: ../libgdm/gdm-user-switching.c:59
+msgid "Unable to create transient display: "
+msgstr "ट्रांजिएंट डिस्पले निर्माण करणे अशक्य"
+
+#: ../libgdm/gdm-user-switching.c:90
+msgid "Unable to activate session: "
+msgstr "सत्र सुरू करणे अशक्य: "
+
+#: ../utils/gdmflexiserver.c:45
+msgid "Only the VERSION command is supported"
+msgstr "फक्त VERSION आदेश समर्थीत आहे"
+
+#: ../utils/gdmflexiserver.c:45
+msgid "COMMAND"
+msgstr "COMMAND"
+
+#: ../utils/gdmflexiserver.c:46 ../utils/gdmflexiserver.c:47
+#: ../utils/gdmflexiserver.c:49 ../utils/gdmflexiserver.c:50
+msgid "Ignored — retained for compatibility"
+msgstr "दुर्लक्षीत — सहत्वताकरीता जपून ठेवले"
+
+#: ../utils/gdmflexiserver.c:48 ../utils/gdm-screenshot.c:43
+msgid "Debugging output"
+msgstr "डीबगींग ऑउटपुट"
+
+#: ../utils/gdmflexiserver.c:52
+msgid "Version of this application"
+msgstr "या अनुप्रयोगाची आवृत्ती"
+
+#. Option parsing
+#: ../utils/gdmflexiserver.c:137
+msgid "- New GDM login"
+msgstr "- नवीन GDM प्रवेश"
+
+#: ../utils/gdm-screenshot.c:212
+msgid "Screenshot taken"
+msgstr "स्क्रीनशॉट घेतले"
+
+#. Option parsing
+#: ../utils/gdm-screenshot.c:279
+msgid "Take a picture of the screen"
+msgstr "पडद्याचे चित्र घ्या"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,507 @@
+# Vital Khilko <dojlid@mova.org>, 2002, 2003.
+# Alexander Nyakhaychyk <nyakhaychyk@gmail.com>, 2003, 2004, 2009.
+# Ihar Hrachyshka <ihar.hrachyshka@gmail.com>, 2011, 2012, 2013.
+# Yuras Shumovich <shumovichy@gmail.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: gdm.master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gdm/issues\n"
+"POT-Creation-Date: 2022-10-28 03:34+0000\n"
+"PO-Revision-Date: 2023-01-07 23:10+0300\n"
+"Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
+"Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
+"Language: be\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: chooser/gdm-host-chooser-dialog.c:139
+msgid "_Refresh"
+msgstr "_Абнавіць"
+
+#: chooser/gdm-host-chooser-dialog.c:140
+msgid "_Cancel"
+msgstr "_Скасаваць"
+
+#: chooser/gdm-host-chooser-dialog.c:141
+msgid "C_onnect"
+msgstr "_Злучыцца"
+
+#: chooser/gdm-host-chooser-dialog.c:146
+msgid "Select System"
+msgstr "Выберыце сістэму"
+
+#: chooser/gdm-host-chooser-widget.c:253
+msgid "XDMCP: Could not create XDMCP buffer!"
+msgstr "XDMCP: не ўдалося стварыць буфер XDMCP."
+
+#: chooser/gdm-host-chooser-widget.c:259
+msgid "XDMCP: Could not read XDMCP header!"
+msgstr "XDMCP: не ўдалося прачытаць загаловак XDMCP."
+
+#: chooser/gdm-host-chooser-widget.c:265
+msgid "XDMCP: Incorrect XDMCP version!"
+msgstr "XDMCP: няправільная версія XDMCP."
+
+#: chooser/gdm-host-chooser-widget.c:271
+msgid "XDMCP: Unable to parse address"
+msgstr "XDMCP: не ўдалося разабраць адрас"
+
+#: common/gdm-common.c:307
+msgid "/dev/urandom is not a character device"
+msgstr "/dev/urandom не з'яўляецца сімвальнай прыладай"
+
+#: common/gdm-common.c:501 libgdm/gdm-user-switching.c:207
+msgid "Could not identify the current session: "
+msgstr "Не ўдалося вызначыць бягучы сеанс: "
+
+#: common/gdm-common.c:510 libgdm/gdm-user-switching.c:216
+msgid "Could not identify the current seat."
+msgstr "Не ўдалося вызначыць бягучае працоўнае месца."
+
+#: daemon/gdm-display-access-file.c:285 daemon/gdm-display-access-file.c:306
+#, c-format
+msgid "Could not find user “%s” on system"
+msgstr "Не ўдалося знайсці ў сістэме карыстальніка «%s»"
+
+#: daemon/gdm-legacy-display.c:236
+msgid ""
+"Could not start the X server (your graphical environment) due to an internal "
+"error. Please contact your system administrator or check your syslog to "
+"diagnose. In the meantime this display will be disabled.  Please restart GDM "
+"when the problem is corrected."
+msgstr ""
+"Не ўдалося запусціць X-сервер (графічнае асяроддзе), адбылася ўнутраная "
+"памылка. Звяжыцеся са сваім сістэмным адміністратарам або праверце сістэмны "
+"журнал, каб правесці дыягностыку. Гэты манітор пакуль што будзе адключаны. "
+"Перазапусціце GDM, калі праблема будзе выпраўлена."
+
+#: daemon/gdm-manager.c:769
+msgid "No display available"
+msgstr "Няма даступных дысплэяў"
+
+#: daemon/gdm-manager.c:867 daemon/gdm-manager.c:1151
+msgid "No session available"
+msgstr "Сеанс недаступны"
+
+#: daemon/gdm-manager.c:886
+msgid "Chooser session unavailable"
+msgstr "Сродак выбару сеанса недаступны"
+
+#: daemon/gdm-manager.c:902
+msgid "Can only be called before user is logged in"
+msgstr "Можа быць выклікана толькі да ўваходу карыстальніка"
+
+#: daemon/gdm-manager.c:913
+msgid "Caller not GDM"
+msgstr "Выклікана не праз GDM"
+
+#: daemon/gdm-manager.c:923
+msgid "Unable to open private communication channel"
+msgstr "Не ўдалося адкрыць прыватны канал камунікацыі"
+
+#: daemon/gdm-server.c:384
+#, c-format
+msgid "Server was to be spawned by user %s but that user doesn’t exist"
+msgstr ""
+"Сервер павінен быў запусціцца ад імя карыстальніка %s, але такога "
+"карыстальніка не існуе"
+
+#: daemon/gdm-server.c:395 daemon/gdm-server.c:415
+#, c-format
+msgid "Couldn’t set groupid to %d"
+msgstr "Не ўдалося задаць ідэнтыфікатар групы %d"
+
+#: daemon/gdm-server.c:401
+#, c-format
+msgid "initgroups () failed for %s"
+msgstr "няўдача initgroups() для %s"
+
+#: daemon/gdm-server.c:407
+#, c-format
+msgid "Couldn’t set userid to %d"
+msgstr "Не ўдалося задаць ідэнтыфікатар карыстальніка %d"
+
+#: daemon/gdm-server.c:485
+#, c-format
+msgid "%s: Could not open log file for display %s!"
+msgstr "%s: не ўдалося адкрыць файл журнала для дысплэя %s."
+
+#: daemon/gdm-server.c:506 daemon/gdm-server.c:512 daemon/gdm-server.c:518
+#, c-format
+msgid "%s: Error setting %s to %s"
+msgstr "%1$s: памылка настаўлення значэння %3$s для %2$s"
+
+#: daemon/gdm-server.c:538
+#, c-format
+msgid "%s: Server priority couldn’t be set to %d: %s"
+msgstr "%s: не ўдалося задаць серверу прыярытэт %d: %s"
+
+#: daemon/gdm-server.c:690
+#, c-format
+msgid "%s: Empty server command for display %s"
+msgstr "%s: пустая серверная каманда для дысплэя %s"
+
+#: daemon/gdm-session-auditor.c:88
+msgid "Username"
+msgstr "Імя карыстальніка"
+
+#: daemon/gdm-session-auditor.c:89
+msgid "The username"
+msgstr "Імя карыстальніка"
+
+#: daemon/gdm-session-auditor.c:93
+msgid "Hostname"
+msgstr "Імя хоста"
+
+#: daemon/gdm-session-auditor.c:94
+msgid "The hostname"
+msgstr "Імя хоста"
+
+#: daemon/gdm-session-auditor.c:99
+msgid "Display Device"
+msgstr "Прылада адлюстравання"
+
+#: daemon/gdm-session-auditor.c:100
+msgid "The display device"
+msgstr "Прылада адлюстравання"
+
+#: daemon/gdm-session.c:1334
+msgid "Could not create authentication helper process"
+msgstr "Не ўдалося стварыць дапаможны працэс для праверкі сапраўднасці"
+
+#: daemon/gdm-session-worker.c:752
+msgid ""
+"You reached the maximum password authentication attempts, please try another "
+"method"
+msgstr ""
+"Вы дасягнулі ліміту спроб на пацвярджэнне сапраўднасці праз пароль, "
+"паспрабуйце іншы метад"
+
+#: daemon/gdm-session-worker.c:755
+msgid ""
+"You reached the maximum auto login attempts, please try another "
+"authentication method"
+msgstr "Вы дасягнулі ліміту спроб для аўтаўваходу, паспрабуйце іншы метад"
+
+#: daemon/gdm-session-worker.c:758
+msgid ""
+"You reached the maximum fingerprint authentication attempts, please try "
+"another method"
+msgstr ""
+"Вы дасягнулі ліміту спроб на пацвярджэнне сапраўднасці праз адбітак пальца, "
+"паспрабуйце іншы метад"
+
+#: daemon/gdm-session-worker.c:761
+msgid ""
+"You reached the maximum smart card authentication attempts, please try "
+"another method"
+msgstr ""
+"Вы дасягнулі ліміту спроб на пацвярджэнне сапраўднасці праз смарт-карту, "
+"паспрабуйце іншы метад"
+
+#: daemon/gdm-session-worker.c:763
+msgid ""
+"You reached the maximum authentication attempts, please try another method"
+msgstr ""
+"Вы дасягнулі ліміту спроб на пацвярджэнне сапраўднасці, паспрабуйце іншы "
+"метад"
+
+#: daemon/gdm-session-worker.c:770
+msgid "Sorry, password authentication didn’t work. Please try again."
+msgstr "Не ўдалося пацвердзіць сапраўднасць паролем. Паўтарыце спробу."
+
+#: daemon/gdm-session-worker.c:773
+msgid "Sorry, auto login didn’t work. Please try again."
+msgstr "Аўтаўваход не спрацаваў. Паўтарыце спробу."
+
+#: daemon/gdm-session-worker.c:776
+msgid "Sorry, fingerprint authentication didn’t work. Please try again."
+msgstr ""
+"Не ўдалося пацвердзіць сапраўднасць праз адбітак пальца. Паўтарыце спробу."
+
+#: daemon/gdm-session-worker.c:779
+msgid "Sorry, smart card authentication didn’t work. Please try again."
+msgstr ""
+"Не ўдалося пацвердзіць сапраўднасць праз смарт-карту. Паўтарыце спробу."
+
+#: daemon/gdm-session-worker.c:781
+msgid "Sorry, that didn’t work. Please try again."
+msgstr "Не ўдалося пацвердзіць сапраўднасць. Паўтарыце спробу."
+
+#: daemon/gdm-session-worker.c:796
+msgid "Your account was given a time limit that’s now passed."
+msgstr "Тэрмін дзеяння ўліковага запісу скончыўся."
+
+#: daemon/gdm-session-worker.c:1197
+msgid "Username:"
+msgstr "Імя карыстальніка:"
+
+#: daemon/gdm-session-worker.c:1597 daemon/gdm-session-worker.c:1614
+msgid "no user account available"
+msgstr "уліковы запіс карыстальніка недаступны"
+
+#: daemon/gdm-session-worker.c:1641
+msgid "Unable to change to user"
+msgstr "Не ўдалося змяніць карыстальніка"
+
+#: daemon/gdm-wayland-session.c:531
+msgid "GNOME Display Manager Wayland Session Launcher"
+msgstr "Модуль запуску сеанса Wayland у GNOME Display Manager"
+
+#: daemon/gdm-xdmcp-display-factory.c:612
+msgid "Could not create socket!"
+msgstr "Не ўдалося стварыць сокет."
+
+#: daemon/gdm-x-session.c:879
+msgid "Run program through /etc/gdm/Xsession wrapper script"
+msgstr "Запусціць праграму праз сцэнарый-абгортку /etc/gdm/Xsession"
+
+#: daemon/gdm-x-session.c:880
+msgid "Listen on TCP socket"
+msgstr "Слухаць TCP-сокет"
+
+#: daemon/gdm-x-session.c:892
+msgid "GNOME Display Manager X Session Launcher"
+msgstr "Модуль запуску сеанса X у GNOME Display Manager"
+
+#: daemon/main.c:125 daemon/main.c:138
+#, c-format
+msgid "Cannot write PID file %s: possibly out of disk space: %s"
+msgstr "Не ўдалося запісаць PID-файл %s: магчыма, не хапае месца на дыску: %s"
+
+#: daemon/main.c:182
+#, c-format
+msgid "Failed to create ran once marker dir %s: %s"
+msgstr "Не ўдалося стварыць каталог маркера %s: %s"
+
+#: daemon/main.c:188
+#, c-format
+msgid "Failed to create LogDir %s: %s"
+msgstr "Не ўдалося стварыць LogDir %s: %s"
+
+#: daemon/main.c:223
+#, c-format
+msgid "Can’t find the GDM user “%s”. Aborting!"
+msgstr "Не ўдалося знайсці карыстальніка GDM «%s». Прымусовае спыненне."
+
+#: daemon/main.c:229
+msgid "The GDM user should not be root. Aborting!"
+msgstr ""
+"Карыстальнік GDM не можа быць root-карыстальнікам. Прымусовае спыненне."
+
+#: daemon/main.c:235
+#, c-format
+msgid "Can’t find the GDM group “%s”. Aborting!"
+msgstr "Не ўдалося знайсці групу GDM «%s». Прымусовае спыненне."
+
+#: daemon/main.c:241
+msgid "The GDM group should not be root. Aborting!"
+msgstr "Група GDM не можа быць root-групай. Прымусовае спыненне."
+
+#: daemon/main.c:309
+msgid "Make all warnings fatal"
+msgstr "Лічыць усе папярэджанні фатальнымі"
+
+#: daemon/main.c:310
+msgid "Exit after a time (for debugging)"
+msgstr "Выйсці праз пэўны час (для адладкі)"
+
+#: daemon/main.c:311
+msgid "Print GDM version"
+msgstr "Вывесці версію GDM"
+
+#: daemon/main.c:322
+msgid "GNOME Display Manager"
+msgstr "GNOME Display Manager"
+
+#. make sure the pid file doesn't get wiped
+#: daemon/main.c:342
+msgid "Only the root user can run GDM"
+msgstr "Толькі root-карыстальнік можа запускаць GDM"
+
+#. Translators: worker is a helper process that does the work
+#. of starting up a session
+#: daemon/session-worker-main.c:119
+msgid "GNOME Display Manager Session Worker"
+msgstr "Рабочы працэс сеанса GNOME Display Manager"
+
+#: data/org.gnome.login-screen.gschema.xml:6
+msgid "Whether or not to allow fingerprint readers for login"
+msgstr "Ці дазваляць уваход праз чытальнік адбіткаў пальцаў"
+
+#: data/org.gnome.login-screen.gschema.xml:9
+msgid ""
+"The login screen can optionally allow users who have enrolled their "
+"fingerprints to log in using those prints."
+msgstr ""
+"Экран уваходу можа дазволіць карыстальнікам, якія зарэгістравалі адбіткі "
+"пальцаў, уваходзіць у сеанс праз іх."
+
+#: data/org.gnome.login-screen.gschema.xml:16
+msgid "Whether or not to allow smartcard readers for login"
+msgstr "Ці дазваляць уваход праз праз чытальнік смарт-карт"
+
+#: data/org.gnome.login-screen.gschema.xml:19
+msgid ""
+"The login screen can optionally allow users who have smartcards to log in "
+"using those smartcards."
+msgstr ""
+"Экран уваходу можа дазволіць карыстальнікам, якія маюць смарт-карты, "
+"уваходзіць у сеанс праз іх."
+
+#: data/org.gnome.login-screen.gschema.xml:26
+msgid "Whether or not to allow passwords for login"
+msgstr "Ці дазваляць уваход праз увод паролю"
+
+#: data/org.gnome.login-screen.gschema.xml:29
+msgid ""
+"The login screen can be configured to disallow password authentication, "
+"forcing the user to use smartcard or fingerprint authentication."
+msgstr ""
+"Экран уваходу можна наладзіць такім чынам, што праверка сапраўднасці праз "
+"увод пароля будзе забаронена, а карыстальнік зможа пацвердзіць сапраўднасць "
+"толькі праз смарт-карту або адбітак пальца."
+
+#: data/org.gnome.login-screen.gschema.xml:36
+#: data/org.gnome.login-screen.gschema.xml:46
+msgid "Path to small image at top of user list"
+msgstr "Шлях да маленькага відарыса ўверсе спіса карыстальнікаў"
+
+#: data/org.gnome.login-screen.gschema.xml:39
+msgid ""
+"The login screen can optionally show a small image to provide site "
+"administrators and distributions a way to display branding."
+msgstr ""
+"На экране ўваходу можна паказваць маленькі відарыс, што дае магчымасць "
+"дэманстраваць фірменную сімволіку дыстрыбутывам і сістэмным адміністратарам."
+
+#: data/org.gnome.login-screen.gschema.xml:49
+msgid ""
+"The fallback login screen can optionally show a small image to provide site "
+"administrators and distributions a way to display branding."
+msgstr ""
+"На зваротным экране ўваходу можна паказваць маленькі відарыс, што дае "
+"магчымасць дэманстраваць фірменную сімволіку дыстрыбутывам і сістэмным "
+"адміністратарам."
+
+#: data/org.gnome.login-screen.gschema.xml:56
+msgid "Avoid showing user list"
+msgstr "Не паказваць спіс карыстальнікаў"
+
+#: data/org.gnome.login-screen.gschema.xml:59
+msgid ""
+"The login screen normally shows a list of available users to log in as. This "
+"setting can be toggled to disable showing the user list."
+msgstr ""
+"Звычайна на экране ўваходу паказваецца спіс даступных карыстальнікаў. З "
+"дапамогай гэтай налады можна адключыць паказ спіса."
+
+#: data/org.gnome.login-screen.gschema.xml:66
+msgid "Enable showing the banner message"
+msgstr "Уключыць паказ прывітальнага паведамлення"
+
+#: data/org.gnome.login-screen.gschema.xml:69
+msgid "Set to true to show the banner message text."
+msgstr "Уключыце, каб паказвалая тэкставае прывітальнае паведамленне."
+
+#: data/org.gnome.login-screen.gschema.xml:75
+msgid "Banner message text"
+msgstr "Тэкст прывітальнага паведамлення"
+
+#: data/org.gnome.login-screen.gschema.xml:78
+msgid "Text banner message to show in the login window."
+msgstr "Тэкст прывітальнага паведамлення для акна ўваходу."
+
+#: data/org.gnome.login-screen.gschema.xml:84
+msgid "Disable showing the restart buttons"
+msgstr "Схаваць кнопкі перазапуску камп'ютара"
+
+#: data/org.gnome.login-screen.gschema.xml:87
+msgid "Set to true to disable showing the restart buttons in the login window."
+msgstr "Уключыце, каб скаваць кнопкі перазапуску камп'ютара ў акне ўваходу."
+
+#: data/org.gnome.login-screen.gschema.xml:93
+msgid "Number of allowed authentication failures"
+msgstr "Дазволеная колькасць няўдалых праверак сапраўднасці"
+
+#: data/org.gnome.login-screen.gschema.xml:96
+msgid ""
+"The number of times a user is allowed to attempt authentication, before "
+"giving up and going back to user selection."
+msgstr ""
+"Колькасць дазволеных карыстальніку спроб пацвердзіць сапраўднасць перад яго "
+"вяртаннем на экран выбару карыстальніка."
+
+#: libgdm/gdm-user-switching.c:59
+msgid "Unable to create transient display: "
+msgstr "Не ўдалося стварыць пераходны дысплэй: "
+
+#: libgdm/gdm-user-switching.c:90
+msgid "Unable to activate session: "
+msgstr "Не ўдалося актываваць сеанс: "
+
+#: utils/gdmflexiserver.c:45
+msgid "Only the VERSION command is supported"
+msgstr "Падтрымліваецца толькі каманда VERSION"
+
+#: utils/gdmflexiserver.c:45
+msgid "COMMAND"
+msgstr "КАМАНДА"
+
+#: utils/gdmflexiserver.c:46 utils/gdmflexiserver.c:47
+#: utils/gdmflexiserver.c:49 utils/gdmflexiserver.c:50
+msgid "Ignored — retained for compatibility"
+msgstr "Ігнаруецца - пакінута для сумяшчальнасці"
+
+#: utils/gdmflexiserver.c:48 utils/gdm-screenshot.c:43
+msgid "Debugging output"
+msgstr "Адладачны вывад"
+
+#: utils/gdmflexiserver.c:52
+msgid "Version of this application"
+msgstr "Версія гэтай праграмы"
+
+#. Option parsing
+#: utils/gdmflexiserver.c:137
+msgid "— New GDM login"
+msgstr "- новы ўваход праз GDM"
+
+#: utils/gdm-screenshot.c:212
+msgid "Screenshot taken"
+msgstr "Здымак экрана гатовы"
+
+#. Option parsing
+#: utils/gdm-screenshot.c:279
+msgid "Take a picture of the screen"
+msgstr "Зрабіць здымак экрана"
+
+#~ msgid ""
+#~ "The system is unable to determine whether to switch to an existing login "
+#~ "screen or start up a new login screen."
+#~ msgstr ""
+#~ "Сістэме не ўдалося вызначыць, ці трэба пераключыцца на наяўны экран "
+#~ "уваходу або запусціць новы."
+
+#~ msgid "The system is unable to start up a new login screen."
+#~ msgstr "Сістэме не ўдалося запусціць новы экран уваходу."
+
+#~ msgid ""
+#~ "You reached the maximum PIN authentication attempts, please try another "
+#~ "method"
+#~ msgstr ""
+#~ "Вы дасягнулі ліміту спроб на пацвярджэнне сапраўднасці праз PIN-код, "
+#~ "паспрабуйце іншы метад"
+
+#~ msgid "Sorry, PIN authentication didn’t work. Please try again."
+#~ msgstr "Не ўдалося пацвердзіць сапраўднасць праз PIN-код. Паўтарыце спробу."
+
+#~ msgid "Your password has expired, please change it now."
+#~ msgstr "Ваш пароль састарэў. Калі ласка, зараз жа змяніце яго."
+
+#~ msgid "GNOME Shell"
+#~ msgstr "GNOME Shell"
+
+#~ msgid "Window management and compositing"
+#~ msgstr "Кіраванне вокнамі і аконная кампазіцыя"

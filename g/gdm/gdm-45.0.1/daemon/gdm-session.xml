@@ -1,0 +1,146 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node name="/org/gnome/DisplayManager/Session">
+  <!-- methods are called by the session worker,
+       signals are emitted by the main daemon -->
+  <interface name="org.gnome.DisplayManager.WorkerManager">
+    <method name="Hello" />
+    <method name="InfoQuery">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="query" direction="in" type="s"/>
+      <arg name="answer" direction="out" type="s"/>
+    </method>
+    <method name="SecretInfoQuery">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="query" direction="in" type="s"/>
+      <arg name="answer" direction="out" type="s"/>
+    </method>
+    <method name="Info">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="info" direction="in" type="s"/>
+    </method>
+    <method name="Problem">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="problem" direction="in" type="s"/>
+    </method>
+    <method name="ChoiceListQuery">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="prompt_message" direction="in" type="s"/>
+      <arg name="query" direction="in" type="a{ss}"/>
+      <arg name="answer" direction="out" type="s"/>
+    </method>
+  </interface>
+  <interface name="org.gnome.DisplayManager.UserVerifier">
+    <method name="EnableExtensions">
+      <arg name="extensions" direction="in" type="as"/>
+    </method>
+    <method name="BeginVerification">
+      <arg name="service_name" direction="in" type="s"/>
+    </method>
+    <method name="BeginVerificationForUser">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="username" direction="in" type="s"/>
+    </method>
+    <method name="AnswerQuery">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="answer" direction="in" type="s"/>
+    </method>
+    <method name="Cancel">
+    </method>
+    <signal name="ConversationStarted">
+      <arg name="service_name" type="s"/>
+    </signal>
+    <signal name="ConversationStopped">
+      <arg name="service_name" type="s"/>
+    </signal>
+    <signal name="ReauthenticationStarted">
+      <arg name="pid_of_caller" type="i"/>
+    </signal>
+    <signal name="Info">
+      <arg name="service_name" type="s"/>
+      <arg name="info" type="s"/>
+    </signal>
+    <signal name="Problem">
+      <arg name="service_name" type="s"/>
+      <arg name="problem" type="s"/>
+    </signal>
+    <signal name="InfoQuery">
+      <arg name="service_name" type="s"/>
+      <arg name="query" type="s"/>
+    </signal>
+    <signal name="SecretInfoQuery">
+      <arg name="service_name" type="s"/>
+      <arg name="query" type="s"/>
+    </signal>
+    <signal name="Reset">
+    </signal>
+    <signal name="ServiceUnavailable">
+      <arg name="service_name" type="s"/>
+      <arg name="message" type="s"/>
+    </signal>
+    <signal name="VerificationFailed">
+      <arg name="service_name" type="s"/>
+    </signal>
+    <signal name="VerificationComplete">
+      <arg name="service_name" type="s"/>
+    </signal>
+  </interface>
+  <interface name="org.gnome.DisplayManager.UserVerifier.ChoiceList">
+    <method name="SelectChoice">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="choice" direction="in" type="s"/>
+    </method>
+    <signal name="ChoiceQuery">
+      <arg name="service_name" type="s"/>
+      <arg name="prompt_message" type="s"/>
+      <arg name="list" type="a{ss}"/>
+    </signal>
+  </interface>
+  <interface name="org.gnome.DisplayManager.Greeter">
+    <method name="SelectSession">
+      <arg name="session" direction="in" type="s"/>
+    </method>
+    <method name="SelectUser">
+      <arg name="username" direction="in" type="s"/>
+    </method>
+    <method name="BeginAutoLogin">
+      <arg name="username" direction="in" type="s"/>
+    </method>
+    <method name="GetTimedLoginDetails">
+      <arg name="enabled" direction="out" type="b"/>
+      <arg name="username" direction="out" type="s"/>
+      <arg name="delay" direction="out" type="i"/>
+    </method>
+    <method name="StartSessionWhenReady">
+      <arg name="service_name" direction="in" type="s"/>
+      <arg name="should_start_session" direction="in" type="b"/>
+    </method>
+    <signal name="SelectedUserChanged">
+      <arg name="username" type="s"/>
+    </signal>
+    <signal name="DefaultLanguageNameChanged">
+      <arg name="language_name" type="s"/>
+    </signal>
+    <signal name="DefaultSessionNameChanged">
+      <arg name="session_name" type="s"/>
+    </signal>
+    <signal name="TimedLoginRequested">
+      <arg name="username" type="s"/>
+      <arg name="delay" type="i"/>
+    </signal>
+    <signal name="SessionOpened">
+      <arg name="service_name" type="s"/>
+    </signal>
+    <signal name="Reauthenticated">
+      <arg name="service_name" type="s"/>
+    </signal>
+  </interface>
+  <interface name="org.gnome.DisplayManager.RemoteGreeter">
+    <method name="Disconnect" />
+  </interface>
+  <interface name="org.gnome.DisplayManager.Chooser">
+    <method name="SelectHostname">
+      <arg name="hostname" direction="in" type="s"/>
+    </method>
+    <method name="Disconnect" />
+  </interface>
+</node>

@@ -1,0 +1,669 @@
+# translation of te.po to Telugu
+# Telugu translation of gdm
+# Copyright (C) 2011, 2012 Swecha Telugu Localisation Team <localization@swecha.net>.
+# This file is distributed under the same license as the gdm package.
+#
+# Krishna Babu K <kkrothap@redhat.com>, 2008, 2009, 2010, 2012, 2013, 2014.
+# Sasi Bhushan Boddepalli <sasi@swecha.net>, 2011, 2012.
+# GVS గిరి<gvs.giri947@gmail.com>,2011.
+# Hari Krishna <hari@swecha.net>, 2011, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: te\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-27 15:41-0400\n"
+"PO-Revision-Date: 2014-01-30 14:28+0630\n"
+"Last-Translator: Krishnababu Krothapalli <kkrothap@redhat.com>\n"
+"Language-Team: Telugu <Fedora-trans-te@redhat.com>\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: ../common/gdm-common.c:298
+#, c-format
+msgid "/dev/urandom is not a character device"
+msgstr "/dev/urandom అక్షర పరికరం కాదు"
+
+#: ../common/gdm-common.c:468 ../libgdm/gdm-user-switching.c:209
+#, c-format
+msgid "Could not identify the current session."
+msgstr "ప్రస్తుత భాగమును గుర్తించలేక పోయింది."
+
+#: ../common/gdm-common.c:477 ../libgdm/gdm-user-switching.c:218
+#, c-format
+msgid "Could not identify the current seat."
+msgstr "ప్రస్తుత పీఠమును  గుర్తించలేక పోయింది."
+
+#: ../common/gdm-common.c:487 ../libgdm/gdm-user-switching.c:228
+#, c-format
+msgid ""
+"The system is unable to determine whether to switch to an existing login "
+"screen or start up a new login screen."
+msgstr ""
+"వ్యవస్థ ఇప్పటికే ఉన్న లాగిన్ తెర మారడం లేదా ఒక క్రొత్త లాగిన్ తెర పైకి ప్రారంభించడము అనే  నిర్ణయాన్ని  "
+"చెయ్యలేకపోయింది."
+
+#: ../common/gdm-common.c:495 ../libgdm/gdm-user-switching.c:236
+#, c-format
+msgid "The system is unable to start up a new login screen."
+msgstr "వ్యవస్థ ఒక క్రొత్త లాగిన్ తెర పైకి మొదలు చేయలేదు. "
+
+#: ../daemon/gdm-display-access-file.c:300
+#, c-format
+msgid "could not find user \"%s\" on system"
+msgstr "వ్యవస్థ లో వాడుకరి \"%s\" కనిపించుటలేదు"
+
+#: ../daemon/gdm-legacy-display.c:235
+msgid ""
+"Could not start the X server (your graphical environment) due to an internal "
+"error. Please contact your system administrator or check your syslog to "
+"diagnose. In the meantime this display will be disabled.  Please restart GDM "
+"when the problem is corrected."
+msgstr ""
+"అంతర్గత దోషం కారణంగా X సేవిక(మీ గ్రాఫికల్ ఎన్విరాన్‌మెంట్) ప్రారంభం కాలేదు.దోష కారణం తెలుసుకొనుటకు మీ "
+"వ్యవస్థ నిర్వహణాధికారిని సంప్రదించండి లేదా మీ సిస్‌లాగ్ ని పరిశీలించండి.ఈ సమయం లో ఈ ప్రదర్శన అచేతనం "
+"చేయబడుతుంది.దయచేసి సమస్య ఎదురైనప్పడు GDM ను పునఃప్రారంభించండి."
+
+#: ../daemon/gdm-manager.c:766
+#, fuzzy
+msgid "No display available"
+msgstr "ఏ సెషన్ అందుబాటులోలేదు"
+
+#: ../daemon/gdm-manager.c:833 ../daemon/gdm-manager.c:1088
+msgid "No session available"
+msgstr "ఏ సెషన్ అందుబాటులోలేదు"
+
+#: ../daemon/gdm-manager.c:844
+msgid "Can only be called before user is logged in"
+msgstr "వాడుకరి లాగిన్ అవ్వడానికి ముందల మాత్రమే పిలువబడగలవు"
+
+#: ../daemon/gdm-manager.c:854
+msgid "Caller not GDM"
+msgstr "కాలర్ GDM కాదు"
+
+#: ../daemon/gdm-manager.c:864
+msgid "Unable to open private communication channel"
+msgstr ""
+
+#: ../daemon/gdm-server.c:378
+#, c-format
+msgid "Server was to be spawned by user %s but that user doesn't exist"
+msgstr "%s వాడుకరి చేత సేవిక ఉంచబడింది అయితే ఆ వాడుకరి లేదు."
+
+#: ../daemon/gdm-server.c:389 ../daemon/gdm-server.c:409
+#, c-format
+msgid "Couldn't set groupid to %d"
+msgstr "%d కు సమూహం id ని అమర్చలేము"
+
+#: ../daemon/gdm-server.c:395
+#, c-format
+msgid "initgroups () failed for %s"
+msgstr "initgroups () %s కొరకు విఫలమైంది"
+
+#: ../daemon/gdm-server.c:401
+#, c-format
+msgid "Couldn't set userid to %d"
+msgstr "%d కు వాడుకరి id ని అమర్చలేము"
+
+#: ../daemon/gdm-server.c:479
+#, c-format
+msgid "%s: Could not open log file for display %s!"
+msgstr "%s: లాగ్‌ఫైలును  %s ప్రదర్శన కొరకు తెరువలేదు!"
+
+#: ../daemon/gdm-server.c:500 ../daemon/gdm-server.c:506
+#: ../daemon/gdm-server.c:512
+#, c-format
+msgid "%s: Error setting %s to %s"
+msgstr "%s: %s ని %s కు అమర్చుటలో దోషం"
+
+#: ../daemon/gdm-server.c:532
+#, c-format
+msgid "%s: Server priority couldn't be set to %d: %s"
+msgstr "%s: సేవిక ప్రాధాన్యత %d కు అమర్చ బడదు: %s"
+
+#: ../daemon/gdm-server.c:684
+#, c-format
+msgid "%s: Empty server command for display %s"
+msgstr "%s: ఖాళీ సేవిక ఆదేశం %s ప్రదర్శన కొరకు"
+
+#: ../daemon/gdm-session-auditor.c:90
+msgid "Username"
+msgstr "వాడుకరిపేరు"
+
+#: ../daemon/gdm-session-auditor.c:91
+msgid "The username"
+msgstr "వాడుకరి పేరు"
+
+#: ../daemon/gdm-session-auditor.c:95
+msgid "Hostname"
+msgstr "అతిధేయపేరు"
+
+#: ../daemon/gdm-session-auditor.c:96
+msgid "The hostname"
+msgstr "ఆ అతిధేయపేరు"
+
+#: ../daemon/gdm-session-auditor.c:101
+msgid "Display Device"
+msgstr "ప్రదర్శించు పరికరం"
+
+#: ../daemon/gdm-session-auditor.c:102
+msgid "The display device"
+msgstr "ప్రదర్శన పరికరం"
+
+#: ../daemon/gdm-session.c:1193
+msgid "Could not create authentication helper process"
+msgstr "ధృవీకరణ సహాయక ప్రోసెస్ సృష్టించలేక పోయింది"
+
+#: ../daemon/gdm-session-worker.c:642
+msgid "Your account was given a time limit that's now passed."
+msgstr "మీ ఖాతాకు కొంత సమయం పరిమితి ఇవ్వబడినది అది ఇప్పుడు గడిచిపోయెను."
+
+#: ../daemon/gdm-session-worker.c:649
+msgid "Sorry, that didn't work. Please try again."
+msgstr "క్షమించండి, అది పనిచేయలేదు. దయచేసి మరలా ప్రయత్నించండి."
+
+#: ../daemon/gdm-session-worker.c:1010
+msgid "Username:"
+msgstr "వాడుకరిపేరు:"
+
+#: ../daemon/gdm-session-worker.c:1142
+msgid "Your password has expired, please change it now."
+msgstr "మీ సంకేతపదం గడువుముగిసినది, దాని ఇప్పుడు మార్చండి."
+
+#: ../daemon/gdm-session-worker.c:1505 ../daemon/gdm-session-worker.c:1522
+#, c-format
+msgid "no user account available"
+msgstr "ఏ వాడుకరి ఖాతా అందుబాటులోలేదు"
+
+#: ../daemon/gdm-session-worker.c:1549
+msgid "Unable to change to user"
+msgstr "వాడుకరికి మారలేదు"
+
+#: ../daemon/gdm-wayland-session.c:385
+#, fuzzy
+msgid "GNOME Display Manager Wayland Session Launcher"
+msgstr "GNOME ప్రదర్శన నిర్వహకి భాగపు పనికారిణి"
+
+#: ../daemon/gdm-xdmcp-display-factory.c:609
+msgid "Could not create socket!"
+msgstr "సాకెట్ ను సృష్టించలేదు!"
+
+#: ../daemon/gdm-x-session.c:686
+msgid "Run program through /etc/gdm/Xsession wrapper script"
+msgstr ""
+
+#: ../daemon/gdm-x-session.c:687
+msgid "Listen on TCP socket"
+msgstr ""
+
+#: ../daemon/gdm-x-session.c:698
+#, fuzzy
+msgid "GNOME Display Manager X Session Launcher"
+msgstr "GNOME ప్రదర్శన నిర్వహకి భాగపు పనికారిణి"
+
+#: ../daemon/main.c:125 ../daemon/main.c:138
+#, c-format
+msgid "Cannot write PID file %s: possibly out of disk space: %s"
+msgstr "PID ఫైల్ %s ను వ్రాయలేదు: సాద్యమైనంతవరకు డిస్కు ఖాళీ అయిపోయింది: %s"
+
+#: ../daemon/main.c:182
+#, c-format
+msgid "Failed to create ran once marker dir %s: %s"
+msgstr "ఒకసారి నడుపు మార్కర్ డైరెక్టరీ %s సృష్టించుటకు విఫలమైంది: %s"
+
+#: ../daemon/main.c:188
+#, c-format
+msgid "Failed to create LogDir %s: %s"
+msgstr "LogDir %s సృష్టించుటకు విఫలమైంది: %s"
+
+#: ../daemon/main.c:223
+#, c-format
+msgid "Can't find the GDM user '%s'. Aborting!"
+msgstr "GDM వాడుకరి '%s' ని కనుగొనలేకపోయింది. తిరస్కరించబడింది!"
+
+#: ../daemon/main.c:229
+msgid "The GDM user should not be root. Aborting!"
+msgstr "GDM వాడుకరి రూట్ అవకూడదు. తిరస్కరించబడింది!"
+
+#: ../daemon/main.c:235
+#, c-format
+msgid "Can't find the GDM group '%s'. Aborting!"
+msgstr "GDM సమూహం '%s' ని కనుగొనలేకపోయింది. తిరస్కరించబడింది."
+
+#: ../daemon/main.c:241
+msgid "The GDM group should not be root. Aborting!"
+msgstr "GDM సమూహం రూట్ కాకూడదు. తిరస్కరించబడింది!"
+
+#: ../daemon/main.c:318
+msgid "Make all warnings fatal"
+msgstr "అన్ని హెచ్చరికలను దుర్భలమైనవిగా చేయుము"
+
+#: ../daemon/main.c:319
+msgid "Exit after a time (for debugging)"
+msgstr "ఒక సమయం తరువాత నిష్క్రమించు (డీబగ్గింగ్ కొరకు)"
+
+#: ../daemon/main.c:320
+msgid "Print GDM version"
+msgstr "GDM వర్షన్ ను ముద్రించు"
+
+#: ../daemon/main.c:333
+msgid "GNOME Display Manager"
+msgstr "GNOME ప్రదర్శన నిర్వాహకి"
+
+#. make sure the pid file doesn't get wiped
+#: ../daemon/main.c:381
+msgid "Only the root user can run GDM"
+msgstr "GDM ను రూట్ వాడుకరి మాత్రమే నడుపగలరు"
+
+#. Translators: worker is a helper process that does the work
+#. of starting up a session
+#: ../daemon/session-worker-main.c:95
+msgid "GNOME Display Manager Session Worker"
+msgstr "GNOME ప్రదర్శన నిర్వహకి భాగపు పనికారిణి"
+
+#: ../data/applications/gnome-shell.desktop.in.h:1
+#: ../data/applications/gnome-shell-wayland.desktop.in.h:1
+msgid "GNOME Shell"
+msgstr "GNOME షెల్"
+
+#: ../data/applications/gnome-shell.desktop.in.h:2
+#: ../data/applications/gnome-shell-wayland.desktop.in.h:2
+msgid "Window management and compositing"
+msgstr "తెర  నిర్వాహకి మరియు కం పోస్టింగ్ "
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:1
+msgid "Whether or not to allow fingerprint readers for login"
+msgstr "వేలుముద్రను గ్రహంచి  నమోదుకి అనుగుణంగా చెయ్యలా  లేదా "
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:2
+msgid ""
+"The login screen can optionally allow users who have enrolled their "
+"fingerprints to log in using those prints."
+msgstr ""
+"లాగిన్ తెర  అభీష్టానికనుగునంగా వినియూగదారునిని నమొదు చెయుటకుముద్రను ఉపయూగించి నమొదు చెసుకొనుటకు "
+"వెలిముద్ర"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:3
+msgid "Whether or not to allow smartcard readers for login"
+msgstr "స్మార్టకర్డలును గ్రహం చి  నమోదుకి అనుగుణంగా చెయ్యలా  లేదా"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:4
+msgid ""
+"The login screen can optionally allow users who have smartcards to log in "
+"using those smartcards."
+msgstr ""
+" లాగిన్ తెర   అభీష్టానికి  అనుగుణంగా    స్మార్టకర్డలు ప్రయోగించుట  ద్వారా  అవి   కలిగివున్న వారికి "
+"ప్రవేశము కలదు "
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:5
+msgid "Whether or not to allow passwords for login"
+msgstr "లాగిన్ కొరకు సంకేతపదాలను అనుమతించాలా లేదా"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:6
+msgid ""
+"The login screen can be configured to disallow password authentication, "
+"forcing the user to use smartcard or fingerprint authentication."
+msgstr ""
+"సంకేతపదం ధృవీకరణను నిరాకరించునట్లు మీరు లాగిన్ తెరను ఆకృతీకరించవచ్చు, వాడుకరిని స్మార్టుకార్డు లేదా "
+"వేలిముద్ర ధృవీకరణను ఉపయోగించునట్లు చేయవచ్చు."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:7
+msgid "Path to small image at top of user list"
+msgstr "మొదట ఉన్న వాడుకరి జాబితాకు వెళ్ళటానికి చిన్న చిత్రాల దారి"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:8
+msgid ""
+"The login screen can optionally show a small image at the top of its user "
+"list to provide site administrators and distributions a way to provide "
+"branding."
+msgstr ""
+"లాగిన్ తెర   అభీష్టానికి  అనుగుణంగా  ఒక చిన్న  ప్రతిమ వాడుకరి  జాబితా  పైన  స్థలము ప్రకారము అమర్చుట "
+"ద్వారా విచారణకర్త లు మరియు పంచిపెట్టడము  కనిపిస్తుం ది "
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:9
+msgid ""
+"The fallback login screen can optionally show a small image at the top of "
+"its user list to provide site administrators and distributions a way to "
+"provide branding."
+msgstr ""
+"లాగిన్ తెర   అభీష్టానికి  అనుగుణంగా  ఒక చిన్న  ప్రతిమ వాడుకరి  జాబితా  పైన  స్థలము ప్రకారము అమర్చుట "
+"ద్వారా విచారణకర్త లు మరియు పంచిపెట్టడము  కనిపిస్తుం ది"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:10
+msgid "Avoid showing user list"
+msgstr "వాడుకరి  జాబితా చూపించుటను తప్పిస్తున్నది. "
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:11
+msgid ""
+"The login screen normally shows a list of available users to log in as. This "
+"setting can be toggled to disable showing the user list."
+msgstr ""
+"లాగిన్ తెర సాధారణంగా గా లాగిన్ అందుబాటులో వాడుకరుల  జాబితాను చూపిస్తుంది. ఈ సెట్టింగు వాడుకరి  జాబితా "
+"చూపిస్తున్న డిసేబుల్ టాగుల్  చేయవచ్చు."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:12
+msgid "Enable showing the banner message"
+msgstr "బ్యానర్ సందేశమును చూపుట చేతనంచేయుము"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:13
+msgid "Set to true to show the banner message text."
+msgstr "బ్యానర్ సందేశం టెక్స్ట్‍‌ను చూపుటకు సత్యంకు అమర్చుము."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:14
+msgid "Banner message text"
+msgstr "బ్యానర్ సందేశం టెక్స్ట్‍"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:15
+msgid "Text banner message to show in the login window."
+msgstr "లాగిన్ విండోనందు చూపుటకు టెక్స్ట్‍ బ్యానర్ సందేశం."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:16
+msgid "Disable showing the restart buttons"
+msgstr "పునఃప్రారంభ బటన్‌లను చూపుట అచేతనంచేయుము"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:17
+msgid "Set to true to disable showing the restart buttons in the login window."
+msgstr "లాగిన్ విండోనందు పునఃప్రారంభ బటన్‌లు చూపుట అచేతనంచేయుటకు సత్యంకు అమర్చుము."
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:18
+msgid "Number of allowed authentication failures"
+msgstr "ఎన్ని ధృవీకరణ వైఫల్యాలు అనుమతించాలి"
+
+#: ../data/org.gnome.login-screen.gschema.xml.in.h:19
+msgid ""
+"The number of times a user is allowed to attempt authentication, before "
+"giving up and going back to user selection."
+msgstr ""
+"ప్రయత్నం ఆపి మరలా వాడుకరి యెంపికకు వెళ్ళడానికి ముందు యెన్ని సార్లు వాడుకరి ధృవీకరణ కొరకు "
+"ప్రయత్నించవచ్చు."
+
+#: ../gui/simple-chooser/gdm-host-chooser-dialog.c:147
+msgid "Select System"
+msgstr "వ్యవస్థ‌ను ఎంపికచేయుము"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:215
+msgid "XDMCP: Could not create XDMCP buffer!"
+msgstr "XDMCP: XDMCP బఫర్ సృష్టించలేక పోయింది!"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:221
+msgid "XDMCP: Could not read XDMCP header!"
+msgstr "XDMCP: అనునది XDMCP యెగువ సూచీను చదువలేదు!"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:227
+msgid "XDMCP: Incorrect XDMCP version!"
+msgstr "XDMCP: సరికాని XDMCP వర్షన్!"
+
+#: ../gui/simple-chooser/gdm-host-chooser-widget.c:233
+msgid "XDMCP: Unable to parse address"
+msgstr "XDMCP: చిరునామాను పార్స్ చేయలేదు"
+
+#: ../libgdm/gdm-user-switching.c:59
+msgid "Unable to create transient display: "
+msgstr "ట్రాన్సియంట్ ప్రదర్శన సృష్టించలేక పోయింది: "
+
+#: ../libgdm/gdm-user-switching.c:90
+msgid "Unable to activate session: "
+msgstr "సెషన్ క్రియాశీలపరచలేక పోయింది: "
+
+#: ../utils/gdmflexiserver.c:45
+msgid "Only the VERSION command is supported"
+msgstr "VERSION ఆదేశము మాత్రమే మద్దతీయబడును"
+
+#: ../utils/gdmflexiserver.c:45
+msgid "COMMAND"
+msgstr "ఆదేశం"
+
+#: ../utils/gdmflexiserver.c:46 ../utils/gdmflexiserver.c:47
+#: ../utils/gdmflexiserver.c:49 ../utils/gdmflexiserver.c:50
+msgid "Ignored — retained for compatibility"
+msgstr "వదిలివేయబడింది - సారూప్యతకొరకు వుంచబడింది"
+
+#: ../utils/gdmflexiserver.c:48 ../utils/gdm-screenshot.c:43
+msgid "Debugging output"
+msgstr "అవుట్‌పుట్ ను డీబగ్‌చేస్తోంది"
+
+#: ../utils/gdmflexiserver.c:52
+msgid "Version of this application"
+msgstr "ఈ అనువర్తనం యొక్క వర్షన్"
+
+#. Option parsing
+#: ../utils/gdmflexiserver.c:137
+msgid "- New GDM login"
+msgstr "- కొత్త GDM లాగిన్"
+
+#: ../utils/gdm-screenshot.c:212
+msgid "Screenshot taken"
+msgstr "స్క్రీన్‌షాట్ తీసుకొనబడింది"
+
+#. Option parsing
+#: ../utils/gdm-screenshot.c:279
+msgid "Take a picture of the screen"
+msgstr "తెరయొక్క చిత్రమును తీసుకొనుము"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+#, fuzzy
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

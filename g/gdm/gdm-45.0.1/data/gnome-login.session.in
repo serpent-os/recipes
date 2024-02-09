@@ -1,0 +1,3 @@
+[GNOME Session]
+Name=Display Manager
+RequiredComponents=@gnome_required_components@;

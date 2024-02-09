@@ -1,0 +1,3843 @@
+# Ukrainian translation of gdm manual.
+# Copyright (C) 1999 Free Software Foundation, Inc.
+# Maxim Dziumanenko <mvd@mylinux.com.ua>, 2005.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: gdm manual\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-02 13:01+0000\n"
+"PO-Revision-Date: 2020-09-06 19:45+0300\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 20.11.70\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr ""
+"Максим Дзюманенко <dziumanenko@gmail.com>, 2004, 2006\n"
+"Юрій Чорноіван <yurchor@ukr.net>, 2020"
+
+#. (itstool) path: articleinfo/title
+#: C/index.docbook:13
+msgid "GNOME Display Manager Reference Manual"
+msgstr "Посібник з менеджера дисплеїв середовища Gnome"
+
+#. (itstool) path: revhistory/revision
+#: C/index.docbook:16
+msgid "<revnumber>0.0</revnumber> <date>2008-09</date>"
+msgstr "<revnumber>0.0</revnumber> <date>2008-09</date>"
+
+#. (itstool) path: abstract/para
+#: C/index.docbook:23
+msgid "GDM is the GNOME Display Manager, a graphical login program."
+msgstr "GDM - менеджер дисплеїв GNOME, графічна програма входу у сеанс."
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:29
+msgid ""
+"<firstname>Martin</firstname><othername>K.</othername> <surname>Petersen</"
+"surname> <affiliation> <address><email>mkp@mkp.net</email></address> </"
+"affiliation>"
+msgstr ""
+"<firstname>Martin</firstname><othername>K.</othername> <surname>Petersen</"
+"surname> <affiliation> <address><email>mkp@mkp.net</email></address> </"
+"affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:36
+msgid ""
+"<firstname>George</firstname><surname>Lebl</surname> <affiliation> "
+"<address><email>jirka@5z.com</email></address> </affiliation>"
+msgstr ""
+"<firstname>George</firstname><surname>Lebl</surname> <affiliation> "
+"<address><email>jirka@5z.com</email></address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:42
+msgid ""
+"<firstname>Jon</firstname><surname>McCann</surname> <affiliation> "
+"<address><email>mccann@jhu.edu</email></address> </affiliation>"
+msgstr ""
+"<firstname>Jon</firstname><surname>McCann</surname> <affiliation> "
+"<address><email>mccann@jhu.edu</email></address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:48
+msgid ""
+"<firstname>Ray</firstname><surname>Strode</surname> <affiliation> "
+"<address><email>rstrode@redhat.com</email></address> </affiliation>"
+msgstr ""
+"<firstname>Ray</firstname><surname>Strode</surname> <affiliation> "
+"<address><email>rstrode@redhat.com</email></address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:54
+msgid ""
+"<firstname>Brian</firstname><surname>Cameron</surname> <affiliation> "
+"<address><email>Brian.Cameron@Oracle.COM</email></address> </affiliation>"
+msgstr ""
+"<firstname>Brian</firstname><surname>Cameron</surname> <affiliation> "
+"<address><email>Brian.Cameron@Oracle.COM</email></address> </affiliation>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:61
+msgid "<year>1998</year> <year>1999</year> <holder>Martin K. Petersen</holder>"
+msgstr ""
+"<year>1998</year> <year>1999</year> <holder>Martin K. Petersen</holder>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:66
+msgid ""
+"<year>2001</year> <year>2003</year> <year>2004</year> <holder>George Lebl</"
+"holder>"
+msgstr ""
+"<year>2001</year> <year>2003</year> <year>2004</year> <holder>George Lebl</"
+"holder>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:72
+msgid ""
+"<year>2003</year> <year>2007</year> <year>2008</year> <holder>Red Hat, Inc.</"
+"holder>"
+msgstr ""
+"<year>2003</year> <year>2007</year> <year>2008</year> <holder>Red Hat, Inc.</"
+"holder>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:78
+msgid ""
+"<year>2003</year> <year>2011</year> <holder>Oracle and/or its affiliates. "
+"All rights reserved.</holder>"
+msgstr ""
+"<year>2003</year> <year>2011</year> <holder>Oracle і/або афілейовані особи. "
+"Усі права застережено.</holder>"
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:2
+msgid ""
+"Permission is granted to copy, distribute and/or modify this document under "
+"the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any "
+"later version published by the Free Software Foundation with no Invariant "
+"Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy "
+"of the GFDL at this <ulink type=\"help\" url=\"ghelp:fdl\">link</ulink> or "
+"in the file COPYING-DOCS distributed with this manual."
+msgstr ""
+"Дозволяється копіювати, розповсюджувати та/або змінювати цей документ на "
+"умовах ліцензії GNU Free Documentation License (GFDL), версії 1.1 або будь-"
+"якої старшої версії, що опублікована Free Software Foundation без "
+"інваріантних розділів, тексту титульної сторінки, та тексту фінальної "
+"сторінки. Копію GFDL можна знайти <ulink type=\"help\" url=\"ghelp:fdl\">за "
+"адресою</ulink> або у файлі COPYING-DOCS, що постачається з цією довідкою."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:12 C/legal.xml:12
+msgid ""
+"This manual is part of a collection of GNOME manuals distributed under the "
+"GFDL. If you want to distribute this manual separately from the collection, "
+"you can do so by adding a copy of the license to the manual, as described in "
+"section 6 of the license."
+msgstr ""
+"Ця довідка є частиною збірки документації з GNOME, що постачається на умовах "
+"ліцензії GFDL. Якщо ви бажаєте розповсюджувати цю довідку окремо від збірки, "
+"можете це зробити додавши до довідки копію ліцензії, як описано у пункті 6 "
+"ліцензії."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:19 C/legal.xml:19
+msgid ""
+"Many of the names used by companies to distinguish their products and "
+"services are claimed as trademarks. Where those names appear in any GNOME "
+"documentation, and the members of the GNOME Documentation Project are made "
+"aware of those trademarks, then the names are in capital letters or initial "
+"capital letters."
+msgstr ""
+"Більшість назв, що використовуються компаніями для розповсюдження їх "
+"продуктів та послуг є торговими марками. Якщо такі назви зустрічаються у "
+"документації з GNOME та учасникам проєкту документування GNOME відомо, що "
+"вони є торговими марками, тоді ці назви пишуться великими літерами або "
+"починаються з великої літери."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:35 C/legal.xml:35
+msgid ""
+"DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, "
+"EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT "
+"THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS FREE OF DEFECTS "
+"MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE "
+"RISK AS TO THE QUALITY, ACCURACY, AND PERFORMANCE OF THE DOCUMENT OR "
+"MODIFIED VERSION OF THE DOCUMENT IS WITH YOU. SHOULD ANY DOCUMENT OR "
+"MODIFIED VERSION PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT THE INITIAL "
+"WRITER, AUTHOR OR ANY CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY "
+"SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN "
+"ESSENTIAL PART OF THIS LICENSE. NO USE OF ANY DOCUMENT OR MODIFIED VERSION "
+"OF THE DOCUMENT IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER; AND"
+msgstr ""
+"ДОКУМЕНТ НАДАЄТЬСЯ \"ЯК Є\", БЕЗ БУДЬ-ЯКИХ ГАРАНТІЇ, ЯВНИХ ЧИ НЕЯВНИХ, "
+"ВКЛЮЧАЮЧИ, АЛЕ НЕ ОБМЕЖУЮЧИСЬ, ГАРАНТІЙ ЩО ЦЕЙ ДОКУМЕНТ ЧИ ЗМІНЕНА ВЕРСІЯ "
+"ДОКУМЕНТА ВІЛЬНІ ВІД ДЕФЕКТІВ, ПРИДАТНІ ДО ПРОДАЖУ, ВІДПОВІДАЮТЬ ПЕВНІЙ МЕТІ "
+"АБО НЕ ПОРУШУЮТЬ ЧИЇСЬ ПРАВА. ВЕСЬ РИЗИК ЗА ЯКІСТЬ, ТОЧНІСТЬ, ТА ЧИННІСТЬ "
+"ЦЬОГО ДОКУМЕНТУ АБО ЙОГО ЗМІНЕНИХ ВЕРСІЙ ЛЕЖИТЬ НА ВАС.  ЯКЩО БУДЬ-ЯКИЙ "
+"ДОКУМЕНТ ЧИ ЗМІНЕНА ВЕРСІЯ БУДУТЬ ВИЗНАНІ ДЕФЕКТНИМИ У БУДЬ-ЯКОМУ "
+"ВІДНОШЕННІ, ВИ (НЕ ПОЧАТКОВИЙ УКЛАДАЧ, АВТОР АБО БУДЬ-ЯКИЙ СПІВАВТОР) БЕРЕТЕ "
+"НА СЕБЕ ВИТРАТИ ЗА БУДЬ-ЯКЕ НЕОБХІДНЕ ОБСЛУГОВУВАННЯ, РЕМОНТ ЧИ ВИПРАВЛЕННЯ. "
+"ЦЯ ВІДМОВА ВІД ГАРАНТІЙ СКЛАДАЄ ВАЖЛИВУ ЧАСТИНУ ЦІЄЇ ЛІЦЕНЗІЇ. НЕ "
+"ДОПУСКАЄТЬСЯ ВИКОРИСТАННЯ ЦЬОГО ДОКУМЕНТУ АБО ЙОГО ЗМІНЕНОЇ ВЕРСІЇ БЕЗ "
+"ПРИЙНЯТТЯ ЦІЄЇ ВІДМОВИ; ТА"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:55 C/legal.xml:55
+msgid ""
+"UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING "
+"NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY "
+"CONTRIBUTOR, OR ANY DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION OF THE "
+"DOCUMENT, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE TO ANY PERSON "
+"FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF "
+"ANY CHARACTER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, "
+"WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER DAMAGES "
+"OR LOSSES ARISING OUT OF OR RELATING TO USE OF THE DOCUMENT AND MODIFIED "
+"VERSIONS OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE "
+"POSSIBILITY OF SUCH DAMAGES."
+msgstr ""
+"НІ ЗА ЯКИХ ОБСТАВИН ТА ЗА БУДЬ-ЯКОГО ЗАКОНОДАВСТВА, ЧИ ТО ГРОМАДЯНСЬКОЇ "
+"ВІДПОВІДАЛЬНОСТІ (ВКЛЮЧАЮЧИ ХАЛАТНІСТЬ), ДОГОВОРУ, ЧИ ЧОГОСЬ ІНШОГО, АВТОР, "
+"ПОЧАТКОВИЙ УКЛАДАЧ, БУДЬ-ЯКИЙ СПІВАВТОР, АБО ДИСТРИБ'ЮТОР ДОКУМЕНТУ ЧИ "
+"ЗМІНЕНОЇ ВЕРСІЇ ДОКУМЕНТУ, АБО БУДЬ-ЯКИЙ ПОСТАЧАЛЬНИК БУДЬ-ЯКОЇ З ЦИХ "
+"СТОРІН, НЕ НЕСЕ ВІДПОВІДАЛЬНІСТЬ ПЕРЕД БУДЬ-ЯКОЮ ОСОБОЮ ЗА БУДЬ-ЯКІ ПРЯМІ, "
+"НЕПРЯМІ, ОСОБЛИВІ, ВИПАДКОВІ, АБО ІСТОТНІ ЗБИТКИ БУДЬ-ЯКОГО ХАРАКТЕРУ "
+"ВКЛЮЧАЮЧИ, АЛЕ НЕ ОБМЕЖУЮЧИСЬ, ЗБИТКАМИ ВІД ВТРАТИ ПРЕСТИЖУ, ЗУПИНКИ РОБОТИ, "
+"ЗБОЇВ АБО НЕСПРАВНОСТЕЙ КОМП'ЮТЕРА, АБО БУДЬ-ЯКІ ІНШІ ЗБИТКИ АБО ВТРАТИ ЩО "
+"ВИНИКЛИ БЕЗВІДНОСНО АБО ВНАСЛІДОК ВИКОРИСТАННЯ ЦЬОГО ДОКУМЕНТУ ТА ЗМІНЕНИХ "
+"ВЕРСІЙ ЦЬОГО ДОКУМЕНТУ, НАВІТЬ ЯКЩО ЦІ СТОРОНИ, МОЖЛИВО, БУЛИ ПРОІНФОРМОВАНІ "
+"ПРО МОЖЛИВІСТЬ ТАКИХ ЗБИТКІВ."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:28 C/legal.xml:28
+msgid ""
+"DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS "
+"OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: "
+"<_:orderedlist-1/>"
+msgstr ""
+"ДОКУМЕНТ ТА ЗМІНЕНІ ВЕРСІЇ ДОКУМЕНТУ НАДАЮТЬСЯ КОРИСТУВАЧУ ЗА УМОВАМИ "
+"ЛІЦЕНЗІЇ GNU FREE DOCUMENTATION LICENSE З ПОДАЛЬШИМ РОЗУМІННЯМ ПРО ТЕ, ЩО: "
+"<_:orderedlist-1/>"
+
+#. (itstool) path: articleinfo/releaseinfo
+#. (itstool) path: sect1/para
+#: C/index.docbook:86 C/index.docbook:97
+msgid ""
+"This manual describes version 2.26.0 of the GNOME Display Manager. It was "
+"last updated on 02/10/2009."
+msgstr ""
+"У посібнику описується менеджер дисплеїв середовища Gnome версії 2.26.0. "
+"Останній раз оновлювався 02 жовтня 2009 року."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:95
+msgid "Terms and Conventions Used in This Manual"
+msgstr "Терміни та домовленості використані у цьому посібнику"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:102
+msgid ""
+"Chooser - A program used to select a remote host for managing a display "
+"remotely on the attached display (<command>gdm-host-chooser</command>)."
+msgstr ""
+"Селектор - програма, що використовується для керування дисплеєм віддаленого "
+"вузла з приєднаного дисплея (<command>gdm-host-chooser</command>)."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:107
+msgid ""
+"FreeDesktop - The organization providing desktop standards, such as the "
+"Desktop Entry Specification used by GDM. <ulink type=\"http\" url=\"http://"
+"www.freedesktop.org/\"> http://www.freedesktop.org</ulink>."
+msgstr ""
+"FreeDesktop — організація, яка надає стандарти стільничного середовища, "
+"зокрема специфікацію стільничних записів, яку використано у GDM. <ulink type="
+"\"http\" url=\"http://www.freedesktop.org/\"> http://www.freedesktop.org</"
+"ulink>."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:113
+msgid ""
+"GDM - GNOME Display Manager. Used to describe the software package as a "
+"whole."
+msgstr ""
+"GDM - менеджер дисплеїв середовища GNOME (Gnome Display Manager). Назва "
+"використовується при посиланні на програмний пакет взагалі."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:118
+msgid ""
+"Greeter - The graphical login window (provided by <command>gnome-shell</"
+"command>)."
+msgstr ""
+"Програма привітання - графічне вікно входу (його роботу забезпечує "
+"<command>gnome-shell</command>)."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:122
+msgid "PAM - Pluggable Authentication Mechanism"
+msgstr "PAM - механізм модульної автентифікації"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:126
+msgid "XDMCP - X Display Manage Protocol"
+msgstr "XDMCP - протокол керування дисплеєм X"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:130
+msgid ""
+"Xserver - An implementation of the X Window System. For example the Xorg "
+"Xserver provided by the X.org Foundation <ulink type=\"http\" url=\"http://"
+"www.x.org/\">http://www.x.org</ulink>."
+msgstr ""
+"Xserver — реалізація системи вікон X. Наприклад, Xorg з Xserver, який "
+"надається X.org Foundation <ulink type=\"http\" url=\"http://www.x.org/"
+"\">http://www.x.org</ulink>."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:136
+msgid ""
+"Paths that start with a word in angle brackets are relative to the "
+"installation prefix. I.e. <filename>&lt;share&gt;/pixmaps/</filename> refers "
+"to <filename>/usr/share/pixmaps</filename> if GDM was configured with "
+"<command>--prefix=/usr</command>."
+msgstr ""
+"Шляхи, які починаються зі слова у кутових дужках, є відносними щодо префікса "
+"встановлення. Тобто <filename>&lt;share&gt;/pixmaps/</filename> позначає "
+"<filename>/usr/share/pixmaps</filename>, якщо GDM було налаштовано з "
+"<command>--prefix=/usr</command>."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:147
+msgid "Overview"
+msgstr "Огляд"
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:150
+msgid "Introduction"
+msgstr "Введення"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:152
+msgid ""
+"The GNOME Display Manager (GDM) is a display manager that implements all "
+"significant features required for managing attached and remote displays. GDM "
+"was written from scratch and does not contain any XDM or X Consortium code."
+msgstr ""
+"GDM - менеджер дисплею для GNOME, у якому реалізовано більшість функцій, що "
+"вимагаються для керування локальними та віддаленими дисплеями. GDM створено "
+"\"з чистого аркуша\" та він не містить оригінального коду XDM / X Consortium."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:159
+msgid ""
+"Note that GDM is configurable, and many configuration settings have an "
+"impact on security. Issues to be aware of are highlighted in this document."
+msgstr ""
+"Зауважте, що GDM є придатним до налаштовування, а багато параметрів "
+"налаштувань стосуються захисту системи. Проблеми, на які слід звернути "
+"увагу, висвітлено у цьому документі."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:165
+msgid ""
+"Please note that some Operating Systems configure GDM to behave differently "
+"than the default values as described in this document. If GDM does not seem "
+"to behave as documented, then check to see if any related configuration may "
+"be different than described here."
+msgstr ""
+"Будь ласка, зверніть увагу на те, що у деяких операційних системах GDM "
+"налаштовано на поведінку, які відрізняється від типових значень, які описано "
+"у цьому документі. Якщо GDM поводить себе не так, як документовано, вам слід "
+"перевірити, чи відрізняються відповідні налаштування від описаних тут."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:172
+msgid ""
+"For further information about GDM, refer to the project website at <ulink "
+"type=\"http\" url=\"http://wiki.gnome.org/Projects/GDM/\"> http://wiki.gnome."
+"org/Projects/GDM</ulink>."
+msgstr ""
+"Щоб дізнатися більше про GDM, зверніться до сайта проєкту на <ulink type="
+"\"http\" url=\"http://wiki.gnome.org/Projects/GDM/\">http://wiki.gnome.org/"
+"Projects/GDM</ulink>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:178
+msgid ""
+"For discussion or queries about GDM, refer to the <address><email>gdm-"
+"list@gnome.org</email></address> mail list. This list is archived, and is a "
+"good resource to check to seek answers to common questions. This list is "
+"archived at <ulink type=\"http\" url=\"http://mail.gnome.org/archives/gdm-"
+"list/\"> http://mail.gnome.org/archives/gdm-list/</ulink> and has a search "
+"facility to look for messages with keywords."
+msgstr ""
+"Якщо хочете обговорити щось щодо GDM або маєте запити щодо можливостей, "
+"надішліть повідомлення до списку листування <address><email>gdm-list@gnome."
+"org</email></address>. Для цього списку ведеться архів — вам варто пошукати "
+"відповіді на типові питання у цьому архіві. З архівом списку листування "
+"можна ознайомитися <ulink type=\"http\" url=\"http://mail.gnome.org/archives/"
+"gdm-list/\">тут</ulink>. Передбачено можливості пошуку повідомлень за "
+"ключовими словами."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:188
+msgid ""
+"Please submit any bug reports or enhancement requests to the \"gdm\" "
+"category in <ulink type=\"http\" url=\"http://bugzilla.gnome.org/\"> http://"
+"bugzilla.gnome.org</ulink>."
+msgstr ""
+"Будь ласка, надсилайте усі звіти щодо вад і пропозиції щодо удосконалення до "
+"категорії «gdm» на сайті <ulink type=\"http\" url=\"http://bugzilla.gnome."
+"org/\">http://bugzilla.gnome.org</ulink>."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:197
+msgid "Interface Stability"
+msgstr "Стабільність інтерфейсу"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:199
+msgid ""
+"GDM 2.20 and earlier supported stable configuration interfaces. However, the "
+"codebase was completely rewritten for GDM 2.22, and is not completely "
+"backward compatible with older releases. This is in part because things work "
+"differently, so some options just don't make sense, in part because some "
+"options never made sense, and in part because some functionality has not "
+"been reimplemented yet."
+msgstr ""
+"У GDM 2.20 і попередніх версіях підтримувалася стабільність інтерфейсів "
+"налаштувань. Втім, у версії GDM 2.22 код було повністю переписано — його "
+"повну сумісність із попередніми версіями було втрачено. Почасти, причиною "
+"цього є те, що він працює інакше, отже деякі параметри втратили сенс, деякі "
+"ніколи не мали сенсу, а функціональні можливості, які було пов'язано із "
+"деякими параметрами, ще не було реалізовано."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:208
+msgid ""
+"Interfaces which continue to be supported in a stable fashion include the "
+"Init, PreSession, PostSession, PostLogin, and Xsession scripts. Some daemon "
+"configuration options in the <filename>&lt;etc&gt;/gdm/custom.conf</"
+"filename> file continue to be supported. Also, the <filename>~/.dmrc</"
+"filename>, and face browser image locations are still supported."
+msgstr ""
+"Стабільними інтерфейсами, підтримку яких продовжено, є Init, PreSession, "
+"PostSession, PostLogin та скрипти Xsession. Продовжено підтримку деяких "
+"параметрів налаштувань у файлі <filename>&lt;etc&gt;/gdm/custom.conf</"
+"filename>. Крім того, продовжено підтримку <filename>~/.dmrc</filename> та "
+"каталогів зображень облич."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:217
+msgid ""
+"GDM 2.20 and earlier supported the ability to manage multiple displays with "
+"separate graphics cards, such as used in terminal server environments, login "
+"in a window via a program like Xnest or Xephyr, the gdmsetup program, XML-"
+"based greeter themes, and the ability to run the XDMCP chooser from the "
+"login screen. These features were not added back during the 2.22 rewrite."
+msgstr ""
+"У GDM 2.20 та попередніх версіях було передбачено можливість керувати "
+"декількома дисплеями із окремими графічними картками, такими, які "
+"використовуються у середовищах термінальних серверів, вхід у вікні за "
+"допомогою програми, подібної до Xnest або Xephyr, програма gdmsetup, теми "
+"вітання на основі XML та можливість запускати засіб вибору XDMCP з вікна "
+"вітання. Ці можливості не було додано під час переписування у версії 2.22."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:229
+msgid "Functional Description"
+msgstr "Функціональний опис"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:240
+msgid ""
+"GDM is responsible for managing displays on the system. This includes "
+"authenticating users, starting the user session, and terminating the user "
+"session. GDM is configurable and the ways it can be configured are described "
+"in the \"Configuring GDM\" section of this document. GDM is also accessible "
+"for users with disabilities."
+msgstr ""
+"GDM відповідає за керування дисплеями у системі. Це стосується розпізнавання "
+"користувачів, запуску сеансів користувачів та переривання сеансів "
+"користувачів. GDM можна налаштовувати. Способи налаштовування описано у "
+"розділі «Налаштовування GDM» цього документа. Крім того, у GDM передбачено "
+"засоби доступності для користувачів із обмеженими можливостями."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:248
+msgid ""
+"GDM provides the ability to manage the main console display, and displays "
+"launched via VT. It is integrated with other programs, such as the Fast User "
+"Switch Applet (FUSA) and gnome-screensaver to manage multiple displays on "
+"the console via the Xserver Virtual Terminal (VT) interface. It also can "
+"manage XDMCP displays."
+msgstr ""
+"GDM надає можливість керувати дисплеєм головної консолі та дисплеями, які "
+"запущено за допомогою віртуальних терміналів. Його інтегровано із іншими "
+"програмами, зокрема Fast User Switch Applet (FUSA) та gnome-screensaver для "
+"керування декількома дисплеями на консолі за допомогою інтерфейсу "
+"віртуального термінала Xserver. Він також може керувати дисплеями XDMCP."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:256
+msgid ""
+"Regardless of the display type, GDM will do the following when it manages "
+"the display. It will start an Xserver process, then run the <filename>Init</"
+"filename> script as the root user, and start the greeter program on the "
+"display."
+msgstr ""
+"Незалежно від типу дисплея, GDM виконує описані такі дій при керуванні "
+"дисплеєм: запускає процес Xserver, далі запускає скрипт <filename>Init</"
+"filename> від імені користувача root і запускає програму вітання на дисплеї."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:263
+msgid ""
+"The greeter program is run as the unprivileged \"gdm\" user/group. This user "
+"and group are described in the \"Security\" section of this document. The "
+"main functions of the greeter program are to provide a mechanism for "
+"selecting an account for log in and to drive the dialogue between the user "
+"and system when authenticating that account. The authentication process is "
+"driven by Pluggable Authentication Modules (PAM). The PAM modules determine "
+"what prompts (if any) are shown to the user to authenticate. On the average "
+"system, the greeter program will request a username and password for "
+"authentication. However some systems may be configured to use supplemental "
+"mechanisms such as a fingerprint or SmartCard readers. GDM can be configured "
+"to support these alternatives in parallel with greeter login extensions and "
+"the <command>--enable-split-authentication</command> <filename>./configure</"
+"filename> option, or one at a time via system PAM configuration."
+msgstr ""
+"Програма вітання запускається від імені непривілейованих користувача і групи "
+"«gdm». Цього користувача і групу описано у розділі «Безпека» цього "
+"підручника. Основним призначенням програми вітання є надання механізму "
+"вибору облікового запису для входу до системи і ведення діалогу між "
+"користувачем і системою при розпізнаванні для входу до цього облікового "
+"запису. За процес розпізнавання відповідають вставні модулі розпізнавання "
+"(PAM). Модулі PAM визначають, які запити буде показано користувачеві для "
+"розпізнавання і чи взагалі буде показано якісь запити. У типовій системі "
+"програма вітання попросить ввести для розпізнавання ім'я користувача і "
+"пароль. Втім, деякі системи може бути налаштовано на використання додаткових "
+"механізмів, зокрема відбитків пальців або карток SmartCard. GDM може бути "
+"налаштовано на підтримку цих альтернатив паралельно до розширень входу до "
+"системи програми вітання за допомогою параметра <command>--enable-split-"
+"authentication</command> скрипту <filename>./configure</filename> або одного "
+"зі способів за допомогою налаштувань загальносистемних PAM."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:282
+msgid ""
+"The smartcard extension can be enabled or disabled via the <filename>org."
+"gnome.display-manager.extensions.smartcard.active</filename> gsettings key."
+msgstr ""
+"Розширення для роботи зі смарт-картками можна увімкнути або вимкнути за "
+"допомогою ключа gsettings <filename>org.gnome.display-manager.extensions."
+"smartcard.active</filename>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:288
+msgid ""
+"Likewise, the fingerprint extension can be enabled or disabled via the "
+"<filename>org.gnome.display-manager.extensions.fingerprint.active</filename> "
+"gsettings key."
+msgstr ""
+"Так само, розширення для роботи із відбитками пальців можна увімкнути або "
+"вимкнути за допомогою ключа gsettings <filename>orggnome.display-manager."
+"extensions.fingerprint.active</filename>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:294
+msgid ""
+"GDM and PAM can be configured to not require any input, which will cause GDM "
+"to automatically log in and simply start a session, which can be useful for "
+"some environments, such as single user systems or kiosks."
+msgstr ""
+"GDM і PAM можна налаштувати так, щоб вхід до системи не обумовлювався "
+"ніякими діями користувача, тобто GDM виконував автоматичних вхід до системи "
+"і просто розпочинав сеанс — це може бути корисним для деяких середових, "
+"зокрема систем із одним користувачем або електронних кіосків."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:301
+msgid ""
+"In addition to authentication, the greeter program allows the user to select "
+"which session to start and which language to use. Sessions are defined by "
+"files that end in the .desktop suffix and more information about these files "
+"can be found in the \"GDM User Session and Language Configuration\" section "
+"of this document. By default, GDM is configured to display a face browser so "
+"the user can select their user account by clicking on an image instead of "
+"having to type their username. GDM keeps track of the user's default session "
+"and language in the user's <filename>~/.dmrc</filename> and will use these "
+"defaults if the user did not pick a session or language in the login GUI."
+msgstr ""
+"Окрім розпізнавання, програма вітання надає користувачеві можливість "
+"вибрати, який з сеансів слід розпочати і якою мовою інтерфейсу слід "
+"користуватися. Сеанси визначаються файлами із суфіксом назви .desktop. "
+"Докладніші відомості щодо цих файлів можна знайти у розділі «Налаштовування "
+"сеансу користувача і мови GDM» цього підручника. Типово, GDM налаштовано на "
+"показ навігатора обличчями, за допомогою якого користувач може вибрати свій "
+"обліковий запис натисканням зображення, замість введення свого імені "
+"користувача. GDM стежить за типовим сеансом і мовою інтерфейсу користувача "
+"за допомогою файла <filename>~/.dmrc</filename> і використає типові "
+"значення, якщо користувач не вибере сеансу або мови у графічному інтерфейсі "
+"для входу до системи."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:314
+msgid ""
+"After authenticating a user, the daemon runs the <filename>PostLogin</"
+"filename> script as root, then runs the <filename>PreSession</filename> "
+"script as root. After running these scripts, the user session is started. "
+"When the user exits their session, the <filename>PostSession</filename> "
+"script is run as root. These scripts are provided as hooks for distributions "
+"and end-users to customize how sessions are managed. For example, using "
+"these hooks you could set up a machine which creates the user's $HOME "
+"directory on the fly, and erases it on logout. The difference between the "
+"<filename>PostLogin</filename> and <filename>PreSession</filename> scripts "
+"is that <filename>PostLogin</filename> is run before the pam_open_session "
+"call so is the right place to do anything which should be run before the "
+"user session is initialized. The <filename>PreSession</filename> script is "
+"called after session initialization."
+msgstr ""
+"Після розпізнавання користувача фонова служба запускає скрипт "
+"<filename>PostLogin</filename> від імені користувача root, потім запускає "
+"скрипт <filename>PreSession</filename> від імені користувача root. Після "
+"завершення роботи цих скриптів буде запущено сеанс користувача. Якщо "
+"користувач вийде з сеансу, буде запущено скрипт <filename>PostSession</"
+"filename> від імені користувача root. Це скрипти призначено для "
+"налаштовування авторами дистрибутивів та кінцевими користувачами керування "
+"сеансами. Наприклад, за допомогою цих скриптів ви можете налаштувати машину, "
+"яка створюватиме «на льоту» каталог користувача $HOME і витиратиме його "
+"після виходу з системи.. Різниця між скриптами <filename>PostLogin</"
+"filename> і <filename>PreSession</filename> полягає у тому, що "
+"<filename>PostLogin</filename> запускається до виклику pam_open_session, "
+"тому це саме те місце, у якому слід визначати усе, що має бути запущено до "
+"того, як буде ініціалізовано сеанс користувача. Скрипт <filename>PreSession</"
+"filename> буде викликано після ініціалізації сеансу."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:334
+msgid "Greeter Panel"
+msgstr "Панель вітання"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:335
+msgid ""
+"The GDM greeter program displays a panel docked at the bottom of the screen "
+"which provides additional functionality. When a user is selected, the panel "
+"allows the user to select which session, language, and keyboard layout to "
+"use after logging in. The keyboard layout selector also changes the keyboard "
+"layout used when typing your password. The panel also contains an area for "
+"login services to leave status icons. Some example status icons include a "
+"battery icon for current battery usage, and an icon for enabling "
+"accessibility features. The greeter program also provides buttons which "
+"allow the user to shutdown or restart the system. It is possible to "
+"configure GDM to not provide the shutdown and restart buttons, if desired. "
+"GDM can also be configured via PolicyKit (or via RBAC on Oracle Solaris) to "
+"require the user have appropriate authorization before accepting the "
+"shutdown or restart request."
+msgstr ""
+"Програма вітання GDM показує панель, яку пришвартовано у нижній частині "
+"екрана і яка надає у ваше розпорядження додаткові функціональні можливості. "
+"Якщо вибрано користувача, панель надає змогу користувачеві вибрати, який "
+"сеанс, мову і розкладку клавіатури слід використовувати після входу до "
+"системи. Засіб вибору розкладки клавіатури змінює розкладку, у якій "
+"вводитиметься ваш пароль. Крім того, на панелі міститься область для служб "
+"входу до системи, де вони можуть розташовувати піктограми стану. Прикладами "
+"піктограм стану є піктограма акумулятора для показу поточного стану заряду "
+"акумулятора та піктограма для вмикання можливостей доступності. Також "
+"програма вітання забезпечує роботу кнопок, за допомогою яких користувач може "
+"вимикати або перезапускати систему. GDM можна налаштувати так, щоб кнопки "
+"вимикання і перезапуску не було показано, якщо ви так хочете. Крім того, GDM "
+"можна налаштувати з використанням PolicyKit (або RBAC у Oracle Solaris) так, "
+"щоб програма вимагала від користувача належного уповноваження у системі, "
+"перш ніж приймати запит щодо вимикання або перезапуску."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:352
+msgid ""
+"Note that keyboard layout features are only available on systems that "
+"support libxklavier."
+msgstr ""
+"Зауважте, що можливості розкладки клавіатури доступі лише у системах із "
+"підтримкою libxklavier."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:359
+msgid "Accessibility"
+msgstr "Спеціальні можливості"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:361
+msgid ""
+"GDM supports \"Accessible Login\", allowing users to log into their desktop "
+"session even if they cannot easily use the screen, mouse, or keyboard in the "
+"usual way. Accessible Technology (AT) features such as an on-screen "
+"keyboard, screen reader, screen magnifier, and Xserver AccessX keyboard "
+"accessibility are available. It is also possible to enable large text or "
+"high contrast icons and controls, if needed. Refer to the \"Accessibility "
+"Configuration\" section of the document for more information how various "
+"accessibility features can be configured."
+msgstr ""
+"У GDM передбачено підтримку «Доступного входу», за допомогою якого "
+"користувачі можуть входити до сеансу стільничного середовища, навіть якщо їм "
+"непросто користуватися екраном, мишею або клавіатурою у звичайний спосіб. "
+"Можна скористатися можливостям доступних технологій, зокрема екранною "
+"клавіатура, засобом читання з екрана, екранною лупа та засобами доступності "
+"клавіатури AccessX Xserver. Також можна увімкнути збільшення тексту або "
+"висококонтрастні піктограми та засоби керування, якщо потрібно. Зверніться "
+"до розділу «Налаштовування доступності» цього підручника, щоб дізнатися "
+"більше про різноманітні можливості доступності, які можна налаштувати."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:373
+msgid ""
+"On some Operating Systems, it is necessary to make sure that the GDM user is "
+"a member of the \"audio\" group for AT programs that require audio output "
+"(such as text-to-speech) to be functional."
+msgstr ""
+"У деяких операційних системах слід переконатися, що користувач GDM є "
+"учасником групи «audio», щоб програми доступності, які потребують виведення "
+"звукових даних (зокрема програми озвучення тексту) могли працювати належним "
+"чином."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:381
+msgid "The GDM Face Browser"
+msgstr "Переглядач портретів GDM"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:383
+msgid ""
+"The Face Browser is the interface which allows users to select their "
+"username by clicking on an image. This feature can be enabled or disabled "
+"via the org.gnome.login-screen disable-user-list GSettings key and is on by "
+"default. When disabled, users must type their complete username by hand. "
+"When enabled, it displays all local users which are available for login on "
+"the system (all user accounts defined in the /etc/passwd file that have a "
+"valid shell and sufficiently high UID) and remote users that have recently "
+"logged in. The face browser in GDM 2.20 and earlier would attempt to display "
+"all remote users, which caused performance problems in large, enterprise "
+"deployments."
+msgstr ""
+"Переглядач портретів — інтерфейс, за допомогою якого користувачі можуть "
+"вибирати обліковий запис клацанням на зображенні. Цю можливість можна "
+"увімкнути або вимкнути за допомогою ключа GSettings org.gnome.login-screen "
+"disable-user-list. Типово, її увімкнено. Якщо можливість вимкнено, "
+"користувачам доведеться вводити ім'я користувача повністю вручну. Якщо "
+"можливість увімкнено, буде показано список усіх локальних користувачів, від "
+"імені яких можна увійти до системи (усіх облікових записів користувачів, які "
+"визначено у файлі /etc/passwd, які мають коректний запис оболонки і "
+"достатньо велике значення UID), і віддалених користувачів, які нещодавно "
+"входили до системи. Переглядач портретів у GDM 2.20 та попередніх версіях "
+"намагався показати усіх віддалених користувачів, що спричиняло проблеми зі "
+"швидкодією у великих промислових конфігураціях."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:397
+msgid ""
+"The Face Browser is configured to display the users who log in most "
+"frequently at the top of the list. This helps to ensure that users who log "
+"in frequently can quickly find their login image."
+msgstr ""
+"Переглядач портретів налаштовано на показ зображень користувачів, які "
+"найчастіше входять до системи, на початку списку. Це спрощує швидке "
+"знаходження потрібного зображення користувачами, які найчастіше працюють у "
+"системі."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:403
+msgid ""
+"The Face Browser supports \"type-ahead search\" which dynamically moves the "
+"face selection as the user types to the corresponding username in the list. "
+"This means that a user with a long username will only have to type the first "
+"few characters of the username before the correct item in the list gets "
+"selected."
+msgstr ""
+"У Переглядачі портретів передбачено підтримку «випереджального пошуку під "
+"час введення» — алгоритму, який динамічно переводить позначення зображення "
+"паралельно із введенням користувачем відповідного імені користувача зі "
+"списку. Це означає, що користувач із довгим іменем може ввести лише декілька "
+"перших літер у назві облікового запису, а програма автоматично вибере "
+"належний пункт у списку."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:411
+msgid ""
+"The icons used by GDM can be installed globally by the sysadmin or can be "
+"located in the user's home directories. If installed globally they should be "
+"in the <filename>&lt;share&gt;/pixmaps/faces/</filename> directory and the "
+"filename should be the name of the user. Face image files should be a "
+"standard image that GTK+ can read, such as PNG or JPEG. Face icons placed in "
+"the global face directory must be readable to the GDM user."
+msgstr ""
+"Піктограми, які використовуються у GDM може бути встановлено на "
+"загальносистемному рівні адміністратором системи або може бути знайдено у "
+"домашніх каталогах користувачів. Якщо піктограми встановлено на "
+"загальносистемному рівні, вони зберігатимуться у каталозі <filename>&lt;"
+"share&gt;/pixmaps/faces/</filename> під назвами, які збігаються із назвами "
+"облікових записів користувачів. Файли зображень облич мають бути звичайними "
+"зображеннями, які може читати GTK+, зокрема PNG або JPEG. Піктограми облич з "
+"загальносистемного каталогу облич мають бути придатними до читання "
+"користувачем GDM."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:427
+msgid ""
+"If there is no global icon for the user, GDM will look in the user's $HOME "
+"directory for the image file. GDM will first look for the user's face image "
+"in <filename>~/.face</filename>. If not found, it will try <filename>~/.face."
+"icon</filename>. If still not found, it will use the value defined for "
+"\"face/picture=\" in the <filename>~/.gnome2/gdm</filename> file."
+msgstr ""
+"Якщо для користувача не буде знайдено загальносистемної піктограми, GDM "
+"виконає пошук файла зображення піктограми у каталозі $HOME користувача. "
+"Спочатку GDM шукатиме зображення обличчя користувача у <filename>~/.face</"
+"filename>. Якщо зображення не буде знайдено, програма спробує знайти його у "
+"<filename>~/.face.icon</filename>. Якщо і там зображення не буде знайдено, "
+"буде використано значення, яке визначено для «face/picture=» у файлі "
+"<filename>~/.gnome2/gdm</filename>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:436
+msgid ""
+"If a user has no defined face image, GDM will use the \"stock_person\" icon "
+"defined in the current GTK+ theme. If no such image is defined, it will "
+"fallback to a generic face image."
+msgstr ""
+"Якщо для користувача не визначено зображення обличчя, GDM скористається "
+"піктограмою «stock_person», яку визначено у поточній темі GTK+. Якщо таке "
+"зображення не визначено, програма скористається резервним типовим "
+"зображенням обличчя."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:442
+msgid ""
+"Please note that loading and scaling face icons located in remote user home "
+"directories can be a very time-consuming task. Since it not practical to "
+"load images over NIS or NFS, GDM does not attempt to load face images from "
+"remote home directories."
+msgstr ""
+"Будь ласка, зауважте, що завантаження і масштабування піктограм облич, які "
+"зберігаються у віддалених домашніх каталогах користувачів є доволі витратним "
+"з точки зору часу. Оскільки завантаження зображень за допомогою NIS або NFS "
+"не є доцільним, GDM не робитиме спроб завантажити зображення облич з "
+"віддалених домашніх каталогів."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:449
+msgid ""
+"When the browser is turned on, valid usernames on the computer are exposed "
+"for everyone to see. If XDMCP is enabled, then the usernames are exposed to "
+"remote users. This, of course, limits security somewhat since a malicious "
+"user does not need to guess valid usernames. In some very restrictive "
+"environments the face browser may not be appropriate."
+msgstr ""
+"Якщо переглядач увімкнено, коректні імена користувачів комп'ютера буде "
+"показано будь-кому. Якщо увімкнено XDMCP, імена користувачів буде показано "
+"віддаленим користувачам. Це, звичайно ж, дещо послаблює захист системи, "
+"оскільки зловмиснику не доведеться вгадувати коректні імена користувачів "
+"системи. У деяких середовищах із суворими правилами безпеки переглядач "
+"портретів може бути неприйнятним до використання."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:461
+msgid "XDMCP"
+msgstr "XDMCP"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:470
+msgid ""
+"The GDM daemon can be configured to listen for and manage X Display Manage "
+"Protocol (XDMCP) requests from remote displays. By default XDMCP support is "
+"turned off, but can be enabled if desired. If GDM is built with TCP Wrapper "
+"support, then the daemon will only grant access to hosts specified in the "
+"GDM service section in the TCP Wrappers configuration file."
+msgstr ""
+"Фонову службу GDM можна налаштувати на очікування та керування запитами X "
+"Display Manage Protocol (XDMCP) з віддалених комп'ютерів. Типово, підтримку "
+"XDMCP вимкнено, але, якщо потрібно, її можна увімкнути. Якщо GDM зібрано із "
+"підтримкою обгортки TCP, фонова служба надаватиме доступ лише вузлам, які "
+"вказано у розділі служби GDM у файлі налаштувань обгорток TCP."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:479
+msgid ""
+"GDM includes several measures making it more resistant to denial of service "
+"attacks on the XDMCP service. A lot of the protocol parameters, handshaking "
+"timeouts, etc. can be fine tuned. The default configuration should work "
+"reasonably on most systems."
+msgstr ""
+"GDM включає декілька заходів, які роблять його більш стійким до атак типу "
+"«відмова у обслуговуванні» на службу XDMCP. Можна налаштувати значну "
+"кількість параметрів протоколу, час очікування з'єднання тощо. Типові "
+"налаштування мають добре працювати у більшості систем."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:486
+msgid ""
+"GDM by default listens for XDMCP requests on the normal UDP port used for "
+"XDMCP, port 177, and will respond to QUERY and BROADCAST_QUERY requests by "
+"sending a WILLING packet to the originator."
+msgstr ""
+"Типово, GDM очікує на запити XDMCP на звичайному порту UDP, який "
+"використовується для XDMCP, порту 177, і відповідає на запити QUERY і "
+"BROADCAST_QUERY надсиланням пакета WILLING на комп'ютер, з якого походить "
+"запит."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:492
+msgid ""
+"GDM can also be configured to honor INDIRECT queries and present a host "
+"chooser to the remote display. GDM will remember the user's choice and "
+"forward subsequent requests to the chosen manager. GDM also supports an "
+"extension to the protocol which will make it forget the redirection once the "
+"user's connection succeeds. This extension is only supported if both daemons "
+"are GDM. It is transparent and will be ignored by XDM or other daemons that "
+"implement XDMCP."
+msgstr ""
+"GDM можна налаштувати на обробку INDIRECT запитів та відображення селектора "
+"вузлів на віддаленому дисплеї. GDM запам'ятовує вибір користувача та "
+"пересилає наступні запити вибраному менеджеру. GDM також підтримує "
+"розширення до протоколу, яке змушує забути про перенаправлення одразу після "
+"успішного з'єднання користувача. Це розширення підтримується якщо з обох "
+"сторін сервери GDM. Розширення прозоре і ігнорується XDM та іншими "
+"серверами, що підтримують XDMCP."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:502
+msgid ""
+"If XDMCP seems to not be working, make sure that all machines are specified "
+"in <filename>/etc/hosts</filename>."
+msgstr ""
+"Якщо XDMCP не працює, переконайтеся, що усі адреси вказано у <filename>/etc/"
+"hosts</filename>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:507
+msgid ""
+"Refer to the \"Security\" section for information about security concerns "
+"when using XDMCP."
+msgstr ""
+"Зверніться до розділу «Безпека», щоб дізнатися більше про проблеми захисту "
+"при використанні XDMCP."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:514
+msgid "Logging"
+msgstr "Реєстрація подій"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:516
+msgid ""
+"GDM uses syslog to log errors and status. It can also log debugging "
+"information, which can be useful for tracking down problems if GDM is not "
+"working properly. Debug output can be enabled by setting the debug/Enable "
+"key to \"true\" in the <filename>&lt;etc&gt;/gdm/custom.conf</filename> file."
+msgstr ""
+"Для записування повідомлень щодо помилок і стану GDM використовує системний "
+"журнал (syslog). Крім того, програма може записувати діагностичний журнал, "
+"який може стати у пригоді для визначення причин проблем із неналежною "
+"роботою GDM. Увімкнути виведення діагностичних даних можна встановленням "
+"значення «true» для ключа debug/Enable у файлі <filename>&lt;etc&gt;/gdm/"
+"custom.conf</filename>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:524
+msgid ""
+"Output from the various Xservers is stored in the GDM log directory, which "
+"is normally <filename>&lt;var&gt;/log/gdm/</filename>. Any Xserver messages "
+"are saved to a file associated with the display value, <filename>&lt;"
+"display&gt;.log</filename>."
+msgstr ""
+"Виведені різноманітними серверами X дані зберігаються у каталозі журналу "
+"GDM, яким зазвичай є <filename>&lt;var&gt;/log/gdm/</filename>. Усі "
+"повідомлення сервера X зберігаються у файлі, який пов'язано зі значенням "
+"назви дисплея, <filename>&lt;дисплей&gt;.log</filename>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:531
+msgid ""
+"The session output is piped through the GDM daemon to the <filename>~/"
+"<replaceable>$XDG_CACHE_HOME</replaceable>/gdm/session.log</filename> file "
+"which usually expands to <filename>~/.cache/gdm/session.log</filename>. The "
+"file is overwritten on each login, so logging out and logging back into the "
+"same user via GDM will cause any messages from the previous session to be "
+"lost."
+msgstr ""
+"Дані, виведені сеансом, передаються каналом крізь фонову службу GDM до файла "
+"<filename>~/<replaceable>$XDG_CACHE_HOME</replaceable>/gdm/session.log</"
+"filename>, яким зазвичай є файл <filename>~/.cache/gdm/session.log</"
+"filename>. Файл перезаписується під час кожного входу до системи, отже вихід "
+"і вхід до того самого облікового запису за допомогою GDM призведе до втрати "
+"усіх повідомлень з попереднього сеансу."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:540
+msgid ""
+"Note that if GDM can not create this file for some reason, then a fallback "
+"file will be created named <filename>~/<replaceable>$XDG_CACHE_HOME</"
+"replaceable>/gdm/session.log.XXXXXXXX</filename> where the "
+"<filename>XXXXXXXX</filename> are some random characters."
+msgstr ""
+"Зауважте, що якщо GDM з якоїсь причини не вдасться створити цей файл, буде "
+"створено файл із резервною назвою <filename>~/<replaceable>$XDG_CACHE_HOME</"
+"replaceable>/gdm/session.log.XXXXXXXX</filename>, де <filename>XXXXXXXX</"
+"filename> — якісь випадкові символи."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:548
+msgid "Fast User Switching"
+msgstr "Швидке перемикання користувачів"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:550
+msgid ""
+"GDM allows multiple users to be logged in at the same time. After one user "
+"is logged in, additional users can log in via the User Switcher on the GNOME "
+"Panel, or from the \"Switch User\" button in Lock Screen dialog of GNOME "
+"Screensaver. The active session can be changed back and forth using the same "
+"mechanism. Note that some distributions may not add the User Switcher to the "
+"default panel configuration. It can be added using the panel context menu."
+msgstr ""
+"GDM уможливлює одночасну роботу у системі декількох користувачів. Після "
+"входу до системи одного користувача додаткові користувачі можуть увійти за "
+"допомогою механізму перемикання користувачів з панелі GNOME або після "
+"натискання кнопки «Перемкнути користувача» у вікні блокування екрана засобу "
+"збереження екрана GNOME. Змінити активний сеанс можна за допомогою цього ж "
+"механізму. Зауважте, що у деяких дистрибутивах кнопку перемикання "
+"користувачів не додають до типової панелі. Додати цю кнопку можна за "
+"допомогою контекстного меню панелі."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:559
+msgid ""
+"Note this feature is available on systems that support Virtual Terminals. "
+"This feature will not function if Virtual Terminals is not available."
+msgstr ""
+"Зауважте, що доступ до цієї можливості надається у системах, де є підтримка "
+"віртуальних терміналів. Цією можливістю не можна буде скористатися, якщо у "
+"системі не реалізовано підтримку віртуальних терміналів."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:570
+msgid "Security"
+msgstr "Безпека"
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:573
+msgid "The GDM User And Group"
+msgstr "Користувач і група GDM"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:575
+msgid ""
+"For security reasons a dedicated user and group id are recommended for "
+"proper operation. This user and group are normally \"gdm\" on most systems, "
+"but can be configured to any user or group. All GDM GUI programs are run as "
+"this user, so that the programs which interact with the user are run in a "
+"sandbox. This user and group should have limited privilege."
+msgstr ""
+"З міркувань безпеки, для належної роботи рекомендуємо створити спеціалізовані"
+" ідентифікатори користувача і групи. У більшості системи цим користувачем і"
+" групою є «gdm», але можна вказати будь-якого користувача і будь-яку групу."
+" Усі програми GDM із графічним інтерфейсом буде запущено від імені цього"
+" користувача — усі програми, які взаємодіятимуть із користувачем буде"
+" запущено у певній «пісочниці». Відповідний користувач та група повинні мати"
+" доволі обмежені права доступу."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:584
+msgid ""
+"The only special privilege the \"gdm\" user requires is the ability to read "
+"and write Xauth files to the <filename>&lt;var&gt;/run/gdm</filename> "
+"directory. The <filename>&lt;var&gt;/run/gdm</filename> directory should "
+"have root:gdm ownership and 1777 permissions."
+msgstr ""
+"Єдиними особливими правами доступу, які потрібні для роботи користувача"
+" «gdm», є можливості читання файлів Xauth з каталогу <filename"
+">&lt;var&gt;/run/gdm</filename> і запису файлів до цього каталогу. Каталог <"
+"filename>&lt;var&gt;/run/gdm</filename> повинен належати користувачеві і"
+" групі root:gdm і мати права доступу 1777."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:592
+msgid ""
+"You should not, under any circumstances, configure the GDM user/group to a "
+"user which a user could easily gain access to, such as the user "
+"<filename>nobody</filename>. Any user who gains access to an Xauth key can "
+"snoop on and control running GUI programs running in the associated session "
+"or perform a denial-of-service attack on it. It is important to ensure that "
+"the system is configured properly so that only the \"gdm\" user has access "
+"to these files and that it is not easy to login to this account. For "
+"example, the account should be setup to not have a password or allow non-"
+"root users to login to the account."
+msgstr ""
+"За жодних обставин не налаштовуйте для користувача і групи GDM значення"
+" запису користувача, доступ до даних якого просто набути, зокрема користувача"
+" <filename>nobody</filename>. Будь-який користувач, який отримає доступ до"
+" ключа Xauth, може проникнути до системи і керувати запущеними програмами з"
+" графічним інтерфейсом, які запущено у пов'язаному сеансі або виконати атаку,"
+" метою якої є приведення системи у недієздатний стан. Важливо налаштувати"
+" систему належним чином, щоб до цих файлів мав доступу лише користувач «gdm»,"
+" і утруднити вхід до системи з цього облікового запису. Наприклад, обліковий"
+" запис можна налаштувати так, щоб у нього не було пароля, і заборонити"
+" користувачам, відмінним від root, входити до облікового запису."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:605
+msgid ""
+"The GDM greeter configuration is stored in GConf. To allow the GDM user to "
+"be able to write configuration, it is necessary for the \"gdm\" user to have "
+"a writable $HOME directory. Users may configure the default GConf "
+"configuration as desired to avoid the need to provide the \"gdm\" user with "
+"a writable $HOME directory. However, some features of GDM may be disabled if "
+"it is unable to write state information to GConf configuration."
+msgstr ""
+"Налаштування програми вітання GDM зберігаються у GConf. Щоб користувач GDM"
+" міг записувати налаштування, користувач «gdm» повинен мати придатний до"
+" запису каталог $HOME. Користувачі можуть вказати типові налаштування GConf"
+" бажаним чином, щоб уникнути потреби у наданні користувачеві «gdm» придатного"
+" до запису каталогу $HOME. Втім, деякі можливості GDM може бути вимкнено,"
+" якщо програм не зможе записувати дані щодо стану до налаштувань GConf."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:617
+msgid "PAM"
+msgstr "PAM"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:619
+msgid ""
+"GDM uses PAM for login authentication. PAM stands for Pluggable "
+"Authentication Module, and is used by most programs that request "
+"authentication on your computer. It allows the administrator to configure "
+"specific authentication behavior for different login programs (such as ssh, "
+"login GUI, screensaver, etc.)"
+msgstr ""
+"GDM використовує для розпізнавання при вході PAM. PAM є абревіатурою від"
+" Pluggable Authentication Module («вставний модуль розпізнавання»). Ця"
+" система використовується у більшості програм, робота яких потребує"
+" розпізнавання на вашому комп'ютері. Система надає можливість адміністратору"
+" налаштувати специфічну поведінку розпізнавання для різних програм для входу"
+" до системи (зокрема ssh, графічної оболонки входу до системи, зберігача"
+" екрана тощо)."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:627
+msgid ""
+"PAM is complicated and highly configurable, and this documentation does not "
+"intend to explain this in detail. Instead, it is intended to give an "
+"overview of how PAM configuration relates with GDM, how PAM is commonly "
+"configured with GDM, and known issues. It is expected that a person needing "
+"to do PAM configuration would need to do further reading of PAM "
+"documentation to understand how to configure PAM and to understand terms "
+"used in this section."
+msgstr ""
+"PAM є складною і гнучкою у налаштуваннях системою — цю документацію не"
+" призначено для докладного її опису. Замість цього, ми обмежимося оглядом"
+" зв'язку налаштувань PAM із GDM, того, як PAM типово налаштовано для роботи з"
+" GDM, та відомих проблем. Ми очікуємо, що ті, хто хоче налаштувати PAM,"
+" ознайомляться із документацією до PAM для того, щоб зрозуміти, як"
+" налаштувати PAM, і ознайомитися із значенням термінів, які використано у"
+" цьому розділі."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:637
+msgid ""
+"PAM configuration has different, but similar, interfaces on different "
+"Operating Systems, so check the <ulink type=\"help\" url=\"man:pam.d\">pam."
+"d</ulink> or <ulink type=\"help\" url=\"man:pam.conf\">pam.conf</ulink> man "
+"page for details. Be sure you read the PAM documentation and are comfortable "
+"with the security implications of any changes you intend to make to your "
+"configuration."
+msgstr ""
+"Налаштування PAM мають різні, але подібні, інтерфейси на різних операційних"
+" системах, тому вам слід ознайомитися із сторінкою підручника (man) <ulink"
+" type=\"help\" url=\"man:pam.d\">pam."
+"d</ulink> or <ulink type=\"help\" url=\"man:pam.conf\">pam.conf</ulink>, щоб"
+" дізнатися більше. Прочитайте документацію з PAM і ознайомитеся із даними"
+" щодо зв'язку захисту системи із змінами, які ви маєте намір внести до"
+" налаштувань."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:647
+msgid ""
+"Note that, by default, GDM uses the \"gdm\" PAM service name for normal "
+"login and the \"gdm-autologin\" PAM service name for automatic login. These "
+"services may not be defined in your pam.d or pam.conf configured file. If "
+"there is no entry, then GDM will use the default PAM behavior. On most "
+"systems this should work fine. However, the automatic login feature may not "
+"work if the gdm-autologin service is not defined."
+msgstr ""
+"Зауважте, що, типово, GDM використовує назву служби PAM «gdm» для звичайного"
+" входу до системи і назву служби PAM «gdm-autologin» для автоматичного входу"
+" системи. Ці служби не можна визначати у вашому pam.d або налаштованому файлі"
+" pam.conf. Якщо не буде запису, GDM використовуватиме типову поведінку PAM. У"
+" більшості систем усе в такому випадку працюватиме як слід. Втім, можливість"
+" автоматичного входу може не працювати, якщо службу gdm-autologin не буде"
+" визначено."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:657
+msgid ""
+"The <filename>PostLogin</filename> script is run before pam_open_session is "
+"called, and the <filename>PreSession</filename> script is called after. This "
+"allows the system administrator to add any scripting to the login process "
+"either before or after PAM initializes the session."
+msgstr ""
+"Скрипт <filename>PostLogin</filename> запускається перед викликом"
+" pam_open_session, а скрипт <filename>PreSession</filename> запускається"
+" після нього. Це надає змогу системному адміністратору додати будь-які"
+" скриптові дії до процесу входу до системи до або після того, як PAM"
+" ініціалізує сеанс."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:665
+msgid ""
+"If you wish to make GDM work with other types of authentication mechanisms "
+"(such as a fingerprint or SmartCard reader), then you should implement this "
+"by using a PAM service module for the desired authentication type rather "
+"than by trying to modify the GDM code directly. Refer to the PAM "
+"documentation on your system. How to do this is frequently discussed on the "
+"<address><email>gdm-list@gnome.org</email></address> mail list, so you can "
+"refer to the list archives for more information."
+msgstr ""
+"Якщо ви хочете зробити так, щоб GDM працював із іншими типами механізмів"
+" розпізнавання (зокрема відбитками пальців або інструментарієм для читання"
+" SmartCard), вам слід реалізувати це використанням модуля служби PAM для"
+" бажаного типу розпізнавання, а не намагатися модифікувати код GDM"
+" безпосередньо. Зверніться до документації з PAM у вашій системі. Способи"
+" досягти цього часто обговорюються у списку листування <address><email"
+">gdm-list@gnome.org</email></address>, тому вам слід звернутися до архівів"
+" цього списку, якщо ви хочете дізнатися більше."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:676
+msgid ""
+"PAM does have some limitations regarding being able to work with multiple "
+"types of authentication at the same time, like supporting the ability to "
+"accept either SmartCard and the ability to type the username and password "
+"into the login program. There are techniques that are used to make this "
+"work, and it is best to research how this problem is commonly solved when "
+"setting up such a configuration."
+msgstr ""
+"У PAM є деякі обмеження щодо можливості працювати зі декількома типами"
+" розпізнавання одночасно, зокрема підтримкою одночасної можливості приймати"
+" одночасно смарт-картку та можливості вводити ім'я користувача і пароль у"
+" програмі для входу до системи. Існують методики забезпечення працездатності"
+" таких схем, тому варто ознайомитися із типовими рішенням проблеми, якщо ви"
+" маєте намір скористатися подібними конфігураціями."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:685
+msgid ""
+"If automatic login does not work on a system, check to see if the \"gdm-"
+"autologin\" PAM stack is defined in the PAM configuration. For this to work, "
+"it is necessary to use a PAM module that simply does no authentication, or "
+"which simply returns PAM_SUCCESS from all of its public interfaces. Assuming "
+"your system has a pam_allow.so PAM module which does this, a PAM "
+"configuration to enable \"gdm-autologin\" would look like this:"
+msgstr ""
+"Якщо у системі не працює автоматичний вхід, перевірте, чи визначено стек PAM"
+" «gdm-autologin» у налаштуваннях PAM. Щоб це спрацювало, необхідно"
+" скористатися модулем PAM, який просто не виконує розпізнавання або який"
+" просто повертає PAM_SUCCESS для усіх його загальнодоступних інтерфейсів."
+" Припускаючи, що у вашій системі є модуль PAM pam_allow.so, який виконує це"
+" завдання, налаштування PAM для уможливлення роботи «gdm-autologin» мають"
+" виглядати якось так:"
+
+#. (itstool) path: sect2/screen
+#: C/index.docbook:695
+#, no-wrap
+msgid ""
+"\n"
+"       gdm-autologin auth  required    pam_unix_cred.so.1\n"
+"       gdm-autologin auth  sufficient  pam_allow.so.1\n"
+"       gdm-autologin account  sufficient  pam_allow.so.1\n"
+"       gdm-autologin session  sufficient  pam_allow.so.1\n"
+"       gdm-autologin password  sufficient  pam_allow.so.1\n"
+msgstr ""
+"\n"
+"       gdm-autologin auth  required    pam_unix_cred.so.1\n"
+"       gdm-autologin auth  sufficient  pam_allow.so.1\n"
+"       gdm-autologin account  sufficient  pam_allow.so.1\n"
+"       gdm-autologin session  sufficient  pam_allow.so.1\n"
+"       gdm-autologin password  sufficient  pam_allow.so.1\n"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:703
+msgid ""
+"The above setup will cause no lastlog entry to be generated. If a lastlog "
+"entry is desired, then use the following for the session:"
+msgstr ""
+"Якщо скористатися наведеними вище налаштуваннями, запис lastlog не буде"
+" створено. Якщо вам потрібен запис lastlog, скористайтеся таким для сеансу:"
+
+#. (itstool) path: sect2/screen
+#: C/index.docbook:708
+#, no-wrap
+msgid ""
+"\n"
+"       gdm-autologin session required pam_unix_session.so.1\n"
+msgstr ""
+"\n"
+"       gdm-autologin session required pam_unix_session.so.1\n"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:712
+msgid ""
+"If the computer is used by several people, which makes automatic login "
+"unsuitable, you may want to allow some users to log in without entering "
+"their password. This feature can be enabled as a per-user option in the "
+"users-admin tool from the gnome-system-tools; it is achieved by checking "
+"that the user is member a Unix group called \"nopasswdlogin\" before asking "
+"for a password. For this to work, the PAM configuration file for the \"gdm\" "
+"service must include a line such as:"
+msgstr ""
+"Якщо комп'ютером користуються декілька осіб, що робить автоматичний вхід до"
+" системи непридатним, може виникнути потреба у забезпеченні входу до"
+" облікових записів деяких користувачів без введення пароля. Цю можливість"
+" можна увімкнути на рівні параметра запису користувача за допомогою програми"
+" users-admin з пакунка gnome-system-tools. Досягти потрібного результату"
+" можна перевіркою того, чи є користувач учасником групи Unix із назвою"
+" «nopasswdlogin» перед тим, як йому буде надіслано запит щодо пароля. Щоб це"
+" спрацювало, файл налаштувань PAM для служби «gdm» має включати рядок,"
+" подібний до такого:"
+
+#. (itstool) path: sect2/screen
+#: C/index.docbook:723
+#, no-wrap
+msgid ""
+"\n"
+"      gdm auth  sufficient  pam_succeed_if.so  user ingroup nopasswdlogin\n"
+msgstr ""
+"\n"
+"      gdm auth  sufficient  pam_succeed_if.so  user ingroup nopasswdlogin\n"
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:730
+msgid "utmp and wtmp"
+msgstr "utmp і wtmp"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:732
+msgid ""
+"GDM generates utmp and wtmp User Accounting Database entries upon session "
+"login and logout. The utmp database contains user access and accounting "
+"information that is accessed by commands such as <command>finger</command>, "
+"<command>last</command>, <command>login</command>, and <command>who</"
+"command>. The wtmp database contains the history of user access and "
+"accounting information for the utmp database. Refer to the <ulink type=\"help"
+"\" url=\"man:utmp\">utmp</ulink> and <ulink type=\"help\" url=\"man:wtmp"
+"\">wtmp</ulink> man pages on your system for more information."
+msgstr ""
+"GDM створює записи бази даних обліку користувачів utmp і wtmp під час входу і"
+" виходу з сеансу. База даних utmp містить дані щодо доступу користувачів та"
+" облікові дані, доступ до яких можна отримати за допомогою команд, подібних"
+" до <command>finger</command>, <command>last</command>, <command>login<"
+"/command> і <command>who</command>. База даних wtmp містить журнал усіх дій з"
+" доступу користувачів та облікові дані з бази даних utmp. Зверніться до"
+" сторінок підручника (man) <ulink type=\"help\" url=\"man:utmp\">utmp</ulink>"
+" і <ulink type=\"help\" url=\"man:wtmp\">wtmp</ulink> у вашій системі, щоб"
+" дізнатися більше."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:747
+msgid "Xserver Authentication Scheme"
+msgstr "Схема аутентифікації X-серверів"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:749
+msgid ""
+"Xserver authorization files are stored in a newly created subdirectory of "
+"<filename>&lt;var&gt;/run/gdm</filename> at start up. These files are used "
+"to store and share a \"password\" between X clients and the Xserver. This "
+"\"password\" is unique for each session logged in, so users from one session "
+"can't snoop on users from another."
+msgstr ""
+"Файл уповноваження сервера X під час запуску зберігаються у новоствореному"
+" каталозі <filename>&lt;var&gt;/run/gdm</filename>. Ці файли використовуються"
+" для зберігання і спільного використання «пароля» між клієнтами X і сервером"
+" X. Цей «пароль» є унікальним для кожного сеансу входу до системи, тому"
+" користувачі з одного сеансу не можуть проникнути до сеансів інших"
+" користувачів зі свого сеансу."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:757
+msgid ""
+"GDM only supports the MIT-MAGIC-COOKIE-1 Xserver authentication scheme. "
+"Normally little is gained from the other schemes, and no effort has been "
+"made to implement them so far. Be especially careful about using XDMCP "
+"because the Xserver authentication cookie goes over the wire as clear text. "
+"If snooping is possible, then an attacker could simply snoop your "
+"authentication password as you log in, regardless of the authentication "
+"scheme being used. If snooping is possible and undesirable, then you should "
+"use ssh for tunneling an X connection rather then using XDMCP. You could "
+"think of XDMCP as a sort of graphical telnet, having the same security "
+"issues. In most cases, ssh -Y should be preferred over GDM's XDMCP features."
+msgstr ""
+"GDM підтримує лише систему автентифікації MIT-MAGIC-COOKIE-1. Зазвичай від "
+"інших схем користі не набагато більше, тому до цих пір не було вжито зусиль "
+"для їх реалізації. При використанні XDMCP слід бути особливо обережним, тому "
+"що cookie передаються по мережі у незмінному вигляді. Якщо можливе "
+"прослуховування лінії зв'язку, тоді нападник може просто отримати ваш пароль "
+"під час реєстрації, незалежно від схеми автентифікації. Якщо прослуховування "
+"можливе але небажане, тоді використовуйте ssh для тунелювання X з'єднань, "
+"замість використання XDMCP. Ви можете розглядати XDMCP як графічний telnet, "
+"який має ті ж самі властивості безпеки. У більшості випадків слід надавати "
+"перевагу ssh -Y перед можливостями XDMCP GDM."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:774
+msgid "XDMCP Security"
+msgstr "Безпека XDCMP"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:776
+msgid ""
+"Even though your display is protected by cookies, XEvents and thus "
+"keystrokes typed when entering passwords will still go over the wire in "
+"clear text. It is trivial to capture these."
+msgstr ""
+"Хоча ваш дисплей захищено куками, XEvents і, отже, натискання клавіш при"
+" введенні паролів проходять крізь дроти з'єднання апаратури без шифрування."
+" Доволі просто перехопити ці дані."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:782
+msgid ""
+"XDMCP is primarily useful for running thin clients such as in terminal labs. "
+"Those thin clients will only ever need the network to access the server, and "
+"so it seems like the best security policy to have those thin clients on a "
+"separate network that cannot be accessed by the outside world, and can only "
+"connect to the server. The only point from which you need to access outside "
+"is the server. This type of set up should never use an unmanaged hub or "
+"other sniffable network."
+msgstr ""
+"Головним чином XDMCP використовується для тонких клієнтів у лабораторних "
+"умовах. Цім тонким клієнтам для доступу до сервера необхідна лише мережа, "
+"та, здається, найкращою політикою безпеки буде тримати їх у окремій мережі, "
+"до якої неможливо отримати доступ із зовнішнього світу, а зв'язок є лише з "
+"сервером. Єдиною точкою доступу до зовнішнього світу повинен бути сервер. У "
+"цьому типі налаштувань ніколи не слід використовувати некерований "
+"концентратор або іншу придатну до вивчення ззовні мережу."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:795
+msgid "XDMCP Access Control"
+msgstr "Контроль доступу XDMCP"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:797
+msgid ""
+"XDMCP access control is done using TCP wrappers. It is possible to compile "
+"GDM without TCP wrapper support, so this feature may not be supported on "
+"some Operating Systems."
+msgstr ""
+"Керування доступом XDMCP виконується за допомогою обгорток TCP. Можна зібрати"
+" GDM без підтримки обгортки TCP, тому у деяких операційних системах підтримки"
+" цієї можливості не передбачено."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:803
+msgid ""
+"You should use the daemon name <command>gdm</command> in the <filename>&lt;"
+"etc&gt;/hosts.allow</filename> and <filename>&lt;etc&gt;/hosts.deny</"
+"filename> files. For example to deny computers from <filename>.evil.domain</"
+"filename> from logging in, then add"
+msgstr ""
+"Вам слід використовувати назву фонової служби <command>gdm</command> у "
+"файлах <filename>&lt;etc&gt;/hosts.allow</filename> та <filename>&lt;etc&gt;"
+"hosts.deny</filename>. Наприклад, щоб заборонити доступ комп'ютерам з "
+"<filename>.evil.domain</filename> додайте "
+
+#. (itstool) path: sect2/screen
+#: C/index.docbook:810
+#, no-wrap
+msgid ""
+"\n"
+"gdm: .evil.domain\n"
+msgstr ""
+"\n"
+"gdm: .evil.domain\n"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:813
+msgid ""
+"to <filename>&lt;etc&gt;/hosts.deny</filename>. You may also need to add"
+msgstr "у файл <filename>&lt;etc&gt;/hosts.deny</filename>. Також можна додати"
+
+#. (itstool) path: sect2/screen
+#: C/index.docbook:817
+#, no-wrap
+msgid ""
+"\n"
+"gdm: .your.domain\n"
+msgstr ""
+"\n"
+"gdm: .your.domain\n"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:820
+msgid ""
+"to your <filename>&lt;etc&gt;/hosts.allow</filename> if you normally "
+"disallow all services from all hosts. See the <ulink type=\"help\" url=\"man:"
+"hosts.allow\">hosts.allow(5)</ulink> man page for details."
+msgstr ""
+"у файл <filename>&lt;etc&gt;/hosts.allow</filename>, якщо ви вимикаєте усі "
+"служби з усіх вузлів. Докладнішу інформацію дивіться у man-сторінці <ulink "
+"type=\"help\" url=\"man:hosts.allow\">hosts.allow(5)</ulink>."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:829
+msgid "Firewall Security"
+msgstr "Захист брандмауером"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:831
+msgid ""
+"Even though GDM tries to outsmart potential attackers trying to take "
+"advantage of XDMCP, it is still advised that you block the XDMCP port "
+"(normally UDP port 177) on your firewall unless really needed. GDM guards "
+"against denial of service attacks, but the X protocol is still inherently "
+"insecure and should only be used in controlled environments. Also each "
+"remote connection takes up lots of resources, so it is much easier to do a "
+"denial of service attack via XDMCP than attacking a webserver."
+msgstr ""
+"Хоча GDM намагається ввести в оману потенційних нападників, рекомендується "
+"блокувати XDMCP (UDP порт 177) на вашому брандмауері, якщо він вам не "
+"потрібен. GDM протидіє DoS атакам (атаки типу відмови у обслуговуванні), але "
+"X протоколу властиві успадковані вади безпеки, тому його слід "
+"використовувати у контрольованому оточенні. Також кожне віддалене з'єднання "
+"споживає багато ресурсів, тому набагато простіше викликати відмову "
+"обслуговування XDMCP сервера, ніж, скажімо, у веб-сервера."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:842
+msgid ""
+"It is also wise to block all of the Xserver ports. These are TCP ports 6000+ "
+"(one for each display number) on your firewall. Note that GDM will use "
+"display numbers 20 and higher for flexible on-demand servers."
+msgstr ""
+"Також буде розумно блокувати на брандмауері всі порти X сервера (TCP порт "
+"6000 + номер дисплею). Зауважте, що різні частини GDM використовують дисплеї "
+"з номером 20 та більше (наприклад, при запуску серверів за вимогою)."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:849
+msgid ""
+"X is not a very safe protocol when using it over the Internet, and XDMCP is "
+"even less safe."
+msgstr ""
+"X не є дуже безпечним протоколом, якщо користуватися ним для зв'язку"
+" інтернетом, а XDMCP є ще менш безпечним протоколом."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:856
+msgid "PolicyKit"
+msgstr "PolicyKit"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:864
+msgid ""
+"GDM may be configured to use PolicyKit to allow the system administrator to "
+"control whether the login screen should provide the shutdown and restart "
+"buttons on the greeter screen."
+msgstr ""
+"GDM можна налаштувати на використання PolicyKit для уможливлення для"
+" системних адміністраторів керувати тим, чи надаватиме вікно входу до системи"
+" доступ до кнопок вимикання та перезапуску системи у вікні програми вітання."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:870
+msgid ""
+"These buttons are controlled by the <filename>org.freedesktop.consolekit."
+"system.stop-multiple-users</filename> and <filename>org.freedesktop."
+"consolekit.system.restart-multiple-users</filename> actions respectively. "
+"Policy for these actions can be set up using the polkit-gnome-authorization "
+"tool, or the polkit-auth command line program."
+msgstr ""
+"Ці кнопки керуються, відповідно, діями <filename"
+">org.freedesktop.consolekit.system.stop-multiple-users</filename> і <filename"
+">org.freedesktop.consolekit.system.restart-multiple-users</filename>. Правила"
+" для цих дій можна налаштувати за допомогою програми"
+" polkit-gnome-authorization або інструмента командного рядка polkit-auth."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:882
+msgid "RBAC (Role Based Access Control)"
+msgstr "RBAC (Role Based Access Control)"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:884
+msgid ""
+"GDM may be configured to use RBAC instead of PolicyKit. In this case the "
+"RBAC configuration is used to control whether the login screen should "
+"provide the shutdown and restart buttons on the greeter screen."
+msgstr ""
+"GDM можна налаштувати на використання RBAC замість PolicyKit. У цьому випадку"
+" для уможливлення для системних адміністраторів керувати тим, чи надаватиме"
+" вікно входу до системи доступ до кнопок вимикання та перезапуску системи у"
+" вікні програми вітання, буде використано RBAC."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:890
+msgid ""
+"For example, on Oracle Solaris, the \"solaris.system.shutdown\" "
+"authorization is used to control this. Simply modify the <filename>/etc/"
+"user_attr</filename> file so that the \"gdm\" user has this authorization."
+msgstr ""
+"Наприклад, у Oracle Solaris для керування цим використовується уповноваження"
+" «solaris.system.shutdown». Просто внесіть зміни до файла <filename"
+">/etc/user_attr</filename> так, щоб користувач «gdm» мав відповідне"
+" уповноваження."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:903
+msgid "Support for ConsoleKit"
+msgstr "Підтримка ConsoleKit"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:914
+msgid ""
+"GDM includes support for publishing user login information with the user and "
+"login session accounting framework known as ConsoleKit. ConsoleKit is able "
+"to keep track of all the users currently logged in. In this respect, it can "
+"be used as a replacement for the utmp or utmpx files that are available on "
+"most Unix-like Operating Systems."
+msgstr ""
+"До GDM включено підтримку оприлюднення даних щодо входу користувачів та"
+" обліку сеансів у форматі бібліотеки, яка має назву ConsoleKit. ConsoleKit"
+" може стежити за усіма користувачами, які працюють у системі. У цьому сенсі"
+" нею можна скористатися як замінником файлів utmp і utmpx, які доступні у"
+" більшості Unix-подібних операційних системах."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:922
+msgid ""
+"When GDM is about to create a new login process for a user it will call a "
+"privileged method of ConsoleKit in order to open a new session for this "
+"user. At this time GDM also provides ConsoleKit with information about this "
+"user session such as: the user ID, the X11 Display name that will be "
+"associated with the session, the host-name from which the session originates "
+"(useful in the case of an XDMCP session), whether or not this session is "
+"attached, etc. As the entity that initiates the user process, GDM is in a "
+"unique position to know about the user session and to be trusted to provide "
+"these bits of information. The use of this privileged method is restricted "
+"by the use of the D-Bus system message bus security policy."
+msgstr ""
+"Коли GDM збирається створити процес входу до системи для користувача,"
+" програма викликає привілейований метод ConsoleKit з метою відкрити новий"
+" сеанс для цього користувача. На цей момент GDM також надає ConsoleKit"
+" відомості щодо цього сеанс користувача, зокрема такі: ідентифікатор"
+" користувача, показане ім'я X11, які буде пов'язано із сеансом, назву вузла,"
+" з якого походить сеанс (корисно у випадку сеансу XDMCP), чи є сеанс"
+" долученим тощо. Як елемент, який ініціює процес користувача, GDM перебуває в"
+" унікальному стані щодо визначення параметрів сеансу користувача і довіри для"
+" надання цієї частини даних. Використання цього привілейованого методу"
+" обмежено використанням правил безпеки каналу системних повідомлень D-Bus."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:936
+msgid ""
+"In case a user with an existing session has authenticated at GDM and "
+"requests to resume that existing session, GDM calls a privileged method of "
+"ConsoleKit to unlock that session. The exact details of what happens when "
+"the session receives this unlock signal are undefined and session-specific. "
+"However, most sessions will unlock a screensaver in response."
+msgstr ""
+"Якщо користувач із наявним сеансом пройшов розпізнавання у GDM і надсилає"
+" запити щодо поновлення наявного сеансу, GDM викликає привілейований метод"
+" ConsoleKit для розблокування сеансу. Дії, які відбуваються, коли сеанс"
+" отримує цей сигнал розблокування, не визначено точно — вони залежать від"
+" сеансу. Втім, у більшості сеансів відбувається розблокування зберігача"
+" екрана."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:945
+msgid ""
+"When the user chooses to log out, or if GDM or the session quit unexpectedly "
+"the user session will be unregistered from ConsoleKit."
+msgstr ""
+"Якщо користувач виходить з облікового запису або якщо GDM або сеанс"
+" несподівано завершує роботу, реєстрацію сеансу користувача у ConsoleKit буде"
+" скасовано."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:954
+msgid "Configuration"
+msgstr "Налаштовування"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:956
+msgid ""
+"GDM has a number of configuration interfaces. These include scripting "
+"integration points, daemon configuration, greeter configuration, general "
+"session settings, integration with gnome-settings-daemon configuration, and "
+"session configuration. These types of integration are described in detail "
+"below."
+msgstr ""
+"У GDM передбачено декілька інтерфейсів налаштовування. Серед них точки"
+" інтеграції скриптів, налаштовування фонових служб, налаштовування програми"
+" вітання, загальні параметри сеансу, налаштовування інтеграції"
+" gnome-settings-daemon та налаштовування сеансу. Ці типи інтеграції докладно"
+" описано нижче."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:965
+msgid "Scripting Integration Points"
+msgstr "Точки інтеграції скриптів"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:967
+msgid ""
+"The GDM script integration points can be found in the <filename>&lt;etc&gt;/"
+"gdm/</filename> directory:"
+msgstr ""
+"Точки інтеграції скриптів GDM можна знайти у каталозі <filename>&lt;etc&gt;/"
+"gdm/</filename>:"
+
+#. (itstool) path: sect2/screen
+#: C/index.docbook:972
+#, no-wrap
+msgid ""
+"\n"
+"Xsession\n"
+"Init/\n"
+"PostLogin/\n"
+"PreSession/\n"
+"PostSession/\n"
+msgstr ""
+"\n"
+"Xsession\n"
+"Init/\n"
+"PostLogin/\n"
+"PreSession/\n"
+"PostSession/\n"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:980
+msgid ""
+"The <filename>Init</filename>, <filename>PostLogin</filename>, "
+"<filename>PreSession</filename>, and <filename>PostSession</filename> "
+"scripts all work as described below."
+msgstr ""
+"Усі скрипти, <filename>Init</filename>, <filename>PostLogin</filename>, "
+"<filename>PreSession</filename> і <filename>PostSession</filename>, працюють "
+"у описаний нижче спосіб."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:986
+msgid ""
+"For each type of script, the default one which will be executed is called "
+"\"Default\" and is stored in a directory associated with the script type. So "
+"the default <filename>Init</filename> script is <filename>&lt;etc&gt;/gdm/"
+"Init/Default</filename>. A per-display script can be provided, and if it "
+"exists it will be run instead of the default script. Such scripts are stored "
+"in the same directory as the default script and have the same name as the "
+"Xserver DISPLAY value for that display. For example, if the <filename>&lt;"
+"Init&gt;/:0</filename> script exists, it will be run for DISPLAY \":0\"."
+msgstr ""
+"Для кожного типу скриптів типовим, тим, який буде виконано, буде той, який"
+" називається «Default» і який зберігається у каталозі, пов'язаному із типом"
+" скрипту. Отже, типовим скриптом <filename>Init</filename> є <filename"
+">&lt;etc&gt;/gdm/Init/Default</filename>. Можна створити окремий скрипт для"
+" дисплея, і, якщо він існує, його буде запущено замість типового скрипту."
+" Такі скрипти зберігаються у тому самому каталозі, що і типовий скрипт, і"
+" мають таку саму назву, як значення змінної DISPLAY у сервері X для"
+" відповідного дисплея. Наприклад, якщо існує скрипт <filename"
+">&lt;Init&gt;/:0</filename>, його буде запущено для DISPLAY \":0\"."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:998
+msgid ""
+"All of these scripts are run with root privilege and return 0 if run "
+"successfully, and a non-zero return code if there was any failure that "
+"should cause the login session to be aborted. Also note that GDM will block "
+"until the scripts finish, so if any of these scripts hang, this will cause "
+"the login process to also hang."
+msgstr ""
+"Усі ці скрипти запускаються із правами доступу root і повертають 0, якщо їх"
+" виконано успішно, і ненульовий код повернення, якщо станеться якась помилка,"
+" яка спричинила переривання сеансу входу до системи. Також зауважте, що GDM"
+" блокуватиметься, аж доки скрипти не завершать роботу. Тому, якщо якийсь з"
+" цих скриптів повисне, це спричинить зависання процесу входу до системи."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1006
+msgid ""
+"When the Xserver for the login GUI has been successfully started, but before "
+"the login GUI is actually displayed, GDM will run the <filename>Init</"
+"filename> script. This script is useful for starting programs that should be "
+"run while the login screen is showing, or for doing any special "
+"initialization if required."
+msgstr ""
+"Коли сервер X для графічного інтерфейсу входу до системи вже запущено, але"
+" перед тим, як графічний інтерфейс входу буде показано, GDM запустить скрипт"
+" <filename>Init</filename>. Цей скрипт є корисним для запуску програм, які"
+" має бути запущено, доки відбувається показ вікна входу до системи, або"
+" виконання будь-якої спеціалізованої ініціалізації, якщо вона потрібна."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1014
+msgid ""
+"After the user has been successfully authenticated GDM will run the "
+"<filename>PostLogin</filename> script. This is done before any session setup "
+"has been done, including before the pam_open_session call. This script is "
+"useful for doing any session initialization that needs to happen before the "
+"session starts. For example, you might setup the user's $HOME directory if "
+"needed."
+msgstr ""
+"Після того, як користувача буде успішно розпізнано, GDM запустить скрипт <"
+"filename>PostLogin</filename>. Це завдання виконується перед налаштовуванням"
+" будь-якого сеансу, зокрема перед викликом pam_open_session. Цей скрипт"
+" корисний для виконання будь-якої ініціалізації сеансу, яку має бути виконано"
+" перед його запуском. Наприклад, ви можете налаштувати каталог $HOME"
+" користувача, якщо у цьому є потреба."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1023
+msgid ""
+"After the user session has been initialized, GDM will run the "
+"<filename>PreSession</filename> script. This script is useful for doing any "
+"session initialization that needs to happen after the session has been "
+"initialized. It can be used for session management or accounting, for "
+"example."
+msgstr ""
+"Після ініціалізації сеансу користувача GDM запустить скрипт <filename"
+">PreSession</filename>. Цей скрипт корисний для виконання будь-якої"
+" ініціалізації сеансу, яку має бути виконано після того, як сеанс було"
+" ініціалізовано. Цим можна скористатися, наприклад, для керування сеансом або"
+" ведення обліку."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1031
+msgid ""
+"When a user terminates their session, GDM will run the "
+"<filename>PostSession</filename> script. Note that the Xserver will have "
+"been stopped by the time this script is run, so it should not be accessed."
+msgstr ""
+"Якщо користувач перериває свій сеанс, GDM запускає скрипт <filename"
+">PostSession</filename>. Зауважте, що роботу сервера X на момент запуску"
+" цього скрипту буде припинено, тому до нього не буде доступу."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1038
+msgid ""
+"Note that the <filename>PostSession</filename> script will be run even when "
+"the display fails to respond due to an I/O error or similar. Thus, there is "
+"no guarantee that X applications will work during script execution."
+msgstr ""
+"Зверніть увагу, сценарій <filename>PostSession</filename> запускається "
+"навіть якщо дисплей завершився аварійно через помилку вводу/виводу або щось "
+"подібне. Тому, не гарантується, що X-програми працюватимуть при його "
+"виконанні."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1045
+msgid ""
+"All of the above scripts will set the <filename>$RUNNING_UNDER_GDM</"
+"filename> environment variable to <filename>yes</filename>. If the scripts "
+"are also shared with other display managers, this allows you to identify "
+"when GDM is calling these scripts, so you can run specific code when GDM is "
+"used."
+msgstr ""
+"Усі згадані вище скрипти встановлюють для змінної середовища <filename"
+">$RUNNING_UNDER_GDM</filename> значення <filename>yes</filename>. Якщо"
+" скрипти використовуються спільно із іншими програмами для керування"
+" дисплеєм, ця змінна надає вам змогу визначити, що скрипти викликає GDM,"
+" отже, ви можете наказувати системі виконувати певний код, якщо використано"
+" GDM."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:1055
+msgid "Autostart Configuration"
+msgstr "Налаштовування автозапуску"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1057
+msgid ""
+"The <filename>&lt;share&gt;/gdm/autostart/LoginWindow</filename> directory "
+"contains files in the format specified by the \"FreeDesktop.org Desktop "
+"Application Autostart Specification\". Standard features in the "
+"specification may be used to specify programs that should auto-restart or "
+"only be launched if a GConf configuration value is set, etc."
+msgstr ""
+"У каталозі <filename>&lt;share&gt;/gdm/autostart/LoginWindow</filename>"
+" містяться файли у форматі, який визначається «FreeDesktop.org Desktop"
+" Application Autostart Specification». Стандартними можливостями з цієї"
+" специфікації можна скористатися для визначення програм, які має бути"
+" автоматично перезапущено або запущено, лише якщо встановлено значення"
+" налаштування GConf тощо."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1066
+msgid ""
+"Any <filename>.desktop</filename> files in this directory will cause the "
+"associated program to automatically start with the login GUI greeter. By "
+"default, GDM is shipped with files which will autostart the gdm-simple-"
+"greeter login GUI greeter itself, the gnome-power-manager application, the "
+"gnome-settings-daemon, and the metacity window manager. These programs are "
+"needed for the greeter program to work. In addition, desktop files are "
+"provided for starting various AT programs if the configuration values "
+"specified in the Accessibility Configuration section below are set."
+msgstr ""
+"Буд-які файли <filename>.desktop</filename> у цьому каталозі спричинятимуть"
+" автоматичний запуск відповідної програми одночасно із графічним інтерфейсом"
+" програми входу до системи. Типово, GDM постачається із файлами, які"
+" автоматично запускають сам графічний інтерфейс входу до системи"
+" gdm-simple-greeter, програму gnome-power-manager, фонову службу"
+" gnome-settings-daemon та програму для керування вікнами metacity. Ці"
+" програми потрібні для забезпечення працездатності програми вітання. Крім"
+" того, передбачено файли desktop для запуску різноманітних засобів технологій"
+" доступності, якщо вказано відповідні значення параметрів налаштувань у"
+" розділі налаштовування доступності, описаному нижче."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:1080
+msgid "Xsession Script"
+msgstr "Скрипт Xsession"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1082
+msgid ""
+"There is also an <filename>Xsession</filename> script located at "
+"<filename>&lt;etc&gt;/gdm/Xsession</filename> which is called between the "
+"<filename>PreSession</filename> and the <filename>PostSession</filename> "
+"scripts. This script does not support per-display like the other scripts. "
+"This script is used for actually starting the user session. This script is "
+"run as the user, and it will run whatever session was specified by the "
+"Desktop session file the user selected to start."
+msgstr ""
+"Також передбачено скрипт <filename>Xsession</filename>, який зберігається у"
+" каталозі <filename>&lt;etc&gt;/gdm/Xsession</filename> і викликається між"
+" скриптом <filename>PreSession</filename> і скриптом <filename>PostSession<"
+"/filename>. У цьому скрипті не передбачено підтримки роботи із окремими"
+" дисплеями, подібно до інших скриптів. Цей скрипт використовується для самого"
+" запуску сеансу користувача. Скрипт запускається від імені користувача і"
+" працюватиме незалежно від сеансу, який було вказано за допомогою файла"
+" стільничного сеансу, вибраного користувачем при запуску."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:1095
+msgid "Daemon Configuration"
+msgstr "Конфігурація сервера"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1097
+msgid ""
+"The GDM daemon is configured using the <filename>&lt;etc&gt;/gdm/custom."
+"conf</filename> file. Default values are stored in GConf in the "
+"<filename>gdm.schemas</filename> file. It is recommended that end-users "
+"modify the <filename>&lt;etc&gt;/gdm/custom.conf</filename> file because the "
+"schemas file may be overwritten when the user updates their system to have a "
+"newer version of GDM."
+msgstr ""
+"Налаштовування фонової служби GDM виконується за допомогою файла <filename"
+">&lt;etc&gt;/gdm/custom."
+"conf</filename>. Типові значення зберігаються у GConf у файлі <filename"
+">gdm.schemas</filename>. Рекомендуємо кінцевим користувачам вносити зміни до"
+" файла <filename>&lt;etc&gt;/gdm/custom.conf</filename>, оскільки файл бази"
+" даних параметрів може бути перезаписано при оновленні користувачем системи з"
+" метою встановлення новішої версії GDM."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1107
+msgid ""
+"Note that older versions of GDM supported additional configuration options "
+"which are no longer supported in the latest versions of GDM."
+msgstr ""
+"Зауважте, що у застарілих версіях GDM було передбачено додаткові параметри"
+" налаштувань, підтримку яких у найновіших версіях GDM не реалізовано."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1112
+msgid ""
+"The <filename>&lt;etc&gt;/gdm/custom.conf</filename> file is in the "
+"<filename>keyfile</filename> format. Keywords in brackets define group "
+"sections, strings before an equal sign (=) are keys and the data after equal "
+"sign represents their value. Empty lines or lines starting with the hash "
+"mark (#) are ignored."
+msgstr ""
+"Файл <filename>&lt;etc&gt;/gdm/custom.conf</filename> має синтаксис "
+"<filename>keyfile</filename>. Ключові слова у дужках визначають розділи "
+"груп, рядки перед знаком «дорівнює» (=) є ключами, а дані після знаку "
+"тотожності є їх значеннями. Порожні рядки або рядки, що починаються зі знаку "
+"(#) ігноруються."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1120
+msgid ""
+"The file <filename>&lt;etc&gt;/gdm/custom.conf</filename> supports the "
+"\"[daemon]\", \"[security]\", and \"[xdmcp]\" group sections. Within each "
+"group, there are particular key/value pairs that can be specified to modify "
+"how GDM behaves. For example, to enable timed login and specify the timed "
+"login user to be a user named \"you\", you would modify the file so it "
+"contains the following lines:"
+msgstr ""
+"У файлі <filename>&lt;etc&gt;/gdm/custom.conf</filename> передбачено"
+" підтримку розділів груп «[daemon]», «[security]» та «[xdmcp]». У кожній"
+" групі записують певні пари ключ-значення, якими можна скористатися для зміни"
+" поведінки GDM. Наприклад, щоб увімкнути відкладений вхід і вказати"
+" користувача, для якого виконуватиметься цей відкладений вхід, як «you», вам"
+" слід внести зміни до цього файла так, щоб у ньому містилися такі рядки:"
+
+#. (itstool) path: sect2/screen
+#: C/index.docbook:1130
+#, no-wrap
+msgid ""
+"\n"
+"[daemon]\n"
+"TimedLoginEnable=true\n"
+"TimedLogin=you\n"
+msgstr ""
+"\n"
+"[daemon]\n"
+"TimedLoginEnable=true\n"
+"TimedLogin=you\n"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1136
+msgid "A full list of supported configuration keys follow:"
+msgstr "Нижче наведено повний список підтримуваних ключів налаштувань:"
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1141
+msgid "[chooser]"
+msgstr "[chooser]"
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1145
+msgid "Multicast"
+msgstr "Multicast"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1147
+#, no-wrap
+msgid "Multicast=false"
+msgstr "Multicast=false"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1148
+msgid ""
+"If true and IPv6 is enabled, the chooser will send a multicast query to the "
+"local network and collect responses from the hosts who have joined multicast "
+"group."
+msgstr ""
+"Якщо має значення true та увімкнено IPv6, селектор буде надсилати multicast-"
+"запити у локальну мережу та слухати відповідь від вузлів, які входять у "
+"multicast-групу."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1157
+msgid "MulticastAddr"
+msgstr "MulticastAddr"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1159
+#, no-wrap
+msgid "MulticastAddr=ff02::1"
+msgstr "MulticastAddr=ff02::1"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1160
+msgid "This is the Link-local multicast address."
+msgstr "У цьому параметрі вказується multicast."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1169
+msgid "[daemon]"
+msgstr "[daemon]"
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1172
+msgid "TimedLoginEnable"
+msgstr "TimedLoginEnable"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1174
+#, no-wrap
+msgid "TimedLoginEnable=false"
+msgstr "TimedLoginEnable=false"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1175
+msgid ""
+"If the user given in <filename>TimedLogin</filename> should be logged in "
+"after a number of seconds (set with <filename>TimedLoginDelay</filename>) of "
+"inactivity on the login screen. This is useful for public access terminals "
+"or perhaps even home use. If the user uses the keyboard or browses the "
+"menus, the timeout will be reset to <filename>TimedLoginDelay</filename> or "
+"30 seconds, whichever is higher. If the user does not enter a username but "
+"just hits the ENTER key while the login program is requesting the username, "
+"then GDM will assume the user wants to login immediately as the timed user. "
+"Note that no password will be asked for this user so you should be careful, "
+"although if using PAM it can be configured to require password entry before "
+"allowing login. Refer to the \"Security-&gt;PAM\" section of the manual for "
+"more information, or for help if this feature does not seem to work."
+msgstr ""
+"Чи має запускатись сеанс користувача, вказаного у параметрі "
+"<filename>TimedLogin</filename>, після певної кількості секунд (у параметрі "
+"<filename>TimedLoginDelay</filename>) відсутності активності у вікні входу. "
+"Використовується для терміналів загального доступу або навіть у домашньому "
+"використанні. Якщо користувач використовує клавіатуру або переглядає меню, "
+"відлік часу скидається на <filename>TimedLoginDelay</filename> або 30 "
+"секунд, в залежності від того яке значення більше. Якщо користувач не ввів "
+"ім'я а просто натиснув на клавішу ENTER, тоді GDM вважає що користувач бажає "
+"негайно увійти з іменем користувача відкладеного входу. Зауважте, при цьому "
+"не запитується пароль, тож будьте обережні,  хоча при використанні PAM можна "
+"налаштувати запит паролю перш, ніж дозволити вхід. Зверніться до розділу "
+"«Безпека-&gt;PAM» підручника, щоб дізнатися більше, або за додатковими "
+"відомостями, якщо ця можливість не працює."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1197
+msgid "TimedLogin"
+msgstr "TimedLogin"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1199
+#, no-wrap
+msgid "TimedLogin="
+msgstr "TimedLogin="
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1200
+msgid ""
+"This is the user that should be logged in after a specified number of "
+"seconds of inactivity."
+msgstr ""
+"Це назва облікового запису користувача, якого має бути впущено до системи"
+" після вказаної кількості секунд бездіяльності."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1204 C/index.docbook:1248
+msgid ""
+"If the value ends with a vertical bar | (the pipe symbol), then GDM will "
+"execute the program specified and use whatever value is returned on standard "
+"out from the program as the user. The program is run with the DISPLAY "
+"environment variable set so that it is possible to specify the user in a per-"
+"display fashion. For example if the value is \"/usr/bin/getloginuser|\", "
+"then the program \"/usr/bin/getloginuser\" will be run to get the user value."
+msgstr ""
+"Якщо значення завершуватиметься вертикальною рискою | (символом каналу), GDM"
+" виконає вказану програму і використає будь-яке повернуте нею до стандартного"
+" виведення значення як назву облікового запису користувача. Програму буде"
+" запущено із встановленою змінною середовища DISPLAY, тому можна вказати"
+" окремого користувача для окремого дисплея. Наприклад, якщо значенням є"
+" «/usr/bin/getloginuser|», буде запущено програму «/usr/bin/getloginuser» для"
+" отримання значення назви облікового запису користувача."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1218
+msgid "TimedLoginDelay"
+msgstr "TimedLoginDelay"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1220
+#, no-wrap
+msgid "TimedLoginDelay=30"
+msgstr "TimedLoginDelay=30"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1221
+msgid ""
+"Delay in seconds before the <filename>TimedLogin</filename> user will be "
+"logged in."
+msgstr ""
+"Затримка у секундах, перш ніж користувача <filename>TimedLogin</filename>"
+" буде впущено до системи."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1229
+msgid "AutomaticLoginEnable"
+msgstr "AutomaticLoginEnable"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1231
+#, no-wrap
+msgid "AutomaticLoginEnable=false"
+msgstr "AutomaticLoginEnable=false"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1232
+msgid ""
+"If true, the user given in <filename>AutomaticLogin</filename> should be "
+"logged in immediately. This feature is like timed login with a delay of 0 "
+"seconds."
+msgstr ""
+"Якщо вказано значення «true», користувача, якого вказано в <filename"
+">AutomaticLogin</filename>, має бути впущено до системи негайно. Ця"
+" можливість рівноцінна відкладеному входу із затримкою у 0 секунд."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1241
+msgid "AutomaticLogin"
+msgstr "AutomaticLogin"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1243
+#, no-wrap
+msgid "AutomaticLogin="
+msgstr "AutomaticLogin="
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1244
+msgid ""
+"This is the user that should be logged in immediately if "
+"<filename>AutomaticLoginEnable</filename> is true."
+msgstr ""
+"Це назва облікового запису користувача, якого має бути впущено до системи"
+" негайно, якщо <filename>AutomaticLoginEnable</filename> дорівнює «true»."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1262
+msgid "User"
+msgstr "User"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1264
+#, no-wrap
+msgid "User=gdm"
+msgstr "User=gdm"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1265
+msgid ""
+"The username under which the greeter and other GUI programs are run. Refer "
+"to the <filename>Group</filename> configuration key and to the \"Security-"
+"&gt;GDM User And Group\" section of this document for more information."
+msgstr ""
+"Ім'я користувача, від імені якого буде запущено програму вітання та інші"
+" програми із графічним інтерфейсом. Зверніться до опису ключа налаштувань <"
+"filename>Group</filename> та до розділу «Захист-"
+"&gt;Користувач і група GDM» цього документа, щоб дізнатися більше."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1275
+msgid "Group"
+msgstr "Group"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1277
+#, no-wrap
+msgid "Group=gdm"
+msgstr "Group=gdm"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1278
+msgid ""
+"The group name under which the greeter and other GUI programs are run. Refer "
+"to the <filename>User</filename> configuration key and to the \"Security-&gt;"
+"GDM User And Group\" section of this document for more information."
+msgstr ""
+"Назва групи, від імені якої буде запущено програму вітання та інші програми"
+" із графічним інтерфейсом. Зверніться до опису ключа налаштувань <filename"
+">User</filename> та до розділу «Захист-"
+"&gt;Користувач і група GDM» цього документа, щоб дізнатися більше."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1290
+msgid "Debug Options"
+msgstr "Параметри налагоджування"
+
+#. (itstool) path: variablelist/title
+#: C/index.docbook:1293
+msgid "[debug]"
+msgstr "[debug]"
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1296 C/index.docbook:1427
+msgid "Enable"
+msgstr "Enable"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1298 C/index.docbook:1429
+#, no-wrap
+msgid "Enable=false"
+msgstr "Enable=false"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1299
+msgid ""
+"To enable debugging, set the debug/Enable key to \"true\" in the "
+"<filename>&lt;etc&gt;/gdm/custom.conf</filename> file and restart GDM. Then "
+"debug output will be sent to the system log file (<filename>&lt;var&gt;/log/"
+"messages</filename> or <filename>&lt;var&gt;/adm/messages</filename> "
+"depending on your Operating System)."
+msgstr ""
+"Щоб увімнути діагностику, встановіть для ключа debug/Enable значення «true» у"
+" файлі "
+"<filename>&lt;etc&gt;/gdm/custom.conf</filename> і перезапустіть GDM."
+" Виведені діагностичні дані буде надіслано до файла журналу системи (<"
+"filename>&lt;var&gt;/log/messages</filename> або <filename"
+">&lt;var&gt;/adm/messages</filename>, залежно від вашої операційної системи)."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1314
+msgid "Greeter Options"
+msgstr "Параметри програми привітання"
+
+#. (itstool) path: variablelist/title
+#: C/index.docbook:1317
+msgid "[greeter]"
+msgstr "[greeter]"
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1320
+msgid "IncludeAll"
+msgstr "IncludeAll"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1322
+#, no-wrap
+msgid "IncludeAll=true"
+msgstr "IncludeAll=true"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1323
+msgid ""
+"If true, then the face browser will show all users on the local machine. If "
+"false, the face browser will only show users who have recently logged in."
+msgstr ""
+"Якщо має значення «true», переглядач портретів показуватиме усіх користувачів"
+" локальної системи. Якщо має значення «false», переглядач портретів"
+" показуватиме лише користувачів, які нещодавно входили до системи."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1329
+msgid ""
+"When this key is true, GDM will call fgetpwent() to get a list of local "
+"users on the system. Any users with a user id less than 500 (or 100 if "
+"running on Oracle Solaris) are filtered out. The Face Browser also will "
+"display any users that have previously logged in on the system (for example "
+"NIS/LDAP users). It gets this list via calling the <command>ck-history</"
+"command> ConsoleKit interface. It will also filter out any users which do "
+"not have a valid shell (valid shells are any shell that getusershell() "
+"returns - /sbin/nologin or /bin/false are considered invalid shells even if "
+"getusershell() returns them)."
+msgstr ""
+"Якщо значенням цього ключа є «true», GDM викличе fgetpwent() для отримання"
+" списку локальних користувачів системи. Усіх користувачів із ідентифікатором"
+" користувача, який є меншим за 500 (або 100, якщо працюємо у Oracle Solaris),"
+" буде відфільтровано. Переглядач портретів також показуватиме усіх"
+" користувачів, які раніше входили до системи (наприклад, користувачів"
+" NIS/LDAP). Він отримуватиме цей список шляхом виклику інтерфейсу <command"
+">ck-history</command> ConsoleKit. Він також відфільтровуватиме усіх"
+" користувачів, у яких немає належної командної оболонки (коректними"
+" вважаються усі оболонки, які повертає getusershell() — /sbin/nologin або"
+" /bin/false не вважаються некоректними, якщо їх повертає getusershell())."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1343
+msgid ""
+"If false, then GDM more simply only displays users that have previously "
+"logged in on the system (local or NIS/LDAP users) by calling the <command>ck-"
+"history</command> ConsoleKit interface."
+msgstr ""
+"Якщо має значення «false», GDM показуватиме лише користувачів, які раніше"
+" входили до цієї системи (локальних або користувачів NIS/LDAP) за допомогою"
+" виклику інтерфейсу <command>ck-history</command> ConsoleKit."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1352
+msgid "Include"
+msgstr "Include"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1354
+#, no-wrap
+msgid "Include="
+msgstr "Include="
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1355
+msgid ""
+"Set to a list of users to always include in the Face Browser. This value is "
+"set to a list of users separated by commas. By default, the value is empty."
+msgstr ""
+"Встановлюється у значення списку користувачів, яких завжди слід включати до"
+" переглядача портретів. Значення у списку слід відокремлювати комами. Типово,"
+" це значення є порожнім."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1364
+msgid "Exclude"
+msgstr "Exclude"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1366
+#, no-wrap
+msgid ""
+"Exclude=bin,root,daemon,adm,lp,sync,shutdown,halt,mail,news,uucp,operator,nobo"
+"dy,nobody4,noaccess,postgres,pvm,rpm,nfsnobody,pcap"
+msgstr ""
+"Exclude=bin,root,daemon,adm,lp,sync,shutdown,halt,mail,news,uucp,operator,nobo"
+"dy,nobody4,noaccess,postgres,pvm,rpm,nfsnobody,pcap"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1367
+msgid ""
+"Set to a list of users to always exclude in the Face Browser. This value is "
+"set to a list of users separated by commas. Note that the setting in the "
+"<filename>custom.conf</filename> overrides the default value, so if you wish "
+"to add additional users to the list, then you need to set the value to the "
+"default value with additional users appended to the list."
+msgstr ""
+"Встановлюється у значення списку користувачів, яких завжди слід виключати з"
+" переглядача портретів. Значення у списку слід відокремлювати комами."
+" Зауважте, що параметр у <filename>custom.conf</filename> має пріоритет над"
+" типовим значенням. Тому, якщо ви хочете додати до списку записи"
+" користувачів, вам слід встановити типове значення з дописаними до списку"
+" додатковими користувачами."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1381
+msgid "Security Options"
+msgstr "Параметри безпеки"
+
+#. (itstool) path: variablelist/title
+#: C/index.docbook:1384
+msgid "[security]"
+msgstr "[security]"
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1387
+msgid "DisallowTCP"
+msgstr "DisallowTCP"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1389
+#, no-wrap
+msgid "DisallowTCP=true"
+msgstr "DisallowTCP=true"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1390
+msgid ""
+"If true, then always append <filename>-nolisten tcp</filename> to the "
+"command line when starting attached Xservers, thus disallowing TCP "
+"connection. This is a more secure configuration if you are not using remote "
+"connections."
+msgstr ""
+"Якщо має значення «true», завжди дописувати <filename>-nolisten tcp</filename"
+"> до командного рядка при запуску долучених серверів X, таким чином"
+" забороняючи з'єднання TCP. Це безпечніша конфігурація, якщо ви не"
+" використовуєте віддалені з'єднання."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1402
+msgid "XDCMP Support"
+msgstr "Підтримка XDCMP"
+
+#. (itstool) path: variablelist/title
+#: C/index.docbook:1405
+msgid "[xdmcp]"
+msgstr "[xdmcp]"
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1408
+msgid "DisplaysPerHost"
+msgstr "DisplaysPerHost"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1410
+#, no-wrap
+msgid "DisplaysPerHost=1"
+msgstr "DisplaysPerHost=1"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1411
+msgid ""
+"To prevent attackers from filling up the pending queue, GDM will only allow "
+"one connection for each remote computer. If you want to provide display "
+"services to computers with more than one screen, you should increase this "
+"value."
+msgstr ""
+"Щоб нападники не змогли наводнити запитами чергу очікування, GDM допускає "
+"одне з'єднання з одного віддаленого комп'ютера. Якщо ви бажаєте надавати "
+"дисплей комп'ютерам з більш ніж одним екраном, відповідно слід збільшити це "
+"значення."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1418
+msgid ""
+"Note that the number of attached DISPLAYS allowed is not limited. Only "
+"remote connections via XDMCP are limited by this configuration option."
+msgstr ""
+"Зауважте, що кількість дозволених до долучення дисплеїв не обмежено. Цим"
+" параметром налаштувань обмежено лише кількість віддалених з'єднань за"
+" допомогою XDMCP."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1430
+msgid ""
+"Setting this to true enables XDMCP support allowing remote displays/X "
+"terminals to be managed by GDM."
+msgstr ""
+"Встановлення значення у true вмикає підтримку XDMCP, що дозволяє керувати "
+"GDM віддаленими дисплеями/X-терміналами."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1435
+msgid ""
+"<filename>gdm</filename> listens for requests on UDP port 177. See the Port "
+"option for more information."
+msgstr ""
+"<filename>gdm</filename> очікує запити на UDP-порту 177. Докладніше дивіться "
+"у параметрі Port."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1440
+msgid ""
+"If GDM is compiled to support it, access from remote displays can be "
+"controlled using the TCP Wrappers library. The service name is "
+"<filename>gdm</filename>"
+msgstr ""
+"Якщо GDM скомпільовано з бібліотекою tcp_wrapper, доступ з віддалених "
+"дисплеїв може контролюватись цією бібліотекою. Назва служби -  "
+"<filename>gdm</filename>"
+
+#. (itstool) path: para/screen
+#: C/index.docbook:1448
+#, no-wrap
+msgid ""
+"\n"
+"gdm:.my.domain\n"
+msgstr ""
+"\n"
+"gdm:.my.domain\n"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1446
+msgid ""
+"You should add <_:screen-1/> to your <filename>&lt;etc&gt;/hosts.allow</"
+"filename>, depending on your TCP Wrappers configuration. See the <ulink type="
+"\"help\" url=\"man:hosts.allow\">hosts.allow</ulink> man page for details."
+msgstr ""
+"Вам слід додати <_:screen-1/> до файла <filename>&lt;etc&gt;/hosts.allow</"
+"filename>, в залежності від конфігурації бібліотеки TCP Wrappers. Докладнішу "
+"інформацію можна знайти у man-сторінці <ulink type=\"help\" url=\"man:hosts."
+"allow\">hosts.allow</ulink>."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1457
+msgid ""
+"Please note that XDMCP is not a particularly secure protocol and that it is "
+"a good idea to block UDP port 177 on your firewall unless you really need it."
+msgstr ""
+"Зауважте, що XDMCP не є безпечним протоколом, тому якщо ви не використовуєте "
+"UDP-порт 177, його краще заблокувати на вашому брандмауері."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1466
+msgid "HonorIndirect"
+msgstr "HonorIndirect"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1468
+#, no-wrap
+msgid "HonorIndirect=true"
+msgstr "HonorIndirect=true"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1469
+msgid ""
+"Enables XDMCP INDIRECT choosing (i.e. remote execution of "
+"<filename>gdmchooser</filename>) for X-terminals which do not supply their "
+"own display browser."
+msgstr ""
+"Дозволяє XDMCP INDIRECT вибір (тобто віддалене виконання "
+"<filename>gdmchooser</filename>) для X-терміналів, як не мають власної "
+"програми перегляду дисплеїв."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1478
+msgid "MaxPending"
+msgstr "MaxPending"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1480
+#, no-wrap
+msgid "MaxPending=4"
+msgstr "MaxPending=4"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1481
+msgid ""
+"To avoid denial of service attacks, GDM has fixed size queue of pending "
+"connections. Only MaxPending displays can start at the same time."
+msgstr ""
+"Для запобігання атакам типу \"відмова у доступі\", GDM має фіксований розмір "
+"черги з'єднань. Одночасно можуть бути запущені лише MaxPending дисплеїв."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1487
+msgid ""
+"Please note that this parameter does not limit the number of remote displays "
+"which can be managed. It only limits the number of displays initiating a "
+"connection simultaneously."
+msgstr ""
+"Зауважте, що цей параметр не обмежує кількість віддалених дисплеїв, якими "
+"можна керувати. Обмежується лише кількість дисплеїв які одночасно ініціюють "
+"з'єднання."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1496
+msgid "MaxSessions"
+msgstr "MaxSessions"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1498
+#, no-wrap
+msgid "MaxSessions=16"
+msgstr "MaxSessions=16"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1499
+msgid ""
+"Determines the maximum number of remote display connections which will be "
+"managed simultaneously. I.e. the total number of remote displays that can "
+"use your host."
+msgstr ""
+"Визначає максимальну кількість одночасних з'єднань з віддаленими дисплеями. "
+"Тобто загальну кількість віддалених дисплеїв які використовуються на вашому "
+"вузлі."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1508
+msgid "MaxWait"
+msgstr "MaxWait"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1510
+#, no-wrap
+msgid "MaxWait=30"
+msgstr "MaxWait=30"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1511
+msgid ""
+"When GDM is ready to manage a display an ACCEPT packet is sent to it "
+"containing a unique session id which will be used in future XDMCP "
+"conversations."
+msgstr ""
+"Коли GDM готовий керувати дисплеєм, йому надсилається пакет ACCEPT  який "
+"містить унікальний ідентифікатор сеансу, що використовується у майбутніх "
+"пакетах XDMCP."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1517
+msgid ""
+"GDM will then place the session id in the pending queue waiting for the "
+"display to respond with a MANAGE request."
+msgstr ""
+"Потім GDM зберігає ідентифікатор сеансу у черзі, очікуючи відповіді від "
+"дисплея пакетом MANAGE."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1522
+msgid ""
+"If no response is received within MaxWait seconds, GDM will declare the "
+"display dead and erase it from the pending queue freeing up the slot for "
+"other displays."
+msgstr ""
+"Якщо відповідь не надійшла протягом MaxWait секунд, GDM вважає дисплей "
+"мертвим та стирає його з черги очікування звільняючи слот для іншого дисплею."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1531
+msgid "MaxWaitIndirect"
+msgstr "MaxWaitIndirect"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1533
+#, no-wrap
+msgid "MaxWaitIndirect=30"
+msgstr "MaxWaitIndirect=30"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1534
+msgid ""
+"The MaxWaitIndirect parameter determines the maximum number of seconds "
+"between the time where a user chooses a host and the subsequent indirect "
+"query where the user is connected to the host. When the timeout is exceeded, "
+"the information about the chosen host is forgotten and the indirect slot "
+"freed up for other displays. The information may be forgotten earlier if "
+"there are more hosts trying to send indirect queries then "
+"<filename>MaxPendingIndirect</filename>."
+msgstr ""
+"Параметр MaxWaitIndirect визначає максимальну кількість секунд між часом, "
+"коли користувач вибрав вузол та наступним непрямим запитом до вузла. При "
+"перевищенні інтервалу очікування, інформація про вибраний вузол забувається "
+"та слот непрямого запиту звільняється. Інформація може відкинутись раніше, "
+"якщо вузлів, що намагаються надіслати непрямі запити більше за "
+"<filename>MaxPendingIndirect</filename>."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1548
+msgid "PingIntervalSeconds"
+msgstr "PingIntervalSeconds"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1550
+#, no-wrap
+msgid "PingIntervalSeconds=60"
+msgstr "PingIntervalSeconds=60"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1551
+msgid ""
+"If the Xserver does not respond in the specified number of seconds, then the "
+"connection is stopped and the session ended. When this happens the daemon "
+"dies with an ALARM signal. Note that GDM 2.20 and earlier multiplied this "
+"setting by 2, so it may be necessary to increase the timeout if upgrading "
+"from GDM 2.20 and earlier to a newer version."
+msgstr ""
+"Якщо сервер X не надасть відповіді протягом вказаної кількості секунд,"
+" з'єднання буде припинено, а сеанс буде завершено. Якщо таке трапляється,"
+" фонова служба завершує роботу із сигналом ALARM. Зауважте, що у GDM 2.20 і"
+" попередніх версіях це значення множилося на 2, тому, можливо, слід збільшити"
+" час очікування після оновлення з GDM 2.20 і попередніх версій до новіших"
+" версій удвічі."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1560
+msgid ""
+"Note that GDM in the past used to have a <filename>PingInterval</filename> "
+"configuration key which was also in minutes. For most purposes you'd want "
+"this setting to be lower than one minute. However since in most cases where "
+"XDMCP would be used (such as terminal labs), a lag of more than 15 or so "
+"seconds would really mean that the terminal was turned off or restarted and "
+"you would want to end the session."
+msgstr ""
+"Зауважте, що GDM у минулому мав ключ конфігурації <filename>PingInterval</"
+"filename>, який вказував час у хвилинах. Для більшості застосувань XDMCP не "
+"потрібно, щоб значення цього параметра було менше за одну хвилину, проте "
+"затримка більша за 15 секунд означатиме, що термінал вимкнений або "
+"перезавантажений, та вам слід завершити сеанс."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1573
+msgid "Port"
+msgstr "Port"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1575
+#, no-wrap
+msgid "Port=177"
+msgstr "Port=177"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1576
+msgid ""
+"The UDP port number <filename>gdm</filename> should listen to for XDMCP "
+"requests. Do not change this unless you know what you are doing."
+msgstr ""
+"Номер UDP-порту, на якому <filename>gdm</filename> очікуватиме XDMCP-"
+"запитів. Не змінюйте його, якщо ви не впевнені у наслідках своїх дій."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1585
+msgid "Willing"
+msgstr "Willing"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1587
+#, no-wrap
+msgid "Willing=&lt;etc&gt;/gdm/Xwilling"
+msgstr "Willing=&lt;etc&gt;/gdm/Xwilling"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1588
+msgid ""
+"When the machine sends a WILLING packet back after a QUERY it sends a string "
+"that gives the current status of this server. The default message is the "
+"system ID, but it is possible to create a script that displays customized "
+"message. If this script does not exist or this key is empty the default "
+"message is sent. If this script succeeds and produces some output, the first "
+"line of it's output is sent (and only the first line). It runs at most once "
+"every 3 seconds to prevent possible denial of service by flooding the "
+"machine with QUERY packets."
+msgstr ""
+"Коли сервер надсилає пакет WILLING у відповідь на QUERY, він надсилає рядок "
+"з поточним статусом цього сервера. Типовим повідомленням є системний "
+"ідентифікатор, але можна створити власний сценарій, який відображатиме "
+"власне повідомлення. Якщо цей сценарій не існує або цей ключ порожній - "
+"надсилається типове повідомлення. Якщо цей сценарій успішно виконується та "
+"виводить деякий текст, надсилається перший рядок цього тексту (та лише "
+"перший рядок). Він запускається максимум раз на 3 секунди для запобігання "
+"можливим атакам типу \"відмова у доступі\" шляхом затоплення його запитами "
+"QUERY."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:1607
+msgid "Simple Greeter Configuration"
+msgstr "Проста конфігурація програми привітання"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1609
+msgid ""
+"The GDM default greeter is called the simple Greeter and is configured via "
+"GConf. Default values are stored in GConf in the <filename>gdm-simple-"
+"greeter.schemas</filename> file. These defaults can be overridden if the "
+"\"gdm\" user has a writable $HOME directory to store GConf settings. These "
+"values can be edited using the <command>gconftool-2</command> or "
+"<command>gconf-editor</command> programs. The following configuration "
+"options are supported:"
+msgstr ""
+"Типова програма вітання GDM називається просто «Greeter» і налаштовується за"
+" допомогою GConf. Типові значення зберігаються у GConf у файлі <filename"
+">gdm-simple-greeter.schemas</filename>. Ці типові параметри можна"
+" перевизначити, якщо у користувача «gdm» є придатний до запису каталог $HOME"
+" для зберігання параметрів GConf. Ці значення можна редагувати за допомогою"
+" програм <command>gconftool-2</command> та <command>gconf-editor</command>."
+" Передбачено такі параметри налаштувань:"
+
+#. (itstool) path: variablelist/title
+#: C/index.docbook:1620
+msgid "Greeter Configuration Keys"
+msgstr "Ключі конфігурації програми привітання"
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1623
+msgid "/apps/gdm/simple-greeter/banner_message_enable"
+msgstr "/apps/gdm/simple-greeter/banner_message_enable"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1625 C/index.docbook:1646 C/index.docbook:1657
+#: C/index.docbook:1722 C/index.docbook:1787 C/index.docbook:1798
+#: C/index.docbook:1809 C/index.docbook:1820
+#, no-wrap
+msgid "false (boolean)"
+msgstr "false (булеве)"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1626
+msgid "Controls whether the banner message text is displayed."
+msgstr "Керує тим, чи буде показано текст повідомлення банера."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1633
+msgid "/apps/gdm/simple-greeter/banner_message_text"
+msgstr "/apps/gdm/simple-greeter/banner_message_text"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1635
+#, no-wrap
+msgid "NULL (string)"
+msgstr "NULL (рядок)"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1636
+msgid "Specifies the text banner message to show on the greeter window."
+msgstr ""
+"Вказує повідомлення текстового банера, яке слід показати у вікні привітання."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1644
+msgid "/apps/gdm/simple-greeter/disable_restart_buttons"
+msgstr "/apps/gdm/simple-greeter/disable_restart_buttons"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1647
+msgid "Controls whether to show the restart buttons in the login window."
+msgstr ""
+"Керує тим, чи буде показано кнопки перезапуску системи у вікні входу до"
+" системи."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1655
+msgid "/apps/gdm/simple-greeter/disable_user_list"
+msgstr "/apps/gdm/simple-greeter/disable_user_list"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1658
+msgid ""
+"If true, then the face browser with known users is not shown in the login "
+"window."
+msgstr ""
+"Якщо має значення «true», у вікні входу до системи буде показано переглядач"
+" портретів зі списком усіх відомих користувачів."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1666
+msgid "/apps/gdm/simple-greeter/logo_icon_name"
+msgstr "/apps/gdm/simple-greeter/logo_icon_name"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1668
+#, no-wrap
+msgid "computer (string)"
+msgstr "computer (рядок)"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1669
+msgid "Set to the themed icon name to use for the greeter logo."
+msgstr ""
+"Встановіть назву піктограми з теми, яку слід використати як логотип програми"
+" вітання."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1676
+msgid "/apps/gdm/simple-greeter/recent-languages"
+msgstr "/apps/gdm/simple-greeter/recent-languages"
+
+#. (itstool) path: listitem/synopsis
+#: C/index.docbook:1678 C/index.docbook:1700
+#, no-wrap
+msgid "[] (string list)"
+msgstr "[] (список рядків)"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1679
+msgid ""
+"Set to a list of languages to be shown by default in the login window. "
+"Default value is \"[]\". With the default setting only the system default "
+"language is shown and the option \"Other...\" which pops-up a dialog box "
+"showing a full list of available languages which the user can select."
+msgstr ""
+"Встановлюється у значення списку мов, які типово буде показано у вікні входу"
+" до системи. Типовим значенням є «[]». З типовим значенням буде показано лише"
+" типову мову системи та пункт «Інші...», який відкриває діалогову панель із"
+" повним списком доступних мов, одну з яких може бути вибрано користувачем."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1687
+msgid ""
+"Users are not intended to change this setting by hand. Instead GDM keeps "
+"track of any languages selected in this configuration key, and will show "
+"them in the language combo box along with the \"Other...\" choice. This way, "
+"commonly selected languages are easier to select."
+msgstr ""
+"Не рекомендуємо користувачам змінювати значення цього параметра вручну."
+" Замість цього, GDM стежить за вибраними для цього ключа налаштувань мовами і"
+" показує їх у спадному списку разом із пунктом «Інші...». У такий спосіб"
+" спрощується вибір типових вибраних мов."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1698
+msgid "/apps/gdm/simple-greeter/recent-layouts"
+msgstr "/apps/gdm/simple-greeter/recent-layouts"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1701
+msgid ""
+"Set to a list of keyboard layouts to be shown by default in the login panel. "
+"Default value is \"[]\". With the default setting only the system default "
+"keyboard layout is shown and the option \"Other...\" which pops-up a dialog "
+"box showing a full list of available keyboard layouts which the user can "
+"select."
+msgstr ""
+"Встановлюється у значення списку розкладок клавіатури, які типово буде"
+" показано на панелі входу до системи. Типовим значенням є «[]». З типовим"
+" значенням буде показано лише типову розкладку клавіатури системи та пункт"
+" «Інші...», який відкриває діалогову панель із повним списком доступних"
+" розкладок клавіатури, одну з яких може бути вибрано користувачем."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1709
+msgid ""
+"Users are not intended to change this setting by hand. Instead GDM keeps "
+"track of any keyboard layouts selected in this configuration key, and will "
+"show them in the keyboard layout combo box along with the \"Other...\" "
+"choice. This way, commonly selected keyboard layouts are easier to select."
+msgstr ""
+"Не рекомендуємо користувачам змінювати значення цього параметра вручну."
+" Замість цього, GDM стежить за вибраними для цього ключа налаштувань"
+" розкладками клавіатури і показує їх у спадному списку разом із пунктом"
+" «Інші...». У такий спосіб спрощується вибір типових вибраних розкладок"
+" клавіатури."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1720
+msgid "/apps/gdm/simple-greeter/wm_use_compiz"
+msgstr "/apps/gdm/simple-greeter/wm_use_compiz"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1723
+msgid ""
+"Controls whether compiz is used as the window manager instead of metacity."
+msgstr ""
+"Керує тим, чи використовується compiz як програма для керування вікнами"
+" замість metacity."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:1733
+msgid "Accessibility Configuration"
+msgstr "Налаштовування спеціальних можливостей"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1735
+msgid ""
+"This section describes the accessibility configuration options available in "
+"GDM."
+msgstr ""
+"У цьому розділі описано параметри налаштування доступності, якими можна "
+"скористатися у GDM."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1741
+msgid "GDM Accessibility Dialog And GConf Keys"
+msgstr "Вікно доступності GDM і ключі GConf"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1743
+msgid ""
+"The GDM greeter panel at the login screen displays an accessibility icon. "
+"Clicking on that icon opens the GDM Accessibility Dialog. In the GDM "
+"Accessibility Dialog, there is a list of checkboxes, so the user can enable "
+"or disable the associated assistive tools."
+msgstr ""
+"На панелі вітання GDM у вікні входу до системи буде показано піктограму"
+" доступності. Натисканням цієї піктограми можна відкрити діалогове вікно"
+" доступності GDM. У діалоговому вікні доступності GDM ви побачите список"
+" пунктів для вмикання або вимикання пов'язаних допоміжних інструментів."
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1750
+msgid ""
+"The checkboxes that correspond to the on-screen keyboard, screen magnifier "
+"and screen reader assistive tools act on the three GConf keys that are "
+"described in the next section of this document. By enabling or disabling "
+"these checkboxes, the associated GConf key is set to \"true\" or \"false\". "
+"When the GConf key is set to true, the assistive tools linked to this GConf "
+"key are launched. When the GConf key is set to \"false\", any running "
+"assistive tool linked to this GConf key are terminated. These GConf keys are "
+"not automatically reset to a default state after the user has logged in. "
+"Consequently, the assistive tools that were running during the last GDM "
+"login session will automatically be launched at the next GDM login session."
+msgstr ""
+"Пункт для позначення, які відповідають екранній клавіатурі, екранному"
+" збільшувальному склу та допоміжним інструментам читання з екрана працюють із"
+" трьома ключами GConf, які описано у наступному розділі цього документа."
+" Позначенням цих пунктів або зняттям з них позначення можна встановити для"
+" пов'язаного ключа GConf значення «true» або «false». Якщо для ключа GConf"
+" встановлено значення «true», буде запущено допоміжні інструменти, пов'язані"
+" із цим ключем. Якщо для ключа GConf встановлено значення «false», роботу"
+" будь-якого допоміжного інструмента, пов'язаного із цим ключем GConf, буде"
+" перервано. Ці ключі GConf не буде автоматично скинуто до типового стану"
+" після входу користувача до системи. Отже, допоміжні інструменти, які було"
+" запущено під час останнього сеансу входу за допомогою GDM, буде також"
+" запущено під час наступного сеансу входу до системи за допомогою GDM."
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1764
+msgid ""
+"The other checkboxes in the GDM Accessibility Dialog do not have "
+"corresponding GConf keys because no additional program is launched to "
+"provide the accessibility features that they offer. These other options "
+"correspond to accessibility features that are provided by the Xserver, which "
+"is always running during the GDM session."
+msgstr ""
+"У інших пунктів діалогового вікна доступності GDM немає відповідних ключів у"
+" GConf, оскільки з ними не пов'язано додаткових програм, які запускаються для"
+" надання можливостей доступності. Ці інші пункти відповідають можливостями"
+" доступності, працездатність яких забезпечується сервером X, який завжди"
+" запускається під час сеансу GDM."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1774
+msgid "Accessibility GConf Keys"
+msgstr "Ключі доступності GConf"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1776
+msgid ""
+"GDM offers the following GConf keys to control its accessibility features:"
+msgstr ""
+"У GDM передбачено вказані нижче ключі GConf для керування його можливостями"
+" доступності:"
+
+#. (itstool) path: variablelist/title
+#: C/index.docbook:1782
+msgid "GDM Configuration Keys"
+msgstr "Ключі налаштувань GDM"
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1785
+msgid "/desktop/gnome/interface/accessibility"
+msgstr "/desktop/gnome/interface/accessibility"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1788
+msgid ""
+"Controls whether the Accessibility infrastructure will be started with the "
+"GDM GUI. This is needed for many accessibility technology programs to work."
+msgstr ""
+"Керує тим, чи буде запущено інфраструктуру доступності разом із графічним"
+" інтерфейсом GDM. Такий запуск потрібен для забезпечення працездатності"
+" багатьох програм, які пов'язано із технологіями доступності."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1796
+msgid "/desktop/gnome/applications/at/screen_magnifier_enabled"
+msgstr "/desktop/gnome/applications/at/screen_magnifier_enabled"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1799
+msgid ""
+"If set, then the assistive tools linked to this GConf key will be started "
+"with the GDM GUI program. By default this is a screen magnifier application."
+msgstr ""
+"Якщо встановлено, разом із графічним інтерфейсом GDM буде запущено допоміжні"
+" інструменти, які пов'язано із цим ключем GConf. Типово, таким інструментом є"
+" екранне збільшувальне скло."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1807
+msgid "/desktop/gnome/applications/at/screen_keyboard_enabled"
+msgstr "/desktop/gnome/applications/at/screen_keyboard_enabled"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1810
+msgid ""
+"If set, then the assistive tools linked to this GConf key will be started "
+"with the GDM GUI program. By default this is an on-screen keyboard "
+"application."
+msgstr ""
+"Якщо встановлено, разом із графічним інтерфейсом GDM буде запущено допоміжні"
+" інструменти, які пов'язано із цим ключем GConf. Типово, таким інструментом є"
+" екранна клавіатура."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:1818
+msgid "/desktop/gnome/applications/at/screen_reader_enabled"
+msgstr "/desktop/gnome/applications/at/screen_reader_enabled"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:1821
+msgid ""
+"If set, then the assistive tools linked to this GConf key will be started "
+"with the GDM GUI program. By default this is a screen reader application."
+msgstr ""
+"Якщо встановлено, разом із графічним інтерфейсом GDM буде запущено допоміжні"
+" інструменти, які пов'язано із цим ключем GConf. Типово, таким інструментом є"
+" програма для читання тексту з екрана."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1832
+msgid "Linking GConf Keys to Accessibility Tools"
+msgstr "Пов'язування ключів GConf до інструментів доступності"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1834
+msgid ""
+"For the screen_magnifier_enabled, the screen_keyboard_enabled, and the "
+"screen_reader_enabled GConf keys, the assistive tool which gets launched "
+"depends on the desktop files located in the GDM autostart directory as "
+"described in the \"Autostart Configuration\" section of this manual. Any "
+"desktop file in the GDM autostart directory can be linked to these GConf key "
+"via specifying that GConf key in the AutostartCondition value in the desktop "
+"file. So the exact AutostartCondition line in the desktop file could be one "
+"of the following:"
+msgstr ""
+"Для ключів GConf screen_magnifier_enabled, screen_keyboard_enabled, і"
+" screen_reader_enabled інструмент доступності, який буде запущено, залежить"
+" від файлів desktop, які зберігаються у каталозі автоматичного запуску GDM,"
+" як це описано у розділі «Налаштовування автозапуску» цього підручника."
+" Будь-який файл "
+"desktop у каталозі автозапуску GDM можна пов'язати із цим ключем GConf за"
+" допомогою визначення цього ключа GConf у значенні AutostartCondition файла"
+" desktop. Отже, точний рядок AutostartCondition у файлі desktop може бути"
+" одним з таких:"
+
+#. (itstool) path: sect3/screen
+#: C/index.docbook:1846
+#, no-wrap
+msgid ""
+"\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_keyboard_enable"
+"d\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_magnifier_enabl"
+"ed\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_reader_enabled"
+"\n"
+msgstr ""
+"\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_keyboard_enable"
+"d\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_magnifier_enabl"
+"ed\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_reader_enabled"
+"\n"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1852
+msgid ""
+"When an accessibility key is true, then any program which is linked to that "
+"key in a GDM autostart desktop file will be launched (unless the Hidden key "
+"is set to true in that desktop file). A single GConf key can even start "
+"multiple assistive tools if there are multiple desktop files with this "
+"AutostartCondition in the GDM autostart directory."
+msgstr ""
+"Якщо ключ доступності має значення «true», буде запущено будь-яку програму,"
+" яку пов'язано із цим ключем у файлі desktop автоматичного запуску GDM (якщо"
+" у цьому файлі desktop не встановлено значення «true» для ключа Hidden). Один"
+" ключ GConf може навіть запускати декілька допоміжних інструментів, якщо у"
+" каталозі автозапуску GDM зберігається декілька файлів desktop із відповідним"
+" значенням AutostartCondition."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:1862
+msgid "Example Of Modifying Accessibility Tool Configuration"
+msgstr "Приклад внесення змін до налаштувань засобу спеціальних можливостей"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1864
+msgid ""
+"For example, if GNOME is distributed with GOK as the default on-screen "
+"keyboard, then this could be replaced with a different program if desired. "
+"To replace GOK with the on-screen keyboard application \"onboard\" and "
+"additionally activate the assistive tool \"mousetweaks\" for dwelling "
+"support, then the following configuration is needed."
+msgstr ""
+"Наприклад, якщо GNOME постачається із GOK як типовою екранною клавіатурою, її"
+" можна замінити, якщо хочете, будь-якою іншою програмою. Щоб замінити GOK на"
+" екранну клавіатуру «onboard» і додатково активувати допоміжний інструмент"
+" «mousetweaks» для підтримки затриманого клацання, слід скористатися"
+" описаними нижче налаштуваннями."
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1872
+msgid ""
+"Create a desktop file for onboard and a second one for mousetweaks; for "
+"example, onboard.desktop and mousetweaks.desktop. These files must be placed "
+"in the GDM autostart directory and be in the format as explained in the "
+"\"Autostart Configuration\" section of this document."
+msgstr ""
+"Створіть файл desktop для onboard і ще один для mousetweaks; наприклад,"
+" onboard.desktop і mousetweaks.desktop. Ці файли мають зберігатися у каталозі"
+" автоматичного запуску (autostart) GDM у форматі, який описано у розділі"
+" «Налаштовування автозапуску» цього документа."
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1880
+msgid "The following is an example <filename>onboard.desktop</filename> file:"
+msgstr "Нижче наведено приклад файла <filename>onboard.desktop</filename>:"
+
+#. (itstool) path: sect3/screen
+#: C/index.docbook:1884
+#, no-wrap
+msgid ""
+"\n"
+"[Desktop Entry]\n"
+"Encoding=UTF-8\n"
+"Name=Onboard Onscreen Keyboard\n"
+"Comment=Use an on-screen keyboard\n"
+"TryExec=onboard\n"
+"Exec=onboard --size 500x180 -x 20 -y 10\n"
+"Terminal=false\n"
+"Type=Application\n"
+"StartupNotify=true\n"
+"Categories=GNOME;GTK;Accessibility;\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_keyboard_enable"
+"d\n"
+msgstr ""
+"\n"
+"[Desktop Entry]\n"
+"Encoding=UTF-8\n"
+"Name=Onboard Onscreen Keyboard\n"
+"Comment=Use an on-screen keyboard\n"
+"TryExec=onboard\n"
+"Exec=onboard --size 500x180 -x 20 -y 10\n"
+"Terminal=false\n"
+"Type=Application\n"
+"StartupNotify=true\n"
+"Categories=GNOME;GTK;Accessibility;\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_keyboard_enable"
+"d\n"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1898
+msgid ""
+"The following is an example <filename>mousetweaks.desktop</filename> file:"
+msgstr "Нижче наведено приклад файла <filename>mousetweaks.desktop</filename>:"
+
+#. (itstool) path: sect3/screen
+#: C/index.docbook:1903
+#, no-wrap
+msgid ""
+"\n"
+"[Desktop Entry]\n"
+"Encoding=UTF-8\n"
+"Name=Software Mouse-Clicks\n"
+"Comment=Perform clicks by dwelling with the pointer\n"
+"TryExec=mousetweaks\n"
+"Exec=mousetweaks --enable-dwell -m window -c -x 20 -y 240 \n"
+"Terminal=false\n"
+"Type=Application\n"
+"StartupNotify=true\n"
+"Categories=GNOME;GTK;Accessibility;\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_keyboard_enable"
+"d\n"
+msgstr ""
+"\n"
+"[Desktop Entry]\n"
+"Encoding=UTF-8\n"
+"Name=Software Mouse-Clicks\n"
+"Comment=Perform clicks by dwelling with the pointer\n"
+"TryExec=mousetweaks\n"
+"Exec=mousetweaks --enable-dwell -m window -c -x 20 -y 240 \n"
+"Terminal=false\n"
+"Type=Application\n"
+"StartupNotify=true\n"
+"Categories=GNOME;GTK;Accessibility;\n"
+"AutostartCondition=GNOME /desktop/gnome/applications/at/screen_keyboard_enable"
+"d\n"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1917
+msgid ""
+"Note the line with the AutostartCondition that links both desktop files to "
+"the GConf key for the on-screen keyboard."
+msgstr ""
+"Зауважте рядок із AutostartCondition, який пов'язує файли desktop із ключем "
+"GConf для екранної клавіатури."
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1922
+msgid ""
+"To disable GOK from starting, the desktop file for the GOK on-screen "
+"keyboard must be removed or deactivated. Otherwise onboard and GOK would "
+"simultaneously be started. This can be done by removing the gok.desktop file "
+"from the GDM autostart directory, or by adding the \"Hidden=true\" key "
+"setting to the gok.desktop file."
+msgstr ""
+"Щоб вимкнути запуск GOK, файл desktop для екранної клавіатури GOK слід"
+" вилучити або дезактивувати. Якщо цього не зробити, буде одночасно запущено"
+" onboard і GOK. Досягти потрібного результату можна вилученням файла"
+" gok.desktop з каталогу автозапуску GDM або додаванням ключа «Hidden=true» до"
+" файла gok.desktop."
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:1930
+msgid ""
+"After making these changes, GOK will no longer be started when the user "
+"activates the on-screen keyboard in the GDM session; but onboard and "
+"mousetweaks will instead be launched."
+msgstr ""
+"Після внесення цих змін GOK не запускатиметься, коли користувач активує"
+" екранну клавіатуру у сеансі GDM, — замість нього буде запущено onboard і"
+" mousetweaks."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:1939
+msgid "General Session Settings"
+msgstr "Параметри загального сеансу"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1948
+msgid ""
+"The GDM Greeter uses some of the same framework that your desktop session "
+"will use. And so, it is influenced by a number of the same GConf settings. "
+"For each of these settings the Greeter will use the default value unless it "
+"is specifically overridden by a) GDM's installed mandatory policy b) system "
+"mandatory policy. GDM installs its own mandatory policy to lock down some "
+"settings for security."
+msgstr ""
+"Програма вітання GDM використовує деякі з бібліотек, які використовуватиме і"
+" ваш стільничний сеанс. Отже, на його роботу впливають декілька параметрів"
+" GConf стільничного сеансу. Для кожного з таких параметрів програма вітання"
+" використовуватиме типове значення, якщо його не буде окремо перевизначено а)"
+" встановленими обов'язковими правилами GDM; б) обов'язковими правилами"
+" системи. GDM встановлює власні обов'язкові правила для блокування деяких"
+" параметрів з міркувань безпеки."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:1959
+msgid "GNOME Settings Daemon"
+msgstr "Фонова служба параметрів GNOME"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1972
+msgid ""
+"GDM enables the following gnome-settings-daemon plugins: a11y-keyboard, "
+"background, sound, xsettings."
+msgstr ""
+"GDM вмикає такі додатки gnome-settings-daemon: a11y-keyboard, background, "
+"sound, xsettings."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1977
+msgid ""
+"These are responsible for things like the background image, font and theme "
+"settings, sound events, etc."
+msgstr ""
+"Ці додатки відповідають за фонове зображення, шрифт та параметри теми, "
+"озвучення подій тощо."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1982
+msgid ""
+"Plugins can also be disabled using GConf. For example, if you want to "
+"disable the sound plugin then unset the following key: <filename>/apps/gdm/"
+"simple-greeter/settings-manager-plugins/sound/active</filename>."
+msgstr ""
+"Додатки можна вимкнути за допомогою GConf. Наприклад, якщо ви хочете "
+"вимкнути додаток озвучення, вимкніть такий ключ: <filename>/apps/gdm/simple-"
+"greeter/settings-manager-plugins/sound/active</filename>."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:1990
+msgid "GDM Session Configuration"
+msgstr "Налаштовування сеансу GDM"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1992
+msgid ""
+"GDM sessions are specified using the FreeDesktop.org Desktop Entry "
+"Specification, which can be referenced at the following URL: <ulink url="
+"\"http://www.freedesktop.org/wiki/Specifications/desktop-entry-spec\"> "
+"http://www.freedesktop.org/wiki/Specifications/desktop-entry-spec</ulink>."
+msgstr ""
+"Сеанси GDM визначаються за допомогою специфікації стільничних записів"
+" FreeDesktop.org, з якою можна ознайомитися за такою адресою: <ulink"
+" url=\"http://www.freedesktop.org/wiki/Specifications/desktop-entry-spec\"> "
+"http://www.freedesktop.org/wiki/Specifications/desktop-entry-spec</ulink>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:1999
+msgid ""
+"By default, GDM will install desktop files in the <filename>&lt;share&gt;/"
+"xsessions</filename> directory. GDM will search the following directories in "
+"this order to find desktop files: <filename>&lt;etc&gt;/X11/sessions/</"
+"filename>, <filename>&lt;dmconfdir&gt;/Sessions</filename>, <filename>&lt;"
+"share&gt;/xsessions</filename>, and <filename>&lt;share&gt;/gdm/"
+"BuiltInSessions</filename>. By default the <filename>&lt;dmconfdir&gt;</"
+"filename> is set to <filename>&lt;etc&gt;/dm/</filename> unless GDM is "
+"configured to use a different directory via the \"--with-dmconfdir\" option."
+msgstr ""
+"Типово, GDM встановлює файли desktop до каталогу <filename"
+">&lt;share&gt;/xsessions</filename>. GDM шукатиме файли desktop у таких"
+" каталогах, за порядком пріоритетності: <filename>&lt;etc&gt;/X11/sessions/</"
+"filename>, <filename>&lt;dmconfdir&gt;/Sessions</filename>, <filename>&lt;"
+"share&gt;/xsessions</filename> і <filename>&lt;share&gt;/gdm/"
+"BuiltInSessions</filename>. Типово, для <filename>&lt;dmconfdir&gt;</"
+"filename> встановлено значення <filename>&lt;etc&gt;/dm/</filename>, якщо GDM"
+" не налаштовано на використання іншого каталогу за допомогою параметра"
+" «--with-dmconfdir»."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2012
+msgid ""
+"A session can be disabled by editing the desktop file and adding a line as "
+"follows: <filename>Hidden=true</filename>."
+msgstr ""
+"Сеанс можна вимкнути редагуванням файла desktop із додаванням такого рядка: <"
+"filename>Hidden=true</filename>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2017
+msgid ""
+"GDM desktop files support a GDM-specific extension, a key named \"X-GDM-"
+"BypassXsession\". If the key is not specified in a desktop file, the value "
+"defaults to \"false\". If this key is specified to be \"true\" in a desktop "
+"file, then GDM will launch the program specified by the desktop file \"Exec"
+"\" key directly when starting the user session. It will not run the program "
+"via the <filename>&lt;etc&gt;/gdm/Xsession</filename> script, which is the "
+"normal behavior. Since bypassing the <filename>&lt;etc&gt;/gdm/Xsession</"
+"filename> script avoids setting up the user session with the normal system "
+"and user settings, sessions started this way can be useful for debugging "
+"problems in the system or user scripts that might be preventing a user from "
+"being able to start a session."
+msgstr ""
+"У файлах desktop GDM передбачено підтримку специфічного для GDM розширення,"
+" ключа із назвою «X-GDM-BypassXsession». Якщо цей ключ у файлі desktop не"
+" вказано, типовим значенням для нього вважається «false». Якщо для ключа у"
+" файлі desktop вказано значення «true», GDM запустить програму, яку вказано у"
+" ключі «Exec» файла desktop безпосередньо під час запуску сеансу користувача."
+" GDM не запускатиме програму за допомогою скрипту <filename"
+">&lt;etc&gt;/gdm/Xsession</filename>, це звична поведінка. Оскільки обхід"
+" скрипту <filename>&lt;etc&gt;/gdm/Xsession</filename> надає змогу уникнути"
+" налаштовування сеансу користувача зі звичайними системними параметрами та"
+" параметрами користувача, сеанси, які запущено у такий спосіб, корисні для"
+" діагностування проблем у системі або скриптах користувача, які можуть"
+" заважати можливості користувача розпочати сеанс."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:2036
+msgid "GDM User Session and Language Configuration"
+msgstr "Налаштовування сеансу користувача і мови GDM"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2037
+msgid ""
+"The user's default session and language choices are stored in the "
+"<filename>~/.dmrc</filename> file. When a user logs in for the first time, "
+"this file is created with the user's initial choices. The user can change "
+"these default values by simply changing to a different value when logging "
+"in. GDM will remember this change for subsequent logins."
+msgstr ""
+"Типові параметри сеансу і вибір мов користувача зберігаються у файлі <"
+"filename>~/.dmrc</filename>. Коли користувач входить до системи вперше,"
+" програма створює цей файл із початковими параметрами користувача. Користувач"
+" може змінити типові значення простим зазначенням іншого значення при вході"
+" до системи. GDM запам'ятає внесені зміни для наступних входів до системи."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2045
+msgid ""
+"The <filename>~/.dmrc</filename> file is in the standard <filename>INI</"
+"filename> format. It has one section called <filename>[Desktop]</filename> "
+"which has two keys: <filename>Session</filename> and <filename>Language</"
+"filename>."
+msgstr ""
+"Файл <filename>~/.dmrc</filename> є файлом у стандартному форматі "
+"<filename>INI</filename>. У ньому є один розділ із назвою "
+"<filename>[Desktop]</filename>, який містить два ключі: <filename>Session</"
+"filename> і <filename>Language</filename>."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2052
+msgid ""
+"The <filename>Session</filename> key specifies the basename of the session "
+"<filename>.desktop</filename> file that the user wishes to normally use "
+"without the <filename>.desktop</filename> extension. The <filename>Language</"
+"filename> key specifies the language that the user wishes to use by default. "
+"If either of these keys is missing, the system default is used. The file "
+"would normally look as follows:"
+msgstr ""
+"Ключ <filename>Session</filename> вказує базову назву файла <filename"
+">.desktop</filename> сеансу, якою користувач бажає користуватися без суфікса"
+" назви <filename>.desktop</filename>. Ключ <filename>Language</filename>"
+" вказує на мову, якою типово хоче користуватися користувач. Якщо якогось із"
+" цих ключів не буде вказано, буде використано типове значення для системи."
+" Файл, зазвичай, виглядає десь так:"
+
+#. (itstool) path: sect2/screen
+#: C/index.docbook:2061
+#, no-wrap
+msgid ""
+"\n"
+"[Desktop]\n"
+"Session=gnome\n"
+"Language=cs_CZ.UTF-8\n"
+msgstr ""
+"\n"
+"[Desktop]\n"
+"Session=gnome\n"
+"Language=uk_UA.UTF-8\n"
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:2073
+msgid "GDM Commands"
+msgstr "Команди GDM"
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:2076
+msgid "GDM Root User Commands"
+msgstr "Команди GDM адміністративного користувача"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2078
+msgid ""
+"The GDM package provides the following commands in <filename>sbindir</"
+"filename> intended to be run by the root user:"
+msgstr ""
+"У пакунку GDM передбачено такі програми у <filename>sbindir</filename>, які"
+" має бути запущено від імені користувача root:"
+
+#. (itstool) path: sect3/title
+#. (itstool) path: variablelist/title
+#: C/index.docbook:2084 C/index.docbook:2092
+msgid "<command>gdm</command> Command Line Options"
+msgstr "Параметри командного рядка <command>gdm</command>"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:2086
+msgid ""
+"<command>gdm</command> is the main daemon which sets up graphical login "
+"environment and starts necessary helpers."
+msgstr ""
+"<command>gdm</command> є основною фоновою службою, яка налаштовує графічне"
+" середовище для входу і запускає необхідні допоміжні програми."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:2095
+msgid "-?, --help"
+msgstr "-?, --help"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:2097
+msgid "Gives a brief overview of the command line options."
+msgstr "Виводить коротку довідку з переліком параметрів командного рядка."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:2104
+msgid "--fatal-warnings"
+msgstr "--fatal-warnings"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:2106
+msgid "Make all warnings cause GDM to exit."
+msgstr "Зробити так, щоб попередження призводили до виходу з GDM."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:2113
+msgid "--timed-exit"
+msgstr "--timed-exit"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:2115
+msgid "Exit after 30 seconds. Useful for debugging."
+msgstr "Вийти за 30 секунд. Корисно для діагностики."
+
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:2122
+msgid "--version"
+msgstr "--version"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:2124
+msgid "Print the version of the GDM daemon."
+msgstr "Вивести версію сервера GDM."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:2133
+msgid "<command>gdm-restart</command> Command Line Options"
+msgstr "Параметри командного рядка <command>gdm-restart</command>"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:2135
+msgid ""
+"<command>gdm-restart</command> stops and restarts GDM by sending the GDM "
+"daemon a HUP signal. This command will immediately terminate all sessions "
+"and log out users currently logged in with GDM."
+msgstr ""
+"<command>gdm-restart</command> зупиняє та перезапускає GDM, надсилаючи "
+"службі GDM сигнал HUP. Це призводить до негайного припинення усіх сеансів та "
+"виходу користувачів, що увійшли через GDM."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:2143
+msgid "<command>gdm-safe-restart</command> Command Line Options"
+msgstr "Параметри командного рядка <command>gdm-safe-restart</command>"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:2145
+msgid ""
+"<command>gdm-safe-restart</command> stops and restarts GDM by sending the "
+"GDM daemon a USR1 signal. GDM will be restarted as soon as all users log out."
+msgstr ""
+"<command>gdm-safe-restart</command> зупиняє та перезапускає GDM надсилаючи "
+"службі GDM сигнал USR1. GDM перезапускається одразу після виходу усіх "
+"користувачів."
+
+#. (itstool) path: sect3/title
+#: C/index.docbook:2153
+msgid "<command>gdm-stop</command> Command Line Options"
+msgstr "Параметри командного рядка <command>gdm-stop</command>"
+
+#. (itstool) path: sect3/para
+#: C/index.docbook:2155
+msgid ""
+"<command>gdm-stop</command> stops GDM by sending the GDM daemon a TERM "
+"signal."
+msgstr ""
+"<command>gdm-stop</command> зупиняє GDM, надсилаючи службі GDM сигнал TERM."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:2166
+msgid "Troubleshooting"
+msgstr "Усунення проблем"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:2174
+msgid ""
+"This section discusses helpful tips for getting GDM working. In general, if "
+"you have a problem using GDM, you can submit a bug or send an email to the "
+"gdm-list mailing list. Information about how to do this is in the "
+"Introduction section of the document."
+msgstr ""
+"У цьому розділі наведено корисні підказки щодо забезпечення працездатності"
+" GDM. Загалом, якщо у вас виникають проблеми з користуванням GDM, ви можете"
+" надіслати повідомлення про ваду або повідомлення електронної пошти до списку"
+" листування gdm-list. Відомості щодо того, як це зробити, наведено у"
+" вступному розділі цього підручника."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:2181
+msgid ""
+"If GDM is failing to work properly, it is always a good idea to include "
+"debug information. To enable debugging, set the debug/Enable key to \"true\" "
+"in the <filename>&lt;etc&gt;/gdm/custom.conf</filename> file and restart "
+"GDM. Then use GDM to the point where it fails, and debug output will be sent "
+"to the system log file (<filename>&lt;var&gt;/log/messages</filename> or "
+"<filename>&lt;var&gt;/adm/messages</filename> depending on your Operating "
+"System). If you share this output with the GDM community via a bug report or "
+"email, please only include the GDM related debug information and not the "
+"entire file since it can be large. If you do not see any GDM syslog output, "
+"you may need to configure syslog (refer to the <ulink type=\"help\" url="
+"\"man:syslog\">syslog</ulink> man page)."
+msgstr ""
+"Якщо GDM не працює належним чином, завжди варто включити до звіту"
+" діагностичні відомості. Щоб увімкнути діагностику, встановіть для ключа"
+" debug/Enable значення «true» у файлі <filename>&lt;etc&gt;/gdm/custom.conf<"
+"/filename> і перезапустіть GDM. Далі, використовуйте GDM до моменту, коли"
+" трапляється помилка, і діагностичні дані буде записано до загальносистемного"
+" файла журналу (<filename>&lt;var&gt;/log/messages</filename> або <filename"
+">&lt;var&gt;/adm/messages</filename>, залежно від вашої операційної системи)."
+" Якщо ви ділитеся цими даним зі спільнотою GDM у звіті щодо вади або"
+" повідомленні електронної пошти, будь ласка, включайте лише пов'язані із GDM"
+" діагностичні дані, але увесь файл, оскільки він може бути доволі великим."
+" Якщо ви не бачите у системному журналі ніяких даних GDM, вам варто"
+" налаштувати системний журнал (зверніться до сторінки підручника (man) щодо <"
+"ulink type=\"help\" url="
+"\"man:syslog\">syslog</ulink>)."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:2197
+msgid "GDM Will Not Start"
+msgstr "GDM не запускається"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2199
+msgid ""
+"There are a many problems that can cause GDM to fail to start, but this "
+"section will discuss a few common problems and how to approach tracking down "
+"a problem with GDM starting. Some problems will cause GDM to respond with an "
+"error message or dialog when it tries to start, but it can be difficult to "
+"track down problems when GDM fails silently."
+msgstr ""
+"Існує багато проблем, які можуть призводити до неможливості запуску GDM, але"
+" у цьому розділі ми обговоримо декілька типових проблем і те, яким чином"
+" підходити до відстежування причин проблем із запуском GDM. Деякі проблеми"
+" спричиняють виведення GDM повідомлення про помилку або діалогового вікна при"
+" спробі запуску, але причину проблеми важко встановити, якщо GDM завершує"
+" роботу без будь-яких повідомлень."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2208
+msgid ""
+"First make sure that the Xserver is configured properly. The GDM "
+"configuration file contains a command in the [server-Standard] section that "
+"is used for starting the Xserver. Verify that this command works on your "
+"system. Running this command from the console should start the Xserver. If "
+"it fails, then the problem is likely with your Xserver configuration. Refer "
+"to your Xserver error log for an idea of what the problem may be. The "
+"problem may also be that your Xserver requires different command-line "
+"options. If so, then modify the Xserver command in the GDM configuration "
+"file so that it is correct for your system."
+msgstr ""
+"Спочатку, переконайтеся, що сервер X налаштовано належним чином. Файл"
+" налаштувань GDM містить у розділі [server-Standard] команду, яка"
+" використовується для запуску сервера X. Перевірте, чи працює ця команда у"
+" вашій системі. Запуск цієї команди з консолі має запускати сервер X. Якщо"
+" запустити сервер не вдається, проблему, ймовірно, пов'язано із вашими"
+" налаштуваннями сервера X. Зверніться до журналу помилок сервера X, щоб"
+" дізнатися про причини проблеми. Проблема може також полягати у тому, що ваш"
+" сервер X потребує для запуску інших параметрів командного рядка. Якщо це"
+" так, змініть команду запуску сервера X у файлі налаштувань GDM так, щоб вона"
+" відповідала вашій системі."
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:2221
+msgid ""
+"Also make sure that the <filename>/tmp</filename> directory has reasonable "
+"ownership and permissions, and that the machine's file system is not full. "
+"These problems will cause GDM to fail to start."
+msgstr ""
+"Також переконайтеся, що каталог <filename>/tmp</filename> має належного"
+" власника і права доступу, і що файлова система комп'ютера не є переповненою."
+" Проблеми із правами доступу і переповнена файлова система не дадуть"
+" запустити GDM."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:2232
+msgid "License"
+msgstr "Ліцензія"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:2233
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the <ulink type=\"help\" url=\"gnome-help:gpl\"> "
+"<citetitle>GNU General Public License</citetitle></ulink> as published by "
+"the Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
+msgstr ""
+"Ця програма є вільною. Ви можете поширювати та змінювати її на умовах, "
+"викладених у <ulink type=\"help\" url=\"gnome-help:gpl\"><citetitle>GNU "
+"General Public License</citetitle></ulink>, що видана Free Software "
+"Foundation; або версії 2 ліцензії, або (на ваше розсуд довільної старшої "
+"версії."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:2241
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the <citetitle>GNU General Public "
+"License</citetitle> for more details."
+msgstr ""
+"Ця програма поширюється з надією, що буде корисною, але БЕЗ БУДЬ_ЯКИХ "
+"ГАРАНТІЙ; навіть без неявної гарантії ПРИДАТНОСТІ ДО ПРОДАЖУ або "
+"ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ. Докладніше про це дивіться у <citetitle>GNU "
+"General Public License</citetitle>."
+
+#. (itstool) path: para/address
+#: C/index.docbook:2255
+#, no-wrap
+msgid ""
+"\n"
+"      Free Software Foundation, Inc.\n"
+"      <street>51 Franklin Street, Fifth Floor</street>\n"
+"      <city>Boston</city>, <state>MA</state> <postcode>02110-1301</postcode>\n"
+"      <country>USA</country>\n"
+"      "
+msgstr ""
+"\n"
+"      Free Software Foundation, Inc.\n"
+"      <street>51 Franklin Street, Fifth Floor</street>\n"
+"      <city>Boston</city>, <state>MA</state> <postcode>02110-1301</postcode>\n"
+"      <country>USA</country>\n"
+"      "
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:2247
+msgid ""
+"A copy of the <citetitle>GNU General Public License</citetitle> is included "
+"as an appendix to the <citetitle>GNOME Users Guide</citetitle>. You may also "
+"obtain a copy of the <citetitle>GNU General Public License</citetitle> from "
+"the Free Software Foundation by visiting <ulink type=\"http\" url=\"http://"
+"www.fsf.org\">their Web site</ulink> or by writing to <_:address-1/>"
+msgstr ""
+"Копію <citetitle>GNU General Public License</citetitle> включено як додаток "
+"до <citetitle>Підручника користувача GNOME</citetitle>. Крім того, ви можете "
+"отримати копію <citetitle>GNU General Public License</citetitle> від Free "
+"Software Foundation, відвідавши <ulink type=\"http\" url=\"http://www.fsf.org"
+"\">їхній вебсайт</ulink> або написавши до <_:address-1/>"
+
+#. (itstool) path: para/ulink
+#: C/legal.xml:9
+msgid "link"
+msgstr "посиланням"
+
+#. (itstool) path: legalnotice/para
+#: C/legal.xml:2
+msgid ""
+"Permission is granted to copy, distribute and/or modify this document under "
+"the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any "
+"later version published by the Free Software Foundation with no Invariant "
+"Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy "
+"of the GFDL at this <_:ulink-1/> or in the file COPYING-DOCS distributed "
+"with this manual."
+msgstr ""
+"Дозволяється копіювати, розповсюджувати та/або змінювати цей документ на "
+"умовах ліцензії GNU Free Documentation License (GFDL), версії 1.1 або будь-"
+"якої старшої версії, що опублікована Free Software Foundation без "
+"інваріантних розділів, тексту титульної сторінки, та тексту фінальної "
+"сторінки. Копію GFDL можна знайти за <_:ulink-1/> або у файлі COPYING-DOCS, "
+"що постачається з цією довідкою."
