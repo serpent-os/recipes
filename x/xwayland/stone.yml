@@ -1,0 +1,71 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : xwayland
+version     : 23.2.4
+release     : 1
+homepage    : https://www.x.org/pub/individual/xserver
+upstreams   :
+    - https://www.x.org/pub/individual/xserver/xwayland-23.2.4.tar.xz : a99e159b6d0d33098b3b6ab22a88bfcece23c8b9d0ca72c535c55dcb0681b46b
+summary     : Specialised X11 server for X11 client support under wayland
+description : |
+    Specialised X11 server for X11 client support under wayland
+license     :
+    - GPL-2.0
+builddeps   :
+    - binary(xmlto)
+    - binary(xsltproc)
+    - pkgconfig(bigreqsproto)
+    - pkgconfig(compositeproto)
+    - pkgconfig(damageproto)
+    - pkgconfig(dri3proto)
+    - pkgconfig(epoxy)
+    - pkgconfig(fixesproto)
+    - pkgconfig(fontsproto)
+    - pkgconfig(gbm)
+    - pkgconfig(inputproto)
+    - pkgconfig(kbproto)
+    - pkgconfig(libdecor-0)
+    - pkgconfig(libdrm)
+    - pkgconfig(libei-1.0)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(liboeffis-1.0)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libtirpc)
+    - pkgconfig(libunwind)
+    - pkgconfig(libxcvt)
+    - pkgconfig(openssl)
+    - pkgconfig(pixman-1)
+    - pkgconfig(presentproto)
+    - pkgconfig(randrproto)
+    - pkgconfig(recordproto)
+    - pkgconfig(renderproto)
+    - pkgconfig(resourceproto)
+    - pkgconfig(scrnsaverproto)
+    - pkgconfig(videoproto)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(xcmiscproto)
+    - pkgconfig(xdmcp)
+    - pkgconfig(xextproto)
+    - pkgconfig(xf86bigfontproto)
+    - pkgconfig(xf86vidmodeproto)
+    - pkgconfig(xfont2)
+    - pkgconfig(xineramaproto)
+    - pkgconfig(xkbcomp)
+    - pkgconfig(xkbfile)
+    - pkgconfig(xproto)
+    - pkgconfig(xshmfence)
+    - pkgconfig(xtrans)
+    - pkgconfig(xwaylandproto)
+    # - pkgconfig(fontutil)
+    # - pkgconfig(wayland-eglstream-protocols)
+    # - pkgconfig(xorg-sgml-doctools)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
