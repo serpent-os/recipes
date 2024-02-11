@@ -1,0 +1,30 @@
+From 03a330a8cdb54a9d5555ecac7bbea90bf336dffa Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Sun, 11 Feb 2024 23:39:19 +0000
+Subject: [PATCH] tmpfiles: Allow nsswitch clobber at non-boot interval
+
+Despite upstream not wanting us to do this, we kinda need to due to
+our stateless approach. Therefore we now have an extra responsibility
+to ensure this file doesn't fudge anything.
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ tmpfiles.d/etc.conf.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tmpfiles.d/etc.conf.in b/tmpfiles.d/etc.conf.in
+index 2fdd498..b36deba 100644
+--- a/tmpfiles.d/etc.conf.in
++++ b/tmpfiles.d/etc.conf.in
+@@ -13,7 +13,7 @@ L+ /etc/mtab - - - - ../proc/self/mounts
+ t /etc/mtab - - - - security.SMACK64=_
+ {% endif %}
+ C! /etc/locale.conf - - - -
+-C! /etc/nsswitch.conf - - - -
++C /etc/nsswitch.conf - - - -
+ {% if HAVE_PAM %}
+ C! /etc/pam.d - - - -
+ {% endif %}
+-- 
+2.43.0
+

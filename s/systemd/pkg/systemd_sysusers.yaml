@@ -1,0 +1,13 @@
+name: systemd_sysusers
+description: |
+    Run systemd-sysusers
+
+handlers:
+    systemd_sysusers:
+        run: /usr/bin/systemd-sysusers
+        args: []
+
+paths:
+    "/usr/lib/sysusers.d/*.conf":
+        handlers:
+            - systemd_sysusers

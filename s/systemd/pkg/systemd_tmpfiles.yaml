@@ -1,0 +1,14 @@
+name: systemd_tmpfiles
+description: |
+    Run systemd-tmpfiles
+after: systemd_syusers
+
+handlers:
+    systemd_tmpfiles:
+        run: /usr/bin/systemd-tmpfiles
+        args: ["--create"]
+
+paths:
+    "/usr/lib/tmpfiles.d/*.conf":
+        handlers:
+            - systemd_tmpfiles

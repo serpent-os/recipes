@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 14
+release     : 15
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -63,6 +63,7 @@ setup       : |
     %patch %(pkgdir)/0001-Set-DefaultTimeoutStopSec-to-5s.patch
     %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
     %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
+    %patch %(pkgdir)/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
 
     %meson \
         -Dbpf-framework=false \
@@ -135,3 +136,7 @@ install     : |
 
     # config.
     %install_file %(pkgdir)/config/00-journald.conf %(installroot)%(libdir)/systemd/journald.conf.d/00-journald.conf
+
+    # install necessary system triggers
+    %install_file %(pkgdir)/systemd_tmpfiles.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_tmpfiles.yaml
+    %install_file %(pkgdir)/systemd_sysusers.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_sysusers.yaml
