@@ -1,7 +1,7 @@
 From 03a330a8cdb54a9d5555ecac7bbea90bf336dffa Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <ikey@serpentos.com>
 Date: Sun, 11 Feb 2024 23:39:19 +0000
-Subject: [PATCH] tmpfiles: Allow nsswitch clobber at non-boot interval
+Subject: [PATCH 1/2] tmpfiles: Allow nsswitch clobber at non-boot interval
 
 Despite upstream not wanting us to do this, we kinda need to due to
 our stateless approach. Therefore we now have an extra responsibility

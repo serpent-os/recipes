@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 15
+release     : 16
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -64,6 +64,7 @@ setup       : |
     %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
     %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
     %patch %(pkgdir)/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
+    %patch %(pkgdir)/0002-sysusers-basic-Remove-all-definitions-bar-root.patch
 
     %meson \
         -Dbpf-framework=false \
