@@ -1,11 +1,11 @@
 name        : moss
 version     : "0.1.0"
-release     : 22
+release     : 23
 summary     : Ridiculously fast atomic package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/moss
 upstreams   :
-    - git|https://github.com/serpent-os/moss.git : 4364e12dcda17aebc98d33c77bb052fb71584517
+    - git|https://github.com/serpent-os/moss.git : 1a85bbd814ad224c6c6a064b3d116f6d872377f9
 description : |
     The new package manager with an old school feel. Traditional interaction
     and management whilst using brand new technologies, including efficient
