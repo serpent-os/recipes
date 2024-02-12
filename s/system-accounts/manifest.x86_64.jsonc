@@ -13,6 +13,7 @@
 				"/usr/lib/userdb/12.group",
 				"/usr/lib/userdb/13.group",
 				"/usr/lib/userdb/15.group",
+				"/usr/lib/userdb/19.group",
 				"/usr/lib/userdb/28.group",
 				"/usr/lib/userdb/3.group",
 				"/usr/lib/userdb/30.group",
@@ -21,6 +22,7 @@
 				"/usr/lib/userdb/61.group",
 				"/usr/lib/userdb/8.group",
 				"/usr/lib/userdb/9.group",
+				"/usr/lib/userdb/9.user",
 				"/usr/lib/userdb/97.group",
 				"/usr/lib/userdb/audio.group",
 				"/usr/lib/userdb/cdrom.group",
@@ -30,6 +32,8 @@
 				"/usr/lib/userdb/kmem.group",
 				"/usr/lib/userdb/kvm.group",
 				"/usr/lib/userdb/lp.group",
+				"/usr/lib/userdb/lp.user",
+				"/usr/lib/userdb/lpadmin.group",
 				"/usr/lib/userdb/render.group",
 				"/usr/lib/userdb/tape.group",
 				"/usr/lib/userdb/tty.group",
@@ -42,6 +46,6 @@
 		}
 	},
 	"source-name": "system-accounts",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "0.1.0"
 }

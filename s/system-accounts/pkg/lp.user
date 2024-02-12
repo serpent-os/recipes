@@ -1,0 +1,8 @@
+{
+    "userName" : "lp",
+    "realName" : "Print Service User",
+    "uid" : 9,
+    "gid" : 9,
+    "disposition" : "system",
+    "locked" : true
+}

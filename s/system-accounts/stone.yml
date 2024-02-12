@@ -5,7 +5,7 @@
 #
 name        : system-accounts
 version     : "0.1.0"
-release     : 3
+release     : 4
 license     : MPL-2.0
 homepage    : https://serpentos.com
 summary     : Core system account definitions
@@ -16,24 +16,16 @@ builddeps   :
 install     : |
     %install_dir %(installroot)%(libdir)/userdb
 
-    for group in \
-        audio \
-        cdrom \
-        dialout \
-        disk \
-        input \
-        kmem \
-        kvm \
-        lp \
-        render \
-        tape \
-        tty \
-        users \
-        utmp \
-        video \
-        wheel \
-    ; do
-        %install_file "%(pkgdir)/${group}.group" %(installroot)%(libdir)/userdb/${group}.group
-        gid=`jq .gid "%(pkgdir)/${group}.group"`
+    for groupFile in %(pkgdir)/*.group ; do
+        group=`jq -r .groupName ${groupFile}`
+        %install_file %(pkgdir)/${group}.group %(installroot)%(libdir)/userdb/${group}.group
+        gid=`jq -r .gid %(pkgdir)/${group}.group`
         ln -s ${group}.group %(installroot)%(libdir)/userdb/${gid}.group
+    done
+
+    for userFile in %(pkgdir)/*.user ; do
+        user=`jq -r .userName ${userFile}`
+        %install_file %(pkgdir)/${user}.user %(installroot)%(libdir)/userdb/${user}.user
+        uid=`jq -r .uid %(pkgdir)/${user}.user`
+        ln -s ${user}.user %(installroot)%(libdir)/userdb/${uid}.user
     done
