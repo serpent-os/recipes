@@ -4,5 +4,6 @@
     "uid" : 21,
     "gid" : 21,
     "disposition" : "system",
-    "locked" : false
+    "locked" : false,
+    "homeDirectory": "/var/lib/gdm"
 }
