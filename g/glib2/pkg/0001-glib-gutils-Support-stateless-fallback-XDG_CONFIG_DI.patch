@@ -1,0 +1,30 @@
+From 26d3057dcdd38f80ba208b395103c46be29b7efc Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Mon, 12 Feb 2024 23:48:27 +0000
+Subject: [PATCH] glib/gutils: Support stateless fallback XDG_CONFIG_DIRS
+
+This allows us to package our own XDG bits and piece within
+`/usr/share/xdg` rather than `/etc/xdg` while respecting the
+system-overrides, if present.
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ glib/gutils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/glib/gutils.c b/glib/gutils.c
+index 362c55a..5a1fb96 100644
+--- a/glib/gutils.c
++++ b/glib/gutils.c
+@@ -2792,7 +2792,7 @@ g_build_system_config_dirs (void)
+     }
+ #else
+   if (!conf_dirs || !conf_dirs[0])
+-    conf_dirs = "/etc/xdg";
++    conf_dirs = "/etc/xdg" G_SEARCHPATH_SEPARATOR_S "/usr/share/xdg";
+ 
+   conf_dir_vector = g_strsplit (conf_dirs, G_SEARCHPATH_SEPARATOR_S, 0);
+ #endif
+-- 
+2.43.0
+

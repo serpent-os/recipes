@@ -5,7 +5,7 @@
 #
 name        : glib2
 version     : 2.78.1
-release     : 10
+release     : 11
 homepage    : https://gitlab.gnome.org/GNOME/glib
 upstreams   :
     - https://download.gnome.org/sources/glib/2.78/glib-2.78.1.tar.xz : 915bc3d0f8507d650ead3832e2f8fb670fce59aac4d7754a7dab6f1e6fed78b2
@@ -30,6 +30,7 @@ builddeps   :
     - pkgconfig(mount)
     - pkgconfig(zlib)
 setup       : |
+    %patch %(pkgdir)/0001-glib-gutils-Support-stateless-fallback-XDG_CONFIG_DI.patch
     %meson -Dtests=false -Dinstalled_tests=false
 build       : |
     %meson_build
