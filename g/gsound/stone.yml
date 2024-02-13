@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gsound
+version     : 1.0.3
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gsound
+upstreams   :
+    - https://download.gnome.org/sources/gsound/1.0/gsound-1.0.3.tar.xz : ca2d039e1ebd148647017a7f548862350bc9af01986d39f10cfdc8e95f07881a
+summary     : Wraper for libcanberra
+description : |
+    GSound is a small library for playing system sounds. It's designed to be
+    used via GObject Introspection, and is a thin wrapper around the libcanberra C library.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(valac)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libcanberra)
+toolchain   : gnu
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

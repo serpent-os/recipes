@@ -1,0 +1,65 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gsound": {
+			"build-depends": [
+				"binary(valac)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(libcanberra)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcanberra.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/gsound-play",
+				"/usr/lib/girepository-1.0/GSound-1.0.typelib",
+				"/usr/lib/libgsound.so.0",
+				"/usr/lib/libgsound.so.0.0.2",
+				"/usr/share/gir-1.0/GSound-1.0.gir",
+				"/usr/share/vala/vapi/gsound.deps",
+				"/usr/share/vala/vapi/gsound.vapi"
+			],
+			"name": "gsound",
+			"provides": [
+				"binary(gsound-play)",
+				"soname(libgsound.so.0(x86_64))"
+			]
+		},
+		"gsound-devel": {
+			"build-depends": [
+				"binary(valac)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(libcanberra)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(libcanberra)"
+			],
+			"files": [
+				"/usr/include/gsound-attr.h",
+				"/usr/include/gsound-context.h",
+				"/usr/include/gsound.h",
+				"/usr/lib/libgsound.so",
+				"/usr/lib/pkgconfig/gsound.pc"
+			],
+			"name": "gsound-devel",
+			"provides": [
+				"pkgconfig(gsound)"
+			]
+		}
+	},
+	"source-name": "gsound",
+	"source-release": "1",
+	"source-version": "1.0.3"
+}
