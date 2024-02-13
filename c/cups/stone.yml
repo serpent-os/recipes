@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cups
+version     : 2.4.7
+release     : 1
+homepage    : https://openprinting.github.io/cups/
+upstreams   :
+    - https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz : dd54228dd903526428ce7e37961afaed230ad310788141da75cebaa08362cf6c
+summary     : CUPS uses IPP Everywhere™ to support printing to local and network printers.
+description : |
+    The current standards-based, open source printing system developed by OpenPrinting for Linux® and other Unix®-like operating systems. CUPS uses IPP Everywhere™ to support printing to local and network printers.
+license     :
+    - Apache-2.0
+builddeps   :
+    - binary(xdg-open)
+    - pkgconfig(gnutls)
+    - pkgconfig(libcrypt)
+    - coreutils
+setup       : |
+    %patch %(pkgdir)/0001-stateless-cupsd.patch
+    %configure \
+        --with-cups-user=lp \
+        --with-cups-group=lp \
+        --with-rundir=/run/cups \
+        --without-rcdir
+build       : |
+    %make
+install     : |
+    %make_install
+
+    %install_dir %(installroot)/usr/share/defaults/etc/
+    mv %(installroot)/etc/* %(installroot)/usr/share/defaults/etc/
+# hardcoded to /usr/bin/ar, instead of llvm-ar etc.
+toolchain   : gnu
