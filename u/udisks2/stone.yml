@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : udisks
+version     : 2.10.1
+release     : 1
+homepage    : https://github.com/storaged-project/udisks
+upstreams   :
+    - https://github.com/storaged-project/udisks/releases/download/udisks-2.10.1/udisks-2.10.1.tar.bz2 : b75734ccf602540dedb4068bec206adcb508a4c003725e117ae8f994d92d8ece
+summary     : Disk and storage device abstraction
+description : |
+    The UDisks project provides a daemon, tools and libraries to access and manipulate disks, storage devices and technologies.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(python3)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(polkit-gobject-1)
+toolchain   : gnu
+setup       : |
+    # TODO: Add atasmart + blockdev for daemon
+    CONF_SHELL=/bin/bash %configure --disable-static \
+               --disable-daemon \
+               --disable-man
+build       : |
+    %make SHELL=/bin/bash
+install     : |
+    %make_install SHELL=/bin/bash
