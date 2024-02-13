@@ -1,0 +1,90 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"tecla": {
+			"build-depends": [
+				"binary(msgfmt)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(gtk4-wayland)",
+				"pkgconfig(libadwaita-1)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libadwaita-1.so.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libpango-1.0.so.0(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/tecla",
+				"/usr/share/applications/org.gnome.Tecla.desktop",
+				"/usr/share/icons/hicolor/scalable/apps/org.gnome.Tecla.svg",
+				"/usr/share/icons/hicolor/symbolic/apps/org.gnome.Tecla-symbolic.svg",
+				"/usr/share/locale/be/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/ca/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/cs/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/da/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/de/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/el/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/eo/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/es/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/eu/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/fa/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/fi/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/gl/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/he/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/hu/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/id/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/it/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/ko/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/lt/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/oc/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/pa/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/pt/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/pt_BR/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/sk/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/sl/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/tr/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/zh_CN/LC_MESSAGES/tecla.mo"
+			],
+			"name": "tecla",
+			"provides": [
+				"binary(tecla)"
+			]
+		},
+		"tecla-devel": {
+			"build-depends": [
+				"binary(msgfmt)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(gtk4-wayland)",
+				"pkgconfig(libadwaita-1)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(xkbcommon)"
+			],
+			"files": [
+				"/usr/share/pkgconfig/tecla.pc"
+			],
+			"name": "tecla-devel",
+			"provides": [
+				"pkgconfig(tecla)"
+			]
+		}
+	},
+	"source-name": "tecla",
+	"source-release": "1",
+	"source-version": "45"
+}

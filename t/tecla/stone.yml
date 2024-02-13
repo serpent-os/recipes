@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : tecla
+version     : 45.0
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/tecla
+upstreams   :
+    - https://download.gnome.org/sources/tecla/45/tecla-45.0.tar.xz : 5c02bb4019b1cffb5663da6107503eff853836a8783dd4705dd04a49f7adc25b
+summary     : Keyboard layout viewer
+description : |
+    Keyboard layout viewer
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - pkgconfig(gtk4-wayland)
+    - pkgconfig(gtk4)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(wayland-client)
+    - pkgconfig(xkbcommon)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
