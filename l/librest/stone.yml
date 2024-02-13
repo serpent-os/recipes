@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : librest
+version     : 0.9.1
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/librest
+upstreams   :
+    - https://gitlab.gnome.org/GNOME/librest/-/archive/0.9.1/librest-0.9.1.tar.gz : d91247d7f8fd6c63e61bd27ad1a6ddb6819e5279286fc2ded84b5b8bf10b330e
+summary     : Wrapper library for so-called RESTful APIs
+description : |
+    This library has been designed to make it easier to access web services that claim to be "RESTful"
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(vapigen)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(libxml-2.0)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+toolchain   : gnu
+setup       : |
+    %meson -Dsoup2=false \
+           -Dintrospection=true \
+           -Dvapi=true \
+           -Dexamples=false \
+           -Dgtk_doc=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
