@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : colord-gtk
+version     : 0.3.1
+release     : 1
+homepage    : https://github.com/hughsie/colord-gtk
+upstreams   :
+    - https://github.com/hughsie/colord-gtk/archive/refs/tags/0.3.1.tar.gz : 9cfb3aa8958dc3fad6c74a7e2e967d182a355a24bea2c6dfb32c4fba87228f7e
+summary     : GTK Support for colord
+description : |
+    GTK Support for colord
+license     :
+    - LGPL-3.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(xsltproc)
+    - pkgconfig(colord)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk4)
+toolchain   : gnu
+setup       : |
+    %meson -Ddocs=false \
+           -Dman=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install

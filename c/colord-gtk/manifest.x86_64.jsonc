@@ -1,0 +1,84 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"colord-gtk": {
+			"build-depends": [
+				"binary(msgfmt)",
+				"binary(xsltproc)",
+				"pkgconfig(colord)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk4)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcairo.so.2(x86_64))",
+				"soname(libcolord.so.2(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-3.so.0(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cd-convert",
+				"/usr/lib/girepository-1.0/ColordGtk-1.0.typelib",
+				"/usr/lib/libcolord-gtk.so.1",
+				"/usr/lib/libcolord-gtk.so.1.0.3",
+				"/usr/lib/libcolord-gtk4.so.1",
+				"/usr/lib/libcolord-gtk4.so.1.0.3",
+				"/usr/share/gir-1.0/ColordGtk-1.0.gir",
+				"/usr/share/locale/en_GB/LC_MESSAGES/colord-gtk.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/colord-gtk.mo"
+			],
+			"name": "colord-gtk",
+			"provides": [
+				"binary(cd-convert)",
+				"soname(libcolord-gtk.so.1(x86_64))",
+				"soname(libcolord-gtk4.so.1(x86_64))"
+			]
+		},
+		"colord-gtk-devel": {
+			"build-depends": [
+				"binary(msgfmt)",
+				"binary(xsltproc)",
+				"pkgconfig(colord)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk4)"
+			],
+			"depends": [
+				"pkgconfig(colord)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk4)"
+			],
+			"files": [
+				"/usr/include/colord-1/colord-gtk.h",
+				"/usr/include/colord-1/colord-gtk/cd-sample-widget.h",
+				"/usr/include/colord-1/colord-gtk/cd-sample-window.h",
+				"/usr/include/colord-1/colord-gtk/cd-version.h",
+				"/usr/include/colord-1/colord-gtk/cd-window-sync.h",
+				"/usr/include/colord-1/colord-gtk/cd-window.h",
+				"/usr/lib/libcolord-gtk.so",
+				"/usr/lib/libcolord-gtk4.so",
+				"/usr/lib/pkgconfig/colord-gtk.pc",
+				"/usr/lib/pkgconfig/colord-gtk4.pc"
+			],
+			"name": "colord-gtk-devel",
+			"provides": [
+				"pkgconfig(colord-gtk)",
+				"pkgconfig(colord-gtk4)"
+			]
+		}
+	},
+	"source-name": "colord-gtk",
+	"source-release": "1",
+	"source-version": "0.3.1"
+}
