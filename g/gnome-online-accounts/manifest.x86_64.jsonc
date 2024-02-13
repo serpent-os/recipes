@@ -1,0 +1,119 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gnome-online-accounts": {
+			"build-depends": [
+				"binary(vapigen)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(gcr-4)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libadwaita-1)",
+				"pkgconfig(libsecret-1)",
+				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(rest-1.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libadwaita-1.so.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libjson-glib-1.0.so.0(x86_64))",
+				"soname(librest-1.0.so.0(x86_64))",
+				"soname(libsecret-1.so.0(x86_64))",
+				"soname(libsoup-3.0.so.0(x86_64))",
+				"soname(libxml2.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/Goa-1.0.typelib",
+				"/usr/lib/gnome-online-accounts/goa-daemon",
+				"/usr/lib/gnome-online-accounts/goa-oauth2-handler",
+				"/usr/lib/goa-1.0/include/goaconfig.h",
+				"/usr/lib/libgoa-1.0.so.0",
+				"/usr/lib/libgoa-1.0.so.0.0.0",
+				"/usr/lib/libgoa-backend-1.0.so.1",
+				"/usr/lib/libgoa-backend-1.0.so.1.0.0",
+				"/usr/share/applications/org.gnome.OnlineAccounts.OAuth2.desktop",
+				"/usr/share/dbus-1/services/org.gnome.OnlineAccounts.service",
+				"/usr/share/gir-1.0/Goa-1.0.gir",
+				"/usr/share/glib-2.0/schemas/org.gnome.online-accounts.gschema.xml",
+				"/usr/share/icons/hicolor/scalable/apps/goa-account-exchange.svg",
+				"/usr/share/icons/hicolor/scalable/apps/goa-account-fedora.svg",
+				"/usr/share/icons/hicolor/scalable/apps/goa-account-google.svg",
+				"/usr/share/icons/hicolor/scalable/apps/goa-account-ms365.svg",
+				"/usr/share/icons/hicolor/scalable/apps/goa-account-msn.svg",
+				"/usr/share/icons/hicolor/scalable/apps/goa-account-owncloud.svg",
+				"/usr/share/icons/hicolor/scalable/apps/goa-account.svg",
+				"/usr/share/icons/hicolor/symbolic/apps/goa-account-exchange-symbolic.svg",
+				"/usr/share/icons/hicolor/symbolic/apps/goa-account-google-symbolic.svg",
+				"/usr/share/icons/hicolor/symbolic/apps/goa-account-msn-symbolic.svg",
+				"/usr/share/icons/hicolor/symbolic/apps/goa-account-owncloud-symbolic.svg",
+				"/usr/share/icons/hicolor/symbolic/apps/goa-account-symbolic.svg"
+			],
+			"name": "gnome-online-accounts",
+			"provides": [
+				"soname(libgoa-1.0.so.0(x86_64))",
+				"soname(libgoa-backend-1.0.so.1(x86_64))"
+			]
+		},
+		"gnome-online-accounts-devel": {
+			"build-depends": [
+				"binary(vapigen)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(gcr-4)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libadwaita-1)",
+				"pkgconfig(libsecret-1)",
+				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(rest-1.0)"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gtk+-3.0)"
+			],
+			"files": [
+				"/usr/include/goa-1.0/goa/goa-generated.h",
+				"/usr/include/goa-1.0/goa/goa.h",
+				"/usr/include/goa-1.0/goa/goaclient.h",
+				"/usr/include/goa-1.0/goa/goaenums.h",
+				"/usr/include/goa-1.0/goa/goaenumtypes.h",
+				"/usr/include/goa-1.0/goa/goaerror.h",
+				"/usr/include/goa-1.0/goa/goaversion.h",
+				"/usr/include/goa-1.0/goabackend/goabackend.h",
+				"/usr/include/goa-1.0/goabackend/goabackendenums.h",
+				"/usr/include/goa-1.0/goabackend/goabackendenumtypes.h",
+				"/usr/include/goa-1.0/goabackend/goaprovider.h",
+				"/usr/lib/libgoa-1.0.so",
+				"/usr/lib/libgoa-backend-1.0.so",
+				"/usr/lib/pkgconfig/goa-1.0.pc",
+				"/usr/lib/pkgconfig/goa-backend-1.0.pc",
+				"/usr/share/vala/vapi/goa-1.0.deps",
+				"/usr/share/vala/vapi/goa-1.0.vapi"
+			],
+			"name": "gnome-online-accounts-devel",
+			"provides": [
+				"pkgconfig(goa-1.0)",
+				"pkgconfig(goa-backend-1.0)"
+			]
+		}
+	},
+	"source-name": "gnome-online-accounts",
+	"source-release": "1",
+	"source-version": "3.49.2"
+}

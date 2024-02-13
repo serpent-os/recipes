@@ -1,0 +1,43 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-online-accounts
+version     : 3.49.2
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-online-accounts
+upstreams   :
+    - https://download.gnome.org/sources/gnome-online-accounts/3.49/gnome-online-accounts-3.49.2.tar.xz : 75dfc7dc76dc58a9a1513de930bdbf7ee4dcf9ebdabb5222634bceffdcad90a2
+summary     : Single sign-on framework for GNOME
+description : |
+    Single sign-on framework for GNOME
+license     :
+    - LGPL-2.1-or-later 
+builddeps   :
+    - binary(vapigen)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gcr-4)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libsecret-1)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(rest-1.0)
+    # - pkgconfig(krb5)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/vala/vapi
+toolchain   : gnu
+setup       : |
+    %meson -Dkerberos=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
