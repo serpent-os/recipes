@@ -1,0 +1,26 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"unifdef": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/unifdef",
+				"/usr/bin/unifdefall",
+				"/usr/share/man/man1/unifdef.1",
+				"/usr/share/man/man1/unifdefall.1"
+			],
+			"name": "unifdef",
+			"provides": [
+				"binary(unifdef)",
+				"binary(unifdefall)"
+			]
+		}
+	},
+	"source-name": "unifdef",
+	"source-release": "1",
+	"source-version": "2.12"
+}

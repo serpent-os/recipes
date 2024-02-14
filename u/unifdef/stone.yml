@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : unifdef
+version     : 2.12
+release     : 1
+homepage    : https://dotat.at/prog/unifdef
+upstreams   :
+    - https://dotat.at/prog/unifdef/unifdef-2.12.tar.xz : 43ce0f02ecdcdc723b2475575563ddb192e988c886d368260bc0a63aee3ac400
+summary     : Selectively remove C preprocessor conditionals
+description : |
+    The unifdef utility selectively processes conditional C preprocessor #if and #ifdef directives. It removes from a file both the directives and the additional text that they delimit, while otherwise leaving the file alone.
+license     :
+    - BSD-2-Clause
+    - BSD-3-Clause
+build       : |
+    %make prefix=%(prefix)
+install     : |
+    %make_install prefix=%(prefix)
