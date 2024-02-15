@@ -1,0 +1,62 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libwpe": {
+			"build-depends": [
+				"pkgconfig(egl)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libwpe-1.0.so.1",
+				"/usr/lib/libwpe-1.0.so.1.8.2"
+			],
+			"name": "libwpe",
+			"provides": [
+				"soname(libwpe-1.0.so.1(x86_64))"
+			]
+		},
+		"libwpe-devel": {
+			"build-depends": [
+				"pkgconfig(egl)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"pkgconfig(egl)",
+				"pkgconfig(xkbcommon)"
+			],
+			"files": [
+				"/usr/include/wpe-1.0/wpe/export.h",
+				"/usr/include/wpe-1.0/wpe/gamepad.h",
+				"/usr/include/wpe-1.0/wpe/input-xkb.h",
+				"/usr/include/wpe-1.0/wpe/input.h",
+				"/usr/include/wpe-1.0/wpe/keysyms.h",
+				"/usr/include/wpe-1.0/wpe/libwpe-version.h",
+				"/usr/include/wpe-1.0/wpe/loader.h",
+				"/usr/include/wpe-1.0/wpe/pasteboard.h",
+				"/usr/include/wpe-1.0/wpe/process.h",
+				"/usr/include/wpe-1.0/wpe/renderer-backend-egl.h",
+				"/usr/include/wpe-1.0/wpe/renderer-host.h",
+				"/usr/include/wpe-1.0/wpe/version-deprecated.h",
+				"/usr/include/wpe-1.0/wpe/version.h",
+				"/usr/include/wpe-1.0/wpe/view-backend.h",
+				"/usr/include/wpe-1.0/wpe/wpe-egl.h",
+				"/usr/include/wpe-1.0/wpe/wpe.h",
+				"/usr/lib/libwpe-1.0.so",
+				"/usr/lib/pkgconfig/wpe-1.0.pc"
+			],
+			"name": "libwpe-devel",
+			"provides": [
+				"pkgconfig(wpe-1.0)"
+			]
+		}
+	},
+	"source-name": "libwpe",
+	"source-release": "1",
+	"source-version": "1.14.2"
+}

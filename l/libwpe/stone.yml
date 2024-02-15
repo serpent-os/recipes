@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libwpe
+version     : 1.14.2
+release     : 1
+homepage    : https://wpewebkit.org/
+upstreams   :
+    - https://github.com/WebPlatformForEmbedded/libwpe/releases/download/1.14.2/libwpe-1.14.2.tar.xz : 8ae38022c50cb340c96fdbee1217f1e46ab57fbc1c8ba98142565abbedbe22ef
+summary     : General-purpose library specifically developed for the WPE-flavored port of WebKi
+description : |
+    General-purpose library specifically developed for the WPE-flavored port of WebKi
+license     :
+    - BSD-2-Clause
+builddeps   :
+    - pkgconfig(egl)
+    - pkgconfig(xkbcommon)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
