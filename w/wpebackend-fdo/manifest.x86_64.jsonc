@@ -1,0 +1,84 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"wpebackend-fdo": {
+			"build-depends": [
+				"pkgconfig(epoxy)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(wayland-server)",
+				"pkgconfig(wpe-1.0)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libepoxy.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libwayland-egl.so.1(x86_64))",
+				"soname(libwayland-server.so.0(x86_64))",
+				"soname(libwpe-1.0.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libWPEBackend-fdo-1.0.so.1",
+				"/usr/lib/libWPEBackend-fdo-1.0.so.1.9.4"
+			],
+			"name": "wpebackend-fdo",
+			"provides": [
+				"soname(libWPEBackend-fdo-1.0.so.1(x86_64))"
+			]
+		},
+		"wpebackend-fdo-devel": {
+			"build-depends": [
+				"pkgconfig(epoxy)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(wayland-server)",
+				"pkgconfig(wpe-1.0)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"pkgconfig(wpe-1.0)"
+			],
+			"files": [
+				"/usr/include/wpe-fdo-1.0/wpe/exported-buffer-shm.h",
+				"/usr/include/wpe-fdo-1.0/wpe/exported-image-egl.h",
+				"/usr/include/wpe-fdo-1.0/wpe/extensions/audio.h",
+				"/usr/include/wpe-fdo-1.0/wpe/extensions/video-plane-display-dmabuf.h",
+				"/usr/include/wpe-fdo-1.0/wpe/fdo-egl.h",
+				"/usr/include/wpe-fdo-1.0/wpe/fdo.h",
+				"/usr/include/wpe-fdo-1.0/wpe/initialize-egl.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/dmabuf-pool-entry.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/fdo-dmabuf.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/fdo-eglstream.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/fdo-shm.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/initialize-dmabuf.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/initialize-eglstream.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/initialize-shm.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/view-backend-dmabuf-pool-fdo.h",
+				"/usr/include/wpe-fdo-1.0/wpe/unstable/view-backend-exportable-eglstream.h",
+				"/usr/include/wpe-fdo-1.0/wpe/version.h",
+				"/usr/include/wpe-fdo-1.0/wpe/view-backend-exportable-egl.h",
+				"/usr/include/wpe-fdo-1.0/wpe/view-backend-exportable.h",
+				"/usr/include/wpe-fdo-1.0/wpe/wpebackend-fdo-version.h",
+				"/usr/lib/libWPEBackend-fdo-1.0.so",
+				"/usr/lib/pkgconfig/wpebackend-fdo-1.0.pc"
+			],
+			"name": "wpebackend-fdo-devel",
+			"provides": [
+				"pkgconfig(wpebackend-fdo-1.0)"
+			]
+		}
+	},
+	"source-name": "wpebackend-fdo",
+	"source-release": "1",
+	"source-version": "1.14.2"
+}
