@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 17
+release     : 18
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -139,6 +139,7 @@ install     : |
     %install_file %(pkgdir)/config/00-journald.conf %(installroot)%(libdir)/systemd/journald.conf.d/00-journald.conf
 
     # install necessary system triggers
+    %install_file %(pkgdir)/systemd_etcfiles.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_etcfiles.yaml
     %install_file %(pkgdir)/systemd_tmpfiles.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_tmpfiles.yaml
     %install_file %(pkgdir)/systemd_sysusers.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_sysusers.yaml
 

@@ -1,6 +1,7 @@
 name: systemd_sysusers
 description: |
     Run systemd-sysusers
+after: systemd_etcfiles
 
 handlers:
     systemd_sysusers:

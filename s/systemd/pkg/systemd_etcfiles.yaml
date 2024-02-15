@@ -1,0 +1,13 @@
+name: systemd_etcfiles
+description: |
+    Run systemd-tmpfiles for /etc
+
+handlers:
+    systemd_etcfiles:
+        run: /usr/bin/systemd-tmpfiles
+        args: ["--create", "/usr/lib/tmpfiles.d/etc.conf"]
+
+paths:
+    "/usr/lib/tmpfiles.d/etc.conf":
+        handlers:
+            - systemd_etcfiles
