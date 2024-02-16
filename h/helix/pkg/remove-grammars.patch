@@ -1,0 +1,26 @@
+From bea336a3bc331b6d16c7b19600ce7b807ea85aa9 Mon Sep 17 00:00:00 2001
+From: Cory Forsstrom <cforsstrom18@gmail.com>
+Date: Fri, 16 Feb 2024 07:42:24 -0800
+Subject: [PATCH] Remove grammars with 403 sources
+
+---
+ languages.toml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/languages.toml b/languages.toml
+index 77c629e4..f4ca3b03 100644
+--- a/languages.toml
++++ b/languages.toml
+@@ -1,6 +1,9 @@
+ # Language support configuration.
+ # See the languages documentation: https://docs.helix-editor.com/master/languages.html
+ 
++# Tree-sitter sources 403 or build fails (d, rescript)
++use-grammars = { except = [ "hare", "wren", "gemini", "d", "rescript" ] }
++
+ [language-server]
+ 
+ awk-language-server = { command = "awk-language-server" }
+-- 
+2.43.0
+

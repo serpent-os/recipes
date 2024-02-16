@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : helix
+version     : "23.10"
+release     : 1
+license     : MPL-2.0
+homepage    : https://helix-editor.com/
+upstreams   :
+    - git|https://github.com/helix-editor/helix.git : "23.10"
+summary     : A post-modern modal text editor. 
+description : |
+    A Kakoune / Neovim inspired editor, written in Rust.
+builddeps   :
+    - binary(cargo)
+    - binary(git)
+networking  : yes
+environment : |
+    export HOME=$(pwd)
+    export CARGO_HTTP_CAINFO=%(vendordir)/etc/ssl/certs/ca-certificates.crt
+    export HELIX_DEFAULT_RUNTIME=%(libexecdir)/runtime
+setup       : |
+    %patch %(pkgdir)/remove-grammars.patch
+build       : |
+    cargo build --target=x86_64-unknown-linux-gnu --release
+install     : |
+    %install_bin target/*/release/hx
+
+    %install_dir %(installroot)/%(libexecdir)
+
+    rm -r runtime/grammars/sources
+    mv runtime %(installroot)/%(libexecdir)/
+
+    %install_file contrib/completion/hx.bash %(installroot)/%(completionsdir)/hx.bash
+    %install_file contrib/completion/hx.zsh %(installroot)/%(datadir)/zsh/site-functions/_hx
+    %install_file contrib/completion/hx.fish %(installroot)/%(datadir)/fish/vendor_completions.d/hx.fish
