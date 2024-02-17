@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : starship
+version     : "1.17.1"
+release     : 1
+license     : ISC
+homepage    : https://starship.rs/
+upstreams   :
+    - git|https://github.com/starship/starship.git : "v1.17.1"
+summary     : The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+description : |
+    The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+builddeps   :
+    - binary(cargo)
+    - binary(cmake)
+    - binary(make)
+networking  : yes
+environment : |
+    export HOME=$(pwd)
+    export CARGO_HTTP_CAINFO=%(vendordir)/etc/ssl/certs/ca-certificates.crt
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %cargo_install
+
+    %install_dir %(installroot)/%(completionsdir)
+    %install_dir %(installroot)/%(datadir)/zsh/site-functions
+    %install_dir %(installroot)/%(datadir)/fish/vendor_completions.d
+
+    target/*/release/starship completions bash > %(installroot)/%(completionsdir)/starship.bash
+    target/*/release/starship completions zsh > %(installroot)/%(datadir)/zsh/site-functions/_starship
+    target/*/release/starship completions fish > %(installroot)/%(datadir)/fish/vendor_completions.d/starship.fish
