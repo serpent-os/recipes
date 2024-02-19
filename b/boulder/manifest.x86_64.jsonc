@@ -619,6 +619,7 @@
 				"/usr/share/boulder/licenses/xpp.txt",
 				"/usr/share/boulder/licenses/zlib-acknowledgement.txt",
 				"/usr/share/boulder/macros/actions/autotools.yml",
+				"/usr/share/boulder/macros/actions/cargo.yml",
 				"/usr/share/boulder/macros/actions/cmake.yml",
 				"/usr/share/boulder/macros/actions/meson.yml",
 				"/usr/share/boulder/macros/actions/misc.yml",
@@ -632,6 +633,7 @@
 				"/usr/share/boulder/macros/arch/x86_64.yml",
 				"/usr/share/boulder/profiles.conf.d/default-x86_64.conf",
 				"/usr/share/moss/macros/actions/autotools.yml",
+				"/usr/share/moss/macros/actions/cargo.yml",
 				"/usr/share/moss/macros/actions/cmake.yml",
 				"/usr/share/moss/macros/actions/meson.yml",
 				"/usr/share/moss/macros/actions/misc.yml",
@@ -652,6 +654,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "38",
-	"source-version": "1.0.1"
+	"source-release": "39",
+	"source-version": "1.0.2"
 }
