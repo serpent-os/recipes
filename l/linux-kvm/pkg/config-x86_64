@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 6.7.5 Kernel Configuration
+# Linux/x86_64 6.7.6 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 16.0.4"
 CONFIG_GCC_VERSION=0
@@ -396,6 +396,7 @@ CONFIG_PARAVIRT_CLOCK=y
 # CONFIG_MALDERLAKE is not set
 # CONFIG_MRAPTORLAKE is not set
 # CONFIG_MMETEORLAKE is not set
+# CONFIG_MEMERALDRAPIDS is not set
 # CONFIG_GENERIC_CPU is not set
 CONFIG_GENERIC_CPU2=y
 # CONFIG_GENERIC_CPU3 is not set
