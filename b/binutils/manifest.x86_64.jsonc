@@ -18,11 +18,11 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libbfd-2.41.so(x86_64))",
+				"soname(libbfd-2.42.so(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libm.so.6(x86_64))",
-				"soname(libopcodes-2.41.so(x86_64))",
+				"soname(libopcodes-2.42.so(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
@@ -164,6 +164,7 @@
 				"/usr/lib/ldscripts/i386pep.xn",
 				"/usr/lib/ldscripts/i386pep.xr",
 				"/usr/lib/ldscripts/i386pep.xu",
+				"/usr/lib/ldscripts/stamp",
 				"/usr/lib/libctf-nobfd.so.0",
 				"/usr/lib/libctf-nobfd.so.0.0.0",
 				"/usr/lib/libctf.so.0",
@@ -235,6 +236,7 @@
 				"/usr/share/locale/ja/LC_MESSAGES/ld.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/bfd.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/gprof.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/ld.mo",
 				"/usr/share/locale/ms/LC_MESSAGES/gprof.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/gprof.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/opcodes.mo",
@@ -246,6 +248,7 @@
 				"/usr/share/locale/ro/LC_MESSAGES/bfd.mo",
 				"/usr/share/locale/ro/LC_MESSAGES/binutils.mo",
 				"/usr/share/locale/ro/LC_MESSAGES/gprof.mo",
+				"/usr/share/locale/ro/LC_MESSAGES/ld.mo",
 				"/usr/share/locale/ro/LC_MESSAGES/opcodes.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/bfd.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/binutils.mo",
@@ -368,6 +371,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libsframe.so.1(x86_64))",
 				"soname(libz.so.1(x86_64))",
@@ -388,23 +392,23 @@
 				"/usr/include/sframe-api.h",
 				"/usr/include/sframe.h",
 				"/usr/include/symcat.h",
-				"/usr/lib/libbfd-2.41.so",
+				"/usr/lib/libbfd-2.42.so",
 				"/usr/lib/libbfd.so",
 				"/usr/lib/libctf-nobfd.so",
 				"/usr/lib/libctf.so",
 				"/usr/lib/libgprofng.so",
-				"/usr/lib/libopcodes-2.41.so",
+				"/usr/lib/libopcodes-2.42.so",
 				"/usr/lib/libopcodes.so",
 				"/usr/lib/libsframe.so"
 			],
 			"name": "binutils-devel",
 			"provides": [
-				"soname(libbfd-2.41.so(x86_64))",
-				"soname(libopcodes-2.41.so(x86_64))"
+				"soname(libbfd-2.42.so(x86_64))",
+				"soname(libopcodes-2.42.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "binutils",
-	"source-release": "9",
-	"source-version": "2.41"
+	"source-release": "10",
+	"source-version": "2.42"
 }
