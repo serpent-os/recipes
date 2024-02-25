@@ -12,10 +12,10 @@ Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
  sysdeps/unix/sysv/linux/x86_64/dl-cache.h | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/sysdeps/unix/sysv/linux/x86_64/dl-cache.h b/sysdeps/unix/sysv/linux/x86_64/dl-cache.h
+diff --git a/sysdeps/x86_64/dl-cache.h b/sysdeps/x86_64/dl-cache.h
 index 911f6083..3a365acb 100644
---- a/sysdeps/unix/sysv/linux/x86_64/dl-cache.h
-+++ b/sysdeps/unix/sysv/linux/x86_64/dl-cache.h
+--- a/sysdeps/x86_64/dl-cache.h
++++ b/sysdeps/x86_64/dl-cache.h
 @@ -27,7 +27,7 @@
        size_t len = strlen (dir);				\
        char path[len + 4];					\

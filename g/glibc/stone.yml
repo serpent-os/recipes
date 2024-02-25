@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : glibc
-version     : 2.37
-release     : 7
+version     : 2.39
+release     : 8
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -15,11 +15,12 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - git|https://sourceware.org/git/glibc.git : 590d0e089b06f158ded713f5e5600eaa66dcea44 # release/2.37/master
+    - https://ftp.gnu.org/gnu/glibc/glibc-2.39.tar.xz : f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926
 builddeps   :
     - binary(bison)
     - binary(gzip)
     - binary(m4)
+    - binary(patch)
     - binary(python3)
 packages    :
     - "%(name)-32bit":
@@ -36,56 +37,53 @@ tuning      :
     - harden: false
     - optimize: speed
     - symbolic: nonweak
-setup       : |
-    # Patches ahoy!
-    %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
-    %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
-    %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
-    %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
-    %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
-    %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
-    #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
-    %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
-    cp %(pkgdir)/SUPPORTED localedata/SUPPORTED
-
-    # security
-    %patch %(pkgdir)/security/CVE-2023-6246.patch
-    %patch %(pkgdir)/security/CVE-2023-6779.patch
-    %patch %(pkgdir)/security/CVE-2023-6780.patch
-
-    mkdir build && cd build
-    echo "LD_SO_CACHE=/var/cache/ldconfig/ld.so.cache" >> configparms
-    echo "slibdir=%(libdir)" >> configparms
-    echo "rtlddir=%(libdir)" >> configparms
-    echo "sbindir=%(sbindir)" >> configparms
-    echo "rootsbindir=%(sbindir)" >> configparms
-    # Note this deliberately excludes libsuffix and is not an error
-    echo "complocaledir=/usr/lib/locale" >> configparms
-
-    ../configure %(options_configure) \
-        --disable-crypt \
-        --disable-obsolete-rpc \
-        --disable-profile \
-        --disable-werror \
-        --enable-add-ons \
-        --enable-bind-now \
-        --enable-cet \
-        --enable-gnu-indirect-function \
-        --enable-kernel=6.0.1 \
-        --enable-lock-elision \
-        --enable-multi-arch \
-        --enable-plugin \
-        --enable-stack-protector \
-        --enable-stackguard-randomization \
-        --enable-static-pie \
-        --enable-threads=posix \
-        --enable-tunables \
-        --without-selinux \
-        libc_cv_include_x86_isa_level=no
+environment : |
+    export COMMON_GLIBC_OPTIONS="\
+        %(options_configure) \
+                --disable-crypt \
+                --disable-obsolete-rpc \
+                --disable-profile \
+                --disable-werror \
+                --enable-add-ons \
+                --enable-bind-now \
+                --enable-gnu-indirect-function \
+                --enable-kernel=6.6.18 \
+                --enable-lock-elision \
+                --enable-multi-arch \
+                --enable-plugin \
+                --enable-stack-protector \
+                --enable-stackguard-randomization \
+                --enable-static-pie \
+                --enable-threads=posix \
+                --enable-tunables \
+                --without-selinux \
+                libc_cv_include_x86_isa_level=no \
+    "
 build       : |
     %make -C build
 profiles    :
     - x86_64:
+        setup: |
+            %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
+            %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
+            %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
+            %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
+            %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
+            %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
+            #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
+            %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
+            cp %(pkgdir)/SUPPORTED localedata/SUPPORTED
+
+            mkdir build && cd build
+            echo "LD_SO_CACHE=/var/cache/ldconfig/ld.so.cache" >> configparms
+            echo "slibdir=%(libdir)" >> configparms
+            echo "rtlddir=%(libdir)" >> configparms
+            echo "sbindir=%(sbindir)" >> configparms
+            echo "rootsbindir=%(sbindir)" >> configparms
+            # Note this deliberately excludes libsuffix and is not an error
+            echo "complocaledir=/usr/lib/locale" >> configparms
+
+            ../configure $COMMON_GLIBC_OPTIONS --enable-cet=permissive
         install: |
             %make_install build DESTDIR="%(installroot)" -C build
             
@@ -108,6 +106,27 @@ profiles    :
             %tmpfiles "d /var/cache/locale 0755 - - -"
             %tmpfiles "d /var/db 0755 - - -"
     - emul32:
+        setup: |
+            %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
+            %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
+            %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
+            %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
+            %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
+            %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
+            #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
+            %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
+            cp %(pkgdir)/SUPPORTED localedata/SUPPORTED
+
+            mkdir build && cd build
+            echo "LD_SO_CACHE=/var/cache/ldconfig/ld.so.cache" >> configparms
+            echo "slibdir=%(libdir)" >> configparms
+            echo "rtlddir=%(libdir)" >> configparms
+            echo "sbindir=%(sbindir)" >> configparms
+            echo "rootsbindir=%(sbindir)" >> configparms
+            # Note this deliberately excludes libsuffix and is not an error
+            echo "complocaledir=/usr/lib/locale" >> configparms
+
+            ../configure $COMMON_GLIBC_OPTIONS --disable-cet
         install: |
             %make_install build DESTDIR="%(installroot)" -C build
             
