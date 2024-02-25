@@ -18,7 +18,7 @@ index a0cbcae0b..cb8673cd8 100644
    "binutils version and newer. If -fno-integrated-as is specified, the "
    "generated assembly will consider GNU as support. 'none' means that all ELF "
 -  "features can be used, regardless of binutils support. Defaults to 2.26.">;
-+  "features can be used, regardless of binutils support. Defaults to 2.37.">;
++  "features can be used, regardless of binutils support. Defaults to 2.42.">;
  def fuse_ld_EQ : Joined<["-"], "fuse-ld=">, Group<f_Group>, Flags<[CoreOption, LinkOption]>;
  def ld_path_EQ : Joined<["--"], "ld-path=">, Group<Link_Group>;
  
@@ -31,7 +31,7 @@ index 355f56986..5524c5bb3 100644
    // regardless of GNU ld support. The default value is referenced by
    // clang/Driver/Options.td.
 -  std::pair<int, int> BinutilsVersion = {2, 26};
-+  std::pair<int, int> BinutilsVersion = {2, 37};
++  std::pair<int, int> BinutilsVersion = {2, 42};
  
    /// Should we use the integrated assembler?
    /// The integrated assembler should be enabled by default (by the
