@@ -1,6 +1,6 @@
 name        : linux-kvm
 version     : 6.7.6
-release     : 57
+release     : 58
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.6.tar.xz : e489ec0e1370d089b446d565aded7a698093d2b7c4122a18f21edb6ef93d37d3
