@@ -5,7 +5,7 @@
 #
 name        : mesa
 version     : 23.3.4
-release     : 9
+release     : 10
 homepage    : https://mesa3d.org/
 upstreams   :
     - https://archive.mesa3d.org/mesa-23.3.4.tar.xz : df12d765be4650fe532860b18aa18e6da1d0b07d1a21dfdfe04660e6b7bac39a
@@ -46,6 +46,8 @@ tuning      :
     - optimize: speed
     - lto: thin
 setup       : |
+    # Symbol issues (undefined)
+    %patch %(pkgdir)/25551.patch
     # TODO: Add vdpau support
     #        intel ray-tracing support
     %meson \

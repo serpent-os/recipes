@@ -1,0 +1,318 @@
+From 667de678a064da449969f2fa3da4aff850d91cf4 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Sun, 1 Oct 2023 17:35:00 -0400
+Subject: [PATCH] gallium: Fix undefined symbols in version scripts
+
+Currently, multiple version scripts unconditionally use symbols from gallium
+drivers that may not be enabled, which causes linking to fail with
+--no-undefined-version (as is default in LLD 17), and can cause issues
+with LTO. This commit adds logic to generate version scripts based on the
+enabled gallium drivers, ensuring only defined symbols are used.
+
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/8003
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/25551>
+---
+ src/gallium/meson.build                       | 14 +++++++++
+ src/gallium/targets/dri/dri.sym               | 11 -------
+ src/gallium/targets/dri/dri.sym.in            | 11 +++++++
+ src/gallium/targets/dri/meson.build           |  6 ++--
+ src/gallium/targets/omx/meson.build           |  6 ++--
+ .../targets/omx/{omx.sym => omx.sym.in}       |  6 ++--
+ src/gallium/targets/pipe-loader/meson.build   | 31 ++++++++++++++-----
+ .../pipe-loader/{pipe.sym => pipe.sym.in}     | 10 +++---
+ src/gallium/targets/va/meson.build            |  6 ++--
+ src/gallium/targets/va/{va.sym => va.sym.in}  |  6 ++--
+ src/gallium/targets/vdpau/meson.build         |  6 ++--
+ src/gallium/targets/vdpau/vdpau.sym           | 10 ------
+ src/gallium/targets/vdpau/vdpau.sym.in        | 10 ++++++
+ 13 files changed, 86 insertions(+), 47 deletions(-)
+ delete mode 100644 src/gallium/targets/dri/dri.sym
+ create mode 100644 src/gallium/targets/dri/dri.sym.in
+ rename src/gallium/targets/omx/{omx.sym => omx.sym.in} (70%)
+ rename src/gallium/targets/pipe-loader/{pipe.sym => pipe.sym.in} (51%)
+ rename src/gallium/targets/va/{va.sym => va.sym.in} (66%)
+ delete mode 100644 src/gallium/targets/vdpau/vdpau.sym
+ create mode 100644 src/gallium/targets/vdpau/vdpau.sym.in
+
+diff --git a/src/gallium/meson.build b/src/gallium/meson.build
+index 7b77da14f30de..e51d5802760b2 100644
+--- a/src/gallium/meson.build
++++ b/src/gallium/meson.build
+@@ -19,6 +19,20 @@
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ # SOFTWARE.
+ 
++sym_config = configuration_data()
++
++foreach d : [[with_gallium_r300 or with_gallium_radeonsi or with_gallium_r600, 'radeon_drm_winsys_create'],
++             [with_gallium_radeonsi, 'amdgpu_winsys_create'],
++             [with_gallium_nouveau, 'nouveau_drm_screen_create'],
++             [with_gallium_freedreno, 'fd_drm_screen_create_renderonly'],
++             [with_llvm and with_gallium_radeonsi, 'ac_init_shared_llvm_once']]
++  if d[0]
++    sym_config.set(d[1], d[1] + ';')
++  else
++    sym_config.set(d[1], '')
++  endif
++endforeach
++
+ inc_gallium_drivers = include_directories('drivers')
+ inc_gallium_winsys = include_directories('winsys')
+ inc_gallium_winsys_sw = include_directories('winsys/sw')
+diff --git a/src/gallium/targets/dri/dri.sym b/src/gallium/targets/dri/dri.sym
+deleted file mode 100644
+index 6f502fa9f92f1..0000000000000
+--- a/src/gallium/targets/dri/dri.sym
++++ /dev/null
+@@ -1,11 +0,0 @@
+-{
+-	global:
+-		__driDriverGetExtensions*;
+-		nouveau_drm_screen_create;
+-		radeon_drm_winsys_create;
+-		amdgpu_winsys_create;
+-		fd_drm_screen_create_renderonly;
+-		ac_init_shared_llvm_once;
+-	local:
+-		*;
+-};
+diff --git a/src/gallium/targets/dri/dri.sym.in b/src/gallium/targets/dri/dri.sym.in
+new file mode 100644
+index 0000000000000..b43cf80020dfb
+--- /dev/null
++++ b/src/gallium/targets/dri/dri.sym.in
+@@ -0,0 +1,11 @@
++{
++	global:
++		__driDriverGetExtensions*;
++		@nouveau_drm_screen_create@
++		@radeon_drm_winsys_create@
++		@amdgpu_winsys_create@
++		@fd_drm_screen_create_renderonly@
++		@ac_init_shared_llvm_once@
++	local:
++		*;
++};
+diff --git a/src/gallium/targets/dri/meson.build b/src/gallium/targets/dri/meson.build
+index 64b67c817489f..9e5f1fb1fb4cf 100644
+--- a/src/gallium/targets/dri/meson.build
++++ b/src/gallium/targets/dri/meson.build
+@@ -28,9 +28,11 @@ gallium_dri_ld_args = []
+ gallium_dri_link_depends = []
+ gallium_dri_drivers = []
+ 
++dri_sym = configure_file(input : 'dri.sym.in', output : 'dri.sym', configuration : sym_config)
++
+ if with_ld_version_script
+-  gallium_dri_ld_args += ['-Wl,--version-script', join_paths(meson.current_source_dir(), 'dri.sym')]
+-  gallium_dri_link_depends += files('dri.sym')
++  gallium_dri_ld_args += ['-Wl,--version-script', join_paths(meson.current_build_dir(), 'dri.sym')]
++  gallium_dri_link_depends += dri_sym
+ endif
+ if with_ld_dynamic_list
+   gallium_dri_ld_args += ['-Wl,--dynamic-list', join_paths(meson.current_source_dir(), '../dri.dyn')]
+diff --git a/src/gallium/targets/omx/meson.build b/src/gallium/targets/omx/meson.build
+index af871c8e6d554..772dcebb5cf91 100644
+--- a/src/gallium/targets/omx/meson.build
++++ b/src/gallium/targets/omx/meson.build
+@@ -25,9 +25,11 @@
+ omx_link_args = []
+ omx_link_depends = []
+ 
++omx_sym = configure_file(input : 'omx.sym.in', output : 'omx.sym', configuration : sym_config)
++
+ if with_ld_version_script
+-  omx_link_args += ['-Wl,--version-script', join_paths(meson.current_source_dir(), 'omx.sym')]
+-  omx_link_depends += files('omx.sym')
++  omx_link_args += ['-Wl,--version-script', join_paths(meson.current_build_dir(), 'omx.sym')]
++  omx_link_depends += omx_sym
+ endif
+ 
+ libomx_gallium = shared_library(
+diff --git a/src/gallium/targets/omx/omx.sym b/src/gallium/targets/omx/omx.sym.in
+similarity index 70%
+rename from src/gallium/targets/omx/omx.sym
+rename to src/gallium/targets/omx/omx.sym.in
+index 8508b473c9a27..726a8c2b92ac3 100644
+--- a/src/gallium/targets/omx/omx.sym
++++ b/src/gallium/targets/omx/omx.sym.in
+@@ -5,9 +5,9 @@
+ 
+ 		# Workaround for an LLVM warning with -simplifycfg-sink-common
+ 		# due to LLVM being initialized multiple times.
+-		radeon_drm_winsys_create;
+-		amdgpu_winsys_create;
+-		ac_init_shared_llvm_once;
++		@radeon_drm_winsys_create@
++		@amdgpu_winsys_create@
++		@ac_init_shared_llvm_once@
+ 	local:
+ 		*;
+ };
+diff --git a/src/gallium/targets/pipe-loader/meson.build b/src/gallium/targets/pipe-loader/meson.build
+index 5e6238fe82259..ee34d79492bea 100644
+--- a/src/gallium/targets/pipe-loader/meson.build
++++ b/src/gallium/targets/pipe-loader/meson.build
+@@ -37,13 +37,6 @@ if (with_gallium_va or with_gallium_vdpau or with_gallium_omx != 'disabled')
+   pipe_loader_link_with += libgalliumvlwinsys
+ endif
+ 
+-if with_ld_version_script
+-  pipe_loader_link_args += [
+-    '-Wl,--version-script', join_paths(meson.current_source_dir(), 'pipe.sym')
+-  ]
+-  pipe_loader_link_deps += files('pipe.sym')
+-endif
+-
+ pipe_loader_install_dir = join_paths(get_option('libdir'), 'gallium-pipe')
+ 
+ _kmsro_targets = [
+@@ -70,6 +63,30 @@ pipe_loaders = [
+ ]
+ 
+ foreach x : pipe_loaders
++  pipe_sym_config = configuration_data()
++
++  foreach d : [[x[1] in ['r300', 'r600', 'radeonsi'], 'radeon_drm_winsys_create'],
++               [x[1] in ['vmwgfx', 'r600', 'r300', 'nouveau', 'msm', 'kmsro', 'iris', 'crocus', 'radeonsi'],
++                'driver_descriptor'],
++               [x[1] == 'radeonsi', 'amdgpu_winsys_create'],
++               [x[1] == 'radeonsi' and with_llvm, 'ac_init_shared_llvm_once'],
++               [x[1] == 'swrast', 'swrast_driver_descriptor']]
++    if d[0]
++      pipe_sym_config.set(d[1], d[1] + ';')
++    else
++      pipe_sym_config.set(d[1], '')
++    endif
++  endforeach
++
++  pipe_sym = configure_file(input : 'pipe.sym.in', output : 'pipe_@0@.sym'.format(x[1]), configuration : pipe_sym_config)
++
++  if with_ld_version_script
++    pipe_loader_link_args += [
++      '-Wl,--version-script', join_paths(meson.current_build_dir(), 'pipe_@0@.sym'.format(x[1]))
++    ]
++    pipe_loader_link_deps += pipe_sym
++  endif
++
+   if x[0]
+     shared_library(
+       'pipe_@0@'.format(x[1]),
+diff --git a/src/gallium/targets/pipe-loader/pipe.sym b/src/gallium/targets/pipe-loader/pipe.sym.in
+similarity index 51%
+rename from src/gallium/targets/pipe-loader/pipe.sym
+rename to src/gallium/targets/pipe-loader/pipe.sym.in
+index 3e5ef52b8d199..05ddd1376a0a0 100644
+--- a/src/gallium/targets/pipe-loader/pipe.sym
++++ b/src/gallium/targets/pipe-loader/pipe.sym.in
+@@ -1,13 +1,13 @@
+ {
+ 	global:
+-		driver_descriptor;
+-		swrast_driver_descriptor;
++		@driver_descriptor@
++		@swrast_driver_descriptor@
+ 
+ 		# Workaround for an LLVM warning with -simplifycfg-sink-common
+ 		# due to LLVM being initialized multiple times.
+-		radeon_drm_winsys_create;
+-		amdgpu_winsys_create;
+-		ac_init_shared_llvm_once;
++		@radeon_drm_winsys_create@
++		@amdgpu_winsys_create@
++		@ac_init_shared_llvm_once@
+ 	local:
+ 		*;
+ };
+diff --git a/src/gallium/targets/va/meson.build b/src/gallium/targets/va/meson.build
+index 0b4e40b63f192..6806eeb955ea0 100644
+--- a/src/gallium/targets/va/meson.build
++++ b/src/gallium/targets/va/meson.build
+@@ -26,9 +26,11 @@ va_link_args = []
+ va_link_depends = []
+ va_drivers = []
+ 
++va_sym = configure_file(input : 'va.sym.in', output : 'va.sym', configuration : sym_config)
++
+ if with_ld_version_script
+-  va_link_args += ['-Wl,--version-script', join_paths(meson.current_source_dir(), 'va.sym')]
+-  va_link_depends += files('va.sym')
++  va_link_args += ['-Wl,--version-script', join_paths(meson.current_build_dir(), 'va.sym')]
++  va_link_depends += va_sym
+ endif
+ if with_ld_dynamic_list
+   va_link_args += ['-Wl,--dynamic-list', join_paths(meson.current_source_dir(), '../dri.dyn')]
+diff --git a/src/gallium/targets/va/va.sym b/src/gallium/targets/va/va.sym.in
+similarity index 66%
+rename from src/gallium/targets/va/va.sym
+rename to src/gallium/targets/va/va.sym.in
+index 76c198790748e..cb54dc953e31b 100644
+--- a/src/gallium/targets/va/va.sym
++++ b/src/gallium/targets/va/va.sym.in
+@@ -4,9 +4,9 @@
+ 
+ 		# Workaround for an LLVM warning with -simplifycfg-sink-common
+ 		# due to LLVM being initialized multiple times.
+-		radeon_drm_winsys_create;
+-		amdgpu_winsys_create;
+-		ac_init_shared_llvm_once;
++		@radeon_drm_winsys_create@
++		@amdgpu_winsys_create@
++		@ac_init_shared_llvm_once@
+ 	local:
+ 		*;
+ };
+diff --git a/src/gallium/targets/vdpau/meson.build b/src/gallium/targets/vdpau/meson.build
+index 87097fe144e59..1f41d0097b762 100644
+--- a/src/gallium/targets/vdpau/meson.build
++++ b/src/gallium/targets/vdpau/meson.build
+@@ -26,9 +26,11 @@ vdpau_link_args = []
+ vdpau_link_depends = []
+ vdpau_drivers = []
+ 
++vdpau_sym = configure_file(input : 'vdpau.sym.in', output : 'vdpau.sym', configuration : sym_config)
++
+ if with_ld_version_script
+-  vdpau_link_args += ['-Wl,--version-script', join_paths(meson.current_source_dir(), 'vdpau.sym')]
+-  vdpau_link_depends += files('vdpau.sym')
++  vdpau_link_args += ['-Wl,--version-script', join_paths(meson.current_build_dir(), 'vdpau.sym')]
++  vdpau_link_depends += vdpau_sym
+ endif
+ if with_ld_dynamic_list
+   vdpau_link_args += ['-Wl,--dynamic-list', join_paths(meson.current_source_dir(), '../dri.dyn')]
+diff --git a/src/gallium/targets/vdpau/vdpau.sym b/src/gallium/targets/vdpau/vdpau.sym
+deleted file mode 100644
+index 928c55b438539..0000000000000
+--- a/src/gallium/targets/vdpau/vdpau.sym
++++ /dev/null
+@@ -1,10 +0,0 @@
+-{
+-       global:
+-               vdp_imp_device_create_x11;
+-               nouveau_drm_screen_create;
+-               radeon_drm_winsys_create;
+-               amdgpu_winsys_create;
+-               ac_init_shared_llvm_once;
+-       local:
+-               *;
+-};
+diff --git a/src/gallium/targets/vdpau/vdpau.sym.in b/src/gallium/targets/vdpau/vdpau.sym.in
+new file mode 100644
+index 0000000000000..d37e44b98f9cd
+--- /dev/null
++++ b/src/gallium/targets/vdpau/vdpau.sym.in
+@@ -0,0 +1,10 @@
++{
++       global:
++               vdp_imp_device_create_x11;
++               @nouveau_drm_screen_create@
++               @radeon_drm_winsys_create@
++               @amdgpu_winsys_create@
++               @ac_init_shared_llvm_once@
++       local:
++               *;
++};
+-- 
+GitLab
+
