@@ -1,6 +1,6 @@
 name        : lldb
-version     : 16.0.4
-release     : 1
+version     : 17.0.4
+release     : 2
 summary     : LLVM Debugger
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -9,7 +9,7 @@ homepage    : https://www.llvm.org
 description : |
     LLDB is a next generation, high-performance debugger. It is built as a set of reusable components which highly leverage existing libraries in the larger LLVM Project, such as the Clang expression parser and LLVM disassembler.
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.4/llvm-project-16.0.4.src.tar.xz: cf3c2a1152ed7a99866bd7f12c24528ada6d9f6336afb7a08416938762004c9f
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.4/llvm-project-17.0.4.src.tar.xz: a225eb96f52e7d8c6c275b351fcc66d7a21d925eecff53730900404f244ff16a
 builddeps  :
   - binary(swig)
   - cmake(Clang)
