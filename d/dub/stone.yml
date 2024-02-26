@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : dub
-version     : 1.31.1
-release     : 3
+version     : 1.36.0
+release     : 4
 homepage    : https://dub.pm/
 upstreams   :
-    - https://github.com/dlang/dub/archive/refs/tags/v1.31.1.tar.gz : dce1b3f7d21f6b111830d849e6f417853bab66d9036df212aec237c1f724bc4f
+    - https://github.com/dlang/dub/archive/refs/tags/v1.36.0.tar.gz : 16ac09875889af03abeeca9b60777ee51611c86b3efe5869db3331d2fd97fd2b
 summary     : The DLang package manager
 description : |
     DUB emerged as a more general replacement for vibe.d's package manager. It does not imply a dependency to vibe.d for packages and was extended to not only directly build projects, but also to generate project files (currently VisualD). Mono-D also supports the use of dub.json (dub's package description) as the project file.
@@ -21,6 +21,8 @@ builddeps   :
     - pkgconfig(libcurl)
 rundeps     :
     - binary(ldc2)
+environment : |
+    export HOME=$(pwd)
 setup       : |
     dub build -b release-debug --skip-registry=all --parallel
 install     : |
