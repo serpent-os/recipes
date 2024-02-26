@@ -5,7 +5,7 @@
 #
 name        : glibc
 version     : 2.39
-release     : 9
+release     : 10
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
