@@ -5,7 +5,7 @@
 #
 name        : perf
 version     : '6.2.12'
-release     : 8
+release     : 9
 summary     : Linux profiling with performance counters
 license     : GPL-2.0-only
 homepage    : https://perf.wiki.kernel.org/
@@ -29,14 +29,16 @@ build       : |
         lib=lib/perf \
         perfexecdir=lib/perf \
         CC=clang \
-        LLVM=1
+        LLVM=1 \
+        WERROR=0
 install     : |
     %make_install -C tools/perf \
         prefix=/usr \
         lib=lib/perf \
         perfexecdir=lib/perf \
         CC=clang \
-        LLVM=1
+        LLVM=1 \
+        WERROR=0
 
     %install_file %(installroot)/etc/bash_completion.d/perf %(installroot)/%(completionsdir)/perf
     rm %(installroot)/etc/bash_completion.d/perf
