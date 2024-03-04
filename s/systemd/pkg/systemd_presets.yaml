@@ -7,14 +7,7 @@ handlers:
     systemd_presets_system:
         run: /usr/bin/systemctl
         args: ["preset", "$(name)", "--root=/", "--force"]
-    systemd_presets_user:
-        run: /usr/bin/systemctl
-        args: ["preset", "$(name)", "--root=/", "--force", "--global"]
-
 paths:
     "/usr/lib*/systemd/system/(name:*.service)":
         handlers:
             - systemd_presets_system
-    "/usr/lib*/systemd/user/(name:*.service)":
-        handlers:
-            - systemd_presets_user

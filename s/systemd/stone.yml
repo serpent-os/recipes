@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 20
+release     : 21
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
