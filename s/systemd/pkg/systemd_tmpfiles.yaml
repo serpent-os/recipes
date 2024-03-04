@@ -1,7 +1,7 @@
 name: systemd_tmpfiles
 description: |
     Run systemd-tmpfiles
-after: systemd_syusers
+after: systemd_sysusers
 
 handlers:
     systemd_tmpfiles:
