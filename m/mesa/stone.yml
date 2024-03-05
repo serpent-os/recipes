@@ -5,7 +5,7 @@
 #
 name        : mesa
 version     : 23.3.4
-release     : 10
+release     : 11
 homepage    : https://mesa3d.org/
 upstreams   :
     - https://archive.mesa3d.org/mesa-23.3.4.tar.xz : df12d765be4650fe532860b18aa18e6da1d0b07d1a21dfdfe04660e6b7bac39a
@@ -15,6 +15,12 @@ description : |
 license     :
     - BSD-2-Clause
     - MIT
+packages    :
+    - "%(name)":
+        paths:
+            # Fix splitting for vulkan `.so` files
+            - /usr/lib/libVk*.so
+            - /usr/lib/libvulkan_*.so
 builddeps   :
     - binary(bison)
     - binary(flex)
