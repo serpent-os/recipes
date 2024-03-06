@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : vte
+version     : 0.74.2
+release     : 1
+homepage    : https://wiki.gnome.org/Apps/Terminal/VTE
+upstreams   :
+    - https://download.gnome.org/sources/vte/0.74/vte-0.74.2.tar.xz : a535fb2a98fea8a2449cd1a02cccf5190131dddff52e715afdace3feb536eae7
+summary     : GNOME Virtual Terminal Embedding library
+description : |
+    GNOME Virtual Terminal Embedding library
+license     :
+    - LGPL-2.0
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/glade
+            - /usr/share/vala/vapi
+builddeps   :
+    - pkgconfig(cairo)
+    - pkgconfig(cairo-gobject)
+    - pkgconfig(fribidi)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gnutls)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(icu-uc)
+    - pkgconfig(libpcre2-8)
+    - pkgconfig(libsystemd)
+    - pkgconfig(pango)
+    - binary(valac)
+    - pkgconfig(zlib)
+toolchain   : gnu
+setup       : |
+    sed -i meson.build -e '/-Werror=missing-include-dirs/d'
+    %meson -Dgtk3=false -Dgtk4=true
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+    %install_dir %(installroot)%(vendordir)%(sysconfdir)
+    mv %(installroot)%(sysconfdir)/profile.d %(installroot)%(vendordir)%(sysconfdir)/profile.d
