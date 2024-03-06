@@ -6,7 +6,7 @@
 name        : desktop-file-utils
 version     : 0.27
 release     : 1
-homepage    : https://www.freedesktop.org/software/desktop-file-utils/releases
+homepage    : https://www.freedesktop.org/wiki/Software/desktop-file-utils/
 upstreams   :
     - https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.27.tar.xz : a0817df39ce385b6621880407c56f1f298168c040c2032cedf88d5b76affe836
 summary     : Utilities required for working with Desktop entries
