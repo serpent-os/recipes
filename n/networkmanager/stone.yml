@@ -5,7 +5,7 @@
 #
 name        : networkmanager
 version     : 1.44.2
-release     : 2 
+release     : 3
 homepage    : https://wiki.gnome.org/Projects/NetworkManager
 upstreams   :
     - https://download.gnome.org/sources/NetworkManager/1.44/NetworkManager-1.44.2.tar.xz : 4b58bf3ac57e2cefb5652efd0945eb0b4bc36a63d92a61ab471d8bb2c9a420e1
@@ -43,6 +43,8 @@ builddeps   :
     - ppp-devel
     # pkgconfig(bluez)
     # pkgconfig(libnewt)
+rundeps     :
+    - binary(iwmon)
 packages    :
     - "%(name)-devel":
         paths:
@@ -52,6 +54,8 @@ setup       : |
         -Dselinux=false \
         -Dlibaudit=no \
         -Dnmtui=false \
+        -Diwd=true \
+        -Dconfig_wifi_backend_default=iwd \
         -Dqt=false \
         -Dvapi=true
 build       : |
