@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : iwd
+version     : 2.16
+release     : 1
+homepage    : https://iwd.wiki.kernel.org/
+upstreams   :
+    - https://mirrors.edge.kernel.org/pub/linux/network/wireless/iwd-2.16.tar.xz : c1a82032e994861e794cf3b5a16d07ae1aa03a6674f716c73408ffeae2a233ba
+summary     : iNet Wireless Daemon
+description : |
+    iNet Wireless Daemon
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(dbus-1)
+    - pkgconfig(libedit)
+    - pkgconfig(readline)
+    - pkgconfig(systemd)
+setup       : |
+    CONF_SHELL=/bin/bash %configure --enable-libedit
+build       : |
+    %make
+install     : |
+    %make_install
