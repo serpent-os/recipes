@@ -1,0 +1,104 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libportal": {
+			"build-depends": [
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk4)",
+				"vala"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-3.so.0(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/Xdp-1.0.typelib",
+				"/usr/lib/girepository-1.0/XdpGtk3-1.0.typelib",
+				"/usr/lib/girepository-1.0/XdpGtk4-1.0.typelib",
+				"/usr/lib/libportal-gtk3.so.1",
+				"/usr/lib/libportal-gtk3.so.1.0.0",
+				"/usr/lib/libportal-gtk4.so.1",
+				"/usr/lib/libportal-gtk4.so.1.0.0",
+				"/usr/lib/libportal.so.1",
+				"/usr/lib/libportal.so.1.0.0",
+				"/usr/share/gir-1.0/Xdp-1.0.gir",
+				"/usr/share/gir-1.0/XdpGtk3-1.0.gir",
+				"/usr/share/gir-1.0/XdpGtk4-1.0.gir",
+				"/usr/share/vala/vapi/libportal-gtk3.deps",
+				"/usr/share/vala/vapi/libportal-gtk3.vapi",
+				"/usr/share/vala/vapi/libportal-gtk4.deps",
+				"/usr/share/vala/vapi/libportal-gtk4.vapi",
+				"/usr/share/vala/vapi/libportal.deps",
+				"/usr/share/vala/vapi/libportal.vapi"
+			],
+			"name": "libportal",
+			"provides": [
+				"soname(libportal-gtk3.so.1(x86_64))",
+				"soname(libportal-gtk4.so.1(x86_64))",
+				"soname(libportal.so.1(x86_64))"
+			]
+		},
+		"libportal-devel": {
+			"build-depends": [
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk4)",
+				"vala"
+			],
+			"depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk4)"
+			],
+			"files": [
+				"/usr/include/libportal-gtk3/portal-gtk3.h",
+				"/usr/include/libportal-gtk4/portal-gtk4.h",
+				"/usr/include/libportal/account.h",
+				"/usr/include/libportal/background.h",
+				"/usr/include/libportal/camera.h",
+				"/usr/include/libportal/dynamic-launcher.h",
+				"/usr/include/libportal/email.h",
+				"/usr/include/libportal/filechooser.h",
+				"/usr/include/libportal/inhibit.h",
+				"/usr/include/libportal/location.h",
+				"/usr/include/libportal/notification.h",
+				"/usr/include/libportal/openuri.h",
+				"/usr/include/libportal/parent.h",
+				"/usr/include/libportal/portal-enums.h",
+				"/usr/include/libportal/portal-helpers.h",
+				"/usr/include/libportal/portal.h",
+				"/usr/include/libportal/print.h",
+				"/usr/include/libportal/remote.h",
+				"/usr/include/libportal/screenshot.h",
+				"/usr/include/libportal/spawn.h",
+				"/usr/include/libportal/trash.h",
+				"/usr/include/libportal/types.h",
+				"/usr/include/libportal/updates.h",
+				"/usr/include/libportal/wallpaper.h",
+				"/usr/lib/libportal-gtk3.so",
+				"/usr/lib/libportal-gtk4.so",
+				"/usr/lib/libportal.so",
+				"/usr/lib/pkgconfig/libportal-gtk3.pc",
+				"/usr/lib/pkgconfig/libportal-gtk4.pc",
+				"/usr/lib/pkgconfig/libportal.pc"
+			],
+			"name": "libportal-devel",
+			"provides": [
+				"pkgconfig(libportal)",
+				"pkgconfig(libportal-gtk3)",
+				"pkgconfig(libportal-gtk4)"
+			]
+		}
+	},
+	"source-name": "libportal",
+	"source-release": "1",
+	"source-version": "0.7.1"
+}

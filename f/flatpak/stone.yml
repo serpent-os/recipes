@@ -1,0 +1,63 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : flatpak
+version     : 1.14.5
+release     : 1
+homepage    : https://www.flatpak.org/
+upstreams   :
+    - https://github.com/flatpak/flatpak/releases/download/1.14.5/flatpak-1.14.5.tar.xz : 5b70c64ce7ac134e1ea08011256e423ae5c54f277297441583f77d013f27ffac
+summary     : Linux application sandboxing and distribution framework
+description : |
+    Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.
+license     :
+    - LGPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(bwrap)
+    - binary(msgfmt)
+    - binary(python)
+    - binary(xmlto)
+    - binary(xsltproc)
+    - binary(yacc)
+    - pkgconfig(appstream)
+    - pkgconfig(dconf)
+    - pkgconfig(fuse3)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gpgme-glib)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libarchive)
+    - pkgconfig(libcap)
+    - pkgconfig(libcurl)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libseccomp)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(libzstd)
+    - pkgconfig(ostree-1)
+    - pkgconfig(polkit-agent-1)
+    - pkgconfig(xau)
+    - docbook
+    - python-pyparsing
+rundeps     :
+    - bubblewrap
+environment : |
+    export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
+setup       : |
+    # system docbook pkg not suitable for documentation?
+    %configure \
+        --disable-documentation \
+        --with-system-bubblewrap \
+        --with-dbus-config-dir=/usr/share/dbus-1/system.d \
+build       : |
+    %make
+install     : |
+    %make_install
+
+    %install_dir %(installroot)/usr/share/defaults/etc/profile.d/
+    mv %(installroot)/etc/profile.d/flatpak.sh %(installroot)/usr/share/defaults/etc/profile.d/70-flatpak.sh
+# g-ir-scanner shitting the bed with clang
+toolchain   : gnu
