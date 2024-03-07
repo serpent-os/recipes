@@ -5,7 +5,7 @@
 #
 name        : libostree
 version     : 2024.4
-release     : 1
+release     : 2
 homepage    : https://ostreedev.github.io/ostree/
 upstreams   :
     - https://github.com/ostreedev/ostree/releases/download/v2024.4/libostree-2024.4.tar.xz : 63c9190821333ac7373e0d923e4c2766b25ebdcfdf4efb44cb5928c6589d9fcb
@@ -28,16 +28,18 @@ builddeps   :
     - binary(bison)
     - binary(python)
     - binary(xsltproc)
+    - docbook
     - pkgconfig(e2p)
     - pkgconfig(fuse3)
     - pkgconfig(glib-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gpgme-glib)
     - pkgconfig(libarchive)
+    - pkgconfig(libcurl)
     - pkgconfig(liblzma)
+    - pkgconfig(libsoup-3.0)
     - pkgconfig(libsystemd)
     - pkgconfig(openssl)
-    - docbook
 setup       : |
     %configure
 build       : |

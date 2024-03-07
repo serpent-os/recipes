@@ -14,7 +14,9 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gpgme-glib)",
 				"pkgconfig(libarchive)",
+				"pkgconfig(libcurl)",
 				"pkgconfig(liblzma)",
+				"pkgconfig(libsoup-3.0)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(openssl)"
 			],
@@ -25,11 +27,13 @@
 				"soname(libfuse3.so.3(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgmodule-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgpg-error.so.0(x86_64))",
 				"soname(libgpgme.so.11(x86_64))",
 				"soname(liblzma.so.5(x86_64))",
 				"soname(libmount.so.1(x86_64))",
+				"soname(libsoup-3.0.so.0(x86_64))",
 				"soname(libsystemd.so.0(x86_64))",
 				"soname(libz.so.1(x86_64))"
 			],
@@ -123,7 +127,9 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gpgme-glib)",
 				"pkgconfig(libarchive)",
+				"pkgconfig(libcurl)",
 				"pkgconfig(liblzma)",
+				"pkgconfig(libsoup-3.0)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(openssl)"
 			],
@@ -171,6 +177,6 @@
 		}
 	},
 	"source-name": "libostree",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2024.4"
 }
