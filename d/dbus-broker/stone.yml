@@ -5,7 +5,7 @@
 #
 name        : dbus-broker
 version     : '35'
-release     : 7
+release     : 8
 summary     : Linux D-Bus Message Broker
 license     : Apache-2.0
 homepage    : https://github.com/bus1/dbus-broker
@@ -20,7 +20,7 @@ builddeps   :
 rundeps     :
     - dbus
 setup       : |
-    %meson
+    %meson -Dsystem-console-users=gdm
 build       : |
     %meson_build
 install     : |
