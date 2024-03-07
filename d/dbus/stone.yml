@@ -5,7 +5,7 @@
 #
 name        : dbus
 version     : '1.14.10'
-release     : 7
+release     : 8
 summary     : D-Bus Message Bus System
 license     :
     - AFL-2.1
@@ -40,5 +40,5 @@ install     : |
 
     # Kill dbus default enabling
     rm -rf %(installroot)/usr/lib/systemd/system/multi-user.target.wants
-    rm %(installroot)/usr/lib/systemd/system/dbus.service
-    rm %(installroot)/usr/lib/systemd/user/dbus.service
+    mv %(installroot)/usr/lib/systemd/system/dbus.service %(installroot)/usr/lib/systemd/system/dbus-daemon.service
+    mv %(installroot)/usr/lib/systemd/user/dbus.service %(installroot)/usr/lib/systemd/user/dbus-daemon.service
