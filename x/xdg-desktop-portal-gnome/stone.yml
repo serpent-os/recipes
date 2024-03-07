@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : xdg-desktop-portal-gnome
+version     : 45.1
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
+upstreams   :
+    - https://download.gnome.org/sources/xdg-desktop-portal-gnome/45/xdg-desktop-portal-gnome-45.1.tar.xz : 3e9ca821044005fb37bd68ebe4ad196fc3d072835581467a22a4879dac7b5fdd
+summary     : A backend implementation for xdg-desktop-portal for the GNOME desktop environment
+description : |
+    A backend implementation for xdg-desktop-portal that is using GTK and various pieces of GNOME infrastructure, such as the org.gnome.Shell.Screenshot or org.gnome.SessionManager D-Bus interfaces.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(msgfmt)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gnome-desktop-4)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(systemd)
+    - pkgconfig(xdg-desktop-portal)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
