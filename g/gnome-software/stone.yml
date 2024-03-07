@@ -1,0 +1,51 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-software
+version     : 45.3
+release     : 1
+homepage    : https://apps.gnome.org/Software/
+upstreams   :
+    - https://download.gnome.org/sources/gnome-software/45/gnome-software-45.3.tar.xz : d6b9245b22237da7bd1739dd28c23cc8f3835f99fa10c1037d9dd7635335251c
+summary     : Software allows you to find and install new apps and system extensions and remove existing installed apps.
+description : |
+    Software showcases featured and popular apps with useful descriptions and multiple screenshots per app. Apps can be found either through browsing the list of categories or by searching. It also allows you to update your system using an offline update.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(xsltproc)
+    - pkgconfig(appstream)
+    - pkgconfig(flatpak)
+    # pkgconfig(fwupd)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(gtk4)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libsoup-3.0)
+    # pkgconfig(malcontent-0)
+    - pkgconfig(ostree-1)
+    # pkgconfig(packagekit-glib2)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(xmlb)
+    - docbook
+setup       : |
+    %patch %(pkgdir)/0001-port-to-appstream1.patch
+    %meson \
+        -Dfwupd=false \
+        -Dpackagekit=false \
+        -Dmalcontent=false \
+        -Dtests=false \
+        -Dgtk_doc=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
+    %install_dir %(installroot)/usr/share/xdg/
+    mv %(installroot)/etc/xdg/* %(installroot)/usr/share/xdg/
