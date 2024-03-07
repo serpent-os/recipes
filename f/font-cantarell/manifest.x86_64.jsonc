@@ -1,0 +1,21 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"font-cantarell": {
+			"build-depends": [
+				"binary(msgfmt)"
+			],
+			"depends": [],
+			"files": [
+				"/usr/share/fonts/opentype/cantarell/Cantarell-VF.otf",
+				"/usr/share/metainfo/org.gnome.cantarell.metainfo.xml"
+			],
+			"name": "font-cantarell",
+			"provides": []
+		}
+	},
+	"source-name": "font-cantarell",
+	"source-release": "1",
+	"source-version": "0.303.1"
+}
