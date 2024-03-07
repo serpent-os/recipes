@@ -5,7 +5,7 @@
 #
 name        : dbus
 version     : '1.14.10'
-release     : 5
+release     : 6
 summary     : D-Bus Message Bus System
 license     :
     - AFL-2.1
@@ -20,8 +20,6 @@ builddeps   :
     - pkgconfig(expat)
     - pkgconfig(libsystemd)
 setup       : |
-    %patch %(pkgdir)/stateless/0001-Add-support-for-ignore_missing-attribute-in-included.patch
-
     %configure --runstatedir=/run \
         --disable-static \
         --disable-asserts \
@@ -34,13 +32,6 @@ build       : |
     %make
 install     : |
     %make_install
-
-    # Stateless: /etc/dbus-1 is no longer used
-    # /var/{lib,run}/dbus are created by tmpfiles
-    rm %(installroot)/etc/dbus-1/*
-    rmdir %(installroot)/etc/dbus-1 %(installroot)/etc
-    rmdir %(installroot)/var/lib/dbus %(installroot)/var/lib
-    rmdir %(installroot)/var/run/dbus %(installroot)/var/run %(installroot)/var
 
     # Need to ensure /var/run becomes a symlink to /run for compatibility
     %tmpfiles "# Create run/dbus directory"
