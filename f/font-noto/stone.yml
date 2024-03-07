@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : font-noto
+version     : 24.2.1
+release     : 1
+homepage    : https://notofonts.github.io/
+upstreams   :
+    - https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.2.1.tar.gz : 1ddeec924765a925dce1adc01599d6ebbf2aff48f6b339624734b370a807e01e
+summary     : Noto is a collection of high-quality fonts with multiple weights and widths in sans, serif, mono, and other styles, in more than 1,000 languages and over 150 writing systems.
+description : |
+    Noto is a collection of high-quality fonts with multiple weights and widths in sans, serif, mono, and other styles. The Noto fonts are perfect for harmonious, aesthetic, and typographically correct global communication, in more than 1,000 languages and over 150 writing systems.
+license     :
+    - OFL-1.1
+install     : |
+    # Packager Note: Do we want to slim this package down more, e.g. split off serif fonts
+    install -Dm00644 fonts/*/hinted/ttf/*.tt[fc] -t %(installroot)/usr/share/fonts/truetype/noto
+packages:
+    - "%(name)-extra":
+        paths:
+            - /usr/share/fonts/truetype/noto/Noto*-Condensed*.ttf
+            - /usr/share/fonts/truetype/noto/Noto*-Extra*.ttf
+            - /usr/share/fonts/truetype/noto/Noto*-Semi*.ttf
