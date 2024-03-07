@@ -5,7 +5,7 @@
 #
 name        : dbus
 version     : '1.14.10'
-release     : 6
+release     : 7
 summary     : D-Bus Message Bus System
 license     :
     - AFL-2.1
@@ -19,6 +19,7 @@ builddeps   :
     # TODO build with audit
     - pkgconfig(expat)
     - pkgconfig(libsystemd)
+toolchain   : gnu
 setup       : |
     %configure --runstatedir=/run \
         --disable-static \
