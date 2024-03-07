@@ -5,7 +5,7 @@
 #
 name        : system-accounts
 version     : "0.1.0"
-release     : 4
+release     : 5
 license     : MPL-2.0
 homepage    : https://serpentos.com
 summary     : Core system account definitions
