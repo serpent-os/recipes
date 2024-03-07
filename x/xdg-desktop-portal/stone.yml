@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : xdg-desktop-portal
+version     : 1.18.2
+release     : 1
+homepage    : https://flatpak.github.io/xdg-desktop-portal/
+upstreams   :
+    - https://github.com/flatpak/xdg-desktop-portal/releases/download/1.18.2/xdg-desktop-portal-1.18.2.tar.xz : dfac239c5476aafd117a9a10131a2f0b142f72106c52fc03859938e00545f440
+summary     : A portal frontend service for Flatpak and other desktop containment frameworks.
+description : |
+    xdg-desktop-portal works by exposing a series of D-Bus interfaces known as portals under a well-known name (org.freedesktop.portal.Desktop) and object path (/org/freedesktop/portal/desktop). The portal interfaces include APIs for file access, opening URIs, printing and others.
+license     :
+    - CC0-1.0
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(bwrap)
+    - binary(msgfmt)
+    - binary(xmlto)
+    - binary(xsltproc)
+    - pkgconfig(flatpak)
+    - pkgconfig(fuse3)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libgeoclue-2.0)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libportal)
+    - pkgconfig(libsystemd)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
