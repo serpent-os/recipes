@@ -1,9 +1,0 @@
-[Match]
-Name=enp*
-
-[Network]
-# this ensures that an attempt is made to contact an IPv4 DHCP server
-# IPv6 will attempt to autoconfigure the link regardless
-DHCP=ipv4
-# Enable this is if you _only_ want link local addressing for IPv6
-# LinkLocalAddressing=ipv6

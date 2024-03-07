@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 22
+release     : 23
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -127,10 +127,6 @@ install     : |
     # Stateless: Clean up /var directories, they are created via tmpfiles already
     rmdir %(installroot)/var/lib/systemd %(installroot)/var/lib
     rmdir %(installroot)/var/log/journal %(installroot)/var/log %(installroot)/var
-
-    # VERY temporary file to cause systemd-networkd to start DHCP on any enp interfaces.
-    # This is a temporary fix until something like NetworkManager is put into place
-    %install_file %(pkgdir)/temporary.network %(installroot)/%(libdir)/systemd/network/70-temporary.network
 
     # Don't clobber pam!
     rm -rf %(installroot)%(datadir)/factory/etc/pam.d

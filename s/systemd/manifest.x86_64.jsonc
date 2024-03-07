@@ -166,7 +166,6 @@
 				"/usr/lib/systemd/journald.conf.d/00-journald.conf",
 				"/usr/lib/systemd/libsystemd-core-252.so",
 				"/usr/lib/systemd/libsystemd-shared-252.so",
-				"/usr/lib/systemd/network/70-temporary.network",
 				"/usr/lib/systemd/network/80-6rd-tunnel.network",
 				"/usr/lib/systemd/network/80-container-host0.network",
 				"/usr/lib/systemd/network/80-container-vb.network",
@@ -2087,6 +2086,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "22",
+	"source-release": "23",
 	"source-version": "252.22"
 }
