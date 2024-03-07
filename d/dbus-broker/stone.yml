@@ -25,7 +25,5 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-    %install_dir %(installroot)/usr/lib/systemd/system/multi-user.target.wants
     ln -s dbus-broker.service %(installroot)/usr/lib/systemd/system/dbus.service
     ln -s dbus-broker.service %(installroot)/usr/lib/systemd/user/dbus.service
-    ln -s ../dbus.service %(installroot)/usr/lib/systemd/system/multi-user.target.wants/.
