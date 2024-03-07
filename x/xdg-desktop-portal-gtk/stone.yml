@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : xdg-desktop-portal-gtk
+version     : 1.15.1
+release     : 1
+homepage    : https://github.com/flatpak/xdg-desktop-portal-gtk
+upstreams   :
+    - https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/1.15.1/xdg-desktop-portal-gtk-1.15.1.tar.xz : 425551ca5f36451d386d53599d95a3a05b94020f1a4927c5111a2c3ba3a0fe4c
+summary     : Gtk implementation of xdg-desktop-portal
+description : |
+    A backend implementation for xdg-desktop-portal that is using GTK and various pieces of GNOME infrastructure, such as org.gnome.desktop.* GSettings schemas and the org.gnome.SessionManager and org.gnome.Screensaver D-Bus interfaces.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(msgfmt)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gnome-desktop-3.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(xdg-desktop-portal)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
