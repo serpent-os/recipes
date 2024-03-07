@@ -16,6 +16,7 @@
 			"files": [
 				"/usr/bin/bash",
 				"/usr/bin/bashbug",
+				"/usr/bin/sh",
 				"/usr/lib/bash/Makefile.inc",
 				"/usr/lib/bash/Makefile.sample",
 				"/usr/lib/bash/accept",
@@ -112,7 +113,8 @@
 			"name": "bash",
 			"provides": [
 				"binary(bash)",
-				"binary(bashbug)"
+				"binary(bashbug)",
+				"binary(sh)"
 			]
 		},
 		"bash-devel": {
@@ -190,6 +192,6 @@
 		}
 	},
 	"source-name": "bash",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "5.2.21"
 }
