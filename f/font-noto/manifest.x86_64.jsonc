@@ -3,8 +3,6 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"font-noto": {
-			"build-depends": [],
-			"depends": [],
 			"files": [
 				"/usr/share/fonts/truetype/noto/NotoFangsongKSSRotated-Regular.ttf",
 				"/usr/share/fonts/truetype/noto/NotoFangsongKSSVertical-Regular.ttf",
@@ -613,12 +611,9 @@
 				"/usr/share/fonts/truetype/noto/NotoTraditionalNushu-Light.ttf",
 				"/usr/share/fonts/truetype/noto/NotoTraditionalNushu-Regular.ttf"
 			],
-			"name": "font-noto",
-			"provides": []
+			"name": "font-noto"
 		},
 		"font-noto-extra": {
-			"build-depends": [],
-			"depends": [],
 			"files": [
 				"/usr/share/fonts/truetype/noto/NotoKufiArabic-ExtraBold.ttf",
 				"/usr/share/fonts/truetype/noto/NotoKufiArabic-ExtraLight.ttf",
@@ -2115,11 +2110,10 @@
 				"/usr/share/fonts/truetype/noto/NotoSerifVithkuqi-SemiBold.ttf",
 				"/usr/share/fonts/truetype/noto/NotoSerifYezidi-SemiBold.ttf"
 			],
-			"name": "font-noto-extra",
-			"provides": []
+			"name": "font-noto-extra"
 		}
 	},
 	"source-name": "font-noto",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "24.2.1"
 }
