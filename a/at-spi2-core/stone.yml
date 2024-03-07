@@ -5,7 +5,7 @@
 #
 name        : at-spi2-core
 version     : '2.51.0'
-release     : 2
+release     : 3
 homepage    : https://wiki.gnome.org/Accessibility
 upstreams   :
     - https://download.gnome.org/sources/at-spi2-core/2.51/at-spi2-core-2.51.0.tar.xz : 8dd07c6160e3115f4f77e2205963449def6822a3dc85d495c5db389f56663037
