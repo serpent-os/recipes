@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.22'
-release     : 24
+release     : 25
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -138,7 +138,3 @@ install     : |
     %install_file %(pkgdir)/systemd_tmpfiles.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_tmpfiles.yaml
     %install_file %(pkgdir)/systemd_sysusers.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_sysusers.yaml
     %install_file %(pkgdir)/systemd_presets.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_presets.yaml
-
-    # compat for gdm
-    %install_dir %(installroot)%(datadir)/dbus-1/session.d/
-    ln -sv ../system.d/org.freedesktop.systemd1.conf %(installroot)%(datadir)/dbus-1/session.d/org.freedesktop.systemd1.conf

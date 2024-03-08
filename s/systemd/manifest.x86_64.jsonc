@@ -732,7 +732,6 @@
 				"/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Unit.xml",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.timedate1.xml",
 				"/usr/share/dbus-1/services/org.freedesktop.systemd1.service",
-				"/usr/share/dbus-1/session.d/org.freedesktop.systemd1.conf",
 				"/usr/share/dbus-1/system-services/org.freedesktop.home1.service",
 				"/usr/share/dbus-1/system-services/org.freedesktop.hostname1.service",
 				"/usr/share/dbus-1/system-services/org.freedesktop.import1.service",
@@ -2086,6 +2085,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "24",
+	"source-release": "25",
 	"source-version": "252.22"
 }
