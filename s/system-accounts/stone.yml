@@ -5,7 +5,7 @@
 #
 name        : system-accounts
 version     : "0.1.0"
-release     : 5
+release     : 6
 license     : MPL-2.0
 homepage    : https://serpentos.com
 summary     : Core system account definitions
@@ -16,12 +16,12 @@ builddeps   :
 install     : |
     %install_dir %(installroot)%(libdir)/userdb
 
-    for groupFile in %(pkgdir)/*.group ; do
-        group=`jq -r .groupName ${groupFile}`
-        %install_file %(pkgdir)/${group}.group %(installroot)%(libdir)/userdb/${group}.group
-        gid=`jq -r .gid %(pkgdir)/${group}.group`
-        ln -s ${group}.group %(installroot)%(libdir)/userdb/${gid}.group
-    done
+    #for groupFile in %(pkgdir)/*.group ; do
+    #    group=`jq -r .groupName ${groupFile}`
+    #    %install_file %(pkgdir)/${group}.group %(installroot)%(libdir)/userdb/${group}.group
+    #    gid=`jq -r .gid %(pkgdir)/${group}.group`
+    #    ln -s ${group}.group %(installroot)%(libdir)/userdb/${gid}.group
+    #done
 
     for userFile in %(pkgdir)/*.user ; do
         user=`jq -r .userName ${userFile}`
