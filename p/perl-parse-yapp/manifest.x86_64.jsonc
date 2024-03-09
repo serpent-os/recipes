@@ -1,0 +1,39 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"perl-parse-yapp": {
+			"build-depends": [],
+			"depends": [],
+			"files": [
+				"/usr/bin/yapp",
+				"/usr/lib/perl5/vendor_perl/5.38/Parse/Yapp.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/Parse/Yapp/Driver.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/Parse/Yapp/Grammar.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/Parse/Yapp/Lalr.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/Parse/Yapp/Options.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/Parse/Yapp/Output.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/Parse/Yapp/Parse.pm",
+				"/usr/share/man/man1/yapp.1"
+			],
+			"name": "perl-parse-yapp",
+			"provides": [
+				"binary(yapp)"
+			]
+		},
+		"perl-parse-yapp-devel": {
+			"build-depends": [],
+			"depends": [
+				"perl-parse-yapp"
+			],
+			"files": [
+				"/usr/share/man/man3/Parse::Yapp.3"
+			],
+			"name": "perl-parse-yapp-devel",
+			"provides": []
+		}
+	},
+	"source-name": "perl-parse-yapp",
+	"source-release": "1",
+	"source-version": "1.21"
+}
