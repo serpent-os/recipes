@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"tdb": {
+			"build-depends": [
+				"binary(ld.bfd)",
+				"binary(python)",
+				"binary(which)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/tdbbackup",
+				"/usr/bin/tdbdump",
+				"/usr/bin/tdbrestore",
+				"/usr/bin/tdbtool",
+				"/usr/lib/libtdb.so.1",
+				"/usr/lib/libtdb.so.1.4.10"
+			],
+			"name": "tdb",
+			"provides": [
+				"soname(libtdb.so.1(x86_64))",
+				"binary(tdbbackup)",
+				"binary(tdbdump)",
+				"binary(tdbrestore)",
+				"binary(tdbtool)"
+			]
+		},
+		"tdb-devel": {
+			"build-depends": [
+				"binary(ld.bfd)",
+				"binary(python)",
+				"binary(which)"
+			],
+			"files": [
+				"/usr/include/tdb.h",
+				"/usr/lib/libtdb.so",
+				"/usr/lib/pkgconfig/tdb.pc"
+			],
+			"name": "tdb-devel",
+			"provides": [
+				"pkgconfig(tdb)"
+			]
+		}
+	},
+	"source-name": "tdb",
+	"source-release": "1",
+	"source-version": "1.4.10"
+}

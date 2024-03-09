@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : tdb
+version     : 1.4.10
+release     : 1
+homepage    : https://tdb.samba.org
+upstreams   :
+    - https://www.samba.org/ftp/tdb/tdb-1.4.10.tar.gz : 02338e33c16c21c9e29571cef523e76b2b708636254f6f30c6cf195d48c62daf
+summary     : Simple database API for Samba.
+description : |
+    This is a simple database API. It was inspired by the realisation that in Samba we have several ad-hoc bits of code that essentially implement small databases for sharing structures between parts of Samba. The interface is based on gdbm. gdbm couldn't be use as we needed to be able to have multiple writers to the databases at one time.
+license     :
+    - LGPL-3.0-or-later
+builddeps   :
+    - binary(ld.bfd)
+    - binary(python)
+    - binary(which)
+environment : |
+    # ld.bfd is required here, but we can still build with clang.
+    export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
+setup       : |
+    %configure \
+        --bundled-libraries=NONE \
+        --builtin-libraries=replace \
+        --disable-rpath-install \
+        --disable-python
+build       : |
+    %make
+install     : |
+    %make_install
+# icf unsupported with bfd
+tuning      :
+    - icf: no
