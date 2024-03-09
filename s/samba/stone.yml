@@ -1,0 +1,88 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : samba
+version     : 4.19.5
+release     : 1
+homepage    : https://www.samba.org/
+upstreams   :
+    - https://download.samba.org/pub/samba/stable/samba-4.19.5.tar.gz : 0e2405b4cec29d0459621f4340a1a74af771ec7cffedff43250cad7f1f87605e
+summary     : Samba is the standard Windows interoperability suite of programs for Linux and Unix.
+description : |
+     Samba is Free Software licensed under the GNU General Public License, the Samba project is a member of the Software Freedom Conservancy. Since 1992, Samba has provided secure, stable and fast file and print services for all clients using the SMB/CIFS protocol, such as all versions of DOS and Windows, OS/2, Linux and many others. Samba is an important component to seamlessly integrate Linux/Unix Servers and Desktops into Active Directory environments. It can function both as a domain controller or as a regular domain member.
+license     :
+    - BSD-3-Clause-No-Nuclear-License-2014
+    - BSD-4-Clause
+    - CC-BY-4.0
+    - GPL-3.0-or-later
+    - MIT
+    - Unlicense
+    - X11
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - binary(python)
+    - binary(rpcgen)
+    - binary(xsltproc)
+    - pkgconfig(avahi-client)
+    - pkgconfig(cmocka)
+    - pkgconfig(cups)
+    - pkgconfig(dbus-1)
+    - pkgconfig(fuse3)
+    - pkgconfig(gnutls)
+    - pkgconfig(icu-i18n)
+    - pkgconfig(jansson)
+    - pkgconfig(krb5)
+    # pkgconfig(ldap)
+    - pkgconfig(ldb)
+    - pkgconfig(libacl)
+    - pkgconfig(libarchive)
+    - pkgconfig(libattr)
+    - pkgconfig(libcap)
+    # pkgconfig(libsasl2)
+    - pkgconfig(libtirpc)
+    - pkgconfig(libunwind)
+    # pkgconfig(liburing)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libxslt)
+    - pkgconfig(ncursesw)
+    - pkgconfig(nss)
+    - pkgconfig(openssl)
+    - pkgconfig(pam)
+    - pkgconfig(popt)
+    - pkgconfig(readline)
+    - pkgconfig(tdb)
+    - pkgconfig(tevent)
+    - perl-parse-yapp
+setup       : |
+    %configure \
+        --bundled-libraries=!cmocka,!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util \
+        --enable-fhs \
+        --disable-python \
+        --without-ad-dc \
+        --without-ldap \
+        --without-ads \
+        --without-regedit \
+        --without-winbind \
+        --with-system-mitkrb5 \
+        --systemd-install-services \
+        --with-configdir=/usr/share/defaults/samba \
+        --with-lockdir=/run/lock \
+        --with-piddir=/run/samba \
+        --with-sockets-dir=/run/samba \
+        --with-systemd
+build       : |
+    %make -v
+install     : |
+    %make_install
+
+    # systemd tmpfiles/userdb files
+    %install_file %(pkgdir)/samba.tmpfiles %(installroot)/%(libdir)/tmpfiles.d/samba.conf
+    %install_file %(pkgdir)/sambaguest.user %(installroot)%(libdir)/userdb/sambaguest.user
+    %install_file %(pkgdir)/sambashares.user %(installroot)%(libdir)/userdb/sambashares.user
+
+# clang hangs when generating librpc .idl files
+# and ld.bfd is a hard requirement
+toolchain   : gnu
