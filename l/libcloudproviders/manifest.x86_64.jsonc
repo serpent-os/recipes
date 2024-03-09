@@ -1,0 +1,56 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libcloudproviders": {
+			"build-depends": [
+				"binary(vapigen)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/CloudProviders-0.3.typelib",
+				"/usr/lib/libcloudproviders.so.0",
+				"/usr/lib/libcloudproviders.so.0.3.4",
+				"/usr/share/gir-1.0/CloudProviders-0.3.gir",
+				"/usr/share/vala/vapi/cloudproviders.deps",
+				"/usr/share/vala/vapi/cloudproviders.vapi"
+			],
+			"name": "libcloudproviders",
+			"provides": [
+				"soname(libcloudproviders.so.0(x86_64))"
+			]
+		},
+		"libcloudproviders-devel": {
+			"build-depends": [
+				"binary(vapigen)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)"
+			],
+			"files": [
+				"/usr/include/cloudproviders/cloudproviders.h",
+				"/usr/include/cloudproviders/cloudprovidersaccount.h",
+				"/usr/include/cloudproviders/cloudprovidersaccountexporter.h",
+				"/usr/include/cloudproviders/cloudproviderscollector.h",
+				"/usr/include/cloudproviders/cloudprovidersprovider.h",
+				"/usr/include/cloudproviders/cloudprovidersproviderexporter.h",
+				"/usr/include/cloudproviders/enums.h",
+				"/usr/lib/libcloudproviders.so",
+				"/usr/lib/pkgconfig/cloudproviders.pc"
+			],
+			"name": "libcloudproviders-devel",
+			"provides": [
+				"pkgconfig(cloudproviders)"
+			]
+		}
+	},
+	"source-name": "libcloudproviders",
+	"source-release": "1",
+	"source-version": "0.3.4"
+}
