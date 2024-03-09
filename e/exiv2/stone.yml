@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : exiv2
+version     : 0.28.2
+release     : 1
+homepage    : https://exiv2.org/
+upstreams   :
+    - https://github.com/Exiv2/exiv2/archive/refs/tags/v0.28.2.tar.gz : 543bead934135f20f438e0b6d8858c55c5fcb7ff80f5d1d55489965f1aad58b9
+summary     : Image metadata library and tools
+description : |
+    Exiv2 is a C++ library and a command-line utility to read, write, delete and modify Exif, IPTC, XMP and ICC image metadata.
+license     :
+    - BSD-3-Clause-No-Military-License
+    - GPL-2.0-or-later
+builddeps   :
+    - pkgconfig(INIReader)
+    - pkgconfig(expat)
+    - pkgconfig(libbrotlidec)
+    - pkgconfig(libcurl)
+    - pkgconfig(zlib)
+setup       : |
+    %cmake \
+        -DEXIV2_ENABLE_WEBREADY=on \
+        -DEXIV2_ENABLE_DYNAMIC_RUNTIME=off \
+        -DCMAKE_SKIP_RPATH=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+#toolchain   : gnu
