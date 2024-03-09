@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : krb5
+version     : 1.21.2
+release     : 1
+homepage    : https://web.mit.edu/kerberos/
+upstreams   :
+    - https://web.mit.edu/kerberos/dist/krb5/1.21/krb5-1.21.2.tar.gz : 9560941a9d843c0243a71b17a7ac6fe31c7cebb5bce3983db79e52ae7e850491
+summary     : network authentication protocol (kerberos)
+description : |
+    Kerberos is a network authentication protocol. It is designed to provide strong authentication for client/server applications by using secret-key cryptography
+license     : MIT
+builddeps   :
+    - binary(yacc)
+    - pkgconfig(com_err)
+    - pkgconfig(openssl)
+environment : |
+    cd src
+setup       : |
+    %configure \
+        --disable-rpath \
+        --enable-dns-for-realm \
+        --with-system-et \
+        --with-system-ss
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # statelessness
+    %install_file %(pkgdir)/krb5.tmpfiles %(installroot)/%(libdir)/tmpfiles.d/krb5.conf
+    rm -frv %(installroot)/run/ %(installroot)/var/
+packages:
+    # add missing -devel rundep
+    - "%(name)-devel":
+        rundeps:
+            - pkgconfig(com_err)
+
