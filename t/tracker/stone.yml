@@ -1,0 +1,43 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : tracker
+version     : 3.6.0
+release     : 1
+homepage    : https://tracker.gnome.org/overview/
+upstreams   :
+    - https://download.gnome.org/sources/tracker/3.6/tracker-3.6.0.tar.xz : 52592cfe19baffd16dbe47475be7da750dbd0b6333fd7acb60faa9da5bc40df2
+summary     : Tracker is an efficient search engine and distributed database for desktop, embedded and mobile.
+description : |
+    Tracker SPARQL contains the triplestore database, provided as the libtracker-sparql library and implemented using SQLite. Also contains the database ontologies and the commandline user interface (tracker3).
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(vapigen)
+    - pkgconfig(bash-completion)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(icu-i18n)
+    - pkgconfig(icu-uc)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(sqlite3)
+    - pkgconfig(systemd)
+    - python-pygobject
+setup       : |
+    %meson -Dman=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# g-ir-scanner / compiler woes
+toolchain   : gnu

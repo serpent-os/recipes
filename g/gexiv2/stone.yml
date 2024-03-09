@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gexiv2
+version     : 0.14.2
+release     : 1
+homepage    : https://wiki.gnome.org/Projects/gexiv2
+upstreams   :
+    - https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.2.tar.xz : 2a0c9cf48fbe8b3435008866ffd40b8eddb0667d2212b42396fdf688e93ce0be
+summary     : gexiv2 is a GObject wrapper around the Exiv2 photo metadata library
+description : |
+    gexiv2 is a GObject wrapper around the Exiv2 photo metadata library. It allows for GNOME applications to easily inspect and update EXIF, IPTC, and XMP metadata in photo and video files of various formats.
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    # binary(g-ir-scanner)
+    # binary(valac)
+    - pkgconfig(exiv2)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gobject-2.0)
+    # pkgconfig(gobject-introspection-1.0)
+    # python-pygobject
+setup       : |
+    %meson -Dintrospection=false -Dvapi=false -Dpython3=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# g-ir-scanner / compiler woes but fails to link with ld.bfd
+#toolchain   : gnu

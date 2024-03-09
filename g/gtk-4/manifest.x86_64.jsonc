@@ -4,9 +4,11 @@
 	"packages": {
 		"gtk-4": {
 			"build-depends": [
-				"gettext",
+				"binary(gettext)",
 				"pkgconfig(cairo)",
+				"pkgconfig(cloudproviders)",
 				"pkgconfig(colord)",
+				"pkgconfig(cups)",
 				"pkgconfig(epoxy)",
 				"pkgconfig(fribidi)",
 				"pkgconfig(gdk-pixbuf-2.0)",
@@ -20,6 +22,7 @@
 				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(libtiff-4)",
 				"pkgconfig(pango)",
+				"pkgconfig(tracker-sparql-3.0)",
 				"pkgconfig(vulkan)",
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-egl)",
@@ -46,6 +49,9 @@
 				"soname(libcairo-gobject.so.2(x86_64))",
 				"soname(libcairo-script-interpreter.so.2(x86_64))",
 				"soname(libcairo.so.2(x86_64))",
+				"soname(libcloudproviders.so.0(x86_64))",
+				"soname(libcolord.so.2(x86_64))",
+				"soname(libcups.so.2(x86_64))",
 				"soname(libepoxy.so.0(x86_64))",
 				"soname(libfontconfig.so.1(x86_64))",
 				"soname(libfribidi.so.0(x86_64))",
@@ -63,6 +69,7 @@
 				"soname(libpangoft2-1.0.so.0(x86_64))",
 				"soname(libpng16.so.16(x86_64))",
 				"soname(libtiff.so.6(x86_64))",
+				"soname(libtracker-sparql-3.0.so.0(x86_64))",
 				"soname(libwayland-client.so.0(x86_64))",
 				"soname(libwayland-egl.so.1(x86_64))",
 				"soname(libxkbcommon.so.0(x86_64))"
@@ -75,6 +82,7 @@
 				"/usr/lib/girepository-1.0/GdkX11-4.0.typelib",
 				"/usr/lib/girepository-1.0/Gsk-4.0.typelib",
 				"/usr/lib/girepository-1.0/Gtk-4.0.typelib",
+				"/usr/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-cups.so",
 				"/usr/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so",
 				"/usr/lib/libgtk-4.so.1",
 				"/usr/lib/libgtk-4.so.1.1200.4",
@@ -244,14 +252,17 @@
 				"binary(gtk4-launch)",
 				"binary(gtk4-update-icon-cache)",
 				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libprintbackend-cups.so(x86_64))",
 				"soname(libprintbackend-file.so(x86_64))"
 			]
 		},
 		"gtk-4-demos": {
 			"build-depends": [
-				"gettext",
+				"binary(gettext)",
 				"pkgconfig(cairo)",
+				"pkgconfig(cloudproviders)",
 				"pkgconfig(colord)",
+				"pkgconfig(cups)",
 				"pkgconfig(epoxy)",
 				"pkgconfig(fribidi)",
 				"pkgconfig(gdk-pixbuf-2.0)",
@@ -265,6 +276,7 @@
 				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(libtiff-4)",
 				"pkgconfig(pango)",
+				"pkgconfig(tracker-sparql-3.0)",
 				"pkgconfig(vulkan)",
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-egl)",
@@ -330,9 +342,11 @@
 		},
 		"gtk-4-devel": {
 			"build-depends": [
-				"gettext",
+				"binary(gettext)",
 				"pkgconfig(cairo)",
+				"pkgconfig(cloudproviders)",
 				"pkgconfig(colord)",
+				"pkgconfig(cups)",
 				"pkgconfig(epoxy)",
 				"pkgconfig(fribidi)",
 				"pkgconfig(gdk-pixbuf-2.0)",
@@ -346,6 +360,7 @@
 				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(libtiff-4)",
 				"pkgconfig(pango)",
+				"pkgconfig(tracker-sparql-3.0)",
 				"pkgconfig(vulkan)",
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-egl)",
@@ -792,6 +807,6 @@
 		}
 	},
 	"source-name": "gtk-4",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "4.12.4"
 }

@@ -1,0 +1,116 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"exiv2": {
+			"build-depends": [
+				"pkgconfig(INIReader)",
+				"pkgconfig(expat)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libINIReader.so.0(x86_64))",
+				"soname(libbrotlidec.so.1(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libexpat.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/exiv2",
+				"/usr/lib/libexiv2.so.0.28.2",
+				"/usr/lib/libexiv2.so.28",
+				"/usr/share/man/man1/exiv2.1"
+			],
+			"name": "exiv2",
+			"provides": [
+				"binary(exiv2)",
+				"soname(libexiv2.so.28(x86_64))"
+			]
+		},
+		"exiv2-devel": {
+			"build-depends": [
+				"pkgconfig(INIReader)",
+				"pkgconfig(expat)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"pkgconfig(INIReader)",
+				"pkgconfig(expat)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(zlib)"
+			],
+			"files": [
+				"/usr/include/exiv2/asfvideo.hpp",
+				"/usr/include/exiv2/basicio.hpp",
+				"/usr/include/exiv2/bmffimage.hpp",
+				"/usr/include/exiv2/bmpimage.hpp",
+				"/usr/include/exiv2/config.h",
+				"/usr/include/exiv2/convert.hpp",
+				"/usr/include/exiv2/cr2image.hpp",
+				"/usr/include/exiv2/crwimage.hpp",
+				"/usr/include/exiv2/datasets.hpp",
+				"/usr/include/exiv2/easyaccess.hpp",
+				"/usr/include/exiv2/epsimage.hpp",
+				"/usr/include/exiv2/error.hpp",
+				"/usr/include/exiv2/exif.hpp",
+				"/usr/include/exiv2/exiv2.hpp",
+				"/usr/include/exiv2/exiv2lib_export.h",
+				"/usr/include/exiv2/exv_conf.h",
+				"/usr/include/exiv2/futils.hpp",
+				"/usr/include/exiv2/gifimage.hpp",
+				"/usr/include/exiv2/http.hpp",
+				"/usr/include/exiv2/image.hpp",
+				"/usr/include/exiv2/image_types.hpp",
+				"/usr/include/exiv2/iptc.hpp",
+				"/usr/include/exiv2/jp2image.hpp",
+				"/usr/include/exiv2/jpgimage.hpp",
+				"/usr/include/exiv2/matroskavideo.hpp",
+				"/usr/include/exiv2/metadatum.hpp",
+				"/usr/include/exiv2/mrwimage.hpp",
+				"/usr/include/exiv2/orfimage.hpp",
+				"/usr/include/exiv2/pgfimage.hpp",
+				"/usr/include/exiv2/photoshop.hpp",
+				"/usr/include/exiv2/pngimage.hpp",
+				"/usr/include/exiv2/preview.hpp",
+				"/usr/include/exiv2/properties.hpp",
+				"/usr/include/exiv2/psdimage.hpp",
+				"/usr/include/exiv2/quicktimevideo.hpp",
+				"/usr/include/exiv2/rafimage.hpp",
+				"/usr/include/exiv2/riffvideo.hpp",
+				"/usr/include/exiv2/rw2image.hpp",
+				"/usr/include/exiv2/slice.hpp",
+				"/usr/include/exiv2/tags.hpp",
+				"/usr/include/exiv2/tgaimage.hpp",
+				"/usr/include/exiv2/tiffimage.hpp",
+				"/usr/include/exiv2/types.hpp",
+				"/usr/include/exiv2/value.hpp",
+				"/usr/include/exiv2/version.hpp",
+				"/usr/include/exiv2/webpimage.hpp",
+				"/usr/include/exiv2/xmp_exiv2.hpp",
+				"/usr/include/exiv2/xmpsidecar.hpp",
+				"/usr/lib/cmake/exiv2/exiv2Config.cmake",
+				"/usr/lib/cmake/exiv2/exiv2ConfigVersion.cmake",
+				"/usr/lib/cmake/exiv2/exiv2Export-release.cmake",
+				"/usr/lib/cmake/exiv2/exiv2Export.cmake",
+				"/usr/lib/libexiv2.so",
+				"/usr/lib/pkgconfig/exiv2.pc"
+			],
+			"name": "exiv2-devel",
+			"provides": [
+				"pkgconfig(exiv2)",
+				"cmake(exiv2)"
+			]
+		}
+	},
+	"source-name": "exiv2",
+	"source-release": "1",
+	"source-version": "0.28.2"
+}
