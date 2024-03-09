@@ -1,0 +1,25 @@
+From a4dc4d150eebfa5517ee9b476c0a1fb28e5f0c27 Mon Sep 17 00:00:00 2001
+From: Monster <bgravendeel@proton.me>
+Date: Fri, 2 Feb 2024 16:25:21 +0100
+Subject: [PATCH] online-accounts: Remove period in description
+
+---
+ panels/online-accounts/cc-online-accounts-panel.ui | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/panels/online-accounts/cc-online-accounts-panel.ui b/panels/online-accounts/cc-online-accounts-panel.ui
+index 6e5364d3b6..7f38c7adde 100644
+--- a/panels/online-accounts/cc-online-accounts-panel.ui
++++ b/panels/online-accounts/cc-online-accounts-panel.ui
+@@ -64,7 +64,7 @@
+ 
+                 <child>
+                   <object class="AdwPreferencesPage">
+-                    <property name="description" translatable="yes">Allow apps to access online services by connecting your cloud accounts.</property>
++                    <property name="description" translatable="yes">Allow apps to access online services by connecting your cloud accounts</property>
+ 
+                     <child>
+                       <object class="AdwPreferencesGroup" id="accounts_frame">
+-- 
+GitLab
+
