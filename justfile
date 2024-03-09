@@ -16,3 +16,10 @@ _chroot target:
 
 # Chroot into pkg from the current directory
 chroot: (_chroot build_file)
+
+# Clean up .stone files
+_clean target:
+    cd {{ invocation_directory() }}; rm -v *.stone || echo "No .stone file(s) found"
+
+# Clean *.stone artefacts from the current directory
+clean: (_clean build_file)
