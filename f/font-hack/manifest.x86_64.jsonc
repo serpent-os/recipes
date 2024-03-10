@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"font-hack": {
+			"files": [
+				"/usr/share/fonts/truetype/hack/Hack-Bold.ttf",
+				"/usr/share/fonts/truetype/hack/Hack-BoldItalic.ttf",
+				"/usr/share/fonts/truetype/hack/Hack-Italic.ttf",
+				"/usr/share/fonts/truetype/hack/Hack-Regular.ttf"
+			],
+			"name": "font-hack"
+		}
+	},
+	"source-name": "font-hack",
+	"source-release": "1",
+	"source-version": "3.003"
+}
