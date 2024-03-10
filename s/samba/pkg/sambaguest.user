@@ -1,0 +1,8 @@
+{
+    "userName" : "sambaguest",
+    "realName" : "Samba guest access user/group",
+    "uid" : 65533,
+    "gid" : 65533,
+    "disposition" : "system",
+    "locked" : true
+}

@@ -1,0 +1,45 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"talloc": {
+			"build-depends": [
+				"binary(ld.bfd)",
+				"binary(python)",
+				"binary(which)",
+				"pkgconfig(libtirpc)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libtalloc.so.2",
+				"/usr/lib/libtalloc.so.2.4.2"
+			],
+			"name": "talloc",
+			"provides": [
+				"soname(libtalloc.so.2(x86_64))"
+			]
+		},
+		"talloc-devel": {
+			"build-depends": [
+				"binary(ld.bfd)",
+				"binary(python)",
+				"binary(which)",
+				"pkgconfig(libtirpc)"
+			],
+			"files": [
+				"/usr/include/talloc.h",
+				"/usr/lib/libtalloc.so",
+				"/usr/lib/pkgconfig/talloc.pc"
+			],
+			"name": "talloc-devel",
+			"provides": [
+				"pkgconfig(talloc)"
+			]
+		}
+	},
+	"source-name": "talloc",
+	"source-release": "1",
+	"source-version": "2.4.2"
+}

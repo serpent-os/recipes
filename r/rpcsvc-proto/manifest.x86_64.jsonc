@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"rpcsvc-proto": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/rpcgen",
+				"/usr/share/man/man1/rpcgen.1"
+			],
+			"name": "rpcsvc-proto",
+			"provides": [
+				"binary(rpcgen)"
+			]
+		},
+		"rpcsvc-proto-devel": {
+			"files": [
+				"/usr/include/rpcsvc/bootparam_prot.h",
+				"/usr/include/rpcsvc/bootparam_prot.x",
+				"/usr/include/rpcsvc/key_prot.h",
+				"/usr/include/rpcsvc/key_prot.x",
+				"/usr/include/rpcsvc/klm_prot.h",
+				"/usr/include/rpcsvc/klm_prot.x",
+				"/usr/include/rpcsvc/mount.h",
+				"/usr/include/rpcsvc/mount.x",
+				"/usr/include/rpcsvc/nfs_prot.h",
+				"/usr/include/rpcsvc/nfs_prot.x",
+				"/usr/include/rpcsvc/nlm_prot.h",
+				"/usr/include/rpcsvc/nlm_prot.x",
+				"/usr/include/rpcsvc/rex.h",
+				"/usr/include/rpcsvc/rex.x",
+				"/usr/include/rpcsvc/rquota.h",
+				"/usr/include/rpcsvc/rquota.x",
+				"/usr/include/rpcsvc/rstat.h",
+				"/usr/include/rpcsvc/rstat.x",
+				"/usr/include/rpcsvc/rusers.h",
+				"/usr/include/rpcsvc/rusers.x",
+				"/usr/include/rpcsvc/sm_inter.h",
+				"/usr/include/rpcsvc/sm_inter.x",
+				"/usr/include/rpcsvc/spray.h",
+				"/usr/include/rpcsvc/spray.x"
+			],
+			"name": "rpcsvc-proto-devel"
+		}
+	},
+	"source-name": "rpcsvc-proto",
+	"source-release": "1",
+	"source-version": "1.4.4"
+}

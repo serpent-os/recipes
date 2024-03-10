@@ -1,0 +1,8 @@
+{
+    "userName" : "sambashares",
+    "realName" : "Samba usershare access user/group",
+    "uid" : 65532,
+    "gid" : 65532,
+    "disposition" : "system",
+    "locked" : true
+}

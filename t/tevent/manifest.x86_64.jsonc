@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"tevent": {
+			"build-depends": [
+				"binary(ld.bfd)",
+				"binary(python)",
+				"binary(which)",
+				"pkgconfig(cmocka)",
+				"pkgconfig(talloc)"
+			],
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libtalloc.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libtevent.so.0",
+				"/usr/lib/libtevent.so.0.16.1"
+			],
+			"name": "tevent",
+			"provides": [
+				"soname(libtevent.so.0(x86_64))"
+			]
+		},
+		"tevent-devel": {
+			"build-depends": [
+				"binary(ld.bfd)",
+				"binary(python)",
+				"binary(which)",
+				"pkgconfig(cmocka)",
+				"pkgconfig(talloc)"
+			],
+			"depends": [
+				"pkgconfig(talloc)"
+			],
+			"files": [
+				"/usr/include/tevent.h",
+				"/usr/lib/libtevent.so",
+				"/usr/lib/pkgconfig/tevent.pc"
+			],
+			"name": "tevent-devel",
+			"provides": [
+				"pkgconfig(tevent)"
+			]
+		}
+	},
+	"source-name": "tevent",
+	"source-release": "1",
+	"source-version": "0.16.1"
+}
