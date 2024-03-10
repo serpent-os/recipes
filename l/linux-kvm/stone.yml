@@ -1,9 +1,9 @@
 name        : linux-kvm
-version     : 6.7.9
-release     : 62
+version     : 6.8.0
+release     : 63
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.9.tar.xz : 0fd733fc0778f8da1fdf66df1698d394248807de71eef83a4d1218bcb3dfd346
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.tar.xz : c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3
 summary     : Linux Kernel - KVM Guest build
 description : |
     Minimalist kernel configuration supporting KVM host and not much else
@@ -33,7 +33,7 @@ setup       : |
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
     %install_file %(pkgdir)/config-x86_64 .config
-    %patch %(pkgdir)/more-uarches-for-kernel-6.1.79-6.8-rc3.patch
+    %patch %(pkgdir)/more-uarches-for-kernel-6.8-rc4+.patch
     %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 oldconfig || exit 1
 build       : |
     # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
