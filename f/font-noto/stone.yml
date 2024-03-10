@@ -5,7 +5,7 @@
 #
 name        : font-noto
 version     : 24.2.1
-release     : 2
+release     : 3
 homepage    : https://notofonts.github.io/
 upstreams   :
     - https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.2.1.tar.gz : 1ddeec924765a925dce1adc01599d6ebbf2aff48f6b339624734b370a807e01e
