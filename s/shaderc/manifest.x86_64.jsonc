@@ -1,0 +1,60 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"shaderc": {
+			"build-depends": [
+				"binary(python)",
+				"cmake(SPIRV-Headers)",
+				"cmake(SPIRV-Tools)",
+				"cmake(glslang)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libSPIRV-Tools-opt.so(x86_64))",
+				"soname(libSPIRV-Tools.so(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/glslc",
+				"/usr/lib/libshaderc_shared.so.1"
+			],
+			"name": "shaderc",
+			"provides": [
+				"binary(glslc)",
+				"soname(libshaderc_shared.so.1(x86_64))"
+			]
+		},
+		"shaderc-devel": {
+			"build-depends": [
+				"binary(python)",
+				"cmake(SPIRV-Headers)",
+				"cmake(SPIRV-Tools)",
+				"cmake(glslang)"
+			],
+			"files": [
+				"/usr/include/shaderc/env.h",
+				"/usr/include/shaderc/shaderc.h",
+				"/usr/include/shaderc/shaderc.hpp",
+				"/usr/include/shaderc/status.h",
+				"/usr/include/shaderc/visibility.h",
+				"/usr/lib/libshaderc.a",
+				"/usr/lib/libshaderc_combined.a",
+				"/usr/lib/libshaderc_shared.so",
+				"/usr/lib/pkgconfig/shaderc.pc",
+				"/usr/lib/pkgconfig/shaderc_combined.pc"
+			],
+			"name": "shaderc-devel",
+			"provides": [
+				"pkgconfig(shaderc)",
+				"pkgconfig(shaderc_combined)"
+			]
+		}
+	},
+	"source-name": "shaderc",
+	"source-release": "1",
+	"source-version": "2023.8"
+}
