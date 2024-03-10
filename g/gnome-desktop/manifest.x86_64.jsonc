@@ -4,8 +4,8 @@
 	"packages": {
 		"gnome-desktop": {
 			"build-depends": [
-				"gettext",
-				"itstool",
+				"binary(itstool)",
+				"binary(msgfmt)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gsettings-desktop-schemas)",
 				"pkgconfig(gtk+-3.0)",
@@ -259,8 +259,8 @@
 		},
 		"gnome-desktop-devel": {
 			"build-depends": [
-				"gettext",
-				"itstool",
+				"binary(itstool)",
+				"binary(msgfmt)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gsettings-desktop-schemas)",
 				"pkgconfig(gtk+-3.0)",
@@ -334,6 +334,6 @@
 		}
 	},
 	"source-name": "gnome-desktop",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "44.0"
 }
