@@ -1,0 +1,75 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-control-center
+version     : 45.3
+release     : 1
+homepage    : https://apps.gnome.org/Settings/
+upstreams   :
+    - https://download.gnome.org/sources/gnome-control-center/45/gnome-control-center-45.3.tar.xz : b1e949c4e86c0624ec6a6ed0df09c9fae2b22983c1dca60ed86aec8ef0b24004
+summary     : Utility to configure the GNOME desktop
+description : |
+    Settings is the primary interface for configuring your system.
+license     :
+    - GPL-2.0-or-later
+    - JSON
+builddeps   :
+    - binary(msgfmt)
+    - binary(setxkbmap)
+    - pkgconfig(accountsservice)
+    - pkgconfig(colord-gtk4)
+    - pkgconfig(com_err)
+    - pkgconfig(cups)
+    - pkgconfig(epoxy)
+    - pkgconfig(gcr-base-3)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gnome-bg-4)
+    - pkgconfig(gnome-bluetooth-ui-3.0)
+    - pkgconfig(gnome-desktop-4)
+    - pkgconfig(gnome-rr-4)
+    - pkgconfig(gnome-settings-daemon)
+    - pkgconfig(goa-backend-1.0)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gsound)
+    - pkgconfig(gthread-2.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(ibus-1.0)
+    - pkgconfig(krb5)
+    - pkgconfig(libgtop-2.0)
+    - pkgconfig(libnm)
+    - pkgconfig(libnma-gtk4)
+    - pkgconfig(libpulse)
+    - pkgconfig(libpulse-mainloop-glib)
+    - pkgconfig(libsecret-1)
+    - pkgconfig(libwacom)
+    - pkgconfig(libxml-2.0)
+    # pkgconfig(malcontent-0)
+    - pkgconfig(mm-glib)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(pwquality)
+    - pkgconfig(smbclient)
+    - pkgconfig(tecla)
+    - pkgconfig(udisks2)
+    - pkgconfig(upower-glib)
+    - pkgconfig(x11)
+    - pkgconfig(xi)
+setup       : |
+    # prerequisite patches from 46 to remove goa account helper
+    %patch %(pkgdir)/online-accounts-fix-leak.patch
+    %patch %(pkgdir)/online-accounts-free-string-on-unexport.patch
+    %patch %(pkgdir)/online-accounts-fix-null-pointer-deref.patch
+    %patch %(pkgdir)/online-accounts-remove-period-in-desc.patch
+    # 46 backport: remove goa accounts helper
+    rm panels/online-accounts/gnome-control-center-goa-helper.c
+    %patch %(pkgdir)/remove-goa-helper.patch
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

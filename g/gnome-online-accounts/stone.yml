@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnome-online-accounts
-version     : 3.48.0
-release     : 2
+version     : 3.49.4
+release     : 3
 homepage    : https://gitlab.gnome.org/GNOME/gnome-online-accounts
 upstreams   :
-    - https://download.gnome.org/sources/gnome-online-accounts/3.48/gnome-online-accounts-3.48.0.tar.xz : 418bb9fcffdbd72a98205ad365137617fc1e3551a54de74f6a98d45d266175bf
+    - https://download.gnome.org/sources/gnome-online-accounts/3.49/gnome-online-accounts-3.49.4.tar.xz : 9982bd5376c04574d5429a82c82a592d113c73f2e4746bb6e8b0572864d80928
 summary     : Single sign-on framework for GNOME
 description : |
     Single sign-on framework for GNOME
@@ -18,26 +18,24 @@ builddeps   :
     - binary(vapigen)
     - pkgconfig(dbus-1)
     - pkgconfig(gcr-4)
-    - pkgconfig(gio-2.0)
-    - pkgconfig(gio-unix-2.0)
     - pkgconfig(glib-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk4)
     - pkgconfig(json-glib-1.0)
+    - pkgconfig(krb5)
+    - pkgconfig(libadwaita-1)
     - pkgconfig(libsecret-1)
     - pkgconfig(libsoup-3.0)
     - pkgconfig(libxml-2.0)
     - pkgconfig(rest-1.0)
-    # - pkgconfig(krb5)
 packages    :
     - "%(name)-devel":
         paths:
             - /usr/share/vala/vapi
 toolchain   : gnu
 setup       : |
-    # TODO: Enable goabackend via javascriptcoregtk-4.1
-    %meson -Dkerberos=false \
-           -Dgoabackend=false
+    %meson
 build       : |
     %meson_build
 install     : |

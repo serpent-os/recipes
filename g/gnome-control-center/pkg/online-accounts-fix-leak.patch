@@ -1,0 +1,29 @@
+From 30c65ceaed4e288049cbc53b93281b65823ae255 Mon Sep 17 00:00:00 2001
+From: Andy Holmes <andrew.g.r.holmes@gmail.com>
+Date: Tue, 31 Oct 2023 13:21:23 -0700
+Subject: [PATCH] online-accounts: free list-providers leak
+
+Unref variants after using the goa-helper to list providers.
+---
+ panels/online-accounts/cc-online-accounts-panel.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/panels/online-accounts/cc-online-accounts-panel.c b/panels/online-accounts/cc-online-accounts-panel.c
+index 8ac3eaea8e..a88eb2836c 100644
+--- a/panels/online-accounts/cc-online-accounts-panel.c
++++ b/panels/online-accounts/cc-online-accounts-panel.c
+@@ -412,7 +412,10 @@ list_providers (CcOnlineAccountsPanel *self)
+   g_variant_iter_init (&iter, providers_variant);
+ 
+   while ((provider = g_variant_iter_next_value (&iter)))
+-    add_provider_row (self, provider);
++    {
++      add_provider_row (self, provider);
++      g_variant_unref (provider);
++    }
+ }
+ 
+ static void
+-- 
+GitLab
+
