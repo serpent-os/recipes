@@ -5,7 +5,7 @@
 #
 name        : libostree
 version     : 2024.4
-release     : 3
+release     : 4
 homepage    : https://ostreedev.github.io/ostree/
 upstreams   :
     - https://github.com/ostreedev/ostree/releases/download/v2024.4/libostree-2024.4.tar.xz : 63c9190821333ac7373e0d923e4c2766b25ebdcfdf4efb44cb5928c6589d9fcb
@@ -47,5 +47,8 @@ build       : |
     %make
 install     : |
     %make_install
+    # we're not an ostree distribution
+    rm -rf %(installroot)%(libdir)/systemd/
+    rm -rf %(installroot)%(libdir)/tmpfiles.d
 # g-ir-scanner shitting the bed with clang
 toolchain   : gnu

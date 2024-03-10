@@ -47,15 +47,6 @@
 				"/usr/lib/libostree/libostree/grub2-15_ostree",
 				"/usr/lib/ostree/ostree-prepare-root",
 				"/usr/lib/ostree/ostree-remount",
-				"/usr/lib/systemd/system-generators/ostree-system-generator",
-				"/usr/lib/systemd/system/ostree-boot-complete.service",
-				"/usr/lib/systemd/system/ostree-finalize-staged-hold.service",
-				"/usr/lib/systemd/system/ostree-finalize-staged.path",
-				"/usr/lib/systemd/system/ostree-finalize-staged.service",
-				"/usr/lib/systemd/system/ostree-prepare-root.service",
-				"/usr/lib/systemd/system/ostree-remount.service",
-				"/usr/lib/systemd/system/ostree-state-overlay@.service",
-				"/usr/lib/tmpfiles.d/ostree-tmpfiles.conf",
 				"/usr/share/bash-completion/completions/ostree",
 				"/usr/share/gir-1.0/OSTree-1.0.gir",
 				"/usr/share/man/man1/ostree-admin-cleanup.1",
@@ -178,6 +169,6 @@
 		}
 	},
 	"source-name": "libostree",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2024.4"
 }
