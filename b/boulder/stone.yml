@@ -1,6 +1,6 @@
 name        : boulder
 version     : 1.0.2
-release     : 41
+release     : 42
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/boulder
@@ -8,7 +8,7 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/boulder : 0c724783ffd174924c72c80dbcb7b2ce026cd1fa
+    - git|https://github.com/serpent-os/boulder : 5294f460bf252e63c0f4adf888d03450942989b2
     - https://github.com/serpent-os/libmoss/archive/refs/tags/v1.2.2.tar.gz :
         hash: 782a2a899a754746ac6dc4184fa720bd5075968921e9e16f82b4fd4025513569
         unpackdir: libmoss
