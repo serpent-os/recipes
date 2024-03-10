@@ -20,7 +20,7 @@ upstreams   :
 rundeps     :
     - python-pytz
 build       : |
-    %python
+    %python_setup
 install     : |
     %python_install
 # check       : |

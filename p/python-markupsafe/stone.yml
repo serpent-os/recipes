@@ -16,7 +16,7 @@ upstreams   :
 # checkdeps   :
 #     - python-pytest
 build       : |
-    %python
+    %python_setup
 install     : |
     %python_install
 # check       : |

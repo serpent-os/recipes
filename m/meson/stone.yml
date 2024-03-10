@@ -19,6 +19,6 @@ rundeps     :
     - binary(ninja)
     - binary(python3)
 build       : |
-    %python
+    %python_setup
 install     : |
     %python_install

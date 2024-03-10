@@ -20,7 +20,7 @@ setup       : |
            -DCMAKE_C_FLAGS="$CFLAGS"
 build       : |
     %cmake_build
-    %python
+    %python_setup
 install     : |
     %cmake_install
     %python_install

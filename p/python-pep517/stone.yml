@@ -18,6 +18,6 @@ rundeps     :
     - python-tomli
 build       : |
     # [LATER] Update to 0.13.0 (or newer) and use %pyproject_build.
-    %python
+    %python_setup
 install     : |
     %python_install

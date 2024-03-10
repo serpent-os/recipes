@@ -20,7 +20,7 @@ rundeps     :
     - python-babel # i18n support
     - python-markupsafe
 build       : |
-    %python
+    %python_setup
 install     : |
     %python_install
 # check       : |

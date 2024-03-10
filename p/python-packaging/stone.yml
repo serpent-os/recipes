@@ -19,6 +19,6 @@ rundeps     :
     - python-pyparsing
 # [LATER] Rebootstrap with  %pyproject_build, %pyproject_install.
 build       : |
-    %python
+    %python_setup
 install     : |
     %python_install
