@@ -623,6 +623,7 @@
 				"/usr/share/boulder/macros/actions/cmake.yml",
 				"/usr/share/boulder/macros/actions/meson.yml",
 				"/usr/share/boulder/macros/actions/misc.yml",
+				"/usr/share/boulder/macros/actions/perl.yml",
 				"/usr/share/boulder/macros/actions/pgo.yml",
 				"/usr/share/boulder/macros/actions/python.yml",
 				"/usr/share/boulder/macros/arch/aarch64.yml",
@@ -630,6 +631,7 @@
 				"/usr/share/boulder/macros/arch/emul32/x86_64.yml",
 				"/usr/share/boulder/macros/arch/x86.yml",
 				"/usr/share/boulder/macros/arch/x86_64-stage1.yml",
+				"/usr/share/boulder/macros/arch/x86_64-v3x.yml",
 				"/usr/share/boulder/macros/arch/x86_64.yml",
 				"/usr/share/boulder/profiles.conf.d/default-x86_64.conf",
 				"/usr/share/moss/macros/actions/autotools.yml",
@@ -637,6 +639,7 @@
 				"/usr/share/moss/macros/actions/cmake.yml",
 				"/usr/share/moss/macros/actions/meson.yml",
 				"/usr/share/moss/macros/actions/misc.yml",
+				"/usr/share/moss/macros/actions/perl.yml",
 				"/usr/share/moss/macros/actions/pgo.yml",
 				"/usr/share/moss/macros/actions/python.yml",
 				"/usr/share/moss/macros/arch/aarch64.yml",
@@ -644,6 +647,7 @@
 				"/usr/share/moss/macros/arch/emul32/x86_64.yml",
 				"/usr/share/moss/macros/arch/x86.yml",
 				"/usr/share/moss/macros/arch/x86_64-stage1.yml",
+				"/usr/share/moss/macros/arch/x86_64-v3x.yml",
 				"/usr/share/moss/macros/arch/x86_64.yml"
 			],
 			"name": "boulder",
@@ -654,6 +658,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "40",
+	"source-release": "41",
 	"source-version": "1.0.2"
 }
