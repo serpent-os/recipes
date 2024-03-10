@@ -68,8 +68,11 @@ setup       : |
     # 46 backport: remove goa accounts helper
     rm panels/online-accounts/gnome-control-center-goa-helper.c
     %patch %(pkgdir)/remove-goa-helper.patch
-    %meson
+    %meson -Ddistributor_logo=%(datadir)/icons/serpent-logo.png \
+    	   -Ddark_mode_distributor_logo=%(datadir)/icons/serpent-logo-dark.png
 build       : |
     %meson_build
 install     : |
     %meson_install
+    %install_file %(pkgdir)/logo/black_notext_4x.png %(installroot)%(datadir)/icons/serpent-logo.png
+    %install_file %(pkgdir)/logo/white_notext_4x.png %(installroot)%(datadir)/icons/serpent-logo-dark.png
