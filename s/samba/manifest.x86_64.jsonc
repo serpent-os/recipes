@@ -303,7 +303,11 @@
 				"/usr/lib/systemd/system/smb.service",
 				"/usr/lib/systemd/system/winbind.service",
 				"/usr/lib/tmpfiles.d/samba.conf",
+				"/usr/lib/userdb/65532.group",
+				"/usr/lib/userdb/65533.group",
+				"/usr/lib/userdb/sambaguest.group",
 				"/usr/lib/userdb/sambaguest.user",
+				"/usr/lib/userdb/sambashares.group",
 				"/usr/lib/userdb/sambashares.user",
 				"/usr/sbin/eventlogadm",
 				"/usr/sbin/nmbd",
@@ -688,6 +692,6 @@
 		}
 	},
 	"source-name": "samba",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "4.19.5"
 }
