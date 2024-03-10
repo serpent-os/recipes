@@ -5,7 +5,7 @@
 #
 name        : evolution-data-server
 version     : 3.48.4
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/evolution-data-server
 upstreams   :
     - https://download.gnome.org/sources/evolution-data-server/3.48/evolution-data-server-3.48.4.tar.xz : 997e3f93b17efb0affcc017bee8780ba5fa2c009e36551bbc91a08ae552d6d60
