@@ -1,0 +1,43 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : shaderc
+version     : 2023.8
+release     : 1
+homepage    : https://github.com/google/shaderc
+upstreams   :
+    - https://github.com/google/shaderc/archive/refs/tags/v2023.8.tar.gz : dfec5045f30d8f6d3d3914ab5b3cc2695947f266d41261b1459177cd789308d1
+summary     : A collection of tools, libraries, and tests for Vulkan shader compilation.
+description : |
+    A collection of tools, libraries and tests for shader compilation. At the moment it includes:
+    - glslc, a command line compiler for GLSL/HLSL to SPIR-V, and
+    - libshaderc, a library API for accessing glslc functionality.
+license     :
+    - Apache-2.0
+builddeps   :
+    - binary(python)
+    - cmake(glslang)
+    - cmake(SPIRV-Tools)
+    - cmake(SPIRV-Headers)
+setup       : |
+    # Stolen from Solus just to get this to build
+    # TODO: clean all this up
+    echo \"shaderc v%(version)\" > glslc/src/build-version.inc
+    echo \" - spirv-tools $(spirv-link --version | perl -ne 'print $1 if /(v\d+\.\d)/;')\" >> glslc/src/build-version.inc
+    echo \" - glslang v$(glslangValidator --version | head -n1 | perl -ne 'print $1 if /:(\d.*\d)/;')\" >> glslc/src/build-version.inc
+
+    %patch %(pkgdir)/0001-Drop-third-party-code-in-CMakeLists.txt.patch
+    %patch %(pkgdir)/0001-Use-glslang-spirv-header.patch
+    %patch %(pkgdir)/0001-Missing-libs-glslc.patch
+
+    # TODO: do we need static libs here?
+    %cmake \
+        -DSHADERC_SKIP_TESTS=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+
+    rm %(installroot)/usr/lib/pkgconfig/shaderc_static.pc
