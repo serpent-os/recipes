@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mesa
-version     : 23.3.4
+version     : 24.0.2
 release     : 11
 homepage    : https://mesa3d.org/
 upstreams   :
-    - https://archive.mesa3d.org/mesa-23.3.4.tar.xz : df12d765be4650fe532860b18aa18e6da1d0b07d1a21dfdfe04660e6b7bac39a
+    - https://archive.mesa3d.org/mesa-24.0.2.tar.xz : 94e28a8edad06d8ed2b83eb53f253b9eb5aa62c3080f939702e1b3039b56c9e8
 summary     : Mesa 3D graphics library
 description : |
     The Mesa project began as an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics. Over the years the project has grown to implement more graphics APIs, including OpenGL ES, OpenCL, OpenMAX, VDPAU, VA-API, Vulkan and EGL. A variety of device drivers allows the Mesa libraries to be used in many different environments ranging from software emulation to complete hardware acceleration for modern GPUs. Mesa ties into several other open-source projects: the Direct Rendering Infrastructure, X.org, and Wayland to provide OpenGL support on Linux, FreeBSD, and other operating systems.
@@ -52,8 +52,6 @@ tuning      :
     - optimize: speed
     - lto: thin
 setup       : |
-    # Symbol issues (undefined)
-    %patch %(pkgdir)/25551.patch
     # TODO: Add vdpau support
     #        intel ray-tracing support
     %meson \
