@@ -1,9 +1,9 @@
 name        : linux-desktop
-version     : 6.7.9
-release     : 21
+version     : "6.8.0-rc7"
+release     : 22
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.9.tar.xz : 0fd733fc0778f8da1fdf66df1698d394248807de71eef83a4d1218bcb3dfd346
+    - https://git.kernel.org/torvalds/t/linux-6.8-rc7.tar.gz : 7dff9585f59c09794344a7e29006b170b76b45bf9880cf011cf3e0a15c1f0768
 summary     : Linux Kernel - Default Desktop Build
 description : |
     Work in progress build for desktop enabling
@@ -32,11 +32,12 @@ builddeps   :
     - intel-microcode
     - linux-firmware-amd
 setup       : |
-    extraVersion="-%(release).desktop"
+    # TODO: Strip rc component when on stable
+    extraVersion="-rc7-%(release).desktop"
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
     %install_file %(pkgdir)/config-x86_64 .config
-    %patch %(pkgdir)/more-uarches-for-kernel-6.1.79-6.8-rc3.patch
+    %patch %(pkgdir)/more-uarches-for-kernel-6.8-rc4+.patch
     %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 oldconfig || exit 1
 build       : |
     # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
