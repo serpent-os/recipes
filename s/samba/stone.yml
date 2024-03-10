@@ -5,7 +5,7 @@
 #
 name        : samba
 version     : 4.19.5
-release     : 1
+release     : 2
 homepage    : https://www.samba.org/
 upstreams   :
     - https://download.samba.org/pub/samba/stable/samba-4.19.5.tar.gz : 0e2405b4cec29d0459621f4340a1a74af771ec7cffedff43250cad7f1f87605e
@@ -80,7 +80,11 @@ install     : |
 
     # systemd tmpfiles/userdb files
     %install_file %(pkgdir)/samba.tmpfiles %(installroot)/%(libdir)/tmpfiles.d/samba.conf
+    %install_file %(pkgdir)/sambaguest.group %(installroot)%(libdir)/userdb/sambaguest.group
+    ln -s sambaguest.group %(installroot)%(libdir)/userdb/65533.group
     %install_file %(pkgdir)/sambaguest.user %(installroot)%(libdir)/userdb/sambaguest.user
+    %install_file %(pkgdir)/sambashares.group %(installroot)%(libdir)/userdb/sambashares.group
+    ln -s sambaguest.group %(installroot)%(libdir)/userdb/65532.group
     %install_file %(pkgdir)/sambashares.user %(installroot)%(libdir)/userdb/sambashares.user
 
 # clang hangs when generating librpc .idl files
