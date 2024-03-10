@@ -5,7 +5,7 @@
 #
 name        : gnome-console
 version     : 45.0
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/console
 upstreams   :
     - https://download.gnome.org/sources/gnome-console/45/gnome-console-45.0.tar.xz : e7462128d2df2324a1d748062c40429cd0504af09e407067b33f3a9d0c59c8e1
