@@ -40,7 +40,6 @@
 				"soname(libcurl.so.4(x86_64))",
 				"soname(libdconf.so.1(x86_64))",
 				"soname(libfuse3.so.3(x86_64))",
-				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
@@ -76,6 +75,7 @@
 				"/usr/lib/systemd/user/flatpak-portal.service",
 				"/usr/lib/systemd/user/flatpak-session-helper.service",
 				"/usr/lib/sysusers.d/flatpak.conf",
+				"/usr/lib/tmpfiles.d/flatpak.conf",
 				"/usr/share/bash-completion/completions/flatpak",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.Flatpak.Authenticator.xml",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.Flatpak.xml",
@@ -187,6 +187,6 @@
 		}
 	},
 	"source-name": "flatpak",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.14.5"
 }

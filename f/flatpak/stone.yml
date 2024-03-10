@@ -5,7 +5,7 @@
 #
 name        : flatpak
 version     : 1.14.5
-release     : 1
+release     : 2
 homepage    : https://www.flatpak.org/
 upstreams   :
     - https://github.com/flatpak/flatpak/releases/download/1.14.5/flatpak-1.14.5.tar.xz : 5b70c64ce7ac134e1ea08011256e423ae5c54f277297441583f77d013f27ffac
@@ -47,6 +47,7 @@ rundeps     :
 environment : |
     export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
 setup       : |
+    %patch %(pkgdir)/0001-Use-fusermount3-pending-new-flatpak-release-upstream.patch
     # system docbook pkg not suitable for documentation?
     %configure \
         --disable-documentation \
