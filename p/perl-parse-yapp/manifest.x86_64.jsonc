@@ -3,8 +3,6 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"perl-parse-yapp": {
-			"build-depends": [],
-			"depends": [],
 			"files": [
 				"/usr/bin/yapp",
 				"/usr/lib/perl5/vendor_perl/5.38/Parse/Yapp.pm",
@@ -22,18 +20,13 @@
 			]
 		},
 		"perl-parse-yapp-devel": {
-			"build-depends": [],
-			"depends": [
-				"perl-parse-yapp"
-			],
 			"files": [
 				"/usr/share/man/man3/Parse::Yapp.3"
 			],
-			"name": "perl-parse-yapp-devel",
-			"provides": []
+			"name": "perl-parse-yapp-devel"
 		}
 	},
 	"source-name": "perl-parse-yapp",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.21"
 }
