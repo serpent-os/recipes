@@ -5,7 +5,7 @@
 #
 name        : perl
 version     : '5.38.2'
-release     : 6
+release     : 7
 summary     : Perl interpreter and modules
 license     :
     - Artistic-1.0
@@ -19,7 +19,7 @@ builddeps   :
     - gdbm-devel
 environment : |
     export majversion=$(echo %(version) | sed 's:\.[0-9]$::')
-    export archname="x86_64-linux-thread-multi"
+    export archname="$(uname -m)-linux-thread-multi"
 setup       : |
     %patch %(pkgdir)/serpent/soname.patch
     ./Configure -des \
