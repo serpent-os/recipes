@@ -1,0 +1,63 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gvfs
+version     : 1.52.2
+release     : 1
+homepage    : https://wiki.gnome.org/Projects/gvfs
+upstreams   :
+    - https://download.gnome.org/sources/gvfs/1.52/gvfs-1.52.2.tar.xz : a643aceaa053caac0d8eff9a015f636e4bd1bb09cfe27864e347db67460e7b91
+summary     : Virtual filesystem implementation for GIO
+description : |
+    Virtual filesystem implementation for GIO
+license     :
+    - GPL-3.0-or-later
+    - LGPL-2.0-or-later
+builddeps   :
+    - pkgconfig(avahi-client)
+    - pkgconfig(avahi-glib)
+    - pkgconfig(dbus-1)
+    - pkgconfig(fuse3)
+    - pkgconfig(gcr-base-3)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(goa-1.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(libarchive)
+    # - pkgconfig(libbluray)
+    - pkgconfig(libcap)
+    # - pkgconfig(libcdio_paranoia)
+    - pkgconfig(libgcrypt)
+    # - pkgconfig(libgdata)
+    # - pkgconfig(libgphoto2)
+    # - pkgconfig(libimobiledevice-1.0)
+    # - pkgconfig(libmtp)
+    # - pkgconfig(libnfs)
+    # - pkgconfig(libplist)
+    - pkgconfig(libsecret-unstable)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(smbclient)
+    - pkgconfig(systemd)
+    - pkgconfig(udisks2)
+    - binary(msgfmt)
+setup       : |
+    %meson -Dafc=false \
+           -Dbluray=false \
+           -Dcdda=false \
+           -Dgoogle=false \
+           -Dgphoto2=false \
+           -Dmtp=false \
+           -Dnfs=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
