@@ -5,7 +5,7 @@
 #
 name        : colord-gtk
 version     : 0.3.1
-release     : 1
+release     : 2
 homepage    : https://github.com/hughsie/colord-gtk
 upstreams   :
     - https://github.com/hughsie/colord-gtk/archive/refs/tags/0.3.1.tar.gz : 9cfb3aa8958dc3fad6c74a7e2e967d182a355a24bea2c6dfb32c4fba87228f7e
