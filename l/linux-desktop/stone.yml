@@ -1,9 +1,9 @@
 name        : linux-desktop
-version     : "6.8.0-rc7"
-release     : 22
+version     : "6.8.0"
+release     : 23
 homepage    : https://kernel.org/
 upstreams   :
-    - https://git.kernel.org/torvalds/t/linux-6.8-rc7.tar.gz : 7dff9585f59c09794344a7e29006b170b76b45bf9880cf011cf3e0a15c1f0768
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.tar.xz : c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3
 summary     : Linux Kernel - Default Desktop Build
 description : |
     Work in progress build for desktop enabling
@@ -32,8 +32,7 @@ builddeps   :
     - intel-microcode
     - linux-firmware-amd
 setup       : |
-    # TODO: Strip rc component when on stable
-    extraVersion="-rc7-%(release).desktop"
+    extraVersion="-%(release).desktop"
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
     %install_file %(pkgdir)/config-x86_64 .config
