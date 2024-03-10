@@ -5,7 +5,7 @@
 #
 name        : gnome-software
 version     : 45.3
-release     : 1
+release     : 2
 homepage    : https://apps.gnome.org/Software/
 upstreams   :
     - https://download.gnome.org/sources/gnome-software/45/gnome-software-45.3.tar.xz : d6b9245b22237da7bd1739dd28c23cc8f3835f99fa10c1037d9dd7635335251c

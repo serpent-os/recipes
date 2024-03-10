@@ -5,7 +5,7 @@
 #
 name        : gtksourceview
 version     : 5.11.0
-release     : 1
+release     : 2
 homepage    : https://wiki.gnome.org/Projects/GtkSourceView
 upstreams   :
     - https://download.gnome.org/sources/gtksourceview/5.11/gtksourceview-5.11.0.tar.xz : 55f9275277a9b3b40d3a55f3e3612e3101d298f48488a99d2afec3c771bec330

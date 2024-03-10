@@ -5,7 +5,7 @@
 #
 name        : mutter
 version     : 45.3
-release     : 1
+release     : 2
 homepage    : https://gnome.org
 upstreams   :
     - https://download.gnome.org/sources/mutter/45/mutter-45.3.tar.xz : b78aea7f3e2bec8322a2af0404716be2269905c7d50c04b0b2a71a38814fcd01

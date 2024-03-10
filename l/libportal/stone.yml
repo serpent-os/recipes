@@ -5,7 +5,7 @@
 #
 name        : libportal
 version     : 0.7.1
-release     : 1
+release     : 2
 homepage    : https://libportal.org/
 upstreams   :
     - https://github.com/flatpak/libportal/releases/download/0.7.1/libportal-0.7.1.tar.xz : 297b90b263fad22190a26b8c7e8ea938fe6b18fb936265e588927179920d3805
