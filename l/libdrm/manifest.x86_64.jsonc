@@ -170,6 +170,6 @@
 		}
 	},
 	"source-name": "libdrm",
-	"source-release": "2",
-	"source-version": "2.4.115"
+	"source-release": "3",
+	"source-version": "2.4.120"
 }
