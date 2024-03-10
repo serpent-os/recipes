@@ -5,6 +5,7 @@
 		"gtk-4": {
 			"build-depends": [
 				"binary(gettext)",
+				"cmake(VulkanHeaders)",
 				"pkgconfig(cairo)",
 				"pkgconfig(cloudproviders)",
 				"pkgconfig(colord)",
@@ -22,6 +23,7 @@
 				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(libtiff-4)",
 				"pkgconfig(pango)",
+				"pkgconfig(shaderc)",
 				"pkgconfig(tracker-sparql-3.0)",
 				"pkgconfig(vulkan)",
 				"pkgconfig(wayland-client)",
@@ -70,6 +72,7 @@
 				"soname(libpng16.so.16(x86_64))",
 				"soname(libtiff.so.6(x86_64))",
 				"soname(libtracker-sparql-3.0.so.0(x86_64))",
+				"soname(libvulkan.so.1(x86_64))",
 				"soname(libwayland-client.so.0(x86_64))",
 				"soname(libwayland-egl.so.1(x86_64))",
 				"soname(libxkbcommon.so.0(x86_64))"
@@ -259,6 +262,7 @@
 		"gtk-4-demos": {
 			"build-depends": [
 				"binary(gettext)",
+				"cmake(VulkanHeaders)",
 				"pkgconfig(cairo)",
 				"pkgconfig(cloudproviders)",
 				"pkgconfig(colord)",
@@ -276,6 +280,7 @@
 				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(libtiff-4)",
 				"pkgconfig(pango)",
+				"pkgconfig(shaderc)",
 				"pkgconfig(tracker-sparql-3.0)",
 				"pkgconfig(vulkan)",
 				"pkgconfig(wayland-client)",
@@ -343,6 +348,7 @@
 		"gtk-4-devel": {
 			"build-depends": [
 				"binary(gettext)",
+				"cmake(VulkanHeaders)",
 				"pkgconfig(cairo)",
 				"pkgconfig(cloudproviders)",
 				"pkgconfig(colord)",
@@ -360,6 +366,7 @@
 				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(libtiff-4)",
 				"pkgconfig(pango)",
+				"pkgconfig(shaderc)",
 				"pkgconfig(tracker-sparql-3.0)",
 				"pkgconfig(vulkan)",
 				"pkgconfig(wayland-client)",
@@ -406,11 +413,13 @@
 				"soname(libpangocairo-1.0.so.0(x86_64))",
 				"soname(libpng16.so.16(x86_64))",
 				"soname(libtiff.so.6(x86_64))",
+				"soname(libvulkan.so.1(x86_64))",
 				"soname(libwayland-client.so.0(x86_64))",
 				"soname(libwayland-egl.so.1(x86_64))",
 				"soname(libxkbcommon.so.0(x86_64))",
 				"pkgconfig(pango)",
 				"pkgconfig(pangocairo)",
+				"pkgconfig(vulkan)",
 				"pkgconfig(wayland-client)",
 				"pkgconfig(x11)"
 			],
@@ -505,6 +514,7 @@
 				"/usr/include/gtk-4.0/gsk/gskroundedrect.h",
 				"/usr/include/gtk-4.0/gsk/gsktransform.h",
 				"/usr/include/gtk-4.0/gsk/gsktypes.h",
+				"/usr/include/gtk-4.0/gsk/vulkan/gskvulkanrenderer.h",
 				"/usr/include/gtk-4.0/gtk/css/gtkcss.h",
 				"/usr/include/gtk-4.0/gtk/css/gtkcssenums.h",
 				"/usr/include/gtk-4.0/gtk/css/gtkcssenumtypes.h",
@@ -807,6 +817,6 @@
 		}
 	},
 	"source-name": "gtk-4",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "4.12.4"
 }

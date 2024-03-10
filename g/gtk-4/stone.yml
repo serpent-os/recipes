@@ -5,7 +5,7 @@
 #
 name        : gtk-4
 version     : 4.12.4
-release     : 6
+release     : 7
 homepage    : https://download.gnome.org/sources/gtk/4.12
 upstreams   :
     - https://download.gnome.org/sources/gtk/4.12/gtk-4.12.4.tar.xz : ba67c6498e5599f928edafb9e08a320adfaa50ab2f0da6fc6ab2252fc2d57520
@@ -18,6 +18,7 @@ license     :
     - LGPL-2.1-or-later
 builddeps   :
     - binary(gettext)
+    - cmake(VulkanHeaders)
     - pkgconfig(cairo)
     - pkgconfig(cloudproviders)
     - pkgconfig(colord)
@@ -35,6 +36,7 @@ builddeps   :
     - pkgconfig(librsvg-2.0)
     - pkgconfig(libtiff-4)
     - pkgconfig(pango)
+    - pkgconfig(shaderc)
     - pkgconfig(tracker-sparql-3.0)
     - pkgconfig(vulkan)
     - pkgconfig(wayland-client)
@@ -48,7 +50,6 @@ builddeps   :
     - pkgconfig(xkbcommon)
     - pkgconfig(xrandr)
     # - pkgconfig(cpdb-frontend)
-    # - pkgconfig(shaderc) # for vulkan
     # - pkgconfig(sysprof-4)
 rundeps     :
     - gsettings-desktop-schemas
@@ -63,6 +64,8 @@ packages    :
     - "%(name)-devel":
         paths:
             - /usr/bin/gtk4-encode-symbolic-svg
+        rundeps:
+            - cmake(VulkanHeaders)
     - "%(name)":
         paths:
             - /usr/bin/gtk4-update-icon-cache
@@ -73,7 +76,8 @@ setup       : |
             -Dcolord=enabled \
             -Dintrospection=enabled \
             -Dmedia-gstreamer=disabled \
-            -Dtracker=enabled
+            -Dtracker=enabled \
+            -Dvulkan=enabled
 build       : |
     %meson_build
 install     : |
