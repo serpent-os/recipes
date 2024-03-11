@@ -5,7 +5,7 @@
 #
 name        : samba
 version     : 4.19.5
-release     : 2
+release     : 3
 homepage    : https://www.samba.org/
 upstreams   :
     - https://download.samba.org/pub/samba/stable/samba-4.19.5.tar.gz : 0e2405b4cec29d0459621f4340a1a74af771ec7cffedff43250cad7f1f87605e
@@ -35,13 +35,13 @@ builddeps   :
     - pkgconfig(icu-i18n)
     - pkgconfig(jansson)
     - pkgconfig(krb5)
-    # pkgconfig(ldap)
+    - pkgconfig(ldap)
     - pkgconfig(ldb)
     - pkgconfig(libacl)
     - pkgconfig(libarchive)
     - pkgconfig(libattr)
     - pkgconfig(libcap)
-    # pkgconfig(libsasl2)
+    - pkgconfig(libsasl2)
     - pkgconfig(libtirpc)
     - pkgconfig(libunwind)
     # pkgconfig(liburing)
@@ -62,8 +62,6 @@ setup       : |
         --enable-fhs \
         --disable-python \
         --without-ad-dc \
-        --without-ldap \
-        --without-ads \
         --without-regedit \
         --without-winbind \
         --with-system-mitkrb5 \
@@ -72,6 +70,8 @@ setup       : |
         --with-lockdir=/run/lock \
         --with-piddir=/run/samba \
         --with-sockets-dir=/run/samba \
+        --with-ads \
+        --with-ldap \
         --with-systemd
 build       : |
     %make -v

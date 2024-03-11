@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cyrus-sasl
+version     : 2.1.28
+release     : 1
+homepage    : https://github.com/cyrusimap/cyrus-sasl
+upstreams   :
+    - https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz : 7ccfc6abd01ed67c1a0924b353e526f1b766b21f42d4562ee635a8ebfc5bb38c
+summary     : Cyrus SASL API implementation
+description : |
+    This is the Cyrus SASL API implementation. It can be used on the client or server side to provide authentication and authorization services. See RFC 4422 for more information.
+license     :
+    - BSD-Attribution-HPND-disclaimer
+builddeps   :
+    - pkgconfig(krb5)
+    - pkgconfig(libxcrypt)
+    - pkgconfig(openssl)
+    # db5-devel
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+# `as` is hardcoded in configure script
+toolchain   : gnu

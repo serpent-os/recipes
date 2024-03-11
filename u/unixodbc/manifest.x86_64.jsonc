@@ -1,0 +1,77 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"unixodbc": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dltest",
+				"/usr/bin/isql",
+				"/usr/bin/iusql",
+				"/usr/bin/odbc_config",
+				"/usr/bin/odbcinst",
+				"/usr/bin/slencheck",
+				"/usr/lib/libodbc.so.2",
+				"/usr/lib/libodbc.so.2.0.0",
+				"/usr/lib/libodbccr.so.2",
+				"/usr/lib/libodbccr.so.2.0.0",
+				"/usr/lib/libodbcinst.so.2",
+				"/usr/lib/libodbcinst.so.2.0.0",
+				"/usr/share/man/man1/dltest.1",
+				"/usr/share/man/man1/isql.1",
+				"/usr/share/man/man1/iusql.1",
+				"/usr/share/man/man1/odbc_config.1",
+				"/usr/share/man/man1/odbcinst.1",
+				"/usr/share/man/man5/odbc.ini.5",
+				"/usr/share/man/man5/odbcinst.ini.5",
+				"/usr/share/man/man7/unixODBC.7"
+			],
+			"name": "unixodbc",
+			"provides": [
+				"binary(dltest)",
+				"binary(isql)",
+				"binary(iusql)",
+				"soname(libodbc.so.2(x86_64))",
+				"soname(libodbccr.so.2(x86_64))",
+				"soname(libodbcinst.so.2(x86_64))",
+				"binary(odbc_config)",
+				"binary(odbcinst)",
+				"binary(slencheck)"
+			]
+		},
+		"unixodbc-devel": {
+			"files": [
+				"/usr/include/autotest.h",
+				"/usr/include/odbcinst.h",
+				"/usr/include/odbcinstext.h",
+				"/usr/include/sql.h",
+				"/usr/include/sqlext.h",
+				"/usr/include/sqlspi.h",
+				"/usr/include/sqltypes.h",
+				"/usr/include/sqlucode.h",
+				"/usr/include/unixODBC/unixodbc_conf.h",
+				"/usr/include/unixodbc.h",
+				"/usr/include/uodbc_extras.h",
+				"/usr/include/uodbc_stats.h",
+				"/usr/lib/libodbc.so",
+				"/usr/lib/libodbccr.so",
+				"/usr/lib/libodbcinst.so",
+				"/usr/lib/pkgconfig/odbc.pc",
+				"/usr/lib/pkgconfig/odbccr.pc",
+				"/usr/lib/pkgconfig/odbcinst.pc"
+			],
+			"name": "unixodbc-devel",
+			"provides": [
+				"pkgconfig(odbc)",
+				"pkgconfig(odbccr)",
+				"pkgconfig(odbcinst)"
+			]
+		}
+	},
+	"source-name": "unixodbc",
+	"source-release": "1",
+	"source-version": "2.3.12"
+}

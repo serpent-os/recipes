@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : unixodbc
+version     : 2.3.12
+release     : 1
+homepage    : https://www.unixodbc.org
+upstreams   :
+    - https://www.unixodbc.org/unixODBC-2.3.12.tar.gz : f210501445ce21bf607ba51ef8c125e10e22dffdffec377646462df5f01915ec
+summary     : ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources
+description : |
+    ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources. Data Sources include SQL Servers and any Data Source with an ODBC Driver.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
