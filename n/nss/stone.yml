@@ -5,7 +5,7 @@
 #
 name        : nss
 version     : "3.96.1"
-release     : 12
+release     : 13
 summary     : Network Security Services
 license     : MPL-2.0
 homepage    : 
@@ -26,10 +26,6 @@ packages    :
 toolchain   : gnu
 setup       : |
     %patch %(pkgdir)/nss-3.97-standalone-1.patch
-    mkdir certs
-    cd certs
-    cp %(workdir)/nss/lib/ckfw/builtins/certdata.txt .
-    python3 %(pkgdir)/certdata2pem.py certdata.txt
 build       : |
     cd nss
     %make BUILT_OPT=1 \
@@ -51,8 +47,3 @@ install     : |
         %install_file dist/Linux*/bin/${i} %(installroot)%(bindir)/${i}
     done
     %install_file dist/Linux*/lib/pkgconfig/nss.pc %(installroot)%(libdir)/pkgconfig/nss.pc
-
-    # Certs
-    %install_dir %(installroot)/%(vendordir)/etc/ssl/certs
-    %install_file -t %(installroot)/%(vendordir)/etc/ssl/certs/ certs/*
-    cat certs/* > %(installroot)/%(vendordir)/etc/ssl/certs/ca-certificates.crt 
