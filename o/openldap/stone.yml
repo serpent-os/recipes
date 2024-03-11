@@ -1,0 +1,43 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : openldap
+version     : 2.6.7
+release     : 1
+homepage    : https://www.openldap.org/
+upstreams   :
+    - https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.7.tgz : cd775f625c944ed78a3da18a03b03b08eea73c8aabc97b41bb336e9a10954930
+summary     : OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.
+description : |
+    OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.
+license     :
+    - OLDAP-2.7
+    - OLDAP-2.8
+builddeps   :
+    - binary(soelim)
+    - pkgconfig(libsasl2)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libxcrypt)
+    - pkgconfig(odbc)
+    - pkgconfig(openssl)
+    - pkgconfig(sqlite3)
+setup       : |
+    %configure \
+        --disable-static \
+        --disable-ndb \
+        --disable-perl \
+        --disable-wt \
+        --enable-backends \
+        --enable-crypt \
+        --enable-dynamic \
+        --enable-ipv6 \
+        --enable-spasswd \
+        --with-threads \
+        --with-tls=openssl
+build       : |
+    %make
+install     : |
+    %make_install
+toolchain   : gnu
