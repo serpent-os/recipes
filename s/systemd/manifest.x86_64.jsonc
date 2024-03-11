@@ -71,7 +71,8 @@
 				"soname(libseccomp.so.2(x86_64))",
 				"soname(libssl.so.3(x86_64))",
 				"soname(libz.so.1(x86_64))",
-				"soname(libzstd.so.1(x86_64))"
+				"soname(libzstd.so.1(x86_64))",
+				"system-accounts"
 			],
 			"files": [
 				"/usr/bin/bootctl",
@@ -1150,6 +1151,7 @@
 				"/usr/share/moss/triggers/sys.d/systemd_presets.yaml",
 				"/usr/share/moss/triggers/sys.d/systemd_sysusers.yaml",
 				"/usr/share/moss/triggers/sys.d/systemd_tmpfiles.yaml",
+				"/usr/share/moss/triggers/tx.d/systemd_hwdb.yaml",
 				"/usr/share/polkit-1/actions/org.freedesktop.home1.policy",
 				"/usr/share/polkit-1/actions/org.freedesktop.hostname1.policy",
 				"/usr/share/polkit-1/actions/org.freedesktop.import1.policy",
@@ -1197,35 +1199,16 @@
 				"binary(bootctl)",
 				"binary(busctl)",
 				"binary(coredumpctl)",
-				"sysbinary(halt)",
 				"binary(homectl)",
 				"binary(hostnamectl)",
-				"sysbinary(init)",
 				"binary(journalctl)",
-				"soname(libcryptsetup-token-systemd-pkcs11.so(x86_64))",
-				"soname(libcryptsetup-token-systemd-tpm2.so(x86_64))",
-				"soname(libnss_myhostname.so.2(x86_64))",
-				"soname(libnss_mymachines.so.2(x86_64))",
-				"soname(libnss_resolve.so.2(x86_64))",
-				"soname(libnss_systemd.so.2(x86_64))",
-				"soname(libsystemd-core-252.so(x86_64))",
-				"soname(libsystemd-shared-252.so(x86_64))",
-				"soname(libsystemd.so.0(x86_64))",
-				"soname(libudev.so.1(x86_64))",
 				"binary(localectl)",
 				"binary(loginctl)",
 				"binary(machinectl)",
 				"binary(networkctl)",
 				"binary(oomctl)",
-				"soname(pam_systemd.so(x86_64))",
-				"soname(pam_systemd_home.so(x86_64))",
 				"binary(portablectl)",
-				"sysbinary(poweroff)",
-				"sysbinary(reboot)",
-				"sysbinary(resolvconf)",
 				"binary(resolvectl)",
-				"sysbinary(runlevel)",
-				"sysbinary(shutdown)",
 				"binary(systemctl)",
 				"binary(systemd-analyze)",
 				"binary(systemd-ask-password)",
@@ -1257,10 +1240,29 @@
 				"binary(systemd-tmpfiles)",
 				"binary(systemd-tty-ask-password-agent)",
 				"binary(systemd-umount)",
-				"sysbinary(telinit)",
 				"binary(timedatectl)",
 				"binary(udevadm)",
-				"binary(userdbctl)"
+				"binary(userdbctl)",
+				"soname(libcryptsetup-token-systemd-pkcs11.so(x86_64))",
+				"soname(libcryptsetup-token-systemd-tpm2.so(x86_64))",
+				"soname(libnss_myhostname.so.2(x86_64))",
+				"soname(libnss_mymachines.so.2(x86_64))",
+				"soname(libnss_resolve.so.2(x86_64))",
+				"soname(libnss_systemd.so.2(x86_64))",
+				"soname(libsystemd-core-252.so(x86_64))",
+				"soname(libsystemd-shared-252.so(x86_64))",
+				"soname(libsystemd.so.0(x86_64))",
+				"soname(libudev.so.1(x86_64))",
+				"soname(pam_systemd.so(x86_64))",
+				"soname(pam_systemd_home.so(x86_64))",
+				"sysbinary(halt)",
+				"sysbinary(init)",
+				"sysbinary(poweroff)",
+				"sysbinary(reboot)",
+				"sysbinary(resolvconf)",
+				"sysbinary(runlevel)",
+				"sysbinary(shutdown)",
+				"sysbinary(telinit)"
 			]
 		},
 		"systemd-devel": {
@@ -1304,6 +1306,9 @@
 				"pkgconfig(xkbcommon)",
 				"pkgconfig(zlib)",
 				"python-jinja"
+			],
+			"depends": [
+				"systemd"
 			],
 			"files": [
 				"/usr/include/libudev.h",
@@ -2085,6 +2090,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "25",
-	"source-version": "252.22"
+	"source-release": "26",
+	"source-version": "252.23"
 }

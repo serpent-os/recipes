@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : systemd
-version     : '252.22'
-release     : 25
+version     : '252.23'
+release     : 26
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -15,7 +15,7 @@ homepage    : http://www.freedesktop.org/wiki/Software/systemd
 description : |
     A System and Service Manager
 upstreams   :
-    - https://github.com/systemd/systemd-stable/archive/v252.22.tar.gz: a01a6a483858701cb7b6c727132efa1173f63d4306602653baa0c7080bc861a8
+    - https://github.com/systemd/systemd-stable/archive/v252.23.tar.gz: 44eb633154f8c2d1758fb76f563aaee16e5c74bdcdf3c27e3502988ddd541287
 builddeps   :
     - acl-devel
     - attr-devel
@@ -138,3 +138,6 @@ install     : |
     %install_file %(pkgdir)/systemd_tmpfiles.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_tmpfiles.yaml
     %install_file %(pkgdir)/systemd_sysusers.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_sysusers.yaml
     %install_file %(pkgdir)/systemd_presets.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_presets.yaml
+
+    # And transaction triggers
+    %install_file %(pkgdir)/systemd_presets.yaml %(installroot)/usr/share/moss/triggers/tx.d/systemd_hwdb.yaml

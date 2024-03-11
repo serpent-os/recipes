@@ -1,0 +1,13 @@
+name: systemd_hwdb
+description: |
+    Run systemd-hwdb
+
+handlers:
+    systemd_hwdb:
+        run: /usr/bin/systemd-hwdb
+        args: ["update", "--root=/", "--usr"]
+
+paths:
+    "/usr/lib/udev/hwdb.d/*.hwdb":
+        handlers:
+            - systemd_hwdb
