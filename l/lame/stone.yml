@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : lame
+version     : 3.100
+release     : 1
+homepage    : https://lame.sourceforge.io/
+upstreams   :
+    - https://netcologne.dl.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz : ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
+summary     : LAME is a high quality MPEG Audio Layer III (MP3) encoder
+description : |
+    LAME is a high quality MPEG Audio Layer III (MP3) encoder licensed under the LGPL.
+license     :
+    - LGPL-2.0-or-later
+builddeps   :
+    - binary(nasm)
+    - pkgconfig(ncursesw)
+setup       : |
+    %configure \
+        --disable-static \
+        --enable-nasm \
+        --enable-expopt=full
+build       : |
+    %make
+install     : |
+    %make_install
+# fails to link with lld
+toolchain   : gnu
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc

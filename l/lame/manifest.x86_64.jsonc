@@ -1,0 +1,66 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"lame": {
+			"build-depends": [
+				"binary(nasm)",
+				"pkgconfig(ncursesw)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/lame",
+				"/usr/lib/libmp3lame.so.0",
+				"/usr/lib/libmp3lame.so.0.0.0",
+				"/usr/share/man/man1/lame.1"
+			],
+			"name": "lame",
+			"provides": [
+				"binary(lame)",
+				"soname(libmp3lame.so.0(x86_64))"
+			]
+		},
+		"lame-devel": {
+			"build-depends": [
+				"binary(nasm)",
+				"pkgconfig(ncursesw)"
+			],
+			"files": [
+				"/usr/include/lame/lame.h",
+				"/usr/lib/libmp3lame.so"
+			],
+			"name": "lame-devel"
+		},
+		"lame-docs": {
+			"build-depends": [
+				"binary(nasm)",
+				"pkgconfig(ncursesw)"
+			],
+			"files": [
+				"/usr/share/doc/lame/html/about.html",
+				"/usr/share/doc/lame/html/abr.html",
+				"/usr/share/doc/lame/html/cbr.html",
+				"/usr/share/doc/lame/html/contact.html",
+				"/usr/share/doc/lame/html/contributors.html",
+				"/usr/share/doc/lame/html/detailed.html",
+				"/usr/share/doc/lame/html/history.html",
+				"/usr/share/doc/lame/html/index.html",
+				"/usr/share/doc/lame/html/introduction.html",
+				"/usr/share/doc/lame/html/links.html",
+				"/usr/share/doc/lame/html/list.html",
+				"/usr/share/doc/lame/html/ms_stereo.html",
+				"/usr/share/doc/lame/html/usage.html",
+				"/usr/share/doc/lame/html/vbr.html"
+			],
+			"name": "lame-docs"
+		}
+	},
+	"source-name": "lame",
+	"source-release": "1",
+	"source-version": "3.1"
+}
