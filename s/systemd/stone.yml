@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.23'
-release     : 26
+release     : 27
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -140,4 +140,4 @@ install     : |
     %install_file %(pkgdir)/systemd_presets.yaml %(installroot)/usr/share/moss/triggers/sys.d/systemd_presets.yaml
 
     # And transaction triggers
-    %install_file %(pkgdir)/systemd_presets.yaml %(installroot)/usr/share/moss/triggers/tx.d/systemd_hwdb.yaml
+    %install_file %(pkgdir)/systemd_hwdb.yaml %(installroot)/usr/share/moss/triggers/tx.d/systemd_hwdb.yaml
