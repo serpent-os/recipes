@@ -5,7 +5,6 @@
 		"glib-networking": {
 			"build-depends": [
 				"pkgconfig(glib-2.0)",
-				"pkgconfig(gnutls)",
 				"pkgconfig(gsettings-desktop-schemas)",
 				"pkgconfig(libproxy-1.0)",
 				"pkgconfig(openssl)"
@@ -13,16 +12,17 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
-				"soname(libgnutls.so.30(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
-				"soname(libproxy.so.1(x86_64))"
+				"soname(libproxy.so.1(x86_64))",
+				"soname(libssl.so.3(x86_64))"
 			],
 			"files": [
 				"/usr/lib/gio/modules/libgiognomeproxy.so",
-				"/usr/lib/gio/modules/libgiognutls.so",
 				"/usr/lib/gio/modules/libgiolibproxy.so",
+				"/usr/lib/gio/modules/libgioopenssl.so",
 				"/usr/lib/glib-networking/glib-pacrunner",
 				"/usr/lib/systemd/user/glib-pacrunner.service",
 				"/usr/share/dbus-1/services/org.gtk.GLib.PACRunner.service"
@@ -30,12 +30,12 @@
 			"name": "glib-networking",
 			"provides": [
 				"soname(libgiognomeproxy.so(x86_64))",
-				"soname(libgiognutls.so(x86_64))",
-				"soname(libgiolibproxy.so(x86_64))"
+				"soname(libgiolibproxy.so(x86_64))",
+				"soname(libgioopenssl.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "glib-networking",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.78.0"
 }
