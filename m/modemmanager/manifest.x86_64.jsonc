@@ -153,6 +153,7 @@
 				"/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Sms.xml",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.xml",
 				"/usr/share/dbus-1/system-services/org.freedesktop.ModemManager1.service",
+				"/usr/share/dbus-1/system.d/org.freedesktop.ModemManager1.conf",
 				"/usr/share/gir-1.0/ModemManager-1.0.gir",
 				"/usr/share/icons/hicolor/22x22/apps/ModemManager.png",
 				"/usr/share/locale/ca/LC_MESSAGES/ModemManager.mo",
@@ -184,7 +185,7 @@
 			],
 			"name": "modemmanager",
 			"provides": [
-				"sysbinary(ModemManager)",
+				"binary(mmcli)",
 				"soname(libmm-glib.so.0(x86_64))",
 				"soname(libmm-plugin-altair-lte.so(x86_64))",
 				"soname(libmm-plugin-anydata.so(x86_64))",
@@ -234,7 +235,7 @@
 				"soname(libmm-shared-sierra.so(x86_64))",
 				"soname(libmm-shared-telit.so(x86_64))",
 				"soname(libmm-shared-xmm.so(x86_64))",
-				"binary(mmcli)"
+				"sysbinary(ModemManager)"
 			]
 		},
 		"modemmanager-devel": {
@@ -259,6 +260,7 @@
 				"pkgconfig(udev)"
 			],
 			"depends": [
+				"modemmanager",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(glib-2.0)",
@@ -347,6 +349,6 @@
 		}
 	},
 	"source-name": "modemmanager",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.22.0"
 }

@@ -5,7 +5,7 @@
 #
 name        : modemmanager
 version     : 1.22.0
-release     : 1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/mobile-broadband/ModemManager
 upstreams   :
     - https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/1.22.0/ModemManager-1.22.0.tar.gz : 6c8f8720737a3788e394c700f36236278c9de09d76069a079e6f1daaf08b2768
@@ -35,7 +35,7 @@ builddeps   :
     - pkgconfig(systemd)
     - pkgconfig(udev)
 setup       : |
-    %meson
+    %meson -Ddbus_policy_dir=/usr/share/dbus-1/system.d
 build       : |
     %meson_build
 install     : |
