@@ -1,0 +1,48 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gstreamer
+version     : 1.24.0
+release     : 1
+homepage    : https://gstreamer.freedesktop.org/
+upstreams   :
+    - https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.0/gstreamer-1.24.0.tar.gz : c2932dc3867de8f3ce43eb3cf5ca084d6a19d7d55eb84d1cf3237f1dcb5262c9
+summary     : GStreamer multimedia framework
+description : |
+    GStreamer can bridge to other multimedia frameworks in order to reuse existing components (e.g. codecs) and use platform input/output mechanisms.
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - binary(g-ir-scanner)
+    - binary(nasm)
+    - binary(xgettext)
+    - pkgconfig(bash-completion)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libdrm)
+    - pkgconfig(libdw)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libunwind)
+    - pkgconfig(vorbis)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(pango)
+    - libogg-devel
+    - lame-devel
+setup       : |
+    # TODO: do an enablement pass for missing features
+    %meson \
+        -D gst-plugins-bad:aja=disabled \
+        -D gst-plugins-bad:faac=disabled \
+        -D gst-plugins-bad:fdkaac=disabled \
+        -D gst-plugins-bad:openh264=disabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+# clang g-ir-scanner/compiler woes
+toolchain   : gnu
