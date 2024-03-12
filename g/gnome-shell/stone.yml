@@ -5,7 +5,7 @@
 #
 name        : gnome-shell
 version     : 45.3
-release     : 11
+release     : 12
 homepage    : https://gitlab.gnome.org/GNOME/gnome-shell
 upstreams   :
     - https://download.gnome.org/sources/gnome-shell/45/gnome-shell-45.3.tar.xz : 3a19724720d8274dc6bced68e0dd5fc7668a04cd79978cbbb8223474ccdda9ab
@@ -25,6 +25,7 @@ builddeps   :
     - binary(msgfmt)
     - binary(perl)
     - binary(python3)
+    - binary(wireplumber)
     - pkgconfig(atk-bridge-2.0)
     - pkgconfig(gcr-4)
     - pkgconfig(gdk-pixbuf-2.0)
