@@ -5,7 +5,7 @@
 #
 name        : lua
 version     : 5.4.6
-release     : 3
+release     : 4
 homepage    : https://www.lua.org
 upstreams   :
     - https://www.lua.org/ftp/lua-5.4.6.tar.gz : 7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88
@@ -32,3 +32,9 @@ install     : |
         INSTALL_LIB=%(installroot)/%(libdir) \
         INSTALL_MAN=%(installroot)/%(mandir)
     rm %(installroot)/%(libdir)/liblua.a
+    %install_file %(pkgdir)/lua-5.4.pc %(installroot)%(libdir)/pkgconfig/lua-5.4.pc
+    ln -s lua-5.4.pc %(installroot)%(libdir)/pkgconfig/lua.pc
+
+    mv %(installroot)%(libdir)/liblua.so %(installroot)%(libdir)/liblua.so.%(version)
+    ln -s liblua.so.%(version) %(installroot)%(libdir)/liblua.so.5
+    ln -s liblua.so.5 %(installroot)%(libdir)/liblua.so
