@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : wireplumber
+version     : 0.4.17
+release     : 1
+homepage    : https://gitlab.freedesktop.org/pipewire/wireplumber/
+upstreams   :
+    - https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.4.17/wireplumber-0.4.17.tar.gz : a12534fd9c1ecf9fbc09f79192d9d57c9ab7bf01da82615ab4103b2f8e2e91a7
+summary     : Session / policy manager implementation for PipeWire
+description : |
+    Session / policy manager implementation for PipeWire
+license     :
+    - MIT
+builddeps   :
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libspa-0.2)
+    - pkgconfig(libsystemd)
+    - pkgconfig(systemd)
+    - lua-devel
+    - lua
+setup       : |
+    %meson -Dsystem-lua=true \
+           -Dsystem-lua-version=5.4
+build       : |
+    %meson_build
+install     : |
+    %meson_install
