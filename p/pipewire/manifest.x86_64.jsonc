@@ -11,6 +11,7 @@
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(gstreamer-1.0)",
 				"pkgconfig(libcanberra)",
 				"pkgconfig(libcap)",
 				"pkgconfig(libdrm)",
@@ -42,6 +43,11 @@
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgstallocators-1.0.so.0(x86_64))",
+				"soname(libgstaudio-1.0.so.0(x86_64))",
+				"soname(libgstbase-1.0.so.0(x86_64))",
+				"soname(libgstreamer-1.0.so.0(x86_64))",
+				"soname(libgstvideo-1.0.so.0(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libncursesw.so.6(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
@@ -85,6 +91,7 @@
 				"/usr/bin/spa-resample",
 				"/usr/lib/alsa-lib/libasound_module_ctl_pipewire.so",
 				"/usr/lib/alsa-lib/libasound_module_pcm_pipewire.so",
+				"/usr/lib/gstreamer-1.0/libgstpipewire.so",
 				"/usr/lib/libpipewire-0.3.so.0",
 				"/usr/lib/libpipewire-0.3.so.0.1003.0",
 				"/usr/lib/pipewire-0.3/jack/libjack.so",
@@ -314,6 +321,7 @@
 			"provides": [
 				"soname(libasound_module_ctl_pipewire.so(x86_64))",
 				"soname(libasound_module_pcm_pipewire.so(x86_64))",
+				"soname(libgstpipewire.so(x86_64))",
 				"soname(libjack.so.0(x86_64))",
 				"soname(libjacknet.so.0(x86_64))",
 				"soname(libjackserver.so.0(x86_64))",
@@ -413,6 +421,7 @@
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(gstreamer-1.0)",
 				"pkgconfig(libcanberra)",
 				"pkgconfig(libcap)",
 				"pkgconfig(libdrm)",
@@ -644,6 +653,6 @@
 		}
 	},
 	"source-name": "pipewire",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.0.3"
 }

@@ -5,7 +5,7 @@
 #
 name        : pipewire
 version     : 1.0.3
-release     : 1
+release     : 2
 homepage    : https://pipewire.org/
 upstreams   :
     - https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.0.3/pipewire-1.0.3.tar.gz : bddb29b9310c344ca069df410f6f02b7f3d8c518811c0505c7fe62d8428fd767
@@ -36,6 +36,7 @@ builddeps   :
     - pkgconfig(vulkan)
     - pkgconfig(x11-xcb)
     - pkgconfig(xfixes)
+    - pkgconfig(gstreamer-1.0)
     # - pkgconfig(intl)
     # - pkgconfig(libavcodec)
     # - pkgconfig(libavformat)
@@ -52,6 +53,7 @@ setup       : |
     %meson -Dsession-managers=[] \
            -Dvulkan=enabled \
            -Dudev=enabled \
+           -Dgstreamer=enabled \
            -Dudevrulesdir=%(libdir)/udev/rules.d
 build       : |
     %meson_build
