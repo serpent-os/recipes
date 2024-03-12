@@ -5,7 +5,7 @@
 #
 name        : gtk-4
 version     : 4.12.4
-release     : 7
+release     : 8
 homepage    : https://download.gnome.org/sources/gtk/4.12
 upstreams   :
     - https://download.gnome.org/sources/gtk/4.12/gtk-4.12.4.tar.xz : ba67c6498e5599f928edafb9e08a320adfaa50ab2f0da6fc6ab2252fc2d57520
@@ -29,6 +29,8 @@ builddeps   :
     - pkgconfig(glib-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(graphene-gobject-1.0)
+    - pkgconfig(gstreamer-gl-1.0)
+    - pkgconfig(gstreamer-player-1.0)
     - pkgconfig(harfbuzz)
     - pkgconfig(iso-codes)
     - pkgconfig(libjpeg)
@@ -75,7 +77,7 @@ setup       : |
             -Dcloudproviders=enabled \
             -Dcolord=enabled \
             -Dintrospection=enabled \
-            -Dmedia-gstreamer=disabled \
+            -Dmedia-gstreamer=enabled \
             -Dtracker=enabled \
             -Dvulkan=enabled
 build       : |

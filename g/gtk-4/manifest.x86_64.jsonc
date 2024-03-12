@@ -16,6 +16,8 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(graphene-gobject-1.0)",
+				"pkgconfig(gstreamer-gl-1.0)",
+				"pkgconfig(gstreamer-player-1.0)",
 				"pkgconfig(harfbuzz)",
 				"pkgconfig(iso-codes)",
 				"pkgconfig(libjpeg)",
@@ -63,6 +65,10 @@
 				"soname(libgmodule-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgraphene-1.0.so.0(x86_64))",
+				"soname(libgstgl-1.0.so.0(x86_64))",
+				"soname(libgstplayer-1.0.so.0(x86_64))",
+				"soname(libgstreamer-1.0.so.0(x86_64))",
+				"soname(libgstvideo-1.0.so.0(x86_64))",
 				"soname(libharfbuzz.so.0(x86_64))",
 				"soname(libjpeg.so.8(x86_64))",
 				"soname(libm.so.6(x86_64))",
@@ -85,6 +91,7 @@
 				"/usr/lib/girepository-1.0/GdkX11-4.0.typelib",
 				"/usr/lib/girepository-1.0/Gsk-4.0.typelib",
 				"/usr/lib/girepository-1.0/Gtk-4.0.typelib",
+				"/usr/lib/gtk-4.0/4.0.0/media/libmedia-gstreamer.so",
 				"/usr/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-cups.so",
 				"/usr/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so",
 				"/usr/lib/libgtk-4.so.1",
@@ -255,6 +262,7 @@
 				"binary(gtk4-launch)",
 				"binary(gtk4-update-icon-cache)",
 				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libmedia-gstreamer.so(x86_64))",
 				"soname(libprintbackend-cups.so(x86_64))",
 				"soname(libprintbackend-file.so(x86_64))"
 			]
@@ -273,6 +281,8 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(graphene-gobject-1.0)",
+				"pkgconfig(gstreamer-gl-1.0)",
+				"pkgconfig(gstreamer-player-1.0)",
 				"pkgconfig(harfbuzz)",
 				"pkgconfig(iso-codes)",
 				"pkgconfig(libjpeg)",
@@ -359,6 +369,8 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(graphene-gobject-1.0)",
+				"pkgconfig(gstreamer-gl-1.0)",
+				"pkgconfig(gstreamer-player-1.0)",
 				"pkgconfig(harfbuzz)",
 				"pkgconfig(iso-codes)",
 				"pkgconfig(libjpeg)",
@@ -817,6 +829,6 @@
 		}
 	},
 	"source-name": "gtk-4",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "4.12.4"
 }
