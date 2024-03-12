@@ -5,7 +5,7 @@
 #
 name        : gstreamer
 version     : 1.24.0
-release     : 1
+release     : 2
 homepage    : https://gstreamer.freedesktop.org/
 upstreams   :
     - https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.0/gstreamer-1.24.0.tar.gz : c2932dc3867de8f3ce43eb3cf5ca084d6a19d7d55eb84d1cf3237f1dcb5262c9
@@ -18,28 +18,44 @@ builddeps   :
     - binary(bison)
     - binary(flex)
     - binary(g-ir-scanner)
+    - binary(glslc)
     - binary(nasm)
     - binary(xgettext)
+    - lame-devel
+    - pkgconfig(alsa)
     - pkgconfig(bash-completion)
+    - pkgconfig(gl)
     - pkgconfig(glib-2.0)
+    - pkgconfig(graphene-1.0)
     - pkgconfig(gudev-1.0)
     - pkgconfig(json-glib-1.0)
+    - pkgconfig(lcms2)
+    - pkgconfig(libcurl)
     - pkgconfig(libdrm)
     - pkgconfig(libdw)
     - pkgconfig(libjpeg)
+    - pkgconfig(libpulse)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(libssl)
     - pkgconfig(libunwind)
-    - pkgconfig(vorbis)
+    - pkgconfig(libwebp)
     - pkgconfig(libxml-2.0)
+    - pkgconfig(ogg)
     - pkgconfig(pango)
-    - libogg-devel
-    - lame-devel
+    - pkgconfig(vapigen)
+    - pkgconfig(vorbis)
+    - pkgconfig(vulkan)
+    - pkgconfig(wayland-client)
+    - pkgconfig(xkbcommon)
 setup       : |
     # TODO: do an enablement pass for missing features
     %meson \
+        --wrap-mode=nodownload \
         -D gst-plugins-bad:aja=disabled \
         -D gst-plugins-bad:faac=disabled \
         -D gst-plugins-bad:fdkaac=disabled \
-        -D gst-plugins-bad:openh264=disabled
+        -D gst-plugins-bad:openh264=disabled \
+        -D gst-plugins-good:soup-version=3
 build       : |
     %meson_build
 install     : |
