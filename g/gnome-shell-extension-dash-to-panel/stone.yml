@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : dash-to-panel
+version     : 60
+release     : 1
+homepage    : https://github.com/home-sweet-gnome/dash-to-panel
+upstreams   :
+    - git|https://github.com/home-sweet-gnome/dash-to-panel : 14fdcfe8d907d8c3ab6d11468e251ead0243fe3b
+summary     : Gnome Shell taskbar extension
+description : |
+    An icon taskbar for the Gnome Shell. This extension moves the dash into the gnome main panel so that the application launchers and system tray are combined into a single panel, similar to that found in KDE Plasma and Windows 7+. A separate dock is no longer needed for easy access to running and favorited applications.
+license     :
+    - GPL-2.0
+builddeps :
+    - binary(glib-compile-schemas)
+    - binary(msgfmt)
+rundeps   :
+    - gnome-shell
+build     : |
+    %make
+install   : |
+    %make_install
