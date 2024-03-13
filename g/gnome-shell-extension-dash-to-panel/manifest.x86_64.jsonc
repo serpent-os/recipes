@@ -2,7 +2,7 @@
 {
 	"manifest-version": "0.2",
 	"packages": {
-		"dash-to-panel": {
+		"gnome-shell-extension-dash-to-panel": {
 			"build-depends": [
 				"binary(glib-compile-schemas)",
 				"binary(msgfmt)"
@@ -76,10 +76,10 @@
 				"/usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/utils.js",
 				"/usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/windowPreview.js"
 			],
-			"name": "dash-to-panel"
+			"name": "gnome-shell-extension-dash-to-panel"
 		}
 	},
-	"source-name": "dash-to-panel",
+	"source-name": "gnome-shell-extension-dash-to-panel",
 	"source-release": "1",
 	"source-version": "60"
 }
