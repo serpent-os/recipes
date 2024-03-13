@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : dash-to-panel
+name        : gnome-shell-extension-dash-to-panel
 version     : 60
 release     : 1
 homepage    : https://github.com/home-sweet-gnome/dash-to-panel
