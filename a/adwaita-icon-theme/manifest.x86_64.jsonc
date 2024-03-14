@@ -902,6 +902,7 @@
 				"/usr/share/icons/Adwaita/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/default/index.theme",
 				"/usr/share/licenses/adwaita-icon-theme/COPYING",
 				"/usr/share/licenses/adwaita-icon-theme/COPYING_CCBYSA3",
 				"/usr/share/licenses/adwaita-icon-theme/COPYING_LGPL",
@@ -914,6 +915,6 @@
 		}
 	},
 	"source-name": "adwaita-icon-theme",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "45"
 }
