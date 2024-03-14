@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-term
+version     : 0.1.0
+release     : 1
+homepage    : https://github.com/pop-os/cosmic-term
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-term : 4169fffa0fef71f1cd6a9f87838d170990b69a68
+summary     : Cosmic Desktop Terminal Application
+description : |
+    Cosmic desktop Terminal Application
+license     :
+    - GPL-3.0
+builddeps   :
+    - binary(just)
+networking  : yes
+environment : |
+    export HOME=$(pwd)
+    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
+setup       : |
+    # Hotpatch the justfile to support our triple+release profile for installing
+    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build
+install     : |
+    just rootdir=%(installroot) install
