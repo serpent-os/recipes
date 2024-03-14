@@ -69,6 +69,7 @@
 				"/usr/share/fontconfig/conf.avail/70-yes-bitmaps.conf",
 				"/usr/share/fontconfig/conf.avail/80-delicious.conf",
 				"/usr/share/fontconfig/conf.avail/90-synthetic.conf",
+				"/usr/share/fontconfig/fonts.conf",
 				"/usr/share/fonts/conf.d/10-hinting-slight.conf",
 				"/usr/share/fonts/conf.d/10-scale-bitmap-fonts.conf",
 				"/usr/share/fonts/conf.d/10-sub-pixel-rgb.conf",
@@ -180,6 +181,6 @@
 		}
 	},
 	"source-name": "fontconfig",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "2.15.0"
 }
