@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ca-certificates
+version     : '20240305'
+release     : 1
+homepage    : https://wiki.mozilla.org/CA
+upstreams   :
+    # https://hg.mozilla.org/releases/mozilla-release/file/default/security/nss/lib/ckfw/builtins/certdata.txt <-- for date
+    - https://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt :
+        hash : 1970dd65858925d68498d2356aea6d03f764422523c5887deca8ce3ba9e1f845
+        unpack : no
+    - https://raw.githubusercontent.com/agl/extract-nss-root-certs/492d8c9/convert_mozilla_certdata.go :
+        hash : 30afd0ca1df9b7788b830485645c4a2f72b07c1c9eb5c66941ae3d0b87e9e623
+        unpack : no
+summary     : Certificate Authority Files
+description : |
+    The Public Key Inrastructure is used for many security issues in a Linux system. In order for a certificate to be trusted, it must be signed by a trusted agent called a Certificate Authority (CA).
+license     :
+    - Apache-2.0
+    - MPL-2.0
+builddeps  :
+    - golang
+environment : |
+    export HOME=$(pwd)
+setup       : |
+    cp %(sourcedir)/* %(workdir)/
+build       : |
+    go run convert_mozilla_certdata.go --to-files
+install     : |
+    %install_file -t %(installroot)/%(vendordir)/etc/ssl/certs/ %(workdir)/../*.pem
+    cat %(workdir)/../*.pem > %(installroot)/%(vendordir)/etc/ssl/certs/ca-certificates.crt
