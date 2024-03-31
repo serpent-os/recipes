@@ -5,7 +5,7 @@
 #
 name        : meson
 version     : '1.3.1'
-release     : 8
+release     : 9
 homepage    : https://github.com/mesonbuild/meson
 upstreams   :
     - https://github.com/mesonbuild/meson/releases/download/1.3.1/meson-1.3.1.tar.gz : 6020568bdede1643d4fb41e28215be38eff5d52da28ac7d125457c59e0032ad7
@@ -16,7 +16,9 @@ license     :
     - Apache-2.0
     - ECL-2.0
 rundeps     :
+    - binary(cmake)
     - binary(ninja)
+    - binary(pkgconf)
     - binary(python3)
 build       : |
     %python_setup
