@@ -1,3 +1,6 @@
 *.tar.*
 *.stone
 .task
+
+# Only use `stone.yaml` path now please.
+stone.yml
