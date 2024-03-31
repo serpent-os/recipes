@@ -1,40 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
 name        : boulder
-version     : 1.0.2
-release     : 43
+version     : 0.1.0
+release     : 44
 summary     : Package creation tool for Serpent OS
 license     : Zlib
-homepage    : https://github.com/serpent-os/boulder
+homepage    : https://github.com/serpent-os/moss
 description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/boulder : b168b8db8b9be9271b89fc984480a0f7194b5bd9
-    - https://github.com/serpent-os/libmoss/archive/refs/tags/v1.2.2.tar.gz :
-        hash: 782a2a899a754746ac6dc4184fa720bd5075968921e9e16f82b4fd4025513569
-        unpackdir: libmoss
-        stripdirs: 1
+    - git|https://github.com/serpent-os/moss.git : 9dd24ff79562d101ec32ccf1e8816ae7d005b721
 builddeps   :
-    - binary(cmake)
-    - ldc
-    - ldc-devel
-    - lmdb-devel
-    - pkgconfig(dbus-1)
-    - pkgconfig(libcurl)
-    - pkgconfig(libxxhash)
-    - pkgconfig(libzstd)
-rundeps     :
-    - binary(moss-container)
+    - binary(cargo)
+networking  : yes
 environment : |
-    cd %(buildroot)/boulder
+    export HOME=$(pwd)
+    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
-    # TODO: Unset buildtype here when moss-format supports DFLAGS
-    export DFLAGS="$DFLAGS -flto=thin -O3 -g"
-    %meson --buildtype debugoptimized
+    %cargo_fetch
 build       : |
-    %meson_build
+    RUST_BACKTRACE=1 %cargo_build -p boulder
 install     : |
-    %meson_install
-    ln -sf boulder %(installroot)/usr/bin/mason
-
-    %install_dir %(installroot)/usr/share/moss
-    mv data/macros %(installroot)/usr/share/moss/
+    %install_bin target/*/release/boulder
+    %install_dir %(installroot)%(datadir)/boulder
+    cp -Ra boulder/data/* %(installroot)%(datadir)/boulder/.
