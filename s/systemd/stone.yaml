@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.23'
-release     : 27
+release     : 28
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -58,6 +58,7 @@ builddeps   :
     - python-jinja
 rundeps     :
     - system-accounts
+    - tzdata
 toolchain   : gnu
 setup       : |
     %patch %(pkgdir)/0001-Set-DefaultTimeoutStopSec-to-5s.patch
