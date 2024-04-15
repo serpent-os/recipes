@@ -5,7 +5,7 @@
 #
 name        : dracut
 version     : '059'
-release     : 4
+release     : 5
 homepage    : https://github.com/dracutdevs/dracut
 upstreams   :
     - https://github.com/dracutdevs/dracut/archive/refs/tags/059.tar.gz : eabf0bb685420c1e1d5475b6855ef787104508f0135ff570312845256e0fcecf
@@ -22,6 +22,7 @@ builddeps   :
     - pkgconfig(libkmod)
 rundeps     :
     - binary(cpio)
+    - terminus-font
 setup       : |
     %configure --disable-documentation
 build       : |
@@ -30,3 +31,5 @@ install     : |
     %make_install
     # Clean empty man dirs, remove when building docs
     find %(installroot)%(mandir) -empty -type d -delete
+
+    %install_file %(pkgdir)/serpent.conf %(installroot)%(libdir)/dracut/dracut.conf.d/00-serpent-os.conf

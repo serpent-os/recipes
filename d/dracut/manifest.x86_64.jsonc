@@ -7,10 +7,12 @@
 				"pkgconfig(libkmod)"
 			],
 			"depends": [
+				"binary(cpio)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libkmod.so.2(x86_64))"
+				"soname(libkmod.so.2(x86_64))",
+				"terminus-font"
 			],
 			"files": [
 				"/usr/bin/dracut",
@@ -24,7 +26,7 @@
 				"/usr/lib/dracut/dracut-logger.sh",
 				"/usr/lib/dracut/dracut-util",
 				"/usr/lib/dracut/dracut-version.sh",
-				"/usr/lib/dracut/dracut.conf.d",
+				"/usr/lib/dracut/dracut.conf.d/00-serpent-os.conf",
 				"/usr/lib/dracut/modules.d",
 				"/usr/lib/dracut/modules.d/00bash",
 				"/usr/lib/dracut/modules.d/00bash/module-setup.sh",
@@ -550,6 +552,9 @@
 			"build-depends": [
 				"pkgconfig(libkmod)"
 			],
+			"depends": [
+				"dracut"
+			],
 			"files": [
 				"/usr/share/pkgconfig/dracut.pc"
 			],
@@ -560,6 +565,6 @@
 		}
 	},
 	"source-name": "dracut",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "059"
 }
