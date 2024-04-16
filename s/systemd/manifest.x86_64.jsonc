@@ -45,6 +45,7 @@
 				"python-jinja"
 			],
 			"depends": [
+				"binary(setfont)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libacl.so.1(x86_64))",
@@ -2091,6 +2092,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "31",
+	"source-release": "32",
 	"source-version": "252.23"
 }

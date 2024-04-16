@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.23'
-release     : 31
+release     : 32
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -57,6 +57,7 @@ builddeps   :
     - pkgconfig(zlib)
     - python-jinja
 rundeps     :
+    - binary(setfont)
     - system-accounts
     - tzdata
 toolchain   : gnu
