@@ -1,9 +1,9 @@
 name        : linux-kvm
-version     : 6.8.2
-release     : 64
+version     : 6.8.6
+release     : 65
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.2.tar.xz : 9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.6.tar.xz : 9e723232d603ab45ebf043c34714c48f277ab195c29abcb8472f2a4c3a5a1995
 summary     : Linux Kernel - KVM Guest build
 description : |
     Minimalist kernel configuration supporting KVM host and not much else
