@@ -6,13 +6,11 @@
 			"build-depends": [
 				"binary(msgfmt)"
 			],
-			"depends": [],
 			"files": [
 				"/usr/share/fonts/opentype/cantarell/Cantarell-VF.otf",
 				"/usr/share/metainfo/org.gnome.cantarell.metainfo.xml"
 			],
-			"name": "font-cantarell",
-			"provides": []
+			"name": "font-cantarell"
 		}
 	},
 	"source-name": "font-cantarell",
