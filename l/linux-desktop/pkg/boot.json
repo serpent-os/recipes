@@ -1,0 +1,5 @@
+{
+  "name": "linux-desktop",
+  "version": "@VERSION@",
+  "variant": "desktop",
+}

@@ -1,6 +1,6 @@
 name        : linux-desktop
 version     : "6.8.2"
-release     : 24
+release     : 25
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.2.tar.xz : 9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04
@@ -44,27 +44,28 @@ build       : |
     %make -C tools/objtool VERBOSE=0 V=0 CC=clang ARCH=x86_64 LLVM=1 WERROR=0
 install     : |
     kernelVersion="%(version)-%(release).desktop"
-    kernelID="com.serpentos.desktop"
-    %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelID.%(version)-%(release)
+    %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelVersion/vmlinuz
 
-    %install_file .config %(installroot)%(libdir)/kernel/config-$kernelVersion
-    %install_file System.map %(installroot)%(libdir)/kernel/System.map-$kernelVersion
+    %install_file .config %(installroot)%(libdir)/kernel/$kernelVersion/config
+    %install_file System.map %(installroot)%(libdir)/kernel/$kernelVersion/System.map
 
     # Modules please
     %install_dir %(installroot)%(libdir)/modules/$kernelVersion
     %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
     /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
-    
+
     # Include early microcode
     LD_PRELOAD='' dracut --strip --tmpdir /tmp -N -f \
         --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs" \
         --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode \
-        %(installroot)%(libdir)/kernel/initrd-$kernelID.%(version)-%(release)
+        %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd
 
     # No building against this kernel pls.
     rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/build
     rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/source
 
     # Temporary: Help with VMs
-    ln -s initrd-$kernelID.%(version)-%(release) %(installroot)%(libdir)/kernel/current.desktop.initrd
-    ln -s $kernelID.%(version)-%(release) %(installroot)%(libdir)/kernel/current.desktop.kernel
+    ln -s $kernelVersion/50-default.initrd %(installroot)%(libdir)/kernel/current.desktop.initrd
+    ln -s $kernelVersion/vmlinuz %(installroot)%(libdir)/kernel/current.desktop.kernel
+    %install_file %(pkgdir)/boot.json %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
+    sed -e 's/@VERSION@/%(version)-%(release).desktop/g' -i %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
