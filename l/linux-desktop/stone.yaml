@@ -1,6 +1,6 @@
 name        : linux-desktop
 version     : "6.8.2"
-release     : 25
+release     : 26
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.2.tar.xz : 9ac322d85bcf98a04667d929f5c2666b15bd58c6c2d68dd512c72acbced07d04
