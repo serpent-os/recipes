@@ -1,6 +1,6 @@
 name        : linux-kvm
 version     : 6.9.8
-release     : 68
+release     : 69
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.8.tar.xz : f048267b7b88316c9ca708c68d15a9ae802dcfc943c3188c1273eb958c433281
@@ -41,27 +41,28 @@ build       : |
     %make -C tools/objtool VERBOSE=0 V=0 CC=clang ARCH=x86_64 LLVM=1 WERROR=0
 install     : |
     kernelVersion="%(version)-%(release).kvm"
-    kernelID="com.serpentos.kvm"
-    %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelID.%(version)-%(release)
+    %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/${kernelVersion}/vmlinuz
 
-    %install_file .config %(installroot)%(libdir)/kernel/config-$kernelVersion
-    %install_file System.map %(installroot)%(libdir)/kernel/System.map-$kernelVersion
+    %install_file .config %(installroot)%(libdir)/kernel/${kernelVersion}/config
+    %install_file System.map %(installroot)%(libdir)/kernel/${kernelVersion}/System.map
 
     # Modules please
-    %install_dir %(installroot)%(libdir)/modules/$kernelVersion
-    %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
+    %install_dir %(installroot)%(libdir)/modules/${kernelVersion}
+    %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="${kernelVersion}" mod-fw= DEPMOD=/usr/bin/true
     /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
     
     # TODO: Include early microcode
     LD_PRELOAD='' dracut --strip --tmpdir /tmp -N -f \
-        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs" \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver ${kernelVersion} --add "dash bash systemd virtiofs" \
         --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd \
-        %(installroot)%(libdir)/kernel/initrd-$kernelID.%(version)-%(release)
+        %(installroot)%(libdir)/kernel/${kernelVersion}/50-default.initrd
 
     # No building against this kernel pls.
     rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/build
     rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/source
 
     # Temporary: Help with VMs
-    ln -s initrd-$kernelID.%(version)-%(release) %(installroot)%(libdir)/kernel/current.initrd
-    ln -s $kernelID.%(version)-%(release) %(installroot)%(libdir)/kernel/current.kernel
+    ln -s ${kernelVersion}/50-default.initrd %(installroot)%(libdir)/kernel/current.kvm.initrd
+    ln -s ${kernelVersion}/vmlinuz %(installroot)%(libdir)/kernel/current.kvm.kernel
+    %install_file %(pkgdir)/boot.json %(installroot)%(libdir)/kernel/${kernelVersion}/boot.json
+    sed -e 's/@VERSION@/%(version)-%(release).kvm/g' -i %(installroot)%(libdir)/kernel/${kernelVersion}/boot.json
