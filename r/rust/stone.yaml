@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : rust
-version     : "1.76.0"
-release     : 2
+version     : "1.79.0"
+release     : 3
 homepage    : https://www.rust-lang.org/
 upstreams   :
-    - https://static.rust-lang.org/dist/rustc-1.76.0-src.tar.gz : 9e5cff033a7f0d2266818982ad90e4d3e4ef8f8ee1715776c6e25073a136c021
+    - https://static.rust-lang.org/dist/rustc-1.79.0-src.tar.gz : 172ecf3c7d1f9d9fb16cd2a628869782670416ded0129e524a86751f961448c0
 summary     : Rust programming language compiler + tools
 description : |
     Rust programming language compiler + tools
@@ -63,5 +63,3 @@ install     : |
     # undesirable:
     rm %(installroot)%(libdir)/rustlib/uninstall.sh
     rm %(installroot)%(libdir)/rustlib/install.log
-    rm %(installroot)%(bindir)/*.old -v
-    rm %(installroot)%(datadir)/doc/rust/*.old -v
