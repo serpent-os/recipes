@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : tomoyo-tools
+version     : 2.6.1
+release     : 1
+homepage    : https://tomoyo.sourceforge.net/2.6/
+upstreams   :
+    - https://sourceforge.net/projects/tomoyo/files/tomoyo-tools/2.6/tomoyo-tools-2.6.1-20210910.tar.gz/download : 47a12cdb1fe7bbd0b2e3486150fe1e754fa9c869aeefd42fd311c4022b78010a
+summary     : Tools for managing the TOMOYO 2.6 Linux kernel MAC LSM
+description : |
+    TOMOYO is a path-based Mandatory Access Control (MAC) implementation for Linux that can be used for system analysis or to increase the security of a system.
+
+    This package contains the user-space tooling for creating, maintaining and inspecting TOMOYO MAC policies.
+license     : GPL-2.0-or-later
+builddeps:
+    - pkgconfig(ncursesw)
+    - pkgconfig(readline)
+setup       : |
+    %patch %(pkgdir)/use_serpent_ncurses_location.patch
+build       : |
+    CFLAGS+=" -I%(includedir)/ncurses/" %make
+install     : |
+    INSTALLDIR=%(installroot) %make_install
+    # this is easier than fixing the Makefile
+    mv -v %(installroot)/sbin/* %(installroot)%(sbindir)/
+    rmdir %(installroot)/sbin/

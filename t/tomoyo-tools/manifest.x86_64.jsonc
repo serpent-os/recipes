@@ -1,0 +1,88 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"tomoyo-tools": {
+			"build-depends": [
+				"pkgconfig(ncursesw)",
+				"pkgconfig(readline)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libtomoyotools.so.3",
+				"/usr/lib/libtomoyotools.so.3.0.4",
+				"/usr/lib/tomoyo/COPYING.tomoyo",
+				"/usr/lib/tomoyo/README.tomoyo",
+				"/usr/lib/tomoyo/audit-exec-param",
+				"/usr/lib/tomoyo/convert-audit-log",
+				"/usr/lib/tomoyo/convert-exec-param",
+				"/usr/lib/tomoyo/init_policy",
+				"/usr/lib/tomoyo/tomoyo-editpolicy-agent",
+				"/usr/sbin/tomoyo-auditd",
+				"/usr/sbin/tomoyo-checkpolicy",
+				"/usr/sbin/tomoyo-diffpolicy",
+				"/usr/sbin/tomoyo-domainmatch",
+				"/usr/sbin/tomoyo-editpolicy",
+				"/usr/sbin/tomoyo-findtemp",
+				"/usr/sbin/tomoyo-init",
+				"/usr/sbin/tomoyo-loadpolicy",
+				"/usr/sbin/tomoyo-notifyd",
+				"/usr/sbin/tomoyo-patternize",
+				"/usr/sbin/tomoyo-pstree",
+				"/usr/sbin/tomoyo-queryd",
+				"/usr/sbin/tomoyo-savepolicy",
+				"/usr/sbin/tomoyo-selectpolicy",
+				"/usr/sbin/tomoyo-setlevel",
+				"/usr/sbin/tomoyo-setprofile",
+				"/usr/sbin/tomoyo-sortpolicy",
+				"/usr/share/man/man8/tomoyo-auditd.8.gz",
+				"/usr/share/man/man8/tomoyo-checkpolicy.8.gz",
+				"/usr/share/man/man8/tomoyo-diffpolicy.8.gz",
+				"/usr/share/man/man8/tomoyo-domainmatch.8.gz",
+				"/usr/share/man/man8/tomoyo-editpolicy-agent.8.gz",
+				"/usr/share/man/man8/tomoyo-editpolicy.8.gz",
+				"/usr/share/man/man8/tomoyo-findtemp.8.gz",
+				"/usr/share/man/man8/tomoyo-init.8.gz",
+				"/usr/share/man/man8/tomoyo-loadpolicy.8.gz",
+				"/usr/share/man/man8/tomoyo-notifyd.8.gz",
+				"/usr/share/man/man8/tomoyo-patternize.8.gz",
+				"/usr/share/man/man8/tomoyo-pstree.8.gz",
+				"/usr/share/man/man8/tomoyo-queryd.8.gz",
+				"/usr/share/man/man8/tomoyo-savepolicy.8.gz",
+				"/usr/share/man/man8/tomoyo-selectpolicy.8.gz",
+				"/usr/share/man/man8/tomoyo-setlevel.8.gz",
+				"/usr/share/man/man8/tomoyo-setprofile.8.gz",
+				"/usr/share/man/man8/tomoyo-sortpolicy.8.gz",
+				"/usr/share/man/man8/tomoyo_init_policy.8.gz"
+			],
+			"name": "tomoyo-tools",
+			"provides": [
+				"soname(libtomoyotools.so.3(x86_64))",
+				"sysbinary(tomoyo-auditd)",
+				"sysbinary(tomoyo-checkpolicy)",
+				"sysbinary(tomoyo-diffpolicy)",
+				"sysbinary(tomoyo-domainmatch)",
+				"sysbinary(tomoyo-editpolicy)",
+				"sysbinary(tomoyo-findtemp)",
+				"sysbinary(tomoyo-init)",
+				"sysbinary(tomoyo-loadpolicy)",
+				"sysbinary(tomoyo-notifyd)",
+				"sysbinary(tomoyo-patternize)",
+				"sysbinary(tomoyo-pstree)",
+				"sysbinary(tomoyo-queryd)",
+				"sysbinary(tomoyo-savepolicy)",
+				"sysbinary(tomoyo-selectpolicy)",
+				"sysbinary(tomoyo-setlevel)",
+				"sysbinary(tomoyo-setprofile)",
+				"sysbinary(tomoyo-sortpolicy)"
+			]
+		}
+	},
+	"source-name": "tomoyo-tools",
+	"source-release": "1",
+	"source-version": "2.6.1"
+}
