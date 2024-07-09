@@ -1,0 +1,32 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"lichen": {
+			"build-depends": [
+				"binary(cargo)"
+			],
+			"depends": [
+				"binary(moss)",
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"iso-codes",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/lichen",
+				"/usr/bin/lichen_cli"
+			],
+			"name": "lichen",
+			"provides": [
+				"binary(lichen)",
+				"binary(lichen_cli)"
+			]
+		}
+	},
+	"source-name": "lichen",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}

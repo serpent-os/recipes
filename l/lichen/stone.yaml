@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : lichen
+version     : "0.1.0"
+release     : 1
+summary     : Experimental OS installer
+license     : MPL-2.0
+homepage    : https://github.com/serpent-os/lichen
+upstreams   :
+    - git|https://github.com/serpent-os/lichen.git : a44f1fe7f03ad2f40cfef405a44545ae01a1292d
+description : |
+    Experimental OS installer
+builddeps   :
+    - binary(cargo)
+networking  : yes
+rundeps     :
+    - binary(moss)
+    - iso-codes
+environment : |
+    export HOME="$(pwd)"
+    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
+setup       : |
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build -p lichen_cli
+install     : |
+    %install_bin target/*/release/lichen_cli
+    ln -sv lichen_cli %(installroot)%(bindir)/lichen
