@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : bash
-version     : '5.2.21'
-release     : 7
+version     : '5.2.23'
+release     : 8
 homepage    : http://www.gnu.org/software/bash/bash.html
 upstreams   :
     - https://ftp.gnu.org/gnu/bash/bash-5.2.21.tar.gz : c8e31bdc59b69aaffc5b36509905ba3e5cbb12747091d27b4b977f078560d5b8
 summary     : GNU Bourne-Again Shell
 description : |
     Bash is a sh-compatible command interpreter that executes
-    commands read from the standard input or from a file. 
+    commands read from the standard input or from a file.
     Bash also incorporates useful features from the Korn and
     C shells (ksh and csh).  Bash is ultimately intended to
     be a conformant implementation of the IEEE Posix Shell
@@ -24,6 +24,8 @@ builddeps   :
     - pkgconfig(ncursesw)
     - pkgconfig(readline)
 setup       : |
+    %patch %(pkgdir)/bash52-022 -p0
+    %patch %(pkgdir)/bash52-023 -p0
     %patch %(pkgdir)/stateless/0001-Use-a-stateless-profile-by-default.patch
 
     %configure \

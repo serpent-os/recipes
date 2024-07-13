@@ -123,6 +123,9 @@
 				"pkgconfig(ncursesw)",
 				"pkgconfig(readline)"
 			],
+			"depends": [
+				"bash"
+			],
 			"files": [
 				"/usr/include/bash/alias.h",
 				"/usr/include/bash/array.h",
@@ -192,6 +195,6 @@
 		}
 	},
 	"source-name": "bash",
-	"source-release": "7",
-	"source-version": "5.2.21"
+	"source-release": "8",
+	"source-version": "5.2.23"
 }
