@@ -153,6 +153,7 @@
 				"/usr/lib/git/git-core/git-remote-https",
 				"/usr/lib/git/git-core/git-repack",
 				"/usr/lib/git/git-core/git-replace",
+				"/usr/lib/git/git-core/git-replay",
 				"/usr/lib/git/git-core/git-request-pull",
 				"/usr/lib/git/git-core/git-rerere",
 				"/usr/lib/git/git-core/git-reset",
@@ -297,6 +298,6 @@
 		}
 	},
 	"source-name": "git",
-	"source-release": "7",
-	"source-version": "2.43.0"
+	"source-release": "8",
+	"source-version": "2.45.2"
 }
