@@ -24,6 +24,8 @@
 				"soname(libffi.so.8(x86_64))",
 				"soname(liblzma.so.5(x86_64))",
 				"soname(libm.so.6(x86_64))",
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libpanelw.so.6(x86_64))",
 				"soname(libsqlite3.so.0(x86_64))",
 				"soname(libssl.so.3(x86_64))",
 				"soname(libuuid.so.1(x86_64))",
@@ -2778,6 +2780,8 @@
 				"/usr/lib/python3.11/lib-dynload/_csv.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_ctypes_test.cpython-311-x86_64-linux-gnu.so",
+				"/usr/lib/python3.11/lib-dynload/_curses.cpython-311-x86_64-linux-gnu.so",
+				"/usr/lib/python3.11/lib-dynload/_curses_panel.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_datetime.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_decimal.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/lib-dynload/_elementtree.cpython-311-x86_64-linux-gnu.so",
@@ -8986,6 +8990,8 @@
 				"soname(_csv.cpython-311-x86_64-linux-gnu.so(x86_64))",
 				"soname(_ctypes.cpython-311-x86_64-linux-gnu.so(x86_64))",
 				"soname(_ctypes_test.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(_curses.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(_curses_panel.cpython-311-x86_64-linux-gnu.so(x86_64))",
 				"soname(_datetime.cpython-311-x86_64-linux-gnu.so(x86_64))",
 				"soname(_decimal.cpython-311-x86_64-linux-gnu.so(x86_64))",
 				"soname(_elementtree.cpython-311-x86_64-linux-gnu.so(x86_64))",
@@ -9272,6 +9278,6 @@
 		}
 	},
 	"source-name": "python",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "3.11.2"
 }
