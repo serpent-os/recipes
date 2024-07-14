@@ -5,7 +5,7 @@
 #
 name        : openssl
 version     : 3.1.6
-release     : 9
+release     : 10
 summary     : OpenSSL cryptography library
 license     : Apache-2.0
 homepage    : https://www.openssl.org
@@ -20,7 +20,7 @@ rundeps     :
     - nss
 setup       : |
     %patch %(pkgdir)/stateless/0001-Use-OS-provided-copy-of-openssl.cnf-as-fallback.patch
-
+    %patch %(pkgdir)/config.patch
     ./Configure shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 enable-ktls \
                 --prefix=/usr \
                 --openssldir=/etc/ssl \
