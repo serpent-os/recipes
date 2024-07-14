@@ -34,7 +34,8 @@
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgtk-3.so.0(x86_64))",
 				"soname(libjson-glib-1.0.so.0(x86_64))",
-				"soname(libsystemd.so.0(x86_64))"
+				"soname(libsystemd.so.0(x86_64))",
+				"wireplumber"
 			],
 			"files": [
 				"/usr/bin/gnome-session",
@@ -203,6 +204,6 @@
 		}
 	},
 	"source-name": "gnome-session",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "45.0"
 }
