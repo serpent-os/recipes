@@ -5,7 +5,7 @@
 #
 name        : glib-networking
 version     : 2.78.0
-release     : 2
+release     : 3
 homepage    : https://gitlab.gnome.org/GNOME/glib-networking
 upstreams   :
     - https://download.gnome.org/sources/glib-networking/2.78/glib-networking-2.78.0.tar.xz : 52fe4ce93f7dc51334b102894599858d23c8a65ac4a1110b30920565d68d3aba
@@ -18,9 +18,9 @@ builddeps   :
     - pkgconfig(glib-2.0)
     - pkgconfig(gsettings-desktop-schemas)
     - pkgconfig(libproxy-1.0)
-    - pkgconfig(openssl)
+    - pkgconfig(gnutls)
 setup       : |
-    %meson -Dopenssl=enabled -Dgnutls=disabled
+    %meson -Dopenssl=disabled -Dgnutls=enabled
 build       : |
     %meson_build
 install     : |
