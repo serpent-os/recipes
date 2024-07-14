@@ -5,7 +5,7 @@
 #
 name        : python
 version     : 3.11.2
-release     : 3
+release     : 4
 summary     : Python language interpreter
 license     : Python-2.0
 homepage    : https://www.python.org
@@ -14,15 +14,16 @@ description : |
 upstreams   :
     - https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz: 29e4b8f5f1658542a8c13e2dd277358c9c48f2b2f7318652ef1675e402b9d2af
 builddeps   :
+    - llvm-bolt
     - pkgconfig(bzip2)
+    - pkgconfig(libcrypt)
     - pkgconfig(libffi)
     - pkgconfig(liblzma)
-    - pkgconfig(uuid)
-    - pkgconfig(libcrypt)
-    - pkgconfig(ncursesw)
     - pkgconfig(libssl)
+    - pkgconfig(ncursesw)
+    - pkgconfig(sqlite3)
+    - pkgconfig(uuid)
     - pkgconfig(zlib)
-    - llvm-bolt
 setup       : |
     %patch %(pkgdir)/serpent/always-install-setuptools.patch
 
