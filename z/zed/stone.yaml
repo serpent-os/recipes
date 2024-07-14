@@ -5,7 +5,7 @@
 #
 name        : zed
 version     : 0.143.6
-release     : 2
+release     : 3
 summary     : High performance, graphical code editor
 license     :
     - AGPL-3.0
@@ -61,7 +61,7 @@ install     : |
 
     # desktop file.
     %install_dir %(installroot)%(datadir)/applications
-    envsubst < "crates/zed/resources/zed.desktop.in" > "%(installroot)%(datadir)/applications/zed-dev.desktop"
+    envsubst < "crates/zed/resources/zed.desktop.in" > "%(installroot)%(datadir)/applications/dev.zed.Zed.desktop"
 
     # icons
     %install_file crates/zed/resources/app-icon-dev.png %(installroot)%(datadir)/icons/hicolor/512x512/apps/zed.png -D
