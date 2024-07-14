@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : xdg-user-dirs-gtk
+version     : 0.11
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/xdg-user-dirs-gtk
+upstreams   :
+    - https://download.gnome.org/sources/xdg-user-dirs-gtk/0.11/xdg-user-dirs-gtk-0.11.tar.xz : 534bd563d3c0e3f8dcbf3578cb8ab0e49d3ba41c966d477c8af9438364121e7d
+summary     : GTK specific extensions for xdg-user-dirs
+description : |
+    GTK specific extensions for xdg-user-dirs
+license     : GPL-2.0
+builddeps   :
+    - binary(intltoolize)
+    - binary(xdg-user-dir)
+    - gettext-devel
+    - pkgconfig(gtk+-3.0)
+rundeps     :
+      - binary(xdg-user-dir)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+    mv %(installroot)%(sysconfdir)/xdg %(installroot)%(datadir)/xdg
+    rmdir %(installroot)%(sysconfdir)
