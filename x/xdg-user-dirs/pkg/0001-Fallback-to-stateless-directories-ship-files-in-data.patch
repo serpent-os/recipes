@@ -1,0 +1,41 @@
+From 00afff46d0bbaacbf759ab31ce1a70775653565b Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Sun, 14 Jul 2024 20:46:28 +0000
+Subject: [PATCH] Fallback to stateless directories, ship files in datadir by
+ default
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ Makefile.am | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f649564..b3fb6b1 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,7 +8,7 @@ endif
+ INCLUDES =					\
+ 	-I$(top_srcdir)				\
+ 	-I$(top_builddir)			\
+-	-DXDGCONFDIR=\"$(sysconfdir)/xdg\"	\
++	-DXDGCONFDIR=\"$(sysconfdir)/xdg:$(datadir)/xdg\"	\
+ 	-DLOCALEDIR=\"$(datadir)/locale\" 	\
+ 	-DSTANDALONE_XDG_USER_DIR_LOOKUP	\
+ 	$(NULL)
+@@ -16,7 +16,7 @@ INCLUDES =					\
+ EXTRA_DIST= config.rpath translate.c autogen.sh \
+ 	user-dirs.conf user-dirs.defaults xdg-user-dir xdg-user-dirs.desktop
+ 
+-xdgdir=$(sysconfdir)/xdg
++xdgdir=$(datadir)/xdg
+ xdg_DATA=user-dirs.conf user-dirs.defaults
+ 
+ xdgautostartdir=$(xdgdir)/autostart
+@@ -63,4 +63,3 @@ check-translations:
+ 			exit 1;										\
+ 		fi;											\
+ 	done;
+-
+-- 
+2.45.2
+
