@@ -5,7 +5,7 @@
 #
 name        : zed
 version     : 0.143.6
-release     : 1
+release     : 2
 summary     : High performance, graphical code editor
 license     :
     - AGPL-3.0
@@ -20,6 +20,7 @@ builddeps   :
     - binary(cargo)
     - binary(clang)
     - binary(cmake)
+    - binary(envsubst)
     - binary(jq)
     - binary(make)
     - binary(mold)
@@ -50,3 +51,18 @@ install     : |
     %install_dir %(installroot)%(libexecdir)
     %install_exe target/*/release/zed %(installroot)%(libexecdir)/zed-editor
     %install_exe target/*/release/cli %(installroot)%(bindir)/zed
+
+    # stolen from zed's bundle-linux script
+    export DO_STARTUP_NOTIFY="true"
+    export APP_CLI="zed"
+    export APP_ICON="zed"
+    export APP_ARGS="%%U"
+    export APP_NAME="Zed Devel"
+
+    # desktop file.
+    %install_dir %(installroot)%(datadir)/applications
+    envsubst < "crates/zed/resources/zed.desktop.in" > "%(installroot)%(datadir)/applications/zed-dev.desktop"
+
+    # icons
+    %install_file crates/zed/resources/app-icon-dev.png %(installroot)%(datadir)/icons/hicolor/512x512/apps/zed.png -D
+    %install_file crates/zed/resources/app-icon-dev@2x.png %(installroot)%(datadir)/icons/hicolor/1024x1024/apps/zed.png -D

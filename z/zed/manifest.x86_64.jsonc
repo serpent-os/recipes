@@ -7,6 +7,7 @@
 				"binary(cargo)",
 				"binary(clang)",
 				"binary(cmake)",
+				"binary(envsubst)",
 				"binary(jq)",
 				"binary(make)",
 				"binary(mold)",
@@ -40,7 +41,10 @@
 			],
 			"files": [
 				"/usr/bin/zed",
-				"/usr/lib/zed/zed-editor"
+				"/usr/lib/zed/zed-editor",
+				"/usr/share/applications/zed-dev.desktop",
+				"/usr/share/icons/hicolor/1024x1024/apps/zed.png",
+				"/usr/share/icons/hicolor/512x512/apps/zed.png"
 			],
 			"name": "zed",
 			"provides": [
@@ -49,6 +53,6 @@
 		}
 	},
 	"source-name": "zed",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.143.6"
 }
