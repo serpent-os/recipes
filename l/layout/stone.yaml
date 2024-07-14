@@ -1,6 +1,11 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
 name        : layout
 version     : "0.1.0"
-release     : 3
+release     : 4
 summary     : Support filesystem layout
 license     : MPL-2.0
 homepage    : https://serpentos.com
@@ -10,6 +15,9 @@ install     : |
     install -d -m 00755 %(installroot)/usr/
     ln -sv lib %(installroot)/usr/lib64
     install -D -m 00644 %(pkgdir)/README %(installroot)/usr/share/doc/layout/README
-    
+
+    # Required core files
+    %install_file %(pkgdir)/protocols %(installroot)%(vendordir)/etc/protocols
+
     # Make /usr/local available
     ln -s /var/local %(installroot)/usr/local

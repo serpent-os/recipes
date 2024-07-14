@@ -6,12 +6,13 @@
 			"files": [
 				"/usr/lib64",
 				"/usr/local",
+				"/usr/share/defaults/etc/protocols",
 				"/usr/share/doc/layout/README"
 			],
 			"name": "layout"
 		}
 	},
 	"source-name": "layout",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "0.1.0"
 }
