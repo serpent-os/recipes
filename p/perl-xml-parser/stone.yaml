@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : perl-xml-parser
+version     : 2.47
+release     : 1
+homepage    : https://metacpan.org/pod/XML::Parser
+upstreams   :
+    - https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.47.tar.gz : ad4aae643ec784f489b956abe952432871a622d4e2b5c619e8855accbfc4d1d8
+summary     : A perl module for parsing XML documents
+description : |
+    A perl module for parsing XML documents
+license     : Artistic-1.0-Perl
+builddeps   :
+    - pkgconfig(expat)
+rundeps     :
+    - binary(perl)
+setup       : |
+    %perl_setup
+build       : |
+    %make
+install     : |
+    %make_install

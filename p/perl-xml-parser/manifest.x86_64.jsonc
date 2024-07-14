@@ -1,0 +1,77 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"perl-xml-parser": {
+			"build-depends": [
+				"pkgconfig(expat)"
+			],
+			"depends": [
+				"binary(perl)",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libexpat.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/Japanese_Encodings.msg",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/README",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/big5.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/euc-kr.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/ibm866.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/iso-8859-15.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/iso-8859-2.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/iso-8859-3.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/iso-8859-4.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/iso-8859-5.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/iso-8859-7.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/iso-8859-8.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/iso-8859-9.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/koi8-r.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/windows-1250.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/windows-1251.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/windows-1252.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/windows-1255.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/x-euc-jp-jisx0221.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/x-euc-jp-unicode.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/x-sjis-cp932.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/x-sjis-jdk117.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/x-sjis-jisx0221.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Encodings/x-sjis-unicode.enc",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Expat.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/LWPExternEnt.pl",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Style/Debug.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Style/Objects.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Style/Stream.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Style/Subs.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/XML/Parser/Style/Tree.pm",
+				"/usr/lib/perl5/vendor_perl/5.38/x86_64-linux-thread-multi/auto/XML/Parser/Expat/Expat.so"
+			],
+			"name": "perl-xml-parser",
+			"provides": [
+				"soname(Expat.so(x86_64))"
+			]
+		},
+		"perl-xml-parser-devel": {
+			"build-depends": [
+				"pkgconfig(expat)"
+			],
+			"depends": [
+				"perl-xml-parser"
+			],
+			"files": [
+				"/usr/share/man/man3/XML::Parser.3",
+				"/usr/share/man/man3/XML::Parser::Expat.3",
+				"/usr/share/man/man3/XML::Parser::Style::Debug.3",
+				"/usr/share/man/man3/XML::Parser::Style::Objects.3",
+				"/usr/share/man/man3/XML::Parser::Style::Stream.3",
+				"/usr/share/man/man3/XML::Parser::Style::Subs.3",
+				"/usr/share/man/man3/XML::Parser::Style::Tree.3"
+			],
+			"name": "perl-xml-parser-devel"
+		}
+	},
+	"source-name": "perl-xml-parser",
+	"source-release": "1",
+	"source-version": "2.47"
+}
