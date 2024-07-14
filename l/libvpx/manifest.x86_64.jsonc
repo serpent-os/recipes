@@ -1,0 +1,69 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libvpx": {
+			"build-depends": [
+				"binary(curl)",
+				"binary(eu-strip)",
+				"binary(nasm)",
+				"binary(perl)",
+				"binary(readelf)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/vpxdec",
+				"/usr/bin/vpxenc",
+				"/usr/lib/libvpx.so.9",
+				"/usr/lib/libvpx.so.9.0",
+				"/usr/lib/libvpx.so.9.0.1"
+			],
+			"name": "libvpx",
+			"provides": [
+				"binary(vpxdec)",
+				"binary(vpxenc)",
+				"soname(libvpx.so.9(x86_64))"
+			]
+		},
+		"libvpx-devel": {
+			"build-depends": [
+				"binary(curl)",
+				"binary(eu-strip)",
+				"binary(nasm)",
+				"binary(perl)",
+				"binary(readelf)"
+			],
+			"depends": [
+				"libvpx"
+			],
+			"files": [
+				"/usr/include/vpx/vp8.h",
+				"/usr/include/vpx/vp8cx.h",
+				"/usr/include/vpx/vp8dx.h",
+				"/usr/include/vpx/vpx_codec.h",
+				"/usr/include/vpx/vpx_decoder.h",
+				"/usr/include/vpx/vpx_encoder.h",
+				"/usr/include/vpx/vpx_ext_ratectrl.h",
+				"/usr/include/vpx/vpx_frame_buffer.h",
+				"/usr/include/vpx/vpx_image.h",
+				"/usr/include/vpx/vpx_integer.h",
+				"/usr/include/vpx/vpx_tpl.h",
+				"/usr/lib/libvpx.so",
+				"/usr/lib/pkgconfig/vpx.pc"
+			],
+			"name": "libvpx-devel",
+			"provides": [
+				"pkgconfig(vpx)"
+			]
+		}
+	},
+	"source-name": "libvpx",
+	"source-release": "1",
+	"source-version": "1.14.1"
+}

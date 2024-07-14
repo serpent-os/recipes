@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libvpx
+version     : 1.14.1
+release     : 1
+homepage    : https://www.webmproject.org/code/
+upstreams   :
+    - https://github.com/webmproject/libvpx/archive/refs/tags/v1.14.1.tar.gz : 901747254d80a7937c933d03bd7c5d41e8e6c883e0665fadcb172542167c7977
+summary     : WebM VP8/VP9 Codec SDK
+description : |
+    WebM VP8/VP9 Codec SDK
+license     : BSD-3-Clause
+builddeps   :
+    - binary(curl)
+    - binary(nasm)
+    - binary(perl)
+    - binary(readelf)
+    - binary(eu-strip)
+tuning      :
+    - lto
+    - optimize: speed
+networking  : true
+environment : |
+    export AS=nasm
+    export STRIP=eu-strip
+setup       : |
+    mkdir _build && cd _build
+    ../configure --prefix=%(prefix) \
+                --libdir=%(libdir) \
+                --disable-static \
+                --enable-shared \
+                --enable-unit-tests \
+                --enable-decode-perf-tests
+build       : |
+    pushd _build
+    %make
+install     : |
+    pushd _build
+    %make_install
+# Needs a long time. Consider a specific set of encoding tests.
+# workload    : |
+#     export LD_LIBRARY_PATH=$(pwd)
+#     pushd _build
+#     %make test
