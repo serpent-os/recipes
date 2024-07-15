@@ -3,6 +3,43 @@
 This repository contains all of the recipes required to build Serpent OS
 from source.
 
+## Quick start for boulder (Serpent OS native)
+
+Obviously, if your name isn't Ikey, then use your own `$USERNAME`
+
+### /etc/subuid (`userns`)
+
+    ikey:100000:65536
+
+### /etc/subgid (`userns`)
+
+    ikey:100000:65536
+
+### Local repository
+
+Our `justfile` defaults to `local-x86_64` profile with boulder. While we traditionally shipped this pre-enabled configuration, we figured that mandating
+`root`-user and world-accessible directories was generally a Bad Move.
+
+**Create an empty local repository**
+
+```bash
+$ mkdir ~/.local_repo && cd ~/.local_repo
+$ moss index .
+```
+
+**Create a profile**
+
+We'll add the (unversioned) volatile repository at the bottom layer, and elevate
+our local repository priority to take precedence.
+
+```bash
+$ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file:///$HOME/.local_repo/stone.index,priority=10
+```
+
+### Go go go
+
+Well, actually Rust.. Anyway, quickly try to build `m/m4/stone.yaml` or `n/nano/stone.yaml` for a quick and easy confirmation that everything works OK.
+
 ## Git summary requirements
 
 To keep git summaries readable, serpent-os requires the following git summary format
