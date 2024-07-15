@@ -5,10 +5,10 @@
 #
 name        : nss
 version     : "3.96.1"
-release     : 13
+release     : 14
 summary     : Network Security Services
 license     : MPL-2.0
-homepage    : 
+homepage    : https://wiki.mozilla.org/NSS
 description : |
     Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.
 upstreams   :

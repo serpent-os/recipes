@@ -37,6 +37,8 @@
 			"name": "nss",
 			"provides": [
 				"binary(certutil)",
+				"binary(nss-config)",
+				"binary(pk12util)",
 				"soname(libfreebl3.so(x86_64))",
 				"soname(libfreeblpriv3.so(x86_64))",
 				"soname(libnss3.so(x86_64))",
@@ -47,9 +49,7 @@
 				"soname(libnssutil3.so(x86_64))",
 				"soname(libsmime3.so(x86_64))",
 				"soname(libsoftokn3.so(x86_64))",
-				"soname(libssl3.so(x86_64))",
-				"binary(nss-config)",
-				"binary(pk12util)"
+				"soname(libssl3.so(x86_64))"
 			]
 		},
 		"nss-devel": {
@@ -61,6 +61,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"nss",
 				"pkgconfig(nspr)"
 			],
 			"files": [
@@ -327,6 +328,6 @@
 		}
 	},
 	"source-name": "nss",
-	"source-release": "13",
+	"source-release": "14",
 	"source-version": "3.96.1"
 }
