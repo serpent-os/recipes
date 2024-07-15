@@ -5,7 +5,7 @@
 #
 name        : nss
 version     : "3.96.1"
-release     : 14
+release     : 15
 summary     : Network Security Services
 license     : MPL-2.0
 homepage    : https://wiki.mozilla.org/NSS
@@ -19,6 +19,8 @@ builddeps   :
     - pkgconfig(nspr)
     - pkgconfig(sqlite3)
     - pkgconfig(zlib)
+rundeps     :
+    - ca-certificates
 packages    :
     - "%(name)":
         paths:
