@@ -1,0 +1,50 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : firefox
+version     : 128.0
+release     : 1
+homepage    : https://www.mozilla.org/
+upstreams   :
+    - https://archive.mozilla.org/pub/firefox/releases/128.0/source/firefox-128.0.source.tar.xz : 65271ffefb235ea1e162a081f2074a0f06fce27b2f613f573c126ba8eef95172
+summary     : Firefox web browser
+description : |
+    Firefox web browser
+license     : MPL-2.0
+builddeps   :
+    - binary(cbindgen)
+    - binary(m4)
+    - binary(make)
+    - binary(nasm)
+    - binary(npm)
+    - binary(objdump)
+    - binary(python3)
+    - binary(rustc)
+    - binary(unzip)
+    - gcc-devel
+    - pkgconfig(alsa)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(ice)
+    - pkgconfig(icu-uc)
+    - pkgconfig(libevent)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpng)
+    - pkgconfig(libpulse)
+    - pkgconfig(libwebp)
+    - pkgconfig(nspr)
+    - pkgconfig(nss)
+    - pkgconfig(pixman-1)
+    - pkgconfig(sm)
+    - pkgconfig(vpx)
+    - pkgconfig(zlib)
+environment : |
+    export MOZ_NOSPAM=1
+    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+setup       : |
+    %install_file %(pkgdir)/mozconfig .
+build       : |
+    ./mach build
+install     : |
+    DESTDIR=%(installroot) ./mach install
