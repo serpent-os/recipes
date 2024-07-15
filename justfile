@@ -5,7 +5,7 @@ build_file := join(invocation_directory(), "stone.yaml")
 
 # Build the stone.yml recipe using boulder
 _build target:
-    cd {{ invocation_directory() }}; boulder build {{ if path_exists(target) == "true" { target } else { error("Missing stone.yml file") } }} -p {{ boulder_profile }}
+    cd {{ invocation_directory() }}; boulder build -u {{ if path_exists(target) == "true" { target } else { error("Missing stone.yml file") } }} -p {{ boulder_profile }}
 
 # Build stone.yml from the current directory
 build: (_build build_file)
