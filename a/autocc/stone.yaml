@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : autocc
+version     : 0.1.0
+release     : 1
+homepage    : https://github.com/serpent-os/autocc
+upstreams   :
+    - https://github.com/serpent-os/autocc/archive/refs/tags/v0.1.0.tar.gz : 7277c70c768a51c71dc6522775cb10452baca5182ea5cae23ed98255e4b6bc9b
+summary     : Automatically manage the CC symlink
+description : |
+    Automatically manages the /usr/bin/cc symlink, overriden using the CC environmental variable.
+license     : MPL-2.0
+environment : |
+    export HOME=$(pwd)
+    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %cargo_install
+check       : |
+    %cargo_install
+    mv %(installroot)%(bindir)/autocc %(installroot)%(bindir)/cc
