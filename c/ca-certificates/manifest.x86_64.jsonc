@@ -66,6 +66,7 @@
 				"/usr/share/defaults/etc/ssl/certs/Entrust_Root_Certification_Authority_-_EC1.pem",
 				"/usr/share/defaults/etc/ssl/certs/Entrust_Root_Certification_Authority_-_G2.pem",
 				"/usr/share/defaults/etc/ssl/certs/Entrust_Root_Certification_Authority_-_G4.pem",
+				"/usr/share/defaults/etc/ssl/certs/FIRMAPROFESIONAL_CA_ROOT-A_WEB.pem",
 				"/usr/share/defaults/etc/ssl/certs/GDCA_TrustAUTH_R5_ROOT.pem",
 				"/usr/share/defaults/etc/ssl/certs/GLOBALTRUST_2020.pem",
 				"/usr/share/defaults/etc/ssl/certs/GTS_Root_R1.pem",
@@ -119,7 +120,6 @@
 				"/usr/share/defaults/etc/ssl/certs/Security_Communication_ECC_RootCA1.pem",
 				"/usr/share/defaults/etc/ssl/certs/Security_Communication_RootCA2.pem",
 				"/usr/share/defaults/etc/ssl/certs/Security_Communication_RootCA3.pem",
-				"/usr/share/defaults/etc/ssl/certs/Security_Communication_Root_CA.pem",
 				"/usr/share/defaults/etc/ssl/certs/Starfield_Class_2_CA.pem",
 				"/usr/share/defaults/etc/ssl/certs/Starfield_Root_Certificate_Authority_-_G2.pem",
 				"/usr/share/defaults/etc/ssl/certs/Starfield_Services_Root_Certificate_Authority_-_G2.pem",
@@ -130,6 +130,8 @@
 				"/usr/share/defaults/etc/ssl/certs/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem",
 				"/usr/share/defaults/etc/ssl/certs/TWCA_Global_Root_CA.pem",
 				"/usr/share/defaults/etc/ssl/certs/TWCA_Root_Certification_Authority.pem",
+				"/usr/share/defaults/etc/ssl/certs/Telekom_Security_TLS_ECC_Root_2020.pem",
+				"/usr/share/defaults/etc/ssl/certs/Telekom_Security_TLS_RSA_Root_2023.pem",
 				"/usr/share/defaults/etc/ssl/certs/TeliaSonera_Root_CA_v1.pem",
 				"/usr/share/defaults/etc/ssl/certs/Telia_Root_CA_v2.pem",
 				"/usr/share/defaults/etc/ssl/certs/TrustAsia_Global_Root_CA_G3.pem",
@@ -159,6 +161,6 @@
 		}
 	},
 	"source-name": "ca-certificates",
-	"source-release": "1",
-	"source-version": "20240305"
+	"source-release": "2",
+	"source-version": "20240708"
 }

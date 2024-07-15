@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ca-certificates
-version     : '20240305'
-release     : 1
+version     : '20240708'
+release     : 2
 homepage    : https://wiki.mozilla.org/CA
 upstreams   :
     # https://hg.mozilla.org/releases/mozilla-release/file/default/security/nss/lib/ckfw/builtins/certdata.txt <-- for date
     - https://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt :
-        hash : 1970dd65858925d68498d2356aea6d03f764422523c5887deca8ce3ba9e1f845
+        hash : 456ff095dde6dd73354c5c28c73d9c06f53b61a803963414cb91a1d92945cdd3
         unpack : no
     - https://raw.githubusercontent.com/agl/extract-nss-root-certs/492d8c9/convert_mozilla_certdata.go :
         hash : 30afd0ca1df9b7788b830485645c4a2f72b07c1c9eb5c66941ae3d0b87e9e623
@@ -23,12 +23,11 @@ license     :
     - MPL-2.0
 builddeps  :
     - golang
-environment : |
-    export HOME=$(pwd)
 setup       : |
-    cp %(sourcedir)/* %(workdir)/
+    %install_file %(sourcedir)/certdata.txt .
+    %install_file %(sourcedir)/convert_mozilla_certdata.go .
 build       : |
     go run convert_mozilla_certdata.go --to-files
 install     : |
-    %install_file -t %(installroot)/%(vendordir)/etc/ssl/certs/ %(workdir)/../*.pem
-    cat %(workdir)/../*.pem > %(installroot)/%(vendordir)/etc/ssl/certs/ca-certificates.crt
+    %install_file -t %(installroot)/%(vendordir)/etc/ssl/certs/ *.pem
+    cat *.pem > %(installroot)/%(vendordir)/etc/ssl/certs/ca-certificates.crt
