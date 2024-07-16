@@ -5,7 +5,7 @@
 #
 name        : rust
 version     : "1.79.0"
-release     : 3
+release     : 4
 homepage    : https://www.rust-lang.org/
 upstreams   :
     - https://static.rust-lang.org/dist/rustc-1.79.0-src.tar.gz : 172ecf3c7d1f9d9fb16cd2a628869782670416ded0129e524a86751f961448c0
@@ -33,8 +33,9 @@ packages    :
         paths:
             - /usr/share/doc
 builddeps   :
-    - binary(cmake)
     - binary(FileCheck)
+    - binary(cc)
+    - binary(cmake)
     - binary(llvm-config)
     - binary(ln)
     - binary(ninja)
@@ -48,12 +49,11 @@ builddeps   :
     - pkgconfig(ncurses)
     - pkgconfig(openssl)
     - pkgconfig(zlib)
+rundeps     :
+    - binary(cc)
 environment : |
     export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
-    export PATH=$(pwd)/BOOT:${PATH}
 setup       : |
-    mkdir BOOT
-    ln -s $(which clang) BOOT/cc
     %install_file %(pkgdir)/config.toml config.toml
 build       : |
     python ./x.py build

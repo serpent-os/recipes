@@ -5,6 +5,7 @@
 		"rust": {
 			"build-depends": [
 				"binary(FileCheck)",
+				"binary(cc)",
 				"binary(cmake)",
 				"binary(llvm-config)",
 				"binary(ln)",
@@ -21,6 +22,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"binary(cc)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libLLVM-17.so(x86_64))",
@@ -1814,6 +1816,7 @@
 		"rust-docs": {
 			"build-depends": [
 				"binary(FileCheck)",
+				"binary(cc)",
 				"binary(cmake)",
 				"binary(llvm-config)",
 				"binary(ln)",
@@ -41217,6 +41220,6 @@
 		}
 	},
 	"source-name": "rust",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.79.0"
 }
