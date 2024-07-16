@@ -42,7 +42,7 @@
 			"files": [
 				"/usr/bin/zed",
 				"/usr/lib/zed/zed-editor",
-				"/usr/share/applications/dev.zed.Zed-dev.desktop",
+				"/usr/share/applications/dev.zed.Zed-Dev.desktop",
 				"/usr/share/icons/hicolor/1024x1024/apps/zed.png",
 				"/usr/share/icons/hicolor/512x512/apps/zed.png"
 			],
@@ -53,6 +53,6 @@
 		}
 	},
 	"source-name": "zed",
-	"source-release": "4",
-	"source-version": "0.143.6"
+	"source-release": "5",
+	"source-version": "0.143.7"
 }
