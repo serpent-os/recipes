@@ -5,7 +5,7 @@
 #
 name        : zed
 version     : 0.143.7
-release     : 5
+release     : 6
 summary     : High performance, graphical code editor
 license     :
     - AGPL-3.0
@@ -57,12 +57,12 @@ install     : |
     export APP_CLI="zed"
     export APP_ICON="zed"
     export APP_ARGS="%%U"
-    export APP_NAME="Zed Devel"
+    export APP_NAME="Zed"
 
     # desktop file.
     %install_dir %(installroot)%(datadir)/applications
-    envsubst < "crates/zed/resources/zed.desktop.in" > "%(installroot)%(datadir)/applications/dev.zed.Zed-Dev.desktop"
+    envsubst < "crates/zed/resources/zed.desktop.in" > "%(installroot)%(datadir)/applications/dev.zed.Zed.desktop"
 
     # icons
-    %install_file crates/zed/resources/app-icon-dev.png %(installroot)%(datadir)/icons/hicolor/512x512/apps/zed.png -D
-    %install_file crates/zed/resources/app-icon-dev@2x.png %(installroot)%(datadir)/icons/hicolor/1024x1024/apps/zed.png -D
+    %install_file crates/zed/resources/app-icon.png %(installroot)%(datadir)/icons/hicolor/512x512/apps/zed.png -D
+    %install_file crates/zed/resources/app-icon@2x.png %(installroot)%(datadir)/icons/hicolor/1024x1024/apps/zed.png -D
