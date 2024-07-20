@@ -68,7 +68,7 @@
 				"/usr/lib/flatpak/revokefs-fuse",
 				"/usr/lib/girepository-1.0/Flatpak-1.0.typelib",
 				"/usr/lib/libflatpak.so.0",
-				"/usr/lib/libflatpak.so.0.11405.0",
+				"/usr/lib/libflatpak.so.0.11408.0",
 				"/usr/lib/systemd/system-environment-generators/60-flatpak-system-only",
 				"/usr/lib/systemd/system/flatpak-system-helper.service",
 				"/usr/lib/systemd/user-environment-generators/60-flatpak",
@@ -189,6 +189,6 @@
 		}
 	},
 	"source-name": "flatpak",
-	"source-release": "3",
-	"source-version": "1.14.5"
+	"source-release": "4",
+	"source-version": "1.14.8"
 }
