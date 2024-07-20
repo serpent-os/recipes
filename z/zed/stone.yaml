@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : zed
-version     : 0.143.7
-release     : 6
+version     : 0.144.4
+release     : 7
 summary     : High performance, graphical code editor
 license     :
     - AGPL-3.0
@@ -13,10 +13,11 @@ license     :
     - GPL-3.0
 homepage    : https://zed.dev/
 upstreams   :
-    - git|https://github.com/zed-industries/zed.git : d6156ef79daab85b6c7932754b686fa993f10a1d
+    - git|https://github.com/zed-industries/zed.git : 5686e103316a721add738f3526f20802879e9970
 description : |
     Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.
 builddeps   :
+    - binary(cc)
     - binary(cargo)
     - binary(clang)
     - binary(cmake)
@@ -34,15 +35,16 @@ builddeps   :
     - pkgconfig(wayland-client)
     - pkgconfig(x11)
     - pkgconfig(xkbcommon)
+rundeps     :
+    - binary(unzip)
 # Big silly, force links libstdc++
 toolchain   : gnu
 networking  : yes
-rundeps     :
-    - layout
 environment : |
     export HOME="$(pwd)"
     export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
     export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+    export ZED_UPDATE_EXPLANATION="Package updates are provided via moss"
 setup       : |
     %cargo_fetch
 build       : |
