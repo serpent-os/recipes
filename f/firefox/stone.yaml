@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : firefox
-version     : 128.0
-release     : 1
+version     : "128.0"
+release     : 2
 homepage    : https://www.mozilla.org/
 upstreams   :
     - https://archive.mozilla.org/pub/firefox/releases/128.0/source/firefox-128.0.source.tar.xz : 65271ffefb235ea1e162a081f2074a0f06fce27b2f613f573c126ba8eef95172
@@ -15,6 +15,7 @@ description : |
 license     : MPL-2.0
 builddeps   :
     - binary(cbindgen)
+    - binary(cc)
     - binary(m4)
     - binary(make)
     - binary(nasm)
@@ -48,3 +49,13 @@ build       : |
     ./mach build
 install     : |
     DESTDIR=%(installroot) ./mach install
+
+    %install_file browser/branding/official/default16.png %(installroot)%(datadir)/icons/hicolor/16x16/apps/firefox.png
+    %install_file browser/branding/official/default22.png %(installroot)%(datadir)/icons/hicolor/22x22/apps/firefox.png
+    %install_file browser/branding/official/default24.png %(installroot)%(datadir)/icons/hicolor/24x24/apps/firefox.png
+    %install_file browser/branding/official/default32.png %(installroot)%(datadir)/icons/hicolor/32x32/apps/firefox.png
+    %install_file browser/branding/official/default48.png %(installroot)%(datadir)/icons/hicolor/48x48/apps/firefox.png
+    %install_file browser/branding/official/default128.png %(installroot)%(datadir)/icons/hicolor/128x128/apps/firefox.png
+    %install_file browser/branding/official/default256.png %(installroot)%(datadir)/icons/hicolor/256x256/apps/firefox.png
+    %install_file %(pkgdir)/firefox-symbolic.svg %(installroot)%(datadir)/icons/hicolor/symbolic/apps/firefox-symbolic.svg
+    %install_file %(pkgdir)/firefox.desktop %(installroot)%(datadir)/applications/firefox.desktop

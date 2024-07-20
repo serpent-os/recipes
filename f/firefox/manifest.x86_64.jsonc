@@ -5,6 +5,7 @@
 		"firefox": {
 			"build-depends": [
 				"binary(cbindgen)",
+				"binary(cc)",
 				"binary(m4)",
 				"binary(make)",
 				"binary(nasm)",
@@ -118,7 +119,16 @@
 				"/usr/lib/firefox/pingsender",
 				"/usr/lib/firefox/platform.ini",
 				"/usr/lib/firefox/removed-files",
-				"/usr/lib/firefox/vaapitest"
+				"/usr/lib/firefox/vaapitest",
+				"/usr/share/applications/firefox.desktop",
+				"/usr/share/icons/hicolor/128x128/apps/firefox.png",
+				"/usr/share/icons/hicolor/16x16/apps/firefox.png",
+				"/usr/share/icons/hicolor/22x22/apps/firefox.png",
+				"/usr/share/icons/hicolor/24x24/apps/firefox.png",
+				"/usr/share/icons/hicolor/256x256/apps/firefox.png",
+				"/usr/share/icons/hicolor/32x32/apps/firefox.png",
+				"/usr/share/icons/hicolor/48x48/apps/firefox.png",
+				"/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
 			],
 			"name": "firefox",
 			"provides": [
@@ -148,6 +158,6 @@
 		}
 	},
 	"source-name": "firefox",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "128.0"
 }
