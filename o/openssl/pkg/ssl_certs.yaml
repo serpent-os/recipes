@@ -1,0 +1,13 @@
+name: ssl_certs
+description: |
+    Relink SSL certificates
+
+handlers:
+    ssl_certs:
+        run: /usr/bin/c_rehash
+        args: ["-v", "/usr/share/defaults/etc/ssl"]
+
+paths:
+    "/usr/share/defaults/etc/ssl/*.pem":
+        handlers:
+            - ssl_certs

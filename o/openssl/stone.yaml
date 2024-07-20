@@ -5,7 +5,7 @@
 #
 name        : openssl
 version     : 3.1.6
-release     : 10
+release     : 11
 summary     : OpenSSL cryptography library
 license     : Apache-2.0
 homepage    : https://www.openssl.org
@@ -17,7 +17,7 @@ builddeps   :
     - pkgconfig(zlib)
     - perl
 rundeps     :
-    - nss
+    - ca-certificates
 setup       : |
     %patch %(pkgdir)/stateless/0001-Use-OS-provided-copy-of-openssl.cnf-as-fallback.patch
     %patch %(pkgdir)/config.patch
@@ -37,6 +37,11 @@ install     : |
     rmdir %(installroot)/etc
     rmdir %(installroot)/%(vendordir)/etc/ssl/certs
     rmdir %(installroot)/%(vendordir)/etc/ssl/private
+
+    %install_file %(pkgdir)/ssl_certs.yaml %(installroot)/usr/share/moss/triggers/tx.d/ssl_certs.yaml
+    # tmpfiles configuration
+    %tmpfiles "# Create SSL compatibility link"
+    %tmpfiles "L /usr/share/defaults/etc/ssl/certs - - - - /etc/ssl/certs"
 packages    :
     - "%(name)-docs":
         paths:
