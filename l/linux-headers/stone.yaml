@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-headers
-version     : 6.6.40
-release     : 16
+version     : "6.10"
+release     : 17
 homepage    : https://www.kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.40.tar.xz : 5c3a3c03c055b8d601a6d7f80d1465ada6b83a12299f6ace2027b47f0baff538
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz : 774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226
 summary     : Linux kernel libc headers
 description : |
     Headers for the kernel libc interface
