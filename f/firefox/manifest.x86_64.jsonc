@@ -69,7 +69,8 @@
 				"soname(libwebpdemux.so.2(x86_64))",
 				"soname(libxcb-shm.so.0(x86_64))",
 				"soname(libxcb.so.1(x86_64))",
-				"soname(libz.so.1(x86_64))"
+				"soname(libz.so.1(x86_64))",
+				"xdg-desktop-portal"
 			],
 			"files": [
 				"/usr/bin/firefox",
@@ -88,6 +89,7 @@
 				"/usr/lib/firefox/crashreporter",
 				"/usr/lib/firefox/defaults/pref/channel-prefs.js",
 				"/usr/lib/firefox/dependentlibs.list",
+				"/usr/lib/firefox/distribution/distribution.ini",
 				"/usr/lib/firefox/firefox",
 				"/usr/lib/firefox/firefox-bin",
 				"/usr/lib/firefox/fonts/TwemojiMozilla.ttf",
@@ -158,6 +160,6 @@
 		}
 	},
 	"source-name": "firefox",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "128.0"
 }

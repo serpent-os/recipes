@@ -5,7 +5,7 @@
 #
 name        : firefox
 version     : "128.0"
-release     : 2
+release     : 3
 homepage    : https://www.mozilla.org/
 upstreams   :
     - https://archive.mozilla.org/pub/firefox/releases/128.0/source/firefox-128.0.source.tar.xz : 65271ffefb235ea1e162a081f2074a0f06fce27b2f613f573c126ba8eef95172
@@ -40,6 +40,8 @@ builddeps   :
     - pkgconfig(sm)
     - pkgconfig(vpx)
     - pkgconfig(zlib)
+rundeps     :
+    - xdg-desktop-portal
 environment : |
     export MOZ_NOSPAM=1
     export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
@@ -59,3 +61,5 @@ install     : |
     %install_file browser/branding/official/default256.png %(installroot)%(datadir)/icons/hicolor/256x256/apps/firefox.png
     %install_file %(pkgdir)/firefox-symbolic.svg %(installroot)%(datadir)/icons/hicolor/symbolic/apps/firefox-symbolic.svg
     %install_file %(pkgdir)/firefox.desktop %(installroot)%(datadir)/applications/firefox.desktop
+
+    %install_file %(pkgdir)/distribution.ini %(installroot)%(libdir)/firefox/distribution/distribution.ini
