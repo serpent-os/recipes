@@ -5,7 +5,7 @@ description: |
 handlers:
     ssl_certs:
         run: /usr/bin/c_rehash
-        args: ["-v", "/usr/share/defaults/etc/ssl"]
+        args: ["-v", "/usr/share/defaults/etc/ssl/certs"]
 
 paths:
     "/usr/share/defaults/etc/ssl/certs/*.pem":
