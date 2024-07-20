@@ -1,6 +1,6 @@
 name        : linux-desktop
 version     : "6.10.0"
-release     : 29
+release     : 30
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz : 774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226
