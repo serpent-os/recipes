@@ -155,6 +155,9 @@
 				"pkgconfig(libportal)",
 				"pkgconfig(libsystemd)"
 			],
+			"depends": [
+				"xdg-desktop-portal"
+			],
 			"files": [
 				"/usr/share/pkgconfig/xdg-desktop-portal.pc"
 			],
@@ -165,6 +168,6 @@
 		}
 	},
 	"source-name": "xdg-desktop-portal",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.18.2"
 }

@@ -235,6 +235,9 @@
 				"pkgconfig(systemd)",
 				"pkgconfig(udisks2)"
 			],
+			"depends": [
+				"gvfs"
+			],
 			"files": [
 				"/usr/include/gvfs-client/gvfs/gvfsurimapper.h",
 				"/usr/include/gvfs-client/gvfs/gvfsuriutils.h"
@@ -243,6 +246,6 @@
 		}
 	},
 	"source-name": "gvfs",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.52.2"
 }

@@ -32,6 +32,7 @@
 				"python-pyparsing"
 			],
 			"depends": [
+				"bubblewrap",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libXau.so.6(x86_64))",
 				"soname(libappstream.so.5(x86_64))",
@@ -157,6 +158,7 @@
 				"python-pyparsing"
 			],
 			"depends": [
+				"flatpak",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(glib-2.0)",
@@ -187,6 +189,6 @@
 		}
 	},
 	"source-name": "flatpak",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.14.5"
 }

@@ -102,9 +102,9 @@
 			],
 			"name": "libostree",
 			"provides": [
-				"soname(libostree-1.so.1(x86_64))",
 				"binary(ostree)",
-				"binary(rofiles-fuse)"
+				"binary(rofiles-fuse)",
+				"soname(libostree-1.so.1(x86_64))"
 			]
 		},
 		"libostree-devel": {
@@ -126,6 +126,7 @@
 				"pkgconfig(openssl)"
 			],
 			"depends": [
+				"libostree",
 				"pkgconfig(gio-unix-2.0)"
 			],
 			"files": [
@@ -169,6 +170,6 @@
 		}
 	},
 	"source-name": "libostree",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "2024.4"
 }

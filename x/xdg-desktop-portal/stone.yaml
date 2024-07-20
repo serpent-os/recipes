@@ -5,7 +5,7 @@
 #
 name        : xdg-desktop-portal
 version     : 1.18.2
-release     : 1
+release     : 2
 homepage    : https://flatpak.github.io/xdg-desktop-portal/
 upstreams   :
     - https://github.com/flatpak/xdg-desktop-portal/releases/download/1.18.2/xdg-desktop-portal-1.18.2.tar.xz : dfac239c5476aafd117a9a10131a2f0b142f72106c52fc03859938e00545f440
