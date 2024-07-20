@@ -8,6 +8,6 @@ handlers:
         args: ["-v", "/usr/share/defaults/etc/ssl"]
 
 paths:
-    "/usr/share/defaults/etc/ssl/*.pem":
+    "/usr/share/defaults/etc/ssl/certs/*.pem":
         handlers:
             - ssl_certs
