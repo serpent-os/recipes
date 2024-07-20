@@ -5,7 +5,7 @@
 #
 name        : openssl
 version     : 3.1.6
-release     : 11
+release     : 12
 summary     : OpenSSL cryptography library
 license     : Apache-2.0
 homepage    : https://www.openssl.org
@@ -41,6 +41,7 @@ install     : |
     %install_file %(pkgdir)/ssl_certs.yaml %(installroot)/usr/share/moss/triggers/tx.d/ssl_certs.yaml
     # tmpfiles configuration
     %tmpfiles "# Create SSL compatibility link"
+    %tmpfiles "d /etc/ssl 0755 - - -"
     %tmpfiles "L /usr/share/defaults/etc/ssl/certs - - - - /etc/ssl/certs"
 packages    :
     - "%(name)-docs":
