@@ -11,12 +11,13 @@
 			"files": [
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.background.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.peripherals.gschema.override",
+				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.wm.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.shell.gschema.override"
 			],
 			"name": "serpent-gnome-defaults"
 		}
 	},
 	"source-name": "serpent-gnome-defaults",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.0"
 }
