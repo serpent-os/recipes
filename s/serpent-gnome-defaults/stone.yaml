@@ -1,0 +1,20 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : serpent-gnome-defaults
+version     : "0.1.0"
+release     : 1
+license     : MPL-2.0
+homepage    : https://serpentos.com
+summary     : Default settings for GNOME desktop
+description : |
+    Default settings for GNOME desktop
+rundeps     :
+    - gnome-backgrounds
+    - gnome-shell
+    - gnome-shell-extension-appindicator
+install     : |
+    %install_dir %(installroot)%(datadir)/glib-2.0/schemas
+    %install_file %(pkgdir)/10_*.gschema.override %(installroot)%(datadir)/glib-2.0/schemas/.
