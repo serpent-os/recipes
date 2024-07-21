@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-shell-extension-appindicator
+version     : 58
+release     : 1
+homepage    : https://github.com/ubuntu/gnome-shell-extension-appindicator
+upstreams   :
+    - https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/refs/tags/v58.tar.gz : 7a6fda28ddd214fbb832486b85c73447ff0c5fc7a36c6d1510c4ff6801cff9d8
+summary     : AppIndicator / SNI support in GNOME Shell
+description : |
+    AppIndicator / SNI support in GNOME Shell
+license     :
+    - GPL-2.0
+builddeps   :
+    - binary(jq)
+    - binary(glib-compile-schemas)
+setup       : |
+    %meson -D local_install=disabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+    rm %(installroot)%(datadir)/glib-2.0/schemas/*.compiled -v

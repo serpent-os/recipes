@@ -1,0 +1,37 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gnome-shell-extension-appindicator": {
+			"build-depends": [
+				"binary(glib-compile-schemas)",
+				"binary(jq)"
+			],
+			"files": [
+				"/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.appindicator.gschema.xml",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/appIndicator.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/dbusMenu.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/dbusProxy.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/extension.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/iconCache.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/indicatorStatusIcon.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/interfaces-xml/DBusMenu.xml",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/interfaces-xml/StatusNotifierItem.xml",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/interfaces-xml/StatusNotifierWatcher.xml",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/interfaces.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/metadata.json",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/pixmapsUtils.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/prefs.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/promiseUtils.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/settingsManager.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/statusNotifierWatcher.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/trayIconsManager.js",
+				"/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/util.js"
+			],
+			"name": "gnome-shell-extension-appindicator"
+		}
+	},
+	"source-name": "gnome-shell-extension-appindicator",
+	"source-release": "1",
+	"source-version": "58"
+}
