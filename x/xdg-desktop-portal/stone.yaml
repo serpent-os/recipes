@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : xdg-desktop-portal
-version     : 1.18.2
-release     : 2
+version     : 1.18.4
+release     : 3
 homepage    : https://flatpak.github.io/xdg-desktop-portal/
 upstreams   :
-    - https://github.com/flatpak/xdg-desktop-portal/releases/download/1.18.2/xdg-desktop-portal-1.18.2.tar.xz : dfac239c5476aafd117a9a10131a2f0b142f72106c52fc03859938e00545f440
+    - https://github.com/flatpak/xdg-desktop-portal/releases/download/1.18.4/xdg-desktop-portal-1.18.4.tar.xz : b858aa1e74e80c862790dbb912906e6eab8b1e4db9339cd759473af62b461e65
 summary     : A portal frontend service for Flatpak and other desktop containment frameworks.
 description : |
     xdg-desktop-portal works by exposing a series of D-Bus interfaces known as portals under a well-known name (org.freedesktop.portal.Desktop) and object path (/org/freedesktop/portal/desktop). The portal interfaces include APIs for file access, opening URIs, printing and others.
