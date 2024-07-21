@@ -14,6 +14,9 @@
 			"name": "hwdata"
 		},
 		"hwdata-devel": {
+			"depends": [
+				"hwdata"
+			],
 			"files": [
 				"/usr/share/pkgconfig/hwdata.pc"
 			],
@@ -24,6 +27,6 @@
 		}
 	},
 	"source-name": "hwdata",
-	"source-release": "10",
-	"source-version": "0.378"
+	"source-release": "11",
+	"source-version": "0.384"
 }
