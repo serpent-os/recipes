@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : dtc
+version     : 1.7.0
+release     : 1
+homepage    : https://github.com/dgibson/dtc.git
+upstreams   :
+    - git|https://github.com/dgibson/dtc.git : 039a99414e778332d8f9c04cbd3072e1dcc62798
+summary     : Device Tree Compiler
+description : |
+    Device Tree Compiler
+license     :
+    - BSD-2-Clause
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - binary(swig)
+    - pkgconfig(python3)
+    - pkgconfig(yaml-0.1)
+    - python-setuptools_scm
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+    rm %(installroot)%(libdir)/*.a -v
