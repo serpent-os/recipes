@@ -1,0 +1,57 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qemu
+version     : 9.0.2
+release     : 1
+homepage    : http://www.qemu-project.org/
+upstreams   :
+    - https://download.qemu.org/qemu-9.0.2.tar.xz : a8c3f596aece96da3b00cafb74baafa0d14515eafb8ed1ee3f7f5c2d0ebf02b6
+summary     :  A generic and open source machine emulator and virtualizer
+description : |
+     A generic and open source machine emulator and virtualizer
+license     :
+    - GPL-2.0
+builddeps   :
+    - binary(bzip2)
+    - binary(meson)
+    - binary(ninja)
+    - binary(nm)
+    - binary(python3)
+    - pkgconfig(alsa)
+    - pkgconfig(epoxy)
+    - pkgconfig(fuse3)
+    - pkgconfig(gbm)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmp)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk+-x11-3.0)
+    - pkgconfig(libcurl)
+    - pkgconfig(libdw)
+    - pkgconfig(libfdt)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libpng)
+    - pkgconfig(libpulse)
+    - pkgconfig(libseccomp)
+    - pkgconfig(libssh)
+    - pkgconfig(libtasn1)
+    - pkgconfig(libudev)
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(libzstd)
+    - pkgconfig(pixman-1)
+    - pkgconfig(x11)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(zlib)
+    - xkeyboard-config
+setup       : |
+    %configure --disable-docs \
+               --target-list=x86_64-linux-user,i386-linux-user,i386-softmmu,x86_64-softmmu
+build       : |
+    %make
+install     : |
+    %make_install
