@@ -4,6 +4,7 @@
 	"packages": {
 		"mutter": {
 			"build-depends": [
+				"binary(Xwayland)",
 				"binary(cvt)",
 				"binary(msgfmt)",
 				"pkgconfig(atk)",
@@ -21,6 +22,7 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gmodule-no-export-2.0)",
 				"pkgconfig(gnome-desktop-4)",
+				"pkgconfig(gnome-settings-daemon)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(graphene-gobject-1.0)",
@@ -34,6 +36,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(lcms2)",
 				"pkgconfig(libcanberra)",
+				"pkgconfig(libdisplay-info)",
 				"pkgconfig(libdrm)",
 				"pkgconfig(libei-1.0)",
 				"pkgconfig(libeis-1.0)",
@@ -71,7 +74,8 @@
 				"pkgconfig(xkeyboard-config)",
 				"pkgconfig(xrandr)",
 				"pkgconfig(xrender)",
-				"pkgconfig(xtst)"
+				"pkgconfig(xtst)",
+				"pkgconfig(xwayland)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -82,6 +86,7 @@
 				"soname(libSM.so.6(x86_64))",
 				"soname(libX11-xcb.so.1(x86_64))",
 				"soname(libX11.so.6(x86_64))",
+				"soname(libXau.so.6(x86_64))",
 				"soname(libXcomposite.so.1(x86_64))",
 				"soname(libXcursor.so.1(x86_64))",
 				"soname(libXdamage.so.1(x86_64))",
@@ -97,6 +102,7 @@
 				"soname(libcairo.so.2(x86_64))",
 				"soname(libcanberra.so.0(x86_64))",
 				"soname(libcolord.so.2(x86_64))",
+				"soname(libdisplay-info.so.2(x86_64))",
 				"soname(libdrm.so.2(x86_64))",
 				"soname(libeis.so.1(x86_64))",
 				"soname(libfontconfig.so.1(x86_64))",
@@ -273,17 +279,18 @@
 			],
 			"name": "mutter",
 			"provides": [
+				"binary(mutter)",
 				"soname(libdefault.so(x86_64))",
 				"soname(libmutter-13.so.0(x86_64))",
 				"soname(libmutter-clutter-13.so.0(x86_64))",
 				"soname(libmutter-cogl-13.so.0(x86_64))",
 				"soname(libmutter-cogl-pango-13.so.0(x86_64))",
-				"soname(libmutter-mtk-13.so.0(x86_64))",
-				"binary(mutter)"
+				"soname(libmutter-mtk-13.so.0(x86_64))"
 			]
 		},
 		"mutter-devel": {
 			"build-depends": [
+				"binary(Xwayland)",
 				"binary(cvt)",
 				"binary(msgfmt)",
 				"pkgconfig(atk)",
@@ -301,6 +308,7 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gmodule-no-export-2.0)",
 				"pkgconfig(gnome-desktop-4)",
+				"pkgconfig(gnome-settings-daemon)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(graphene-gobject-1.0)",
@@ -314,6 +322,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(lcms2)",
 				"pkgconfig(libcanberra)",
+				"pkgconfig(libdisplay-info)",
 				"pkgconfig(libdrm)",
 				"pkgconfig(libei-1.0)",
 				"pkgconfig(libeis-1.0)",
@@ -351,9 +360,11 @@
 				"pkgconfig(xkeyboard-config)",
 				"pkgconfig(xrandr)",
 				"pkgconfig(xrender)",
-				"pkgconfig(xtst)"
+				"pkgconfig(xtst)",
+				"pkgconfig(xwayland)"
 			],
 			"depends": [
+				"mutter",
 				"pkgconfig(atk)",
 				"pkgconfig(cairo)",
 				"pkgconfig(cairo-gobject)",
@@ -614,6 +625,6 @@
 		}
 	},
 	"source-name": "mutter",
-	"source-release": "2",
-	"source-version": "45.3"
+	"source-release": "3",
+	"source-version": "45.7"
 }

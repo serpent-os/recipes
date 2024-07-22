@@ -4,20 +4,18 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mutter
-version     : 45.3
-release     : 2
+version     : 45.7
+release     : 3
 homepage    : https://gnome.org
 upstreams   :
-    - https://download.gnome.org/sources/mutter/45/mutter-45.3.tar.xz : b78aea7f3e2bec8322a2af0404716be2269905c7d50c04b0b2a71a38814fcd01
+    - https://download.gnome.org/sources/mutter/45/mutter-45.7.tar.xz : 5fa01a100c468efa1ddc232cb3c91865d092760946e3e3c61b2b6cd31f000968
 summary     : A Wayland display server and X11 window manager and compositor library.
 description : |
     A Wayland display server and X11 window manager and compositor library.
 license     :
     - GPL-2.0-or-later
 builddeps   :
-    # - binary(Xwayland)
-    #-  binary(catch)
-    # - binary(xvfb-run)
+    - binary(Xwayland)
     - binary(msgfmt)
     - pkgconfig(atk)
     - pkgconfig(cairo)
@@ -28,14 +26,13 @@ builddeps   :
     - pkgconfig(fribidi)
     - pkgconfig(gbm)
     - pkgconfig(gdk-pixbuf-2.0)
-    # - pkgconfig(gi-docgen)
     - pkgconfig(gio-unix-2.0)
     - pkgconfig(gl)
     - pkgconfig(glesv2)
     - pkgconfig(glib-2.0)
     - pkgconfig(gmodule-no-export-2.0)
     - pkgconfig(gnome-desktop-4)
-    # - pkgconfig(gnome-settings-daemon)
+    - pkgconfig(gnome-settings-daemon)
     - pkgconfig(gobject-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(graphene-gobject-1.0)
@@ -49,7 +46,7 @@ builddeps   :
     - pkgconfig(json-glib-1.0)
     - pkgconfig(lcms2)
     - pkgconfig(libcanberra)
-    # - pkgconfig(libdisplay-info)
+    - pkgconfig(libdisplay-info)
     - pkgconfig(libdrm)
     - pkgconfig(libei-1.0)
     - pkgconfig(libeis-1.0)
@@ -63,8 +60,6 @@ builddeps   :
     - pkgconfig(pangocairo)
     - pkgconfig(pangoft2)
     - pkgconfig(sm)
-    # - pkgconfig(sysprof-6)
-    # - pkgconfig(sysprof-capture-4)
     - pkgconfig(udev)
     - pkgconfig(wayland-client)
     - pkgconfig(wayland-cursor)
@@ -92,12 +87,12 @@ builddeps   :
     - pkgconfig(xrender)
     - pkgconfig(xtst)
     - binary(cvt)
-    # - pkgconfig(xwayland)
+    - pkgconfig(xwayland)
 toolchain   : gnu
 setup       : |
     %meson -Dtests=false \
            -Dprofiler=false \
-           -Dxwayland=false
+           -Dlibdisplay_info=true
 build       : |
     %meson_build
 install     : |
