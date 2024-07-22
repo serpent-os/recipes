@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : sndio
+version     : 1.9.0
+release     : 1
+homepage    : https://sndio.org
+upstreams   :
+    - https://sndio.org/sndio-1.9.0.tar.gz : f30826fc9c07e369d3924d5fcedf6a0a53c0df4ae1f5ab50fe9cf280540f699a
+summary     : Audio & MIDI framework
+description : |
+    Audo & MIDI Framework
+
+license     :
+    - ISC
+builddeps   :
+    - pkgconfig(alsa)
+setup       : |
+    ./configure --prefix=%(prefix) \
+                --libdir=%(libdir) \
+                --enable-alsa \
+                --enable-rmidi
+build       : |
+    %make
+install     : |
+    %make_install

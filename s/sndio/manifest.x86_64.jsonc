@@ -1,0 +1,92 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"sndio": {
+			"build-depends": [
+				"pkgconfig(alsa)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libasound.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/aucat",
+				"/usr/bin/midicat",
+				"/usr/bin/sndioctl",
+				"/usr/bin/sndiod",
+				"/usr/lib/libsndio.so.7",
+				"/usr/lib/libsndio.so.7.0",
+				"/usr/lib/libsndio.so.7.2",
+				"/usr/share/man/man1/aucat.1",
+				"/usr/share/man/man1/midicat.1",
+				"/usr/share/man/man1/sndioctl.1",
+				"/usr/share/man/man7/sndio.7",
+				"/usr/share/man/man8/sndiod.8"
+			],
+			"name": "sndio",
+			"provides": [
+				"binary(aucat)",
+				"binary(midicat)",
+				"binary(sndioctl)",
+				"binary(sndiod)",
+				"soname(libsndio.so.7(x86_64))"
+			]
+		},
+		"sndio-devel": {
+			"build-depends": [
+				"pkgconfig(alsa)"
+			],
+			"depends": [
+				"sndio"
+			],
+			"files": [
+				"/usr/include/sndio.h",
+				"/usr/lib/libsndio.so",
+				"/usr/lib/pkgconfig/sndio.pc",
+				"/usr/share/man/man3/mio_close.3",
+				"/usr/share/man/man3/mio_eof.3",
+				"/usr/share/man/man3/mio_nfds.3",
+				"/usr/share/man/man3/mio_open.3",
+				"/usr/share/man/man3/mio_pollfd.3",
+				"/usr/share/man/man3/mio_read.3",
+				"/usr/share/man/man3/mio_revents.3",
+				"/usr/share/man/man3/mio_write.3",
+				"/usr/share/man/man3/sio_close.3",
+				"/usr/share/man/man3/sio_eof.3",
+				"/usr/share/man/man3/sio_getcap.3",
+				"/usr/share/man/man3/sio_getpar.3",
+				"/usr/share/man/man3/sio_initpar.3",
+				"/usr/share/man/man3/sio_nfds.3",
+				"/usr/share/man/man3/sio_onmove.3",
+				"/usr/share/man/man3/sio_onvol.3",
+				"/usr/share/man/man3/sio_open.3",
+				"/usr/share/man/man3/sio_pollfd.3",
+				"/usr/share/man/man3/sio_read.3",
+				"/usr/share/man/man3/sio_revents.3",
+				"/usr/share/man/man3/sio_setpar.3",
+				"/usr/share/man/man3/sio_setvol.3",
+				"/usr/share/man/man3/sio_start.3",
+				"/usr/share/man/man3/sio_stop.3",
+				"/usr/share/man/man3/sio_write.3",
+				"/usr/share/man/man3/sioctl_close.3",
+				"/usr/share/man/man3/sioctl_eof.3",
+				"/usr/share/man/man3/sioctl_nfds.3",
+				"/usr/share/man/man3/sioctl_ondesc.3",
+				"/usr/share/man/man3/sioctl_onval.3",
+				"/usr/share/man/man3/sioctl_open.3",
+				"/usr/share/man/man3/sioctl_pollfd.3",
+				"/usr/share/man/man3/sioctl_revents.3",
+				"/usr/share/man/man3/sioctl_setval.3"
+			],
+			"name": "sndio-devel",
+			"provides": [
+				"pkgconfig(sndio)"
+			]
+		}
+	},
+	"source-name": "sndio",
+	"source-release": "1",
+	"source-version": "1.9.0"
+}
