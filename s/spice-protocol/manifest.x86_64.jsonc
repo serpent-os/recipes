@@ -1,0 +1,31 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"spice-protocol": {
+			"files": [
+				"/usr/include/spice-1/spice/barrier.h",
+				"/usr/include/spice-1/spice/end-packed.h",
+				"/usr/include/spice-1/spice/enums.h",
+				"/usr/include/spice-1/spice/ipc_ring.h",
+				"/usr/include/spice-1/spice/macros.h",
+				"/usr/include/spice-1/spice/protocol.h",
+				"/usr/include/spice-1/spice/qxl_dev.h",
+				"/usr/include/spice-1/spice/qxl_windows.h",
+				"/usr/include/spice-1/spice/start-packed.h",
+				"/usr/include/spice-1/spice/stats.h",
+				"/usr/include/spice-1/spice/stream-device.h",
+				"/usr/include/spice-1/spice/types.h",
+				"/usr/include/spice-1/spice/vd_agent.h",
+				"/usr/share/pkgconfig/spice-protocol.pc"
+			],
+			"name": "spice-protocol",
+			"provides": [
+				"pkgconfig(spice-protocol)"
+			]
+		}
+	},
+	"source-name": "spice-protocol",
+	"source-release": "1",
+	"source-version": "0.14.4"
+}
