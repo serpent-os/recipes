@@ -125,6 +125,7 @@
 				"/usr/include/nss/keyi.h",
 				"/usr/include/nss/keyt.h",
 				"/usr/include/nss/keythi.h",
+				"/usr/include/nss/kyber.h",
 				"/usr/include/nss/lgglue.h",
 				"/usr/include/nss/lowkeyi.h",
 				"/usr/include/nss/lowkeyti.h",
@@ -329,6 +330,6 @@
 		}
 	},
 	"source-name": "nss",
-	"source-release": "15",
-	"source-version": "3.96.1"
+	"source-release": "16",
+	"source-version": "3.99"
 }
