@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : spice
+version     : 0.15.2
+release     : 1
+homepage    : https://gitlab.freedesktop.org/spice
+upstreams   :
+    - https://gitlab.freedesktop.org/-/project/62/uploads/29ef6b318d554e835a02e2141f888437/spice-0.15.2.tar.bz2 : 6d9eb6117f03917471c4bc10004abecff48a79fb85eb85a1c45f023377015b81
+summary     : SPICE Server Component
+description : |
+    SPICE is a remote display system built for virtual environments which
+    allows you to view a computing 'desktop' environment not only on the
+    machine where it is running, but from anywhere on the Internet and
+    from a wide variety of machine architectures.
+license     :
+    - LGPL-2.1
+builddeps   :
+    - binary(cmake)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gstreamer-1.0)
+    - pkgconfig(libjpeg)
+    - pkgconfig(liblz4)
+    - pkgconfig(libsasl2)
+    - pkgconfig(openssl)
+    - pkgconfig(orc-0.4)
+    - pkgconfig(pixman-1)
+    - pkgconfig(spice-protocol)
+    - python-pyparsing
+    - python-six
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

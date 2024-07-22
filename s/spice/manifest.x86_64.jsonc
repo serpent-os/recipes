@@ -1,0 +1,102 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"spice": {
+			"build-depends": [
+				"binary(cmake)",
+				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gstreamer-1.0)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(libsasl2)",
+				"pkgconfig(openssl)",
+				"pkgconfig(orc-0.4)",
+				"pkgconfig(pixman-1)",
+				"pkgconfig(spice-protocol)",
+				"python-pyparsing",
+				"python-six"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgstapp-1.0.so.0(x86_64))",
+				"soname(libgstreamer-1.0.so.0(x86_64))",
+				"soname(libjpeg.so.8(x86_64))",
+				"soname(liblz4.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(liborc-0.4.so.0(x86_64))",
+				"soname(libpixman-1.so.0(x86_64))",
+				"soname(libsasl2.so.3(x86_64))",
+				"soname(libssl.so.3(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libspice-server.so.1",
+				"/usr/lib/libspice-server.so.1.14.3"
+			],
+			"name": "spice",
+			"provides": [
+				"soname(libspice-server.so.1(x86_64))"
+			]
+		},
+		"spice-devel": {
+			"build-depends": [
+				"binary(cmake)",
+				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gstreamer-1.0)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(libsasl2)",
+				"pkgconfig(openssl)",
+				"pkgconfig(orc-0.4)",
+				"pkgconfig(pixman-1)",
+				"pkgconfig(spice-protocol)",
+				"python-pyparsing",
+				"python-six"
+			],
+			"depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gstreamer-1.0)",
+				"pkgconfig(gstreamer-app-1.0)",
+				"pkgconfig(gstreamer-base-1.0)",
+				"pkgconfig(gstreamer-video-1.0)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(libsasl2)",
+				"pkgconfig(openssl)",
+				"pkgconfig(orc-0.4)",
+				"pkgconfig(pixman-1)",
+				"pkgconfig(spice-protocol)",
+				"pkgconfig(zlib)",
+				"spice"
+			],
+			"files": [
+				"/usr/include/spice-server/spice-audio.h",
+				"/usr/include/spice-server/spice-char.h",
+				"/usr/include/spice-server/spice-core.h",
+				"/usr/include/spice-server/spice-input.h",
+				"/usr/include/spice-server/spice-migration.h",
+				"/usr/include/spice-server/spice-qxl.h",
+				"/usr/include/spice-server/spice-replay.h",
+				"/usr/include/spice-server/spice-server.h",
+				"/usr/include/spice-server/spice-version.h",
+				"/usr/include/spice-server/spice.h",
+				"/usr/lib/libspice-server.so",
+				"/usr/lib/pkgconfig/spice-server.pc"
+			],
+			"name": "spice-devel",
+			"provides": [
+				"pkgconfig(spice-server)"
+			]
+		}
+	},
+	"source-name": "spice",
+	"source-release": "1",
+	"source-version": "0.15.2"
+}
