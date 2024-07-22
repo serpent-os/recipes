@@ -5,12 +5,12 @@
 #
 name        : lichen
 version     : "0.1.0"
-release     : 2
+release     : 3
 summary     : Experimental OS installer
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/lichen
 upstreams   :
-    - git|https://github.com/serpent-os/lichen.git : 9018f235c85565b80175c3c285e8ee5270504a17
+    - git|https://github.com/serpent-os/lichen.git : d4c7ba72134c49b9b35ea387d6031cd08505b8de
 description : |
     Experimental OS installer
 builddeps   :
@@ -21,9 +21,6 @@ rundeps     :
     - sysbinary(mkfs.ext4)
     - sysbinary(mkfs.vfat)
     - iso-codes
-environment : |
-    export HOME="$(pwd)"
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
     %cargo_fetch
 build       : |
