@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : sdl2
+version     : 2.30.5
+release     : 1
+homepage    : https://libsdl.prg
+upstreams   :
+    - https://github.com/libsdl-org/SDL/releases/download/release-2.30.5/SDL2-2.30.5.tar.gz : f374f3fa29c37dfcc20822d4a7d7dc57e58924d1a5f2ad511bfab4c8193de63b
+summary     : Simple DirectMedia Library
+description : |
+    Simple DirectMedia Library
+license     :
+    - Zlib
+builddeps   :
+    - pkgconfig(alsa)
+    - pkgconfig(dbus-1)
+    - pkgconfig(egl)
+    - pkgconfig(ibus-1.0)
+    - pkgconfig(libdecor-0)
+    - pkgconfig(libdrm)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libpulse)
+    - pkgconfig(sndio)
+    - pkgconfig(wayland-client)
+    - pkgconfig(x11)
+    - pkgconfig(xext)
+    - pkgconfig(xkbcommon)
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
