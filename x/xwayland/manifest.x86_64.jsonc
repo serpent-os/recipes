@@ -13,6 +13,7 @@
 				"pkgconfig(epoxy)",
 				"pkgconfig(fixesproto)",
 				"pkgconfig(fontsproto)",
+				"pkgconfig(fontutil)",
 				"pkgconfig(gbm)",
 				"pkgconfig(inputproto)",
 				"pkgconfig(kbproto)",
@@ -51,6 +52,7 @@
 				"pkgconfig(xwaylandproto)"
 			],
 			"depends": [
+				"binary(xkbcomp)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libGL.so.1(x86_64))",
 				"soname(libXau.so.6(x86_64))",
@@ -95,6 +97,7 @@
 				"pkgconfig(epoxy)",
 				"pkgconfig(fixesproto)",
 				"pkgconfig(fontsproto)",
+				"pkgconfig(fontutil)",
 				"pkgconfig(gbm)",
 				"pkgconfig(inputproto)",
 				"pkgconfig(kbproto)",
@@ -132,6 +135,9 @@
 				"pkgconfig(xtrans)",
 				"pkgconfig(xwaylandproto)"
 			],
+			"depends": [
+				"xwayland"
+			],
 			"files": [
 				"/usr/lib/pkgconfig/xwayland.pc"
 			],
@@ -142,6 +148,6 @@
 		}
 	},
 	"source-name": "xwayland",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "23.2.4"
 }

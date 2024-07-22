@@ -5,7 +5,7 @@
 #
 name        : xwayland
 version     : 23.2.4
-release     : 1
+release     : 2
 homepage    : https://www.x.org/pub/individual/xserver
 upstreams   :
     - https://www.x.org/pub/individual/xserver/xwayland-23.2.4.tar.xz : a99e159b6d0d33098b3b6ab22a88bfcece23c8b9d0ca72c535c55dcb0681b46b
@@ -24,6 +24,7 @@ builddeps   :
     - pkgconfig(epoxy)
     - pkgconfig(fixesproto)
     - pkgconfig(fontsproto)
+    - pkgconfig(fontutil)
     - pkgconfig(gbm)
     - pkgconfig(inputproto)
     - pkgconfig(kbproto)
@@ -60,9 +61,10 @@ builddeps   :
     - pkgconfig(xshmfence)
     - pkgconfig(xtrans)
     - pkgconfig(xwaylandproto)
-    # - pkgconfig(fontutil)
     # - pkgconfig(wayland-eglstream-protocols)
     # - pkgconfig(xorg-sgml-doctools)
+rundeps     :
+    - binary(xkbcomp)
 setup       : |
     %meson
 build       : |
