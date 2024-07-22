@@ -5,7 +5,7 @@
 #
 name        : firefox
 version     : "128.0"
-release     : 3
+release     : 4
 homepage    : https://www.mozilla.org/
 upstreams   :
     - https://archive.mozilla.org/pub/firefox/releases/128.0/source/firefox-128.0.source.tar.xz : 65271ffefb235ea1e162a081f2074a0f06fce27b2f613f573c126ba8eef95172
