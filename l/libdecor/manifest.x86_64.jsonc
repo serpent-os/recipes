@@ -11,15 +11,29 @@
 			],
 			"depends": [
 				"soname(libc.so.6(x86_64))",
-				"soname(libwayland-client.so.0(x86_64))"
+				"soname(libcairo.so.2(x86_64))",
+				"soname(libdbus-1.so.3(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-3.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpango-1.0.so.0(x86_64))",
+				"soname(libpangocairo-1.0.so.0(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libwayland-cursor.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/lib/libdecor-0.so.0",
-				"/usr/lib/libdecor-0.so.0.200.2"
+				"/usr/lib/libdecor-0.so.0.200.2",
+				"/usr/lib/libdecor/plugins-1/libdecor-cairo.so",
+				"/usr/lib/libdecor/plugins-1/libdecor-gtk.so"
 			],
 			"name": "libdecor",
 			"provides": [
-				"soname(libdecor-0.so.0(x86_64))"
+				"soname(libdecor-0.so.0(x86_64))",
+				"soname(libdecor-cairo.so(x86_64))",
+				"soname(libdecor-gtk.so(x86_64))"
 			]
 		},
 		"libdecor-devel": {
@@ -30,37 +44,21 @@
 				"pkgconfig(wayland-protocols)"
 			],
 			"depends": [
-				"soname(libc.so.6(x86_64))",
-				"soname(libcairo.so.2(x86_64))",
-				"soname(libdbus-1.so.3(x86_64))",
-				"soname(libdecor-0.so.0(x86_64))",
-				"soname(libgdk-3.so.0(x86_64))",
-				"soname(libglib-2.0.so.0(x86_64))",
-				"soname(libgobject-2.0.so.0(x86_64))",
-				"soname(libgtk-3.so.0(x86_64))",
-				"soname(libm.so.6(x86_64))",
-				"soname(libpango-1.0.so.0(x86_64))",
-				"soname(libpangocairo-1.0.so.0(x86_64))",
-				"soname(libwayland-client.so.0(x86_64))",
-				"soname(libwayland-cursor.so.0(x86_64))",
+				"libdecor",
 				"pkgconfig(wayland-client)"
 			],
 			"files": [
 				"/usr/include/libdecor-0/libdecor.h",
 				"/usr/lib/libdecor-0.so",
-				"/usr/lib/libdecor/plugins-1/libdecor-cairo.so",
-				"/usr/lib/libdecor/plugins-1/libdecor-gtk.so",
 				"/usr/lib/pkgconfig/libdecor-0.pc"
 			],
 			"name": "libdecor-devel",
 			"provides": [
-				"pkgconfig(libdecor-0)",
-				"soname(libdecor-cairo.so(x86_64))",
-				"soname(libdecor-gtk.so(x86_64))"
+				"pkgconfig(libdecor-0)"
 			]
 		}
 	},
 	"source-name": "libdecor",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.2.2"
 }

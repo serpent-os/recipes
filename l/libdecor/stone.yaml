@@ -5,7 +5,7 @@
 #
 name        : libdecor
 version     : 0.2.2
-release     : 1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/libdecor/
 upstreams   :
     - https://gitlab.freedesktop.org/libdecor/libdecor/-/releases/0.2.2/downloads/libdecor-0.2.2.tar.xz : 16a288e24354d461b20dda9cf38e68543569134f04e4b7fa2914aa647907dfac
@@ -19,6 +19,10 @@ builddeps   :
     - pkgconfig(gtk+-3.0)
     - pkgconfig(wayland-client)
     - pkgconfig(wayland-protocols)
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/libdecor/plugins-1/*.so
 setup       : |
     %meson
 build       : |
