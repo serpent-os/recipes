@@ -1,0 +1,83 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"orc": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/orc-bugreport",
+				"/usr/bin/orcc",
+				"/usr/lib/liborc-0.4.so.0",
+				"/usr/lib/liborc-0.4.so.0.39.0",
+				"/usr/lib/liborc-test-0.4.so.0",
+				"/usr/lib/liborc-test-0.4.so.0.39.0"
+			],
+			"name": "orc",
+			"provides": [
+				"binary(orc-bugreport)",
+				"binary(orcc)",
+				"soname(liborc-0.4.so.0(x86_64))",
+				"soname(liborc-test-0.4.so.0(x86_64))"
+			]
+		},
+		"orc-devel": {
+			"depends": [
+				"orc"
+			],
+			"files": [
+				"/usr/include/orc-0.4/orc-test/orcarray.h",
+				"/usr/include/orc-0.4/orc-test/orcprofile.h",
+				"/usr/include/orc-0.4/orc-test/orcrandom.h",
+				"/usr/include/orc-0.4/orc-test/orctest.h",
+				"/usr/include/orc-0.4/orc/orc-stdint.h",
+				"/usr/include/orc-0.4/orc/orc.h",
+				"/usr/include/orc-0.4/orc/orcarm.h",
+				"/usr/include/orc-0.4/orc/orcavx.h",
+				"/usr/include/orc-0.4/orc/orcbytecode.h",
+				"/usr/include/orc-0.4/orc/orcbytecodes.h",
+				"/usr/include/orc-0.4/orc/orccode.h",
+				"/usr/include/orc-0.4/orc/orccompiler.h",
+				"/usr/include/orc-0.4/orc/orcconstant.h",
+				"/usr/include/orc-0.4/orc/orccpu.h",
+				"/usr/include/orc-0.4/orc/orcdebug.h",
+				"/usr/include/orc-0.4/orc/orcemulateopcodes.h",
+				"/usr/include/orc-0.4/orc/orcexecutor.h",
+				"/usr/include/orc-0.4/orc/orcfunctions.h",
+				"/usr/include/orc-0.4/orc/orcinstruction.h",
+				"/usr/include/orc-0.4/orc/orcinternal.h",
+				"/usr/include/orc-0.4/orc/orclimits.h",
+				"/usr/include/orc-0.4/orc/orcmips.h",
+				"/usr/include/orc-0.4/orc/orcmmx.h",
+				"/usr/include/orc-0.4/orc/orcneon.h",
+				"/usr/include/orc-0.4/orc/orconce.h",
+				"/usr/include/orc-0.4/orc/orcopcode.h",
+				"/usr/include/orc-0.4/orc/orcparse.h",
+				"/usr/include/orc-0.4/orc/orcpowerpc.h",
+				"/usr/include/orc-0.4/orc/orcprogram.h",
+				"/usr/include/orc-0.4/orc/orcrule.h",
+				"/usr/include/orc-0.4/orc/orcsse.h",
+				"/usr/include/orc-0.4/orc/orctarget.h",
+				"/usr/include/orc-0.4/orc/orcutils.h",
+				"/usr/include/orc-0.4/orc/orcvariable.h",
+				"/usr/include/orc-0.4/orc/orcx86.h",
+				"/usr/include/orc-0.4/orc/orcx86insn.h",
+				"/usr/lib/liborc-0.4.so",
+				"/usr/lib/liborc-test-0.4.so",
+				"/usr/lib/pkgconfig/orc-0.4.pc",
+				"/usr/lib/pkgconfig/orc-test-0.4.pc"
+			],
+			"name": "orc-devel",
+			"provides": [
+				"pkgconfig(orc-0.4)",
+				"pkgconfig(orc-test-0.4)"
+			]
+		}
+	},
+	"source-name": "orc",
+	"source-release": "1",
+	"source-version": "0.4.39"
+}

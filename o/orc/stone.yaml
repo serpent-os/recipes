@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : orc
+version     : 0.4.39
+release     : 1
+homepage    : https://gitlab.freedesktop.org/gstreamer/orc
+upstreams   :
+    - https://gstreamer.freedesktop.org/src/orc/orc-0.4.39.tar.xz : 33ed2387f49b825fa1b9c3b0072e05f259141b895474ad085ae51143d3040cc0
+summary     : Optimized Inner Loop Runtime Compiler
+description : |
+    Orc is a library and set of tools for compiling and executing
+    very simple programs that operate on arrays of data.  The "language"
+    is a generic assembly language that represents many of the features
+    available in SIMD architectures, including saturated addition and
+    subtraction, and many arithmetic operations.
+license     :
+    - BSD-3-Clause
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
