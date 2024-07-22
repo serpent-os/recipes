@@ -9,6 +9,7 @@
 				"binary(ninja)",
 				"binary(nm)",
 				"binary(python3)",
+				"pkgconfig(SDL2_image)",
 				"pkgconfig(alsa)",
 				"pkgconfig(epoxy)",
 				"pkgconfig(fuse3)",
@@ -45,6 +46,7 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libSDL2-2.0.so.0(x86_64))",
+				"soname(libSDL2_image-2.0.so.0(x86_64))",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libasound.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -238,6 +240,7 @@
 				"binary(ninja)",
 				"binary(nm)",
 				"binary(python3)",
+				"pkgconfig(SDL2_image)",
 				"pkgconfig(alsa)",
 				"pkgconfig(epoxy)",
 				"pkgconfig(fuse3)",
@@ -281,6 +284,6 @@
 		}
 	},
 	"source-name": "qemu",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "9.0.2"
 }
