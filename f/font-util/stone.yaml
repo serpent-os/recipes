@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : font-util
+version     : 1.4.1
+release     : 1
+homepage    : https://www.x.org/archive/individual/font
+upstreams   :
+    - https://www.x.org/archive/individual/font/font-util-1.4.1.tar.xz : 5c9f64123c194b150fee89049991687386e6ff36ef2af7b80ba53efaf368cc95
+summary     : X Font Utilities
+description : |
+    X Font Utilities
+license     :
+    - MIT
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
