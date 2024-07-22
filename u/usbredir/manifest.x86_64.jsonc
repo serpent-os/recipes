@@ -1,0 +1,62 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"usbredir": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libusb-1.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/usbredirect",
+				"/usr/lib/libusbredirhost.so.1",
+				"/usr/lib/libusbredirhost.so.1.0.3",
+				"/usr/lib/libusbredirparser.so.1",
+				"/usr/lib/libusbredirparser.so.1.2.1",
+				"/usr/share/man/man1/usbredirect.1"
+			],
+			"name": "usbredir",
+			"provides": [
+				"binary(usbredirect)",
+				"soname(libusbredirhost.so.1(x86_64))",
+				"soname(libusbredirparser.so.1(x86_64))"
+			]
+		},
+		"usbredir-devel": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"pkgconfig(libusb-1.0)",
+				"usbredir"
+			],
+			"files": [
+				"/usr/include/usbredirfilter.h",
+				"/usr/include/usbredirhost.h",
+				"/usr/include/usbredirparser.h",
+				"/usr/include/usbredirproto.h",
+				"/usr/lib/libusbredirhost.so",
+				"/usr/lib/libusbredirparser.so",
+				"/usr/lib/pkgconfig/libusbredirhost.pc",
+				"/usr/lib/pkgconfig/libusbredirparser-0.5.pc"
+			],
+			"name": "usbredir-devel",
+			"provides": [
+				"pkgconfig(libusbredirhost)",
+				"pkgconfig(libusbredirparser-0.5)"
+			]
+		}
+	},
+	"source-name": "usbredir",
+	"source-release": "1",
+	"source-version": "0.14.0"
+}
