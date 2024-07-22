@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libdisplay-info
+version     : 0.2.0
+release     : 1
+homepage    : https://gitlab.freedesktop.org/emersion/libdisplay-info
+upstreams   :
+    - https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.2.0/downloads/libdisplay-info-0.2.0.tar.xz : 5a2f002a16f42dd3540c8846f80a90b8f4bdcd067a94b9d2087bc2feae974176
+summary     : EDID and DisplayID library
+description : |
+    EDID and DisplayID library
+license     :
+    - MIT
+builddeps   :
+    - pkgconfig(hwdata)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
