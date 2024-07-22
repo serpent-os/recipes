@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : '252.23'
-release     : 36
+release     : 37
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -60,6 +60,25 @@ rundeps     :
     - binary(setfont)
     - system-accounts
     - tzdata
+packages    :
+    - "%(name)-networkd":
+        summary: systemd-networkd
+        description: systemd-networkd
+        paths:
+            - /usr/bin/networkctl
+            - /usr/lib/systemd/network
+            - /usr/lib/systemd/system/*networkd*
+            - /usr/lib/systemd/*networkd*
+            - /usr/lib/sysusers.d/*networkd*
+            - /usr/lib/tmpfiles.d/*networkd*
+            - /usr/share/dbus-1/interfaces/*network1*
+            - /usr/share/dbus-1/system-services/*network1*
+            - /usr/share/dbus-1/system.d/*network1*
+            - /usr/share/man/man1/network*
+            - /usr/share/man/man5/*network*
+            - /usr/share/man/man8/*network*
+            - /usr/share/polkit-1/actions/*network*
+            - /usr/share/polkit-1/rules.d/*network*
 toolchain   : gnu
 setup       : |
     %patch %(pkgdir)/0001-Set-DefaultTimeoutStopSec-to-5s.patch
@@ -68,6 +87,7 @@ setup       : |
     %patch %(pkgdir)/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
     %patch %(pkgdir)/0001-gpt-auto-generate-Stop-automounting-xbootldr-and-esp.patch
     %patch %(pkgdir)/protocols.patch
+    %patch %(pkgdir)/linux-headers.patch
 
     %meson \
         -Dbpf-framework=false \
