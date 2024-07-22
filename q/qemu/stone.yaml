@@ -5,7 +5,7 @@
 #
 name        : qemu
 version     : 9.0.2
-release     : 3
+release     : 4
 homepage    : http://www.qemu-project.org/
 upstreams   :
     - https://download.qemu.org/qemu-9.0.2.tar.xz : a8c3f596aece96da3b00cafb74baafa0d14515eafb8ed1ee3f7f5c2d0ebf02b6
@@ -44,6 +44,8 @@ builddeps   :
     - pkgconfig(libusb-1.0)
     - pkgconfig(libzstd)
     - pkgconfig(pixman-1)
+    - pkgconfig(spice-protocol)
+    - pkgconfig(spice-server)
     - pkgconfig(virglrenderer)
     - pkgconfig(x11)
     - pkgconfig(xkbcommon)

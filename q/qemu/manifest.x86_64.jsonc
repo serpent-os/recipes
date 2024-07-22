@@ -33,6 +33,8 @@
 				"pkgconfig(libusb-1.0)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(pixman-1)",
+				"pkgconfig(spice-protocol)",
+				"pkgconfig(spice-server)",
 				"pkgconfig(virglrenderer)",
 				"pkgconfig(x11)",
 				"pkgconfig(xkbcommon)",
@@ -66,7 +68,9 @@
 				"soname(libpixman-1.so.0(x86_64))",
 				"soname(libpng16.so.16(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
+				"soname(libsasl2.so.3(x86_64))",
 				"soname(libseccomp.so.2(x86_64))",
+				"soname(libspice-server.so.1(x86_64))",
 				"soname(libssh.so.4(x86_64))",
 				"soname(libudev.so.1(x86_64))",
 				"soname(libusb-1.0.so.0(x86_64))",
@@ -256,6 +260,8 @@
 				"pkgconfig(libusb-1.0)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(pixman-1)",
+				"pkgconfig(spice-protocol)",
+				"pkgconfig(spice-server)",
 				"pkgconfig(virglrenderer)",
 				"pkgconfig(x11)",
 				"pkgconfig(xkbcommon)",
@@ -272,6 +278,6 @@
 		}
 	},
 	"source-name": "qemu",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "9.0.2"
 }
