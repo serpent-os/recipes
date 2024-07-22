@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : virglrenderer
+version     : 1.0.1
+release     : 1
+homepage    : https://gitlab.freedesktop.org/virgl/virglrenderer
+upstreams   :
+    - https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/1.0.1/virglrenderer-1.0.1.tar.gz : e4a61bfeda06e34b8df188366abff77b090fcd877536fd83db83448cdd56c72e
+summary     : Virtual OpenGL Renderer
+description : |
+    Virtual OpenGL Renderer
+license     :
+    - MIT
+builddeps   :
+    - pkgconfig(epoxy)
+    - pkgconfig(gbm)
+    - pkgconfig(libdrm)
+    - pkgconfig(libva)
+    - pkgconfig(libva-drm)
+    - pkgconfig(vulkan)
+    - pkgconfig(x11)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

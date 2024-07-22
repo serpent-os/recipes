@@ -1,0 +1,67 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"virglrenderer": {
+			"build-depends": [
+				"pkgconfig(epoxy)",
+				"pkgconfig(gbm)",
+				"pkgconfig(libdrm)",
+				"pkgconfig(libva)",
+				"pkgconfig(libva-drm)",
+				"pkgconfig(vulkan)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libdrm.so.2(x86_64))",
+				"soname(libepoxy.so.0(x86_64))",
+				"soname(libgbm.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/virgl_test_server",
+				"/usr/lib/libvirglrenderer.so.1",
+				"/usr/lib/libvirglrenderer.so.1.8.9"
+			],
+			"name": "virglrenderer",
+			"provides": [
+				"binary(virgl_test_server)",
+				"soname(libvirglrenderer.so.1(x86_64))"
+			]
+		},
+		"virglrenderer-devel": {
+			"build-depends": [
+				"pkgconfig(epoxy)",
+				"pkgconfig(gbm)",
+				"pkgconfig(libdrm)",
+				"pkgconfig(libva)",
+				"pkgconfig(libva-drm)",
+				"pkgconfig(vulkan)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"pkgconfig(epoxy)",
+				"pkgconfig(gbm)",
+				"pkgconfig(libdrm)",
+				"pkgconfig(x11)",
+				"virglrenderer"
+			],
+			"files": [
+				"/usr/include/virgl/virgl-version.h",
+				"/usr/include/virgl/virglrenderer.h",
+				"/usr/lib/libvirglrenderer.so",
+				"/usr/lib/pkgconfig/virglrenderer.pc"
+			],
+			"name": "virglrenderer-devel",
+			"provides": [
+				"pkgconfig(virglrenderer)"
+			]
+		}
+	},
+	"source-name": "virglrenderer",
+	"source-release": "1",
+	"source-version": "1.0.1"
+}
