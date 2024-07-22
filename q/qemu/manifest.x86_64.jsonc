@@ -33,6 +33,7 @@
 				"pkgconfig(libusb-1.0)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(pixman-1)",
+				"pkgconfig(virglrenderer)",
 				"pkgconfig(x11)",
 				"pkgconfig(xkbcommon)",
 				"pkgconfig(zlib)",
@@ -69,6 +70,7 @@
 				"soname(libssh.so.4(x86_64))",
 				"soname(libudev.so.1(x86_64))",
 				"soname(libusb-1.0.so.0(x86_64))",
+				"soname(libvirglrenderer.so.1(x86_64))",
 				"soname(libxkbcommon.so.0(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
@@ -88,6 +90,7 @@
 				"/usr/bin/qemu-system-x86_64",
 				"/usr/bin/qemu-x86_64",
 				"/usr/lib/qemu/qemu-bridge-helper",
+				"/usr/lib/qemu/vhost-user-gpu",
 				"/usr/share/applications/qemu.desktop",
 				"/usr/share/icons/hicolor/128x128/apps/qemu.png",
 				"/usr/share/icons/hicolor/16x16/apps/qemu.png",
@@ -201,6 +204,7 @@
 				"/usr/share/qemu/vgabios-virtio.bin",
 				"/usr/share/qemu/vgabios-vmware.bin",
 				"/usr/share/qemu/vgabios.bin",
+				"/usr/share/qemu/vhost-user/50-qemu-gpu.json",
 				"/usr/share/qemu/vof-nvram.bin",
 				"/usr/share/qemu/vof.bin"
 			],
@@ -252,6 +256,7 @@
 				"pkgconfig(libusb-1.0)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(pixman-1)",
+				"pkgconfig(virglrenderer)",
 				"pkgconfig(x11)",
 				"pkgconfig(xkbcommon)",
 				"pkgconfig(zlib)",
@@ -267,6 +272,6 @@
 		}
 	},
 	"source-name": "qemu",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "9.0.2"
 }
