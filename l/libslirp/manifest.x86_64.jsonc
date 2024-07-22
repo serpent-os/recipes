@@ -1,0 +1,45 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libslirp": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libslirp.so.0",
+				"/usr/lib/libslirp.so.0.4.0"
+			],
+			"name": "libslirp",
+			"provides": [
+				"soname(libslirp.so.0(x86_64))"
+			]
+		},
+		"libslirp-devel": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)"
+			],
+			"depends": [
+				"libslirp",
+				"pkgconfig(glib-2.0)"
+			],
+			"files": [
+				"/usr/include/slirp/libslirp-version.h",
+				"/usr/include/slirp/libslirp.h",
+				"/usr/lib/libslirp.so",
+				"/usr/lib/pkgconfig/slirp.pc"
+			],
+			"name": "libslirp-devel",
+			"provides": [
+				"pkgconfig(slirp)"
+			]
+		}
+	},
+	"source-name": "libslirp",
+	"source-release": "1",
+	"source-version": "4.8.0"
+}
