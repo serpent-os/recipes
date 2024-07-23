@@ -5,10 +5,10 @@
 #
 name        : cosmic-term
 version     : 0.1.0
-release     : 1
+release     : 2
 homepage    : https://github.com/pop-os/cosmic-term
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-term : 4169fffa0fef71f1cd6a9f87838d170990b69a68
+    - git|https://github.com/pop-os/cosmic-term : 06520014ec94914ebdf43b113f28ecf0d617c420
 summary     : Cosmic Desktop Terminal Application
 description : |
     Cosmic desktop Terminal Application
@@ -16,10 +16,8 @@ license     :
     - GPL-3.0
 builddeps   :
     - binary(just)
+    - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export HOME=$(pwd)
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
     # Hotpatch the justfile to support our triple+release profile for installing
     sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
