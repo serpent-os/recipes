@@ -5,10 +5,10 @@
 #
 name        : cosmic-files
 version     : 0.1.0
-release     : 1
+release     : 2
 homepage    : https://github.com/pop-os/cosmic-files
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-files : dc3c4eb731bc719b4d6ea3c08ac28f5276cae092
+    - git|https://github.com/pop-os/cosmic-files : 1820433da4940279749bef923b9f43e38ad75eef
 summary     : Cosmic Desktop File Browser
 description : |
     Cosmic desktop File Browser
@@ -16,10 +16,9 @@ license     :
     - GPL-3.0
 builddeps   :
     - binary(just)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export HOME=$(pwd)
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
     # Hotpatch the justfile to support our triple+release profile for installing
     sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
