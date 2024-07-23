@@ -1,0 +1,35 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-session": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"binary(cosmic-comp)",
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cosmic-session",
+				"/usr/bin/start-cosmic",
+				"/usr/lib/systemd/user/cosmic-session.target",
+				"/usr/share/applications/cosmic-mimeapps.list",
+				"/usr/share/wayland-sessions/cosmic.desktop"
+			],
+			"name": "cosmic-session",
+			"provides": [
+				"binary(cosmic-session)",
+				"binary(start-cosmic)"
+			]
+		}
+	},
+	"source-name": "cosmic-session",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}

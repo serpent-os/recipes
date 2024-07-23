@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-session
+version     : "0.1.0"
+release     : 1
+summary     : Cosmic Session Management
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-session
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-session.git : 577a181122881ac5e1a2bd263edf6cd53d17b3dc
+description : |
+    Cosmic Session Management
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - pkgconfig(xkbcommon)
+rundeps     :
+    - binary(cosmic-comp)
+networking  : yes
+setup       : |
+    # Hotpatch the justfile to support our triple+release profile for installing
+    sed -e "s@/release/@/%(target_triple)/release/@g" -i Justfile
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build
+install     : |
+    just rootdir=%(installroot) install
