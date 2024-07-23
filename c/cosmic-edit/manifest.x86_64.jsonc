@@ -4,7 +4,8 @@
 	"packages": {
 		"cosmic-edit": {
 			"build-depends": [
-				"binary(just)"
+				"binary(just)",
+				"pkgconfig(xkbcommon)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -32,6 +33,6 @@
 		}
 	},
 	"source-name": "cosmic-edit",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.0"
 }
