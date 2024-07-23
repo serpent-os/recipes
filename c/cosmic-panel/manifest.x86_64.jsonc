@@ -1,0 +1,68 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-panel": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cosmic-panel",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/anchor",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/anchor_gap",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/autohide",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/background",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/border_radius",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/exclusive_zone",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/expand_to_edges",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/keyboard_interactivity",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/layer",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/margin",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/name",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/opacity",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/output",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/padding",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/plugins_center",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/plugins_wings",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/size",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Dock/v1/spacing",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/anchor",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/anchor_gap",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/autohide",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/background",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/border_radius",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/exclusive_zone",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/expand_to_edges",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/keyboard_interactivity",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/layer",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/margin",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/name",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/opacity",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/output",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/padding",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/plugins_center",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/plugins_wings",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/size",
+				"/usr/share/cosmic/com.system76.CosmicPanel.Panel/v1/spacing",
+				"/usr/share/cosmic/com.system76.CosmicPanel/v1/entries"
+			],
+			"name": "cosmic-panel",
+			"provides": [
+				"binary(cosmic-panel)"
+			]
+		}
+	},
+	"source-name": "cosmic-panel",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}
