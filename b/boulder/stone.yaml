@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.1.0
-release     : 48
+release     : 49
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/moss
@@ -13,13 +13,10 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/moss.git : f58693acdac7755b1a7a24cecb547d728a0ec339
+    - git|https://github.com/serpent-os/moss.git : 97b414e230beecbfaf55dd6ab63eeb2f0f2dd154
 builddeps   :
     - binary(cargo)
 networking  : yes
-environment : |
-    export HOME=$(pwd)
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
     # TODO: Enable zstd in llvm
     %patch %(pkgdir)/no-zstd.patch
