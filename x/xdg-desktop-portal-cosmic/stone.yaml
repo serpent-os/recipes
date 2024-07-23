@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : xdg-desktop-portal-cosmic
+version     : "0.1.0"
+release     : 1
+summary     : Cosmic Desktop - XDG Portal Support
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/xdg-desktop-portal-cosmic
+upstreams   :
+    - git|https://github.com/pop-os/xdg-desktop-portal-cosmic.git : 813352e64194d54c1959a468a7749a5b2a1957f4
+description : |
+    Cosmic Desktop - XDG Portal Support
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - pkgconfig(gbm)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(xkbcommon)
+rundeps     :
+    - xdg-desktop-portal
+networking  : yes
+setup       : |
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build
+install     : |
+    %make_install TARGET=%(target_triple)/release prefix=%(prefix)

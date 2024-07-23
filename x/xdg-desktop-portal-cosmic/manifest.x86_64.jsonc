@@ -1,0 +1,39 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xdg-desktop-portal-cosmic": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"pkgconfig(gbm)",
+				"pkgconfig(libpipewire-0.3)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgbm.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpipewire-0.3.so.0(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))",
+				"xdg-desktop-portal"
+			],
+			"files": [
+				"/usr/libexec/xdg-desktop-portal-cosmic",
+				"/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.cosmic.service",
+				"/usr/share/icons/hicolor/scalable/actions/screenshot-screen-symbolic.svg",
+				"/usr/share/icons/hicolor/scalable/actions/screenshot-selection-symbolic.svg",
+				"/usr/share/icons/hicolor/scalable/actions/screenshot-window-symbolic.svg",
+				"/usr/share/xdg-desktop-portal/cosmic-portals.conf",
+				"/usr/share/xdg-desktop-portal/portals/cosmic.portal"
+			],
+			"name": "xdg-desktop-portal-cosmic"
+		}
+	},
+	"source-name": "xdg-desktop-portal-cosmic",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}
