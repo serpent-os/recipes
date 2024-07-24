@@ -1,0 +1,43 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-comp": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"binary(mold)",
+				"pkgconfig(gbm)",
+				"pkgconfig(libinput)",
+				"pkgconfig(libseat)",
+				"pkgconfig(libudev)",
+				"pkgconfig(pixman-1)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgbm.so.1(x86_64))",
+				"soname(libinput.so.10(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpixman-1.so.0(x86_64))",
+				"soname(libseat.so.1(x86_64))",
+				"soname(libudev.so.1(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cosmic-comp",
+				"/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults"
+			],
+			"name": "cosmic-comp",
+			"provides": [
+				"binary(cosmic-comp)"
+			]
+		}
+	},
+	"source-name": "cosmic-comp",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}

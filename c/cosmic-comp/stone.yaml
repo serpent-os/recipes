@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-comp
+version     : "0.1.0"
+release     : 1
+summary     : Cosmic Desktop Compositor
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-comp
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-comp.git : 4f043133bc0365283fbb7aafd81a80dc3e2cecee
+description : |
+    Cosmic Desktop Compositor
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - binary(mold)
+    - pkgconfig(gbm)
+    - pkgconfig(libinput)
+    - pkgconfig(libseat)
+    - pkgconfig(libudev)
+    - pkgconfig(pixman-1)
+    - pkgconfig(xkbcommon)
+networking  : yes
+environment : |
+    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+setup       : |
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 nice %cargo_build
+install     : |
+    %make_install prefix=%(prefix) TARGET=%(target_triple)/release
