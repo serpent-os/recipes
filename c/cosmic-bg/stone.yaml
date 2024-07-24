@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-bg
+version     : "0.1.0"
+release     : 1
+summary     : Cosmic Desktop Background Service
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-bg
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-bg.git : 343410f22b299fbd16e0491ceffb731c15a4e2fd
+description : |
+    Cosmic Desktop Background Service
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - binary(mold)
+    - pkgconfig(xkbcommon)
+networking  : yes
+environment : |
+    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+setup       : |
+    # Hotpatch the justfile to support our triple+release profile for installing
+    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build
+install     : |
+    just rootdir=%(installroot) install
