@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : pop-os-icon-theme
+version     : 3.5.0
+release     : 1
+homepage    : https://github.com/pop-os/icon-theme
+upstreams   :
+    - https://github.com/pop-os/icon-theme/archive/refs/tags/v3.5.0.tar.gz : 917f5e300e927fe2557355717793f3284aee869a6ae0b81cd31507f20090d796
+summary     : Pop Icons by System76
+description : |
+    Pop Icons by System76
+license     :
+    - CC-BY-SA-4.0
+rundeps     :
+    - hicolor-icon-theme
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
