@@ -1,0 +1,36 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-settings-daemon": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"binary(mold)",
+				"pkgconfig(libinput)",
+				"pkgconfig(libudev)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libudev.so.1(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cosmic-settings-daemon",
+				"/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/system_actions",
+				"/usr/share/polkit-1/rules.d/cosmic-settings-daemon.rules"
+			],
+			"name": "cosmic-settings-daemon",
+			"provides": [
+				"binary(cosmic-settings-daemon)"
+			]
+		}
+	},
+	"source-name": "cosmic-settings-daemon",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}

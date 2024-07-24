@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-settings-daemon
+version     : "0.1.0"
+release     : 1
+summary     : Cosmic Settings Daemon
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-settings-daemon
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-settings-daemon.git : 54700dfee57d1569efb2179896e36d754c2bf270
+description : |
+    Cosmic Settings Daemon
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - binary(mold)
+    - pkgconfig(libinput)
+    - pkgconfig(libudev)
+    - pkgconfig(xkbcommon)
+networking  : yes
+environment : |
+    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+setup       : |
+      %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+install     : |
+    %make_install prefix=%(prefix) TARGET=%(target_triple)/release
