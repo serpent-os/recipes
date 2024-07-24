@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : sccache
+version     : 0.8.1
+release     : 1
+homepage    : https://github.com/mozilla/sccache
+upstreams   :
+    - https://github.com/mozilla/sccache/archive/refs/tags/v0.8.1.tar.gz : 30b951b49246d5ca7d614e5712215cb5f39509d6f899641f511fb19036b5c4e5
+summary     : Sccache is a ccache-like tool. It is used as a compiler wrapper and avoids compilation when possible.
+description : |
+    Sccache is a ccache-like tool. It is used as a compiler wrapper and avoids compilation when possible. Sccache has the capability to utilize caching in remote storage environments, including various cloud storage options, or alternatively, in local storage.
+license     : Apache-2.0
+networking  : yes
+builddeps   :
+    - pkgconfig(libzstd)
+    - pkgconfig(openssl)
+    - pkgconfig(zlib)
+environment : |
+    export ZSTD_SYS_USE_PKG_CONFIG=1
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build --features all,dist-server
+install     : |
+    %cargo_install sccache sccache-dist
