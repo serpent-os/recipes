@@ -1,0 +1,34 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"sccache": {
+			"build-depends": [
+				"pkgconfig(libzstd)",
+				"pkgconfig(openssl)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libssl.so.3(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/sccache",
+				"/usr/bin/sccache-dist"
+			],
+			"name": "sccache",
+			"provides": [
+				"binary(sccache)",
+				"binary(sccache-dist)"
+			]
+		}
+	},
+	"source-name": "sccache",
+	"source-release": "1",
+	"source-version": "0.8.1"
+}
