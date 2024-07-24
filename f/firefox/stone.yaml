@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : firefox
-version     : "128.0"
-release     : 4
+version     : 128.0.2
+release     : 5
 homepage    : https://www.mozilla.org/
 upstreams   :
-    - https://archive.mozilla.org/pub/firefox/releases/128.0/source/firefox-128.0.source.tar.xz : 65271ffefb235ea1e162a081f2074a0f06fce27b2f613f573c126ba8eef95172
+    - https://ftp.mozilla.org/pub/firefox/releases/128.0.2/source/firefox-128.0.2.source.tar.xz : 39baed6a9a836adb03ed443ee568438a5093f89e5f8bad3f7b11be8f73b3e45f
 summary     : Firefox web browser
 description : |
     Firefox web browser
