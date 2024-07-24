@@ -1,0 +1,46 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xwayland-run": {
+			"depends": [
+				"binary(Xwayland)",
+				"binary(mutter)"
+			],
+			"files": [
+				"/usr/bin/wlheadless-run",
+				"/usr/bin/xwayland-run",
+				"/usr/bin/xwfb-run",
+				"/usr/lib/python3.11/site-packages/wlheadless/__init__.py",
+				"/usr/lib/python3.11/site-packages/wlheadless/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/wlheadless/__pycache__/cage.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/wlheadless/__pycache__/gnome-kiosk.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/wlheadless/__pycache__/kwin.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/wlheadless/__pycache__/mutter.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/wlheadless/__pycache__/weston.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/wlheadless/__pycache__/wlheadless_common.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/wlheadless/__pycache__/xwayland.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/wlheadless/cage.py",
+				"/usr/lib/python3.11/site-packages/wlheadless/gnome-kiosk.py",
+				"/usr/lib/python3.11/site-packages/wlheadless/kwin.py",
+				"/usr/lib/python3.11/site-packages/wlheadless/mutter.py",
+				"/usr/lib/python3.11/site-packages/wlheadless/weston.py",
+				"/usr/lib/python3.11/site-packages/wlheadless/wlheadless_common.py",
+				"/usr/lib/python3.11/site-packages/wlheadless/xwayland.py",
+				"/usr/share/man/man1/wlheadless-run.1",
+				"/usr/share/man/man1/xwayland-run.1",
+				"/usr/share/man/man1/xwfb-run.1",
+				"/usr/share/wlheadless/wlheadless.conf"
+			],
+			"name": "xwayland-run",
+			"provides": [
+				"binary(wlheadless-run)",
+				"binary(xwayland-run)",
+				"binary(xwfb-run)"
+			]
+		}
+	},
+	"source-name": "xwayland-run",
+	"source-release": "1",
+	"source-version": "0.0.4"
+}
