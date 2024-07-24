@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : xwayland-run
+version     : 0.0.4
+release     : 1
+homepage    : https://gitlab.freedesktop.org/ofourdan/xwayland-run
+upstreams   :
+    - https://gitlab.freedesktop.org/ofourdan/xwayland-run/-/archive/0.0.4/xwayland-run-0.0.4.tar.gz : 409eaf44938b120e8abe4e7c4a384d71d6ee1c72239f36e585fa0a2815d0fd8f
+summary     : xwayland-run contains a set of small utilities revolving around running Xwayland and various Wayland compositor headless.
+description : |
+    xwayland-run contains a set of small utilities revolving around running Xwayland and various Wayland compositor headless. Initially, xwayland-run was intended as a replacement for the xvfb-run utility
+    that ships with some distributions. However, while implementing the features for spawning various Wayland compositors headless and Xwayland rootful, it became clear that it might be useful to
+    actually split that into different (yet related) smaller utilities which could be used separately for different purposes. So now, xwayland-run actually contains 3 different tools, namely:
+
+    xwayland-run, to spawn an X11 client within its own dedicated Xwayland rootful instance,
+    wlheadless-run to run a Wayland client on a set of supported Wayland headless compositors,
+    xwfb-run, a combination of the two other tools above to be used as a direct replacement for xvfb-run specifically.
+license     : GPL-2.0-or-later
+rundeps     :
+    - binary(mutter)
+    - binary(Xwayland)
+setup       : |
+    %meson -Dcompositor=mutter
+build       : |
+    %meson_build
+install     : |
+    %meson_install
