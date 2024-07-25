@@ -46,6 +46,14 @@
 				"pkgconfig(zlib)",
 				"rustls-ffi"
 			],
+			"depends": [
+				"curl",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libnghttp2)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(rustls)",
+				"pkgconfig(zlib)"
+			],
 			"files": [
 				"/usr/include/curl/curl.h",
 				"/usr/include/curl/curlver.h",
@@ -103,6 +111,7 @@
 				"/usr/share/man/man3/CURLINFO_PROXYAUTH_AVAIL.3",
 				"/usr/share/man/man3/CURLINFO_PROXY_ERROR.3",
 				"/usr/share/man/man3/CURLINFO_PROXY_SSL_VERIFYRESULT.3",
+				"/usr/share/man/man3/CURLINFO_QUEUE_TIME_T.3",
 				"/usr/share/man/man3/CURLINFO_REDIRECT_COUNT.3",
 				"/usr/share/man/man3/CURLINFO_REDIRECT_TIME.3",
 				"/usr/share/man/man3/CURLINFO_REDIRECT_TIME_T.3",
@@ -132,6 +141,7 @@
 				"/usr/share/man/man3/CURLINFO_TLS_SSL_PTR.3",
 				"/usr/share/man/man3/CURLINFO_TOTAL_TIME.3",
 				"/usr/share/man/man3/CURLINFO_TOTAL_TIME_T.3",
+				"/usr/share/man/man3/CURLINFO_USED_PROXY.3",
 				"/usr/share/man/man3/CURLINFO_XFER_ID.3",
 				"/usr/share/man/man3/CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE.3",
 				"/usr/share/man/man3/CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE.3",
@@ -202,6 +212,7 @@
 				"/usr/share/man/man3/CURLOPT_DOH_SSL_VERIFYPEER.3",
 				"/usr/share/man/man3/CURLOPT_DOH_SSL_VERIFYSTATUS.3",
 				"/usr/share/man/man3/CURLOPT_DOH_URL.3",
+				"/usr/share/man/man3/CURLOPT_ECH.3",
 				"/usr/share/man/man3/CURLOPT_EGDSOCKET.3",
 				"/usr/share/man/man3/CURLOPT_ERRORBUFFER.3",
 				"/usr/share/man/man3/CURLOPT_EXPECT_100_TIMEOUT_MS.3",
@@ -370,6 +381,7 @@
 				"/usr/share/man/man3/CURLOPT_SEEKDATA.3",
 				"/usr/share/man/man3/CURLOPT_SEEKFUNCTION.3",
 				"/usr/share/man/man3/CURLOPT_SERVER_RESPONSE_TIMEOUT.3",
+				"/usr/share/man/man3/CURLOPT_SERVER_RESPONSE_TIMEOUT_MS.3",
 				"/usr/share/man/man3/CURLOPT_SERVICE_NAME.3",
 				"/usr/share/man/man3/CURLOPT_SHARE.3",
 				"/usr/share/man/man3/CURLOPT_SOCKOPTDATA.3",
@@ -416,6 +428,7 @@
 				"/usr/share/man/man3/CURLOPT_SUPPRESS_CONNECT_HEADERS.3",
 				"/usr/share/man/man3/CURLOPT_TCP_FASTOPEN.3",
 				"/usr/share/man/man3/CURLOPT_TCP_KEEPALIVE.3",
+				"/usr/share/man/man3/CURLOPT_TCP_KEEPCNT.3",
 				"/usr/share/man/man3/CURLOPT_TCP_KEEPIDLE.3",
 				"/usr/share/man/man3/CURLOPT_TCP_KEEPINTVL.3",
 				"/usr/share/man/man3/CURLOPT_TCP_NODELAY.3",
@@ -519,6 +532,7 @@
 				"/usr/share/man/man3/curl_multi_strerror.3",
 				"/usr/share/man/man3/curl_multi_timeout.3",
 				"/usr/share/man/man3/curl_multi_wait.3",
+				"/usr/share/man/man3/curl_multi_waitfds.3",
 				"/usr/share/man/man3/curl_multi_wakeup.3",
 				"/usr/share/man/man3/curl_pushheader_byname.3",
 				"/usr/share/man/man3/curl_pushheader_bynum.3",
@@ -563,6 +577,6 @@
 		}
 	},
 	"source-name": "curl",
-	"source-release": "8",
-	"source-version": "8.5.0"
+	"source-release": "9",
+	"source-version": "8.9.0"
 }
