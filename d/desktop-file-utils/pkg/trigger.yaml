@@ -1,0 +1,13 @@
+name: desktopdb
+description: |
+    Update the desktop database
+
+handlers:
+    mimedb:
+        run: /usr/bin/update-desktop-database
+        args: ["/usr/share/applications"]
+
+paths:
+    "/usr/share/applications/*.desktop" :
+        handlers:
+            - desktopdb

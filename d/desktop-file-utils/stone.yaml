@@ -5,7 +5,7 @@
 #
 name        : desktop-file-utils
 version     : 0.27
-release     : 1
+release     : 2
 homepage    : https://www.freedesktop.org/wiki/Software/desktop-file-utils/
 upstreams   :
     - https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.27.tar.xz : a0817df39ce385b6621880407c56f1f298168c040c2032cedf88d5b76affe836
@@ -22,3 +22,4 @@ build       : |
     %meson_build
 install     : |
     %meson_install
+    %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/tx.d/desktop_file_utils.yaml

@@ -20,7 +20,8 @@
 				"/usr/share/man/man1/desktop-file-edit.1",
 				"/usr/share/man/man1/desktop-file-install.1",
 				"/usr/share/man/man1/desktop-file-validate.1",
-				"/usr/share/man/man1/update-desktop-database.1"
+				"/usr/share/man/man1/update-desktop-database.1",
+				"/usr/share/moss/triggers/tx.d/desktop_file_utils.yaml"
 			],
 			"name": "desktop-file-utils",
 			"provides": [
@@ -32,6 +33,6 @@
 		}
 	},
 	"source-name": "desktop-file-utils",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.27"
 }
