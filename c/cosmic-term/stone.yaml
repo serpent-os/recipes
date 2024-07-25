@@ -5,10 +5,10 @@
 #
 name        : cosmic-term
 version     : 0.1.0
-release     : 2
+release     : 3
 homepage    : https://github.com/pop-os/cosmic-term
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-term : 06520014ec94914ebdf43b113f28ecf0d617c420
+    - git|https://github.com/pop-os/cosmic-term : 72391e782da30038d806413660662f775d384cc1
 summary     : Cosmic Desktop Terminal Application
 description : |
     Cosmic desktop Terminal Application
@@ -23,6 +23,6 @@ setup       : |
     sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build
+    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
 install     : |
     just rootdir=%(installroot) install
