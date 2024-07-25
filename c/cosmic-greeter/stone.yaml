@@ -1,0 +1,44 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-greeter
+version     : "0.1.0"
+release     : 1
+summary     : Cosmic Desktop Greeter
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-greeter
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-greeter.git : acc30acc62533cb23c474f4c36af607b75d5d0e8
+description : |
+    Cosmic Desktop Greeter
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - binary(mold)
+    - cmake(Clang)
+    - pkgconfig(dbus-1)
+    - pkgconfig(libinput)
+    - pkgconfig(libseat)
+    - pkgconfig(libudev)
+    - pkgconfig(pam)
+    - pkgconfig(xkbcommon)
+networking  : yes
+environment : |
+    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+setup       : |
+    # Hotpatch the justfile to support our triple+release profile for installing
+    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\" --all
+install     : |
+    just rootdir=%(installroot) install
+
+    # userdb pls
+    rm -rfv %(installroot)%(libdir)/sysusers.d
+    %install_file %(pkgdir)/cosmic-greeter.group %(installroot)%(libdir)/userdb/cosmic-greeter.group
+    ln -s cosmic-greeter.group %(installroot)%(libdir)/userdb/23.group
+    %install_file %(pkgdir)/cosmic-greeter.user %(installroot)%(libdir)/userdb/cosmic-greeter.user
+    ln -s cosmic-greeter.user %(installroot)%(libdir)/userdb/23.user

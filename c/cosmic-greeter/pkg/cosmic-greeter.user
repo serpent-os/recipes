@@ -1,0 +1,12 @@
+{
+    "userName" : "cosmic-greeter",
+    "realName" : "Cosmic Desdktop Display Manager",
+    "uid" : 23,
+    "gid" : 23,
+    "disposition" : "system",
+    "locked" : false,
+    "homeDirectory": "/var/lib/cosmic-greeter",
+    "memberOf": [
+        "video"
+    ]
+}

@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-greeter": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"binary(mold)",
+				"cmake(Clang)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(libinput)",
+				"pkgconfig(libseat)",
+				"pkgconfig(libudev)",
+				"pkgconfig(pam)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpam.so.0(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cosmic-greeter",
+				"/usr/bin/cosmic-greeter-daemon",
+				"/usr/lib/tmpfiles.d/cosmic-greeter.conf",
+				"/usr/lib/userdb/23.group",
+				"/usr/lib/userdb/23.user",
+				"/usr/lib/userdb/cosmic-greeter.group",
+				"/usr/lib/userdb/cosmic-greeter.user",
+				"/usr/share/dbus-1/system.d/com.system76.CosmicGreeter.conf"
+			],
+			"name": "cosmic-greeter",
+			"provides": [
+				"binary(cosmic-greeter)",
+				"binary(cosmic-greeter-daemon)"
+			]
+		}
+	},
+	"source-name": "cosmic-greeter",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}
