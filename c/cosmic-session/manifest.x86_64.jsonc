@@ -19,10 +19,14 @@
 				"binary(cosmic-randr)",
 				"binary(cosmic-settings-daemon)",
 				"binary(cosmic-workspaces)",
+				"binary(update-desktop-database)",
+				"binary(update-mime-database)",
+				"binary(xdg-user-dirs-gtk-update)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libunwind.so.1(x86_64))"
+				"soname(libunwind.so.1(x86_64))",
+				"wireplumber"
 			],
 			"files": [
 				"/usr/bin/cosmic-session",
@@ -39,6 +43,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.1.0"
 }

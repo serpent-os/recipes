@@ -5,7 +5,7 @@
 #
 name        : cosmic-session
 version     : "0.1.0"
-release     : 2
+release     : 3
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
@@ -28,6 +28,10 @@ rundeps     :
     - binary(cosmic-randr)
     - binary(cosmic-settings-daemon)
     - binary(cosmic-workspaces)
+    - binary(update-desktop-database)
+    - binary(update-mime-database)
+    - binary(xdg-user-dirs-gtk-update)
+    - wireplumber
 networking  : yes
 setup       : |
     # Hotpatch the justfile to support our triple+release profile for installing
