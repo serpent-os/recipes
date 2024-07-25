@@ -4,12 +4,14 @@
 	"packages": {
 		"serpent-gnome-defaults": {
 			"depends": [
+				"font-hack",
 				"gnome-backgrounds",
 				"gnome-shell",
 				"gnome-shell-extension-appindicator"
 			],
 			"files": [
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.background.gschema.override",
+				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.interface.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.peripherals.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.wm.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.shell.gschema.override"
@@ -18,6 +20,6 @@
 		}
 	},
 	"source-name": "serpent-gnome-defaults",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "0.1.0"
 }
