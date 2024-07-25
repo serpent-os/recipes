@@ -5,12 +5,12 @@
 #
 name        : cosmic-applets
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Panel Applets
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-applets
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-applets.git : 0c7083ecb42587c73439e9a07ae8c91c2dc75037
+    - git|https://github.com/pop-os/cosmic-applets.git : 478bb3e500ab1d9e7cbaa1d4d7695d137fbeac8c
 description : |
     Cosmic Panel Applets
 builddeps   :
