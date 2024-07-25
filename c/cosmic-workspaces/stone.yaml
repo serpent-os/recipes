@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-workspaces
+version     : "0.1.0"
+release     : 1
+summary     : Cosmic Desktop Workspaces
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-workspaces
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-workspaces-epoch.git : 2de366939bc4bd475c36ff805fb96272f207bb74
+description : |
+    Cosmic Desktop Workspaces
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - binary(mold)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gbm)
+    - pkgconfig(libinput)
+    - pkgconfig(libudev)
+    - pkgconfig(xkbcommon)
+networking  : yes
+environment : |
+    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+setup       : |
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+install     : |
+    %make_install prefix=%(prefix) TARGET=%(target_triple)/release

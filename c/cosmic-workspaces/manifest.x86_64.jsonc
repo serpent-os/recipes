@@ -1,0 +1,39 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-workspaces": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"binary(mold)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(gbm)",
+				"pkgconfig(libinput)",
+				"pkgconfig(libudev)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgbm.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cosmic-workspaces",
+				"/usr/share/applications/com.system76.CosmicWorkspaces.desktop",
+				"/usr/share/icons/hicolor/scalable/apps/com.system76.CosmicWorkspaces.svg"
+			],
+			"name": "cosmic-workspaces",
+			"provides": [
+				"binary(cosmic-workspaces)"
+			]
+		}
+	},
+	"source-name": "cosmic-workspaces",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}
