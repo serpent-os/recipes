@@ -5,10 +5,10 @@
 #
 name        : cosmic-files
 version     : 0.1.0
-release     : 2
+release     : 3
 homepage    : https://github.com/pop-os/cosmic-files
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-files : 1820433da4940279749bef923b9f43e38ad75eef
+    - git|https://github.com/pop-os/cosmic-files : 82580d5660afe0d77abb57b1badb3f1dcecc4539
 summary     : Cosmic Desktop File Browser
 description : |
     Cosmic desktop File Browser
@@ -24,6 +24,6 @@ setup       : |
     sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build
+    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
 install     : |
     just rootdir=%(installroot) install
