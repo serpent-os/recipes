@@ -5,7 +5,7 @@
 #
 name        : cosmic-panel
 version     : "0.1.0"
-release     : 2
+release     : 3
 summary     : Cosmic Desktop Panel
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-panel
@@ -17,6 +17,8 @@ builddeps   :
     - binary(cargo)
     - binary(just)
     - pkgconfig(xkbcommon)
+rundeps     :
+    - binary(cosmic-applets)
 networking  : yes
 setup       : |
     # Hotpatch the justfile to support our triple+release profile for installing
