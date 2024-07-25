@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-screenshot": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"binary(mold)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(libudev)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cosmic-screenshot",
+				"/usr/share/applications/com.system76.CosmicScreenshot.desktop",
+				"/usr/share/icons/hicolor/128x128/apps/com.system76.CosmicScreenshot.svg",
+				"/usr/share/icons/hicolor/16x16/apps/com.system76.CosmicScreenshot.svg",
+				"/usr/share/icons/hicolor/24x24/apps/com.system76.CosmicScreenshot.svg",
+				"/usr/share/icons/hicolor/256x256/apps/com.system76.CosmicScreenshot.svg",
+				"/usr/share/icons/hicolor/32x32/apps/com.system76.CosmicScreenshot.svg",
+				"/usr/share/icons/hicolor/48x48/apps/com.system76.CosmicScreenshot.svg",
+				"/usr/share/icons/hicolor/64x64/apps/com.system76.CosmicScreenshot.svg"
+			],
+			"name": "cosmic-screenshot",
+			"provides": [
+				"binary(cosmic-screenshot)"
+			]
+		}
+	},
+	"source-name": "cosmic-screenshot",
+	"source-release": "1",
+	"source-version": "0.1.0"
+}
