@@ -3,7 +3,7 @@ description: |
     Update the desktop database
 
 handlers:
-    mimedb:
+    desktopdb:
         run: /usr/bin/update-desktop-database
         args: ["/usr/share/applications"]
 
