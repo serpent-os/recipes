@@ -41,8 +41,6 @@ rundeps     :
 toolchain   : gnu
 networking  : yes
 environment : |
-    export HOME="$(pwd)"
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
     export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
     export ZED_UPDATE_EXPLANATION="Package updates are provided via moss"
 setup       : |
