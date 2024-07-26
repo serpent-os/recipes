@@ -5,8 +5,8 @@
 		"just": {
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
@@ -22,6 +22,6 @@
 		}
 	},
 	"source-name": "just",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.25.2"
 }
