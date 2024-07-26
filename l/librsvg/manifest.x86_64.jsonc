@@ -51,9 +51,9 @@
 			],
 			"name": "librsvg",
 			"provides": [
+				"binary(rsvg-convert)",
 				"soname(libpixbufloader-svg.so(x86_64))",
-				"soname(librsvg-2.so.2(x86_64))",
-				"binary(rsvg-convert)"
+				"soname(librsvg-2.so.2(x86_64))"
 			]
 		},
 		"librsvg-devel": {
@@ -71,6 +71,7 @@
 				"pkgconfig(xshmfence)"
 			],
 			"depends": [
+				"librsvg",
 				"pkgconfig(cairo)",
 				"pkgconfig(gdk-pixbuf-2.0)",
 				"pkgconfig(gio-2.0)",
@@ -93,6 +94,6 @@
 		}
 	},
 	"source-name": "librsvg",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.57.1"
 }

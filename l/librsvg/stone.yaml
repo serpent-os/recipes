@@ -5,7 +5,7 @@
 #
 name        : librsvg
 version     : 2.57.1
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/librsvg
 upstreams   :
     - https://download.gnome.org/sources/librsvg/2.57/librsvg-2.57.1.tar.xz : 074671a3ed6fbcd67cae2a40e539107f4f097ca8a4ab1a894c05e2524ff340ef
@@ -28,9 +28,6 @@ builddeps   :
     - pkgconfig(pango)
     - pkgconfig(xdamage)
     - pkgconfig(xshmfence)
-environment : |
-    export HOME=$(pwd)
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
     %configure
 build       : |
