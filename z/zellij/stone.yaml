@@ -5,24 +5,23 @@
 #
 name        : zellij
 version     : "0.39.2"
-release     : 1
+release     : 2
 license     : MIT
 homepage    : https://zellij.dev/
 upstreams   :
     - git|https://github.com/zellij-org/zellij.git : v0.39.2
 summary     : A terminal workspace with batteries included
 description : |
-    Zellij is a workspace aimed at developers, ops-oriented people 
-    and anyone who loves the terminal. Similar programs are sometimes 
-    called "Terminal Multiplexers".
+    Zellij is a workspace aimed at developers, ops-oriented people and anyone who loves the terminal. Similar programs are sometimes called "Terminal Multiplexers".
 builddeps   :
     - binary(cargo)
     - pkgconfig(openssl)
 networking  : yes
-environment : |
-    export HOME=$(pwd)
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
+setup       : |
+    %cargo_fetch
 build       : |
-    OPENSSL_NO_VENDOR=1 RUST_BACKTRACE=1 cargo build --target=x86_64-unknown-linux-gnu --release
+    OPENSSL_NO_VENDOR=1 %cargo_build
 install     : |
-    %install_bin target/*/release/zellij
+    %cargo_install
+tuning      :
+    - lto : thin
