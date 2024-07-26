@@ -5,7 +5,7 @@
 #
 name        : starship
 version     : "1.17.1"
-release     : 1
+release     : 2
 license     : ISC
 homepage    : https://starship.rs/
 upstreams   :
@@ -18,9 +18,6 @@ builddeps   :
     - binary(cmake)
     - binary(make)
 networking  : yes
-environment : |
-    export HOME=$(pwd)
-    export CARGO_HTTP_CAINFO=%(vendordir)/etc/ssl/certs/ca-certificates.crt
 setup       : |
     %cargo_fetch
 build       : |
@@ -32,6 +29,11 @@ install     : |
     %install_dir %(installroot)/%(datadir)/zsh/site-functions
     %install_dir %(installroot)/%(datadir)/fish/vendor_completions.d
 
-    target/*/release/starship completions bash > %(installroot)/%(completionsdir)/starship.bash
-    target/*/release/starship completions zsh > %(installroot)/%(datadir)/zsh/site-functions/_starship
-    target/*/release/starship completions fish > %(installroot)/%(datadir)/fish/vendor_completions.d/starship.fish
+    target/*/debug/starship completions bash > %(installroot)/%(completionsdir)/starship.bash
+    target/*/debug/starship completions zsh > %(installroot)/%(datadir)/zsh/site-functions/_starship
+    target/*/debug/starship completions fish > %(installroot)/%(datadir)/fish/vendor_completions.d/starship.fish
+check      : |
+    # $HOME .config tests fail and TERM=dumb causing issues in a couple of tests
+    %cargo_test || :
+tuning      :
+    - lto : thin
