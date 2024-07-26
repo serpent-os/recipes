@@ -6,6 +6,7 @@
 			"build-depends": [
 				"binary(cargo)",
 				"binary(m4)",
+				"binary(objdump)",
 				"binary(python3)",
 				"binary(which)",
 				"pkgconfig(icu-i18n)",
@@ -38,10 +39,14 @@
 			"build-depends": [
 				"binary(cargo)",
 				"binary(m4)",
+				"binary(objdump)",
 				"binary(python3)",
 				"binary(which)",
 				"pkgconfig(icu-i18n)",
 				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"mozjs-115"
 			],
 			"files": [
 				"/usr/include/mozjs-115/BaseProfiler.h",
@@ -403,6 +408,6 @@
 		}
 	},
 	"source-name": "mozjs-115",
-	"source-release": "2",
-	"source-version": "115.7.0esr"
+	"source-release": "3",
+	"source-version": "115.13.0esr"
 }
