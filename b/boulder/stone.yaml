@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.1.0
-release     : 49
+release     : 50
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/moss
@@ -13,17 +13,15 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/moss.git : 97b414e230beecbfaf55dd6ab63eeb2f0f2dd154
+    - git|https://github.com/serpent-os/moss.git : efed7749d6e3f5dba41eb3822ca826ca491b001b
 builddeps   :
     - binary(cargo)
 networking  : yes
 setup       : |
-    # TODO: Enable zstd in llvm
-    %patch %(pkgdir)/no-zstd.patch
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build -p boulder
+    %cargo_build -p boulder --profile packaging
 install     : |
-    %install_bin target/*/release/boulder
+    %install_bin target/*/packaging/boulder
     %install_dir %(installroot)%(datadir)/boulder
     cp -Ra boulder/data/* %(installroot)%(datadir)/boulder/.
