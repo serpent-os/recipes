@@ -5,7 +5,7 @@
 #
 name        : cbindgen
 version     : 0.26.0
-release     : 1
+release     : 2
 homepage    : https://github.com/mozilla/cbindgen
 upstreams   :
     - https://github.com/mozilla/cbindgen/archive/refs/tags/0.26.0.tar.gz : b45e1a64875b615702a86ac3084ef69ae32926241cd2b687a30c12474be15105
@@ -14,9 +14,6 @@ description : |
     Generate C bindings from Rust code
 license     : MPL-2.0
 networking  : true
-environment : |
-    export HOME=$(pwd)
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
     %cargo_fetch
 build       : |

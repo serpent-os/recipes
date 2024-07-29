@@ -51,8 +51,6 @@ builddeps   :
     - pkgconfig(zlib)
 rundeps     :
     - binary(cc)
-environment : |
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
     %install_file %(pkgdir)/config.toml config.toml
 build       : |

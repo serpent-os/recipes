@@ -20,14 +20,11 @@ builddeps   :
 networking  : yes
 rundeps     :
     - layout
-environment : |
-    export HOME="$(pwd)"
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
 setup       : |
     # TODO: Enable zstd in llvm
     %patch %(pkgdir)/no-zstd.patch
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build -p moss
+    RUST_BACKTRACE=1 %cargo_build -p moss --profile packaging
 install     : |
-    %install_bin target/*/release/moss
+    %install_bin target/*/packaging/moss

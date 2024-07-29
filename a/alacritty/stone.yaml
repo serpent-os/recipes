@@ -16,8 +16,6 @@ networking  : yes
 license     :
     - Apache-2.0
     - MIT
-environment : |
-    export HOME=$(pwd)
 builddeps   :
     - binary(cargo)
     - binary(cmake)
@@ -25,7 +23,6 @@ builddeps   :
     - binary(scdoc)
     - pkgconfig(fontconfig)
 build       : |
-    export CARGO_HTTP_CAINFO=/usr/share/defaults/etc/ssl/certs/ca-certificates.crt
     make binary
 
     for FILENAME in alacritty-bindings.5 alacritty-msg.1 alacritty.1 alacritty.5; do

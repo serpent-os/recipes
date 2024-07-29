@@ -5,12 +5,12 @@
 #
 name        : helix
 version     : "23.10"
-release     : 1
+release     : 2
 license     : MPL-2.0
 homepage    : https://helix-editor.com/
 upstreams   :
     - git|https://github.com/helix-editor/helix.git : "23.10"
-summary     : A post-modern modal text editor. 
+summary     : A post-modern modal text editor.
 description : |
     A Kakoune / Neovim inspired editor, written in Rust.
 builddeps   :
@@ -18,15 +18,14 @@ builddeps   :
     - binary(git)
 networking  : yes
 environment : |
-    export HOME=$(pwd)
-    export CARGO_HTTP_CAINFO=%(vendordir)/etc/ssl/certs/ca-certificates.crt
     export HELIX_DEFAULT_RUNTIME=%(libexecdir)/runtime
 setup       : |
     %patch %(pkgdir)/remove-grammars.patch
+    %cargo_fetch
 build       : |
-    cargo build --target=x86_64-unknown-linux-gnu --release
+    %cargo_build
 install     : |
-    %install_bin target/*/release/hx
+    %cargo_install hx
 
     %install_dir %(installroot)/%(libexecdir)
 
