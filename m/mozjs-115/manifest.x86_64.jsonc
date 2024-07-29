@@ -408,6 +408,6 @@
 		}
 	},
 	"source-name": "mozjs-115",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "115.13.0esr"
 }
