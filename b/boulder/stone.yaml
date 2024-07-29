@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.1.0
-release     : 50
+release     : 51
 summary     : Package creation tool for Serpent OS
 license     : Zlib
 homepage    : https://github.com/serpent-os/moss
