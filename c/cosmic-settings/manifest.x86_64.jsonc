@@ -6,7 +6,6 @@
 			"build-depends": [
 				"binary(cargo)",
 				"binary(just)",
-				"binary(mold)",
 				"pkgconfig(libinput)",
 				"pkgconfig(libudev)",
 				"pkgconfig(xkbcommon)"
@@ -150,6 +149,6 @@
 		}
 	},
 	"source-name": "cosmic-settings",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.0"
 }
