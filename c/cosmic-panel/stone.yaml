@@ -5,12 +5,12 @@
 #
 name        : cosmic-panel
 version     : "0.1.0"
-release     : 3
+release     : 4
 summary     : Cosmic Desktop Panel
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-panel
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-panel.git : 4958f0670653f8d896fcadd9e3a0fa446df15d95
+    - git|https://github.com/pop-os/cosmic-panel.git : 3d0802185bacf5e0dbb8eeb0c16b872b5f9cbb8e
 description : |
     Cosmic Desktop panel
 builddeps   :
@@ -19,12 +19,13 @@ builddeps   :
     - pkgconfig(xkbcommon)
 rundeps     :
     - binary(cosmic-applets)
+tuning      :
+    - lto: thin
 networking  : yes
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+    RUST_BACKTRACE=1 %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
