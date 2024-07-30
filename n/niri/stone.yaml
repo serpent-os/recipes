@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : niri
+version     : "0.1.7"
+release     : 1
+summary     : Niri Desktop Compositor
+license     : GPL-3.0
+homepage    : https://github.com/YaLTeR/niri
+upstreams   :
+    - git|https://github.com/YaLTeR/niri : v0.1.7
+description : |
+    A scrollable-tiling Wayland compositor
+builddeps   :
+    - binary(cargo)
+    - binary(mold)
+    - pkgconfig(gbm)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(libinput)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libseat)
+    - pkgconfig(libudev)
+    - pkgconfig(pango)
+    - pkgconfig(xkbcommon)
+networking  : yes
+environment : |
+    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+setup       : |
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 nice %cargo_build
+install     : |
+    %cargo_install
