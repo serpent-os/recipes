@@ -5,12 +5,12 @@
 #
 name        : cosmic-applets
 version     : "0.1.0"
-release     : 2
+release     : 3
 summary     : Cosmic Panel Applets
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-applets
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-applets.git : 478bb3e500ab1d9e7cbaa1d4d7695d137fbeac8c
+    - git|https://github.com/pop-os/cosmic-applets.git : d10bc475b7dcaada4c0d1f3519a14f361ae2fe93
 description : |
     Cosmic Panel Applets
 builddeps   :
@@ -23,13 +23,12 @@ builddeps   :
     - pkgconfig(libudev)
     - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+tuning      :
+    - lto: thin
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+    %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
