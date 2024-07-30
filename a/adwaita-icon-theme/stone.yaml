@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : adwaita-icon-theme
-version     : 45.0
-release     : 3
+version     : 46.2
+release     : 4
 homepage    : https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 upstreams   :
-    - https://download.gnome.org/sources/adwaita-icon-theme/45/adwaita-icon-theme-45.0.tar.xz : 2442bfb06f4e6cc95bf6e2682fdff98fa5eddc688751b9d6215c623cb4e42ff1
+    - https://download.gnome.org/sources/adwaita-icon-theme/46/adwaita-icon-theme-46.2.tar.xz : beb126b9429339ba762e0818d5e73b2c46f444975bf80076366eae2d0f96b5cb
 summary     : The Adwaita Icon Theme package contains an assortment of non-scalable icons of different sizes and themes.
 description : |
     The Adwaita Icon Theme package contains an assortment of non-scalable icons of different sizes and themes.
@@ -25,6 +25,7 @@ builddeps   :
     - binary(gtk-update-icon-cache)
 rundeps     :
     - binary(gtk-update-icon-cache)
+    - adwaita-icon-theme-legacy
     - hicolor-icon-theme
 setup       : |
     %meson
@@ -32,5 +33,4 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-    rm %(installroot)%(datadir)/icons/Adwaita/.icon-theme.cache
     %install_file %(pkgdir)/default.index.theme %(installroot)%(datadir)/icons/default/index.theme
