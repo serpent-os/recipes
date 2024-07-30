@@ -5,29 +5,27 @@
 #
 name        : cosmic-applibrary
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Desktop App Launcher
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-applibrary
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-applibrary.git : 58489721f1bea7604a75fbc17c0386d6f1599a11
+    - git|https://github.com/pop-os/cosmic-applibrary.git : 5323a0951bf1f53596730a5adbef8f38f62a7348
 description : |
     Cosmic Desktop App Launcher
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - binary(mold)
     - pkgconfig(dbus-1)
     - pkgconfig(libudev)
     - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+tuning      :
+    - lto: thin
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+    %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
