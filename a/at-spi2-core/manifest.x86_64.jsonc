@@ -39,7 +39,7 @@
 				"/usr/lib/gnome-settings-daemon-3.0/gtk-modules/at-spi2-atk.desktop",
 				"/usr/lib/gtk-2.0/modules/libatk-bridge.so",
 				"/usr/lib/libatk-1.0.so.0",
-				"/usr/lib/libatk-1.0.so.0.25109.1",
+				"/usr/lib/libatk-1.0.so.0.25209.1",
 				"/usr/lib/libatk-bridge-2.0.so.0",
 				"/usr/lib/libatk-bridge-2.0.so.0.0.0",
 				"/usr/lib/libatspi.so.0",
@@ -98,6 +98,7 @@
 				"/usr/share/locale/it/LC_MESSAGES/at-spi2-core.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/at-spi2-core.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/at-spi2-core.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/at-spi2-core.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/at-spi2-core.mo",
 				"/usr/share/locale/km/LC_MESSAGES/at-spi2-core.mo",
 				"/usr/share/locale/kn/LC_MESSAGES/at-spi2-core.mo",
@@ -180,7 +181,9 @@
 				"pkgconfig(xtst)"
 			],
 			"depends": [
+				"at-spi2-core",
 				"pkgconfig(dbus-1)",
+				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gmodule-2.0)",
 				"pkgconfig(gobject-2.0)",
@@ -273,6 +276,6 @@
 		}
 	},
 	"source-name": "at-spi2-core",
-	"source-release": "3",
-	"source-version": "2.51.0"
+	"source-release": "4",
+	"source-version": "2.52.0"
 }
