@@ -1,0 +1,62 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"pop-os-launcher": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(just)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/pop-launcher",
+				"/usr/lib/pop-launcher/plugins/calc/calc",
+				"/usr/lib/pop-launcher/plugins/calc/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/cosmic_toplevel/cosmic-toplevel",
+				"/usr/lib/pop-launcher/plugins/cosmic_toplevel/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/desktop_entries/desktop-entries",
+				"/usr/lib/pop-launcher/plugins/desktop_entries/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/files/files",
+				"/usr/lib/pop-launcher/plugins/files/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/find/find",
+				"/usr/lib/pop-launcher/plugins/find/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/pop_shell/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/pop_shell/pop-shell",
+				"/usr/lib/pop-launcher/plugins/pulse/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/pulse/pulse",
+				"/usr/lib/pop-launcher/plugins/recent/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/recent/recent",
+				"/usr/lib/pop-launcher/plugins/scripts/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/scripts/scripts",
+				"/usr/lib/pop-launcher/plugins/terminal/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/terminal/terminal",
+				"/usr/lib/pop-launcher/plugins/web/config.ron",
+				"/usr/lib/pop-launcher/plugins/web/plugin.ron",
+				"/usr/lib/pop-launcher/plugins/web/web",
+				"/usr/lib/pop-launcher/scripts/session/session-bios.sh",
+				"/usr/lib/pop-launcher/scripts/session/session-lock.sh",
+				"/usr/lib/pop-launcher/scripts/session/session-logout.sh",
+				"/usr/lib/pop-launcher/scripts/session/session-reboot.sh",
+				"/usr/lib/pop-launcher/scripts/session/session-shutdown.sh",
+				"/usr/lib/pop-launcher/scripts/session/session-suspend.sh",
+				"/usr/lib/pop-launcher/scripts/system76-power/graphics-compute.sh",
+				"/usr/lib/pop-launcher/scripts/system76-power/graphics-discrete.sh",
+				"/usr/lib/pop-launcher/scripts/system76-power/graphics-hybrid.sh",
+				"/usr/lib/pop-launcher/scripts/system76-power/graphics-integrated.sh"
+			],
+			"name": "pop-os-launcher",
+			"provides": [
+				"binary(pop-launcher)"
+			]
+		}
+	},
+	"source-name": "pop-os-launcher",
+	"source-release": "1",
+	"source-version": "1.2.3"
+}

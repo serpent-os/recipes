@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : pop-os-launcher
+version     : "1.2.3"
+release     : 1
+summary     : Pop!_OS Launcher
+license     : MPL-2.0
+homepage    : https://github.com/pop-os/pop-os-launcher
+upstreams   :
+    - git|https://github.com/pop-os/launcher.git : e44d6cd0bd56ffb62293344f67467909caced433
+description : |
+    Pop!_OS Application Launcher
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - pkgconfig(xkbcommon)
+networking  : yes
+setup       : |
+    %cargo_fetch
+build       : |
+    RUST_BACKTRACE=1 %cargo_build -p pop-launcher-bin
+install     : |
+    just target-dir='target/%(target_triple)/debug' rootdir=%(installroot) install
