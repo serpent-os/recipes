@@ -5,18 +5,17 @@
 #
 name        : cosmic-comp
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Desktop Compositor
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-comp
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-comp.git : 4f043133bc0365283fbb7aafd81a80dc3e2cecee
+    - git|https://github.com/pop-os/cosmic-comp.git : af553a16a67569b8b67e92fbfcf943ac143303ad
 description : |
     Cosmic Desktop Compositor
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - binary(mold)
     - pkgconfig(gbm)
     - pkgconfig(libinput)
     - pkgconfig(libseat)
@@ -24,11 +23,11 @@ builddeps   :
     - pkgconfig(pixman-1)
     - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+tuning      :
+    - lto: thin
 setup       : |
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 nice %cargo_build
+    %cargo_build
 install     : |
-    %make_install prefix=%(prefix) TARGET=%(target_triple)/release
+    %make_install prefix=%(prefix) TARGET=%(target_triple)/debug
