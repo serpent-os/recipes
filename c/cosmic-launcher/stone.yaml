@@ -5,24 +5,27 @@
 #
 name        : cosmic-launcher
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Desktop Launcher
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-launcher
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-launcher.git : c188029efde3db0748e55defba12184168443192
+    - git|https://github.com/pop-os/cosmic-launcher.git : 75554d3b465032ca8243e299b6a265032d3e6b60
 description : |
     Cosmic Desktop Launcher
 builddeps   :
     - binary(cargo)
     - binary(just)
     - pkgconfig(xkbcommon)
+rundeps     :
+    - binary(pop-launcher)
 networking  : yes
+tuning      :
+    - lto: thin
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build
+    %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
