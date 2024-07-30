@@ -22,6 +22,7 @@
 				"binary(update-desktop-database)",
 				"binary(update-mime-database)",
 				"binary(xdg-user-dirs-gtk-update)",
+				"font-firacode",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -43,6 +44,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "0.1.0"
 }
