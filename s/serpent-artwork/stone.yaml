@@ -5,7 +5,7 @@
 #
 name        : serpent-artwork
 version     : "0"
-release     : 1
+release     : 2
 summary     : Serpent OS Artwork
 license     : Distributable
 homepage    : https://github.com/serpent-os/artwork
@@ -15,5 +15,7 @@ description : |
     Default artwork for Serpent OS
 builddeps   :
     - binary(just)
+setup       : |
+    %patch %(pkgdir)/0001-.xml-Fix-invalid-path.patch
 install     : |
     DESTDIR=%(installroot) just install
