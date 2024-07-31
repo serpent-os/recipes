@@ -5,7 +5,7 @@
 #
 name        : serpent-gnome-defaults
 version     : "0.1.0"
-release     : 4
+release     : 5
 license     : MPL-2.0
 homepage    : https://serpentos.com
 summary     : Default settings for GNOME desktop
@@ -16,6 +16,7 @@ rundeps     :
     - gnome-backgrounds
     - gnome-shell
     - gnome-shell-extension-appindicator
+    - serpent-artwork
 install     : |
     %install_dir %(installroot)%(datadir)/glib-2.0/schemas
     %install_file %(pkgdir)/10_*.gschema.override %(installroot)%(datadir)/glib-2.0/schemas/.

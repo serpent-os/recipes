@@ -7,7 +7,8 @@
 				"font-hack",
 				"gnome-backgrounds",
 				"gnome-shell",
-				"gnome-shell-extension-appindicator"
+				"gnome-shell-extension-appindicator",
+				"serpent-artwork"
 			],
 			"files": [
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.background.gschema.override",
@@ -20,6 +21,6 @@
 		}
 	},
 	"source-name": "serpent-gnome-defaults",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "0.1.0"
 }
