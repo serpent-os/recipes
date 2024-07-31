@@ -56,6 +56,7 @@
 				"/usr/lib/bash/uname",
 				"/usr/lib/bash/unlink",
 				"/usr/lib/bash/whoami",
+				"/usr/share/defaults/etc/bashrc",
 				"/usr/share/defaults/etc/profile",
 				"/usr/share/doc/bash/CHANGES",
 				"/usr/share/doc/bash/COMPAT",
@@ -195,6 +196,6 @@
 		}
 	},
 	"source-name": "bash",
-	"source-release": "8",
-	"source-version": "5.2.23"
+	"source-release": "9",
+	"source-version": "5.2.32"
 }
