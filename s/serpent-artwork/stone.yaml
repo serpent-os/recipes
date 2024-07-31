@@ -1,0 +1,19 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : serpent-artwork
+version     : "0"
+release     : 1
+summary     : Serpent OS Artwork
+license     : Distributable
+homepage    : https://github.com/serpent-os/artwork
+upstreams   :
+    - https://github.com/serpent-os/artwork/archive/refs/tags/v0.tar.gz : 2fab1d61027b69bf8f9e07caeff93be4fe17c42b87a3af7f97ea6041bf0fecd8
+description : |
+    Default artwork for Serpent OS
+builddeps   :
+    - binary(just)
+install     : |
+    DESTDIR=%(installroot) just install

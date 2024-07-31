@@ -1,0 +1,21 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"serpent-artwork": {
+			"build-depends": [
+				"binary(just)"
+			],
+			"files": [
+				"/usr/share/backgrounds/serpent-os/austin-d-JQ9-cbC4rDE-unsplash.jpg",
+				"/usr/share/backgrounds/serpent-os/mike-uderevsky-4fqXRDI4gXQ-unsplash.jpg",
+				"/usr/share/gnome-background-properties/austin.xml",
+				"/usr/share/gnome-background-properties/mike.xml"
+			],
+			"name": "serpent-artwork"
+		}
+	},
+	"source-name": "serpent-artwork",
+	"source-release": "1",
+	"source-version": "0"
+}
