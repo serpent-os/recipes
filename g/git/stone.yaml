@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : git
-version     : 2.45.2
-release     : 8
+version     : 2.46.0
+release     : 9
 summary     : Fast, scalable, distributed revision control system
 license     : GPL-2.0-only
 homepage    : https://git-scm.com
 description : |
     Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.
 upstreams   :
-    - https://www.kernel.org/pub/software/scm/git/git-2.45.2.tar.gz: 98b26090ed667099a3691b93698d1e213e1ded73d36a2fde7e9125fce28ba234
+    - https://www.kernel.org/pub/software/scm/git/git-2.46.0.tar.gz: b138811e16838f669a2516e40f09d50500e1c7fc541b5ab50ce84b98585e5230
 builddeps   :
     - binary(msgfmt)
     - pkgconfig(expat)
@@ -22,7 +22,7 @@ builddeps   :
     - pkgconfig(openssl)
     - pkgconfig(zlib)
 setup       : |
-    %configure --disable-static \
+    %reconfigure --disable-static \
         --with-editor=/usr/bin/nano \
         --with-libpcre2 \
         --without-tcltk \
@@ -30,4 +30,7 @@ build       : |
     %make
 install     : |
     %make_install
+
+    %install_file contrib/completion/git-completion.bash %(installroot)%(datadir)/bash-completion/completions/git
+    %install_file contrib/completion/git-completion.zsh %(installroot)%(datadir)/zsh/site-functions/_git
 # TODO Checks

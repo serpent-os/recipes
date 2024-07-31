@@ -144,6 +144,7 @@
 				"/usr/lib/git/git-core/git-rebase",
 				"/usr/lib/git/git-core/git-receive-pack",
 				"/usr/lib/git/git-core/git-reflog",
+				"/usr/lib/git/git-core/git-refs",
 				"/usr/lib/git/git-core/git-remote",
 				"/usr/lib/git/git-core/git-remote-ext",
 				"/usr/lib/git/git-core/git-remote-fd",
@@ -224,6 +225,7 @@
 				"/usr/lib/git/git-core/mergetools/winmerge",
 				"/usr/lib/git/git-core/mergetools/xxdiff",
 				"/usr/lib/git/git-core/scalar",
+				"/usr/share/bash-completion/completions/git",
 				"/usr/share/git-core/templates/branches",
 				"/usr/share/git-core/templates/description",
 				"/usr/share/git-core/templates/hooks/applypatch-msg.sample",
@@ -283,7 +285,8 @@
 				"/usr/share/perl5/Git/SVN/Migration.pm",
 				"/usr/share/perl5/Git/SVN/Prompt.pm",
 				"/usr/share/perl5/Git/SVN/Ra.pm",
-				"/usr/share/perl5/Git/SVN/Utils.pm"
+				"/usr/share/perl5/Git/SVN/Utils.pm",
+				"/usr/share/zsh/site-functions/_git"
 			],
 			"name": "git",
 			"provides": [
@@ -298,6 +301,6 @@
 		}
 	},
 	"source-name": "git",
-	"source-release": "8",
-	"source-version": "2.45.2"
+	"source-release": "9",
+	"source-version": "2.46.0"
 }
