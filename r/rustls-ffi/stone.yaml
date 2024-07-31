@@ -5,7 +5,7 @@
 #
 name        : rustls-ffi
 version     : 0.13.0
-release     : 2
+release     : 3
 homepage    : https://github.com/rustls/rustls-ffi
 upstreams   :
     - https://github.com/rustls/rustls-ffi/archive/refs/tags/v0.13.0.tar.gz : 462d9069d655d433249d3d554ad5b5146a6c96c13d0f002934bd274ce6634854
@@ -17,16 +17,15 @@ license     :
     - MIT
 builddeps   :
     - binary(cargo)
+    - binary(cargo-capi)
 networking  : true
-packages    :
-    - "%(name)":
-        paths:
-            - /usr/lib
-            - /usr/include
 setup       : |
     # asan issues.
     %patch %(pkgdir)/clang-asan.patch
+    %cargo_fetch
 build       : |
-    %make PROFILE=release
+    cargo cbuild --destdir=%(installroot) --prefix="%(prefix)" --libdir="%(libdir)" \
+              -v -j "%(jobs)" --frozen --target "%(target_triple)"
 install     : |
-    %make PROFILE=release install DESTDIR=%(installroot)/usr
+    cargo cinstall --destdir=%(installroot) --prefix="%(prefix)" --libdir="%(libdir)" \
+              -v -j "%(jobs)" --frozen --target "%(target_triple)"
