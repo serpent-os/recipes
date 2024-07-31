@@ -5,7 +5,7 @@
 #
 name        : bash
 version     : '5.2.32'
-release     : 9
+release     : 10
 homepage    : http://www.gnu.org/software/bash/bash.html
 upstreams   :
     - https://ftp.gnu.org/gnu/bash/bash-5.2.21.tar.gz : c8e31bdc59b69aaffc5b36509905ba3e5cbb12747091d27b4b977f078560d5b8
