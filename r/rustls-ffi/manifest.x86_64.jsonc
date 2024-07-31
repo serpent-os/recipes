@@ -30,7 +30,6 @@
 			],
 			"files": [
 				"/usr/include/rustls.h",
-				"/usr/lib/librustls.a",
 				"/usr/lib/librustls.so",
 				"/usr/lib/pkgconfig/rustls.pc"
 			],
@@ -41,6 +40,6 @@
 		}
 	},
 	"source-name": "rustls-ffi",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "0.13.0"
 }

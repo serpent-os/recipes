@@ -5,7 +5,7 @@
 #
 name        : rustls-ffi
 version     : 0.13.0
-release     : 3
+release     : 4
 homepage    : https://github.com/rustls/rustls-ffi
 upstreams   :
     - https://github.com/rustls/rustls-ffi/archive/refs/tags/v0.13.0.tar.gz : 462d9069d655d433249d3d554ad5b5146a6c96c13d0f002934bd274ce6634854
@@ -29,3 +29,4 @@ build       : |
 install     : |
     cargo cinstall --destdir=%(installroot) --prefix="%(prefix)" --libdir="%(libdir)" \
               -v -j "%(jobs)" --frozen --target "%(target_triple)"
+    rm -v %(installroot)%(libdir)/*.a
