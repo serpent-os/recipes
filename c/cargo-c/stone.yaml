@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cargo-c
+version     : 0.10.3
+release     : 1
+homepage    : https://github.com/lu-zero/cargo-c
+upstreams   :
+    - https://github.com/lu-zero/cargo-c/archive/refs/tags/v0.10.3.tar.gz : 922171afb3ceaf6553ff3916ae4663d3743ba22f80725f2300a26b76eb6eb94f
+    - https://github.com/lu-zero/cargo-c/releases/download/v0.10.3/Cargo.lock :
+        unpack: false
+        hash: 6c099fe28666e4c6b5da41b65d00de35c9c60ab336c625d845f28055a0e90a7d
+summary     : Generate C Libraries using Cargo
+description : |
+    Generate C Libraries using Cargo
+license     : MIT
+networking  : yes
+builddeps   :
+    - binary(cargo)
+    - pkgconfig(libssl)
+setup       : |
+    %install_file %(sourcedir)/Cargo.lock -v .
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %install_bin target/*/debug/cargo-capi
+    %install_bin target/*/debug/cargo-cbuild
+    %install_bin target/*/debug/cargo-ctest
+    %install_bin target/*/debug/cargo-cinstall
+check       : |
+    %cargo_test
