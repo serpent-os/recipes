@@ -1,7 +1,7 @@
 [org.gnome.desktop.background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/serpent/austin-d-JQ9-cbC4rDE-unsplash.jpg'
-picture-uri-dark='file:///usr/share/backgrounds/serpent/austin-d-JQ9-cbC4rDE-unsplash.jpg'
+picture-uri='file:///usr/share/backgrounds/serpent-os/austin-d-JQ9-cbC4rDE-unsplash.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/serpent-os/austin-d-JQ9-cbC4rDE-unsplash.jpg'
 primary-color='#86b6ef'
 secondary-color='#000000'
