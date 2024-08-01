@@ -58,6 +58,7 @@
 				"/usr/lib/bash/whoami",
 				"/usr/share/defaults/etc/bashrc",
 				"/usr/share/defaults/etc/profile",
+				"/usr/share/defaults/etc/profile.d/prompt.sh",
 				"/usr/share/doc/bash/CHANGES",
 				"/usr/share/doc/bash/COMPAT",
 				"/usr/share/doc/bash/FAQ",
@@ -196,6 +197,6 @@
 		}
 	},
 	"source-name": "bash",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "5.2.32"
 }
