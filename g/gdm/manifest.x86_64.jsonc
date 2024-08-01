@@ -15,6 +15,7 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libcanberra-gtk3)",
 				"pkgconfig(pam)",
 				"pkgconfig(systemd)",
@@ -25,6 +26,10 @@
 				"pkgconfig(xdmcp)"
 			],
 			"depends": [
+				"binary(Xwayland)",
+				"binary(gnome-session)",
+				"binary(gnome-shell)",
+				"gnome-settings-daemon",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libXau.so.6(x86_64))",
@@ -40,11 +45,13 @@
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgtk-3.so.0(x86_64))",
 				"soname(libgudev-1.0.so.0(x86_64))",
+				"soname(libjson-glib-1.0.so.0(x86_64))",
 				"soname(libpam.so.0(x86_64))",
 				"soname(libsystemd.so.0(x86_64))",
 				"soname(libxcb.so.1(x86_64))"
 			],
 			"files": [
+				"/usr/bin/gdm-config",
 				"/usr/bin/gdm-screenshot",
 				"/usr/bin/gdmflexiserver",
 				"/usr/lib/gdm/gdm-host-chooser",
@@ -250,11 +257,12 @@
 			],
 			"name": "gdm",
 			"provides": [
-				"sysbinary(gdm)",
+				"binary(gdm-config)",
 				"binary(gdm-screenshot)",
 				"binary(gdmflexiserver)",
 				"soname(libgdm.so.1(x86_64))",
-				"soname(pam_gdm.so(x86_64))"
+				"soname(pam_gdm.so(x86_64))",
+				"sysbinary(gdm)"
 			]
 		},
 		"gdm-devel": {
@@ -270,6 +278,7 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libcanberra-gtk3)",
 				"pkgconfig(pam)",
 				"pkgconfig(systemd)",
@@ -280,6 +289,7 @@
 				"pkgconfig(xdmcp)"
 			],
 			"depends": [
+				"gdm",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(glib-2.0)",
@@ -287,8 +297,11 @@
 				"pkgconfig(libsystemd)"
 			],
 			"files": [
+				"/usr/include/gdm/gdm-choice-list-pam-extension.h",
 				"/usr/include/gdm/gdm-client-glue.h",
 				"/usr/include/gdm/gdm-client.h",
+				"/usr/include/gdm/gdm-custom-json-pam-extension.h",
+				"/usr/include/gdm/gdm-pam-extensions-common.h",
 				"/usr/include/gdm/gdm-pam-extensions.h",
 				"/usr/include/gdm/gdm-sessions.h",
 				"/usr/include/gdm/gdm-user-switching.h",
@@ -304,6 +317,6 @@
 		}
 	},
 	"source-name": "gdm",
-	"source-release": "8",
-	"source-version": "45.0.1"
+	"source-release": "9",
+	"source-version": "46.2"
 }
