@@ -5,7 +5,7 @@
 #
 name        : gnome-bluetooth
 version     : 46.0
-release     : 4
+release     : 5
 homepage    : https://gitlab.gnome.org/GNOME/gnome-bluetooth
 upstreams   :
     - https://download.gnome.org/sources/gnome-bluetooth/46/gnome-bluetooth-46.0.tar.xz : 13fe1e75f317acdbdf5e80c9029d2e0632d60a9ccf72a43ae36eb7545021fbef
