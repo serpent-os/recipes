@@ -6,8 +6,10 @@
 			"build-depends": [
 				"binary(bison)",
 				"binary(flex)",
+				"binary(g++)",
 				"binary(m4)",
 				"binary(makeinfo)",
+				"binary(msgmerge)",
 				"binary(perl)",
 				"binary(yacc)",
 				"pkgconfig(jansson)",
@@ -18,11 +20,11 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libbfd-2.42.so(x86_64))",
+				"soname(libbfd-2.42.0.so(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libm.so.6(x86_64))",
-				"soname(libopcodes-2.42.so(x86_64))",
+				"soname(libopcodes-2.42.0.so(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
@@ -336,6 +338,14 @@
 				"binary(gprofng)",
 				"binary(ld)",
 				"binary(ld.bfd)",
+				"binary(nm)",
+				"binary(objcopy)",
+				"binary(objdump)",
+				"binary(ranlib)",
+				"binary(readelf)",
+				"binary(size)",
+				"binary(strings)",
+				"binary(strip)",
 				"soname(libctf-nobfd.so.0(x86_64))",
 				"soname(libctf.so.0(x86_64))",
 				"soname(libdep.so(x86_64))",
@@ -345,23 +355,17 @@
 				"soname(libgp-iotrace.so(x86_64))",
 				"soname(libgp-sync.so(x86_64))",
 				"soname(libgprofng.so.0(x86_64))",
-				"soname(libsframe.so.1(x86_64))",
-				"binary(nm)",
-				"binary(objcopy)",
-				"binary(objdump)",
-				"binary(ranlib)",
-				"binary(readelf)",
-				"binary(size)",
-				"binary(strings)",
-				"binary(strip)"
+				"soname(libsframe.so.1(x86_64))"
 			]
 		},
 		"binutils-devel": {
 			"build-depends": [
 				"binary(bison)",
 				"binary(flex)",
+				"binary(g++)",
 				"binary(m4)",
 				"binary(makeinfo)",
+				"binary(msgmerge)",
 				"binary(perl)",
 				"binary(yacc)",
 				"pkgconfig(jansson)",
@@ -371,6 +375,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"binutils",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libsframe.so.1(x86_64))",
@@ -392,23 +397,23 @@
 				"/usr/include/sframe-api.h",
 				"/usr/include/sframe.h",
 				"/usr/include/symcat.h",
-				"/usr/lib/libbfd-2.42.so",
+				"/usr/lib/libbfd-2.42.0.so",
 				"/usr/lib/libbfd.so",
 				"/usr/lib/libctf-nobfd.so",
 				"/usr/lib/libctf.so",
 				"/usr/lib/libgprofng.so",
-				"/usr/lib/libopcodes-2.42.so",
+				"/usr/lib/libopcodes-2.42.0.so",
 				"/usr/lib/libopcodes.so",
 				"/usr/lib/libsframe.so"
 			],
 			"name": "binutils-devel",
 			"provides": [
-				"soname(libbfd-2.42.so(x86_64))",
-				"soname(libopcodes-2.42.so(x86_64))"
+				"soname(libbfd-2.42.0.so(x86_64))",
+				"soname(libopcodes-2.42.0.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "binutils",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "2.42"
 }
