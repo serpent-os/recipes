@@ -61,6 +61,7 @@
 				"/usr/share/locale/it/LC_MESSAGES/kgx.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/kgx.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/kgx.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/kgx.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/kgx.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/kgx.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/kgx.mo",
@@ -93,6 +94,6 @@
 		}
 	},
 	"source-name": "gnome-console",
-	"source-release": "2",
-	"source-version": "45"
+	"source-release": "3",
+	"source-version": "46.0"
 }
