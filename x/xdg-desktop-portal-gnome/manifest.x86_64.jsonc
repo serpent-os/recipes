@@ -25,8 +25,11 @@
 				"soname(libgnome-bg-4.so.2(x86_64))",
 				"soname(libgnome-desktop-4.so.2(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgraphene-1.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
-				"soname(libwayland-client.so.0(x86_64))"
+				"soname(libwayland-client.so.0(x86_64))",
+				"xdg-desktop-portal",
+				"xdg-desktop-portal-gtk"
 			],
 			"files": [
 				"/usr/lib/systemd/user/xdg-desktop-portal-gnome.service",
@@ -61,9 +64,12 @@
 				"/usr/share/locale/it/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
+				"/usr/share/locale/lv/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
+				"/usr/share/locale/nb/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/ne/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/oc/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
@@ -77,6 +83,7 @@
 				"/usr/share/locale/sl/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
+				"/usr/share/locale/th/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/xdg-desktop-portal-gnome.mo",
@@ -87,6 +94,6 @@
 		}
 	},
 	"source-name": "xdg-desktop-portal-gnome",
-	"source-release": "3",
-	"source-version": "45.1"
+	"source-release": "4",
+	"source-version": "46.2"
 }
