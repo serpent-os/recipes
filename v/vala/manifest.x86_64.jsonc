@@ -6,7 +6,8 @@
 			"build-depends": [
 				"binary(flex)",
 				"binary(yacc)",
-				"pkgconfig(glib-2.0)"
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -360,8 +361,6 @@
 			],
 			"name": "vala",
 			"provides": [
-				"soname(libvala-0.56.so.0(x86_64))",
-				"soname(libvalaccodegen.so(x86_64))",
 				"binary(vala)",
 				"binary(vala-0.56)",
 				"binary(vala-gen-introspect)",
@@ -369,19 +368,23 @@
 				"binary(valac)",
 				"binary(valac-0.56)",
 				"binary(vapigen)",
-				"binary(vapigen-0.56)"
+				"binary(vapigen-0.56)",
+				"soname(libvala-0.56.so.0(x86_64))",
+				"soname(libvalaccodegen.so(x86_64))"
 			]
 		},
 		"vala-devel": {
 			"build-depends": [
 				"binary(flex)",
 				"binary(yacc)",
-				"pkgconfig(glib-2.0)"
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)"
 			],
 			"depends": [
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gmodule-2.0)",
-				"pkgconfig(gobject-2.0)"
+				"pkgconfig(gobject-2.0)",
+				"vala"
 			],
 			"files": [
 				"/usr/include/vala-0.56/vala.h",
@@ -402,6 +405,6 @@
 		}
 	},
 	"source-name": "vala",
-	"source-release": "2",
-	"source-version": "0.56.14"
+	"source-release": "3",
+	"source-version": "0.56.17"
 }

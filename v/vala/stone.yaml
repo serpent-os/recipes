@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : vala
-version     : '0.56.14'
-release     : 2
+version     : 0.56.17
+release     : 3
 homepage    : https://vala.dev/
 upstreams   :
-    - https://download.gnome.org/sources/vala/0.56/vala-0.56.14.tar.xz : 9382c268ca9bdc02aaedc8152a9818bf3935273041f629c56de410e360a3f557
+    - https://download.gnome.org/sources/vala/0.56/vala-0.56.17.tar.xz : 26100c4e4ef0049c619275f140d97cf565883d00c7543c82bcce5a426934ed6a
 summary     : Vala programming language
 description : |
     Vala is a programming language using modern high level abstractions without
@@ -22,6 +22,7 @@ builddeps   :
     - binary(flex)
     - binary(yacc)
     - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
 setup       : |
     # Requires graphviz, out of scope for now
     %configure --disable-valadoc
