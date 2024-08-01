@@ -41,13 +41,13 @@
 				"/usr/lib/girepository-1.0/PangoOT-1.0.typelib",
 				"/usr/lib/girepository-1.0/PangoXft-1.0.typelib",
 				"/usr/lib/libpango-1.0.so.0",
-				"/usr/lib/libpango-1.0.so.0.5000.14",
+				"/usr/lib/libpango-1.0.so.0.5200.2",
 				"/usr/lib/libpangocairo-1.0.so.0",
-				"/usr/lib/libpangocairo-1.0.so.0.5000.14",
+				"/usr/lib/libpangocairo-1.0.so.0.5200.2",
 				"/usr/lib/libpangoft2-1.0.so.0",
-				"/usr/lib/libpangoft2-1.0.so.0.5000.14",
+				"/usr/lib/libpangoft2-1.0.so.0.5200.2",
 				"/usr/lib/libpangoxft-1.0.so.0",
-				"/usr/lib/libpangoxft-1.0.so.0.5000.14",
+				"/usr/lib/libpangoxft-1.0.so.0.5200.2",
 				"/usr/share/gir-1.0/Pango-1.0.gir",
 				"/usr/share/gir-1.0/PangoCairo-1.0.gir",
 				"/usr/share/gir-1.0/PangoFT2-1.0.gir",
@@ -80,6 +80,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"pango",
 				"pkgconfig(cairo)",
 				"pkgconfig(fontconfig)",
 				"pkgconfig(freetype2)",
@@ -89,6 +90,9 @@
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(harfbuzz)",
 				"pkgconfig(harfbuzz-gobject)",
+				"pkgconfig(libthai)",
+				"pkgconfig(xft)",
+				"pkgconfig(xrender)",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libXft.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -100,10 +104,7 @@
 				"soname(libpango-1.0.so.0(x86_64))",
 				"soname(libpangocairo-1.0.so.0(x86_64))",
 				"soname(libpangoft2-1.0.so.0(x86_64))",
-				"soname(libpangoxft-1.0.so.0(x86_64))",
-				"pkgconfig(libthai)",
-				"pkgconfig(xft)",
-				"pkgconfig(xrender)"
+				"soname(libpangoxft-1.0.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/pango-list",
@@ -160,10 +161,10 @@
 			],
 			"name": "pango-devel",
 			"provides": [
-				"pkgconfig(pango)",
 				"binary(pango-list)",
 				"binary(pango-segmentation)",
 				"binary(pango-view)",
+				"pkgconfig(pango)",
 				"pkgconfig(pangocairo)",
 				"pkgconfig(pangofc)",
 				"pkgconfig(pangoft2)",
@@ -173,6 +174,6 @@
 		}
 	},
 	"source-name": "pango",
-	"source-release": "1",
-	"source-version": "1.50.14"
+	"source-release": "2",
+	"source-version": "1.52.2"
 }
