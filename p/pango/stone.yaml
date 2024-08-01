@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : pango
-version     : 1.50.14
-release     : 1
+version     : 1.52.2
+release     : 2
 homepage    : https://pango.gnome.org/
 upstreams   :
-    - https://download.gnome.org/sources/pango/1.50/pango-1.50.14.tar.xz : 1d67f205bfc318c27a29cfdfb6828568df566795df0cb51d2189cde7f2d581e8
+    - https://download.gnome.org/sources/pango/1.52/pango-1.52.2.tar.xz : d0076afe01082814b853deec99f9349ece5f2ce83908b8e58ff736b41f78a96b
 summary     : Pango is a library for layout and rendering of text, with an emphasis on internationalization
 description : |
     Pango is a library for layout and rendering of text, with an emphasis on internationalization. Pango can be used anywhere that text layout is needed; however, most of the work on Pango so far has been done using the GTK widget toolkit as a test platform. Pango forms the core of text and font handling for GTK.
@@ -46,3 +46,4 @@ packages    :
     - "%(name)-devel":
         paths:
             - /usr/bin/*
+toolchain   : gnu

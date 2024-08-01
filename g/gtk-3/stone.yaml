@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gtk-3
-version     : 3.24.41
-release     : 4
+version     : 3.24.42
+release     : 5
 homepage    : https://gtk.org
 upstreams   :
-    - https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.41.tar.xz : 47da61487af3087a94bc49296fd025ca0bc02f96ef06c556e7c8988bd651b6fa
+    - https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.42.tar.xz : 50f89f615092d4dd01bbd759719f8bd380e5f149f6fd78a94725e2de112377e2
 summary     : Develop applications and user interfaces with GTK+
 description : |
     Develop applications and user interfaces with GTK+

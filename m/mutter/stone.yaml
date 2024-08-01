@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mutter
-version     : 45.7
-release     : 3
+version     : 46.3.1
+release     : 4
 homepage    : https://gnome.org
 upstreams   :
-    - https://download.gnome.org/sources/mutter/45/mutter-45.7.tar.xz : 5fa01a100c468efa1ddc232cb3c91865d092760946e3e3c61b2b6cd31f000968
+    - https://download.gnome.org/sources/mutter/46/mutter-46.3.1.tar.xz : 747a63da3745f304b01b55393d96abdaa820983b188b60b40dbbab3e683c805f
 summary     : A Wayland display server and X11 window manager and compositor library.
 description : |
     A Wayland display server and X11 window manager and compositor library.
@@ -88,6 +88,8 @@ builddeps   :
     - pkgconfig(xtst)
     - binary(cvt)
     - pkgconfig(xwayland)
+rundeps     :
+    - binary(gnome-session)
 toolchain   : gnu
 setup       : |
     %meson -Dtests=false \

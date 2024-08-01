@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : patchelf
+version     : 0.18.0
+release     : 1
+homepage    : https://github.com/NixOS/patchelf
+upstreams   :
+    - https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0.tar.gz : 64de10e4c6b8b8379db7e87f58030f336ea747c0515f381132e810dbf84a86e7
+summary     : A small utility to modify the dynamic linker and RPATH of ELF executables
+description : |
+    PatchELF is a simple utility for modifying existing ELF executables and libraries.
+license     : GPL-3.0-or-later
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

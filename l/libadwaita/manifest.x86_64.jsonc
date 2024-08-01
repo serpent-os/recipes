@@ -58,9 +58,12 @@
 				"/usr/share/locale/it/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/libadwaita.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/libadwaita.mo",
+				"/usr/share/locale/lv/LC_MESSAGES/libadwaita.mo",
+				"/usr/share/locale/nb/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/ne/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/oc/LC_MESSAGES/libadwaita.mo",
@@ -99,6 +102,7 @@
 				"pkgconfig(gtk4)"
 			],
 			"depends": [
+				"libadwaita",
 				"pkgconfig(appstream)",
 				"pkgconfig(fribidi)",
 				"pkgconfig(gio-2.0)",
@@ -106,8 +110,10 @@
 				"pkgconfig(gtk4)"
 			],
 			"files": [
+				"/usr/include/libadwaita-1/adw-about-dialog.h",
 				"/usr/include/libadwaita-1/adw-about-window.h",
 				"/usr/include/libadwaita-1/adw-action-row.h",
+				"/usr/include/libadwaita-1/adw-alert-dialog.h",
 				"/usr/include/libadwaita-1/adw-animation-target.h",
 				"/usr/include/libadwaita-1/adw-animation-util.h",
 				"/usr/include/libadwaita-1/adw-animation.h",
@@ -126,6 +132,7 @@
 				"/usr/include/libadwaita-1/adw-clamp-scrollable.h",
 				"/usr/include/libadwaita-1/adw-clamp.h",
 				"/usr/include/libadwaita-1/adw-combo-row.h",
+				"/usr/include/libadwaita-1/adw-dialog.h",
 				"/usr/include/libadwaita-1/adw-easing.h",
 				"/usr/include/libadwaita-1/adw-entry-row.h",
 				"/usr/include/libadwaita-1/adw-enum-list-model.h",
@@ -143,6 +150,7 @@
 				"/usr/include/libadwaita-1/adw-navigation-view.h",
 				"/usr/include/libadwaita-1/adw-overlay-split-view.h",
 				"/usr/include/libadwaita-1/adw-password-entry-row.h",
+				"/usr/include/libadwaita-1/adw-preferences-dialog.h",
 				"/usr/include/libadwaita-1/adw-preferences-group.h",
 				"/usr/include/libadwaita-1/adw-preferences-page.h",
 				"/usr/include/libadwaita-1/adw-preferences-row.h",
@@ -183,6 +191,6 @@
 		}
 	},
 	"source-name": "libadwaita",
-	"source-release": "2",
-	"source-version": "1.4.2"
+	"source-release": "3",
+	"source-version": "1.5.2"
 }

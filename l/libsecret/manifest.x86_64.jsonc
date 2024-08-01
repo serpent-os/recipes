@@ -4,6 +4,7 @@
 	"packages": {
 		"libsecret": {
 			"build-depends": [
+				"binary(vapigen)",
 				"binary(xsltproc)",
 				"docbook",
 				"pkgconfig(glib-2.0)",
@@ -29,16 +30,19 @@
 				"/usr/lib/libsecret-1.so.0",
 				"/usr/lib/libsecret-1.so.0.0.0",
 				"/usr/share/gir-1.0/Secret-1.gir",
-				"/usr/share/man/man1/secret-tool.1"
+				"/usr/share/man/man1/secret-tool.1",
+				"/usr/share/vala/vapi/libsecret-1.deps",
+				"/usr/share/vala/vapi/libsecret-1.vapi"
 			],
 			"name": "libsecret",
 			"provides": [
-				"soname(libsecret-1.so.0(x86_64))",
-				"binary(secret-tool)"
+				"binary(secret-tool)",
+				"soname(libsecret-1.so.0(x86_64))"
 			]
 		},
 		"libsecret-devel": {
 			"build-depends": [
+				"binary(vapigen)",
 				"binary(xsltproc)",
 				"docbook",
 				"pkgconfig(glib-2.0)",
@@ -47,6 +51,7 @@
 				"pkgconfig(tss2-esys)"
 			],
 			"depends": [
+				"libsecret",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(glib-2.0)",
@@ -85,6 +90,6 @@
 		}
 	},
 	"source-name": "libsecret",
-	"source-release": "2",
-	"source-version": "0.21.2"
+	"source-release": "3",
+	"source-version": "0.21.4"
 }

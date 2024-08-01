@@ -38,9 +38,9 @@
 				"/usr/lib/girepository-1.0/Gck-2.typelib",
 				"/usr/lib/girepository-1.0/Gcr-4.typelib",
 				"/usr/lib/libgck-2.so.2",
-				"/usr/lib/libgck-2.so.2.1.0",
+				"/usr/lib/libgck-2.so.2.2.1",
 				"/usr/lib/libgcr-4.so.4",
-				"/usr/lib/libgcr-4.so.4.1.0",
+				"/usr/lib/libgcr-4.so.4.2.1",
 				"/usr/lib/systemd/user/gcr-ssh-agent.service",
 				"/usr/lib/systemd/user/gcr-ssh-agent.socket",
 				"/usr/share/gir-1.0/Gck-2.gir",
@@ -163,6 +163,7 @@
 				"pkgconfig(systemd)"
 			],
 			"depends": [
+				"gcr",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
@@ -212,6 +213,6 @@
 		}
 	},
 	"source-name": "gcr",
-	"source-release": "2",
-	"source-version": "4.1.0"
+	"source-release": "3",
+	"source-version": "4.2.1"
 }

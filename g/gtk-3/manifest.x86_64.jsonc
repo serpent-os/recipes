@@ -44,6 +44,7 @@
 				"pkgconfig(xrender)"
 			],
 			"depends": [
+				"gsettings-desktop-schemas",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libXcomposite.so.1(x86_64))",
@@ -99,9 +100,9 @@
 				"/usr/lib/libgailutil-3.so.0",
 				"/usr/lib/libgailutil-3.so.0.0.0",
 				"/usr/lib/libgdk-3.so.0",
-				"/usr/lib/libgdk-3.so.0.2409.32",
+				"/usr/lib/libgdk-3.so.0.2410.32",
 				"/usr/lib/libgtk-3.so.0",
-				"/usr/lib/libgtk-3.so.0.2409.32",
+				"/usr/lib/libgtk-3.so.0.2410.32",
 				"/usr/share/applications/gtk3-demo.desktop",
 				"/usr/share/applications/gtk3-icon-browser.desktop",
 				"/usr/share/applications/gtk3-widget-factory.desktop",
@@ -311,6 +312,7 @@
 				"pkgconfig(xrender)"
 			],
 			"depends": [
+				"gtk-3",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"pkgconfig(atk)",
 				"pkgconfig(atk-bridge-2.0)",
@@ -323,12 +325,6 @@
 				"pkgconfig(gdk-pixbuf-2.0)",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gio-unix-2.0)",
-				"soname(libc.so.6(x86_64))",
-				"soname(libgdk-3.so.0(x86_64))",
-				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
-				"soname(libgio-2.0.so.0(x86_64))",
-				"soname(libglib-2.0.so.0(x86_64))",
-				"soname(libgobject-2.0.so.0(x86_64))",
 				"pkgconfig(pango)",
 				"pkgconfig(pangocairo)",
 				"pkgconfig(pangoft2)",
@@ -344,7 +340,13 @@
 				"pkgconfig(xi)",
 				"pkgconfig(xinerama)",
 				"pkgconfig(xkbcommon)",
-				"pkgconfig(xrandr)"
+				"pkgconfig(xrandr)",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/gtk-encode-symbolic-svg",
@@ -765,6 +767,7 @@
 			],
 			"name": "gtk-3-devel",
 			"provides": [
+				"binary(gtk-encode-symbolic-svg)",
 				"pkgconfig(gail-3.0)",
 				"pkgconfig(gdk-3.0)",
 				"pkgconfig(gdk-wayland-3.0)",
@@ -772,8 +775,7 @@
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(gtk+-unix-print-3.0)",
 				"pkgconfig(gtk+-wayland-3.0)",
-				"pkgconfig(gtk+-x11-3.0)",
-				"binary(gtk-encode-symbolic-svg)"
+				"pkgconfig(gtk+-x11-3.0)"
 			]
 		},
 		"gtk-3-update-icon-cache": {
@@ -834,6 +836,6 @@
 		}
 	},
 	"source-name": "gtk-3",
-	"source-release": "4",
-	"source-version": "3.24.41"
+	"source-release": "5",
+	"source-version": "3.24.42"
 }

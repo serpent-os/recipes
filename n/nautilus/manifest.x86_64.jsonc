@@ -36,13 +36,15 @@
 				"soname(libgnome-autoar-0.so.0(x86_64))",
 				"soname(libgnome-desktop-4.so.2(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgraphene-1.0.so.0(x86_64))",
 				"soname(libgstpbutils-1.0.so.0(x86_64))",
 				"soname(libgstreamer-1.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
 				"soname(libpango-1.0.so.0(x86_64))",
 				"soname(libportal-gtk4.so.1(x86_64))",
 				"soname(libportal.so.1(x86_64))",
-				"soname(libtracker-sparql-3.0.so.0(x86_64))"
+				"soname(libtracker-sparql-3.0.so.0(x86_64))",
+				"tracker-miners"
 			],
 			"files": [
 				"/usr/bin/nautilus",
@@ -184,18 +186,18 @@
 				"/usr/share/locale/zh_HK/LC_MESSAGES/nautilus.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/nautilus.mo",
 				"/usr/share/locale/zu/LC_MESSAGES/nautilus.mo",
-				"/usr/share/metainfo/org.gnome.Nautilus.appdata.xml",
+				"/usr/share/metainfo/org.gnome.Nautilus.metainfo.xml",
 				"/usr/share/nautilus/ontology/nautilus.description",
 				"/usr/share/nautilus/ontology/nautilus.ontology",
 				"/usr/share/tracker3/domain-ontologies/org.gnome.Nautilus.domain.rule"
 			],
 			"name": "nautilus",
 			"provides": [
+				"binary(nautilus)",
+				"binary(nautilus-autorun-software)",
 				"soname(libnautilus-extension.so.4(x86_64))",
 				"soname(libnautilus-image-properties.so(x86_64))",
-				"soname(libtotem-properties-page.so(x86_64))",
-				"binary(nautilus)",
-				"binary(nautilus-autorun-software)"
+				"soname(libtotem-properties-page.so(x86_64))"
 			]
 		},
 		"nautilus-devel": {
@@ -218,6 +220,7 @@
 				"pkgconfig(tracker-sparql-3.0)"
 			],
 			"depends": [
+				"nautilus",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)"
 			],
@@ -243,6 +246,6 @@
 		}
 	},
 	"source-name": "nautilus",
-	"source-release": "1",
-	"source-version": "45.2.1"
+	"source-release": "2",
+	"source-version": "46.2"
 }

@@ -63,6 +63,7 @@
 				"pkgconfig(mozjs-115)"
 			],
 			"depends": [
+				"gjs",
 				"pkgconfig(cairo)",
 				"pkgconfig(cairo-gobject)",
 				"pkgconfig(cairo-xlib)",
@@ -92,6 +93,6 @@
 		}
 	},
 	"source-name": "gjs",
-	"source-release": "1",
-	"source-version": "1.78.3"
+	"source-release": "2",
+	"source-version": "1.80.2"
 }

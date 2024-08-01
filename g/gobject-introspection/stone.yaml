@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gobject-introspection
-version     : 1.78.1
-release     : 5
+version     : 1.80.1
+release     : 6
 homepage    : https://gitlab.gnome.org/GNOME/gobject-introspection
 upstreams   :
-    - https://download.gnome.org/sources/gobject-introspection/1.78/gobject-introspection-1.78.1.tar.xz : bd7babd99af7258e76819e45ba4a6bc399608fe762d83fde3cac033c50841bb4
+    - https://download.gnome.org/sources/gobject-introspection/1.80/gobject-introspection-1.80.1.tar.xz : a1df7c424e15bda1ab639c00e9051b9adf5cea1a9e512f8a603b53cd199bc6d8
 summary     : GObject Introspection
 description : |
     Describe C/GObject APIs and expose them to other programming languages
@@ -22,7 +22,6 @@ builddeps   :
     - pkgconfig(python3)
     - binary(flex)
     - binary(bison)
-toolchain   : gnu
 packages    :
     - "%(name)-devel":
         paths:
@@ -35,3 +34,4 @@ build       : |
     %meson_build
 install     : |
     %meson_install
+toolchain   : gnu

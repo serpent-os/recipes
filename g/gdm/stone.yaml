@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gdm
-version     : 45.0.1
-release     : 8
+version     : 46.2
+release     : 9
 homepage    : https://gitlab.gnome.org/GNOME/gdm
 upstreams   :
-    - https://download.gnome.org/sources/gdm/45/gdm-45.0.1.tar.xz : 6572578c05e3c6569d6ed269f7de2aaf3a035657654586d8243907bb7a6ffa85
+    - https://download.gnome.org/sources/gdm/46/gdm-46.2.tar.xz : 4ee345422a16537150cd842450cda52b2ca86984bc51ee20cdc025dcf4bd268b
 summary     : GNOME Display Manager
 description : |
     Login/lock and session management with the GNOME Display Manager
@@ -26,6 +26,7 @@ builddeps   :
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gtk+-3.0)
     - pkgconfig(gudev-1.0)
+    - pkgconfig(json-glib-1.0)
     - pkgconfig(libcanberra-gtk3)
     - pkgconfig(pam)
     - pkgconfig(systemd)
@@ -45,8 +46,6 @@ rundeps     :
     - gnome-settings-daemon
 toolchain   : gnu
 setup       : |
-    # active vt detection
-    %patch %(pkgdir)/3b94726faf2ecac47af110715a2d10e4fcfa7a9f.patch
     %meson -Ddbus-sys=%(datadir)/dbus-1/system.d \
            -Ddefault-pam-config=lfs \
            -Dgdm-xsession=true \

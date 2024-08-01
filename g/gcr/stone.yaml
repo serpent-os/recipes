@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gcr
-version     : 4.1.0
-release     : 2
+version     : 4.2.1
+release     : 3
 homepage    : https://gitlab.gnome.org/GNOME/gcr
 upstreams   :
-    - https://download.gnome.org/sources/gcr/4.1/gcr-4.1.0.tar.xz : 9ceaad29284ba919b9216e2888c18ec67240c2c93b3a4856bc5488bbc1f3a383
+    - https://download.gnome.org/sources/gcr/4.2/gcr-4.2.1.tar.xz : ed783b5c80373cd058c02ea9e3e2a64e558599ca190a5abd598122e479967de5
 summary     : GCR is a library for displaying certificates and crypto UI, accessing key stores
 description : |
     GCR is a library for displaying certificates and crypto UI, accessing key stores. It also provides the viewer for crypto files on the GNOME desktop. GCK is a library for accessing PKCS#11 modules like smart cards, in a (G)object oriented way.

@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnome-software
-version     : 45.3
-release     : 2
+version     : 46.3
+release     : 3
 homepage    : https://apps.gnome.org/Software/
 upstreams   :
-    - https://download.gnome.org/sources/gnome-software/45/gnome-software-45.3.tar.xz : d6b9245b22237da7bd1739dd28c23cc8f3835f99fa10c1037d9dd7635335251c
+    - https://download.gnome.org/sources/gnome-software/46/gnome-software-46.3.tar.xz : 9d6bc1f637d81b2b5985837904f05ed707600147d9af160ba8912abf2d42f136
 summary     : Software allows you to find and install new apps and system extensions and remove existing installed apps.
 description : |
     Software showcases featured and popular apps with useful descriptions and multiple screenshots per app. Apps can be found either through browsing the list of categories or by searching. It also allows you to update your system using an offline update.
@@ -35,7 +35,6 @@ builddeps   :
     - pkgconfig(xmlb)
     - docbook
 setup       : |
-    %patch %(pkgdir)/0001-port-to-appstream1.patch
     %meson \
         -Dfwupd=false \
         -Dpackagekit=false \

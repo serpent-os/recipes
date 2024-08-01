@@ -1,0 +1,90 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"msgraph": {
+			"build-depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(goa-1.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libuhttpmock-1.0)",
+				"pkgconfig(rest-1.0)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgoa-1.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libjson-glib-1.0.so.0(x86_64))",
+				"soname(libsoup-3.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/Msg-0.typelib",
+				"/usr/lib/libmsgraph-0.so.0.2.1",
+				"/usr/lib/libmsgraph-0.so.1",
+				"/usr/share/gir-1.0/Msg-0.gir"
+			],
+			"name": "msgraph",
+			"provides": [
+				"soname(libmsgraph-0.so.1(x86_64))"
+			]
+		},
+		"msgraph-devel": {
+			"build-depends": [
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(goa-1.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libuhttpmock-1.0)",
+				"pkgconfig(rest-1.0)"
+			],
+			"depends": [
+				"msgraph",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(goa-1.0)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(rest-1.0)"
+			],
+			"files": [
+				"/usr/include/msg/contact/msg-contact-service.h",
+				"/usr/include/msg/contact/msg-contact.h",
+				"/usr/include/msg/drive/msg-drive-item-file.h",
+				"/usr/include/msg/drive/msg-drive-item-folder.h",
+				"/usr/include/msg/drive/msg-drive-item.h",
+				"/usr/include/msg/drive/msg-drive-service.h",
+				"/usr/include/msg/drive/msg-drive.h",
+				"/usr/include/msg/message/msg-mail-folder.h",
+				"/usr/include/msg/message/msg-message-service.h",
+				"/usr/include/msg/message/msg-message.h",
+				"/usr/include/msg/msg-authorizer.h",
+				"/usr/include/msg/msg-error.h",
+				"/usr/include/msg/msg-goa-authorizer.h",
+				"/usr/include/msg/msg-input-stream.h",
+				"/usr/include/msg/msg-oauth2-authorizer.h",
+				"/usr/include/msg/msg-private.h",
+				"/usr/include/msg/msg-service.h",
+				"/usr/include/msg/msg-version.h",
+				"/usr/include/msg/msg.h",
+				"/usr/include/msg/user/msg-user-service.h",
+				"/usr/include/msg/user/msg-user.h",
+				"/usr/lib/libmsgraph-0.so",
+				"/usr/lib/pkgconfig/msgraph-0.1.pc"
+			],
+			"name": "msgraph-devel",
+			"provides": [
+				"pkgconfig(msgraph-0.1)"
+			]
+		}
+	},
+	"source-name": "msgraph",
+	"source-release": "1",
+	"source-version": "0.2.1"
+}

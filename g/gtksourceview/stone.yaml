@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gtksourceview
-version     : 5.11.0
-release     : 2
+version     : 5.12.1
+release     : 3
 homepage    : https://wiki.gnome.org/Projects/GtkSourceView
 upstreams   :
-    - https://download.gnome.org/sources/gtksourceview/5.11/gtksourceview-5.11.0.tar.xz : 55f9275277a9b3b40d3a55f3e3612e3101d298f48488a99d2afec3c771bec330
+    - https://download.gnome.org/sources/gtksourceview/5.12/gtksourceview-5.12.1.tar.xz : 84c82aad985c5aadae7cea7804904a76341ec82b268d46594c1a478f39b42c1f
 summary     : A text editor widget for code editing
 description : |
     GtkSourceView is a GNOME library that extends GtkTextView, the standard GTK+

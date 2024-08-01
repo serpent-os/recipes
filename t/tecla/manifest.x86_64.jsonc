@@ -34,11 +34,14 @@
 				"/usr/share/locale/da/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/de/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/el/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/en_GB/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/eo/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/es/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/eu/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/fa/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/fi/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/fur/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/gl/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/he/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/hu/LC_MESSAGES/tecla.mo",
@@ -47,19 +50,22 @@
 				"/usr/share/locale/ka/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/lv/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/oc/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/pa/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/pl/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/pt/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/pt_BR/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/ro/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/tecla.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/tecla.mo",
-				"/usr/share/locale/zh_CN/LC_MESSAGES/tecla.mo"
+				"/usr/share/locale/zh_CN/LC_MESSAGES/tecla.mo",
+				"/usr/share/locale/zh_TW/LC_MESSAGES/tecla.mo"
 			],
 			"name": "tecla",
 			"provides": [
@@ -75,6 +81,9 @@
 				"pkgconfig(wayland-client)",
 				"pkgconfig(xkbcommon)"
 			],
+			"depends": [
+				"tecla"
+			],
 			"files": [
 				"/usr/share/pkgconfig/tecla.pc"
 			],
@@ -85,6 +94,6 @@
 		}
 	},
 	"source-name": "tecla",
-	"source-release": "2",
-	"source-version": "45"
+	"source-release": "3",
+	"source-version": "46.0"
 }

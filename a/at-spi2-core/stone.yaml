@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : at-spi2-core
-version     : '2.51.0'
-release     : 3
+version     : 2.52.0
+release     : 4
 homepage    : https://wiki.gnome.org/Accessibility
 upstreams   :
-    - https://download.gnome.org/sources/at-spi2-core/2.51/at-spi2-core-2.51.0.tar.xz : 8dd07c6160e3115f4f77e2205963449def6822a3dc85d495c5db389f56663037
+    - https://download.gnome.org/sources/at-spi2-core/2.52/at-spi2-core-2.52.0.tar.xz : 0ac3fc8320c8d01fa147c272ba7fa03806389c6b03d3c406d0823e30e35ff5ab
 summary     : Base DBus XML interfaces for accessibility, the accessibility registry daemon, and atspi library.
 description : |
     This repository contains the DBus interface definitions for AT-SPI (Assistive Technology Service Provider Interface) — the core of an accessibility stack for free software systems.  It also contains the basic daemons of the accessibility stack, the ATK library to make applications and GUI toolkits accessible, and the internal hooks between AT-SPI and ATK.
