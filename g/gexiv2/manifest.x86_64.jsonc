@@ -20,7 +20,7 @@
 			],
 			"files": [
 				"/usr/lib/libgexiv2.so.2",
-				"/usr/lib/libgexiv2.so.2.14.2"
+				"/usr/lib/libgexiv2.so.2.14.3"
 			],
 			"name": "gexiv2",
 			"provides": [
@@ -34,6 +34,7 @@
 				"pkgconfig(gobject-2.0)"
 			],
 			"depends": [
+				"gexiv2",
 				"pkgconfig(exiv2)",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
@@ -59,6 +60,6 @@
 		}
 	},
 	"source-name": "gexiv2",
-	"source-release": "1",
-	"source-version": "0.14.2"
+	"source-release": "2",
+	"source-version": "0.14.3"
 }
