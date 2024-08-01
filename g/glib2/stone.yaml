@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : glib2
-version     : 2.78.1
-release     : 11
+version     : 2.80.4
+release     : 13
 homepage    : https://gitlab.gnome.org/GNOME/glib
 upstreams   :
-    - https://download.gnome.org/sources/glib/2.78/glib-2.78.1.tar.xz : 915bc3d0f8507d650ead3832e2f8fb670fce59aac4d7754a7dab6f1e6fed78b2
+    - https://download.gnome.org/sources/glib/2.80/glib-2.80.4.tar.xz : 24e029c5dfc9b44e4573697adf33078a9827c48938555004b3b9096fa4ea034f
 summary     : Low-level core library that forms the basis for projects such as GTK+ and GNOME
 description : |
     GLib is the low-level core library that forms the basis for projects such
@@ -25,10 +25,18 @@ license     :
 builddeps   :
     - binary(xgettext)
     - pkgconfig(bash-completion)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(libelf)
     - pkgconfig(libffi)
     - pkgconfig(libpcre2-8)
     - pkgconfig(mount)
     - pkgconfig(zlib)
+    - python-packaging
+rundeps     :
+    - elfutils-libs
+    - python-packaging
+environment : |
+    export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
 setup       : |
     %patch %(pkgdir)/0001-glib-gutils-Support-stateless-fallback-XDG_CONFIG_DI.patch
     %meson -Dtests=false -Dinstalled_tests=false
@@ -36,4 +44,6 @@ build       : |
     %meson_build
 install     : |
     %meson_install
+    %python_compile
     %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/tx.d/glib2.yaml
+toolchain  : gnu
