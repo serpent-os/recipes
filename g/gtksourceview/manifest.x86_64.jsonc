@@ -214,6 +214,7 @@
 				"/usr/share/gtksourceview-5/language-specs/vbnet.lang",
 				"/usr/share/gtksourceview-5/language-specs/verilog.lang",
 				"/usr/share/gtksourceview-5/language-specs/vhdl.lang",
+				"/usr/share/gtksourceview-5/language-specs/wren.lang",
 				"/usr/share/gtksourceview-5/language-specs/xml.lang",
 				"/usr/share/gtksourceview-5/language-specs/xslt.lang",
 				"/usr/share/gtksourceview-5/language-specs/yacc.lang",
@@ -291,6 +292,7 @@
 				"/usr/share/locale/it/LC_MESSAGES/gtksourceview-5.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/gtksourceview-5.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/gtksourceview-5.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/gtksourceview-5.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/gtksourceview-5.mo",
 				"/usr/share/locale/kn/LC_MESSAGES/gtksourceview-5.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/gtksourceview-5.mo",
@@ -360,6 +362,7 @@
 				"pkgconfig(vulkan)"
 			],
 			"depends": [
+				"gtksourceview",
 				"pkgconfig(fontconfig)",
 				"pkgconfig(fribidi)",
 				"pkgconfig(gio-2.0)",
@@ -434,6 +437,6 @@
 		}
 	},
 	"source-name": "gtksourceview",
-	"source-release": "2",
-	"source-version": "5.11.0"
+	"source-release": "3",
+	"source-version": "5.12.1"
 }
