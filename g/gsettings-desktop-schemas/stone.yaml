@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gsettings-desktop-schemas
-version     : '45.0'
-release     : 1
+version     : 46.0
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 upstreams   :
-    - https://download.gnome.org/sources/gsettings-desktop-schemas/45/gsettings-desktop-schemas-45.0.tar.xz : 365c8d04daf79b38c8b3dc9626349a024f9e4befdd31fede74b42f7a9fbe0ae2
+    - https://download.gnome.org/sources/gsettings-desktop-schemas/46/gsettings-desktop-schemas-46.0.tar.xz : 493a46a1161b6388d57aa72f632a79ce96c42d5ffbd1d0b00f496ec5876f8575
 summary     : A collection of GSettings schemas for settings shared by various components of a GNOME Desktop.
 description : |
     A collection of GSettings schemas for settings shared by various components of a GNOME Desktop.

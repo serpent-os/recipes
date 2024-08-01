@@ -4,7 +4,7 @@
 	"packages": {
 		"gsettings-desktop-schemas": {
 			"build-depends": [
-				"gettext",
+				"binary(msgfmt)",
 				"pkgconfig(gobject-introspection-1.0)"
 			],
 			"files": [
@@ -54,6 +54,7 @@
 				"/usr/share/locale/de/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/el/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/en_GB/LC_MESSAGES/gsettings-desktop-schemas.mo",
+				"/usr/share/locale/en_US/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/eo/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/es/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/eu/LC_MESSAGES/gsettings-desktop-schemas.mo",
@@ -106,8 +107,11 @@
 		},
 		"gsettings-desktop-schemas-devel": {
 			"build-depends": [
-				"gettext",
+				"binary(msgfmt)",
 				"pkgconfig(gobject-introspection-1.0)"
+			],
+			"depends": [
+				"gsettings-desktop-schemas"
 			],
 			"files": [
 				"/usr/include/gsettings-desktop-schemas/gdesktop-enums.h",
@@ -120,6 +124,6 @@
 		}
 	},
 	"source-name": "gsettings-desktop-schemas",
-	"source-release": "1",
-	"source-version": "45.0"
+	"source-release": "2",
+	"source-version": "46.0"
 }
