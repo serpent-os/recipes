@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : alacritty
-version     : '0.13.1'
-release     : 2
+version     : 0.13.2
+release     : 3
 homepage    : https://alacritty.org/
 upstreams   :
-    - https://github.com/alacritty/alacritty/archive/refs/tags/v0.13.1.tar.gz : 38a42e23e1e6faaa9e300347df3f7b58b6182908a701517aac6e296fbdf37451
+    - https://github.com/alacritty/alacritty/archive/refs/tags/v0.13.2.tar.gz : e9a54aabc92bbdc25ab1659c2e5a1e9b76f27d101342c8219cc98a730fd46d90
 summary     : A cross-platform, OpenGL terminal emulator.
 description : |
     Alacritty is a modern terminal emulator that comes with sensible defaults, but allows for extensive configuration.
@@ -22,22 +22,24 @@ builddeps   :
     - binary(make)
     - binary(scdoc)
     - pkgconfig(fontconfig)
+setup       : |
+    %cargo_fetch
 build       : |
-    make binary
+    %cargo_build
 
     for FILENAME in alacritty-bindings.5 alacritty-msg.1 alacritty.1 alacritty.5; do
         scdoc < extra/man/${FILENAME}.scd > extra/man/${FILENAME}
     done
 install     : |
-    install -Dm00755 target/release/alacritty -t %(installroot)/usr/bin
+    %install_exe target/*/debug/alacritty -t %(installroot)/usr/bin
 
-    install -Dm00644 extra/completions/alacritty.bash %(installroot)/usr/share/bash-completion/completions/alacritty
-    install -Dm00644 extra/completions/_alacritty %(installroot)/usr/share/zsh/site-functions/_alacritty
-    install -Dm00644 extra/completions/alacritty.fish %(installroot)/usr/share/fish/vendor_completions.d/alacritty.fish
+    %install_file extra/completions/alacritty.bash %(installroot)/usr/share/bash-completion/completions/alacritty
+    %install_file extra/completions/_alacritty %(installroot)/usr/share/zsh/site-functions/_alacritty
+    %install_file extra/completions/alacritty.fish %(installroot)/usr/share/fish/vendor_completions.d/alacritty.fish
 
     for FILENAME in alacritty-bindings.5 alacritty-msg.1 alacritty.1 alacritty.5; do
-        install -Dm00644 extra/man/${FILENAME} %(installroot)/usr/share/man/man${FILENAME##*.}/${FILENAME}
+        %install_file extra/man/${FILENAME} %(installroot)/usr/share/man/man${FILENAME##*.}/${FILENAME}
     done
 
-    install -Dm00644 extra/linux/Alacritty.desktop %(installroot)/usr/share/applications/alacritty.desktop
-    install -Dm00644 extra/logo/alacritty-term+scanlines.svg %(installroot)/usr/share/icons/hicolor/scalable/apps/Alacritty.svg
+    %install_file extra/linux/Alacritty.desktop %(installroot)/usr/share/applications/alacritty.desktop
+    %install_file extra/logo/alacritty-term+scanlines.svg %(installroot)/usr/share/icons/hicolor/scalable/apps/Alacritty.svg
