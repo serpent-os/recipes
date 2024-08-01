@@ -13,7 +13,6 @@
 			"depends": [
 				"soname(libc.so.6(x86_64))",
 				"soname(libffi.so.8(x86_64))",
-				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgmodule-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
@@ -24,10 +23,6 @@
 				"/usr/lib/girepository-1.0/DBusGLib-1.0.typelib",
 				"/usr/lib/girepository-1.0/GIRepository-2.0.typelib",
 				"/usr/lib/girepository-1.0/GL-1.0.typelib",
-				"/usr/lib/girepository-1.0/GLib-2.0.typelib",
-				"/usr/lib/girepository-1.0/GModule-2.0.typelib",
-				"/usr/lib/girepository-1.0/GObject-2.0.typelib",
-				"/usr/lib/girepository-1.0/Gio-2.0.typelib",
 				"/usr/lib/girepository-1.0/Vulkan-1.0.typelib",
 				"/usr/lib/girepository-1.0/cairo-1.0.typelib",
 				"/usr/lib/girepository-1.0/fontconfig-2.0.typelib",
@@ -44,10 +39,6 @@
 				"/usr/share/gir-1.0/DBusGLib-1.0.gir",
 				"/usr/share/gir-1.0/GIRepository-2.0.gir",
 				"/usr/share/gir-1.0/GL-1.0.gir",
-				"/usr/share/gir-1.0/GLib-2.0.gir",
-				"/usr/share/gir-1.0/GModule-2.0.gir",
-				"/usr/share/gir-1.0/GObject-2.0.gir",
-				"/usr/share/gir-1.0/Gio-2.0.gir",
 				"/usr/share/gir-1.0/Vulkan-1.0.gir",
 				"/usr/share/gir-1.0/cairo-1.0.gir",
 				"/usr/share/gir-1.0/fontconfig-2.0.gir",
@@ -78,6 +69,7 @@
 				"pkgconfig(python3)"
 			],
 			"depends": [
+				"gobject-introspection",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
@@ -236,18 +228,18 @@
 			],
 			"name": "gobject-introspection-devel",
 			"provides": [
-				"soname(_giscanner.cpython-311-x86_64-linux-gnu.so(x86_64))",
 				"binary(g-ir-annotation-tool)",
 				"binary(g-ir-compiler)",
 				"binary(g-ir-generate)",
 				"binary(g-ir-inspect)",
 				"binary(g-ir-scanner)",
 				"pkgconfig(gobject-introspection-1.0)",
-				"pkgconfig(gobject-introspection-no-export-1.0)"
+				"pkgconfig(gobject-introspection-no-export-1.0)",
+				"soname(_giscanner.cpython-311-x86_64-linux-gnu.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "gobject-introspection",
-	"source-release": "5",
-	"source-version": "1.78.1"
+	"source-release": "6",
+	"source-version": "1.80.1"
 }
