@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : tracker-miners
-version     : 3.6.2
-release     : 1
+version     : 3.7.3
+release     : 2
 homepage    : https://tracker.gnome.org/
 upstreams   :
-    - https://download.gnome.org/sources/tracker-miners/3.6/tracker-miners-3.6.2.tar.xz : 0ad722f3d532c21d757cf488f942960679ea8f457925efa97656ed4c9e9ba4ff
+    - https://download.gnome.org/sources/tracker-miners/3.7/tracker-miners-3.7.3.tar.xz : e74388154b5c197b4b7ee42f0dce8c5fbbddd4d361093ef88d4fb303e33da5fe
 summary     : Tracker is an efficient search engine and triplestore for desktop, embedded and mobile.
 description : |
     Tracker Miners contains the indexer daemon (tracker-miner-fs-3) and tools to extract metadata from many different filetypes.
@@ -17,6 +17,7 @@ license     :
     - LGPL-2.1-or-later
 builddeps   :
     # binary(a2x) man
+    - binary(msgfmt)
     - binary(glib-compile-schemas)
     - binary(glib-mkenums)
     - binary(sha256sum)
@@ -52,9 +53,11 @@ builddeps   :
     - pkgconfig(upower-glib)
 setup       : |
     # TODO: do an enablement pass on this pkg
+    # TODO: enable landlock support in kernel
     %meson \
         -Dman=false \
-        -Dminer_rss=false
+        -Dminer_rss=false \
+        -Dlandlock=disabled
 build       : |
     %meson_build
 install     : |
