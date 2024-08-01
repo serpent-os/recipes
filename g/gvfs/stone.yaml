@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gvfs
-version     : 1.52.2
-release     : 2
+version     : 1.54.2
+release     : 3
 homepage    : https://wiki.gnome.org/Projects/gvfs
 upstreams   :
-    - https://download.gnome.org/sources/gvfs/1.52/gvfs-1.52.2.tar.xz : a643aceaa053caac0d8eff9a015f636e4bd1bb09cfe27864e347db67460e7b91
+    - https://download.gnome.org/sources/gvfs/1.54/gvfs-1.54.2.tar.xz : 54908f4e10b5f1c231e90330c8c15b7f21f2bb610f194c034b338e379c508e3c
 summary     : Virtual filesystem implementation for GIO
 description : |
     Virtual filesystem implementation for GIO
@@ -20,7 +20,7 @@ builddeps   :
     - pkgconfig(avahi-glib)
     - pkgconfig(dbus-1)
     - pkgconfig(fuse3)
-    - pkgconfig(gcr-base-3)
+    - pkgconfig(gcr-4)
     - pkgconfig(gio-2.0)
     - pkgconfig(gio-unix-2.0)
     - pkgconfig(glib-2.0)
@@ -44,6 +44,7 @@ builddeps   :
     - pkgconfig(libsystemd)
     - pkgconfig(libusb-1.0)
     - pkgconfig(libxml-2.0)
+    - pkgconfig(msgraph-0.1)
     - pkgconfig(polkit-gobject-1)
     - pkgconfig(smbclient)
     - pkgconfig(systemd)
