@@ -21,14 +21,17 @@
 			],
 			"name": "lmdb",
 			"provides": [
-				"soname(liblmdb.so.0.0.0(x86_64))",
 				"binary(mdb_copy)",
 				"binary(mdb_dump)",
 				"binary(mdb_load)",
-				"binary(mdb_stat)"
+				"binary(mdb_stat)",
+				"soname(liblmdb.so.0.0.0(x86_64))"
 			]
 		},
 		"lmdb-devel": {
+			"depends": [
+				"lmdb"
+			],
 			"files": [
 				"/usr/include/lmdb.h",
 				"/usr/lib/liblmdb.so"
@@ -37,6 +40,6 @@
 		}
 	},
 	"source-name": "lmdb",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "0.9.31"
 }

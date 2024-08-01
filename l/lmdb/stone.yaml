@@ -5,10 +5,10 @@
 #
 name        : lmdb
 version     : 0.9.31
-release     : 7
-homepage    : http://symas.com/mdb
+release     : 8
+homepage    : https://www.symas.com/lmdb
 upstreams   :
-    - https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.31/openldap-LMDB_0.9.31.tar.gz : d35d4f6f46313d62fd342c9dcbf574432919ce5e802d2b6cbe2ebd549821e5c4
+    - https://github.com/LMDB/lmdb/archive/refs/tags/LMDB_0.9.31.tar.gz : dd70a8c67807b3b8532b3e987b0a4e998962ecc28643e1af5ec77696b081c9b0
 summary     : Symas Lightning Memory-Mapped Database
 description : |
     Symas Lightning Memory-Mapped Database
