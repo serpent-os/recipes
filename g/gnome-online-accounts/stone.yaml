@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnome-online-accounts
-version     : 3.49.4
-release     : 4
+version     : 3.50.3
+release     : 5
 homepage    : https://gitlab.gnome.org/GNOME/gnome-online-accounts
 upstreams   :
-    - https://download.gnome.org/sources/gnome-online-accounts/3.49/gnome-online-accounts-3.49.4.tar.xz : 9982bd5376c04574d5429a82c82a592d113c73f2e4746bb6e8b0572864d80928
+    - https://download.gnome.org/sources/gnome-online-accounts/3.50/gnome-online-accounts-3.50.3.tar.xz : e714a67d171c57144361eb74ee82a17b15d0a82228ff188cf92704f5626ca294
 summary     : Single sign-on framework for GNOME
 description : |
     Single sign-on framework for GNOME

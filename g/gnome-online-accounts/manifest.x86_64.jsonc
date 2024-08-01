@@ -87,6 +87,7 @@
 				"pkgconfig(rest-1.0)"
 			],
 			"depends": [
+				"gnome-online-accounts",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gtk4)",
@@ -119,6 +120,6 @@
 		}
 	},
 	"source-name": "gnome-online-accounts",
-	"source-release": "4",
-	"source-version": "3.49.4"
+	"source-release": "5",
+	"source-version": "3.50.3"
 }
