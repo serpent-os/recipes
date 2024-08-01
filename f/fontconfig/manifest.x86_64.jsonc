@@ -28,6 +28,7 @@
 				"/usr/bin/fc-validate",
 				"/usr/lib/libfontconfig.so.1",
 				"/usr/lib/libfontconfig.so.1.14.0",
+				"/usr/lib/tmpfiles.d/fontconfig.conf",
 				"/usr/share/fontconfig/conf.avail/05-reset-dirs-sample.conf",
 				"/usr/share/fontconfig/conf.avail/09-autohint-if-no-hinting.conf",
 				"/usr/share/fontconfig/conf.avail/10-autohint.conf",
@@ -121,6 +122,7 @@
 				"pkgconfig32(freetype2)"
 			],
 			"depends": [
+				"fontconfig",
 				"soname(libc.so.6(x86))",
 				"soname(libexpat.so.1(x86))",
 				"soname(libfreetype.so.6(x86))"
@@ -131,6 +133,7 @@
 			],
 			"name": "fontconfig-32bit",
 			"provides": [
+				"soname(libfontconfig.so.1(386))",
 				"soname(libfontconfig.so.1(x86))"
 			]
 		},
@@ -143,6 +146,8 @@
 				"pkgconfig32(freetype2)"
 			],
 			"depends": [
+				"fontconfig-32bit",
+				"fontconfig-devel",
 				"pkgconfig32(expat)",
 				"pkgconfig32(freetype2)"
 			],
@@ -164,6 +169,7 @@
 				"pkgconfig32(freetype2)"
 			],
 			"depends": [
+				"fontconfig",
 				"pkgconfig(expat)",
 				"pkgconfig(freetype2)"
 			],
@@ -181,6 +187,6 @@
 		}
 	},
 	"source-name": "fontconfig",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "2.15.0"
 }

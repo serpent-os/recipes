@@ -5,7 +5,7 @@
 #
 name        : fontconfig
 version     : '2.15.0'
-release     : 9
+release     : 10
 homepage    : https://www.freedesktop.org/wiki/Software/fontconfig
 upstreams   :
     - https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.15.0.tar.xz : 63a0658d0e06e0fa886106452b58ef04f21f58202ea02a94c39de0d3335d7c0e
@@ -18,7 +18,7 @@ description : |
         - have GUI configuration tools built as it uses an XML-based configuration file (though with autodiscovery, we believe this need is minimized).
         - efficiently and quickly find the fonts you need among the set of fonts you have installed, even if you have installed thousands of fonts, while minimzing memory usage.
         - be used in concert with the X Render Extension and FreeType to implement high quality, anti-aliased and subpixel rendered text on a display.
-license     :
+license     : MIT
 builddeps   :
     - binary(gperf)
     - pkgconfig(expat)
@@ -44,3 +44,7 @@ install     : |
     # Remain compatible with expected fontconfig lookup paths, ala fontdb for cosmic
     ln -svf ../fonts/fonts.conf %(installroot)%(datadir)/fontconfig/fonts.conf
     %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/tx.d/fonts-cache.yaml
+
+    # tmpfiles configuration
+    %tmpfiles "# Create font compatibility link"
+    %tmpfiles "L+ /etc/fonts - - - - /usr/share/fonts"
