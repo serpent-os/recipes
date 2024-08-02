@@ -21,11 +21,14 @@ setup       : |
     %patch %(pkgdir)/stateless/stateless.patch
     %meson \
         -Dexamples=false \
-        -Duseroot=false \
+        -Duseroot=false
 build       : |
     %meson_build
 install     : |
     %meson_install
     %install_dir %(installroot)%(vendordir)/fuse
     mv %(installroot)/etc/fuse.conf %(installroot)%(vendordir)/fuse/fuse.conf
+
+    # -Duseroot=true is being too clever and causes a ftbfs, so we do the setsuid thing manually
+    # (without this we get daft fuse mount errors when adding flatpak repos as root) /joey
     chmod 4755 %(installroot)%(bindir)/fusermount3
