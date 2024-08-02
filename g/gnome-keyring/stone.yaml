@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-keyring
+version     : 46.1
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-keyring
+upstreams   :
+    - https://download.gnome.org/sources/gnome-keyring/46/gnome-keyring-46.1.tar.xz : b1d3ae9132ff2f8b3f25a190790892968e3d0acf952a487e40f644a8550ce3f6
+summary     : gnome-keyring is a program that keep password and other secrets for users
+description : |
+  gnome-keyring is a program that keep password and other secrets for users. It is run as a daemon in the session, similar to ssh-agent, and other applications locate it via an environment variable or a D-Bus.
+
+  The program can manage several keyrings, each with its own master password, and there is also a session keyring which is never stored to disk, but forgotten when the session ends.
+
+  The library libsecret is used by applications to integrate with the GNOME keyring system.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - binary(python3)
+    - binary(xsltproc)
+    - pkgconfig(gck-1)
+    - pkgconfig(gcr-4)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(p11-kit-1)
+    - pkgconfig(pam)
+    - pkgconfig(libsystemd)
+    - docbook
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+
+    %install_dir %(installroot)/usr/share/xdg/autostart
+    mv %(installroot)/etc/xdg/autostart/* %(installroot)/usr/share/xdg/autostart/
