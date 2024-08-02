@@ -18,7 +18,7 @@ index e703d97..7d3c7ff 100644
 --- a/crypto/conf/conf_mod.c
 +++ b/crypto/conf/conf_mod.c
 @@ -9,6 +9,7 @@
- 
+
  #include "internal/cryptlib.h"
  #include <stdio.h>
 +#include <unistd.h>
@@ -30,7 +30,7 @@ index 6e7291a..a8690a6 100644
 --- a/include/internal/cryptlib.h
 +++ b/include/internal/cryptlib.h
 @@ -55,8 +55,13 @@ DEFINE_LHASH_OF(MEM);
- 
+
  # ifndef OPENSSL_SYS_VMS
  #  define X509_CERT_AREA          OPENSSLDIR
 -#  define X509_CERT_DIR           OPENSSLDIR "/certs"
@@ -39,7 +39,7 @@ index 6e7291a..a8690a6 100644
 + * and should remain set to /etc/ssl. We modify the path to the cert
 + * areas instead to point to the cache location
 + */
-+#  define CACHE_CERT_AREA         "/var/cache/ca-certs"
++#  define CACHE_CERT_AREA         "/etc/ssl"
 +#  define X509_CERT_DIR           CACHE_CERT_AREA "/certs"
 +#  define X509_CERT_FILE          CACHE_CERT_AREA "/compat/ca-roots.pem"
  #  define X509_PRIVATE_DIR        OPENSSLDIR "/private"
@@ -58,7 +58,7 @@ index 6e7291a..a8690a6 100644
 +    OPENSSL_free(file);
 +    return OPENSSL_strdup("/usr/share/defaults/etc/ssl/openssl.cnf");
  }
- 
+
  /*
 --- openssl-3.0.5/apps/lib/apps.c~	2022-07-05 08:57:04.000000000 +0000
 +++ openssl-3.0.5/apps/lib/apps.c	2022-09-11 19:42:36.761669443 +0000
@@ -69,5 +69,5 @@ index 6e7291a..a8690a6 100644
 +	config = to_free = app_load_config_quiet("/usr/share/defaults/etc/ssl/openssl.cnf");
 +    if (config == NULL)
          return 1;
- 
+
      if (CONF_modules_load(config, NULL, 0) <= 0) {

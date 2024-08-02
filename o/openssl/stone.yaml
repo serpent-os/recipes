@@ -5,7 +5,7 @@
 #
 name        : openssl
 version     : 3.1.6
-release     : 15
+release     : 16
 summary     : OpenSSL cryptography library
 license     : Apache-2.0
 homepage    : https://www.openssl.org
