@@ -5,7 +5,7 @@
 #
 name        : ncurses
 version     : 6.4
-release     : 8
+release     : 9
 homepage    : https://ftp.gnu.org/gnu/ncurses
 upstreams   :
     - https://ftp.gnu.org/gnu/ncurses/ncurses-6.4.tar.gz : 6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
@@ -16,13 +16,16 @@ license     :
     - MIT
 emul32      : yes
 setup       : |
+    %patch %(pkgdir)/pkgconfig.patch
     unset CPP # Breaks stdin on this build.
+
     %configure --disable-rpath \
         --disable-stripping \
         --enable-db-install \
         --enable-largefile \
         --enable-widec \
         --with-cxx-binding \
+        --with-cxx-shared \
         --with-pkg-config-libdir=%(libdir)/pkgconfig \
         --with-shared \
         --without-ada \
