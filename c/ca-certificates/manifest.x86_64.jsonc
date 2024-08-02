@@ -161,6 +161,6 @@
 		}
 	},
 	"source-name": "ca-certificates",
-	"source-release": "2",
-	"source-version": "20240708"
+	"source-release": "3",
+	"source-version": "20240801"
 }
