@@ -1,0 +1,5 @@
+d /var/local 0755 root root -
+d /var/local/lib 0755 root root -
+d /var/local/bin 0755 root root -
+d /var/local/include 0755 root root -
+d /var/local/share 0755 root root -

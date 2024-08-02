@@ -5,7 +5,7 @@
 #
 name        : layout
 version     : "0.1.0"
-release     : 4
+release     : 5
 summary     : Support filesystem layout
 license     : MPL-2.0
 homepage    : https://serpentos.com
@@ -21,3 +21,6 @@ install     : |
 
     # Make /usr/local available
     ln -s /var/local %(installroot)/usr/local
+
+    # Ensure we have working /usr/local
+    %install_file %(pkgdir)/layout.tmpfiles %(installroot)/%(libdir)/tmpfiles.d/layout.conf
