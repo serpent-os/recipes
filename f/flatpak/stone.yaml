@@ -5,7 +5,7 @@
 #
 name        : flatpak
 version     : 1.14.8
-release     : 4
+release     : 5
 homepage    : https://www.flatpak.org/
 upstreams   :
     - https://github.com/flatpak/flatpak/releases/download/1.14.8/flatpak-1.14.8.tar.xz : 1016b7327f7af87896f95465f7e5813750d3b7049a3740a1a4ddcb5fa8c5348e
@@ -44,10 +44,13 @@ builddeps   :
     - python-pyparsing
 rundeps     :
     - bubblewrap
-environment : |
-    export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
 setup       : |
     %patch %(pkgdir)/0001-Use-fusermount3-pending-new-flatpak-release-upstream.patch
+
+    # TODO: remove me when layout is updated
+    # overriding with cflags ain't enough here
+    sed -i '/-Werror=missing-include-dirs/d' configure
+
     # system docbook pkg not suitable for documentation?
     %configure \
         --disable-documentation \
@@ -60,5 +63,10 @@ install     : |
 
     %install_dir %(installroot)/usr/share/defaults/etc/profile.d/
     mv %(installroot)/etc/profile.d/flatpak.sh %(installroot)/usr/share/defaults/etc/profile.d/70-flatpak.sh
+
+    # Enable flathub
+    %install_dir %(installroot)/%(libdir)/systemd/system/multi-user.target.wants
+    %install_file -t %(installroot)/%(libdir)/systemd/system %(pkgdir)/flatpak-enable-flathub.service
+    ln -sv ../flatpak-enable-flathub.service %(installroot)/%(libdir)/systemd/system/multi-user.target.wants/flatpak-enable-flathub.service
 # g-ir-scanner shitting the bed with clang
 toolchain   : gnu
