@@ -5,7 +5,7 @@
 #
 name        : libfuse
 version     : 3.16.2
-release     : 4
+release     : 5
 homepage    : https://github.com/libfuse/libfuse
 upstreams   :
     - https://github.com/libfuse/libfuse/releases/download/fuse-3.16.2/fuse-3.16.2.tar.gz : f797055d9296b275e981f5f62d4e32e089614fc253d1ef2985851025b8a0ce87
@@ -28,3 +28,4 @@ install     : |
     %meson_install
     %install_dir %(installroot)%(vendordir)/fuse
     mv %(installroot)/etc/fuse.conf %(installroot)%(vendordir)/fuse/fuse.conf
+    chmod 4755 %(installroot)%(bindir)/fusermount3
