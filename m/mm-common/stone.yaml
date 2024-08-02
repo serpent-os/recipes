@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : mm-common
+version     : 1.0.6
+release     : 1
+homepage    : https://www.gtkmm.org
+upstreams   :
+    - https://download.gnome.org/sources/mm-common/1.0/mm-common-1.0.6.tar.xz : b55c46037dbcdabc5cee3b389ea11cc3910adb68ebe883e9477847aa660862e7
+summary     : Utilities shared among GNOME C++ binding libraries
+description : |
+    The mm-common module provides the build infrastructure and utilities shared among the GNOME C++ binding libraries.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(aclocal)
+    - binary(python3)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
