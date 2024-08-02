@@ -70,7 +70,9 @@
 				"/usr/lib/libflatpak.so.0",
 				"/usr/lib/libflatpak.so.0.11408.0",
 				"/usr/lib/systemd/system-environment-generators/60-flatpak-system-only",
+				"/usr/lib/systemd/system/flatpak-enable-flathub.service",
 				"/usr/lib/systemd/system/flatpak-system-helper.service",
+				"/usr/lib/systemd/system/multi-user.target.wants/flatpak-enable-flathub.service",
 				"/usr/lib/systemd/user-environment-generators/60-flatpak",
 				"/usr/lib/systemd/user/flatpak-oci-authenticator.service",
 				"/usr/lib/systemd/user/flatpak-portal.service",
@@ -189,6 +191,6 @@
 		}
 	},
 	"source-name": "flatpak",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "1.14.8"
 }
