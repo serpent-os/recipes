@@ -8,7 +8,6 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))"
@@ -40,6 +39,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "51",
+	"source-release": "53",
 	"source-version": "0.1.0"
 }
