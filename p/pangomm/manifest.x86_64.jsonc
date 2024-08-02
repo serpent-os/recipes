@@ -1,0 +1,125 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"pangomm": {
+			"build-depends": [
+				"binary(m4)",
+				"binary(perl)",
+				"binary(python3)",
+				"binary(xsltproc)",
+				"pkgconfig(cairomm-1.16)",
+				"pkgconfig(glibmm-2.68)",
+				"pkgconfig(pangocairo)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcairomm-1.16.so.1(x86_64))",
+				"soname(libgiomm-2.68.so.1(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libglibmm-2.68.so.1(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libpango-1.0.so.0(x86_64))",
+				"soname(libpangocairo-1.0.so.0(x86_64))",
+				"soname(libsigc-3.0.so.0(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libpangomm-2.48.so.1",
+				"/usr/lib/libpangomm-2.48.so.1.0.30",
+				"/usr/lib/pangomm-2.48/include/pangommconfig.h",
+				"/usr/lib/pangomm-2.48/proc/m4/convert.m4",
+				"/usr/lib/pangomm-2.48/proc/m4/convert_pango.m4",
+				"/usr/lib/pangomm-2.48/proc/m4/convert_pangomm.m4"
+			],
+			"name": "pangomm",
+			"provides": [
+				"soname(libpangomm-2.48.so.1(x86_64))"
+			]
+		},
+		"pangomm-devel": {
+			"build-depends": [
+				"binary(m4)",
+				"binary(perl)",
+				"binary(python3)",
+				"binary(xsltproc)",
+				"pkgconfig(cairomm-1.16)",
+				"pkgconfig(glibmm-2.68)",
+				"pkgconfig(pangocairo)"
+			],
+			"depends": [
+				"pangomm",
+				"pkgconfig(cairomm-1.16)",
+				"pkgconfig(giomm-2.68)",
+				"pkgconfig(pangocairo)"
+			],
+			"files": [
+				"/usr/include/pangomm-2.48/pangomm.h",
+				"/usr/include/pangomm-2.48/pangomm/attributes.h",
+				"/usr/include/pangomm-2.48/pangomm/attriter.h",
+				"/usr/include/pangomm-2.48/pangomm/attrlist.h",
+				"/usr/include/pangomm-2.48/pangomm/cairofontmap.h",
+				"/usr/include/pangomm-2.48/pangomm/cairofontmapimpl.h",
+				"/usr/include/pangomm-2.48/pangomm/color.h",
+				"/usr/include/pangomm-2.48/pangomm/context.h",
+				"/usr/include/pangomm-2.48/pangomm/coverage.h",
+				"/usr/include/pangomm-2.48/pangomm/font.h",
+				"/usr/include/pangomm-2.48/pangomm/fontdescription.h",
+				"/usr/include/pangomm-2.48/pangomm/fontface.h",
+				"/usr/include/pangomm-2.48/pangomm/fontfamily.h",
+				"/usr/include/pangomm-2.48/pangomm/fontmap.h",
+				"/usr/include/pangomm-2.48/pangomm/fontmetrics.h",
+				"/usr/include/pangomm-2.48/pangomm/fontset.h",
+				"/usr/include/pangomm-2.48/pangomm/glyph.h",
+				"/usr/include/pangomm-2.48/pangomm/glyphitem.h",
+				"/usr/include/pangomm-2.48/pangomm/glyphstring.h",
+				"/usr/include/pangomm-2.48/pangomm/init.h",
+				"/usr/include/pangomm-2.48/pangomm/item.h",
+				"/usr/include/pangomm-2.48/pangomm/language.h",
+				"/usr/include/pangomm-2.48/pangomm/layout.h",
+				"/usr/include/pangomm-2.48/pangomm/layoutiter.h",
+				"/usr/include/pangomm-2.48/pangomm/layoutline.h",
+				"/usr/include/pangomm-2.48/pangomm/private/attributes_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/attriter_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/attrlist_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/cairofontmap_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/color_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/context_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/coverage_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/font_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/fontdescription_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/fontface_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/fontfamily_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/fontmap_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/fontmetrics_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/fontset_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/glyph_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/glyphitem_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/glyphstring_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/item_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/language_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/layout_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/layoutiter_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/layoutline_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/rectangle_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/renderer_p.h",
+				"/usr/include/pangomm-2.48/pangomm/private/tabarray_p.h",
+				"/usr/include/pangomm-2.48/pangomm/rectangle.h",
+				"/usr/include/pangomm-2.48/pangomm/renderer.h",
+				"/usr/include/pangomm-2.48/pangomm/tabarray.h",
+				"/usr/include/pangomm-2.48/pangomm/types.h",
+				"/usr/include/pangomm-2.48/pangomm/wrap_init.h",
+				"/usr/lib/libpangomm-2.48.so",
+				"/usr/lib/pkgconfig/pangomm-2.48.pc"
+			],
+			"name": "pangomm-devel",
+			"provides": [
+				"pkgconfig(pangomm-2.48)"
+			]
+		}
+	},
+	"source-name": "pangomm",
+	"source-release": "1",
+	"source-version": "2.52.0"
+}

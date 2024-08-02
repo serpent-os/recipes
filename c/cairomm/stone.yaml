@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cairomm
+version     : 1.18.0
+release     : 1
+homepage    : https://www.cairographics.org/cairomm/
+upstreams   :
+    - https://gitlab.freedesktop.org/cairo/cairomm/-/archive/1.18.0/cairomm-1.18.0.tar.gz : aec941f5b1c25392fec2b079edbd322d54520efc7c6a7a48eef111e14a67ca64
+summary     : C++ interface to cairo (1.16 ABI)
+description : |
+    This library provides a C++ interface to cairo (1.16 ABI)
+license     : LGPL-2.1-or-later
+builddeps   :
+    # binary(doxygen)
+    - binary(mm-common-get)
+    - binary(perl)
+    - binary(python3)
+    - binary(xsltproc)
+    - pkgconfig(cairo)
+    - pkgconfig(fontconfig)
+    - pkgconfig(sigc++-3.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

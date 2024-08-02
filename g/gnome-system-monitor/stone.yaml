@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-system-monitor
+version     : 46.0
+release     : 1
+homepage    : https://apps.gnome.org/SystemMonitor/
+upstreams   :
+    - https://download.gnome.org/sources/gnome-system-monitor/46/gnome-system-monitor-46.0.tar.xz : 5376248158c686c308255472e8c2a9e4c17255642c149fc7198c6d034e547599
+summary     : View and manage system resources
+description : |
+  System Monitor is a process viewer and system monitor with an attractive, easy-to-use interface. System Monitor can help you find out what applications are using the processor or the memory of your computer, can manage the running applications, force stop processes not responding, and change the state or priority of existing processes. The resource graphs feature shows you a quick overview of what is going on with your computer displaying recent network, memory and processor usage.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(itstool)
+    - binary(lld)
+    - binary(msgfmt)
+    - binary(python3)
+    - pkgconfig(giomm-2.68)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(glibmm-2.68)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(gtkmm-4.0)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libgtop-2.0)
+    - pkgconfig(librsvg-2.0)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libxml-2.0)
+environment : |
+    export CXXFLAGS="${CXXFLAGS} -Wno-c++11-narrowing"
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

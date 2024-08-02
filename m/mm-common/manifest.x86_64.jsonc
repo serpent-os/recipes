@@ -1,0 +1,72 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"mm-common": {
+			"build-depends": [
+				"binary(aclocal)",
+				"binary(python3)"
+			],
+			"files": [
+				"/usr/bin/mm-common-get",
+				"/usr/bin/mm-common-prepare",
+				"/usr/share/doc/mm-common/OVERVIEW.md",
+				"/usr/share/doc/mm-common/README.md",
+				"/usr/share/doc/mm-common/skeletonmm.tar.xz",
+				"/usr/share/man/man1/mm-common-get.1",
+				"/usr/share/man/man1/mm-common-prepare.1",
+				"/usr/share/mm-common/build/check-dllexport-usage.py",
+				"/usr/share/mm-common/build/compile-binding.am",
+				"/usr/share/mm-common/build/dist-build-scripts.py",
+				"/usr/share/mm-common/build/dist-changelog.am",
+				"/usr/share/mm-common/build/dist-changelog.py",
+				"/usr/share/mm-common/build/doc-reference.am",
+				"/usr/share/mm-common/build/doc-reference.py",
+				"/usr/share/mm-common/build/generate-binding.am",
+				"/usr/share/mm-common/build/generate-binding.py",
+				"/usr/share/mm-common/doctags/libstdc++.tag",
+				"/usr/share/mm-common/doctool/doc-install.pl",
+				"/usr/share/mm-common/doctool/doc-postprocess.pl",
+				"/usr/share/mm-common/doctool/doc_install.py",
+				"/usr/share/mm-common/doctool/doc_postprocess.py",
+				"/usr/share/mm-common/doctool/doxygen-extra.css",
+				"/usr/share/mm-common/doctool/doxygen.css",
+				"/usr/share/mm-common/doctool/tagfile-to-devhelp2.xsl"
+			],
+			"name": "mm-common",
+			"provides": [
+				"binary(mm-common-get)",
+				"binary(mm-common-prepare)"
+			]
+		},
+		"mm-common-devel": {
+			"build-depends": [
+				"binary(aclocal)",
+				"binary(python3)"
+			],
+			"depends": [
+				"mm-common"
+			],
+			"files": [
+				"/usr/share/aclocal/mm-ax_cxx_compile_stdcxx.m4",
+				"/usr/share/aclocal/mm-ax_cxx_compile_stdcxx_11.m4",
+				"/usr/share/aclocal/mm-common.m4",
+				"/usr/share/aclocal/mm-dietlib.m4",
+				"/usr/share/aclocal/mm-doc.m4",
+				"/usr/share/aclocal/mm-module.m4",
+				"/usr/share/aclocal/mm-pkg.m4",
+				"/usr/share/aclocal/mm-warnings.m4",
+				"/usr/share/pkgconfig/mm-common-libstdc++.pc",
+				"/usr/share/pkgconfig/mm-common-util.pc"
+			],
+			"name": "mm-common-devel",
+			"provides": [
+				"pkgconfig(mm-common-libstdc++)",
+				"pkgconfig(mm-common-util)"
+			]
+		}
+	},
+	"source-name": "mm-common",
+	"source-release": "1",
+	"source-version": "1.0.6"
+}
