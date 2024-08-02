@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : pangomm
+version     : 2.52.0
+release     : 1
+homepage    : https://www.gtkmm.org
+upstreams   :
+    - https://download.gnome.org/sources/pangomm/2.52/pangomm-2.52.0.tar.xz : 34a134126a6484ff12f774358c36ecc44d0e9df094e1b83796d9774bb7d24947
+summary     : C++ API for Pango (2.48 ABI)
+description : |
+    C++ API for Pango (2.48 ABI)
+license     : LGPL-2.1-or-later
+builddeps   :
+    # binary(doxygen)
+    - binary(m4)
+    - binary(perl)
+    - binary(python3)
+    - binary(xsltproc)
+    - pkgconfig(cairomm-1.16)
+    - pkgconfig(glibmm-2.68)
+    - pkgconfig(pangocairo)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
