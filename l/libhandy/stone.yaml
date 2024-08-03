@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libhandy
+version     : 1.8.3
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/libhandy
+upstreams   :
+    - https://download.gnome.org/sources/libhandy/1.8/libhandy-1.8.3.tar.xz : 05b497229073ff557f10b326e074c5066f8743a302d4820ab97bcb5cd2dab087
+summary     : Building blocks for modern adaptive GNOME apps
+description : |
+    The aim of the Handy library is to help with developing UI for mobile devices using GTK/GNOME.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - binary(vapigen)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/bin/handy-1-demo
+            - /usr/share/vala
+toolchain   : gnu
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

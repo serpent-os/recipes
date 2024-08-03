@@ -1,0 +1,114 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libhandy": {
+			"build-depends": [
+				"binary(vapigen)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk+-3.0)"
+			],
+			"depends": [
+				"soname(libatk-1.0.so.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcairo.so.2(x86_64))",
+				"soname(libfribidi.so.0(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-3.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpango-1.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/Handy-1.typelib",
+				"/usr/lib/libhandy-1.so.0",
+				"/usr/share/gir-1.0/Handy-1.gir"
+			],
+			"name": "libhandy",
+			"provides": [
+				"soname(libhandy-1.so.0(x86_64))"
+			]
+		},
+		"libhandy-devel": {
+			"build-depends": [
+				"binary(vapigen)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk+-3.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"libhandy",
+				"pkgconfig(gtk+-3.0)",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-3.so.0(x86_64))",
+				"soname(libhandy-1.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/handy-1-demo",
+				"/usr/include/libhandy-1/handy.h",
+				"/usr/include/libhandy-1/hdy-action-row.h",
+				"/usr/include/libhandy-1/hdy-animation.h",
+				"/usr/include/libhandy-1/hdy-application-window.h",
+				"/usr/include/libhandy-1/hdy-avatar.h",
+				"/usr/include/libhandy-1/hdy-carousel-indicator-dots.h",
+				"/usr/include/libhandy-1/hdy-carousel-indicator-lines.h",
+				"/usr/include/libhandy-1/hdy-carousel.h",
+				"/usr/include/libhandy-1/hdy-clamp.h",
+				"/usr/include/libhandy-1/hdy-combo-row.h",
+				"/usr/include/libhandy-1/hdy-deck.h",
+				"/usr/include/libhandy-1/hdy-enum-value-object.h",
+				"/usr/include/libhandy-1/hdy-enums.h",
+				"/usr/include/libhandy-1/hdy-expander-row.h",
+				"/usr/include/libhandy-1/hdy-flap.h",
+				"/usr/include/libhandy-1/hdy-header-bar.h",
+				"/usr/include/libhandy-1/hdy-header-group.h",
+				"/usr/include/libhandy-1/hdy-keypad.h",
+				"/usr/include/libhandy-1/hdy-leaflet.h",
+				"/usr/include/libhandy-1/hdy-main.h",
+				"/usr/include/libhandy-1/hdy-navigation-direction.h",
+				"/usr/include/libhandy-1/hdy-preferences-group.h",
+				"/usr/include/libhandy-1/hdy-preferences-page.h",
+				"/usr/include/libhandy-1/hdy-preferences-row.h",
+				"/usr/include/libhandy-1/hdy-preferences-window.h",
+				"/usr/include/libhandy-1/hdy-search-bar.h",
+				"/usr/include/libhandy-1/hdy-squeezer.h",
+				"/usr/include/libhandy-1/hdy-status-page.h",
+				"/usr/include/libhandy-1/hdy-style-manager.h",
+				"/usr/include/libhandy-1/hdy-swipe-group.h",
+				"/usr/include/libhandy-1/hdy-swipe-tracker.h",
+				"/usr/include/libhandy-1/hdy-swipeable.h",
+				"/usr/include/libhandy-1/hdy-tab-bar.h",
+				"/usr/include/libhandy-1/hdy-tab-view.h",
+				"/usr/include/libhandy-1/hdy-title-bar.h",
+				"/usr/include/libhandy-1/hdy-types.h",
+				"/usr/include/libhandy-1/hdy-value-object.h",
+				"/usr/include/libhandy-1/hdy-version.h",
+				"/usr/include/libhandy-1/hdy-view-switcher-bar.h",
+				"/usr/include/libhandy-1/hdy-view-switcher-title.h",
+				"/usr/include/libhandy-1/hdy-view-switcher.h",
+				"/usr/include/libhandy-1/hdy-window-handle.h",
+				"/usr/include/libhandy-1/hdy-window.h",
+				"/usr/lib/libhandy-1.so",
+				"/usr/lib/pkgconfig/libhandy-1.pc",
+				"/usr/share/vala/vapi/libhandy-1.deps",
+				"/usr/share/vala/vapi/libhandy-1.vapi"
+			],
+			"name": "libhandy-devel",
+			"provides": [
+				"binary(handy-1-demo)",
+				"pkgconfig(libhandy-1)"
+			]
+		}
+	},
+	"source-name": "libhandy",
+	"source-release": "1",
+	"source-version": "1.8.3"
+}
