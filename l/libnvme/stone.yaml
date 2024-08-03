@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libnvme
+version     : 1.9
+release     : 1
+homepage    : https://github.com/linux-nvme/libnvme
+upstreams   :
+    - https://github.com/linux-nvme/libnvme/archive/refs/tags/v1.9.tar.gz : 455867060d2b7563eab59fe21779dff469d98465028997178c7efbe4b8763206
+summary     : C Library for NVM Express on Linux
+description : |
+    This is the libnvme development C library. libnvme provides type definitions for NVMe specification structures, enumerations, and bit fields, helper functions to construct, dispatch, and decode commands and payloads, and utilities to connect, scan, and manage nvme devices on a Linux system.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(json-c)
+    - pkgconfig(libkeyutils)
+    - pkgconfig(openssl)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
