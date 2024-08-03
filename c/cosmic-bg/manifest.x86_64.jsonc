@@ -6,7 +6,7 @@
 			"build-depends": [
 				"binary(cargo)",
 				"binary(just)",
-				"binary(mold)",
+				"binary(which)",
 				"pkgconfig(xkbcommon)"
 			],
 			"depends": [
@@ -14,8 +14,7 @@
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
-				"soname(libunwind.so.1(x86_64))",
-				"soname(libxkbcommon.so.0(x86_64))"
+				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/cosmic-bg",
@@ -33,6 +32,6 @@
 		}
 	},
 	"source-name": "cosmic-bg",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.0"
 }
