@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ldc
-version     : 1.36.0
-release     : 11
+version     : 1.39.0
+release     : 12
 summary     : The LLVM-based D Compiler
 license     :
     - Apache-2.0
@@ -15,9 +15,9 @@ homepage    : https://github.com/ldc-developers/ldc
 description : |
     The LLVM-based D Compiler
 upstreams   :
-    - https://github.com/ldc-developers/ldc/releases/download/v1.36.0/ldc-1.36.0-src.tar.gz: a00c79073123a887c17f446c7782a49556a3512a3d35ab676b7d53ae1bb8d6ef
-    - https://downloads.dlang.org/releases/2.x/2.103.1/dmd.2.103.1.linux.tar.xz:
-        hash: b77619f0f6b103467efb3b546cd63e7d3078c515ee6ebefbe1a0083f6fdd72fc
+    - https://github.com/ldc-developers/ldc/releases/download/v1.39.0/ldc-1.39.0-src.tar.gz: 839bac36f6073318e36f0b163767e03bdbd3f57d99256b97494ac439b59a4562
+    - https://downloads.dlang.org/releases/2.x/2.109.1/dmd.2.109.1.linux.tar.xz:
+        hash: db52ed3cdc211a341370a07b56ee187955dfc8c1b0766f540cce3f030506fb9b
         stripdirs: 1
         unpackdir: "%(name)-%(version)-src/dmd2/"
 builddeps   :
@@ -43,5 +43,9 @@ build       : |
     %cmake_build
 install     : |
     %cmake_install
+
+    %install_dir %(installroot)/%(libdir)/bfd-plugins
+    ln -srf %(installroot)/%(libdir)/LLVMgold-ldc.so %(installroot)/%(libdir)/bfd-plugins/LLVMgold-ldc.so
+
     # Stateless: Put file in patched stateless location
     %install_file %(installroot)/etc/ldc2.conf %(installroot)/%(vendordir)/ldc2/ldc2.conf
