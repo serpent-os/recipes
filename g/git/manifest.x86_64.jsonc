@@ -6,8 +6,10 @@
 			"build-depends": [
 				"binary(msgfmt)",
 				"pkgconfig(expat)",
+				"pkgconfig(gobject-2.0)",
 				"pkgconfig(libcurl)",
 				"pkgconfig(libpcre2-8)",
+				"pkgconfig(libsecret-1)",
 				"pkgconfig(libxcrypt)",
 				"pkgconfig(openssl)",
 				"pkgconfig(zlib)"
@@ -18,7 +20,10 @@
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(libcurl.so.4(x86_64))",
 				"soname(libexpat.so.1(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libpcre2-8.so.0(x86_64))",
+				"soname(libsecret-1.so.0(x86_64))",
 				"soname(libssl.so.3(x86_64))",
 				"soname(libz.so.1(x86_64))"
 			],
@@ -63,6 +68,7 @@
 				"/usr/lib/git/git-core/git-credential",
 				"/usr/lib/git/git-core/git-credential-cache",
 				"/usr/lib/git/git-core/git-credential-cache--daemon",
+				"/usr/lib/git/git-core/git-credential-libsecret",
 				"/usr/lib/git/git-core/git-credential-store",
 				"/usr/lib/git/git-core/git-cvsexportcommit",
 				"/usr/lib/git/git-core/git-cvsimport",
@@ -181,6 +187,7 @@
 				"/usr/lib/git/git-core/git-stripspace",
 				"/usr/lib/git/git-core/git-submodule",
 				"/usr/lib/git/git-core/git-submodule--helper",
+				"/usr/lib/git/git-core/git-subtree",
 				"/usr/lib/git/git-core/git-svn",
 				"/usr/lib/git/git-core/git-switch",
 				"/usr/lib/git/git-core/git-symbolic-ref",
@@ -301,6 +308,6 @@
 		}
 	},
 	"source-name": "git",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "2.46.0"
 }

@@ -5,7 +5,7 @@
 #
 name        : git
 version     : 2.46.0
-release     : 9
+release     : 10
 summary     : Fast, scalable, distributed revision control system
 license     : GPL-2.0-only
 homepage    : https://git-scm.com
@@ -16,8 +16,10 @@ upstreams   :
 builddeps   :
     - binary(msgfmt)
     - pkgconfig(expat)
+    - pkgconfig(gobject-2.0)
     - pkgconfig(libcurl)
     - pkgconfig(libpcre2-8)
+    - pkgconfig(libsecret-1)
     - pkgconfig(libxcrypt)
     - pkgconfig(openssl)
     - pkgconfig(zlib)
@@ -28,9 +30,13 @@ setup       : |
         --without-tcltk \
 build       : |
     %make
+    %make -C contrib/subtree
+    %make -C contrib/credential/libsecret
 install     : |
     %make_install
+    %make_install -C contrib/subtree
 
     %install_file contrib/completion/git-completion.bash %(installroot)%(datadir)/bash-completion/completions/git
     %install_file contrib/completion/git-completion.zsh %(installroot)%(datadir)/zsh/site-functions/_git
+    %install_exe contrib/credential/libsecret/git-credential-libsecret %(installroot)%(libdir)/git/git-core/.
 # TODO Checks
