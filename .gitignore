@@ -4,3 +4,6 @@
 
 # Only use `stone.yaml` path now please.
 stone.yml
+
+# Used by just for loading environment variables specific to local systems
+.env

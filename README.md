@@ -36,9 +36,25 @@ our local repository priority to take precedence.
 $ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file:///$HOME/.local_repo/stone.index,priority=10
 ```
 
+**Create a `.env` file**
+
+If you are not building on Serpent OS using the os-supplied boulder package, or if you want to specify custom arguments to the boulder invocation when using the `just` targets,
+you might benefit from creating a `.env` file in the root of the `recipes/` directory, next to the supplied `justfile`.
+
+_Example `.env` file:_
+
+    BOULDER="${HOME}/.local/bin/boulder"
+    BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder --config-dir=${HOME}/.config/boulder --moss-root=${HOME}/.cache/boulder""
+
+The `justfile` is set up so you can also choose to specify either of the above environment variables on a command-line invocation of `just`:
+
+_Example:_
+
+    BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder" just build
+
 ### Go go go
 
-Well, actually Rust.. Anyway, quickly try to build `m/m4/stone.yaml` or `n/nano/stone.yaml` for a quick and easy confirmation that everything works OK.
+Well, actually Rust.. Anyway, quickly try to `pushd m/m4/ && just build` or `pushd n/nano && just build` for a quick and easy confirmation that everything works OK.
 
 ## Git summary requirements
 
