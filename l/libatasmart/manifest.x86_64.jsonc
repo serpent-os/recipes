@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libatasmart": {
+			"build-depends": [
+				"pkgconfig(libudev)",
+				"pkgconfig(vapigen)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libudev.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libatasmart.so.4",
+				"/usr/lib/libatasmart.so.4.0.5",
+				"/usr/sbin/skdump",
+				"/usr/sbin/sktest",
+				"/usr/share/doc/libatasmart/README",
+				"/usr/share/vala/vapi/atasmart.vapi"
+			],
+			"name": "libatasmart",
+			"provides": [
+				"soname(libatasmart.so.4(x86_64))",
+				"sysbinary(skdump)",
+				"sysbinary(sktest)"
+			]
+		},
+		"libatasmart-devel": {
+			"build-depends": [
+				"pkgconfig(libudev)",
+				"pkgconfig(vapigen)"
+			],
+			"depends": [
+				"libatasmart"
+			],
+			"files": [
+				"/usr/include/atasmart.h",
+				"/usr/lib/libatasmart.so",
+				"/usr/lib/pkgconfig/libatasmart.pc"
+			],
+			"name": "libatasmart-devel",
+			"provides": [
+				"pkgconfig(libatasmart)"
+			]
+		}
+	},
+	"source-name": "libatasmart",
+	"source-release": "1",
+	"source-version": "0.19"
+}

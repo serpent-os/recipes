@@ -1,0 +1,70 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libnvme": {
+			"build-depends": [
+				"pkgconfig(json-c)",
+				"pkgconfig(libkeyutils)",
+				"pkgconfig(openssl)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libjson-c.so.5(x86_64))",
+				"soname(libkeyutils.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libnvme-mi.so.1",
+				"/usr/lib/libnvme-mi.so.1.9.0",
+				"/usr/lib/libnvme.so.1",
+				"/usr/lib/libnvme.so.1.9.0"
+			],
+			"name": "libnvme",
+			"provides": [
+				"soname(libnvme-mi.so.1(x86_64))",
+				"soname(libnvme.so.1(x86_64))"
+			]
+		},
+		"libnvme-devel": {
+			"build-depends": [
+				"pkgconfig(json-c)",
+				"pkgconfig(libkeyutils)",
+				"pkgconfig(openssl)"
+			],
+			"depends": [
+				"libnvme",
+				"pkgconfig(json-c)",
+				"pkgconfig(libkeyutils)",
+				"pkgconfig(openssl)"
+			],
+			"files": [
+				"/usr/include/libnvme-mi.h",
+				"/usr/include/libnvme.h",
+				"/usr/include/nvme/api-types.h",
+				"/usr/include/nvme/fabrics.h",
+				"/usr/include/nvme/filters.h",
+				"/usr/include/nvme/ioctl.h",
+				"/usr/include/nvme/linux.h",
+				"/usr/include/nvme/log.h",
+				"/usr/include/nvme/mi.h",
+				"/usr/include/nvme/nbft.h",
+				"/usr/include/nvme/tree.h",
+				"/usr/include/nvme/types.h",
+				"/usr/include/nvme/util.h",
+				"/usr/lib/libnvme-mi.so",
+				"/usr/lib/libnvme.so",
+				"/usr/lib/pkgconfig/libnvme-mi.pc",
+				"/usr/lib/pkgconfig/libnvme.pc"
+			],
+			"name": "libnvme-devel",
+			"provides": [
+				"pkgconfig(libnvme)",
+				"pkgconfig(libnvme-mi)"
+			]
+		}
+	},
+	"source-name": "libnvme",
+	"source-release": "1",
+	"source-version": "1.9"
+}

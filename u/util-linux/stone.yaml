@@ -5,7 +5,7 @@
 #
 name        : util-linux
 version     : '2.39.3'
-release     : 6
+release     : 7
 summary     : Random collection of Linux utilities
 license     :
     - BSD-3-Clause
@@ -31,7 +31,6 @@ builddeps   :
 setup       : |
     # Can fix these issues once fakeroot is implemented
     %configure --disable-makeinstall-chown \
-               --disable-makeinstall-setuid \
                --disable-static \
                --with-vendordir=%(vendordir)
 build       : |

@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : parted
+version     : 3.6
+release     : 1
+homepage    : https://www.gnu.org/software/parted/
+upstreams   :
+    - https://ftp.gnu.org/gnu/parted/parted-3.6.tar.xz : 3b43dbe33cca0f9a18601ebab56b7852b128ec1a3df3a9b30ccde5e73359e612
+summary     : GNU Parted manipulates partition tables
+description : |
+    GNU Parted manipulates partition tables. This is useful for creating space for new operating systems, reorganizing disk usage, copying data on hard disks and disk imaging. The package contains a library, libparted, as well as a command-line frontend, parted, which can also be used in scripts.
+license     : GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(devmapper)
+    - pkgconfig(readline)
+    - pkgconfig(uuid)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
