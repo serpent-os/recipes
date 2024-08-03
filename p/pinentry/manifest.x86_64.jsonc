@@ -24,19 +24,17 @@
 			],
 			"files": [
 				"/usr/bin/pinentry",
-				"/usr/bin/pinentry-curses",
 				"/usr/bin/pinentry-gnome3",
 				"/usr/share/info/pinentry.info"
 			],
 			"name": "pinentry",
 			"provides": [
 				"binary(pinentry)",
-				"binary(pinentry-curses)",
 				"binary(pinentry-gnome3)"
 			]
 		}
 	},
 	"source-name": "pinentry",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.3.1"
 }
