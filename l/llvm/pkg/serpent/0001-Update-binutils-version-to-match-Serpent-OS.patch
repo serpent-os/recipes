@@ -1,4 +1,4 @@
-From 6e3233780d688e8ed49ef33f58c7f9c881831781 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Peter O'Connor <sunnyflunk@serpentos.com>
 Date: Mon, 8 Nov 2021 09:07:17 +1100
 Subject: [PATCH] Update binutils version to match Serpent OS
@@ -10,23 +10,23 @@ Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/clang/include/clang/Driver/Options.td b/clang/include/clang/Driver/Options.td
-index a0cbcae0b..cb8673cd8 100644
+index 175bedbfb4d..b8d1608a145 100644
 --- a/clang/include/clang/Driver/Options.td
 +++ b/clang/include/clang/Driver/Options.td
-@@ -4291,7 +4291,7 @@ def fbinutils_version_EQ : Joined<["-"], "fbinutils-version=">,
+@@ -6145,7 +6145,7 @@ def fbinutils_version_EQ : Joined<["-"], "fbinutils-version=">,
    HelpText<"Produced object files can use all ELF features supported by this "
    "binutils version and newer. If -fno-integrated-as is specified, the "
    "generated assembly will consider GNU as support. 'none' means that all ELF "
 -  "features can be used, regardless of binutils support. Defaults to 2.26.">;
 +  "features can be used, regardless of binutils support. Defaults to 2.42.">;
- def fuse_ld_EQ : Joined<["-"], "fuse-ld=">, Group<f_Group>, Flags<[CoreOption, LinkOption]>;
+ def fuse_ld_EQ : Joined<["-"], "fuse-ld=">, Group<f_Group>,
+   Flags<[LinkOption]>, Visibility<[ClangOption, FlangOption, CLOption]>;
  def ld_path_EQ : Joined<["--"], "ld-path=">, Group<Link_Group>;
- 
 diff --git a/llvm/include/llvm/MC/MCAsmInfo.h b/llvm/include/llvm/MC/MCAsmInfo.h
-index 355f56986..5524c5bb3 100644
+index 56492368bd9..254657af82c 100644
 --- a/llvm/include/llvm/MC/MCAsmInfo.h
 +++ b/llvm/include/llvm/MC/MCAsmInfo.h
-@@ -492,7 +492,7 @@ protected:
+@@ -509,7 +509,7 @@ protected:
    // this binutils version and later. INT_MAX means all features can be used,
    // regardless of GNU ld support. The default value is referenced by
    // clang/Driver/Options.td.
@@ -35,5 +35,3 @@ index 355f56986..5524c5bb3 100644
  
    /// Should we use the integrated assembler?
    /// The integrated assembler should be enabled by default (by the
---
-2.33.1

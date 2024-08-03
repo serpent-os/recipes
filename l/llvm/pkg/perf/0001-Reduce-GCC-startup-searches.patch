@@ -1,4 +1,4 @@
-From d813db193eb378d087387333f03361d835ba1645 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Peter O'Connor <sunnyflunk@serpentos.com>
 Date: Mon, 28 Feb 2022 04:01:37 +0300
 Subject: [PATCH] Reduce GCC startup searches
@@ -9,10 +9,10 @@ Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
  1 file changed, 5 insertions(+), 11 deletions(-)
 
 diff --git a/clang/lib/Driver/ToolChains/Gnu.cpp b/clang/lib/Driver/ToolChains/Gnu.cpp
-index 5c3b6c787c7c..61a804d872a0 100644
+index f532ac9fbcb..f00d2dc580e 100644
 --- a/clang/lib/Driver/ToolChains/Gnu.cpp
 +++ b/clang/lib/Driver/ToolChains/Gnu.cpp
-@@ -2201,22 +2201,16 @@ void Generic_GCC::GCCInstallationDetector::AddDefaultGCCPrefixes(
+@@ -2475,22 +2475,16 @@ void Generic_GCC::GCCInstallationDetector::AddDefaultGCCPrefixes(
    static const char *const CSKYTriples[] = {
        "csky-linux-gnuabiv2", "csky-linux-uclibcabiv2", "csky-elf-noneabiv2"};
  
@@ -35,11 +35,8 @@ index 5c3b6c787c7c..61a804d872a0 100644
    static const char *const X86Triples[] = {
 -      "i586-linux-gnu",      "i686-linux-gnu",        "i686-pc-linux-gnu",
 -      "i386-redhat-linux6E", "i686-redhat-linux",     "i386-redhat-linux",
--      "i586-suse-linux",     "i686-montavista-linux", "i686-gnu",
+-      "i586-suse-linux",     "i686-montavista-linux",
 +      "i686-linux-gnu",        "i686-gnu",
    };
  
-   static const char *const M68kLibDirs[] = {"/lib"};
--- 
-2.39.0
-
+   static const char *const LoongArch64LibDirs[] = {"/lib64", "/lib"};
