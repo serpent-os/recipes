@@ -4,9 +4,11 @@
 	"packages": {
 		"serpent-gnome-defaults": {
 			"depends": [
+				"binary(gnome-shell)",
+				"binary(gnome-software)",
+				"binary(gnome-system-monitor)",
 				"font-hack",
 				"gnome-backgrounds",
-				"gnome-shell",
 				"gnome-shell-extension-appindicator",
 				"serpent-artwork"
 			],
@@ -21,6 +23,6 @@
 		}
 	},
 	"source-name": "serpent-gnome-defaults",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "0.1.0"
 }

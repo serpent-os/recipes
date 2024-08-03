@@ -5,16 +5,18 @@
 #
 name        : serpent-gnome-defaults
 version     : "0.1.0"
-release     : 7
+release     : 8
 license     : MPL-2.0
 homepage    : https://serpentos.com
-summary     : Default settings for GNOME desktop
+summary     : Default settings and dependencies for GNOME desktop
 description : |
-    Default settings for GNOME desktop
+    Default settings and dependencies for GNOME desktop
 rundeps     :
+    - binary(gnome-shell)
+    - binary(gnome-software)
+    - binary(gnome-system-monitor)
     - font-hack
     - gnome-backgrounds
-    - gnome-shell
     - gnome-shell-extension-appindicator
     - serpent-artwork
 install     : |
