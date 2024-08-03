@@ -6,26 +6,46 @@
 			"build-depends": [
 				"binary(msgfmt)",
 				"binary(python3)",
+				"pkgconfig(blockdev)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libatasmart)",
 				"pkgconfig(polkit-gobject-1)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libatasmart.so.4(x86_64))",
+				"soname(libbd_utils.so.3(x86_64))",
+				"soname(libblkid.so.1(x86_64))",
+				"soname(libblockdev.so.3(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgmodule-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgudev-1.0.so.0(x86_64))",
+				"soname(libmount.so.1(x86_64))",
 				"soname(libpolkit-agent-1.so.0(x86_64))",
-				"soname(libpolkit-gobject-1.so.0(x86_64))"
+				"soname(libpolkit-gobject-1.so.0(x86_64))",
+				"soname(libsystemd.so.0(x86_64))",
+				"soname(libuuid.so.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/udisksctl",
 				"/usr/lib/girepository-1.0/UDisks-2.0.typelib",
 				"/usr/lib/libudisks2.so.0",
 				"/usr/lib/libudisks2.so.0.0.0",
+				"/usr/lib/systemd/system/udisks2.service",
+				"/usr/lib/tmpfiles.d/udisks2.conf",
+				"/usr/lib/udev/rules.d/80-udisks2.rules",
+				"/usr/lib/udisks/udisks2/udisksd",
+				"/usr/sbin/umount.udisks2",
 				"/usr/share/bash-completion/completions/udisksctl",
+				"/usr/share/dbus-1/system-services/org.freedesktop.UDisks2.service",
+				"/usr/share/dbus-1/system.d/org.freedesktop.UDisks2.conf",
+				"/usr/share/defaults/etc/udisks2/udisks2.conf",
 				"/usr/share/gir-1.0/UDisks-2.0.gir",
 				"/usr/share/locale/af/LC_MESSAGES/udisks2.mo",
 				"/usr/share/locale/ar/LC_MESSAGES/udisks2.mo",
@@ -97,27 +117,32 @@
 				"/usr/share/locale/zh_CN/LC_MESSAGES/udisks2.mo",
 				"/usr/share/locale/zh_HK/LC_MESSAGES/udisks2.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/udisks2.mo",
+				"/usr/share/polkit-1/actions/org.freedesktop.UDisks2.policy",
 				"/usr/share/zsh/site-functions/_udisks2"
 			],
 			"name": "udisks",
 			"provides": [
+				"binary(udisksctl)",
 				"soname(libudisks2.so.0(x86_64))",
-				"binary(udisksctl)"
+				"sysbinary(umount.udisks2)"
 			]
 		},
 		"udisks-devel": {
 			"build-depends": [
 				"binary(msgfmt)",
 				"binary(python3)",
+				"pkgconfig(blockdev)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libatasmart)",
 				"pkgconfig(polkit-gobject-1)"
 			],
 			"depends": [
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
-				"pkgconfig(gobject-2.0)"
+				"pkgconfig(gobject-2.0)",
+				"udisks"
 			],
 			"files": [
 				"/usr/include/udisks2/udisks/udisks-generated.h",
@@ -141,9 +166,11 @@
 			"build-depends": [
 				"binary(msgfmt)",
 				"binary(python3)",
+				"pkgconfig(blockdev)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libatasmart)",
 				"pkgconfig(polkit-gobject-1)"
 			],
 			"files": [
@@ -292,6 +319,6 @@
 		}
 	},
 	"source-name": "udisks",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.10.1"
 }

@@ -5,7 +5,7 @@
 #
 name        : udisks
 version     : 2.10.1
-release     : 1
+release     : 2
 homepage    : https://github.com/storaged-project/udisks
 upstreams   :
     - https://github.com/storaged-project/udisks/releases/download/udisks-2.10.1/udisks-2.10.1.tar.bz2 : b75734ccf602540dedb4068bec206adcb508a4c003725e117ae8f994d92d8ece
@@ -17,17 +17,19 @@ license     :
 builddeps   :
     - binary(msgfmt)
     - binary(python3)
+    - pkgconfig(blockdev)
     - pkgconfig(glib-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gudev-1.0)
+    - pkgconfig(libatasmart)
     - pkgconfig(polkit-gobject-1)
 toolchain   : gnu
 setup       : |
-    # TODO: Add atasmart + blockdev for daemon
-    CONF_SHELL=/bin/bash %configure --disable-static \
-               --disable-daemon \
+    %patch %(pkgdir)/0001-Add-support-for-a-stateless-configuration-file.patch
+    %configure --disable-static \
                --disable-man
 build       : |
-    %make SHELL=/bin/bash
+    %make
 install     : |
-    %make_install SHELL=/bin/bash
+    %make_install
+    %install_file udisks/udisks2.conf %(installroot)/usr/share/defaults/etc/udisks2/udisks2.conf
