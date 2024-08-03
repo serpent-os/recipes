@@ -1,0 +1,65 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : thunderbird
+version     : 128.0.1esr
+release     : 1
+homepage    : https://www.thunderbird.net/
+upstreams   :
+    - https://ftp.mozilla.org/pub/thunderbird/releases/128.0.1esr/source/thunderbird-128.0.1esr.source.tar.xz : 19d49f320c18450d80136b79bdd40d7ab6d3df1757404fbfd1052164a787db99
+summary     : Thunderbird Email Client
+description : |
+    Thunderbird Email Client
+license     : MPL-2.0
+builddeps   :
+    - binary(cbindgen)
+    - binary(cc)
+    - binary(m4)
+    - binary(make)
+    - binary(nasm)
+    - binary(npm)
+    - binary(objdump)
+    - binary(python3)
+    - binary(rustc)
+    - binary(unzip)
+    - gcc-devel
+    - pkgconfig(alsa)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(ice)
+    - pkgconfig(icu-uc)
+    - pkgconfig(libevent)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpng)
+    - pkgconfig(libpulse)
+    - pkgconfig(libwebp)
+    - pkgconfig(nspr)
+    - pkgconfig(nss)
+    - pkgconfig(pixman-1)
+    - pkgconfig(sm)
+    - pkgconfig(vpx)
+    - pkgconfig(zlib)
+rundeps     :
+    - xdg-desktop-portal
+environment : |
+    export MOZ_NOSPAM=1
+    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+setup       : |
+    %install_file %(pkgdir)/mozconfig .
+build       : |
+    ./mach build
+install     : |
+    DESTDIR=%(installroot) ./mach install
+
+    %install_file browser/branding/official/default16.png %(installroot)%(datadir)/icons/hicolor/16x16/apps/thunderbird.png
+    %install_file browser/branding/official/default22.png %(installroot)%(datadir)/icons/hicolor/22x22/apps/thunderbird.png
+    %install_file browser/branding/official/default24.png %(installroot)%(datadir)/icons/hicolor/24x24/apps/thunderbird.png
+    %install_file browser/branding/official/default32.png %(installroot)%(datadir)/icons/hicolor/32x32/apps/thunderbird.png
+    %install_file browser/branding/official/default48.png %(installroot)%(datadir)/icons/hicolor/48x48/apps/thunderbird.png
+    %install_file browser/branding/official/default128.png %(installroot)%(datadir)/icons/hicolor/128x128/apps/thunderbird.png
+    %install_file browser/branding/official/default256.png %(installroot)%(datadir)/icons/hicolor/256x256/apps/thunderbird.png
+    %install_file %(pkgdir)/thunderbird-symbolic.svg %(installroot)%(datadir)/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg
+    %install_file %(pkgdir)/thunderbird.desktop %(installroot)%(datadir)/applications/thunderbird.desktop
+
+    %install_file %(pkgdir)/distribution.ini %(installroot)%(libdir)/thunderbird/distribution/distribution.ini
