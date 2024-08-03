@@ -5,7 +5,7 @@
 #
 name        : niri
 version     : "0.1.7"
-release     : 1
+release     : 2
 summary     : Niri Desktop Compositor
 license     : GPL-3.0
 homepage    : https://github.com/YaLTeR/niri
@@ -33,3 +33,9 @@ build       : |
     RUST_BACKTRACE=1 nice %cargo_build
 install     : |
     %cargo_install
+
+    %install_bin resources/niri-session
+    %install_file resources/niri.desktop %(installroot)/%(datadir)/wayland-sessions/niri.desktop
+    %install_file resources/niri-portals.conf %(installroot)/%(datadir)/xdg-desktop-portal/niri-portals.conf
+    %install_file resources/niri.service %(installroot)/%(libdir)/systemd/user/niri.service
+    %install_file resources/niri-shutdown.target %(installroot)/%(libdir)/systemd/user/niri.service

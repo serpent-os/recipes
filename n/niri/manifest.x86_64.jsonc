@@ -19,6 +19,7 @@
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
+				"soname(libcairo-gobject.so.2(x86_64))",
 				"soname(libcairo.so.2(x86_64))",
 				"soname(libgbm.so.1(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
@@ -37,15 +38,20 @@
 				"soname(libxkbcommon.so.0(x86_64))"
 			],
 			"files": [
-				"/usr/bin/niri"
+				"/usr/bin/niri",
+				"/usr/bin/niri-session",
+				"/usr/lib/systemd/user/niri.service",
+				"/usr/share/wayland-sessions/niri.desktop",
+				"/usr/share/xdg-desktop-portal/niri-portals.conf"
 			],
 			"name": "niri",
 			"provides": [
-				"binary(niri)"
+				"binary(niri)",
+				"binary(niri-session)"
 			]
 		}
 	},
 	"source-name": "niri",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.7"
 }
