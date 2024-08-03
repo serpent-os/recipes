@@ -120,8 +120,6 @@ install     : |
     # bolt_opt %(workdir)/%(builddir)/bin/clang-${major_version}
 
     # install_bin %(workdir)/%(builddir)/bin/clang-${major_version} %(workdir)/%(builddir)/bin/lld
-
-    ls -ahl %(installroot)/usr/bin
 # workload    : |
 #    unset LD_PRELOAD
 #    # check-compiler-rt needs sanitizer changes

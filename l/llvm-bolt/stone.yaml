@@ -4,26 +4,31 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : llvm-bolt
-version     : 16.0.1
-release     : 4
+version     : 18.1.8
+release     : 5
 summary     : Binary Optimization and Layout Tool
 license     : Apache-2.0
 homepage    : https://github.com/facebookincubator/BOLT
 description : |
     Binary Optimization and Layout Tool.
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.4/llvm-project-16.0.4.src.tar.xz: cf3c2a1152ed7a99866bd7f12c24528ada6d9f6336afb7a08416938762004c9f
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz: 0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a
 builddeps   :
     - binary(python)
     - cmake(LLVM)
     - pkgconfig(ncursesw)
     - pkgconfig(zlib)
 setup       : |
-    %cmake -S llvm -DLLVM_ENABLE_ASSERTIONS=OFF \
-        -DLLVM_ENABLE_PROJECTS='bolt;' \
-        -DLLVM_TARGETS_TO_BUILD='X86'
+    %cmake -S llvm \
+        -DLLVM_INSTALL_UTILS=ON \
+        -DBUILD_SHARED_LIBS:BOOL=OFF \
+        -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
+        -DLLVM_ENABLE_PROJECTS="bolt" \
+        -DLLVM_TARGETS_TO_BUILD="X86;AArch64"
+build       : |
+    %cmake_build
 install     : |
-    DESTDIR="%(installroot)" %cmake_build install-llvm-bolt install-perf2bolt install-merge-fdata install-llvm-boltdiff install-bolt_rt
+    DESTDIR="%(installroot)" %cmake_build install-bolt
 tuning      :
     - icf: all
     #- lto: thin
