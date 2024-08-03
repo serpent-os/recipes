@@ -5,29 +5,27 @@
 #
 name        : cosmic-notifications
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Desktop Notifications
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-notifications
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-notifications.git : 2caf2fb640e3601fac4dee1ae5c0121f75adcb51
+    - git|https://github.com/pop-os/cosmic-notifications.git : e9abef567a928cfa88949dbbdb5c49bb87c2f6a0
 description : |
     Cosmic Desktop Notifications
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - binary(mold)
+    - binary(which)
     - pkgconfig(dbus-1)
     - pkgconfig(libudev)
     - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
 setup       : |
     # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 nice %cargo_build
+    %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
