@@ -6,7 +6,7 @@
 			"build-depends": [
 				"binary(cargo)",
 				"binary(just)",
-				"binary(mold)",
+				"binary(which)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(libudev)",
 				"pkgconfig(xkbcommon)"
@@ -27,6 +27,6 @@
 		}
 	},
 	"source-name": "cosmic-randr",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.0"
 }

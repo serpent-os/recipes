@@ -5,29 +5,27 @@
 #
 name        : cosmic-randr
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Desktop display configuration
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-randr
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-randr.git : e214fe92036b902f15098277de1e1be76b7b2e85
+    - git|https://github.com/pop-os/cosmic-randr.git : 71fabbb382fa8cf750f50fb77c4ba014bff80056
 description : |
     Cosmic Desktop display configuration
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - binary(mold)
+    - binary(which)
     - pkgconfig(dbus-1)
     - pkgconfig(libudev)
     - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
 setup       : |
     # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+    %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
