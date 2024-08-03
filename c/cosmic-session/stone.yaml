@@ -5,12 +5,12 @@
 #
 name        : cosmic-session
 version     : "0.1.0"
-release     : 4
+release     : 5
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-session.git : 577a181122881ac5e1a2bd263edf6cd53d17b3dc
+    - git|https://github.com/pop-os/cosmic-session.git : c3de3d24dd200d5f8a19a26de56590472f461574
 description : |
     Cosmic Session Management
 builddeps   :
