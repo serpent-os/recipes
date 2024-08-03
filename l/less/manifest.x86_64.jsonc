@@ -18,6 +18,8 @@
 				"/usr/bin/less",
 				"/usr/bin/lessecho",
 				"/usr/bin/lesskey",
+				"/usr/share/defaults/etc/profile.d/10_default_PAGER_less.sh",
+				"/usr/share/defaults/less/10_default_PAGER_less.sh",
 				"/usr/share/man/man1/less.1",
 				"/usr/share/man/man1/lessecho.1",
 				"/usr/share/man/man1/lesskey.1"
@@ -31,6 +33,6 @@
 		}
 	},
 	"source-name": "less",
-	"source-release": "7",
-	"source-version": "649"
+	"source-release": "8",
+	"source-version": "661"
 }
