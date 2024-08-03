@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ripgrep
+version     : 14.1.0
+release     : 1
+homepage    : https://github.com/BurntSushi/ripgrep
+upstreams   :
+    - https://github.com/BurntSushi/ripgrep/archive/refs/tags/14.1.0.tar.gz : 33c6169596a6bbfdc81415910008f26e0809422fda2d849562637996553b2ab6
+summary     : Recursive text search utility
+description : |
+    ripgrep recursively searches directories for a regex pattern while respecting your gitignore
+license     : MIT
+builddeps   :
+    - pkgconfig(bash-completion)
+    - pkgconfig(libpcre2-8)
+networking  : true
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build --features 'pcre2'
+install     : |
+    %cargo_install rg
+
+    completionsdir=`pkg-config --variable=completionsdir bash-completion`
+    %install_dir %(installroot)${completionsdir}
+    ./target/*/debug/rg --generate complete-bash > %(installroot)${completionsdir}/rg
+
+    # man pages
+    %install_dir %(installroot)%(mandir)/man1
+    ./target/*/debug/rg --generate man > %(installroot)%(mandir)/man1/rg.1
+check       : |
+    %cargo_test --features 'pcre2'
