@@ -82,7 +82,7 @@ The Serpent OS Developers reserve the right to reject recipe contributions
 which are not licensed to the Serpent OS Developer collective under the MPL-2.0 license
 
 Individual software releases are available under the terms specified
-upstream, collected in each `stone.yml` recipe. Any patches against
+upstream, collected in each `stone.yaml` recipe. Any patches against
 a software package is under the relevant license for each upstream.
 
 Copyright © 2020-2024 Serpent OS Developers
