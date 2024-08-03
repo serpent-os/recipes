@@ -1,0 +1,49 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : seahorse
+version     : 43.0
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/seahorse
+upstreams   :
+    - git|https://gitlab.gnome.org/GNOME/seahorse.git : d513a78b0ae3fa93cb71001d39d646b4448a06b1
+summary     : Passwords & Secrets Manager
+description : |
+    Seahorse is a graphical interface for managing and using encryption keys.
+    Currently it supports PGP keys (using GPG/GPGME) and SSH keys. Its goal is to
+    provide an easy to use key management tool, along with an easy to use interface
+    for encryption operations.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(gpg2)
+    - binary(gtk-update-icon-cache)
+    - binary(itstool)
+    - binary(msgfmt)
+    - binary(ssh)
+    - binary(ssh-keygen)
+    - binary(update-desktop-database)
+    - binary(valac)
+    - pkgconfig(avahi-client)
+    - pkgconfig(avahi-glib)
+    - pkgconfig(gcr-3)
+    - pkgconfig(gcr-ui-3)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gpgme)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(ldap)
+    - pkgconfig(libhandy-1)
+    - pkgconfig(libsecret-1)
+    - pkgconfig(libsoup-3.0)
+    - pkgconfig(pwquality)
+rundeps     :
+    - binary(gpg2)
+    - binary(ssh)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
