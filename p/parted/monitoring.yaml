@@ -1,0 +1,6 @@
+releases:
+    id: 2596
+security:
+  cpe:
+    - vendor: parted_project
+      product: parted
