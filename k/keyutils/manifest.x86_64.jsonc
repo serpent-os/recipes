@@ -1,0 +1,96 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"keyutils": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libresolv.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/bin/keyctl",
+				"/usr/lib/libkeyutils.so.1",
+				"/usr/lib/libkeyutils.so.1.10",
+				"/usr/sbin/key.dns_resolver",
+				"/usr/sbin/request-key",
+				"/usr/share/defaults/etc/keyutils/request-key.conf",
+				"/usr/share/keyutils/request-key-debug.sh",
+				"/usr/share/man/man1/keyctl.1",
+				"/usr/share/man/man5/key.dns_resolver.conf.5",
+				"/usr/share/man/man5/request-key.conf.5",
+				"/usr/share/man/man7/asymmetric-key.7",
+				"/usr/share/man/man7/keyutils.7",
+				"/usr/share/man/man8/key.dns_resolver.8",
+				"/usr/share/man/man8/request-key.8"
+			],
+			"name": "keyutils",
+			"provides": [
+				"binary(keyctl)",
+				"soname(libkeyutils.so.1(x86_64))",
+				"sysbinary(key.dns_resolver)",
+				"sysbinary(request-key)"
+			]
+		},
+		"keyutils-devel": {
+			"depends": [
+				"keyutils"
+			],
+			"files": [
+				"/usr/include/keyutils.h",
+				"/usr/lib/libkeyutils.a",
+				"/usr/lib/libkeyutils.so",
+				"/usr/lib/pkgconfig/libkeyutils.pc",
+				"/usr/share/man/man3/find_key_by_type_and_name.3",
+				"/usr/share/man/man3/keyctl.3",
+				"/usr/share/man/man3/keyctl_assume_authority.3",
+				"/usr/share/man/man3/keyctl_capabilities.3",
+				"/usr/share/man/man3/keyctl_chown.3",
+				"/usr/share/man/man3/keyctl_clear.3",
+				"/usr/share/man/man3/keyctl_describe.3",
+				"/usr/share/man/man3/keyctl_describe_alloc.3",
+				"/usr/share/man/man3/keyctl_dh_compute.3",
+				"/usr/share/man/man3/keyctl_dh_compute_alloc.3",
+				"/usr/share/man/man3/keyctl_dh_compute_kdf.3",
+				"/usr/share/man/man3/keyctl_get_keyring_ID.3",
+				"/usr/share/man/man3/keyctl_get_persistent.3",
+				"/usr/share/man/man3/keyctl_get_security.3",
+				"/usr/share/man/man3/keyctl_get_security_alloc.3",
+				"/usr/share/man/man3/keyctl_instantiate.3",
+				"/usr/share/man/man3/keyctl_instantiate_iov.3",
+				"/usr/share/man/man3/keyctl_invalidate.3",
+				"/usr/share/man/man3/keyctl_join_session_keyring.3",
+				"/usr/share/man/man3/keyctl_link.3",
+				"/usr/share/man/man3/keyctl_move.3",
+				"/usr/share/man/man3/keyctl_negate.3",
+				"/usr/share/man/man3/keyctl_pkey_decrypt.3",
+				"/usr/share/man/man3/keyctl_pkey_encrypt.3",
+				"/usr/share/man/man3/keyctl_pkey_query.3",
+				"/usr/share/man/man3/keyctl_pkey_sign.3",
+				"/usr/share/man/man3/keyctl_pkey_verify.3",
+				"/usr/share/man/man3/keyctl_read.3",
+				"/usr/share/man/man3/keyctl_read_alloc.3",
+				"/usr/share/man/man3/keyctl_reject.3",
+				"/usr/share/man/man3/keyctl_restrict_keyring.3",
+				"/usr/share/man/man3/keyctl_revoke.3",
+				"/usr/share/man/man3/keyctl_search.3",
+				"/usr/share/man/man3/keyctl_session_to_parent.3",
+				"/usr/share/man/man3/keyctl_set_reqkey_keyring.3",
+				"/usr/share/man/man3/keyctl_set_timeout.3",
+				"/usr/share/man/man3/keyctl_setperm.3",
+				"/usr/share/man/man3/keyctl_unlink.3",
+				"/usr/share/man/man3/keyctl_update.3",
+				"/usr/share/man/man3/keyctl_watch_key.3",
+				"/usr/share/man/man3/recursive_key_scan.3",
+				"/usr/share/man/man3/recursive_session_key_scan.3"
+			],
+			"name": "keyutils-devel",
+			"provides": [
+				"pkgconfig(libkeyutils)"
+			]
+		}
+	},
+	"source-name": "keyutils",
+	"source-release": "1",
+	"source-version": "1.6.3"
+}
