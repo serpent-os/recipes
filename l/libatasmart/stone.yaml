@@ -1,6 +1,6 @@
 name        : libatasmart
 version     : 0.19
-release     : 1
+release     : 2
 homepage    : http://0pointer.de
 upstreams   :
     - git|http://git.0pointer.net/clone/libatasmart.git : v0.19
