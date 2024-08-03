@@ -4,33 +4,34 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnupg
-version     : '2.4.3'
-release     : 2
+version     : 2.4.5
+release     : 3
 homepage    : https://gnupg.org/software/index.html
 upstreams   :
-    - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.3.tar.bz2 : a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d
+    - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.5.tar.bz2 : f68f7d75d06cb1635c336d34d844af97436c3f64ea14bcb7c869782f96f44277
 summary     : Complete and free implementation of the OpenPGP standard to encrypt communications and files
 description : |
     %(name) is a complete and free implementation of the OpenPGP standard as defined by RFC4880, also known as PGP. GnuPG allows you to encrypt and sign your data and communications; it features a versatile key management system, along with access modules for all kinds of public key directories. GnuPG, also known as GPG, is a command line tool with features for easy integration with other applications. A wealth of frontend applications and libraries are available. GnuPG also provides support for S/MIME and SSH.
 license     :
     - GPL-3.0-or-later
 builddeps   :
+    - npth-devel
     - pkgconfig(bzip2)
     - pkgconfig(gnutls)
     - pkgconfig(gpg-error)
     - pkgconfig(ksba)
+    - pkgconfig(ldap)
     - pkgconfig(libassuan)
     - pkgconfig(libgcrypt)
     - pkgconfig(readline)
     - pkgconfig(sqlite3)
-    - npth-devel
 rundeps     :
     - pinentry
 setup       : |
-    # can be removed when building with LDAP
-    %patch %(pkgdir)/0001-dirmngr-Enable-the-call-of-ks_ldap_help_variables-wh.patch
-    %configure
+    %configure --enable-gpg-is-gpg2
 build       : |
     %make
 install     : |
     %make_install
+    ln -s gpg2 %(installroot)%(bindir)/gpg
+    ln -s gpgv2 %(installroot)%(bindir)/gpgv
