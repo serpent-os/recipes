@@ -18,6 +18,10 @@ build: (_build build_file)
 _chroot target:
     cd {{ invocation_directory() }}; {{boulder}} {{boulder_args}} chroot {{ if path_exists(target) == "true" { target } else { error("Missing stone.yaml file") } }}
 
+_bump target:
+    cd {{ invocation_directory() }}; {{boulder}} {{boulder_args}} recipe bump
+bump: (_bump build_file)
+
 # Chroot into pkg from the current directory
 chroot: (_chroot build_file)
 
