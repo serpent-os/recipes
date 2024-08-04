@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : rust
-version     : "1.79.0"
-release     : 4
+version     : "1.80"
+release     : 5
 homepage    : https://www.rust-lang.org/
 upstreams   :
-    - https://static.rust-lang.org/dist/rustc-1.79.0-src.tar.gz : 172ecf3c7d1f9d9fb16cd2a628869782670416ded0129e524a86751f961448c0
+    - https://static.rust-lang.org/dist/rustc-1.80.0-src.tar.gz : 6f606c193f230f6b2cae4576f7b24d50f5f9b25dff11dbf9b22f787d3521d672
 summary     : Rust programming language compiler + tools
 description : |
     Rust programming language compiler + tools
