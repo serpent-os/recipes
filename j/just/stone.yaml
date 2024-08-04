@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : just
-version     : 1.25.2
-release     : 2
+version     : 1.34.0
+release     : 3
 homepage    : https://github.com/casey/just
 upstreams   :
-    - https://github.com/casey/just/archive/refs/tags/1.25.2.tar.gz : 5a005a4de9f99b297ba7b5dc02c3365c689e579148790660384afee0810a2342
+    - https://github.com/casey/just/archive/refs/tags/1.34.0.tar.gz : e9f16d28156e1a906f19b267b9fc7c8e47e8f9347c39a7095f0495d4034ce96e
 summary     : just is a handy way to save and run project-specific commands.
 description : |
     just is a handy way to save and run project-specific commands.
@@ -21,9 +21,13 @@ build       : |
     %cargo_build
 install     : |
     %cargo_install
-    %install_file completions/just.bash %(installroot)%(datadir)/bash-completion/completions/just
-    %install_file completions/just.zsh %(installroot)%(datadir)/zsh/site-functions/_just
-    %install_file completions/just.fish %(installroot)%(datadir)/fish/vendor_completions.d/just.fish
+    %install_dir %(installroot)%(datadir)/bash-completion/completions
+    %install_dir %(installroot)%(datadir)/zsh/site-functions
+    %install_dir %(installroot)%(datadir)/fish/vendor_completions.d
+
+    ./target/*/debug/just --completions bash > %(installroot)%(datadir)/bash-completion/completions/just
+    ./target/*/debug/just --completions zsh > %(installroot)%(datadir)/zsh/site-functions/_just
+    ./target/*/debug/just --completions fish > %(installroot)%(datadir)/fish/vendor_completions.d/just.fish
 check       : |
     # functions::env_var_functions
     %cargo_test || :
