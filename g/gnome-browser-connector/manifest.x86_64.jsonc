@@ -1,0 +1,53 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gnome-browser-connector": {
+			"build-depends": [
+				"pkgconfig(pygobject-3.0)"
+			],
+			"depends": [
+				"python-pygobject"
+			],
+			"files": [
+				"/usr/bin/gnome-browser-connector",
+				"/usr/bin/gnome-browser-connector-host",
+				"/usr/lib/mozilla/native-messaging-hosts/org.gnome.browser_connector.json",
+				"/usr/lib/mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__init__.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/application.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/base.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/connector.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/constants.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/helpers.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/logs.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/main.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/service.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/__pycache__/version.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/application.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/base.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/connector.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/constants.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/helpers.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/logs.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/main.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/service.py",
+				"/usr/lib/python3.11/site-packages/gnome_browser_connector/version.py",
+				"/usr/share/applications/org.gnome.BrowserConnector.desktop",
+				"/usr/share/dbus-1/services/org.gnome.BrowserConnector.service",
+				"/usr/share/icons/hicolor/128x128/apps/org.gnome.BrowserConnector.png",
+				"/usr/share/icons/hicolor/16x16/apps/org.gnome.BrowserConnector.png",
+				"/usr/share/icons/hicolor/48x48/apps/org.gnome.BrowserConnector.png"
+			],
+			"name": "gnome-browser-connector",
+			"provides": [
+				"binary(gnome-browser-connector)",
+				"binary(gnome-browser-connector-host)"
+			]
+		}
+	},
+	"source-name": "gnome-browser-connector",
+	"source-release": "1",
+	"source-version": "42.1"
+}
