@@ -5,7 +5,7 @@
 #
 name        : thunderbird
 version     : 128.0.1esr
-release     : 1
+release     : 2
 homepage    : https://www.thunderbird.net/
 upstreams   :
     - https://ftp.mozilla.org/pub/thunderbird/releases/128.0.1esr/source/thunderbird-128.0.1esr.source.tar.xz : 19d49f320c18450d80136b79bdd40d7ab6d3df1757404fbfd1052164a787db99
