@@ -13,7 +13,6 @@
 				"/usr/bin/mdb_load",
 				"/usr/bin/mdb_stat",
 				"/usr/lib/liblmdb.so.0.0.0",
-				"/usr/lib/lmdb.pc",
 				"/usr/share/man/man1/mdb_copy.1",
 				"/usr/share/man/man1/mdb_dump.1",
 				"/usr/share/man/man1/mdb_load.1",
@@ -34,12 +33,16 @@
 			],
 			"files": [
 				"/usr/include/lmdb.h",
-				"/usr/lib/liblmdb.so"
+				"/usr/lib/liblmdb.so",
+				"/usr/lib/pkgconfig/lmdb.pc"
 			],
-			"name": "lmdb-devel"
+			"name": "lmdb-devel",
+			"provides": [
+				"pkgconfig(lmdb)"
+			]
 		}
 	},
 	"source-name": "lmdb",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "0.9.31"
 }
