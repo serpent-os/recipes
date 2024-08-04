@@ -5,7 +5,7 @@
 #
 name        : thunderbird
 version     : 128.0.1esr
-release     : 2
+release     : 3
 homepage    : https://www.thunderbird.net/
 upstreams   :
     - https://ftp.mozilla.org/pub/thunderbird/releases/128.0.1esr/source/thunderbird-128.0.1esr.source.tar.xz : 19d49f320c18450d80136b79bdd40d7ab6d3df1757404fbfd1052164a787db99
@@ -52,13 +52,13 @@ build       : |
 install     : |
     DESTDIR=%(installroot) ./mach install
 
-    %install_file browser/branding/official/default16.png %(installroot)%(datadir)/icons/hicolor/16x16/apps/thunderbird.png
-    %install_file browser/branding/official/default22.png %(installroot)%(datadir)/icons/hicolor/22x22/apps/thunderbird.png
-    %install_file browser/branding/official/default24.png %(installroot)%(datadir)/icons/hicolor/24x24/apps/thunderbird.png
-    %install_file browser/branding/official/default32.png %(installroot)%(datadir)/icons/hicolor/32x32/apps/thunderbird.png
-    %install_file browser/branding/official/default48.png %(installroot)%(datadir)/icons/hicolor/48x48/apps/thunderbird.png
-    %install_file browser/branding/official/default128.png %(installroot)%(datadir)/icons/hicolor/128x128/apps/thunderbird.png
-    %install_file browser/branding/official/default256.png %(installroot)%(datadir)/icons/hicolor/256x256/apps/thunderbird.png
+    %install_file comm/mail/branding/thunderbird/default16.png %(installroot)%(datadir)/icons/hicolor/16x16/apps/thunderbird.png
+    %install_file comm/mail/branding/thunderbird/default22.png %(installroot)%(datadir)/icons/hicolor/22x22/apps/thunderbird.png
+    %install_file comm/mail/branding/thunderbird/default24.png %(installroot)%(datadir)/icons/hicolor/24x24/apps/thunderbird.png
+    %install_file comm/mail/branding/thunderbird/default32.png %(installroot)%(datadir)/icons/hicolor/32x32/apps/thunderbird.png
+    %install_file comm/mail/branding/thunderbird/default48.png %(installroot)%(datadir)/icons/hicolor/48x48/apps/thunderbird.png
+    %install_file comm/mail/branding/thunderbird/default128.png %(installroot)%(datadir)/icons/hicolor/128x128/apps/thunderbird.png
+    %install_file comm/mail/branding/thunderbird/default256.png %(installroot)%(datadir)/icons/hicolor/256x256/apps/thunderbird.png
     %install_file %(pkgdir)/thunderbird-symbolic.svg %(installroot)%(datadir)/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg
     %install_file %(pkgdir)/thunderbird.desktop %(installroot)%(datadir)/applications/thunderbird.desktop
 
