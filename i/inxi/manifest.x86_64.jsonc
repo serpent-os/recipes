@@ -3,6 +3,11 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"inxi": {
+			"depends": [
+				"binary(lspci)",
+				"binary(perl)",
+				"binary(ps)"
+			],
 			"files": [
 				"/usr/bin/inxi",
 				"/usr/share/man/man1/inxi.1"
@@ -14,6 +19,6 @@
 		}
 	},
 	"source-name": "inxi",
-	"source-release": "5",
-	"source-version": "3.3.31-2"
+	"source-release": "6",
+	"source-version": "3.3.35-1"
 }
