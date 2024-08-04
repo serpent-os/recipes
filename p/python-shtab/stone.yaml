@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-shtab
+version     : 1.7.1
+release     : 1
+homepage    : https://github.com/iterative/shtab
+upstreams   :
+    - https://files.pythonhosted.org/packages/a9/e4/13bf30c7c30ab86a7bc4104b1c943ff2f56c1a07c6d82a71ad034bcef1dc/shtab-1.7.1.tar.gz : 4e4bcb02eeb82ec45920a5d0add92eac9c9b63b2804c9196c1f1fdc2d039243c
+summary     : Automagic shell tab completion for Python CLI applications
+description : |
+    Automagic shell tab completion for Python CLI applications
+license     : Apache-2.0
+builddeps   :
+    - python-setuptools_scm
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
