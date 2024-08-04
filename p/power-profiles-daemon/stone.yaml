@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : power-profiles-daemon
+version     : 0.21
+release     : 1
+homepage    : https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/0.21
+upstreams   :
+    - https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/0.21/power-profiles-daemon-0.21.tar.gz : c15a368a59f2cae1474bdfccdd9357f06b0abc9eb7638a87f68c091aaf570349
+summary     : Makes power profiles handling available over D-Bus.
+description : |
+    Makes power profiles handling available over D-Bus.
+license     : GPL-3.0
+builddeps   :
+    - binary(xmllint)
+    - pkgconfig(bash-completion)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(systemd)
+    - pkgconfig(upower-glib)
+    - python-pygobject
+    - python-shtab
+rundeps     :
+    - python-pygobject
+setup       : |
+    %meson -Dtests=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
