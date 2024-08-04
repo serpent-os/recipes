@@ -1,0 +1,61 @@
+From 4f961aeb3c264119216c0d0ee666797ea112bea7 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Sun, 4 Aug 2024 00:04:52 +0000
+Subject: [PATCH] {vi,}sudo: Support stateless default paths
+
+On Serpent OS we require packages work out of the box in the absence
+of custom configuration, as well as being extensible by local machine
+changes.
+
+As such we enforce the `/usr/share/defaults/etc/sudo/sudoers` path for sudo-rs
+as we did for `sudo`, while having the drop-in dir, `/etc/sudoers.d`,
+used for local changes.
+
+We modify `visudo` to default to the `/etc/sudoers.d/visudo` path for
+new customisations.
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ src/sudo/mod.rs   | 4 ++--
+ src/visudo/mod.rs | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/sudo/mod.rs b/src/sudo/mod.rs
+index 3b48326..3977ba7 100644
+--- a/src/sudo/mod.rs
++++ b/src/sudo/mod.rs
+@@ -29,8 +29,8 @@ fn candidate_sudoers_file() -> &'static Path {
+         dev_info!("Running with /etc/sudoers-rs file");
+         pb_rs
+     } else {
+-        dev_info!("Running with /etc/sudoers file");
+-        Path::new("/etc/sudoers")
++        dev_info!("Running with /usr/share/defaults/etc/sudo/sudoers file");
++        Path::new("/usr/share/defaults/etc/sudo/sudoers")
+     }
+ }
+
+diff --git a/src/visudo/mod.rs b/src/visudo/mod.rs
+index 4aec4ab..4f338a6 100644
+--- a/src/visudo/mod.rs
++++ b/src/visudo/mod.rs
+@@ -64,7 +64,7 @@ pub fn main() {
+ }
+
+ fn check(file_arg: Option<&str>, perms: bool, owner: bool) -> io::Result<()> {
+-    let sudoers_path = Path::new(file_arg.unwrap_or("/etc/sudoers"));
++    let sudoers_path = Path::new(file_arg.unwrap_or("/etc/sudoers.d/visudo"));
+
+     let sudoers_file = File::open(sudoers_path)
+         .map_err(|err| io_msg!(err, "unable to open {}", sudoers_path.display()))?;
+@@ -121,7 +121,7 @@ fn check(file_arg: Option<&str>, perms: bool, owner: bool) -> io::Result<()> {
+ }
+
+ fn run(file_arg: Option<&str>, perms: bool, owner: bool) -> io::Result<()> {
+-    let sudoers_path = Path::new(file_arg.unwrap_or("/etc/sudoers"));
++    let sudoers_path = Path::new(file_arg.unwrap_or("/etc/sudoers.d/visudo"));
+
+     let (sudoers_file, existed) = if sudoers_path.exists() {
+         let file = File::options().read(true).write(true).open(sudoers_path)?;
+--
+2.46.0

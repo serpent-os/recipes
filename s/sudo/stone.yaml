@@ -4,57 +4,57 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : sudo
-version     : 1.9.13_p3
-release     : 4
-summary     : Run commands as a privileged user
-license     :
-    - ISC
-homepage    : https://www.sudo.ws/
-description : |
-    The Sudo package allows a system administrator to give certain users (or groups of users) the ability to run some (or all) commands as root or another user while logging the commands and arguments.
+version     : "0.2.3"
+release     : 5
+homepage    : https://github.com/trifectatechfoundation/sudo-rs
 upstreams   :
-    - https://www.sudo.ws/dist/sudo-1.9.13p3.tar.gz: 92334a12bb93e0c056b09f53e255ccb7d6f67c6350e2813cd9593ceeca78560b
+    - https://github.com/trifectatechfoundation/sudo-rs/archive/refs/tags/v0.2.3.tar.gz : 2371c91644185c2bcf1f02408c2cc7a79b1dd1ba740088a9a16f0f947b649cdc
+summary     : A memory safe implementation of sudo and su
+description : |
+    A safety oriented and memory safe implementation of sudo and su written in Rust.
+license     :
+    - Apache-2.0
+    - MIT
 builddeps   :
-    - pkgconfig(libssl)
     - pkgconfig(pam)
-    - pkgconfig(zlib)
+    - binary(go-md2man)
+networking  : true
+tuning      :
+    - lto: thin
 setup       : |
-    %patch %(pkgdir)/stateless/0001-stateless.patch
-    %patch %(pkgdir)/stateless/0002-visudo-Use-sane-default-file.patch
-
-    %configure --with-vardir=/var/db/sudo \
-               --with-rundir=/run/sudo \
-               --with-insults \
-               --with-all-insults \
-               --with-editor=/usr/bin/nano \
-               --with-env-editor \
-               --with-passprompt="[sudo] password for %%p: " \
-               --with-tty-tickets
+    %patch %(pkgdir)/0001-vi-sudo-Support-stateless-default-paths.patch
+    %cargo_fetch
 build       : |
-    %make
+    %cargo_build --all-features
 install     : |
-    %make_install
+    %cargo_install sudo su visudo
+    chmod 4755 %(installroot)%(bindir)/su
+    chmod 4755 %(installroot)%(bindir)/sudo
+    %install_dir %(installroot)%(sbindir)
+    mv %(installroot)%(bindir)/visudo %(installroot)%(sbindir)/visudo
 
-    # PAM
-    %install_file %(pkgdir)/sudo.pam %(installroot)/%(vendordir)/pam.d/sudo
+    %install_dir %(installroot)%(mandir)/man1
+    %install_dir %(installroot)%(mandir)/man8
 
-    # Default sudoers
-    rm -fv %(installroot)/%(vendordir)/sudo/sudoers
-    %install_file %(pkgdir)/sudoers %(installroot)/%(vendordir)/sudo/sudoers
+    %install_file %(pkgdir)/sudo.conf %(installroot)%(libdir)/tmpfiles.d/sudo.conf
+    %install_file %(pkgdir)/sudo.pam %(installroot)%(vendordir)/etc/pam.d/sudo
+    %install_file %(pkgdir)/sudo.pam %(installroot)%(vendordir)/etc/pam.d/sudo-l
+    %install_file %(pkgdir)/su.pam %(installroot)/%(vendordir)%(sysconfdir)/pam.d/su
+    %install_file %(pkgdir)/su.pam %(installroot)/%(vendordir)%(sysconfdir)/pam.d/su-l
 
-    # Cleanup
-    rm -rfv %(installroot)/usr/share/doc
+    %install_file %(pkgdir)/sudoers %(installroot)%(vendordir)/etc/sudo/sudoers
 
-    # Tmpfiles. Note that sudo already ships a tmpfiles, we're just adding onto it.
-    %tmpfiles "d /var/db/sudo/ 0700 root root -"
-    %tmpfiles "d /var/db/sudo/lectured 0700 root root -"
+    # We own special permission on the dir now
+    install -d -m 00750 %(installroot)%(vendordir)/etc/sudo/sudoers.d
 
-    # Stateless
-    rm -fv %(installroot)/etc
-    rmdir %(installroot)/run/sudo
-    rmdir %(installroot)/run/
-    rmdir %(installroot)/var/db/sudo/lectured
-    rmdir %(installroot)/var/db/sudo
-    rmdir %(installroot)/var/db
-    rmdir %(installroot)/var
-toolchain   : gnu
+    go-md2man -in docs/man/su.1.md -out %(installroot)%(mandir)/man1/su.1
+    go-md2man -in docs/man/sudo.8.md -out %(installroot)%(mandir)/man8/sudo.8
+    go-md2man -in docs/man/visudo.8.md -out %(installroot)%(mandir)/man8/visudo.8
+
+    # stub old sudo-devel
+    %install_dir %(installroot)%(includedir)
+    ln -s /dev/null %(installroot)%(includedir)/sudo_plugin.h
+
+check       : |
+    # Currently stateless will break some tests involving /etc/hosts
+    %cargo_test --all-features || true

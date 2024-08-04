@@ -1,6 +1,2 @@
 releases:
-  id: 4906
-security:
-  cpe:
-  - vendcor: sudo_project
-    product: sudo
+  id: 371563
