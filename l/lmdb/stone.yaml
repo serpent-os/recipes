@@ -5,7 +5,7 @@
 #
 name        : lmdb
 version     : 0.9.31
-release     : 8
+release     : 9
 homepage    : https://www.symas.com/lmdb
 upstreams   :
     - https://github.com/LMDB/lmdb/archive/refs/tags/LMDB_0.9.31.tar.gz : dd70a8c67807b3b8532b3e987b0a4e998962ecc28643e1af5ec77696b081c9b0
@@ -20,7 +20,7 @@ build       : |
     %make -C libraries/liblmdb XCFLAGS="${CFLAGS}" CC=clang AR=llvm-ar
 install     : |
     %make_install -C libraries/liblmdb XCFLAGS="${CFLAGS}" prefix=%(prefix) libdir=%(libdir) CC=clang AR=llvm-ar
-    %install_file %(pkgdir)/lmdb.pc %(installroot)/%(libdir)/lmdb.pc
+    %install_file %(pkgdir)/lmdb.pc %(installroot)/%(libdir)/pkgconfig/lmdb.pc
 check       : |
     cd libraries/liblmdb
     export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:."
