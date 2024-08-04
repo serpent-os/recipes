@@ -14,27 +14,30 @@
 			],
 			"files": [
 				"/usr/lib/libcap.so.2",
-				"/usr/lib/libcap.so.2.68",
+				"/usr/lib/libcap.so.2.70",
 				"/usr/lib/libpsx.so.2",
-				"/usr/lib/libpsx.so.2.68",
+				"/usr/lib/libpsx.so.2.70",
 				"/usr/lib/security/pam_cap.so",
 				"/usr/sbin/capsh",
 				"/usr/sbin/getcap",
 				"/usr/sbin/getpcaps",
 				"/usr/sbin/setcap",
 				"/usr/share/man/man1/capsh.1",
+				"/usr/share/man/man5/capability.conf.5",
 				"/usr/share/man/man8/captree.8",
 				"/usr/share/man/man8/getcap.8",
 				"/usr/share/man/man8/getpcaps.8",
+				"/usr/share/man/man8/pam_cap.8",
 				"/usr/share/man/man8/setcap.8"
 			],
 			"name": "libcap",
 			"provides": [
+				"soname(libcap.so.2(x86_64))",
+				"soname(libpsx.so.2(x86_64))",
+				"soname(pam_cap.so(x86_64))",
 				"sysbinary(capsh)",
 				"sysbinary(getcap)",
 				"sysbinary(getpcaps)",
-				"soname(libcap.so.2(x86_64))",
-				"soname(libpsx.so.2(x86_64))",
 				"sysbinary(setcap)"
 			]
 		},
@@ -42,6 +45,9 @@
 			"build-depends": [
 				"linux-headers",
 				"pkgconfig(pam)"
+			],
+			"depends": [
+				"libcap"
 			],
 			"files": [
 				"/usr/include/sys/capability.h",
@@ -132,6 +138,6 @@
 		}
 	},
 	"source-name": "libcap",
-	"source-release": "4",
-	"source-version": "2.68"
+	"source-release": "5",
+	"source-version": "2.70"
 }
