@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : iwd
-version     : 2.16
-release     : 1
+version     : 2.19
+release     : 2
 homepage    : https://iwd.wiki.kernel.org/
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/network/wireless/iwd-2.16.tar.xz : c1a82032e994861e794cf3b5a16d07ae1aa03a6674f716c73408ffeae2a233ba
+    - https://mirrors.edge.kernel.org/pub/linux/network/wireless/iwd-2.19.tar.xz : 9d0b934e51580316919796aa0357590971fc0df244b273fa10e154c268374f91
 summary     : iNet Wireless Daemon
 description : |
     iNet Wireless Daemon
