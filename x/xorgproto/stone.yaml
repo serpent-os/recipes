@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : xorgproto
-version     : '2023.2'
-release     : 2
+version     : '2024.1'
+release     : 3
 homepage    : https://xorg.freedesktop.org/archive/individual/proto
 upstreams   :
-    - https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2023.2.tar.xz : b61fbc7db82b14ce2dc705ab590efc32b9ad800037113d1973811781d5118c2c
+    - https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2024.1.tar.xz : 372225fd40815b8423547f5d890c5debc72e88b91088fbfb13158c20495ccb59
 summary     : X Window System unified protocol definitions
 description : |
     This package provides the headers and specification documents defining
