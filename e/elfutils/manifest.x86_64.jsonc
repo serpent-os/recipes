@@ -89,6 +89,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"elfutils",
 				"pkgconfig(liblzma)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(zlib)"
@@ -156,13 +157,13 @@
 				"soname(libzstd.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libasm-0.190.so",
+				"/usr/lib/libasm-0.191.so",
 				"/usr/lib/libasm.so.1",
-				"/usr/lib/libdebuginfod-0.190.so",
+				"/usr/lib/libdebuginfod-0.191.so",
 				"/usr/lib/libdebuginfod.so.1",
-				"/usr/lib/libdw-0.190.so",
+				"/usr/lib/libdw-0.191.so",
 				"/usr/lib/libdw.so.1",
-				"/usr/lib/libelf-0.190.so",
+				"/usr/lib/libelf-0.191.so",
 				"/usr/lib/libelf.so.1"
 			],
 			"name": "elfutils-libs",
@@ -175,6 +176,6 @@
 		}
 	},
 	"source-name": "elfutils",
-	"source-release": "3",
-	"source-version": "0.190"
+	"source-release": "4",
+	"source-version": "0.191"
 }

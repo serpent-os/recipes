@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : elfutils
-version     : '0.190'
-release     : 3
+version     : '0.191'
+release     : 4
 homepage    : https://sourceware.org/elfutils
 upstreams   :
-    - https://sourceware.org/elfutils/ftp/0.190/elfutils-0.190.tar.bz2 : 8e00a3a9b5f04bc1dc273ae86281d2d26ed412020b391ffcc23198f10231d692
+    - https://sourceware.org/elfutils/ftp/0.191/elfutils-0.191.tar.bz2 : df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871
 summary     : Collection of utilities and libraries to read, create and modify ELF binary files
 description : |
     elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.
