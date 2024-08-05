@@ -68,7 +68,6 @@
 				"soname(libm.so.6(x86_64))",
 				"soname(liboeffis.so.1(x86_64))",
 				"soname(libpixman-1.so.0(x86_64))",
-				"soname(libsystemd.so.0(x86_64))",
 				"soname(libtirpc.so.3(x86_64))",
 				"soname(libwayland-client.so.0(x86_64))",
 				"soname(libxcvt.so.0(x86_64))",
@@ -148,6 +147,6 @@
 		}
 	},
 	"source-name": "xwayland",
-	"source-release": "2",
-	"source-version": "23.2.4"
+	"source-release": "3",
+	"source-version": "24.1.1"
 }
