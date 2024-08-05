@@ -31,3 +31,8 @@ _clean target:
 
 # Clean *.stone artefacts from the current directory
 clean: (_clean build_file)
+
+# Init git hooks
+_init target:
+    ln -sfv ../../tools/prepare-commit-msg.py $(git rev-parse --git-path hooks)/prepare-commit-msg
+init: (_init build_file)
