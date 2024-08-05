@@ -1,0 +1,6 @@
+releases:
+  id: 311451
+  rss: https://github.com/GNOME/gnome-browser-connector/releases.atom
+security:
+  # No known CPE, last checked 2024-08-05
+  cpe: ~

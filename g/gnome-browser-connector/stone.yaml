@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-browser-connector
+version     : '42.1'
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-browser-connector
+upstreams   :
+    - https://github.com/GNOME/gnome-browser-connector/archive/refs/tags/v42.1.tar.gz : 2eab5d7b842a806e2de185676550cf7027b0da0a41d0652b0f049db903a76162
+summary     : OS-native connector counterpart for GNOME Shell browser extension
+description : |
+    When installed next to the GNOME Shell browser extension, gnome-browser-connection enables the installation of GNOME Shell extensions directly from https://extensions.gnome.org
+license     : GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(pygobject-3.0)
+rundeps     :
+    - python-pygobject
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
