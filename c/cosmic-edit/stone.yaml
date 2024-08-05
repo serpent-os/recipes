@@ -5,10 +5,10 @@
 #
 name        : cosmic-edit
 version     : 0.1.0
-release     : 2
+release     : 3
 homepage    : https://github.com/pop-os/cosmic-edit
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-edit : 33d6522438838e53472d5e98fe23dbd07e6990f1
+    - git|https://github.com/pop-os/cosmic-edit : df5d10936c5a1cc16e231b92221eae7c73ed9da4
 summary     : Cosmic Desktop Text Editor
 description : |
     Cosmic desktop Text Editor
@@ -18,11 +18,12 @@ builddeps   :
     - binary(just)
     - pkgconfig(xkbcommon)
 networking  : yes
+tuning      :
+    - lto: thin
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build
+    %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
