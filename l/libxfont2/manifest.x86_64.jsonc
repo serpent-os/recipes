@@ -37,6 +37,7 @@
 				"pkgconfig(xtrans)"
 			],
 			"depends": [
+				"libxfont2",
 				"pkgconfig(fontenc)",
 				"pkgconfig(fontsproto)",
 				"pkgconfig(freetype2)",
@@ -55,6 +56,6 @@
 		}
 	},
 	"source-name": "libxfont2",
-	"source-release": "1",
-	"source-version": "2.0.6"
+	"source-release": "2",
+	"source-version": "2.0.7"
 }
