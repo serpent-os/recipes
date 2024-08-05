@@ -28,6 +28,7 @@
 				"pkgconfig(xproto)"
 			],
 			"depends": [
+				"libxkbfile",
 				"pkgconfig(kbproto)",
 				"pkgconfig(x11)"
 			],
@@ -49,6 +50,6 @@
 		}
 	},
 	"source-name": "libxkbfile",
-	"source-release": "1",
-	"source-version": "1.1.2"
+	"source-release": "2",
+	"source-version": "1.1.3"
 }
