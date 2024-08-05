@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.1.0
-release     : 53
+release     : 54
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/moss
@@ -13,7 +13,7 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/moss.git : 0a922ed1ec54b47c80c49b8f8400d24a97e74311
+    - git|https://github.com/serpent-os/moss.git : 1f165638176cca4f4a67749f7c258f467925c9df
 builddeps   :
     - binary(cargo)
 networking  : yes
