@@ -5,12 +5,12 @@
 #
 name        : xdg-desktop-portal-cosmic
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Desktop - XDG Portal Support
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/xdg-desktop-portal-cosmic
 upstreams   :
-    - git|https://github.com/pop-os/xdg-desktop-portal-cosmic.git : 813352e64194d54c1959a468a7749a5b2a1957f4
+    - git|https://github.com/pop-os/xdg-desktop-portal-cosmic.git : 41c1e7cfd0779db6005fc64798ac75b630332678
 description : |
     Cosmic Desktop - XDG Portal Support
 builddeps   :
@@ -21,10 +21,12 @@ builddeps   :
     - pkgconfig(xkbcommon)
 rundeps     :
     - xdg-desktop-portal
+tuning      :
+    - lto: thin
 networking  : yes
 setup       : |
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build
+    %cargo_build
 install     : |
-    %make_install TARGET=%(target_triple)/release prefix=%(prefix)
+    %make_install TARGET=%(target_triple)/debug prefix=%(prefix)
