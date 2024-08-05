@@ -5,10 +5,10 @@
 #
 name        : cosmic-term
 version     : 0.1.0
-release     : 3
+release     : 4
 homepage    : https://github.com/pop-os/cosmic-term
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-term : 72391e782da30038d806413660662f775d384cc1
+    - git|https://github.com/pop-os/cosmic-term : be808b56cf24d03fc99cf44b0885078a81a16523
 summary     : Cosmic Desktop Terminal Application
 description : |
     Cosmic desktop Terminal Application
@@ -18,11 +18,12 @@ builddeps   :
     - binary(just)
     - pkgconfig(xkbcommon)
 networking  : yes
+tuning      :
+    - lto: thin
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+    %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
