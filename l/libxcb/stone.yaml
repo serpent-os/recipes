@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxcb
-version     : '1.16'
-release     : 3
+version     : 1.17.0
+release     : 4
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxcb
 upstreams   :
-    - https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.16.tar.xz : 4348566aa0fbf196db5e0a576321c65966189210cb51328ea2bb2be39c711d71
+    - https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.17.0.tar.xz : 599ebf9996710fea71622e6e184f3a8ad5b43d0e5fa8c4e407123c88a59a6d55
 summary     : C interface to the X Window System protocol, which replaces the traditional Xlib interface.
 description : |
     libxcb provides an interface to the X Window System protocol, which

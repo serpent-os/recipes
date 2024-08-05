@@ -104,6 +104,7 @@
 				"pkgconfig32(xau)"
 			],
 			"depends": [
+				"libxcb",
 				"soname(libXau.so.6(x86))",
 				"soname(libc.so.6(x86))"
 			],
@@ -161,30 +162,55 @@
 			],
 			"name": "libxcb-32bit",
 			"provides": [
+				"soname(libxcb-composite.so.0(386))",
 				"soname(libxcb-composite.so.0(x86))",
+				"soname(libxcb-damage.so.0(386))",
 				"soname(libxcb-damage.so.0(x86))",
+				"soname(libxcb-dbe.so.0(386))",
 				"soname(libxcb-dbe.so.0(x86))",
+				"soname(libxcb-dpms.so.0(386))",
 				"soname(libxcb-dpms.so.0(x86))",
+				"soname(libxcb-dri2.so.0(386))",
 				"soname(libxcb-dri2.so.0(x86))",
+				"soname(libxcb-dri3.so.0(386))",
 				"soname(libxcb-dri3.so.0(x86))",
+				"soname(libxcb-glx.so.0(386))",
 				"soname(libxcb-glx.so.0(x86))",
+				"soname(libxcb-present.so.0(386))",
 				"soname(libxcb-present.so.0(x86))",
+				"soname(libxcb-randr.so.0(386))",
 				"soname(libxcb-randr.so.0(x86))",
+				"soname(libxcb-record.so.0(386))",
 				"soname(libxcb-record.so.0(x86))",
+				"soname(libxcb-render.so.0(386))",
 				"soname(libxcb-render.so.0(x86))",
+				"soname(libxcb-res.so.0(386))",
 				"soname(libxcb-res.so.0(x86))",
+				"soname(libxcb-screensaver.so.0(386))",
 				"soname(libxcb-screensaver.so.0(x86))",
+				"soname(libxcb-shape.so.0(386))",
 				"soname(libxcb-shape.so.0(x86))",
+				"soname(libxcb-shm.so.0(386))",
 				"soname(libxcb-shm.so.0(x86))",
+				"soname(libxcb-sync.so.1(386))",
 				"soname(libxcb-sync.so.1(x86))",
+				"soname(libxcb-xf86dri.so.0(386))",
 				"soname(libxcb-xf86dri.so.0(x86))",
+				"soname(libxcb-xfixes.so.0(386))",
 				"soname(libxcb-xfixes.so.0(x86))",
+				"soname(libxcb-xinerama.so.0(386))",
 				"soname(libxcb-xinerama.so.0(x86))",
+				"soname(libxcb-xinput.so.0(386))",
 				"soname(libxcb-xinput.so.0(x86))",
+				"soname(libxcb-xkb.so.1(386))",
 				"soname(libxcb-xkb.so.1(x86))",
+				"soname(libxcb-xtest.so.0(386))",
 				"soname(libxcb-xtest.so.0(x86))",
+				"soname(libxcb-xv.so.0(386))",
 				"soname(libxcb-xv.so.0(x86))",
+				"soname(libxcb-xvmc.so.0(386))",
 				"soname(libxcb-xvmc.so.0(x86))",
+				"soname(libxcb.so.1(386))",
 				"soname(libxcb.so.1(x86))"
 			]
 		},
@@ -196,6 +222,8 @@
 				"pkgconfig32(xau)"
 			],
 			"depends": [
+				"libxcb-32bit",
+				"libxcb-devel",
 				"pkgconfig32(xau)"
 			],
 			"files": [
@@ -287,6 +315,7 @@
 				"pkgconfig32(xau)"
 			],
 			"depends": [
+				"libxcb",
 				"pkgconfig(xau)"
 			],
 			"files": [
@@ -617,6 +646,8 @@
 				"/usr/share/man/man3/xcb_dri3_fd_from_fence_unchecked.3",
 				"/usr/share/man/man3/xcb_dri3_fence_from_fd.3",
 				"/usr/share/man/man3/xcb_dri3_fence_from_fd_checked.3",
+				"/usr/share/man/man3/xcb_dri3_free_syncobj.3",
+				"/usr/share/man/man3/xcb_dri3_free_syncobj_checked.3",
 				"/usr/share/man/man3/xcb_dri3_get_supported_modifiers.3",
 				"/usr/share/man/man3/xcb_dri3_get_supported_modifiers_reply.3",
 				"/usr/share/man/man3/xcb_dri3_get_supported_modifiers_screen_modifiers.3",
@@ -626,6 +657,8 @@
 				"/usr/share/man/man3/xcb_dri3_get_supported_modifiers_window_modifiers.3",
 				"/usr/share/man/man3/xcb_dri3_get_supported_modifiers_window_modifiers_end.3",
 				"/usr/share/man/man3/xcb_dri3_get_supported_modifiers_window_modifiers_length.3",
+				"/usr/share/man/man3/xcb_dri3_import_syncobj.3",
+				"/usr/share/man/man3/xcb_dri3_import_syncobj_checked.3",
 				"/usr/share/man/man3/xcb_dri3_open.3",
 				"/usr/share/man/man3/xcb_dri3_open_reply.3",
 				"/usr/share/man/man3/xcb_dri3_open_unchecked.3",
@@ -1503,6 +1536,8 @@
 				"/usr/share/man/man3/xcb_present_notify_msc_checked.3",
 				"/usr/share/man/man3/xcb_present_pixmap.3",
 				"/usr/share/man/man3/xcb_present_pixmap_checked.3",
+				"/usr/share/man/man3/xcb_present_pixmap_synced.3",
+				"/usr/share/man/man3/xcb_present_pixmap_synced_checked.3",
 				"/usr/share/man/man3/xcb_present_query_capabilities.3",
 				"/usr/share/man/man3/xcb_present_query_capabilities_reply.3",
 				"/usr/share/man/man3/xcb_present_query_capabilities_unchecked.3",
@@ -2710,6 +2745,6 @@
 		}
 	},
 	"source-name": "libxcb",
-	"source-release": "3",
-	"source-version": "1.16"
+	"source-release": "4",
+	"source-version": "1.17.0"
 }
