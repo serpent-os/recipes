@@ -12,6 +12,8 @@
 				"/usr/share/X11/xkb/compat/basic",
 				"/usr/share/X11/xkb/compat/caps",
 				"/usr/share/X11/xkb/compat/complete",
+				"/usr/share/X11/xkb/compat/grab",
+				"/usr/share/X11/xkb/compat/grp_led",
 				"/usr/share/X11/xkb/compat/iso9995",
 				"/usr/share/X11/xkb/compat/japan",
 				"/usr/share/X11/xkb/compat/ledcaps",
@@ -20,6 +22,7 @@
 				"/usr/share/X11/xkb/compat/ledscroll",
 				"/usr/share/X11/xkb/compat/level5",
 				"/usr/share/X11/xkb/compat/misc",
+				"/usr/share/X11/xkb/compat/mod_led",
 				"/usr/share/X11/xkb/compat/mousekeys",
 				"/usr/share/X11/xkb/compat/olpc",
 				"/usr/share/X11/xkb/compat/pc",
@@ -43,7 +46,6 @@
 				"/usr/share/X11/xkb/geometry/macintosh",
 				"/usr/share/X11/xkb/geometry/microsoft",
 				"/usr/share/X11/xkb/geometry/nec",
-				"/usr/share/X11/xkb/geometry/nokia",
 				"/usr/share/X11/xkb/geometry/northgate",
 				"/usr/share/X11/xkb/geometry/pc",
 				"/usr/share/X11/xkb/geometry/sanwa",
@@ -143,6 +145,7 @@
 				"/usr/share/X11/xkb/symbols/gh",
 				"/usr/share/X11/xkb/symbols/gn",
 				"/usr/share/X11/xkb/symbols/gr",
+				"/usr/share/X11/xkb/symbols/grab",
 				"/usr/share/X11/xkb/symbols/group",
 				"/usr/share/X11/xkb/symbols/hp_vndr/us",
 				"/usr/share/X11/xkb/symbols/hr",
@@ -205,9 +208,6 @@
 				"/usr/share/X11/xkb/symbols/ng",
 				"/usr/share/X11/xkb/symbols/nl",
 				"/usr/share/X11/xkb/symbols/no",
-				"/usr/share/X11/xkb/symbols/nokia_vndr/rx-44",
-				"/usr/share/X11/xkb/symbols/nokia_vndr/rx-51",
-				"/usr/share/X11/xkb/symbols/nokia_vndr/su-8w",
 				"/usr/share/X11/xkb/symbols/np",
 				"/usr/share/X11/xkb/symbols/nz",
 				"/usr/share/X11/xkb/symbols/olpc",
@@ -221,6 +221,7 @@
 				"/usr/share/X11/xkb/symbols/rs",
 				"/usr/share/X11/xkb/symbols/ru",
 				"/usr/share/X11/xkb/symbols/rupeesign",
+				"/usr/share/X11/xkb/symbols/scrolllock",
 				"/usr/share/X11/xkb/symbols/se",
 				"/usr/share/X11/xkb/symbols/sgi_vndr/jp",
 				"/usr/share/X11/xkb/symbols/sharp_vndr/sl-c3x00",
@@ -234,6 +235,7 @@
 				"/usr/share/X11/xkb/symbols/sn",
 				"/usr/share/X11/xkb/symbols/sony_vndr/us",
 				"/usr/share/X11/xkb/symbols/srvr_ctrl",
+				"/usr/share/X11/xkb/symbols/srvrkeys",
 				"/usr/share/X11/xkb/symbols/sun_vndr/ara",
 				"/usr/share/X11/xkb/symbols/sun_vndr/be",
 				"/usr/share/X11/xkb/symbols/sun_vndr/br",
@@ -294,7 +296,6 @@
 				"/usr/share/X11/xkb/types/iso9995",
 				"/usr/share/X11/xkb/types/level5",
 				"/usr/share/X11/xkb/types/mousekeys",
-				"/usr/share/X11/xkb/types/nokia",
 				"/usr/share/X11/xkb/types/numpad",
 				"/usr/share/X11/xkb/types/pc"
 			],
@@ -303,6 +304,9 @@
 		"xkeyboard-config-devel": {
 			"build-depends": [
 				"binary(perl)"
+			],
+			"depends": [
+				"xkeyboard-config"
 			],
 			"files": [
 				"/usr/share/pkgconfig/xkeyboard-config.pc"
@@ -314,6 +318,6 @@
 		}
 	},
 	"source-name": "xkeyboard-config",
-	"source-release": "1",
-	"source-version": "2.40"
+	"source-release": "2",
+	"source-version": "2.42"
 }

@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxkbfile
-version     : 1.1.2
-release     : 1
+version     : 1.1.3
+release     : 2
 homepage    : https://www.x.org/
 upstreams   :
-    - https://www.x.org/releases/individual/lib/libxkbfile-1.1.2.tar.gz : d1a7e659bc7ae1aa1fc1ecced261c734df5ad5d86af1ef7a946be0e2d841e51d
+    - https://www.x.org/releases/individual/lib/libxkbfile-1.1.3.tar.gz : c4c2687729d1f920f165ebb96557a1ead2ef655809ab5eaa66a1ad36dc31050d
 summary     : X11 keyboard file manipulation library
 description : |
     libxkbfile provides an interface to read and manipulate description files for XKB, the X11 keyboard configuration extension

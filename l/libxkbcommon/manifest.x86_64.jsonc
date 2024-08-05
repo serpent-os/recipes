@@ -27,6 +27,7 @@
 				"/usr/lib/libxkbcommon-x11.so.0.0.0",
 				"/usr/lib/libxkbcommon.so.0",
 				"/usr/lib/libxkbcommon.so.0.0.0",
+				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-compile-compose",
 				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-compile-keymap",
 				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-how-to-type",
 				"/usr/lib/libxkbcommon/xkbcommon/xkbcli-interactive-evdev",
@@ -36,6 +37,7 @@
 				"/usr/lib/libxkbregistry.so.0",
 				"/usr/lib/libxkbregistry.so.0.0.0",
 				"/usr/share/bash-completion/completions/xkbcli",
+				"/usr/share/man/man1/xkbcli-compile-compose.1",
 				"/usr/share/man/man1/xkbcli-compile-keymap.1",
 				"/usr/share/man/man1/xkbcli-how-to-type.1",
 				"/usr/share/man/man1/xkbcli-interactive-evdev.1",
@@ -46,10 +48,10 @@
 			],
 			"name": "libxkbcommon",
 			"provides": [
+				"binary(xkbcli)",
 				"soname(libxkbcommon-x11.so.0(x86_64))",
 				"soname(libxkbcommon.so.0(x86_64))",
-				"soname(libxkbregistry.so.0(x86_64))",
-				"binary(xkbcli)"
+				"soname(libxkbregistry.so.0(x86_64))"
 			]
 		},
 		"libxkbcommon-devel": {
@@ -64,6 +66,7 @@
 				"pkgconfig(xcb-xkb)"
 			],
 			"depends": [
+				"libxkbcommon",
 				"pkgconfig(libxml-2.0)",
 				"pkgconfig(xcb)",
 				"pkgconfig(xcb-xkb)"
@@ -92,6 +95,6 @@
 		}
 	},
 	"source-name": "libxkbcommon",
-	"source-release": "2",
-	"source-version": "1.6.0"
+	"source-release": "3",
+	"source-version": "1.7.0"
 }
