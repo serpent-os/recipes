@@ -5,12 +5,12 @@
 #
 name        : cosmic-launcher
 version     : "0.1.0"
-release     : 2
+release     : 3
 summary     : Cosmic Desktop Launcher
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-launcher
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-launcher.git : 75554d3b465032ca8243e299b6a265032d3e6b60
+    - git|https://github.com/pop-os/cosmic-launcher.git : d84fda0bcc494f6ba197a5bc4bae17c45dcbf458
 description : |
     Cosmic Desktop Launcher
 builddeps   :
