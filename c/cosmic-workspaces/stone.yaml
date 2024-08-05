@@ -5,12 +5,12 @@
 #
 name        : cosmic-workspaces
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Desktop Workspaces
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-workspaces
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-workspaces-epoch.git : 2de366939bc4bd475c36ff805fb96272f207bb74
+    - git|https://github.com/pop-os/cosmic-workspaces-epoch.git : c1acf0c1aa819fc279193dd61e04ec132f318b6c
 description : |
     Cosmic Desktop Workspaces
 builddeps   :
@@ -23,11 +23,11 @@ builddeps   :
     - pkgconfig(libudev)
     - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+tuning      :
+    - lto: thin
 setup       : |
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+    %cargo_build
 install     : |
-    %make_install prefix=%(prefix) TARGET=%(target_triple)/release
+    %make_install prefix=%(prefix) TARGET=%(target_triple)/debug
