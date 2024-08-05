@@ -5,10 +5,10 @@
 #
 name        : cosmic-files
 version     : 0.1.0
-release     : 3
+release     : 4
 homepage    : https://github.com/pop-os/cosmic-files
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-files : 82580d5660afe0d77abb57b1badb3f1dcecc4539
+    - git|https://github.com/pop-os/cosmic-files : 190029aa27d08a26877e73db2dda789de3e6595f
 summary     : Cosmic Desktop File Browser
 description : |
     Cosmic desktop File Browser
@@ -20,10 +20,9 @@ builddeps   :
     - pkgconfig(xkbcommon)
 networking  : yes
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\"
+    %cargo_build
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
