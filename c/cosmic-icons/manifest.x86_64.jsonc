@@ -229,6 +229,7 @@
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-dock-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-input-devices-keyboard.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-input-devices-mouse.svg",
+				"/usr/share/icons/Cosmic/scalable/apps/preferences-input-devices-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-input-devices-touchpad.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-input-devices.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-network-and-wireless-vpn.svg",
@@ -236,11 +237,13 @@
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-network-and-wireless-wired.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-network-and-wireless.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-panel-symbolic.svg",
+				"/usr/share/icons/Cosmic/scalable/apps/preferences-power-and-battery-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-system-and-accounts-about.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-system-and-accounts-users.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-system-and-accounts.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-time-and-language-date-and-time.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-time-and-language-region-and-language.svg",
+				"/usr/share/icons/Cosmic/scalable/apps/preferences-time-and-language-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-time-and-language.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-window-management-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-workspaces-symbolic.svg",
@@ -582,6 +585,6 @@
 		}
 	},
 	"source-name": "cosmic-icons",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.0"
 }

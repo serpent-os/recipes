@@ -5,12 +5,12 @@
 #
 name        : cosmic-icons
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Icons by System76
 license     : CC-BY-SA-4.0
 homepage    : https://github.com/pop-os/cosmic-icons
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-icons.git : 73be037ba266b08a2fa7b544d78e7f143a2894c5
+    - git|https://github.com/pop-os/cosmic-icons.git : f93dcdfa1060c2cf3f8cf0b56b0338292edcafa5
 description : |
     Cosmic Icons by System76
 builddeps   :
