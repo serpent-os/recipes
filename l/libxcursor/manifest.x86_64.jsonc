@@ -32,6 +32,7 @@
 				"pkgconfig32(xrender)"
 			],
 			"depends": [
+				"libxcursor",
 				"soname(libX11.so.6(x86))",
 				"soname(libXfixes.so.3(x86))",
 				"soname(libXrender.so.1(x86))",
@@ -43,6 +44,7 @@
 			],
 			"name": "libxcursor-32bit",
 			"provides": [
+				"soname(libXcursor.so.1(386))",
 				"soname(libXcursor.so.1(x86))"
 			]
 		},
@@ -54,9 +56,11 @@
 				"pkgconfig32(xrender)"
 			],
 			"depends": [
+				"libxcursor-32bit",
+				"libxcursor-devel",
+				"pkgconfig(xproto)",
 				"pkgconfig32(x11)",
 				"pkgconfig32(xfixes)",
-				"pkgconfig(xproto)",
 				"pkgconfig32(xrender)"
 			],
 			"files": [
@@ -77,6 +81,7 @@
 				"pkgconfig32(xrender)"
 			],
 			"depends": [
+				"libxcursor",
 				"pkgconfig(x11)",
 				"pkgconfig(xfixes)",
 				"pkgconfig(xproto)",
@@ -155,6 +160,6 @@
 		}
 	},
 	"source-name": "libxcursor",
-	"source-release": "1",
-	"source-version": "1.2.1"
+	"source-release": "2",
+	"source-version": "1.2.2"
 }
