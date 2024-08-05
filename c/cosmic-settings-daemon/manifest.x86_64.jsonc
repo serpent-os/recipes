@@ -15,6 +15,7 @@
 			"depends": [
 				"geoclue",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"power-profiles-daemon",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
@@ -33,6 +34,6 @@
 		}
 	},
 	"source-name": "cosmic-settings-daemon",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.1.0"
 }
