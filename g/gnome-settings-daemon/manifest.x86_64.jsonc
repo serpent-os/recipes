@@ -8,6 +8,7 @@
 				"binary(perl)",
 				"pkgconfig(alsa)",
 				"pkgconfig(colord)",
+				"pkgconfig(cups)",
 				"pkgconfig(gcr-4)",
 				"pkgconfig(gdk-wayland-3.0)",
 				"pkgconfig(geocode-glib-2.0)",
@@ -44,6 +45,7 @@
 				"soname(libcanberra-gtk3.so.0(x86_64))",
 				"soname(libcanberra.so.0(x86_64))",
 				"soname(libcolord.so.2(x86_64))",
+				"soname(libcups.so.2(x86_64))",
 				"soname(libfontconfig.so.1(x86_64))",
 				"soname(libgck-2.so.2(x86_64))",
 				"soname(libgcr-4.so.4(x86_64))",
@@ -68,12 +70,13 @@
 				"soname(libpolkit-gobject-1.so.0(x86_64))",
 				"soname(libpulse-mainloop-glib.so.0(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
+				"soname(libsystemd.so.0(x86_64))",
 				"soname(libupower-glib.so.3(x86_64))",
 				"soname(libwacom.so.9(x86_64))",
 				"soname(libwayland-client.so.0(x86_64))"
 			],
 			"files": [
-				"/usr/lib/gnome-settings-daemon-45/libgsd.so",
+				"/usr/lib/gnome-settings-daemon-46/libgsd.so",
 				"/usr/lib/gnome-settings-daemon/gsd-a11y-settings",
 				"/usr/lib/gnome-settings-daemon/gsd-backlight-helper",
 				"/usr/lib/gnome-settings-daemon/gsd-color",
@@ -82,6 +85,8 @@
 				"/usr/lib/gnome-settings-daemon/gsd-keyboard",
 				"/usr/lib/gnome-settings-daemon/gsd-media-keys",
 				"/usr/lib/gnome-settings-daemon/gsd-power",
+				"/usr/lib/gnome-settings-daemon/gsd-print-notifications",
+				"/usr/lib/gnome-settings-daemon/gsd-printer",
 				"/usr/lib/gnome-settings-daemon/gsd-rfkill",
 				"/usr/lib/gnome-settings-daemon/gsd-screensaver-proxy",
 				"/usr/lib/gnome-settings-daemon/gsd-sharing",
@@ -108,6 +113,8 @@
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.MediaKeys.target",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Power.service",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Power.target",
+				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.PrintNotifications.service",
+				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.PrintNotifications.target",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Rfkill.service",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Rfkill.target",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.ScreensaverProxy.service",
@@ -270,6 +277,7 @@
 				"binary(perl)",
 				"pkgconfig(alsa)",
 				"pkgconfig(colord)",
+				"pkgconfig(cups)",
 				"pkgconfig(gcr-4)",
 				"pkgconfig(gdk-wayland-3.0)",
 				"pkgconfig(geocode-glib-2.0)",
@@ -294,8 +302,11 @@
 				"pkgconfig(x11)",
 				"pkgconfig(xfixes)"
 			],
+			"depends": [
+				"gnome-settings-daemon"
+			],
 			"files": [
-				"/usr/include/gnome-settings-daemon-45/gnome-settings-daemon/gsd-enums.h",
+				"/usr/include/gnome-settings-daemon-46/gnome-settings-daemon/gsd-enums.h",
 				"/usr/lib/pkgconfig/gnome-settings-daemon.pc"
 			],
 			"name": "gnome-settings-daemon-devel",
@@ -305,6 +316,6 @@
 		}
 	},
 	"source-name": "gnome-settings-daemon",
-	"source-release": "1",
-	"source-version": "45.1"
+	"source-release": "2",
+	"source-version": "46.0"
 }
