@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
 version     : 18.1.8
-release     : 11
+release     : 12
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -51,7 +51,6 @@ environment : |
         -DLLVM_ENABLE_LTO=Thin \
         -DLLVM_ENABLE_MODULES=OFF \
         -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
-        -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld;llvm;polly' \
         -DLLVM_ENABLE_ZLIB=ON \
         -DLLVM_ENABLE_ZSTD=ON \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
@@ -59,12 +58,11 @@ environment : |
         -DLLVM_INCLUDE_UTILS=ON \
         -DLLVM_INSTALL_UTILS=ON \
         -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
-        -DLLVM_LINK_LLVM_DYLIB=ON
+        -DLLVM_LINK_LLVM_DYLIB=ON \
         -DLLVM_TARGET_ARCH=X86_64 \
         -DLLVM_TARGETS_TO_BUILD='X86;AArch64;AMDGPU;BPF' \
         -DLLVM_USE_SANITIZER=OFF \
-        -DLLVM_ENABLE_RTTI=ON
-        "
+        -DLLVM_ENABLE_RTTI=ON"
 
     # Without RPATH, we need help finding the right libraries to use
     export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib"
@@ -81,7 +79,22 @@ setup       : |
     %patch %(pkgdir)/serpent/0003-PATCH-clang-Don-t-install-static-libraries.patch
     %patch %(pkgdir)/serpent/ignore-werror.patch
 
-    %cmake ${llvmopts} -S llvm
+    %cmake -S llvm \
+           -C clang/cmake/caches/PGO.cmake \
+           -DLLVM_ENABLE_PROJECTS='clang;lld;llvm;polly' \
+           -DPGO_INSTRUMENT_LTO=ON \
+           -B pgo-training \
+           ${llvmopts}
+
+    unset LD_PRELOAD
+    %cmake_build -C pgo-training stage2-instrumented-generate-profdata
+
+    find pgo-training -name "clang.profdata" -exec mv {} %(workdir) \;
+
+    %cmake -S llvm \
+           -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld;llvm;polly' \
+           -DLLVM_PROFDATA_FILE=%(workdir)/clang.profdata \
+           ${llvmopts}
 build       : |
     unset LD_PRELOAD
     %cmake_build
@@ -93,40 +106,30 @@ install     : |
 
     # unset LD_PRELOAD
 
-    # cmake ${llvmopts} -S llvm \
-    #     -DLLVM_BUILD_LLVM_DYLIB=OFF \
-    #     -DLLVM_LINK_LLVM_DYLIB=OFF \
-    #     -DCLANG_LINK_CLANG_DYLIB=OFF
-
-    # Relink clang and lld statically
-    #cmake_build clang lld
-
-    # Major clang version
+    # # Major clang version
     # major_version=$(echo %(version) | cut -d. -f1)
-    # export PATH="%(workdir)/%(builddir)/bin:${PATH}"
-    # export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib:${LD_LIBRARY_PATH}"
-    # #bolt_instr %(workdir)/%(builddir)/bin/clang-${major_version}
+    # export PATH="%(installroot)/usr/bin:${PATH}"
+    # export LD_LIBRARY_PATH="%(installroot)/%(libdir):${LD_LIBRARY_PATH}"
+
+    # for i in /usr/bin/clang-${major_version} /usr/lib/liblldELF.so.18.1 /usr/lib/liblldCommon.so.18.1 /usr/lib/LLVMPolly.so /usr/lib/libPollyISL.so /usr/lib/libclang-cpp.so.18.1 /usr/lib/libclang.so.%(version) /usr/lib/libLLVM.so.18.1 /usr/lib/libLTO.so.18.1; do
+    #     bolt_instr %(installroot)/$i
+    # done
 
     # cmake -G Ninja ${llvmopts} -B bolt-clang -S runtimes \
-    #     -DCMAKE_C_COMPILER="%(workdir)/%(builddir)/bin/clang" \
-    #     -DCMAKE_CXX_COMPILER="%(workdir)/%(builddir)/bin/clang++" \
+    #     -DCMAKE_C_COMPILER="%(installroot)/usr/bin/clang" \
+    #     -DCMAKE_CXX_COMPILER="%(installroot)/usr/bin/clang++" \
     #     -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
-    #     -DLLVM_USE_LINKER="%(workdir)/%(builddir)/bin/ld.lld" \
+    #     -DLLVM_USE_LINKER="%(installroot)/usr/bin/ld.lld" \
     #     -DLLVM_ENABLE_LTO=Full
 
     # cmake_build -C bolt-clang
 
-    # bolt_merge %(workdir)/%(builddir)/bin/clang-${major_version}
-    # bolt_opt %(workdir)/%(builddir)/bin/clang-${major_version}
-
-    # install_bin %(workdir)/%(builddir)/bin/clang-${major_version} %(workdir)/%(builddir)/bin/lld
-# workload    : |
-#    unset LD_PRELOAD
-#    # check-compiler-rt needs sanitizer changes
-#    %cmake_build check-clang check-llvm check-lld check-polly -k 10000 ||:
+    # for i in /usr/bin/clang-${major_version} /usr/lib/liblldELF.so.18.1 /usr/lib/liblldCommon.so.18.1 /usr/lib/LLVMPolly.so /usr/lib/libPollyISL.so /usr/lib/libclang-cpp.so.18.1 /usr/lib/libclang.so.%(version) /usr/lib/libLLVM.so.18.1 /usr/lib/libLTO.so.18.1; do
+    #     bolt_merge %(installroot)/$i
+    #     bolt_opt %(installroot)/$i
+    # done
 # LTO needs to be set in LLVM cmake flags so it adds -fno-lto where needed
 tuning      :
-    # - bolt
     - fortify: false
     - frame-pointer: false
     - harden: false
@@ -166,6 +169,7 @@ packages    :
             - /usr/bin/yaml-bench
             - /usr/bin/yaml2obj
         rundeps:
+            - pkgconfig(libzstd)
             - polly-devel
 
     - "clang-libs":
