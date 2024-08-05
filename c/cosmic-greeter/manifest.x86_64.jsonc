@@ -6,7 +6,6 @@
 			"build-depends": [
 				"binary(cargo)",
 				"binary(just)",
-				"binary(mold)",
 				"cmake(Clang)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(libinput)",
@@ -42,6 +41,6 @@
 		}
 	},
 	"source-name": "cosmic-greeter",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.1.0"
 }

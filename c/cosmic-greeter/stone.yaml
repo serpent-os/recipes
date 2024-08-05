@@ -5,7 +5,7 @@
 #
 name        : cosmic-greeter
 version     : "0.1.0"
-release     : 1
+release     : 2
 summary     : Cosmic Desktop Greeter
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-greeter
@@ -16,7 +16,6 @@ description : |
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - binary(mold)
     - cmake(Clang)
     - pkgconfig(dbus-1)
     - pkgconfig(libinput)
@@ -25,16 +24,15 @@ builddeps   :
     - pkgconfig(pam)
     - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+tuning      :
+    - lto: thin
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'%(target_triple)' / 'release'@g" -i justfile
+    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build --config profile.release.lto=\"thin\" --all
+    %cargo_build --all
 install     : |
-    just rootdir=%(installroot) install
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
 
     # userdb pls
     rm -rfv %(installroot)%(libdir)/sysusers.d
