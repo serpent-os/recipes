@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-edit
-version     : 0.1.0
-release     : 3
+version     : "1.0.0-alpha.1"
+release     : 4
 homepage    : https://github.com/pop-os/cosmic-edit
 upstreams   :
     - git|https://github.com/pop-os/cosmic-edit : df5d10936c5a1cc16e231b92221eae7c73ed9da4
