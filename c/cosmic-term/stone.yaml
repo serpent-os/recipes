@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-term
-version     : 0.1.0
-release     : 4
+version     : "1.0.0-alpha.1"
+release     : 5
 homepage    : https://github.com/pop-os/cosmic-term
 upstreams   :
     - git|https://github.com/pop-os/cosmic-term : be808b56cf24d03fc99cf44b0885078a81a16523
