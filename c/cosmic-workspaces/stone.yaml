@@ -5,7 +5,7 @@
 #
 name        : cosmic-workspaces
 version     : "1.0.0-alpha.1"
-release     : 3
+release     : 4
 summary     : Cosmic Desktop Workspaces
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-workspaces
@@ -16,6 +16,7 @@ description : |
 builddeps   :
     - binary(cargo)
     - binary(just)
+    - binary(which)
     - pkgconfig(dbus-1)
     - pkgconfig(gbm)
     - pkgconfig(libinput)
@@ -27,6 +28,6 @@ tuning      :
 setup       : |
     %cargo_fetch
 build       : |
-    %cargo_build
+    %cargo_build --features rust-embed/debug-embed
 install     : |
     %make_install prefix=%(prefix) TARGET=%(target_triple)/debug
