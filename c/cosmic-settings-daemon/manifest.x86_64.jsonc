@@ -34,6 +34,6 @@
 		}
 	},
 	"source-name": "cosmic-settings-daemon",
-	"source-release": "3",
-	"source-version": "0.1.0"
+	"source-release": "4",
+	"source-version": "1.0.0-alpha.1"
 }
