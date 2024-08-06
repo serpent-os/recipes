@@ -5,6 +5,7 @@
 		"cosmic-files": {
 			"build-depends": [
 				"binary(just)",
+				"binary(which)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(xkbcommon)"
 			],
@@ -37,6 +38,6 @@
 		}
 	},
 	"source-name": "cosmic-files",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "1.0.0-alpha.1"
 }

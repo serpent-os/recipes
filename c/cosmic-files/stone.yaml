@@ -5,7 +5,7 @@
 #
 name        : cosmic-files
 version     : "1.0.0-alpha.1"
-release     : 5
+release     : 6
 homepage    : https://github.com/pop-os/cosmic-files
 upstreams   :
     - git|https://github.com/pop-os/cosmic-files : 190029aa27d08a26877e73db2dda789de3e6595f
@@ -16,13 +16,16 @@ license     :
     - GPL-3.0
 builddeps   :
     - binary(just)
+    - binary(which)
     - pkgconfig(glib-2.0)
     - pkgconfig(xkbcommon)
 networking  : yes
+tuning      :
+    - lto: thin
 setup       : |
     sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    %cargo_build
+    %cargo_build --features rust-embed/debug-embed
 install     : |
     CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
