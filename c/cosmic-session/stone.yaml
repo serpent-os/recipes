@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-session
-version     : "0.1.0"
-release     : 6
+version     : "1.0.0-alpha.1"
+release     : 7
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
@@ -21,11 +21,13 @@ rundeps     :
     - binary(cosmic-app-library)
     - binary(cosmic-bg)
     - binary(cosmic-comp)
+    - binary(cosmic-files)
     - binary(cosmic-greeter)
     - binary(cosmic-notifications)
     - binary(cosmic-osd)
     - binary(cosmic-panel)
     - binary(cosmic-randr)
+    - binary(cosmic-settings)
     - binary(cosmic-settings-daemon)
     - binary(cosmic-workspaces)
     - binary(update-desktop-database)
@@ -33,6 +35,7 @@ rundeps     :
     - binary(xdg-user-dirs-gtk-update)
     - font-firacode
     - wireplumber
+    - xdg-desktop-portal-cosmic
 networking  : yes
 tuning      :
     - lto: thin

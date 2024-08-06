@@ -12,11 +12,13 @@
 				"binary(cosmic-app-library)",
 				"binary(cosmic-bg)",
 				"binary(cosmic-comp)",
+				"binary(cosmic-files)",
 				"binary(cosmic-greeter)",
 				"binary(cosmic-notifications)",
 				"binary(cosmic-osd)",
 				"binary(cosmic-panel)",
 				"binary(cosmic-randr)",
+				"binary(cosmic-settings)",
 				"binary(cosmic-settings-daemon)",
 				"binary(cosmic-workspaces)",
 				"binary(update-desktop-database)",
@@ -27,7 +29,8 @@
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
-				"wireplumber"
+				"wireplumber",
+				"xdg-desktop-portal-cosmic"
 			],
 			"files": [
 				"/usr/bin/cosmic-session",
@@ -44,6 +47,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "6",
-	"source-version": "0.1.0"
+	"source-release": "7",
+	"source-version": "1.0.0-alpha.1"
 }
