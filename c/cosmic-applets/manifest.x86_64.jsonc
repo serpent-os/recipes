@@ -6,7 +6,6 @@
 			"build-depends": [
 				"binary(cargo)",
 				"binary(just)",
-				"binary(mold)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(libinput)",
 				"pkgconfig(libpulse)",
@@ -143,6 +142,6 @@
 		}
 	},
 	"source-name": "cosmic-applets",
-	"source-release": "4",
-	"source-version": "0.1.1"
+	"source-release": "5",
+	"source-version": "1.0.0-alpha.1"
 }
