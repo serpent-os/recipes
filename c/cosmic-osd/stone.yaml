@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-osd
-version     : "0.1.0"
-release     : 1
+version     : "1.0.0-alpha.1"
+release     : 2
 summary     : Cosmic Desktop OSD
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-osd
@@ -16,15 +16,14 @@ description : |
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - binary(mold)
     - pkgconfig(libpulse)
     - pkgconfig(xkbcommon)
 networking  : yes
-environment : |
-    export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+tuning      :
+    - lto: thin
 setup       : |
     %cargo_fetch
 build       : |
-    RUST_BACKTRACE=1 %cargo_build
+    %cargo_build
 install     : |
-    %make_install prefix=%(prefix) TARGET=%(target_triple)/release
+    %make_install prefix=%(prefix) TARGET=%(target_triple)/debug
