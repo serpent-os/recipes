@@ -6,7 +6,6 @@
 			"build-depends": [
 				"binary(cargo)",
 				"binary(just)",
-				"binary(mold)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gbm)",
 				"pkgconfig(libinput)",
@@ -34,6 +33,6 @@
 		}
 	},
 	"source-name": "cosmic-workspaces",
-	"source-release": "2",
-	"source-version": "0.1.0"
+	"source-release": "3",
+	"source-version": "1.0.0-alpha.1"
 }

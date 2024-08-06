@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-workspaces
-version     : "0.1.0"
-release     : 2
+version     : "1.0.0-alpha.1"
+release     : 3
 summary     : Cosmic Desktop Workspaces
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-workspaces
@@ -16,7 +16,6 @@ description : |
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - binary(mold)
     - pkgconfig(dbus-1)
     - pkgconfig(gbm)
     - pkgconfig(libinput)
