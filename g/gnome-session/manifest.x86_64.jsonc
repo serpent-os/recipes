@@ -18,6 +18,7 @@
 			],
 			"depends": [
 				"binary(gnome-keyring)",
+				"binary(switcherooctl)",
 				"binary(update-desktop-database)",
 				"binary(update-mime-database)",
 				"binary(xdg-user-dirs-gtk-update)",
@@ -208,6 +209,6 @@
 		}
 	},
 	"source-name": "gnome-session",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "46.0"
 }
