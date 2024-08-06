@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-greeter
-version     : "0.1.0"
-release     : 2
+version     : "1.0.0-alpha.1"
+release     : 3
 summary     : Cosmic Desktop Greeter
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-greeter
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-greeter.git : acc30acc62533cb23c474f4c36af607b75d5d0e8
+    - git|https://github.com/pop-os/cosmic-greeter.git : cc744b0b9a6065a97808744bf63433c439e4186c
 description : |
     Cosmic Desktop Greeter
 builddeps   :
