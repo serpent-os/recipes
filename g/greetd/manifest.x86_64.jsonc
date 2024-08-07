@@ -1,0 +1,34 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"greetd": {
+			"build-depends": [
+				"binary(scdoc)",
+				"pkgconfig(pam)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libpam.so.0(x86_64))",
+				"soname(libpam_misc.so.0(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/greetd",
+				"/usr/share/defaults/etc/pam.d/greetd",
+				"/usr/share/man/man1/greetd.1",
+				"/usr/share/man/man5/greetd.5",
+				"/usr/share/man/man7/greetd-ipc.7"
+			],
+			"name": "greetd",
+			"provides": [
+				"binary(greetd)"
+			]
+		}
+	},
+	"source-name": "greetd",
+	"source-release": "1",
+	"source-version": "0.10.3"
+}
