@@ -53,6 +53,7 @@
 				"/usr/lib/gnome-session/gnome-session-check-accelerated-gles-helper",
 				"/usr/lib/gnome-session/gnome-session-ctl",
 				"/usr/lib/gnome-session/gnome-session-failed",
+				"/usr/lib/systemd/system-preset/50-gnome.preset",
 				"/usr/lib/systemd/user/gnome-launched-.scope.d/override.conf",
 				"/usr/lib/systemd/user/gnome-session-failed.service",
 				"/usr/lib/systemd/user/gnome-session-failed.target",
@@ -209,6 +210,6 @@
 		}
 	},
 	"source-name": "gnome-session",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "46.0"
 }

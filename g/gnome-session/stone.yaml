@@ -5,7 +5,7 @@
 #
 name        : gnome-session
 version     : 46.0
-release     : 9
+release     : 10
 homepage    : https://gitlab.gnome.org/GNOME/gnome-session
 upstreams   :
     - https://download.gnome.org/sources/gnome-session/46/gnome-session-46.0.tar.xz : c6e1624af6090bc4e1a191fe2268abfa7a8de07831ca7a57f217e679bf7b9a54
@@ -40,3 +40,5 @@ build      : |
     %meson_build
 install    : |
     %meson_install
+
+    %install_file %(pkgdir)/50-gnome.preset %(installroot)%(libdir)/systemd/system-preset/50-gnome.preset
