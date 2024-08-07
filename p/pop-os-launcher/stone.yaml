@@ -5,7 +5,7 @@
 #
 name        : pop-os-launcher
 version     : "1.2.3"
-release     : 3
+release     : 4
 summary     : Pop!_OS Launcher
 license     : MPL-2.0
 homepage    : https://github.com/pop-os/pop-os-launcher
@@ -19,10 +19,9 @@ builddeps   :
     - pkgconfig(xkbcommon)
 networking  : yes
 setup       : |
-    sed -i 's|{{bin-path}}|/usr/bin/pop-launcher|g' justfile
+    %patch %(pkgdir)/0001-justfile-Use-relative-links-for-DESTDIR-style-instal.patch
     %cargo_fetch
 build       : |
     RUST_BACKTRACE=1 %cargo_build -p pop-launcher-bin
 install     : |
     just target-dir='target/%(target_triple)/debug' rootdir=%(installroot) install
-    %install_exe target/*/debug/pop-launcher-bin %(installroot)%(bindir)/pop-launcher
