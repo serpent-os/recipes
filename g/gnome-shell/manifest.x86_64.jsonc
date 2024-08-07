@@ -39,9 +39,11 @@
 			],
 			"depends": [
 				"adwaita-icon-theme",
+				"binary(Xwayland)",
 				"font-cantarell",
 				"geoclue",
 				"glib-networking",
+				"gnome-settings-daemon",
 				"gvfs",
 				"ibus",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -56,7 +58,7 @@
 				"soname(libatk-bridge-2.0.so.0(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcairo.so.2(x86_64))",
-				"soname(libecal-2.0.so.2(x86_64))",
+				"soname(libecal-2.0.so.3(x86_64))",
 				"soname(libedataserver-1.2.so.27(x86_64))",
 				"soname(libgcr-4.so.4(x86_64))",
 				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
@@ -272,6 +274,6 @@
 		}
 	},
 	"source-name": "gnome-shell",
-	"source-release": "13",
+	"source-release": "14",
 	"source-version": "46.3.1"
 }

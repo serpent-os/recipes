@@ -5,7 +5,7 @@
 #
 name        : gnome-shell
 version     : 46.3.1
-release     : 13
+release     : 14
 homepage    : https://gitlab.gnome.org/GNOME/gnome-shell
 upstreams   :
     - https://download.gnome.org/sources/gnome-shell/46/gnome-shell-46.3.1.tar.xz : e7be5fc6ee2cc528ad261dc7a55c8de5a32412d3d6840a0a075e0fc12a07ff8b
@@ -57,9 +57,11 @@ builddeps   :
     # - pkgconfig(gnome-keybindings)
 rundeps     :
     - adwaita-icon-theme
+    - binary(Xwayland)
     - font-cantarell
     - geoclue
     - glib-networking
+    - gnome-settings-daemon
     - gvfs
     - ibus
     - iso-codes
