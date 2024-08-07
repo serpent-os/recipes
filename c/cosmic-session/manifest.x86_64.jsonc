@@ -35,6 +35,7 @@
 			"files": [
 				"/usr/bin/cosmic-session",
 				"/usr/bin/start-cosmic",
+				"/usr/lib/systemd/system-preset/60-cosmic.preset",
 				"/usr/lib/systemd/user/cosmic-session.target",
 				"/usr/share/applications/cosmic-mimeapps.list",
 				"/usr/share/wayland-sessions/cosmic.desktop"
@@ -47,6 +48,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "1.0.0-alpha.1"
 }

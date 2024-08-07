@@ -5,7 +5,7 @@
 #
 name        : cosmic-session
 version     : "1.0.0-alpha.1"
-release     : 7
+release     : 8
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
@@ -46,3 +46,4 @@ build       : |
     %cargo_build
 install     : |
     CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
+    %install_file %(pkgdir)/60-cosmic.preset %(installroot)%(libdir)/systemd/system-preset/60-cosmic.preset
