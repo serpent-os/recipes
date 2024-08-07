@@ -1,0 +1,9 @@
+[terminal]
+vt = "1"
+
+[general]
+service = "login"
+
+[default_session]
+command = "cosmic-comp systemd-cat -t cosmic-greeter cosmic-greeter"
+user = "cosmic-greeter"

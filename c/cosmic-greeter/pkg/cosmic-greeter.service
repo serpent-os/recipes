@@ -1,0 +1,21 @@
+[Unit]
+Description=COSMIC Greeter
+After=systemd-user-sessions.service cosmic-greeter-daemon.service
+After=getty@tty1.service
+Conflicts=getty@tty1.service
+Wants=cosmic-greeter-daemon.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/greetd --config /usr/share/greetd/cosmic-greeter.toml
+IgnoreSIGPIPE=no
+SendSIGHUP=yes
+TimeoutStopSec=30s
+KeyringMode=shared
+Restart=always
+RestartSec=1
+StartLimitBurst=5
+StartLimitInterval=30
+
+[Install]
+Alias=display-manager.service

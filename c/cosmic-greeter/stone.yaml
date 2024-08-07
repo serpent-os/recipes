@@ -5,7 +5,7 @@
 #
 name        : cosmic-greeter
 version     : "1.0.0-alpha.1"
-release     : 3
+release     : 4
 summary     : Cosmic Desktop Greeter
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-greeter
@@ -23,6 +23,8 @@ builddeps   :
     - pkgconfig(libudev)
     - pkgconfig(pam)
     - pkgconfig(xkbcommon)
+rundeps     :
+    - binary(greetd)
 networking  : yes
 tuning      :
     - lto: thin
@@ -40,3 +42,8 @@ install     : |
     ln -s cosmic-greeter.group %(installroot)%(libdir)/userdb/23.group
     %install_file %(pkgdir)/cosmic-greeter.user %(installroot)%(libdir)/userdb/cosmic-greeter.user
     ln -s cosmic-greeter.user %(installroot)%(libdir)/userdb/23.user
+
+    # systemd bits
+    %install_file %(pkgdir)/cosmic-greeter-daemon.service %(installroot)%(libdir)/systemd/system/cosmic-greeter-daemon.service
+    %install_file %(pkgdir)/cosmic-greeter.service %(installroot)%(libdir)/systemd/system/cosmic-greeter.service
+    %install_file %(pkgdir)/cosmic-greeter.toml %(installroot)%(datadir)/greetd/cosmic-greeter.toml
