@@ -32,7 +32,7 @@
 			],
 			"depends": [
 				"soname(ld-linux-x86-64.so.2(x86_64))",
-				"soname(libLLVM-17.so(x86_64))",
+				"soname(libLLVM.so.18.1(x86_64))",
 				"soname(libX11-xcb.so.1(x86_64))",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libXext.so.6(x86_64))",
@@ -115,6 +115,7 @@
 			],
 			"name": "mesa",
 			"provides": [
+				"binary(mesa-overlay-control.py)",
 				"soname(libEGL_mesa.so.0(x86_64))",
 				"soname(libGLX_mesa.so.0(x86_64))",
 				"soname(libOSMesa.so.8(x86_64))",
@@ -129,8 +130,7 @@
 				"soname(libvulkan_lvp.so(x86_64))",
 				"soname(libvulkan_radeon.so(x86_64))",
 				"soname(libvulkan_virtio.so(x86_64))",
-				"soname(libxatracker.so.2(x86_64))",
-				"binary(mesa-overlay-control.py)"
+				"soname(libxatracker.so.2(x86_64))"
 			]
 		},
 		"mesa-devel": {
@@ -162,6 +162,7 @@
 				"python-mako"
 			],
 			"depends": [
+				"mesa",
 				"pkgconfig(libdrm)"
 			],
 			"files": [
@@ -194,6 +195,6 @@
 		}
 	},
 	"source-name": "mesa",
-	"source-release": "12",
+	"source-release": "13",
 	"source-version": "24.0.2"
 }

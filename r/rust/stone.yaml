@@ -5,7 +5,7 @@
 #
 name        : rust
 version     : '1.80.1'
-release     : 6
+release     : 7
 homepage    : https://www.rust-lang.org/
 upstreams   :
     - https://static.rust-lang.org/dist/rustc-1.80.1-src.tar.gz : 2c0b8f643942dcb810cbcc50f292564b1b6e44db5d5f45091153996df95d2dc4
@@ -23,9 +23,10 @@ license     :
     - GPL-3.0-or-later
     - MIT
     - Zlib
-networking  : true
+# networking  : true
 builddeps   :
     - binary(FileCheck)
+    - binary(cargo)
     - binary(cc)
     - binary(cmake)
     - binary(llvm-config)
@@ -54,6 +55,8 @@ environment : |
 setup       : |
     sed -e 's|@@LTO@@|thin-local|g' %(pkgdir)/config.toml.in > config.toml.pgo
 
+    sed -e 's|@@LTO@@|fat|g' %(pkgdir)/config.toml.in > config.toml.release
+
     # Ensure that we use the system sqlite3
     %patch %(pkgdir)/0001-unbundle-sqlite.patch -d src/tools/cargo
     find ./vendor/libsqlite3-sys*/sqlite3/ -mindepth 1 -delete -print
@@ -65,11 +68,20 @@ setup       : |
         -exec sed -i.uncheck -e 's/"files":{[^}]*}/"files":{ }/' '{}' '+'
 build       : |
     python ./x.py build \
+            --build-dir %(workdir)/build-pgo \
             --config config.toml.pgo \
-            --jobs %(jobs)
-install     : |
-    DESTDIR="%(installroot)" python x.py install --config config.toml.pgo
+            --jobs %(jobs) \
+            --rust-profile-generate %(workdir)/rustc-pgo-profile-data \
+            --stage 2
 
+    llvm-profdata merge -output=%(workdir)/rustc-pgo-profile-data/rustc-pgo.profdata %(workdir)/rustc-pgo-profile-data/default_*.profraw
+
+    DESTDIR=%(installroot) python3 x.py install \
+            --build-dir %(workdir)/build-release \
+            --config config.toml.release \
+            --jobs %(jobs) \
+            --rust-profile-use %(workdir)/rustc-pgo-profile-data/rustc-pgo.profdata
+install     : |
     install -Dm00644 %(installroot)/etc/bash_completion.d/* -t %(installroot)/usr/share/bash-completion/completions
     rm -rvf %(installroot)/etc
 

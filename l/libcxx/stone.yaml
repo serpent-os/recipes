@@ -1,6 +1,6 @@
 name        : libcxx
 version     : 18.1.8
-release     : 8
+release     : 9
 summary     : Modern C++ standard library
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -71,5 +71,5 @@ install     : |
     # Origin: https://raw.githubusercontent.com/kraj/meta-clang/master/recipes-devtools/clang/clang/libunwind.pc.in
     %install_dir %(installroot)%(libdir)/pkgconfig
     sed -e 's@\@LIBDIR\@@%(libdir)@g' -e 's/@VERSION@/%(version)/g' %(pkgdir)/libunwind.pc.in > %(installroot)%(libdir)/pkgconfig/libunwind.pc
-#workload    : |
-#    %cmake_build check-runtimes -k 10000 ||:
+workload    : |
+    %cmake_build check-runtimes -k 1000 ||:

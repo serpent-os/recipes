@@ -39,6 +39,6 @@
 		}
 	},
 	"source-name": "llvm-bolt",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "18.1.8"
 }

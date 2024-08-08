@@ -5,6 +5,7 @@
 		"rust": {
 			"build-depends": [
 				"binary(FileCheck)",
+				"binary(cargo)",
 				"binary(cc)",
 				"binary(cmake)",
 				"binary(llvm-config)",
@@ -130,6 +131,7 @@
 		"rust-32bit": {
 			"build-depends": [
 				"binary(FileCheck)",
+				"binary(cargo)",
 				"binary(cc)",
 				"binary(cmake)",
 				"binary(llvm-config)",
@@ -193,6 +195,7 @@
 		"rust-devel": {
 			"build-depends": [
 				"binary(FileCheck)",
+				"binary(cargo)",
 				"binary(cc)",
 				"binary(cmake)",
 				"binary(llvm-config)",
@@ -1922,6 +1925,7 @@
 		"rust-docs": {
 			"build-depends": [
 				"binary(FileCheck)",
+				"binary(cargo)",
 				"binary(cc)",
 				"binary(cmake)",
 				"binary(llvm-config)",
@@ -1966,6 +1970,6 @@
 		}
 	},
 	"source-name": "rust",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "1.80.1"
 }
