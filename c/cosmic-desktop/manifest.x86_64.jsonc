@@ -19,7 +19,7 @@
 				"binary(cosmic-session)",
 				"binary(cosmic-settings)",
 				"binary(cosmic-settings-daemon)",
-				"binary(cosmic-term)mos",
+				"binary(cosmic-term)",
 				"binary(cosmic-workspaces)",
 				"binary(update-desktop-database)",
 				"binary(update-mime-database)",
@@ -36,6 +36,6 @@
 		}
 	},
 	"source-name": "cosmic-desktop",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.0.0-alpha.1"
 }
