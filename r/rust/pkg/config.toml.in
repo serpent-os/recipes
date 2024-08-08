@@ -1,0 +1,70 @@
+# At the end of the install phase Rust will print a message about the new change-id. Please
+# review any changed settings and then update the following field when updating to new Rust versions
+change-id = 125535
+
+[llvm]
+link-shared = true
+targets = "X86;Aarch64"
+
+[build]
+# rustc = "/usr/bin/rustc"
+# cargo = "/usr/bin/cargo"
+docs = false
+# Triggers the build of tools. Cargo, in our case.
+extended = true
+# Mainly needed for cross-language PGO in Firefox.
+profiler = true
+sanitizers = true
+target = ["i686-unknown-linux-gnu", "x86_64-unknown-linux-gnu"]
+tools = [
+    "analysis",
+    "cargo",
+    "clippy",
+    "rustdoc",
+    "rustfmt",
+    "rust-analyzer",
+    "rust-analyzer-proc-macro-srv",
+    "rust-demangler",
+    "src",
+]
+vendor = true
+
+[install]
+prefix = "/usr"
+
+[rust]
+channel = "stable"
+default-linker = "clang"
+description = "Serpent OS"
+lto = "@@LTO@@"
+new-symbol-mangling = true
+optimize = true
+rpath = false
+strip = false
+llvm-libunwind = 'system'
+use-lld = true
+
+[target.i686-unknown-linux-gnu]
+cc = "clang"
+cxx = "clang++"
+linker = "clang"
+ar = "/usr/bin/llvm-ar"
+ranlib = "/usr/bin/llvm-ranlib"
+llvm-config = "/usr/bin/llvm-config"
+
+[target.x86_64-unknown-linux-gnu]
+cc = "clang"
+cxx = "clang++"
+linker = "clang"
+ar = "/usr/bin/llvm-ar"
+ranlib = "/usr/bin/llvm-ranlib"
+llvm-config = "/usr/bin/llvm-config"
+
+# TODO: Fix the flags for this build so it doesn't try to use -mcpu=x86whatever causing the aarch64 build to fail
+# [target.aarch64-unknown-linux-gnu]
+# cc = "clang"
+# cxx = "clang++"
+# linker = "clang"
+# ar = "/usr/bin/llvm-ar"
+# ranlib = "/usr/bin/llvm-ranlib"
+# llvm-config = "/usr/bin/llvm-config"

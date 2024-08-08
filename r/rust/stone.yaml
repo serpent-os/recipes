@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : rust
-version     : "1.80"
-release     : 5
+version     : '1.80.1'
+release     : 6
 homepage    : https://www.rust-lang.org/
 upstreams   :
-    - https://static.rust-lang.org/dist/rustc-1.80.0-src.tar.gz : 6f606c193f230f6b2cae4576f7b24d50f5f9b25dff11dbf9b22f787d3521d672
+    - https://static.rust-lang.org/dist/rustc-1.80.1-src.tar.gz : 2c0b8f643942dcb810cbcc50f292564b1b6e44db5d5f45091153996df95d2dc4
 summary     : Rust programming language compiler + tools
 description : |
     Rust programming language compiler + tools
@@ -24,14 +24,6 @@ license     :
     - MIT
     - Zlib
 networking  : true
-packages    :
-    - "%(name)":
-        paths:
-            - /usr/lib/lib*.so
-            - /usr/lib/rustlib
-    - "%(name)-docs":
-        paths:
-            - /usr/share/doc
 builddeps   :
     - binary(FileCheck)
     - binary(cc)
@@ -42,22 +34,73 @@ builddeps   :
     - binary(python)
     - binary(strip)
     - binary(which)
-    - gcc-devel # Bootstrap cargo linked to libgcc.
+    - pkgconfig32(libunwind)
     - pkgconfig(libffi)
-    - pkgconfig(libunwind)
     - pkgconfig(libxml-2.0)
     - pkgconfig(ncurses)
     - pkgconfig(openssl)
+    - pkgconfig(sqlite3)
     - pkgconfig(zlib)
+    - gcc-32bit-devel
+    - glibc-32bit-devel
 rundeps     :
     - binary(cc)
-setup       : |
-    %install_file %(pkgdir)/config.toml config.toml
-build       : |
-    python ./x.py build
-install     : |
-    DESTDIR="%(installroot)" python x.py install
+environment : |
+    # Don't set these here, all configuration should come from config.toml or the package.yml
+    unset RUSTFLAGS
 
-    # undesirable:
-    rm %(installroot)%(libdir)/rustlib/uninstall.sh
-    rm %(installroot)%(libdir)/rustlib/install.log
+    # Force libsqlite3-sys to use the system deps
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+setup       : |
+    sed -e 's|@@LTO@@|thin-local|g' %(pkgdir)/config.toml.in > config.toml.pgo
+
+    # Ensure that we use the system sqlite3
+    %patch %(pkgdir)/0001-unbundle-sqlite.patch -d src/tools/cargo
+    find ./vendor/libsqlite3-sys*/sqlite3/ -mindepth 1 -delete -print
+
+    # TODO package libgit2 and libssh2
+
+    # Fix bootstrap checking checksums for all the files we just deleted
+    find vendor -name .cargo-checksum.json -print \
+        -exec sed -i.uncheck -e 's/"files":{[^}]*}/"files":{ }/' '{}' '+'
+build       : |
+    python ./x.py build \
+            --config config.toml.pgo \
+            --jobs %(jobs)
+install     : |
+    DESTDIR="%(installroot)" python x.py install --config config.toml.pgo
+
+    install -Dm00644 %(installroot)/etc/bash_completion.d/* -t %(installroot)/usr/share/bash-completion/completions
+    rm -rvf %(installroot)/etc
+
+    # Remove text files from libs (manifests, installation logs...)
+    find %(installroot)/%(libdir)/rustlib -maxdepth 1 -type f -delete -print
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/lib*.so
+            - /usr/lib/rustlib/x86_64-unknown-linux-gnu
+
+    - "%(name)-32bit":
+        paths:
+            - /usr/lib/rustlib/i686-unknown-linux-gnu
+        rundeps:
+            - "%(name)"
+
+    - "%(name)-devel":
+        paths:
+            - /usr/bin/cargo-clippy
+            - /usr/bin/cargo-fmt
+            - /usr/bin/clippy-driver
+            - /usr/bin/rust-analyzer
+            - /usr/bin/rust-demangler
+            - /usr/bin/rust-gdb*
+            - /usr/bin/rust-lldb
+            - /usr/bin/rustfmt
+            - /usr/lib/rustlib/etc/
+            - /usr/lib/rustlib/src/
+            - /usr/libexec/rust-analyzer-proc-macro-srv
+
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
