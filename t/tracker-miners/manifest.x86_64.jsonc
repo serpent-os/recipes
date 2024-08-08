@@ -36,7 +36,7 @@
 				"soname(libgstpbutils-1.0.so.0(x86_64))",
 				"soname(libgstreamer-1.0.so.0(x86_64))",
 				"soname(libgsttag-1.0.so.0(x86_64))",
-				"soname(libicui18n.so.73(x86_64))",
+				"soname(libicui18n.so.75(x86_64))",
 				"soname(libjpeg.so.8(x86_64))",
 				"soname(libpng16.so.16(x86_64))",
 				"soname(libseccomp.so.2(x86_64))",
@@ -213,6 +213,6 @@
 		}
 	},
 	"source-name": "tracker-miners",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "3.7.3"
 }

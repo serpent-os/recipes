@@ -5,7 +5,7 @@
 #
 name        : vte
 version     : 0.76.3
-release     : 3
+release     : 4
 homepage    : https://wiki.gnome.org/Apps/Terminal/VTE
 upstreams   :
     - https://download.gnome.org/sources/vte/0.76/vte-0.76.3.tar.xz : f678e94c056f377fd0021214adff5450cb172e9a08b160911181ddff7b7d5d60

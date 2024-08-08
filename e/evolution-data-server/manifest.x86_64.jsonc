@@ -40,8 +40,8 @@
 				"soname(libgtk-4.so.1(x86_64))",
 				"soname(libical-glib.so.3(x86_64))",
 				"soname(libical.so.3(x86_64))",
-				"soname(libicui18n.so.73(x86_64))",
-				"soname(libicuuc.so.73(x86_64))",
+				"soname(libicui18n.so.75(x86_64))",
+				"soname(libicuuc.so.75(x86_64))",
 				"soname(libjson-glib-1.0.so.0(x86_64))",
 				"soname(libnspr4.so(x86_64))",
 				"soname(libnss3.so(x86_64))",
@@ -773,6 +773,6 @@
 		}
 	},
 	"source-name": "evolution-data-server",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "3.52.3"
 }

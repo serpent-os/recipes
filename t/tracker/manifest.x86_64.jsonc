@@ -31,8 +31,8 @@
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgmodule-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
-				"soname(libicui18n.so.73(x86_64))",
-				"soname(libicuuc.so.73(x86_64))",
+				"soname(libicui18n.so.75(x86_64))",
+				"soname(libicuuc.so.75(x86_64))",
 				"soname(libjson-glib-1.0.so.0(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libsoup-3.0.so.0(x86_64))",
@@ -467,6 +467,6 @@
 		}
 	},
 	"source-name": "tracker",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "3.7.3"
 }

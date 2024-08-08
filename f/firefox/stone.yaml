@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : firefox
-version     : 129.0
-release     : 7
+version     : '129.0'
+release     : 8
 homepage    : https://www.mozilla.org/
 upstreams   :
     - https://ftp.mozilla.org/pub/firefox/releases/129.0/source/firefox-129.0.source.tar.xz : 4b9ff955de7099f09aa1f00985e34695fa1a911e56c2d46cb4d60c3bff3d9174
@@ -46,6 +46,7 @@ environment : |
     export MOZ_NOSPAM=1
     export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
 setup       : |
+    %patch %(pkgdir)/icu74.patch
     %install_file %(pkgdir)/mozconfig .
 build       : |
     ./mach build
