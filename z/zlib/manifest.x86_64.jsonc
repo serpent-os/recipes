@@ -8,7 +8,7 @@
 			],
 			"files": [
 				"/usr/lib/libz.so.1",
-				"/usr/lib/libz.so.1.3.1"
+				"/usr/lib/libz.so.1.3.1.zlib-ng"
 			],
 			"name": "zlib",
 			"provides": [
@@ -17,16 +17,17 @@
 		},
 		"zlib-32bit": {
 			"depends": [
-				"soname(libc.so.6(386))",
+				"soname(libc.so.6(x86))",
 				"zlib"
 			],
 			"files": [
 				"/usr/lib32/libz.so.1",
-				"/usr/lib32/libz.so.1.3.1"
+				"/usr/lib32/libz.so.1.3.1.zlib-ng"
 			],
 			"name": "zlib-32bit",
 			"provides": [
-				"soname(libz.so.1(386))"
+				"soname(libz.so.1(386))",
+				"soname(libz.so.1(x86))"
 			]
 		},
 		"zlib-32bit-devel": {
@@ -35,11 +36,16 @@
 				"zlib-devel"
 			],
 			"files": [
+				"/usr/lib32/cmake/ZLIB/ZLIB-release.cmake",
+				"/usr/lib32/cmake/ZLIB/ZLIB.cmake",
+				"/usr/lib32/cmake/ZLIB/zlib-config-version.cmake",
+				"/usr/lib32/cmake/ZLIB/zlib-config.cmake",
 				"/usr/lib32/libz.so",
 				"/usr/lib32/pkgconfig/zlib.pc"
 			],
 			"name": "zlib-32bit-devel",
 			"provides": [
+				"cmake(zlib)",
 				"pkgconfig32(zlib)"
 			]
 		},
@@ -50,17 +56,22 @@
 			"files": [
 				"/usr/include/zconf.h",
 				"/usr/include/zlib.h",
+				"/usr/include/zlib_name_mangling.h",
+				"/usr/lib/cmake/ZLIB/ZLIB-release.cmake",
+				"/usr/lib/cmake/ZLIB/ZLIB.cmake",
+				"/usr/lib/cmake/ZLIB/zlib-config-version.cmake",
+				"/usr/lib/cmake/ZLIB/zlib-config.cmake",
 				"/usr/lib/libz.so",
-				"/usr/lib/pkgconfig/zlib.pc",
-				"/usr/share/man/man3/zlib.3"
+				"/usr/lib/pkgconfig/zlib.pc"
 			],
 			"name": "zlib-devel",
 			"provides": [
+				"cmake(zlib)",
 				"pkgconfig(zlib)"
 			]
 		}
 	},
 	"source-name": "zlib",
-	"source-release": "12",
-	"source-version": "1.3.1"
+	"source-release": "14",
+	"source-version": "2.2.1"
 }
