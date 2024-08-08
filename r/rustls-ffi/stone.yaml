@@ -20,8 +20,6 @@ builddeps   :
     - binary(cargo-capi)
 networking  : true
 setup       : |
-    # asan issues.
-    %patch %(pkgdir)/clang-asan.patch
     %cargo_fetch
 build       : |
     cargo cbuild --destdir=%(installroot) --prefix="%(prefix)" --libdir="%(libdir)" \
