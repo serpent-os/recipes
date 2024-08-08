@@ -40,6 +40,7 @@
 			"files": [
 				"/usr/bin/niri",
 				"/usr/bin/niri-session",
+				"/usr/lib/systemd/user/niri-shutdown.target",
 				"/usr/lib/systemd/user/niri.service",
 				"/usr/share/wayland-sessions/niri.desktop",
 				"/usr/share/xdg-desktop-portal/niri-portals.conf"
@@ -52,6 +53,6 @@
 		}
 	},
 	"source-name": "niri",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.1.7"
 }
