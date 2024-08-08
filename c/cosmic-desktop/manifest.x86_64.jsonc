@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-desktop": {
+			"depends": [
+				"binary(cosmic-app-library)",
+				"binary(cosmic-bg)",
+				"binary(cosmic-comp)",
+				"binary(cosmic-edit)",
+				"binary(cosmic-files)",
+				"binary(cosmic-greeter)",
+				"binary(cosmic-launcher)",
+				"binary(cosmic-notifications)",
+				"binary(cosmic-osd)",
+				"binary(cosmic-panel)",
+				"binary(cosmic-randr)",
+				"binary(cosmic-screenshot)",
+				"binary(cosmic-session)",
+				"binary(cosmic-settings)",
+				"binary(cosmic-settings-daemon)",
+				"binary(cosmic-term)mos",
+				"binary(cosmic-workspaces)",
+				"binary(update-desktop-database)",
+				"binary(update-mime-database)",
+				"binary(xdg-user-dirs-gtk-update)",
+				"cosmic-icons",
+				"font-firacode",
+				"wireplumber",
+				"xdg-desktop-portal-cosmic"
+			],
+			"files": [
+				"/usr/share/doc/cosmic-desktop/README"
+			],
+			"name": "cosmic-desktop"
+		}
+	},
+	"source-name": "cosmic-desktop",
+	"source-release": "1",
+	"source-version": "1.0.0-alpha.1"
+}

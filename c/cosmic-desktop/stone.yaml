@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-desktop
+version     : "1.0.0-alpha.1"
+release     : 1
+summary     : Cosmic Desktop Metapackage
+license     : GPL-3.0
+homepage    : https://system76.com/cosmic
+description : |
+    Cosmic Desktop Metapackage
+rundeps     :
+    - binary(cosmic-app-library)
+    - binary(cosmic-bg)
+    - binary(cosmic-comp)
+    - binary(cosmic-edit)
+    - binary(cosmic-files)
+    - binary(cosmic-greeter)
+    - binary(cosmic-launcher)
+    - binary(cosmic-notifications)
+    - binary(cosmic-osd)
+    - binary(cosmic-panel)
+    - binary(cosmic-randr)
+    - binary(cosmic-screenshot)
+    - binary(cosmic-session)
+    - binary(cosmic-settings)
+    - binary(cosmic-settings-daemon)
+    - binary(cosmic-term)mos
+    - binary(cosmic-workspaces)
+    - binary(update-desktop-database)
+    - binary(update-mime-database)
+    - binary(xdg-user-dirs-gtk-update)
+    - cosmic-icons
+    - font-firacode
+    - wireplumber
+    - xdg-desktop-portal-cosmic
+install     : |
+    %install_dir %(installroot)%(docdir)/cosmic-desktop
+    echo "cosmic meta package" > %(installroot)%(docdir)/cosmic-desktop/README
