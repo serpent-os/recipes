@@ -63,6 +63,7 @@
 				"/usr/share/locale/ko/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/lv/LC_MESSAGES/libadwaita.mo",
+				"/usr/share/locale/ml/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/nb/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/ne/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/libadwaita.mo",
@@ -191,6 +192,6 @@
 		}
 	},
 	"source-name": "libadwaita",
-	"source-release": "3",
-	"source-version": "1.5.2"
+	"source-release": "4",
+	"source-version": "1.5.3"
 }

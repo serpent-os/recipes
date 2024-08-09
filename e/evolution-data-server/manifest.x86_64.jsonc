@@ -12,6 +12,7 @@
 				"binary(vapigen)",
 				"pkgconfig(com_err)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(goa-1.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(gtk4)",
@@ -35,6 +36,7 @@
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgmodule-2.0.so.0(x86_64))",
+				"soname(libgoa-1.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgtk-3.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
@@ -76,8 +78,10 @@
 				"/usr/lib/evolution-data-server/camel-providers/libcamelsendmail.urls",
 				"/usr/lib/evolution-data-server/camel-providers/libcamelsmtp.so",
 				"/usr/lib/evolution-data-server/camel-providers/libcamelsmtp.urls",
+				"/usr/lib/evolution-data-server/credential-modules/module-credentials-goa.so",
 				"/usr/lib/evolution-data-server/libedbus-private.so",
 				"/usr/lib/evolution-data-server/registry-modules/module-cache-reaper.so",
+				"/usr/lib/evolution-data-server/registry-modules/module-gnome-online-accounts.so",
 				"/usr/lib/evolution-data-server/registry-modules/module-google-backend.so",
 				"/usr/lib/evolution-data-server/registry-modules/module-oauth2-services.so",
 				"/usr/lib/evolution-data-server/registry-modules/module-outlook-backend.so",
@@ -318,6 +322,8 @@
 				"soname(libedataserverui4-1.0.so.0(x86_64))",
 				"soname(libedbus-private.so(x86_64))",
 				"soname(module-cache-reaper.so(x86_64))",
+				"soname(module-credentials-goa.so(x86_64))",
+				"soname(module-gnome-online-accounts.so(x86_64))",
 				"soname(module-google-backend.so(x86_64))",
 				"soname(module-oauth2-services.so(x86_64))",
 				"soname(module-outlook-backend.so(x86_64))",
@@ -337,6 +343,7 @@
 				"binary(vapigen)",
 				"pkgconfig(com_err)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(goa-1.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(gtk4)",
@@ -773,6 +780,6 @@
 		}
 	},
 	"source-name": "evolution-data-server",
-	"source-release": "5",
-	"source-version": "3.52.3"
+	"source-release": "6",
+	"source-version": "3.52.4"
 }

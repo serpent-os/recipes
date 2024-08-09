@@ -100,9 +100,9 @@
 				"/usr/lib/libgailutil-3.so.0",
 				"/usr/lib/libgailutil-3.so.0.0.0",
 				"/usr/lib/libgdk-3.so.0",
-				"/usr/lib/libgdk-3.so.0.2410.32",
+				"/usr/lib/libgdk-3.so.0.2411.32",
 				"/usr/lib/libgtk-3.so.0",
-				"/usr/lib/libgtk-3.so.0.2410.32",
+				"/usr/lib/libgtk-3.so.0.2411.32",
 				"/usr/share/applications/gtk3-demo.desktop",
 				"/usr/share/applications/gtk3-icon-browser.desktop",
 				"/usr/share/applications/gtk3-widget-factory.desktop",
@@ -836,6 +836,6 @@
 		}
 	},
 	"source-name": "gtk-3",
-	"source-release": "5",
-	"source-version": "3.24.42"
+	"source-release": "6",
+	"source-version": "3.24.43"
 }
