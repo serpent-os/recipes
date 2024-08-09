@@ -5,7 +5,7 @@
 #
 name        : mutter
 version     : '46.4'
-release     : 5
+release     : 6
 homepage    : https://gnome.org
 upstreams   :
     - https://download.gnome.org/sources/mutter/46/mutter-46.4.tar.xz : 611bd9cf982adb56597ce2b34224272fda619bb3bb912a684d75c6f2c37502e4
