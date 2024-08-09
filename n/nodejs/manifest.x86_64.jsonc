@@ -22,8 +22,8 @@
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcrypto.so.3(x86_64))",
-				"soname(libicui18n.so.73(x86_64))",
-				"soname(libicuuc.so.73(x86_64))",
+				"soname(libicui18n.so.75(x86_64))",
+				"soname(libicuuc.so.75(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libnghttp2.so.14(x86_64))",
 				"soname(libssl.so.3(x86_64))",
@@ -2323,6 +2323,9 @@
 				"pkgconfig(openssl)",
 				"pkgconfig(zlib)"
 			],
+			"depends": [
+				"nodejs"
+			],
 			"files": [
 				"/usr/include/node/common.gypi",
 				"/usr/include/node/config.gypi",
@@ -2392,6 +2395,6 @@
 		}
 	},
 	"source-name": "nodejs",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "18.16.0"
 }

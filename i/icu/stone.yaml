@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : icu
-version     : "73-1"
-release     : 3
+version     : '75.1'
+release     : 4
 homepage    : https://icu.unicode.org/
 upstreams   :
-    - https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-src.tgz : a457431de164b4aa7eca00ed134d00dfbf88a77c6986a10ae7774fc076bb8c45
+    - https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz : cb968df3e4d2e87e8b11c49a5d01c787bd13b9545280fc6642f826527618caef
 summary     : International Components for Unicode
 description : |
     The International Components for Unicode (ICU) package is a mature, widely used set of C/C++ libraries providing Unicode and Globalization support for software applications. ICU is widely portable and gives applications the same results on all platforms.

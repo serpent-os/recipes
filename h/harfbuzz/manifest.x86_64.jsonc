@@ -19,22 +19,22 @@
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgraphite2.so.3(x86_64))",
-				"soname(libicuuc.so.73(x86_64))",
+				"soname(libicuuc.so.75(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libstdc++.so.6(x86_64))"
 			],
 			"files": [
 				"/usr/lib/girepository-1.0/HarfBuzz-0.0.typelib",
 				"/usr/lib/libharfbuzz-cairo.so.0",
-				"/usr/lib/libharfbuzz-cairo.so.0.60830.0",
+				"/usr/lib/libharfbuzz-cairo.so.0.60900.0",
 				"/usr/lib/libharfbuzz-gobject.so.0",
-				"/usr/lib/libharfbuzz-gobject.so.0.60830.0",
+				"/usr/lib/libharfbuzz-gobject.so.0.60900.0",
 				"/usr/lib/libharfbuzz-icu.so.0",
-				"/usr/lib/libharfbuzz-icu.so.0.60830.0",
+				"/usr/lib/libharfbuzz-icu.so.0.60900.0",
 				"/usr/lib/libharfbuzz-subset.so.0",
-				"/usr/lib/libharfbuzz-subset.so.0.60830.0",
+				"/usr/lib/libharfbuzz-subset.so.0.60900.0",
 				"/usr/lib/libharfbuzz.so.0",
-				"/usr/lib/libharfbuzz.so.0.60830.0",
+				"/usr/lib/libharfbuzz.so.0.60900.0",
 				"/usr/share/gir-1.0/HarfBuzz-0.0.gir"
 			],
 			"name": "harfbuzz",
@@ -57,6 +57,7 @@
 				"pkgconfig(icu-uc)"
 			],
 			"depends": [
+				"harfbuzz",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"pkgconfig(cairo)",
 				"pkgconfig(freetype2)",
@@ -136,21 +137,21 @@
 			],
 			"name": "harfbuzz-devel",
 			"provides": [
-				"pkgconfig(harfbuzz)",
-				"cmake(harfbuzz)",
-				"pkgconfig(harfbuzz-cairo)",
-				"pkgconfig(harfbuzz-gobject)",
-				"pkgconfig(harfbuzz-icu)",
-				"pkgconfig(harfbuzz-subset)",
 				"binary(hb-info)",
 				"binary(hb-ot-shape-closure)",
 				"binary(hb-shape)",
 				"binary(hb-subset)",
-				"binary(hb-view)"
+				"binary(hb-view)",
+				"cmake(harfbuzz)",
+				"pkgconfig(harfbuzz)",
+				"pkgconfig(harfbuzz-cairo)",
+				"pkgconfig(harfbuzz-gobject)",
+				"pkgconfig(harfbuzz-icu)",
+				"pkgconfig(harfbuzz-subset)"
 			]
 		}
 	},
 	"source-name": "harfbuzz",
-	"source-release": "6",
-	"source-version": "8.3.0"
+	"source-release": "7",
+	"source-version": "9.0.0"
 }
