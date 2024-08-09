@@ -73,6 +73,7 @@
 				"/usr/share/locale/it/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/gsettings-desktop-schemas.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/gsettings-desktop-schemas.mo",
 				"/usr/share/locale/lv/LC_MESSAGES/gsettings-desktop-schemas.mo",
@@ -124,6 +125,6 @@
 		}
 	},
 	"source-name": "gsettings-desktop-schemas",
-	"source-release": "2",
-	"source-version": "46.0"
+	"source-release": "3",
+	"source-version": "46.1"
 }
