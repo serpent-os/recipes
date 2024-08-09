@@ -1,0 +1,17 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-wallpapers
+version     : "1.0.0-alpha.1"
+release     : 1
+summary     : Cosmic Desktop Wallpapers
+license     : CC-BY-4.0
+homepage    : https://github.com/pop-os/cosmic-wallpapers
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-wallpapers.git : 0f2f16dc39ff1281a56680e37719e98a1bc8cb99
+description : |
+    Cosmic Desktop Wallpaper
+install     : |
+    %make_install PREFIX=%(prefix)

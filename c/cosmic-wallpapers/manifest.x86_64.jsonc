@@ -1,0 +1,22 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cosmic-wallpapers": {
+			"files": [
+				"/usr/share/backgrounds/cosmic/A_stormy_stellar_nursery_esa_379309.jpg",
+				"/usr/share/backgrounds/cosmic/meerKAT_milky_way_center_saroa.jpg",
+				"/usr/share/backgrounds/cosmic/orion_nebula_nasa_heic0601a.jpg",
+				"/usr/share/backgrounds/cosmic/otherworldly_earth_nasa_ISS064-E-29444.jpg",
+				"/usr/share/backgrounds/cosmic/phytoplankton_bloom_nasa_oli2_20240121.jpg",
+				"/usr/share/backgrounds/cosmic/round_moons_nasa.jpg",
+				"/usr/share/backgrounds/cosmic/tarantula_nebula_nasa_PIA23646.jpg",
+				"/usr/share/backgrounds/cosmic/webb-inspired-wallpaper-system76.jpg"
+			],
+			"name": "cosmic-wallpapers"
+		}
+	},
+	"source-name": "cosmic-wallpapers",
+	"source-release": "1",
+	"source-version": "1.0.0-alpha.1"
+}
