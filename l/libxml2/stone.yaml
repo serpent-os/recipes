@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxml2
-version     : '2.12.4'
-release     : 6
+version     : 2.13.3
+release     : 7
 summary     : XML parsing library
 license     : MIT
 homepage    : http://www.xmlsoft.org/
 description : |
     XML parsing library
 upstreams   :
-    - https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.4.tar.xz: 497360e423cf0bd99eacdb7c6215dea92e6d6e89ee940393c2bae0e77cb9b7d0
+    - https://download.gnome.org/sources/libxml2/2.13/libxml2-2.13.3.tar.xz: 0805d7c180cf09caad71666c7a458a74f041561a532902454da5047d83948138
 builddeps   :
     - perl
     - pkgconfig(liblzma)
@@ -32,12 +32,14 @@ profiles    :
             %patch %(pkgdir)/stateless/0001-Make-it-stateless.patch
             %configure --disable-static \
                        --with-history \
-                       --without-python
+                       --without-python \
+                       --with-legacy
 
 setup       : |
     %patch %(pkgdir)/stateless/0001-Make-it-stateless.patch
     %configure --disable-static \
-               --with-history
+               --with-history \
+               --with-legacy
 build       : |
     %make
 install     : |
