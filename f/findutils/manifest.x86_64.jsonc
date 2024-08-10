@@ -17,8 +17,6 @@
 				"/usr/lib/tmpfiles.d/findutils.conf",
 				"/usr/share/info/find-maint.info",
 				"/usr/share/info/find.info",
-				"/usr/share/info/find.info-1",
-				"/usr/share/info/find.info-2",
 				"/usr/share/locale/be/LC_MESSAGES/findutils.mo",
 				"/usr/share/locale/bg/LC_MESSAGES/findutils.mo",
 				"/usr/share/locale/ca/LC_MESSAGES/findutils.mo",
@@ -38,6 +36,7 @@
 				"/usr/share/locale/id/LC_MESSAGES/findutils.mo",
 				"/usr/share/locale/it/LC_MESSAGES/findutils.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/findutils.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/findutils.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/findutils.mo",
 				"/usr/share/locale/lg/LC_MESSAGES/findutils.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/findutils.mo",
@@ -74,6 +73,6 @@
 		}
 	},
 	"source-name": "findutils",
-	"source-release": "2",
-	"source-version": "4.9.0"
+	"source-release": "3",
+	"source-version": "4.10.0"
 }
