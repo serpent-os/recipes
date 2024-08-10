@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnutls
-version     : '3.8.3'
+version     : 3.8.6
 release     : 4
 homepage    : https://www.gnutls.org/
 upstreams   :
-    - https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.3.tar.xz: f74fc5954b27d4ec6dfbb11dea987888b5b124289a3703afcada0ee520f4173e
+    - https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.6.tar.xz: 2e1588aae53cb32d43937f1f4eca28febd9c0c7aa1734fc5dd61a7e81e0ebcdd
 summary     : The GnuTLS package contains libraries and userspace tools which provide a secure layer over a reliable transport layer
 description : |
     GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them. It provides a simple C language application programming interface (API) to access the secure communications protocols as well as APIs to parse and write X.509, PKCS #12, OpenPGP and other required structures.
@@ -16,7 +16,7 @@ license     : LGPL-2.1-or-later
 builddeps   :
     - libunistring-devel
     - pkgconfig(gmp)
-    - pkgconfig(libbrotlienc)
+    - pkgconfig(libbrotlicommon)
     - pkgconfig(libidn2)
     - pkgconfig(libtasn1)
     - pkgconfig(libzstd)
@@ -26,8 +26,7 @@ builddeps   :
 # TODO gtk-docs support?
 # TODO guile support?
 setup       : |
-    %configure --disable-static \
-               --with-default-trust-store-file=/%(vendordir)/etc/ssl/ca-certificates.crt
+    %configure --disable-static
 build       : |
     %make
 install     : |
