@@ -32,7 +32,6 @@
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libssl.so.3(x86_64))",
-				"soname(libstdc++.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
 				"soname(libxcb.so.1(x86_64))",
 				"soname(libxkbcommon-x11.so.0(x86_64))",
@@ -54,6 +53,6 @@
 		}
 	},
 	"source-name": "zed",
-	"source-release": "10",
-	"source-version": "0.146.5"
+	"source-release": "11",
+	"source-version": "0.147.2"
 }
