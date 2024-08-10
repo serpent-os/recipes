@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : hyperfine
+version     : 1.18.0
+release     : 1
+homepage    : https://github.com/sharkdp/hyperfine
+upstreams   :
+    - https://github.com/sharkdp/hyperfine/archive/refs/tags/v1.18.0.tar.gz : fea7b92922117ed04b9c84bb9998026264346768804f66baa40743c5528bed6b
+summary     : A command-line benchmarking tool
+description : |
+    A command-line benchmarking tool.
+license     :
+    - Apache-2.0
+    - MIT
+networking  : yes
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %cargo_install
+check       : |
+    %cargo_test
+tuning      :
+    - lto : thin
