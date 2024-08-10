@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : thunderbird
-version     : 128.0.1esr
-release     : 6
+version     : 128.1.0esr
+release     : 7
 homepage    : https://www.thunderbird.net/
 upstreams   :
-    - https://ftp.mozilla.org/pub/thunderbird/releases/128.0.1esr/source/thunderbird-128.0.1esr.source.tar.xz : 19d49f320c18450d80136b79bdd40d7ab6d3df1757404fbfd1052164a787db99
+    - https://download.serpentos.com/howdoiwebserver/thunderbird-128.1.0esr.source.tar.xz : a61e21b93fd9c3f97fa73d52108ad0fcf9ab2e58e5ecaeefb9b6666e6ff8edf3
 summary     : Thunderbird Email Client
 description : |
     Thunderbird Email Client
