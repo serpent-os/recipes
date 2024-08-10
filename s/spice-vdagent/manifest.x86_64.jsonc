@@ -1,0 +1,62 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"spice-vdagent": {
+			"build-depends": [
+				"pkgconfig(alsa)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(libdrm)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(spice-protocol)",
+				"pkgconfig(x11)",
+				"pkgconfig(xfixes)",
+				"pkgconfig(xinerama)",
+				"pkgconfig(xrandr)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libXinerama.so.1(x86_64))",
+				"soname(libXrandr.so.2(x86_64))",
+				"soname(libasound.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libdbus-1.so.3(x86_64))",
+				"soname(libdrm.so.2(x86_64))",
+				"soname(libgdk-3.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-3.so.0(x86_64))",
+				"soname(libpciaccess.so.0(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/spice-vdagent",
+				"/usr/lib/systemd/system-preset/60-spice-vdagentd.preset",
+				"/usr/lib/systemd/system/spice-vdagentd.service",
+				"/usr/lib/systemd/system/spice-vdagentd.socket",
+				"/usr/lib/systemd/user-preset/60-spice-vdagent.preset",
+				"/usr/lib/systemd/user/spice-vdagent.service",
+				"/usr/lib/tmpfiles.d/spice-vdagentd.conf",
+				"/usr/lib/udev/rules.d/70-spice-vdagentd.rules",
+				"/usr/sbin/spice-vdagentd",
+				"/usr/share/gdm/autostart/LoginWindow/spice-vdagent.desktop",
+				"/usr/share/gdm/greeter/autostart/spice-vdagent.desktop",
+				"/usr/share/man/man1/spice-vdagent.1",
+				"/usr/share/man/man1/spice-vdagentd.1",
+				"/usr/share/xdg/autostart/spice-vdagent.desktop"
+			],
+			"name": "spice-vdagent",
+			"provides": [
+				"binary(spice-vdagent)",
+				"sysbinary(spice-vdagentd)"
+			]
+		}
+	},
+	"source-name": "spice-vdagent",
+	"source-release": "1",
+	"source-version": "0.22.1"
+}

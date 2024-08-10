@@ -1,0 +1,5 @@
+releases:
+  id: 14893
+security:
+  - vendor: spice-space
+    product: spice-vdagent

@@ -1,0 +1,51 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : spice-vdagent
+version     : 0.22.1
+release     : 1
+homepage    : https://www.spice-space.org
+upstreams   :
+    - https://www.spice-space.org/download/releases/spice-vdagent-0.22.1.tar.bz2 : 93b0d15aca4762cc7d379b179a7101149dbaed62b72112fffb2b3e90b11687a0
+summary     : Spice agent for Linux guests
+description : |
+    Spice agent for Linux guests offering the following features:
+    * Client mouse mode (no need to grab mouse by client, no mouse lag)
+      this is handled by the daemon by feeding mouse events into the kernel
+      via uinput. This will only work if the active X-session is running a
+      spice-vdagent process so that its resolution can be determined.
+    * Automatic adjustment of the X-session resolution to the client resolution
+    * Support of copy and paste (text and images) between the active X-session
+      and the client
+license     : GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(alsa)
+    - pkgconfig(dbus-1)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(libdrm)
+    - pkgconfig(libsystemd)
+    - pkgconfig(spice-protocol)
+    - pkgconfig(x11)
+    - pkgconfig(xfixes)
+    - pkgconfig(xrandr)
+    - pkgconfig(xinerama)
+setup       : |
+    %patch %(pkgdir)/0002-vdagent-Remove-watch-event-on-vdagent_display_destro.patch
+    %patch %(pkgdir)/0003-Switch-to-spice-vdagent.service-by-default.patch
+    %patch %(pkgdir)/0001-Only-start-vdagent-under-virtualisation.patch
+
+    %configure\
+      --with-session-info=systemd \
+      --with-init-script=systemd
+build       : |
+    %make
+install     : |
+    %make_install
+
+    %install_file %(pkgdir)/spice-vdagentd.preset %(installroot)%(libdir)/systemd/system-preset/60-spice-vdagentd.preset
+    %install_file %(pkgdir)/spice-vdagent.preset %(installroot)%(libdir)/systemd/user-preset/60-spice-vdagent.preset
+
+    mv %(installroot)/etc/xdg %(installroot)/usr/share/xdg
