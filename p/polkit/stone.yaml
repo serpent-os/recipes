@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : polkit
-version     : 122
-release     : 3
+version     : 124
+release     : 4
 summary     : Application-level authorization toolkit
 license     : GPL-2.0-or-later
 homepage    : https://gitlab.freedesktop.org/polkit/polkit
 description : |
     polkit is an application-level toolkit for defining and handling the policy that allows unprivileged processes to speak to privileged processes: It is a framework for centralizing the decision making process with respect to granting access to privileged operations for unprivileged applications. See the polkit(8) manual page for more detailed information.
 upstreams   :
-    - https://gitlab.freedesktop.org/polkit/polkit/-/archive/122/polkit-122.tar.gz: 0d69656d60800835c3d7d1f0a8362b32e1ae3ace2875a35bb624296fc52d5dc4
+    - https://gitlab.freedesktop.org/polkit/polkit/-/archive/124/polkit-124.tar.gz: 72457d96a0538fd03a3ca96a6bf9b7faf82184d4d67c793eb759168e4fd49e20
 builddeps   :
     - binary(msgfmt)
     - binary(perl)
@@ -46,15 +46,13 @@ install     : |
 
     # Statelessness
     %install_dir %(installroot)/%(vendordir)/etc
-    mv %(installroot)/etc/pam.d %(installroot)/%(vendordir)/etc
-    rmdir %(installroot)/etc/polkit-1/rules.d
-    rmdir %(installroot)/etc/polkit-1
-    rmdir %(installroot)/etc
+    mv %(installroot)/usr/lib/pam.d/ %(installroot)/%(vendordir)/etc
 
     # userdb
     %install_file %(pkgdir)/polkitd.group %(installroot)%(libdir)/userdb/polkitd.group
     ln -s polkitd.group %(installroot)%(libdir)/userdb/27.group
     %install_file %(pkgdir)/polkitd.user %(installroot)%(libdir)/userdb/polkitd.user
     ln -s polkitd.user %(installroot)%(libdir)/userdb/27.user
+    rm -fr %(installroot)%(libdir)/sysusers.d
 
 # TODO checks (needs python-dbusmock)

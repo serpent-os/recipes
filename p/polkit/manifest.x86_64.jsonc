@@ -66,6 +66,7 @@
 				"/usr/share/locale/pt/LC_MESSAGES/polkit-1.mo",
 				"/usr/share/locale/pt_BR/LC_MESSAGES/polkit-1.mo",
 				"/usr/share/locale/ro/LC_MESSAGES/polkit-1.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/polkit-1.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/polkit-1.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/polkit-1.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/polkit-1.mo",
@@ -84,12 +85,12 @@
 			],
 			"name": "polkit",
 			"provides": [
-				"soname(libpolkit-agent-1.so.0(x86_64))",
-				"soname(libpolkit-gobject-1.so.0(x86_64))",
 				"binary(pkaction)",
 				"binary(pkcheck)",
 				"binary(pkexec)",
-				"binary(pkttyagent)"
+				"binary(pkttyagent)",
+				"soname(libpolkit-agent-1.so.0(x86_64))",
+				"soname(libpolkit-gobject-1.so.0(x86_64))"
 			]
 		},
 		"polkit-devel": {
@@ -107,7 +108,9 @@
 			],
 			"depends": [
 				"pkgconfig(gio-2.0)",
-				"pkgconfig(glib-2.0)"
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"polkit"
 			],
 			"files": [
 				"/usr/include/polkit-1/polkit/polkit.h",
@@ -151,6 +154,6 @@
 		}
 	},
 	"source-name": "polkit",
-	"source-release": "3",
-	"source-version": "122"
+	"source-release": "4",
+	"source-version": "124"
 }
