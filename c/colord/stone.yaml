@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : colord
-version     : 1.4.6
-release     : 1
+version     : 1.4.7
+release     : 2
 homepage    : https://www.freedesktop.org/software/colord/releases
 upstreams   :
-    - https://www.freedesktop.org/software/colord/releases/colord-1.4.6.tar.xz : 7407631a27bfe5d1b672e7ae42777001c105d860b7b7392283c8c6300de88e6f
+    - https://www.freedesktop.org/software/colord/releases/colord-1.4.7.tar.xz : de02d9910634ae159547585cec414e450f711c27235453b4f9b38a9f2361a653
 summary     : Making color management just work
 description : |
     colord is a system service that makes it easy to manage, install and generate color profiles to accurately color manage input and output devices. This functionality is implemented as a system activated daemon called colord. Being system activated means that it's only started when the user is using a text mode or graphical tool.
@@ -25,7 +25,7 @@ builddeps   :
     - pkgconfig(gio-unix-2.0)
     - pkgconfig(glib-2.0)
     - pkgconfig(gmodule-2.0)
-    # pkgconfig(gnome-desktop-3.0)
+    - pkgconfig(gnome-desktop-3.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gudev-1.0)
     - pkgconfig(gusb)
@@ -51,3 +51,5 @@ install     : |
     # FIXME: TRIGGERS MOFO
     %tmpfiles "d /var/lib/colord/icc 0755 colord colord -"
     %sysusers 'u colord 124 "Color Daemon" /var/empty'
+# clang g-ir-scanner woes
+toolchain   : gnu

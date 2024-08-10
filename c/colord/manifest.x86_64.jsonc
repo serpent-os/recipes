@@ -12,6 +12,7 @@
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gmodule-2.0)",
+				"pkgconfig(gnome-desktop-3.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
 				"pkgconfig(gusb)",
@@ -177,6 +178,7 @@
 				"/usr/share/locale/is/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/it/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/colord.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/kn/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/colord.mo",
@@ -194,8 +196,10 @@
 				"/usr/share/locale/pt_BR/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/ro/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/colord.mo",
+				"/usr/share/locale/si/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/colord.mo",
+				"/usr/share/locale/sq/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/sr@latin/LC_MESSAGES/colord.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/colord.mo",
@@ -215,6 +219,13 @@
 				"binary(cd-it8)",
 				"binary(colormgr)",
 				"soname(libcolord.so.2(x86_64))",
+				"soname(libcolord_sensor_argyll.so(x86_64))",
+				"soname(libcolord_sensor_camera.so(x86_64))",
+				"soname(libcolord_sensor_colorhug.so(x86_64))",
+				"soname(libcolord_sensor_dtp94.so(x86_64))",
+				"soname(libcolord_sensor_dummy.so(x86_64))",
+				"soname(libcolord_sensor_huey.so(x86_64))",
+				"soname(libcolord_sensor_scanner.so(x86_64))",
 				"soname(libcolordprivate.so.2(x86_64))",
 				"soname(libcolorhug.so.2(x86_64))"
 			]
@@ -229,6 +240,7 @@
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gmodule-2.0)",
+				"pkgconfig(gnome-desktop-3.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
 				"pkgconfig(gusb)",
@@ -241,6 +253,7 @@
 				"pkgconfig(udev)"
 			],
 			"depends": [
+				"colord",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(gusb)"
@@ -297,6 +310,6 @@
 		}
 	},
 	"source-name": "colord",
-	"source-release": "1",
-	"source-version": "1.4.6"
+	"source-release": "2",
+	"source-version": "1.4.7"
 }
