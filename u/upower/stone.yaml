@@ -4,17 +4,19 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : upower
-version     : 1.90.2
-release     : 1
+version     : 1.90.4
+release     : 2
 homepage    : https://upower.freedesktop.org/
 upstreams   :
-    - https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.2/upower-v1.90.2.tar.gz : 5c4e736648f0c89d2368fbbe1e6fc0598a1565c4b435bade1d65e890259fb759
+    - https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.4/upower-v1.90.4.tar.gz : cd194dd278bd8d058b4728efd1d0a91cdf017378f025b558beb6f60a86af4781
 summary     : UPower is an abstraction for enumerating power devices, listening to device events and querying history and statistics.
 description : |
     UPower is an abstraction for enumerating power devices, listening to device events and querying history and statistics. Any application or service on the system can access the org.freedesktop.UPower service via the system message bus.
 license     :
     - LGPL-2.0-or-later
 builddeps   :
+    - binary(msgfmt)
+    - binary(xmlto)
     - binary(xsltproc)
     - pkgconfig(gio-2.0)
     - pkgconfig(gobject-introspection-1.0)
@@ -22,8 +24,8 @@ builddeps   :
     # pkgconfig(libimobiledevice-1.0)
     # pkgconfig(libplist)
     - pkgconfig(systemd)
-    - xmlto
 setup       : |
+    %patch %(pkgdir)/0001-Support-a-fully-stateless-configuration.patch
     %meson -Dgtk-doc=false
 build       : |
     %meson_build
