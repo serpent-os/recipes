@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-menus
+version     : 3.36.0
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-menus
+upstreams   :
+    - https://download.gnome.org/sources/gnome-menus/3.36/gnome-menus-3.36.0.tar.xz : d9348f38bde956fc32753b28c1cde19c175bfdbf1f4d5b06003b3aa09153bb1f
+summary     : GNOME Menu support
+description : |
+  gnome-menus contains the libgnome-menu library, the layout configuration files for the GNOME menu, as well as a simple menu editor. The layout files control the menu layout for the GNOME Classic desktop. They are unused in normal GNOME sessions and have no effect outside GNOME Classic.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(autopoint)
+    - binary(python3)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+setup       : |
+    %reconfigure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+
+    mv %(installroot)/etc/xdg %(installroot)/usr/share/xdg
+    ln -s /usr/share/xdg/menus/gnome-applications.menu %(installroot)/usr/share/xdg/menus/applications.menu
+# g-ir-scanner woes
+toolchain   : gnu
