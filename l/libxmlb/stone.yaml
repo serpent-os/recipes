@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxmlb
-version     : '0.3.15'
-release     : 1
+version     : 0.3.19
+release     : 2
 homepage    : https://github.com/hughsie/libxmlb
 upstreams   :
-    - https://github.com/hughsie/libxmlb/releases/download/0.3.15/libxmlb-0.3.15.tar.xz : 4cf605965d0e669db737da6443314664ea471807f2719a84550f2490670beea9
+    - https://github.com/hughsie/libxmlb/releases/download/0.3.19/libxmlb-0.3.19.tar.xz : 0a3ec258b12dbf10e5fe840b2421c84137eb7cc1b09c3de6210f3f7d51733733
 summary     : A library to help create and query binary XML blobs
 description : |
     A library to help create and query binary XML blobs
@@ -25,8 +25,15 @@ builddeps   :
     - pkgconfig(liblzma)
     - pkgconfig(libzstd)
 setup       : |
-    %meson -Dgtkdoc=false -Dtests=false
+    %meson -Dgtkdoc=false
 build       : |
     %meson_build
 install     : |
     %meson_install
+
+    # nuke installed tests
+    rm -fr %(installroot)%(libdir)/libxmlb/installed-tests/
+    rm -fr %(installroot)/usr/share/installed-tests
+    rmdir %(installroot)%(libdir)/libxmlb
+check       : |
+    %meson_test
