@@ -8,6 +8,7 @@
 				"pkgconfig(libsystemd)"
 			],
 			"depends": [
+				"dbus",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libexpat.so.1(x86_64))",
@@ -31,6 +32,6 @@
 		}
 	},
 	"source-name": "dbus-broker",
-	"source-release": "8",
-	"source-version": "35"
+	"source-release": "9",
+	"source-version": "36"
 }
