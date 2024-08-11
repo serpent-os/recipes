@@ -18,7 +18,7 @@
 				"/usr/bin/sndiod",
 				"/usr/lib/libsndio.so.7",
 				"/usr/lib/libsndio.so.7.0",
-				"/usr/lib/libsndio.so.7.2",
+				"/usr/lib/libsndio.so.7.3",
 				"/usr/share/man/man1/aucat.1",
 				"/usr/share/man/man1/midicat.1",
 				"/usr/share/man/man1/sndioctl.1",
@@ -87,6 +87,6 @@
 		}
 	},
 	"source-name": "sndio",
-	"source-release": "1",
-	"source-version": "1.9.0"
+	"source-release": "2",
+	"source-version": "1.10.0"
 }

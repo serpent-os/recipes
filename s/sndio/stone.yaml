@@ -4,15 +4,14 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : sndio
-version     : 1.9.0
-release     : 1
+version     : 1.10.0
+release     : 2
 homepage    : https://sndio.org
 upstreams   :
-    - https://sndio.org/sndio-1.9.0.tar.gz : f30826fc9c07e369d3924d5fcedf6a0a53c0df4ae1f5ab50fe9cf280540f699a
-summary     : Audio & MIDI framework
+    - https://sndio.org/sndio-1.10.0.tar.gz : bebd3bfd01c50c9376cf3e7814b9379bed9e17d0393b5113b7eb7a3d0d038c54
+summary     : Audio and MIDI framework
 description : |
-    Audo & MIDI Framework
-
+    Sndio is a small audio and MIDI framework. It provides a lightweight audio & MIDI server and a fully documented user-space API to access either the server or the hardware directly in a uniform way. Sndio is designed to work for desktop applications, but pays special attention to synchronization mechanisms and reliability required by music applications. Reliability through simplicity are part of the project goals.
 license     :
     - ISC
 builddeps   :
