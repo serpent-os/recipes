@@ -4,15 +4,17 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : helix
-version     : "23.10"
-release     : 2
+version     : '24.07'
+release     : 3
 license     : MPL-2.0
 homepage    : https://helix-editor.com/
 upstreams   :
-    - git|https://github.com/helix-editor/helix.git : "23.10"
+    - git|https://github.com/helix-editor/helix.git : 079f544260f4f5eaff08104bf07abd57bfb7b611
 summary     : A post-modern modal text editor.
 description : |
-    A Kakoune / Neovim inspired editor, written in Rust.
+    Helix is a Neovim / Kakoune (object-verb) inspired modal, console-based text editor written in Rust, with built-in support for multiple selections, Language Server Protocol (LSP), tree-sitter, and experimental support for Debug Adapter Protocol (DAP).
+
+    Note: If you want to fetch and build grammars yourself, use `CC=clang CXX=clang hx -g build` to build grammars after fetching them with `hx -g fetch`.
 builddeps   :
     - binary(cargo)
     - binary(git)
@@ -20,7 +22,6 @@ networking  : yes
 environment : |
     export HELIX_DEFAULT_RUNTIME=%(libexecdir)/runtime
 setup       : |
-    %patch %(pkgdir)/remove-grammars.patch
     %cargo_fetch
 build       : |
     %cargo_build
