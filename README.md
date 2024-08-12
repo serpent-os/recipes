@@ -44,7 +44,7 @@ you might benefit from creating a `.env` file in the root of the `recipes/` dire
 _Example `.env` file:_
 
     BOULDER="${HOME}/.local/bin/boulder"
-    BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder --config-dir=${HOME}/.config/boulder --moss-root=${HOME}/.cache/boulder""
+    BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder --config-dir=${HOME}/.config/boulder --moss-root=${HOME}/.cache/boulder"
 
 The `justfile` is set up so you can also choose to specify either of the above environment variables on a command-line invocation of `just`:
 
