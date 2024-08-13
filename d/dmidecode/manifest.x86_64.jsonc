@@ -1,0 +1,35 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dmidecode": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/sbin/biosdecode",
+				"/usr/sbin/dmidecode",
+				"/usr/sbin/ownership",
+				"/usr/sbin/vpddecode",
+				"/usr/share/doc/dmidecode/AUTHORS",
+				"/usr/share/doc/dmidecode/NEWS",
+				"/usr/share/doc/dmidecode/README",
+				"/usr/share/man/man8/biosdecode.8",
+				"/usr/share/man/man8/dmidecode.8",
+				"/usr/share/man/man8/ownership.8",
+				"/usr/share/man/man8/vpddecode.8"
+			],
+			"name": "dmidecode",
+			"provides": [
+				"sysbinary(biosdecode)",
+				"sysbinary(dmidecode)",
+				"sysbinary(ownership)",
+				"sysbinary(vpddecode)"
+			]
+		}
+	},
+	"source-name": "dmidecode",
+	"source-release": "1",
+	"source-version": "3.6"
+}
