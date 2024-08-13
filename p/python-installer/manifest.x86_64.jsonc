@@ -1,28 +1,40 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"python-installer": {
+			"build-depends": [
+				"python-flit-core",
+				"python-pyproject-hooks"
+			],
 			"files": [
-				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/INSTALLER",
-				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/LICENSE",
-				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/METADATA",
-				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/RECORD",
-				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/REQUESTED",
-				"/usr/lib/python3.11/site-packages/installer-0.6.0.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/installer-0.7.0.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/installer-0.7.0.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/installer-0.7.0.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/installer-0.7.0.dist-info/WHEEL",
 				"/usr/lib/python3.11/site-packages/installer/__init__.py",
 				"/usr/lib/python3.11/site-packages/installer/__main__.py",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/__main__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/__main__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/_core.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/_core.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/destinations.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/destinations.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/exceptions.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/exceptions.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/records.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/records.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/scripts.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/scripts.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/sources.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/sources.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/installer/__pycache__/utils.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/__pycache__/utils.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/installer/_core.py",
 				"/usr/lib/python3.11/site-packages/installer/_scripts/__init__.py",
+				"/usr/lib/python3.11/site-packages/installer/_scripts/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/installer/_scripts/__pycache__/__init__.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/installer/_scripts/t32.exe",
 				"/usr/lib/python3.11/site-packages/installer/_scripts/t64-arm.exe",
@@ -40,10 +52,14 @@
 				"/usr/lib/python3.11/site-packages/installer/sources.py",
 				"/usr/lib/python3.11/site-packages/installer/utils.py"
 			],
-			"name": "python-installer"
+			"name": "python-installer",
+			"provides": [
+				"python(installer(3.11))",
+				"python(installer)"
+			]
 		}
 	},
 	"source-name": "python-installer",
-	"source-release": "1",
-	"source-version": "0.6.0"
+	"source-release": "2",
+	"source-version": "0.7.0"
 }
