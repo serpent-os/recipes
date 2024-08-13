@@ -4,18 +4,18 @@
 	"packages": {
 		"python-trove-classifiers": {
 			"build-depends": [
+				"python-calver"
+			],
+			"depends": [
 				"binary(python3)",
-				"python-calver",
-				"python-installer",
-				"python-packaging",
-				"python-wheel"
+				"python-calver"
 			],
 			"files": [
-				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.1.31.dist-info/LICENSE",
-				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.1.31.dist-info/METADATA",
-				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.1.31.dist-info/RECORD",
-				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.1.31.dist-info/WHEEL",
-				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.1.31.dist-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.7.2.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.7.2.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.7.2.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.7.2.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/trove_classifiers-2024.7.2.dist-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/trove_classifiers/__init__.py",
 				"/usr/lib/python3.11/site-packages/trove_classifiers/__main__.py",
 				"/usr/lib/python3.11/site-packages/trove_classifiers/__pycache__/__init__.cpython-311.opt-1.pyc",
@@ -24,10 +24,14 @@
 				"/usr/lib/python3.11/site-packages/trove_classifiers/__pycache__/__main__.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/trove_classifiers/py.typed"
 			],
-			"name": "python-trove-classifiers"
+			"name": "python-trove-classifiers",
+			"provides": [
+				"python(trove-classifiers(3.11))",
+				"python(trove-classifiers)"
+			]
 		}
 	},
 	"source-name": "python-trove-classifiers",
-	"source-release": "1",
-	"source-version": "2024.1.31"
+	"source-release": "2",
+	"source-version": "2024.7.2"
 }
