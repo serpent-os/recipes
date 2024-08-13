@@ -62,7 +62,9 @@
 			],
 			"name": "python-build",
 			"provides": [
-				"binary(pyproject-build)"
+				"binary(pyproject-build)",
+				"python(build(3.11))",
+				"python(build)"
 			]
 		}
 	},
