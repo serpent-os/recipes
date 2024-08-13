@@ -4,22 +4,22 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : p11-kit
-version     : '0.25.3'
-release     : 2
+version     : 0.25.5
+release     : 3
 homepage    : https://p11-glue.freedesktop.org
 upstreams   :
-    - https://github.com/p11-glue/p11-kit/releases/download/0.25.3/p11-kit-0.25.3.tar.xz: d8ddce1bb7e898986f9d250ccae7c09ce14d82f1009046d202a0eb1b428b2adc
+    - https://github.com/p11-glue/p11-kit/releases/download/0.25.5/p11-kit-0.25.5.tar.xz: 04d0a86450cdb1be018f26af6699857171a188ac6d5b8c90786a60854e1198e5
 summary     : Loads and enumerates PKCS#11 modules
 description : |
    Loads and enumerates PKCS#11 modules
 license     : GPL-2.0-or-later
 builddeps   :
     - binary(gettext)
+    - pkgconfig(bash-completion)
     - pkgconfig(libffi)
     - pkgconfig(libtasn1)
     - pkgconfig(libsystemd)
-# TODO build with gtk-docs for gtk docs support
-# TODO build with bash-completions
+    # cmake(GtkDocConfig)
 setup       : |
     %meson -Dsystem_config=/usr/share/defaults/pkcs11 \
            -Duser_config=/etc/pkcs11
@@ -30,10 +30,8 @@ install     : |
 
     %tmpfiles "# Create /etc/pkcs11 directory"
     %tmpfiles "d /etc/pkcs11 0755 - - -"
-# 10/53 test-path fails with a SIGSEGV
-# TODO figure out why and re-enable this test
-# check       : |
-#     meson test -v -C "%(builddir)" --print-errorlogs
+check       : |
+    %meson_test
 packages    :
     - "%(name)-libs":
         description: |
