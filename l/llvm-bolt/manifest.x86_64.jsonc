@@ -21,16 +21,17 @@
 			],
 			"files": [
 				"/usr/bin/llvm-bolt",
+				"/usr/bin/llvm-bolt-heatmap",
 				"/usr/bin/llvm-boltdiff",
 				"/usr/bin/merge-fdata",
 				"/usr/bin/perf2bolt",
 				"/usr/lib/libbolt_rt_hugify.a",
-				"/usr/lib/libbolt_rt_instr.a",
-				"/usr/lib/libbolt_rt_instr_osx.a"
+				"/usr/lib/libbolt_rt_instr.a"
 			],
 			"name": "llvm-bolt",
 			"provides": [
 				"binary(llvm-bolt)",
+				"binary(llvm-bolt-heatmap)",
 				"binary(llvm-boltdiff)",
 				"binary(merge-fdata)",
 				"binary(perf2bolt)"
@@ -38,6 +39,6 @@
 		}
 	},
 	"source-name": "llvm-bolt",
-	"source-release": "4",
-	"source-version": "16.0.1"
+	"source-release": "5",
+	"source-version": "18.1.8"
 }

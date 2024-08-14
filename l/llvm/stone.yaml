@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
-version     : 17.0.4
-release     : 10
+version     : 18.1.8
+release     : 11
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -10,13 +10,15 @@ homepage    : https://www.llvm.org
 description : |
     Low Level Virtual Machine
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.4/llvm-project-17.0.4.src.tar.xz: a225eb96f52e7d8c6c275b351fcc66d7a21d925eecff53730900404f244ff16a
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz: 0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a
 builddeps   :
     - binary(perl)
     - binary(python3)
+    - pkgconfig(libedit)
     - pkgconfig(libffi)
     - pkgconfig(libxcrypt)
     - pkgconfig(libxml-2.0)
+    - pkgconfig(libzstd)
     - pkgconfig(ncursesw)
     - pkgconfig(zlib)
     - binutils-devel
@@ -24,6 +26,7 @@ builddeps   :
     - glibc-32bit-devel
     - libcxx-32bit-devel
     - clang-32bit
+    # TODO: Package python-myst-parser so we can build man pages
 environment : |
     export llvmopts="
         -DCMAKE_BUILD_TYPE=Release \
@@ -31,15 +34,17 @@ environment : |
         -DCLANG_DEFAULT_CXX_STDLIB=libc++ \
         -DCLANG_DEFAULT_LINKER=lld \
         -DCLANG_DEFAULT_OBJCOPY=llvm-objcopy \
-        -DCLANG_DEFAULT_PIE_ON_LINUX=OFF \
         -DCLANG_DEFAULT_RTLIB=compiler-rt \
         -DCLANG_DEFAULT_UNWINDLIB=libunwind \
+        -DCLANG_LINK_CLANG_DYLIB=ON \
         -DCOMPILER_RT_USE_BUILTINS_LIBRARY=ON \
         -DCOMPILER_RT_USE_LIBCXX=ON \
         -DENABLE_LINKER_BUILD_ID=ON \
         -DLLVM_BINUTILS_INCDIR=/usr/include \
+        -DLLVM_BUILD_LLVM_DYLIB=ON \
         -DLLVM_BUILD_TOOLS=ON \
         -DLLVM_DEFAULT_TARGET_TRIPLE=%(build_platform) \
+        -DLLVM_DYLIB_COMPONENTS="all" \
         -DLLVM_ENABLE_FFI=ON \
         -DLLVM_ENABLE_LIBCXX=ON \
         -DLLVM_ENABLE_LIBXML2=ON \
@@ -47,13 +52,16 @@ environment : |
         -DLLVM_ENABLE_MODULES=OFF \
         -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
         -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;lld;llvm;polly' \
+        -DLLVM_ENABLE_ZLIB=ON \
+        -DLLVM_ENABLE_ZSTD=ON \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_TESTS=ON \
         -DLLVM_INCLUDE_UTILS=ON \
         -DLLVM_INSTALL_UTILS=ON \
         -DLLVM_LIBDIR_SUFFIX=%(libsuffix) \
+        -DLLVM_LINK_LLVM_DYLIB=ON
         -DLLVM_TARGET_ARCH=X86_64 \
-        -DLLVM_TARGETS_TO_BUILD='X86;AMDGPU' \
+        -DLLVM_TARGETS_TO_BUILD='X86;AArch64;AMDGPU;BPF' \
         -DLLVM_USE_SANITIZER=OFF \
         -DLLVM_ENABLE_RTTI=ON
         "
@@ -67,52 +75,60 @@ setup       : |
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
     %patch %(pkgdir)/serpent/0001-Make-gnu-hash-the-default-for-lld-and-clang.patch
     %patch %(pkgdir)/serpent/0001-Update-binutils-version-to-match-Serpent-OS.patch
+    %patch %(pkgdir)/serpent/0001-Build-lld-libraries-shared.patch
+    %patch %(pkgdir)/serpent/0001-Build-polly-libraries-shared.patch
+    %patch %(pkgdir)/serpent/0001-Emit-relocations-for-BOLT.patch
+    %patch %(pkgdir)/serpent/0003-PATCH-clang-Don-t-install-static-libraries.patch
+    %patch %(pkgdir)/serpent/ignore-werror.patch
 
-    %cmake ${llvmopts} -S llvm \
-        -DLLVM_BUILD_LLVM_DYLIB=ON \
-        -DLLVM_LINK_LLVM_DYLIB=ON
+    %cmake ${llvmopts} -S llvm
 build       : |
     unset LD_PRELOAD
     %cmake_build
 install     : |
     %cmake_install
-    unset LD_PRELOAD
 
-    %cmake ${llvmopts} -S llvm \
-        -DLLVM_BUILD_LLVM_DYLIB=OFF \
-        -DLLVM_LINK_LLVM_DYLIB=OFF \
-        -DCLANG_LINK_CLANG_DYLIB=OFF
+    %install_dir %(installroot)/%(libdir)/bfd-plugins
+    ln -srf %(installroot)/%(libdir)/LLVMgold.so %(installroot)/%(libdir)/bfd-plugins/LLVMgold.so
+
+    # unset LD_PRELOAD
+
+    # cmake ${llvmopts} -S llvm \
+    #     -DLLVM_BUILD_LLVM_DYLIB=OFF \
+    #     -DLLVM_LINK_LLVM_DYLIB=OFF \
+    #     -DCLANG_LINK_CLANG_DYLIB=OFF
 
     # Relink clang and lld statically
-    %cmake_build clang lld
+    #cmake_build clang lld
 
     # Major clang version
-    major_version=$(echo %(version) | cut -d. -f1)
-    export PATH="%(workdir)/%(builddir)/bin:${PATH}"
-    export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib:${LD_LIBRARY_PATH}"
-    %bolt_instr %(workdir)/%(builddir)/bin/clang-${major_version}
+    # major_version=$(echo %(version) | cut -d. -f1)
+    # export PATH="%(workdir)/%(builddir)/bin:${PATH}"
+    # export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib:${LD_LIBRARY_PATH}"
+    # #bolt_instr %(workdir)/%(builddir)/bin/clang-${major_version}
 
-    %cmake -G Ninja ${llvmopts} -B bolt-clang -S runtimes \
-        -DCMAKE_C_COMPILER="%(workdir)/%(builddir)/bin/clang" \
-        -DCMAKE_CXX_COMPILER="%(workdir)/%(builddir)/bin/clang++" \
-        -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi' \
-        -DLLVM_USE_LINKER="%(workdir)/%(builddir)/bin/ld.lld" \
-        -DLLVM_ENABLE_LTO=Full
+    # cmake -G Ninja ${llvmopts} -B bolt-clang -S runtimes \
+    #     -DCMAKE_C_COMPILER="%(workdir)/%(builddir)/bin/clang" \
+    #     -DCMAKE_CXX_COMPILER="%(workdir)/%(builddir)/bin/clang++" \
+    #     -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
+    #     -DLLVM_USE_LINKER="%(workdir)/%(builddir)/bin/ld.lld" \
+    #     -DLLVM_ENABLE_LTO=Full
 
-    %cmake_build -C bolt-clang
+    # cmake_build -C bolt-clang
 
-    %bolt_merge %(workdir)/%(builddir)/bin/clang-${major_version}
-    %bolt_opt %(workdir)/%(builddir)/bin/clang-${major_version}
+    # bolt_merge %(workdir)/%(builddir)/bin/clang-${major_version}
+    # bolt_opt %(workdir)/%(builddir)/bin/clang-${major_version}
 
-    %install_bin %(workdir)/%(builddir)/bin/clang-${major_version} %(workdir)/%(builddir)/bin/lld
+    # install_bin %(workdir)/%(builddir)/bin/clang-${major_version} %(workdir)/%(builddir)/bin/lld
 # workload    : |
 #    unset LD_PRELOAD
 #    # check-compiler-rt needs sanitizer changes
 #    %cmake_build check-clang check-llvm check-lld check-polly -k 10000 ||:
 # LTO needs to be set in LLVM cmake flags so it adds -fno-lto where needed
 tuning      :
-    - bolt
+    # - bolt
     - fortify: false
+    - frame-pointer: false
     - harden: false
     - icf: all
     - lto: false
@@ -126,7 +142,15 @@ packages    :
         description: |
             Library files for %(name), typically pulled in as a dependency of another package.
         paths:
-            - /usr/lib/libLLVM-*.so
+            - /usr/lib/libLLVM.so.*
+            - /usr/lib/libLTO.so.*
+            - /usr/lib/libRemarks.so.*
+            - /usr/lib/LLVMgold.so
+            - /usr/lib/bfd-plugins/LLVMgold.so
+
+    - "%(name)":
+        rundeps:
+            - pkgconfig(libedit)
 
     - "%(name)-devel":
         paths:
@@ -134,12 +158,24 @@ packages    :
             - /usr/bin/UnicodeNameMappingGenerator
             - /usr/bin/count
             - /usr/bin/lli-child-target
+            - /usr/bin/llvm-config
             - /usr/bin/llvm-PerfectShuffle
             - /usr/bin/llvm-jitlink-executor
             - /usr/bin/not
             - /usr/bin/obj2yaml
             - /usr/bin/yaml-bench
             - /usr/bin/yaml2obj
+        rundeps:
+            - polly-devel
+
+    - "clang-libs":
+        summary: "Library files for clang"
+        description: |
+            Library files for clang, typically pulled in as a dependency of another package.
+        paths:
+            - /usr/lib/libclang.so.*
+            - /usr/lib/libclang-cpp.so.*
+            - /usr/lib/clang/*/include/*
 
     - "clang":
         summary: "Clang compiler front-end (LLVM)"
@@ -149,13 +185,16 @@ packages    :
             - libcxx-devel
             - lld
             - llvm
+            - polly
         paths:
+            - /usr/bin/amdgpu-arch
             - /usr/bin/analyze-build
             - /usr/bin/c-index-test
             - /usr/bin/*clang*
             - /usr/bin/diagtool
             - /usr/bin/hmaptool
             - /usr/bin/intercept-build
+            - /usr/bin/nvptx-arch
             - /usr/bin/scan-*
             - /usr/lib/clang/*/bin
             - /usr/lib/clang/*/include
@@ -167,22 +206,15 @@ packages    :
             - /usr/share/man
             - /usr/share/scan-*
 
-    - "clang-libs":
-        summary: "Library files for clang"
-        description: |
-            Library files for clang, typically pulled in as a dependency of another package.
-        paths:
-            - /usr/lib/libclang*.so.*
-
     - "clang-devel":
         summary: "Development files for clang"
         description: |
             Install this package if you intend to build software against
             the clang package.
         paths:
+            - /usr/bin/clang-tblgen
             - /usr/lib/cmake/clang
             - /usr/lib/libclang*.so
-            - /usr/lib/libclang*.a
             - /usr/include/clang*
         rundeps:
             - clang
@@ -194,6 +226,13 @@ packages    :
             clang package libraries.
         paths:
             - /usr/lib/clang/*/lib/linux/*i386*
+
+    - "lld-libs":
+        summary: "Library files for lld"
+        description: |
+            Library files for lld, typically pulled in as a dependency of another package.
+        paths:
+            - /usr/lib/liblld*.so.*
 
     - "lld":
         summary: "Clang compiler front-end (LLVM)"
@@ -210,6 +249,24 @@ packages    :
             the lld package.
         paths:
             - /usr/lib/cmake/lld
-            - /usr/lib/liblld*.a
+            - /usr/lib/liblld*.so
+            - /usr/include/lld/*
         rundeps:
             - lld
+
+    - "polly":
+        summary: "LLVM Framework for High-Level Loop and Data-Locality Optimizations"
+        description: |
+            LLVM Framework for High-Level Loop and Data-Locality Optimizations
+        paths:
+            - /usr/lib/libPollyISL.so
+            - /usr/lib/LLVMPolly.so
+
+    - "polly-devel":
+        summary: "LLVM Framework for High-Level Loop and Data-Locality Optimizations"
+        description: |
+            LLVM Framework for High-Level Loop and Data-Locality Optimizations - Development files
+        paths:
+            - /usr/include/polly
+            - /usr/lib/cmake/polly
+            - /usr/lib/libPolly.a
