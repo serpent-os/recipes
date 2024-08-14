@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name: portal
+version: v1.2.3
+release: 1
+homepage: https://github.com/SpatiumPortae/portal
+upstreams:
+  - https://github.com/SpatiumPortae/portal/archive/refs/tags/v1.2.3.tar.gz: 7a457ab1efa559b89eb5d7edbebccb1342896a42e30dbd943ffb6eea14179b36
+summary: Peer to Peer secure copy tool (via Relay if needed)
+description: |
+  A command-line file transfer utility for sending files from any computer to another.
+  Sender and Receiver both require the portal application.
+license: MIT
+networking: yes
+builddeps:
+  - binary(go)
+build: |
+  PORTAL_VERSION=%(version) %make build-production
+install: |
+  %install_file portal %(installroot)%(bindir)/portal
+  chmod 4755 %(installroot)%(bindir)/portal
