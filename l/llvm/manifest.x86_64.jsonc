@@ -276,6 +276,7 @@
 			"depends": [
 				"clang",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
@@ -1711,7 +1712,9 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"llvm",
+				"pkgconfig(libzstd)",
 				"polly-devel",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
@@ -4062,6 +4065,6 @@
 		}
 	},
 	"source-name": "llvm",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "18.1.8"
 }
