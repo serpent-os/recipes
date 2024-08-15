@@ -5,18 +5,19 @@
 #
 name        : cosmic-settings
 version     : "1.0.0-alpha.1"
-release     : 4
+release     : 5
 summary     : Cosmic Desktop Settings
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-settings
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-settings.git : 648c4e24ab825444af4e84bf713dc37c6250dbee
+    - git|https://github.com/pop-os/cosmic-settings.git : 1161bfa96ff13d8cc28e8ee8e0faadf3f3b7a82a
 description : |
     Cosmic Desktop Settings
 builddeps   :
     - binary(cargo)
     - binary(just)
     - pkgconfig(libinput)
+    - pkgconfig(libpipewire-0.3)
     - pkgconfig(libudev)
     - pkgconfig(xkbcommon)
 networking  : yes

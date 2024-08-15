@@ -7,6 +7,7 @@
 				"binary(cargo)",
 				"binary(just)",
 				"pkgconfig(libinput)",
+				"pkgconfig(libpipewire-0.3)",
 				"pkgconfig(libudev)",
 				"pkgconfig(xkbcommon)"
 			],
@@ -15,6 +16,8 @@
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
+				"soname(libpipewire-0.3.so.0(x86_64))",
+				"soname(libpulse.so.0(x86_64))",
 				"soname(libudev.so.1(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
 				"soname(libxkbcommon.so.0(x86_64))"
@@ -31,6 +34,7 @@
 				"/usr/share/applications/com.system76.CosmicSettings.Mouse.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Notifications.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Panel.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Power.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.RegionLanguage.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Sound.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Touchpad.desktop",
@@ -151,6 +155,6 @@
 		}
 	},
 	"source-name": "cosmic-settings",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "1.0.0-alpha.1"
 }
