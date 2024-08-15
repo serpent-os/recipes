@@ -1,0 +1,6 @@
+releases:
+  id: 1728
+  rss: https://github.com/jedisct1/libsodium/releases.atom
+security:
+  # Last checked 2024-08-15
+  cpe: ~
