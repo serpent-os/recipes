@@ -1,0 +1,27 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"vulkan-volk": {
+			"build-depends": [
+				"cmake(VulkanHeaders)"
+			],
+			"files": [
+				"/usr/include/volk.c",
+				"/usr/include/volk.h",
+				"/usr/lib/cmake/volk/volkConfig.cmake",
+				"/usr/lib/cmake/volk/volkConfigVersion.cmake",
+				"/usr/lib/cmake/volk/volkTargets-release.cmake",
+				"/usr/lib/cmake/volk/volkTargets.cmake",
+				"/usr/lib/libvolk.a"
+			],
+			"name": "vulkan-volk",
+			"provides": [
+				"cmake(volk)"
+			]
+		}
+	},
+	"source-name": "vulkan-volk",
+	"source-release": "1",
+	"source-version": "1.3.290.0"
+}
