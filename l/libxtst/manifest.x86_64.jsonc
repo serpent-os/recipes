@@ -34,6 +34,7 @@
 				"pkgconfig32(xi)"
 			],
 			"depends": [
+				"libxtst",
 				"soname(libX11.so.6(x86))",
 				"soname(libXext.so.6(x86))",
 				"soname(libXi.so.6(x86))",
@@ -45,6 +46,7 @@
 			],
 			"name": "libxtst-32bit",
 			"provides": [
+				"soname(libXtst.so.6(386))",
 				"soname(libXtst.so.6(x86))"
 			]
 		},
@@ -56,10 +58,12 @@
 				"pkgconfig32(xi)"
 			],
 			"depends": [
+				"libxtst-32bit",
+				"libxtst-devel",
 				"pkgconfig(recordproto)",
+				"pkgconfig(xextproto)",
 				"pkgconfig32(x11)",
 				"pkgconfig32(xext)",
-				"pkgconfig(xextproto)",
 				"pkgconfig32(xi)"
 			],
 			"files": [
@@ -80,6 +84,7 @@
 				"pkgconfig32(xi)"
 			],
 			"depends": [
+				"libxtst",
 				"pkgconfig(recordproto)",
 				"pkgconfig(x11)",
 				"pkgconfig(xext)",
@@ -111,6 +116,6 @@
 		}
 	},
 	"source-name": "libxtst",
-	"source-release": "1",
-	"source-version": "1.2.4"
+	"source-release": "2",
+	"source-version": "1.2.5"
 }
