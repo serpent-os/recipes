@@ -1,9 +1,9 @@
 name        : linux-desktop
-version     : "6.10.4"
-release     : 37
+version     : "6.10.5"
+release     : 38
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.4.tar.xz : e2c69dfd5fa00c741ebac4560bed9f7be6abb727d05a719e4df9e99df11555f8
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.5.tar.xz : 30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b
 summary     : Linux Kernel - Default Desktop Build
 description : |
     Work in progress build for desktop enabling
