@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : glslang
-version     : 12.2.0
-release     : 3
+version     : 14.3.0
+release     : 4
 homepage    : https://github.com/KhronosGroup/glslang
 upstreams   :
-    - https://github.com/KhronosGroup/glslang/archive/refs/tags/12.2.0.tar.gz : 870d17030fda7308c1521fb2e01a9e93cbe4b130bc8274e90d00e127432ab6f6
+    - https://github.com/KhronosGroup/glslang/archive/refs/tags/14.3.0.tar.gz : be6339048e20280938d9cb399fcdd06e04f8654d43e170e8cce5a56c9a754284
 summary     : Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
 description : |
     Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
@@ -19,10 +19,11 @@ license     :
     - GPL-3.0-with-bison-exception
     - MIT
 builddeps   :
+    - binary(python3)
     - cmake(SPIRV-Tools)
-    - pkgconfig(python3)
 setup       : |
-    %cmake
+    %cmake -DBUILD_SHARED_LIBS=OFF \
+           -DALLOW_EXTERNAL_SPIRV_TOOLS=ON
 build       : |
     %cmake_build
 install     : |
