@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : intel-microcode
-version     : 20240531
-release     : 5
+version     : 20240813
+release     : 6
 homepage    : https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files
 upstreams   :
-    - https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/refs/tags/microcode-20240531.tar.gz : c29eb35fdbd39e3ed8587e6f0b1275cc03265f230c2fcaf88e2a1556451e773f
+    - https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/refs/tags/microcode-20240813.tar.gz : f46cfe1d8be8d3c2c5a0fb63fc4d48c7dd1444f34346f0e42ad92c706cb90e79
 summary     : Microcode for Intel CPUs
 description : |
     Microcode package for Intel CPUs. You do not need to install this package unless
