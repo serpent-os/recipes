@@ -4,20 +4,22 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : binutils
-version     : "2.42"
-release     : 10
+version     : '2.42'
+release     : 11
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    - http://ftp.nluug.nl/ftp/gnu/binutils/binutils-2.42.tar.xz: f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800
+    - git|https://sourceware.org/git/binutils-gdb.git : d9ddfab9be2c25e049d1d42775db600d45eee31b
 builddeps   :
     - binary(bison)
     - binary(flex)
+    - binary(g++)
     - binary(m4)
     - binary(makeinfo)
+    - binary(msgmerge)
     - binary(perl)
     - binary(yacc)
     - pkgconfig(libzstd)

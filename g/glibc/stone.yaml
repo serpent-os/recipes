@@ -5,7 +5,7 @@
 #
 name        : glibc
 version     : 2.39
-release     : 10
+release     : 11
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -15,13 +15,15 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - https://ftp.gnu.org/gnu/glibc/glibc-2.39.tar.xz : f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926
+    - git|https://sourceware.org/git/glibc.git: 4bdcc1963bc2b5ba5f8e319e402d9eb2cb6096c1
 builddeps   :
     - binary(bison)
+    - binary(gperf)
     - binary(gzip)
     - binary(m4)
     - binary(patch)
     - binary(python3)
+    - gcc-32bit
 packages    :
     - "%(name)-32bit":
         paths:
@@ -37,7 +39,7 @@ tuning      :
     - harden: false
     - optimize: speed
     - symbolic: nonweak
-environment : |
+environment : &environment |
     export COMMON_GLIBC_OPTIONS="\
         %(options_configure) \
                 --disable-crypt \
@@ -47,7 +49,7 @@ environment : |
                 --enable-add-ons \
                 --enable-bind-now \
                 --enable-gnu-indirect-function \
-                --enable-kernel=6.0.1 \
+                --enable-kernel=5.15 \
                 --enable-lock-elision \
                 --enable-multi-arch \
                 --enable-plugin \
@@ -59,14 +61,16 @@ environment : |
                 --without-selinux \
                 libc_cv_include_x86_isa_level=no \
     "
-build       : |
+build       : &build |
     %make -C build
 profiles    :
     - x86_64:
+        environment: *environment
         setup: |
             %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
             %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
             %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
+            %patch %(pkgdir)/serpent/0001-Compress-charmaps-with-zstd.patch
             %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
             %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
             %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
@@ -84,6 +88,7 @@ profiles    :
             echo "complocaledir=/usr/lib/locale" >> configparms
 
             ../configure $COMMON_GLIBC_OPTIONS --enable-cet=permissive
+        build: *build
         install: |
             %make_install build DESTDIR="%(installroot)" -C build
             
@@ -106,10 +111,12 @@ profiles    :
             %tmpfiles "d /var/cache/locale 0755 - - -"
             %tmpfiles "d /var/db 0755 - - -"
     - emul32:
+        environment: *environment
         setup: |
             %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
             %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
             %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
+            %patch %(pkgdir)/serpent/0001-Compress-charmaps-with-zstd.patch
             %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
             %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
             %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
@@ -127,6 +134,7 @@ profiles    :
             echo "complocaledir=/usr/lib/locale" >> configparms
 
             ../configure $COMMON_GLIBC_OPTIONS --disable-cet
+        build: *build
         install: |
             %make_install build DESTDIR="%(installroot)" -C build
             

@@ -4,19 +4,21 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gcc
-version     : 13.2.0
-release     : 3
+version     : 14.2.0
+release     : 4
 summary     : GNU C++ standard library and compiler
 license     : GPL-3.0-or-later
 homepage    : https://gcc.gnu.org/
 description : |
     GNU C++ standard library and compiler
 upstreams   :
-    - https://ftp.gnu.org/gnu/gcc/gcc-13.2.0/gcc-13.2.0.tar.xz: e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da
+    - https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz:
+        hash: a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9
+        unpackdir: "gcc"
     - https://libisl.sourceforge.io/isl-0.24.tar.xz:
         hash: 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
         stripdirs: 1
-        unpackdir: "%(name)-%(version)/isl/"
+        unpackdir: "gcc/isl"
 builddeps   :
     - binary(bison)
     - binary(flex)
@@ -38,7 +40,7 @@ tuning      :
     - fortify: false
     - harden: false
     - nosemantic
-    - optimize: speed
+    # - optimize: speed
     - symbolic
 setup       : |
     %patch %(pkgdir)/perf/increase-vectorize-cost-model-to-cheap.patch
@@ -47,29 +49,31 @@ setup       : |
     %patch %(pkgdir)/serpent/0001-Install-libraries-into-lib-rather-than-lib64.patch
 
     mkdir build && cd build
-    ../configure %(options_configure) \
-        --disable-libmpx \
+    ../configure \
+        --build=x86_64-serpent-linux \
+        --host=x86_64-serpent-linux \
+        --prefix=/usr \
+        --libdir=%(libdir) \
+        --libexecdir=%(libdir) \
         --disable-libssp \
-        --disable-libunwind-exceptions \
-        --disable-libstdcxx-pch \
-        --disable-vtable-verify \
-        --enable-__cxa_atexit \
+        --enable-cet \
         --enable-checking=release \
-        --enable-clocale=gnu \
+        --enable-default-pie \
+        --enable-default-ssp \
         --enable-gnu-indirect-function \
-        --enable-gnu-unique-object \
-        --enable-initfini-array \
-        --enable-languages=c,c++,lto \
+        --enable-host-bind-now \
+        --enable-host-pie \
+        --enable-host-shared \
+        --enable-languages=c,c++,fortran \
         --enable-linker-build-id \
-        --enable-linux-futex \
-        --enable-lto \
         --enable-multilib \
         --enable-plugin \
         --enable-shared \
-        --enable-threads=posix \
+        --enable-threads=yes \
         --with-arch=%(march) \
         --with-arch_32=%(march) \
-        --with-build-config=bootstrap-lto \
+        --with-bugurl='https://github.com/serpent-os/recipes/issues' \
+        --with-build-config=bootstrap-O1 \
         --with-gcc-major-version-only \
         --with-isl \
         --with-linker-hash-style=gnu \
@@ -78,14 +82,14 @@ setup       : |
         --with-tune=%(mtune) \
         --with-tune_32=%(mtune)
 build       : |
-    %make -C build profiledbootstrap
+    %make -C build bootstrap2-lean
 install     : |
     %make_install -C build
 
     # bfd needs to be able to find the LTO plugin
     major_version=$(echo %(version) | cut -d. -f1)
     %install_dir %(installroot)/%(libdir)/bfd-plugins
-    ln -sf %(libdir)/gcc/gcc/%(build_platform)/${major_version}/liblto_plugin.so %(installroot)/%(libdir)/bfd-plugins/liblto_plugin.so
+    ln -srfv %(installroot)/%(libdir)/gcc/%(build_platform)/${major_version}/liblto_plugin.so %(installroot)/%(libdir)/bfd-plugins/liblto_plugin.so
 
     # gdb needs to autoload some files, maybe lldb piggy backs off this?
     %install_dir %(installroot)/%(datadir)/gdb/auto-load/%(libdir)
@@ -94,4 +98,136 @@ install     : |
     mv %(installroot)/%(libdir)32/libstdc++.so.*-gdb.py %(installroot)/%(datadir)/gdb/auto-load/%(libdir)32/.
 
     # not allowed to install these =)
-    rm %(installroot)%(datadir)/info/dir -v
+    rm -rv %(installroot)%(datadir)/info
+    rm -v %(installroot)/usr/lib*/*.la
+
+    # TODO: Remove once we can remove gcc-devel and gcc-32bit-devel from the index
+    mkdir %(installroot)/usr/share/tmp/
+    touch %(installroot)/usr/share/tmp/gcc{,-32bit}-devel
+packages    :
+    - "libgcc":
+        paths:
+            - /usr/lib/libgcc*.so*
+    - "libgcc-32bit":
+        paths:
+            - /usr/lib32/libgcc*.so*
+    - "libatomic":
+        paths:
+            - /usr/lib/libatomic*.so*
+    - "libatomic-32bit":
+        paths:
+            - /usr/lib32/libatomic*.so*
+    - "libquadmath":
+        paths:
+            - /usr/lib/libquadmath*.so*
+    - "libquadmath-32bit":
+        paths:
+            - /usr/lib32/libquadmath*.so*
+    - "libgomp":
+        paths:
+            - /usr/lib/libgomp*.so*
+    - "libgomp-32bit":
+        paths:
+            - /usr/lib32/libgomp*.so*
+    - "libstdc++":
+        paths:
+            - /usr/lib/lib*++*.so*
+            - /usr/share/gcc-*/python/libstdcxx/*
+            - /usr/share/gdb/auto-load/usr/lib
+    - "libstdc++-32bit":
+        paths:
+            - /usr/lib32/lib*++*.so*
+            - /usr/share/gdb/auto-load/usr/lib32
+    - "libgfortran":
+        paths:
+            - /usr/lib/*fortran*.so*
+    - "libgfortran-32bit":
+        paths:
+            - /usr/lib32/*fortran*.so*
+    - "gcc":
+        paths:
+            - /usr/lib/*.a
+            - /usr/lib/*.so
+            - /usr/lib/*.spec
+            - /usr/lib/libasan*
+            - /usr/lib/libitm*
+            - /usr/lib/libubsan*
+        rundeps:
+            - libgcc
+            - libatomic
+            - libquadmath
+            - libgomp
+            - libgfortran
+    - "gcc-32bit":
+        paths:
+            - /usr/lib32/*.a
+            - /usr/lib32/*.so
+            - /usr/lib32/*.spec
+            - /usr/lib32/libasan*
+            - /usr/lib32/libitm*
+            - /usr/lib32/libubsan*
+            - /usr/lib/gcc/*-serpent-linux/*/32/*.a
+            - /usr/lib/gcc/*-serpent-linux/*/32/*.o
+        rundeps:
+            - libgcc-32bit
+            - libatomic-32bit
+            - libquadmath-32bit
+            - libgomp-32bit
+            - libgfortran-32bit
+    - "g++":
+        paths:
+            - /usr/bin/*c++
+            - /usr/bin/*g++
+            - /usr/bin/cpp
+            - /usr/lib/gcc/*-serpent-linux/*/cc1plus
+            - /usr/lib/gcc/*-serpent-linux/*/g++-mapper-server
+            - /usr/lib/lib*++*.a
+            - /usr/lib/lib*++*.so
+            - /usr/include/c++
+            - /usr/share/locale/*/LC_MESSAGES/cpplib.mo
+            - /usr/share/man/*/cpp*
+            - /usr/share/man/*/g++*
+        rundeps:
+            - binary(gcc)
+            - libstdc++
+    - "g++-32bit":
+        paths:
+            - /usr/lib32/lib*++*.a
+            - /usr/lib32/lib*++*.so
+            - /usr/include/c++/*-serpent-linux/32/*
+        rundeps:
+            - g++
+            - libstdc++-32bit
+    - "gfortran":
+        paths:
+            - /usr/bin/*fortran*
+            - /usr/lib/*fortran*.a
+            - /usr/lib/*fortran*.so
+            - /usr/lib/*fortran*.spec
+            - /usr/lib/gcc/*-serpent-linux/*/f951
+            - /usr/lib/gcc/*-serpent-linux/*/finclude/*
+            - /usr/lib/gcc/*-serpent-linux/*/include/*Fortran*.h
+            - /usr/share/man/*/*fortran*
+        rundeps:
+            - binary(gcc)
+            - libgfortran
+    - "gfortran-32bit":
+        paths:
+            - /usr/lib32/*fortran*.a
+            - /usr/lib32/*fortran*.so
+            - /usr/lib32/*fortran*.spec
+            - /usr/lib/gcc/*-serpent-linux/*/32/finclude/*
+        rundeps:
+            - gfortran
+            - libgfortran-32bit
+    # TODO: Delete once moss can handle package removals
+    - "gcc-devel":
+        paths:
+            - /usr/share/tmp/gcc-devel
+        rundeps:
+            - binary(gcc)
+    - "gcc-32bit-devel":
+        paths:
+            - /usr/share/tmp/gcc-32bit-devel
+        rundeps:
+            - gcc-32bit
