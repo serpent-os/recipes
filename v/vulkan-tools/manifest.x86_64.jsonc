@@ -1,0 +1,40 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"vulkan-tools": {
+			"build-depends": [
+				"cmake(VulkanHeaders)",
+				"cmake(volk)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(x11)",
+				"pkgconfig(xcb)",
+				"pkgconfig(xrandr)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libxcb.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/vkcube",
+				"/usr/bin/vkcubepp",
+				"/usr/bin/vulkaninfo"
+			],
+			"name": "vulkan-tools",
+			"provides": [
+				"binary(vkcube)",
+				"binary(vkcubepp)",
+				"binary(vulkaninfo)"
+			]
+		}
+	},
+	"source-name": "vulkan-tools",
+	"source-release": "1",
+	"source-version": "1.3.290.0"
+}
