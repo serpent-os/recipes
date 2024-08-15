@@ -1,0 +1,51 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"spirv-llvm-translator": {
+			"build-depends": [
+				"cmake(LLVM)",
+				"cmake(SPIRV-Tools)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libLLVM.so.18.1(x86_64))",
+				"soname(libSPIRV-Tools.so(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/llvm-spirv",
+				"/usr/lib/libLLVMSPIRVLib.so.18.1"
+			],
+			"name": "spirv-llvm-translator",
+			"provides": [
+				"binary(llvm-spirv)",
+				"soname(libLLVMSPIRVLib.so.18.1(x86_64))"
+			]
+		},
+		"spirv-llvm-translator-devel": {
+			"build-depends": [
+				"cmake(LLVM)",
+				"cmake(SPIRV-Tools)"
+			],
+			"depends": [
+				"spirv-llvm-translator"
+			],
+			"files": [
+				"/usr/include/LLVMSPIRVLib/LLVMSPIRVExtensions.inc",
+				"/usr/include/LLVMSPIRVLib/LLVMSPIRVLib.h",
+				"/usr/include/LLVMSPIRVLib/LLVMSPIRVOpts.h",
+				"/usr/lib/libLLVMSPIRVLib.so",
+				"/usr/lib/pkgconfig/LLVMSPIRVLib.pc"
+			],
+			"name": "spirv-llvm-translator-devel",
+			"provides": [
+				"pkgconfig(LLVMSPIRVLib)"
+			]
+		}
+	},
+	"source-name": "spirv-llvm-translator",
+	"source-release": "1",
+	"source-version": "18.1.2"
+}
