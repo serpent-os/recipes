@@ -31,6 +31,8 @@
 				"/usr/bin/gdk-pixbuf-query-loaders",
 				"/usr/bin/gdk-pixbuf-thumbnailer",
 				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jpeg.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.so",
 				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tiff.so",
 				"/usr/lib/girepository-1.0/GdkPixbuf-2.0.typelib",
 				"/usr/lib/girepository-1.0/GdkPixdata-2.0.typelib",
@@ -49,6 +51,8 @@
 				"binary(gdk-pixbuf-thumbnailer)",
 				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
 				"soname(libpixbufloader-gif.so(x86_64))",
+				"soname(libpixbufloader-jpeg.so(x86_64))",
+				"soname(libpixbufloader-png.so(x86_64))",
 				"soname(libpixbufloader-tiff.so(x86_64))"
 			]
 		},
@@ -69,9 +73,6 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gmodule-no-export-2.0)",
 				"pkgconfig(gobject-2.0)",
-				"pkgconfig(libjpeg)",
-				"pkgconfig(libpng)",
-				"pkgconfig(libtiff-4)",
 				"pkgconfig(shared-mime-info)"
 			],
 			"files": [
@@ -98,6 +99,6 @@
 		}
 	},
 	"source-name": "gdk-pixbuf",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "2.42.12"
 }
