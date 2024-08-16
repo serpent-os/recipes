@@ -4,16 +4,14 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : appstream
-version     : '1.0.1'
-release     : 2
+version     : 1.0.3
+release     : 3
 homepage    : https://www.freedesktop.org/wiki/Distributions/AppStream/
 upstreams   :
-    - https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.1.tar.xz : fa4d5994e5c6f22e9b66cb0b52e8b5f5d96e7353ea5528b56436e0150829203b
+    - https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.3.tar.xz : 5ab6f6cf644e7875a9508593962e56bb430f4e59ae0bf03be6be7029deb6baa4
 summary     : Tools and libraries to work with AppStream metadata
 description : |
-    AppStream is a cross-distribution effort for enhancing the way we
-    interact with the software repositories provided by (Linux) distributions
-    by standardizing software component metadata.
+    AppStream is a cross-distribution effort for enhancing the way we interact with the software repositories provided by (Linux) distributions by standardizing software component metadata.
 license     :
     - LGPL-2.1-or-later
 builddeps   :
@@ -34,11 +32,13 @@ builddeps   :
     - pkgconfig(libzstd)
     - pkgconfig(xmlb)
     - pkgconfig(yaml-0.1)
-toolchain   : gnu
+environment : |
+    pushd AppStream-%(version)
+    export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
 setup       : |
-    sed -i '/missing-include-dirs/d' meson.build
     %meson -Dstemming=false -Dvapi=true -Dapidocs=false -Dinstall-docs=false --sysconfdir=%(datadir)/appstream
 build       : |
     %meson_build
 install     : |
     %meson_install
+toolchain   : gnu
