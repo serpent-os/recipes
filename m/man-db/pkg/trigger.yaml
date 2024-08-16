@@ -1,6 +1,6 @@
 name: mandb
 description: |
-    Rebuild the man page database
+    Rebuild manual pages database
 
 handlers:
     mandb:
@@ -8,6 +8,6 @@ handlers:
         args: ["-q"]
 
 paths:
-    "/usr/share/man/man*/*" :
+    "/usr/share/man/**" :
         handlers:
             - mandb

@@ -16,6 +16,7 @@
 				"slibtool"
 			],
 			"depends": [
+				"binary(groff)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgdbm.so.6(x86_64))",
@@ -32,9 +33,9 @@
 				"/usr/bin/mandb",
 				"/usr/bin/manpath",
 				"/usr/bin/whatis",
-				"/usr/lib/man-db/libman-2.12.0.so",
+				"/usr/lib/man-db/libman-2.12.1.so",
 				"/usr/lib/man-db/libman.so",
-				"/usr/lib/man-db/libmandb-2.12.0.so",
+				"/usr/lib/man-db/libmandb-2.12.1.so",
 				"/usr/lib/man-db/libmandb.so",
 				"/usr/lib/man-db/man-db/globbing",
 				"/usr/lib/man-db/man-db/manconv",
@@ -135,21 +136,21 @@
 			],
 			"name": "man-db",
 			"provides": [
-				"sysbinary(accessdb)",
 				"binary(apropos)",
 				"binary(catman)",
 				"binary(lexgrog)",
-				"soname(libman-2.12.0.so(x86_64))",
-				"soname(libmandb-2.12.0.so(x86_64))",
 				"binary(man)",
 				"binary(man-recode)",
 				"binary(mandb)",
 				"binary(manpath)",
-				"binary(whatis)"
+				"binary(whatis)",
+				"soname(libman-2.12.1.so(x86_64))",
+				"soname(libmandb-2.12.1.so(x86_64))",
+				"sysbinary(accessdb)"
 			]
 		}
 	},
 	"source-name": "man-db",
-	"source-release": "4",
-	"source-version": "2.12.0"
+	"source-release": "5",
+	"source-version": "2.12.1"
 }
