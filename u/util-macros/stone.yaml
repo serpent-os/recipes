@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : util-macros
-version     : 1.20.0
-release     : 1
+version     : 1.20.1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/xorg/util/macros
 upstreams   :
-    - https://www.x.org/pub/individual/util/util-macros-1.20.0.tar.xz : 0b86b262dbe971edb4ff233bc370dfad9f241d09f078a3f6d5b7f4b8ea4430db
+    - https://www.x.org/pub/individual/util/util-macros-1.20.1.tar.xz : 0b308f62dce78ac0f4d9de6888234bf170f276b64ac7c96e99779bb4319bcef5
 summary     : GNU autoconf macros shared across X.Org projects
 description : |
     This is a set of autoconf macros used by the configure.ac scripts in
