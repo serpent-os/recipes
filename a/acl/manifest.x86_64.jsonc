@@ -1,8 +1,11 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"acl": {
+			"build-depends": [
+				"pkgconfig(libattr)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libattr.so.1(x86_64))",
@@ -31,6 +34,28 @@
 				"/usr/share/man/man1/chacl.1",
 				"/usr/share/man/man1/getfacl.1",
 				"/usr/share/man/man1/setfacl.1",
+				"/usr/share/man/man5/acl.5"
+			],
+			"name": "acl",
+			"provides": [
+				"binary(chacl)",
+				"binary(getfacl)",
+				"binary(setfacl)",
+				"soname(libacl.so.1(x86_64))"
+			]
+		},
+		"acl-devel": {
+			"build-depends": [
+				"pkgconfig(libattr)"
+			],
+			"depends": [
+				"acl"
+			],
+			"files": [
+				"/usr/include/acl/libacl.h",
+				"/usr/include/sys/acl.h",
+				"/usr/lib/libacl.so",
+				"/usr/lib/pkgconfig/libacl.pc",
 				"/usr/share/man/man3/acl_add_perm.3",
 				"/usr/share/man/man3/acl_calc_mask.3",
 				"/usr/share/man/man3/acl_check.3",
@@ -69,23 +94,7 @@
 				"/usr/share/man/man3/acl_size.3",
 				"/usr/share/man/man3/acl_to_any_text.3",
 				"/usr/share/man/man3/acl_to_text.3",
-				"/usr/share/man/man3/acl_valid.3",
-				"/usr/share/man/man5/acl.5"
-			],
-			"name": "acl",
-			"provides": [
-				"binary(chacl)",
-				"binary(getfacl)",
-				"soname(libacl.so.1(x86_64))",
-				"binary(setfacl)"
-			]
-		},
-		"acl-devel": {
-			"files": [
-				"/usr/include/acl/libacl.h",
-				"/usr/include/sys/acl.h",
-				"/usr/lib/libacl.so",
-				"/usr/lib/pkgconfig/libacl.pc"
+				"/usr/share/man/man3/acl_valid.3"
 			],
 			"name": "acl-devel",
 			"provides": [
@@ -95,5 +104,5 @@
 	},
 	"source-name": "acl",
 	"source-release": "2",
-	"source-version": "2.3.1"
+	"source-version": "2.3.2"
 }
