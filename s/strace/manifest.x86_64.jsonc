@@ -4,8 +4,6 @@
 	"packages": {
 		"strace": {
 			"build-depends": [
-				"binutils",
-				"gcc-devel",
 				"pkgconfig(libdw)"
 			],
 			"depends": [
@@ -27,6 +25,6 @@
 		}
 	},
 	"source-name": "strace",
-	"source-release": "7",
-	"source-version": "6.7"
+	"source-release": "8",
+	"source-version": "6.10"
 }
