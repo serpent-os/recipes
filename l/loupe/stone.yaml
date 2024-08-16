@@ -5,7 +5,7 @@
 #
 name        : loupe
 version     : 46.2
-release     : 2
+release     : 3
 homepage    : https://apps.gnome.org/Loupe/
 upstreams   :
     - https://download.gnome.org/sources/loupe/46/loupe-46.2.tar.xz : 3a15a3f9cf8f889a7e642e3902299f79218a9001c08c56374e05914ffef5ab30
