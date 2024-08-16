@@ -8,13 +8,13 @@
 			],
 			"files": [
 				"/usr/lib/libpcre2-16.so.0",
-				"/usr/lib/libpcre2-16.so.0.11.2",
+				"/usr/lib/libpcre2-16.so.0.13.0",
 				"/usr/lib/libpcre2-32.so.0",
-				"/usr/lib/libpcre2-32.so.0.11.2",
+				"/usr/lib/libpcre2-32.so.0.13.0",
 				"/usr/lib/libpcre2-8.so.0",
-				"/usr/lib/libpcre2-8.so.0.11.2",
+				"/usr/lib/libpcre2-8.so.0.13.0",
 				"/usr/lib/libpcre2-posix.so.3",
-				"/usr/lib/libpcre2-posix.so.3.0.4"
+				"/usr/lib/libpcre2-posix.so.3.0.5"
 			],
 			"name": "pcre2",
 			"provides": [
@@ -26,27 +26,36 @@
 		},
 		"pcre2-32bit": {
 			"depends": [
+				"pcre2",
 				"soname(libc.so.6(x86))"
 			],
 			"files": [
 				"/usr/lib32/libpcre2-16.so.0",
-				"/usr/lib32/libpcre2-16.so.0.11.2",
+				"/usr/lib32/libpcre2-16.so.0.13.0",
 				"/usr/lib32/libpcre2-32.so.0",
-				"/usr/lib32/libpcre2-32.so.0.11.2",
+				"/usr/lib32/libpcre2-32.so.0.13.0",
 				"/usr/lib32/libpcre2-8.so.0",
-				"/usr/lib32/libpcre2-8.so.0.11.2",
+				"/usr/lib32/libpcre2-8.so.0.13.0",
 				"/usr/lib32/libpcre2-posix.so.3",
-				"/usr/lib32/libpcre2-posix.so.3.0.4"
+				"/usr/lib32/libpcre2-posix.so.3.0.5"
 			],
 			"name": "pcre2-32bit",
 			"provides": [
+				"soname(libpcre2-16.so.0(386))",
 				"soname(libpcre2-16.so.0(x86))",
+				"soname(libpcre2-32.so.0(386))",
 				"soname(libpcre2-32.so.0(x86))",
+				"soname(libpcre2-8.so.0(386))",
 				"soname(libpcre2-8.so.0(x86))",
+				"soname(libpcre2-posix.so.3(386))",
 				"soname(libpcre2-posix.so.3(x86))"
 			]
 		},
 		"pcre2-32bit-devel": {
+			"depends": [
+				"pcre2-32bit",
+				"pcre2-devel"
+			],
 			"files": [
 				"/usr/lib32/libpcre2-16.so",
 				"/usr/lib32/libpcre2-32.so",
@@ -66,6 +75,9 @@
 			]
 		},
 		"pcre2-devel": {
+			"depends": [
+				"pcre2"
+			],
 			"files": [
 				"/usr/bin/pcre2-config",
 				"/usr/include/pcre2.h",
@@ -82,15 +94,15 @@
 			],
 			"name": "pcre2-devel",
 			"provides": [
+				"binary(pcre2-config)",
 				"pkgconfig(libpcre2-16)",
 				"pkgconfig(libpcre2-32)",
 				"pkgconfig(libpcre2-8)",
-				"pkgconfig(libpcre2-posix)",
-				"binary(pcre2-config)"
+				"pkgconfig(libpcre2-posix)"
 			]
 		}
 	},
 	"source-name": "pcre2",
-	"source-release": "3",
-	"source-version": "10.42"
+	"source-release": "4",
+	"source-version": "10.44"
 }
