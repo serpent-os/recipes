@@ -5,6 +5,7 @@
 		"p11-kit": {
 			"build-depends": [
 				"binary(gettext)",
+				"pkgconfig(bash-completion)",
 				"pkgconfig(libffi)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(libtasn1)"
@@ -25,6 +26,8 @@
 				"/usr/lib/systemd/user/p11-kit-server.service",
 				"/usr/lib/systemd/user/p11-kit-server.socket",
 				"/usr/lib/tmpfiles.d/p11-kit.conf",
+				"/usr/share/bash-completion/completions/p11-kit",
+				"/usr/share/bash-completion/completions/trust",
 				"/usr/share/defaults/pkcs11/pkcs11.conf.example",
 				"/usr/share/locale/ar/LC_MESSAGES/p11-kit.mo",
 				"/usr/share/locale/as/LC_MESSAGES/p11-kit.mo",
@@ -108,9 +111,13 @@
 		"p11-kit-devel": {
 			"build-depends": [
 				"binary(gettext)",
+				"pkgconfig(bash-completion)",
 				"pkgconfig(libffi)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(libtasn1)"
+			],
+			"depends": [
+				"p11-kit"
 			],
 			"files": [
 				"/usr/include/p11-kit-1/p11-kit/deprecated.h",
@@ -121,6 +128,7 @@
 				"/usr/include/p11-kit-1/p11-kit/pkcs11x.h",
 				"/usr/include/p11-kit-1/p11-kit/remote.h",
 				"/usr/include/p11-kit-1/p11-kit/uri.h",
+				"/usr/include/p11-kit-1/p11-kit/version.h",
 				"/usr/lib/libp11-kit.so",
 				"/usr/lib/pkgconfig/p11-kit-1.pc"
 			],
@@ -132,6 +140,7 @@
 		"p11-kit-libs": {
 			"build-depends": [
 				"binary(gettext)",
+				"pkgconfig(bash-completion)",
 				"pkgconfig(libffi)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(libtasn1)"
@@ -144,7 +153,7 @@
 			],
 			"files": [
 				"/usr/lib/libp11-kit.so.0",
-				"/usr/lib/libp11-kit.so.0.3.1",
+				"/usr/lib/libp11-kit.so.0.4.1",
 				"/usr/lib/p11-kit-proxy.so",
 				"/usr/lib/pkcs11/p11-kit-client.so",
 				"/usr/lib/pkcs11/p11-kit-trust.so"
@@ -158,6 +167,6 @@
 		}
 	},
 	"source-name": "p11-kit",
-	"source-release": "2",
-	"source-version": "0.25.3"
+	"source-release": "3",
+	"source-version": "0.25.5"
 }
