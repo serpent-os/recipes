@@ -4,12 +4,13 @@
 	"packages": {
 		"upower": {
 			"build-depends": [
+				"binary(msgfmt)",
+				"binary(xmlto)",
 				"binary(xsltproc)",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
-				"pkgconfig(systemd)",
-				"xmlto"
+				"pkgconfig(systemd)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -43,30 +44,37 @@
 				"/usr/share/dbus-1/interfaces/org.freedesktop.UPower.xml",
 				"/usr/share/dbus-1/system-services/org.freedesktop.UPower.service",
 				"/usr/share/dbus-1/system.d/org.freedesktop.UPower.conf",
+				"/usr/share/defaults/etc/UPower/UPower.conf",
 				"/usr/share/gir-1.0/UPowerGlib-1.0.gir",
 				"/usr/share/installed-tests/upower/upower-integration.test",
+				"/usr/share/locale/fr/LC_MESSAGES/upower.mo",
+				"/usr/share/locale/it/LC_MESSAGES/upower.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/upower.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/upower.mo",
 				"/usr/share/man/man1/upower.1",
 				"/usr/share/man/man7/UPower.7",
 				"/usr/share/man/man8/upowerd.8"
 			],
 			"name": "upower",
 			"provides": [
-				"soname(libupower-glib.so.3(x86_64))",
-				"binary(upower)"
+				"binary(upower)",
+				"soname(libupower-glib.so.3(x86_64))"
 			]
 		},
 		"upower-devel": {
 			"build-depends": [
+				"binary(msgfmt)",
+				"binary(xmlto)",
 				"binary(xsltproc)",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
-				"pkgconfig(systemd)",
-				"xmlto"
+				"pkgconfig(systemd)"
 			],
 			"depends": [
 				"pkgconfig(glib-2.0)",
-				"pkgconfig(gobject-2.0)"
+				"pkgconfig(gobject-2.0)",
+				"upower"
 			],
 			"files": [
 				"/usr/include/libupower-glib/up-autocleanups.h",
@@ -87,6 +95,6 @@
 		}
 	},
 	"source-name": "upower",
-	"source-release": "1",
-	"source-version": "1.90.2"
+	"source-release": "2",
+	"source-version": "1.90.4"
 }
