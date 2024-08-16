@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : fribidi
-version     : '1.0.13'
-release     : 2
+version     : 1.0.15
+release     : 3
 homepage    : https://github.com/fribidi/fribidi
 upstreams   :
-    - https://github.com/fribidi/fribidi/releases/download/v1.0.13/fribidi-1.0.13.tar.xz : 7fa16c80c81bd622f7b198d31356da139cc318a63fc7761217af4130903f54a2
+    - https://github.com/fribidi/fribidi/releases/download/v1.0.15/fribidi-1.0.15.tar.xz : 0bbc7ff633bfa208ae32d7e369cf5a7d20d5d2557a0b067c9aa98bcbf9967587
 summary     : The Free Implementation of the Unicode Bidirectional Algorithm.
 description : |
     One of the missing links stopping the penetration of free software in Middle East is the lack of support for the Arabic and Hebrew alphabets. In order to have proper Arabic and Hebrew support, the bidi algorithm needs to be implemented. It is our hope that this library will stimulate more free software in the Middle Eastern countries.

@@ -17,6 +17,7 @@
 		},
 		"fribidi-devel": {
 			"depends": [
+				"fribidi",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libfribidi.so.0(x86_64))"
@@ -81,12 +82,12 @@
 			],
 			"name": "fribidi-devel",
 			"provides": [
-				"pkgconfig(fribidi)",
-				"binary(fribidi)"
+				"binary(fribidi)",
+				"pkgconfig(fribidi)"
 			]
 		}
 	},
 	"source-name": "fribidi",
-	"source-release": "2",
-	"source-version": "1.0.13"
+	"source-release": "3",
+	"source-version": "1.0.15"
 }
