@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : perf
-version     : '6.2.12'
-release     : 9
+version     : "6.10.0"
+release     : 10
 summary     : Linux profiling with performance counters
 license     : GPL-2.0-only
 homepage    : https://perf.wiki.kernel.org/
 description : |
     Linux profiling with performance counters.
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.12.tar.xz: c7e146b52737adfa4c724bfa41bf4721c5ee3cf220c074fbc60eb3ea62b0ccc8
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz: 774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226
 builddeps   :
     - binary(bison)
     - binary(flex)
@@ -30,7 +30,8 @@ build       : |
         perfexecdir=lib/perf \
         CC=clang \
         LLVM=1 \
-        WERROR=0
+        WERROR=0 \
+        NO_LIBTRACEEVENT=1
 install     : |
     %make_install -C tools/perf \
         prefix=/usr \
@@ -38,7 +39,7 @@ install     : |
         perfexecdir=lib/perf \
         CC=clang \
         LLVM=1 \
-        WERROR=0
+        WERROR=0 NO_LIBTRACEEVENT=1
 
     %install_file %(installroot)/etc/bash_completion.d/perf %(installroot)/%(completionsdir)/perf
     rm %(installroot)/etc/bash_completion.d/perf
