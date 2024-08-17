@@ -5,12 +5,12 @@
 #
 name        : cosmic-workspaces
 version     : "1.0.0-alpha.1"
-release     : 4
+release     : 5
 summary     : Cosmic Desktop Workspaces
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-workspaces
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-workspaces-epoch.git : c1acf0c1aa819fc279193dd61e04ec132f318b6c
+    - git|https://github.com/pop-os/cosmic-workspaces-epoch.git : 70d6c415a1cd931f575c3e18274c3fecc7cc9a03
 description : |
     Cosmic Desktop Workspaces
 builddeps   :
