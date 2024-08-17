@@ -20,12 +20,15 @@
 			"name": "libevdev",
 			"provides": [
 				"binary(libevdev-tweak-device)",
-				"soname(libevdev.so.2(x86_64))",
 				"binary(mouse-dpi-tool)",
-				"binary(touchpad-edge-detector)"
+				"binary(touchpad-edge-detector)",
+				"soname(libevdev.so.2(x86_64))"
 			]
 		},
 		"libevdev-devel": {
+			"depends": [
+				"libevdev"
+			],
 			"files": [
 				"/usr/include/libevdev-1.0/libevdev/libevdev-uinput.h",
 				"/usr/include/libevdev-1.0/libevdev/libevdev.h",
@@ -40,6 +43,6 @@
 		}
 	},
 	"source-name": "libevdev",
-	"source-release": "2",
-	"source-version": "1.13.1"
+	"source-release": "3",
+	"source-version": "1.13.2"
 }
