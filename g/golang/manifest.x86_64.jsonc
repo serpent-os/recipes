@@ -10256,8 +10256,7 @@
 				"/usr/lib/golang/test/winbatch.go",
 				"/usr/lib/golang/test/writebarrier.go",
 				"/usr/lib/golang/test/zerodivide.go",
-				"/usr/lib/golang/test/zerosize.go",
-				"/usr/share/defaults/etc/profile.d/golang-GOROOT.sh"
+				"/usr/lib/golang/test/zerosize.go"
 			],
 			"name": "golang",
 			"provides": [
@@ -10268,6 +10267,6 @@
 		}
 	},
 	"source-name": "golang",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "1.22.6"
 }
