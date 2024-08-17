@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mesa
-version     : 24.0.2
-release     : 14
+version     : 24.2.0
+release     : 15
 homepage    : https://mesa3d.org/
 upstreams   :
-    - https://archive.mesa3d.org/mesa-24.0.2.tar.xz : 94e28a8edad06d8ed2b83eb53f253b9eb5aa62c3080f939702e1b3039b56c9e8
+    - https://archive.mesa3d.org/mesa-24.2.0.tar.xz : c02bb72cea290f78b11895a0c95c7c92394f180d7ff66d4a762ec6950a58addf
 summary     : Mesa 3D graphics library
 description : |
     The Mesa project began as an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics. Over the years the project has grown to implement more graphics APIs, including OpenGL ES, OpenCL, OpenMAX, VDPAU, VA-API, Vulkan and EGL. A variety of device drivers allows the Mesa libraries to be used in many different environments ranging from software emulation to complete hardware acceleration for modern GPUs. Mesa ties into several other open-source projects: the Direct Rendering Infrastructure, X.org, and Wayland to provide OpenGL support on Linux, FreeBSD, and other operating systems.
@@ -19,16 +19,24 @@ packages    :
     - "%(name)":
         paths:
             # Fix splitting for vulkan `.so` files
+            - /usr/lib/libgallium*.so
             - /usr/lib/libVk*.so
             - /usr/lib/libvulkan_*.so
+networking  : true
 builddeps   :
+    - binary(bindgen)
     - binary(bison)
+    - binary(cbindgen)
     - binary(flex)
     - binary(python3)
-    - cmake(glslang)
+    - binary(rustc)
+    - cmake(Clang)
     - cmake(LLVM)
+    - cmake(SPIRV-Tools)
+    - cmake(glslang)
+    - pkgconfig(LLVMSPIRVLib)
     - pkgconfig(expat)
-    - pkgconfig(glproto)
+    - pkgconfig(libclc)
     - pkgconfig(libdrm)
     - pkgconfig(libelf)
     - pkgconfig(libglvnd)
@@ -36,36 +44,44 @@ builddeps   :
     - pkgconfig(libunwind)
     - pkgconfig(libva)
     - pkgconfig(libzstd)
-    - pkgconfig(wayland-egl-backend)
+    - pkgconfig(vdpau)
     - pkgconfig(wayland-protocols)
     - pkgconfig(x11)
     - pkgconfig(xcb)
+    - pkgconfig(xcb-keysyms)
     - pkgconfig(xext)
     - pkgconfig(xfixes)
     - pkgconfig(xrandr)
     - pkgconfig(xshmfence)
     - pkgconfig(xxf86vm)
     - pkgconfig(zlib)
+    - lm_sensors-devel
     - python-mako
+    - python-ply
+    - python-pyyaml
 tuning      :
     - symbolic: false
     - optimize: speed
     - lto: thin
 setup       : |
-    # TODO: Add vdpau support
-    #        intel ray-tracing support
     %meson \
-        -Dosmesa=true \
-        -Dvideo-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
-        -Dglvnd=true \
+        -Degl=enabled \
+        -Dgallium-drivers=crocus,i915,iris,llvmpipe,nouveau,r300,r600,radeonsi,softpipe,svga,virgl,zink \
+        -Dgallium-extra-hud=true \
+        -Dgallium-nine=true \
+        -Dgallium-va=enabled \
+        -Dgallium-vdpau=enabled \
+        -Dgallium-xa=enabled \
+        -Dgbm=enabled \
+        -Dgles1=disabled \
+        -Dglvnd=enabled \
         -Dllvm=enabled \
-        -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
-        -Dshared-llvm=enabled \
         -Dosmesa=true \
         -Dplatforms=x11,wayland \
-        -Dvulkan-drivers=amd,intel,intel_hasvk,swrast,virtio \
+        -Dshared-llvm=enabled \
+        -Dvideo-codecs=all \
+        -Dvulkan-drivers=amd,intel,intel_hasvk,nouveau,swrast,virtio \
         -Dvulkan-layers=device-select,overlay
-
 build       : |
     %meson_build
 install     : |
