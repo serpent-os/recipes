@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ppp
-version     : 2.4.8
-release     : 1
+version     : 2.5.0
+release     : 2
 homepage    : https://ppp.samba.org/
 upstreams   :
-    - https://download.samba.org/pub/ppp/ppp-2.4.8.tar.gz : f6bf89beae26b2943dff8f1003533d6a5a4909a0fa6edfbec44fe039bbe61bc6
+    - https://download.samba.org/pub/ppp/ppp-2.5.0.tar.gz : 5cae0e8075f8a1755f16ca290eb44e6b3545d3f292af4da65ecffe897de636ff
 summary     : Point-to-Point Protocol (PPP)
 description : |
     ppp (Paul's PPP Package) is an open source package which implements the Point-to-Point Protocol (PPP) on Linux and Solaris systems.
@@ -16,12 +16,20 @@ license     :
     - BSD-3-Clause
     - GPL-2.0-or-later
 builddeps   :
-    - binary(strip) # FIXME: Let us doing the stripping
+    - pkgconfig(libpcap)
+    - pkgconfig(libsystemd)
     - pkgconfig(libxcrypt)
     - pkgconfig(openssl)
+    - pkgconfig(pam)
 setup       : |
-    %configure
+    %patch %(pkgdir)/stateless.patch
+    %configure --enable-systemd
 build       : |
     %make
 install     : |
-    %make_install DESTDIR=%(installroot)/usr
+    %make_install
+
+    %tmpfiles '# Create neccessary runtime directories'
+    %tmpfiles 'd /etc/ppp 0755 root root -'
+    %tmpfiles 'd /run/pppd/lock 0700 root root -'
+    %tmpfiles 'd /var/log/ppp 0700 root root -'
