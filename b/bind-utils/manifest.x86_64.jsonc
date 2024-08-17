@@ -59,19 +59,19 @@
 				"binary(delv)",
 				"binary(dig)",
 				"binary(host)",
+				"binary(nslookup)",
+				"binary(nsupdate)",
 				"soname(libbind9-9.18.21.so(x86_64))",
 				"soname(libdns-9.18.21.so(x86_64))",
 				"soname(libirs-9.18.21.so(x86_64))",
 				"soname(libisc-9.18.21.so(x86_64))",
 				"soname(libisccc-9.18.21.so(x86_64))",
 				"soname(libisccfg-9.18.21.so(x86_64))",
-				"soname(libns-9.18.21.so(x86_64))",
-				"binary(nslookup)",
-				"binary(nsupdate)"
+				"soname(libns-9.18.21.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "bind-utils",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "9.18.21"
 }
