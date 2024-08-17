@@ -4,8 +4,8 @@
 	"packages": {
 		"iproute2": {
 			"build-depends": [
+				"binary(bison)",
 				"binutils",
-				"bison",
 				"flex-devel",
 				"gcc-devel"
 			],
@@ -35,15 +35,15 @@
 				"/usr/sbin/tc",
 				"/usr/share/bash-completion/completions/devlink",
 				"/usr/share/bash-completion/completions/tc",
-				"/usr/share/defaults/iproute2/bpf_pinning",
-				"/usr/share/defaults/iproute2/ematch_map",
-				"/usr/share/defaults/iproute2/group",
-				"/usr/share/defaults/iproute2/nl_protos",
-				"/usr/share/defaults/iproute2/rt_dsfield",
-				"/usr/share/defaults/iproute2/rt_protos",
-				"/usr/share/defaults/iproute2/rt_realms",
-				"/usr/share/defaults/iproute2/rt_scopes",
-				"/usr/share/defaults/iproute2/rt_tables",
+				"/usr/share/iproute2/bpf_pinning",
+				"/usr/share/iproute2/ematch_map",
+				"/usr/share/iproute2/group",
+				"/usr/share/iproute2/nl_protos",
+				"/usr/share/iproute2/rt_dsfield",
+				"/usr/share/iproute2/rt_protos",
+				"/usr/share/iproute2/rt_realms",
+				"/usr/share/iproute2/rt_scopes",
+				"/usr/share/iproute2/rt_tables",
 				"/usr/share/man/man7/tc-hfsc.7",
 				"/usr/share/man/man8/arpd.8",
 				"/usr/share/man/man8/bridge.8",
@@ -55,6 +55,7 @@
 				"/usr/share/man/man8/dcb-ets.8",
 				"/usr/share/man/man8/dcb-maxrate.8",
 				"/usr/share/man/man8/dcb-pfc.8",
+				"/usr/share/man/man8/dcb-rewr.8",
 				"/usr/share/man/man8/dcb.8",
 				"/usr/share/man/man8/devlink-dev.8",
 				"/usr/share/man/man8/devlink-dpipe.8",
@@ -115,8 +116,6 @@
 				"/usr/share/man/man8/tc-bfifo.8",
 				"/usr/share/man/man8/tc-bpf.8",
 				"/usr/share/man/man8/tc-cake.8",
-				"/usr/share/man/man8/tc-cbq-details.8",
-				"/usr/share/man/man8/tc-cbq.8",
 				"/usr/share/man/man8/tc-cbs.8",
 				"/usr/share/man/man8/tc-cgroup.8",
 				"/usr/share/man/man8/tc-choke.8",
@@ -135,6 +134,7 @@
 				"/usr/share/man/man8/tc-fq_codel.8",
 				"/usr/share/man/man8/tc-fq_pie.8",
 				"/usr/share/man/man8/tc-fw.8",
+				"/usr/share/man/man8/tc-gact.8",
 				"/usr/share/man/man8/tc-gate.8",
 				"/usr/share/man/man8/tc-hfsc.8",
 				"/usr/share/man/man8/tc-htb.8",
@@ -163,11 +163,9 @@
 				"/usr/share/man/man8/tc-stab.8",
 				"/usr/share/man/man8/tc-taprio.8",
 				"/usr/share/man/man8/tc-tbf.8",
-				"/usr/share/man/man8/tc-tcindex.8",
 				"/usr/share/man/man8/tc-tunnel_key.8",
 				"/usr/share/man/man8/tc-u32.8",
 				"/usr/share/man/man8/tc-vlan.8",
-				"/usr/share/man/man8/tc-xt.8",
 				"/usr/share/man/man8/tc.8",
 				"/usr/share/man/man8/tipc-bearer.8",
 				"/usr/share/man/man8/tipc-link.8",
@@ -200,10 +198,13 @@
 		},
 		"iproute2-devel": {
 			"build-depends": [
+				"binary(bison)",
 				"binutils",
-				"bison",
 				"flex-devel",
 				"gcc-devel"
+			],
+			"depends": [
+				"iproute2"
 			],
 			"files": [
 				"/usr/include/iproute2/bpf_elf.h",
@@ -213,6 +214,6 @@
 		}
 	},
 	"source-name": "iproute2",
-	"source-release": "2",
-	"source-version": "6.2.0"
+	"source-release": "3",
+	"source-version": "6.10.0"
 }
