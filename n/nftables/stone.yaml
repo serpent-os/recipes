@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nftables
-version     : 1.0.7
-release     : 2
+version     : 1.1.0
+release     : 3
 homepage    : https://www.netfilter.org/projects/nftables/
 upstreams   :
-    - https://netfilter.org/pub/nftables/nftables-1.0.7.tar.xz : c12ac941fff9adaedf17367d5ce213789b98a0d314277bc22b3d71e10891f412
+    - https://netfilter.org/pub/nftables/nftables-1.1.0.tar.xz : ef3373294886c5b607ee7be82c56a25bc04e75f802f8e8adcd55aac91eb0aa24
 summary     : Netfilter nf_tables user library
 description : |
     Netfilter nf_tables user library
@@ -23,13 +23,19 @@ builddeps   :
     - pkgconfig(readline)
 setup       : |
     %configure --disable-static \
-               --sysconfdir=%(vendordir) \
+               --sysconfdir=%(vendordir)/etc/ \
                --with-json \
                --with-cli=readline
 build       : |
     %make
+
+    pushd py
+    %pyproject_build
 install     : |
     %make_install
+
+    pushd py
+    %pyproject_install
 tune        :
     - lto
     - optimize: speed
