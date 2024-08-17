@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : networkmanager
-version     : 1.44.2
-release     : 3
+version     : 1.48.8
+release     : 4
 homepage    : https://wiki.gnome.org/Projects/NetworkManager
 upstreams   :
-    - https://download.gnome.org/sources/NetworkManager/1.44/NetworkManager-1.44.2.tar.xz : 4b58bf3ac57e2cefb5652efd0945eb0b4bc36a63d92a61ab471d8bb2c9a420e1
+    - https://download.gnome.org/sources/NetworkManager/1.48/NetworkManager-1.48.8.tar.xz : 6200eac8f1d3fe6a3ea1f2c4158b3c95b3b9f91e74cd704e97b0b051b5a54878
 summary     : NetworkManager — network management daemon
 description : |
     NetworkManager attempts to keep an active network connection available at all times.  The point of NetworkManager is to make networking configuration and setup as painless and automatic as possible.  NetworkManager is intended to replace default route, replace other routes, set IP addresses, and in general configure networking as NM sees fit (with the possibility of manual override as necessary).  In effect, the goal of NetworkManager is to make networking Just Work with a minimum of user hassle, but still allow customization and a high level of manual network control.  If you have special needs, we'd like to hear about them, but understand that NetworkManager is not intended for every use-case.
@@ -49,6 +49,9 @@ packages    :
     - "%(name)-devel":
         paths:
             - /usr/share/vala/vapi
+environment : |
+    # gcc 14 changes, no upstream issue found
+    export CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types"
 setup       : |
     %meson \
         -Dselinux=false \
