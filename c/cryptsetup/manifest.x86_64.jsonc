@@ -70,6 +70,7 @@
 				"pkgconfig(uuid)"
 			],
 			"depends": [
+				"cryptsetup",
 				"pkgconfig(blkid)",
 				"pkgconfig(devmapper)",
 				"pkgconfig(json-c)",
@@ -88,6 +89,6 @@
 		}
 	},
 	"source-name": "cryptsetup",
-	"source-release": "2",
-	"source-version": "2.7.0"
+	"source-release": "3",
+	"source-version": "2.7.4"
 }
