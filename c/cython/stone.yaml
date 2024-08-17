@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cython
+version     : 3.0.11
+release     : 1
+homepage    : https://cython.org/
+upstreams   :
+    - https://pypi.debian.net/Cython/cython-3.0.11.tar.gz: 7146dd2af8682b4ca61331851e6aebce9fe5158e75300343f80c07ca80b1faff
+summary     : C-Extensions for Python
+description : |
+    C-Extensions for Python
+license     : Apache-2.0
+builddeps   :
+    - pkgconfig(python3)
+build       : |
+    %python_setup
+install     : |
+    %python_install
+packages    :
+    - "%(name)":
+        rundeps:
+            - pkgconfig(python3)
