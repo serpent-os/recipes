@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libvdpau": {
+			"build-depends": [
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libvdpau.so.1",
+				"/usr/lib/libvdpau.so.1.0.0",
+				"/usr/lib/vdpau/libvdpau_trace.so",
+				"/usr/lib/vdpau/libvdpau_trace.so.1",
+				"/usr/lib/vdpau/libvdpau_trace.so.1.0.0"
+			],
+			"name": "libvdpau",
+			"provides": [
+				"soname(libvdpau.so.1(x86_64))",
+				"soname(libvdpau_trace.so.1(x86_64))"
+			]
+		},
+		"libvdpau-devel": {
+			"build-depends": [
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"libvdpau"
+			],
+			"files": [
+				"/usr/include/vdpau/vdpau.h",
+				"/usr/include/vdpau/vdpau_x11.h",
+				"/usr/lib/libvdpau.so",
+				"/usr/lib/pkgconfig/vdpau.pc"
+			],
+			"name": "libvdpau-devel",
+			"provides": [
+				"pkgconfig(vdpau)"
+			]
+		}
+	},
+	"source-name": "libvdpau",
+	"source-release": "1",
+	"source-version": "1.5"
+}
