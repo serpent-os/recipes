@@ -5,12 +5,12 @@
 #
 name        : cosmic-greeter
 version     : "1.0.0-alpha.1"
-release     : 5
+release     : 6
 summary     : Cosmic Desktop Greeter
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-greeter
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-greeter.git : cc744b0b9a6065a97808744bf63433c439e4186c
+    - git|https://github.com/pop-os/cosmic-greeter.git : 3679ee55614f7c37f8a2eb9b52900024c186a576
 description : |
     Cosmic Desktop Greeter
 builddeps   :
