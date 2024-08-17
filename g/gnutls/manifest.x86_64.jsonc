@@ -106,11 +106,11 @@
 				"binary(gnutls-cli)",
 				"binary(gnutls-cli-debug)",
 				"binary(gnutls-serv)",
-				"soname(libgnutls.so.30(x86_64))",
-				"soname(libgnutlsxx.so.30(x86_64))",
 				"binary(ocsptool)",
 				"binary(p11tool)",
-				"binary(psktool)"
+				"binary(psktool)",
+				"soname(libgnutls.so.30(x86_64))",
+				"soname(libgnutlsxx.so.30(x86_64))"
 			]
 		},
 		"gnutls-devel": {
@@ -126,6 +126,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"gnutls",
 				"pkgconfig(hogweed)",
 				"pkgconfig(libbrotlidec)",
 				"pkgconfig(libbrotlienc)",
@@ -1359,6 +1360,6 @@
 		}
 	},
 	"source-name": "gnutls",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "3.8.3"
 }
