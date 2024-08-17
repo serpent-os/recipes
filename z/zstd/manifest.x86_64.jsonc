@@ -23,7 +23,7 @@
 				"/usr/bin/zstdless",
 				"/usr/bin/zstdmt",
 				"/usr/lib/libzstd.so.1",
-				"/usr/lib/libzstd.so.1.5.5",
+				"/usr/lib/libzstd.so.1.5.6",
 				"/usr/share/man/man1/unzstd.1",
 				"/usr/share/man/man1/zstd.1",
 				"/usr/share/man/man1/zstdcat.1",
@@ -32,13 +32,13 @@
 			],
 			"name": "zstd",
 			"provides": [
-				"soname(libzstd.so.1(x86_64))",
 				"binary(unzstd)",
 				"binary(zstd)",
 				"binary(zstdcat)",
 				"binary(zstdgrep)",
 				"binary(zstdless)",
-				"binary(zstdmt)"
+				"binary(zstdmt)",
+				"soname(libzstd.so.1(x86_64))"
 			]
 		},
 		"zstd-devel": {
@@ -46,6 +46,9 @@
 				"pkgconfig(liblz4)",
 				"pkgconfig(liblzma)",
 				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"zstd"
 			],
 			"files": [
 				"/usr/include/zdict.h",
@@ -61,6 +64,6 @@
 		}
 	},
 	"source-name": "zstd",
-	"source-release": "4",
-	"source-version": "1.5.5"
+	"source-release": "5",
+	"source-version": "1.5.6"
 }
