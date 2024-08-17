@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : flatpak
-version     : 1.14.8
-release     : 5
+version     : 1.14.10
+release     : 6
 homepage    : https://www.flatpak.org/
 upstreams   :
-    - https://github.com/flatpak/flatpak/releases/download/1.14.8/flatpak-1.14.8.tar.xz : 1016b7327f7af87896f95465f7e5813750d3b7049a3740a1a4ddcb5fa8c5348e
+    - https://github.com/flatpak/flatpak/releases/download/1.14.10/flatpak-1.14.10.tar.xz : 6bbdc7908127350ad85a4a47d70292ca2f4c46e977b32b1fd231c2a719d821cd
 summary     : Linux application sandboxing and distribution framework
 description : |
     Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.
