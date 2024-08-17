@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : xdg-utils
-version     : '1.2.0'
-release     : 2
+version     : 1.2.1
+release     : 3
 homepage    : https://gitlab.freedesktop.org/xdg/xdg-utils/
 upstreams   :
-    - git|https://gitlab.freedesktop.org/xdg/xdg-utils.git : b5188f34647c6ff76402e3d907879264e9bc3409
+    - https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.2.1/xdg-utils-v1.2.1.tar.gz : f6b648c064464c2636884c05746e80428110a576f8daacf46ef2e554dcfdae75
 summary     : Tools to assist with desktop integration tasks
 description : |
     The xdg-utils package is a set of simple scripts that provide basic desktop integration functions
