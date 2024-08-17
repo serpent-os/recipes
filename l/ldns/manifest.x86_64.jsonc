@@ -106,6 +106,9 @@
 				"pkgconfig(libpcap)",
 				"pkgconfig(openssl)"
 			],
+			"depends": [
+				"ldns"
+			],
 			"files": [
 				"/usr/bin/ldns-config",
 				"/usr/include/ldns/buffer.h",
@@ -618,8 +621,8 @@
 			],
 			"name": "ldns-devel",
 			"provides": [
-				"pkgconfig(ldns)",
 				"binary(ldns-config)",
+				"pkgconfig(ldns)",
 				"pkgconfig(libldns)"
 			]
 		},
@@ -636,7 +639,7 @@
 			],
 			"files": [
 				"/usr/lib/libldns.so.3",
-				"/usr/lib/libldns.so.3.5.0"
+				"/usr/lib/libldns.so.3.6.0"
 			],
 			"name": "ldns-libs",
 			"provides": [
@@ -645,6 +648,6 @@
 		}
 	},
 	"source-name": "ldns",
-	"source-release": "2",
-	"source-version": "1.8.3"
+	"source-release": "3",
+	"source-version": "1.8.4"
 }
