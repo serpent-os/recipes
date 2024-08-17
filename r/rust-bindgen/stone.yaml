@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : rust-bindgen
+version     : 0.70.0
+release     : 1
+homepage    : https://github.com/rust-lang/rust-bindgen
+upstreams   :
+    - https://github.com/rust-lang/rust-bindgen/releases/download/v0.70.0/source.tar.gz : 8a785ea72f8683bb1cad6016f69b30cec154814cec95a9e81a730682c1c6c3e5
+summary     : Tool for generating Rust FFI bindings
+description : |
+    Automatically generates Rust FFI bindings to C (and some C++) libraries
+license     : BSD-3-Clause
+networking  : true
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build --all-targets
+
+    mkdir -p completions
+    ./target/%(target_triple)/debug/bindgen --generate-shell-completions bash > "completions/bindgen"
+    ./target/%(target_triple)/debug/bindgen --generate-shell-completions fish > "completions/bindgen.fish"
+    ./target/%(target_triple)/debug/bindgen --generate-shell-completions zsh  > "completions/_bindgen"
+install     : |
+    %cargo_install bindgen
+
+    %install_file completions/bindgen -t %(installroot)/usr/share/bash-completion/completions/
+    %install_file completions/bindgen.fish -t %(installroot)/usr/share/fish/vendor_completions.d/
+    %install_file completions/_bindgen -t %(installroot)/usr/share/zsh/site-functions/
