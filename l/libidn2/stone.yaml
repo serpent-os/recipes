@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libidn2
-version     : 2.3.4
-release     : 1
+version     : 2.3.7
+release     : 2
 summary     : Internationalized domain name support library
 license     : 
     - GPL-2.0-or-later
@@ -14,7 +14,7 @@ homepage    : https://www.gnu.org/software/libidn/#libidn2
 description : |
     Libidn2 is a free software implementation of IDNA2008, Punycode and TR46. Its purpose is to encode and decode internationalized domain names.
 upstreams   :
-    - https://ftp.gnu.org/gnu/libidn/libidn2-2.3.4.tar.gz: 93caba72b4e051d1f8d4f5a076ab63c99b77faee019b72b9783b267986dbb45f
+    - https://ftp.gnu.org/gnu/libidn/libidn2-2.3.7.tar.gz: 4c21a791b610b9519b9d0e12b8097bf2f359b12f8dd92647611a929e6bfd7d64
 builddeps   :
     - libunistring-devel
 setup       : |
