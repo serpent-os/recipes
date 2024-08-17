@@ -5,10 +5,10 @@
 #
 name        : cosmic-edit
 version     : "1.0.0-alpha.1"
-release     : 4
+release     : 5
 homepage    : https://github.com/pop-os/cosmic-edit
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-edit : df5d10936c5a1cc16e231b92221eae7c73ed9da4
+    - git|https://github.com/pop-os/cosmic-edit : 536cc2fb60ed0ff3b35ac9e47de297d30ef27061
 summary     : Cosmic Desktop Text Editor
 description : |
     Cosmic desktop Text Editor
