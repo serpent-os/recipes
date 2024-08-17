@@ -35,7 +35,8 @@
 				"pkgconfig(xcb)",
 				"pkgconfig(xcb-image)",
 				"pkgconfig(xcb-render)",
-				"pkgconfig(xcb-renderutil)"
+				"pkgconfig(xcb-renderutil)",
+				"xcb-util-cursor"
 			],
 			"files": [
 				"/usr/include/xcb/xcb_cursor.h",
@@ -49,6 +50,6 @@
 		}
 	},
 	"source-name": "xcb-util-cursor",
-	"source-release": "1",
-	"source-version": "0.1.4"
+	"source-release": "2",
+	"source-version": "0.1.5"
 }
