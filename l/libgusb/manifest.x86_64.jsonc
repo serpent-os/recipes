@@ -4,6 +4,8 @@
 	"packages": {
 		"libgusb": {
 			"build-depends": [
+				"binary(vapigen)",
+				"hwdata",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(json-glib-1.0)",
@@ -23,7 +25,9 @@
 				"/usr/lib/girepository-1.0/GUsb-1.0.typelib",
 				"/usr/lib/libgusb.so.2",
 				"/usr/lib/libgusb.so.2.0.10",
-				"/usr/share/gir-1.0/GUsb-1.0.gir"
+				"/usr/share/gir-1.0/GUsb-1.0.gir",
+				"/usr/share/vala/vapi/gusb.deps",
+				"/usr/share/vala/vapi/gusb.vapi"
 			],
 			"name": "libgusb",
 			"provides": [
@@ -33,12 +37,15 @@
 		},
 		"libgusb-devel": {
 			"build-depends": [
+				"binary(vapigen)",
+				"hwdata",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libusb-1.0)"
 			],
 			"depends": [
+				"libgusb",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(json-glib-1.0)",
@@ -71,6 +78,6 @@
 		}
 	},
 	"source-name": "libgusb",
-	"source-release": "1",
-	"source-version": "0.4.5"
+	"source-release": "2",
+	"source-version": "0.4.9"
 }
