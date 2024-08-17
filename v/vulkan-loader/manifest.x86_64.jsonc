@@ -16,7 +16,7 @@
 			],
 			"files": [
 				"/usr/lib/libvulkan.so.1",
-				"/usr/lib/libvulkan.so.1.3.275"
+				"/usr/lib/libvulkan.so.1.3.290"
 			],
 			"name": "vulkan-loader",
 			"provides": [
@@ -30,6 +30,9 @@
 				"pkgconfig(wayland-client)",
 				"pkgconfig(x11)",
 				"pkgconfig(xrandr)"
+			],
+			"depends": [
+				"vulkan-loader"
 			],
 			"files": [
 				"/usr/lib/cmake/VulkanLoader/VulkanLoaderConfig-release.cmake",
@@ -46,6 +49,6 @@
 		}
 	},
 	"source-name": "vulkan-loader",
-	"source-release": "4",
-	"source-version": "1.3.275"
+	"source-release": "5",
+	"source-version": "1.3.290.0"
 }

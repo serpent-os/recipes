@@ -11,6 +11,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libSPIRV-Tools-opt.so(x86_64))",
 				"soname(libSPIRV-Tools.so(x86_64))",
 				"soname(libc++.so.1(x86_64))",
@@ -35,6 +36,9 @@
 				"cmake(SPIRV-Tools)",
 				"cmake(glslang)"
 			],
+			"depends": [
+				"shaderc"
+			],
 			"files": [
 				"/usr/include/shaderc/env.h",
 				"/usr/include/shaderc/shaderc.h",
@@ -55,6 +59,6 @@
 		}
 	},
 	"source-name": "shaderc",
-	"source-release": "1",
-	"source-version": "2023.8"
+	"source-release": "2",
+	"source-version": "2024.1"
 }
