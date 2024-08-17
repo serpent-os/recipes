@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nghttp2
-version     : '1.59.0'
-release     : 4
+version     : 1.62.1
+release     : 5
 homepage    : https://nghttp2.org
 upstreams   :
-    - https://github.com/nghttp2/nghttp2/releases/download/v1.59.0/nghttp2-1.59.0.tar.xz : fdc9bd71f5cf8d3fdfb63066b89364c10eb2fdeab55f3c6755cd7917b2ec4ffb
+    - https://github.com/nghttp2/nghttp2/releases/download/v1.62.1/nghttp2-1.62.1.tar.xz : 2345d4dc136fda28ce243e0bb21f2e7e8ef6293d62c799abbf6f633a6887af72
 summary     : C implementation of the HTTP/2.0 protocol
 description : |
    nghttp2 is an implementation of the Hypertext Transfer Protocol version 2 in C.
