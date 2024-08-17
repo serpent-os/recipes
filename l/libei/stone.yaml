@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libei
-version     : 1.2.0
-release     : 1
+version     : 1.3.0
+release     : 2
 homepage    : https://gitlab.freedesktop.org/libinput/libei
 upstreams   :
-    - https://gitlab.freedesktop.org/libinput/libei/-/archive/1.2.0/libei-1.2.0.tar.gz : 680f85d49968dd96dff6e4b97340669d4e04a8b6248fbe223cdf192e8fc9e3e8
+    - https://gitlab.freedesktop.org/libinput/libei/-/archive/1.3.0/libei-1.3.0.tar.gz : 162dc7b0d86a4575cdde1d3cb04f364f89a8b1ba6d95fe0b442564e0444d851d
 summary     : Library for emulated input
 description : |
     libei is a library for Emulated Input, primarily aimed at the Wayland
