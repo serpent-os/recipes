@@ -5,7 +5,7 @@
 #
 name        : cosmic-comp
 version     : "1.0.0-alpha.1"
-release     : 5
+release     : 6
 summary     : Cosmic Desktop Compositor
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-comp
@@ -22,6 +22,11 @@ builddeps   :
     - pkgconfig(libudev)
     - pkgconfig(pixman-1)
     - pkgconfig(xkbcommon)
+rundeps     :
+    - binary(Xwayland)
+    - iso-codes
+    - shared-mime-info
+    - xkeyboard-config
 networking  : yes
 tuning      :
     - lto: thin

@@ -14,7 +14,10 @@
 				"pkgconfig(xkbcommon)"
 			],
 			"depends": [
+				"binary(Xwayland)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"iso-codes",
+				"shared-mime-info",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgbm.so.1(x86_64))",
@@ -24,7 +27,8 @@
 				"soname(libseat.so.1(x86_64))",
 				"soname(libudev.so.1(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
-				"soname(libxkbcommon.so.0(x86_64))"
+				"soname(libxkbcommon.so.0(x86_64))",
+				"xkeyboard-config"
 			],
 			"files": [
 				"/usr/bin/cosmic-comp",
@@ -37,6 +41,6 @@
 		}
 	},
 	"source-name": "cosmic-comp",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "1.0.0-alpha.1"
 }
