@@ -5,7 +5,7 @@
 #
 name        : golang
 version     : 1.22.6
-release     : 7
+release     : 8
 homepage    : https://golang.org
 upstreams   :
     - https://go.dev/dl/go1.22.6.src.tar.gz : 9e48d99d519882579917d8189c17e98c373ce25abaebb98772e2927088992a51
@@ -14,6 +14,7 @@ description : |
     Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
 license     : BSD-3-Clause
 builddeps   :
+    #- binary(ar) # checkdep
     - binary(bash)
     - binary(go)
 packages    :
@@ -21,6 +22,7 @@ packages    :
         paths:
             - /usr/lib/*.a
 environment : |
+    export GOROOT="%(libdir)/%(name)"
     export GOROOT_BOOTSTRAP="%(libdir)/%(name)"
 
     # Should this be set by boulder automatically?
@@ -28,10 +30,11 @@ environment : |
 setup       : |
     %patch %(pkgdir)/stateless/x509-certificate-path.patch
 build       : |
+    # some tests just fail (some need networking)
     cd src && ./make.bash -v
 # TODO: Properly filter unwanted content to achieve a clean package.
 install     : |
-    GOROOT=$(pwd) PATH=$(pwd)/bin:$PATH go install -buildmode=shared std
+    GOROOT=${PWD} PATH=${PWD}/bin:${PATH} go install -buildmode=shared std
     rm -rf .cache go
     # Testdata searches for /libexec/ld-elf.so.1.
     # This is just data fed into tests, but boulder scans it regardless.
@@ -41,15 +44,13 @@ install     : |
     %install_exe bin/gofmt %(installroot)%(libdir)/%(name)/bin/gofmt
     %install_exe bin/go %(installroot)%(libdir)/%(name)/bin/go
 
-    # do it again (dedupes)
-    %install_bin bin/go
-    %install_bin bin/gofmt
+    # relative symlinks are nice for /proc/self/exe
+    %install_dir %(installroot)%(bindir)
+    ln -srvf %(installroot)%(libdir)/%(name)/bin/gofmt %(installroot)%(bindir)/
+    ln -srvf %(installroot)%(libdir)/%(name)/bin/go %(installroot)%(bindir)/
 
     # needed assets
     find -mindepth 1 -maxdepth 1 -type d -not -name bin -exec cp -a {} %(installroot)/%(libdir)/%(name) \;
-
-    # without this, `go <verb>` will refuse to work
-    %install_file %(pkgdir)/golang-GOROOT.sh %(installroot)%(vendordir)/etc/profile.d/golang-GOROOT.sh
 
     # Ensure that the present toolchain version is always used for building other go recipes
     %install_file %(pkgdir)/go.env %(installroot)%(libdir)/%(name)/go.env
