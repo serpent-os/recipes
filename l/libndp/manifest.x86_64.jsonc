@@ -11,16 +11,19 @@
 			"files": [
 				"/usr/bin/ndptool",
 				"/usr/lib/libndp.so.0",
-				"/usr/lib/libndp.so.0.2.0",
+				"/usr/lib/libndp.so.0.3.0",
 				"/usr/share/man/man8/ndptool.8"
 			],
 			"name": "libndp",
 			"provides": [
-				"soname(libndp.so.0(x86_64))",
-				"binary(ndptool)"
+				"binary(ndptool)",
+				"soname(libndp.so.0(x86_64))"
 			]
 		},
 		"libndp-devel": {
+			"depends": [
+				"libndp"
+			],
 			"files": [
 				"/usr/include/ndp.h",
 				"/usr/lib/libndp.so",
@@ -33,6 +36,6 @@
 		}
 	},
 	"source-name": "libndp",
-	"source-release": "2",
-	"source-version": "1.8"
+	"source-release": "3",
+	"source-version": "1.9"
 }

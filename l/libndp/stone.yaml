@@ -4,19 +4,19 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libndp
-version     : 1.8
-release     : 2
+version     : '1.9'
+release     : 3
 homepage    : https://github.com/jpirko/libndp
 upstreams   :
     # NOTE: using a knownsane distcheck style origin
-    - https://salsa.debian.org/debian/libndp/-/archive/debian/1.8-1/libndp-debian-1.8-1.tar.gz : 4cd1f57b44602137a18da8cd2bbdc198205bbe9ec3e0835ff21e93ab4d8f1084
+    - https://salsa.debian.org/debian/libndp/-/archive/debian/1.9-1/libndp-debian-1.9-1.tar.gz : 5181c492db04d1b2a7612a37619394cf51d13911e6a7631c071041e0360b053f
 summary     : Neighbor Discovery library
 description : |
     This package contains a library which provides a wrapper for IPv6 Neighbor Discovery Protocol.  It also provides a tool named ndptool for sending and receiving NDP messages.
 license     :
     - LGPL-2.1-or-later
 setup       : |
-    %configure --disable-static
+    %reconfigure --disable-static
 build       : |
     %make
 install     : |
