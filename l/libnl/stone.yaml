@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libnl
-version     : '3.9.0'
-release     : 2
+version     : 3.10.0
+release     : 3
 homepage    : https://github.com/thom311/libnl/
 upstreams   :
-    - https://github.com/thom311/libnl/releases/download/libnl3_9_0/libnl-3.9.0.tar.gz : aed507004d728a5cf11eab48ca4bf9e6e1874444e33939b9d3dfed25018ee9bb
+    - https://github.com/thom311/libnl/releases/download/libnl3_10_0/libnl-3.10.0.tar.gz : 49b3e2235fdb58f5910bbb3ed0de8143b71ffc220571540502eb6c2471f204f5
 summary     : Library for applications dealing with netlink sockets
 description : |
     Library for applications dealing with netlink sockets
