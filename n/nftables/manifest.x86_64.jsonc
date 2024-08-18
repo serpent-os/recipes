@@ -57,6 +57,9 @@
 				"pkgconfig(libnftnl)",
 				"pkgconfig(readline)"
 			],
+			"depends": [
+				"nftables"
+			],
 			"files": [
 				"/usr/include/nftables/libnftables.h",
 				"/usr/lib/libnftables.so",
@@ -94,22 +97,29 @@
 				"pkgconfig(libnftnl)",
 				"pkgconfig(readline)"
 			],
-			"files": [
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/PKG-INFO",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/SOURCES.txt",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/dependency_links.txt",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/not-zip-safe",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/top_level.txt",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/__init__.py",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/__pycache__/__init__.cpython-311.pyc",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/__pycache__/nftables.cpython-311.pyc",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/nftables.py",
-				"/usr/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/schema.json"
+			"depends": [
+				"binary(python3)"
 			],
-			"name": "python-nftables"
+			"files": [
+				"/usr/lib/python3.11/site-packages/nftables-0.1.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/nftables-0.1.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/nftables-0.1.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/nftables-0.1.dist-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/nftables/__init__.py",
+				"/usr/lib/python3.11/site-packages/nftables/__pycache__/__init__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/nftables/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/nftables/__pycache__/nftables.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/nftables/__pycache__/nftables.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/nftables/nftables.py",
+				"/usr/lib/python3.11/site-packages/nftables/schema.json"
+			],
+			"name": "python-nftables",
+			"provides": [
+				"python(nftables)"
+			]
 		}
 	},
 	"source-name": "nftables",
-	"source-release": "2",
-	"source-version": "1.0.7"
+	"source-release": "3",
+	"source-version": "1.1.0"
 }

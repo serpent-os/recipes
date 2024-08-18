@@ -87,13 +87,6 @@
 			"provides": [
 				"binary(genl-ctrl-list)",
 				"binary(idiag-socket-details)",
-				"soname(libnl-3.so.200(x86_64))",
-				"soname(libnl-cli-3.so.200(x86_64))",
-				"soname(libnl-genl-3.so.200(x86_64))",
-				"soname(libnl-idiag-3.so.200(x86_64))",
-				"soname(libnl-nf-3.so.200(x86_64))",
-				"soname(libnl-route-3.so.200(x86_64))",
-				"soname(libnl-xfrm-3.so.200(x86_64))",
 				"binary(nf-ct-add)",
 				"binary(nf-ct-events)",
 				"binary(nf-ct-list)",
@@ -139,7 +132,14 @@
 				"binary(nl-route-list)",
 				"binary(nl-rule-list)",
 				"binary(nl-tctree-list)",
-				"binary(nl-util-addr)"
+				"binary(nl-util-addr)",
+				"soname(libnl-3.so.200(x86_64))",
+				"soname(libnl-cli-3.so.200(x86_64))",
+				"soname(libnl-genl-3.so.200(x86_64))",
+				"soname(libnl-idiag-3.so.200(x86_64))",
+				"soname(libnl-nf-3.so.200(x86_64))",
+				"soname(libnl-route-3.so.200(x86_64))",
+				"soname(libnl-xfrm-3.so.200(x86_64))"
 			]
 		},
 		"libnl-devel": {
@@ -148,6 +148,7 @@
 				"binary(flex)"
 			],
 			"depends": [
+				"libnl",
 				"soname(libc.so.6(x86_64))"
 			],
 			"files": [
@@ -313,6 +314,13 @@
 			],
 			"name": "libnl-devel",
 			"provides": [
+				"pkgconfig(libnl-3.0)",
+				"pkgconfig(libnl-cli-3.0)",
+				"pkgconfig(libnl-genl-3.0)",
+				"pkgconfig(libnl-idiag-3.0)",
+				"pkgconfig(libnl-nf-3.0)",
+				"pkgconfig(libnl-route-3.0)",
+				"pkgconfig(libnl-xfrm-3.0)",
 				"soname(basic.so(x86_64))",
 				"soname(bfifo.so(x86_64))",
 				"soname(blackhole.so(x86_64))",
@@ -321,19 +329,12 @@
 				"soname(hfsc.so(x86_64))",
 				"soname(htb.so(x86_64))",
 				"soname(ingress.so(x86_64))",
-				"pkgconfig(libnl-3.0)",
-				"pkgconfig(libnl-cli-3.0)",
-				"pkgconfig(libnl-genl-3.0)",
-				"pkgconfig(libnl-idiag-3.0)",
-				"pkgconfig(libnl-nf-3.0)",
-				"pkgconfig(libnl-route-3.0)",
-				"pkgconfig(libnl-xfrm-3.0)",
 				"soname(pfifo.so(x86_64))",
 				"soname(plug.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "libnl",
-	"source-release": "2",
-	"source-version": "3.9.0"
+	"source-release": "3",
+	"source-version": "3.10.0"
 }

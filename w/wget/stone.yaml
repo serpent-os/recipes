@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : wget
-version     : 2.0.1
-release     : 2
+version     : 2.1.0
+release     : 3
 homepage    : https://www.gnu.org/software/wget
 upstreams   :
-    - https://ftp.gnu.org/gnu/wget/wget2-2.0.1.tar.gz : 0bb7fa03697bb5b8d05e1b5e15b863440826eb845874c4ffb5e32330f9845db1
+    - https://ftp.gnu.org/gnu/wget/wget2-2.1.0.tar.gz : a05dc5191c6bad9313fd6db2777a78f5527ba4774f665d5d69f5a7461b49e2e7
 summary     : Retrieves files online supporting many known protocols
 description : |
     GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS, the most widely used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, cron jobs, terminals without X-Windows support, etc.
@@ -16,15 +16,18 @@ license     :
     - GPL-3.0-or-later  # wget binary.
     - LGPL-3.0-or-later # libwget.
 builddeps   :
+    - pkgconfig(bzip2)
+    - pkgconfig(gpgme)
     - pkgconfig(libbrotlidec)
     - pkgconfig(liblzma)
     - pkgconfig(libnghttp2)
+    - pkgconfig(libpcre2-posix)
+    - pkgconfig(libpsl)
     - pkgconfig(libzstd)
     - pkgconfig(openssl)
     - pkgconfig(zlib)
     # pandoc for manpages
 setup       : |
-    %patch %(pkgdir)/0001-libwget-openssl-Use-vendor-SSL-certs-for-now.patch
     %configure --disable-static --with-lzma
 build       : |
     %make

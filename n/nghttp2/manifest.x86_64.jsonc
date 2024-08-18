@@ -8,7 +8,7 @@
 			],
 			"files": [
 				"/usr/lib/libnghttp2.so.14",
-				"/usr/lib/libnghttp2.so.14.26.0",
+				"/usr/lib/libnghttp2.so.14.28.1",
 				"/usr/share/doc/nghttp2/README.rst",
 				"/usr/share/man/man1/h2load.1",
 				"/usr/share/man/man1/nghttp.1",
@@ -22,9 +22,14 @@
 			]
 		},
 		"nghttp2-devel": {
+			"depends": [
+				"nghttp2"
+			],
 			"files": [
 				"/usr/include/nghttp2/nghttp2.h",
 				"/usr/include/nghttp2/nghttp2ver.h",
+				"/usr/lib/cmake/nghttp2/nghttp2-targets-release.cmake",
+				"/usr/lib/cmake/nghttp2/nghttp2-targets.cmake",
 				"/usr/lib/libnghttp2.so",
 				"/usr/lib/pkgconfig/libnghttp2.pc"
 			],
@@ -35,6 +40,6 @@
 		}
 	},
 	"source-name": "nghttp2",
-	"source-release": "4",
-	"source-version": "1.59.0"
+	"source-release": "5",
+	"source-version": "1.62.1"
 }
