@@ -5,7 +5,7 @@
 #
 name        : bind-utils
 version     : '9.18.21'
-release     : 3
+release     : 4
 homepage    : https://www.isc.org/bind/
 upstreams   :
     - https://downloads.isc.org/isc/bind9/9.18.21/bind-9.18.21.tar.xz : a556be22505d9ea4f9c6717aee9c549739c68498aff3ca69035787ecc648fec5

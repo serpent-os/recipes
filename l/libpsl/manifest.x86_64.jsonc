@@ -24,9 +24,9 @@
 			],
 			"name": "libpsl",
 			"provides": [
-				"soname(libpsl.so.5(x86_64))",
 				"binary(psl)",
-				"binary(psl-make-dafsa)"
+				"binary(psl-make-dafsa)",
+				"soname(libpsl.so.5(x86_64))"
 			]
 		},
 		"libpsl-devel": {
@@ -36,6 +36,7 @@
 				"pkgconfig(libidn2)"
 			],
 			"depends": [
+				"libpsl",
 				"pkgconfig(libidn2)"
 			],
 			"files": [
@@ -50,6 +51,6 @@
 		}
 	},
 	"source-name": "libpsl",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.21.5"
 }
