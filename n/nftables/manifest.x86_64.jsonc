@@ -113,13 +113,10 @@
 				"/usr/lib/python3.11/site-packages/nftables/nftables.py",
 				"/usr/lib/python3.11/site-packages/nftables/schema.json"
 			],
-			"name": "python-nftables",
-			"provides": [
-				"python(nftables)"
-			]
+			"name": "python-nftables"
 		}
 	},
 	"source-name": "nftables",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.1.0"
 }
