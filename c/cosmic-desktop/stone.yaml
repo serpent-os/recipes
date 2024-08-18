@@ -5,7 +5,7 @@
 #
 name        : cosmic-desktop
 version     : "1.0.0-alpha.1"
-release     : 3
+release     : 4
 summary     : Cosmic Desktop Metapackage
 license     : GPL-3.0
 homepage    : https://system76.com/cosmic
@@ -35,6 +35,7 @@ rundeps     :
     - cosmic-icons
     - font-fira
     - font-firacode
+    - networkmanager
     - wireplumber
     - xdg-desktop-portal-cosmic
 install     : |

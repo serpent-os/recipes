@@ -27,6 +27,7 @@
 				"cosmic-icons",
 				"font-fira",
 				"font-firacode",
+				"networkmanager",
 				"wireplumber",
 				"xdg-desktop-portal-cosmic"
 			],
@@ -37,6 +38,6 @@
 		}
 	},
 	"source-name": "cosmic-desktop",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.0.0-alpha.1"
 }
