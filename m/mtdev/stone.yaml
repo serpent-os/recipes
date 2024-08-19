@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mtdev
-version     : '1.1.6'
-release     : 1
+version     : 1.1.7
+release     : 2
 homepage    : https://bitmath.org/code/mtdev
 upstreams   :
-    - https://bitmath.org/code/mtdev/mtdev-1.1.6.tar.gz : 1325f389a2f25cd5f5a8ea4d29aad24aa7c3ec30401d679400dd79eb9c0a8dbb
+    - https://bitmath.org/code/mtdev/mtdev-1.1.7.tar.gz : a55bd02a9af4dd266c0042ec608744fff3a017577614c057da09f1f4566ea32c
 summary     : Stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol
 description : |
     %(name) is a stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol. The events put into mtdev may be from any MT device, specifically type A without contact tracking, type A with contact tracking, or type B with contact tracking.
