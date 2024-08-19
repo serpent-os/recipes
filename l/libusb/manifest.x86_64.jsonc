@@ -13,7 +13,7 @@
 			],
 			"files": [
 				"/usr/lib/libusb-1.0.so.0",
-				"/usr/lib/libusb-1.0.so.0.3.0"
+				"/usr/lib/libusb-1.0.so.0.4.0"
 			],
 			"name": "libusb",
 			"provides": [
@@ -23,6 +23,9 @@
 		"libusb-devel": {
 			"build-depends": [
 				"pkgconfig(libudev)"
+			],
+			"depends": [
+				"libusb"
 			],
 			"files": [
 				"/usr/include/libusb-1.0/libusb.h",
@@ -36,6 +39,6 @@
 		}
 	},
 	"source-name": "libusb",
-	"source-release": "1",
-	"source-version": "1.0.26"
+	"source-release": "2",
+	"source-version": "1.0.27"
 }
