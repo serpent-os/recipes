@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libunistring
-version     : "1.1"
-release     : 1
-summary     : Library for manipulating Unicode strings and C strings
-license     : LGPL-3.0-or-later
+version     : '1.2'
+release     : 2
 homepage    : https://www.gnu.org/software/libunistring/
+upstreams   :
+    - https://ftp.gnu.org/gnu/libunistring/libunistring-1.2.tar.gz: fd6d5662fa706487c48349a758b57bc149ce94ec6c30624ec9fdc473ceabbc8e
+summary     : Library for manipulating Unicode strings and C strings
 description : |
     Library for manipulating Unicode strings and C strings
-upstreams   :
-    - https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.gz: a2252beeec830ac444b9f68d6b38ad883db19919db35b52222cf827c385bdb6a
+license     : LGPL-3.0-or-later
 setup       : |
     %configure --disable-static
 build       : |

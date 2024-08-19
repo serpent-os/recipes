@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"libunistring": {
 			"depends": [
@@ -8,7 +8,7 @@
 			],
 			"files": [
 				"/usr/lib/libunistring.so.5",
-				"/usr/lib/libunistring.so.5.0.0",
+				"/usr/lib/libunistring.so.5.1.0",
 				"/usr/share/info/libunistring.info"
 			],
 			"name": "libunistring",
@@ -17,12 +17,16 @@
 			]
 		},
 		"libunistring-devel": {
+			"depends": [
+				"libunistring"
+			],
 			"files": [
 				"/usr/include/unicase.h",
 				"/usr/include/uniconv.h",
 				"/usr/include/unictype.h",
 				"/usr/include/unigbrk.h",
 				"/usr/include/unilbrk.h",
+				"/usr/include/unimetadata.h",
 				"/usr/include/uniname.h",
 				"/usr/include/uninorm.h",
 				"/usr/include/unistdio.h",
@@ -59,6 +63,7 @@
 				"/usr/share/doc/libunistring/libunistring_20.html",
 				"/usr/share/doc/libunistring/libunistring_21.html",
 				"/usr/share/doc/libunistring/libunistring_22.html",
+				"/usr/share/doc/libunistring/libunistring_23.html",
 				"/usr/share/doc/libunistring/libunistring_3.html",
 				"/usr/share/doc/libunistring/libunistring_4.html",
 				"/usr/share/doc/libunistring/libunistring_5.html",
@@ -67,12 +72,13 @@
 				"/usr/share/doc/libunistring/libunistring_8.html",
 				"/usr/share/doc/libunistring/libunistring_9.html",
 				"/usr/share/doc/libunistring/libunistring_abt.html",
+				"/usr/share/doc/libunistring/libunistring_fot.html",
 				"/usr/share/doc/libunistring/libunistring_toc.html"
 			],
 			"name": "libunistring-docs"
 		}
 	},
 	"source-name": "libunistring",
-	"source-release": "1",
-	"source-version": "1.1"
+	"source-release": "2",
+	"source-version": "1.2"
 }
