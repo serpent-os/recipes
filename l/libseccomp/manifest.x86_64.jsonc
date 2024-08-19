@@ -15,13 +15,13 @@
 			"files": [
 				"/usr/bin/scmp_sys_resolver",
 				"/usr/lib/libseccomp.so.2",
-				"/usr/lib/libseccomp.so.2.5.4",
+				"/usr/lib/libseccomp.so.2.5.5",
 				"/usr/share/man/man1/scmp_sys_resolver.1"
 			],
 			"name": "libseccomp",
 			"provides": [
-				"soname(libseccomp.so.2(x86_64))",
-				"binary(scmp_sys_resolver)"
+				"binary(scmp_sys_resolver)",
+				"soname(libseccomp.so.2(x86_64))"
 			]
 		},
 		"libseccomp-devel": {
@@ -29,6 +29,9 @@
 				"binary(gperf)",
 				"binary(which)",
 				"pkgconfig(valgrind)"
+			],
+			"depends": [
+				"libseccomp"
 			],
 			"files": [
 				"/usr/include/seccomp-syscalls.h",
@@ -75,6 +78,6 @@
 		}
 	},
 	"source-name": "libseccomp",
-	"source-release": "2",
-	"source-version": "2.5.4"
+	"source-release": "3",
+	"source-version": "2.5.5"
 }
