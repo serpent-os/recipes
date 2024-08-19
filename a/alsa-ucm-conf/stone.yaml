@@ -5,10 +5,10 @@
 #
 name        : alsa-ucm-conf
 version     : 1.2.12
-release     : 1
+release     : 2
 homepage    : https://www.alsa-project.org/wiki/Main_Page
 upstreams   :
-    - http://www.alsa-project.org/files/pub/lib/alsa-ucm-conf-1.2.12.tar.bz2 : 168e7c0549b7bf8991092fa2bfb903631df779dc4c43ee8f4277fcb772d8c035
+    - https://github.com/alsa-project/alsa-ucm-conf/archive/refs/tags/v1.2.12.tar.gz : ad8dd8d79bda54f9d28b095ce9dfa009de9970daf7b57dda86216a4e4977fe4e
 summary     : ALSA UCM configuration files
 description : |
     ALSA Use Case Manager configuration (and topologies)
