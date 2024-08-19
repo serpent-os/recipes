@@ -1,0 +1,57 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-remote-desktop
+version     : '46.4'
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-remote-desktop
+upstreams   :
+    - https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/archive/46.4/gnome-remote-desktop-46.4.tar.gz : 951435badc993eff6a5260f52653860427a9a7ab2a23ea37dc996de46dea2d9a
+summary     : Remote desktop daemon for GNOME using pipewire
+description : |
+    Remote desktop server which allows you to connect to your machine remotely
+license     :
+    - GPL-2.0-or-later
+builddeps   :
+    - binary(mutter)
+    - pkgconfig(cairo)
+    - pkgconfig(dbus-1)
+    - pkgconfig(epoxy)
+    - pkgconfig(fdk-aac)
+    - pkgconfig(ffnvcodec)
+    - pkgconfig(freerdp3)
+    - pkgconfig(freerdp-client3)
+    - pkgconfig(freerdp-server3)
+    - pkgconfig(fuse3)
+    - pkgconfig(gbm)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(libdrm)
+    - pkgconfig(libei-1.0)
+    - pkgconfig(libnotify)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libsecret-1)
+    - pkgconfig(opus)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(systemd)
+    - pkgconfig(tss2-esys)
+    - pkgconfig(tss2-mu)
+    - pkgconfig(tss2-rc)
+    - pkgconfig(tss2-tctildr)
+    - pkgconfig(winpr3)
+    - pkgconfig(wireplumber-0.4)
+    - pkgconfig(xkbcommon)
+setup       : |
+    %meson \
+        -Drdp=true \
+        -Dvnc=false \
+        -Dsystemd=true \
+        -Dman=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
