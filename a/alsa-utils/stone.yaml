@@ -5,20 +5,23 @@
 #
 name        : alsa-utils
 version     : 1.2.12
-release     : 1
+release     : 2
 homepage    : https://www.alsa-project.org/wiki/Main_Page
 upstreams   :
-    - http://www.alsa-project.org/files/pub/utils/alsa-utils-1.2.12.tar.bz2 : 98bc6677d0c0074006679051822324a0ab0879aea558a8f68b511780d30cd924
+    - https://github.com/alsa-project/alsa-utils/archive/refs/tags/v1.2.12.tar.gz : 11bb585a072162808f8a0fac2b3093f87a94feefcec1b11da106c9a8955d3ade
 summary     : ALSA Utilities
 description : |
     Advanced Linux Sound Architecture - Utilities
 license     : GPL-2.0-or-later
 builddeps   :
+    - binary(ar)
+    - binary(autopoint)
     - pkgconfig(alsa)
     - pkgconfig(ncursesw)
     - pkgconfig(systemd)
 setup       : |
-    %configure \
+    cp /usr/share/libtoolize/AC_CONFIG_AUX_DIR/ltmain.sh .
+    %reconfigure \
                --disable-alsaconf \
                --with-udev-rules-dir=/usr/lib/udev/rules.d
 build       : |

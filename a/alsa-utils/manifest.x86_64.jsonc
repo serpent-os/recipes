@@ -4,6 +4,8 @@
 	"packages": {
 		"alsa-utils": {
 			"build-depends": [
+				"binary(ar)",
+				"binary(autopoint)",
 				"pkgconfig(alsa)",
 				"pkgconfig(ncursesw)",
 				"pkgconfig(systemd)"
@@ -124,6 +126,6 @@
 		}
 	},
 	"source-name": "alsa-utils",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.2.12"
 }
