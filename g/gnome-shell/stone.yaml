@@ -5,7 +5,7 @@
 #
 name        : gnome-shell
 version     : '46.4'
-release     : 15
+release     : 16
 homepage    : https://gitlab.gnome.org/GNOME/gnome-shell
 upstreams   :
     - https://download.gnome.org/sources/gnome-shell/46/gnome-shell-46.4.tar.xz : 188468fe72e90ac4b234e9d4d0707d607feaf39a13d25bd3aa3eb75e55a3e052
@@ -21,6 +21,7 @@ license     :
     - GPL-3.0-or-later
     - LGPL-2.1-or-later
 builddeps   :
+    # - binary(a2x)
     - binary(gjs)
     - binary(msgfmt)
     - binary(perl)
@@ -35,6 +36,7 @@ builddeps   :
     - pkgconfig(gjs-1.0)
     - pkgconfig(gnome-autoar-0)
     - pkgconfig(gnome-desktop-4)
+    - pkgconfig(gnome-keybindings)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gsettings-desktop-schemas)
     - pkgconfig(gtk4)
@@ -53,14 +55,13 @@ builddeps   :
     - pkgconfig(polkit-agent-1)
     - pkgconfig(systemd)
     - pkgconfig(x11)
-    # - binary(a2x)
-    # - pkgconfig(gnome-keybindings)
 rundeps     :
     - adwaita-icon-theme
     - binary(Xwayland)
     - font-cantarell
     - geoclue
     - glib-networking
+    - gnome-menus
     - gnome-settings-daemon
     - gvfs
     - ibus

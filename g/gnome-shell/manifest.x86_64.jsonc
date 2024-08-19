@@ -18,6 +18,7 @@
 				"pkgconfig(gjs-1.0)",
 				"pkgconfig(gnome-autoar-0)",
 				"pkgconfig(gnome-desktop-4)",
+				"pkgconfig(gnome-keybindings)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gsettings-desktop-schemas)",
 				"pkgconfig(gtk4)",
@@ -43,6 +44,7 @@
 				"font-cantarell",
 				"geoclue",
 				"glib-networking",
+				"gnome-menus",
 				"gnome-settings-daemon",
 				"gvfs",
 				"ibus",
@@ -274,6 +276,6 @@
 		}
 	},
 	"source-name": "gnome-shell",
-	"source-release": "15",
+	"source-release": "16",
 	"source-version": "46.4"
 }
