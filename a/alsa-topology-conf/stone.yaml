@@ -1,0 +1,19 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : alsa-topology-conf
+version     : 1.2.5.1
+release     : 1
+homepage    : https://www.alsa-project.org/wiki/Main_Page
+upstreams   :
+    - http://www.alsa-project.org/files/pub/lib/alsa-topology-conf-1.2.5.1.tar.bz2 : f7c5bae1545abcd73824bc97f4e72c340e11abea188ba0f1c06f5e0ad776b179
+summary     : ALSA topology configuration files
+description : |
+    ALSA topology configuration files
+license     : BSD-3-Clause
+install     : |
+    for dir in topology/*; do
+        %install_file $dir/*.conf -t "%(installroot)%(datadir)/alsa/topology/$(basename $dir)"
+    done

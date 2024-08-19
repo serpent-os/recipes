@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"alsa-topology-conf": {
+			"files": [
+				"/usr/share/alsa/topology/broadwell/broadwell.conf",
+				"/usr/share/alsa/topology/bxtrt298/bxt_i2s.conf",
+				"/usr/share/alsa/topology/hda-dsp/skl_hda_dsp_generic-tplg.conf",
+				"/usr/share/alsa/topology/sklrt286/skl_i2s.conf"
+			],
+			"name": "alsa-topology-conf"
+		}
+	},
+	"source-name": "alsa-topology-conf",
+	"source-release": "1",
+	"source-version": "1.2.5.1"
+}
