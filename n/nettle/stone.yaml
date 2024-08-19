@@ -4,24 +4,22 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nettle
-version     : 3.8.1
-release     : 2
+version     : '3.10'
+release     : 3
 homepage    : https://www.lysator.liu.se/~nisse/nettle/
 upstreams   :
-    - https://ftp.gnu.org/gnu/nettle/nettle-3.8.1.tar.gz : 364f3e2b77cd7dcde83fd7c45219c834e54b0c75e428b6f894a23d12dd41cbfe
+    - https://ftp.gnu.org/gnu/nettle/nettle-3.10.tar.gz : b4c518adb174e484cb4acea54118f02380c7133771e7e9beb98a0787194ee47c
 summary     : Low-level cryptographic library
 description : |
    A low-level cryptographic library
 license     : LGPL-3.0-or-later
 builddeps   :
+    - binary(makeinfo)
     - pkgconfig(gmp)
-# TODO: enable checks after packaging valgrind
 checkdeps   :
     - binary(valgrind)
-# TODO: documentation requires makeinfo support
 setup       : |
-    %configure --disable-static \
-               --enable-documentation=no
+    %configure --disable-static
 build       : |
     %make
 install     : |
