@@ -31,6 +31,7 @@
 				"/usr/lib/libaccountsservice.so.0",
 				"/usr/lib/libaccountsservice.so.0.0.0",
 				"/usr/lib/systemd/system/accounts-daemon.service",
+				"/usr/lib/tmpfiles.d/accountsservice.conf",
 				"/usr/share/accountsservice/user-templates/administrator",
 				"/usr/share/accountsservice/user-templates/standard",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.Accounts.User.xml",
@@ -135,6 +136,7 @@
 				"pkgconfig(systemd)"
 			],
 			"depends": [
+				"accountsservice",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
@@ -155,6 +157,6 @@
 		}
 	},
 	"source-name": "accountsservice",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "23.13.9"
 }

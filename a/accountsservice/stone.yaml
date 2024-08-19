@@ -5,7 +5,7 @@
 #
 name        : accountsservice
 version     : 23.13.9
-release     : 1
+release     : 2
 homepage    : https://www.freedesktop.org/wiki/Software/AccountsService/
 upstreams   :
     - https://www.freedesktop.org/software/accountsservice/accountsservice-23.13.9.tar.xz : adda4cdeae24fa0992e7df3ffff9effa7090be3ac233a3edfdf69d5a9c9b924f
@@ -27,9 +27,19 @@ builddeps   :
     - pkgconfig(systemd)
 toolchain   : gnu
 setup       : |
+    %patch %(pkgdir)/gcc-14.patch
+
     %meson
 build       : |
     %meson_build
 install     : |
     %meson_install
-    # TODO: Add tmpfiles / sysusers for the /var/lib bits
+
+    # Stateless
+    %tmpfiles "d /var/lib/AccountsService/icons 0775 root root -"
+    %tmpfiles "d /var/lib/AccountsService/users 0700 root root -"
+    rmdir -v %(installroot)/var/lib/AccountsService/icons \
+             %(installroot)/var/lib/AccountsService/users \
+             %(installroot)/var/lib/AccountsService/ \
+             %(installroot)/var/lib/ \
+             %(installroot)/var/
