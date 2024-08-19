@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cjson": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libcjson.so.1",
+				"/usr/lib/libcjson.so.1.7.18"
+			],
+			"name": "cjson",
+			"provides": [
+				"soname(libcjson.so.1(x86_64))"
+			]
+		},
+		"cjson-devel": {
+			"depends": [
+				"cjson"
+			],
+			"files": [
+				"/usr/include/cjson/cJSON.h",
+				"/usr/lib/cmake/cJSON/cJSONConfig.cmake",
+				"/usr/lib/cmake/cJSON/cJSONConfigVersion.cmake",
+				"/usr/lib/cmake/cJSON/cjson-release.cmake",
+				"/usr/lib/cmake/cJSON/cjson.cmake",
+				"/usr/lib/libcjson.so",
+				"/usr/lib/pkgconfig/libcjson.pc"
+			],
+			"name": "cjson-devel",
+			"provides": [
+				"cmake(cJSON)",
+				"pkgconfig(libcjson)"
+			]
+		}
+	},
+	"source-name": "cjson",
+	"source-release": "1",
+	"source-version": "1.7.18"
+}
