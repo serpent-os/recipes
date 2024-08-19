@@ -5,7 +5,7 @@
 #
 name        : samba
 version     : 4.19.5
-release     : 4
+release     : 5
 homepage    : https://www.samba.org/
 upstreams   :
     - https://download.samba.org/pub/samba/stable/samba-4.19.5.tar.gz : 0e2405b4cec29d0459621f4340a1a74af771ec7cffedff43250cad7f1f87605e
@@ -28,7 +28,7 @@ builddeps   :
     - binary(xsltproc)
     - pkgconfig(avahi-client)
     - pkgconfig(cmocka)
-    - pkgconfig(cups)
+    # - pkgconfig(cups)
     - pkgconfig(dbus-1)
     - pkgconfig(fuse3)
     - pkgconfig(gnutls)

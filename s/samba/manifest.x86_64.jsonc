@@ -12,7 +12,6 @@
 				"perl-parse-yapp",
 				"pkgconfig(avahi-client)",
 				"pkgconfig(cmocka)",
-				"pkgconfig(cups)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(fuse3)",
 				"pkgconfig(gnutls)",
@@ -49,7 +48,6 @@
 				"soname(libc.so.6(x86_64))",
 				"soname(libcap.so.2(x86_64))",
 				"soname(libcom_err.so.2(x86_64))",
-				"soname(libcups.so.2(x86_64))",
 				"soname(libdbus-1.so.3(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libgnutls.so.30(x86_64))",
@@ -269,7 +267,6 @@
 				"/usr/lib/samba/samba/rpcd_winreg",
 				"/usr/lib/samba/samba/samba-bgqd",
 				"/usr/lib/samba/samba/samba-dcerpcd",
-				"/usr/lib/samba/samba/smbspool_krb5_wrapper",
 				"/usr/lib/samba/vfs/acl_tdb.so",
 				"/usr/lib/samba/vfs/acl_xattr.so",
 				"/usr/lib/samba/vfs/aio_fork.so",
@@ -551,7 +548,6 @@
 				"perl-parse-yapp",
 				"pkgconfig(avahi-client)",
 				"pkgconfig(cmocka)",
-				"pkgconfig(cups)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(fuse3)",
 				"pkgconfig(gnutls)",
@@ -718,6 +714,6 @@
 		}
 	},
 	"source-name": "samba",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "4.19.5"
 }
