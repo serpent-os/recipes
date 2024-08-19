@@ -1,0 +1,7 @@
+releases:
+  id: 37
+  rss: ~
+security:
+  cpe:
+  - vendor: alsa-project
+    product: alsa
