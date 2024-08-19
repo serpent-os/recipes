@@ -25,7 +25,7 @@
 			"files": [
 				"/usr/bin/sdl2-config",
 				"/usr/lib/libSDL2-2.0.so.0",
-				"/usr/lib/libSDL2-2.0.so.0.3000.5",
+				"/usr/lib/libSDL2-2.0.so.0.3000.6",
 				"/usr/share/licenses/SDL2/LICENSE.txt"
 			],
 			"name": "sdl2",
@@ -160,6 +160,6 @@
 		}
 	},
 	"source-name": "sdl2",
-	"source-release": "1",
-	"source-version": "2.30.5"
+	"source-release": "2",
+	"source-version": "2.30.6"
 }
