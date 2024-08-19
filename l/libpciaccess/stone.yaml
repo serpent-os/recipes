@@ -4,22 +4,21 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libpciaccess
-version     : '0.17'
-release     : 2
+version     : 0.18.1
+release     : 3
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libpciaccess
 upstreams   :
-    - https://www.x.org/archive/individual/lib/libpciaccess-0.17.tar.xz: 74283ba3c974913029e7a547496a29145b07ec51732bbb5b5c58d5025ad95b73
+    - https://www.x.org/archive/individual/lib/libpciaccess-0.18.1.tar.xz: 4af43444b38adb5545d0ed1c2ce46d9608cc47b31c2387fc5181656765a6fa76
 summary     : Generic PCI access library
 description : |
     libpciaccess provides a facilitated way to access the PCI bus.
 license     : MIT
 emul32      : yes
 builddeps   :
-    - pkgconfig(zlib)
     - pkgconfig32(zlib)
 setup       : |
-    %configure --disable-static
+    %meson
 build       : |
-    %make
+    %meson_build
 install     : |
-    %make_install
+    %meson_install
