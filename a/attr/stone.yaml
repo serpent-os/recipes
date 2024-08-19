@@ -5,7 +5,7 @@
 #
 name        : attr
 version     : '2.5.2'
-release     : 3
+release     : 4
 summary     : Commands for Manipulating Extended Attributes
 license     :
     - GPL-2.0-or-later
@@ -16,11 +16,17 @@ description : |
 upstreams   :
     - https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.xz : f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b
 setup       : |
-    # TODO: Make properly stateless
-    %configure --sysconfdir="%(vendordir)%(sysconfdir)" \
+    %patch %(pkgdir)/0001-Support-stateless-path.patch
+
+    %configure \
                --enable-shared \
                --disable-static
 build       : |
     %make
 install     : |
     %make_install
+
+    # Stateless
+    %install_dir %(installroot)%(datadir)/defaults/attr/
+    mv %(installroot)/etc/xattr.conf %(installroot)%(datadir)/defaults/attr/
+    rmdir -v %(installroot)/etc

@@ -13,7 +13,7 @@
 				"/usr/bin/setfattr",
 				"/usr/lib/libattr.so.1",
 				"/usr/lib/libattr.so.1.1.2502",
-				"/usr/share/defaults/etc/xattr.conf",
+				"/usr/share/defaults/attr/xattr.conf",
 				"/usr/share/doc/attr/CHANGES",
 				"/usr/share/doc/attr/COPYING",
 				"/usr/share/doc/attr/COPYING.LGPL",
@@ -36,11 +36,14 @@
 			"provides": [
 				"binary(attr)",
 				"binary(getfattr)",
-				"soname(libattr.so.1(x86_64))",
-				"binary(setfattr)"
+				"binary(setfattr)",
+				"soname(libattr.so.1(x86_64))"
 			]
 		},
 		"attr-devel": {
+			"depends": [
+				"attr"
+			],
 			"files": [
 				"/usr/include/attr/attributes.h",
 				"/usr/include/attr/error_context.h",
@@ -65,6 +68,6 @@
 		}
 	},
 	"source-name": "attr",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.5.2"
 }
