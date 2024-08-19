@@ -16,6 +16,9 @@
 			]
 		},
 		"mimalloc-devel": {
+			"depends": [
+				"mimalloc"
+			],
 			"files": [
 				"/usr/include/mimalloc-new-delete.h",
 				"/usr/include/mimalloc-override.h",
@@ -29,12 +32,12 @@
 			],
 			"name": "mimalloc-devel",
 			"provides": [
-				"pkgconfig(mimalloc)",
-				"cmake(mimalloc)"
+				"cmake(mimalloc)",
+				"pkgconfig(mimalloc)"
 			]
 		}
 	},
 	"source-name": "mimalloc",
-	"source-release": "4",
-	"source-version": "2.1.2"
+	"source-release": "5",
+	"source-version": "2.1.7"
 }
