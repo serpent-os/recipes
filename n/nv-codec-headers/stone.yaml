@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name       : nv-codec-headers
+version    : '12.2.72.0'
+release    : 1
+homepage   : https://github.com/FFmpeg/nv-codec-headers
+upstreams  :
+    - https://github.com/FFmpeg/nv-codec-headers/releases/download/n12.2.72.0/nv-codec-headers-12.2.72.0.tar.gz : c295a2ba8a06434d4bdc5c2208f8a825285210d71d91d572329b2c51fd0d4d03
+summary    : Headers for Nvidia Video Codec API.
+description: |
+    FFmpeg version of headers required to interface with Nvidias codec APIs.
+license    : MIT
+install    : |
+    %make_install PREFIX=/usr
+packages   :
+    - "%(name)":
+        paths:
+            - /*
