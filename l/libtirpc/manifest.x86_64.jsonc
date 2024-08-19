@@ -3,8 +3,15 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"libtirpc": {
+			"build-depends": [
+				"pkgconfig(krb5)"
+			],
 			"depends": [
-				"soname(libc.so.6(x86_64))"
+				"soname(libc.so.6(x86_64))",
+				"soname(libcom_err.so.2(x86_64))",
+				"soname(libgssapi_krb5.so.2(x86_64))",
+				"soname(libk5crypto.so.3(x86_64))",
+				"soname(libkrb5.so.3(x86_64))"
 			],
 			"files": [
 				"/usr/lib/libtirpc.so.3",
@@ -17,10 +24,17 @@
 			]
 		},
 		"libtirpc-devel": {
+			"build-depends": [
+				"pkgconfig(krb5)"
+			],
+			"depends": [
+				"libtirpc"
+			],
 			"files": [
 				"/usr/include/tirpc/netconfig.h",
 				"/usr/include/tirpc/rpc/auth.h",
 				"/usr/include/tirpc/rpc/auth_des.h",
+				"/usr/include/tirpc/rpc/auth_gss.h",
 				"/usr/include/tirpc/rpc/auth_unix.h",
 				"/usr/include/tirpc/rpc/clnt.h",
 				"/usr/include/tirpc/rpc/clnt_soc.h",
@@ -40,8 +54,10 @@
 				"/usr/include/tirpc/rpc/rpcb_prot.h",
 				"/usr/include/tirpc/rpc/rpcb_prot.x",
 				"/usr/include/tirpc/rpc/rpcent.h",
+				"/usr/include/tirpc/rpc/rpcsec_gss.h",
 				"/usr/include/tirpc/rpc/svc.h",
 				"/usr/include/tirpc/rpc/svc_auth.h",
+				"/usr/include/tirpc/rpc/svc_auth_gss.h",
 				"/usr/include/tirpc/rpc/svc_dg.h",
 				"/usr/include/tirpc/rpc/svc_mt.h",
 				"/usr/include/tirpc/rpc/svc_soc.h",
@@ -61,6 +77,21 @@
 				"/usr/share/man/man3/rpc_clnt_auth.3t",
 				"/usr/share/man/man3/rpc_clnt_calls.3t",
 				"/usr/share/man/man3/rpc_clnt_create.3t",
+				"/usr/share/man/man3/rpc_gss_get_error.3t",
+				"/usr/share/man/man3/rpc_gss_get_mech_info.3t",
+				"/usr/share/man/man3/rpc_gss_get_mechanisms.3t",
+				"/usr/share/man/man3/rpc_gss_get_principal_name.3t",
+				"/usr/share/man/man3/rpc_gss_get_versions.3t",
+				"/usr/share/man/man3/rpc_gss_getcred.3t",
+				"/usr/share/man/man3/rpc_gss_is_installed.3t",
+				"/usr/share/man/man3/rpc_gss_max_data_length.3t",
+				"/usr/share/man/man3/rpc_gss_mech_to_oid.3t",
+				"/usr/share/man/man3/rpc_gss_qop_to_num.3t",
+				"/usr/share/man/man3/rpc_gss_seccreate.3t",
+				"/usr/share/man/man3/rpc_gss_set_callback.3t",
+				"/usr/share/man/man3/rpc_gss_set_defaults.3t",
+				"/usr/share/man/man3/rpc_gss_set_svc_name.3t",
+				"/usr/share/man/man3/rpc_gss_svc_max_data_length.3t",
 				"/usr/share/man/man3/rpc_secure.3t",
 				"/usr/share/man/man3/rpc_soc.3t",
 				"/usr/share/man/man3/rpc_svc_calls.3t",
@@ -69,6 +100,7 @@
 				"/usr/share/man/man3/rpc_svc_reg.3t",
 				"/usr/share/man/man3/rpc_xdr.3t",
 				"/usr/share/man/man3/rpcbind.3t",
+				"/usr/share/man/man3/rpcsec_gss.3t",
 				"/usr/share/man/man3/rtime.3t"
 			],
 			"name": "libtirpc-devel",
@@ -78,6 +110,6 @@
 		}
 	},
 	"source-name": "libtirpc",
-	"source-release": "1",
-	"source-version": "1.3.4"
+	"source-release": "2",
+	"source-version": "1.3.5"
 }
