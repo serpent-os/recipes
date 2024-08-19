@@ -18,6 +18,9 @@
 			]
 		},
 		"libuv-devel": {
+			"depends": [
+				"libuv"
+			],
 			"files": [
 				"/usr/include/uv.h",
 				"/usr/include/uv/aix.h",
@@ -40,12 +43,12 @@
 			],
 			"name": "libuv-devel",
 			"provides": [
-				"pkgconfig(libuv)",
-				"cmake(libuv)"
+				"cmake(libuv)",
+				"pkgconfig(libuv)"
 			]
 		}
 	},
 	"source-name": "libuv",
-	"source-release": "2",
-	"source-version": "1.47.0"
+	"source-release": "3",
+	"source-version": "1.48.0"
 }
