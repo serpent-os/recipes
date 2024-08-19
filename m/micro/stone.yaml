@@ -4,40 +4,24 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : micro
-version     : 2.0.11
-release     : 2
+version     : 2.0.13
+release     : 3
 homepage    : https://micro-editor.github.io/
 upstreams   :
-    - https://github.com/zyedidia/micro/archive/refs/tags/v2.0.11.tar.gz : 1bb499edeaaadf1fe1791a49f96ab672c4e1add31ee125882ccd85a0fc8a4abe
-summary     : A modern and intuitive terminal-based text editor 
+    - https://github.com/zyedidia/micro/archive/refs/tags/v2.0.13.tar.gz : a96fff974ed6bd9a1dd58a33e54ff23b78783bbb3571b86d5c37d787b1e0e4be
+summary     : A modern and intuitive terminal-based text editor
 description : |
-    A modern and intuitive terminal-based text editor 
+    A modern and intuitive terminal-based text editor
 license     :
     - JSON
     - MIT
 builddeps   :
    - binary(go)
-   - nss # for certs, https://github.com/serpent-os/boulder/issues/28
 #[LATER] rundep: xclip
 networking  : yes
-environment : |
-    # This can probably be removed after golang reboostrap.
-    export GOMODCACHE="%(workdir)/.cache"
-
-    export GO111MODULE=auto
-    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
-
-    # https://github.com/serpent-os/boulder/issues/74
-    export CGO_CFLAGS="${CGO_CFLAGS} -Wno-error=unused-command-line-argument"
-    
-    # https://github.com/serpent-os/boulder/issues/75
-    export CGO_LDFLAGS="${CGO_LDFLAGS} -Wl,--no-gc-sections"
 build       : |
-    mkdir -p src/github.com/zyedidia
-    ln -s `pwd` src/github.com/zyedidia/micro
-    cd src/github.com/zyedidia/micro
-    %make GO_BUILD_FLAGS="$GOFLAGS"
+    %make
 install     : |
-    %install_bin ../%(name)-%(version)/micro
+    %install_bin micro
     %install_file assets/packaging/micro.1 -t %(installroot)/%(mandir)/man1
     %install_file assets/packaging/micro.desktop -t %(installroot)/%(mandir)/applications/

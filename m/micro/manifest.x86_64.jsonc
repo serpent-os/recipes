@@ -4,8 +4,7 @@
 	"packages": {
 		"micro": {
 			"build-depends": [
-				"binary(go)",
-				"nss"
+				"binary(go)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -23,6 +22,6 @@
 		}
 	},
 	"source-name": "micro",
-	"source-release": "2",
-	"source-version": "2.0.11"
+	"source-release": "3",
+	"source-version": "2.0.13"
 }
