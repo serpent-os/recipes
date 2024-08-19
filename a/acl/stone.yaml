@@ -5,7 +5,7 @@
 #
 name        : acl
 version     : 2.3.2
-release     : 2
+release     : 3
 summary     : Access control list utilities
 license     :
     - GPL-2.0-or-later
@@ -14,7 +14,7 @@ homepage    : https://savannah.nongnu.org/projects/acl
 description : |
     Commands for Manipulating POSIX Access Control Lists
 upstreams   :
-    - https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz : c0234042e17f11306c23c038b08e5e070edb7be44bef6697fb8734dcff1c66b1
+    - https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz : 97203a72cae99ab89a067fe2210c1cbf052bc492b479eca7d226d9830883b0bd
 builddeps   :
     - pkgconfig(libattr)
 setup       : |
@@ -25,5 +25,17 @@ build       : |
 install     : |
     %make_install
 check       : |
-    # evalvated permissions tests failing
-    %make check || :
+    # test/root/permissions.test requires the 'daemon' user to be a member
+    # of the 'bin' group in order not to fail.
+    sed -e 's|test/root/permissions.test||' \
+        -i test/Makemodule.am Makefile.in Makefile
+
+    # test/root/setfacl.test fails if 'bin' user cannot access build dir
+    sed -e 's|test/root/setfacl.test||' \
+        -i test/Makemodule.am Makefile.in Makefile
+
+    # test/root/restore.test fails if 'bin' user doesn't exist
+    sed -e 's|test/root/restore.test||' \
+        -i test/Makemodule.am Makefile.in Makefile
+
+    %make check || (cat ./test-suite.log && exit 1)
