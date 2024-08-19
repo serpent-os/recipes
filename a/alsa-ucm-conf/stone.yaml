@@ -1,0 +1,18 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : alsa-ucm-conf
+version     : 1.2.12
+release     : 1
+homepage    : https://www.alsa-project.org/wiki/Main_Page
+upstreams   :
+    - http://www.alsa-project.org/files/pub/lib/alsa-ucm-conf-1.2.12.tar.bz2 : 168e7c0549b7bf8991092fa2bfb903631df779dc4c43ee8f4277fcb772d8c035
+summary     : ALSA UCM configuration files
+description : |
+    ALSA Use Case Manager configuration (and topologies)
+license     : BSD-3-Clause
+install     : |
+    %install_dir %(installroot)%(datadir)/alsa
+    cp -rv --preserve=mode,timestamps ucm2 %(installroot)%(datadir)/alsa
