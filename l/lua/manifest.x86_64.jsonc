@@ -13,7 +13,7 @@
 				"/usr/bin/luac",
 				"/usr/lib/liblua.so.5",
 				"/usr/lib/liblua.so.5.4",
-				"/usr/lib/liblua.so.5.4.6",
+				"/usr/lib/liblua.so.5.4.7",
 				"/usr/lib/lua/5.4",
 				"/usr/share/lua/5.4",
 				"/usr/share/man/lua.1",
@@ -21,12 +21,15 @@
 			],
 			"name": "lua",
 			"provides": [
-				"soname(liblua.so.5.4(x86_64))",
 				"binary(lua)",
-				"binary(luac)"
+				"binary(luac)",
+				"soname(liblua.so.5.4(x86_64))"
 			]
 		},
 		"lua-devel": {
+			"depends": [
+				"lua"
+			],
 			"files": [
 				"/usr/include/lauxlib.h",
 				"/usr/include/lua.h",
@@ -45,6 +48,6 @@
 		}
 	},
 	"source-name": "lua",
-	"source-release": "4",
-	"source-version": "5.4.6"
+	"source-release": "5",
+	"source-version": "5.4.7"
 }
