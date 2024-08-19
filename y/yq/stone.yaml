@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : yq
-version     : "4.40.5"
-release     : 3
+version     : 4.44.3
+release     : 4
 homepage    : https://mikefarah.gitbook.io/yq/
 upstreams   :
-    - https://github.com/mikefarah/yq/archive/refs/tags/v4.40.5.tar.gz : 6ab08e0332697cf6a95383a38fd70c5162d00c0e28ea4b2311e9646b664aabe3
+    - https://github.com/mikefarah/yq/archive/refs/tags/v4.44.3.tar.gz : ea950f5622480fc0ff3708c52589426a737cd4ec887a52922a74efa1be8f2fbf
 summary     : yq is a lightweight command-line YAML processor
 description : |
     A lightweight and portable command-line YAML processor. yq uses jq like syntax but works with yaml files as well as json. It doesn't yet support everything jq does - but it does support the most common operations and functions, and more is being added continuously.
@@ -20,31 +20,14 @@ checkdeps   :
     # Some of the tests need timezone data
     - tzdata
 networking  : yes
-environment : |
-    # This can probably be removed after golang reboostrap.
-    export GOMODCACHE="%(workdir)/.cache"
-
-    export GO111MODULE=auto
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
-
-    # https://github.com/serpent-os/boulder/issues/74
-    export CGO_CFLAGS="${CGO_CFLAGS} -Wno-error=unused-command-line-argument"
 build       : |
     go build -v ./yq.go
 install     : |
     %install_bin yq
-
-    %(installroot)/%(bindir)/yq --version
-
-    # # symbolic link in case anyone is expecting this to be go-task instead
-    # ln -s task %(installroot)/%(bindir)/go-task
 
     # Completions
     ./yq shell-completion bash | install -Dm00644 /dev/stdin %(installroot)/%(completionsdir)/yq
     ./yq shell-completion zsh | install -Dm00644 /dev/stdin %(installroot)/%(datadir)/zsh/site-functions/_yq
     ./yq shell-completion fish | install -Dm00644 /dev/stdin %(installroot)/%(datadir)/fish/vendor_completions.d/yq.fish
 check       : |
-    # Fix wonky tests
-    export HOME=%(workdir)
-
     go test ./...
