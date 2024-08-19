@@ -3,6 +3,9 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"alsa-lib": {
+			"build-depends": [
+				"binary(ar)"
+			],
 			"depends": [
 				"alsa-topology-conf",
 				"alsa-ucm-conf",
@@ -104,6 +107,9 @@
 			]
 		},
 		"alsa-lib-devel": {
+			"build-depends": [
+				"binary(ar)"
+			],
 			"depends": [
 				"alsa-lib"
 			],
@@ -172,6 +178,6 @@
 		}
 	},
 	"source-name": "alsa-lib",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.2.12"
 }
