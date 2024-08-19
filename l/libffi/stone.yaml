@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libffi
-version     : 3.4.4
-release     : 3
-summary     : A portable foreign function interface library
-license     : MIT
+version     : 3.4.6
+release     : 4
 homepage    : https://sourceware.org/libffi
+upstreams   :
+    - https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz: b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e
+summary     : A portable foreign function interface library
 description : |
     A portable foreign function interface library
-upstreams   :
-    - https://github.com/libffi/libffi/releases/download/v3.4.4/libffi-3.4.4.tar.gz: d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676
+license     : MIT
 emul32      : yes
 setup       : |
     %configure --disable-static
@@ -20,3 +20,5 @@ build       : |
     %make
 install     : |
     %make_install
+#check       : |
+#    %make check
