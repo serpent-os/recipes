@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mimalloc
-version     : 2.1.2
-release     : 4
-summary     : Compact general purpose allocator
-license     : MIT
+version     : 2.1.7
+release     : 5
 homepage    : https://github.com/microsoft/mimalloc
+upstreams   :
+    - https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.7.tar.gz: 0eed39319f139afde8515010ff59baf24de9e47ea316a315398e8027d198202d
+summary     : Compact general purpose allocator
 description : |
     mimalloc is a compact general purpose allocator with excellent performance.
-upstreams   :
-    - https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz: 2b1bff6f717f9725c70bf8d79e4786da13de8a270059e4ba0bdd262ae7be46eb
+license     : MIT
 setup       : |
     %cmake -DMI_BUILD_STATIC=OFF \
            -DMI_BUILD_OBJECT=OFF \
@@ -21,3 +21,5 @@ build       : |
     %cmake_build
 install     : |
     %cmake_install
+check       : |
+    %cmake_test
