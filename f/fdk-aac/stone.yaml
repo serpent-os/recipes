@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name       : fdk-aac
+version    : '2.0.3'
+release    : 1
+homepage   : https://sourceforge.net/projects/opencore-amr/
+upstreams  :
+    - https://github.com/mstorsjo/fdk-aac/archive/refs/tags/v2.0.3.tar.gz : e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78
+summary    : Fraunhofer FDK AAC codec library
+description: |
+    Library of OpenCORE Framework implementation of Adaptive Multi Rate Narrowband and Wideband (AMR-NB and AMR-WB) speech codec. Library of VisualOn implementation of Adaptive Multi Rate Wideband (AMR-WB) encoder and Advanced Audio Coding (AAC) encoder. Modified library of Fraunhofer AAC decoder and encoder.
+license    : custom
+setup      : |
+    %cmake
+build      : |
+    %cmake_build
+install    : |
+    %cmake_install
+
+    %install_file NOTICE %(installroot)%(datadir)/licenses/fdk-aac/NOTICE
