@@ -4,23 +4,26 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : swig
-version     : '4.2.0'
-release     : 2
+version     : 4.2.1
+release     : 3
 homepage    : https://www.swig.org
 summary     : Generate scripting interfaces to C/C++ code
 description : |
     Generate scripting interfaces to C/C++ code
 license     : GPL-3.0-or-later
 upstreams   :
-    - https://downloads.sourceforge.net/swig/swig-4.2.0.tar.gz : 261ca2d7589e260762817b912c075831572b72ff2717942f75b3e51244829c97
+    - https://downloads.sourceforge.net/swig/swig-4.2.1.tar.gz : fa045354e2d048b2cddc69579e4256245d4676894858fcf0bab2290ecf59b7d8
 builddeps   :
     - pkgconfig(libpcre2-8)
+#checkdeps   :
+#    - cmake(boost)
 setup       : |
     %configure
 build       : |
     %make
 install     : |
     %make_install
-# TODO enable these
-# check       : |
-#     %make check
+check       : |
+    # remove exit 0 hack when we have boost packaged
+    # multiple_inheritance_shared_ptr_wrap.cxx:1613:10: fatal error: 'boost/shared_ptr.hpp' file not found
+    %make check || :
