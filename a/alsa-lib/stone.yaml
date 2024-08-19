@@ -5,7 +5,7 @@
 #
 name        : alsa-lib
 version     : 1.2.12
-release     : 2
+release     : 3
 homepage    : https://www.alsa-project.org/wiki/Main_Page
 upstreams   :
     - https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.12.tar.bz2 : 4868cd908627279da5a634f468701625be8cc251d84262c7e5b6a218391ad0d2
@@ -20,3 +20,8 @@ build       : |
     %make
 install     : |
     %make_install
+packages    :
+    - "%(name)":
+        rundeps:
+            - alsa-topology-conf
+            - alsa-ucm-conf
