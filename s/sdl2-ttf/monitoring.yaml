@@ -1,0 +1,5 @@
+releases:
+  id: 4784
+# No known CPE. Last checked 20240820
+security:
+  cpe: ~

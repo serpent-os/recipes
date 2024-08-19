@@ -1,0 +1,58 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"sdl2-ttf": {
+			"build-depends": [
+				"pkgconfig(freetype2)",
+				"pkgconfig(harfbuzz)",
+				"pkgconfig(sdl2)",
+				"pkgconfig(xshmfence)"
+			],
+			"depends": [
+				"soname(libSDL2-2.0.so.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libfreetype.so.6(x86_64))",
+				"soname(libharfbuzz.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libSDL2_ttf-2.0.so.0",
+				"/usr/lib/libSDL2_ttf-2.0.so.0.2200.0"
+			],
+			"name": "sdl2-ttf",
+			"provides": [
+				"soname(libSDL2_ttf-2.0.so.0(x86_64))"
+			]
+		},
+		"sdl2-ttf-devel": {
+			"build-depends": [
+				"pkgconfig(freetype2)",
+				"pkgconfig(harfbuzz)",
+				"pkgconfig(sdl2)",
+				"pkgconfig(xshmfence)"
+			],
+			"depends": [
+				"pkgconfig(freetype2)",
+				"pkgconfig(harfbuzz)",
+				"pkgconfig(sdl2)",
+				"sdl2-ttf"
+			],
+			"files": [
+				"/usr/include/SDL2/SDL_ttf.h",
+				"/usr/lib/cmake/SDL2_ttf/sdl2_ttf-config-version.cmake",
+				"/usr/lib/cmake/SDL2_ttf/sdl2_ttf-config.cmake",
+				"/usr/lib/libSDL2_ttf.so",
+				"/usr/lib/pkgconfig/SDL2_ttf.pc"
+			],
+			"name": "sdl2-ttf-devel",
+			"provides": [
+				"cmake(sdl2_ttf)",
+				"pkgconfig(SDL2_ttf)"
+			]
+		}
+	},
+	"source-name": "sdl2-ttf",
+	"source-release": "1",
+	"source-version": "2.22.0"
+}
