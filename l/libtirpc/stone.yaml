@@ -4,19 +4,23 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libtirpc
-version     : 1.3.4
-release     : 1
+version     : 1.3.5
+release     : 2
 homepage    : https://sourceforge.net/projects/libtirpc/
 upstreams   :
-    - https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.4.tar.bz2 : 1e0b0c7231c5fa122e06c0609a76723664d068b0dba3b8219b63e6340b347860
+    - https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.5.tar.bz2 : 9b31370e5a38d3391bf37edfa22498e28fe2142467ae6be7a17c9068ec0bf12f
 summary     : Transport-independent secure RPC library
 description : |
     Transport-independent secure RPC libary
 license     :
     - BSD-3-Clause
+builddeps   :
+    - pkgconfig(krb5)
+environment : |
+    # clang 16/17 changes
+    export LDFLAGS="${LDFLAGS} -Wl,--undefined-version"
 setup       : |
-    %configure --disable-static \
-               --disable-gssapi
+    %configure --disable-static
 build       : |
     %make
 install     : |
