@@ -5,7 +5,7 @@
 #
 name        : alsa-lib
 version     : 1.2.12
-release     : 4
+release     : 5
 homepage    : https://www.alsa-project.org/wiki/Main_Page
 upstreams   :
     - https://github.com/alsa-project/alsa-lib/archive/refs/tags/v1.2.12.tar.gz : f067dbba9376e5bbbb417b77751d2a9f2f277c54fb3a2b5c023cc2c7dfb4e3c1
@@ -17,7 +17,6 @@ license     :
 builddeps   :
     - binary(ar)
 setup       : |
-    cp /usr/share/libtoolize/AC_CONFIG_AUX_DIR/ltmain.sh .
     %reconfigure --disable-static
 build       : |
     %make
