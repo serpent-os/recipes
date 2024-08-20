@@ -1,17 +1,26 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"slibtool": {
+			"build-depends": [
+				"binary(m4)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
 			"files": [
 				"/usr/bin/clibtool",
+				"/usr/bin/clibtool-ar",
 				"/usr/bin/clibtool-shared",
 				"/usr/bin/clibtool-static",
+				"/usr/bin/dclibtool",
+				"/usr/bin/dclibtool-ar",
+				"/usr/bin/dclibtool-shared",
+				"/usr/bin/dclibtool-static",
 				"/usr/bin/dlibtool",
+				"/usr/bin/dlibtool-ar",
 				"/usr/bin/dlibtool-shared",
 				"/usr/bin/dlibtool-static",
 				"/usr/bin/libtool",
@@ -21,17 +30,27 @@
 				"/usr/bin/rdlibtool",
 				"/usr/bin/rlibtool",
 				"/usr/bin/slibtool",
+				"/usr/bin/slibtool-ar",
 				"/usr/bin/slibtool-shared",
 				"/usr/bin/slibtool-static",
+				"/usr/bin/slibtoolize",
 				"/usr/share/aclocal/slibtool.m4",
-				"/usr/share/libtoolize/AC_CONFIG_AUX_DIR/ltmain.sh"
+				"/usr/share/slibtool/ltmain.sh",
+				"/usr/share/slibtool/slibtool.m4",
+				"/usr/share/slibtool/slibtool.sh"
 			],
 			"name": "slibtool",
 			"provides": [
 				"binary(clibtool)",
+				"binary(clibtool-ar)",
 				"binary(clibtool-shared)",
 				"binary(clibtool-static)",
+				"binary(dclibtool)",
+				"binary(dclibtool-ar)",
+				"binary(dclibtool-shared)",
+				"binary(dclibtool-static)",
 				"binary(dlibtool)",
+				"binary(dlibtool-ar)",
 				"binary(dlibtool-shared)",
 				"binary(dlibtool-static)",
 				"binary(libtool)",
@@ -41,12 +60,14 @@
 				"binary(rdlibtool)",
 				"binary(rlibtool)",
 				"binary(slibtool)",
+				"binary(slibtool-ar)",
 				"binary(slibtool-shared)",
-				"binary(slibtool-static)"
+				"binary(slibtool-static)",
+				"binary(slibtoolize)"
 			]
 		}
 	},
 	"source-name": "slibtool",
-	"source-release": "4",
-	"source-version": "0.5.34"
+	"source-release": "5",
+	"source-version": "0.6.0"
 }
