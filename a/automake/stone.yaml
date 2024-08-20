@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : automake
-version     : 1.16.5
-release     : 3
+version     : '1.17'
+release     : 4
 homepage    : https://ftp.gnu.org/gnu/automake
 upstreams   :
-    - https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.xz : f01d58cd6d9d77fbdca9eb4bbd5ead1988228fdb73d6f7a201f5f8d6b118b469
+    - https://ftp.gnu.org/gnu/automake/automake-1.17.tar.xz : 8920c1fc411e13b90bf704ef9db6f29d540e76d232cb3b2c9f4dc4cc599bd990
 summary     : Generate Makefile.in files
 description : |
     GNU Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards. Automake requires the use of GNU Autoconf.
@@ -18,14 +18,28 @@ packages    :
     - "%(name)":
         paths:
             - /usr/share/aclocal
-rundeps     :
-    - binary(autoconf)
+        rundeps     :
+            - binary(autoconf)
 setup       : |
     %configure
 build       : |
     %make
 install     : |
     %make_install
+check       : |
+    # Fail due to gnu-isms
+    for test in "objcxx-deps.sh" "objcxx-minidemo.sh" "subobj-objname-clash"; do
+        sed -e "s|t/$test||" \
+            -i Makefile.in Makefile
+    done
+
+    # Error due to not running as root
+    for test in "depcomp-auto.tap" "depcomp-cpp.tap" "depcomp-dashmstdout.tap" "depcomp-disabled.tap" "depcomp-gcc.tap"; do
+        sed -e "s|t/$test||" \
+            -i Makefile.in Makefile
+    done
+
+    %make check || (cat ./test-suite.log && exit 1)
 tuning      :
     - lto
     - optimize: speed
