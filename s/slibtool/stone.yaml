@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : slibtool
-version     : 0.5.34
-release     : 4
+version     : 0.6.0
+release     : 5
 homepage    : https://github.com/midipix-project/slibtool
 upstreams   :
-    - https://github.com/midipix-project/slibtool/archive/refs/tags/v0.5.34.tar.gz : 5967569d472afe7490adbc22d6d8cb2352c48568c1628fd999f7ab9137ee017a
+    - https://dl.midipix.org/slibtool/slibtool-0.6.0.tar.gz : afe87a71655aedf241062271b0e881ef8987e421f5a8d1273da735656c65972c
 summary     : a surrogate libtool implementation, written in C
 description : |
     `slibtool` is an independent reimplementation of the widely used libtool,
@@ -27,21 +27,28 @@ description : |
     of individual translation units.
 license     :
     - MIT
+builddeps   :
+    - binary(m4)
 setup       : |
-    %configure
+    # No idea why but this causes the build to fail
+    %patch %(pkgdir)/0001-Revert-build-system-ccenv_set_cc_underscore-rewrite-.patch
+    %patch %(pkgdir)/0001-Work-if-invoked-as-libtoolize.patch
+    %patch %(pkgdir)/0001-Fix-space-breaking-macros.patch
+
+    ./configure \
+        --prefix=%(prefix) \
+        --libdir=%(libdir)
 build       : |
     %make
 install     : |
     %make_install
 
     # Use slibtool for all libtool purposes
-    ln -svf slibtool "%(installroot)/usr/bin/libtool"
+    ln -srvf %(installroot)%(datadir)/slibtool/slibtool.sh "%(installroot)%(bindir)/libtool"
+    ln -svf slibtoolize "%(installroot)%(bindir)/libtoolize"
 
-    # Future versions of slibtool should support libtoolize automatically
-    %install_bin %(pkgdir)/libtoolize
-    %install_exe %(pkgdir)/ltmain.sh -t %(installroot)/usr/share/libtoolize/AC_CONFIG_AUX_DIR
-
-    %install_file m4/slibtool.m4 -t %(installroot)/usr/share/aclocal/
+    %install_dir %(installroot)%(datadir)/aclocal/
+    ln -srvf %(installroot)%(datadir)/slibtool/slibtool.m4 %(installroot)%(datadir)/aclocal/slibtool.m4
 packages    :
     - "%(name)":
         paths:

@@ -5,7 +5,7 @@
 #
 name        : alsa-utils
 version     : 1.2.12
-release     : 2
+release     : 3
 homepage    : https://www.alsa-project.org/wiki/Main_Page
 upstreams   :
     - https://github.com/alsa-project/alsa-utils/archive/refs/tags/v1.2.12.tar.gz : 11bb585a072162808f8a0fac2b3093f87a94feefcec1b11da106c9a8955d3ade
@@ -20,7 +20,6 @@ builddeps   :
     - pkgconfig(ncursesw)
     - pkgconfig(systemd)
 setup       : |
-    cp /usr/share/libtoolize/AC_CONFIG_AUX_DIR/ltmain.sh .
     %reconfigure \
                --disable-alsaconf \
                --with-udev-rules-dir=/usr/lib/udev/rules.d
