@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : bind-utils
-version     : '9.18.21'
-release     : 4
+version     : '9.18.28'
+release     : 5
 homepage    : https://www.isc.org/bind/
 upstreams   :
-    - https://downloads.isc.org/isc/bind9/9.18.21/bind-9.18.21.tar.xz : a556be22505d9ea4f9c6717aee9c549739c68498aff3ca69035787ecc648fec5
+    - https://downloads.isc.org/isc/bind9/9.18.28/bind-9.18.28.tar.xz : e7cce9a165f7b619eefc4832f0a8dc16b005d29e3890aed6008c506ea286a5e7
 summary     : Tools to interact with DNS services
 description : |
     BIND (Berkeley Internet Name Domain) is a complete, highly portable
@@ -21,18 +21,25 @@ license     :
 builddeps   :
     - lmdb-devel
     - pkgconfig(json-c)
-    - pkgconfig(libcap)
     - pkgconfig(libidn2)
     - pkgconfig(libnghttp2)
     - pkgconfig(libuv)
     - pkgconfig(libxml-2.0)
     - pkgconfig(openssl)
+    - pkgconfig(readline)
     - pkgconfig(zlib)
 setup       : |
-    %configure --disable-geoip \
+    # Autoconf fix for using clang
+    export CC_FOR_BUILD="$CC"
+
+    # TODO geoip (libmaxmind)
+    %configure \
+               --disable-geoip \
+               --disable-linux-caps \
                --with-json-c \
                --with-libidn2 \
                --with-libxml2 \
+               --with-readline=readline \
                --with-zlib
 build       : |
     %make -C lib
@@ -46,11 +53,12 @@ install     : |
     %make_install -C bin/delv
     %make_install -C bin/dig
     %make_install -C bin/nsupdate
+
     rm -rvf %(installroot)/usr/include
+
     install -dm00755 %(installroot)/%(mandir)/man1
     install -Dm00644 doc/man/delv.1 doc/man/dig.1 doc/man/host.1 doc/man/nslookup.1 doc/man/nsupdate.1 -t %(installroot)/%(mandir)/man1
 # TODO Checks
-toolchain   : gnu
 packages    :
     - "%(name)":
         paths:
