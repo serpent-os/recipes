@@ -5,10 +5,11 @@
 #
 name        : avahi
 version     : 0.8
-release     : 2
+release     : 3
 homepage    : https://www.avahi.org/
 upstreams   :
-    - https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz : 060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda
+    # - https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz : 060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda
+    - git|https://github.com/avahi/avahi.git : 9cbc63c1e77b0e339181c853f2c4e5caec7a53d8
 summary     : Avahi - Service Discovery for Linux using mDNS/DNS-SD
 description : |
     Avahi is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite. This enables you to plug your laptop or computer into a network and instantly be able to view other people who you can chat with, find printers to print to or find files being shared.
@@ -17,20 +18,17 @@ license     :
 builddeps  :
     - binary(gettextize)
     - binary(python3)
-    - gdbm-devel
+    - binary(xmltoman)
     - pkgconfig(dbus-1)
     - pkgconfig(expat)
     - pkgconfig(glib-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(libdaemon)
     - pkgconfig(libevent)
-    - pkgconfig(libgcrypt)
-    - pkgconfig(liblzma)
-    - pkgconfig(libzstd)
+    - pkgconfig(systemd)
+    - gdbm-devel
 toolchain   : gnu
 setup       : |
-    # Stop hardcoding libevent-2xxx
-    %patch %(pkgdir)/libevent_pc.patch
     %reconfigure \
         --disable-static \
         --disable-gtk3 \

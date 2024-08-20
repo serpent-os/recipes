@@ -6,6 +6,7 @@
 			"build-depends": [
 				"binary(gettextize)",
 				"binary(python3)",
+				"binary(xmltoman)",
 				"gdbm-devel",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(expat)",
@@ -13,9 +14,7 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libdaemon)",
 				"pkgconfig(libevent)",
-				"pkgconfig(libgcrypt)",
-				"pkgconfig(liblzma)",
-				"pkgconfig(libzstd)"
+				"pkgconfig(systemd)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -26,7 +25,8 @@
 				"soname(libexpat.so.1(x86_64))",
 				"soname(libgdbm.so.6(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
-				"soname(libgobject-2.0.so.0(x86_64))"
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/avahi-browse",
@@ -53,6 +53,9 @@
 				"/usr/lib/libavahi-gobject.so.0.0.5",
 				"/usr/lib/libavahi-libevent.so.1",
 				"/usr/lib/libavahi-libevent.so.1.0.0",
+				"/usr/lib/systemd/system/avahi-daemon.service",
+				"/usr/lib/systemd/system/avahi-daemon.socket",
+				"/usr/lib/systemd/system/avahi-dnsconfd.service",
 				"/usr/sbin/avahi-autoipd",
 				"/usr/sbin/avahi-daemon",
 				"/usr/sbin/avahi-dnsconfd",
@@ -66,6 +69,8 @@
 				"/usr/share/dbus-1/interfaces/org.freedesktop.Avahi.ServiceBrowser.xml",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.Avahi.ServiceResolver.xml",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.Avahi.ServiceTypeBrowser.xml",
+				"/usr/share/dbus-1/system-services/org.freedesktop.Avahi.service",
+				"/usr/share/dbus-1/system.d/avahi-dbus.conf",
 				"/usr/share/gir-1.0/Avahi-0.6.gir",
 				"/usr/share/gir-1.0/AvahiCore-0.6.gir",
 				"/usr/share/locale/ach/LC_MESSAGES/avahi.mo",
@@ -89,10 +94,13 @@
 				"/usr/share/locale/fr/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/gl/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/he/LC_MESSAGES/avahi.mo",
+				"/usr/share/locale/hi/LC_MESSAGES/avahi.mo",
+				"/usr/share/locale/hr/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/hu/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/id/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/it/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/avahi.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/lv/LC_MESSAGES/avahi.mo",
 				"/usr/share/locale/ms/LC_MESSAGES/avahi.mo",
@@ -131,11 +139,8 @@
 			],
 			"name": "avahi",
 			"provides": [
-				"sysbinary(avahi-autoipd)",
 				"binary(avahi-browse)",
 				"binary(avahi-browse-domains)",
-				"sysbinary(avahi-daemon)",
-				"sysbinary(avahi-dnsconfd)",
 				"binary(avahi-publish)",
 				"binary(avahi-publish-address)",
 				"binary(avahi-publish-service)",
@@ -148,13 +153,17 @@
 				"soname(libavahi-core.so.7(x86_64))",
 				"soname(libavahi-glib.so.1(x86_64))",
 				"soname(libavahi-gobject.so.0(x86_64))",
-				"soname(libavahi-libevent.so.1(x86_64))"
+				"soname(libavahi-libevent.so.1(x86_64))",
+				"sysbinary(avahi-autoipd)",
+				"sysbinary(avahi-daemon)",
+				"sysbinary(avahi-dnsconfd)"
 			]
 		},
 		"avahi-devel": {
 			"build-depends": [
 				"binary(gettextize)",
 				"binary(python3)",
+				"binary(xmltoman)",
 				"gdbm-devel",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(expat)",
@@ -162,11 +171,11 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libdaemon)",
 				"pkgconfig(libevent)",
-				"pkgconfig(libgcrypt)",
-				"pkgconfig(liblzma)",
-				"pkgconfig(libzstd)"
+				"pkgconfig(systemd)"
 			],
 			"depends": [
+				"avahi",
+				"pkgconfig(dbus-1)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(libevent)"
@@ -228,6 +237,6 @@
 		}
 	},
 	"source-name": "avahi",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.8"
 }
