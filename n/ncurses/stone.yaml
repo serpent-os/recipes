@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ncurses
-version     : 6.5
-release     : 10
+version     : 6.5-20240817
+release     : 11
 homepage    : https://invisible-island.net/ncurses/ncurses.html
 upstreams   :
-    - https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz : 136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6
+    - https://invisible-island.net/archives/ncurses/current/ncurses-6.5-20240817.tgz : 604fbeeb9713faac7e73a54dc372c0b071336798fef9f43b2560af394294b906
 summary     : Console display library
 description : |
     The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. It uses terminfo format, supports pads and color and multiple highlights and forms characters and function-key mapping, and has all the other SVr4-curses enhancements over BSD curses. SVr4 curses became the basis of X/Open Curses.
@@ -21,8 +21,10 @@ setup       : |
 
     %configure --disable-rpath \
         --disable-stripping \
+        --enable-colorfgbg \
         --enable-db-install \
         --enable-largefile \
+        --enable-pc-files \
         --enable-widec \
         --with-cxx-binding \
         --with-cxx-shared \
@@ -32,7 +34,9 @@ setup       : |
         --without-debug \
         --without-normal \
         --enable-pc-files \
+        --disable-rpath \
         --disable-root-access \
+        --disable-root-environ \
         --disable-setuid-environ \
         PKG_CONFIG_LIBDIR=%(libdir)/pkgconfig
 build       : |
