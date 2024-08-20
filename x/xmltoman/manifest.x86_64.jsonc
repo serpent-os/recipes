@@ -1,0 +1,31 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xmltoman": {
+			"build-depends": [
+				"perl-xml-parser"
+			],
+			"depends": [
+				"perl-xml-parser"
+			],
+			"files": [
+				"/usr/bin/xmlmantohtml",
+				"/usr/bin/xmltoman",
+				"/usr/share/man/man1/xmlmantohtml.1",
+				"/usr/share/man/man1/xmltoman.1",
+				"/usr/share/xmltoman/xmltoman.css",
+				"/usr/share/xmltoman/xmltoman.dtd",
+				"/usr/share/xmltoman/xmltoman.xsl"
+			],
+			"name": "xmltoman",
+			"provides": [
+				"binary(xmlmantohtml)",
+				"binary(xmltoman)"
+			]
+		}
+	},
+	"source-name": "xmltoman",
+	"source-release": "1",
+	"source-version": "0.6"
+}

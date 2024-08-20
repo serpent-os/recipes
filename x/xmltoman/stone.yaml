@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : xmltoman
+version     : '0.6'
+release     : 1
+homepage    : https://github.com/atsb/xmltoman
+upstreams   :
+    - https://github.com/atsb/xmltoman/archive/refs/tags/0.6.tar.gz : cdd5063ca8beb6fe51ec6ab85f70d31fc8ed034e85e32dd9b7c0b7142bb72fb6
+summary     : Convert xml to man pages in groff format or html
+description : |
+    Convert xml to man pages in groff format or html
+license     : GPL-2.0-only
+builddeps   :
+    - perl-xml-parser
+packages    :
+    - "%(name)":
+        rundeps:
+            - perl-xml-parser
+build       : |
+    %make prefix=%(prefix)
+install     : |
+    %make_install prefix=%(prefix)
