@@ -7,13 +7,16 @@
 				"binary(python3)",
 				"python-setuptools_scm"
 			],
+			"depends": [
+				"binary(python3)"
+			],
 			"files": [
 				"/usr/bin/codespell",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/METADATA",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/RECORD",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/WHEEL",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/entry_points.txt",
-				"/usr/lib/python3.11/site-packages/codespell-2.2.4.dist-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/codespell-2.3.0.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/codespell-2.3.0.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/codespell-2.3.0.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/codespell-2.3.0.dist-info/entry_points.txt",
+				"/usr/lib/python3.11/site-packages/codespell-2.3.0.dist-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/codespell_lib/__init__.py",
 				"/usr/lib/python3.11/site-packages/codespell_lib/__main__.py",
 				"/usr/lib/python3.11/site-packages/codespell_lib/__pycache__/__init__.cpython-311.opt-1.pyc",
@@ -45,16 +48,19 @@
 				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/test_basic.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/test_dictionary.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/codespell_lib/tests/__pycache__/test_dictionary.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/data/en_GB-additional.wordlist",
+				"/usr/lib/python3.11/site-packages/codespell_lib/tests/data/en_US-additional.wordlist",
 				"/usr/lib/python3.11/site-packages/codespell_lib/tests/test_basic.py",
 				"/usr/lib/python3.11/site-packages/codespell_lib/tests/test_dictionary.py"
 			],
 			"name": "codespell",
 			"provides": [
-				"binary(codespell)"
+				"binary(codespell)",
+				"python(codespell)"
 			]
 		}
 	},
 	"source-name": "codespell",
-	"source-release": "4",
-	"source-version": "2.2.4"
+	"source-release": "5",
+	"source-version": "2.3.0"
 }
