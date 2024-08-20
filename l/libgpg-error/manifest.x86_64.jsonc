@@ -12,7 +12,7 @@
 				"/usr/bin/gpgrt-config",
 				"/usr/bin/yat2m",
 				"/usr/lib/libgpg-error.so.0",
-				"/usr/lib/libgpg-error.so.0.33.1",
+				"/usr/lib/libgpg-error.so.0.37.0",
 				"/usr/share/common-lisp/source/gpg-error/gpg-error-codes.lisp",
 				"/usr/share/common-lisp/source/gpg-error/gpg-error-package.lisp",
 				"/usr/share/common-lisp/source/gpg-error/gpg-error.asd",
@@ -39,17 +39,21 @@
 				"/usr/share/locale/uk/LC_MESSAGES/libgpg-error.mo",
 				"/usr/share/locale/vi/LC_MESSAGES/libgpg-error.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/libgpg-error.mo",
-				"/usr/share/locale/zh_TW/LC_MESSAGES/libgpg-error.mo"
+				"/usr/share/locale/zh_TW/LC_MESSAGES/libgpg-error.mo",
+				"/usr/share/man/man1/gpgrt-config.1"
 			],
 			"name": "libgpg-error",
 			"provides": [
 				"binary(gpg-error)",
 				"binary(gpgrt-config)",
-				"soname(libgpg-error.so.0(x86_64))",
-				"binary(yat2m)"
+				"binary(yat2m)",
+				"soname(libgpg-error.so.0(x86_64))"
 			]
 		},
 		"libgpg-error-devel": {
+			"depends": [
+				"libgpg-error"
+			],
 			"files": [
 				"/usr/include/gpg-error.h",
 				"/usr/include/gpgrt.h",
@@ -65,6 +69,6 @@
 		}
 	},
 	"source-name": "libgpg-error",
-	"source-release": "1",
-	"source-version": "1.46"
+	"source-release": "2",
+	"source-version": "1.50"
 }
