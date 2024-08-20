@@ -32,10 +32,10 @@
 			"provides": [
 				"binary(captest)",
 				"binary(filecap)",
-				"soname(libcap-ng.so.0(x86_64))",
-				"soname(libdrop_ambient.so.0(x86_64))",
 				"binary(netcap)",
-				"binary(pscap)"
+				"binary(pscap)",
+				"soname(libcap-ng.so.0(x86_64))",
+				"soname(libdrop_ambient.so.0(x86_64))"
 			]
 		},
 		"libcap-ng-devel": {
@@ -43,6 +43,9 @@
 				"binary(swig)",
 				"pkgconfig(libattr)",
 				"pkgconfig(python3)"
+			],
+			"depends": [
+				"libcap-ng"
 			],
 			"files": [
 				"/usr/include/cap-ng.h",
@@ -84,6 +87,7 @@
 				"pkgconfig(python3)"
 			],
 			"depends": [
+				"binary(python3)",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcap-ng.so.0(x86_64))"
 			],
@@ -100,6 +104,6 @@
 		}
 	},
 	"source-name": "libcap-ng",
-	"source-release": "2",
-	"source-version": "0.8.3"
+	"source-release": "3",
+	"source-version": "0.8.5"
 }
