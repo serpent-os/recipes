@@ -5,7 +5,7 @@
 #
 name        : libfuse2
 version     : 2.9.9
-release     : 1
+release     : 2
 homepage    : https://github.com/libfuse/libfuse
 upstreams   :
     - https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz : d0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5
@@ -19,8 +19,9 @@ builddeps   :
     - binary(aclocal)
     - binary(perl)
     - gettext-devel
+emul32      : true
 environment :
-    export UDEV_RULES_PATH=%(libdir)udev/rules.d
+    export UDEV_RULES_PATH=/usr/lib/udev/rules.d
     export MOUNT_FUSE_PATH=%(bindir)
 setup       : |
     %patch %(pkgdir)/conditionally-define-closefrom.patch
