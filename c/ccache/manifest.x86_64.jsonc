@@ -7,6 +7,7 @@
 				"binary(eu-elfcmp)",
 				"binary(objdump)",
 				"binary(perl)",
+				"pkgconfig(libxxhash)",
 				"pkgconfig(libzstd)"
 			],
 			"depends": [
@@ -15,6 +16,7 @@
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
+				"soname(libxxhash.so.0(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
 			],
 			"files": [
@@ -36,6 +38,6 @@
 		}
 	},
 	"source-name": "ccache",
-	"source-release": "5",
-	"source-version": "4.9"
+	"source-release": "6",
+	"source-version": "4.10.2"
 }
