@@ -4,17 +4,19 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ccache
-version     : '4.9'
-release     : 5
+version     : 4.10.2
+release     : 6
 summary     : ccache - a fast C/C++ compiler cache
 license     : GPL-3.0-or-later
 homepage    : https://ccache.dev/
 description : |
     Ccache is a compiler cache. It speeds up recompilation by caching previous compilations and detecting when the same compilation is being done again. Supported languages are C, C++, Objective-C and Objective-C++.
 upstreams   :
-    - https://github.com/ccache/ccache/releases/download/v4.9/ccache-4.9.tar.xz: 1ebc72324e3ab52af0b562bf54189d108e85eef6478d6304a345a3c2dc4018e0
+    - https://github.com/ccache/ccache/releases/download/v4.10.2/ccache-4.10.2.tar.xz: c0b85ddfc1a3e77b105ec9ada2d24aad617fa0b447c6a94d55890972810f0f5a
 builddeps   :
+    # pkgconfig(fmt)
     # pkgconfig(hiredis)
+    - pkgconfig(libxxhash)
     - pkgconfig(libzstd)
     # TODO asciidoctor for man pages
 checkdeps   :
@@ -24,24 +26,28 @@ checkdeps   :
 setup       : |
     # avoid packaging hiredis for now...
     %cmake \
-        -DCMAKE_INSTALL_SYSCONFDIR="%(vendordir)/ccache" \
-        -DREDIS_STORAGE_BACKEND=OFF
+        -DVENDORDIR="%(vendordir)/ccache" \
+        -DREDIS_STORAGE_BACKEND=OFF \
+        -DENABLE_DOCUMENTATION=OFF \
+        -DENABLE_TESTING=OFF \
+        -DDEPS=LOCAL
 build       : |
     %cmake_build
 install     : |
     %cmake_install
 
     # Setup ccache symlinks for gnu and clang compilers
-    %install_dir %(installroot)/%(libdir)%/ccache/bin
-    TGT="%(installroot)/%(libdir)%/ccache/bin"
+    %install_dir %(installroot)/%(libdir)/ccache/bin
+    TGT="%(installroot)/%(libdir)/ccache/bin"
     for compiler in gcc x86_64-serpent-linux-gcc g++ x86_64-serpent-linux-g++ c++ x86_64-serpent-linux-c++ clang clang++ ; do
         ln -sv /usr/bin/ccache "${TGT}/${compiler}"
     done
 
     # Install our default config
     %install_file %(pkgdir)/ccache.conf %(installroot)/%(vendordir)%(sysconfdir)/ccache/ccache.conf
-check       : |
-    %cmake_build test
+#check       : |
+#    needs doctest packaged
+#    %cmake_test
 tuning      :
     - lto
     - optimize: speed
