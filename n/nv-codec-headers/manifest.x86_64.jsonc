@@ -1,0 +1,23 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"nv-codec-headers": {
+			"files": [
+				"/usr/include/ffnvcodec/dynlink_cuda.h",
+				"/usr/include/ffnvcodec/dynlink_cuviddec.h",
+				"/usr/include/ffnvcodec/dynlink_loader.h",
+				"/usr/include/ffnvcodec/dynlink_nvcuvid.h",
+				"/usr/include/ffnvcodec/nvEncodeAPI.h",
+				"/usr/lib/pkgconfig/ffnvcodec.pc"
+			],
+			"name": "nv-codec-headers",
+			"provides": [
+				"pkgconfig(ffnvcodec)"
+			]
+		}
+	},
+	"source-name": "nv-codec-headers",
+	"source-release": "1",
+	"source-version": "12.2.72.0"
+}

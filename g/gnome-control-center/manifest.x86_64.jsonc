@@ -49,6 +49,7 @@
 				"pkgconfig(xi)"
 			],
 			"depends": [
+				"gnome-remote-desktop",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libXi.so.6(x86_64))",

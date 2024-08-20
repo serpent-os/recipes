@@ -1,0 +1,42 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"opus": {
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libopus.so.0",
+				"/usr/lib/libopus.so.0.10.1"
+			],
+			"name": "opus",
+			"provides": [
+				"soname(libopus.so.0(x86_64))"
+			]
+		},
+		"opus-devel": {
+			"depends": [
+				"opus"
+			],
+			"files": [
+				"/usr/include/opus/opus.h",
+				"/usr/include/opus/opus_custom.h",
+				"/usr/include/opus/opus_defines.h",
+				"/usr/include/opus/opus_multistream.h",
+				"/usr/include/opus/opus_projection.h",
+				"/usr/include/opus/opus_types.h",
+				"/usr/lib/libopus.so",
+				"/usr/lib/pkgconfig/opus.pc"
+			],
+			"name": "opus-devel",
+			"provides": [
+				"pkgconfig(opus)"
+			]
+		}
+	},
+	"source-name": "opus",
+	"source-release": "1",
+	"source-version": "1.5.2"
+}

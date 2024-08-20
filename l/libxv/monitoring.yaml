@@ -1,0 +1,6 @@
+releases:
+  id: 1795
+security:
+  cpe:
+  - vendor: x.org
+    product: libxv

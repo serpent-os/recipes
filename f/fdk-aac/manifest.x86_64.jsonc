@@ -1,0 +1,48 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"fdk-aac": {
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libfdk-aac.so.2",
+				"/usr/lib/libfdk-aac.so.2.0.3",
+				"/usr/share/licenses/fdk-aac/NOTICE"
+			],
+			"name": "fdk-aac",
+			"provides": [
+				"soname(libfdk-aac.so.2(x86_64))"
+			]
+		},
+		"fdk-aac-devel": {
+			"depends": [
+				"fdk-aac"
+			],
+			"files": [
+				"/usr/include/fdk-aac/FDK_audio.h",
+				"/usr/include/fdk-aac/aacdecoder_lib.h",
+				"/usr/include/fdk-aac/aacenc_lib.h",
+				"/usr/include/fdk-aac/genericStds.h",
+				"/usr/include/fdk-aac/machine_type.h",
+				"/usr/include/fdk-aac/syslib_channelMapDescr.h",
+				"/usr/lib/cmake/fdk-aac/fdk-aac-config-version.cmake",
+				"/usr/lib/cmake/fdk-aac/fdk-aac-config.cmake",
+				"/usr/lib/cmake/fdk-aac/fdk-aac-targets-release.cmake",
+				"/usr/lib/cmake/fdk-aac/fdk-aac-targets.cmake",
+				"/usr/lib/libfdk-aac.so",
+				"/usr/lib/pkgconfig/fdk-aac.pc"
+			],
+			"name": "fdk-aac-devel",
+			"provides": [
+				"cmake(fdk-aac)",
+				"pkgconfig(fdk-aac)"
+			]
+		}
+	},
+	"source-name": "fdk-aac",
+	"source-release": "1",
+	"source-version": "2.0.3"
+}
