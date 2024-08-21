@@ -3,6 +3,8 @@
 This repository contains all of the recipes required to build Serpent OS
 from source.
 
+[![Repository status](https://repology.org/badge/repository-big/serpentos.svg)](https://repology.org/repository/serpentos)
+
 ## Quick start for boulder (Serpent OS native)
 
 Obviously, if your name isn't Ikey, then use your own `$USERNAME`
