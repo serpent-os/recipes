@@ -5,7 +5,7 @@
 #
 name        : gnupg
 version     : 2.4.5
-release     : 3
+release     : 4
 homepage    : https://gnupg.org/software/index.html
 upstreams   :
     - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.5.tar.bz2 : f68f7d75d06cb1635c336d34d844af97436c3f64ea14bcb7c869782f96f44277

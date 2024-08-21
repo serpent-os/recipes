@@ -4,7 +4,6 @@
 	"packages": {
 		"gnupg": {
 			"build-depends": [
-				"npth-devel",
 				"pkgconfig(bzip2)",
 				"pkgconfig(gnutls)",
 				"pkgconfig(gpg-error)",
@@ -12,6 +11,7 @@
 				"pkgconfig(ldap)",
 				"pkgconfig(libassuan)",
 				"pkgconfig(libgcrypt)",
+				"pkgconfig(npth)",
 				"pkgconfig(readline)",
 				"pkgconfig(sqlite3)"
 			],
@@ -189,6 +189,6 @@
 		}
 	},
 	"source-name": "gnupg",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.4.5"
 }
