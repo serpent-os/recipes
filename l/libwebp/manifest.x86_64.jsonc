@@ -14,13 +14,13 @@
 			],
 			"files": [
 				"/usr/lib/libsharpyuv.so.0",
-				"/usr/lib/libsharpyuv.so.0.0.1",
+				"/usr/lib/libsharpyuv.so.0.1.0",
 				"/usr/lib/libwebp.so.7",
-				"/usr/lib/libwebp.so.7.1.8",
+				"/usr/lib/libwebp.so.7.1.9",
 				"/usr/lib/libwebpdemux.so.2",
-				"/usr/lib/libwebpdemux.so.2.0.14",
+				"/usr/lib/libwebpdemux.so.2.0.15",
 				"/usr/lib/libwebpmux.so.3",
-				"/usr/lib/libwebpmux.so.3.0.13"
+				"/usr/lib/libwebpmux.so.3.1.0"
 			],
 			"name": "libwebp",
 			"provides": [
@@ -35,6 +35,9 @@
 				"pkgconfig(libjpeg)",
 				"pkgconfig(libpng)",
 				"pkgconfig(libtiff-4)"
+			],
+			"depends": [
+				"libwebp"
 			],
 			"files": [
 				"/usr/include/webp/decode.h",
@@ -102,6 +105,6 @@
 		}
 	},
 	"source-name": "libwebp",
-	"source-release": "2",
-	"source-version": "1.3.2"
+	"source-release": "3",
+	"source-version": "1.4.0"
 }
