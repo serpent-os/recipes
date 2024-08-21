@@ -15,7 +15,6 @@ description : |
 license     :
     - GPL-3.0-or-later
 builddeps   :
-    - npth-devel
     - pkgconfig(bzip2)
     - pkgconfig(gnutls)
     - pkgconfig(gpg-error)
@@ -23,6 +22,7 @@ builddeps   :
     - pkgconfig(ldap)
     - pkgconfig(libassuan)
     - pkgconfig(libgcrypt)
+    - pkgconfig(npth)
     - pkgconfig(readline)
     - pkgconfig(sqlite3)
 rundeps     :
