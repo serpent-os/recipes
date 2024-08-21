@@ -356,7 +356,6 @@
 				"binary(id)",
 				"binary(install)",
 				"binary(join)",
-				"soname(libstdbuf.so(x86_64))",
 				"binary(link)",
 				"binary(ln)",
 				"binary(logname)",
@@ -422,11 +421,12 @@
 				"binary(wc)",
 				"binary(who)",
 				"binary(whoami)",
-				"binary(yes)"
+				"binary(yes)",
+				"soname(libstdbuf.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "coreutils",
-	"source-release": "5",
-	"source-version": "9.4"
+	"source-release": "6",
+	"source-version": "9.5"
 }
