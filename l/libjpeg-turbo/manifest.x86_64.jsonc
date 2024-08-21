@@ -33,6 +33,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"libjpeg-turbo",
 				"soname(libc.so.6(x86_64))",
 				"soname(libjpeg.so.8(x86_64))",
 				"soname(libm.so.6(x86_64))",
@@ -64,16 +65,16 @@
 				"binary(cjpeg)",
 				"binary(djpeg)",
 				"binary(jpegtran)",
-				"pkgconfig(libjpeg)",
-				"cmake(libjpeg-turbo)",
-				"pkgconfig(libturbojpeg)",
 				"binary(rdjpgcom)",
 				"binary(tjbench)",
-				"binary(wrjpgcom)"
+				"binary(wrjpgcom)",
+				"cmake(libjpeg-turbo)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libturbojpeg)"
 			]
 		}
 	},
 	"source-name": "libjpeg-turbo",
-	"source-release": "3",
-	"source-version": "3.0.1"
+	"source-release": "4",
+	"source-version": "3.0.3"
 }
