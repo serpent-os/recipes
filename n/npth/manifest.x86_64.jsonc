@@ -8,7 +8,7 @@
 			],
 			"files": [
 				"/usr/lib/libnpth.so.0",
-				"/usr/lib/libnpth.so.0.1.2"
+				"/usr/lib/libnpth.so.0.2.0"
 			],
 			"name": "npth",
 			"provides": [
@@ -16,19 +16,22 @@
 			]
 		},
 		"npth-devel": {
+			"depends": [
+				"npth"
+			],
 			"files": [
-				"/usr/bin/npth-config",
 				"/usr/include/npth.h",
 				"/usr/lib/libnpth.so",
+				"/usr/lib/pkgconfig/npth.pc",
 				"/usr/share/aclocal/npth.m4"
 			],
 			"name": "npth-devel",
 			"provides": [
-				"binary(npth-config)"
+				"pkgconfig(npth)"
 			]
 		}
 	},
 	"source-name": "npth",
-	"source-release": "1",
-	"source-version": "1.6"
+	"source-release": "2",
+	"source-version": "1.7"
 }

@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : npth
-version     : 1.6
-release     : 1
+version     : '1.7'
+release     : 2
 homepage    : https://gnupg.org/software/npth
 upstreams   :
-    - https://gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2 : 1393abd9adcf0762d34798dc34fdcf4d0d22a8410721e76f1e3afcd1daa4e2d1
+    - https://gnupg.org/ftp/gcrypt/npth/npth-1.7.tar.bz2 : 8589f56937b75ce33b28d312fccbf302b3b71ec3f3945fde6aaa74027914ad05
 summary     : Library to provide the GNU Pth API
 description : |
     In contrast to GNU Pth is is based on the system's standard threads implementation. This allows the use of libraries which are not compatible to GNU Pth. Experience with a Windows Pth emulation showed that this is a solid way to provide a co-routine based framework.
@@ -20,9 +20,3 @@ build       : |
     %make
 install     : |
     %make_install
-packages    :
-    - "%(name)-devel":
-        paths:
-            # It's an alternative to pkg-config, so -devel.
-            # [LATER] should be %(bindir) https://github.com/serpent-os/moss-format/issues/2
-            - "/usr/bin/npth-config"
