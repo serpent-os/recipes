@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libgcrypt
-version     : 1.10.2
-release     : 2
+version     : 1.11.0
+release     : 3
 homepage    : https://gnupg.org/software/libgcrypt
 upstreams   :
-    - https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.2.tar.bz2 : 3b9c02a004b68c256add99701de00b383accccf37177e0d6c58289664cce0c03
+    - https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.11.0.tar.bz2 : 09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
 summary     : General purpose cryptographic library originally based on code from GnuPG
 description : |
     %(name) is a general purpose cryptographic library originally based on code from GnuPG. It provides functions for all cryptograhic building blocks.
@@ -17,9 +17,13 @@ license     :
     - LGPL-2.1-or-later
 builddeps   :
     - pkgconfig(gpg-error)
+checkdeps   :
+    - soname(libgcc_s.so.1(x86_64))
 setup       : |
     %configure
 build       : |
     %make
 install     : |
     %make_install
+check       : |
+    %make check

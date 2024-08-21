@@ -4,7 +4,8 @@
 	"packages": {
 		"libgcrypt": {
 			"build-depends": [
-				"pkgconfig(gpg-error)"
+				"pkgconfig(gpg-error)",
+				"soname(libgcc_s.so.1(x86_64))"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -14,10 +15,9 @@
 			"files": [
 				"/usr/bin/dumpsexp",
 				"/usr/bin/hmac256",
-				"/usr/bin/libgcrypt-config",
 				"/usr/bin/mpicalc",
 				"/usr/lib/libgcrypt.so.20",
-				"/usr/lib/libgcrypt.so.20.4.2",
+				"/usr/lib/libgcrypt.so.20.5.0",
 				"/usr/share/info/gcrypt.info",
 				"/usr/share/info/gcrypt.info-1",
 				"/usr/share/info/gcrypt.info-2",
@@ -27,16 +27,17 @@
 			"provides": [
 				"binary(dumpsexp)",
 				"binary(hmac256)",
-				"binary(libgcrypt-config)",
-				"soname(libgcrypt.so.20(x86_64))",
-				"binary(mpicalc)"
+				"binary(mpicalc)",
+				"soname(libgcrypt.so.20(x86_64))"
 			]
 		},
 		"libgcrypt-devel": {
 			"build-depends": [
-				"pkgconfig(gpg-error)"
+				"pkgconfig(gpg-error)",
+				"soname(libgcc_s.so.1(x86_64))"
 			],
 			"depends": [
+				"libgcrypt",
 				"pkgconfig(gpg-error)"
 			],
 			"files": [
@@ -52,6 +53,6 @@
 		}
 	},
 	"source-name": "libgcrypt",
-	"source-release": "2",
-	"source-version": "1.10.2"
+	"source-release": "3",
+	"source-version": "1.11.0"
 }
