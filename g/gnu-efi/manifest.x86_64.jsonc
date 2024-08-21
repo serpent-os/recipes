@@ -1,15 +1,44 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"gnu-efi": {
 			"files": [
 				"/usr/lib/crt0-efi-x86_64.o",
-				"/usr/lib/elf_x86_64_efi.lds"
+				"/usr/lib/elf_x86_64_efi.lds",
+				"/usr/lib/gnuefi/apps/AllocPages.efi",
+				"/usr/lib/gnuefi/apps/FreePages.efi",
+				"/usr/lib/gnuefi/apps/bltgrid.efi",
+				"/usr/lib/gnuefi/apps/ctors_dtors_priority_test.efi",
+				"/usr/lib/gnuefi/apps/ctors_test.efi",
+				"/usr/lib/gnuefi/apps/debughook.efi",
+				"/usr/lib/gnuefi/apps/debughook.efi.debug",
+				"/usr/lib/gnuefi/apps/drv0.efi",
+				"/usr/lib/gnuefi/apps/drv0_use.efi",
+				"/usr/lib/gnuefi/apps/exit.efi",
+				"/usr/lib/gnuefi/apps/lfbgrid.efi",
+				"/usr/lib/gnuefi/apps/modelist.efi",
+				"/usr/lib/gnuefi/apps/printenv.efi",
+				"/usr/lib/gnuefi/apps/route80h.efi",
+				"/usr/lib/gnuefi/apps/setdbg.efi",
+				"/usr/lib/gnuefi/apps/setjmp.efi",
+				"/usr/lib/gnuefi/apps/t.efi",
+				"/usr/lib/gnuefi/apps/t2.efi",
+				"/usr/lib/gnuefi/apps/t3.efi",
+				"/usr/lib/gnuefi/apps/t4.efi",
+				"/usr/lib/gnuefi/apps/t5.efi",
+				"/usr/lib/gnuefi/apps/t6.efi",
+				"/usr/lib/gnuefi/apps/t7.efi",
+				"/usr/lib/gnuefi/apps/t8.efi",
+				"/usr/lib/gnuefi/apps/tcc.efi",
+				"/usr/lib/gnuefi/apps/unsetdbg.efi"
 			],
 			"name": "gnu-efi"
 		},
 		"gnu-efi-devel": {
+			"depends": [
+				"gnu-efi"
+			],
 			"files": [
 				"/usr/include/efi/efi.h",
 				"/usr/include/efi/efi_nii.h",
@@ -59,12 +88,16 @@
 				"/usr/include/efi/x86_64/efisetjmp_arch.h",
 				"/usr/include/efi/x86_64/pe.h",
 				"/usr/lib/libefi.a",
-				"/usr/lib/libgnuefi.a"
+				"/usr/lib/libgnuefi.a",
+				"/usr/lib/pkgconfig/gnu-efi.pc"
 			],
-			"name": "gnu-efi-devel"
+			"name": "gnu-efi-devel",
+			"provides": [
+				"pkgconfig(gnu-efi)"
+			]
 		}
 	},
 	"source-name": "gnu-efi",
-	"source-release": "1",
-	"source-version": "3.0.15"
+	"source-release": "2",
+	"source-version": "3.0.18"
 }

@@ -4,18 +4,24 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnu-efi
-version     : 3.0.15
-release     : 1
+version     : 3.0.18
+release     : 2
 summary     : EFI development library
 license     : BSD
-homepage    : http://sourceforge.net/projects/gnu-efi/
+homepage    : https://sourceforge.net/projects/gnu-efi/
 description : |
     Develop EFI applications for ARM-64, ARM-32, x86_64, IA-64 (IPF), and IA-32 (x86) platforms using the GNU toolchain and the EFI development environment.
 upstreams   :
-    - http://downloads.sourceforge.net/project/gnu-efi/gnu-efi-3.0.15.tar.bz2: 931a257b9c5c1ba65ff519f18373c438a26825f2db7866b163e96d1b168f20ea
-builddeps   :
-    - binary(as)
+    - https://sourceforge.net/projects/gnu-efi/files/gnu-efi-3.0.18.tar.bz2: 7f212c96ee66547eeefb531267b641e5473d7d8529f0bd8ccdefd33cf7413f5c
+toolchain   : gnu
+tuning      :
+    - base: false
+    - harden: false
+    - asneeded: false
+    - symbolic: nonweak
+    - bindnow: false
+    - relr: false
 build       : |
-    %make lib gnuefi inc
+    %make
 install     : |
     %make_install INSTALLROOT="%(installroot)" PREFIX="%(prefix)" LIBDIR="/usr/lib"
