@@ -23,6 +23,7 @@
 				"pkgconfig(xproto)"
 			],
 			"depends": [
+				"libxau",
 				"soname(libc.so.6(x86))"
 			],
 			"files": [
@@ -31,6 +32,7 @@
 			],
 			"name": "libxau-32bit",
 			"provides": [
+				"soname(libXau.so.6(386))",
 				"soname(libXau.so.6(x86))"
 			]
 		},
@@ -39,6 +41,8 @@
 				"pkgconfig(xproto)"
 			],
 			"depends": [
+				"libxau-32bit",
+				"libxau-devel",
 				"pkgconfig(xproto)"
 			],
 			"files": [
@@ -55,6 +59,7 @@
 				"pkgconfig(xproto)"
 			],
 			"depends": [
+				"libxau",
 				"pkgconfig(xproto)"
 			],
 			"files": [
@@ -78,6 +83,6 @@
 		}
 	},
 	"source-name": "libxau",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.0.11"
 }
