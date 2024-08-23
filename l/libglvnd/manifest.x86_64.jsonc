@@ -44,6 +44,7 @@
 				"pkgconfig32(xext)"
 			],
 			"depends": [
+				"libglvnd",
 				"soname(libX11.so.6(x86))",
 				"soname(libc.so.6(x86))"
 			],
@@ -65,12 +66,19 @@
 			],
 			"name": "libglvnd-32bit",
 			"provides": [
+				"soname(libEGL.so.1(386))",
 				"soname(libEGL.so.1(x86))",
+				"soname(libGL.so.1(386))",
 				"soname(libGL.so.1(x86))",
+				"soname(libGLESv1_CM.so.1(386))",
 				"soname(libGLESv1_CM.so.1(x86))",
+				"soname(libGLESv2.so.2(386))",
 				"soname(libGLESv2.so.2(x86))",
+				"soname(libGLX.so.0(386))",
 				"soname(libGLX.so.0(x86))",
+				"soname(libGLdispatch.so.0(386))",
 				"soname(libGLdispatch.so.0(x86))",
+				"soname(libOpenGL.so.0(386))",
 				"soname(libOpenGL.so.0(x86))"
 			]
 		},
@@ -78,6 +86,10 @@
 			"build-depends": [
 				"pkgconfig32(x11)",
 				"pkgconfig32(xext)"
+			],
+			"depends": [
+				"libglvnd-32bit",
+				"libglvnd-devel"
 			],
 			"files": [
 				"/usr/lib32/libEGL.so",
@@ -110,6 +122,9 @@
 			"build-depends": [
 				"pkgconfig32(x11)",
 				"pkgconfig32(xext)"
+			],
+			"depends": [
+				"libglvnd"
 			],
 			"files": [
 				"/usr/include/EGL/egl.h",
@@ -164,6 +179,6 @@
 		}
 	},
 	"source-name": "libglvnd",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.6.0"
 }
