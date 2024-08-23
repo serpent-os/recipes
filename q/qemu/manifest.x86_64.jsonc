@@ -88,7 +88,6 @@
 			"files": [
 				"/usr/bin/elf2dmp",
 				"/usr/bin/qemu-edid",
-				"/usr/bin/qemu-ga",
 				"/usr/bin/qemu-i386",
 				"/usr/bin/qemu-img",
 				"/usr/bin/qemu-io",
@@ -225,7 +224,6 @@
 			"provides": [
 				"binary(elf2dmp)",
 				"binary(qemu-edid)",
-				"binary(qemu-ga)",
 				"binary(qemu-i386)",
 				"binary(qemu-img)",
 				"binary(qemu-io)",
@@ -288,9 +286,70 @@
 				"/usr/include/qemu-plugin.h"
 			],
 			"name": "qemu-devel"
+		},
+		"qemu-guest-agent": {
+			"build-depends": [
+				"binary(bzip2)",
+				"binary(meson)",
+				"binary(ninja)",
+				"binary(nm)",
+				"binary(python3)",
+				"pkgconfig(SDL2_image)",
+				"pkgconfig(alsa)",
+				"pkgconfig(epoxy)",
+				"pkgconfig(fuse3)",
+				"pkgconfig(gbm)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmp)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gtk+-x11-3.0)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libdw)",
+				"pkgconfig(libfdt)",
+				"pkgconfig(libgcrypt)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libpipewire-0.3)",
+				"pkgconfig(libpng)",
+				"pkgconfig(libpulse)",
+				"pkgconfig(libseccomp)",
+				"pkgconfig(libssh)",
+				"pkgconfig(libtasn1)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libusb-1.0)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(pixman-1)",
+				"pkgconfig(sdl2)",
+				"pkgconfig(slirp)",
+				"pkgconfig(spice-protocol)",
+				"pkgconfig(spice-server)",
+				"pkgconfig(virglrenderer)",
+				"pkgconfig(x11)",
+				"pkgconfig(xkbcommon)",
+				"pkgconfig(zlib)",
+				"xkeyboard-config"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libudev.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/qemu-ga",
+				"/usr/lib/systemd/system-preset/99-qemu-guest-agent.preset",
+				"/usr/lib/systemd/system/qemu-guest-agent.service",
+				"/usr/lib/tmpfiles.d/qemu-guest-agent.conf",
+				"/usr/lib/udev/rules.d/99-qemu-guest-agent.rules"
+			],
+			"name": "qemu-guest-agent",
+			"provides": [
+				"binary(qemu-ga)"
+			]
 		}
 	},
 	"source-name": "qemu",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "9.1.0"
 }
