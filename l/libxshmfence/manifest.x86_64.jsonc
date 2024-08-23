@@ -23,6 +23,7 @@
 				"pkgconfig(xproto)"
 			],
 			"depends": [
+				"libxshmfence",
 				"soname(libc.so.6(x86))"
 			],
 			"files": [
@@ -31,12 +32,17 @@
 			],
 			"name": "libxshmfence-32bit",
 			"provides": [
+				"soname(libxshmfence.so.1(386))",
 				"soname(libxshmfence.so.1(x86))"
 			]
 		},
 		"libxshmfence-32bit-devel": {
 			"build-depends": [
 				"pkgconfig(xproto)"
+			],
+			"depends": [
+				"libxshmfence-32bit",
+				"libxshmfence-devel"
 			],
 			"files": [
 				"/usr/lib32/libxshmfence.so",
@@ -51,6 +57,9 @@
 			"build-depends": [
 				"pkgconfig(xproto)"
 			],
+			"depends": [
+				"libxshmfence"
+			],
 			"files": [
 				"/usr/include/X11/xshmfence.h",
 				"/usr/lib/libxshmfence.so",
@@ -63,6 +72,6 @@
 		}
 	},
 	"source-name": "libxshmfence",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.3.2"
 }
