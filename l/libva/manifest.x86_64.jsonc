@@ -48,6 +48,7 @@
 				"pkgconfig32(xfixes)"
 			],
 			"depends": [
+				"libva",
 				"soname(libX11-xcb.so.1(x86))",
 				"soname(libX11.so.6(x86))",
 				"soname(libXext.so.6(x86))",
@@ -70,9 +71,13 @@
 			],
 			"name": "libva-32bit",
 			"provides": [
+				"soname(libva-drm.so.2(386))",
 				"soname(libva-drm.so.2(x86))",
+				"soname(libva-wayland.so.2(386))",
 				"soname(libva-wayland.so.2(x86))",
+				"soname(libva-x11.so.2(386))",
 				"soname(libva-x11.so.2(x86))",
+				"soname(libva.so.2(386))",
 				"soname(libva.so.2(x86))"
 			]
 		},
@@ -85,6 +90,8 @@
 				"pkgconfig32(xfixes)"
 			],
 			"depends": [
+				"libva-32bit",
+				"libva-devel",
 				"pkgconfig32(wayland-client)"
 			],
 			"files": [
@@ -114,6 +121,7 @@
 				"pkgconfig32(xfixes)"
 			],
 			"depends": [
+				"libva",
 				"pkgconfig(wayland-client)"
 			],
 			"files": [
@@ -169,6 +177,6 @@
 		}
 	},
 	"source-name": "libva",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.20.0"
 }
