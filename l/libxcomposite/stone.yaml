@@ -5,7 +5,7 @@
 #
 name        : libxcomposite
 version     : 0.4.6
-release     : 1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxcomposite
 upstreams   :
     - https://xorg.freedesktop.org/releases/individual/lib/libXcomposite-0.4.6.tar.xz : fe40bcf0ae1a09070eba24088a5eb9810efe57453779ec1e20a55080c6dc2c87

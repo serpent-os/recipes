@@ -5,7 +5,7 @@
 #
 name        : nspr
 version     : 4.35
-release     : 1
+release     : 2
 homepage    : https://firefox-source-docs.mozilla.org/nspr/index.html
 upstreams   :
     - https://archive.mozilla.org/pub/nspr/releases/v4.35/src/nspr-4.35.tar.gz : 7ea3297ea5969b5d25a5dd8d47f2443cda88e9ee746301f6e1e1426f8a6abc8f
@@ -34,7 +34,7 @@ profiles    :
             %configure --with-mozilla --with-pthreads --disable-static
 setup: |
     sed -i 's#$(LIBRARY) ##' config/rules.mk
-    %configure --with-mozilla --with-pthreads --enable-64bit 
+    %configure --with-mozilla --with-pthreads --enable-64bit
 build       : |
     %make
 install     : |

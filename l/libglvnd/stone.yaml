@@ -5,7 +5,7 @@
 #
 name        : libglvnd
 version     : '1.6.0'
-release     : 2
+release     : 3
 homepage    : https://gitlab.freedesktop.org/glvnd/libglvnd
 upstreams   :
     - https://gitlab.freedesktop.org/glvnd/libglvnd/uploads/2ea903100818cb7703dbabc9a11bc025/libglvnd-1.6.0.tar.gz : ecf095405c5be15ecaec5edc7df7d52cd283aec66cb3811b5df88ec3e563af1c
