@@ -58,6 +58,12 @@ def commit_scope(commit_dir: str) -> str:
                 except json.JSONDecodeError as e:
                     print(e)
 
+        # Detect non-functional changes ([NFC])
+        staged_files_result = subprocess.run(['git', 'diff', '--name-only', '--staged', commit_dir], stdout=subprocess.PIPE)
+        if 'stone.yaml' in staged_files_result.stdout.decode('utf-8') and \
+            not 'manifest.x86_64.jsonc' in staged_files_result.stdout.decode('utf-8'):
+            return "[NFC] " + os.path.basename(commit_dir) + ': '
+
         return os.path.basename(commit_dir) + ': '
 
     return ''
