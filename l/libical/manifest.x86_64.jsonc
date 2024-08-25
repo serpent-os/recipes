@@ -24,17 +24,17 @@
 				"/usr/lib/girepository-1.0/ICal-3.0.typelib",
 				"/usr/lib/girepository-1.0/ICalGLib-3.0.typelib",
 				"/usr/lib/libical-glib.so.3",
-				"/usr/lib/libical-glib.so.3.0.17",
+				"/usr/lib/libical-glib.so.3.0.18",
 				"/usr/lib/libical.so.3",
-				"/usr/lib/libical.so.3.0.17",
+				"/usr/lib/libical.so.3.0.18",
 				"/usr/lib/libical_cxx.so.3",
-				"/usr/lib/libical_cxx.so.3.0.17",
+				"/usr/lib/libical_cxx.so.3.0.18",
 				"/usr/lib/libicalss.so.3",
-				"/usr/lib/libicalss.so.3.0.17",
+				"/usr/lib/libicalss.so.3.0.18",
 				"/usr/lib/libicalss_cxx.so.3",
-				"/usr/lib/libicalss_cxx.so.3.0.17",
+				"/usr/lib/libicalss_cxx.so.3.0.18",
 				"/usr/lib/libicalvcal.so.3",
-				"/usr/lib/libicalvcal.so.3.0.17",
+				"/usr/lib/libicalvcal.so.3.0.18",
 				"/usr/libexec/libical/ical-glib-src-generator",
 				"/usr/share/gir-1.0/ICal-3.0.gir",
 				"/usr/share/gir-1.0/ICalGLib-3.0.gir"
@@ -59,6 +59,7 @@
 				"pkgconfig(libxml-2.0)"
 			],
 			"depends": [
+				"libical",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)"
 			],
@@ -173,6 +174,6 @@
 		}
 	},
 	"source-name": "libical",
-	"source-release": "1",
-	"source-version": "3.0.17"
+	"source-release": "2",
+	"source-version": "3.18"
 }
