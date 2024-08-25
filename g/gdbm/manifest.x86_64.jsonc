@@ -26,8 +26,10 @@
 				"/usr/share/locale/fi/LC_MESSAGES/gdbm.mo",
 				"/usr/share/locale/fr/LC_MESSAGES/gdbm.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/gdbm.mo",
 				"/usr/share/locale/pl/LC_MESSAGES/gdbm.mo",
 				"/usr/share/locale/pt_BR/LC_MESSAGES/gdbm.mo",
+				"/usr/share/locale/ro/LC_MESSAGES/gdbm.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/gdbm.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/gdbm.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/gdbm.mo",
@@ -35,8 +37,7 @@
 				"/usr/share/locale/vi/LC_MESSAGES/gdbm.mo",
 				"/usr/share/man/man1/gdbm_dump.1",
 				"/usr/share/man/man1/gdbm_load.1",
-				"/usr/share/man/man1/gdbmtool.1",
-				"/usr/share/man/man3/gdbm.3"
+				"/usr/share/man/man1/gdbmtool.1"
 			],
 			"name": "gdbm",
 			"provides": [
@@ -50,14 +51,18 @@
 			"build-depends": [
 				"pkgconfig(readline)"
 			],
+			"depends": [
+				"gdbm"
+			],
 			"files": [
 				"/usr/include/gdbm.h",
-				"/usr/lib/libgdbm.so"
+				"/usr/lib/libgdbm.so",
+				"/usr/share/man/man3/gdbm.3"
 			],
 			"name": "gdbm-devel"
 		}
 	},
 	"source-name": "gdbm",
-	"source-release": "2",
-	"source-version": "1.23"
+	"source-release": "3",
+	"source-version": "1.24"
 }
