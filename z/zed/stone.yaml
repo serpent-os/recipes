@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : zed
-version     : 0.149.3
-release     : 13
+version     : 0.149.5
+release     : 14
 summary     : High performance, graphical code editor
 license     :
     - AGPL-3.0
@@ -13,7 +13,7 @@ license     :
     - GPL-3.0
 homepage    : https://zed.dev/
 upstreams   :
-    - git|https://github.com/zed-industries/zed.git : 7155d2c45fea97cdff7c97bfe3c7ffb5962cc17d
+    - git|https://github.com/zed-industries/zed.git : 5321b10aa41e2ac0603c7a6fc99ba1ae9421b460
 description : |
     Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.
 builddeps   :
@@ -49,8 +49,8 @@ build       : |
     RUST_BACKTRACE=1 %cargo_build -p zed -p cli
 install     : |
     %install_dir %(installroot)%(libexecdir)
-    %install_exe target/*/debug/zed %(installroot)%(libexecdir)/zed-editor
-    %install_exe target/*/debug/cli %(installroot)%(bindir)/zed
+    %install_exe target/*/release/zed %(installroot)%(libexecdir)/zed-editor
+    %install_exe target/*/release/cli %(installroot)%(bindir)/zed
 
     # stolen from zed's bundle-linux script
     export DO_STARTUP_NOTIFY="true"
