@@ -8,7 +8,7 @@ description : |
     zlib data compression library for the next generation systems
 upstreams   :
     - https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.2.1.tar.gz : ec6a76169d4214e2e8b737e0850ba4acb806c69eeace6240ed4481b9f5c57cdf
-emul32     : yes
+emul32      : yes
 setup       : |
     %cmake \
         -DZLIB_COMPAT=ON \
