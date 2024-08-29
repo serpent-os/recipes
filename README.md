@@ -69,6 +69,12 @@ To keep git summaries readable, serpent-os requires the following git summary fo
 
 The use of the `Initial inclusion` verbiage is _strongly discouraged_.
 
+## Using `jq`
+
+We provide `.jsonc` (JSON with comments) manifest files, the popular `jq` tool doesn't currently support `.jsonc` files; however, you can use the C preprocessor to strip any comments before passing to `jq` e.g.
+
+`cpp -P -E manifest.x86_64.jsonc | jq .packages`
+
 ## Current focus
 
 Packaging focus should be on bringing up the GNOME Desktop + associated stack
