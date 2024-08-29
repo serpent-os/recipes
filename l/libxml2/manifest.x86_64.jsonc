@@ -28,7 +28,7 @@
 				"/usr/bin/xmlcatalog",
 				"/usr/bin/xmllint",
 				"/usr/lib/libxml2.so.2",
-				"/usr/lib/libxml2.so.2.12.4",
+				"/usr/lib/libxml2.so.2.13.3",
 				"/usr/lib/python3.11/site-packages/__pycache__/drv_libxml2.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/__pycache__/drv_libxml2.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/__pycache__/libxml2.cpython-311.opt-1.pyc",
@@ -42,11 +42,11 @@
 			],
 			"name": "libxml2",
 			"provides": [
-				"soname(libxml2.so.2(x86_64))",
-				"soname(libxml2mod.so(x86_64))",
 				"binary(xml2-config)",
 				"binary(xmlcatalog)",
-				"binary(xmllint)"
+				"binary(xmllint)",
+				"soname(libxml2.so.2(x86_64))",
+				"soname(libxml2mod.so(x86_64))"
 			]
 		},
 		"libxml2-32bit": {
@@ -63,6 +63,7 @@
 				"pkgconfig32(zlib)"
 			],
 			"depends": [
+				"libxml2",
 				"soname(libc.so.6(x86))",
 				"soname(liblzma.so.5(x86))",
 				"soname(libm.so.6(x86))",
@@ -70,10 +71,11 @@
 			],
 			"files": [
 				"/usr/lib32/libxml2.so.2",
-				"/usr/lib32/libxml2.so.2.12.4"
+				"/usr/lib32/libxml2.so.2.13.3"
 			],
 			"name": "libxml2-32bit",
 			"provides": [
+				"soname(libxml2.so.2(386))",
 				"soname(libxml2.so.2(x86))"
 			]
 		},
@@ -91,6 +93,8 @@
 				"pkgconfig32(zlib)"
 			],
 			"depends": [
+				"libxml2-32bit",
+				"libxml2-devel",
 				"pkgconfig32(liblzma)",
 				"pkgconfig32(zlib)"
 			],
@@ -101,8 +105,8 @@
 			],
 			"name": "libxml2-32bit-devel",
 			"provides": [
-				"pkgconfig32(libxml-2.0)",
-				"cmake(libxml2)"
+				"cmake(libxml2)",
+				"pkgconfig32(libxml-2.0)"
 			]
 		},
 		"libxml2-devel": {
@@ -119,6 +123,7 @@
 				"pkgconfig32(zlib)"
 			],
 			"depends": [
+				"libxml2",
 				"pkgconfig(liblzma)",
 				"pkgconfig(zlib)"
 			],
@@ -176,8 +181,8 @@
 			],
 			"name": "libxml2-devel",
 			"provides": [
-				"pkgconfig(libxml-2.0)",
-				"cmake(libxml2)"
+				"cmake(libxml2)",
+				"pkgconfig(libxml-2.0)"
 			]
 		},
 		"libxml2-docs": {
@@ -194,124 +199,6 @@
 				"pkgconfig32(zlib)"
 			],
 			"files": [
-				"/usr/share/doc/libxml2/examples/index.html",
-				"/usr/share/doc/libxml2/examples/io1.c",
-				"/usr/share/doc/libxml2/examples/io2.c",
-				"/usr/share/doc/libxml2/examples/parse1.c",
-				"/usr/share/doc/libxml2/examples/parse2.c",
-				"/usr/share/doc/libxml2/examples/parse3.c",
-				"/usr/share/doc/libxml2/examples/parse4.c",
-				"/usr/share/doc/libxml2/examples/reader1.c",
-				"/usr/share/doc/libxml2/examples/reader2.c",
-				"/usr/share/doc/libxml2/examples/reader3.c",
-				"/usr/share/doc/libxml2/examples/reader4.c",
-				"/usr/share/doc/libxml2/examples/testWriter.c",
-				"/usr/share/doc/libxml2/examples/tree1.c",
-				"/usr/share/doc/libxml2/examples/tree2.c",
-				"/usr/share/doc/libxml2/examples/xmllint.c",
-				"/usr/share/doc/libxml2/examples/xpath1.c",
-				"/usr/share/doc/libxml2/examples/xpath2.c",
-				"/usr/share/doc/libxml2/python/examples/attribs.py",
-				"/usr/share/doc/libxml2/python/examples/build.py",
-				"/usr/share/doc/libxml2/python/examples/compareNodes.py",
-				"/usr/share/doc/libxml2/python/examples/ctxterror.py",
-				"/usr/share/doc/libxml2/python/examples/cutnpaste.py",
-				"/usr/share/doc/libxml2/python/examples/dtdvalid.py",
-				"/usr/share/doc/libxml2/python/examples/error.py",
-				"/usr/share/doc/libxml2/python/examples/inbuf.py",
-				"/usr/share/doc/libxml2/python/examples/indexes.py",
-				"/usr/share/doc/libxml2/python/examples/input_callback.py",
-				"/usr/share/doc/libxml2/python/examples/invalid.xml",
-				"/usr/share/doc/libxml2/python/examples/nsdel.py",
-				"/usr/share/doc/libxml2/python/examples/outbuf.py",
-				"/usr/share/doc/libxml2/python/examples/push.py",
-				"/usr/share/doc/libxml2/python/examples/pushSAX.py",
-				"/usr/share/doc/libxml2/python/examples/pushSAXhtml.py",
-				"/usr/share/doc/libxml2/python/examples/reader.py",
-				"/usr/share/doc/libxml2/python/examples/reader2.py",
-				"/usr/share/doc/libxml2/python/examples/reader3.py",
-				"/usr/share/doc/libxml2/python/examples/reader4.py",
-				"/usr/share/doc/libxml2/python/examples/reader5.py",
-				"/usr/share/doc/libxml2/python/examples/reader6.py",
-				"/usr/share/doc/libxml2/python/examples/reader7.py",
-				"/usr/share/doc/libxml2/python/examples/reader8.py",
-				"/usr/share/doc/libxml2/python/examples/readererr.py",
-				"/usr/share/doc/libxml2/python/examples/readernext.py",
-				"/usr/share/doc/libxml2/python/examples/regexp.py",
-				"/usr/share/doc/libxml2/python/examples/relaxng.py",
-				"/usr/share/doc/libxml2/python/examples/resolver.py",
-				"/usr/share/doc/libxml2/python/examples/schema.py",
-				"/usr/share/doc/libxml2/python/examples/serialize.py",
-				"/usr/share/doc/libxml2/python/examples/setup_test.py",
-				"/usr/share/doc/libxml2/python/examples/sync.py",
-				"/usr/share/doc/libxml2/python/examples/test.dtd",
-				"/usr/share/doc/libxml2/python/examples/thread2.py",
-				"/usr/share/doc/libxml2/python/examples/tst.py",
-				"/usr/share/doc/libxml2/python/examples/tst.xml",
-				"/usr/share/doc/libxml2/python/examples/tstLastError.py",
-				"/usr/share/doc/libxml2/python/examples/tstURI.py",
-				"/usr/share/doc/libxml2/python/examples/tstmem.py",
-				"/usr/share/doc/libxml2/python/examples/tstxpath.py",
-				"/usr/share/doc/libxml2/python/examples/valid.xml",
-				"/usr/share/doc/libxml2/python/examples/validDTD.py",
-				"/usr/share/doc/libxml2/python/examples/validRNG.py",
-				"/usr/share/doc/libxml2/python/examples/validSchemas.py",
-				"/usr/share/doc/libxml2/python/examples/validate.py",
-				"/usr/share/doc/libxml2/python/examples/walker.py",
-				"/usr/share/doc/libxml2/python/examples/xpath.py",
-				"/usr/share/doc/libxml2/python/examples/xpathext.py",
-				"/usr/share/doc/libxml2/python/examples/xpathleak.py",
-				"/usr/share/doc/libxml2/python/examples/xpathns.py",
-				"/usr/share/doc/libxml2/python/examples/xpathret.py",
-				"/usr/share/doc/libxml2/tutorial/apa.html",
-				"/usr/share/doc/libxml2/tutorial/apb.html",
-				"/usr/share/doc/libxml2/tutorial/apc.html",
-				"/usr/share/doc/libxml2/tutorial/apd.html",
-				"/usr/share/doc/libxml2/tutorial/ape.html",
-				"/usr/share/doc/libxml2/tutorial/apf.html",
-				"/usr/share/doc/libxml2/tutorial/apg.html",
-				"/usr/share/doc/libxml2/tutorial/aph.html",
-				"/usr/share/doc/libxml2/tutorial/api.html",
-				"/usr/share/doc/libxml2/tutorial/ar01s02.html",
-				"/usr/share/doc/libxml2/tutorial/ar01s03.html",
-				"/usr/share/doc/libxml2/tutorial/ar01s04.html",
-				"/usr/share/doc/libxml2/tutorial/ar01s05.html",
-				"/usr/share/doc/libxml2/tutorial/ar01s06.html",
-				"/usr/share/doc/libxml2/tutorial/ar01s07.html",
-				"/usr/share/doc/libxml2/tutorial/ar01s08.html",
-				"/usr/share/doc/libxml2/tutorial/ar01s09.html",
-				"/usr/share/doc/libxml2/tutorial/images/blank.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/1.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/10.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/2.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/3.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/4.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/5.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/6.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/7.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/8.png",
-				"/usr/share/doc/libxml2/tutorial/images/callouts/9.png",
-				"/usr/share/doc/libxml2/tutorial/images/caution.png",
-				"/usr/share/doc/libxml2/tutorial/images/draft.png",
-				"/usr/share/doc/libxml2/tutorial/images/home.png",
-				"/usr/share/doc/libxml2/tutorial/images/important.png",
-				"/usr/share/doc/libxml2/tutorial/images/next.png",
-				"/usr/share/doc/libxml2/tutorial/images/note.png",
-				"/usr/share/doc/libxml2/tutorial/images/prev.png",
-				"/usr/share/doc/libxml2/tutorial/images/tip.png",
-				"/usr/share/doc/libxml2/tutorial/images/toc-blank.png",
-				"/usr/share/doc/libxml2/tutorial/images/toc-minus.png",
-				"/usr/share/doc/libxml2/tutorial/images/toc-plus.png",
-				"/usr/share/doc/libxml2/tutorial/images/up.png",
-				"/usr/share/doc/libxml2/tutorial/images/warning.png",
-				"/usr/share/doc/libxml2/tutorial/includeaddattribute.c",
-				"/usr/share/doc/libxml2/tutorial/includeaddkeyword.c",
-				"/usr/share/doc/libxml2/tutorial/includeconvert.c",
-				"/usr/share/doc/libxml2/tutorial/includegetattribute.c",
-				"/usr/share/doc/libxml2/tutorial/includekeyword.c",
-				"/usr/share/doc/libxml2/tutorial/includexpath.c",
-				"/usr/share/doc/libxml2/tutorial/index.html",
-				"/usr/share/doc/libxml2/tutorial/ix01.html",
 				"/usr/share/doc/libxml2/xmlcatalog.html",
 				"/usr/share/doc/libxml2/xmllint.html",
 				"/usr/share/gtk-doc/html/libxml2/general.html",
@@ -373,6 +260,6 @@
 		}
 	},
 	"source-name": "libxml2",
-	"source-release": "6",
-	"source-version": "2.12.4"
+	"source-release": "7",
+	"source-version": "2.13.3"
 }
