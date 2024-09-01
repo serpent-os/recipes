@@ -5,17 +5,23 @@ from source.
 
 [![Repository status](https://repology.org/badge/repository-big/serpentos.svg)](https://repology.org/repository/serpentos)
 
-## Quick start for boulder (Serpent OS native)
+## Quick start for boulder
 
-Obviously, if your name isn't Ikey, then use your own `$USERNAME`
+`boulder` and `moss` rely on so-called `subuid` and `subgid` support.
+If you do not already have this set up for your user in `/etc/subuid` and `/etc/subuid`, run this:
 
-### /etc/subuid (`userns`)
+```bash
+$ sudo touch /etc/sub{uid,gid}
+$ sudo usermod --add-subuids 1000000-1065535 --add-subgids 1000000-1065535 root
+$ sudo usermod --add-subuids 1065536-1131071 --add-subgids 1065536-1131071 "$USER"
+```
 
-    ikey:100000:65536
+**Non-Serpent OS hosts**
 
-### /etc/subgid (`userns`)
+If you are not building on Serpent OS, you're going to have to install `boulder` first.
+See [its readme][moss-boulder-readme] for instructions.
 
-    ikey:100000:65536
+[moss-boulder-readme]: https://github.com/serpent-os/moss?tab=readme-ov-file#onboarding
 
 ### Local repository
 
@@ -24,19 +30,31 @@ Our `justfile` defaults to `local-x86_64` profile with boulder. While we traditi
 
 **Create an empty local repository**
 
+The path you use for this doesn't matter much, you can choose anything other than `~/.local_repo`
+as long as the user account you want to use to run `boulder` has read/write access to it.
+
 ```bash
-$ mkdir ~/.local_repo && cd ~/.local_repo
-$ moss index .
+$ mkdir ~/.local_repo
+$ moss index ~/.local_repo
+```
+
+If you're on Serpent OS and want to make the local repository available for package installation,
+run the following command:
+
+```bash
+$ sudo moss repo add local file://${HOME}/.local_repo/stone.index -p 10
 ```
 
 **Create a profile**
 
-We'll add the (unversioned) volatile repository at the bottom layer, and elevate
+We'll add the (unversioned) volatile repository¹ at the bottom layer, and elevate
 our local repository priority to take precedence.
 
 ```bash
-$ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file:///$HOME/.local_repo/stone.index,priority=10
+$ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file:///${HOME}/.local_repo/stone.index,priority=10
 ```
+
+¹ the current one and only official online repository that you usually get all your packages from
 
 **Create a `.env` file**
 
@@ -54,7 +72,7 @@ _Example:_
 
     BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder" just build
 
-### Go go go
+## Go go go
 
 Well, actually Rust.. Anyway, quickly try to `pushd m/m4/ && just build` or `pushd n/nano && just build` for a quick and easy confirmation that everything works OK.
 
