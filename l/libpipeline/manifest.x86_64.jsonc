@@ -8,7 +8,7 @@
 			],
 			"files": [
 				"/usr/lib/libpipeline.so.1",
-				"/usr/lib/libpipeline.so.1.5.7"
+				"/usr/lib/libpipeline.so.1.5.8"
 			],
 			"name": "libpipeline",
 			"provides": [
@@ -16,6 +16,9 @@
 			]
 		},
 		"libpipeline-devel": {
+			"depends": [
+				"libpipeline"
+			],
 			"files": [
 				"/usr/include/pipeline.h",
 				"/usr/lib/libpipeline.so",
@@ -96,6 +99,6 @@
 		}
 	},
 	"source-name": "libpipeline",
-	"source-release": "1",
-	"source-version": "1.5.7"
+	"source-release": "2",
+	"source-version": "1.5.8"
 }
