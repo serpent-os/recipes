@@ -1,11 +1,12 @@
 default: (_build build_file)
 
 set dotenv-load
-# respect BOULDER=<...> and BOULDER_ARGS=<...> set in .env file next to the present justfile
+# respect variables set in .env file next to the present justfile
 boulder := env_var_or_default('BOULDER', 'boulder')
 boulder_args := env_var_or_default('BOULDER_ARGS', '')
 boulder_profile := env_var_or_default('BOULDER_PROFILE', 'local-x86_64')
 build_file := join(invocation_directory(), "stone.yaml")
+local_repo := env_var_or_default('LOCAL_REPO', '${HOME}/.cache/local_repo/x86_64')
 
 # Build the stone.yaml recipe using boulder
 _build target:
@@ -36,3 +37,24 @@ clean: (_clean build_file)
 _init target:
     ln -sfv ../../tools/prepare-commit-msg.py $(git rev-parse --git-path hooks)/prepare-commit-msg
 init: (_init build_file)
+
+# create LOCAL_REPO dir if it doesn't exist
+create-local:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    if [[ ! -d {{local_repo}} ]]; then
+       mkdir -pv {{local_repo}}
+    fi
+
+# index .stones in LOCAL_REPO (create it if it doesn't exist)
+index-local: create-local
+    cd {{ invocation_directory() }} && moss index {{local_repo}}
+
+# list .stones in LOCAL_REPO (create it if it doesn't exist)
+ls-local: create-local
+    cd {{ invocation_directory() }} && ls -AFcghlot {{local_repo}}
+
+# move .stones to LOCAL_REPO (create if it doesn't exist) and reindex it
+mv-local: create-local
+    cd {{ invocation_directory() }} && mv -v *.stone {{local_repo}}/ && moss index {{local_repo}}
+
