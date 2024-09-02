@@ -94,16 +94,16 @@
 				"/usr/lib/alsa-lib/libasound_module_pcm_pipewire.so",
 				"/usr/lib/gstreamer-1.0/libgstpipewire.so",
 				"/usr/lib/libpipewire-0.3.so.0",
-				"/usr/lib/libpipewire-0.3.so.0.1202.0",
+				"/usr/lib/libpipewire-0.3.so.0.1203.0",
 				"/usr/lib/pipewire-0.3/jack/libjack.so",
 				"/usr/lib/pipewire-0.3/jack/libjack.so.0",
-				"/usr/lib/pipewire-0.3/jack/libjack.so.0.3.1202",
+				"/usr/lib/pipewire-0.3/jack/libjack.so.0.3.1203",
 				"/usr/lib/pipewire-0.3/jack/libjacknet.so",
 				"/usr/lib/pipewire-0.3/jack/libjacknet.so.0",
-				"/usr/lib/pipewire-0.3/jack/libjacknet.so.0.3.1202",
+				"/usr/lib/pipewire-0.3/jack/libjacknet.so.0.3.1203",
 				"/usr/lib/pipewire-0.3/jack/libjackserver.so",
 				"/usr/lib/pipewire-0.3/jack/libjackserver.so.0",
-				"/usr/lib/pipewire-0.3/jack/libjackserver.so.0.3.1202",
+				"/usr/lib/pipewire-0.3/jack/libjackserver.so.0.3.1203",
 				"/usr/lib/pipewire-0.3/libpipewire-module-access.so",
 				"/usr/lib/pipewire-0.3/libpipewire-module-adapter.so",
 				"/usr/lib/pipewire-0.3/libpipewire-module-avb.so",
@@ -664,6 +664,6 @@
 		}
 	},
 	"source-name": "pipewire",
-	"source-release": "3",
-	"source-version": "1.2.2"
+	"source-release": "4",
+	"source-version": "1.2.3"
 }
