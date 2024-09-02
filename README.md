@@ -16,39 +16,44 @@ $ sudo usermod --add-subuids 1000000-1065535 --add-subgids 1000000-1065535 root
 $ sudo usermod --add-subuids 1065536-1131071 --add-subgids 1065536-1131071 "$USER"
 ```
 
-**Non-Serpent OS hosts**
+### Non-Serpent OS hosts
 
 If you are not building on Serpent OS, you're going to have to install `boulder` first.
 See [its readme][moss-boulder-readme] for instructions.
 
 [moss-boulder-readme]: https://github.com/serpent-os/moss?tab=readme-ov-file#onboarding
 
-### Local repository
+### Add a local repository
 
 Our `justfile` defaults to `local-x86_64` profile with boulder. While we traditionally shipped this pre-enabled configuration, we figured that mandating
 `root`-user and world-accessible directories was generally a Bad Move.
 
 **Create an empty local repository**
 
-The path you use for this doesn't matter much, you can choose anything other than `~/.local_repo`
-as long as the user account you want to use to run `boulder` has read/write access to it.
+The path you use for this doesn't matter much, as long as the user account you want to use
+to run `boulder` has read/write access to it.
 
 ```bash
-$ mkdir ~/.local_repo
-$ moss index ~/.local_repo
+# Set up an XDG compliant local_repo w/explicit architecture
+$ mkdir -pv ~/.cache/local_repo/x86_64/
+$ moss index ~/.cache/local_repo/x86_64/
 ```
 
-If you're on Serpent OS and want to make the local repository available for package installation,
-run the following command:
+**Add the local repository to the repositories known to `moss`**
+
+If you're on Serpent OS, you will want to make the local repository available for package
+installation.
+
+To do so, run the following command:
 
 ```bash
-$ sudo moss repo add local file://${HOME}/.local_repo/stone.index -p 10
+$ sudo moss repo add local file://${HOME}/.cache/local_repo/x86_64/stone.index -p 10
 ```
 
-**Create a profile**
+**Create a boulder build profile**
 
-We'll add the (unversioned) volatile repository¹ at the bottom layer, and elevate
-our local repository priority to take precedence.
+We'll add the (unversioned) volatile repository¹ at the bottom layer, and elevate our
+local repository priority to take precedence.
 
 ```bash
 $ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file:///${HOME}/.local_repo/stone.index,priority=10
@@ -56,21 +61,33 @@ $ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpento
 
 ¹ the current one and only official online repository that you usually get all your packages from
 
-**Create a `.env` file**
+**Specifying `just` default variables in the `.env` file**
 
-If you are not building on Serpent OS using the os-supplied boulder package, or if you want to specify custom arguments to the boulder invocation when using the `just` targets,
-you might benefit from creating a `.env` file in the root of the `recipes/` directory, next to the supplied `justfile`.
+Create a `.env` file in the root of the `recipes/` directory, next to the supplied `justfile`.
 
 _Example `.env` file:_
 
-    BOULDER="${HOME}/.local/bin/boulder"
-    BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder --config-dir=${HOME}/.config/boulder --moss-root=${HOME}/.cache/boulder"
+    # All installs need a default local repository set up for convenience
+    # If you're awkward and want to use a different path than the default,
+    # uncomment and change it below:
+    # LOCAL_REPO="${HOME}/.cache/local_repo/x86_64"
 
 The `justfile` is set up so you can also choose to specify either of the above environment variables on a command-line invocation of `just`:
 
 _Example:_
 
     BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder" just build
+
+**Overriding default boulder arguments**
+
+If you are not building on Serpent OS using the os-supplied boulder package, or if you want to specify custom arguments
+to the boulder invocation when using the `just` targets, you might benefit from adding some or all of the following options
+to your `.env` file in recipes/ root next to the `justfile`:
+
+    # Uncomment this if you want to use a different boulder than the one in /usr/bin
+    # BOULDER="${HOME}/.local/bin/boulder"
+    # Uncomment this if you want to explicitly override the shipped boulder configuration
+    # BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder --config-dir=${HOME}/.config/boulder --moss-root=${HOME}/.cache/boulder"
 
 ## Go go go
 
