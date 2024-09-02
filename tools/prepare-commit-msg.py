@@ -12,7 +12,7 @@ import subprocess
 import sys
 from typing import Any
 
-scope_help = "# Scope and title, eg: nano: Update to 1.2.3\n"
+scope_help = "# Scope and title, eg: nano: Update to v1.2.3\n"
 help_msg = """
 
 # Describe or link the changes here, for example:
@@ -53,8 +53,8 @@ def commit_scope(commit_dir: str) -> str:
                     data = json.load(manifest, cls=JSONWithCommentsDecoder)
                     version = data["source-version"]
                     if data["source-release"] == "1":
-                        return os.path.basename(commit_dir) + ': Add at ' + str(version)
-                    return os.path.basename(commit_dir) + ': Update to ' + str(version)
+                        return os.path.basename(commit_dir) + ': Add at v' + str(version)
+                    return os.path.basename(commit_dir) + ': Update to v' + str(version)
                 except json.JSONDecodeError as e:
                     print(e)
 
