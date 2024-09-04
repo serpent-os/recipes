@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : fd
+version     : 10.2.0
+release     : 1
+homepage    : https://github.com/sharkdp/fd
+upstreams   :
+    - https://github.com/sharkdp/fd/archive/refs/tags/v10.2.0.tar.gz : 73329fe24c53f0ca47cd0939256ca5c4644742cb7c14cf4114c8c9871336d342
+summary     : A simple, fast and user-friendly alternative to 'find'
+description : |
+    fd is a program to find entries in your filesystem.
+license     : MIT OR Apache-2.0
+builddeps   :
+    - pkgconfig(bash-completion)
+networking  : true
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build --no-default-features --features completions
+install     : |
+    %cargo_install fd
+
+    completionsdir=`pkg-config --variable=completionsdir bash-completion`
+    %install_dir %(installroot)${completionsdir}
+    ./target/*/release/fd --gen-completions bash > %(installroot)${completionsdir}/fd
+check       : |
+    %cargo_test --no-default-features --features completions
