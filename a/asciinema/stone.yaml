@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : asciinema
+version     : "3.0.0-rc.3"
+release     : 1
+homepage    : https://asciinema.oasciinema/
+upstreams   :
+    - https://github.com/asciinema/asciinema/archive/refs/tags/v3.0.0-rc.3.tar.gz : 3e7402589eac1a704951e3c48d769f5d007c52630f17ec895dfad6676e4ba6b9
+summary     : Terminal session recorder
+description : |
+    asciinema (aka asciinema CLI or asciinema recorder) is a command-line tool for recording terminal sessions.
+license     : GPL-3.0
+networking  : true
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %cargo_install
+check       : |
+    # pty issues
+    %cargo_test || :
