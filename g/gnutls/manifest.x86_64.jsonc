@@ -38,7 +38,7 @@
 				"/usr/bin/p11tool",
 				"/usr/bin/psktool",
 				"/usr/lib/libgnutls.so.30",
-				"/usr/lib/libgnutls.so.30.40.0",
+				"/usr/lib/libgnutls.so.30.40.1",
 				"/usr/lib/libgnutlsxx.so.30",
 				"/usr/lib/libgnutlsxx.so.30.0.0",
 				"/usr/share/doc/gnutls/gnutls-client-server-use-case.png",
@@ -1360,6 +1360,6 @@
 		}
 	},
 	"source-name": "gnutls",
-	"source-release": "4",
-	"source-version": "3.8.6"
+	"source-release": "5",
+	"source-version": "3.8.7.1"
 }
