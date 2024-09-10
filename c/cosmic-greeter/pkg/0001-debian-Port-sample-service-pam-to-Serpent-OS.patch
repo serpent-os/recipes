@@ -1,0 +1,55 @@
+From 0c4153e7f38b18fd0bac697f65a9e2cd06bc528f Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Tue, 10 Sep 2024 23:49:21 +0000
+Subject: [PATCH] debian: Port sample service/pam to Serpent OS
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ debian/cosmic-greeter.pam     | 11 ++++++-----
+ debian/cosmic-greeter.service |  5 ++---
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/debian/cosmic-greeter.pam b/debian/cosmic-greeter.pam
+index 2a15d02..197fbde 100644
+--- a/debian/cosmic-greeter.pam
++++ b/debian/cosmic-greeter.pam
+@@ -1,9 +1,10 @@
+ #%PAM-1.0
+ auth    requisite       pam_nologin.so
+ auth	required	pam_succeed_if.so user != root quiet_success
+-@include common-auth
++auth    include         system-local-login
++
+ auth    optional        pam_gnome_keyring.so
+-@include common-account
++account include         system-local-login
+ # SELinux needs to be the first session rule. This ensures that any 
+ # lingering context has been cleared. Without this it is possible 
+ # that a module could execute code in the wrong domain.
+@@ -19,7 +20,7 @@ session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_
+ session optional        pam_keyinit.so force revoke
+ session required        pam_limits.so
+ session required        pam_env.so readenv=1
+-session required        pam_env.so readenv=1 user_readenv=1 envfile=/etc/default/locale
+-@include common-session
++session include         system-local-login
+ session optional        pam_gnome_keyring.so auto_start
+-@include common-password
++password include        system-local-login
++
+diff --git a/debian/cosmic-greeter.service b/debian/cosmic-greeter.service
+index 278e591..70dcad3 100644
+--- a/debian/cosmic-greeter.service
++++ b/debian/cosmic-greeter.service
+@@ -17,6 +17,5 @@ RestartSec=1
+ StartLimitBurst=5
+ StartLimitInterval=30
+ 
+-# Managed by debconf
+-#[Install]
+-#Alias=display-manager.service
++[Install]
++Alias=display-manager.service
+-- 
+2.46.0
+
