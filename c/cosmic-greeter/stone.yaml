@@ -5,7 +5,7 @@
 #
 name        : cosmic-greeter
 version     : "1.0.0-alpha.1"
-release     : 7
+release     : 8
 summary     : Cosmic Desktop Greeter
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-greeter
@@ -31,6 +31,8 @@ tuning      :
     - lto: thin
 setup       : |
     %cargo_fetch
+    # display manager link
+    %patch %(pkgdir)/fix-service.patch
     # debianism, /etc/default/locale
     %patch %(pkgdir)/no-env-default-locale.patch
 build       : |
