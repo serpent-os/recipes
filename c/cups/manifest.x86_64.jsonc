@@ -692,7 +692,6 @@
 				"/usr/share/cups/templates/test-page.tmpl",
 				"/usr/share/cups/templates/trailer.tmpl",
 				"/usr/share/cups/templates/users.tmpl",
-				"/usr/share/defaults/etc",
 				"/usr/share/defaults/etc/cups/cups-files.conf",
 				"/usr/share/defaults/etc/cups/cups-files.conf.default",
 				"/usr/share/defaults/etc/cups/cupsd.conf",
@@ -867,23 +866,10 @@
 			"provides": [
 				"binary(cancel)",
 				"binary(cups-config)",
-				"sysbinary(cupsaccept)",
-				"sysbinary(cupsctl)",
-				"sysbinary(cupsd)",
-				"sysbinary(cupsdisable)",
-				"sysbinary(cupsenable)",
-				"sysbinary(cupsfilter)",
-				"sysbinary(cupsreject)",
 				"binary(cupstestppd)",
 				"binary(ippeveprinter)",
 				"binary(ipptool)",
-				"soname(libcups.so.2(x86_64))",
-				"soname(libcupsimage.so.2(x86_64))",
 				"binary(lp)",
-				"sysbinary(lpadmin)",
-				"sysbinary(lpc)",
-				"sysbinary(lpinfo)",
-				"sysbinary(lpmove)",
 				"binary(lpoptions)",
 				"binary(lpq)",
 				"binary(lpr)",
@@ -893,7 +879,20 @@
 				"binary(ppdhtml)",
 				"binary(ppdi)",
 				"binary(ppdmerge)",
-				"binary(ppdpo)"
+				"binary(ppdpo)",
+				"soname(libcups.so.2(x86_64))",
+				"soname(libcupsimage.so.2(x86_64))",
+				"sysbinary(cupsaccept)",
+				"sysbinary(cupsctl)",
+				"sysbinary(cupsd)",
+				"sysbinary(cupsdisable)",
+				"sysbinary(cupsenable)",
+				"sysbinary(cupsfilter)",
+				"sysbinary(cupsreject)",
+				"sysbinary(lpadmin)",
+				"sysbinary(lpc)",
+				"sysbinary(lpinfo)",
+				"sysbinary(lpmove)"
 			]
 		},
 		"cups-devel": {
@@ -904,6 +903,7 @@
 				"pkgconfig(libcrypt)"
 			],
 			"depends": [
+				"cups",
 				"pkgconfig(gnutls)"
 			],
 			"files": [
