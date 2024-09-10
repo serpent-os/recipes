@@ -36,6 +36,7 @@
 				"/usr/lib/userdb/cosmic-greeter.group",
 				"/usr/lib/userdb/cosmic-greeter.user",
 				"/usr/share/dbus-1/system.d/com.system76.CosmicGreeter.conf",
+				"/usr/share/defaults/etc/pam.d/cosmic-greeter",
 				"/usr/share/greetd/cosmic-greeter.toml"
 			],
 			"name": "cosmic-greeter",
@@ -46,6 +47,6 @@
 		}
 	},
 	"source-name": "cosmic-greeter",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "1.0.0-alpha.1"
 }
