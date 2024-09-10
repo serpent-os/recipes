@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 6.10.8 Kernel Configuration
+# Linux/x86_64 6.10.9 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 18.1.8"
 CONFIG_GCC_VERSION=0
@@ -2506,8 +2506,9 @@ CONFIG_E100=m
 CONFIG_E1000=m
 CONFIG_E1000E=m
 CONFIG_E1000E_HWTS=y
-# CONFIG_IGB is not set
-# CONFIG_IGBVF is not set
+CONFIG_IGB=m
+CONFIG_IGB_HWMON=y
+CONFIG_IGBVF=m
 # CONFIG_IXGBE is not set
 # CONFIG_IXGBEVF is not set
 # CONFIG_I40E is not set
