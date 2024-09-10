@@ -23,6 +23,7 @@
 				"binary(cosmic-workspaces)",
 				"binary(update-desktop-database)",
 				"binary(update-mime-database)",
+				"binary(upower)",
 				"binary(xdg-user-dirs-gtk-update)",
 				"font-firacode",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -48,6 +49,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "1.0.0-alpha.1"
 }

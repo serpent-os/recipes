@@ -5,12 +5,12 @@
 #
 name        : cosmic-session
 version     : "1.0.0-alpha.1"
-release     : 8
+release     : 9
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-session.git : c3de3d24dd200d5f8a19a26de56590472f461574
+    - git|https://github.com/pop-os/cosmic-session.git : 39c7f9380029cb789ada8b4edf6e946881bdc545
 description : |
     Cosmic Session Management
 builddeps   :
@@ -32,6 +32,7 @@ rundeps     :
     - binary(cosmic-workspaces)
     - binary(update-desktop-database)
     - binary(update-mime-database)
+    - binary(upower)
     - binary(xdg-user-dirs-gtk-update)
     - font-firacode
     - wireplumber
@@ -40,7 +41,6 @@ networking  : yes
 tuning      :
     - lto: thin
 setup       : |
-    sed -e "s@/release/@/debug/@g" -i Justfile
     %cargo_fetch
 build       : |
     %cargo_build
