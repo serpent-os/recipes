@@ -20,9 +20,9 @@
 				"/usr/lib/tmpfiles.d/sudo.conf",
 				"/usr/sbin/visudo",
 				"/usr/share/defaults/etc/pam.d/su",
-				"/usr/share/defaults/etc/pam.d/su-l",
+				"/usr/share/defaults/etc/pam.d/su-i",
 				"/usr/share/defaults/etc/pam.d/sudo",
-				"/usr/share/defaults/etc/pam.d/sudo-l",
+				"/usr/share/defaults/etc/pam.d/sudo-i",
 				"/usr/share/defaults/etc/sudo/sudoers",
 				"/usr/share/defaults/etc/sudo/sudoers.d",
 				"/usr/share/man/man1/su.1",
@@ -51,6 +51,6 @@
 		}
 	},
 	"source-name": "sudo",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "0.2.3"
 }
