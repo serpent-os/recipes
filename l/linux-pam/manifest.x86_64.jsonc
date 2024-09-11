@@ -4,12 +4,18 @@
 	"packages": {
 		"linux-pam": {
 			"build-depends": [
+				"binary(autopoint)",
+				"pkgconfig(libeconf)",
+				"pkgconfig(libsystemd)",
 				"pkgconfig(libxcrypt)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libcrypt.so.1(x86_64))"
+				"soname(libcrypt.so.1(x86_64))",
+				"soname(libeconf.so.0(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/lib/libpam.so.0",
@@ -19,6 +25,7 @@
 				"/usr/lib/libpamc.so.0",
 				"/usr/lib/libpamc.so.0.82.1",
 				"/usr/lib/security/pam_access.so",
+				"/usr/lib/security/pam_canonicalize_user.so",
 				"/usr/lib/security/pam_debug.so",
 				"/usr/lib/security/pam_deny.so",
 				"/usr/lib/security/pam_echo.so",
@@ -59,15 +66,12 @@
 				"/usr/lib/security/pam_warn.so",
 				"/usr/lib/security/pam_wheel.so",
 				"/usr/lib/security/pam_xauth.so",
-				"/usr/lib/systemd/system/pam_namespace.service",
 				"/usr/lib/tmpfiles.d/linux-pam.conf",
 				"/usr/sbin/faillock",
 				"/usr/sbin/mkhomedir_helper",
 				"/usr/sbin/pam_namespace_helper",
 				"/usr/sbin/pam_timestamp_check",
-				"/usr/sbin/pwhistory_helper",
 				"/usr/sbin/unix_chkpwd",
-				"/usr/sbin/unix_update",
 				"/usr/share/defaults/etc/environment",
 				"/usr/share/defaults/etc/pam.d/other",
 				"/usr/share/defaults/etc/pam.d/system-auth",
@@ -84,6 +88,7 @@
 				"/usr/share/defaults/etc/security/namespace.d",
 				"/usr/share/defaults/etc/security/namespace.init",
 				"/usr/share/defaults/etc/security/pam_env.conf",
+				"/usr/share/defaults/etc/security/pwhistory.conf",
 				"/usr/share/defaults/etc/security/time.conf",
 				"/usr/share/defaults/etc/shells",
 				"/usr/share/doc/Linux-PAM/draft-morgan-pam-current.txt",
@@ -180,12 +185,14 @@
 				"/usr/share/man/man5/pam.conf.5",
 				"/usr/share/man/man5/pam.d.5",
 				"/usr/share/man/man5/pam_env.conf.5",
+				"/usr/share/man/man5/pwhistory.conf.5",
 				"/usr/share/man/man5/time.conf.5",
 				"/usr/share/man/man8/PAM.8",
 				"/usr/share/man/man8/faillock.8",
 				"/usr/share/man/man8/mkhomedir_helper.8",
 				"/usr/share/man/man8/pam.8",
 				"/usr/share/man/man8/pam_access.8",
+				"/usr/share/man/man8/pam_canonicalize_user.8",
 				"/usr/share/man/man8/pam_debug.8",
 				"/usr/share/man/man8/pam_deny.8",
 				"/usr/share/man/man8/pam_echo.8",
@@ -227,18 +234,15 @@
 				"/usr/share/man/man8/pam_warn.8",
 				"/usr/share/man/man8/pam_wheel.8",
 				"/usr/share/man/man8/pam_xauth.8",
-				"/usr/share/man/man8/pwhistory_helper.8",
-				"/usr/share/man/man8/unix_chkpwd.8",
-				"/usr/share/man/man8/unix_update.8"
+				"/usr/share/man/man8/unix_chkpwd.8"
 			],
 			"name": "linux-pam",
 			"provides": [
-				"sysbinary(faillock)",
 				"soname(libpam.so.0(x86_64))",
 				"soname(libpam_misc.so.0(x86_64))",
 				"soname(libpamc.so.0(x86_64))",
-				"sysbinary(mkhomedir_helper)",
 				"soname(pam_access.so(x86_64))",
+				"soname(pam_canonicalize_user.so(x86_64))",
 				"soname(pam_debug.so(x86_64))",
 				"soname(pam_deny.so(x86_64))",
 				"soname(pam_echo.so(x86_64))",
@@ -260,7 +264,6 @@
 				"soname(pam_mkhomedir.so(x86_64))",
 				"soname(pam_motd.so(x86_64))",
 				"soname(pam_namespace.so(x86_64))",
-				"sysbinary(pam_namespace_helper)",
 				"soname(pam_nologin.so(x86_64))",
 				"soname(pam_permit.so(x86_64))",
 				"soname(pam_pwhistory.so(x86_64))",
@@ -273,21 +276,28 @@
 				"soname(pam_succeed_if.so(x86_64))",
 				"soname(pam_time.so(x86_64))",
 				"soname(pam_timestamp.so(x86_64))",
-				"sysbinary(pam_timestamp_check)",
 				"soname(pam_umask.so(x86_64))",
 				"soname(pam_unix.so(x86_64))",
 				"soname(pam_usertype.so(x86_64))",
 				"soname(pam_warn.so(x86_64))",
 				"soname(pam_wheel.so(x86_64))",
 				"soname(pam_xauth.so(x86_64))",
-				"sysbinary(pwhistory_helper)",
-				"sysbinary(unix_chkpwd)",
-				"sysbinary(unix_update)"
+				"sysbinary(faillock)",
+				"sysbinary(mkhomedir_helper)",
+				"sysbinary(pam_namespace_helper)",
+				"sysbinary(pam_timestamp_check)",
+				"sysbinary(unix_chkpwd)"
 			]
 		},
 		"linux-pam-devel": {
 			"build-depends": [
+				"binary(autopoint)",
+				"pkgconfig(libeconf)",
+				"pkgconfig(libsystemd)",
 				"pkgconfig(libxcrypt)"
+			],
+			"depends": [
+				"linux-pam"
 			],
 			"files": [
 				"/usr/include/security/_pam_compat.h",
@@ -358,6 +368,6 @@
 		}
 	},
 	"source-name": "linux-pam",
-	"source-release": "6",
-	"source-version": "1.5.2"
+	"source-release": "7",
+	"source-version": "1.6.1"
 }
