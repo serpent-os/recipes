@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : systemd
-version     : '252.23'
-release     : 38
+version     : 254.17
+release     : 39
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -15,12 +15,13 @@ homepage    : http://www.freedesktop.org/wiki/Software/systemd
 description : |
     A System and Service Manager
 upstreams   :
-    - https://github.com/systemd/systemd-stable/archive/v252.23.tar.gz: 44eb633154f8c2d1758fb76f563aaee16e5c74bdcdf3c27e3502988ddd541287
+    - https://github.com/systemd/systemd-stable/archive/refs/tags/v254.17.tar.gz: a3ffb90b6d79214014b7469eac51b07e12dd765e6c3b524a915503815c32e6cb
 builddeps   :
     - acl-devel
     - attr-devel
     - binary(gperf)
     - binary(m4)
+    - binary(readelf.py)
     - binary(xsltproc)
     - docbook
     - gettext-devel
@@ -81,19 +82,17 @@ packages    :
             - /usr/share/polkit-1/rules.d/*network*
 toolchain   : gnu
 setup       : |
-    %patch %(pkgdir)/0001-Set-DefaultTimeoutStopSec-to-5s.patch
     %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
     %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
     %patch %(pkgdir)/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
     %patch %(pkgdir)/0001-gpt-auto-generate-Stop-automounting-xbootldr-and-esp.patch
     %patch %(pkgdir)/protocols.patch
-    %patch %(pkgdir)/linux-headers.patch
 
     %meson \
         -Dbpf-framework=false \
         -Defi=true \
+        -Dbootloader=true \
         -Dfuzz-tests=false \
-        -Dgnu-efi=true \
         -Dinstall-tests=false \
         -Dmode=release \
         -Dpamlibdir="%(libdir)/security" \
@@ -121,6 +120,7 @@ setup       : |
         -Dkernel-install=false \
         -Dok-color=highlight-blue \
         -Ddefault-dnssec=no \
+        -Ddefault-timeout-sec=5 \
         -Dadm-group=true \
         -Dwheel-group=true \
         -Dnobody-user=nobody \
