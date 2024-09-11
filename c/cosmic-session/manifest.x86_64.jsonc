@@ -9,6 +9,7 @@
 				"pkgconfig(xkbcommon)"
 			],
 			"depends": [
+				"accountsservice",
 				"binary(cosmic-app-library)",
 				"binary(cosmic-bg)",
 				"binary(cosmic-comp)",
@@ -50,6 +51,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "1.0.0-alpha.1"
 }
