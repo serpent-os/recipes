@@ -34,7 +34,7 @@ body:
   - type: textarea
     id: what-happened
     attributes:
-      label: What is not working?
+      label: What hardware is not working?
       description: Please explain what hardware did not work. Whether the whole computer did not work or specific pieces of hardware (eg. wifi or webcame etc_
       placeholder: Tell us what you see!
       value: "Please fill in the details here!"
