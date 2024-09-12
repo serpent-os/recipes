@@ -1,12 +1,12 @@
 name: Request a new package
-description: Request a new package for SerpentOS
+description: Request a new package for Serpent OS
 title: "[Package Request]: "
 labels: ["package: request"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this package request! Your interest in SerpentOS is appreciated and we commit to reviewing your request. Please note that we are currently limiting the repo size during the development stages of the project.
+        Thanks for taking the time to fill out this package request! Your interest in Serpent OS is appreciated and we commit to reviewing your request. Please note that we are currently limiting the repo size during the development stages of the project.
   - type: checkboxes
     id: search
     attributes:
