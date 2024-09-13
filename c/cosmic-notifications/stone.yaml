@@ -5,7 +5,7 @@
 #
 name        : cosmic-notifications
 version     : "1.0.0-alpha.1"
-release     : 3
+release     : 4
 summary     : Cosmic Desktop Notifications
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-notifications
@@ -22,8 +22,6 @@ builddeps   :
     - pkgconfig(xkbcommon)
 networking  : yes
 setup       : |
-    # Hotpatch the justfile to support our triple+release profile for installing
-    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
     %cargo_build
