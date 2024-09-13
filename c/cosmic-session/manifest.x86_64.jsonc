@@ -23,6 +23,7 @@
 				"binary(cosmic-settings-daemon)",
 				"binary(cosmic-workspaces)",
 				"binary(gnome-keyring)",
+				"binary(switcherooctl)",
 				"binary(update-desktop-database)",
 				"binary(update-mime-database)",
 				"binary(upower)",
@@ -51,6 +52,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "1.0.0-alpha.1"
 }
