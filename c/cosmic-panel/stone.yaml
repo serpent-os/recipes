@@ -5,12 +5,12 @@
 #
 name        : cosmic-panel
 version     : "1.0.0-alpha.1"
-release     : 6
+release     : 7
 summary     : Cosmic Desktop Panel
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-panel
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-panel.git : 47c672066adac6ff77b680b9461c8e1c2667b758
+    - git|https://github.com/pop-os/cosmic-panel.git : 4fedcbfc3574600b58de6da6c2401c92264537bd
 description : |
     Cosmic Desktop panel
 builddeps   :
@@ -23,7 +23,6 @@ tuning      :
     - lto: thin
 networking  : yes
 setup       : |
-    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
     RUST_BACKTRACE=1 %cargo_build
