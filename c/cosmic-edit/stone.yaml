@@ -5,10 +5,10 @@
 #
 name        : cosmic-edit
 version     : "1.0.0-alpha.1"
-release     : 5
+release     : 6
 homepage    : https://github.com/pop-os/cosmic-edit
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-edit : 536cc2fb60ed0ff3b35ac9e47de297d30ef27061
+    - git|https://github.com/pop-os/cosmic-edit : 9477a4759cd806a2c2593c6e8aabb4579ac77622
 summary     : Cosmic Desktop Text Editor
 description : |
     Cosmic desktop Text Editor
@@ -21,7 +21,6 @@ networking  : yes
 tuning      :
     - lto: thin
 setup       : |
-    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
     %cargo_build
