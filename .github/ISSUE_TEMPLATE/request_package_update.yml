@@ -1,6 +1,6 @@
 name: Request a package update
 description: Request that a package already in the repo is updated
-title: "[Package Update: "
+title: "[Package Update]: "
 labels: ["package update"]
 body:
   - type: markdown
