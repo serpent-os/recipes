@@ -1,0 +1,42 @@
+name: Request a package update
+description: Request that a package already in the repo is updated
+title: "[Package Update]: "
+labels: ["package update"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this package update request! Your interest in Serpent OS is appreciated and we commit to reviewing your request. Please note that whilst the project is actively being worked on, there could be a delay in package updates.
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Existing package update request?
+      description: Before opening a new issue, please search [the open issues](https://github.com/serpent-os/recipes/issues?q=is%3Aopen+is%3Aissue) to ensure there is not already an open package update request for this package.
+      options:
+        - label: I have searched open package request reports for an equivalent package update request
+          required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: Name of the software as it is found in the repo.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What is the latest version of the package you are requesting.
+  - type: input
+    id: url
+    attributes:
+      label: Link to the release notes or announcement.
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for update
+      description: Please provide a brief explanation of the updates from the currently packaged version of this package that would be helpful for SerpentOS users
+    validations:
+       required: true
