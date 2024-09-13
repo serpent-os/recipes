@@ -5,7 +5,7 @@
 #
 name        : cosmic-screenshot
 version     : "1.0.0-alpha.1"
-release     : 2
+release     : 3
 summary     : Cosmic Screenshot Tool
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-screenshot
@@ -23,7 +23,6 @@ networking  : yes
 tuning      :
     - lto: thin
 setup       : |
-    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
     %cargo_build
