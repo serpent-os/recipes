@@ -5,10 +5,10 @@
 #
 name        : cosmic-files
 version     : "1.0.0-alpha.1"
-release     : 6
+release     : 7
 homepage    : https://github.com/pop-os/cosmic-files
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-files : 190029aa27d08a26877e73db2dda789de3e6595f
+    - git|https://github.com/pop-os/cosmic-files : 17774af1e40c7d33cd8bb0b1fe582978e7a6d2f2
 summary     : Cosmic Desktop File Browser
 description : |
     Cosmic desktop File Browser
@@ -23,9 +23,9 @@ networking  : yes
 tuning      :
     - lto: thin
 setup       : |
-    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    %cargo_build --features rust-embed/debug-embed
+    %cargo_build -p cosmic-files
+    %cargo_build -p cosmic-files-applet
 install     : |
     CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
