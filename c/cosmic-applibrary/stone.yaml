@@ -5,12 +5,12 @@
 #
 name        : cosmic-applibrary
 version     : "1.0.0-alpha.1"
-release     : 4
+release     : 5
 summary     : Cosmic Desktop App Launcher
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-applibrary
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-applibrary.git : 1416b80bf42064a5ccc7109011f00531f5a8e3aa
+    - git|https://github.com/pop-os/cosmic-applibrary.git : db4a96e4307f7bc57f7af0d9faa498940dfaea65
 description : |
     Cosmic Desktop App Launcher
 builddeps   :
@@ -23,7 +23,6 @@ networking  : yes
 tuning      :
     - lto: thin
 setup       : |
-    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
     %cargo_build
