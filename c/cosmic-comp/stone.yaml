@@ -5,12 +5,12 @@
 #
 name        : cosmic-comp
 version     : "1.0.0-alpha.1"
-release     : 6
+release     : 7
 summary     : Cosmic Desktop Compositor
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-comp
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-comp.git : a3c81119e87c7de721dd3a2218dbdf224cbb5dc9
+    - git|https://github.com/pop-os/cosmic-comp.git : 3e1b352297fb763edb8dd747bb1c8d54188842f5
 description : |
     Cosmic Desktop Compositor
 builddeps   :
@@ -35,4 +35,4 @@ setup       : |
 build       : |
     %cargo_build
 install     : |
-    %make_install prefix=%(prefix) TARGET=%(target_triple)/debug
+    %make_install prefix=%(prefix) TARGET=%(target_triple)/release
