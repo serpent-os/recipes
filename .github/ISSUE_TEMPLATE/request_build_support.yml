@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this package build support failure! Your interest in Serpent OS is appreciated and we hope to be able to support you in successfully building packages within SerpentOS.
+        Thanks for taking the time to fill out this package build support failure! Your interest in Serpent OS is appreciated and we hope to be able to support you in successfully building packages within Serpent OS.
   - type: checkboxes
     id: search
     attributes:
