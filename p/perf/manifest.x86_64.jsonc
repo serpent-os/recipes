@@ -10,12 +10,14 @@
 				"pkgconfig(libcap)",
 				"pkgconfig(libelf)",
 				"pkgconfig(liblzma)",
+				"pkgconfig(libtraceevent)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(python3)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcap.so.2(x86_64))",
@@ -24,7 +26,9 @@
 				"soname(libelf.so.1(x86_64))",
 				"soname(liblzma.so.5(x86_64))",
 				"soname(libm.so.6(x86_64))",
+				"soname(libperl.so(x86_64))",
 				"soname(libpython3.11.so.1.0(x86_64))",
+				"soname(libtraceevent.so.1(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
 			],
@@ -254,6 +258,6 @@
 		}
 	},
 	"source-name": "perf",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "6.10.0"
 }

@@ -1,0 +1,76 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libtraceevent": {
+			"build-depends": [
+				"binary(readelf)",
+				"cunit",
+				"cunit-devel"
+			],
+			"depends": [
+				"cunit",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libtraceevent.so.1",
+				"/usr/lib/libtraceevent.so.1.8.3",
+				"/usr/lib/traceevent/plugins/libtraceevent-dynamic-list",
+				"/usr/lib/traceevent/plugins/plugin_cfg80211.so",
+				"/usr/lib/traceevent/plugins/plugin_function.so",
+				"/usr/lib/traceevent/plugins/plugin_futex.so",
+				"/usr/lib/traceevent/plugins/plugin_hrtimer.so",
+				"/usr/lib/traceevent/plugins/plugin_jbd2.so",
+				"/usr/lib/traceevent/plugins/plugin_kmem.so",
+				"/usr/lib/traceevent/plugins/plugin_kvm.so",
+				"/usr/lib/traceevent/plugins/plugin_mac80211.so",
+				"/usr/lib/traceevent/plugins/plugin_sched_switch.so",
+				"/usr/lib/traceevent/plugins/plugin_scsi.so",
+				"/usr/lib/traceevent/plugins/plugin_tlb.so",
+				"/usr/lib/traceevent/plugins/plugin_xen.so"
+			],
+			"name": "libtraceevent",
+			"provides": [
+				"soname(libtraceevent.so.1(x86_64))",
+				"soname(plugin_cfg80211.so(x86_64))",
+				"soname(plugin_function.so(x86_64))",
+				"soname(plugin_futex.so(x86_64))",
+				"soname(plugin_hrtimer.so(x86_64))",
+				"soname(plugin_jbd2.so(x86_64))",
+				"soname(plugin_kmem.so(x86_64))",
+				"soname(plugin_kvm.so(x86_64))",
+				"soname(plugin_mac80211.so(x86_64))",
+				"soname(plugin_sched_switch.so(x86_64))",
+				"soname(plugin_scsi.so(x86_64))",
+				"soname(plugin_tlb.so(x86_64))",
+				"soname(plugin_xen.so(x86_64))"
+			]
+		},
+		"libtraceevent-devel": {
+			"build-depends": [
+				"binary(readelf)",
+				"cunit",
+				"cunit-devel"
+			],
+			"depends": [
+				"libtraceevent"
+			],
+			"files": [
+				"/usr/include/traceevent/event-parse.h",
+				"/usr/include/traceevent/event-utils.h",
+				"/usr/include/traceevent/kbuffer.h",
+				"/usr/include/traceevent/trace-seq.h",
+				"/usr/lib/libtraceevent.a",
+				"/usr/lib/libtraceevent.so",
+				"/usr/lib/pkgconfig/libtraceevent.pc"
+			],
+			"name": "libtraceevent-devel",
+			"provides": [
+				"pkgconfig(libtraceevent)"
+			]
+		}
+	},
+	"source-name": "libtraceevent",
+	"source-release": "1",
+	"source-version": "1.8.3"
+}
