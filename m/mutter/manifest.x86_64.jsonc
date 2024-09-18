@@ -82,7 +82,6 @@
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libEGL.so.1(x86_64))",
 				"soname(libGL.so.1(x86_64))",
-				"soname(libGLESv2.so.2(x86_64))",
 				"soname(libICE.so.6(x86_64))",
 				"soname(libSM.so.6(x86_64))",
 				"soname(libX11-xcb.so.1(x86_64))",
@@ -130,7 +129,6 @@
 				"soname(libsystemd.so.0(x86_64))",
 				"soname(libudev.so.1(x86_64))",
 				"soname(libwacom.so.9(x86_64))",
-				"soname(libwayland-client.so.0(x86_64))",
 				"soname(libwayland-server.so.0(x86_64))",
 				"soname(libxcb-randr.so.0(x86_64))",
 				"soname(libxcb-res.so.0(x86_64))",
@@ -613,6 +611,6 @@
 		}
 	},
 	"source-name": "mutter",
-	"source-release": "6",
-	"source-version": "46.4"
+	"source-release": "7",
+	"source-version": "46.5"
 }
