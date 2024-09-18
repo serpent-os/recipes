@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : librsvg
-version     : 2.58.2
-release     : 3
+version     : 2.58.4
+release     : 4
 homepage    : https://gitlab.gnome.org/GNOME/librsvg
 upstreams   :
-    - https://download.gnome.org/sources/librsvg/2.58/librsvg-2.58.2.tar.xz : 18e9d70c08cf25f50d610d6d5af571561d67cf4179f962e04266475df6e2e224
+    - https://download.gnome.org/sources/librsvg/2.58/librsvg-2.58.4.tar.xz : 296e3760d2347d0767c3e291dec962ab36baecd25c4898c6e8150a731f967c7b
 summary     : Library to render SVG files using Cairo
 description : |
     A small library to render Scalable Vector Graphics (SVG), associated with the GNOME Project. It renders SVG files to Cairo surfaces. Cairo is the 2D, antialiased drawing library that GNOME uses to draw things to the screen or to generate output for printing.
@@ -17,7 +17,6 @@ license     :
 networking  : yes
 builddeps   :
     - binary(cargo)
-    - binary(clang)
     - binary(python3)
     # binary(vapigen)
     - pkgconfig(fontconfig)
@@ -34,5 +33,3 @@ build       : |
     %make
 install     : |
     %make_install
-# g-ir-compiler crap
-toolchain   : gnu
