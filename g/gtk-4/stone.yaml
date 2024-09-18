@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gtk-4
-version     : 4.14.4
-release     : 10
+version     : 4.14.5
+release     : 11
 homepage    : https://download.gnome.org/sources/gtk/4.12
 upstreams   :
-    - https://download.gnome.org/sources/gtk/4.14/gtk-4.14.4.tar.xz : 443518b97e8348f9f6430ac435b1010f9a6c5207f4dc6a7cd5d24e3820cee633
+    - https://download.gnome.org/sources/gtk/4.14/gtk-4.14.5.tar.xz : 5547f2b9f006b133993e070b87c17804e051efda3913feaca1108fa2be41e24d
 summary     : The GTK 4 libraries for developing user interfaces
 description : |
     The GTK 4 libraries are used for developing user interfaces
@@ -84,6 +84,3 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-# error running g-ir-scanner on files with clang
-# clang-16: error: cannot specify -o when generating multiple output files
-toolchain   : gnu
