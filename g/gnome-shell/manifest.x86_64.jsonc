@@ -53,7 +53,6 @@
 				"libnma",
 				"librsvg",
 				"shared-mime-info",
-				"soname(libGLESv2.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libXfixes.so.3(x86_64))",
 				"soname(libatk-1.0.so.0(x86_64))",
@@ -276,6 +275,6 @@
 		}
 	},
 	"source-name": "gnome-shell",
-	"source-release": "17",
-	"source-version": "46.4"
+	"source-release": "18",
+	"source-version": "46.5"
 }

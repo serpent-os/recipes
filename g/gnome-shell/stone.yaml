@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnome-shell
-version     : '46.4'
-release     : 17
+version     : '46.5'
+release     : 18
 homepage    : https://gitlab.gnome.org/GNOME/gnome-shell
 upstreams   :
-    - https://download.gnome.org/sources/gnome-shell/46/gnome-shell-46.4.tar.xz : 188468fe72e90ac4b234e9d4d0707d607feaf39a13d25bd3aa3eb75e55a3e052
+    - https://download.gnome.org/sources/gnome-shell/46/gnome-shell-46.5.tar.xz : 3e640fa9ae9c7f66ba34d52a2e88b625e4d3636e2c0c6d8b9d13edda57d0cc18
 summary     : The core GNOME desktop experience
 description : |
     GNOME Shell provides core user interface functions for the GNOME desktop,
@@ -71,7 +71,6 @@ rundeps     :
     - shared-mime-info
     - xdg-desktop-portal-gnome
     - xkeyboard-config
-toolchain   : gnu
 setup       : |
     %meson -Dtests=false
 build       : |
