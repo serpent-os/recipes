@@ -5,7 +5,7 @@
 #
 name        : gexiv2
 version     : 0.14.3
-release     : 2
+release     : 3
 homepage    : https://wiki.gnome.org/Projects/gexiv2
 upstreams   :
     - https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.3.tar.xz : 21e64d2c56e9b333d44fef3f2a4b25653d922c419acd972fa96fab695217e2c8
@@ -15,18 +15,16 @@ description : |
 license     :
     - GPL-2.0-or-later
 builddeps   :
-    # binary(g-ir-scanner)
-    # binary(valac)
+    - binary(g-ir-scanner)
+    - binary(valac)
     - pkgconfig(exiv2)
     - pkgconfig(gio-2.0)
     - pkgconfig(gobject-2.0)
-    # pkgconfig(gobject-introspection-1.0)
-    # python-pygobject
+    - pkgconfig(gobject-introspection-1.0)
+    - python-pygobject
 setup       : |
-    %meson -Dintrospection=false -Dvapi=false -Dpython3=false
+    %meson
 build       : |
     %meson_build
 install     : |
     %meson_install
-# g-ir-scanner / compiler woes but fails to link with ld.bfd
-#toolchain   : gnu
