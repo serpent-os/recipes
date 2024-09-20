@@ -1,0 +1,71 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : localsearch
+version     : 3.8.0
+release     : 1
+homepage    : https://tracker.gnome.org/
+upstreams   :
+    - https://download.gnome.org/sources/localsearch/3.8/localsearch-3.8.0.tar.xz : e4e83a1daebb5263915b45b719731e3f7041d959cbd637ea29afbe910c92bbf9
+summary     : Tracker is an efficient search engine and triplestore for desktop, embedded and mobile.
+description : |
+    Tracker Miners contains the indexer daemon (tracker-miner-fs-3) and tools to extract metadata from many different filetypes.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    # binary(a2x) man
+    - binary(msgfmt)
+    - binary(glib-compile-schemas)
+    - binary(glib-mkenums)
+    - binary(sha256sum)
+    - pkgconfig(blkid)
+    - pkgconfig(dbus-1)
+    # pkgconfig(enca)
+    # pkgconfig(exempi-2.0)
+    - pkgconfig(gexiv2)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gstreamer-1.0)
+    - pkgconfig(gudev-1.0)
+    # pkgconfig(gupnp-dlna-2.0)
+    # pkgconfig(gupnp-dlna-gst-2.0)
+    # pkgconfig(hal)
+    - pkgconfig(icu-i18n)
+    # pkgconfig(libavcodec)
+    # pkgconfig(libcue)
+    # pkgconfig(libexif)
+    # pkgconfig(libgrss)
+    # pkgconfig(libgsf-1)
+    # pkgconfig(libgxps)
+    # pkgconfig(libiptcdata)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libnm)
+    # pkgconfig(libosinfo-1.0)
+    - pkgconfig(libpng)
+    - pkgconfig(libseccomp)
+    - pkgconfig(libtiff-4)
+    - pkgconfig(libxml-2.0)
+    # pkgconfig(poppler-glib)
+    - pkgconfig(systemd)
+    # pkgconfig(totem-plparser)
+    - pkgconfig(tinysparql-3.0)
+    - pkgconfig(upower-glib)
+setup       : |
+    # TODO: do an enablement pass on this pkg
+    # TODO: enable landlock support in kernel
+    %meson \
+        -Dman=false \
+        -Dminer_rss=false \
+        -Dlandlock=disabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
+    %install_dir %(installroot)/usr/share/xdg/autostart/
+    mv %(installroot)/etc/xdg/autostart/localsearch-3.desktop \
+        %(installroot)/usr/share/xdg/autostart/
+    rm -frv %(installroot)/etc
