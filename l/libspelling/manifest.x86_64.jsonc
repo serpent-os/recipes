@@ -1,0 +1,76 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libspelling": {
+			"build-depends": [
+				"binary(vapigen)",
+				"pkgconfig(enchant-2)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(gtksourceview-5)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libenchant-2.so.2(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libgtksourceview-5.so.0(x86_64))",
+				"soname(libicuuc.so.75(x86_64))",
+				"soname(libpango-1.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/Spelling-1.typelib",
+				"/usr/lib/libspelling-1.so.2",
+				"/usr/lib/libspelling-1.so.2.0.0",
+				"/usr/share/gir-1.0/Spelling-1.gir",
+				"/usr/share/vala/vapi/libspelling-1.deps",
+				"/usr/share/vala/vapi/libspelling-1.vapi"
+			],
+			"name": "libspelling",
+			"provides": [
+				"soname(libspelling-1.so.2(x86_64))"
+			]
+		},
+		"libspelling-devel": {
+			"build-depends": [
+				"binary(vapigen)",
+				"pkgconfig(enchant-2)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(gtksourceview-5)"
+			],
+			"depends": [
+				"libspelling",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(gtksourceview-5)"
+			],
+			"files": [
+				"/usr/include/libspelling-1/libspelling.h",
+				"/usr/include/libspelling-1/spelling-checker.h",
+				"/usr/include/libspelling-1/spelling-dictionary.h",
+				"/usr/include/libspelling-1/spelling-init.h",
+				"/usr/include/libspelling-1/spelling-language.h",
+				"/usr/include/libspelling-1/spelling-provider.h",
+				"/usr/include/libspelling-1/spelling-text-buffer-adapter.h",
+				"/usr/include/libspelling-1/spelling-types.h",
+				"/usr/include/libspelling-1/spelling-version-macros.h",
+				"/usr/include/libspelling-1/spelling-version.h",
+				"/usr/lib/libspelling-1.so",
+				"/usr/lib/pkgconfig/libspelling-1.pc"
+			],
+			"name": "libspelling-devel",
+			"provides": [
+				"pkgconfig(libspelling-1)"
+			]
+		}
+	},
+	"source-name": "libspelling",
+	"source-release": "1",
+	"source-version": "0.4.0"
+}
