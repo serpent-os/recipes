@@ -1,0 +1,45 @@
+name: Request build support
+description: File a report where you recieved failures to build a package and are unsure how to proceed. 
+title: "[Package Build Failure]: "
+labels: ["package: build failure"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this package build support failure! Your interest in Serpent OS is appreciated and we hope to be able to support you in successfully building packages within Serpent OS.
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Existing reports?
+      description: Before opening a new issue, please search [the open issues](https://github.com/serpent-os/recipes/issues?q=is%3Aopen+is%3Aissue) to ensure there is not already an open package build failure report for the problem.
+      options:
+        - label: I have searched open package build failure reports for this issue
+          required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: Name of the package.
+    validations:
+      required: true
+ - type: input
+    id: source
+    attributes:
+      label: Link to source archive file
+      description: Please provide a link to the source file you are using to try and build this package
+      placeholder: https://www.example.com/releases/v1.2.3.tar.gz
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Build failure logs 
+      description: Please copy and paste the output of the errors/build failure from your CLI when you try and build this package in SerpentOS. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: other
+    attributes:
+      label: Other comments
+      description: Any other details that might help us diagnose the issue
