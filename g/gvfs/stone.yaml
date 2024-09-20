@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gvfs
-version     : 1.54.3
-release     : 4
+version     : 1.56.0
+release     : 5
 homepage    : https://wiki.gnome.org/Projects/gvfs
 upstreams   :
-    - https://download.gnome.org/sources/gvfs/1.54/gvfs-1.54.3.tar.xz : b7187f8d0ba4c32d9663d14b41f0ee578829a61dcaa82e9aea3be95758016865
+    - https://download.gnome.org/sources/gvfs/1.56/gvfs-1.56.0.tar.xz : 441d2356c72616364cdb420af96199113a13ed9e146f2175fe373989adada39e
 summary     : Virtual filesystem implementation for GIO
 description : |
     Virtual filesystem implementation for GIO
@@ -50,6 +50,8 @@ builddeps   :
     - pkgconfig(systemd)
     - pkgconfig(udisks2)
     - binary(msgfmt)
+environment : |
+    export LDFLAGS="${LDFLAGS} -Wl,--allow-shlib-undefined"
 setup       : |
     %meson -Dafc=false \
            -Dbluray=false \
