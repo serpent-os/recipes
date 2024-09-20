@@ -41,13 +41,13 @@
 				"/usr/lib/girepository-1.0/PangoOT-1.0.typelib",
 				"/usr/lib/girepository-1.0/PangoXft-1.0.typelib",
 				"/usr/lib/libpango-1.0.so.0",
-				"/usr/lib/libpango-1.0.so.0.5200.2",
+				"/usr/lib/libpango-1.0.so.0.5400.0",
 				"/usr/lib/libpangocairo-1.0.so.0",
-				"/usr/lib/libpangocairo-1.0.so.0.5200.2",
+				"/usr/lib/libpangocairo-1.0.so.0.5400.0",
 				"/usr/lib/libpangoft2-1.0.so.0",
-				"/usr/lib/libpangoft2-1.0.so.0.5200.2",
+				"/usr/lib/libpangoft2-1.0.so.0.5400.0",
 				"/usr/lib/libpangoxft-1.0.so.0",
-				"/usr/lib/libpangoxft-1.0.so.0.5200.2",
+				"/usr/lib/libpangoxft-1.0.so.0.5400.0",
 				"/usr/share/gir-1.0/Pango-1.0.gir",
 				"/usr/share/gir-1.0/PangoCairo-1.0.gir",
 				"/usr/share/gir-1.0/PangoFT2-1.0.gir",
@@ -174,6 +174,6 @@
 		}
 	},
 	"source-name": "pango",
-	"source-release": "2",
-	"source-version": "1.52.2"
+	"source-release": "3",
+	"source-version": "1.54.0"
 }
