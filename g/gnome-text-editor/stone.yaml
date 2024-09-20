@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnome-text-editor
-version     : 46.3
-release     : 3
-homepage    : https://gitlab.gnome.org/GNOME/gnome-text-editor
+version     : '47.0'
+release     : 4
+homepage    : https://apps.gnome.org/TextEditor/
 upstreams   :
-    - https://download.gnome.org/sources/gnome-text-editor/46/gnome-text-editor-46.3.tar.xz : 005b48104a909be66ae07448d2bc5706c7d113781057a24ff6da55bdf324c73d
+    - https://download.gnome.org/sources/gnome-text-editor/47/gnome-text-editor-47.0.tar.xz : 0304961974bdacc7e6e8d146dadc949527df99b2823582c8d1ba8b33d25d4217
 summary     : A simple text editor
 description : |
     Text Editor is a simple text editor that focuses on session management.
@@ -24,9 +24,10 @@ builddeps   :
     - pkgconfig(gtk4)
     - pkgconfig(gtksourceview-5)
     - pkgconfig(libadwaita-1)
+    - pkgconfig(libspelling-1)
 setup       : |
     sed -i '/update_desktop_database/d' meson.build
-    %meson -Denchant=disabled
+    %meson
 build       : |
     %meson_build
 install     : |
