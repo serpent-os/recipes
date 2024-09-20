@@ -1,0 +1,80 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"appstream-generator": {
+			"build-depends": [
+				"binary(girtod)",
+				"binary(xsltproc)",
+				"docbook",
+				"ldc-devel",
+				"pkgconfig(appstream)",
+				"pkgconfig(appstream-compose)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(glibd-2.0)",
+				"pkgconfig(libarchive)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(lmdb)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libappstream-compose.so.0(x86_64))",
+				"soname(libappstream.so.5(x86_64))",
+				"soname(libarchive.so.13(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libdruntime-ldc-shared.so.109(x86_64))",
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libglibd-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(liblmdb.so.0.0.0(x86_64))",
+				"soname(libphobos2-ldc-shared.so.109(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/appstream-generator",
+				"/usr/share/appstream/asgen-hints.json",
+				"/usr/share/appstream/hicolor-theme-index.theme",
+				"/usr/share/appstream/templates/debian",
+				"/usr/share/appstream/templates/debian/base.html",
+				"/usr/share/appstream/templates/debian/main.html",
+				"/usr/share/appstream/templates/debian/static",
+				"/usr/share/appstream/templates/debian/static/css",
+				"/usr/share/appstream/templates/debian/static/css/highlight.css",
+				"/usr/share/appstream/templates/debian/static/css/style.css",
+				"/usr/share/appstream/templates/debian/static/img",
+				"/usr/share/appstream/templates/debian/static/js",
+				"/usr/share/appstream/templates/default",
+				"/usr/share/appstream/templates/default/base.html",
+				"/usr/share/appstream/templates/default/issues_index.html",
+				"/usr/share/appstream/templates/default/issues_page.html",
+				"/usr/share/appstream/templates/default/main.html",
+				"/usr/share/appstream/templates/default/metainfo_index.html",
+				"/usr/share/appstream/templates/default/metainfo_page.html",
+				"/usr/share/appstream/templates/default/section_page.html",
+				"/usr/share/appstream/templates/default/sections_index.html",
+				"/usr/share/appstream/templates/default/static",
+				"/usr/share/appstream/templates/default/static/css",
+				"/usr/share/appstream/templates/default/static/css/highlight.css",
+				"/usr/share/appstream/templates/default/static/css/style.css",
+				"/usr/share/appstream/templates/default/static/img",
+				"/usr/share/appstream/templates/default/static/img/asgen.png",
+				"/usr/share/appstream/templates/default/static/img/cpt-nogui.png",
+				"/usr/share/appstream/templates/default/static/img/favicon.png",
+				"/usr/share/appstream/templates/default/static/img/no-image.png",
+				"/usr/share/appstream/templates/ubuntu",
+				"/usr/share/man/man1/appstream-generator.1",
+				"/usr/share/metainfo/org.freedesktop.appstream.generator.metainfo.xml"
+			],
+			"name": "appstream-generator",
+			"provides": [
+				"binary(appstream-generator)"
+			]
+		}
+	},
+	"source-name": "appstream-generator",
+	"source-release": "1",
+	"source-version": "0.9.1"
+}
