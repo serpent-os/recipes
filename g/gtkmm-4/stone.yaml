@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gtkmm-4
-version     : 4.14.0
-release     : 1
+version     : 4.16.0
+release     : 2
 homepage    : https://gtkmm.org
 upstreams   :
-    - https://download.gnome.org/sources/gtkmm/4.14/gtkmm-4.14.0.tar.xz : 9350a0444b744ca3dc69586ebd1b6707520922b6d9f4f232103ce603a271ecda
+    - https://download.gnome.org/sources/gtkmm/4.16/gtkmm-4.16.0.tar.xz : 3b23fd3abf8fb223b00e9983b6010af2db80e38c89ab6994b8b6230aa85d60f9
 summary     : gtkmm is the official C++ interface for the popular GUI library GTK
 description : |
     gtkmm is the official C++ interface for the popular GUI library GTK. Highlights include typesafe callbacks, and a comprehensive set of widgets that are easily extensible via inheritance. You can create user interfaces either in code or with the Cambalache User Interface designer, using Gtk::Builder.
