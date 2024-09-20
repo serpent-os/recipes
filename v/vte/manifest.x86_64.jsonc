@@ -24,24 +24,26 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
-				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcairo-gobject.so.2(x86_64))",
 				"soname(libcairo.so.2(x86_64))",
 				"soname(libfribidi.so.0(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgnutls.so.30(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgraphene-1.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
 				"soname(libicuuc.so.75(x86_64))",
 				"soname(liblz4.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
 				"soname(libpango-1.0.so.0(x86_64))",
 				"soname(libpangocairo-1.0.so.0(x86_64))",
 				"soname(libpcre2-8.so.0(x86_64))",
-				"soname(libsystemd.so.0(x86_64))",
-				"soname(libunwind.so.1(x86_64))"
+				"soname(libstdc++.so.6(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/vte-2.91-gtk4",
@@ -98,6 +100,7 @@
 				"/usr/include/vte-2.91-gtk4/vte/vteterminal.h",
 				"/usr/include/vte-2.91-gtk4/vte/vtetypebuiltins-gtk4.h",
 				"/usr/include/vte-2.91-gtk4/vte/vtetypebuiltins.h",
+				"/usr/include/vte-2.91-gtk4/vte/vteuuid.h",
 				"/usr/include/vte-2.91-gtk4/vte/vteversion.h",
 				"/usr/lib/libvte-2.91-gtk4.so",
 				"/usr/lib/pkgconfig/vte-2.91-gtk4.pc",
@@ -111,6 +114,6 @@
 		}
 	},
 	"source-name": "vte",
-	"source-release": "6",
-	"source-version": "0.76.4"
+	"source-release": "7",
+	"source-version": "0.78.0"
 }
