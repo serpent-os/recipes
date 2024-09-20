@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nautilus
-version     : 46.2
-release     : 2
+version     : '47.0'
+release     : 3
 homepage    : https://apps.gnome.org/Nautilus/
 upstreams   :
-    - https://download.gnome.org/sources/nautilus/46/nautilus-46.2.tar.xz : 6ee8c99019b9e3447f6918d68232a20deca89e5525c05805432b7d8840ca71fa
+    - https://download.gnome.org/sources/nautilus/47/nautilus-47.0.tar.xz : 334264cdd9edbfd95ee7bcaafe442ebed31acca3f2d9b90f3eda30eacfd0387a
 summary     : Access and organize files
 description : |
     Files, also known as Nautilus, is the default file manager of the GNOME desktop. It provides a simple and integrated way of managing your files and browsing your file system. Nautilus supports all the basic functions of a file manager and more. It can search and manage your files and folders, both locally and on a network, read and write data to and from removable media, run scripts, and launch apps. It has three views: Icon Grid, Icon List, and Tree List. Its functions can be extended with plugins and scripts.
@@ -16,6 +16,7 @@ license     :
     - GPL-3.0-or-later
     - LGPL-2.1-or-later
 builddeps   :
+    - binary(localsearch)
     - binary(msgfmt)
     - binary(update-desktop-database)
     - pkgconfig(cloudproviders)
@@ -31,9 +32,9 @@ builddeps   :
     - pkgconfig(libportal)
     - pkgconfig(libportal-gtk4)
     - pkgconfig(libxml-2.0)
-    - pkgconfig(tracker-sparql-3.0)
+    - pkgconfig(tinysparql-3.0)
 rundeps     :
-    - tracker-miners
+    - localsearch
 environment : |
     export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
 setup       : |
@@ -42,5 +43,3 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-# clang g-ir-scanner/compiler woes
-toolchain   : gnu
