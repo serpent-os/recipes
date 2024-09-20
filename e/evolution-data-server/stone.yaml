@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : evolution-data-server
-version     : 3.52.4
-release     : 7
+version     : 3.54.0
+release     : 8
 homepage    : https://gitlab.gnome.org/GNOME/evolution-data-server
 upstreams   :
-    - https://download.gnome.org/sources/evolution-data-server/3.52/evolution-data-server-3.52.4.tar.xz : 1b36a839db1c8d898066e19be78b995930a0a2f2a886f149e4f64e1755f064f7
+    - https://download.gnome.org/sources/evolution-data-server/3.54/evolution-data-server-3.54.0.tar.xz : a54b47b977a97030f738a412f4f5d5b2efbef5e0ebe8929b7cce00ac54681084
 summary     : Calendar, contacts and task backend management
 description : |
     The Evolution Data Server provides a single database for common, desktop-wide information,
@@ -26,11 +26,13 @@ builddeps   :
     - pkgconfig(glib-2.0)
     - pkgconfig(goa-1.0)
     - pkgconfig(gobject-introspection-1.0)
-    - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gtk+-3.0)
     - pkgconfig(gtk4)
+    - pkgconfig(gweather4)
     - pkgconfig(icu-i18n)
     - pkgconfig(json-glib-1.0)
+    - pkgconfig(krb5)
+    - pkgconfig(ldap)
     - pkgconfig(libcanberra-gtk3)
     - pkgconfig(libical-glib)
     - pkgconfig(libical-glib)
@@ -38,22 +40,15 @@ builddeps   :
     - pkgconfig(libsoup-3.0)
     - pkgconfig(libxml-2.0)
     - pkgconfig(nss)
-    # - pkgconfig(gweather4)
-    # - pkgconfig(krb5)
     # - pkgconfig(webkit2gtk-4.1)
     # - pkgconfig(webkitgtk-6.0)
 packages    :
     - "%(name)-devel":
         paths:
             - /usr/share/vala/vapi
-
-toolchain   : gnu
 setup       : |
-    %cmake -DWITH_KRB5=OFF \
-           -DWITH_OPENLDAP=OFF \
-           -DENABLE_OAUTH2_WEBKITGTK=OFF -DENABLE_OAUTH2_WEBKITGTK4=OFF \
+    %cmake -DENABLE_OAUTH2_WEBKITGTK=OFF -DENABLE_OAUTH2_WEBKITGTK4=OFF \
            -DWITH_LIBDB=OFF \
-           -DENABLE_WEATHER=OFF \
            -DENABLE_INTROSPECTION=ON \
            -DENABLE_VALA_BINDINGS=ON \
            -DSYSCONF_INSTALL_DIR="%(datadir)"
