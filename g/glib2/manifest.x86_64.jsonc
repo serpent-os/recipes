@@ -6,6 +6,7 @@
 			"build-depends": [
 				"binary(xgettext)",
 				"pkgconfig(bash-completion)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libelf)",
 				"pkgconfig(libffi)",
 				"pkgconfig(libpcre2-8)",
@@ -46,6 +47,13 @@
 				"/usr/bin/gtester",
 				"/usr/bin/gtester-report",
 				"/usr/lib/gio/modules",
+				"/usr/lib/girepository-1.0/GIRepository-3.0.typelib",
+				"/usr/lib/girepository-1.0/GLib-2.0.typelib",
+				"/usr/lib/girepository-1.0/GLibUnix-2.0.typelib",
+				"/usr/lib/girepository-1.0/GModule-2.0.typelib",
+				"/usr/lib/girepository-1.0/GObject-2.0.typelib",
+				"/usr/lib/girepository-1.0/Gio-2.0.typelib",
+				"/usr/lib/girepository-1.0/GioUnix-2.0.typelib",
 				"/usr/lib/glib-2.0/include/glibconfig.h",
 				"/usr/lib/glib2/gio-launch-desktop",
 				"/usr/lib/libgio-2.0.so.0",
@@ -71,6 +79,13 @@
 				"/usr/share/gdb/auto-load/usr/lib/libgobject-2.0.so.0.8200.1-gdb.py",
 				"/usr/share/gettext/its/gschema.its",
 				"/usr/share/gettext/its/gschema.loc",
+				"/usr/share/gir-1.0/GIRepository-3.0.gir",
+				"/usr/share/gir-1.0/GLib-2.0.gir",
+				"/usr/share/gir-1.0/GLibUnix-2.0.gir",
+				"/usr/share/gir-1.0/GModule-2.0.gir",
+				"/usr/share/gir-1.0/GObject-2.0.gir",
+				"/usr/share/gir-1.0/Gio-2.0.gir",
+				"/usr/share/gir-1.0/GioUnix-2.0.gir",
 				"/usr/share/glib-2.0/codegen/__init__.py",
 				"/usr/share/glib-2.0/codegen/__pycache__/__init__.cpython-311.pyc",
 				"/usr/share/glib-2.0/codegen/__pycache__/codegen.cpython-311.pyc",
@@ -234,6 +249,7 @@
 			"build-depends": [
 				"binary(xgettext)",
 				"pkgconfig(bash-completion)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libelf)",
 				"pkgconfig(libffi)",
 				"pkgconfig(libpcre2-8)",
@@ -588,6 +604,6 @@
 		}
 	},
 	"source-name": "glib2",
-	"source-release": "16",
+	"source-release": "17",
 	"source-version": "2.82.1"
 }

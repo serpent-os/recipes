@@ -5,7 +5,7 @@
 #
 name        : glib2
 version     : 2.82.1
-release     : 16
+release     : 17
 homepage    : https://gitlab.gnome.org/GNOME/glib
 upstreams   :
     - https://download.gnome.org/sources/glib/2.82/glib-2.82.1.tar.xz : 478634440bf52ee4ec4428d558787398c0be6b043c521beb308334b3db4489a6
@@ -25,6 +25,7 @@ license     :
 builddeps   :
     - binary(xgettext)
     - pkgconfig(bash-completion)
+    - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(libelf)
     - pkgconfig(libffi)
     - pkgconfig(libpcre2-8)
