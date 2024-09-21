@@ -66,14 +66,17 @@
 				"pkgconfig(giomm-2.68)",
 				"pkgconfig(gtk4)",
 				"pkgconfig(gtk4-unix-print)",
-				"pkgconfig(pangomm-2.48)"
+				"pkgconfig(pangomm-2.48)",
+				"pkgconfig(vulkan)"
 			],
 			"files": [
 				"/usr/include/gtkmm-4.0/gdkmm.h",
 				"/usr/include/gtkmm-4.0/gdkmm/applaunchcontext.h",
 				"/usr/include/gtkmm-4.0/gdkmm/cairocontext.h",
 				"/usr/include/gtkmm-4.0/gdkmm/cairoutils.h",
+				"/usr/include/gtkmm-4.0/gdkmm/cicpparams.h",
 				"/usr/include/gtkmm-4.0/gdkmm/clipboard.h",
+				"/usr/include/gtkmm-4.0/gdkmm/colorstate.h",
 				"/usr/include/gtkmm-4.0/gdkmm/contentformats.h",
 				"/usr/include/gtkmm-4.0/gdkmm/contentformatsbuilder.h",
 				"/usr/include/gtkmm-4.0/gdkmm/contentprovider.h",
@@ -105,6 +108,7 @@
 				"/usr/include/gtkmm-4.0/gdkmm/graphene_rect.h",
 				"/usr/include/gtkmm-4.0/gdkmm/graphene_size.h",
 				"/usr/include/gtkmm-4.0/gdkmm/memorytexture.h",
+				"/usr/include/gtkmm-4.0/gdkmm/memorytexturebuilder.h",
 				"/usr/include/gtkmm-4.0/gdkmm/monitor.h",
 				"/usr/include/gtkmm-4.0/gdkmm/paintable.h",
 				"/usr/include/gtkmm-4.0/gdkmm/pixbuf.h",
@@ -117,7 +121,9 @@
 				"/usr/include/gtkmm-4.0/gdkmm/popupsurfaceimpl.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/applaunchcontext_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/cairocontext_p.h",
+				"/usr/include/gtkmm-4.0/gdkmm/private/cicpparams_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/clipboard_p.h",
+				"/usr/include/gtkmm-4.0/gdkmm/private/colorstate_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/contentformats_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/contentformatsbuilder_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/contentprovider_p.h",
@@ -146,6 +152,7 @@
 				"/usr/include/gtkmm-4.0/gdkmm/private/graphene_rect_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/graphene_size_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/memorytexture_p.h",
+				"/usr/include/gtkmm-4.0/gdkmm/private/memorytexturebuilder_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/monitor_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/paintable_p.h",
 				"/usr/include/gtkmm-4.0/gdkmm/private/pixbuf_p.h",
@@ -753,6 +760,6 @@
 		}
 	},
 	"source-name": "gtkmm-4",
-	"source-release": "1",
-	"source-version": "4.14.0"
+	"source-release": "2",
+	"source-version": "4.16.0"
 }

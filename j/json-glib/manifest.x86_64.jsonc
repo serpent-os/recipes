@@ -17,7 +17,7 @@
 			"files": [
 				"/usr/lib/girepository-1.0/Json-1.0.typelib",
 				"/usr/lib/libjson-glib-1.0.so.0",
-				"/usr/lib/libjson-glib-1.0.so.0.800.0",
+				"/usr/lib/libjson-glib-1.0.so.0.1000.0",
 				"/usr/share/gir-1.0/Json-1.0.gir",
 				"/usr/share/locale/ab/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/as/LC_MESSAGES/json-glib-1.0.mo",
@@ -48,6 +48,7 @@
 				"/usr/share/locale/it/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/json-glib-1.0.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/ky/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/json-glib-1.0.mo",
@@ -72,6 +73,7 @@
 				"/usr/share/locale/sv/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/te/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/tg/LC_MESSAGES/json-glib-1.0.mo",
+				"/usr/share/locale/th/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/ug/LC_MESSAGES/json-glib-1.0.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/json-glib-1.0.mo",
@@ -129,6 +131,6 @@
 		}
 	},
 	"source-name": "json-glib",
-	"source-release": "2",
-	"source-version": "1.8.0"
+	"source-release": "3",
+	"source-version": "1.10.0"
 }

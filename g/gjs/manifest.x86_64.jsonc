@@ -14,12 +14,14 @@
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gthread-2.0)",
+				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(libffi)",
-				"pkgconfig(mozjs-115)"
+				"pkgconfig(mozjs-128)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcairo-gobject.so.2(x86_64))",
 				"soname(libcairo.so.2(x86_64))",
@@ -28,13 +30,21 @@
 				"soname(libgirepository-1.0.so.1(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
-				"soname(libmozjs-115.so(x86_64))",
-				"soname(libstdc++.so.6(x86_64))"
+				"soname(libmozjs-128.so(x86_64))"
 			],
 			"files": [
 				"/usr/bin/gjs",
 				"/usr/bin/gjs-console",
 				"/usr/lib/gjs/girepository-1.0/GjsPrivate-1.0.typelib",
+				"/usr/lib/gjs/installed-tests/gjs/GIMarshallingTests-1.0.typelib",
+				"/usr/lib/gjs/installed-tests/gjs/Regress-1.0.typelib",
+				"/usr/lib/gjs/installed-tests/gjs/RegressUnix-1.0.typelib",
+				"/usr/lib/gjs/installed-tests/gjs/Utility-1.0.typelib",
+				"/usr/lib/gjs/installed-tests/gjs/WarnLib-1.0.typelib",
+				"/usr/lib/gjs/installed-tests/gjs/libgimarshallingtests.so",
+				"/usr/lib/gjs/installed-tests/gjs/libregress.so",
+				"/usr/lib/gjs/installed-tests/gjs/libutility.so",
+				"/usr/lib/gjs/installed-tests/gjs/libwarnlib.so",
 				"/usr/lib/libgjs.so.0",
 				"/usr/lib/libgjs.so.0.0.0",
 				"/usr/share/gjs-1.0/lsan/lsan.supp",
@@ -44,7 +54,11 @@
 			"provides": [
 				"binary(gjs)",
 				"binary(gjs-console)",
-				"soname(libgjs.so.0(x86_64))"
+				"soname(libgimarshallingtests.so(x86_64))",
+				"soname(libgjs.so.0(x86_64))",
+				"soname(libregress.so(x86_64))",
+				"soname(libutility.so(x86_64))",
+				"soname(libwarnlib.so(x86_64))"
 			]
 		},
 		"gjs-devel": {
@@ -59,8 +73,9 @@
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gthread-2.0)",
+				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(libffi)",
-				"pkgconfig(mozjs-115)"
+				"pkgconfig(mozjs-128)"
 			],
 			"depends": [
 				"gjs",
@@ -73,7 +88,7 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gthread-2.0)",
 				"pkgconfig(libffi)",
-				"pkgconfig(mozjs-115)"
+				"pkgconfig(mozjs-128)"
 			],
 			"files": [
 				"/usr/include/gjs-1.0/gjs/context.h",
@@ -93,6 +108,6 @@
 		}
 	},
 	"source-name": "gjs",
-	"source-release": "2",
-	"source-version": "1.80.2"
+	"source-release": "3",
+	"source-version": "1.82.0"
 }

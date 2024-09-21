@@ -28,7 +28,6 @@
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
-				"soname(libm.so.6(x86_64))",
 				"soname(libpango-1.0.so.0(x86_64))",
 				"soname(libpangocairo-1.0.so.0(x86_64))",
 				"soname(libpangoft2-1.0.so.0(x86_64))",
@@ -99,6 +98,7 @@
 				"/usr/share/gtksourceview-5/language-specs/glsl.lang",
 				"/usr/share/gtksourceview-5/language-specs/go.lang",
 				"/usr/share/gtksourceview-5/language-specs/gradle.lang",
+				"/usr/share/gtksourceview-5/language-specs/groff.lang",
 				"/usr/share/gtksourceview-5/language-specs/groovy.lang",
 				"/usr/share/gtksourceview-5/language-specs/gtk-doc.lang",
 				"/usr/share/gtksourceview-5/language-specs/gtkrc.lang",
@@ -437,6 +437,6 @@
 		}
 	},
 	"source-name": "gtksourceview",
-	"source-release": "3",
-	"source-version": "5.12.1"
+	"source-release": "4",
+	"source-version": "5.14.0"
 }

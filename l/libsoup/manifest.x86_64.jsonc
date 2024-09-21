@@ -65,6 +65,7 @@
 				"/usr/share/locale/it/LC_MESSAGES/libsoup-3.0.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/libsoup-3.0.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/libsoup-3.0.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/libsoup-3.0.mo",
 				"/usr/share/locale/kn/LC_MESSAGES/libsoup-3.0.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/libsoup-3.0.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/libsoup-3.0.mo",
@@ -120,9 +121,10 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"libsoup",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(glib-2.0)",
-				"pkgconfig(gmodule-2.0)",
+				"pkgconfig(gmodule-no-export-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(libbrotlidec)",
 				"pkgconfig(libnghttp2)",
@@ -183,6 +185,6 @@
 		}
 	},
 	"source-name": "libsoup",
-	"source-release": "1",
-	"source-version": "3.4.4"
+	"source-release": "2",
+	"source-version": "3.6.0"
 }

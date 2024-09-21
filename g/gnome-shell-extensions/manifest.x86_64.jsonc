@@ -12,6 +12,7 @@
 				"/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.screenshot-window-sizer.gschema.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.system-monitor.gschema.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.window-list.gschema.xml",
+				"/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.workspace-indicator.gschema.xml",
 				"/usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com/extension.js",
 				"/usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com/metadata.json",
 				"/usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com/stylesheet.css",
@@ -29,6 +30,8 @@
 				"/usr/share/gnome-shell/extensions/screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com/extension.js",
 				"/usr/share/gnome-shell/extensions/screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com/metadata.json",
 				"/usr/share/gnome-shell/extensions/screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com/stylesheet.css",
+				"/usr/share/gnome-shell/extensions/status-icons@gnome-shell-extensions.gcampax.github.com/extension.js",
+				"/usr/share/gnome-shell/extensions/status-icons@gnome-shell-extensions.gcampax.github.com/metadata.json",
 				"/usr/share/gnome-shell/extensions/system-monitor@gnome-shell-extensions.gcampax.github.com/extension.js",
 				"/usr/share/gnome-shell/extensions/system-monitor@gnome-shell-extensions.gcampax.github.com/icons/download-symbolic.svg",
 				"/usr/share/gnome-shell/extensions/system-monitor@gnome-shell-extensions.gcampax.github.com/icons/download-symbolic.svg.license",
@@ -47,6 +50,8 @@
 				"/usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/prefs.js",
 				"/usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/stylesheet-dark.css",
 				"/usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/stylesheet-light.css",
+				"/usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/stylesheet-workspace-switcher-dark.css",
+				"/usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/stylesheet-workspace-switcher-light.css",
 				"/usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/workspaceIndicator.js",
 				"/usr/share/gnome-shell/extensions/windowsNavigator@gnome-shell-extensions.gcampax.github.com/extension.js",
 				"/usr/share/gnome-shell/extensions/windowsNavigator@gnome-shell-extensions.gcampax.github.com/metadata.json",
@@ -54,12 +59,14 @@
 				"/usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/extension.js",
 				"/usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/metadata.json",
 				"/usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/prefs.js",
-				"/usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/stylesheet.css"
+				"/usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/stylesheet-dark.css",
+				"/usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/stylesheet-light.css",
+				"/usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/workspaceIndicator.js"
 			],
 			"name": "gnome-shell-extensions"
 		}
 	},
 	"source-name": "gnome-shell-extensions",
-	"source-release": "1",
-	"source-version": "46.2"
+	"source-release": "2",
+	"source-version": "47.0"
 }

@@ -7,6 +7,9 @@
 				"binary(glib-compile-schemas)",
 				"binary(msgfmt)"
 			],
+			"depends": [
+				"gnome-shell"
+			],
 			"files": [
 				"/usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/COPYING",
 				"/usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/README.md",
@@ -80,6 +83,6 @@
 		}
 	},
 	"source-name": "gnome-shell-extension-dash-to-panel",
-	"source-release": "1",
-	"source-version": "60"
+	"source-release": "2",
+	"source-version": "63"
 }

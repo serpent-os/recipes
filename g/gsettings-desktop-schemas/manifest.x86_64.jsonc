@@ -20,6 +20,7 @@
 				"/usr/share/glib-2.0/schemas/org.gnome.desktop.a11y.mouse.gschema.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.desktop.app-folders.gschema.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.desktop.background.gschema.xml",
+				"/usr/share/glib-2.0/schemas/org.gnome.desktop.break-reminders.gschema.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.desktop.calendar.gschema.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.desktop.datetime.gschema.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.desktop.default-applications.gschema.xml",
@@ -125,6 +126,6 @@
 		}
 	},
 	"source-name": "gsettings-desktop-schemas",
-	"source-release": "3",
-	"source-version": "46.1"
+	"source-release": "4",
+	"source-version": "47.1"
 }

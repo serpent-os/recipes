@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gtk-4
-version     : 4.14.5
-release     : 11
+version     : 4.16.1
+release     : 12
 homepage    : https://download.gnome.org/sources/gtk/4.12
 upstreams   :
-    - https://download.gnome.org/sources/gtk/4.14/gtk-4.14.5.tar.xz : 5547f2b9f006b133993e070b87c17804e051efda3913feaca1108fa2be41e24d
+    - https://download.gnome.org/sources/gtk/4.16/gtk-4.16.1.tar.xz : 926a1eabd481f9bfa25538f95016fdfcfaf963b2f90b40ae69e90def5499215c
 summary     : The GTK 4 libraries for developing user interfaces
 description : |
     The GTK 4 libraries are used for developing user interfaces
@@ -39,7 +39,7 @@ builddeps   :
     - pkgconfig(libtiff-4)
     - pkgconfig(pango)
     - pkgconfig(shaderc)
-    - pkgconfig(tracker-sparql-3.0)
+    - pkgconfig(tinysparql-3.0)
     - pkgconfig(vulkan)
     - pkgconfig(wayland-client)
     - pkgconfig(wayland-egl)

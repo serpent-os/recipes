@@ -28,6 +28,7 @@
 			"files": [
 				"/usr/bin/adwaita-1-demo",
 				"/usr/lib/girepository-1.0/Adw-1.typelib",
+				"/usr/lib/libadwaita-1-internal.so.0",
 				"/usr/lib/libadwaita-1.so.0",
 				"/usr/share/applications/org.gnome.Adwaita1.Demo.desktop",
 				"/usr/share/gir-1.0/Adw-1.gir",
@@ -63,11 +64,11 @@
 				"/usr/share/locale/ko/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/lv/LC_MESSAGES/libadwaita.mo",
-				"/usr/share/locale/ml/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/nb/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/ne/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/oc/LC_MESSAGES/libadwaita.mo",
+				"/usr/share/locale/pa/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/pl/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/pt/LC_MESSAGES/libadwaita.mo",
 				"/usr/share/locale/pt_BR/LC_MESSAGES/libadwaita.mo",
@@ -89,6 +90,7 @@
 			"name": "libadwaita",
 			"provides": [
 				"binary(adwaita-1-demo)",
+				"soname(libadwaita-1-internal.so.0(x86_64))",
 				"soname(libadwaita-1.so.0(x86_64))"
 			]
 		},
@@ -113,6 +115,7 @@
 			"files": [
 				"/usr/include/libadwaita-1/adw-about-dialog.h",
 				"/usr/include/libadwaita-1/adw-about-window.h",
+				"/usr/include/libadwaita-1/adw-accent-color.h",
 				"/usr/include/libadwaita-1/adw-action-row.h",
 				"/usr/include/libadwaita-1/adw-alert-dialog.h",
 				"/usr/include/libadwaita-1/adw-animation-target.h",
@@ -123,9 +126,11 @@
 				"/usr/include/libadwaita-1/adw-avatar.h",
 				"/usr/include/libadwaita-1/adw-banner.h",
 				"/usr/include/libadwaita-1/adw-bin.h",
+				"/usr/include/libadwaita-1/adw-bottom-sheet.h",
 				"/usr/include/libadwaita-1/adw-breakpoint-bin.h",
 				"/usr/include/libadwaita-1/adw-breakpoint.h",
 				"/usr/include/libadwaita-1/adw-button-content.h",
+				"/usr/include/libadwaita-1/adw-button-row.h",
 				"/usr/include/libadwaita-1/adw-carousel-indicator-dots.h",
 				"/usr/include/libadwaita-1/adw-carousel-indicator-lines.h",
 				"/usr/include/libadwaita-1/adw-carousel.h",
@@ -142,10 +147,13 @@
 				"/usr/include/libadwaita-1/adw-flap.h",
 				"/usr/include/libadwaita-1/adw-fold-threshold-policy.h",
 				"/usr/include/libadwaita-1/adw-header-bar.h",
+				"/usr/include/libadwaita-1/adw-layout-slot.h",
+				"/usr/include/libadwaita-1/adw-layout.h",
 				"/usr/include/libadwaita-1/adw-leaflet.h",
 				"/usr/include/libadwaita-1/adw-length-unit.h",
 				"/usr/include/libadwaita-1/adw-main.h",
 				"/usr/include/libadwaita-1/adw-message-dialog.h",
+				"/usr/include/libadwaita-1/adw-multi-layout-view.h",
 				"/usr/include/libadwaita-1/adw-navigation-direction.h",
 				"/usr/include/libadwaita-1/adw-navigation-split-view.h",
 				"/usr/include/libadwaita-1/adw-navigation-view.h",
@@ -157,6 +165,8 @@
 				"/usr/include/libadwaita-1/adw-preferences-row.h",
 				"/usr/include/libadwaita-1/adw-preferences-window.h",
 				"/usr/include/libadwaita-1/adw-spin-row.h",
+				"/usr/include/libadwaita-1/adw-spinner-paintable.h",
+				"/usr/include/libadwaita-1/adw-spinner.h",
 				"/usr/include/libadwaita-1/adw-split-button.h",
 				"/usr/include/libadwaita-1/adw-spring-animation.h",
 				"/usr/include/libadwaita-1/adw-spring-params.h",
@@ -182,6 +192,7 @@
 				"/usr/include/libadwaita-1/adw-window-title.h",
 				"/usr/include/libadwaita-1/adw-window.h",
 				"/usr/include/libadwaita-1/adwaita.h",
+				"/usr/lib/libadwaita-1-internal.so",
 				"/usr/lib/libadwaita-1.so",
 				"/usr/lib/pkgconfig/libadwaita-1.pc"
 			],
@@ -192,6 +203,6 @@
 		}
 	},
 	"source-name": "libadwaita",
-	"source-release": "5",
-	"source-version": "1.5.4"
+	"source-release": "6",
+	"source-version": "1.6.0"
 }

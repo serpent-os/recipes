@@ -5,6 +5,8 @@
 		"gnome-online-accounts": {
 			"build-depends": [
 				"binary(vapigen)",
+				"binary(xsltproc)",
+				"docbook",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gcr-4)",
 				"pkgconfig(glib-2.0)",
@@ -14,6 +16,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(krb5)",
 				"pkgconfig(libadwaita-1)",
+				"pkgconfig(libkeyutils)",
 				"pkgconfig(libsecret-1)",
 				"pkgconfig(libsoup-3.0)",
 				"pkgconfig(libxml-2.0)",
@@ -29,6 +32,7 @@
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
 				"soname(libjson-glib-1.0.so.0(x86_64))",
+				"soname(libkeyutils.so.1(x86_64))",
 				"soname(libkrb5.so.3(x86_64))",
 				"soname(librest-1.0.so.0(x86_64))",
 				"soname(libsecret-1.so.0(x86_64))",
@@ -61,7 +65,8 @@
 				"/usr/share/icons/hicolor/symbolic/apps/goa-account-google-symbolic.svg",
 				"/usr/share/icons/hicolor/symbolic/apps/goa-account-msn-symbolic.svg",
 				"/usr/share/icons/hicolor/symbolic/apps/goa-account-owncloud-symbolic.svg",
-				"/usr/share/icons/hicolor/symbolic/apps/goa-account-symbolic.svg"
+				"/usr/share/icons/hicolor/symbolic/apps/goa-account-symbolic.svg",
+				"/usr/share/man/man8/goa-daemon.8"
 			],
 			"name": "gnome-online-accounts",
 			"provides": [
@@ -72,6 +77,8 @@
 		"gnome-online-accounts-devel": {
 			"build-depends": [
 				"binary(vapigen)",
+				"binary(xsltproc)",
+				"docbook",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gcr-4)",
 				"pkgconfig(glib-2.0)",
@@ -81,6 +88,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(krb5)",
 				"pkgconfig(libadwaita-1)",
+				"pkgconfig(libkeyutils)",
 				"pkgconfig(libsecret-1)",
 				"pkgconfig(libsoup-3.0)",
 				"pkgconfig(libxml-2.0)",
@@ -120,6 +128,6 @@
 		}
 	},
 	"source-name": "gnome-online-accounts",
-	"source-release": "7",
-	"source-version": "3.50.5"
+	"source-release": "8",
+	"source-version": "3.52.0"
 }

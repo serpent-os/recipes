@@ -63,8 +63,10 @@
 			],
 			"files": [
 				"/usr/bin/grdctl",
+				"/usr/lib/gnome-remote-desktop/gnome-remote-desktop-configuration-daemon",
 				"/usr/lib/gnome-remote-desktop/gnome-remote-desktop-daemon",
 				"/usr/lib/gnome-remote-desktop/gnome-remote-desktop-enable-service",
+				"/usr/lib/systemd/system/gnome-remote-desktop-configuration.service",
 				"/usr/lib/systemd/system/gnome-remote-desktop.service",
 				"/usr/lib/systemd/user/gnome-remote-desktop-handover.service",
 				"/usr/lib/systemd/user/gnome-remote-desktop-headless.service",
@@ -72,7 +74,7 @@
 				"/usr/lib/sysusers.d/gnome-remote-desktop-sysusers.conf",
 				"/usr/lib/tmpfiles.d/gnome-remote-desktop-tmpfiles.conf",
 				"/usr/share/applications/org.gnome.RemoteDesktop.Handover.desktop",
-				"/usr/share/dbus-1/system-services/org.gnome.RemoteDesktop.service",
+				"/usr/share/dbus-1/system-services/org.gnome.RemoteDesktop.Configuration.service",
 				"/usr/share/dbus-1/system.d/org.gnome.RemoteDesktop.conf",
 				"/usr/share/glib-2.0/schemas/org.gnome.desktop.remote-desktop.enums.xml",
 				"/usr/share/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml",
@@ -90,6 +92,6 @@
 		}
 	},
 	"source-name": "gnome-remote-desktop",
-	"source-release": "2",
-	"source-version": "46.5"
+	"source-release": "3",
+	"source-version": "47.0"
 }

@@ -3,12 +3,12 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : mozjs-115
-version     : "115.13.0esr"
-release     : 6
+name        : mozjs-128
+version     : 128.2.0esr
+release     : 1
 homepage    : https://mozilla.org
 upstreams   :
-    - https://archive.mozilla.org/pub/firefox/releases/115.13.0esr/source/firefox-115.13.0esr.source.tar.xz : 3fa20d1897100684d2560a193a48d4a413f31e61f2ed134713d607c5f30d5d5c
+    - https://archive.mozilla.org/pub/firefox/releases/128.2.0esr/source/firefox-128.2.0esr.source.tar.xz : 9617a1e547d373fe25c2f5477ba1b2fc482b642dc54adf28d815fc36ed72d0c2
 summary     : Mozilla's Spidermonkey JS Engine
 description : |
     Mozilla's Spidermonkey JS Engine (From Firefox)
@@ -21,6 +21,7 @@ packages    :
             - /usr/lib/lib*.so
 builddeps   :
     - binary(cargo)
+    - binary(cbindgen)
     - binary(m4)
     - binary(objdump)
     - binary(python3)
