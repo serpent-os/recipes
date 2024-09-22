@@ -98,6 +98,7 @@
 				"/usr/bin/qemu-storage-daemon",
 				"/usr/bin/qemu-system-i386",
 				"/usr/bin/qemu-system-x86_64",
+				"/usr/bin/qemu-vmsr-helper",
 				"/usr/bin/qemu-x86_64",
 				"/usr/lib/qemu/qemu-bridge-helper",
 				"/usr/lib/qemu/vhost-user-gpu",
@@ -126,6 +127,8 @@
 				"/usr/share/qemu/edk2-i386-secure-code.fd",
 				"/usr/share/qemu/edk2-i386-vars.fd",
 				"/usr/share/qemu/edk2-licenses.txt",
+				"/usr/share/qemu/edk2-riscv-code.fd",
+				"/usr/share/qemu/edk2-riscv-vars.fd",
 				"/usr/share/qemu/edk2-x86_64-code.fd",
 				"/usr/share/qemu/edk2-x86_64-secure-code.fd",
 				"/usr/share/qemu/efi-e1000.rom",
@@ -232,6 +235,7 @@
 				"binary(qemu-storage-daemon)",
 				"binary(qemu-system-i386)",
 				"binary(qemu-system-x86_64)",
+				"binary(qemu-vmsr-helper)",
 				"binary(qemu-x86_64)"
 			]
 		},
@@ -287,6 +291,6 @@
 		}
 	},
 	"source-name": "qemu",
-	"source-release": "7",
-	"source-version": "9.0.2"
+	"source-release": "8",
+	"source-version": "9.1.0"
 }
