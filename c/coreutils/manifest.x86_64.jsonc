@@ -253,11 +253,9 @@
 				"/usr/share/man/man1/hashsum.1",
 				"/usr/share/man/man1/head.1",
 				"/usr/share/man/man1/hostid.1",
-				"/usr/share/man/man1/hostname.1",
 				"/usr/share/man/man1/id.1",
 				"/usr/share/man/man1/install.1",
 				"/usr/share/man/man1/join.1",
-				"/usr/share/man/man1/kill.1",
 				"/usr/share/man/man1/link.1",
 				"/usr/share/man/man1/ln.1",
 				"/usr/share/man/man1/logname.1",
@@ -266,7 +264,6 @@
 				"/usr/share/man/man1/mkfifo.1",
 				"/usr/share/man/man1/mknod.1",
 				"/usr/share/man/man1/mktemp.1",
-				"/usr/share/man/man1/more.1",
 				"/usr/share/man/man1/mv.1",
 				"/usr/share/man/man1/nice.1",
 				"/usr/share/man/man1/nl.1",
@@ -527,6 +524,6 @@
 		}
 	},
 	"source-name": "coreutils",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "0.0.27"
 }

@@ -5,7 +5,7 @@
 #
 name        : coreutils
 version     : 0.0.27
-release     : 7
+release     : 8
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
     - git|https://github.com/uutils/coreutils.git : 6d79b35dbae1ed5ef001e618b4ac47d5e68915cc
@@ -38,6 +38,9 @@ install     : |
     rm %(installroot)%(bindir)/more -v
     rm %(installroot)%(bindir)/groups -v
     rm %(installroot)%(bindir)/hostname -v
+    rm %(installroot)%(mandir)/man1/kill.1
+    rm %(installroot)%(mandir)/man1/hostname.1
+    rm %(installroot)%(mandir)/man1/more.1
 
     # TODO: Rectify bash-completion conflicts!
     rm -rf %(installroot)%(datadir)/bash-completion
