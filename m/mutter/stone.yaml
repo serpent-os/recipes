@@ -5,7 +5,7 @@
 #
 name        : mutter
 version     : '47.0'
-release     : 8
+release     : 9
 homepage    : https://gnome.org
 upstreams   :
     - https://download.gnome.org/sources/mutter/47/mutter-47.0.tar.xz : 2d0ea90150ac6cd0219d0078db05d6e1514d6ae21bf9f3f740d4fb039129016b
@@ -91,6 +91,7 @@ builddeps   :
 rundeps     :
     - binary(gnome-session)
 setup       : |
+    %patch %(pkgdir)/12aee186dd8e2dc27350f300b04e91375e7aa6d6.patch
     %meson -Dtests=disabled \
            -Dprofiler=false \
            -Dlibdisplay_info=true
