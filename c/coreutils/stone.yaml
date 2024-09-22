@@ -4,27 +4,43 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : coreutils
-version     : 9.5
-release     : 6
-homepage    : https://www.gnu.org/software/coreutils/
+version     : 0.0.27
+release     : 7
+homepage    : https://uutils.github.io/coreutils/
 upstreams   :
-    - https://ftp.gnu.org/gnu/coreutils/coreutils-9.5.tar.xz : cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a
-summary     : Basic file, shell, and text manipulation utilities
+    - git|https://github.com/uutils/coreutils.git : 6d79b35dbae1ed5ef001e618b4ac47d5e68915cc
+summary     : Cross-platform Rust rewrite of the GNU coreutils
 description : |
-    The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system.
-license     :
-    - GPL-3.0-or-later
+    Cross-platform Rust rewrite of the GNU coreutils
+license     : MIT
+networking  : true
 builddeps   :
+    - binary(g++) # libstdc++...
     - pkgconfig(libacl)
-    - pkgconfig(libattr)
-    - pkgconfig(libcap)
+tuning      :
+    - lto: thin
+environment : |
+    export UUTILS_FEATURES="feat_acl"
 setup       : |
-    export FORCE_UNSAFE_CONFIGURE=1
-    %configure \
-        --enable-single-binary \
-        --with-openssl=no \
-        --enable-no-install-program=kill,groups,uptime
+    %cargo_fetch
 build       : |
-    %make
+    %make MULTICALL=y PROFILE=release CARGOFLAGS="%(options_cargo) --features $UUTILS_FEATURES" PREFIX=%(prefix)
 install     : |
-    %make_install
+    %make_install BUILDDIR=$(pwd)/%(cargo_target_dir) MULTICALL=y PROFILE=release CARGOFLAGS="%(options_cargo) --features $UUTILS_FEATURES" PREFIX=%(prefix)
+
+    for item in md5sum sha1sum sha224sum sha256sum sha384sum sha512sum ; do
+        ln -svf coreutils %(installroot)%(bindir)/${item}
+    done
+
+    # TEMP: unconflict with util-linux
+    rm %(installroot)%(bindir)/uptime -v
+    rm %(installroot)%(bindir)/kill -v
+    rm %(installroot)%(bindir)/more -v
+    rm %(installroot)%(bindir)/groups -v
+    rm %(installroot)%(bindir)/hostname -v
+
+    # TODO: Rectify bash-completion conflicts!
+    rm -rf %(installroot)%(datadir)/bash-completion
+check       : |
+    # Issues with looking for /etc/fstab, setting date, using sudo, etc.
+    %make MULTICALL=y PROFILE=release CARGOFLAGS="%(options_cargo)" PREFIX=%(prefix) test || :
