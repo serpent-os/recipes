@@ -308,7 +308,6 @@
 				"/usr/share/man/man1/unexpand.1",
 				"/usr/share/man/man1/uniq.1",
 				"/usr/share/man/man1/unlink.1",
-				"/usr/share/man/man1/uptime.1",
 				"/usr/share/man/man1/users.1",
 				"/usr/share/man/man1/vdir.1",
 				"/usr/share/man/man1/wc.1",
@@ -524,6 +523,6 @@
 		}
 	},
 	"source-name": "coreutils",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "0.0.27"
 }
