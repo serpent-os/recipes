@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : python-wheel
-version     : 0.38.4
-release     : 1
+version     : 0.44.0
+release     : 2
 homepage    : https://github.com/pypa/wheel
 upstreams   :
-    - https://pypi.io/packages/source/w/wheel/wheel-0.38.4.tar.gz : 965f5259b566725405b05e7cf774052044b1ed30119b5d586b2703aafe8719ac
+    - https://pypi.io/packages/source/w/wheel/wheel-0.44.0.tar.gz : a29c3f2817e95ab89aa4660681ad547c0e9547f20e75b0562fe7723c9a2a9d49
 summary     : The official binary distribution format for Python
 description : |
     python-wheel is the reference implementation of the Python wheel packaging standard, as defined in PEP 427.

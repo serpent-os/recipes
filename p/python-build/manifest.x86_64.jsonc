@@ -1,33 +1,74 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"python-build": {
+			"build-depends": [
+				"python-flit-core",
+				"python-pyproject-hooks"
+			],
+			"depends": [
+				"python-packaging",
+				"python-pyproject-hooks",
+				"python-tomli"
+			],
 			"files": [
 				"/usr/bin/pyproject-build",
-				"/usr/lib/python3.11/site-packages/build-0.9.0-py3.11.egg-info/PKG-INFO",
-				"/usr/lib/python3.11/site-packages/build-0.9.0-py3.11.egg-info/SOURCES.txt",
-				"/usr/lib/python3.11/site-packages/build-0.9.0-py3.11.egg-info/dependency_links.txt",
-				"/usr/lib/python3.11/site-packages/build-0.9.0-py3.11.egg-info/entry_points.txt",
-				"/usr/lib/python3.11/site-packages/build-0.9.0-py3.11.egg-info/requires.txt",
-				"/usr/lib/python3.11/site-packages/build-0.9.0-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/build-1.2.1.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/build-1.2.1.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/build-1.2.1.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/build-1.2.1.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/build-1.2.1.dist-info/entry_points.txt",
 				"/usr/lib/python3.11/site-packages/build/__init__.py",
 				"/usr/lib/python3.11/site-packages/build/__main__.py",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/build/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/__main__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/build/__pycache__/__main__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_builder.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_builder.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_ctx.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_ctx.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_exceptions.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_exceptions.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_types.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_types.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_util.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/_util.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/env.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/build/__pycache__/env.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/__pycache__/util.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/build/__pycache__/util.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/_builder.py",
+				"/usr/lib/python3.11/site-packages/build/_compat/__init__.py",
+				"/usr/lib/python3.11/site-packages/build/_compat/__pycache__/__init__.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/_compat/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/_compat/__pycache__/importlib.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/_compat/__pycache__/importlib.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/_compat/__pycache__/tarfile.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/_compat/__pycache__/tarfile.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/_compat/__pycache__/tomllib.cpython-311.opt-1.pyc",
+				"/usr/lib/python3.11/site-packages/build/_compat/__pycache__/tomllib.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/build/_compat/importlib.py",
+				"/usr/lib/python3.11/site-packages/build/_compat/tarfile.py",
+				"/usr/lib/python3.11/site-packages/build/_compat/tomllib.py",
+				"/usr/lib/python3.11/site-packages/build/_ctx.py",
+				"/usr/lib/python3.11/site-packages/build/_exceptions.py",
+				"/usr/lib/python3.11/site-packages/build/_types.py",
+				"/usr/lib/python3.11/site-packages/build/_util.py",
 				"/usr/lib/python3.11/site-packages/build/env.py",
 				"/usr/lib/python3.11/site-packages/build/py.typed",
 				"/usr/lib/python3.11/site-packages/build/util.py"
 			],
 			"name": "python-build",
 			"provides": [
-				"binary(pyproject-build)"
+				"binary(pyproject-build)",
+				"python(build(3.11))",
+				"python(build)"
 			]
 		}
 	},
 	"source-name": "python-build",
-	"source-release": "1",
-	"source-version": "0.9.0"
+	"source-release": "2",
+	"source-version": "1.2.1"
 }
