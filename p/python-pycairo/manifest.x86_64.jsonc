@@ -18,7 +18,7 @@
 				"/usr/lib/python3.11/site-packages/cairo/_cairo.cpython-311-x86_64-linux-gnu.so",
 				"/usr/lib/python3.11/site-packages/cairo/include/py3cairo.h",
 				"/usr/lib/python3.11/site-packages/cairo/py.typed",
-				"/usr/lib/python3.11/site-packages/pycairo-1.25.1.egg-info"
+				"/usr/lib/python3.11/site-packages/pycairo-1.26.1.egg-info"
 			],
 			"name": "pycairo",
 			"provides": [
@@ -31,7 +31,8 @@
 				"pkgconfig(python3)"
 			],
 			"depends": [
-				"pkgconfig(cairo)"
+				"pkgconfig(cairo)",
+				"pycairo"
 			],
 			"files": [
 				"/usr/include/pycairo/py3cairo.h",
@@ -44,6 +45,6 @@
 		}
 	},
 	"source-name": "pycairo",
-	"source-release": "1",
-	"source-version": "1.25.1"
+	"source-release": "2",
+	"source-version": "1.26.1"
 }

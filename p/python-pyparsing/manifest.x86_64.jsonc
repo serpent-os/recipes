@@ -1,30 +1,42 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"python-pyparsing": {
+			"build-depends": [
+				"python(flit_core)"
+			],
 			"files": [
-				"/usr/lib/python3.11/site-packages/pyparsing-3.0.9.dist-info/INSTALLER",
-				"/usr/lib/python3.11/site-packages/pyparsing-3.0.9.dist-info/LICENSE",
-				"/usr/lib/python3.11/site-packages/pyparsing-3.0.9.dist-info/METADATA",
-				"/usr/lib/python3.11/site-packages/pyparsing-3.0.9.dist-info/RECORD",
-				"/usr/lib/python3.11/site-packages/pyparsing-3.0.9.dist-info/REQUESTED",
-				"/usr/lib/python3.11/site-packages/pyparsing-3.0.9.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/pyparsing-3.1.2.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/pyparsing-3.1.2.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/pyparsing-3.1.2.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/pyparsing-3.1.2.dist-info/WHEEL",
 				"/usr/lib/python3.11/site-packages/pyparsing/__init__.py",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/actions.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/actions.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/common.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/common.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/core.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/core.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/exceptions.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/exceptions.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/helpers.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/helpers.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/results.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/results.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/testing.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/testing.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/unicode.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/unicode.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/util.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/__pycache__/util.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/actions.py",
 				"/usr/lib/python3.11/site-packages/pyparsing/common.py",
 				"/usr/lib/python3.11/site-packages/pyparsing/core.py",
 				"/usr/lib/python3.11/site-packages/pyparsing/diagram/__init__.py",
+				"/usr/lib/python3.11/site-packages/pyparsing/diagram/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/diagram/__pycache__/__init__.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/pyparsing/exceptions.py",
 				"/usr/lib/python3.11/site-packages/pyparsing/helpers.py",
@@ -34,10 +46,14 @@
 				"/usr/lib/python3.11/site-packages/pyparsing/unicode.py",
 				"/usr/lib/python3.11/site-packages/pyparsing/util.py"
 			],
-			"name": "python-pyparsing"
+			"name": "python-pyparsing",
+			"provides": [
+				"python(pyparsing(3.11))",
+				"python(pyparsing)"
+			]
 		}
 	},
 	"source-name": "python-pyparsing",
-	"source-release": "1",
-	"source-version": "3.0.9"
+	"source-release": "2",
+	"source-version": "3.1.2"
 }
