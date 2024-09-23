@@ -1,0 +1,5 @@
+{
+    "groupName" : "ntpd-rs-observe",
+    "gid" : 98,
+    "disposition" : "system"
+}

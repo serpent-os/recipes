@@ -1,0 +1,9 @@
+{
+    "userName" : "ntpd-rs-observe",
+    "realName" : "ntpd-rs-observe system account",
+    "uid" : 98,
+    "gid" : 98,
+    "disposition" : "system",
+    "locked" : false,
+    "homeDirectory": "/var/lib/ntpd-rs-observe"
+}
