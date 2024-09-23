@@ -11,6 +11,7 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk4)",
 				"pkgconfig(lcms2)",
+				"pkgconfig(libjxl)",
 				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(libseccomp)",
 				"pkgconfig(libxml-2.0)"
@@ -25,6 +26,7 @@
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libjxl.so.0.11(x86_64))",
 				"soname(liblcms2.so.2(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(librsvg-2.so.2(x86_64))",
@@ -35,12 +37,14 @@
 				"/usr/lib/girepository-1.0/Gly-1.typelib",
 				"/usr/lib/girepository-1.0/GlyGtk4-1.typelib",
 				"/usr/lib/glycin/glycin-loaders/1+/glycin-image-rs",
+				"/usr/lib/glycin/glycin-loaders/1+/glycin-jxl",
 				"/usr/lib/glycin/glycin-loaders/1+/glycin-svg",
 				"/usr/lib/libglycin-1.so.0",
 				"/usr/lib/libglycin-gtk4-1.so.0",
 				"/usr/share/gir-1.0/Gly-1.gir",
 				"/usr/share/gir-1.0/GlyGtk4-1.gir",
 				"/usr/share/glycin-loaders/1+/conf.d/glycin-image-rs.conf",
+				"/usr/share/glycin-loaders/1+/conf.d/glycin-jxl.conf",
 				"/usr/share/glycin-loaders/1+/conf.d/glycin-svg.conf",
 				"/usr/share/vala/vapi/libglycin-1.deps",
 				"/usr/share/vala/vapi/libglycin-1.vapi",
@@ -62,6 +66,7 @@
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gtk4)",
 				"pkgconfig(lcms2)",
+				"pkgconfig(libjxl)",
 				"pkgconfig(librsvg-2.0)",
 				"pkgconfig(libseccomp)",
 				"pkgconfig(libxml-2.0)"
@@ -89,6 +94,6 @@
 		}
 	},
 	"source-name": "glycin",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.1.1"
 }

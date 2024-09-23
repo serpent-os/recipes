@@ -5,7 +5,7 @@
 #
 name        : glycin
 version     : 1.1.1
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/sophie-h/glycin
 upstreams   :
     - https://download.gnome.org/sources/glycin/1.1/glycin-1.1.1.tar.xz : 560ee42167c1ed22826618e61d83e49140db5bf47a65a9ba8ece2cd73d2a4aa8
@@ -23,12 +23,12 @@ builddeps   :
     - pkgconfig(gtk4)
     - pkgconfig(lcms2)
     # pkgconfig(libheif)
-    # pkgconfig(libjxl)
+    - pkgconfig(libjxl)
     - pkgconfig(librsvg-2.0)
     - pkgconfig(libseccomp)
     - pkgconfig(libxml-2.0)
 setup       : |
-    %meson -Dtest_skip_install=true -Dloaders=glycin-image-rs,glycin-svg
+    %meson -Dtest_skip_install=true -Dloaders=glycin-image-rs,glycin-svg,glycin-jxl
 build       : |
     %meson_build
 install     : |
