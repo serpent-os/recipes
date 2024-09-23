@@ -1,0 +1,51 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ntpd-rs
+version     : 1.3.0
+release     : 1
+homepage    : https://github.com/pendulum-project/ntpd-rs
+upstreams   :
+    - https://github.com/pendulum-project/ntpd-rs/archive/refs/tags/v1.3.0.tar.gz : f3fd862f1066b5f89473dc1070102566a29bbcc1c4868d087a2cc0cac9849062
+summary     : NTP Daemon, in Rust
+description : |
+    A full-featured implementation of the Network Time Protocol, including NTS support.
+license     : MIT
+networking  : true
+setup       : |
+    %patch %(pkgdir)/0001-ntpd-Fallback-to-stateless-system-config-if-provided.patch
+    %cargo_fetch
+build       : |
+    %cargo_build -p ntpd
+install     : |
+    %cargo_install ntp-daemon ntp-ctl ntp-metrics-exporter
+
+    %install_dir %(installroot)%(mandir)/man8
+    %install_dir %(installroot)%(mandir)/man5
+
+    %install_file docs/precompiled/man/ntp-ctl.8 %(installroot)%(mandir)/man8/.
+    %install_file docs/precompiled/man/ntp-daemon.8 %(installroot)%(mandir)/man8/.
+    %install_file docs/precompiled/man/ntp-metrics-exporter.8 %(installroot)%(mandir)/man8/.
+    %install_file docs/precompiled/man/ntp.toml.5 %(installroot)%(mandir)/man5/.
+
+    %install_dir %(installroot)%(docdir)/%(name)
+    %install_file docs/examples/conf/ntp.toml.default %(installroot)%(docdir)/%(name)/.
+    %install_file docs/examples/conf/ntpd-rs.service %(installroot)%(libdir)/systemd/system/ntpd-rs.service
+    %install_file docs/examples/conf/ntpd-rs-metrics.service %(installroot)%(libdir)/systemd/system/ntpd-rs-metrics.service
+    %install_file docs/examples/conf/ntpd-rs.preset %(installroot)%(libdir)/systemd-preset/50-ntpd-rs.preset
+    %install_file COPYRIGHT %(installroot)%(docdir)/%(name)/.
+    %install_file LICENSE-APACHE %(installroot)%(docdir)/%(name)/.
+    %install_file LICENSE-MIT %(installroot)%(docdir)/%(name)/.
+    %install_file CHANGELOG.md %(installroot)%(docdir)/%(name)/.
+    %install_file README.md %(installroot)%(docdir)/%(name)/.
+    %install_file docs/examples/conf/ntp.toml.default %(installroot)%(vendordir)/%(name)/ntp.toml
+
+    %tmpfiles "d /var/lib/ntpd-rs 0755 99 99"
+    %install_file %(pkgdir)/ntpd-rs.group %(installroot)%(libdir)/userdb/ntpd-rs.group
+    ln -s ntpd-rs.group %(installroot)%(libdir)/userdb/99.group
+    %install_file %(pkgdir)/ntpd-rs.user %(installroot)%(libdir)/userdb/ntpd-rs.user
+    ln -s ntpd-rs.user %(installroot)%(libdir)/userdb/99.user
+check       : |
+    %cargo_test || :

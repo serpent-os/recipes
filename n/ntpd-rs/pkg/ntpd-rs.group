@@ -1,0 +1,5 @@
+{
+    "groupName" : "ntpd-rs",
+    "gid" : 99,
+    "disposition" : "system"
+}

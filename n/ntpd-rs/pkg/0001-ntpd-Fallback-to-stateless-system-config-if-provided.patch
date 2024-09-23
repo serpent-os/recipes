@@ -1,0 +1,31 @@
+From fea0cc492f13841aa1d3f5d3159c5f38ece1391e Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Mon, 23 Sep 2024 21:16:58 +0000
+Subject: [PATCH] ntpd: Fallback to stateless system config if provided
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ ntpd/src/daemon/config/mod.rs | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/ntpd/src/daemon/config/mod.rs b/ntpd/src/daemon/config/mod.rs
+index befde1c..396779a 100644
+--- a/ntpd/src/daemon/config/mod.rs
++++ b/ntpd/src/daemon/config/mod.rs
+@@ -385,7 +385,12 @@ impl Config {
+         }
+ 
+         // for the global file we also ignore it when there are permission errors
+-        let global_path = Path::new("/etc/ntpd-rs/ntp.toml");
++        let system_path = Path::new("/etc/ntpd-rs/ntp.toml");
++        let global_path = if system_path.exists() {
++            system_path
++        } else {
++            Path::new("/usr/share/defaults/ntpd-rs/ntp.toml")
++        };
+         if global_path.exists() {
+             info!("using config file at default location `{:?}`", global_path);
+             match Config::from_file(global_path).await {
+-- 
+2.46.0
+
