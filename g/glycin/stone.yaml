@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : glycin
+version     : 1.1.1
+release     : 1
+homepage    : https://gitlab.gnome.org/sophie-h/glycin
+upstreams   :
+    - https://download.gnome.org/sources/glycin/1.1/glycin-1.1.1.tar.xz : 560ee42167c1ed22826618e61d83e49140db5bf47a65a9ba8ece2cd73d2a4aa8
+summary     : Sandboxed and extendable image loading
+description : |
+  Glycin allows to decode images into gdk::Textures and to extract image metadata. The decoding happens in sandboxed modular image loaders.
+license     :
+    - MPL-2.0 OR LGPL-2.1-or-later
+builddeps   :
+    - binary(cargo)
+    - binary(msgfmt)
+    - binary(vapigen)
+    - pkgconfig(cairo)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(lcms2)
+    # pkgconfig(libheif)
+    # pkgconfig(libjxl)
+    - pkgconfig(librsvg-2.0)
+    - pkgconfig(libseccomp)
+    - pkgconfig(libxml-2.0)
+setup       : |
+    %meson -Dtest_skip_install=true -Dloaders=glycin-image-rs,glycin-svg
+build       : |
+    %meson_build
+install     : |
+    %meson_install

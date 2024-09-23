@@ -5,7 +5,7 @@
 #
 name        : loupe
 version     : '47.0'
-release     : 4
+release     : 5
 homepage    : https://apps.gnome.org/Loupe/
 upstreams   :
     - https://download.gnome.org/sources/loupe/47/loupe-47.0.tar.xz : 58938ba673b2f769b5f7b89b9854a3d55dbf3541fed5e60e08e146595115f791
@@ -28,6 +28,8 @@ builddeps   :
     - pkgconfig(lcms2)
     - pkgconfig(libadwaita-1)
     - pkgconfig(libseccomp)
+rundeps     :
+    - glycin
 setup       : |
     %meson
 build       : |
