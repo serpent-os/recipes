@@ -1,0 +1,122 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libjxl": {
+			"build-depends": [
+				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(gl)",
+				"pkgconfig(glut)",
+				"pkgconfig(lcms2)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libhwy)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libpng)",
+				"pkgconfig(libwebp)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libbrotlidec.so.1(x86_64))",
+				"soname(libbrotlienc.so.1(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libhwy.so.1(x86_64))",
+				"soname(libjpeg.so.8(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpng16.so.16(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libwebp.so.7(x86_64))"
+			],
+			"files": [
+				"/usr/bin/benchmark_xl",
+				"/usr/bin/cjxl",
+				"/usr/bin/djxl",
+				"/usr/bin/jxlinfo",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jxl.so",
+				"/usr/lib/libjxl.so.0.11",
+				"/usr/lib/libjxl.so.0.11.0",
+				"/usr/lib/libjxl_cms.so.0.11",
+				"/usr/lib/libjxl_cms.so.0.11.0",
+				"/usr/lib/libjxl_threads.so.0.11",
+				"/usr/lib/libjxl_threads.so.0.11.0",
+				"/usr/share/mime/packages/image-jxl.xml",
+				"/usr/share/thumbnailers/jxl.thumbnailer"
+			],
+			"name": "libjxl",
+			"provides": [
+				"binary(benchmark_xl)",
+				"binary(cjxl)",
+				"binary(djxl)",
+				"binary(jxlinfo)",
+				"soname(libjxl.so.0.11(x86_64))",
+				"soname(libjxl_cms.so.0.11(x86_64))",
+				"soname(libjxl_threads.so.0.11(x86_64))",
+				"soname(libpixbufloader-jxl.so(x86_64))"
+			]
+		},
+		"libjxl-devel": {
+			"build-depends": [
+				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(gl)",
+				"pkgconfig(glut)",
+				"pkgconfig(lcms2)",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libhwy)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libpng)",
+				"pkgconfig(libwebp)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"libjxl",
+				"pkgconfig(libbrotlidec)",
+				"pkgconfig(libbrotlienc)",
+				"pkgconfig(libhwy)"
+			],
+			"files": [
+				"/usr/include/jxl/cms.h",
+				"/usr/include/jxl/cms_interface.h",
+				"/usr/include/jxl/codestream_header.h",
+				"/usr/include/jxl/color_encoding.h",
+				"/usr/include/jxl/compressed_icc.h",
+				"/usr/include/jxl/decode.h",
+				"/usr/include/jxl/decode_cxx.h",
+				"/usr/include/jxl/encode.h",
+				"/usr/include/jxl/encode_cxx.h",
+				"/usr/include/jxl/gain_map.h",
+				"/usr/include/jxl/jxl_cms_export.h",
+				"/usr/include/jxl/jxl_export.h",
+				"/usr/include/jxl/jxl_threads_export.h",
+				"/usr/include/jxl/memory_manager.h",
+				"/usr/include/jxl/parallel_runner.h",
+				"/usr/include/jxl/resizable_parallel_runner.h",
+				"/usr/include/jxl/resizable_parallel_runner_cxx.h",
+				"/usr/include/jxl/stats.h",
+				"/usr/include/jxl/thread_parallel_runner.h",
+				"/usr/include/jxl/thread_parallel_runner_cxx.h",
+				"/usr/include/jxl/types.h",
+				"/usr/include/jxl/version.h",
+				"/usr/lib/libjxl.so",
+				"/usr/lib/libjxl_cms.so",
+				"/usr/lib/libjxl_extras_codec.a",
+				"/usr/lib/libjxl_threads.so",
+				"/usr/lib/pkgconfig/libjxl.pc",
+				"/usr/lib/pkgconfig/libjxl_cms.pc",
+				"/usr/lib/pkgconfig/libjxl_threads.pc"
+			],
+			"name": "libjxl-devel",
+			"provides": [
+				"pkgconfig(libjxl)",
+				"pkgconfig(libjxl_cms)",
+				"pkgconfig(libjxl_threads)"
+			]
+		}
+	},
+	"source-name": "libjxl",
+	"source-release": "1",
+	"source-version": "0.11.0"
+}
