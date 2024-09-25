@@ -4,7 +4,7 @@
 	"packages": {
 		"python-shtab": {
 			"build-depends": [
-				"python-setuptools_scm"
+				"python(setuptools-scm)"
 			],
 			"files": [
 				"/usr/bin/shtab",
@@ -30,11 +30,13 @@
 			],
 			"name": "python-shtab",
 			"provides": [
-				"binary(shtab)"
+				"binary(shtab)",
+				"python(shtab(3.11))",
+				"python(shtab)"
 			]
 		}
 	},
 	"source-name": "python-shtab",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.7.1"
 }
