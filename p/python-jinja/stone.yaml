@@ -4,24 +4,23 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : python-jinja
-version     : 3.1.2
-release     : 1
+version     : 3.1.4
+release     : 2
 summary     : Jinja2 is a template engine written in pure Python.
 license     : BSD-3-Clause
 homepage    : https://palletsprojects.com/p/jinja/
 description : |
     Jinja2 is a template engine written in pure Python.
 upstreams   :
-    - https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-3.1.2.tar.gz: 31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852
+    - https://files.pythonhosted.org/packages/source/J/Jinja2/jinja2-3.1.4.tar.gz: 4a3aee7acbbe7303aede8e9648d13b8bf88a429282aa6122a993f0ac800cb369
+builddeps     :
+    - python(flit_core)
 # checkdeps   :
 #     - python-markupsafe
 #     - python-pytest
-rundeps     :
-    - python-babel # i18n support
-    - python-markupsafe
 build       : |
-    %python_setup
+    %pyproject_build
 install     : |
-    %python_install
+    %pyproject_install
 # check       : |
 #     %python_check
