@@ -16,6 +16,7 @@
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
 				"soname(libxkbcommon.so.0(x86_64))"
@@ -41,6 +42,6 @@
 		}
 	},
 	"source-name": "cosmic-files",
-	"source-release": "7",
-	"source-version": "1.0.0-alpha.1"
+	"source-release": "8",
+	"source-version": "1.0.0-alpha.2"
 }
