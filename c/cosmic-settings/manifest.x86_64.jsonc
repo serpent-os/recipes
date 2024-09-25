@@ -26,6 +26,7 @@
 				"/usr/bin/cosmic-settings",
 				"/usr/share/applications/com.system76.CosmicSettings.About.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Appearance.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Bluetooth.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.DateTime.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Desktop.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Displays.desktop",
@@ -162,6 +163,6 @@
 		}
 	},
 	"source-name": "cosmic-settings",
-	"source-release": "7",
-	"source-version": "1.0.0-alpha.1"
+	"source-release": "8",
+	"source-version": "1.0.0-alpha.2"
 }
