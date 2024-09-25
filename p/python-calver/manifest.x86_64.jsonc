@@ -4,10 +4,10 @@
 	"packages": {
 		"python-calver": {
 			"build-depends": [
-				"binary(python3)",
-				"python-installer",
-				"python-packaging",
-				"python-wheel"
+				"binary(python3)"
+			],
+			"depends": [
+				"binary(python3)"
 			],
 			"files": [
 				"/usr/lib/python3.11/site-packages/calver-2022.6.26.dist-info/LICENSE",
@@ -23,10 +23,14 @@
 				"/usr/lib/python3.11/site-packages/calver/__pycache__/integration.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/calver/integration.py"
 			],
-			"name": "python-calver"
+			"name": "python-calver",
+			"provides": [
+				"python(calver(3.11))",
+				"python(calver)"
+			]
 		}
 	},
 	"source-name": "python-calver",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2022.6.26"
 }
