@@ -1,0 +1,33 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"system76-power": {
+			"build-depends": [
+				"binary(cargo)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libusb-1.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/system76-power",
+				"/usr/lib/systemd/system/com.system76.PowerDaemon.service",
+				"/usr/share/dbus-1/interfaces/com.system76.PowerDaemon.xml",
+				"/usr/share/dbus-1/system.d/com.system76.PowerDaemon.conf",
+				"/usr/share/polkit-1/actions/com.system76.PowerDaemon.policy"
+			],
+			"name": "system76-power",
+			"provides": [
+				"binary(system76-power)"
+			]
+		}
+	},
+	"source-name": "system76-power",
+	"source-release": "1",
+	"source-version": "1.2.1"
+}
