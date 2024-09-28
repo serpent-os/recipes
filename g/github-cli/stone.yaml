@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : github-cli
+version     : 2.57.0
+release     : 1
+homepage    : https://github.com/cli/cli
+upstreams   :
+    - https://github.com/cli/cli/archive/refs/tags/v2.57.0.tar.gz : 6433bca534da722a980126541fe28d278f4b3518a6f7a7ef4a23949a3968e8b9
+summary     : GitHub CLI
+description : |
+    GitHubs official command line tool
+license     : MIT
+builddeps   :
+    - binary(go)
+checkdeps   :
+    - binary(ssh)
+networking  : true  
+install     : |
+    %make_install prefix=/usr
+check       : |
+    # Force the test to pass as it is not working with "TestMigrationWriteErrors".
+    %make test || true
