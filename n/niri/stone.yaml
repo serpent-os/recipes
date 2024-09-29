@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : niri
-version     : "0.1.8"
-release     : 4
+version     : "0.1.9"
+release     : 5
 summary     : Niri Desktop Compositor
 license     : GPL-3.0
 homepage    : https://github.com/YaLTeR/niri
 upstreams   :
-    - git|https://github.com/YaLTeR/niri : v0.1.8
+    - git|https://github.com/YaLTeR/niri : v0.1.9
 description : |
     A scrollable-tiling Wayland compositor
 builddeps   :
@@ -24,6 +24,7 @@ builddeps   :
     - pkgconfig(libudev)
     - pkgconfig(pango)
     - pkgconfig(xkbcommon)
+    - pkgconfig(libdisplay-info)
 networking  : yes
 environment : |
     export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
@@ -39,3 +40,7 @@ install     : |
     %install_file resources/niri-portals.conf %(installroot)/%(datadir)/xdg-desktop-portal/niri-portals.conf
     %install_file resources/niri.service %(installroot)/%(libdir)/systemd/user/niri.service
     %install_file resources/niri-shutdown.target %(installroot)/%(libdir)/systemd/user/niri-shutdown.target
+
+    %install_dir %(installroot)%(docdir)/%(name)
+    %install_file resources/default-config.kdl %(installroot)%(docdir)/%(name)/.
+    %install_file README.md %(installroot)%(docdir)/%(name)/.
