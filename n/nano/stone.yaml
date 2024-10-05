@@ -6,7 +6,7 @@
 name        : nano
 version     : "8.1"
 release     : 28
-homepage    : https://www.nano-editor.org/dist/v7
+homepage    : https://www.nano-editor.org/
 upstreams   :
     - https://www.nano-editor.org/dist/v8/nano-8.1.tar.xz : 93b3e3e9155ae389fe9ccf9cb7ab380eac29602835ba3077b22f64d0f0cbe8cb
 summary     : GNU Text Editor
