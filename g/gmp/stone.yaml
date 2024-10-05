@@ -24,3 +24,8 @@ build       : |
     %make
 install     : |
     %make_install
+check       : |
+    %make check
+tuning      :
+    - lto
+    - optimize: speed
