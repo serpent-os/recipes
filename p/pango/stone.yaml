@@ -5,7 +5,7 @@
 #
 name        : pango
 version     : 1.54.0
-release     : 4
+release     : 5
 homepage    : https://pango.gnome.org/
 upstreams   :
     - https://download.gnome.org/sources/pango/1.54/pango-1.54.0.tar.xz : 8a9eed75021ee734d7fc0fdf3a65c3bba51dfefe4ae51a9b414a60c70b2d1ed8
@@ -42,6 +42,12 @@ build       : |
     %meson_build
 install     : |
     %meson_install
+check       : |
+    %meson_test || :
+workload    : |
+    %meson_test || :
+tuning      :
+    - lto : thin
 packages    :
     - "%(name)-devel":
         paths:
