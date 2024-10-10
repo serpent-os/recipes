@@ -7,30 +7,49 @@ This will be used only if OPENSSL_CONF is not set and if
 /etc/openssl.cnf is not found. If either one of those is the case, they
 will be used and create an error if there is something wrong with them.
 ---
- apps/apps.c                 | 3 +++
- apps/openssl.c              | 7 ++++++-
- crypto/conf/conf_mod.c      | 7 ++++++-
- include/internal/cryptlib.h | 9 +++++++--
- 4 files changed, 22 insertions(+), 4 deletions(-)
-
+diff --git a/apps/lib/apps.c b/apps/lib/apps.c
+index 17a8538069..bfa166624f 100644
+--- a/apps/lib/apps.c
++++ b/apps/lib/apps.c
+@@ -423,6 +423,8 @@ int app_load_modules(const CONF *config)
+ 
+     if (config == NULL)
+         config = to_free = app_load_config_quiet(default_config_file);
++    if (config == NULL)
++        config = to_free = app_load_config_quiet("/usr/share/defaults/etc/ssl/openssl.cnf");
+     if (config == NULL)
+         return 1;
+ 
 diff --git a/crypto/conf/conf_mod.c b/crypto/conf/conf_mod.c
-index e703d97..7d3c7ff 100644
+index 6d3683d76f..6a706a078b 100644
 --- a/crypto/conf/conf_mod.c
 +++ b/crypto/conf/conf_mod.c
-@@ -9,6 +9,7 @@
-
+@@ -13,6 +13,7 @@
  #include "internal/cryptlib.h"
+ #include "internal/rcu.h"
  #include <stdio.h>
 +#include <unistd.h>
  #include <ctype.h>
  #include <openssl/crypto.h>
  #include "internal/conf.h"
-diff --git a/include/internal/cryptlib.h b/include/internal/cryptlib.h
-index 6e7291a..a8690a6 100644
---- a/include/internal/cryptlib.h
-+++ b/include/internal/cryptlib.h
-@@ -55,8 +55,13 @@ DEFINE_LHASH_OF(MEM);
-
+@@ -692,7 +693,10 @@ char *CONF_get1_default_config_file(void)
+         return NULL;
+     BIO_snprintf(file, size, "%s%s%s", t, sep, OPENSSL_CONF);
+ 
+-    return file;
++    if (access(file, R_OK) == 0)
++	    return file;
++        OPENSSL_free(file);
++        return OPENSSL_strdup("/usr/share/defaults/etc/ssl/openssl.cnf");
+ }
+ 
+ /*
+diff --git a/include/internal/common.h b/include/internal/common.h
+index b176a27494..282e0af8c4 100644
+--- a/include/internal/common.h
++++ b/include/internal/common.h
+@@ -82,8 +82,13 @@ __owur static ossl_inline int ossl_assert_int(int expr, const char *exprstr,
+ 
  # ifndef OPENSSL_SYS_VMS
  #  define X509_CERT_AREA          OPENSSLDIR
 -#  define X509_CERT_DIR           OPENSSLDIR "/certs"
@@ -45,29 +64,3 @@ index 6e7291a..a8690a6 100644
  #  define X509_PRIVATE_DIR        OPENSSLDIR "/private"
  #  define CTLOG_FILE              OPENSSLDIR "/ct_log_list.cnf"
  # else
---- openssl-3.0.5/crypto/conf/conf_mod.c~	2022-07-05 08:57:04.000000000 +0000
-+++ openssl-3.0.5/crypto/conf/conf_mod.c	2022-09-11 19:36:20.682992501 +0000
-@@ -641,8 +641,10 @@
-     if (file == NULL)
-         return NULL;
-     BIO_snprintf(file, size, "%s%s%s", t, sep, OPENSSL_CONF);
--
--    return file;
-+    if (access(file, R_OK) == 0)
-+	return file;
-+    OPENSSL_free(file);
-+    return OPENSSL_strdup("/usr/share/defaults/etc/ssl/openssl.cnf");
- }
-
- /*
---- openssl-3.0.5/apps/lib/apps.c~	2022-07-05 08:57:04.000000000 +0000
-+++ openssl-3.0.5/apps/lib/apps.c	2022-09-11 19:42:36.761669443 +0000
-@@ -403,6 +403,8 @@
-     if (config == NULL)
-         config = to_free = app_load_config_quiet(default_config_file);
-     if (config == NULL)
-+	config = to_free = app_load_config_quiet("/usr/share/defaults/etc/ssl/openssl.cnf");
-+    if (config == NULL)
-         return 1;
-
-     if (CONF_modules_load(config, NULL, 0) <= 0) {
