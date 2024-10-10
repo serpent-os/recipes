@@ -56,11 +56,13 @@
 			],
 			"name": "python-pyyaml",
 			"provides": [
+				"python(PyYAML(3.11))",
+				"python(PyYAML)",
 				"soname(_yaml.cpython-311-x86_64-linux-gnu.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "python-pyyaml",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "6.0.2"
 }

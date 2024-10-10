@@ -5,10 +5,10 @@
 #
 name        : python-editables
 version     : 0.5
-release     : 1
+release     : 2
 homepage    : https://pypi.org/project/editables
 upstreams   :
-    - https://files.pythonhosted.org/packages/37/4a/986d35164e2033ddfb44515168a281a7986e260d344cf369c3f52d4c3275/editables-0.5.tar.gz : 309627d9b5c4adc0e668d8c6fa7bac1ba7c8c5d415c2d27f60f081f8e80d1de2
+    - https://files.pythonhosted.org/packages/source/e/editables/editables-0.5.tar.gz : 309627d9b5c4adc0e668d8c6fa7bac1ba7c8c5d415c2d27f60f081f8e80d1de2
 summary     : A Python library for creating "editable wheels"
 description : |
     This library supports the building of wheels which, when installed, will expose packages in a local directory on sys.path in "editable mode". In other words, changes to the package source will be reflected in the package visible to Python, without needing a reinstall.
@@ -16,13 +16,9 @@ license     :
     - MIT
 builddeps   :
     - binary(python3)
-    - python-installer
-    - python-packaging
-    - python-wheel
-    - python-flit-core
+    - python(flit_core)
 rundeps     :
     - binary(python3)
-    - python-flit-core
 build       : |
     %pyproject_build
 install     : |

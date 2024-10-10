@@ -5,10 +5,10 @@
 #
 name        : python-hatch-fancy-pypi-readme
 version     : 24.1.0
-release     : 1
+release     : 2
 homepage    : https://pypi.org/project/hatch-fancy-pypi-readme
 upstreams   :
-    - https://files.pythonhosted.org/packages/b4/c2/c9094283a07dd96c5a8f7a5f1910259d40d2e29223b95dd875a6ca13b58f/hatch_fancy_pypi_readme-24.1.0.tar.gz : 44dd239f1a779b9dcf8ebc9401a611fd7f7e3e14578dcf22c265dfaf7c1514b8
+    - https://files.pythonhosted.org/packages/source/h/hatch_fancy_pypi_readme/hatch_fancy_pypi_readme-24.1.0.tar.gz : 44dd239f1a779b9dcf8ebc9401a611fd7f7e3e14578dcf22c265dfaf7c1514b8
 summary     : Your ✨Fancy✨ Project Deserves a ✨Fancy✨ PyPI Readme!
 description : |
     Your ✨Fancy✨ Project Deserves a ✨Fancy✨ PyPI Readme!
@@ -16,10 +16,7 @@ license     :
     - JSON
 builddeps   :
     - binary(python3)
-    - python-installer
-    - python-packaging
-    - python-wheel
-    - python-hatchling
+    - python(hatchling)
 rundeps     :
     - binary(python3)
 build       : |

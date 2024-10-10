@@ -1,40 +1,70 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"python-jinja": {
+			"build-depends": [
+				"python(flit_core)"
+			],
+			"depends": [
+				"python(MarkupSafe(3.11))"
+			],
 			"files": [
-				"/usr/lib/python3.11/site-packages/Jinja2-3.1.2-py3.11.egg-info/PKG-INFO",
-				"/usr/lib/python3.11/site-packages/Jinja2-3.1.2-py3.11.egg-info/SOURCES.txt",
-				"/usr/lib/python3.11/site-packages/Jinja2-3.1.2-py3.11.egg-info/dependency_links.txt",
-				"/usr/lib/python3.11/site-packages/Jinja2-3.1.2-py3.11.egg-info/entry_points.txt",
-				"/usr/lib/python3.11/site-packages/Jinja2-3.1.2-py3.11.egg-info/requires.txt",
-				"/usr/lib/python3.11/site-packages/Jinja2-3.1.2-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/jinja2-3.1.4.dist-info/LICENSE.txt",
+				"/usr/lib/python3.11/site-packages/jinja2-3.1.4.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/jinja2-3.1.4.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/jinja2-3.1.4.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/jinja2-3.1.4.dist-info/entry_points.txt",
 				"/usr/lib/python3.11/site-packages/jinja2/__init__.py",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/_identifier.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/_identifier.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/async_utils.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/async_utils.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/bccache.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/bccache.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/compiler.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/compiler.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/constants.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/constants.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/debug.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/debug.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/defaults.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/defaults.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/environment.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/environment.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/exceptions.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/exceptions.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/ext.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/ext.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/filters.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/filters.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/idtracking.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/idtracking.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/lexer.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/lexer.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/loaders.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/loaders.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/meta.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/meta.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/nativetypes.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/nativetypes.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/nodes.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/nodes.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/optimizer.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/optimizer.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/parser.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/parser.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/runtime.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/runtime.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/sandbox.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/sandbox.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/tests.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/tests.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/utils.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/utils.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/visitor.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/__pycache__/visitor.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/jinja2/_identifier.py",
 				"/usr/lib/python3.11/site-packages/jinja2/async_utils.py",
@@ -62,10 +92,14 @@
 				"/usr/lib/python3.11/site-packages/jinja2/utils.py",
 				"/usr/lib/python3.11/site-packages/jinja2/visitor.py"
 			],
-			"name": "python-jinja"
+			"name": "python-jinja",
+			"provides": [
+				"python(Jinja2(3.11))",
+				"python(Jinja2)"
+			]
 		}
 	},
 	"source-name": "python-jinja",
-	"source-release": "1",
-	"source-version": "3.1.2"
+	"source-release": "2",
+	"source-version": "3.1.4"
 }

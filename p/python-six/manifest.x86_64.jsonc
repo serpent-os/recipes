@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"python-six": {
 			"files": [
@@ -13,10 +13,14 @@
 				"/usr/lib/python3.11/site-packages/six-1.16.0.dist-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/six.py"
 			],
-			"name": "python-six"
+			"name": "python-six",
+			"provides": [
+				"python(six(3.11))",
+				"python(six)"
+			]
 		}
 	},
 	"source-name": "python-six",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.16.0"
 }

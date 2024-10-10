@@ -5,10 +5,11 @@
 		"python-hatch-fancy-pypi-readme": {
 			"build-depends": [
 				"binary(python3)",
-				"python-hatchling",
-				"python-installer",
-				"python-packaging",
-				"python-wheel"
+				"python(hatchling)"
+			],
+			"depends": [
+				"binary(python3)",
+				"python(hatchling(3.11))"
 			],
 			"files": [
 				"/usr/bin/hatch-fancy-pypi-readme",
@@ -49,11 +50,13 @@
 			],
 			"name": "python-hatch-fancy-pypi-readme",
 			"provides": [
-				"binary(hatch-fancy-pypi-readme)"
+				"binary(hatch-fancy-pypi-readme)",
+				"python(hatch-fancy-pypi-readme(3.11))",
+				"python(hatch-fancy-pypi-readme)"
 			]
 		}
 	},
 	"source-name": "python-hatch-fancy-pypi-readme",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "24.1.0"
 }
