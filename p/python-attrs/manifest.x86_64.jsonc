@@ -5,13 +5,9 @@
 		"python-attrs": {
 			"build-depends": [
 				"binary(python3)",
+				"python(hatchling)",
 				"python-hatch-fancy-pypi-readme",
-				"python-hatch-vcs",
-				"python-hatchling",
-				"python-installer",
-				"python-packaging",
-				"python-setuptools_scm",
-				"python-wheel"
+				"python-hatch-vcs"
 			],
 			"depends": [
 				"binary(python3)"
@@ -91,10 +87,14 @@
 				"/usr/lib/python3.11/site-packages/attrs/setters.py",
 				"/usr/lib/python3.11/site-packages/attrs/validators.py"
 			],
-			"name": "python-attrs"
+			"name": "python-attrs",
+			"provides": [
+				"python(attrs(3.11))",
+				"python(attrs)"
+			]
 		}
 	},
 	"source-name": "python-attrs",
-	"source-release": "2",
+	"source-release": "4",
 	"source-version": "24.2.0"
 }

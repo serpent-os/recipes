@@ -5,7 +5,7 @@
 #
 name        : python-attrs
 version     : 24.2.0
-release     : 2
+release     : 4
 homepage    : https://pypi.org/project/attrs
 upstreams   :
     - https://files.pythonhosted.org/packages/source/a/attrs/attrs-24.2.0.tar.gz : 5cfb1b9148b5b086569baec03f20d7b6bf3bcacc9a42bebf87ffaaca362f6346
@@ -17,9 +17,8 @@ license     :
 builddeps   :
     - binary(python3)
     - python(hatchling)
-    - python(hatch_vcs)
-    - python(hatch_fancy_pypi_readme)
-    - python(setuptools_scm)
+    - python-hatch-vcs
+    - python-hatch-fancy-pypi-readme
 rundeps     :
     - binary(python3)
 build       : |
