@@ -5,7 +5,7 @@
 #
 name        : python-hatch-fancy-pypi-readme
 version     : 24.1.0
-release     : 2
+release     : 3
 homepage    : https://pypi.org/project/hatch-fancy-pypi-readme
 upstreams   :
     - https://files.pythonhosted.org/packages/source/h/hatch_fancy_pypi_readme/hatch_fancy_pypi_readme-24.1.0.tar.gz : 44dd239f1a779b9dcf8ebc9401a611fd7f7e3e14578dcf22c265dfaf7c1514b8
