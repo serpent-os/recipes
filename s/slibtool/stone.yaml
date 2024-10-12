@@ -48,7 +48,7 @@ install     : |
     ln -svf slibtoolize "%(installroot)%(bindir)/libtoolize"
 
     %install_dir %(installroot)%(datadir)/aclocal/
-    ln -srvf %(installroot)%(datadir)/slibtool/slibtool.m4 %(installroot)%(datadir)/aclocal/slibtool.m4
+    ln -srvf %(installroot)%(datadir)/slibtool/slibtool.m4 %(installroot)%(datadir)/aclocal
 packages    :
     - "%(name)":
         paths:
