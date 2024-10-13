@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
 version     : 18.1.8
-release     : 12
+release     : 13
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -22,7 +22,7 @@ builddeps   :
     - pkgconfig(ncursesw)
     - pkgconfig(zlib)
     - binutils-devel
-    - gcc-32bit-devel
+    - g++-32bit
     - glibc-32bit-devel
     - libcxx-32bit-devel
     - clang-32bit
@@ -67,9 +67,9 @@ environment : |
     # Without RPATH, we need help finding the right libraries to use
     export LD_LIBRARY_PATH="%(workdir)/%(builddir)/lib"
 setup       : |
-    unset LD_PRELOAD
     %patch %(pkgdir)/serpent/0001-Support-serpent-as-a-distro.patch
     %patch %(pkgdir)/perf/0001-Reduce-GCC-startup-searches.patch
+    %patch %(pkgdir)/perf/build-libLLVMSupport-for-perf-training.patch
     %patch %(pkgdir)/serpent/0001-Use-correct-Serpent-OS-multilib-paths-for-ld.patch
     %patch %(pkgdir)/serpent/0001-Make-gnu-hash-the-default-for-lld-and-clang.patch
     %patch %(pkgdir)/serpent/0001-Update-binutils-version-to-match-Serpent-OS.patch
@@ -82,11 +82,10 @@ setup       : |
     %cmake -S llvm \
            -C clang/cmake/caches/PGO.cmake \
            -DLLVM_ENABLE_PROJECTS='clang;lld;llvm;polly' \
-           -DPGO_INSTRUMENT_LTO=ON \
+           -DPGO_INSTRUMENT_LTO=Thin \
            -B pgo-training \
            ${llvmopts}
 
-    unset LD_PRELOAD
     %cmake_build -C pgo-training stage2-instrumented-generate-profdata
 
     find pgo-training -name "clang.profdata" -exec mv {} %(workdir) \;
@@ -96,15 +95,12 @@ setup       : |
            -DLLVM_PROFDATA_FILE=%(workdir)/clang.profdata \
            ${llvmopts}
 build       : |
-    unset LD_PRELOAD
     %cmake_build
 install     : |
     %cmake_install
 
     %install_dir %(installroot)/%(libdir)/bfd-plugins
     ln -srf %(installroot)/%(libdir)/LLVMgold.so %(installroot)/%(libdir)/bfd-plugins/LLVMgold.so
-
-    # unset LD_PRELOAD
 
     # # Major clang version
     # major_version=$(echo %(version) | cut -d. -f1)
