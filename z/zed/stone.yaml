@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : zed
-version     : 0.153.6
-release     : 17
+version     : 0.157.5
+release     : 18
 summary     : High performance, graphical code editor
 license     :
     - AGPL-3.0
@@ -13,7 +13,7 @@ license     :
     - GPL-3.0
 homepage    : https://zed.dev/
 upstreams   :
-    - git|https://github.com/zed-industries/zed.git : 7234166077055e63911c36aad117e75f51edf3ea
+    - git|https://github.com/zed-industries/zed.git : 6192aa14692a24f279888e0b5f781ce204bda57b
 description : |
     Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.
 builddeps   :
@@ -64,5 +64,5 @@ install     : |
     envsubst < "crates/zed/resources/zed.desktop.in" > "%(installroot)%(datadir)/applications/dev.zed.Zed.desktop"
 
     # icons
-    %install_file crates/zed/resources/app-icon.png %(installroot)%(datadir)/icons/hicolor/512x512/apps/zed.png -D
-    %install_file crates/zed/resources/app-icon@2x.png %(installroot)%(datadir)/icons/hicolor/1024x1024/apps/zed.png -D
+    %install_file crates/zed/resources/app-icon.png %(installroot)%(datadir)/icons/hicolor/512x512/apps/zed.png
+    %install_file crates/zed/resources/app-icon@2x.png %(installroot)%(datadir)/icons/hicolor/1024x1024/apps/zed.png
