@@ -1,0 +1,84 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cunit": {
+			"build-depends": [
+				"autoconf",
+				"automake"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/doc/CUnit/CUnit_doc.css",
+				"/usr/doc/CUnit/error_handling.html",
+				"/usr/doc/CUnit/fdl.html",
+				"/usr/doc/CUnit/headers/Automated.h",
+				"/usr/doc/CUnit/headers/Basic.h",
+				"/usr/doc/CUnit/headers/CUCurses.h",
+				"/usr/doc/CUnit/headers/CUError.h",
+				"/usr/doc/CUnit/headers/CUnit.h",
+				"/usr/doc/CUnit/headers/CUnit_intl.h",
+				"/usr/doc/CUnit/headers/Console.h",
+				"/usr/doc/CUnit/headers/MyMem.h",
+				"/usr/doc/CUnit/headers/TestDB.h",
+				"/usr/doc/CUnit/headers/TestRun.h",
+				"/usr/doc/CUnit/headers/Util.h",
+				"/usr/doc/CUnit/headers/Win.h",
+				"/usr/doc/CUnit/index.html",
+				"/usr/doc/CUnit/introduction.html",
+				"/usr/doc/CUnit/managing_tests.html",
+				"/usr/doc/CUnit/running_tests.html",
+				"/usr/doc/CUnit/test_registry.html",
+				"/usr/doc/CUnit/writing_tests.html",
+				"/usr/lib/libcunit.so.1",
+				"/usr/lib/libcunit.so.1.0.1",
+				"/usr/share/CUnit/CUnit-List.dtd",
+				"/usr/share/CUnit/CUnit-List.xsl",
+				"/usr/share/CUnit/CUnit-Run.dtd",
+				"/usr/share/CUnit/CUnit-Run.xsl",
+				"/usr/share/CUnit/Memory-Dump.dtd",
+				"/usr/share/CUnit/Memory-Dump.xsl",
+				"/usr/share/CUnit/Test/test_cunit"
+			],
+			"name": "cunit",
+			"provides": [
+				"soname(libcunit.so.1(x86_64))"
+			]
+		},
+		"cunit-devel": {
+			"build-depends": [
+				"autoconf",
+				"automake"
+			],
+			"depends": [
+				"cunit"
+			],
+			"files": [
+				"/usr/include/CUnit/Automated.h",
+				"/usr/include/CUnit/Basic.h",
+				"/usr/include/CUnit/CUError.h",
+				"/usr/include/CUnit/CUnit.h",
+				"/usr/include/CUnit/CUnit_intl.h",
+				"/usr/include/CUnit/Console.h",
+				"/usr/include/CUnit/MyMem.h",
+				"/usr/include/CUnit/TestDB.h",
+				"/usr/include/CUnit/TestRun.h",
+				"/usr/include/CUnit/Util.h",
+				"/usr/lib/libcunit.a",
+				"/usr/lib/libcunit.so",
+				"/usr/lib/pkgconfig/cunit.pc",
+				"/usr/share/man/man3/CUnit.3"
+			],
+			"name": "cunit-devel",
+			"provides": [
+				"pkgconfig(cunit)"
+			]
+		}
+	},
+	"source-name": "cunit",
+	"source-release": "1",
+	"source-version": "2.1.3"
+}
