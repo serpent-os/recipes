@@ -5,7 +5,7 @@
 #
 name        : sudo
 version     : "0.2.3"
-release     : 6
+release     : 7
 homepage    : https://github.com/trifectatechfoundation/sudo-rs
 upstreams   :
     - https://github.com/trifectatechfoundation/sudo-rs/archive/refs/tags/v0.2.3.tar.gz : 2371c91644185c2bcf1f02408c2cc7a79b1dd1ba740088a9a16f0f947b649cdc
@@ -38,9 +38,9 @@ install     : |
 
     %install_file %(pkgdir)/sudo.conf %(installroot)%(libdir)/tmpfiles.d/sudo.conf
     %install_file %(pkgdir)/sudo.pam %(installroot)%(vendordir)/etc/pam.d/sudo
-    %install_file %(pkgdir)/sudo.pam %(installroot)%(vendordir)/etc/pam.d/sudo-l
+    %install_file %(pkgdir)/sudo.pam %(installroot)%(vendordir)/etc/pam.d/sudo-i
     %install_file %(pkgdir)/su.pam %(installroot)/%(vendordir)%(sysconfdir)/pam.d/su
-    %install_file %(pkgdir)/su.pam %(installroot)/%(vendordir)%(sysconfdir)/pam.d/su-l
+    %install_file %(pkgdir)/su.pam %(installroot)/%(vendordir)%(sysconfdir)/pam.d/su-i
 
     %install_file %(pkgdir)/sudoers %(installroot)%(vendordir)/etc/sudo/sudoers
 

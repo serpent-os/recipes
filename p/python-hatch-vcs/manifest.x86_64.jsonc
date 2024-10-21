@@ -5,10 +5,12 @@
 		"python-hatch-vcs": {
 			"build-depends": [
 				"binary(python3)",
-				"python-hatchling",
-				"python-installer",
-				"python-packaging",
-				"python-wheel"
+				"python(hatchling)"
+			],
+			"depends": [
+				"binary(python3)",
+				"python(hatchling(3.11))",
+				"python(setuptools-scm(3.11))"
 			],
 			"files": [
 				"/usr/lib/python3.11/site-packages/hatch_vcs-0.4.0.dist-info/METADATA",
@@ -38,10 +40,14 @@
 				"/usr/lib/python3.11/site-packages/hatch_vcs/vcs_utils.py",
 				"/usr/lib/python3.11/site-packages/hatch_vcs/version_source.py"
 			],
-			"name": "python-hatch-vcs"
+			"name": "python-hatch-vcs",
+			"provides": [
+				"python(hatch-vcs(3.11))",
+				"python(hatch-vcs)"
+			]
 		}
 	},
 	"source-name": "python-hatch-vcs",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.4.0"
 }

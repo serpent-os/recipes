@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-session
-version     : "1.0.0-alpha.1"
-release     : 8
+version     : "1.0.0-alpha.2"
+release     : 13
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-session.git : c3de3d24dd200d5f8a19a26de56590472f461574
+    - git|https://github.com/pop-os/cosmic-session.git : d06f94a8a01c47b01e0b490c98e0f6d7242ceadd
 description : |
     Cosmic Session Management
 builddeps   :
@@ -30,9 +30,13 @@ rundeps     :
     - binary(cosmic-settings)
     - binary(cosmic-settings-daemon)
     - binary(cosmic-workspaces)
+    - binary(gnome-keyring)
+    - binary(switcherooctl)
     - binary(update-desktop-database)
     - binary(update-mime-database)
+    - binary(upower)
     - binary(xdg-user-dirs-gtk-update)
+    - accountsservice
     - font-firacode
     - wireplumber
     - xdg-desktop-portal-cosmic
@@ -40,7 +44,6 @@ networking  : yes
 tuning      :
     - lto: thin
 setup       : |
-    sed -e "s@/release/@/debug/@g" -i Justfile
     %cargo_fetch
 build       : |
     %cargo_build

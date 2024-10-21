@@ -1,0 +1,48 @@
+name: Request a new package
+description: Request a new package for Serpent OS
+title: "[Package Request]: "
+labels: ["package: request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this package request! Your interest in Serpent OS is appreciated and we commit to reviewing your request. Please note that we are currently limiting the repo size during the development stages of the project.
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Existing package request?
+      description: Before opening a new issue, please search [the open issues](https://github.com/serpent-os/recipes/issues?q=is%3Aopen+is%3Aissue) to ensure there is not already an open package request.
+      options:
+        - label: I have searched open package request reports for this package
+          required: true
+  - type: input
+    id: homepage
+    attributes:
+      label: Homepage of package
+      description: Project homepage if any, otherwise the URL of the source repository.
+      placeholder: https://www.example.com
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Please state why you believe this package should be included
+      description: If we already offer a similar package please also explain why this package is different or better
+    validations:
+       required: true
+  - type: input
+    id: license
+    attributes:
+      label: Licence of package?
+      description: Please state the license that the package uses. Use identifiers from the [SPX License List](https://spdx.org/licenses/)
+      placeholder: MIT, BSD-3-Clause…
+    validations:
+      required: false
+  - type: input
+    id: source
+    attributes:
+      label: Link to source archive file
+      description: 'This must point to a stable, versioned source, for example: `1.2.3.tar.gz` or `packagename-1.2.3`. Nightlies, snapshots and pre-releases are not allowed.'
+      placeholder: https://www.example.com/releases/v1.2.3.tar.gz
+    validations:
+      required: true

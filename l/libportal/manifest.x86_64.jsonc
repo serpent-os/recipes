@@ -53,6 +53,7 @@
 				"vala"
 			],
 			"depends": [
+				"libportal",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(gtk+-3.0)",
@@ -68,6 +69,9 @@
 				"/usr/include/libportal/email.h",
 				"/usr/include/libportal/filechooser.h",
 				"/usr/include/libportal/inhibit.h",
+				"/usr/include/libportal/inputcapture-pointerbarrier.h",
+				"/usr/include/libportal/inputcapture-zone.h",
+				"/usr/include/libportal/inputcapture.h",
 				"/usr/include/libportal/location.h",
 				"/usr/include/libportal/notification.h",
 				"/usr/include/libportal/openuri.h",
@@ -78,6 +82,8 @@
 				"/usr/include/libportal/print.h",
 				"/usr/include/libportal/remote.h",
 				"/usr/include/libportal/screenshot.h",
+				"/usr/include/libportal/session.h",
+				"/usr/include/libportal/settings.h",
 				"/usr/include/libportal/spawn.h",
 				"/usr/include/libportal/trash.h",
 				"/usr/include/libportal/types.h",
@@ -99,6 +105,6 @@
 		}
 	},
 	"source-name": "libportal",
-	"source-release": "2",
-	"source-version": "0.7.1"
+	"source-release": "3",
+	"source-version": "0.8.1"
 }

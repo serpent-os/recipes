@@ -4,21 +4,20 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : python-installer
-version     : 0.6.0
-release     : 1
+version     : 0.7.0
+release     : 2
 homepage    : https://github.com/pypa/installer
 upstreams   :
-    - https://pypi.io/packages/source/i/installer/installer-0.6.0.tar.gz : f3bd36cd261b440a88a1190b1becca0578fee90b4b62decc796932fdd5ae8839
+    - https://pypi.io/packages/source/i/installer/installer-0.7.0.tar.gz : a26d3e3116289bb08216e0d0f7d925fcef0b0194eedfa0c944bcaaa106c4b631
 summary     : Low-level library for installing from a Python wheel distribution
 description : |
     python-installer is a low-level library for installing a Python package from a wheel distribution. It provides basic functionality and abstractions for handling wheels and installing packages from wheels.
 license     :
     - MIT
-# [LATER] Rebootstrap using %pyproject_build, %pyproject_install.
-#         Keep the python-flit-core builddep.
-networking  : yes
 builddeps   :
-    - binary(pip3)
     - python-flit-core
+    - python-pyproject-hooks
+build       : |
+    %pyproject_build
 install     : |
-    pip3 install installer==%(version) --root=%(installroot)
+    %pyproject_install

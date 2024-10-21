@@ -5,12 +5,12 @@
 #
 name        : lichen
 version     : "0.1.0"
-release     : 13
+release     : 14
 summary     : Experimental OS installer
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/lichen
 upstreams   :
-    - git|https://github.com/serpent-os/lichen.git : b697ed0b7a8d09aa96dc6131c1cab9b26e2132e2
+    - git|https://github.com/serpent-os/lichen.git : 3d12910e7b2dd52a24e0887cf338a0d14ce3313a
 description : |
     Experimental OS installer
 builddeps   :
@@ -26,5 +26,5 @@ setup       : |
 build       : |
     %cargo_build -p lichen_cli
 install     : |
-    %install_bin target/*/debug/lichen_cli
+    %cargo_install lichen_cli
     ln -sv lichen_cli %(installroot)%(bindir)/lichen

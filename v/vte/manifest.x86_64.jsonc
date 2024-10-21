@@ -34,6 +34,7 @@
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgnutls.so.30(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgraphene-1.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
 				"soname(libicuuc.so.75(x86_64))",
 				"soname(liblz4.so.1(x86_64))",
@@ -99,6 +100,7 @@
 				"/usr/include/vte-2.91-gtk4/vte/vteterminal.h",
 				"/usr/include/vte-2.91-gtk4/vte/vtetypebuiltins-gtk4.h",
 				"/usr/include/vte-2.91-gtk4/vte/vtetypebuiltins.h",
+				"/usr/include/vte-2.91-gtk4/vte/vteuuid.h",
 				"/usr/include/vte-2.91-gtk4/vte/vteversion.h",
 				"/usr/lib/libvte-2.91-gtk4.so",
 				"/usr/lib/pkgconfig/vte-2.91-gtk4.pc",
@@ -112,6 +114,6 @@
 		}
 	},
 	"source-name": "vte",
-	"source-release": "5",
-	"source-version": "0.76.3"
+	"source-release": "7",
+	"source-version": "0.78.0"
 }

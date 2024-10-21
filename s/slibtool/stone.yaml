@@ -5,7 +5,7 @@
 #
 name        : slibtool
 version     : 0.6.0
-release     : 5
+release     : 6
 homepage    : https://github.com/midipix-project/slibtool
 upstreams   :
     - https://dl.midipix.org/slibtool/slibtool-0.6.0.tar.gz : afe87a71655aedf241062271b0e881ef8987e421f5a8d1273da735656c65972c
@@ -48,7 +48,7 @@ install     : |
     ln -svf slibtoolize "%(installroot)%(bindir)/libtoolize"
 
     %install_dir %(installroot)%(datadir)/aclocal/
-    ln -srvf %(installroot)%(datadir)/slibtool/slibtool.m4 %(installroot)%(datadir)/aclocal/slibtool.m4
+    ln -srvf %(installroot)%(datadir)/slibtool/slibtool.m4 %(installroot)%(datadir)/aclocal
 packages    :
     - "%(name)":
         paths:

@@ -1,0 +1,30 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"tailscale": {
+			"build-depends": [
+				"git",
+				"golang"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/tailscale",
+				"/usr/lib/systemd/system/tailscaled.service",
+				"/usr/sbin/tailscaled",
+				"/usr/share/defaults/tailscale/tailscaled"
+			],
+			"name": "tailscale",
+			"provides": [
+				"binary(tailscale)",
+				"sysbinary(tailscaled)"
+			]
+		}
+	},
+	"source-name": "tailscale",
+	"source-release": "5",
+	"source-version": "v1.72.1"
+}

@@ -219,6 +219,8 @@
 				"/usr/share/gobject-introspection-1.0/tests/gimarshallingtests.c",
 				"/usr/share/gobject-introspection-1.0/tests/gimarshallingtests.h",
 				"/usr/share/gobject-introspection-1.0/tests/gitestmacros.h",
+				"/usr/share/gobject-introspection-1.0/tests/regress-unix.c",
+				"/usr/share/gobject-introspection-1.0/tests/regress-unix.h",
 				"/usr/share/gobject-introspection-1.0/tests/regress.c",
 				"/usr/share/gobject-introspection-1.0/tests/regress.h",
 				"/usr/share/gobject-introspection-1.0/tests/utility.c",
@@ -240,6 +242,6 @@
 		}
 	},
 	"source-name": "gobject-introspection",
-	"source-release": "6",
-	"source-version": "1.80.1"
+	"source-release": "9",
+	"source-version": "1.82.0"
 }

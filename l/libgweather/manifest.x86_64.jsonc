@@ -27,7 +27,7 @@
 			"files": [
 				"/usr/lib/girepository-1.0/GWeather-4.0.typelib",
 				"/usr/lib/libgweather-4.so.0",
-				"/usr/lib/libgweather-4.so.0.400.2",
+				"/usr/lib/libgweather-4.so.0.400.4",
 				"/usr/lib/libgweather-4/Locations.bin",
 				"/usr/share/gir-1.0/GWeather-4.0.gir",
 				"/usr/share/glib-2.0/schemas/org.gnome.GWeather4.enums.xml",
@@ -78,6 +78,6 @@
 		}
 	},
 	"source-name": "libgweather",
-	"source-release": "3",
-	"source-version": "4.4.2"
+	"source-release": "5",
+	"source-version": "4.4.4"
 }

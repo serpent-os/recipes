@@ -20,8 +20,8 @@ builddeps   :
     - libcxx-32bit-devel
     - pkgconfig(libxcrypt)
     - pkgconfig32(libxcrypt)
-emul32     : yes
-setup      : |
+emul32      : yes
+setup       : |
     # Context on CMAKE_ vars: https://reviews.llvm.org/D112155#3353869
     %cmake -S runtimes \
         -DCMAKE_INSTALL_PREFIX=/usr \

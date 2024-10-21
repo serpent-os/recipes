@@ -9,6 +9,7 @@
 				"pkgconfig(xkbcommon)"
 			],
 			"depends": [
+				"accountsservice",
 				"binary(cosmic-app-library)",
 				"binary(cosmic-bg)",
 				"binary(cosmic-comp)",
@@ -21,8 +22,11 @@
 				"binary(cosmic-settings)",
 				"binary(cosmic-settings-daemon)",
 				"binary(cosmic-workspaces)",
+				"binary(gnome-keyring)",
+				"binary(switcherooctl)",
 				"binary(update-desktop-database)",
 				"binary(update-mime-database)",
+				"binary(upower)",
 				"binary(xdg-user-dirs-gtk-update)",
 				"font-firacode",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -48,6 +52,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "8",
-	"source-version": "1.0.0-alpha.1"
+	"source-release": "13",
+	"source-version": "1.0.0-alpha.2"
 }

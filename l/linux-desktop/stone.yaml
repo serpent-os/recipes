@@ -1,9 +1,9 @@
 name        : linux-desktop
-version     : "6.10.6"
-release     : 40
+version     : "6.10.13"
+release     : 48
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.6.tar.xz : e0d50d5b74f8599375660e79f187af7493864dba5ff6671b14983376a070b3d1
+    - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.10.13.tar.xz : 5ffceb2350db1547e69231a63df2d3beed015a313d7d7adf8b5cb71dedaeb16a
 summary     : Linux Kernel - Default Desktop Build
 description : |
     Work in progress build for desktop enabling
@@ -36,7 +36,7 @@ setup       : |
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
     %install_file %(pkgdir)/config-x86_64 .config
-    %patch %(pkgdir)/more-uarches-for-kernel-6.8-rc4+.patch
+    %patch %(pkgdir)/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch
     %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 oldconfig || exit 1
 build       : |
     # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific

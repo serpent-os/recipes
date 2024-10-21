@@ -47,13 +47,13 @@
 				"/usr/lib/gnome-desktop/gnome-desktop-debug/test-wall-clock",
 				"/usr/lib/gnome-desktop/gnome-desktop-debug/test-xkb-info",
 				"/usr/lib/libgnome-bg-4.so.2",
-				"/usr/lib/libgnome-bg-4.so.2.1.0",
+				"/usr/lib/libgnome-bg-4.so.2.1.1",
 				"/usr/lib/libgnome-desktop-3.so.20",
 				"/usr/lib/libgnome-desktop-3.so.20.0.0",
 				"/usr/lib/libgnome-desktop-4.so.2",
-				"/usr/lib/libgnome-desktop-4.so.2.1.0",
+				"/usr/lib/libgnome-desktop-4.so.2.1.1",
 				"/usr/lib/libgnome-rr-4.so.2",
-				"/usr/lib/libgnome-rr-4.so.2.1.0",
+				"/usr/lib/libgnome-rr-4.so.2.1.1",
 				"/usr/share/gir-1.0/GnomeBG-4.0.gir",
 				"/usr/share/gir-1.0/GnomeDesktop-3.0.gir",
 				"/usr/share/gir-1.0/GnomeDesktop-4.0.gir",
@@ -205,6 +205,7 @@
 				"/usr/share/locale/mn/LC_MESSAGES/gnome-desktop-3.0.mo",
 				"/usr/share/locale/mr/LC_MESSAGES/gnome-desktop-3.0.mo",
 				"/usr/share/locale/ms/LC_MESSAGES/gnome-desktop-3.0.mo",
+				"/usr/share/locale/my/LC_MESSAGES/gnome-desktop-3.0.mo",
 				"/usr/share/locale/nb/LC_MESSAGES/gnome-desktop-3.0.mo",
 				"/usr/share/locale/nds/LC_MESSAGES/gnome-desktop-3.0.mo",
 				"/usr/share/locale/ne/LC_MESSAGES/gnome-desktop-3.0.mo",
@@ -336,6 +337,6 @@
 		}
 	},
 	"source-name": "gnome-desktop",
-	"source-release": "3",
-	"source-version": "44.0"
+	"source-release": "4",
+	"source-version": "44.1"
 }

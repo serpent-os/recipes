@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"ntpd-rs": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/ntp-ctl",
+				"/usr/bin/ntp-daemon",
+				"/usr/bin/ntp-metrics-exporter",
+				"/usr/lib/systemd-preset/50-ntpd-rs.preset",
+				"/usr/lib/systemd/system/ntpd-rs-metrics.service",
+				"/usr/lib/systemd/system/ntpd-rs.service",
+				"/usr/lib/tmpfiles.d/ntpd-rs.conf",
+				"/usr/lib/userdb/98.group",
+				"/usr/lib/userdb/98.user",
+				"/usr/lib/userdb/99.group",
+				"/usr/lib/userdb/99.user",
+				"/usr/lib/userdb/ntpd-rs-observe.group",
+				"/usr/lib/userdb/ntpd-rs-observe.user",
+				"/usr/lib/userdb/ntpd-rs.group",
+				"/usr/lib/userdb/ntpd-rs.user",
+				"/usr/share/defaults/ntpd-rs/ntp.toml",
+				"/usr/share/doc/ntpd-rs/CHANGELOG.md",
+				"/usr/share/doc/ntpd-rs/COPYRIGHT",
+				"/usr/share/doc/ntpd-rs/LICENSE-APACHE",
+				"/usr/share/doc/ntpd-rs/LICENSE-MIT",
+				"/usr/share/doc/ntpd-rs/README.md",
+				"/usr/share/doc/ntpd-rs/ntp.toml.default",
+				"/usr/share/man/man5/ntp.toml.5",
+				"/usr/share/man/man8/ntp-ctl.8",
+				"/usr/share/man/man8/ntp-daemon.8",
+				"/usr/share/man/man8/ntp-metrics-exporter.8"
+			],
+			"name": "ntpd-rs",
+			"provides": [
+				"binary(ntp-ctl)",
+				"binary(ntp-daemon)",
+				"binary(ntp-metrics-exporter)"
+			]
+		}
+	},
+	"source-name": "ntpd-rs",
+	"source-release": "2",
+	"source-version": "1.3.0"
+}

@@ -12,7 +12,7 @@ import subprocess
 import sys
 from typing import Any
 
-scope_help = "# Scope and title, eg: nano: Update to 1.2.3\n"
+scope_help = "# Scope and title, eg: nano: Update to v1.2.3\n"
 help_msg = """
 
 # Describe or link the changes here, for example:
@@ -53,10 +53,16 @@ def commit_scope(commit_dir: str) -> str:
                     data = json.load(manifest, cls=JSONWithCommentsDecoder)
                     version = data["source-version"]
                     if data["source-release"] == "1":
-                        return os.path.basename(commit_dir) + ': Add at ' + str(version)
-                    return os.path.basename(commit_dir) + ': Update to ' + str(version)
+                        return os.path.basename(commit_dir) + ': Add at v' + str(version)
+                    return os.path.basename(commit_dir) + ': Update to v' + str(version)
                 except json.JSONDecodeError as e:
                     print(e)
+
+        # Detect non-functional changes ([NFC])
+        staged_files_result = subprocess.run(['git', 'diff', '--name-only', '--staged', commit_dir], stdout=subprocess.PIPE)
+        if 'stone.yaml' in staged_files_result.stdout.decode('utf-8') and \
+            not 'manifest.x86_64.jsonc' in staged_files_result.stdout.decode('utf-8'):
+            return "[NFC] " + os.path.basename(commit_dir) + ': '
 
         return os.path.basename(commit_dir) + ': '
 

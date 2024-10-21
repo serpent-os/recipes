@@ -5,10 +5,10 @@
 		"python-editables": {
 			"build-depends": [
 				"binary(python3)",
-				"python-flit-core",
-				"python-installer",
-				"python-packaging",
-				"python-wheel"
+				"python(flit_core)"
+			],
+			"depends": [
+				"binary(python3)"
 			],
 			"files": [
 				"/usr/lib/python3.11/site-packages/editables-0.5.dist-info/LICENSE.txt",
@@ -23,10 +23,14 @@
 				"/usr/lib/python3.11/site-packages/editables/py.typed",
 				"/usr/lib/python3.11/site-packages/editables/redirector.py"
 			],
-			"name": "python-editables"
+			"name": "python-editables",
+			"provides": [
+				"python(editables(3.11))",
+				"python(editables)"
+			]
 		}
 	},
 	"source-name": "python-editables",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.5"
 }

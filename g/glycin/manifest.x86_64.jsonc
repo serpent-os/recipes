@@ -1,0 +1,99 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"glycin": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(msgfmt)",
+				"binary(vapigen)",
+				"pkgconfig(cairo)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(lcms2)",
+				"pkgconfig(libjxl)",
+				"pkgconfig(librsvg-2.0)",
+				"pkgconfig(libseccomp)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcairo.so.2(x86_64))",
+				"soname(libfontconfig.so.1(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libjxl.so.0.11(x86_64))",
+				"soname(liblcms2.so.2(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(librsvg-2.so.2(x86_64))",
+				"soname(libseccomp.so.2(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/Gly-1.typelib",
+				"/usr/lib/girepository-1.0/GlyGtk4-1.typelib",
+				"/usr/lib/glycin/glycin-loaders/1+/glycin-image-rs",
+				"/usr/lib/glycin/glycin-loaders/1+/glycin-jxl",
+				"/usr/lib/glycin/glycin-loaders/1+/glycin-svg",
+				"/usr/lib/libglycin-1.so.0",
+				"/usr/lib/libglycin-gtk4-1.so.0",
+				"/usr/share/gir-1.0/Gly-1.gir",
+				"/usr/share/gir-1.0/GlyGtk4-1.gir",
+				"/usr/share/glycin-loaders/1+/conf.d/glycin-image-rs.conf",
+				"/usr/share/glycin-loaders/1+/conf.d/glycin-jxl.conf",
+				"/usr/share/glycin-loaders/1+/conf.d/glycin-svg.conf",
+				"/usr/share/vala/vapi/libglycin-1.deps",
+				"/usr/share/vala/vapi/libglycin-1.vapi",
+				"/usr/share/vala/vapi/libglycin-gtk4-1.deps",
+				"/usr/share/vala/vapi/libglycin-gtk4-1.vapi"
+			],
+			"name": "glycin",
+			"provides": [
+				"soname(libglycin-1.so.0(x86_64))",
+				"soname(libglycin-gtk4-1.so.0(x86_64))"
+			]
+		},
+		"glycin-devel": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(msgfmt)",
+				"binary(vapigen)",
+				"pkgconfig(cairo)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(lcms2)",
+				"pkgconfig(libjxl)",
+				"pkgconfig(librsvg-2.0)",
+				"pkgconfig(libseccomp)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"depends": [
+				"glycin",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gtk4)",
+				"pkgconfig(lcms2)",
+				"pkgconfig(libseccomp)"
+			],
+			"files": [
+				"/usr/include/glycin-1/glycin.h",
+				"/usr/include/glycin-gtk4-1/glycin-gtk4.h",
+				"/usr/lib/libglycin-1.so",
+				"/usr/lib/libglycin-gtk4-1.so",
+				"/usr/lib/pkgconfig/glycin-1.pc",
+				"/usr/lib/pkgconfig/glycin-gtk4-1.pc"
+			],
+			"name": "glycin-devel",
+			"provides": [
+				"pkgconfig(glycin-1)",
+				"pkgconfig(glycin-gtk4-1)"
+			]
+		}
+	},
+	"source-name": "glycin",
+	"source-release": "2",
+	"source-version": "1.1.1"
+}

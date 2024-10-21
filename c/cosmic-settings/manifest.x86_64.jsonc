@@ -26,10 +26,13 @@
 				"/usr/bin/cosmic-settings",
 				"/usr/share/applications/com.system76.CosmicSettings.About.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Appearance.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Bluetooth.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.DateTime.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Desktop.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Displays.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Dock.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Firmware.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Input.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Keyboard.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Mouse.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Notifications.desktop",
@@ -37,10 +40,15 @@
 				"/usr/share/applications/com.system76.CosmicSettings.Power.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.RegionLanguage.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Sound.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.System.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Time.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Touchpad.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Users.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Vpn.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Wallpaper.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.WindowManagement.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Wired.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Wireless.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Workspaces.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.desktop",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/accent",
@@ -155,6 +163,6 @@
 		}
 	},
 	"source-name": "cosmic-settings",
-	"source-release": "5",
-	"source-version": "1.0.0-alpha.1"
+	"source-release": "8",
+	"source-version": "1.0.0-alpha.2"
 }

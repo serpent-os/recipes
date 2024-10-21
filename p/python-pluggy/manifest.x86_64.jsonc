@@ -5,24 +5,34 @@
 		"python-pluggy": {
 			"build-depends": [
 				"binary(python3)",
-				"python-pep517",
 				"python-setuptools_scm",
 				"python-wheel"
 			],
+			"depends": [
+				"binary(python3)"
+			],
 			"files": [
-				"/usr/lib/python3.11/site-packages/pluggy-1.4.0-py3.11.egg-info/PKG-INFO",
-				"/usr/lib/python3.11/site-packages/pluggy-1.4.0-py3.11.egg-info/SOURCES.txt",
-				"/usr/lib/python3.11/site-packages/pluggy-1.4.0-py3.11.egg-info/dependency_links.txt",
-				"/usr/lib/python3.11/site-packages/pluggy-1.4.0-py3.11.egg-info/requires.txt",
-				"/usr/lib/python3.11/site-packages/pluggy-1.4.0-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/pluggy-1.5.0.dist-info/LICENSE",
+				"/usr/lib/python3.11/site-packages/pluggy-1.5.0.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/pluggy-1.5.0.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/pluggy-1.5.0.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/pluggy-1.5.0.dist-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/pluggy/__init__.py",
+				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/__init__.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_callers.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_callers.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_hooks.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_hooks.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_manager.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_manager.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_result.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_result.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_tracing.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_tracing.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_version.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_version.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_warnings.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/__pycache__/_warnings.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/pluggy/_callers.py",
 				"/usr/lib/python3.11/site-packages/pluggy/_hooks.py",
@@ -33,10 +43,14 @@
 				"/usr/lib/python3.11/site-packages/pluggy/_warnings.py",
 				"/usr/lib/python3.11/site-packages/pluggy/py.typed"
 			],
-			"name": "python-pluggy"
+			"name": "python-pluggy",
+			"provides": [
+				"python(pluggy(3.11))",
+				"python(pluggy)"
+			]
 		}
 	},
 	"source-name": "python-pluggy",
-	"source-release": "1",
-	"source-version": "1.4.0"
+	"source-release": "2",
+	"source-version": "1.5.0"
 }

@@ -13,7 +13,7 @@
 				"/usr/bin/xxh64sum",
 				"/usr/bin/xxhsum",
 				"/usr/lib/libxxhash.so.0",
-				"/usr/lib/libxxhash.so.0.8.1",
+				"/usr/lib/libxxhash.so.0.8.2",
 				"/usr/share/man/man1/xxh128sum.1",
 				"/usr/share/man/man1/xxh32sum.1",
 				"/usr/share/man/man1/xxh64sum.1",
@@ -21,14 +21,17 @@
 			],
 			"name": "xxhash",
 			"provides": [
-				"soname(libxxhash.so.0(x86_64))",
 				"binary(xxh128sum)",
 				"binary(xxh32sum)",
 				"binary(xxh64sum)",
-				"binary(xxhsum)"
+				"binary(xxhsum)",
+				"soname(libxxhash.so.0(x86_64))"
 			]
 		},
 		"xxhash-devel": {
+			"depends": [
+				"xxhash"
+			],
 			"files": [
 				"/usr/include/xxh3.h",
 				"/usr/include/xxhash.h",
@@ -42,6 +45,6 @@
 		}
 	},
 	"source-name": "xxhash",
-	"source-release": "5",
-	"source-version": "0.8.1"
+	"source-release": "6",
+	"source-version": "0.8.2"
 }

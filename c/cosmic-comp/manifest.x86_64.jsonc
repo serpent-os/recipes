@@ -32,7 +32,8 @@
 			],
 			"files": [
 				"/usr/bin/cosmic-comp",
-				"/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults"
+				"/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults",
+				"/usr/share/cosmic/com.system76.CosmicSettings.WindowRules/v1/tiling_exception_defaults"
 			],
 			"name": "cosmic-comp",
 			"provides": [
@@ -41,6 +42,6 @@
 		}
 	},
 	"source-name": "cosmic-comp",
-	"source-release": "6",
-	"source-version": "1.0.0-alpha.1"
+	"source-release": "8",
+	"source-version": "1.0.0-alpha.2"
 }

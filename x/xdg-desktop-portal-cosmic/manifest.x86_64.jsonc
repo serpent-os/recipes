@@ -7,6 +7,7 @@
 				"binary(cargo)",
 				"binary(just)",
 				"pkgconfig(gbm)",
+				"pkgconfig(glib-2.0)",
 				"pkgconfig(libpipewire-0.3)",
 				"pkgconfig(xkbcommon)"
 			],
@@ -15,6 +16,9 @@
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgbm.so.1(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libpipewire-0.3.so.0(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
@@ -34,6 +38,6 @@
 		}
 	},
 	"source-name": "xdg-desktop-portal-cosmic",
-	"source-release": "3",
-	"source-version": "1.0.0-alpha.1"
+	"source-release": "5",
+	"source-version": "1.0.0-alpha.2"
 }

@@ -4,22 +4,20 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : python-build
-version     : 0.9.0
-release     : 1
+version     : 1.2.2
+release     : 3
 homepage    : https://github.com/pypa/build
 upstreams   :
-    - https://files.pythonhosted.org/packages/source/b/build/build-0.9.0.tar.gz : 1a07724e891cbd898923145eb7752ee7653674c511378eb9c7691aab1612bc3c
+    - https://files.pythonhosted.org/packages/source/b/build/build-1.2.2.tar.gz : 119b2fb462adef986483438377a13b2f42064a2a3a4161f24a0cca698a07ac8c
 summary     : Simple and correct PEP 517 build frontend
 description : |
     python-build is a simple and correct PEP 517 build frontend.
 license     :
     - MIT
-rundeps     :
-    - python-packaging
-    - python-pep517
-    - python-tomli
-# [LATER] Rebootstrap using %pyproject_build, %pyproject_install.
+builddeps   :
+    - python(flit_core)
+    - python(pyproject_hooks)
 build       : |
-    %python_setup
+    %pyproject_build
 install     : |
-    %python_install
+    %pyproject_install

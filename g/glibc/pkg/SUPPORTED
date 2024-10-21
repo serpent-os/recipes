@@ -1,8 +1,0 @@
-# This file names the currently supported and somewhat tested locales.
-# If you have any additions please file a glibc bug report.
-SUPPORTED-LOCALES=\
-en_AU.UTF-8/UTF-8 \
-en_CA.UTF-8/UTF-8 \
-en_GB.UTF-8/UTF-8 \
-en_NZ.UTF-8/UTF-8 \
-en_US.UTF-8/UTF-8 \

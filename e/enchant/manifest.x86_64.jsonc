@@ -1,0 +1,66 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"enchant": {
+			"build-depends": [
+				"binary(groff)",
+				"binary(valac)",
+				"pkgconfig(glib-2.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgmodule-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/enchant-2",
+				"/usr/bin/enchant-lsmod-2",
+				"/usr/lib/libenchant-2.so.2",
+				"/usr/lib/libenchant-2.so.2.8.2",
+				"/usr/share/doc/enchant/enchant-2.html",
+				"/usr/share/doc/enchant/enchant-lsmod-2.html",
+				"/usr/share/doc/enchant/enchant.html",
+				"/usr/share/enchant-2/enchant.ordering",
+				"/usr/share/man/man1/enchant-2.1",
+				"/usr/share/man/man1/enchant-lsmod-2.1",
+				"/usr/share/man/man5/enchant.5"
+			],
+			"name": "enchant",
+			"provides": [
+				"binary(enchant-2)",
+				"binary(enchant-lsmod-2)",
+				"soname(libenchant-2.so.2(x86_64))"
+			]
+		},
+		"enchant-devel": {
+			"build-depends": [
+				"binary(groff)",
+				"binary(valac)",
+				"pkgconfig(glib-2.0)"
+			],
+			"depends": [
+				"enchant",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmodule-no-export-2.0)"
+			],
+			"files": [
+				"/usr/include/enchant-2/enchant++.h",
+				"/usr/include/enchant-2/enchant.h",
+				"/usr/lib/libenchant-2.a",
+				"/usr/lib/libenchant-2.so",
+				"/usr/lib/pkgconfig/enchant-2.pc"
+			],
+			"name": "enchant-devel",
+			"provides": [
+				"pkgconfig(enchant-2)"
+			]
+		}
+	},
+	"source-name": "enchant",
+	"source-release": "1",
+	"source-version": "2.8.2"
+}

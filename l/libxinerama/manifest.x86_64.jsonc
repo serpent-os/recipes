@@ -29,6 +29,7 @@
 				"pkgconfig32(xext)"
 			],
 			"depends": [
+				"libxinerama",
 				"soname(libX11.so.6(x86))",
 				"soname(libXext.so.6(x86))",
 				"soname(libc.so.6(x86))"
@@ -39,6 +40,7 @@
 			],
 			"name": "libxinerama-32bit",
 			"provides": [
+				"soname(libXinerama.so.1(386))",
 				"soname(libXinerama.so.1(x86))"
 			]
 		},
@@ -49,9 +51,11 @@
 				"pkgconfig32(xext)"
 			],
 			"depends": [
+				"libxinerama-32bit",
+				"libxinerama-devel",
+				"pkgconfig(xineramaproto)",
 				"pkgconfig32(x11)",
-				"pkgconfig32(xext)",
-				"pkgconfig(xineramaproto)"
+				"pkgconfig32(xext)"
 			],
 			"files": [
 				"/usr/lib32/libXinerama.so",
@@ -69,6 +73,7 @@
 				"pkgconfig32(xext)"
 			],
 			"depends": [
+				"libxinerama",
 				"pkgconfig(x11)",
 				"pkgconfig(xext)",
 				"pkgconfig(xineramaproto)"
@@ -91,6 +96,6 @@
 		}
 	},
 	"source-name": "libxinerama",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.1.5"
 }

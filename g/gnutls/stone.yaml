@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnutls
-version     : 3.8.6
-release     : 4
+version     : 3.8.7.1
+release     : 5
 homepage    : https://www.gnutls.org/
 upstreams   :
-    - https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.6.tar.xz: 2e1588aae53cb32d43937f1f4eca28febd9c0c7aa1734fc5dd61a7e81e0ebcdd
+    - https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.7.1.tar.xz: 9ca0ddaccce28a74fa18d738744190afb3b0daebef74e6ad686bf7bef99abd60
 summary     : The GnuTLS package contains libraries and userspace tools which provide a secure layer over a reliable transport layer
 description : |
     GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them. It provides a simple C language application programming interface (API) to access the secure communications protocols as well as APIs to parse and write X.509, PKCS #12, OpenPGP and other required structures.

@@ -32,6 +32,7 @@
 				"pkgconfig32(xrender)"
 			],
 			"depends": [
+				"libxrandr",
 				"soname(libX11.so.6(x86))",
 				"soname(libXext.so.6(x86))",
 				"soname(libXrender.so.1(x86))",
@@ -43,6 +44,7 @@
 			],
 			"name": "libxrandr-32bit",
 			"provides": [
+				"soname(libXrandr.so.2(386))",
 				"soname(libXrandr.so.2(x86))"
 			]
 		},
@@ -54,10 +56,12 @@
 				"pkgconfig32(xrender)"
 			],
 			"depends": [
+				"libxrandr-32bit",
+				"libxrandr-devel",
 				"pkgconfig(randrproto)",
+				"pkgconfig(xproto)",
 				"pkgconfig32(x11)",
 				"pkgconfig32(xext)",
-				"pkgconfig(xproto)",
 				"pkgconfig32(xrender)"
 			],
 			"files": [
@@ -77,6 +81,7 @@
 				"pkgconfig32(xrender)"
 			],
 			"depends": [
+				"libxrandr",
 				"pkgconfig(randrproto)",
 				"pkgconfig(x11)",
 				"pkgconfig(xext)",
@@ -110,6 +115,6 @@
 		}
 	},
 	"source-name": "libxrandr",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "1.5.4"
 }

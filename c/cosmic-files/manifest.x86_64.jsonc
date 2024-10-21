@@ -16,11 +16,14 @@
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
 				"soname(libm.so.6(x86_64))",
-				"soname(libunwind.so.1(x86_64))"
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/cosmic-files",
+				"/usr/bin/cosmic-files-applet",
 				"/usr/share/applications/com.system76.CosmicFiles.desktop",
 				"/usr/share/icons/hicolor/128x128/apps/com.system76.CosmicFiles.svg",
 				"/usr/share/icons/hicolor/16x16/apps/com.system76.CosmicFiles.svg",
@@ -33,11 +36,12 @@
 			],
 			"name": "cosmic-files",
 			"provides": [
-				"binary(cosmic-files)"
+				"binary(cosmic-files)",
+				"binary(cosmic-files-applet)"
 			]
 		}
 	},
 	"source-name": "cosmic-files",
-	"source-release": "6",
-	"source-version": "1.0.0-alpha.1"
+	"source-release": "8",
+	"source-version": "1.0.0-alpha.2"
 }

@@ -5,13 +5,12 @@
 		"python-attrs": {
 			"build-depends": [
 				"binary(python3)",
+				"python(hatchling)",
 				"python-hatch-fancy-pypi-readme",
-				"python-hatch-vcs",
-				"python-hatchling",
-				"python-installer",
-				"python-packaging",
-				"python-setuptools_scm",
-				"python-wheel"
+				"python-hatch-vcs"
+			],
+			"depends": [
+				"binary(python3)"
 			],
 			"files": [
 				"/usr/lib/python3.11/site-packages/attr/__init__.py",
@@ -63,10 +62,10 @@
 				"/usr/lib/python3.11/site-packages/attr/setters.pyi",
 				"/usr/lib/python3.11/site-packages/attr/validators.py",
 				"/usr/lib/python3.11/site-packages/attr/validators.pyi",
-				"/usr/lib/python3.11/site-packages/attrs-23.2.0.dist-info/METADATA",
-				"/usr/lib/python3.11/site-packages/attrs-23.2.0.dist-info/RECORD",
-				"/usr/lib/python3.11/site-packages/attrs-23.2.0.dist-info/WHEEL",
-				"/usr/lib/python3.11/site-packages/attrs-23.2.0.dist-info/licenses/LICENSE",
+				"/usr/lib/python3.11/site-packages/attrs-24.2.0.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/attrs-24.2.0.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/attrs-24.2.0.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/attrs-24.2.0.dist-info/licenses/LICENSE",
 				"/usr/lib/python3.11/site-packages/attrs/__init__.py",
 				"/usr/lib/python3.11/site-packages/attrs/__init__.pyi",
 				"/usr/lib/python3.11/site-packages/attrs/__pycache__/__init__.cpython-311.opt-1.pyc",
@@ -88,10 +87,14 @@
 				"/usr/lib/python3.11/site-packages/attrs/setters.py",
 				"/usr/lib/python3.11/site-packages/attrs/validators.py"
 			],
-			"name": "python-attrs"
+			"name": "python-attrs",
+			"provides": [
+				"python(attrs(3.11))",
+				"python(attrs)"
+			]
 		}
 	},
 	"source-name": "python-attrs",
-	"source-release": "1",
-	"source-version": "23.2.0"
+	"source-release": "4",
+	"source-version": "24.2.0"
 }

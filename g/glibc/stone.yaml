@@ -5,7 +5,7 @@
 #
 name        : glibc
 version     : 2.39
-release     : 12
+release     : 13
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -21,6 +21,8 @@ builddeps   :
     - binary(gperf)
     - binary(gzip)
     - binary(m4)
+    - binary(makeinfo)
+    - binary(msgfmt)
     - binary(patch)
     - binary(python3)
     - gcc-32bit
@@ -39,7 +41,7 @@ tuning      :
     - harden: false
     - optimize: speed
     - symbolic: nonweak
-environment : &environment |
+environment : |
     export COMMON_GLIBC_OPTIONS="\
         %(options_configure) \
                 --disable-crypt \
@@ -61,57 +63,51 @@ environment : &environment |
                 --without-selinux \
                 libc_cv_include_x86_isa_level=no \
     "
-build       : &build |
+setup       : |
+    %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
+    %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
+    %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
+    %patch %(pkgdir)/serpent/0001-Compress-charmaps-with-zstd.patch
+    %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
+    %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
+    %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
+    #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
+    %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
+
+    mkdir build && cd build
+    echo "LD_SO_CACHE=/var/cache/ldconfig/ld.so.cache" >> configparms
+    echo "slibdir=%(libdir)" >> configparms
+    echo "rtlddir=%(libdir)" >> configparms
+    echo "sbindir=%(sbindir)" >> configparms
+    echo "rootsbindir=%(sbindir)" >> configparms
+    # Note this deliberately excludes libsuffix and is not an error
+    echo "complocaledir=/usr/lib/locale" >> configparms
+    ../configure $COMMON_GLIBC_OPTIONS --enable-cet=permissive
+build       : |
     %make -C build
+install     : |
+    %make_install build DESTDIR="%(installroot)" -C build
+
+    # Make gconv cache
+    LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux-x86-64.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
+
+    %make localedata/install-locales DESTDIR="%(installroot)" -C build
+
+    # Stateless: Remove obsolete rpc
+    rm %(installroot)/var/db/Makefile %(installroot)/etc/rpc
+    rmdir %(installroot)/var/db %(installroot)/var %(installroot)/etc
+
+    %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)/ld.so.conf
+    %install_dir %(installroot)/%(vendordir)/ld.so.conf.d
+
+    # Stateless: We need these directories to exist without including them
+    %tmpfiles "# Create stateless directories"
+    %tmpfiles "d /etc/ld.so.conf.d 0755 - - -"
+    %tmpfiles "d /var/cache/ldconfig 0755 - - -"
+    %tmpfiles "d /var/cache/locale 0755 - - -"
+    %tmpfiles "d /var/db 0755 - - -"
 profiles    :
-    - x86_64:
-        environment: *environment
-        setup: |
-            %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
-            %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
-            %patch %(pkgdir)/serpent/0001-Force-correct-RTLDLIST-for-ldd.patch
-            %patch %(pkgdir)/serpent/0001-Compress-charmaps-with-zstd.patch
-            %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
-            %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
-            %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
-            #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
-            %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
-            cp %(pkgdir)/SUPPORTED localedata/SUPPORTED
-
-            mkdir build && cd build
-            echo "LD_SO_CACHE=/var/cache/ldconfig/ld.so.cache" >> configparms
-            echo "slibdir=%(libdir)" >> configparms
-            echo "rtlddir=%(libdir)" >> configparms
-            echo "sbindir=%(sbindir)" >> configparms
-            echo "rootsbindir=%(sbindir)" >> configparms
-            # Note this deliberately excludes libsuffix and is not an error
-            echo "complocaledir=/usr/lib/locale" >> configparms
-
-            ../configure $COMMON_GLIBC_OPTIONS --enable-cet=permissive
-        build: *build
-        install: |
-            %make_install build DESTDIR="%(installroot)" -C build
-            
-            # Make gconv cache
-            LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux-x86-64.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
-
-            %make localedata/install-locales DESTDIR="%(installroot)" -C build
-
-            # Stateless: Remove obsolete rpc
-            rm %(installroot)/var/db/Makefile %(installroot)/etc/rpc
-            rmdir %(installroot)/var/db %(installroot)/var %(installroot)/etc
-
-            %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)/ld.so.conf
-            %install_dir %(installroot)/%(vendordir)/ld.so.conf.d
-            
-            # Stateless: We need these directories to exist without including them
-            %tmpfiles "# Create stateless directories"
-            %tmpfiles "d /etc/ld.so.conf.d 0755 - - -"
-            %tmpfiles "d /var/cache/ldconfig 0755 - - -"
-            %tmpfiles "d /var/cache/locale 0755 - - -"
-            %tmpfiles "d /var/db 0755 - - -"
     - emul32:
-        environment: *environment
         setup: |
             %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
             %patch %(pkgdir)/serpent/0001-sysdeps-Add-support-for-default-directories.patch
@@ -122,7 +118,6 @@ profiles    :
             %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
             #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
             %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
-            cp %(pkgdir)/SUPPORTED localedata/SUPPORTED
 
             mkdir build && cd build
             echo "LD_SO_CACHE=/var/cache/ldconfig/ld.so.cache" >> configparms
@@ -134,10 +129,9 @@ profiles    :
             echo "complocaledir=/usr/lib/locale" >> configparms
 
             ../configure $COMMON_GLIBC_OPTIONS --disable-cet
-        build: *build
         install: |
             %make_install build DESTDIR="%(installroot)" -C build
-            
+
             # Make gconv cache
             LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
 

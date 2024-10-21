@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-workspaces
-version     : "1.0.0-alpha.1"
-release     : 5
+version     : "1.0.0-alpha.2"
+release     : 7
 summary     : Cosmic Desktop Workspaces
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-workspaces
@@ -28,6 +28,6 @@ tuning      :
 setup       : |
     %cargo_fetch
 build       : |
-    %cargo_build --features rust-embed/debug-embed
+    %cargo_build
 install     : |
-    %make_install prefix=%(prefix) TARGET=%(target_triple)/debug
+    %make_install prefix=%(prefix) TARGET=%(target_triple)/release

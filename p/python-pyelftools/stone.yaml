@@ -1,0 +1,19 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-pyelftools
+version     : 0.31
+release     : 1
+homepage    : https://files.pythonhosted.org/packages/88/56/0f2d69ed9a0060da009f672ddec8a71c041d098a66f6b1d80264bf6bbdc0
+upstreams   :
+    - https://files.pythonhosted.org/packages/88/56/0f2d69ed9a0060da009f672ddec8a71c041d098a66f6b1d80264bf6bbdc0/pyelftools-0.31.tar.gz : c774416b10310156879443b81187d182d8d9ee499660380e645918b50bc88f99
+summary     : Parsing ELF and DWARF in Python
+description : |
+    Parsing ELF and DWARF in Python
+license     : Public-Domain
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install

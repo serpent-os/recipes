@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : system76-power
+version     : 1.2.1
+release     : 1
+homepage    : https://github.com/pop-os/system76-power
+upstreams   :
+    - https://github.com/pop-os/system76-power/archive/refs/tags/1.2.1.tar.gz: 90b796e72a442a7968fc80b269ed2a936c6541bcba939a72612898082fbd7ec3
+summary     : system76-power is a utility for managing graphics and power profiles.
+description : |
+    system76-power is a utility for managing graphics and power profiles.
+license:
+    - GPL-3.0-only
+builddeps   :
+    - binary(cargo)
+    - pkgconfig(libusb-1.0)
+networking  : yes
+build       : |
+    %make
+install     : |
+    %make_install

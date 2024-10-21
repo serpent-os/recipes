@@ -21,10 +21,14 @@
 				"/usr/lib/python3.11/site-packages/ply/yacc.py",
 				"/usr/lib/python3.11/site-packages/ply/ygen.py"
 			],
-			"name": "python-ply"
+			"name": "python-ply",
+			"provides": [
+				"python(ply(3.11))",
+				"python(ply)"
+			]
 		}
 	},
 	"source-name": "python-ply",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.11"
 }

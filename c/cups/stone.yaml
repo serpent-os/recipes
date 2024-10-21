@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cups
-version     : 2.4.7
-release     : 1
+version     : 2.4.11
+release     : 3
 homepage    : https://openprinting.github.io/cups/
 upstreams   :
-    - https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz : dd54228dd903526428ce7e37961afaed230ad310788141da75cebaa08362cf6c
+    - https://github.com/OpenPrinting/cups/releases/download/v2.4.11/cups-2.4.11-source.tar.gz : 9a88fe1da3a29a917c3fc67ce6eb3178399d68e1a548c6d86c70d9b13651fd71
 summary     : CUPS uses IPP Everywhere™ to support printing to local and network printers.
 description : |
     The current standards-based, open source printing system developed by OpenPrinting for Linux® and other Unix®-like operating systems. CUPS uses IPP Everywhere™ to support printing to local and network printers.

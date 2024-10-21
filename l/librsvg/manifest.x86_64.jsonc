@@ -5,8 +5,9 @@
 		"librsvg": {
 			"build-depends": [
 				"binary(cargo)",
-				"binary(clang)",
+				"binary(cargo-cbuild)",
 				"binary(python3)",
+				"binary(vapigen)",
 				"pkgconfig(fontconfig)",
 				"pkgconfig(gdk-pixbuf-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
@@ -22,43 +23,38 @@
 				"soname(libc.so.6(x86_64))",
 				"soname(libcairo-gobject.so.2(x86_64))",
 				"soname(libcairo.so.2(x86_64))",
-				"soname(libfreetype.so.6(x86_64))",
-				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
-				"soname(libharfbuzz.so.0(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libpango-1.0.so.0(x86_64))",
 				"soname(libpangocairo-1.0.so.0(x86_64))",
-				"soname(libpng16.so.16(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
 				"soname(libxml2.so.2(x86_64))"
 			],
 			"files": [
 				"/usr/bin/rsvg-convert",
-				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-svg.so",
+				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader_svg.so",
 				"/usr/lib/girepository-1.0/Rsvg-2.0.typelib",
 				"/usr/lib/librsvg-2.so.2",
-				"/usr/lib/librsvg-2.so.2.50.0",
-				"/usr/share/doc/librsvg/README.md",
-				"/usr/share/doc/librsvg/code-of-conduct.md",
+				"/usr/lib/librsvg-2.so.2.59.0",
 				"/usr/share/gir-1.0/Rsvg-2.0.gir",
 				"/usr/share/thumbnailers/librsvg.thumbnailer"
 			],
 			"name": "librsvg",
 			"provides": [
 				"binary(rsvg-convert)",
-				"soname(libpixbufloader-svg.so(x86_64))",
+				"soname(libpixbufloader_svg.so(x86_64))",
 				"soname(librsvg-2.so.2(x86_64))"
 			]
 		},
 		"librsvg-devel": {
 			"build-depends": [
 				"binary(cargo)",
-				"binary(clang)",
+				"binary(cargo-cbuild)",
 				"binary(python3)",
+				"binary(vapigen)",
 				"pkgconfig(fontconfig)",
 				"pkgconfig(gdk-pixbuf-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
@@ -71,17 +67,24 @@
 			"depends": [
 				"librsvg",
 				"pkgconfig(cairo)",
+				"pkgconfig(cairo-gobject)",
+				"pkgconfig(cairo-png)",
+				"pkgconfig(freetype2)",
 				"pkgconfig(gdk-pixbuf-2.0)",
 				"pkgconfig(gio-2.0)",
-				"pkgconfig(glib-2.0)"
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmodule-2.0)",
+				"pkgconfig(harfbuzz)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(pangocairo)",
+				"pkgconfig(pangoft2)"
 			],
 			"files": [
 				"/usr/include/librsvg-2.0/librsvg/rsvg-cairo.h",
 				"/usr/include/librsvg-2.0/librsvg/rsvg-features.h",
+				"/usr/include/librsvg-2.0/librsvg/rsvg-pixbuf.h",
 				"/usr/include/librsvg-2.0/librsvg/rsvg-version.h",
 				"/usr/include/librsvg-2.0/librsvg/rsvg.h",
-				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-svg.a",
-				"/usr/lib/librsvg-2.a",
 				"/usr/lib/librsvg-2.so",
 				"/usr/lib/pkgconfig/librsvg-2.0.pc"
 			],
@@ -92,6 +95,6 @@
 		}
 	},
 	"source-name": "librsvg",
-	"source-release": "3",
-	"source-version": "2.58.2"
+	"source-release": "5",
+	"source-version": "2.59.0"
 }

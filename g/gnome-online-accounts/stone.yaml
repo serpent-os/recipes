@@ -4,18 +4,19 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnome-online-accounts
-version     : 3.50.4
-release     : 6
+version     : 3.52.0
+release     : 8
 homepage    : https://gitlab.gnome.org/GNOME/gnome-online-accounts
 upstreams   :
-    - https://download.gnome.org/sources/gnome-online-accounts/3.50/gnome-online-accounts-3.50.4.tar.xz : 30ca13038cd7a69d5b6b2d53643fba6548d1712b925f0c216f3133c36cbf7773
+    - https://download.gnome.org/sources/gnome-online-accounts/3.52/gnome-online-accounts-3.52.0.tar.xz : 631953a9d9ea098b268a0bbe2df18cbbec6781589cac6b0455214609ee12bbd8
 summary     : Single sign-on framework for GNOME
 description : |
     Single sign-on framework for GNOME
 license     :
-    - LGPL-2.1-or-later 
+    - LGPL-2.1-or-later
 builddeps   :
     - binary(vapigen)
+    - binary(xsltproc)
     - pkgconfig(dbus-1)
     - pkgconfig(gcr-4)
     - pkgconfig(glib-2.0)
@@ -25,17 +26,18 @@ builddeps   :
     - pkgconfig(json-glib-1.0)
     - pkgconfig(krb5)
     - pkgconfig(libadwaita-1)
+    - pkgconfig(libkeyutils)
     - pkgconfig(libsecret-1)
     - pkgconfig(libsoup-3.0)
     - pkgconfig(libxml-2.0)
     - pkgconfig(rest-1.0)
+    - docbook
 packages    :
     - "%(name)-devel":
         paths:
             - /usr/share/vala/vapi
-toolchain   : gnu
 setup       : |
-    %meson
+    %meson -Ddocumentation=false
 build       : |
     %meson_build
 install     : |

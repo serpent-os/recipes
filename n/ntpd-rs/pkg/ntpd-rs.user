@@ -1,0 +1,9 @@
+{
+    "userName" : "ntpd-rs",
+    "realName" : "ntpd-rs system account",
+    "uid" : 99,
+    "gid" : 99,
+    "disposition" : "system",
+    "locked" : false,
+    "homeDirectory": "/var/lib/ntpd-rs"
+}

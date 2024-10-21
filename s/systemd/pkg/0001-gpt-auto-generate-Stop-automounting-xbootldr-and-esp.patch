@@ -1,6 +1,6 @@
-From 2900100c52ddc178252b9a854f16b8c4aafda9a6 Mon Sep 17 00:00:00 2001
+From 8e39ec6632b3e10a12ae07d6d504fe33fb8628c3 Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <ikey@serpentos.com>
-Date: Mon, 15 Jul 2024 23:42:46 +0000
+Date: Wed, 11 Sep 2024 01:54:58 +0000
 Subject: [PATCH] gpt-auto-generate: Stop automounting `xbootldr` and `esp`
 
 This is now exclusively the management domain of blsforme by way of `moss`
@@ -11,31 +11,31 @@ mounted as and when we need them, and immediately umount when finished.
 
 Signed-off-by: Ikey Doherty <ikey@serpentos.com>
 ---
- src/gpt-auto-generator/gpt-auto-generator.c | 140 --------------------
- 1 file changed, 140 deletions(-)
+ src/gpt-auto-generator/gpt-auto-generator.c | 224 --------------------
+ 1 file changed, 224 deletions(-)
 
 diff --git a/src/gpt-auto-generator/gpt-auto-generator.c b/src/gpt-auto-generator/gpt-auto-generator.c
-index 2e60b82..9446607 100644
+index d05ece3..f5287fe 100644
 --- a/src/gpt-auto-generator/gpt-auto-generator.c
 +++ b/src/gpt-auto-generator/gpt-auto-generator.c
-@@ -411,134 +411,6 @@ static int add_automount(
+@@ -475,175 +475,6 @@ static int add_automount(
          return generator_add_symlink(arg_dest, SPECIAL_LOCAL_FS_TARGET, "wants", unit);
  }
  
--static const char *esp_or_xbootldr_options(const DissectedPartition *p) {
--        assert(p);
+-static int slash_boot_in_fstab(void) {
+-        static int cache = -1;
 -
--        /* Discoveried ESP and XBOOTLDR partition are always hardened with "noexec,nosuid,nodev".
--         * If we probed vfat or have no idea about the file system then assume these file systems are vfat
--         * and thus understand "umask=0077". */
+-        if (cache >= 0)
+-                return cache;
 -
--        if (!p->fstype || streq(p->fstype, "vfat"))
--                return "umask=0077,noexec,nosuid,nodev";
--
--        return "noexec,nosuid,nodev";
+-        cache = fstab_is_mount_point("/boot");
+-        if (cache < 0)
+-                return log_error_errno(cache, "Failed to parse fstab: %m");
+-        return cache;
 -}
 -
 -static int add_partition_xbootldr(DissectedPartition *p) {
+-        _cleanup_free_ char *options = NULL;
 -        int r;
 -
 -        assert(p);
@@ -45,11 +45,11 @@ index 2e60b82..9446607 100644
 -                return 0;
 -        }
 -
--        r = fstab_is_mount_point("/boot");
+-        r = slash_boot_in_fstab();
 -        if (r < 0)
--                return log_error_errno(r, "Failed to parse fstab: %m");
+-                return r;
 -        if (r > 0) {
--                log_debug("/boot specified in fstab, ignoring XBOOTLDR partition.");
+-                log_debug("/boot/ specified in fstab, ignoring XBOOTLDR partition.");
 -                return 0;
 -        }
 -
@@ -59,20 +59,59 @@ index 2e60b82..9446607 100644
 -        if (r > 0)
 -                return 0;
 -
--        return add_automount("boot",
--                             p->node,
--                             "/boot",
--                             p->fstype,
--                             /* rw= */ true,
--                             /* growfs= */ false,
--                             esp_or_xbootldr_options(p),
--                             "Boot Loader Partition",
--                             120 * USEC_PER_SEC);
+-        r = partition_pick_mount_options(
+-                        PARTITION_XBOOTLDR,
+-                        dissected_partition_fstype(p),
+-                        /* rw= */ true,
+-                        /* discard= */ false,
+-                        &options,
+-                        /* ret_ms_flags= */ NULL);
+-        if (r < 0)
+-                return log_error_errno(r, "Failed to determine default mount options for /boot/: %m");
+-
+-        return add_automount(
+-                        "boot",
+-                        p->node,
+-                        "/boot",
+-                        p->fstype,
+-                        /* rw= */ true,
+-                        /* growfs= */ false,
+-                        options,
+-                        "Boot Loader Partition",
+-                        120 * USEC_PER_SEC);
 -}
 -
 -#if ENABLE_EFI
+-static int slash_efi_in_fstab(void) {
+-        static int cache = -1;
+-
+-        if (cache >= 0)
+-                return cache;
+-
+-        cache = fstab_is_mount_point("/efi");
+-        if (cache < 0)
+-                return log_error_errno(cache, "Failed to parse fstab: %m");
+-        return cache;
+-}
+-
+-static bool slash_boot_exists(void) {
+-        static int cache = -1;
+-
+-        if (cache >= 0)
+-                return cache;
+-
+-        if (access("/boot", F_OK) >= 0)
+-                return (cache = true);
+-        if (errno != ENOENT)
+-                log_error_errno(errno, "Failed to determine whether /boot/ exists, assuming no: %m");
+-        else
+-                log_debug_errno(errno, "/boot/: %m");
+-        return (cache = false);
+-}
+-
 -static int add_partition_esp(DissectedPartition *p, bool has_xbootldr) {
 -        const char *esp_path = NULL, *id = NULL;
+-        _cleanup_free_ char *options = NULL;
 -        int r;
 -
 -        assert(p);
@@ -82,67 +121,69 @@ index 2e60b82..9446607 100644
 -                return 0;
 -        }
 -
--        /* If /efi exists we'll use that. Otherwise we'll use /boot, as that's usually the better choice, but
--         * only if there's no explicit XBOOTLDR partition around. */
--        if (access("/efi", F_OK) < 0) {
--                if (errno != ENOENT)
--                        return log_error_errno(errno, "Failed to determine whether /efi exists: %m");
--
--                /* Use /boot as fallback, but only if there's no XBOOTLDR partition */
--                if (!has_xbootldr) {
--                        esp_path = "/boot";
--                        id = "boot";
--                }
--        }
--        if (!esp_path)
--                esp_path = "/efi";
--        if (!id)
--                id = "efi";
--
--        /* We create an .automount which is not overridden by the .mount from the fstab generator. */
--        r = fstab_is_mount_point(esp_path);
+-        /* Check if there's an existing fstab entry for ESP. If so, we just skip the gpt-auto logic. */
+-        r = fstab_has_node(p->node);
 -        if (r < 0)
--                return log_error_errno(r, "Failed to parse fstab: %m");
--        if (r > 0) {
--                log_debug("%s specified in fstab, ignoring.", esp_path);
--                return 0;
--        }
--
--        r = path_is_busy(esp_path);
--        if (r < 0)
--                return r;
+-                return log_error_errno(r,
+-                                       "Failed to check if fstab entry for device '%s' exists: %m", p->node);
 -        if (r > 0)
 -                return 0;
 -
--        if (is_efi_boot()) {
--                sd_id128_t loader_uuid;
--
--                /* If this is an EFI boot, be extra careful, and only mount the ESP if it was the ESP used for booting. */
--
--                r = efi_loader_get_device_part_uuid(&loader_uuid);
--                if (r == -ENOENT) {
--                        log_debug("EFI loader partition unknown.");
--                        return 0;
--                }
+-        /* If /boot/ is present, unused, and empty, we'll take that.
+-         * Otherwise, if /efi/ is unused and empty (or missing), we'll take that.
+-         * Otherwise, we do nothing. */
+-        if (!has_xbootldr && slash_boot_exists()) {
+-                r = slash_boot_in_fstab();
 -                if (r < 0)
--                        return log_error_errno(r, "Failed to read ESP partition UUID: %m");
--
--                if (!sd_id128_equal(p->uuid, loader_uuid)) {
--                        log_debug("Partition for %s does not appear to be the partition we are booted from.", p->node);
--                        return 0;
+-                        return r;
+-                if (r == 0) {
+-                        r = path_is_busy("/boot");
+-                        if (r < 0)
+-                                return r;
+-                        if (r == 0) {
+-                                esp_path = "/boot";
+-                                id = "boot";
+-                        }
 -                }
--        } else
--                log_debug("Not an EFI boot, skipping ESP check.");
+-        }
 -
--        return add_automount(id,
--                             p->node,
--                             esp_path,
--                             p->fstype,
--                             /* rw= */ true,
--                             /* growfs= */ false,
--                             esp_or_xbootldr_options(p),
--                             "EFI System Partition Automount",
--                             120 * USEC_PER_SEC);
+-        if (!esp_path) {
+-                r = slash_efi_in_fstab();
+-                if (r < 0)
+-                        return r;
+-                if (r > 0)
+-                        return 0;
+-
+-                r = path_is_busy("/efi");
+-                if (r < 0)
+-                        return r;
+-                if (r > 0)
+-                        return 0;
+-
+-                esp_path = "/efi";
+-                id = "efi";
+-        }
+-
+-        r = partition_pick_mount_options(
+-                        PARTITION_ESP,
+-                        dissected_partition_fstype(p),
+-                        /* rw= */ true,
+-                        /* discard= */ false,
+-                        &options,
+-                        /* ret_ms_flags= */ NULL);
+-        if (r < 0)
+-                return log_error_errno(r, "Failed to determine default mount options for %s: %m", esp_path);
+-
+-        return add_automount(
+-                        id,
+-                        p->node,
+-                        esp_path,
+-                        p->fstype,
+-                        /* rw= */ true,
+-                        /* growfs= */ false,
+-                        options,
+-                        "EFI System Partition Automount",
+-                        120 * USEC_PER_SEC);
 -}
 -#else
 -static int add_partition_esp(DissectedPartition *p, bool has_xbootldr) {
@@ -153,25 +194,75 @@ index 2e60b82..9446607 100644
  static int add_partition_root_rw(DissectedPartition *p) {
          const char *path;
          int r;
-@@ -684,18 +556,6 @@ static int enumerate_partitions(dev_t devnum) {
+@@ -758,57 +589,6 @@ static int add_root_mount(void) {
+ #endif
+ }
+ 
+-static int process_loader_partitions(DissectedPartition *esp, DissectedPartition *xbootldr) {
+-        sd_id128_t loader_uuid;
+-        int r, ret = 0;
+-
+-        assert(esp);
+-        assert(xbootldr);
+-
+-        if (!is_efi_boot()) {
+-                log_debug("Not an EFI boot, skipping loader partition UUID check.");
+-                goto mount;
+-        }
+-
+-        /* Let's check if LoaderDevicePartUUID points to either ESP or XBOOTLDR. We prefer it pointing
+-         * to the ESP, but we accept XBOOTLDR too. If it points to neither of them, don't mount any
+-         * loader partitions, since they are not the ones used for booting. */
+-
+-        r = efi_loader_get_device_part_uuid(&loader_uuid);
+-        if (r == -ENOENT) {
+-                log_debug_errno(r, "EFI loader partition unknown, skipping ESP and XBOOTLDR mounts.");
+-                return 0;
+-        }
+-        if (r < 0)
+-                return log_debug_errno(r, "Failed to read loader partition UUID, ignoring: %m");
+-
+-        if (esp->found && sd_id128_equal(esp->uuid, loader_uuid))
+-                goto mount;
+-
+-        if (xbootldr->found && sd_id128_equal(xbootldr->uuid, loader_uuid)) {
+-                log_debug("LoaderDevicePartUUID points to XBOOTLDR partition.");
+-                goto mount;
+-        }
+-
+-        log_debug("LoaderDevicePartUUID points to neither ESP nor XBOOTLDR, ignoring.");
+-        return 0;
+-
+-mount:
+-        if (xbootldr->found) {
+-                r = add_partition_xbootldr(xbootldr);
+-                if (r < 0)
+-                        ret = r;
+-        }
+-
+-        if (esp->found) {
+-                r = add_partition_esp(esp, xbootldr->found);
+-                if (r < 0)
+-                        ret = r;
+-        }
+-
+-        return ret;
+-}
+-
+ static int enumerate_partitions(dev_t devnum) {
+         _cleanup_(dissected_image_unrefp) DissectedImage *m = NULL;
+         _cleanup_(loop_device_unrefp) LoopDevice *loop = NULL;
+@@ -859,10 +639,6 @@ static int enumerate_partitions(dev_t devnum) {
                          r = k;
          }
  
--        if (m->partitions[PARTITION_XBOOTLDR].found) {
--                k = add_partition_xbootldr(m->partitions + PARTITION_XBOOTLDR);
--                if (k < 0)
--                        r = k;
--        }
--
--        if (m->partitions[PARTITION_ESP].found) {
--                k = add_partition_esp(m->partitions + PARTITION_ESP, m->partitions[PARTITION_XBOOTLDR].found);
--                if (k < 0)
--                        r = k;
--        }
+-        k = process_loader_partitions(m->partitions + PARTITION_ESP, m->partitions + PARTITION_XBOOTLDR);
+-        if (k < 0)
+-                r = k;
 -
          if (m->partitions[PARTITION_HOME].found) {
-                 k = add_partition_mount(m->partitions + PARTITION_HOME, "home", "/home", "Home Partition");
+                 k = add_partition_mount(PARTITION_HOME, m->partitions + PARTITION_HOME, "home", "/home", "Home Partition");
                  if (k < 0)
 -- 
-2.45.2
+2.46.0
 

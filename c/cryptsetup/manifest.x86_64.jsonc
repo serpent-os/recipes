@@ -18,14 +18,19 @@
 				"pkgconfig(uuid)"
 			],
 			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libblkid.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(libdevmapper.so.1.02(x86_64))",
 				"soname(libjson-c.so.5(x86_64))",
+				"soname(libpopt.so.0(x86_64))",
 				"soname(libuuid.so.1(x86_64))"
 			],
 			"files": [
+				"/usr/bin/cryptsetup",
+				"/usr/bin/integritysetup",
+				"/usr/bin/veritysetup",
 				"/usr/lib/libcryptsetup.so.12",
 				"/usr/lib/libcryptsetup.so.12.10.0",
 				"/usr/share/locale/cs/LC_MESSAGES/cryptsetup.mo",
@@ -51,6 +56,9 @@
 			],
 			"name": "cryptsetup",
 			"provides": [
+				"binary(cryptsetup)",
+				"binary(integritysetup)",
+				"binary(veritysetup)",
 				"soname(libcryptsetup.so.12(x86_64))"
 			]
 		},
@@ -70,6 +78,7 @@
 				"pkgconfig(uuid)"
 			],
 			"depends": [
+				"cryptsetup",
 				"pkgconfig(blkid)",
 				"pkgconfig(devmapper)",
 				"pkgconfig(json-c)",
@@ -88,6 +97,6 @@
 		}
 	},
 	"source-name": "cryptsetup",
-	"source-release": "2",
-	"source-version": "2.7.0"
+	"source-release": "3",
+	"source-version": "2.7.4"
 }

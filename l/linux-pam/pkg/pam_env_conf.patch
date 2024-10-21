@@ -1,0 +1,14 @@
+diff --git a/modules/pam_env/pam_env.conf b/modules/pam_env/pam_env.conf
+index 2549e43..1e00cee 100644
+--- a/modules/pam_env/pam_env.conf
++++ b/modules/pam_env/pam_env.conf
+@@ -62,8 +62,7 @@
+ #MANPAGER	DEFAULT=less
+ #LESS		DEFAULT="M q e h15 z23 b80"
+ #NNTPSERVER	DEFAULT=localhost
+-#PATH		DEFAULT=${HOME}/bin:/usr/local/bin:/bin\
+-#:/usr/bin:/usr/local/bin/X11:/usr/bin/X11
++PATH		DEFAULT=${HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin
+ #
+ # silly examples of escaped variables, just to show how they work.
+ #

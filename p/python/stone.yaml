@@ -4,18 +4,20 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : python
-version     : 3.11.2
-release     : 5
+version     : 3.11.9
+release     : 6
 summary     : Python language interpreter
 license     : Python-2.0
 homepage    : https://www.python.org
 description : |
     Python language interpreter
 upstreams   :
-    - https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz: 29e4b8f5f1658542a8c13e2dd277358c9c48f2b2f7318652ef1675e402b9d2af
+    - https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tar.xz: 9b1e896523fc510691126c864406d9360a3d1e986acbda59cda57b5abda45b87
 builddeps   :
+    - gdbm-devel
     - llvm-bolt
     - pkgconfig(bzip2)
+    - pkgconfig(expat)
     - pkgconfig(libcrypt)
     - pkgconfig(libffi)
     - pkgconfig(liblzma)
@@ -24,17 +26,23 @@ builddeps   :
     - pkgconfig(sqlite3)
     - pkgconfig(uuid)
     - pkgconfig(zlib)
+# FIXME: change to auxdeps, needed for python handlers
+#        this is an exception as it doesn't use python macros
+checkdeps   :
+    - binary(python3)
+    - python-packaging
 setup       : |
     %patch %(pkgdir)/serpent/always-install-setuptools.patch
 
-    %configure --disable-ipv6 \
+    %configure \
+        --enable-loadable-sqlite-extensions \
         --enable-lto \
         --enable-optimizations \
         --enable-shared \
         --with-computed-gotos \
         --without-cxx-main \
-        ax_cv_c_float_words_bigendian=no \
-        CFLAGS="${CFLAGS} -I/usr/include/ncurses"
+        --with-system-expat \
+        ax_cv_c_float_words_bigendian=no
 build       : |
     %make
 install     : |

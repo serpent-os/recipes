@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : expat
-version     : 2.6.2
-release     : 4
+version     : 2.6.3
+release     : 5
 summary     : An XML parser library
 license     : MIT
 homepage    : https://libexpat.github.io
 description : |
     An XML parser library
 upstreams   :
-    - https://github.com/libexpat/libexpat/releases/download/R_2_6_2/expat-2.6.2.tar.xz: ee14b4c5d8908b1bec37ad937607eab183d4d9806a08adee472c3c3121d27364
+    - https://github.com/libexpat/libexpat/releases/download/R_2_6_3/expat-2.6.3.tar.xz: 274db254a6979bde5aad404763a704956940e465843f2a9bd9ed7af22e2c0efc
 emul32      : yes
 setup       : |
     %configure --disable-static

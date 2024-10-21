@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : glibmm
-version     : 2.80.0
-release     : 1
+version     : 2.80.1
+release     : 2
 homepage    : https://gtkmm.org
 upstreams   :
-    - https://download.gnome.org/sources/glibmm/2.80/glibmm-2.80.0.tar.xz : 539b0a29e15a96676c4f0594541250566c5ca44da5d4d87a3732fa2d07909e4a
+    - https://download.gnome.org/sources/glibmm/2.80/glibmm-2.80.1.tar.xz : f1a0c0ec514e3774bf993396f17f72106b40912c7d7cc9d10da31ba15517e3f5
 summary     : C++ interface for the GLib library (2.68 ABI)
 description : |
     C++ interface for the GLib library (2.68 ABI)

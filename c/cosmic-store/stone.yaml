@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-store
-version     : "1.0.0-alpha.1"
-release     : 2
+version     : "1.0.0-alpha.2"
+release     : 4
 summary     : Cosmic Desktop Store
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-store
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-store.git : 83866da566eca02592ae359e01d432f92ad99214
+    - git|https://github.com/pop-os/cosmic-store.git : da8c64229f43164c6fa6613087f2284d3caf1721
 description : |
     Cosmic Desktop Store
 builddeps   :
@@ -27,9 +27,8 @@ networking  : yes
 tuning      :
     - lto: thin
 setup       : |
-    sed -e "s@'release'@'debug'@g" -i justfile
     %cargo_fetch
 build       : |
-    %cargo_build --features wgpu,flatpak,logind,rust-embed/debug-embed
+    %cargo_build --features wgpu,flatpak,logind
 install     : |
     CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install

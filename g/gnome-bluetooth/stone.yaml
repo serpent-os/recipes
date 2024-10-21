@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnome-bluetooth
-version     : '46.1'
-release     : 6
+version     : '47.0'
+release     : 7
 homepage    : https://gitlab.gnome.org/GNOME/gnome-bluetooth
 upstreams   :
-    - https://download.gnome.org/sources/gnome-bluetooth/46/gnome-bluetooth-46.1.tar.xz : 56c44a17034598e9607458afae1be75f3de5efdf0e62355f09ba58fc7bc312ac
+    - https://download.gnome.org/sources/gnome-bluetooth/47/gnome-bluetooth-47.0.tar.xz : 7aa406d3cb71152f525bdbc9788e11816204408197b6411c6ee25554bc4cb673
 summary     : GNOME library for interacting with bluez over D-BUS
 description : |
     GNOME library for interacting with bluez over D-BUS
@@ -26,7 +26,6 @@ builddeps   :
     - pkgconfig(libnotify)
     - pkgconfig(libudev)
     - pkgconfig(upower-glib)
-toolchain   : gnu
 setup       : |
     %meson
 build       : |

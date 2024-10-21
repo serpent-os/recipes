@@ -20,6 +20,7 @@
 		},
 		"nspr-32bit": {
 			"depends": [
+				"nspr",
 				"soname(libc.so.6(x86))"
 			],
 			"files": [
@@ -29,12 +30,19 @@
 			],
 			"name": "nspr-32bit",
 			"provides": [
+				"soname(libnspr4.so(386))",
 				"soname(libnspr4.so(x86))",
+				"soname(libplc4.so(386))",
 				"soname(libplc4.so(x86))",
+				"soname(libplds4.so(386))",
 				"soname(libplds4.so(x86))"
 			]
 		},
 		"nspr-32bit-devel": {
+			"depends": [
+				"nspr-32bit",
+				"nspr-devel"
+			],
 			"files": [
 				"/usr/lib32/pkgconfig/nspr.pc"
 			],
@@ -44,6 +52,9 @@
 			]
 		},
 		"nspr-devel": {
+			"depends": [
+				"nspr"
+			],
 			"files": [
 				"/usr/bin/compile-et.pl",
 				"/usr/bin/nspr-config",
@@ -129,13 +140,13 @@
 			"name": "nspr-devel",
 			"provides": [
 				"binary(compile-et.pl)",
-				"pkgconfig(nspr)",
 				"binary(nspr-config)",
-				"binary(prerr.properties)"
+				"binary(prerr.properties)",
+				"pkgconfig(nspr)"
 			]
 		}
 	},
 	"source-name": "nspr",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "4.35"
 }

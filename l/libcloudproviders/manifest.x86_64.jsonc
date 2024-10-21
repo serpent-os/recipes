@@ -17,7 +17,7 @@
 			"files": [
 				"/usr/lib/girepository-1.0/CloudProviders-0.3.typelib",
 				"/usr/lib/libcloudproviders.so.0",
-				"/usr/lib/libcloudproviders.so.0.3.4",
+				"/usr/lib/libcloudproviders.so.0.3.6",
 				"/usr/share/gir-1.0/CloudProviders-0.3.gir",
 				"/usr/share/vala/vapi/cloudproviders.deps",
 				"/usr/share/vala/vapi/cloudproviders.vapi"
@@ -32,6 +32,9 @@
 				"binary(vapigen)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)"
+			],
+			"depends": [
+				"libcloudproviders"
 			],
 			"files": [
 				"/usr/include/cloudproviders/cloudproviders.h",
@@ -51,6 +54,6 @@
 		}
 	},
 	"source-name": "libcloudproviders",
-	"source-release": "1",
-	"source-version": "0.3.4"
+	"source-release": "2",
+	"source-version": "0.3.6"
 }

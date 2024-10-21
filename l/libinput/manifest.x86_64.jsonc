@@ -23,6 +23,7 @@
 				"/usr/lib/libinput.so.10",
 				"/usr/lib/libinput.so.10.13.0",
 				"/usr/lib/libinput/libinput-analyze",
+				"/usr/lib/libinput/libinput-analyze-buttons",
 				"/usr/lib/libinput/libinput-analyze-per-slot-delta",
 				"/usr/lib/libinput/libinput-analyze-recording",
 				"/usr/lib/libinput/libinput-analyze-touch-down-state",
@@ -55,7 +56,9 @@
 				"/usr/share/libinput/30-vendor-cypress.quirks",
 				"/usr/share/libinput/30-vendor-elantech.quirks",
 				"/usr/share/libinput/30-vendor-glorious.quirks",
+				"/usr/share/libinput/30-vendor-huion.quirks",
 				"/usr/share/libinput/30-vendor-ibm.quirks",
+				"/usr/share/libinput/30-vendor-ite.quirks",
 				"/usr/share/libinput/30-vendor-kensington.quirks",
 				"/usr/share/libinput/30-vendor-logitech.quirks",
 				"/usr/share/libinput/30-vendor-madcatz.quirks",
@@ -65,6 +68,7 @@
 				"/usr/share/libinput/30-vendor-razer.quirks",
 				"/usr/share/libinput/30-vendor-synaptics.quirks",
 				"/usr/share/libinput/30-vendor-trust.quirks",
+				"/usr/share/libinput/30-vendor-uniwill.quirks",
 				"/usr/share/libinput/30-vendor-vmware.quirks",
 				"/usr/share/libinput/30-vendor-wacom.quirks",
 				"/usr/share/libinput/50-system-acer.quirks",
@@ -82,12 +86,15 @@
 				"/usr/share/libinput/50-system-hp.quirks",
 				"/usr/share/libinput/50-system-huawei.quirks",
 				"/usr/share/libinput/50-system-lenovo.quirks",
+				"/usr/share/libinput/50-system-lg.quirks",
+				"/usr/share/libinput/50-system-minisforum.quirks",
 				"/usr/share/libinput/50-system-pine64.quirks",
 				"/usr/share/libinput/50-system-sony.quirks",
 				"/usr/share/libinput/50-system-starlabs.quirks",
 				"/usr/share/libinput/50-system-system76.quirks",
 				"/usr/share/libinput/50-system-toshiba.quirks",
 				"/usr/share/libinput/50-system-vaio.quirks",
+				"/usr/share/man/man1/libinput-analyze-buttons.1",
 				"/usr/share/man/man1/libinput-analyze-per-slot-delta.1",
 				"/usr/share/man/man1/libinput-analyze-recording.1",
 				"/usr/share/man/man1/libinput-analyze-touch-down-state.1",
@@ -124,6 +131,9 @@
 				"pkgconfig(libwacom)",
 				"pkgconfig(mtdev)"
 			],
+			"depends": [
+				"libinput"
+			],
 			"files": [
 				"/usr/include/libinput.h",
 				"/usr/lib/libinput.so",
@@ -136,6 +146,6 @@
 		}
 	},
 	"source-name": "libinput",
-	"source-release": "2",
-	"source-version": "1.25.0"
+	"source-release": "3",
+	"source-version": "1.26.2"
 }

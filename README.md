@@ -5,48 +5,72 @@ from source.
 
 [![Repository status](https://repology.org/badge/repository-big/serpentos.svg)](https://repology.org/repository/serpentos)
 
-## Quick start for boulder (Serpent OS native)
+## Quick start for boulder
 
-Obviously, if your name isn't Ikey, then use your own `$USERNAME`
+`boulder` and `moss` rely on so-called `subuid` and `subgid` support.
+If you do not already have this set up for your user in `/etc/subuid` and `/etc/subuid`, run this:
 
-### /etc/subuid (`userns`)
+```bash
+$ sudo touch /etc/sub{uid,gid}
+$ sudo usermod --add-subuids 1000000-1065535 --add-subgids 1000000-1065535 root
+$ sudo usermod --add-subuids 1065536-1131071 --add-subgids 1065536-1131071 "$USER"
+```
 
-    ikey:100000:65536
+### Non-Serpent OS hosts
 
-### /etc/subgid (`userns`)
+If you are not building on Serpent OS, you're going to have to install `boulder` first.
+See [its readme][moss-boulder-readme] for instructions.
 
-    ikey:100000:65536
+[moss-boulder-readme]: https://github.com/serpent-os/moss?tab=readme-ov-file#onboarding
 
-### Local repository
+### Add a local repository
 
 Our `justfile` defaults to `local-x86_64` profile with boulder. While we traditionally shipped this pre-enabled configuration, we figured that mandating
 `root`-user and world-accessible directories was generally a Bad Move.
 
 **Create an empty local repository**
 
-```bash
-$ mkdir ~/.local_repo && cd ~/.local_repo
-$ moss index .
-```
-
-**Create a profile**
-
-We'll add the (unversioned) volatile repository at the bottom layer, and elevate
-our local repository priority to take precedence.
+The path you use for this doesn't matter much, as long as the user account you want to use
+to run `boulder` has read/write access to it.
 
 ```bash
-$ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file:///$HOME/.local_repo/stone.index,priority=10
+# Set up an XDG compliant local_repo w/explicit architecture
+$ mkdir -pv ~/.cache/local_repo/x86_64/
+$ moss index ~/.cache/local_repo/x86_64/
 ```
 
-**Create a `.env` file**
+**Add the local repository to the repositories known to `moss`**
 
-If you are not building on Serpent OS using the os-supplied boulder package, or if you want to specify custom arguments to the boulder invocation when using the `just` targets,
-you might benefit from creating a `.env` file in the root of the `recipes/` directory, next to the supplied `justfile`.
+If you're on Serpent OS, you will want to make the local repository available for package
+installation.
+
+To do so, run the following command:
+
+```bash
+$ sudo moss repo add local file://${HOME}/.cache/local_repo/x86_64/stone.index -p 10
+```
+
+**Create a boulder build profile**
+
+We'll add the (unversioned) volatile repository¹ at the bottom layer, and elevate our
+local repository priority to take precedence.
+
+```bash
+$ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file://${HOME}/.cache/local_repo/x86_64/stone.index,priority=10
+```
+
+¹ the current one and only official online repository that you usually get all your packages from
+
+**Specifying `just` default variables in the `.env` file**
+
+Create a `.env` file in the root of the `recipes/` directory, next to the supplied `justfile`.
 
 _Example `.env` file:_
 
-    BOULDER="${HOME}/.local/bin/boulder"
-    BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder --config-dir=${HOME}/.config/boulder --moss-root=${HOME}/.cache/boulder"
+    # All installs need a default local repository set up for convenience
+    # If you're awkward and want to use a different path than the default,
+    # uncomment and change it below:
+    # LOCAL_REPO="${HOME}/.cache/local_repo/x86_64"
 
 The `justfile` is set up so you can also choose to specify either of the above environment variables on a command-line invocation of `just`:
 
@@ -54,7 +78,18 @@ _Example:_
 
     BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder" just build
 
-### Go go go
+**Overriding default boulder arguments**
+
+If you are not building on Serpent OS using the os-supplied boulder package, or if you want to specify custom arguments
+to the boulder invocation when using the `just` targets, you might benefit from adding some or all of the following options
+to your `.env` file in recipes/ root next to the `justfile`:
+
+    # Uncomment this if you want to use a different boulder than the one in /usr/bin
+    # BOULDER="${HOME}/.local/bin/boulder"
+    # Uncomment this if you want to explicitly override the shipped boulder configuration
+    # BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder --config-dir=${HOME}/.config/boulder --moss-root=${HOME}/.cache/boulder"
+
+## Go go go
 
 Well, actually Rust.. Anyway, quickly try to `pushd m/m4/ && just build` or `pushd n/nano && just build` for a quick and easy confirmation that everything works OK.
 
@@ -68,6 +103,12 @@ To keep git summaries readable, serpent-os requires the following git summary fo
 - `name: [NFC] <description of no functional change>`
 
 The use of the `Initial inclusion` verbiage is _strongly discouraged_.
+
+## Using `jq`
+
+We provide `.jsonc` (JSON with comments) manifest files, the popular `jq` tool doesn't currently support `.jsonc` files; however, you can use the C preprocessor to strip any comments before passing to `jq` e.g.
+
+`cpp -P -E manifest.x86_64.jsonc | jq .packages`
 
 ## Current focus
 

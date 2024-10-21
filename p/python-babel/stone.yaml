@@ -4,21 +4,19 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : python-babel
-version     : 2.11.0
-release     : 1
+version     : 2.16.0
+release     : 2
 summary     : Internationalization utilities for Python
 license     : BSD-3-Clause
 homepage    : https://github.com/python-babel/babel
 description : |
     A collection of tools for internationalizing Python applications.
 upstreams   :
-    - https://files.pythonhosted.org/packages/source/B/Babel/Babel-2.11.0.tar.gz: 5ef4b3226b0180dedded4229651c8b0e1a3a6a2837d45a073272f313e4cf97f6
+    - https://files.pythonhosted.org/packages/source/b/babel/babel-2.16.0.tar.gz: d1f3554ca26605fe173f3de0c65f750f5a42f924499bf134de6423582298e316
 # checkdeps   :
 #     - python-freezegun
 #     - python-pytest
 #     - python-pytz
-rundeps     :
-    - python-pytz
 build       : |
     %python_setup
 install     : |
