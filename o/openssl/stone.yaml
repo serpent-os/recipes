@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : openssl
-version     : 3.1.6
-release     : 16
+version     : 3.3.2
+release     : 17
 summary     : OpenSSL cryptography library
 license     : Apache-2.0
 homepage    : https://www.openssl.org
 description : |
     OpenSSL cryptography library.
 upstreams   :
-    - https://www.openssl.org/source/openssl-3.1.6.tar.gz: 5d2be4036b478ef3cb0a854ca9b353072c3a0e26d8a56f8f0ab9fb6ed32d38d7
+    - https://www.openssl.org/source/openssl-3.3.2.tar.gz: 2e8a40b01979afe8be0bbfb3de5dc1c6709fedb46d6c89c10da114ab5fc3d281
 builddeps   :
     - pkgconfig(zlib)
     - perl
