@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : fakeroot
-version     : '1.32.2'
-release     : 3
+version     : '1.36'
+release     : 4
 homepage    : https://packages.debian.org/fakeroot
 upstreams   :
-    - https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.32.2.orig.tar.gz : f0f72b504f288eea5b043cd5fe37585bc163f5acaacd386e1976b1055686116d
+    - https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.36.orig.tar.gz : 7fe3cf3daf95ee93b47e568e85f4d341a1f9ae91766b4f9a9cdc29737dea4988
 summary     : Tool for simulating super-user privileges
 description : |
     Tool for simulating super-user privileges
