@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gjs
-version     : 1.82.0
-release     : 4
+version     : 1.82.1
+release     : 5
 homepage    : https://gitlab.gnome.org/GNOME/gjs
 upstreams   :
-    - https://download.gnome.org/sources/gjs/1.82/gjs-1.82.0.tar.xz : 14490236868d0bf822f7aa7cf38fcd333e7620760fdcf50e932423611f626623
+    - https://download.gnome.org/sources/gjs/1.82/gjs-1.82.1.tar.xz : fb39aa5636576de0e5a1171f56a1a5825e2bd1a69972fb120ba78bd109b5693c
 summary     : GNOME Javascript Bindings
 description : |
     GNOME JavaScript bindings and `gjs` interpreter

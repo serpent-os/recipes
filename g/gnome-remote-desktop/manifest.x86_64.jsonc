@@ -32,7 +32,7 @@
 				"pkgconfig(tss2-rc)",
 				"pkgconfig(tss2-tctildr)",
 				"pkgconfig(winpr3)",
-				"pkgconfig(wireplumber-0.4)",
+				"pkgconfig(wireplumber-0.5)",
 				"pkgconfig(xkbcommon)"
 			],
 			"depends": [
@@ -92,6 +92,6 @@
 		}
 	},
 	"source-name": "gnome-remote-desktop",
-	"source-release": "3",
-	"source-version": "47.0"
+	"source-release": "4",
+	"source-version": "47.1"
 }

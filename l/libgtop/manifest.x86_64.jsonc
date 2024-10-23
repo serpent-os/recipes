@@ -127,6 +127,7 @@
 				"pkgconfig(x11)"
 			],
 			"depends": [
+				"libgtop",
 				"pkgconfig(glib-2.0)"
 			],
 			"files": [
@@ -243,6 +244,6 @@
 		}
 	},
 	"source-name": "libgtop",
-	"source-release": "1",
-	"source-version": "2.41.2"
+	"source-release": "2",
+	"source-version": "2.41.3"
 }

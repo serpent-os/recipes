@@ -1,0 +1,6 @@
+releases:
+  id: 4194
+security:
+  cpe:
+  - vendor: gnome
+    product: librest
