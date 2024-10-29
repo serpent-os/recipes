@@ -1,0 +1,51 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libdvdread": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libdvdread.so.8",
+				"/usr/lib/libdvdread.so.8.0.0",
+				"/usr/share/doc/libdvdread/AUTHORS",
+				"/usr/share/doc/libdvdread/COPYING",
+				"/usr/share/doc/libdvdread/ChangeLog",
+				"/usr/share/doc/libdvdread/NEWS",
+				"/usr/share/doc/libdvdread/README.md",
+				"/usr/share/doc/libdvdread/TODO"
+			],
+			"name": "libdvdread",
+			"provides": [
+				"soname(libdvdread.so.8(x86_64))"
+			]
+		},
+		"libdvdread-devel": {
+			"depends": [
+				"libdvdread"
+			],
+			"files": [
+				"/usr/include/dvdread/bitreader.h",
+				"/usr/include/dvdread/dvd_reader.h",
+				"/usr/include/dvdread/dvd_udf.h",
+				"/usr/include/dvdread/ifo_print.h",
+				"/usr/include/dvdread/ifo_read.h",
+				"/usr/include/dvdread/ifo_types.h",
+				"/usr/include/dvdread/nav_print.h",
+				"/usr/include/dvdread/nav_read.h",
+				"/usr/include/dvdread/nav_types.h",
+				"/usr/include/dvdread/version.h",
+				"/usr/lib/libdvdread.so",
+				"/usr/lib/pkgconfig/dvdread.pc"
+			],
+			"name": "libdvdread-devel",
+			"provides": [
+				"pkgconfig(dvdread)"
+			]
+		}
+	},
+	"source-name": "libdvdread",
+	"source-release": "1",
+	"source-version": "6.1.3"
+}
