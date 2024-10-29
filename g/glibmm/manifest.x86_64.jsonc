@@ -100,6 +100,9 @@
 			"depends": [
 				"glibmm",
 				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmodule-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(sigc++-3.0)"
 			],
@@ -510,6 +513,6 @@
 		}
 	},
 	"source-name": "glibmm",
-	"source-release": "2",
-	"source-version": "2.80.1"
+	"source-release": "3",
+	"source-version": "2.82.0"
 }
