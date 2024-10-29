@@ -1,5 +1,5 @@
 [org.gnome.desktop.interface]
 accent-color='purple'
-color-scheme='prefer-dark'
+color-scheme='default'
 icon-theme='Adwaita'
 monospace-font-name = "Hack 10"
