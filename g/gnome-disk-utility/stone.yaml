@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-disk-utility
+version     : 46.1
+release     : 1
+homepage    : https://wiki.gnome.org/Apps/Disks
+upstreams   :
+    - https://download.gnome.org/sources/gnome-disk-utility/46/gnome-disk-utility-46.1.tar.xz : c24e9439a04d70bcfae349ca134c7005435fe2b6f452114df878bff0b89bbffe
+summary     : Disk management application for GNOME
+description : |
+    gnome-disk-utility provides libraries and applications for dealing with storage devices.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(gtk-update-icon-cache)
+    - binary(msgfmt)
+    - binary(update-desktop-database)
+    - binary(xsltproc)
+    - docbook
+    - pkgconfig(dvdread)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(libcanberra-gtk3)
+    - pkgconfig(libhandy-1)
+    - pkgconfig(liblzma)
+    - pkgconfig(libnotify)
+    - pkgconfig(libsecret-1)
+    - pkgconfig(libsystemd)
+    - pkgconfig(pwquality)
+    - pkgconfig(udisks2)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
