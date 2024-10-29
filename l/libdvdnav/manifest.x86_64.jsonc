@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libdvdnav": {
+			"build-depends": [
+				"pkgconfig(dvdread)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libdvdread.so.8(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libdvdnav.so.4",
+				"/usr/lib/libdvdnav.so.4.3.0",
+				"/usr/share/doc/libdvdnav/AUTHORS",
+				"/usr/share/doc/libdvdnav/COPYING",
+				"/usr/share/doc/libdvdnav/ChangeLog",
+				"/usr/share/doc/libdvdnav/README",
+				"/usr/share/doc/libdvdnav/TODO"
+			],
+			"name": "libdvdnav",
+			"provides": [
+				"soname(libdvdnav.so.4(x86_64))"
+			]
+		},
+		"libdvdnav-devel": {
+			"build-depends": [
+				"pkgconfig(dvdread)"
+			],
+			"depends": [
+				"libdvdnav",
+				"pkgconfig(dvdread)"
+			],
+			"files": [
+				"/usr/include/dvdnav/dvd_types.h",
+				"/usr/include/dvdnav/dvdnav.h",
+				"/usr/include/dvdnav/dvdnav_events.h",
+				"/usr/include/dvdnav/version.h",
+				"/usr/lib/libdvdnav.so",
+				"/usr/lib/pkgconfig/dvdnav.pc"
+			],
+			"name": "libdvdnav-devel",
+			"provides": [
+				"pkgconfig(dvdnav)"
+			]
+		}
+	},
+	"source-name": "libdvdnav",
+	"source-release": "1",
+	"source-version": "6.1.1"
+}
