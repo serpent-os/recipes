@@ -5,9 +5,9 @@
 #
 name        : openssh
 version     : "9.3p1"
-release     : 5
+release     : 6
 summary     : OpenSSH (OpenBSD Secure Shell)
-license     : 
+license     :
     - BSD-2-Clause
     - BSD-3-Clause
     - ISC
@@ -38,6 +38,7 @@ setup       : |
     %patch %(pkgdir)/stateless/0007-Make-OpenSSH-print-a-MOTD-file-in-usr-share-defaults.patch
     %patch %(pkgdir)/stateless/0008-Update-sshd_config-to-reflect-UsePAM-yes-default.patch
     %patch %(pkgdir)/stateless/statelessconfig.patch
+    %patch %(pkgdir)/openssl303.patch
 
     # --disable-strip is specified because we want the build toolchain to do it instead
     %reconfigure --sysconfdir=/etc/ssh \
@@ -60,11 +61,11 @@ install     : |
     %install_file %(pkgdir)/sshd*.service -t %(installroot)/%(libdir)/systemd/system/
 
     # PAM configuration
-    %install_file %(pkgdir)/sshd.pam %(installroot)/%(vendordir)/pam.d/sshd
+    %install_file %(pkgdir)/sshd.pam %(installroot)/%(vendordir)%(sysconfdir)/pam.d/sshd
 
     # Statelessness
     %install_dir %(installroot)/%(vendordir)/
-    mv %(installroot)/etc/ssh %(installroot)/%(vendordir)/
+    mv %(installroot)/etc/ssh %(installroot)/%(vendordir)%(sysconfdir)/.
     rmdir %(installroot)/etc
     rmdir %(installroot)/var/empty
     rmdir %(installroot)/var/
