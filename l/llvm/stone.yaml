@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
 version     : 18.1.8
-release     : 13
+release     : 14
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -78,6 +78,9 @@ setup       : |
     %patch %(pkgdir)/serpent/0001-Emit-relocations-for-BOLT.patch
     %patch %(pkgdir)/serpent/0003-PATCH-clang-Don-t-install-static-libraries.patch
     %patch %(pkgdir)/serpent/ignore-werror.patch
+    %patch %(pkgdir)/llvm-SelectionDAG.patch
+    %patch %(pkgdir)/0016-llvm-exegesis-Use-correct-rseq-struct-size-100804.patch
+    %patch %(pkgdir)/99574.patch
 
     %cmake -S llvm \
            -C clang/cmake/caches/PGO.cmake \
