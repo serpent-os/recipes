@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : firefox
-version     : '129.0'
-release     : 9
+version     : 132.0
+release     : 10
 homepage    : https://www.mozilla.org/
 upstreams   :
-    - https://ftp.mozilla.org/pub/firefox/releases/129.0/source/firefox-129.0.source.tar.xz : 4b9ff955de7099f09aa1f00985e34695fa1a911e56c2d46cb4d60c3bff3d9174
+    - https://ftp.mozilla.org/pub/firefox/releases/132.0/source/firefox-132.0.source.tar.xz : 8908b144895b354460c6975291b75ea804b07bf9bb0ee386eafeaf3c82c55c7e
 summary     : Firefox web browser
 description : |
     Firefox web browser
@@ -16,6 +16,7 @@ license     : MPL-2.0
 builddeps   :
     - binary(cbindgen)
     - binary(cc)
+    - binary(g++)
     - binary(m4)
     - binary(make)
     - binary(nasm)
@@ -24,7 +25,6 @@ builddeps   :
     - binary(python3)
     - binary(rustc)
     - binary(unzip)
-    - gcc-devel
     - pkgconfig(alsa)
     - pkgconfig(gtk+-3.0)
     - pkgconfig(ice)
@@ -45,6 +45,8 @@ rundeps     :
 environment : |
     export MOZ_NOSPAM=1
     export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+    # Not working with libc++ 18, reevaluate with LLVM 19
+    export CXXFLAGS="${CXXFLAGS} -stdlib=libstdc++"
 setup       : |
     %patch %(pkgdir)/icu74.patch
     %install_file %(pkgdir)/mozconfig .
