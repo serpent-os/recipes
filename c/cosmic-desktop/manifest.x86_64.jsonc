@@ -10,6 +10,7 @@
 				"binary(cosmic-edit)",
 				"binary(cosmic-files)",
 				"binary(cosmic-greeter)",
+				"binary(cosmic-idle)",
 				"binary(cosmic-launcher)",
 				"binary(cosmic-notifications)",
 				"binary(cosmic-osd)",
@@ -38,6 +39,6 @@
 		}
 	},
 	"source-name": "cosmic-desktop",
-	"source-release": "5",
-	"source-version": "1.0.0-alpha.2"
+	"source-release": "6",
+	"source-version": "1.0.0-alpha.3"
 }

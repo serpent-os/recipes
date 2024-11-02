@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-desktop
-version     : "1.0.0-alpha.2"
-release     : 5
+version     : "1.0.0-alpha.3"
+release     : 6
 summary     : Cosmic Desktop Metapackage
 license     : GPL-3.0
 homepage    : https://system76.com/cosmic
@@ -18,6 +18,7 @@ rundeps     :
     - binary(cosmic-edit)
     - binary(cosmic-files)
     - binary(cosmic-greeter)
+    - binary(cosmic-idle)
     - binary(cosmic-launcher)
     - binary(cosmic-notifications)
     - binary(cosmic-osd)
