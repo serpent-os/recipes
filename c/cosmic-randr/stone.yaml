@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-randr
-version     : "1.0.0-alpha.2"
-release     : 5
+version     : "1.0.0-alpha.3"
+release     : 6
 summary     : Cosmic Desktop display configuration
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-randr
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-randr.git : 71fabbb382fa8cf750f50fb77c4ba014bff80056
+    - git|https://github.com/pop-os/cosmic-randr.git : 8d0938029f223016fde11aef4c5233ddbfdb2796
 description : |
     Cosmic Desktop display configuration
 builddeps   :
