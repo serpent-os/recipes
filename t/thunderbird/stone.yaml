@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : thunderbird
-version     : 128.1.0esr
-release     : 7
+version     : 128.4.0esr
+release     : 8
 homepage    : https://www.thunderbird.net/
 upstreams   :
-    - https://download.serpentos.com/howdoiwebserver/thunderbird-128.1.0esr.source.tar.xz : a61e21b93fd9c3f97fa73d52108ad0fcf9ab2e58e5ecaeefb9b6666e6ff8edf3
+    - https://releases.mozilla.org/pub/thunderbird/releases/128.4.0esr/source/thunderbird-128.4.0esr.source.tar.xz : 81f43a2680412a6afdb5fdf6b8296c92d0d6812892399b174723c4f753d5429f
 summary     : Thunderbird Email Client
 description : |
     Thunderbird Email Client
@@ -16,6 +16,7 @@ license     : MPL-2.0
 builddeps   :
     - binary(cbindgen)
     - binary(cc)
+    - binary(g++)
     - binary(m4)
     - binary(make)
     - binary(nasm)
@@ -24,7 +25,6 @@ builddeps   :
     - binary(python3)
     - binary(rustc)
     - binary(unzip)
-    - gcc-devel
     - pkgconfig(alsa)
     - pkgconfig(gtk+-3.0)
     - pkgconfig(ice)
@@ -45,6 +45,8 @@ rundeps     :
 environment : |
     export MOZ_NOSPAM=1
     export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+    # Not working with libc++ 18, reevaluate with LLVM 19
+    export CXXFLAGS="${CXXFLAGS} -stdlib=libstdc++"
 setup       : |
     %patch %(pkgdir)/icu74.patch
     %install_file %(pkgdir)/mozconfig .

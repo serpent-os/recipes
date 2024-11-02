@@ -6,6 +6,7 @@
 			"build-depends": [
 				"binary(cbindgen)",
 				"binary(cc)",
+				"binary(g++)",
 				"binary(m4)",
 				"binary(make)",
 				"binary(nasm)",
@@ -14,7 +15,6 @@
 				"binary(python3)",
 				"binary(rustc)",
 				"binary(unzip)",
-				"gcc-devel",
 				"pkgconfig(alsa)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(ice)",
@@ -70,6 +70,7 @@
 				"soname(libplds4.so(x86_64))",
 				"soname(libsmime3.so(x86_64))",
 				"soname(libssl3.so(x86_64))",
+				"soname(libstdc++.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
 				"soname(libvpx.so.9(x86_64))",
 				"soname(libwebp.so.7(x86_64))",
@@ -155,6 +156,6 @@
 		}
 	},
 	"source-name": "thunderbird",
-	"source-release": "7",
-	"source-version": "128.1.0esr"
+	"source-release": "8",
+	"source-version": "128.4.0esr"
 }
