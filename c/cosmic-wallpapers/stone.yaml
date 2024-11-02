@@ -4,21 +4,17 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-wallpapers
-version     : "1.0.0-alpha.2"
-release     : 3
+version     : "1.0.0-alpha.3"
+release     : 4
 summary     : Cosmic Desktop Wallpapers
 license     : CC-BY-4.0
 homepage    : https://github.com/pop-os/cosmic-wallpapers
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-wallpapers.git : 0f2f16dc39ff1281a56680e37719e98a1bc8cb99
+    - git|https://github.com/pop-os/cosmic-wallpapers.git : cb8e6d653b5062e046e83b4670c3d9944fa39c39
     - https://media.githubusercontent.com/media/pop-os/cosmic-wallpapers/0f2f16dc39ff1281a56680e37719e98a1bc8cb99/original/A_stormy_stellar_nursery_esa_379309.jpg:
         unpack: false
         hash: a76cfb42a0b33e4dee7e977ea97ab892bc0d10e03bc5a7261a5570928cd014aa
         rename: A_stormy_stellar_nursery_esa_379309.jpg
-    - https://media.githubusercontent.com/media/pop-os/cosmic-wallpapers/0f2f16dc39ff1281a56680e37719e98a1bc8cb99/original/meerKAT_milky_way_center_saroa.jpg:
-        unpack: false
-        hash: 7e4ac2a8ac6e0bb6c0cda216e9541e613359e6c4f6799e16cb41f787ca476b61
-        rename: meerKAT_milky_way_center_saroa.jpg
     - https://media.githubusercontent.com/media/pop-os/cosmic-wallpapers/0f2f16dc39ff1281a56680e37719e98a1bc8cb99/original/orion_nebula_nasa_heic0601a.jpg:
         unpack: false
         hash: 7500f702f0488d4a8df2c5abeb7ca9107a7ca7998e0441727cbaf79465b02388
