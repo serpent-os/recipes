@@ -5,7 +5,7 @@
 #
 name        : firefox
 version     : 132.0
-release     : 10
+release     : 11
 homepage    : https://www.mozilla.org/
 upstreams   :
     - https://ftp.mozilla.org/pub/firefox/releases/132.0/source/firefox-132.0.source.tar.xz : 8908b144895b354460c6975291b75ea804b07bf9bb0ee386eafeaf3c82c55c7e
@@ -41,6 +41,7 @@ builddeps   :
     - pkgconfig(vpx)
     - pkgconfig(zlib)
 rundeps     :
+    - ffmpeg
     - xdg-desktop-portal
 environment : |
     export MOZ_NOSPAM=1
