@@ -119,7 +119,8 @@
 				"/usr/share/icons/hicolor/scalable/status/cosmic-applet-bluetooth-disabled-symbolic.svg",
 				"/usr/share/icons/hicolor/scalable/status/cosmic-applet-notification-disabled-symbolic.svg",
 				"/usr/share/icons/hicolor/scalable/status/cosmic-applet-notification-new-symbolic.svg",
-				"/usr/share/icons/hicolor/scalable/status/cosmic-applet-notification-symbolic.svg"
+				"/usr/share/icons/hicolor/scalable/status/cosmic-applet-notification-symbolic.svg",
+				"/usr/share/metainfo/com.system76.CosmicApplets.metainfo.xml"
 			],
 			"name": "cosmic-applets",
 			"provides": [
@@ -142,6 +143,6 @@
 		}
 	},
 	"source-name": "cosmic-applets",
-	"source-release": "8",
-	"source-version": "1.0.0-alpha.2"
+	"source-release": "9",
+	"source-version": "1.0.0-alpha.3"
 }
