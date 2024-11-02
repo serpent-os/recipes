@@ -114,6 +114,8 @@
 				"/usr/share/icons/Cosmic/scalable/actions/media-seek-forward-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/actions/media-skip-backward-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/actions/media-skip-forward-symbolic.svg",
+				"/usr/share/icons/Cosmic/scalable/actions/navbar-closed-symbolic.svg",
+				"/usr/share/icons/Cosmic/scalable/actions/navbar-open-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/actions/notification-alert-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/actions/object-flip-horizontal-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/actions/object-flip-vertical-symbolic.svg",
@@ -616,6 +618,6 @@
 		}
 	},
 	"source-name": "cosmic-icons",
-	"source-release": "7",
-	"source-version": "1.0.0-alpha.2"
+	"source-release": "8",
+	"source-version": "1.0.0-alpha.3"
 }
