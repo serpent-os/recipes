@@ -35,6 +35,7 @@
 				"/usr/share/applications/com.system76.CosmicSettings.Input.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Keyboard.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Mouse.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Network.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Notifications.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Panel.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Power.desktop",
@@ -163,6 +164,6 @@
 		}
 	},
 	"source-name": "cosmic-settings",
-	"source-release": "8",
-	"source-version": "1.0.0-alpha.2"
+	"source-release": "9",
+	"source-version": "1.0.0-alpha.3"
 }
