@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : pop-os-launcher
-version     : "1.2.3"
+version     : "1.2.4"
 release     : 5
 summary     : Pop!_OS Launcher
 license     : MPL-2.0
 homepage    : https://github.com/pop-os/pop-os-launcher
 upstreams   :
-    - git|https://github.com/pop-os/launcher.git : 6a1b8b9ad0563693136872809dac2a30fb7d633f
+    - git|https://github.com/pop-os/launcher.git : fca3b25552deca3bd64de8bfd1ebb38c45e4fb39
 description : |
     Pop!_OS Application Launcher
 builddeps   :
