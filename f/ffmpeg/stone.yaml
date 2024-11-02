@@ -1,0 +1,73 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ffmpeg
+version     : 7.1
+release     : 1
+homepage    : https://ffmpeg.org/releases
+upstreams   :
+    - https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz : 40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6
+summary     : FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.
+description : |
+    FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.
+    It includes libavcodec - the leading audio/video codec library.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+    - LGPL-3.0
+builddeps   :
+    - binary(nasm)
+    - lame-devel
+    - pkgconfig(fdk-aac)
+    - pkgconfig(fontconfig)
+    - pkgconfig(freetype2)
+    - pkgconfig(libjpeg)
+    - pkgconfig(liblzma)
+    - pkgconfig(libpng)
+    - pkgconfig(libpulse)
+    - pkgconfig(libssl)
+    - pkgconfig(libwebp)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(opus)
+    - pkgconfig(sndio)
+    - pkgconfig(vorbis)
+    - pkgconfig(vpx)
+    - pkgconfig(vulkan)
+    - pkgconfig(x11)
+    - pkgconfig(xcb)
+tuning      :
+    - lto: thin
+    - optimize: speed
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/ffmpeg/examples
+            - /usr/share/man/man3
+setup       : |
+    ./configure --prefix=%(prefix) \
+                --enable-shared \
+                --disable-static \
+                --cc=%(cc) \
+                --cxx=%(cxx) \
+                --ld=%(cxx) \
+                --nm=%(nm) \
+                --strip=%(strip) \
+                --extra-libs=-lpthread \
+                --enable-gpl \
+                --enable-nonfree \
+                --enable-openssl \
+                --enable-libopus \
+                --enable-libvorbis \
+                --enable-libfdk-aac \
+                --enable-libmp3lame \
+                --enable-libvpx \
+                --enable-libfreetype \
+                --enable-libfontconfig \
+                --enable-libpulse \
+                --enable-libwebp
+build       : |
+    %make
+install     : |
+    %make_install
