@@ -115,6 +115,9 @@
 				"/usr/share/defaults/etc/ssl/certs/Sectigo_Public_Server_Authentication_Root_E46.pem",
 				"/usr/share/defaults/etc/ssl/certs/Sectigo_Public_Server_Authentication_Root_R46.pem",
 				"/usr/share/defaults/etc/ssl/certs/SecureSign_RootCA11.pem",
+				"/usr/share/defaults/etc/ssl/certs/SecureSign_Root_CA12.pem",
+				"/usr/share/defaults/etc/ssl/certs/SecureSign_Root_CA14.pem",
+				"/usr/share/defaults/etc/ssl/certs/SecureSign_Root_CA15.pem",
 				"/usr/share/defaults/etc/ssl/certs/SecureTrust_CA.pem",
 				"/usr/share/defaults/etc/ssl/certs/Secure_Global_CA.pem",
 				"/usr/share/defaults/etc/ssl/certs/Security_Communication_ECC_RootCA1.pem",
@@ -128,6 +131,7 @@
 				"/usr/share/defaults/etc/ssl/certs/T-TeleSec_GlobalRoot_Class_2.pem",
 				"/usr/share/defaults/etc/ssl/certs/T-TeleSec_GlobalRoot_Class_3.pem",
 				"/usr/share/defaults/etc/ssl/certs/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem",
+				"/usr/share/defaults/etc/ssl/certs/TWCA_CYBER_Root_CA.pem",
 				"/usr/share/defaults/etc/ssl/certs/TWCA_Global_Root_CA.pem",
 				"/usr/share/defaults/etc/ssl/certs/TWCA_Root_Certification_Authority.pem",
 				"/usr/share/defaults/etc/ssl/certs/Telekom_Security_TLS_ECC_Root_2020.pem",
@@ -161,6 +165,6 @@
 		}
 	},
 	"source-name": "ca-certificates",
-	"source-release": "2",
-	"source-version": "20240708"
+	"source-release": "3",
+	"source-version": "20241101"
 }
