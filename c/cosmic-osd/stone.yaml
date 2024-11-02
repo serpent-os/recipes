@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-osd
-version     : "1.0.0-alpha.2"
-release     : 3
+version     : "1.0.0-alpha.3"
+release     : 4
 summary     : Cosmic Desktop OSD
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-osd
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-osd.git : 27fc5e5ba4bbed119a1fc85f840db0ade13dde85
+    - git|https://github.com/pop-os/cosmic-osd.git : c6fda40a0aa42c07dc357ebed6ce935cee3269ae
 description : |
     Cosmic Desktop OSD
 builddeps   :
