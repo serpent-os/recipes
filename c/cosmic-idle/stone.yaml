@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-idle
+version     : "1.0.0-alpha.3"
+release     : 4
+summary     : Cosmic Desktop Idle Daemon
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-idle
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-idle.git : 08c1cf318e91831b6cbfd2c94d2fafbedb90919f
+description : |
+    Cosmic Desktop Idle Daemon
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - pkgconfig(libpulse)
+    - pkgconfig(xkbcommon)
+networking  : yes
+tuning      :
+    - lto: thin
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
