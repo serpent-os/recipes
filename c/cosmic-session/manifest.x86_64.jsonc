@@ -15,6 +15,7 @@
 				"binary(cosmic-comp)",
 				"binary(cosmic-files)",
 				"binary(cosmic-greeter)",
+				"binary(cosmic-idle)",
 				"binary(cosmic-notifications)",
 				"binary(cosmic-osd)",
 				"binary(cosmic-panel)",
@@ -52,6 +53,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "13",
-	"source-version": "1.0.0-alpha.2"
+	"source-release": "14",
+	"source-version": "1.0.0-alpha.3"
 }
