@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : rustls-ffi
-version     : 0.13.0
-release     : 5
+version     : 0.14.0
+release     : 6
 homepage    : https://github.com/rustls/rustls-ffi
 upstreams   :
-    - https://github.com/rustls/rustls-ffi/archive/refs/tags/v0.13.0.tar.gz : 462d9069d655d433249d3d554ad5b5146a6c96c13d0f002934bd274ce6634854
+    - https://github.com/rustls/rustls-ffi/archive/refs/tags/v0.14.0.tar.gz : cfdee5c1fe65de6293ecb3bd69bedce227fe502adfa4ce152617e25f1543c565
 summary     : Access rustls from any language
 description : |
     Encapsulation of the rustls crate for non-memory-safe languages to take advantage.

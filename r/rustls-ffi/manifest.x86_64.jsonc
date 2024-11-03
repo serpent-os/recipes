@@ -13,11 +13,11 @@
 				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/librustls.so.0.13.0"
+				"/usr/lib/librustls.so.0.14.0"
 			],
 			"name": "rustls-ffi",
 			"provides": [
-				"soname(librustls.so.0.13.0(x86_64))"
+				"soname(librustls.so.0.14.0(x86_64))"
 			]
 		},
 		"rustls-ffi-devel": {
@@ -40,6 +40,6 @@
 		}
 	},
 	"source-name": "rustls-ffi",
-	"source-release": "5",
-	"source-version": "0.13.0"
+	"source-release": "6",
+	"source-version": "0.14.0"
 }
