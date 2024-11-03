@@ -1,0 +1,43 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"rsync": {
+			"build-depends": [
+				"pkgconfig(libacl)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(libxxhash)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(openssl)",
+				"pkgconfig(popt)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libacl.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(liblz4.so.1(x86_64))",
+				"soname(libpopt.so.0(x86_64))",
+				"soname(libxxhash.so.0(x86_64))",
+				"soname(libz.so.1(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/rsync",
+				"/usr/bin/rsync-ssl",
+				"/usr/share/man/man1/rsync-ssl.1",
+				"/usr/share/man/man1/rsync.1",
+				"/usr/share/man/man5/rsyncd.conf.5"
+			],
+			"name": "rsync",
+			"provides": [
+				"binary(rsync)",
+				"binary(rsync-ssl)"
+			]
+		}
+	},
+	"source-name": "rsync",
+	"source-release": "1",
+	"source-version": "3.3.0"
+}
