@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : moss
-version     : "0.24.2"
-release     : 53
+version     : 0.24.3
+release     : 54
 summary     : Ridiculously fast atomic package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
 upstreams   :
-    - git|https://github.com/serpent-os/tools.git : 057a1a5f5cfde3f3c7206566b0941f38f81918cf
+    - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.3.tar.gz : 5e65fa653c445f1cf9b09e9dc614e2f4c371f65e7263e9811885d99e1d5498a6
 description : |
     The new package manager with an old school feel. Traditional interaction
     and management whilst using brand new technologies, including efficient
