@@ -1,0 +1,6 @@
+releases:
+  id: 4217
+security:
+  cpe:
+  - vendor: gnu
+    product: rsync
