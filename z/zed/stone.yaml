@@ -5,7 +5,7 @@
 #
 name        : zed
 version     : 0.159.7
-release     : 19
+release     : 20
 summary     : High performance, graphical code editor
 license     :
     - AGPL-3.0
@@ -44,6 +44,7 @@ environment : |
     export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
     export ZED_UPDATE_EXPLANATION="Package updates are provided via moss"
 setup       : |
+    %patch %(pkgdir)/19968.patch
     %cargo_fetch
 build       : |
     RUST_BACKTRACE=1 %cargo_build -p zed -p cli
