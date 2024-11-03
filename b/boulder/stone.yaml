@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.24.3
-release     : 65
+release     : 66
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -13,7 +13,7 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-  - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.3.tar.gz : 5e65fa653c445f1cf9b09e9dc614e2f4c371f65e7263e9811885d99e1d5498a6
+    - git|https://github.com/serpent-os/tools.git : 314f35476bf6f15a7162253771a4a72c76349804
 builddeps   :
     - binary(cargo)
 networking  : yes

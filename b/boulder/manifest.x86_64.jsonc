@@ -15,7 +15,6 @@
 			],
 			"files": [
 				"/usr/bin/boulder",
-				"/usr/share/boulder",
 				"/usr/share/boulder/macros",
 				"/usr/share/boulder/macros/actions",
 				"/usr/share/boulder/macros/actions/autotools.yaml",
@@ -46,6 +45,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "65",
+	"source-release": "66",
 	"source-version": "0.24.3"
 }
