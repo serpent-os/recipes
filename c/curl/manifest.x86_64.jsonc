@@ -582,6 +582,6 @@
 		}
 	},
 	"source-name": "curl",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "8.10.1"
 }
