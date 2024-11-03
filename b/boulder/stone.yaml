@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.24.3
-release     : 66
+release     : 67
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -26,4 +26,4 @@ build       : |
 install     : |
     %cargo_install
     %install_dir %(installroot)%(datadir)/boulder
-    cp -Ra boulder/data/* %(installroot)%(datadir)/boulder/.
+    cp -R boulder/data/* %(installroot)%(datadir)/boulder/.

@@ -15,8 +15,6 @@
 			],
 			"files": [
 				"/usr/bin/boulder",
-				"/usr/share/boulder/macros",
-				"/usr/share/boulder/macros/actions",
 				"/usr/share/boulder/macros/actions/autotools.yaml",
 				"/usr/share/boulder/macros/actions/cargo.yaml",
 				"/usr/share/boulder/macros/actions/cmake.yaml",
@@ -25,16 +23,13 @@
 				"/usr/share/boulder/macros/actions/perl.yaml",
 				"/usr/share/boulder/macros/actions/pgo.yaml",
 				"/usr/share/boulder/macros/actions/python.yaml",
-				"/usr/share/boulder/macros/arch",
 				"/usr/share/boulder/macros/arch/aarch64.yaml",
 				"/usr/share/boulder/macros/arch/base.yaml",
-				"/usr/share/boulder/macros/arch/emul32",
 				"/usr/share/boulder/macros/arch/emul32/x86_64.yaml",
 				"/usr/share/boulder/macros/arch/x86.yaml",
 				"/usr/share/boulder/macros/arch/x86_64-stage1.yaml",
 				"/usr/share/boulder/macros/arch/x86_64-v3x.yaml",
 				"/usr/share/boulder/macros/arch/x86_64.yaml",
-				"/usr/share/boulder/profile.d",
 				"/usr/share/boulder/profile.d/default-x86_64.yaml",
 				"/usr/share/boulder/recipeTemplate.yaml"
 			],
@@ -45,6 +40,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "66",
+	"source-release": "67",
 	"source-version": "0.24.3"
 }
