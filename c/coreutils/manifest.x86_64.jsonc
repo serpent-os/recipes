@@ -523,6 +523,6 @@
 		}
 	},
 	"source-name": "coreutils",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "0.0.27"
 }

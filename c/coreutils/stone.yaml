@@ -5,10 +5,10 @@
 #
 name        : coreutils
 version     : 0.0.27
-release     : 9
+release     : 10
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
-    - git|https://github.com/uutils/coreutils.git : 6d79b35dbae1ed5ef001e618b4ac47d5e68915cc
+    - git|https://github.com/uutils/coreutils.git : d66fde26d41472f7e462ee16fae6fbd180d51650
 summary     : Cross-platform Rust rewrite of the GNU coreutils
 description : |
     Cross-platform Rust rewrite of the GNU coreutils
