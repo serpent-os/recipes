@@ -2,5 +2,5 @@ releases:
   id: 13826
 security:
   cpe:
-    vendor: tini_project
-    product: tini
+    - vendor: tini_project
+      product: tini
