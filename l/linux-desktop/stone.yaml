@@ -1,12 +1,15 @@
 name        : linux-desktop
 version     : "6.11.6"
-release     : 50
+release     : 51
 homepage    : https://kernel.org/
 upstreams   :
     - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.11.6.tar.xz : c954f60197008f1e1f32a1e77293903cf3801d2543ec4bf521f5651eb7f133ce
-summary     : Linux Kernel - Default Desktop Build
+summary     : The Linux Kernel for desktop systems
 description : |
-    Work in progress build for desktop enabling
+    The Linux Kernel for desktop systems
+
+    This package provides the Linux Kernel for desktop systems. It is built with
+    the LLVM compiler and the LLD linker, and is optimized for desktop systems.
 license     :
     - GPL-2.0-only
 builddeps   :
@@ -31,6 +34,10 @@ builddeps   :
     - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
     - intel-microcode
     - linux-firmware-amd
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/src
 setup       : |
     extraVersion="-%(release).desktop"
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
@@ -55,17 +62,42 @@ install     : |
     /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
 
     # Include early microcode
-    LD_PRELOAD='' dracut --strip --tmpdir /tmp -N -f \
+    dracut --strip --tmpdir /tmp -N -f \
         --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs" \
         --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode \
         %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd
-
-    # No building against this kernel pls.
-    rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/build
-    rm -rf %(installroot)%(libdir)/modules/${kernelVersion}/source
 
     # Temporary: Help with VMs
     ln -s $kernelVersion/50-default.initrd %(installroot)%(libdir)/kernel/current.desktop.initrd
     ln -s $kernelVersion/vmlinuz %(installroot)%(libdir)/kernel/current.desktop.kernel
     %install_file %(pkgdir)/boot.json %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
     sed -e 's/@VERSION@/%(version)-%(release).desktop/g' -i %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
+
+    # Install kernel headers
+    headerRoot="/usr/src/linux-headers-%(version)-%(release).desktop"
+    dstDir="%(installroot)$headerRoot"
+    %install_dir $dstDir
+
+    # Copy core build files
+    find . -type f \( -name 'Makefile*' -o -name 'Kconfig*' -o -name 'Kbuild*' -o -name '*.sh' -o -name '*.pl' -o -name '*.lds' \) -exec cp --parents {} $dstDir \;
+
+    # Copy headers and essential directories
+    cp -a include scripts $dstDir/
+    (find arch -name include -type d -print | xargs -n1 -i: find : -type f) | cpio -pd --preserve-modification-time $dstDir
+
+    # Media driver headers
+    for dir in "drivers/media/dvb-frontends" "drivers/media/tuners"; do
+        find $dir -name "*.h" -exec cp --parents {} $dstDir \;
+    done
+    find drivers/media/platform -name "*.h" -exec cp --parents {} $dstDir \;
+
+    # Clean unnecessary files
+    find $dstDir -name "*.o" -o -name "*.lds" -delete
+
+    # Copy build requirements
+    %install_file Module.symvers System.map .config $dstDir/
+    %install_exe tools/objtool/objtool $dstDir/tools/objtool/objtool
+
+    # Set up module symlinks
+    ln -svf build %(installroot)%(libdir)/modules/$kernelVersion/source
+    ln -srvf $headerRoot %(installroot)%(libdir)/modules/$kernelVersion/build
