@@ -15,6 +15,7 @@
 			],
 			"files": [
 				"/usr/bin/boulder",
+				"/usr/share/bash-completion/completions/boulder",
 				"/usr/share/boulder/macros/actions/autotools.yaml",
 				"/usr/share/boulder/macros/actions/cargo.yaml",
 				"/usr/share/boulder/macros/actions/cmake.yaml",
@@ -31,7 +32,22 @@
 				"/usr/share/boulder/macros/arch/x86_64-v3x.yaml",
 				"/usr/share/boulder/macros/arch/x86_64.yaml",
 				"/usr/share/boulder/profile.d/default-x86_64.yaml",
-				"/usr/share/boulder/recipeTemplate.yaml"
+				"/usr/share/boulder/recipeTemplate.yaml",
+				"/usr/share/fish/completions/boulder.fish",
+				"/usr/share/man/man1/boulder-build.1",
+				"/usr/share/man/man1/boulder-chroot.1",
+				"/usr/share/man/man1/boulder-profile-add.1",
+				"/usr/share/man/man1/boulder-profile-list.1",
+				"/usr/share/man/man1/boulder-profile-update.1",
+				"/usr/share/man/man1/boulder-profile.1",
+				"/usr/share/man/man1/boulder-recipe-bump.1",
+				"/usr/share/man/man1/boulder-recipe-macros.1",
+				"/usr/share/man/man1/boulder-recipe-new.1",
+				"/usr/share/man/man1/boulder-recipe-update.1",
+				"/usr/share/man/man1/boulder-recipe.1",
+				"/usr/share/man/man1/boulder-version.1",
+				"/usr/share/man/man1/boulder.1",
+				"/usr/share/zsh/site-functions/_boulder"
 			],
 			"name": "boulder",
 			"provides": [
@@ -40,6 +56,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "67",
-	"source-version": "0.24.3"
+	"source-release": "68",
+	"source-version": "0.24.4"
 }

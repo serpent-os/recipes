@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : boulder
-version     : 0.24.3
-release     : 67
+version     : 0.24.4
+release     : 68
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -13,7 +13,7 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/tools.git : 314f35476bf6f15a7162253771a4a72c76349804
+    - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.4.tar.gz : e90d9cca5d80bd516beba2c3d4ba2d725a1e02d0d092541df01763d7ed547290
 builddeps   :
     - binary(cargo)
 networking  : yes
@@ -27,3 +27,16 @@ install     : |
     %cargo_install
     %install_dir %(installroot)%(datadir)/boulder
     cp -R boulder/data/* %(installroot)%(datadir)/boulder/.
+
+    # Completions
+    mkdir compl/
+    ./target/*/release/boulder --generate-completions compl/.
+    %install_file compl/_boulder %(installroot)%(datadir)/zsh/site-functions/_boulder
+    %install_file compl/boulder.bash %(installroot)%(datadir)/bash-completion/completions/boulder
+    %install_file compl/boulder.fish %(installroot)%(datadir)/fish/completions/boulder.fish
+
+    # Generate manpages
+    mkdir man/
+    ./target/*/release/boulder --generate-manpages man/.
+    %install_dir %(installroot)%(mandir)/man1
+    cp man/*.1 %(installroot)%(mandir)/man1/.
