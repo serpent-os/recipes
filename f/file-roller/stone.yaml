@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : file-roller
+version     : 44.3
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/file-roller
+upstreams   :
+    - https://download.gnome.org/sources/file-roller/44/file-roller-44.3.tar.xz : 04c8a74625fec84267fdec40306afb4104bd332d85061e0d36d4ab0533adfa4a
+summary     : An archive manager utility for the GNOME Environment.
+description : |
+  File Roller is an archive manager for the GNOME environment.  This means that you can create and modify archives; view the content of an archive; view and modify a file contained in the archive; extract files from the archive.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(cpio)
+    - binary(msgfmt)
+    - binary(itstool)
+    - binary(update-desktop-database)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gthread-2.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libarchive)
+    - pkgconfig(libnautilus-extension-4)
+    - pkgconfig(libportal)
+    - pkgconfig(libportal-gtk4)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
