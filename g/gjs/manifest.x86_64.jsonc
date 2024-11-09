@@ -54,11 +54,11 @@
 			"provides": [
 				"binary(gjs)",
 				"binary(gjs-console)",
-				"soname(libgimarshallingtests.so(x86_64))",
-				"soname(libgjs.so.0(x86_64))",
-				"soname(libregress.so(x86_64))",
-				"soname(libutility.so(x86_64))",
-				"soname(libwarnlib.so(x86_64))"
+				"soname(gjs/installed-tests/gjs/libgimarshallingtests.so(x86_64))",
+				"soname(gjs/installed-tests/gjs/libregress.so(x86_64))",
+				"soname(gjs/installed-tests/gjs/libutility.so(x86_64))",
+				"soname(gjs/installed-tests/gjs/libwarnlib.so(x86_64))",
+				"soname(libgjs.so.0(x86_64))"
 			]
 		},
 		"gjs-devel": {
@@ -108,6 +108,6 @@
 		}
 	},
 	"source-name": "gjs",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "1.82.1"
 }
