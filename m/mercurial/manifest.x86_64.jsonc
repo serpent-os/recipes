@@ -451,11 +451,11 @@
 				"/usr/lib/python3.11/site-packages/hgext3rd/__init__.py",
 				"/usr/lib/python3.11/site-packages/hgext3rd/__pycache__/__init__.cpython-311.opt-1.pyc",
 				"/usr/lib/python3.11/site-packages/hgext3rd/__pycache__/__init__.cpython-311.pyc",
-				"/usr/lib/python3.11/site-packages/mercurial-6.8.dist-info/COPYING",
-				"/usr/lib/python3.11/site-packages/mercurial-6.8.dist-info/METADATA",
-				"/usr/lib/python3.11/site-packages/mercurial-6.8.dist-info/RECORD",
-				"/usr/lib/python3.11/site-packages/mercurial-6.8.dist-info/WHEEL",
-				"/usr/lib/python3.11/site-packages/mercurial-6.8.dist-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/mercurial-6.8.2.dist-info/COPYING",
+				"/usr/lib/python3.11/site-packages/mercurial-6.8.2.dist-info/METADATA",
+				"/usr/lib/python3.11/site-packages/mercurial-6.8.2.dist-info/RECORD",
+				"/usr/lib/python3.11/site-packages/mercurial-6.8.2.dist-info/WHEEL",
+				"/usr/lib/python3.11/site-packages/mercurial-6.8.2.dist-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/mercurial/__init__.py",
 				"/usr/lib/python3.11/site-packages/mercurial/__main__.py",
 				"/usr/lib/python3.11/site-packages/mercurial/__modulepolicy__.py",
@@ -1481,19 +1481,21 @@
 			"name": "mercurial",
 			"provides": [
 				"binary(hg)",
-				"soname(_zope_interface_coptimizations.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(base85.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(bdiff.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(bser.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(mpatch.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(osutil.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(parsers.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(sha1dc.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(zstd.cpython-311-x86_64-linux-gnu.so(x86_64))"
+				"python(mercurial(3.11))",
+				"python(mercurial)",
+				"soname(python3.11/site-packages/hgext/fsmonitor/pywatchman/bser.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/mercurial/cext/base85.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/mercurial/cext/bdiff.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/mercurial/cext/mpatch.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/mercurial/cext/osutil.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/mercurial/cext/parsers.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/mercurial/thirdparty/sha1dc.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/mercurial/thirdparty/zope/interface/_zope_interface_coptimizations.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/mercurial/zstd.cpython-311-x86_64-linux-gnu.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "mercurial",
-	"source-release": "1",
-	"source-version": "6.8"
+	"source-release": "2",
+	"source-version": "6.8.2"
 }
