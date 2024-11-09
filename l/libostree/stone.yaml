@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libostree
-version     : 2024.7
-release     : 6
+version     : 2024.9
+release     : 7
 homepage    : https://ostreedev.github.io/ostree/
 upstreams   :
-    - https://github.com/ostreedev/ostree/releases/download/v2024.7/libostree-2024.7.tar.xz : 72451efffe5a10acb4cfdd6eb849db97fa9e61a81e4113fc656eece77eb93355
+    - https://github.com/ostreedev/ostree/releases/download/v2024.9/libostree-2024.9.tar.xz : 4356170ec5f7a09428b6add77e2c6f31d4049ab765ee67cf929bfa3b750d3e1b
 summary     : Operating system and container binary deployment and upgrades
 description : |
     The core OSTree model is like git in that it checksums individual files and has a content-addressed-object store. It's unlike git in that it "checks out" the files via hardlinks, and they thus need to be immutable to prevent corruption. Therefore, another way to think of OSTree is that it's just a more polished version of Linux VServer hardlinks.
@@ -41,6 +41,7 @@ builddeps   :
     - pkgconfig(libsystemd)
     - pkgconfig(openssl)
 setup       : |
+    sed -e '/Werror=missing-include-dirs/d' -i configure
     %configure --with-curl \
                --with-crypto=openssl
 build       : |

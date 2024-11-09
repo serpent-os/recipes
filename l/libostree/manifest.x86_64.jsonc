@@ -27,7 +27,6 @@
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(libcurl.so.4(x86_64))",
 				"soname(libfuse3.so.3(x86_64))",
-				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
@@ -170,6 +169,6 @@
 		}
 	},
 	"source-name": "libostree",
-	"source-release": "6",
-	"source-version": "2024.7"
+	"source-release": "7",
+	"source-version": "2024.9"
 }
