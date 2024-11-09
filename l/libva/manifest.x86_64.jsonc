@@ -23,13 +23,13 @@
 			],
 			"files": [
 				"/usr/lib/libva-drm.so.2",
-				"/usr/lib/libva-drm.so.2.2000.0",
+				"/usr/lib/libva-drm.so.2.2200.0",
 				"/usr/lib/libva-wayland.so.2",
-				"/usr/lib/libva-wayland.so.2.2000.0",
+				"/usr/lib/libva-wayland.so.2.2200.0",
 				"/usr/lib/libva-x11.so.2",
-				"/usr/lib/libva-x11.so.2.2000.0",
+				"/usr/lib/libva-x11.so.2.2200.0",
 				"/usr/lib/libva.so.2",
-				"/usr/lib/libva.so.2.2000.0"
+				"/usr/lib/libva.so.2.2200.0"
 			],
 			"name": "libva",
 			"provides": [
@@ -49,25 +49,25 @@
 			],
 			"depends": [
 				"libva",
-				"soname(libX11-xcb.so.1(x86))",
-				"soname(libX11.so.6(x86))",
-				"soname(libXext.so.6(x86))",
-				"soname(libXfixes.so.3(x86))",
-				"soname(libc.so.6(x86))",
-				"soname(libdrm.so.2(x86))",
-				"soname(libwayland-client.so.0(x86))",
-				"soname(libxcb-dri3.so.0(x86))",
-				"soname(libxcb.so.1(x86))"
+				"soname(libX11-xcb.so.1(386))",
+				"soname(libX11.so.6(386))",
+				"soname(libXext.so.6(386))",
+				"soname(libXfixes.so.3(386))",
+				"soname(libc.so.6(386))",
+				"soname(libdrm.so.2(386))",
+				"soname(libwayland-client.so.0(386))",
+				"soname(libxcb-dri3.so.0(386))",
+				"soname(libxcb.so.1(386))"
 			],
 			"files": [
 				"/usr/lib32/libva-drm.so.2",
-				"/usr/lib32/libva-drm.so.2.2000.0",
+				"/usr/lib32/libva-drm.so.2.2200.0",
 				"/usr/lib32/libva-wayland.so.2",
-				"/usr/lib32/libva-wayland.so.2.2000.0",
+				"/usr/lib32/libva-wayland.so.2.2200.0",
 				"/usr/lib32/libva-x11.so.2",
-				"/usr/lib32/libva-x11.so.2.2000.0",
+				"/usr/lib32/libva-x11.so.2.2200.0",
 				"/usr/lib32/libva.so.2",
-				"/usr/lib32/libva.so.2.2000.0"
+				"/usr/lib32/libva.so.2.2200.0"
 			],
 			"name": "libva-32bit",
 			"provides": [
@@ -136,7 +136,9 @@
 				"/usr/include/va/va_dec_jpeg.h",
 				"/usr/include/va/va_dec_vp8.h",
 				"/usr/include/va/va_dec_vp9.h",
+				"/usr/include/va/va_dec_vvc.h",
 				"/usr/include/va/va_dri2.h",
+				"/usr/include/va/va_dri3.h",
 				"/usr/include/va/va_dricommon.h",
 				"/usr/include/va/va_drm.h",
 				"/usr/include/va/va_drmcommon.h",
@@ -154,6 +156,7 @@
 				"/usr/include/va/va_prot.h",
 				"/usr/include/va/va_str.h",
 				"/usr/include/va/va_tpi.h",
+				"/usr/include/va/va_trace.h",
 				"/usr/include/va/va_version.h",
 				"/usr/include/va/va_vpp.h",
 				"/usr/include/va/va_wayland.h",
@@ -177,6 +180,6 @@
 		}
 	},
 	"source-name": "libva",
-	"source-release": "4",
-	"source-version": "2.20.0"
+	"source-release": "5",
+	"source-version": "2.22.0"
 }
