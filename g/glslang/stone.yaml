@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : glslang
-version     : 14.3.0
-release     : 4
+version     : 15.0.0
+release     : 5
 homepage    : https://github.com/KhronosGroup/glslang
 upstreams   :
-    - https://github.com/KhronosGroup/glslang/archive/refs/tags/14.3.0.tar.gz : be6339048e20280938d9cb399fcdd06e04f8654d43e170e8cce5a56c9a754284
+    - https://github.com/KhronosGroup/glslang/archive/refs/tags/15.0.0.tar.gz : c31c8c2e89af907507c0631273989526ee7d5cdf7df95ececd628fd7b811e064
 summary     : Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
 description : |
     Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.

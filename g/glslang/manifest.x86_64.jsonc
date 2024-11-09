@@ -40,6 +40,7 @@
 				"/usr/include/glslang/Include/ResourceLimits.h",
 				"/usr/include/glslang/Include/glslang_c_interface.h",
 				"/usr/include/glslang/Include/glslang_c_shader_types.h",
+				"/usr/include/glslang/Include/visibility.h",
 				"/usr/include/glslang/MachineIndependent/Versions.h",
 				"/usr/include/glslang/Public/ResourceLimits.h",
 				"/usr/include/glslang/Public/ShaderLang.h",
@@ -47,6 +48,7 @@
 				"/usr/include/glslang/SPIRV/GlslangToSpv.h",
 				"/usr/include/glslang/SPIRV/Logger.h",
 				"/usr/include/glslang/SPIRV/SPVRemapper.h",
+				"/usr/include/glslang/SPIRV/SpvTools.h",
 				"/usr/include/glslang/SPIRV/disassemble.h",
 				"/usr/include/glslang/SPIRV/spirv.hpp",
 				"/usr/include/glslang/build_info.h",
@@ -69,6 +71,6 @@
 		}
 	},
 	"source-name": "glslang",
-	"source-release": "4",
-	"source-version": "14.3.0"
+	"source-release": "5",
+	"source-version": "15.0.0"
 }
