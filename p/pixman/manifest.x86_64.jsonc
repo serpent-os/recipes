@@ -10,7 +10,7 @@
 			],
 			"files": [
 				"/usr/lib/libpixman-1.so.0",
-				"/usr/lib/libpixman-1.so.0.43.4"
+				"/usr/lib/libpixman-1.so.0.44.0"
 			],
 			"name": "pixman",
 			"provides": [
@@ -34,6 +34,6 @@
 		}
 	},
 	"source-name": "pixman",
-	"source-release": "4",
-	"source-version": "0.43.4"
+	"source-release": "5",
+	"source-version": "0.44.0"
 }
