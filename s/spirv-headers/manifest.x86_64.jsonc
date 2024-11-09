@@ -89,6 +89,6 @@
 		}
 	},
 	"source-name": "spirv-headers",
-	"source-release": "4",
-	"source-version": "2024.3"
+	"source-release": "5",
+	"source-version": "vulkan-sdk-1.3.296.0"
 }
