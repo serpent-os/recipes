@@ -98,7 +98,7 @@
 				"/usr/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-cups.so",
 				"/usr/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so",
 				"/usr/lib/libgtk-4.so.1",
-				"/usr/lib/libgtk-4.so.1.1600.3",
+				"/usr/lib/libgtk-4.so.1.1600.5",
 				"/usr/share/gettext/its/gtk4builder.its",
 				"/usr/share/gettext/its/gtk4builder.loc",
 				"/usr/share/gir-1.0/Gdk-4.0.gir",
@@ -272,10 +272,10 @@
 			"provides": [
 				"binary(gtk4-launch)",
 				"binary(gtk4-update-icon-cache)",
-				"soname(libgtk-4.so.1(x86_64))",
-				"soname(libmedia-gstreamer.so(x86_64))",
-				"soname(libprintbackend-cups.so(x86_64))",
-				"soname(libprintbackend-file.so(x86_64))"
+				"soname(gtk-4.0/4.0.0/media/libmedia-gstreamer.so(x86_64))",
+				"soname(gtk-4.0/4.0.0/printbackends/libprintbackend-cups.so(x86_64))",
+				"soname(gtk-4.0/4.0.0/printbackends/libprintbackend-file.so(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))"
 			]
 		},
 		"gtk-4-demos": {
@@ -871,6 +871,6 @@
 		}
 	},
 	"source-name": "gtk-4",
-	"source-release": "13",
-	"source-version": "4.16.3"
+	"source-release": "14",
+	"source-version": "4.16.5"
 }
