@@ -61,6 +61,7 @@
 				"/usr/share/locale/it/LC_MESSAGES/texinfo_document.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/texinfo.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/texinfo.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/texinfo_document.mo",
 				"/usr/share/locale/nb/LC_MESSAGES/texinfo.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/texinfo.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/texinfo_document.mo",
@@ -562,9 +563,6 @@
 			],
 			"name": "texinfo",
 			"provides": [
-				"soname(MiscXS.so(x86_64))",
-				"soname(Parsetexi.so(x86_64))",
-				"soname(XSParagraph.so(x86_64))",
 				"binary(info)",
 				"binary(install-info)",
 				"binary(makeinfo)",
@@ -573,11 +571,14 @@
 				"binary(texi2any)",
 				"binary(texi2dvi)",
 				"binary(texi2pdf)",
-				"binary(texindex)"
+				"binary(texindex)",
+				"soname(texinfo/MiscXS.so(x86_64))",
+				"soname(texinfo/Parsetexi.so(x86_64))",
+				"soname(texinfo/XSParagraph.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "texinfo",
-	"source-release": "8",
-	"source-version": "7.1"
+	"source-release": "9",
+	"source-version": "7.1.1"
 }
