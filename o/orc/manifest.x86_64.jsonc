@@ -12,9 +12,9 @@
 				"/usr/bin/orc-bugreport",
 				"/usr/bin/orcc",
 				"/usr/lib/liborc-0.4.so.0",
-				"/usr/lib/liborc-0.4.so.0.39.0",
+				"/usr/lib/liborc-0.4.so.0.40.0",
 				"/usr/lib/liborc-test-0.4.so.0",
-				"/usr/lib/liborc-test-0.4.so.0.39.0"
+				"/usr/lib/liborc-test-0.4.so.0.40.0"
 			],
 			"name": "orc",
 			"provides": [
@@ -78,6 +78,6 @@
 		}
 	},
 	"source-name": "orc",
-	"source-release": "1",
-	"source-version": "0.4.39"
+	"source-release": "2",
+	"source-version": "0.4.40"
 }
