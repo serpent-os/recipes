@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : xkeyboard-config
-version     : '2.42'
-release     : 2
+version     : 2.43
+release     : 3
 homepage    : https://www.freedesktop.org/wiki/Software/XKeyboardConfig/
 upstreams   :
-    - http://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.42.tar.xz : a6b06ebfc1f01fc505f2f05f265f95f67cc8873a54dd247e3c2d754b8f7e0807
+    - http://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.43.tar.xz : c810f362c82a834ee89da81e34cd1452c99789339f46f6037f4b9e227dd06c01
 summary     : X Keyboard Configuration Database
 description : |
     The non-arch keyboard configuration database for X Window.

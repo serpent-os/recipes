@@ -136,6 +136,7 @@
 				"/usr/share/X11/xkb/symbols/eu",
 				"/usr/share/X11/xkb/symbols/eurosign",
 				"/usr/share/X11/xkb/symbols/fi",
+				"/usr/share/X11/xkb/symbols/fkeys",
 				"/usr/share/X11/xkb/symbols/fo",
 				"/usr/share/X11/xkb/symbols/fr",
 				"/usr/share/X11/xkb/symbols/fujitsu_vndr/jp",
@@ -318,6 +319,6 @@
 		}
 	},
 	"source-name": "xkeyboard-config",
-	"source-release": "2",
-	"source-version": "2.42"
+	"source-release": "3",
+	"source-version": "2.43"
 }
