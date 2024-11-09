@@ -142,20 +142,20 @@
 			"name": "thunderbird",
 			"provides": [
 				"binary(thunderbird)",
-				"soname(libgkcodecs.so(x86_64))",
-				"soname(liblgpllibs.so(x86_64))",
-				"soname(libmozavcodec.so(x86_64))",
-				"soname(libmozavutil.so(x86_64))",
-				"soname(libmozgtk.so(x86_64))",
-				"soname(libmozsandbox.so(x86_64))",
-				"soname(libmozsqlite3.so(x86_64))",
-				"soname(libmozwayland.so(x86_64))",
-				"soname(librnp.so(x86_64))",
-				"soname(libxul.so(x86_64))"
+				"soname(thunderbird/libgkcodecs.so(x86_64))",
+				"soname(thunderbird/liblgpllibs.so(x86_64))",
+				"soname(thunderbird/libmozavcodec.so(x86_64))",
+				"soname(thunderbird/libmozavutil.so(x86_64))",
+				"soname(thunderbird/libmozgtk.so(x86_64))",
+				"soname(thunderbird/libmozsandbox.so(x86_64))",
+				"soname(thunderbird/libmozsqlite3.so(x86_64))",
+				"soname(thunderbird/libmozwayland.so(x86_64))",
+				"soname(thunderbird/librnp.so(x86_64))",
+				"soname(thunderbird/libxul.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "thunderbird",
-	"source-release": "8",
-	"source-version": "128.4.0esr"
+	"source-release": "9",
+	"source-version": "128.4.2"
 }
