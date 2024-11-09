@@ -5,7 +5,7 @@
 #
 name        : mesa-demos
 version     : 9.0.0
-release     : 1
+release     : 2
 homepage    : https://gitlab.freedesktop.org/mesa/demos
 upstreams   :
     - https://archive.mesa3d.org/demos/mesa-demos-9.0.0.tar.xz : 3046a3d26a7b051af7ebdd257a5f23bfeb160cad6ed952329cdff1e9f1ed496b
@@ -26,14 +26,16 @@ builddeps   :
     - pkgconfig(glu)
     - pkgconfig(glut)
     - pkgconfig(glx)
-    # pkgconfig(libdecor-0)
+    - pkgconfig(libdecor-0)
     - pkgconfig(libdrm)
     - pkgconfig(osmesa)
+    - pkgconfig(pixman-1)
     - pkgconfig(vulkan)
     - pkgconfig(wayland-client)
     - pkgconfig(wayland-protocols)
     - pkgconfig(x11)
     - pkgconfig(xcb)
+    - pkgconfig(xfont2)
 setup       : |
     %meson
 build       : |

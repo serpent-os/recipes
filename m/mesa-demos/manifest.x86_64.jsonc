@@ -13,13 +13,16 @@
 				"pkgconfig(glu)",
 				"pkgconfig(glut)",
 				"pkgconfig(glx)",
+				"pkgconfig(libdecor-0)",
 				"pkgconfig(libdrm)",
 				"pkgconfig(osmesa)",
+				"pkgconfig(pixman-1)",
 				"pkgconfig(vulkan)",
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-protocols)",
 				"pkgconfig(x11)",
-				"pkgconfig(xcb)"
+				"pkgconfig(xcb)",
+				"pkgconfig(xfont2)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -675,6 +678,6 @@
 		}
 	},
 	"source-name": "mesa-demos",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "9.0.0"
 }
