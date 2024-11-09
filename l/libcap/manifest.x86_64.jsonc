@@ -14,9 +14,9 @@
 			],
 			"files": [
 				"/usr/lib/libcap.so.2",
-				"/usr/lib/libcap.so.2.70",
+				"/usr/lib/libcap.so.2.71",
 				"/usr/lib/libpsx.so.2",
-				"/usr/lib/libpsx.so.2.70",
+				"/usr/lib/libpsx.so.2.71",
 				"/usr/lib/security/pam_cap.so",
 				"/usr/sbin/capsh",
 				"/usr/sbin/getcap",
@@ -34,7 +34,7 @@
 			"provides": [
 				"soname(libcap.so.2(x86_64))",
 				"soname(libpsx.so.2(x86_64))",
-				"soname(pam_cap.so(x86_64))",
+				"soname(security/pam_cap.so(x86_64))",
 				"sysbinary(capsh)",
 				"sysbinary(getcap)",
 				"sysbinary(getpcaps)",
@@ -138,6 +138,6 @@
 		}
 	},
 	"source-name": "libcap",
-	"source-release": "5",
-	"source-version": "2.70"
+	"source-release": "6",
+	"source-version": "2.71"
 }
