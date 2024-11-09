@@ -90,6 +90,7 @@
 				"/usr/share/man/man3/CURLINFO_CONTENT_LENGTH_UPLOAD_T.3",
 				"/usr/share/man/man3/CURLINFO_CONTENT_TYPE.3",
 				"/usr/share/man/man3/CURLINFO_COOKIELIST.3",
+				"/usr/share/man/man3/CURLINFO_EARLYDATA_SENT_T.3",
 				"/usr/share/man/man3/CURLINFO_EFFECTIVE_METHOD.3",
 				"/usr/share/man/man3/CURLINFO_EFFECTIVE_URL.3",
 				"/usr/share/man/man3/CURLINFO_FILETIME.3",
@@ -582,6 +583,6 @@
 		}
 	},
 	"source-name": "curl",
-	"source-release": "13",
-	"source-version": "8.10.1"
+	"source-release": "14",
+	"source-version": "8.11.0"
 }
