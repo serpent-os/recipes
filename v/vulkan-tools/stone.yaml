@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : vulkan-tools
-version     : 1.3.290.0
-release     : 2
+version     : 1.3.301
+release     : 3
 homepage    : https://www.khronos.org/vulkan/
 upstreams   :
-    - https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/vulkan-sdk-1.3.290.0.tar.gz : 9d8a941f3cedd904774e888871840dd9b5df4de7682d741181b5c9af58a46420
+    - https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v1.3.301.tar.gz : 452a1693fdde1f175fc82e3461ebd09cb8285246972bc6dc206ad0f72f6a5acd
 summary     : Vulkan Utilities and Tools
 description : |
     This package provides Khronos official Vulkan tools and utilities that can assist development by enabling developers to verify their applications correct use of the Vulkan API.
