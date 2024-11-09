@@ -5,7 +5,7 @@
 #
 name        : mesa
 version     : 24.2.6
-release     : 18
+release     : 19
 homepage    : https://mesa3d.org/
 upstreams   :
     - https://archive.mesa3d.org/mesa-24.2.6.tar.xz : 2b68c4a6f204c1999815a457299f81c41ba7bf48c4674b0b2d1d8864f41f3709
