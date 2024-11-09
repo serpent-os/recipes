@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : virglrenderer
-version     : 1.0.1
-release     : 1
+version     : 1.1.0
+release     : 2
 homepage    : https://gitlab.freedesktop.org/virgl/virglrenderer
 upstreams   :
-    - https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/1.0.1/virglrenderer-1.0.1.tar.gz : e4a61bfeda06e34b8df188366abff77b090fcd877536fd83db83448cdd56c72e
+    - https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/1.1.0/virglrenderer-1.1.0.tar.gz : 9996b87bda2fbf515473b60f32b00ed58847da733b47053923fd2cb035a6f5a2
 summary     : Virtual OpenGL Renderer
 description : |
     Virtual OpenGL Renderer
