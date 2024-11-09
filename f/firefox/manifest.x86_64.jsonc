@@ -132,21 +132,21 @@
 			"name": "firefox",
 			"provides": [
 				"binary(firefox)",
-				"soname(libclearkey.so(x86_64))",
-				"soname(libgkcodecs.so(x86_64))",
-				"soname(libipcclientcerts.so(x86_64))",
-				"soname(liblgpllibs.so(x86_64))",
-				"soname(libmozavcodec.so(x86_64))",
-				"soname(libmozavutil.so(x86_64))",
-				"soname(libmozgtk.so(x86_64))",
-				"soname(libmozsandbox.so(x86_64))",
-				"soname(libmozsqlite3.so(x86_64))",
-				"soname(libmozwayland.so(x86_64))",
-				"soname(libxul.so(x86_64))"
+				"soname(firefox/gmp-clearkey/0.1/libclearkey.so(x86_64))",
+				"soname(firefox/libgkcodecs.so(x86_64))",
+				"soname(firefox/libipcclientcerts.so(x86_64))",
+				"soname(firefox/liblgpllibs.so(x86_64))",
+				"soname(firefox/libmozavcodec.so(x86_64))",
+				"soname(firefox/libmozavutil.so(x86_64))",
+				"soname(firefox/libmozgtk.so(x86_64))",
+				"soname(firefox/libmozsandbox.so(x86_64))",
+				"soname(firefox/libmozsqlite3.so(x86_64))",
+				"soname(firefox/libmozwayland.so(x86_64))",
+				"soname(firefox/libxul.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "firefox",
-	"source-release": "11",
-	"source-version": "132.0"
+	"source-release": "12",
+	"source-version": "132.0.1"
 }
