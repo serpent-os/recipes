@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libtiff
-version     : 4.6.0
-release     : 2
+version     : 4.7.0
+release     : 3
 homepage    : https://download.osgeo.org/libtiff
 upstreams   :
-    - https://download.osgeo.org/libtiff/tiff-4.6.0.tar.xz : e178649607d1e22b51cf361dd20a3753f244f022eefab1f2f218fc62ebaf87d2
+    - https://download.osgeo.org/libtiff/tiff-4.7.0.tar.xz : 273a0a73b1f0bed640afee4a5df0337357ced5b53d3d5d1c405b936501f71017
 summary     : TIFF Library and Utilities
 description : |
     The LibTIFF software provides support for the Tag Image File Format (TIFF), a widely used format for storing image data. The latest version of the TIFF specification is TIFF File Format Specification. Included in this software distribution are: a library, libtiff, for reading and writing TIFF images, a small collection of tools for performing simple manipulations of TIFF images, and, documentation for the library and tools.
