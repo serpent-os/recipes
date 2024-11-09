@@ -181,6 +181,8 @@
 				"/usr/share/locale/chr/LC_MESSAGES/iso_3166.mo",
 				"/usr/share/locale/ckb/LC_MESSAGES/iso_3166-1.mo",
 				"/usr/share/locale/ckb/LC_MESSAGES/iso_3166.mo",
+				"/usr/share/locale/ckb/LC_MESSAGES/iso_639-3.mo",
+				"/usr/share/locale/ckb/LC_MESSAGES/iso_639_3.mo",
 				"/usr/share/locale/crh/LC_MESSAGES/iso_3166-1.mo",
 				"/usr/share/locale/crh/LC_MESSAGES/iso_3166-2.mo",
 				"/usr/share/locale/crh/LC_MESSAGES/iso_3166-3.mo",
@@ -426,9 +428,13 @@
 				"/usr/share/locale/he/LC_MESSAGES/iso_639-3.mo",
 				"/usr/share/locale/he/LC_MESSAGES/iso_639.mo",
 				"/usr/share/locale/he/LC_MESSAGES/iso_639_3.mo",
+				"/usr/share/locale/hi/LC_MESSAGES/iso_15924.mo",
 				"/usr/share/locale/hi/LC_MESSAGES/iso_3166-1.mo",
+				"/usr/share/locale/hi/LC_MESSAGES/iso_3166-2.mo",
 				"/usr/share/locale/hi/LC_MESSAGES/iso_3166-3.mo",
 				"/usr/share/locale/hi/LC_MESSAGES/iso_3166.mo",
+				"/usr/share/locale/hi/LC_MESSAGES/iso_3166_2.mo",
+				"/usr/share/locale/hi/LC_MESSAGES/iso_4217.mo",
 				"/usr/share/locale/hi/LC_MESSAGES/iso_639-2.mo",
 				"/usr/share/locale/hi/LC_MESSAGES/iso_639-3.mo",
 				"/usr/share/locale/hi/LC_MESSAGES/iso_639-5.mo",
@@ -1171,6 +1177,6 @@
 		}
 	},
 	"source-name": "iso-codes",
-	"source-release": "2",
-	"source-version": "4.16.0"
+	"source-release": "3",
+	"source-version": "4.17.0"
 }
