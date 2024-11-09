@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gstreamer
-version     : 1.24.6
-release     : 3
+version     : 1.24.9
+release     : 4
 homepage    : https://gstreamer.freedesktop.org/
 upstreams   :
-    - https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.6/gstreamer-1.24.6.tar.gz : dde1acbb57bc61d095048985e24bb7eb6cfe614a28a19df5986a0232d2d84f54
+    - https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.9/gstreamer-1.24.9.tar.gz : ec9483e7ecc59306923d797c0824e859013901ed520975cbbad5f46c9413a748
 summary     : GStreamer multimedia framework
 description : |
     GStreamer can bridge to other multimedia frameworks in order to reuse existing components (e.g. codecs) and use platform input/output mechanisms.
@@ -16,20 +16,24 @@ license     :
     - LGPL-2.1-or-later
 builddeps   :
     - binary(bison)
+    - binary(cargo)
     - binary(flex)
     - binary(g-ir-scanner)
     - binary(glslc)
     - binary(nasm)
     - binary(xgettext)
+    - binary(valac)
     - lame-devel
     - pkgconfig(alsa)
     - pkgconfig(bash-completion)
+    - pkgconfig(fdk-aac)
     - pkgconfig(gl)
     - pkgconfig(glib-2.0)
     - pkgconfig(graphene-1.0)
     - pkgconfig(gudev-1.0)
     - pkgconfig(json-glib-1.0)
     - pkgconfig(lcms2)
+    - pkgconfig(libavfilter)
     - pkgconfig(libcurl)
     - pkgconfig(libdrm)
     - pkgconfig(libdw)
@@ -40,9 +44,12 @@ builddeps   :
     - pkgconfig(libunwind)
     - pkgconfig(libwebp)
     - pkgconfig(libxml-2.0)
+    - pkgconfig(opus)
+    - pkgconfig(orc-0.4)
     - pkgconfig(ogg)
     - pkgconfig(pango)
     - pkgconfig(vapigen)
+    - pkgconfig(vpx)
     - pkgconfig(vorbis)
     - pkgconfig(vulkan)
     - pkgconfig(wayland-client)
@@ -52,7 +59,6 @@ setup       : |
     %meson \
         --wrap-mode=nodownload \
         -D gst-plugins-bad:aja=disabled \
-        -D gst-plugins-bad:faac=disabled \
         -D gst-plugins-bad:fdkaac=disabled \
         -D gst-plugins-bad:openh264=disabled \
         -D gst-plugins-good:soup-version=3
@@ -60,5 +66,3 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-# clang g-ir-scanner/compiler woes
-toolchain   : gnu
