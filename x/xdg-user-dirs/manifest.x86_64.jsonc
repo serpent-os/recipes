@@ -15,6 +15,7 @@
 			"files": [
 				"/usr/bin/xdg-user-dir",
 				"/usr/bin/xdg-user-dirs-update",
+				"/usr/lib/systemd/user-preset/60-xdg-user-dirs.preset",
 				"/usr/lib/systemd/user/xdg-user-dirs-update.service",
 				"/usr/share/locale/af/LC_MESSAGES/xdg-user-dirs.mo",
 				"/usr/share/locale/an/LC_MESSAGES/xdg-user-dirs.mo",
@@ -106,6 +107,6 @@
 		}
 	},
 	"source-name": "xdg-user-dirs",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.18"
 }

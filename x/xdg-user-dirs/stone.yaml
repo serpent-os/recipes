@@ -5,7 +5,7 @@
 #
 name        : xdg-user-dirs
 version     : 0.18
-release     : 2
+release     : 3
 homepage    : http://user-dirs.freedesktop.org/releases
 upstreams   :
     - git|https://gitlab.freedesktop.org/xdg/xdg-user-dirs.git : 97ff189affdbf0d33c0f8e91d3fd5608f425ef96
@@ -27,3 +27,4 @@ install     : |
 
     rm -frv %(installroot)%(datadir)/xdg/autostart
     %install_file %(pkgdir)/xdg-user-dirs-update.service %(installroot)%(libdir)/systemd/user/xdg-user-dirs-update.service
+    %install_file %(pkgdir)/60-xdg-user-dirs.preset %(installroot)%(libdir)/systemd/user-preset/60-xdg-user-dirs.preset
