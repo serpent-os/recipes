@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : coreutils
-version     : 0.0.27
-release     : 10
+version     : 0.0.28
+release     : 11
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
-    - git|https://github.com/uutils/coreutils.git : d66fde26d41472f7e462ee16fae6fbd180d51650
+    - https://github.com/uutils/coreutils/archive/refs/tags/0.0.28.tar.gz : b2e8b2531c52e9b09e55a6b41a8875e5770bcea6e5fa7a01d89d7904cf292cb9
 summary     : Cross-platform Rust rewrite of the GNU coreutils
 description : |
     Cross-platform Rust rewrite of the GNU coreutils
