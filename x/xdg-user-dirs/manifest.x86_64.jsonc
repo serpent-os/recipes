@@ -15,6 +15,7 @@
 			"files": [
 				"/usr/bin/xdg-user-dir",
 				"/usr/bin/xdg-user-dirs-update",
+				"/usr/lib/systemd/user/xdg-user-dirs-update.service",
 				"/usr/share/locale/af/LC_MESSAGES/xdg-user-dirs.mo",
 				"/usr/share/locale/an/LC_MESSAGES/xdg-user-dirs.mo",
 				"/usr/share/locale/ar/LC_MESSAGES/xdg-user-dirs.mo",
@@ -94,7 +95,6 @@
 				"/usr/share/man/man5/user-dirs.conf.5",
 				"/usr/share/man/man5/user-dirs.defaults.5",
 				"/usr/share/man/man5/user-dirs.dirs.5",
-				"/usr/share/xdg/autostart/xdg-user-dirs.desktop",
 				"/usr/share/xdg/user-dirs.conf",
 				"/usr/share/xdg/user-dirs.defaults"
 			],
@@ -106,6 +106,6 @@
 		}
 	},
 	"source-name": "xdg-user-dirs",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.18"
 }
