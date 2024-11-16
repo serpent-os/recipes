@@ -106,7 +106,7 @@
 				"/usr/lib/libOSMesa.so.8.0.0",
 				"/usr/lib/libVkLayer_MESA_device_select.so",
 				"/usr/lib/libVkLayer_MESA_overlay.so",
-				"/usr/lib/libgallium-24.2.6.so",
+				"/usr/lib/libgallium-24.2.7.so",
 				"/usr/lib/libgbm.so.1",
 				"/usr/lib/libgbm.so.1.0.0",
 				"/usr/lib/libglapi.so.0",
@@ -157,7 +157,7 @@
 				"soname(libOSMesa.so.8(x86_64))",
 				"soname(libVkLayer_MESA_device_select.so(x86_64))",
 				"soname(libVkLayer_MESA_overlay.so(x86_64))",
-				"soname(libgallium-24.2.6.so(x86_64))",
+				"soname(libgallium-24.2.7.so(x86_64))",
 				"soname(libgbm.so.1(x86_64))",
 				"soname(libglapi.so.0(x86_64))",
 				"soname(libvulkan_intel.so(x86_64))",
@@ -246,6 +246,6 @@
 		}
 	},
 	"source-name": "mesa",
-	"source-release": "19",
-	"source-version": "24.2.6"
+	"source-release": "20",
+	"source-version": "24.2.7"
 }
