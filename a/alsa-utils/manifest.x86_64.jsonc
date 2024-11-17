@@ -32,8 +32,10 @@
 				"/usr/bin/amixer",
 				"/usr/bin/aplay",
 				"/usr/bin/aplaymidi",
+				"/usr/bin/aplaymidi2",
 				"/usr/bin/arecord",
 				"/usr/bin/arecordmidi",
+				"/usr/bin/arecordmidi2",
 				"/usr/bin/aseqdump",
 				"/usr/bin/aseqnet",
 				"/usr/bin/aseqsend",
@@ -75,8 +77,10 @@
 				"/usr/share/man/man1/amixer.1",
 				"/usr/share/man/man1/aplay.1",
 				"/usr/share/man/man1/aplaymidi.1",
+				"/usr/share/man/man1/aplaymidi2.1",
 				"/usr/share/man/man1/arecord.1",
 				"/usr/share/man/man1/arecordmidi.1",
+				"/usr/share/man/man1/arecordmidi2.1",
 				"/usr/share/man/man1/aseqdump.1",
 				"/usr/share/man/man1/aseqnet.1",
 				"/usr/share/man/man1/aseqsend.1",
@@ -109,8 +113,10 @@
 				"binary(amixer)",
 				"binary(aplay)",
 				"binary(aplaymidi)",
+				"binary(aplaymidi2)",
 				"binary(arecord)",
 				"binary(arecordmidi)",
+				"binary(arecordmidi2)",
 				"binary(aseqdump)",
 				"binary(aseqnet)",
 				"binary(aseqsend)",
@@ -118,7 +124,7 @@
 				"binary(iecset)",
 				"binary(nhlt-dmic-info)",
 				"binary(speaker-test)",
-				"soname(libalsatplg_module_nhlt.so(x86_64))",
+				"soname(alsa-topology/libalsatplg_module_nhlt.so(x86_64))",
 				"sysbinary(alsa-info.sh)",
 				"sysbinary(alsabat-test.sh)",
 				"sysbinary(alsactl)"
@@ -126,6 +132,6 @@
 		}
 	},
 	"source-name": "alsa-utils",
-	"source-release": "3",
-	"source-version": "1.2.12"
+	"source-release": "4",
+	"source-version": "1.2.13"
 }

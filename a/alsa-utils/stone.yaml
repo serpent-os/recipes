@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : alsa-utils
-version     : 1.2.12
-release     : 3
+version     : 1.2.13
+release     : 4
 homepage    : https://www.alsa-project.org/wiki/Main_Page
 upstreams   :
-    - https://github.com/alsa-project/alsa-utils/archive/refs/tags/v1.2.12.tar.gz : 11bb585a072162808f8a0fac2b3093f87a94feefcec1b11da106c9a8955d3ade
+    - https://github.com/alsa-project/alsa-utils/archive/refs/tags/v1.2.13.tar.gz : 90c941cbcccfb9d8f87c22efe00035b6a7bfe37f71c109afb8422114cd3dca35
 summary     : ALSA Utilities
 description : |
     Advanced Linux Sound Architecture - Utilities
