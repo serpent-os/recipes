@@ -5,7 +5,7 @@
 #
 name        : pinentry
 version     : 1.3.1
-release     : 5
+release     : 6
 homepage    : https://gnupg.org/related_software/pinentry
 upstreams   :
     - https://gnupg.org/ftp/gcrypt/pinentry/pinentry-1.3.1.tar.bz2 : bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04
@@ -21,6 +21,7 @@ builddeps   :
     - pkgconfig(ncursesw)
     - pkgconfig(x11)
 setup       : |
+    export CFLAGS="${CFLAGS} -lassuan"
     %configure \
         --disable-pinentry-curses \
         --enable-fallback-curses \
