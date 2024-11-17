@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cairo
-version     : '1.18.0'
-release     : 4
+version     : 1.18.2
+release     : 5
 homepage    : https://cairographics.org
 upstreams   :
-    - https://cairographics.org/releases/cairo-1.18.0.tar.xz : 243a0736b978a33dee29f9cca7521733b78a65b5418206fef7bd1c3d4cf10b64
+    - https://cairographics.org/releases/cairo-1.18.2.tar.xz : a62b9bb42425e844cc3d6ddde043ff39dbabedd1542eba57a2eb79f85889d45a
 summary     : Cairo is a 2D graphics library with support for multiple output devices.
 description : |
     Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available (eg. through the X Render Extension).

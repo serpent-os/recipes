@@ -40,15 +40,15 @@
 			"files": [
 				"/usr/lib/cairo/libcairo-fdr.so",
 				"/usr/lib/libcairo-gobject.so.2",
-				"/usr/lib/libcairo-gobject.so.2.11800.0",
+				"/usr/lib/libcairo-gobject.so.2.11802.2",
 				"/usr/lib/libcairo-script-interpreter.so.2",
-				"/usr/lib/libcairo-script-interpreter.so.2.11800.0",
+				"/usr/lib/libcairo-script-interpreter.so.2.11802.2",
 				"/usr/lib/libcairo.so.2",
-				"/usr/lib/libcairo.so.2.11800.0"
+				"/usr/lib/libcairo.so.2.11802.2"
 			],
 			"name": "cairo",
 			"provides": [
-				"soname(libcairo-fdr.so(x86_64))",
+				"soname(cairo/libcairo-fdr.so(x86_64))",
 				"soname(libcairo-gobject.so.2(x86_64))",
 				"soname(libcairo-script-interpreter.so.2(x86_64))",
 				"soname(libcairo.so.2(x86_64))"
@@ -72,13 +72,12 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"cairo",
 				"pkgconfig(fontconfig)",
 				"pkgconfig(freetype2)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
-				"soname(libc.so.6(x86_64))",
 				"pkgconfig(libpng)",
-				"soname(libz.so.1(x86_64))",
 				"pkgconfig(lzo2)",
 				"pkgconfig(pixman-1)",
 				"pkgconfig(x11)",
@@ -87,7 +86,9 @@
 				"pkgconfig(xcb-shm)",
 				"pkgconfig(xext)",
 				"pkgconfig(xrender)",
-				"pkgconfig(zlib)"
+				"pkgconfig(zlib)",
+				"soname(libc.so.6(x86_64))",
+				"soname(libz.so.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/cairo-trace",
@@ -128,6 +129,7 @@
 			],
 			"name": "cairo-devel",
 			"provides": [
+				"binary(cairo-trace)",
 				"pkgconfig(cairo)",
 				"pkgconfig(cairo-fc)",
 				"pkgconfig(cairo-ft)",
@@ -139,16 +141,15 @@
 				"pkgconfig(cairo-script-interpreter)",
 				"pkgconfig(cairo-svg)",
 				"pkgconfig(cairo-tee)",
-				"binary(cairo-trace)",
 				"pkgconfig(cairo-xcb)",
 				"pkgconfig(cairo-xcb-shm)",
 				"pkgconfig(cairo-xlib)",
 				"pkgconfig(cairo-xlib-xrender)",
-				"soname(libcairo-trace.so(x86_64))"
+				"soname(cairo/libcairo-trace.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "cairo",
-	"source-release": "4",
-	"source-version": "1.18.0"
+	"source-release": "5",
+	"source-version": "1.18.2"
 }
