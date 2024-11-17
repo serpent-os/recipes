@@ -12,7 +12,7 @@
 			],
 			"files": [
 				"/usr/lib/libksba.so.8",
-				"/usr/lib/libksba.so.8.14.3",
+				"/usr/lib/libksba.so.8.14.7",
 				"/usr/share/info/ksba.info"
 			],
 			"name": "libksba",
@@ -25,6 +25,7 @@
 				"pkgconfig(gpg-error)"
 			],
 			"depends": [
+				"libksba",
 				"pkgconfig(gpg-error)"
 			],
 			"files": [
@@ -40,6 +41,6 @@
 		}
 	},
 	"source-name": "libksba",
-	"source-release": "1",
-	"source-version": "1.6.3"
+	"source-release": "2",
+	"source-version": "1.6.7"
 }
