@@ -4,6 +4,7 @@
 	"packages": {
 		"gnupg": {
 			"build-depends": [
+				"binary(yat2m)",
 				"pkgconfig(bzip2)",
 				"pkgconfig(gnutls)",
 				"pkgconfig(gpg-error)",
@@ -18,7 +19,7 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"pinentry",
-				"soname(libassuan.so.0(x86_64))",
+				"soname(libassuan.so.9(x86_64))",
 				"soname(libbz2.so.1.0(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgcrypt.so.20(x86_64))",
@@ -29,8 +30,7 @@
 				"soname(libldap.so.2(x86_64))",
 				"soname(libnpth.so.0(x86_64))",
 				"soname(libreadline.so.8(x86_64))",
-				"soname(libsqlite3.so.0(x86_64))",
-				"soname(libz.so.1(x86_64))"
+				"soname(libsqlite3.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/dirmngr",
@@ -39,6 +39,7 @@
 				"/usr/bin/gpg-agent",
 				"/usr/bin/gpg-card",
 				"/usr/bin/gpg-connect-agent",
+				"/usr/bin/gpg-mail-tube",
 				"/usr/bin/gpg-wks-client",
 				"/usr/bin/gpg-wks-server",
 				"/usr/bin/gpg2",
@@ -131,6 +132,7 @@
 				"/usr/share/locale/it/LC_MESSAGES/gnupg2.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/gnupg2.mo",
 				"/usr/share/locale/nb/LC_MESSAGES/gnupg2.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/gnupg2.mo",
 				"/usr/share/locale/pl/LC_MESSAGES/gnupg2.mo",
 				"/usr/share/locale/pt/LC_MESSAGES/gnupg2.mo",
 				"/usr/share/locale/ro/LC_MESSAGES/gnupg2.mo",
@@ -146,21 +148,23 @@
 				"/usr/share/man/man1/gpg-card.1",
 				"/usr/share/man/man1/gpg-check-pattern.1",
 				"/usr/share/man/man1/gpg-connect-agent.1",
+				"/usr/share/man/man1/gpg-mail-tube.1",
 				"/usr/share/man/man1/gpg-preset-passphrase.1",
 				"/usr/share/man/man1/gpg-wks-client.1",
 				"/usr/share/man/man1/gpg-wks-server.1",
-				"/usr/share/man/man1/gpg2.1",
+				"/usr/share/man/man1/gpg.1",
 				"/usr/share/man/man1/gpgconf.1",
 				"/usr/share/man/man1/gpgparsemail.1",
 				"/usr/share/man/man1/gpgsm.1",
 				"/usr/share/man/man1/gpgtar.1",
-				"/usr/share/man/man1/gpgv2.1",
+				"/usr/share/man/man1/gpgv.1",
 				"/usr/share/man/man1/scdaemon.1",
 				"/usr/share/man/man1/watchgnupg.1",
 				"/usr/share/man/man7/gnupg.7",
 				"/usr/share/man/man8/addgnupghome.8",
 				"/usr/share/man/man8/applygnupgdefaults.8",
-				"/usr/share/man/man8/dirmngr.8"
+				"/usr/share/man/man8/dirmngr.8",
+				"/usr/share/man/manh/gnupg.7.html"
 			],
 			"name": "gnupg",
 			"provides": [
@@ -170,6 +174,7 @@
 				"binary(gpg-agent)",
 				"binary(gpg-card)",
 				"binary(gpg-connect-agent)",
+				"binary(gpg-mail-tube)",
 				"binary(gpg-wks-client)",
 				"binary(gpg-wks-server)",
 				"binary(gpg2)",
@@ -189,6 +194,6 @@
 		}
 	},
 	"source-name": "gnupg",
-	"source-release": "4",
-	"source-version": "2.4.5"
+	"source-release": "5",
+	"source-version": "2.4.6"
 }
