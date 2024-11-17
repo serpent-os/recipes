@@ -31,7 +31,7 @@ for recipe in $(find . -name "stone.yaml"); do
     fi
 
     # Get the latest commit from the github API
-    latest_commit=$(curl -s "https://api.github.com/repos/$REPO/$package_name/commits" | jq -r '.[0].sha')
+    latest_commit=$(gh api repos/$REPO/$package_name/commits --jq '.[0].sha')
 
     # change to working directory
     pushd $(dirname $recipe)
