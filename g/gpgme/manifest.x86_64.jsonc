@@ -11,9 +11,10 @@
 				"pkgconfig(python3)"
 			],
 			"depends": [
+				"binary(gpg)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
-				"soname(libassuan.so.0(x86_64))",
+				"soname(libassuan.so.9(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgpg-error.so.0(x86_64))",
@@ -24,12 +25,13 @@
 				"/usr/bin/gpgme-json",
 				"/usr/bin/gpgme-tool",
 				"/usr/lib/libgpgme.so.11",
-				"/usr/lib/libgpgme.so.11.32.1",
+				"/usr/lib/libgpgme.so.11.33.0",
 				"/usr/lib/libgpgmepp.so.6",
-				"/usr/lib/libgpgmepp.so.6.20.1",
+				"/usr/lib/libgpgmepp.so.6.21.0",
 				"/usr/share/info/gpgme.info",
 				"/usr/share/info/gpgme.info-1",
-				"/usr/share/info/gpgme.info-2"
+				"/usr/share/info/gpgme.info-2",
+				"/usr/share/man/man1/gpgme-json.1"
 			],
 			"name": "gpgme",
 			"provides": [
@@ -48,6 +50,7 @@
 				"pkgconfig(python3)"
 			],
 			"depends": [
+				"gpgme",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gpg-error)",
 				"pkgconfig(libassuan)"
@@ -102,17 +105,19 @@
 				"/usr/lib/libgpgmepp.so",
 				"/usr/lib/pkgconfig/gpgme-glib.pc",
 				"/usr/lib/pkgconfig/gpgme.pc",
+				"/usr/lib/pkgconfig/gpgmepp.pc",
 				"/usr/share/aclocal/gpgme.m4"
 			],
 			"name": "gpgme-devel",
 			"provides": [
 				"cmake(Gpgmepp)",
 				"pkgconfig(gpgme)",
-				"pkgconfig(gpgme-glib)"
+				"pkgconfig(gpgme-glib)",
+				"pkgconfig(gpgmepp)"
 			]
 		}
 	},
 	"source-name": "gpgme",
-	"source-release": "1",
-	"source-version": "1.23.2"
+	"source-release": "2",
+	"source-version": "1.24.0"
 }

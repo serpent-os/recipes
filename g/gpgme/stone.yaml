@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gpgme
-version     : 1.23.2
-release     : 1
+version     : 1.24.0
+release     : 2
 homepage    : https://gnupg.org/software/gpgme/index.html
 upstreams   :
-    - https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.23.2.tar.bz2 : 9499e8b1f33cccb6815527a1bc16049d35a6198a6c5fae0185f2bd561bce5224
+    - https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.24.0.tar.bz2 : 61e3a6ad89323fecfaff176bc1728fb8c3312f2faa83424d9d5077ba20f5f7da
 summary     : Library to provide easy access to GnuPG
 description : |
     GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier
@@ -26,6 +26,8 @@ builddeps   :
 rundeps     :
     - binary(gpg)
 setup       : |
+    export CFLAGS="${CFLAGS} -lassuan"
+
     # TODO: Enable python support
     %configure --disable-static \
                --enable-languages=cpp
