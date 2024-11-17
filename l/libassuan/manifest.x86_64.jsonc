@@ -11,15 +11,13 @@
 				"soname(libgpg-error.so.0(x86_64))"
 			],
 			"files": [
-				"/usr/bin/libassuan-config",
-				"/usr/lib/libassuan.so.0",
-				"/usr/lib/libassuan.so.0.8.5",
+				"/usr/lib/libassuan.so.9",
+				"/usr/lib/libassuan.so.9.0.1",
 				"/usr/share/info/assuan.info"
 			],
 			"name": "libassuan",
 			"provides": [
-				"binary(libassuan-config)",
-				"soname(libassuan.so.0(x86_64))"
+				"soname(libassuan.so.9(x86_64))"
 			]
 		},
 		"libassuan-devel": {
@@ -27,6 +25,7 @@
 				"pkgconfig(gpg-error)"
 			],
 			"depends": [
+				"libassuan",
 				"pkgconfig(gpg-error)"
 			],
 			"files": [
@@ -42,6 +41,6 @@
 		}
 	},
 	"source-name": "libassuan",
-	"source-release": "1",
-	"source-version": "2.5.5"
+	"source-release": "2",
+	"source-version": "3.0.1"
 }
