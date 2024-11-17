@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : pycairo
-version     : 1.26.1
-release     : 2
+version     : 1.27.0
+release     : 3
 homepage    : http://cairographics.org/pycairo/
 upstreams   :
-    - https://github.com/pygobject/pycairo/releases/download/v1.26.1/pycairo-1.26.1.tar.gz : a11b999ce55b798dbf13516ab038e0ce8b6ec299b208d7c4e767a6f7e68e8430
+    - https://github.com/pygobject/pycairo/releases/download/v1.27.0/pycairo-1.27.0.tar.gz : 5cb21e7a00a2afcafea7f14390235be33497a2cce53a98a19389492a60628430
 summary     : Python bindings for the cairo graphics library.
 description : |
     Pycairo is a set of Python 2 & 3 bindings for the cairo graphics library.
