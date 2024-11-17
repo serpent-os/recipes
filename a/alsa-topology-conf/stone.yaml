@@ -5,7 +5,7 @@
 #
 name        : alsa-topology-conf
 version     : 1.2.5.1
-release     : 2
+release     : 3
 homepage    : https://www.alsa-project.org/wiki/Main_Page
 upstreams   :
     - https://github.com/alsa-project/alsa-topology-conf/archive/refs/tags/v1.2.5.1.tar.gz : 7fa593b905559933fe18304ab77740f3d54b261bc8b591d27bec1627531afce4
