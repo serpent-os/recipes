@@ -4,6 +4,7 @@
 	"packages": {
 		"valgrind": {
 			"depends": [
+				"glibc-dbginfo",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -218,15 +219,18 @@
 				"binary(valgrind-di-server)",
 				"binary(valgrind-listener)",
 				"binary(vgdb)",
-				"soname(vgpreload_core-amd64-linux.so(x86_64))",
-				"soname(vgpreload_dhat-amd64-linux.so(x86_64))",
-				"soname(vgpreload_drd-amd64-linux.so(x86_64))",
-				"soname(vgpreload_helgrind-amd64-linux.so(x86_64))",
-				"soname(vgpreload_massif-amd64-linux.so(x86_64))",
-				"soname(vgpreload_memcheck-amd64-linux.so(x86_64))"
+				"soname(valgrind/valgrind/vgpreload_core-amd64-linux.so(x86_64))",
+				"soname(valgrind/valgrind/vgpreload_dhat-amd64-linux.so(x86_64))",
+				"soname(valgrind/valgrind/vgpreload_drd-amd64-linux.so(x86_64))",
+				"soname(valgrind/valgrind/vgpreload_helgrind-amd64-linux.so(x86_64))",
+				"soname(valgrind/valgrind/vgpreload_massif-amd64-linux.so(x86_64))",
+				"soname(valgrind/valgrind/vgpreload_memcheck-amd64-linux.so(x86_64))"
 			]
 		},
 		"valgrind-devel": {
+			"depends": [
+				"valgrind"
+			],
 			"files": [
 				"/usr/include/valgrind/cachegrind.h",
 				"/usr/include/valgrind/callgrind.h",
@@ -299,6 +303,7 @@
 				"/usr/include/valgrind/vki/vki-amd64-freebsd.h",
 				"/usr/include/valgrind/vki/vki-amd64-linux.h",
 				"/usr/include/valgrind/vki/vki-arm-linux.h",
+				"/usr/include/valgrind/vki/vki-arm64-freebsd.h",
 				"/usr/include/valgrind/vki/vki-arm64-linux.h",
 				"/usr/include/valgrind/vki/vki-darwin.h",
 				"/usr/include/valgrind/vki/vki-freebsd.h",
@@ -306,6 +311,7 @@
 				"/usr/include/valgrind/vki/vki-linux-io_uring.h",
 				"/usr/include/valgrind/vki/vki-linux.h",
 				"/usr/include/valgrind/vki/vki-machine-types-amd64-freebsd.h",
+				"/usr/include/valgrind/vki/vki-machine-types-arm64-freebsd.h",
 				"/usr/include/valgrind/vki/vki-machine-types-x86-freebsd.h",
 				"/usr/include/valgrind/vki/vki-mips32-linux.h",
 				"/usr/include/valgrind/vki/vki-mips64-linux.h",
@@ -370,6 +376,6 @@
 		}
 	},
 	"source-name": "valgrind",
-	"source-release": "4",
-	"source-version": "3.22.0"
+	"source-release": "5",
+	"source-version": "3.24.0"
 }
