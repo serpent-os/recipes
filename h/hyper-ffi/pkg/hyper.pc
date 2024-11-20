@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: hyper
+Description: Hyper FFI bindings
+Version: 1.5.1
+Libs: -L${libdir} -lhyper
+Cflags: -I${includedir}
+Libs.private:  -lunwind -lutil -lrt -lpthread -lm -ldl -lc
