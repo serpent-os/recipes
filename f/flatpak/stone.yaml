@@ -5,10 +5,13 @@
 #
 name        : flatpak
 version     : 1.14.10
-release     : 8
+release     : 9
 homepage    : https://www.flatpak.org/
 upstreams   :
-    - https://github.com/flatpak/flatpak/releases/download/1.14.10/flatpak-1.14.10.tar.xz : 6bbdc7908127350ad85a4a47d70292ca2f4c46e977b32b1fd231c2a719d821cd
+    - https://github.com/flatpak/flatpak/releases/download/1.15.10/flatpak-1.15.10.tar.xz : 6aa67ca29b4f4da74654888446710b16c9fcfe640c324a51c5025087eecbf42f
+    - https://dl.flathub.org/repo/flathub.flatpakrepo:
+        hash: 3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a
+        unpack: false
 summary     : Linux application sandboxing and distribution framework
 description : |
     Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.
@@ -16,12 +19,16 @@ license     :
     - LGPL-2.0-or-later
     - LGPL-2.1-or-later
 builddeps   :
+    - binary(bison)
     - binary(bwrap)
+    - binary(m4)
     - binary(msgfmt)
     - binary(python)
+    - binary(wayland-scanner)
     - binary(xmlto)
     - binary(xsltproc)
     - binary(yacc)
+    - docbook
     - pkgconfig(appstream)
     - pkgconfig(dconf)
     - pkgconfig(fuse3)
@@ -33,40 +40,33 @@ builddeps   :
     - pkgconfig(libarchive)
     - pkgconfig(libcap)
     - pkgconfig(libcurl)
-    - pkgconfig(libsystemd)
     - pkgconfig(libseccomp)
+    - pkgconfig(libsystemd)
     - pkgconfig(libxml-2.0)
     - pkgconfig(libzstd)
     - pkgconfig(ostree-1)
     - pkgconfig(polkit-agent-1)
+    - pkgconfig(wayland-protocols)
     - pkgconfig(xau)
-    - docbook
     - python-pyparsing
+networking  : true
 rundeps     :
-    - bubblewrap
+    - binary(bwrap)
 setup       : |
-    %patch %(pkgdir)/0001-Use-fusermount3-pending-new-flatpak-release-upstream.patch
-
-    # TODO: remove me when layout is updated
-    # overriding with cflags ain't enough here
-    sed -i '/-Werror=missing-include-dirs/d' configure
-
-    # system docbook pkg not suitable for documentation?
-    %configure \
-        --disable-documentation \
-        --with-system-bubblewrap \
-        --with-dbus-config-dir=/usr/share/dbus-1/system.d \
+    %patch %(pkgdir)/5688.patch
+    %meson -Ddbus_config_dir=/usr/share/dbus-1/system.d \
+           -Ddocbook_docs=disabled \
+           -Dgir=enabled \
+           -Dtests=false \
+           -Dhttp_backend=curl \
+           -Dlibzstd=enabled \
+           -Dsystem_fusermount=fusermount3 \
+           -Dsystem_bubblewrap=%(bindir)/bwrap
 build       : |
-    %make
+    %meson_build
 install     : |
-    %make_install
+    %meson_install
 
     %install_dir %(installroot)/usr/share/defaults/etc/profile.d/
     mv %(installroot)/etc/profile.d/flatpak.sh %(installroot)/usr/share/defaults/etc/profile.d/70-flatpak.sh
-
-    # Enable flathub
-    %install_dir %(installroot)/%(libdir)/systemd/system/multi-user.target.wants
-    %install_file -t %(installroot)/%(libdir)/systemd/system %(pkgdir)/flatpak-enable-flathub.service
-    ln -sv ../flatpak-enable-flathub.service %(installroot)/%(libdir)/systemd/system/multi-user.target.wants/flatpak-enable-flathub.service
-# g-ir-scanner shitting the bed with clang
-toolchain   : gnu
+    %install_file %(pkgdir)/flathub.flatpakrepo %(installroot)%(datadir)/flatpak/remotes.d/flathub.flatpakrepo
