@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-session
-version     : "1.0.0-alpha.3"
-release     : 14
+version     : 1.0.0-alpha.3
+release     : 15
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-session.git : 5a0df6afb6c9c5e9c29e33a756bf7e600c3d0264
+    - git|https://github.com/pop-os/cosmic-session.git : 2612282fcfcc2c12c8a7227631cb936d17edc494
 description : |
     Cosmic Session Management
 builddeps   :
