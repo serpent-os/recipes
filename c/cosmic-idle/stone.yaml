@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-idle
-version     : "1.0.0-alpha.3"
-release     : 4
+version     : 1.0.0-alpha.3
+release     : 5
 summary     : Cosmic Desktop Idle Daemon
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-idle
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-idle.git : 08c1cf318e91831b6cbfd2c94d2fafbedb90919f
+    - git|https://github.com/pop-os/cosmic-idle.git : eaa09a6fef304ddc236709c111bb7b0c16883f7d
 description : |
     Cosmic Desktop Idle Daemon
 builddeps   :
