@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : hyper-ffi
+version     : 1.5.1
+release     : 1
+homepage    : https://github.com/hyperium/hyper
+upstreams   :
+    - https://github.com/hyperium/hyper/archive/refs/tags/v1.5.1.tar.gz : fc043aa072c7ed39740324b250047d8ef2cfb30bff3364fabeeb150c28406ec0
+summary     : Hyper is a fast and correct HTTP implementation written in and for Rust
+description : |
+    Hyper is a fast and correct HTTP implementation written in and for Rust. It is a low-level typesafe abstraction over raw HTTP, providing an elegant layer over "stringly-typed" HTTP.
+license     : MIT
+environment : |
+    # We add a soname for link/package splitting, 0 to indicate no stable version
+    export RUSTFLAGS="$RUSTFLAGS --cfg hyper_unstable_ffi -Clink-arg=-Wl,-soname=libhyper.so.0"
+networking  : true
+builddeps   :
+    - binary(cargo)
+setup       : |
+    cargo fetch
+build       : |
+    cargo rustc -v -j "%(jobs)" --release --target %(target_triple) --features client,http1,http2,ffi --crate-type cdylib
+install     : |
+    %install_file capi/include/hyper.h %(installroot)%(includedir)/hyper.h
+    %install_exe target/%(target_triple)/release/libhyper.so %(installroot)%(libdir)/libhyper.so.0
+    ln -s libhyper.so.0 %(installroot)%(libdir)/libhyper.so
