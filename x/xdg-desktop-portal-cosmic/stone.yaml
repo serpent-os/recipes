@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : xdg-desktop-portal-cosmic
-version     : "1.0.0-alpha.2"
-release     : 5
+version     : 1.0.0-alpha.3
+release     : 6
 summary     : Cosmic Desktop - XDG Portal Support
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/xdg-desktop-portal-cosmic
 upstreams   :
-    - git|https://github.com/pop-os/xdg-desktop-portal-cosmic.git : dcbdd9974b570633ae3b47cb1d427771e4b8e276
+    - git|https://github.com/pop-os/xdg-desktop-portal-cosmic.git : 29f0c058b0151868193ef5d48657008aa8df30dc
 description : |
     Cosmic Desktop - XDG Portal Support
 builddeps   :
