@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libxscrnsaver
+version     : 1.2.4
+release     : 1
+homepage    : https://xorg.freedesktop.org/releases/individual/lib
+upstreams   :
+    - https://xorg.freedesktop.org/releases/individual/lib/libXScrnSaver-1.2.4.tar.xz : 75cd2859f38e207a090cac980d76bc71e9da99d48d09703584e00585abc920fe
+summary     : X11 Screen Saver extension library
+description : |
+    X11 Screen Saver extension library
+license     : MIT
+builddeps   :
+    - pkgconfig32(x11)
+    - pkgconfig32(xext)
+    - pkgconfig(xextproto)
+    - pkgconfig(scrnsaverproto)
+emul32      : true
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
