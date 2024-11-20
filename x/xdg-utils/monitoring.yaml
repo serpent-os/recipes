@@ -1,5 +1,6 @@
 releases:
     id: 5176
+    rss: https://gitlab.freedesktop.org/xdg/xdg-utils/-/tags?format=atom
 security:
     cpe:
         - vendor: freedesktop

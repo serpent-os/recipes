@@ -5,15 +5,16 @@
 #
 name        : xdg-utils
 version     : 1.2.1
-release     : 3
-homepage    : https://gitlab.freedesktop.org/xdg/xdg-utils/
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.2.1
 upstreams   :
     - https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.2.1/xdg-utils-v1.2.1.tar.gz : f6b648c064464c2636884c05746e80428110a576f8daacf46ef2e554dcfdae75
-summary     : Tools to assist with desktop integration tasks
+summary     : Basic desktop integration functions from the freedesktop project
 description : |
-    The xdg-utils package is a set of simple scripts that provide basic desktop integration functions
-license     :
-    - MIT
+    A set of scripts that provide basic desktop integration functions for any Free Desktop on Linux, the BSDs and even partially on MacOS and WSL.
+
+    They are intended to provide a set of defacto standards.
+license     : MIT
 builddeps   :
     - binary(lynx)
     - binary(xmlto)
