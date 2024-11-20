@@ -25,6 +25,7 @@
 			],
 			"files": [
 				"/usr/bin/cosmic-app-list",
+				"/usr/bin/cosmic-applet-a11y",
 				"/usr/bin/cosmic-applet-audio",
 				"/usr/bin/cosmic-applet-battery",
 				"/usr/bin/cosmic-applet-bluetooth",
@@ -40,6 +41,7 @@
 				"/usr/bin/cosmic-applets",
 				"/usr/bin/cosmic-panel-button",
 				"/usr/share/applications/com.system76.CosmicAppList.desktop",
+				"/usr/share/applications/com.system76.CosmicAppletA11y.desktop",
 				"/usr/share/applications/com.system76.CosmicAppletAudio.desktop",
 				"/usr/share/applications/com.system76.CosmicAppletBattery.desktop",
 				"/usr/share/applications/com.system76.CosmicAppletBluetooth.desktop",
@@ -125,6 +127,7 @@
 			"name": "cosmic-applets",
 			"provides": [
 				"binary(cosmic-app-list)",
+				"binary(cosmic-applet-a11y)",
 				"binary(cosmic-applet-audio)",
 				"binary(cosmic-applet-battery)",
 				"binary(cosmic-applet-bluetooth)",
@@ -143,6 +146,6 @@
 		}
 	},
 	"source-name": "cosmic-applets",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "1.0.0-alpha.3"
 }
