@@ -1,0 +1,71 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"ptyxis": {
+			"build-depends": [
+				"binary(msgfmt)",
+				"binary(update-desktop-database)",
+				"pkgconfig(json-glib-1.0)",
+				"pkgconfig(libadwaita-1)",
+				"pkgconfig(libportal-gtk4)",
+				"pkgconfig(vte-2.91-gtk4)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libadwaita-1.so.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgtk-4.so.1(x86_64))",
+				"soname(libjson-glib-1.0.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpango-1.0.so.0(x86_64))",
+				"soname(libportal-gtk4.so.1(x86_64))",
+				"soname(libportal.so.1(x86_64))",
+				"soname(libvte-2.91-gtk4.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/ptyxis",
+				"/usr/lib/ptyxis/ptyxis-agent",
+				"/usr/share/applications/org.gnome.Ptyxis.desktop",
+				"/usr/share/dbus-1/services/org.gnome.Ptyxis.service",
+				"/usr/share/glib-2.0/schemas/org.gnome.Ptyxis.gschema.xml",
+				"/usr/share/icons/hicolor/scalable/apps/org.gnome.Ptyxis.svg",
+				"/usr/share/icons/hicolor/symbolic/apps/org.gnome.Ptyxis-symbolic.svg",
+				"/usr/share/locale/cs/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/de/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/en_GB/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/es/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/eu/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/fa/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/fi/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/he/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/hi/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/id/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/it/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/nb/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/pt_BR/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/sl/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/tr/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/locale/zh_CN/LC_MESSAGES/ptyxis.mo",
+				"/usr/share/man/man1/ptyxis.1",
+				"/usr/share/metainfo/org.gnome.Ptyxis.metainfo.xml"
+			],
+			"name": "ptyxis",
+			"provides": [
+				"binary(ptyxis)"
+			]
+		}
+	},
+	"source-name": "ptyxis",
+	"source-release": "1",
+	"source-version": "47.3"
+}
