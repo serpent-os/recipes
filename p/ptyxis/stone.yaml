@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ptyxis
+version     : 47.3
+release     : 1
+homepage    : https://gitlab.gnome.org/chergert/ptyxis
+upstreams   :
+    - https://download.gnome.org/sources/ptyxis/47/ptyxis-47.3.tar.xz : 2099ec416ebc1092afff1769394e3c280f5e6d546c354c190df5cef42253f73f
+summary     : A terminal for a container-oriented desktop
+description : |
+  Ptyxis is a terminal for GNOME with first-class support for containers.
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(update-desktop-database)
+    - pkgconfig(json-glib-1.0)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libportal-gtk4)
+    - pkgconfig(vte-2.91-gtk4)
+setup       : |
+    %meson -Dgeneric=terminal
+build       : |
+    %meson_build
+install     : |
+    %meson_install
