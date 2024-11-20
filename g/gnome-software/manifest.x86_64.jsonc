@@ -32,6 +32,7 @@
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgmodule-2.0.so.0(x86_64))",
+				"soname(libgnomesoftware.so.21(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
 				"soname(libgudev-1.0.so.0(x86_64))",
@@ -288,22 +289,22 @@
 			"name": "gnome-software",
 			"provides": [
 				"binary(gnome-software)",
-				"soname(libgnomesoftware.so.21(x86_64))",
-				"soname(libgs_plugin_appstream.so(x86_64))",
-				"soname(libgs_plugin_dpkg.so(x86_64))",
-				"soname(libgs_plugin_dummy.so(x86_64))",
-				"soname(libgs_plugin_epiphany.so(x86_64))",
-				"soname(libgs_plugin_fedora-langpacks.so(x86_64))",
-				"soname(libgs_plugin_fedora-pkgdb-collections.so(x86_64))",
-				"soname(libgs_plugin_flatpak.so(x86_64))",
-				"soname(libgs_plugin_generic-updates.so(x86_64))",
-				"soname(libgs_plugin_hardcoded-blocklist.so(x86_64))",
-				"soname(libgs_plugin_icons.so(x86_64))",
-				"soname(libgs_plugin_modalias.so(x86_64))",
-				"soname(libgs_plugin_os-release.so(x86_64))",
-				"soname(libgs_plugin_provenance-license.so(x86_64))",
-				"soname(libgs_plugin_provenance.so(x86_64))",
-				"soname(libgs_plugin_repos.so(x86_64))"
+				"soname(gnome-software/libgnomesoftware.so.21(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_appstream.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_dpkg.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_dummy.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_epiphany.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_fedora-langpacks.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_fedora-pkgdb-collections.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_flatpak.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_generic-updates.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_hardcoded-blocklist.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_icons.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_modalias.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_os-release.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_provenance-license.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_provenance.so(x86_64))",
+				"soname(gnome-software/plugins-21/libgs_plugin_repos.so(x86_64))"
 			]
 		},
 		"gnome-software-devel": {
@@ -397,6 +398,6 @@
 		}
 	},
 	"source-name": "gnome-software",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "47.1"
 }
