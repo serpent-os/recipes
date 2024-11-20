@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-files
-version     : "1.0.0-alpha.3"
-release     : 9
+version     : 1.0.0-alpha.3
+release     : 10
 homepage    : https://github.com/pop-os/cosmic-files
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-files : 20f9292e7925da20086c7f1f3c8e3a8d03d63b99
+    - git|https://github.com/pop-os/cosmic-files : b4b5e78abe82a6be41fab320469a371719a71d53
 summary     : Cosmic Desktop File Browser
 description : |
     Cosmic desktop File Browser
