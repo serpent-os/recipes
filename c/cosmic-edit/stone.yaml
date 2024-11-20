@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-edit
-version     : "1.0.0-alpha.3"
-release     : 8
+version     : 1.0.0-alpha.3
+release     : 9
 homepage    : https://github.com/pop-os/cosmic-edit
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-edit : 3d9240927588efe9a33e16c014979798f78e1d7a
+    - git|https://github.com/pop-os/cosmic-edit : 9ae988db678bb273a59a479df38ace380d209636
 summary     : Cosmic Desktop Text Editor
 description : |
     Cosmic desktop Text Editor
