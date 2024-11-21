@@ -5,7 +5,7 @@
 #
 name        : lz4
 version     : 1.10.0
-release     : 2
+release     : 3
 homepage    : https://lz4.github.io/lz4
 upstreams   :
     - https://github.com/lz4/lz4/releases/download/v1.10.0/lz4-1.10.0.tar.gz : 537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b
@@ -15,10 +15,16 @@ description : |
 license     :
     - BSD-2-Clause
     - GPL-2.0-or-later
+emul32      : true
+setup       : |
+    pushd build/meson
+    %meson -Dprograms=true
 build       : |
-    %make
+    pushd build/meson
+    %meson_build
 install     : |
-    %make_install PREFIX=%(prefix)
-    rm %(installroot)/%(libdir)/*.a
+    pushd build/meson
+    %meson_install
 check       : |
-    %make check
+    pushd build/meson
+    %meson_test

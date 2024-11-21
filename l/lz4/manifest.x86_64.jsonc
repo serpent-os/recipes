@@ -28,15 +28,42 @@
 				"soname(liblz4.so.1(x86_64))"
 			]
 		},
+		"lz4-32bit": {
+			"depends": [
+				"lz4",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/liblz4.so.1",
+				"/usr/lib32/liblz4.so.1.10.0"
+			],
+			"name": "lz4-32bit",
+			"provides": [
+				"soname(liblz4.so.1(386))",
+				"soname(liblz4.so.1(x86))"
+			]
+		},
+		"lz4-32bit-devel": {
+			"depends": [
+				"lz4-32bit",
+				"lz4-devel"
+			],
+			"files": [
+				"/usr/lib32/liblz4.so",
+				"/usr/lib32/pkgconfig/liblz4.pc"
+			],
+			"name": "lz4-32bit-devel",
+			"provides": [
+				"pkgconfig32(liblz4)"
+			]
+		},
 		"lz4-devel": {
 			"depends": [
 				"lz4"
 			],
 			"files": [
 				"/usr/include/lz4.h",
-				"/usr/include/lz4file.h",
 				"/usr/include/lz4frame.h",
-				"/usr/include/lz4frame_static.h",
 				"/usr/include/lz4hc.h",
 				"/usr/lib/liblz4.so",
 				"/usr/lib/pkgconfig/liblz4.pc"
@@ -48,6 +75,6 @@
 		}
 	},
 	"source-name": "lz4",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.10.0"
 }
