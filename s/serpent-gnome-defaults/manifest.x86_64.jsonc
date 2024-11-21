@@ -6,7 +6,8 @@
 			"depends": [
 				"binary(gnome-shell)",
 				"binary(gnome-software)",
-				"binary(gnome-system-monitor)",
+				"binary(gnome-system-monitor",
+				"binary(ptyxis)",
 				"font-hack",
 				"gnome-backgrounds",
 				"gnome-shell-extension-appindicator",
@@ -24,6 +25,6 @@
 		}
 	},
 	"source-name": "serpent-gnome-defaults",
-	"source-release": "12",
+	"source-release": "13",
 	"source-version": "0.1.0"
 }
