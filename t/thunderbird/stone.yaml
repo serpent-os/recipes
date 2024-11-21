@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : thunderbird
-version     : 128.4.3
-release     : 10
+version     : 128.4.4
+release     : 11
 homepage    : https://www.thunderbird.net/
 upstreams   :
-    - https://releases.mozilla.org/pub/thunderbird/releases/128.4.3esr/source/thunderbird-128.4.3esr.source.tar.xz : 146edcfee47ebaa3fb6cf877a0747140dd011a3f6b674c98cdc61b9e98bbd61c
+    - https://releases.mozilla.org/pub/thunderbird/releases/128.4.4esr/source/thunderbird-128.4.4esr.source.tar.xz : 370fae094c0f600e8eb54628c34485c7da6528f905613d41d6975092566731cd
 summary     : Thunderbird Email Client
 description : |
     Thunderbird Email Client
