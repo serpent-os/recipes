@@ -1,0 +1,38 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"steam": {
+			"files": [
+				"/usr/bin/steam",
+				"/usr/bin/steamdeps",
+				"/usr/lib/steam/bin_steam.sh",
+				"/usr/lib/steam/bin_steamdeps.py",
+				"/usr/lib/steam/bootstraplinux_ubuntu12_32.tar.xz",
+				"/usr/lib/steam/steam.desktop",
+				"/usr/lib/steam/steam_launcher/__init__.py",
+				"/usr/lib/steam/steam_launcher/launcherutils.py",
+				"/usr/share/applications/steam.desktop",
+				"/usr/share/doc/steam/README",
+				"/usr/share/doc/steam/steam_subscriber_agreement.txt",
+				"/usr/share/icons/hicolor/16x16/apps/steam.png",
+				"/usr/share/icons/hicolor/24x24/apps/steam.png",
+				"/usr/share/icons/hicolor/256x256/apps/steam.png",
+				"/usr/share/icons/hicolor/32x32/apps/steam.png",
+				"/usr/share/icons/hicolor/48x48/apps/steam.png",
+				"/usr/share/man/man6/steam.6",
+				"/usr/share/metainfo/com.valvesoftware.Steam.metainfo.xml",
+				"/usr/share/pixmaps/steam.png",
+				"/usr/share/pixmaps/steam_tray_mono.png"
+			],
+			"name": "steam",
+			"provides": [
+				"binary(steam)",
+				"binary(steamdeps)"
+			]
+		}
+	},
+	"source-name": "steam",
+	"source-release": "1",
+	"source-version": "1.0.0.82"
+}
