@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : tar
+version     : 1.35
+release     : 1
+homepage    : https://gnu.org/software/tar/
+upstreams   :
+    - https://ftp.gnu.org/gnu/tar/tar-1.35.tar.gz : 14d55e32063ea9526e057fbf35fcabd53378e769787eff7919c3755b02d2b57e
+summary     : GNU Tar
+description : |
+    GNU Tar provides the ability to create tar archives, as well as various other kinds of manipulation.
+license     : GPL-3.0-or-later
+environment :
+    export FORCE_UNSAFE_CONFIGURE=1
+builddeps   :
+    - binary(bison)
+    - binary(msgfmt)
+    - pkgconfig(libacl)
+    - pkgconfig(libattr)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
