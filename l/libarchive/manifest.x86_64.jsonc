@@ -28,7 +28,6 @@
 				"/usr/bin/bsdcpio",
 				"/usr/bin/bsdtar",
 				"/usr/bin/bsdunzip",
-				"/usr/bin/tar",
 				"/usr/lib/libarchive.so.13",
 				"/usr/lib/libarchive.so.13.7.4",
 				"/usr/share/man/man1/bsdcat.1",
@@ -46,7 +45,6 @@
 				"binary(bsdcpio)",
 				"binary(bsdtar)",
 				"binary(bsdunzip)",
-				"binary(tar)",
 				"soname(libarchive.so.13(x86_64))"
 			]
 		},
@@ -114,6 +112,6 @@
 		}
 	},
 	"source-name": "libarchive",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "3.7.7"
 }

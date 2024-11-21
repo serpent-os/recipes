@@ -5,7 +5,7 @@
 #
 name        : libarchive
 version     : 3.7.7
-release     : 6
+release     : 7
 summary     : Multi-format archive and compression library
 license     : BSD-2-Clause
 homepage    : https://www.libarchive.org
@@ -31,6 +31,3 @@ build       : |
     %make
 install     : |
     %make_install
-
-    # Make libarchive default provider of tar
-    ln -svf bsdtar "%(installroot)/usr/bin/tar"
