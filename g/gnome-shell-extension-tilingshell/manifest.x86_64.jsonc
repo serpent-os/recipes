@@ -1,0 +1,29 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gnome-shell-extension-tilingshell": {
+			"files": [
+				"/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.tilingshell.gschema.xml",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/extension.js",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/icons/add-symbolic.svg",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/icons/cancel-symbolic.svg",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/icons/delete-symbolic.svg",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/icons/edit-symbolic.svg",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/icons/indicator-symbolic.svg",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/icons/info-symbolic.svg",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/icons/menu-symbolic.svg",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/icons/save-symbolic.svg",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/metadata.json",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/monitorDescription.js",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/prefs.js",
+				"/usr/share/gnome-shell/extensions/tilingshell@ferrarodomenico.com/stylesheet.css",
+				"/usr/share/locale/it/LC_MESSAGES/tilingshell.mo"
+			],
+			"name": "gnome-shell-extension-tilingshell"
+		}
+	},
+	"source-name": "gnome-shell-extension-tilingshell",
+	"source-release": "1",
+	"source-version": "15.0.0"
+}

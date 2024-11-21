@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-shell-extension-tilingshell
+version     : 15.0.0
+release     : 1
+homepage    : https://github.com/domferr/tilingshell
+upstreams   :
+    - https://github.com/domferr/tilingshell/releases/download/15.0.0/tilingshell@ferrarodomenico.com.zip : c8b45caa0072a504b53544df4539c490a336144d3cae1b1181ce6a85ed6b81ef
+summary     : Tiling Shell GNOME Shell Extension
+description : |
+    Tiling Shell GNOME Shell Extension
+license     :
+    - GPL-2.0
+install     : |
+    %install_dir %(installroot)%(datadir)/gnome-shell/extensions/tilingshell@ferrarodomenico.com
+    %install_file *.js *.json *.css %(installroot)%(datadir)/gnome-shell/extensions/tilingshell@ferrarodomenico.com/.
+    cp -R locale %(installroot)%(datadir)/
+    cp -R icons %(installroot)%(datadir)/gnome-shell/extensions/tilingshell@ferrarodomenico.com
+    %install_file schemas/org.gnome.shell.extensions.tilingshell.gschema.xml %(installroot)%(datadir)/glib-2.0/schemas/org.gnome.shell.extensions.tilingshell.gschema.xml
