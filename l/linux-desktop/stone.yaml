@@ -1,9 +1,9 @@
 name        : linux-desktop
-version     : 6.11.9
-release     : 54
+version     : 6.12.0
+release     : 55
 homepage    : https://kernel.org/
 upstreams   :
-    - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.11.9.tar.xz : 75658a7aa3bd9598c96ee1e5862c5e1d34fced75c28d825c727a1510a6f384b4
+    - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.tar.xz : b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb
 summary     : The Linux Kernel for desktop systems
 description : |
     The Linux Kernel for desktop systems
