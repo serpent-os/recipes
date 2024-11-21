@@ -4,12 +4,12 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : starship
-version     : "1.17.1"
+version     : "1.21.1"
 release     : 2
 license     : ISC
 homepage    : https://starship.rs/
 upstreams   :
-    - git|https://github.com/starship/starship.git : "v1.17.1"
+    - https://github.com/starship/starship/archive/refs/tags/v1.21.1.tar.gz : f543dfa3229441ca2a55b8a625ce4bad5756a896378b019f4d0f0e00cf34dcc8
 summary     : The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 description : |
     The minimal, blazing-fast, and infinitely customizable prompt for any shell!
@@ -29,9 +29,9 @@ install     : |
     %install_dir %(installroot)/%(datadir)/zsh/site-functions
     %install_dir %(installroot)/%(datadir)/fish/vendor_completions.d
 
-    target/*/debug/starship completions bash > %(installroot)/%(completionsdir)/starship.bash
-    target/*/debug/starship completions zsh > %(installroot)/%(datadir)/zsh/site-functions/_starship
-    target/*/debug/starship completions fish > %(installroot)/%(datadir)/fish/vendor_completions.d/starship.fish
+    target/*/release/starship completions bash > %(installroot)/%(completionsdir)/starship.bash
+    target/*/release/starship completions zsh > %(installroot)/%(datadir)/zsh/site-functions/_starship
+    target/*/release/starship completions fish > %(installroot)/%(datadir)/fish/vendor_completions.d/starship.fish
 check      : |
     # $HOME .config tests fail and TERM=dumb causing issues in a couple of tests
     %cargo_test || :
