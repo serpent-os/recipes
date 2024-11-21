@@ -4,6 +4,7 @@
 	"packages": {
 		"steam": {
 			"depends": [
+				"binary(cmp)",
 				"binary(tar)",
 				"binary(zenity)",
 				"soname(libdrm.so.2(386))"
@@ -38,6 +39,6 @@
 		}
 	},
 	"source-name": "steam",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "1.0.0.82"
 }

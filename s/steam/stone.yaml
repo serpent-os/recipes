@@ -5,7 +5,7 @@
 #
 name        : steam
 version     : 1.0.0.82
-release     : 4
+release     : 5
 homepage    : https://store.steampowered.com/
 upstreams   :
     - https://repo.steampowered.com/steam/pool/steam/s/steam/steam_1.0.0.82.tar.gz : afa2f1dd6271fd2b645ba30b8f3ab40afd3654e354241a31cbd51000f7e6fc77
@@ -14,6 +14,7 @@ description : |
     steam is a digital distribution platform developed by Valve Corporation, which offers digital rights management (DRM), multiplayer gaming, video streaming and social networking services.
 license     : Distributable
 rundeps     :
+    - binary(cmp)
     - binary(tar)
     - binary(zenity)
     - soname(libdrm.so.2(386))
