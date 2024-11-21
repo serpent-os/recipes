@@ -3,6 +3,9 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"steam": {
+			"depends": [
+				"binary(tar)"
+			],
 			"files": [
 				"/usr/bin/steam",
 				"/usr/bin/steamdeps",
@@ -33,6 +36,6 @@
 		}
 	},
 	"source-name": "steam",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.0.0.82"
 }
