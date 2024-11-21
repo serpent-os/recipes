@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : zenity
+version     : 4.0.3
+release     : 1
+homepage    : https://wiki.gnome.org/Projects/Zenity
+upstreams   :
+    - https://download.gnome.org/sources/zenity/4.0/zenity-4.0.3.tar.xz : b429d97b87bd9ce7fb72ac0b78df534725d8ad39817ddca6a4ca2ee5381b08de
+summary     : Display graphical dialog boxes from shell scripts
+description : |
+    Display graphical dialog boxes from shell scripts
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(itstool)
+    - binary(msgfmt)
+    - pkgconfig(libadwaita-1)
+setup       : |
+    %meson -Dwebkitgtk=false -Dmanpage=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
