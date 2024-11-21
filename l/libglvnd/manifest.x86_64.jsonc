@@ -179,6 +179,6 @@
 		}
 	},
 	"source-name": "libglvnd",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "1.7.0"
 }
