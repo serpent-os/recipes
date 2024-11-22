@@ -5,7 +5,7 @@
 #
 name        : nautilus
 version     : '47.0'
-release     : 3
+release     : 4
 homepage    : https://apps.gnome.org/Nautilus/
 upstreams   :
     - https://download.gnome.org/sources/nautilus/47/nautilus-47.0.tar.xz : 334264cdd9edbfd95ee7bcaafe442ebed31acca3f2d9b90f3eda30eacfd0387a
@@ -38,6 +38,7 @@ rundeps     :
 environment : |
     export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
 setup       : |
+    %patch %(pkgdir)/default-terminal.patch
     %meson -Ddocs=false
 build       : |
     %meson_build
