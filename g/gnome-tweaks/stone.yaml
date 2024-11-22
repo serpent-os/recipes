@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-tweaks
+version     : 9999-git
+release     : 1
+homepage    : https://github.com/GNOME/gnome-tweaks
+upstreams   :
+    - git|https://github.com/GNOME/gnome-tweaks.git : 3ddc4b3759f3e17de84b39ec432f36ab340fc62e
+summary     : Tools for tweaking otherwise hidden GNOME desktop settings
+description : |
+    Tools for tweaking otherwise hidden GNOME desktop settings
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(update-desktop-database)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gsettings-desktop-schemas)
+    - pkgconfig(gtk4)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(pygobject-3.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
