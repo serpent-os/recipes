@@ -5,7 +5,7 @@
 #
 name        : cpio
 version     : '2.15'
-release     : 2
+release     : 3
 homepage    : https://ftp.gnu.org/gnu/cpio
 upstreams   :
     - https://ftp.gnu.org/gnu/cpio/cpio-2.15.tar.gz : efa50ef983137eefc0a02fdb51509d624b5e3295c980aa127ceee4183455499e
@@ -18,12 +18,16 @@ description : |
     files.
 license     :
     - GPL-3.0-or-later
+rundeps    :
+    - sysbinary(rmt)
 setup       : |
-    %configure --disable-static
+    %configure --disable-static \
+               --with-rmt=%(sbindir)/rmt
 build       : |
     %make
 install     : |
     %make_install
+    rmdir %(installroot)%(mandir)/man8
 tuning      :
     - icf: false
     - common: true
