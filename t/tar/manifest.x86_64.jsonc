@@ -16,7 +16,7 @@
 			],
 			"files": [
 				"/usr/bin/tar",
-				"/usr/lib/tar/rmt",
+				"/usr/sbin/rmt",
 				"/usr/share/info/tar.info",
 				"/usr/share/info/tar.info-1",
 				"/usr/share/info/tar.info-2",
@@ -65,11 +65,12 @@
 			],
 			"name": "tar",
 			"provides": [
-				"binary(tar)"
+				"binary(tar)",
+				"sysbinary(rmt)"
 			]
 		}
 	},
 	"source-name": "tar",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.35"
 }
