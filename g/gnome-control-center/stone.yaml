@@ -5,7 +5,7 @@
 #
 name        : gnome-control-center
 version     : 47.1.1
-release     : 11
+release     : 12
 homepage    : https://apps.gnome.org/Settings/
 upstreams   :
     - https://download.gnome.org/sources/gnome-control-center/47/gnome-control-center-47.1.1.tar.xz : 051fd4057157f4b2337013fbefc96e3d129654e3fc960d4849d354252400be77
@@ -70,5 +70,3 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-    %install_file %(pkgdir)/logo/black_notext_4x.png %(installroot)%(datadir)/icons/serpent-logo.png
-    %install_file %(pkgdir)/logo/white_notext_4x.png %(installroot)%(datadir)/icons/serpent-logo-dark.png

@@ -193,8 +193,6 @@
 				"/usr/share/icons/hicolor/scalable/apps/org.gnome.Settings.Devel.svg",
 				"/usr/share/icons/hicolor/scalable/apps/org.gnome.Settings.svg",
 				"/usr/share/icons/hicolor/symbolic/apps/org.gnome.Settings-symbolic.svg",
-				"/usr/share/icons/serpent-logo-dark.png",
-				"/usr/share/icons/serpent-logo.png",
 				"/usr/share/locale/ab/LC_MESSAGES/gnome-control-center-2.0.mo",
 				"/usr/share/locale/af/LC_MESSAGES/gnome-control-center-2.0.mo",
 				"/usr/share/locale/am/LC_MESSAGES/gnome-control-center-2.0-timezones.mo",
@@ -511,6 +509,6 @@
 		}
 	},
 	"source-name": "gnome-control-center",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "47.1.1"
 }
