@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.24.4
-release     : 68
+release     : 69
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -16,6 +16,8 @@ upstreams   :
     - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.4.tar.gz : e90d9cca5d80bd516beba2c3d4ba2d725a1e02d0d092541df01763d7ed547290
 builddeps   :
     - binary(cargo)
+rundeps     :
+    - binary(tar) # needed for `boulder recipe (...)` actions
 networking  : yes
 check       : |
     %cargo_test
