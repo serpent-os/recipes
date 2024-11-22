@@ -1,6 +1,7 @@
 default: (_build build_file)
 
 set dotenv-load
+set quiet
 # respect variables set in .env file next to the present justfile
 boulder := env_var_or_default('BOULDER', 'boulder')
 boulder_args := env_var_or_default('BOULDER_ARGS', '')
@@ -38,10 +39,22 @@ _init target:
     ln -sfv ../../tools/prepare-commit-msg.py $(git rev-parse --git-path hooks)/prepare-commit-msg
 init: (_init build_file)
 
+[confirm('This will delete ALL .stones in your local repo -- continue?')]
+_clean-local:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [[ -d {{local_repo}} ]]; then
+       rm -f {{local_repo}}/*.stone
+    fi
+
+# clean the LOCAL_REPO dir of .stones and reindex it
+clean-local: ls-local && ls-local
+  just _clean-local
+
 # create LOCAL_REPO dir if it doesn't exist
 create-local:
     #!/usr/bin/env bash
-    set -euxo pipefail
+    set -euo pipefail
     if [[ ! -d {{local_repo}} ]]; then
        mkdir -pv {{local_repo}}
     fi
@@ -57,4 +70,3 @@ ls-local: create-local
 # move .stones to LOCAL_REPO (create if it doesn't exist) and reindex it
 mv-local: create-local
     cd {{ invocation_directory() }} && mv -v *.stone {{local_repo}}/ && moss index {{local_repo}}
-
