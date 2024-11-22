@@ -17,6 +17,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libkeyutils)",
 				"pkgconfig(pam)",
+				"pkgconfig(ply-boot-client)",
 				"pkgconfig(systemd)",
 				"pkgconfig(udev)",
 				"pkgconfig(xau)"
@@ -243,7 +244,7 @@
 				"binary(gdm-config)",
 				"binary(gdmflexiserver)",
 				"soname(libgdm.so.1(x86_64))",
-				"soname(pam_gdm.so(x86_64))",
+				"soname(security/pam_gdm.so(x86_64))",
 				"sysbinary(gdm)"
 			]
 		},
@@ -262,6 +263,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libkeyutils)",
 				"pkgconfig(pam)",
+				"pkgconfig(ply-boot-client)",
 				"pkgconfig(systemd)",
 				"pkgconfig(udev)",
 				"pkgconfig(xau)"
@@ -295,6 +297,6 @@
 		}
 	},
 	"source-name": "gdm",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "47.0"
 }

@@ -5,7 +5,7 @@
 #
 name        : gdm
 version     : '47.0'
-release     : 10
+release     : 11
 homepage    : https://gitlab.gnome.org/GNOME/gdm
 upstreams   :
     - https://download.gnome.org/sources/gdm/47/gdm-47.0.tar.xz : c5858326bfbcc8ace581352e2be44622dc0e9e5c2801c8690fd2eed502607f84
@@ -28,6 +28,7 @@ builddeps   :
     - pkgconfig(json-glib-1.0)
     - pkgconfig(libkeyutils)
     - pkgconfig(pam)
+    - pkgconfig(ply-boot-client)
     - pkgconfig(systemd)
     - pkgconfig(udev)
     - pkgconfig(xau)
@@ -47,7 +48,8 @@ setup       : |
            -Dudev-dir=%(libdir)/udev/rules.d \
            -Dpam-prefix=%(vendordir)/etc \
            -Duser-display-server=true \
-           -Dx11-support=false
+           -Dx11-support=false \
+           -Dplymouth=enabled
 build       : |
     %meson_build
 install     : |
