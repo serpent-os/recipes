@@ -26,11 +26,11 @@ sha256sum linux*.tar.*
 
 At this point, the kernel is ready to be configured inside a serpent-based systemd-nspawn root.
 
+
 ### Update the kernel config
 
 Firstly, enter the nspawn environment which will be populated using moss ephemeral roots
 for up to date build dependencies, allowing native configuration:
-
 
 ```bash
 # Go back to the root of the serpent linux-<kernel version>/ recipe dir
@@ -57,6 +57,13 @@ make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 menuconfig
 
 # Ensure you save your new work/linux-(..)/.config file back to the serpent pkg/ dir
 cp .config ../../pkg/config-x86_64
+
+# Exit the nspawn container
+exit
 ```
+
+After you exit the nspawn container environment and are back to your original session,
+you can edit the `stone.yaml` recipe to use the new upstream version (along with any new
+patches you have added) with `just build`.
 
 Best of luck on your kernel maintenance journey. ^^'
