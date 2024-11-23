@@ -6,6 +6,7 @@
 			"build-depends": [
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libudev)"
 			],
 			"depends": [
@@ -15,8 +16,10 @@
 				"soname(libudev.so.1(x86_64))"
 			],
 			"files": [
+				"/usr/lib/girepository-1.0/GUdev-1.0.typelib",
 				"/usr/lib/libgudev-1.0.so.0",
-				"/usr/lib/libgudev-1.0.so.0.3.0"
+				"/usr/lib/libgudev-1.0.so.0.3.0",
+				"/usr/share/gir-1.0/GUdev-1.0.gir"
 			],
 			"name": "libgudev",
 			"provides": [
@@ -27,9 +30,11 @@
 			"build-depends": [
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libudev)"
 			],
 			"depends": [
+				"libgudev",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-2.0)",
 				"pkgconfig(libudev)"
@@ -52,6 +57,6 @@
 		}
 	},
 	"source-name": "libgudev",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "238"
 }
