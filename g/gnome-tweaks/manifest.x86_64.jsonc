@@ -155,6 +155,6 @@
 		}
 	},
 	"source-name": "gnome-tweaks",
-	"source-release": "1",
-	"source-version": "9999-git"
+	"source-release": "2",
+	"source-version": "3ddc4b3-git"
 }
