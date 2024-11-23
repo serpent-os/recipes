@@ -48,7 +48,7 @@ _clean-local:
     fi
 
 # clean the LOCAL_REPO dir of .stones and reindex it
-clean-local: ls-local && ls-local
+clean-local: ls-local && index-local
   just _clean-local
 
 # create LOCAL_REPO dir if it doesn't exist
