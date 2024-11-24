@@ -60,7 +60,8 @@
 				"soname(libsystemd.so.0(x86_64))",
 				"soname(libudisks2.so.0(x86_64))",
 				"soname(libusb-1.0.so.0(x86_64))",
-				"soname(libxml2.so.2(x86_64))"
+				"soname(libxml2.so.2(x86_64))",
+				"sysbinary(usbmuxd)"
 			],
 			"files": [
 				"/usr/lib/gio/modules/libgioremote-volume-monitor.so",
@@ -234,6 +235,6 @@
 		}
 	},
 	"source-name": "gvfs",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "1.56.1"
 }
