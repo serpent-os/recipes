@@ -5,7 +5,7 @@
 #
 name        : discord
 version     : 0.0.75
-release     : 1
+release     : 2
 summary     : Group chat, video, and voice calling app
 license     : Distributable
 homepage    : https://discord.com/
@@ -21,7 +21,8 @@ builddeps   :
     - binary(ln)
     - binary(tar)
 rundeps     :
-    - libxscrnsaver
+    - soname(libXss.so.1(x86_64))
+    - soname(libatomic.so.1(x86_64))
 strip       : false
 setup       : |
     ar xf %(sourcedir)/discord.deb
