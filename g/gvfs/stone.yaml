@@ -5,7 +5,7 @@
 #
 name        : gvfs
 version     : 1.56.1
-release     : 6
+release     : 7
 homepage    : https://wiki.gnome.org/Projects/gvfs
 upstreams   :
     - https://download.gnome.org/sources/gvfs/1.56/gvfs-1.56.1.tar.xz : 86731ccec679648f8734e237b1de190ebdee6e4c8c0f56f454c31588e509aa10
@@ -35,10 +35,10 @@ builddeps   :
     - pkgconfig(libgcrypt)
     # - pkgconfig(libgdata)
     # - pkgconfig(libgphoto2)
-    # - pkgconfig(libimobiledevice-1.0)
-    # - pkgconfig(libmtp)
+    - pkgconfig(libimobiledevice-1.0)
+    - pkgconfig(libmtp)
     # - pkgconfig(libnfs)
-    # - pkgconfig(libplist)
+    - pkgconfig(libplist-2.0)
     - pkgconfig(libsecret-unstable)
     - pkgconfig(libsoup-3.0)
     - pkgconfig(libsystemd)
@@ -53,12 +53,10 @@ builddeps   :
 environment : |
     export LDFLAGS="${LDFLAGS} -Wl,--allow-shlib-undefined"
 setup       : |
-    %meson -Dafc=false \
-           -Dbluray=false \
+    %meson -Dbluray=false \
            -Dcdda=false \
            -Dgoogle=false \
            -Dgphoto2=false \
-           -Dmtp=false \
            -Dnfs=false
 build       : |
     %meson_build
