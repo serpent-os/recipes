@@ -5,7 +5,7 @@
 #
 name        : bluez
 version     : 5.79
-release     : 1
+release     : 2
 homepage    : https://www.bluez.org/
 upstreams   :
     - https://www.kernel.org/pub/linux/bluetooth/bluez-5.79.tar.xz : 4164a5303a9f71c70f48c03ff60be34231b568d93a9ad5e79928d34e6aa0ea8a
@@ -38,7 +38,7 @@ setup       : |
                --enable-obex \
                --enable-library \
                --disable-client \
-               --with-dbusconfdir=%(datadir)/dbus-1 \
+               --with-dbusconfdir=%(datadir) \
                --with-vendordir=%(vendordir)/etc/bluetooth
 build       : |
     %make

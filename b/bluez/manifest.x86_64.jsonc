@@ -49,9 +49,9 @@
 				"/usr/lib/systemd/user/dbus-org.bluez.obex.service",
 				"/usr/lib/systemd/user/mpris-proxy.service",
 				"/usr/lib/systemd/user/obex.service",
-				"/usr/share/dbus-1/dbus-1/system.d/bluetooth.conf",
 				"/usr/share/dbus-1/services/org.bluez.obex.service",
 				"/usr/share/dbus-1/system-services/org.bluez.service",
+				"/usr/share/dbus-1/system.d/bluetooth.conf",
 				"/usr/share/defaults/etc/bluetooth/input.conf",
 				"/usr/share/defaults/etc/bluetooth/main.conf",
 				"/usr/share/defaults/etc/bluetooth/network.conf",
@@ -116,6 +116,6 @@
 		}
 	},
 	"source-name": "bluez",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "5.79"
 }
