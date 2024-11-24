@@ -5,7 +5,7 @@
 #
 name        : zstd
 version     : 1.5.6
-release     : 5
+release     : 6
 summary     : Fast real-time compression algorithm
 license     :
     - BSD-3-Clause
@@ -16,29 +16,35 @@ description : |
 upstreams   :
     - https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-1.5.6.tar.zst: 4aa8dd1c1115c0fd6b6b66c35c7f6ce7bd58cc1dfd3e4f175b45b39e84b14352
 builddeps   :
-    - pkgconfig(liblz4)
-    - pkgconfig(liblzma)
-    - pkgconfig(zlib)
+    - pkgconfig32(liblz4)
+    - pkgconfig32(liblzma)
+    - pkgconfig32(zlib)
+emul32      : yes
 environment : |
     export CFLAGS="${CFLAGS} -mllvm -vp-counters-per-site=1.5"
 build       : |
     %make
 install     : |
-    %bolt_instr programs/zstd
-    for i in $(seq 1 22); do
-        cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
-        cat $(find lib -type f) | programs/zstd --ultra --long -${i} | programs/zstd -d > /dev/null
-    done
-    %bolt_merge programs/zstd
-    %bolt_opt programs/zstd
-
-    %make_install PREFIX=/usr LIBDIR=/usr/lib
+    %make_install PREFIX=/usr LIBDIR=%(libdir)
     rm %(installroot)/%(libdir)/*.a
-workload    : |
-    for i in $(seq 1 22); do
-        cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
-        cat $(find lib -type f) | programs/zstd --ultra --long -${i} | programs/zstd -d > /dev/null
-    done
+profiles    :
+    - x86_64:
+        install: |
+            %bolt_instr programs/zstd
+            for i in $(seq 1 22); do
+                cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
+                cat $(find lib -type f) | programs/zstd --ultra --long -${i} | programs/zstd -d > /dev/null
+            done
+            %bolt_merge programs/zstd
+            %bolt_opt programs/zstd
+
+            %make_install PREFIX=/usr LIBDIR=%(libdir)
+            rm %(installroot)/%(libdir)/*.a
+        workload: |
+            for i in $(seq 1 22); do
+                cat $(find lib -type f) | programs/zstd --ultra -${i} | programs/zstd -d > /dev/null
+                cat $(find lib -type f) | programs/zstd --ultra --long -${i} | programs/zstd -d > /dev/null
+            done
 tuning      :
     - bolt
     - icf: all
