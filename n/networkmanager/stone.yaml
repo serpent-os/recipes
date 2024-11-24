@@ -5,7 +5,7 @@
 #
 name        : networkmanager
 version     : 1.48.8
-release     : 4
+release     : 5
 homepage    : https://wiki.gnome.org/Projects/NetworkManager
 upstreams   :
     - https://download.gnome.org/sources/NetworkManager/1.48/NetworkManager-1.48.8.tar.xz : 6200eac8f1d3fe6a3ea1f2c4158b3c95b3b9f91e74cd704e97b0b051b5a54878
@@ -22,6 +22,7 @@ builddeps   :
     - binary(perl)
     - binary(vapigen)
     - binary(xsltproc)
+    - pkgconfig(bluez)
     - pkgconfig(dbus-1)
     - pkgconfig(gio-unix-2.0)
     - pkgconfig(gmodule-2.0)
@@ -41,7 +42,6 @@ builddeps   :
     - pkgconfig(systemd)
     - pkgconfig(uuid)
     - ppp-devel
-    # pkgconfig(bluez)
     # pkgconfig(libnewt)
 rundeps     :
     - binary(iwmon)
@@ -65,5 +65,3 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-# incompatible pointer types
-toolchain   : gnu

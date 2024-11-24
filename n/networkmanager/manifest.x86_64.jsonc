@@ -9,6 +9,7 @@
 				"binary(perl)",
 				"binary(vapigen)",
 				"binary(xsltproc)",
+				"pkgconfig(bluez)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(gmodule-2.0)",
@@ -220,15 +221,15 @@
 			"provides": [
 				"binary(nm-online)",
 				"binary(nmcli)",
-				"soname(libnm-device-plugin-adsl.so(x86_64))",
-				"soname(libnm-device-plugin-bluetooth.so(x86_64))",
-				"soname(libnm-device-plugin-ovs.so(x86_64))",
-				"soname(libnm-device-plugin-wifi.so(x86_64))",
-				"soname(libnm-device-plugin-wwan.so(x86_64))",
-				"soname(libnm-ppp-plugin.so(x86_64))",
-				"soname(libnm-wwan.so(x86_64))",
+				"soname(NetworkManager/1.48.8/libnm-device-plugin-adsl.so(x86_64))",
+				"soname(NetworkManager/1.48.8/libnm-device-plugin-bluetooth.so(x86_64))",
+				"soname(NetworkManager/1.48.8/libnm-device-plugin-ovs.so(x86_64))",
+				"soname(NetworkManager/1.48.8/libnm-device-plugin-wifi.so(x86_64))",
+				"soname(NetworkManager/1.48.8/libnm-device-plugin-wwan.so(x86_64))",
+				"soname(NetworkManager/1.48.8/libnm-ppp-plugin.so(x86_64))",
+				"soname(NetworkManager/1.48.8/libnm-wwan.so(x86_64))",
 				"soname(libnm.so.0(x86_64))",
-				"soname(nm-pppd-plugin.so(x86_64))",
+				"soname(pppd/2.5.0/nm-pppd-plugin.so(x86_64))",
 				"sysbinary(NetworkManager)"
 			]
 		},
@@ -239,6 +240,7 @@
 				"binary(perl)",
 				"binary(vapigen)",
 				"binary(xsltproc)",
+				"pkgconfig(bluez)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(gmodule-2.0)",
@@ -399,6 +401,6 @@
 		}
 	},
 	"source-name": "networkmanager",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "1.48.8"
 }
