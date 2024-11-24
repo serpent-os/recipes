@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libusbmuxd
+version     : 2.1.0
+release     : 1
+homepage    : https://github.com/libimobiledevice/libusbmuxd
+upstreams   :
+    - https://github.com/libimobiledevice/libusbmuxd/releases/download/2.1.0/libusbmuxd-2.1.0.tar.bz2 : c35bf68f8e248434957bd5b234c389b02206a06ecd9303a7fb931ed7a5636b16
+summary     : A client library to multiplex connections from and to iOS devices
+description : |
+    A client library to multiplex connections from and to iOS devices
+license     : LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(libplist-2.0)
+    - pkgconfig(libimobiledevice-glue-1.0)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

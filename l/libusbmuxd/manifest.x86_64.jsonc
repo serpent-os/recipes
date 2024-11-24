@@ -1,0 +1,56 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libusbmuxd": {
+			"build-depends": [
+				"pkgconfig(libimobiledevice-glue-1.0)",
+				"pkgconfig(libplist-2.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libimobiledevice-glue-1.0.so.0(x86_64))",
+				"soname(libplist-2.0.so.4(x86_64))"
+			],
+			"files": [
+				"/usr/bin/inetcat",
+				"/usr/bin/iproxy",
+				"/usr/lib/libusbmuxd-2.0.so.7",
+				"/usr/lib/libusbmuxd-2.0.so.7.0.0",
+				"/usr/share/man/man1/inetcat.1",
+				"/usr/share/man/man1/iproxy.1"
+			],
+			"name": "libusbmuxd",
+			"provides": [
+				"binary(inetcat)",
+				"binary(iproxy)",
+				"soname(libusbmuxd-2.0.so.7(x86_64))"
+			]
+		},
+		"libusbmuxd-devel": {
+			"build-depends": [
+				"pkgconfig(libimobiledevice-glue-1.0)",
+				"pkgconfig(libplist-2.0)"
+			],
+			"depends": [
+				"libusbmuxd",
+				"pkgconfig(libimobiledevice-glue-1.0)",
+				"pkgconfig(libplist-2.0)"
+			],
+			"files": [
+				"/usr/include/usbmuxd-proto.h",
+				"/usr/include/usbmuxd.h",
+				"/usr/lib/libusbmuxd-2.0.so",
+				"/usr/lib/pkgconfig/libusbmuxd-2.0.pc"
+			],
+			"name": "libusbmuxd-devel",
+			"provides": [
+				"pkgconfig(libusbmuxd-2.0)"
+			]
+		}
+	},
+	"source-name": "libusbmuxd",
+	"source-release": "1",
+	"source-version": "2.1.0"
+}
