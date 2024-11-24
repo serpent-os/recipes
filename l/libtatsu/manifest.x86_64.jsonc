@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libtatsu": {
+			"build-depends": [
+				"binary(which)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libplist-2.0)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libcurl.so.4(x86_64))",
+				"soname(libplist-2.0.so.4(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libtatsu.so.0",
+				"/usr/lib/libtatsu.so.0.0.2"
+			],
+			"name": "libtatsu",
+			"provides": [
+				"soname(libtatsu.so.0(x86_64))"
+			]
+		},
+		"libtatsu-devel": {
+			"build-depends": [
+				"binary(which)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libplist-2.0)"
+			],
+			"depends": [
+				"libtatsu",
+				"pkgconfig(libplist-2.0)"
+			],
+			"files": [
+				"/usr/include/libtatsu/tatsu.h",
+				"/usr/include/libtatsu/tss.h",
+				"/usr/lib/libtatsu.so",
+				"/usr/lib/pkgconfig/libtatsu-1.0.pc"
+			],
+			"name": "libtatsu-devel",
+			"provides": [
+				"pkgconfig(libtatsu-1.0)"
+			]
+		}
+	},
+	"source-name": "libtatsu",
+	"source-release": "1",
+	"source-version": "1.0.4"
+}

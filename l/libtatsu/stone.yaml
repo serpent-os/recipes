@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libtatsu
+version     : 1.0.4
+release     : 1
+homepage    : https://github.com/libimobiledevice/libtatsu
+upstreams   :
+    - https://github.com/libimobiledevice/libtatsu/releases/download/1.0.4/libtatsu-1.0.4.tar.bz2 : 08094e58364858360e1743648581d9bad055ba3b06e398c660e481ebe0ae20b3
+summary     : A library to communicate with Apple devices
+description : |
+    A library to communicate with Apple devices
+license     : LGPL-2.1-or-later
+builddeps   :
+    - binary(which)
+    - pkgconfig(libcurl)
+    - pkgconfig(libplist-2.0)
+setup       : |
+    %reconfigure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
