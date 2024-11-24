@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libimobiledevice
+version     : 1.3.0
+release     : 1
+homepage    : https://github.com/libimobiledevice/libimobiledevice
+upstreams   :
+    - git|https://github.com/libimobiledevice/libimobiledevice.git : ba829e6f1a62bdad7866572d1e2cff1836ced742
+summary     : Library for communicating with iPhone and iPod Touch devices
+description : |
+    Library for communicating with iPhone and iPod Touch devices
+license     :
+    - LGPL-2.1-or-later
+    - GPL-2.0-or-later
+builddeps   :
+    - binary(cython)
+    - binary(msgfmt)
+    - binary(which)
+    - pkgconfig(libtatsu-1.0)
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(libusbmuxd-2.0)
+    - pkgconfig(openssl)
+    - pkgconfig(python3)
+setup       : |
+    %reconfigure
+build       : |
+    %make
+install     : |
+    %make_install
