@@ -1,0 +1,54 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libimobiledevice-glue": {
+			"build-depends": [
+				"pkgconfig(libplist-2.0)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libplist-2.0.so.4(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libimobiledevice-glue-1.0.so.0",
+				"/usr/lib/libimobiledevice-glue-1.0.so.0.3.1"
+			],
+			"name": "libimobiledevice-glue",
+			"provides": [
+				"soname(libimobiledevice-glue-1.0.so.0(x86_64))"
+			]
+		},
+		"libimobiledevice-glue-devel": {
+			"build-depends": [
+				"pkgconfig(libplist-2.0)"
+			],
+			"depends": [
+				"libimobiledevice-glue",
+				"pkgconfig(libplist-2.0)"
+			],
+			"files": [
+				"/usr/include/libimobiledevice-glue/cbuf.h",
+				"/usr/include/libimobiledevice-glue/collection.h",
+				"/usr/include/libimobiledevice-glue/glue.h",
+				"/usr/include/libimobiledevice-glue/nskeyedarchive.h",
+				"/usr/include/libimobiledevice-glue/opack.h",
+				"/usr/include/libimobiledevice-glue/sha.h",
+				"/usr/include/libimobiledevice-glue/socket.h",
+				"/usr/include/libimobiledevice-glue/termcolors.h",
+				"/usr/include/libimobiledevice-glue/thread.h",
+				"/usr/include/libimobiledevice-glue/tlv.h",
+				"/usr/include/libimobiledevice-glue/utils.h",
+				"/usr/lib/libimobiledevice-glue-1.0.so",
+				"/usr/lib/pkgconfig/libimobiledevice-glue-1.0.pc"
+			],
+			"name": "libimobiledevice-glue-devel",
+			"provides": [
+				"pkgconfig(libimobiledevice-glue-1.0)"
+			]
+		}
+	},
+	"source-name": "libimobiledevice-glue",
+	"source-release": "1",
+	"source-version": "1.3.1"
+}
