@@ -43,7 +43,7 @@
 				"binary(spirv-val)"
 			]
 		},
-		"spirv-tools-32bit-devel": {
+		"spirv-tools-32bit": {
 			"build-depends": [
 				"pkgconfig(SPIRV-Headers)",
 				"pkgconfig(python3)"
@@ -52,6 +52,41 @@
 				"soname(libc++.so.1(386))",
 				"soname(libc.so.6(386))",
 				"soname(libm.so.6(386))",
+				"spirv-tools"
+			],
+			"files": [
+				"/usr/lib32/libSPIRV-Tools-diff.so",
+				"/usr/lib32/libSPIRV-Tools-link.so",
+				"/usr/lib32/libSPIRV-Tools-lint.so",
+				"/usr/lib32/libSPIRV-Tools-opt.so",
+				"/usr/lib32/libSPIRV-Tools-reduce.so",
+				"/usr/lib32/libSPIRV-Tools-shared.so",
+				"/usr/lib32/libSPIRV-Tools.so"
+			],
+			"name": "spirv-tools-32bit",
+			"provides": [
+				"soname(libSPIRV-Tools-diff.so(386))",
+				"soname(libSPIRV-Tools-diff.so(x86))",
+				"soname(libSPIRV-Tools-link.so(386))",
+				"soname(libSPIRV-Tools-link.so(x86))",
+				"soname(libSPIRV-Tools-lint.so(386))",
+				"soname(libSPIRV-Tools-lint.so(x86))",
+				"soname(libSPIRV-Tools-opt.so(386))",
+				"soname(libSPIRV-Tools-opt.so(x86))",
+				"soname(libSPIRV-Tools-reduce.so(386))",
+				"soname(libSPIRV-Tools-reduce.so(x86))",
+				"soname(libSPIRV-Tools-shared.so(386))",
+				"soname(libSPIRV-Tools-shared.so(x86))",
+				"soname(libSPIRV-Tools.so(386))",
+				"soname(libSPIRV-Tools.so(x86))"
+			]
+		},
+		"spirv-tools-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(SPIRV-Headers)",
+				"pkgconfig(python3)"
+			],
+			"depends": [
 				"spirv-tools-32bit",
 				"spirv-tools-devel"
 			],
@@ -77,13 +112,6 @@
 				"/usr/lib32/cmake/SPIRV-Tools/SPIRV-ToolsConfig.cmake",
 				"/usr/lib32/cmake/SPIRV-Tools/SPIRV-ToolsTarget-release.cmake",
 				"/usr/lib32/cmake/SPIRV-Tools/SPIRV-ToolsTarget.cmake",
-				"/usr/lib32/libSPIRV-Tools-diff.so",
-				"/usr/lib32/libSPIRV-Tools-link.so",
-				"/usr/lib32/libSPIRV-Tools-lint.so",
-				"/usr/lib32/libSPIRV-Tools-opt.so",
-				"/usr/lib32/libSPIRV-Tools-reduce.so",
-				"/usr/lib32/libSPIRV-Tools-shared.so",
-				"/usr/lib32/libSPIRV-Tools.so",
 				"/usr/lib32/pkgconfig/SPIRV-Tools-shared.pc",
 				"/usr/lib32/pkgconfig/SPIRV-Tools.pc"
 			],
@@ -97,21 +125,7 @@
 				"cmake(SPIRV-Tools-reduce)",
 				"cmake(SPIRV-Tools-tools)",
 				"pkgconfig32(SPIRV-Tools)",
-				"pkgconfig32(SPIRV-Tools-shared)",
-				"soname(libSPIRV-Tools-diff.so(386))",
-				"soname(libSPIRV-Tools-diff.so(x86))",
-				"soname(libSPIRV-Tools-link.so(386))",
-				"soname(libSPIRV-Tools-link.so(x86))",
-				"soname(libSPIRV-Tools-lint.so(386))",
-				"soname(libSPIRV-Tools-lint.so(x86))",
-				"soname(libSPIRV-Tools-opt.so(386))",
-				"soname(libSPIRV-Tools-opt.so(x86))",
-				"soname(libSPIRV-Tools-reduce.so(386))",
-				"soname(libSPIRV-Tools-reduce.so(x86))",
-				"soname(libSPIRV-Tools-shared.so(386))",
-				"soname(libSPIRV-Tools-shared.so(x86))",
-				"soname(libSPIRV-Tools.so(386))",
-				"soname(libSPIRV-Tools.so(x86))"
+				"pkgconfig32(SPIRV-Tools-shared)"
 			]
 		},
 		"spirv-tools-devel": {
@@ -198,6 +212,6 @@
 		}
 	},
 	"source-name": "spirv-tools",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "vulkan-sdk-1.3.296.0"
 }
