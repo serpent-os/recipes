@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libmtp
+version     : 1.1.22
+release     : 1
+homepage    : https://github.com/libmtp/libmtp
+upstreams   :
+    - https://github.com/libmtp/libmtp/releases/download/v1.1.22/libmtp-1.1.22.tar.gz : c3fcf411aea9cb9643590cbc9df99fa5fe30adcac695024442973d76fa5f87bc
+summary     : A library for communicating with MTP devices
+description : |
+    A library for communicating with MTP devices. Media Transfer Protocol (MTP) is a protocol used for transferring files between devices.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(libgcrypt)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

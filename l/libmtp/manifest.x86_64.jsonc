@@ -1,0 +1,95 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libmtp": {
+			"build-depends": [
+				"pkgconfig(libgcrypt)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcrypt.so.20(x86_64))",
+				"soname(libusb-1.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/mtp-albumart",
+				"/usr/bin/mtp-albums",
+				"/usr/bin/mtp-connect",
+				"/usr/bin/mtp-delfile",
+				"/usr/bin/mtp-detect",
+				"/usr/bin/mtp-emptyfolders",
+				"/usr/bin/mtp-files",
+				"/usr/bin/mtp-filetree",
+				"/usr/bin/mtp-folders",
+				"/usr/bin/mtp-format",
+				"/usr/bin/mtp-getfile",
+				"/usr/bin/mtp-getplaylist",
+				"/usr/bin/mtp-hotplug",
+				"/usr/bin/mtp-newfolder",
+				"/usr/bin/mtp-newplaylist",
+				"/usr/bin/mtp-playlists",
+				"/usr/bin/mtp-reset",
+				"/usr/bin/mtp-sendfile",
+				"/usr/bin/mtp-sendtr",
+				"/usr/bin/mtp-thumb",
+				"/usr/bin/mtp-tracks",
+				"/usr/bin/mtp-trexist",
+				"/usr/lib/libmtp.so.9",
+				"/usr/lib/libmtp.so.9.4.0",
+				"/usr/lib/udev/hwdb.d/69-libmtp.hwdb",
+				"/usr/lib/udev/mtp-probe",
+				"/usr/lib/udev/rules.d/69-libmtp.rules"
+			],
+			"name": "libmtp",
+			"provides": [
+				"binary(mtp-albumart)",
+				"binary(mtp-albums)",
+				"binary(mtp-connect)",
+				"binary(mtp-delfile)",
+				"binary(mtp-detect)",
+				"binary(mtp-emptyfolders)",
+				"binary(mtp-files)",
+				"binary(mtp-filetree)",
+				"binary(mtp-folders)",
+				"binary(mtp-format)",
+				"binary(mtp-getfile)",
+				"binary(mtp-getplaylist)",
+				"binary(mtp-hotplug)",
+				"binary(mtp-newfolder)",
+				"binary(mtp-newplaylist)",
+				"binary(mtp-playlists)",
+				"binary(mtp-reset)",
+				"binary(mtp-sendfile)",
+				"binary(mtp-sendtr)",
+				"binary(mtp-thumb)",
+				"binary(mtp-tracks)",
+				"binary(mtp-trexist)",
+				"soname(libmtp.so.9(x86_64))"
+			]
+		},
+		"libmtp-devel": {
+			"build-depends": [
+				"pkgconfig(libgcrypt)",
+				"pkgconfig(libusb-1.0)"
+			],
+			"depends": [
+				"libmtp",
+				"pkgconfig(libusb-1.0)"
+			],
+			"files": [
+				"/usr/include/libmtp.h",
+				"/usr/lib/libmtp.so",
+				"/usr/lib/pkgconfig/libmtp.pc"
+			],
+			"name": "libmtp-devel",
+			"provides": [
+				"pkgconfig(libmtp)"
+			]
+		}
+	},
+	"source-name": "libmtp",
+	"source-release": "1",
+	"source-version": "1.1.22"
+}
