@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : usbmuxd
+version     : 1.1.1
+release     : 1
+homepage    : https://github.com/libimobiledevice/usbmuxd
+upstreams   :
+    - git|https://github.com/libimobiledevice/usbmuxd.git : 0b1b233b57d581515978a09e5a4394bfa4ee4962
+summary     : USB multiplexor daemon for iPhone and iPod Touch devices
+description : |
+    USB multiplexor daemon for iPhone and iPod Touch devices
+license     :
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(which)
+    - pkgconfig(libimobiledevice-1.0)
+    - pkgconfig(libimobiledevice-glue-1.0)
+    - pkgconfig(libplist-2.0)
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(systemd)
+setup       : |
+    %reconfigure
+build       : |
+    %make
+install     : |
+    %make_install

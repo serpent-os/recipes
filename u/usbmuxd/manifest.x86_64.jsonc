@@ -1,0 +1,37 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"usbmuxd": {
+			"build-depends": [
+				"binary(which)",
+				"pkgconfig(libimobiledevice-1.0)",
+				"pkgconfig(libimobiledevice-glue-1.0)",
+				"pkgconfig(libplist-2.0)",
+				"pkgconfig(libusb-1.0)",
+				"pkgconfig(systemd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libimobiledevice-1.0.so.6(x86_64))",
+				"soname(libimobiledevice-glue-1.0.so.0(x86_64))",
+				"soname(libplist-2.0.so.4(x86_64))",
+				"soname(libusb-1.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/systemd/system/usbmuxd.service",
+				"/usr/lib/udev/rules.d/39-usbmuxd.rules",
+				"/usr/sbin/usbmuxd",
+				"/usr/share/man/man8/usbmuxd.8"
+			],
+			"name": "usbmuxd",
+			"provides": [
+				"sysbinary(usbmuxd)"
+			]
+		}
+	},
+	"source-name": "usbmuxd",
+	"source-release": "1",
+	"source-version": "1.1.1"
+}
