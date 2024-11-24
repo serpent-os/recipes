@@ -25,6 +25,7 @@
 				"serpent-artwork"
 			],
 			"depends": [
+				"font-cantarell",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"serpent-artwork",
 				"soname(libc.so.6(x86_64))",
@@ -338,6 +339,7 @@
 				"/usr/share/plymouth/themes/spinner/throbber-0028.png",
 				"/usr/share/plymouth/themes/spinner/throbber-0029.png",
 				"/usr/share/plymouth/themes/spinner/throbber-0030.png",
+				"/usr/share/plymouth/themes/spinner/watermark.png",
 				"/usr/share/plymouth/themes/text/text.plymouth",
 				"/usr/share/plymouth/themes/tribar/tribar.plymouth"
 			],
@@ -458,6 +460,6 @@
 		}
 	},
 	"source-name": "plymouth",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "24.004.60"
 }
