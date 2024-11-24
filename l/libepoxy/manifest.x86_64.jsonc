@@ -25,6 +25,7 @@
 				"pkgconfig(x11)"
 			],
 			"depends": [
+				"libepoxy",
 				"pkgconfig(egl)",
 				"pkgconfig(gl)",
 				"pkgconfig(x11)"
@@ -47,6 +48,6 @@
 		}
 	},
 	"source-name": "libepoxy",
-	"source-release": "1",
-	"source-version": "1.5.10"
+	"source-release": "2",
+	"source-version": "1.5.11"
 }
