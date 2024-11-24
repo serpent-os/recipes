@@ -18,6 +18,7 @@
 				"/usr/bin/dracut",
 				"/usr/bin/dracut-catimages",
 				"/usr/bin/lsinitrd",
+				"/usr/lib/dracut",
 				"/usr/lib/dracut/dracut-functions",
 				"/usr/lib/dracut/dracut-functions.sh",
 				"/usr/lib/dracut/dracut-init.sh",
@@ -27,7 +28,6 @@
 				"/usr/lib/dracut/dracut-util",
 				"/usr/lib/dracut/dracut-version.sh",
 				"/usr/lib/dracut/dracut.conf.d/00-serpent-os.conf",
-				"/usr/lib/dracut/modules.d",
 				"/usr/lib/dracut/modules.d/00bash",
 				"/usr/lib/dracut/modules.d/00bash/module-setup.sh",
 				"/usr/lib/dracut/modules.d/00dash",
@@ -565,6 +565,6 @@
 		}
 	},
 	"source-name": "dracut",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "059"
 }

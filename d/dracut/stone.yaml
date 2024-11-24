@@ -5,7 +5,7 @@
 #
 name        : dracut
 version     : '059'
-release     : 5
+release     : 6
 homepage    : https://github.com/dracutdevs/dracut
 upstreams   :
     - https://github.com/dracutdevs/dracut/archive/refs/tags/059.tar.gz : eabf0bb685420c1e1d5475b6855ef787104508f0135ff570312845256e0fcecf
@@ -18,12 +18,12 @@ license     :
     - BSD-3-Clause
     - GPL-2.0-or-later
 builddeps   :
-    # TODO: asciidoc for docs
     - pkgconfig(libkmod)
 rundeps     :
     - binary(cpio)
     - terminus-font
 setup       : |
+    %patch %(pkgdir)/plymouth.patch
     %configure --disable-documentation
 build       : |
     %make
