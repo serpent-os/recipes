@@ -5,7 +5,7 @@
 #
 name        : gnome-control-center
 version     : 47.1.1
-release     : 12
+release     : 13
 homepage    : https://apps.gnome.org/Settings/
 upstreams   :
     - https://download.gnome.org/sources/gnome-control-center/47/gnome-control-center-47.1.1.tar.xz : 051fd4057157f4b2337013fbefc96e3d129654e3fc960d4849d354252400be77
