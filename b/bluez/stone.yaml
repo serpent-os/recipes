@@ -5,7 +5,7 @@
 #
 name        : bluez
 version     : 5.79
-release     : 2
+release     : 3
 homepage    : https://www.bluez.org/
 upstreams   :
     - https://www.kernel.org/pub/linux/bluetooth/bluez-5.79.tar.xz : 4164a5303a9f71c70f48c03ff60be34231b568d93a9ad5e79928d34e6aa0ea8a
@@ -46,3 +46,5 @@ install     : |
     %make_install
     %install_dir %(installroot)%(vendordir)%(sysconfdir)
     mv %(installroot)%(sysconfdir)/bluetooth %(installroot)%(vendordir)/etc/.
+
+    ln -s bluez/bluetooth %(installroot)%(libdir)/bluetooth
