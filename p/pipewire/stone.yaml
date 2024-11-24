@@ -5,11 +5,11 @@
 #
 name        : pipewire
 version     : 1.2.6
-release     : 5
+release     : 6
 homepage    : https://pipewire.org/
 upstreams   :
     - https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.2.6/pipewire-1.2.6.tar.gz : 8d9b4e95dba33d218c760fecbb71672c86a56917f803e96fe6c3af62fa783a95
-summary     : Linux audio + video multiplexing 
+summary     : Linux audio + video multiplexing
 description : |
     PipeWire is a project that aims to greatly improve handling of audio and video under Linux. It provides a low-latency, graph-based processing engine on top of audio and video devices that can be used to support the use cases currently handled by both PulseAudio and JACK. PipeWire was designed with a powerful security model that makes interacting with audio and video devices from containerized applications easy, with support for Flatpak applications being the primary goal.
 license     :
@@ -19,7 +19,9 @@ builddeps   :
     - cmake(VulkanHeaders)
     - pkgconfig(alsa)
     - pkgconfig(avahi-client)
+    - pkgconfig(bluez)
     - pkgconfig(dbus-1)
+    - pkgconfig(fdk-aac)
     - pkgconfig(gio-2.0)
     - pkgconfig(glib-2.0)
     - pkgconfig(libcanberra)
@@ -37,24 +39,18 @@ builddeps   :
     - pkgconfig(x11-xcb)
     - pkgconfig(xfixes)
     - pkgconfig(gstreamer-1.0)
-    # - pkgconfig(intl)
-    # - pkgconfig(libavcodec)
-    # - pkgconfig(libavformat)
-    # - pkgconfig(libavutil)
-    # - pkgconfig(libffado)
-    # - pkgconfig(libinotify)
-    # - pkgconfig(libmysofa)
-    # - pkgconfig(lilv-0)
-    # - pkgconfig(opus)
-    # - pkgconfig(sdl2)
-    # - pkgconfig(webrtc-audio-processing-1)
-    # - pkgconfig(webrtc-audio-processing)
+    - pkgconfig(libavcodec)
+    - pkgconfig(opus)
+    - pkgconfig(sbc)
+    - pkgconfig(sdl2)
 setup       : |
     %meson -Dsession-managers=[] \
            -Dvulkan=enabled \
            -Dudev=enabled \
            -Dgstreamer=enabled \
-           -Dudevrulesdir=%(libdir)/udev/rules.d
+           -Dudevrulesdir=%(libdir)/udev/rules.d \
+           -Dbluez5=enabled \
+           -Dffmpeg=enabled
 build       : |
     %meson_build
 install     : |
