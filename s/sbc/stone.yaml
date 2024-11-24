@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : sbc
+version     : 2.0
+release     : 1
+homepage    : https://www.bluez.org/
+upstreams   :
+    - https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz : 8f12368e1dbbf55e14536520473cfb338c84b392939cc9b64298360fd4a07992
+summary     : Bluetooth Subband Codec
+description : |
+    Bluetooth Subband Codec
+license     : LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(sndfile)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

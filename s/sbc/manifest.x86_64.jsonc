@@ -1,0 +1,49 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"sbc": {
+			"build-depends": [
+				"pkgconfig(sndfile)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/sbcdec",
+				"/usr/bin/sbcenc",
+				"/usr/bin/sbcinfo",
+				"/usr/lib/libsbc.so.1",
+				"/usr/lib/libsbc.so.1.3.1"
+			],
+			"name": "sbc",
+			"provides": [
+				"binary(sbcdec)",
+				"binary(sbcenc)",
+				"binary(sbcinfo)",
+				"soname(libsbc.so.1(x86_64))"
+			]
+		},
+		"sbc-devel": {
+			"build-depends": [
+				"pkgconfig(sndfile)"
+			],
+			"depends": [
+				"sbc"
+			],
+			"files": [
+				"/usr/include/sbc/sbc.h",
+				"/usr/lib/libsbc.so",
+				"/usr/lib/pkgconfig/sbc.pc"
+			],
+			"name": "sbc-devel",
+			"provides": [
+				"pkgconfig(sbc)"
+			]
+		}
+	},
+	"source-name": "sbc",
+	"source-release": "1",
+	"source-version": "2.0"
+}
