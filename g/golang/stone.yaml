@@ -5,7 +5,7 @@
 #
 name        : golang
 version     : 1.23.3
-release     : 9
+release     : 10
 homepage    : https://go.dev
 upstreams   :
     - https://go.dev/dl/go1.23.3.linux-amd64.tar.gz : a0afb9744c00648bafb1b90b4aba5bdb86f424f02f9275399ce0c20b93a2c3a8
@@ -54,6 +54,14 @@ install     : |
 
     # Ensure that the present toolchain version is always used for building other go recipes
     %install_file %(pkgdir)/go.env %(installroot)%(libdir)/%(name)/go.env
+
+    # ensure go.env is visible in build
     cat %(installroot)%(libdir)/%(name)/go.env
+
+    # Ensure that relevant env vars are set in user sessions
+    %install_dir %(installroot)%(vendordir)/etc/profile.d
+    # GOROOT needs to be set or bad things will happen, because make.bash uses -trimpath
+    echo 'export GOROOT=%(libdir)/%(name)' >> %(installroot)%(vendordir)/etc/profile.d/golang-env.sh
+    cat %(installroot)%(vendordir)/etc/profile.d/golang-env.sh
 # check      : |
 #     cd src && ./run.bash -v -v -v -k

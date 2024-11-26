@@ -11727,7 +11727,8 @@
 				"/usr/lib/golang/test/winbatch.go",
 				"/usr/lib/golang/test/writebarrier.go",
 				"/usr/lib/golang/test/zerodivide.go",
-				"/usr/lib/golang/test/zerosize.go"
+				"/usr/lib/golang/test/zerosize.go",
+				"/usr/share/defaults/etc/profile.d/golang-env.sh"
 			],
 			"name": "golang",
 			"provides": [
@@ -11738,6 +11739,6 @@
 		}
 	},
 	"source-name": "golang",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "1.23.3"
 }
