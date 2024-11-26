@@ -16,18 +16,18 @@
 			"files": [
 				"/usr/bin/xsltproc",
 				"/usr/lib/libexslt.so.0",
-				"/usr/lib/libexslt.so.0.8.20",
+				"/usr/lib/libexslt.so.0.8.23",
 				"/usr/lib/libxslt-plugins",
 				"/usr/lib/libxslt.so.1",
-				"/usr/lib/libxslt.so.1.1.37",
+				"/usr/lib/libxslt.so.1.1.42",
 				"/usr/lib/xsltConf.sh",
 				"/usr/share/man/man1/xsltproc.1"
 			],
 			"name": "libxslt",
 			"provides": [
+				"binary(xsltproc)",
 				"soname(libexslt.so.0(x86_64))",
-				"soname(libxslt.so.1(x86_64))",
-				"binary(xsltproc)"
+				"soname(libxslt.so.1(x86_64))"
 			]
 		},
 		"libxslt-devel": {
@@ -36,6 +36,7 @@
 				"pkgconfig(python3)"
 			],
 			"depends": [
+				"libxslt",
 				"pkgconfig(libxml-2.0)"
 			],
 			"files": [
@@ -70,16 +71,15 @@
 				"/usr/lib/libxslt.so",
 				"/usr/lib/pkgconfig/libexslt.pc",
 				"/usr/lib/pkgconfig/libxslt.pc",
-				"/usr/share/aclocal/libxslt.m4",
 				"/usr/share/man/man3/libexslt.3",
 				"/usr/share/man/man3/libxslt.3"
 			],
 			"name": "libxslt-devel",
 			"provides": [
-				"pkgconfig(libexslt)",
-				"pkgconfig(libxslt)",
+				"binary(xslt-config)",
 				"cmake(libxslt)",
-				"binary(xslt-config)"
+				"pkgconfig(libexslt)",
+				"pkgconfig(libxslt)"
 			]
 		},
 		"libxslt-docs": {
@@ -93,6 +93,7 @@
 				"/usr/share/doc/libxslt/python/examples/extelem.py",
 				"/usr/share/doc/libxslt/python/examples/extfunc.py",
 				"/usr/share/doc/libxslt/python/examples/pyxsltproc.py",
+				"/usr/share/doc/libxslt/python/examples/setup_test.py",
 				"/usr/share/doc/libxslt/python/examples/test.xml",
 				"/usr/share/doc/libxslt/python/examples/test.xsl",
 				"/usr/share/doc/libxslt/tutorial/images/callouts/1.png",
@@ -157,6 +158,7 @@
 				"pkgconfig(python3)"
 			],
 			"depends": [
+				"binary(python3)",
 				"soname(libc.so.6(x86_64))",
 				"soname(libexslt.so.0(x86_64))",
 				"soname(libxml2.so.2(x86_64))",
@@ -170,11 +172,11 @@
 			],
 			"name": "python-libxslt",
 			"provides": [
-				"soname(libxsltmod.so(x86_64))"
+				"soname(python3.11/site-packages/libxsltmod.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "libxslt",
-	"source-release": "2",
-	"source-version": "1.1.37"
+	"source-release": "3",
+	"source-version": "1.1.42"
 }
