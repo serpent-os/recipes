@@ -76,9 +76,6 @@
 				"soname(libjson-glib-1.0.so.0(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libmutter-15.so.0(x86_64))",
-				"soname(libmutter-clutter-15.so.0(x86_64))",
-				"soname(libmutter-cogl-15.so.0(x86_64))",
-				"soname(libmutter-mtk-15.so.0(x86_64))",
 				"soname(libnm.so.0(x86_64))",
 				"soname(libpango-1.0.so.0(x86_64))",
 				"soname(libpipewire-0.3.so.0(x86_64))",
@@ -88,6 +85,9 @@
 				"soname(libpulse.so.0(x86_64))",
 				"soname(libsecret-1.so.0(x86_64))",
 				"soname(libsystemd.so.0(x86_64))",
+				"soname(mutter-15/libmutter-clutter-15.so.0(x86_64))",
+				"soname(mutter-15/libmutter-cogl-15.so.0(x86_64))",
+				"soname(mutter-15/libmutter-mtk-15.so.0(x86_64))",
 				"xdg-desktop-portal-gnome",
 				"xkeyboard-config"
 			],
@@ -272,6 +272,6 @@
 		}
 	},
 	"source-name": "gnome-shell",
-	"source-release": "22",
+	"source-release": "23",
 	"source-version": "47.2"
 }

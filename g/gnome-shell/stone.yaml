@@ -5,7 +5,7 @@
 #
 name        : gnome-shell
 version     : 47.2
-release     : 22
+release     : 23
 homepage    : https://gitlab.gnome.org/GNOME/gnome-shell
 upstreams   :
     - https://download.gnome.org/sources/gnome-shell/47/gnome-shell-47.2.tar.xz : 4184d01a1ab82cb421d1ca2e2bcce0292ceb46c4c749e61b0bde4b75004d2e00
