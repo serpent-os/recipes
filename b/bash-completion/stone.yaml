@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : bash-completion
-version     : 2.14.0
-release     : 3
+version     : 2.15.0
+release     : 4
 homepage    : https://github.com/scop/bash-completion
 upstreams   :
-    - https://github.com/scop/bash-completion/releases/download/2.14.0/bash-completion-2.14.0.tar.xz : 5c7494f968280832d6adb5aa19f745a56f1a79df311e59338c5efa6f7285e168
+    - https://github.com/scop/bash-completion/releases/download/2.15.0/bash-completion-2.15.0.tar.xz : 976a62ee6226970283cda85ecb9c7a4a88f62574c0a6f9e856126976decf1a06
 summary     : Programmable completion functions for bash
 description : |
     bash-completion is a collection of command line command completions for the Bash shell, collection of helper functions to assist in creating new completions, and set of facilities for loading completions automatically on demand, as well as installing them.
