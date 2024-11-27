@@ -161,6 +161,12 @@
 				"/usr/share/man/man1/gh-repo-deploy-key.1",
 				"/usr/share/man/man1/gh-repo-edit.1",
 				"/usr/share/man/man1/gh-repo-fork.1",
+				"/usr/share/man/man1/gh-repo-gitignore-list.1",
+				"/usr/share/man/man1/gh-repo-gitignore-view.1",
+				"/usr/share/man/man1/gh-repo-gitignore.1",
+				"/usr/share/man/man1/gh-repo-license-list.1",
+				"/usr/share/man/man1/gh-repo-license-view.1",
+				"/usr/share/man/man1/gh-repo-license.1",
 				"/usr/share/man/man1/gh-repo-list.1",
 				"/usr/share/man/man1/gh-repo-rename.1",
 				"/usr/share/man/man1/gh-repo-set-default.1",
@@ -216,6 +222,6 @@
 		}
 	},
 	"source-name": "github-cli",
-	"source-release": "1",
-	"source-version": "2.57.0"
+	"source-release": "2",
+	"source-version": "2.62.0"
 }

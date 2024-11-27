@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : github-cli
-version     : 2.57.0
-release     : 1
+version     : 2.62.0
+release     : 2
 homepage    : https://github.com/cli/cli
 upstreams   :
-    - https://github.com/cli/cli/archive/refs/tags/v2.57.0.tar.gz : 6433bca534da722a980126541fe28d278f4b3518a6f7a7ef4a23949a3968e8b9
+    - https://github.com/cli/cli/archive/refs/tags/v2.62.0.tar.gz : 8b0d44a7fccd0c768d5ef7c3fbd274851b5752084e47761f146852de6539193e
 summary     : GitHub CLI
 description : |
     GitHubs official command line tool
