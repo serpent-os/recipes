@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : font-fira
-version     : 4.202
-release     : 1
+version     : 4301
+release     : 2
 homepage    : https://github.com/mozilla/Fira
 upstreams   :
-    - https://github.com/mozilla/Fira/archive/refs/tags/4.202.tar.gz : d86269657387f144d77ba12011124f30f423f70672e1576dc16f918bb16ddfe4
+    - https://bboxtype.com/downloads/Fira/Download_Folder_FiraSans_4301.zip : ff966173d53fc55cca9661fbdedb08a91a2f3984d5415b51cfb31c2bc4c18f19
 summary     : Font developed for Firefox and Mozilla
 description : |
     Font developed for Firefox and Mozilla
@@ -18,9 +18,11 @@ install     : |
     %install_dir %(installroot)%(datadir)/fonts/truetype
     %install_dir %(installroot)%(datadir)/fonts/opentype
 
-    for i in ttf/*.ttf ; do
-        %install_file ttf/$(basename ${i}) %(installroot)%(datadir)/fonts/truetype/$(basename ${i})
+    pushd Download_Folder_FiraSans_4301/Fonts
+
+    for i in `find . -name '*.ttf'` ; do
+        %install_file $i %(installroot)%(datadir)/fonts/truetype/$(basename ${i})
     done
-    for i in otf/*.otf ; do
-        %install_file otf/$(basename ${i}) %(installroot)%(datadir)/fonts/opentype/$(basename ${i})
+    for i in `find . -name '*.otf'` ; do
+        %install_file $i %(installroot)%(datadir)/fonts/opentype/$(basename ${i})
     done
