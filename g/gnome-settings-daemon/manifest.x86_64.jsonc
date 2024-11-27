@@ -269,7 +269,7 @@
 			],
 			"name": "gnome-settings-daemon",
 			"provides": [
-				"soname(libgsd.so(x86_64))"
+				"soname(gnome-settings-daemon-47/libgsd.so(x86_64))"
 			]
 		},
 		"gnome-settings-daemon-devel": {
@@ -317,6 +317,6 @@
 		}
 	},
 	"source-name": "gnome-settings-daemon",
-	"source-release": "3",
-	"source-version": "47.1"
+	"source-release": "4",
+	"source-version": "47.2"
 }
