@@ -3,16 +3,13 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"font-noto-emoji": {
-			"build-depends": [],
-			"depends": [],
 			"files": [
 				"/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
 			],
-			"name": "font-noto-emoji",
-			"provides": []
+			"name": "font-noto-emoji"
 		}
 	},
 	"source-name": "font-noto-emoji",
-	"source-release": "1",
-	"source-version": "2.042"
+	"source-release": "2",
+	"source-version": "2.047"
 }
