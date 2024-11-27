@@ -275,12 +275,12 @@
 			"name": "mutter",
 			"provides": [
 				"binary(mutter)",
-				"soname(libdefault.so(x86_64))",
 				"soname(libmutter-15.so.0(x86_64))",
-				"soname(libmutter-clutter-15.so.0(x86_64))",
-				"soname(libmutter-cogl-15.so.0(x86_64))",
-				"soname(libmutter-cogl-pango-15.so.0(x86_64))",
-				"soname(libmutter-mtk-15.so.0(x86_64))"
+				"soname(mutter-15/libmutter-clutter-15.so.0(x86_64))",
+				"soname(mutter-15/libmutter-cogl-15.so.0(x86_64))",
+				"soname(mutter-15/libmutter-cogl-pango-15.so.0(x86_64))",
+				"soname(mutter-15/libmutter-mtk-15.so.0(x86_64))",
+				"soname(mutter-15/plugins/libdefault.so(x86_64))"
 			]
 		},
 		"mutter-devel": {
@@ -590,6 +590,6 @@
 		}
 	},
 	"source-name": "mutter",
-	"source-release": "10",
-	"source-version": "47.1"
+	"source-release": "11",
+	"source-version": "47.2"
 }

@@ -1,0 +1,32 @@
+From a3799e5d8890f2344cb942925d26102f9cdc1c87 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Tue, 26 Nov 2024 20:24:34 +0000
+Subject: [PATCH] compositor/plugins: Ensure libdefault has valid RPATH
+
+Correct dependency analysis for required DT_NEEDED entries is
+made difficult due to the lack of DT_RPATH, despite all other
+installed libraries in the build setting an RPATH.
+
+Whilst it is true dlopen() still works, this is only because
+libmutter is already linked to the main executable, which in turn
+links to the private libraries via DT_RPATH.
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ src/compositor/plugins/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/compositor/plugins/meson.build b/src/compositor/plugins/meson.build
+index 519e998ad..61e1788db 100644
+--- a/src/compositor/plugins/meson.build
++++ b/src/compositor/plugins/meson.build
+@@ -14,5 +14,6 @@ default_plugin = shared_module('default',
+     libmutter_clutter_dep,
+   ],
+   install_dir: pkglibdir / 'plugins',
++  install_rpath: pkglibdir,
+   install: true,
+ )
+-- 
+2.46.0
+
