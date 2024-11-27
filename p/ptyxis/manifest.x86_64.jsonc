@@ -34,6 +34,7 @@
 				"/usr/share/glib-2.0/schemas/org.gnome.Ptyxis.gschema.xml",
 				"/usr/share/icons/hicolor/scalable/apps/org.gnome.Ptyxis.svg",
 				"/usr/share/icons/hicolor/symbolic/apps/org.gnome.Ptyxis-symbolic.svg",
+				"/usr/share/locale/be/LC_MESSAGES/ptyxis.mo",
 				"/usr/share/locale/cs/LC_MESSAGES/ptyxis.mo",
 				"/usr/share/locale/de/LC_MESSAGES/ptyxis.mo",
 				"/usr/share/locale/en_GB/LC_MESSAGES/ptyxis.mo",
@@ -66,6 +67,6 @@
 		}
 	},
 	"source-name": "ptyxis",
-	"source-release": "1",
-	"source-version": "47.3"
+	"source-release": "2",
+	"source-version": "47.5"
 }
