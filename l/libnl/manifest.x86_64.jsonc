@@ -321,20 +321,20 @@
 				"pkgconfig(libnl-nf-3.0)",
 				"pkgconfig(libnl-route-3.0)",
 				"pkgconfig(libnl-xfrm-3.0)",
-				"soname(basic.so(x86_64))",
-				"soname(bfifo.so(x86_64))",
-				"soname(blackhole.so(x86_64))",
-				"soname(cgroup.so(x86_64))",
-				"soname(fq_codel.so(x86_64))",
-				"soname(hfsc.so(x86_64))",
-				"soname(htb.so(x86_64))",
-				"soname(ingress.so(x86_64))",
-				"soname(pfifo.so(x86_64))",
-				"soname(plug.so(x86_64))"
+				"soname(libnl/cli/cls/basic.so(x86_64))",
+				"soname(libnl/cli/cls/cgroup.so(x86_64))",
+				"soname(libnl/cli/qdisc/bfifo.so(x86_64))",
+				"soname(libnl/cli/qdisc/blackhole.so(x86_64))",
+				"soname(libnl/cli/qdisc/fq_codel.so(x86_64))",
+				"soname(libnl/cli/qdisc/hfsc.so(x86_64))",
+				"soname(libnl/cli/qdisc/htb.so(x86_64))",
+				"soname(libnl/cli/qdisc/ingress.so(x86_64))",
+				"soname(libnl/cli/qdisc/pfifo.so(x86_64))",
+				"soname(libnl/cli/qdisc/plug.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "libnl",
-	"source-release": "3",
-	"source-version": "3.10.0"
+	"source-release": "4",
+	"source-version": "3.11.0"
 }
