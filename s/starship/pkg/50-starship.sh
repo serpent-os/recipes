@@ -11,7 +11,9 @@ case $TERM in
     linux) return 0;;
 esac
 
-# Initialise starship prompt
+# Initialise starship prompt with serpent's default prompt'
+
+[ ! -e ~/.config/starship.toml ] && starship preset serpent-os -o  ~/.config/starship.toml
 
 # For bash
 [ -n "$BASH_VERSION" ]  && eval "$(starship init bash)"

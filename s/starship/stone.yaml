@@ -5,7 +5,7 @@
 #
 name        : starship
 version     : "1.21.1"
-release     : 3
+release     : 4
 license     : ISC
 homepage    : https://starship.rs/
 upstreams   :
@@ -18,7 +18,11 @@ builddeps   :
     - binary(cmake)
     - binary(make)
 networking  : yes
+tuning      :
+    - optimize: speed
+    - lto: thin
 setup       : |
+    %install_file %(pkgdir)/serpent-os.toml docs/public/presets/toml/serpent-os.toml
     %cargo_fetch
 build       : |
     %cargo_build
@@ -38,5 +42,3 @@ install     : |
 check      : |
     # $HOME .config tests fail and TERM=dumb causing issues in a couple of tests
     %cargo_test || :
-tuning      :
-    - lto : thin
