@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mozjs-128
-version     : 128.4.0
-release     : 2
+version     : 128.5.0
+release     : 3
 homepage    : https://mozilla.org
 upstreams   :
-    - https://archive.mozilla.org/pub/firefox/releases/128.4.0esr/source/firefox-128.4.0esr.source.tar.xz : 074014e1c26144e10707b12a271176a4b6b67021e91444b613edae38d188febc
+    - https://archive.mozilla.org/pub/firefox/releases/128.5.0esr/source/firefox-128.5.0esr.source.tar.xz : 0bd18968314afdcc341edd2a9178e305c9d454560a42193154a0f994047fecb8
 summary     : Mozilla's Spidermonkey JS Engine
 description : |
     Mozilla's Spidermonkey JS Engine (From Firefox)
