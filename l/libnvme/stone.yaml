@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libnvme
-version     : 1.9
-release     : 1
+version     : 1.11.1
+release     : 2
 homepage    : https://github.com/linux-nvme/libnvme
 upstreams   :
-    - https://github.com/linux-nvme/libnvme/archive/refs/tags/v1.9.tar.gz : 455867060d2b7563eab59fe21779dff469d98465028997178c7efbe4b8763206
+    - https://github.com/linux-nvme/libnvme/archive/refs/tags/v1.11.1.tar.gz : 6d5d8ba2cc4c94a61a994c9f7f25b3b26ef973fb5c0daa37729890903f37a1f1
 summary     : C Library for NVM Express on Linux
 description : |
     This is the libnvme development C library. libnvme provides type definitions for NVMe specification structures, enumerations, and bit fields, helper functions to construct, dispatch, and decode commands and payloads, and utilities to connect, scan, and manage nvme devices on a Linux system.
