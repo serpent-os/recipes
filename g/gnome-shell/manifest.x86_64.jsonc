@@ -263,15 +263,15 @@
 				"binary(gnome-shell)",
 				"binary(gnome-shell-extension-tool)",
 				"binary(gnome-shell-test-tool)",
-				"soname(libgnome-shell-menu.so(x86_64))",
-				"soname(libgvc.so(x86_64))",
-				"soname(libshell-15.so(x86_64))",
-				"soname(libshew-0.so(x86_64))",
-				"soname(libst-15.so(x86_64))"
+				"soname(gnome-shell/libgnome-shell-menu.so(x86_64))",
+				"soname(gnome-shell/libgvc.so(x86_64))",
+				"soname(gnome-shell/libshell-15.so(x86_64))",
+				"soname(gnome-shell/libshew-0.so(x86_64))",
+				"soname(gnome-shell/libst-15.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "gnome-shell",
-	"source-release": "21",
-	"source-version": "47.1"
+	"source-release": "22",
+	"source-version": "47.2"
 }

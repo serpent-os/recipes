@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnome-shell
-version     : 47.1
-release     : 21
+version     : 47.2
+release     : 22
 homepage    : https://gitlab.gnome.org/GNOME/gnome-shell
 upstreams   :
-    - https://download.gnome.org/sources/gnome-shell/47/gnome-shell-47.1.tar.xz : b467575f8c159d20557258517f0dd68dfd0147d11b48d97ab8e1f709bc522a63
+    - https://download.gnome.org/sources/gnome-shell/47/gnome-shell-47.2.tar.xz : 4184d01a1ab82cb421d1ca2e2bcce0292ceb46c4c749e61b0bde4b75004d2e00
 summary     : The core GNOME desktop experience
 description : |
     GNOME Shell provides core user interface functions for the GNOME desktop,
