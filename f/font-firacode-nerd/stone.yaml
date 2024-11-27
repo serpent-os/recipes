@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : font-firacode-nerd
+version     : 3.3.0
+release     : 1
+homepage    : https://github.com/tonsky/FiraCode
+upstreams   :
+    - https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraCode.zip : 89978e6f870d044286a339161d5ed961569744b1cd2afee62337fa140cd0b397
+summary     : Monospace nerd font with programming ligatures
+description : |
+    Monospace nerd font with programming ligatures based on Fira Code
+license     :
+    - OFL-1.1
+install     : |
+    %install_dir %(installroot)%(datadir)/fonts/truetype
+    for i in *.ttf ; do
+        %install_file $i %(installroot)%(datadir)/fonts/truetype/.
+    done

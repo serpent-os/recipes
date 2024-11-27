@@ -1,0 +1,32 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"font-firacode-nerd": {
+			"files": [
+				"/usr/share/fonts/truetype/FiraCodeNerdFont-Bold.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFont-Light.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFont-Medium.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFont-Regular.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFont-Retina.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFont-SemiBold.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontMono-Bold.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontMono-Light.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontMono-Medium.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontMono-Regular.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontMono-Retina.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontMono-SemiBold.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontPropo-Bold.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontPropo-Light.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontPropo-Medium.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontPropo-Regular.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontPropo-Retina.ttf",
+				"/usr/share/fonts/truetype/FiraCodeNerdFontPropo-SemiBold.ttf"
+			],
+			"name": "font-firacode-nerd"
+		}
+	},
+	"source-name": "font-firacode-nerd",
+	"source-release": "1",
+	"source-version": "3.3.0"
+}
