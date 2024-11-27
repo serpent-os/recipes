@@ -70,6 +70,7 @@
 				"pkgconfig(mm-glib)"
 			],
 			"depends": [
+				"geoclue",
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gio-unix-2.0)",
 				"pkgconfig(glib-2.0)"
@@ -95,6 +96,6 @@
 		}
 	},
 	"source-name": "geoclue",
-	"source-release": "1",
-	"source-version": "2.7.1"
+	"source-release": "2",
+	"source-version": "2.7.2"
 }
