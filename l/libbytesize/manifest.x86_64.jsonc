@@ -38,6 +38,7 @@
 				"/usr/share/locale/hu/LC_MESSAGES/libbytesize.mo",
 				"/usr/share/locale/id/LC_MESSAGES/libbytesize.mo",
 				"/usr/share/locale/it/LC_MESSAGES/libbytesize.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/libbytesize.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/libbytesize.mo",
 				"/usr/share/locale/kk/LC_MESSAGES/libbytesize.mo",
 				"/usr/share/locale/ko/LC_MESSAGES/libbytesize.mo",
@@ -86,6 +87,6 @@
 		}
 	},
 	"source-name": "libbytesize",
-	"source-release": "3",
-	"source-version": "2.10"
+	"source-release": "4",
+	"source-version": "2.11"
 }

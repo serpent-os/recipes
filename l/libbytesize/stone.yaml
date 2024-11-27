@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libbytesize
-version     : "2.10"
-release     : 3
+version     : 2.11
+release     : 4
 homepage    : https://github.com/storaged-project/libbytesize
 upstreams   :
-    - https://github.com/storaged-project/libbytesize/releases/download/2.10/libbytesize-2.10.tar.gz : 1d1ce3be8ac59fd59511d0794c7327d5cf33f1e83496837b17e19ac49400cad1
+    - https://github.com/storaged-project/libbytesize/releases/download/2.11/libbytesize-2.11.tar.gz : 1f6ce157750ed1201ce83edd3c23d997a615c7da30f9a0e5bb44635f66768d81
 summary     : A tiny library providing a C "class" for working with arbitrary big sizes in bytes
 description : |
     The goal of this project is to provide a tiny library that would facilitate the common operations with sizes in bytes. Many projects need to work with sizes in bytes (be it sizes of storage space, memory,...) and all of them need to deal with the same issues like:
