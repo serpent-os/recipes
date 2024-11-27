@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ripgrep
-version     : 14.1.0
-release     : 1
+version     : 14.1.1
+release     : 2
 homepage    : https://github.com/BurntSushi/ripgrep
 upstreams   :
-    - https://github.com/BurntSushi/ripgrep/archive/refs/tags/14.1.0.tar.gz : 33c6169596a6bbfdc81415910008f26e0809422fda2d849562637996553b2ab6
+    - https://github.com/BurntSushi/ripgrep/archive/refs/tags/14.1.1.tar.gz : 4dad02a2f9c8c3c8d89434e47337aa654cb0e2aa50e806589132f186bf5c2b66
 summary     : Recursive text search utility
 description : |
     ripgrep recursively searches directories for a regex pattern while respecting your gitignore
@@ -26,10 +26,10 @@ install     : |
 
     completionsdir=`pkg-config --variable=completionsdir bash-completion`
     %install_dir %(installroot)${completionsdir}
-    ./target/*/debug/rg --generate complete-bash > %(installroot)${completionsdir}/rg
+    ./target/*/release/rg --generate complete-bash > %(installroot)${completionsdir}/rg
 
     # man pages
     %install_dir %(installroot)%(mandir)/man1
-    ./target/*/debug/rg --generate man > %(installroot)%(mandir)/man1/rg.1
+    ./target/*/release/rg --generate man > %(installroot)%(mandir)/man1/rg.1
 check       : |
     %cargo_test --features 'pcre2'
