@@ -229,6 +229,7 @@
 				"/usr/lib/git/git-core/mergetools/tkdiff",
 				"/usr/lib/git/git-core/mergetools/tortoisemerge",
 				"/usr/lib/git/git-core/mergetools/vimdiff",
+				"/usr/lib/git/git-core/mergetools/vscode",
 				"/usr/lib/git/git-core/mergetools/winmerge",
 				"/usr/lib/git/git-core/mergetools/xxdiff",
 				"/usr/lib/git/git-core/scalar",
@@ -308,6 +309,6 @@
 		}
 	},
 	"source-name": "git",
-	"source-release": "10",
-	"source-version": "2.46.0"
+	"source-release": "11",
+	"source-version": "2.47.1"
 }
