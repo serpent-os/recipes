@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gnupg
-version     : 2.4.6
-release     : 5
+version     : 2.4.7
+release     : 6
 homepage    : https://gnupg.org/software/index.html
 upstreams   :
-    - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.6.tar.bz2 : 95acfafda7004924a6f5c901677f15ac1bda2754511d973bb4523e8dd840e17a
+    - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.7.tar.bz2 : 7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46
 summary     : Complete and free implementation of the OpenPGP standard to encrypt communications and files
 description : |
     %(name) is a complete and free implementation of the OpenPGP standard as defined by RFC4880, also known as PGP. GnuPG allows you to encrypt and sign your data and communications; it features a versatile key management system, along with access modules for all kinds of public key directories. GnuPG, also known as GPG, is a command line tool with features for easy integration with other applications. A wealth of frontend applications and libraries are available. GnuPG also provides support for S/MIME and SSH.
