@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : json-c
-version     : '0.17'
-release     : 2
+version     : 0.18
+release     : 3
 homepage    : https://github.com/json-c/json-c
 upstreams   :
-    - https://s3.amazonaws.com/json-c_releases/releases/json-c-0.17.tar.gz : 7550914d58fb63b2c3546f3ccfbe11f1c094147bd31a69dcd23714d7956159e6
+    - https://s3.amazonaws.com/json-c_releases/releases/json-c-0.18.tar.gz : 876ab046479166b869afc6896d288183bbc0e5843f141200c677b3e8dfb11724
 summary     : A JSON implementation in C
 description : |
     JSON-C implements a reference counting object model that allows you to easily

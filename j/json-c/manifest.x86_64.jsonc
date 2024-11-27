@@ -9,7 +9,7 @@
 			],
 			"files": [
 				"/usr/lib/libjson-c.so.5",
-				"/usr/lib/libjson-c.so.5.3.0"
+				"/usr/lib/libjson-c.so.5.4.0"
 			],
 			"name": "json-c",
 			"provides": [
@@ -17,6 +17,9 @@
 			]
 		},
 		"json-c-devel": {
+			"depends": [
+				"json-c"
+			],
 			"files": [
 				"/usr/include/json-c/arraylist.h",
 				"/usr/include/json-c/debug.h",
@@ -42,12 +45,12 @@
 			],
 			"name": "json-c-devel",
 			"provides": [
-				"pkgconfig(json-c)",
-				"cmake(json-c)"
+				"cmake(json-c)",
+				"pkgconfig(json-c)"
 			]
 		}
 	},
 	"source-name": "json-c",
-	"source-release": "2",
-	"source-version": "0.17"
+	"source-release": "3",
+	"source-version": "0.18"
 }
