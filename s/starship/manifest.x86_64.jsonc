@@ -18,6 +18,7 @@
 			"files": [
 				"/usr/bin/starship",
 				"/usr/share/bash-completion/completions/starship.bash",
+				"/usr/share/defaults/etc/profile.d/50-starship.sh",
 				"/usr/share/fish/vendor_completions.d/starship.fish",
 				"/usr/share/zsh/site-functions/_starship"
 			],
@@ -28,6 +29,6 @@
 		}
 	},
 	"source-name": "starship",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.21.1"
 }
