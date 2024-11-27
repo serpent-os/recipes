@@ -83,8 +83,10 @@
 				"/usr/share/libinput/50-system-google.quirks",
 				"/usr/share/libinput/50-system-gpd.quirks",
 				"/usr/share/libinput/50-system-graviton.quirks",
+				"/usr/share/libinput/50-system-honor.quirks",
 				"/usr/share/libinput/50-system-hp.quirks",
 				"/usr/share/libinput/50-system-huawei.quirks",
+				"/usr/share/libinput/50-system-icl.quirks",
 				"/usr/share/libinput/50-system-lenovo.quirks",
 				"/usr/share/libinput/50-system-lg.quirks",
 				"/usr/share/libinput/50-system-minisforum.quirks",
@@ -146,6 +148,6 @@
 		}
 	},
 	"source-name": "libinput",
-	"source-release": "3",
-	"source-version": "1.26.2"
+	"source-release": "4",
+	"source-version": "1.27.0"
 }
