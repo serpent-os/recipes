@@ -24,7 +24,7 @@
 			],
 			"files": [
 				"/usr/lib/girepository-1.0/Msg-0.typelib",
-				"/usr/lib/libmsgraph-0.so.0.2.1",
+				"/usr/lib/libmsgraph-0.so.0.2.3",
 				"/usr/lib/libmsgraph-0.so.1",
 				"/usr/share/gir-1.0/Msg-0.gir"
 			],
@@ -50,8 +50,7 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(goa-1.0)",
 				"pkgconfig(json-glib-1.0)",
-				"pkgconfig(libsoup-3.0)",
-				"pkgconfig(rest-1.0)"
+				"pkgconfig(libsoup-3.0)"
 			],
 			"files": [
 				"/usr/include/msg/contact/msg-contact-service.h",
@@ -68,6 +67,7 @@
 				"/usr/include/msg/msg-error.h",
 				"/usr/include/msg/msg-goa-authorizer.h",
 				"/usr/include/msg/msg-input-stream.h",
+				"/usr/include/msg/msg-json-utils.h",
 				"/usr/include/msg/msg-oauth2-authorizer.h",
 				"/usr/include/msg/msg-private.h",
 				"/usr/include/msg/msg-service.h",
@@ -85,6 +85,6 @@
 		}
 	},
 	"source-name": "msgraph",
-	"source-release": "1",
-	"source-version": "0.2.1"
+	"source-release": "2",
+	"source-version": "0.2.3"
 }
