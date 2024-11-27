@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.24.5
-release     : 70
+release     : 71
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -23,6 +23,7 @@ check       : |
     %cargo_test
 setup       : |
     %patch %(pkgdir)/no-rustfmt.patch
+    %patch %(pkgdir)/0001-boulder-Include-origin-dir-in-RPATH-evaluation-for-p.patch
     %cargo_fetch
 build       : |
     %cargo_build -p boulder
