@@ -1,7 +1,7 @@
 From f721100369d9ba81954ed79d306a233bf6bcd339 Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <ikey@serpentos.com>
 Date: Wed, 27 Nov 2024 01:00:02 +0000
-Subject: [PATCH] boulder: Include origin dir in RPATH evaluation for
+Subject: [PATCH 1/2] boulder: Include origin dir in RPATH evaluation for
  pipewire/etc
 
 Signed-off-by: Ikey Doherty <ikey@serpentos.com>
