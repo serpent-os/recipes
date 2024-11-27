@@ -51,8 +51,7 @@
 				"/usr/lib/libvte-2.91-gtk4.so.0",
 				"/usr/lib/systemd/user/vte-spawn-.scope.d/defaults.conf",
 				"/usr/lib/vte/vte-urlencode-cwd",
-				"/usr/share/defaults/etc/profile.d/vte.csh",
-				"/usr/share/defaults/etc/profile.d/vte.sh",
+				"/usr/share/defaults/etc/profile.d/10-vte.sh",
 				"/usr/share/gir-1.0/Vte-3.91.gir"
 			],
 			"name": "vte",
@@ -114,6 +113,6 @@
 		}
 	},
 	"source-name": "vte",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "0.78.2"
 }
