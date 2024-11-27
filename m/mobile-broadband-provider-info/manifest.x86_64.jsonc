@@ -17,6 +17,9 @@
 			"build-depends": [
 				"binary(xsltproc)"
 			],
+			"depends": [
+				"mobile-broadband-provider-info"
+			],
 			"files": [
 				"/usr/share/pkgconfig/mobile-broadband-provider-info.pc"
 			],
@@ -27,6 +30,6 @@
 		}
 	},
 	"source-name": "mobile-broadband-provider-info",
-	"source-release": "1",
-	"source-version": "20230416"
+	"source-release": "2",
+	"source-version": "20240407"
 }
