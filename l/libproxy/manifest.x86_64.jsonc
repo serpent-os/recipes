@@ -16,11 +16,12 @@
 				"soname(libc.so.6(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
-				"soname(libpxbackend-1.0.so(x86_64))"
+				"soname(libproxy/libpxbackend-1.0.so(x86_64))"
 			],
 			"files": [
 				"/usr/bin/proxy",
 				"/usr/lib/girepository-1.0/Libproxy-1.0.typelib",
+				"/usr/lib/libproxy.so.0.5.9",
 				"/usr/lib/libproxy.so.1",
 				"/usr/share/gir-1.0/Libproxy-1.0.gir",
 				"/usr/share/man/man8/proxy.8",
@@ -29,8 +30,8 @@
 			],
 			"name": "libproxy",
 			"provides": [
-				"soname(libproxy.so.1(x86_64))",
-				"binary(proxy)"
+				"binary(proxy)",
+				"soname(libproxy.so.1(x86_64))"
 			]
 		},
 		"libproxy-devel": {
@@ -43,11 +44,11 @@
 				"pkgconfig(libcurl)"
 			],
 			"depends": [
+				"libproxy",
 				"pkgconfig(gobject-2.0)",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcurl.so.4(x86_64))",
 				"soname(libduktape.so.207(x86_64))",
-				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))"
@@ -61,11 +62,11 @@
 			"name": "libproxy-devel",
 			"provides": [
 				"pkgconfig(libproxy-1.0)",
-				"soname(libpxbackend-1.0.so(x86_64))"
+				"soname(libproxy/libpxbackend-1.0.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "libproxy",
-	"source-release": "1",
-	"source-version": "0.5.3"
+	"source-release": "2",
+	"source-version": "0.5.9"
 }

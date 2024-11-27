@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libproxy
-version     : 0.5.3
-release     : 1
+version     : 0.5.9
+release     : 2
 homepage    : https://libproxy.github.io/libproxy/
 upstreams   :
-    - https://github.com/libproxy/libproxy/archive/refs/tags/0.5.3.tar.gz : 0d8d8e4dd96239ba173c2b18905c0bb6e161fd5000e1e0aeace16f754e9a9108
+    - https://github.com/libproxy/libproxy/archive/refs/tags/0.5.9.tar.gz : a1976c3ac4affedc17e6d40cf78c9d8eca6751520ea3cbbec1a8850f7ded1565
 summary     : Simplifyed proxy handling
 description : |
     libproxy is a library that provides automatic proxy configuration management.
