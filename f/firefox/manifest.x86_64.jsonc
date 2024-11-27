@@ -113,7 +113,6 @@
 				"/usr/lib/firefox/libmozsqlite3.so",
 				"/usr/lib/firefox/libmozwayland.so",
 				"/usr/lib/firefox/libxul.so",
-				"/usr/lib/firefox/minidump-analyzer",
 				"/usr/lib/firefox/omni.ja",
 				"/usr/lib/firefox/pingsender",
 				"/usr/lib/firefox/platform.ini",
@@ -147,6 +146,6 @@
 		}
 	},
 	"source-name": "firefox",
-	"source-release": "13",
-	"source-version": "132.0.2"
+	"source-release": "14",
+	"source-version": "133.0"
 }
