@@ -13,20 +13,23 @@
 			],
 			"files": [
 				"/usr/bin/editorconfig",
-				"/usr/bin/editorconfig-0.12.6",
+				"/usr/bin/editorconfig-0.12.9",
 				"/usr/lib/libeditorconfig.so.0",
-				"/usr/lib/libeditorconfig.so.0.12.6"
+				"/usr/lib/libeditorconfig.so.0.12.9"
 			],
 			"name": "editorconfig-core-c",
 			"provides": [
 				"binary(editorconfig)",
-				"binary(editorconfig-0.12.6)",
+				"binary(editorconfig-0.12.9)",
 				"soname(libeditorconfig.so.0(x86_64))"
 			]
 		},
 		"editorconfig-core-c-devel": {
 			"build-depends": [
 				"pkgconfig(libpcre2-8)"
+			],
+			"depends": [
+				"editorconfig-core-c"
 			],
 			"files": [
 				"/usr/include/editorconfig/editorconfig.h",
@@ -46,6 +49,6 @@
 		}
 	},
 	"source-name": "editorconfig-core-c",
-	"source-release": "1",
-	"source-version": "0.12.6"
+	"source-release": "2",
+	"source-version": "0.12.9"
 }
