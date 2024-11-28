@@ -70,3 +70,7 @@ ls-local: create-local
 # move .stones to LOCAL_REPO (create if it doesn't exist) and reindex it
 mv-local: create-local
     cd {{ invocation_directory() }} && mv -v *.stone {{local_repo}}/ && moss index {{local_repo}}
+
+# Check for upstream updates
+updates:
+    cd {{ invocation_directory() }} && ent check updates
