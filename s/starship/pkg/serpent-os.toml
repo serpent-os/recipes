@@ -30,6 +30,7 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
+"Videos" = " "
 
 [username]
 show_always = false
