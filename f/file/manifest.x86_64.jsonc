@@ -42,6 +42,9 @@
 				"pkgconfig(libzstd)",
 				"pkgconfig(zlib)"
 			],
+			"depends": [
+				"file"
+			],
 			"files": [
 				"/usr/include/magic.h",
 				"/usr/lib/libmagic.so",
@@ -55,6 +58,6 @@
 		}
 	},
 	"source-name": "file",
-	"source-release": "7",
-	"source-version": "5.45"
+	"source-release": "8",
+	"source-version": "5.46"
 }
