@@ -5,7 +5,7 @@
 #
 name        : starship
 version     : "1.21.1"
-release     : 4
+release     : 5
 license     : ISC
 homepage    : https://starship.rs/
 upstreams   :

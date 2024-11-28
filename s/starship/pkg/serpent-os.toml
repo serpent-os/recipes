@@ -25,6 +25,7 @@ truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
+"Desktop" = " "
 "Documents" = "󰈙 "
 "Downloads" = " "
 "Music" = " "
