@@ -1,0 +1,88 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : mpv
+version     : 0.39.0
+release     : 1
+homepage    : https://mpv.io/
+upstreams   :
+    - https://github.com/mpv-player/mpv/archive/refs/tags/v0.39.0.tar.gz : 2ca92437affb62c2b559b4419ea4785c70d023590500e8a52e95ea3ab4554683
+summary     : a free, open source, and cross-platform media player
+description : |
+  mpv is a free (as in freedom) media player for the command line. It supports a wide variety of media file formats, audio and video codecs, and subtitle types.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(python3)
+    # binary(rst2man)
+    - cmake(VulkanHeaders)
+    - pkgconfig(alsa)
+    # pkgconfig(caca)
+    - pkgconfig(dvdnav)
+    - pkgconfig(dvdread)
+    - pkgconfig(egl)
+    - pkgconfig(ffnvcodec)
+    - pkgconfig(gbm)
+    # pkgconfig(jack)
+    - pkgconfig(lcms2)
+    - pkgconfig(libarchive)
+    - pkgconfig(libass)
+    - pkgconfig(libavcodec)
+    - pkgconfig(libavdevice)
+    - pkgconfig(libavfilter)
+    - pkgconfig(libavformat)
+    - pkgconfig(libavutil)
+    # pkgconfig(libbluray)
+    # pkgconfig(libcdio)
+    # pkgconfig(libcdio_paranoia)
+    - pkgconfig(libdrm)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libplacebo)
+    - pkgconfig(libpulse)
+    # pkgconfig(libsixel)
+    - pkgconfig(libswresample)
+    - pkgconfig(libswscale)
+    # pkgconfig(libva)
+    # pkgconfig(mujs)
+    # pkgconfig(openal)
+    # pkgconfig(rubberband)
+    - pkgconfig(sdl2)
+    - pkgconfig(shaderc)
+    - pkgconfig(sndio)
+    # pkgconfig(spirv-cross-c-shared)
+    # pkgconfig(uchardet)
+    # pkgconfig(vapoursynth)
+    # pkgconfig(vdpau)
+    - pkgconfig(vulkan)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(x11)
+    - pkgconfig(xext)
+    - pkgconfig(xkbcommon)
+    # pkgconfig(xpresent)
+    - pkgconfig(xrandr)
+    - pkgconfig(xscrnsaver)
+    - pkgconfig(xv)
+    # pkgconfig(zimg)
+    - pkgconfig(zlib)
+setup       : |
+    %meson -Dlibmpv=true
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+packages:
+    - "%(name)-libs":
+        paths:
+            - /usr/lib/*.so.*
+    - "%(name)-libs-devel":
+        paths:
+            - /usr/include
+            - /usr/lib/*.so
+            - /usr/lib/pkgconfig
+        rundeps:
+            - mpv-libs

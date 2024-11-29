@@ -1,0 +1,6 @@
+releases:
+  id: 5348
+security:
+  cpe:
+  - vendor: mpv
+    product: mpv
