@@ -5,7 +5,7 @@
 #
 name        : sndio
 version     : 1.10.0
-release     : 2
+release     : 3
 homepage    : https://sndio.org
 upstreams   :
     - https://sndio.org/sndio-1.10.0.tar.gz : bebd3bfd01c50c9376cf3e7814b9379bed9e17d0393b5113b7eb7a3d0d038c54
