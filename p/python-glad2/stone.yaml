@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-glad2
+version     : 2.0.8
+release     : 1
+homepage    : https://github.com/Dav1dde/glad
+upstreams   :
+    - https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.8.tar.gz : 44f06f9195427c7017f5028d0894f57eb216b0a8f7c4eda7ce883732aeb2d0fc
+summary     : Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs
+description : |
+  Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specifications for multiple languages.
+license     :
+    - Apache-2.0
+    - MIT
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install

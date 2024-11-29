@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libass
+version     : 0.17.3
+release     : 1
+homepage    : https://github.com/libass/libass
+upstreams   :
+    - https://github.com/libass/libass/releases/download/0.17.3/libass-0.17.3.tar.xz : eae425da50f0015c21f7b3a9c7262a910f0218af469e22e2931462fed3c50959
+summary     : libass is a portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format.
+description : |
+    libass is a portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format. It is mostly compatible with VSFilter.
+license     : ISC
+builddeps   :
+    - binary(nasm)
+    - pkgconfig(freetype2)
+    - pkgconfig(fribidi)
+    - pkgconfig(libpng)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

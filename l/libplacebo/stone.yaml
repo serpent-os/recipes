@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libplacebo
+version     : 7.349.0
+release     : 1
+homepage    : https://libplacebo.org/
+upstreams   :
+    - https://code.videolan.org/videolan/libplacebo/-/archive/v7.349.0/libplacebo-v7.349.0.tar.bz2 : 38c9c75d9c1bb412baf34845d1ca58c41a9804d1d0798091d7a8602a0d7c9aa6
+summary     : Reusable library for GPU-accelerated image/video processing primitives and shaders, as well a batteries-included, extensible, high-quality rendering pipeline
+description : |
+  libplacebo is, in a nutshell, the core rendering algorithms and ideas of mpv rewritten as an independent library. As of today, libplacebo contains a large assortment of video processing shaders, focusing on both quality and performance
+license     : LGPL-2.1-or-later
+builddeps   :
+    # TODO: lcms, shaderrc, libdovi
+    # cmake(glslang) <- FTBFS
+    - cmake(FastFloat)
+    - cmake(VulkanHeaders)
+    - pkgconfig(libxxhash)
+    - python(glad2)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

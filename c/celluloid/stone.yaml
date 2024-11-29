@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : celluloid
+version     : 0.27
+release     : 1
+homepage    : https://github.com/celluloid-player/celluloid
+upstreams   :
+    - https://github.com/celluloid-player/celluloid/archive/refs/tags/v0.27.tar.gz : 6c216a3dead5baf931bd52876cab7e08abcb9aef2132ca3a9ea35bf9dffe7644
+summary     : A simple GTK+ frontend for mpv
+description : |
+  Celluloid (formerly GNOME MPV) is a simple GTK+ frontend for mpv. Celluloid interacts with mpv via the client API exported by libmpv, allowing access to mpv's powerful playback capabilities.
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - pkgconfig(epoxy)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(mpv)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

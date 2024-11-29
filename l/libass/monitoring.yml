@@ -1,0 +1,6 @@
+releases:
+  id: 1560
+security:
+  cpe:
+  - vendor: libass_project
+    product: libass
