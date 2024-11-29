@@ -1,0 +1,29 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"fast-float": {
+			"files": [
+				"/usr/include/fast_float/ascii_number.h",
+				"/usr/include/fast_float/bigint.h",
+				"/usr/include/fast_float/constexpr_feature_detect.h",
+				"/usr/include/fast_float/decimal_to_binary.h",
+				"/usr/include/fast_float/digit_comparison.h",
+				"/usr/include/fast_float/fast_float.h",
+				"/usr/include/fast_float/fast_table.h",
+				"/usr/include/fast_float/float_common.h",
+				"/usr/include/fast_float/parse_number.h",
+				"/usr/share/cmake/FastFloat/FastFloatConfig.cmake",
+				"/usr/share/cmake/FastFloat/FastFloatConfigVersion.cmake",
+				"/usr/share/cmake/FastFloat/fast_float-targets.cmake"
+			],
+			"name": "fast-float",
+			"provides": [
+				"cmake(FastFloat)"
+			]
+		}
+	},
+	"source-name": "fast-float",
+	"source-release": "1",
+	"source-version": "6.1.1"
+}
