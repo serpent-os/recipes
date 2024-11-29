@@ -46,6 +46,7 @@
 				"/usr/share/man/man1/moss-sync.1",
 				"/usr/share/man/man1/moss-version.1",
 				"/usr/share/man/man1/moss.1",
+				"/usr/share/mime/packages/stone.xml",
 				"/usr/share/zsh/site-functions/_moss"
 			],
 			"name": "moss",
@@ -55,6 +56,6 @@
 		}
 	},
 	"source-name": "moss",
-	"source-release": "57",
+	"source-release": "58",
 	"source-version": "0.24.5"
 }
