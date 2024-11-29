@@ -5,7 +5,7 @@
 #
 name        : file
 version     : 5.46
-release     : 8
+release     : 9
 homepage    : https://astron.com/pub/file
 upstreams   :
     - https://astron.com/pub/file/file-5.46.tar.gz : c9cc77c7c560c543135edc555af609d5619dbef011997e988ce40a3d75d86088
@@ -21,16 +21,13 @@ builddeps   :
     - pkgconfig(libzstd)
     - pkgconfig(zlib)
 setup       : |
+    %patch %(pkgdir)/0001-magic-Support-Serpent-OS-stone-format.patch
     # Fix linking libmagic
     export CFLAGS="$CFLAGS -pthread"
-    %configure \
+    %reconfigure \
         --disable-static \
         --enable-shared \
         --enable-libseccomp
-
-    # remove hardcoded library paths from local libtool
-    sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-    sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 build      : |
     export LD_LIBRARY_PATH=$PWD/src/.libs
     %make

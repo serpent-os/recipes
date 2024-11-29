@@ -1,0 +1,48 @@
+From 0f6634e79b5d18f8036c7018e79993f85b788192 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Fri, 29 Nov 2024 00:02:27 +0000
+Subject: [PATCH] magic: Support Serpent OS stone format
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ magic/Magdir/stone | 15 +++++++++++++++
+ magic/Makefile.am  |  1 +
+ 2 files changed, 16 insertions(+)
+ create mode 100644 magic/Magdir/stone
+
+diff --git a/magic/Magdir/stone b/magic/Magdir/stone
+new file mode 100644
+index 0000000..45b6123
+--- /dev/null
++++ b/magic/Magdir/stone
+@@ -0,0 +1,15 @@
++# Stone archive file - Serpent OS moss package manager's native format
++0    string  \0mos   Stone archive
++>28  belong  1       (format v%d)
++>>27  byte    1       binary package
++!:mime application/x-stone-binary
++!:ext stone
++>>27  byte    2       delta package
++!:mime application/x-stone-delta
++!:ext stone
++>>27  byte    3       repository index
++!:mime application/x-stone-repository
++!:ext index
++>>27  byte    4       build manifest
++!:mime application/x-stone-manifest
++!:ext bin
+diff --git a/magic/Makefile.am b/magic/Makefile.am
+index e0f9034..3a0d983 100644
+--- a/magic/Makefile.am
++++ b/magic/Makefile.am
+@@ -297,6 +297,7 @@ $(MAGIC_FRAGMENT_DIR)/sql \
+ $(MAGIC_FRAGMENT_DIR)/ssh \
+ $(MAGIC_FRAGMENT_DIR)/ssl \
+ $(MAGIC_FRAGMENT_DIR)/statistics \
++$(MAGIC_FRAGMENT_DIR)/stone \
+ $(MAGIC_FRAGMENT_DIR)/subtitle \
+ $(MAGIC_FRAGMENT_DIR)/sun \
+ $(MAGIC_FRAGMENT_DIR)/svf \
+-- 
+2.47.1
+
