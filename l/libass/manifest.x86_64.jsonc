@@ -1,0 +1,58 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libass": {
+			"build-depends": [
+				"binary(nasm)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(fribidi)",
+				"pkgconfig(libpng)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libfontconfig.so.1(x86_64))",
+				"soname(libfreetype.so.6(x86_64))",
+				"soname(libfribidi.so.0(x86_64))",
+				"soname(libharfbuzz.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libass.so.9",
+				"/usr/lib/libass.so.9.3.1"
+			],
+			"name": "libass",
+			"provides": [
+				"soname(libass.so.9(x86_64))"
+			]
+		},
+		"libass-devel": {
+			"build-depends": [
+				"binary(nasm)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(fribidi)",
+				"pkgconfig(libpng)"
+			],
+			"depends": [
+				"libass",
+				"pkgconfig(fontconfig)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(fribidi)",
+				"pkgconfig(harfbuzz)"
+			],
+			"files": [
+				"/usr/include/ass/ass.h",
+				"/usr/include/ass/ass_types.h",
+				"/usr/lib/libass.so",
+				"/usr/lib/pkgconfig/libass.pc"
+			],
+			"name": "libass-devel",
+			"provides": [
+				"pkgconfig(libass)"
+			]
+		}
+	},
+	"source-name": "libass",
+	"source-release": "1",
+	"source-version": "0.17.3"
+}
