@@ -14,7 +14,9 @@ cd l/linux-<kernel version>/
 mkdir -pv work
 cd work
 
-# Fetch the tarball of the kernel you want to work on
+# Fetch the tarball of the kernel you want to work on. Use the URL from the stone.yaml
+# recipe if you want to patch or adjust the config of the upstream kernel at the version
+# that Serpent OS currently ships
 wget <the linux kernel you want to work on>
 
 # Unpack the tarball
