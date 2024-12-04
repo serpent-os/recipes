@@ -1,0 +1,52 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libgee": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/Gee-0.8.typelib",
+				"/usr/lib/libgee-0.8.so.2",
+				"/usr/lib/libgee-0.8.so.2.6.1",
+				"/usr/share/gir-1.0/Gee-0.8.gir",
+				"/usr/share/vala/vapi/gee-0.8.vapi"
+			],
+			"name": "libgee",
+			"provides": [
+				"soname(libgee-0.8.so.2(x86_64))"
+			]
+		},
+		"libgee-devel": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)"
+			],
+			"depends": [
+				"libgee",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)"
+			],
+			"files": [
+				"/usr/include/gee-0.8/gee.h",
+				"/usr/lib/libgee-0.8.so",
+				"/usr/lib/pkgconfig/gee-0.8.pc"
+			],
+			"name": "libgee-devel",
+			"provides": [
+				"pkgconfig(gee-0.8)"
+			]
+		}
+	},
+	"source-name": "libgee",
+	"source-release": "1",
+	"source-version": "0.20.6"
+}
