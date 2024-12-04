@@ -5,6 +5,7 @@
 		"libsoup": {
 			"build-depends": [
 				"binary(g-ir-scanner)",
+				"binary(valac)",
 				"binary(xgettext)",
 				"glib-networking",
 				"pkgconfig(gmodule-2.0)",
@@ -100,7 +101,9 @@
 				"/usr/share/locale/vi/LC_MESSAGES/libsoup-3.0.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/libsoup-3.0.mo",
 				"/usr/share/locale/zh_HK/LC_MESSAGES/libsoup-3.0.mo",
-				"/usr/share/locale/zh_TW/LC_MESSAGES/libsoup-3.0.mo"
+				"/usr/share/locale/zh_TW/LC_MESSAGES/libsoup-3.0.mo",
+				"/usr/share/vala/vapi/libsoup-3.0.deps",
+				"/usr/share/vala/vapi/libsoup-3.0.vapi"
 			],
 			"name": "libsoup",
 			"provides": [
@@ -110,6 +113,7 @@
 		"libsoup-devel": {
 			"build-depends": [
 				"binary(g-ir-scanner)",
+				"binary(valac)",
 				"binary(xgettext)",
 				"glib-networking",
 				"pkgconfig(gmodule-2.0)",
@@ -185,6 +189,6 @@
 		}
 	},
 	"source-name": "libsoup",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "3.6.1"
 }
