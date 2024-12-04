@@ -5,7 +5,7 @@
 #
 name        : libsoup
 version     : 3.6.1
-release     : 4
+release     : 5
 homepage    : https://gitlab.gnome.org/GNOME/libsoup
 upstreams   :
     - https://download.gnome.org/sources/libsoup/3.6/libsoup-3.6.1.tar.xz : ceb1f1aa2bdd73b2cd8159d3998c96c55ef097ef15e4b4f36029209fa18af838
@@ -17,6 +17,7 @@ license     :
 builddeps   :
     # binary(apachectl)
     - binary(g-ir-scanner)
+    - binary(valac)
     # binary(httpd2)
     # binary(wstest)
     - binary(xgettext)
