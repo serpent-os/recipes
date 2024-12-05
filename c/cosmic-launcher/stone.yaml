@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-launcher
-version     : 1.0.0-alpha.3
-release     : 8
+version     : 1.0.0-alpha.4
+release     : 9
 summary     : Cosmic Desktop Launcher
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-launcher
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-launcher.git : 6fe20b09991f13c487e620863b23efd6fb4b4d5a
+    - git|https://github.com/pop-os/cosmic-launcher.git : 9324e9e7772341de72a06b8970dada3250bd1794
 description : |
     Cosmic Desktop Launcher
 builddeps   :
