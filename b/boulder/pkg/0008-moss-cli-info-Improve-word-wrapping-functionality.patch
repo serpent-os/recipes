@@ -1,0 +1,98 @@
+From 45770744cc2843fe1fa01b7b9ffe6473b4648b64 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Thu, 5 Dec 2024 10:25:59 +0000
+Subject: [PATCH 08/10] moss/cli/info: Improve word-wrapping functionality
+
+When the input (ie a package description) contains manual
+linebreaks, we ignore them as attempts at manual wordwrapping.
+However, when an *empty* line (`$WHITESPACE \n $WHITESPACE`)
+is present, we now respect the manual paragraph breaking to
+improve the display.
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ moss/src/cli/info.rs | 61 ++++++++++++++++++++++++++++----------------
+ 1 file changed, 39 insertions(+), 22 deletions(-)
+
+diff --git a/moss/src/cli/info.rs b/moss/src/cli/info.rs
+index 47f7564..450c1c4 100644
+--- a/moss/src/cli/info.rs
++++ b/moss/src/cli/info.rs
+@@ -72,35 +72,52 @@ fn print_paragraph(p: &str) {
+     let term_width = TermSize::default().width;
+     let available_width = term_width - COLUMN_WIDTH;
+ 
+-    // Split into words and build lines up to available width
+-    let mut current_line = String::new();
+-    let mut first_line = true;
+-
+-    for word in p.split_whitespace() {
+-        if current_line.len() + word.len() < available_width {
+-            if !current_line.is_empty() {
+-                current_line.push(' ');
++    // Split into paragraphs by empty lines
++    let paragraphs = p.lines().collect::<Vec<_>>();
++    let paragraphs = paragraphs
++        .split(|line| line.trim().is_empty())
++        .filter(|para| !para.is_empty());
++
++    let mut first_paragraph = true;
++
++    for paragraph in paragraphs {
++        if !first_paragraph {
++            println!(); // Add blank line between paragraphs
++        }
++
++        // Join the lines and split into words for wrapping
++        let text = paragraph.join(" ");
++        let mut current_line = String::new();
++        let mut first_line = true;
++
++        for word in text.split_whitespace() {
++            if current_line.len() + word.len() < available_width {
++                if !current_line.is_empty() {
++                    current_line.push(' ');
++                }
++                current_line.push_str(word);
++            } else {
++                // Print current line
++                if first_line && first_paragraph {
++                    println!("{}", current_line.dim());
++                    first_line = false;
++                } else {
++                    println!("{:width$} {}", " ", current_line.dim(), width = COLUMN_WIDTH);
++                }
++                current_line = word.to_string();
+             }
+-            current_line.push_str(word);
+-        } else {
+-            // Print current line
+-            if first_line {
++        }
++
++        // Print any remaining content
++        if !current_line.is_empty() {
++            if first_line && first_paragraph {
+                 println!("{}", current_line.dim());
+-                first_line = false;
+             } else {
+                 println!("{:width$} {}", " ", current_line.dim(), width = COLUMN_WIDTH);
+             }
+-            current_line = word.to_string();
+         }
+-    }
+ 
+-    // Print any remaining content
+-    if !current_line.is_empty() {
+-        if first_line {
+-            println!("{}", current_line);
+-        } else {
+-            println!("{:width$} {}", " ", current_line.dim(), width = COLUMN_WIDTH);
+-        }
++        first_paragraph = false;
+     }
+ }
+ 
+-- 
+2.47.1
+

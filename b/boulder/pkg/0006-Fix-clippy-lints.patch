@@ -1,0 +1,48 @@
+From 81d535f7081555c8cc8d95cc1d98cf5712ecff9f Mon Sep 17 00:00:00 2001
+From: Jonas Platte <jplatte+git@posteo.de>
+Date: Sat, 30 Nov 2024 22:37:46 +0100
+Subject: [PATCH 06/10] Fix clippy lints
+
+---
+ boulder/src/build.rs                   | 2 +-
+ moss/src/varlink/com_serpentos_moss.rs | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/boulder/src/build.rs b/boulder/src/build.rs
+index b8a47d7..ec76831 100644
+--- a/boulder/src/build.rs
++++ b/boulder/src/build.rs
+@@ -377,7 +377,7 @@ fn breakpoint_line(
+ 
+     let has_key = |line: &str, key: &str| {
+         line.split_once(':')
+-            .map_or(false, |(leading, _)| leading.trim().ends_with(key))
++            .is_some_and(|(leading, _)| leading.trim().ends_with(key))
+     };
+ 
+     let mut lines = recipe
+diff --git a/moss/src/varlink/com_serpentos_moss.rs b/moss/src/varlink/com_serpentos_moss.rs
+index ec68a01..0ad730b 100644
+--- a/moss/src/varlink/com_serpentos_moss.rs
++++ b/moss/src/varlink/com_serpentos_moss.rs
+@@ -107,7 +107,7 @@ impl From<&varlink::Reply> for ErrorKind {
+     }
+ }
+ pub trait VarlinkCallError: varlink::CallTrait {}
+-impl<'a> VarlinkCallError for varlink::Call<'a> {}
++impl VarlinkCallError for varlink::Call<'_> {}
+ #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+ pub struct Version_Reply {
+     pub r#version: String,
+@@ -120,7 +120,7 @@ pub trait Call_Version: VarlinkCallError {
+         self.reply_struct(Version_Reply { r#version }.into())
+     }
+ }
+-impl<'a> Call_Version for varlink::Call<'a> {}
++impl Call_Version for varlink::Call<'_> {}
+ pub trait VarlinkInterface {
+     fn version(&self, call: &mut dyn Call_Version) -> varlink::Result<()>;
+     fn call_upgraded(&self, _call: &mut varlink::Call, _bufreader: &mut dyn BufRead) -> varlink::Result<Vec<u8>> {
+-- 
+2.47.1
+

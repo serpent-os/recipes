@@ -1,7 +1,7 @@
 From 543e3df4090003be1f891d12f4db88843e95cfd5 Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <ikey@serpentos.com>
 Date: Wed, 27 Nov 2024 02:40:29 +0000
-Subject: [PATCH 3/3] boulder: Allow RPATH dependencies across package
+Subject: [PATCH 03/10] boulder: Allow RPATH dependencies across package
  boundaries
 
 We may also hit the case where a valid RPATH-bound dependency is
@@ -43,5 +43,5 @@ index 7d9f935..c9350e5 100644
                          None
                      }
 -- 
-2.46.0
+2.47.1
 

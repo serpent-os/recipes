@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.24.5
-release     : 73
+release     : 74
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -26,6 +26,14 @@ setup       : |
     %patch %(pkgdir)/0001-boulder-Include-origin-dir-in-RPATH-evaluation-for-p.patch
     %patch %(pkgdir)/0002-boulder-Also-handle-DT_RUNPATH-in-conjunction-with-D.patch
     %patch %(pkgdir)/0003-boulder-Allow-RPATH-dependencies-across-package-boun.patch
+    %patch %(pkgdir)/0004-Add-stone.xml-for-usr-share-mime-packages.patch
+    %patch %(pkgdir)/0005-Upgrade-dependencies.patch
+    %patch %(pkgdir)/0006-Fix-clippy-lints.patch
+    %patch %(pkgdir)/0007-Switch-futures-futures-util.patch
+    %patch %(pkgdir)/0008-moss-cli-info-Improve-word-wrapping-functionality.patch
+    %patch %(pkgdir)/0009-boulder-cli-recipe-Allow-suppression-of-recipe-bump-.patch
+    %patch %(pkgdir)/0010-Switch-all-volatile-repo-usage-to-packages.serpentos.patch
+
     %cargo_fetch
 build       : |
     %cargo_build -p boulder

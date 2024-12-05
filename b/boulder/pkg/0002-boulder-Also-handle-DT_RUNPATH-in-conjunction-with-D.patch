@@ -1,7 +1,7 @@
 From 83f1084601c87f958127cb78789fbd421d0555f4 Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <ikey@serpentos.com>
 Date: Wed, 27 Nov 2024 02:07:13 +0000
-Subject: [PATCH 2/3] boulder: Also handle DT_RUNPATH in conjunction with
+Subject: [PATCH 02/10] boulder: Also handle DT_RUNPATH in conjunction with
  DT_RPATH...
 
 Signed-off-by: Ikey Doherty <ikey@serpentos.com>
@@ -63,5 +63,5 @@ index ad1064a..7d9f935 100644
          }
  
 -- 
-2.46.0
+2.47.1
 

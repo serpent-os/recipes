@@ -1,0 +1,56 @@
+From 712ffc236a51d1b72de412a0c15c8a0d14c110bb Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Thu, 5 Dec 2024 13:17:31 +0000
+Subject: [PATCH 10/10] Switch all volatile repo usage to
+ `packages.serpentos.com`
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ README.md                                  | 2 +-
+ boulder/data/profile.d/default-x86_64.yaml | 5 ++---
+ boulder/src/cli/profile.rs                 | 2 +-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/README.md b/README.md
+index 3d2032b..6cde49e 100644
+--- a/README.md
++++ b/README.md
+@@ -78,7 +78,7 @@ just get-started
+ mkdir -pv sosroot/
+ 
+ # Add the volatile repo
+-moss -D sosroot/ repo add volatile https://dev.serpentos.com/volatile/x86_64/stone.index
++moss -D sosroot/ repo add volatile https://packages.serpentos.com/volatile/x86_64/stone.index
+ 
+ # List packages
+ moss -D sosroot/ list available
+diff --git a/boulder/data/profile.d/default-x86_64.yaml b/boulder/data/profile.d/default-x86_64.yaml
+index daca616..935b0a9 100644
+--- a/boulder/data/profile.d/default-x86_64.yaml
++++ b/boulder/data/profile.d/default-x86_64.yaml
+@@ -1,7 +1,6 @@
+ default-x86_64:
+   repositories:
+     volatile:
+-      uri: "https://dev.serpentos.com/volatile/x86_64/stone.index"
+-      description: "Volatile moss repo"
++      uri: "https://packages.serpentos.com/volatile/x86_64/stone.index"
++      description: "Volatile Serpent OS repo"
+       priority: 0
+-
+diff --git a/boulder/src/cli/profile.rs b/boulder/src/cli/profile.rs
+index ca696c2..43a1c96 100644
+--- a/boulder/src/cli/profile.rs
++++ b/boulder/src/cli/profile.rs
+@@ -34,7 +34,7 @@ pub enum Subcommand {
+         help = "profile repositories",
+         value_parser = parse_repository,
+         help = "repository to add to profile, can be passed multiple times",
+-        long_help = "repository to add to profile\n\nExample: --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=100"
++        long_help = "repository to add to profile\n\nExample: --repo name=volatile,uri=https://packages.serpentos.com/volatile/x86_64/stone.index,priority=100"
+         )]
+         repos: Vec<(repository::Id, Repository)>,
+     },
+-- 
+2.47.1
+
