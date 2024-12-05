@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-settings
-version     : 1.0.0-alpha.3
-release     : 10
+version     : 1.0.0-alpha.4
+release     : 11
 summary     : Cosmic Desktop Settings
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-settings
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-settings.git : 355c27caa8de24ff83883eadd88a5bc29305227f
+    - git|https://github.com/pop-os/cosmic-settings.git : d01e0d85fbd2836489d8092381fc4637fc51ce25
 description : |
     Cosmic Desktop Settings
 builddeps   :
