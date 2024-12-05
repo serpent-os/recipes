@@ -56,7 +56,7 @@ We'll add the (unversioned) volatile repository¹ at the bottom layer, and eleva
 local repository priority to take precedence.
 
 ```bash
-$ boulder profile add local-x86_64 --repo name=volatile,uri=https://dev.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file://${HOME}/.cache/local_repo/x86_64/stone.index,priority=10
+$ boulder profile add local-x86_64 --repo name=volatile,uri=https://packages.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file://${HOME}/.cache/local_repo/x86_64/stone.index,priority=10
 ```
 
 ¹ the current one and only official online repository that you usually get all your packages from

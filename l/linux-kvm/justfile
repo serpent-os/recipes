@@ -13,7 +13,7 @@ _prepare_root:
     set -euxo pipefail
     if [[ ! -d "{{cache_dir}}" ]]; then
         mkdir "{{cache_dir}}"
-        moss -D {{cache_dir}} repo add volatile "https://dev.serpentos.com/volatile/x86_64/stone.index"
+        moss -D {{cache_dir}} repo add volatile "https://packages.serpentos.com/volatile/x86_64/stone.index"
     else
         moss -D {{cache_dir}} repo update
     fi
