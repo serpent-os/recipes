@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-applets
-version     : 1.0.0-alpha.3
-release     : 10
+version     : 1.0.0-alpha.4
+release     : 11
 summary     : Cosmic Panel Applets
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-applets
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-applets.git : 1e99f2c4765a59c403b018421b09f6d72bfe0c94
+    - git|https://github.com/pop-os/cosmic-applets.git : 104a608cf1d55b5b8696ada431e77b96602242aa
 description : |
     Cosmic Panel Applets
 builddeps   :
