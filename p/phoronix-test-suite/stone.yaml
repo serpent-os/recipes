@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : phoronix-test-suite
+version     : 10.8.5
+release     : 1
+homepage    : https://www.phoronix-test-suite.com/
+upstreams   :
+    - git|https://github.com/phoronix-test-suite/phoronix-test-suite.git : f665ba8ee724331f5bc375715089ad6393bcf10e
+summary     : Phoronix Test Suite
+description : |
+    The Phoronix Test Suite is the most comprehensive testing and benchmarking platform available for the
+    Linux operating system. This software is designed to effectively carry out both qualitative and
+    quantitative benchmarks in a clean, reproducible, and easy-to-use manner.
+license     : GPL-3.0-or-later
+rundeps     :
+    - binary(php)
+install     : |
+    DESTDIR=%(installroot) ./install-sh
