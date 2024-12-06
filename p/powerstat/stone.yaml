@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : powerstat
-version     : 0.04.02
-release     : 1
+version     : 0.04.03
+release     : 2
 homepage    : https://github.com/ColinIanKing/powerstat
 upstreams   :
-    - https://github.com/ColinIanKing/powerstat/archive/refs/tags/V0.04.02.tar.gz : 51b79161fc1dfc8776c025cb726bde331393c177cfe71dbc1fd95b59ef470aaf
+    - https://github.com/ColinIanKing/powerstat/archive/refs/tags/V0.04.03.tar.gz : f7612bb5af9c1355bda30b0441aaab34e0b125bd867e7feac98671fd39de9b17
 summary     : Power consumption statistics
 description : |
     Powerstat is a small utility to retrieve power consumption statistics from the kernel.
