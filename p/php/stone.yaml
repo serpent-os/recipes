@@ -5,7 +5,7 @@
 #
 name        : php
 version     : 8.4.1
-release     : 1
+release     : 2
 homepage    : https://www.php.net/distributions
 upstreams   :
     - https://www.php.net/distributions/php-8.4.1.tar.xz : 94c8a4fd419d45748951fa6d73bd55f6bdf0adaefb8814880a67baa66027311f
@@ -17,6 +17,7 @@ builddeps   :
     - binary(gawk)
     - pkgconfig(bzip2)
     - pkgconfig(freetype2)
+    - pkgconfig(icu-uc)
     - pkgconfig(libcurl)
     - pkgconfig(libffi)
     - pkgconfig(libjpeg)
@@ -39,7 +40,18 @@ setup       : |
                --enable-mbstring \
                --with-readline \
                --with-zlib \
-               --with-bz2
+               --with-bz2 \
+               --with-openssl \
+               --enable-sockets \
+               --enable-pcntl \
+               --enable-gd \
+               --with-freetype \
+               --with-webp \
+               --with-jpeg \
+               --with-curl \
+               --with-openssl \
+               --with-ffi \
+               --enable-calendar
 build       : |
     %make
 install     : |
