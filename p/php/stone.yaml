@@ -1,0 +1,46 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : php
+version     : 8.4.1
+release     : 1
+homepage    : https://www.php.net/distributions
+upstreams   :
+    - https://www.php.net/distributions/php-8.4.1.tar.xz : 94c8a4fd419d45748951fa6d73bd55f6bdf0adaefb8814880a67baa66027311f
+summary     : PHP is a popular general-purpose scripting language
+description : |
+    PHP is a popular general-purpose scripting language that is especially suited to web development.
+license     : PHP-3.01
+builddeps   :
+    - binary(gawk)
+    - pkgconfig(bzip2)
+    - pkgconfig(freetype2)
+    - pkgconfig(libcurl)
+    - pkgconfig(libffi)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpcre2-posix)
+    - pkgconfig(libsodium)
+    - pkgconfig(libssl)
+    - pkgconfig(libwebp)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(oniguruma)
+    - pkgconfig(readline)
+    - pkgconfig(sqlite3)
+    - pkgconfig(valgrind)
+    - pkgconfig(zlib)
+tuning      :
+    - optimize: speed
+environment : |
+    export EXTENSION_DIR=%(libdir)/php/extensions
+setup       : |
+    %configure --with-gettext \
+               --enable-mbstring \
+               --with-readline \
+               --with-zlib \
+               --with-bz2
+build       : |
+    %make
+install     : |
+    %make_install INSTALL_ROOT=%(installroot)
