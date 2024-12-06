@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : oniguurma
+version     : 6.9.9
+release     : 1
+homepage    : https://github.com/kkos/oniguruma/releases/download/v6.9.9
+upstreams   :
+    - https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz : 60162bd3b9fc6f4886d4c7a07925ffd374167732f55dce8c491bfd9cd818a6cf
+summary     : Regular expressions library
+description : |
+    Oniguruma is a regular expressions library. The characteristics of this library is that
+    different character encoding for every regular expression object can be specified.
+license     : BSD-2-Clause
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,0 +1,39 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"oniguurma": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/onig-config",
+				"/usr/lib/libonig.so.5",
+				"/usr/lib/libonig.so.5.4.0"
+			],
+			"name": "oniguurma",
+			"provides": [
+				"binary(onig-config)",
+				"soname(libonig.so.5(x86_64))"
+			]
+		},
+		"oniguurma-devel": {
+			"depends": [
+				"oniguurma"
+			],
+			"files": [
+				"/usr/include/oniggnu.h",
+				"/usr/include/oniguruma.h",
+				"/usr/lib/libonig.so",
+				"/usr/lib/pkgconfig/oniguruma.pc"
+			],
+			"name": "oniguurma-devel",
+			"provides": [
+				"pkgconfig(oniguruma)"
+			]
+		}
+	},
+	"source-name": "oniguurma",
+	"source-release": "1",
+	"source-version": "6.9.9"
+}
