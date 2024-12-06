@@ -1,0 +1,25 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"powerstat": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/powerstat",
+				"/usr/share/bash-completion/completions/powerstat",
+				"/usr/share/man/man8/powerstat.8.gz"
+			],
+			"name": "powerstat",
+			"provides": [
+				"binary(powerstat)"
+			]
+		}
+	},
+	"source-name": "powerstat",
+	"source-release": "1",
+	"source-version": "0.04.02"
+}
