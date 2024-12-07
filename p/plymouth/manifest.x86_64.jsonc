@@ -58,10 +58,10 @@
 				"/usr/lib/plymouth/fade-throbber.so",
 				"/usr/lib/plymouth/label-freetype.so",
 				"/usr/lib/plymouth/label-pango.so",
-				"/usr/lib/plymouth/plymouth/plymouth-generate-initrd",
-				"/usr/lib/plymouth/plymouth/plymouth-populate-initrd",
-				"/usr/lib/plymouth/plymouth/plymouth-update-initrd",
-				"/usr/lib/plymouth/plymouth/plymouthd-fd-escrow",
+				"/usr/lib/plymouth/plymouth-generate-initrd",
+				"/usr/lib/plymouth/plymouth-populate-initrd",
+				"/usr/lib/plymouth/plymouth-update-initrd",
+				"/usr/lib/plymouth/plymouthd-fd-escrow",
 				"/usr/lib/plymouth/renderers/drm.so",
 				"/usr/lib/plymouth/renderers/frame-buffer.so",
 				"/usr/lib/plymouth/renderers/x11.so",
@@ -460,6 +460,6 @@
 		}
 	},
 	"source-name": "plymouth",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "24.004.60"
 }

@@ -5,7 +5,7 @@
 #
 name        : plymouth
 version     : 24.004.60
-release     : 2
+release     : 3
 homepage    : https://www.freedesktop.org/wiki/Software/Plymouth/
 upstreams   :
     - https://gitlab.freedesktop.org/plymouth/plymouth/-/archive/24.004.60/plymouth-24.004.60.tar.gz : f59bc6dea9745c32e9ca03a717adc284b0ea5677243a7769eb8a7c6cc1eba801
@@ -38,7 +38,7 @@ rundeps    :
     - serpent-artwork
 setup       : |
     %patch %(pkgdir)/0001-Set-plymouth-defaults.patch
-    %meson -Dlogo=/usr/share/icons/serpent-logo-dark.png
+    %meson -Dlogo=/usr/share/icons/serpent-logo-dark.png --libexecdir=lib
 build       : |
     %meson_build
 install     : |
