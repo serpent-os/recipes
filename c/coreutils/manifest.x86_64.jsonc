@@ -95,6 +95,7 @@
 				"/usr/bin/split",
 				"/usr/bin/stat",
 				"/usr/bin/stdbuf",
+				"/usr/bin/stty",
 				"/usr/bin/sum",
 				"/usr/bin/sync",
 				"/usr/bin/tac",
@@ -496,6 +497,7 @@
 				"binary(split)",
 				"binary(stat)",
 				"binary(stdbuf)",
+				"binary(stty)",
 				"binary(sum)",
 				"binary(sync)",
 				"binary(tac)",
@@ -523,6 +525,6 @@
 		}
 	},
 	"source-name": "coreutils",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "0.0.28"
 }
