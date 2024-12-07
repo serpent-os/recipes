@@ -3,18 +3,19 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"jq": {
+			"build-depends": [
+				"oniguurma-devel"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libm.so.6(x86_64))"
+				"soname(libm.so.6(x86_64))",
+				"soname(libonig.so.5(x86_64))"
 			],
 			"files": [
 				"/usr/bin/jq",
-				"/usr/bin/onig-config",
 				"/usr/lib/libjq.so.1",
 				"/usr/lib/libjq.so.1.0.4",
-				"/usr/lib/libonig.so.5",
-				"/usr/lib/libonig.so.5.3.0",
 				"/usr/share/doc/jq/AUTHORS",
 				"/usr/share/doc/jq/COPYING",
 				"/usr/share/doc/jq/NEWS.md",
@@ -24,30 +25,29 @@
 			"name": "jq",
 			"provides": [
 				"binary(jq)",
-				"soname(libjq.so.1(x86_64))",
-				"soname(libonig.so.5(x86_64))",
-				"binary(onig-config)"
+				"soname(libjq.so.1(x86_64))"
 			]
 		},
 		"jq-devel": {
+			"build-depends": [
+				"oniguurma-devel"
+			],
+			"depends": [
+				"jq"
+			],
 			"files": [
 				"/usr/include/jq.h",
 				"/usr/include/jv.h",
-				"/usr/include/oniggnu.h",
-				"/usr/include/oniguruma.h",
 				"/usr/lib/libjq.so",
-				"/usr/lib/libonig.so",
-				"/usr/lib/pkgconfig/libjq.pc",
-				"/usr/lib/pkgconfig/oniguruma.pc"
+				"/usr/lib/pkgconfig/libjq.pc"
 			],
 			"name": "jq-devel",
 			"provides": [
-				"pkgconfig(libjq)",
-				"pkgconfig(oniguruma)"
+				"pkgconfig(libjq)"
 			]
 		}
 	},
 	"source-name": "jq",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.7.1"
 }

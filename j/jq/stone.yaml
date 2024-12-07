@@ -5,7 +5,7 @@
 #
 name        : jq
 version     : 1.7.1
-release     : 1
+release     : 2
 homepage    : https://github.com/jqlang/jq
 upstreams   :
     - https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-1.7.1.tar.gz : 478c9ca129fd2e3443fe27314b455e211e0d8c60bc8ff7df703873deeee580c2
@@ -14,8 +14,10 @@ description : |
     jq is a lightweight and flexible command-line JSON processor akin to sed,awk,grep, and friends for JSON data. It's written in portable C and has zero runtime dependencies, allowing you to easily slice, filter, map, and transform structured data.
 license     :
     - BSD-2-Clause
+builddeps   :
+    - oniguurma-devel
 setup       : |
-    %configure --disable-static
+    %reconfigure --disable-static
 build       : |
     %make
 install     : |
