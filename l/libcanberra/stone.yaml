@@ -5,7 +5,7 @@
 #
 name        : libcanberra
 version     : '0.30'
-release     : 2
+release     : 3
 homepage    : http://0pointer.de/lennart/projects/libcanberra
 upstreams   :
     - http://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz : c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72
@@ -17,7 +17,9 @@ license     :
 builddeps   :
     - binary(file)
     - libtool-ltldl-devel
+    - pkgconfig(alsa)
     - pkgconfig(gtk+-3.0)
+    - pkgconfig(libpulse)
     - pkgconfig(systemd)
     - pkgconfig(udev)
     - pkgconfig(vorbisfile)
