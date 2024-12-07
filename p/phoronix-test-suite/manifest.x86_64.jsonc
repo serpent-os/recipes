@@ -8,9 +8,6 @@
 			],
 			"files": [
 				"/usr/bin/phoronix-test-suite",
-				"/usr/lib/systemd/system/phoromatic-client.service",
-				"/usr/lib/systemd/system/phoromatic-server.service",
-				"/usr/lib/systemd/system/phoronix-result-server.service",
 				"/usr/share/applications/phoronix-test-suite-launcher.desktop",
 				"/usr/share/applications/phoronix-test-suite.desktop",
 				"/usr/share/doc/phoronix-test-suite/AUTHORS",
@@ -10055,6 +10052,6 @@
 		}
 	},
 	"source-name": "phoronix-test-suite",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "10.8.5"
 }
