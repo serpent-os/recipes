@@ -5,7 +5,7 @@
 #
 name        : serpent-artwork
 version     : "0"
-release     : 4
+release     : 5
 summary     : Serpent OS Artwork
 license     : Distributable
 homepage    : https://github.com/serpent-os/artwork
@@ -19,8 +19,8 @@ setup       : |
     %patch %(pkgdir)/0001-.xml-Fix-invalid-path.patch
 install     : |
     DESTDIR=%(installroot) just install
-    %install_file %(pkgdir)/logo/black_notext_4x.png %(installroot)%(datadir)/icons/serpent-logo.png
-    %install_file %(pkgdir)/logo/white_notext_4x.png %(installroot)%(datadir)/icons/serpent-logo-dark.png
+    %install_file %(pkgdir)/logo/black_notext_2x.png %(installroot)%(datadir)/icons/serpent-logo.png
+    %install_file %(pkgdir)/logo/white_notext_2x.png %(installroot)%(datadir)/icons/serpent-logo-dark.png
 
     %install_dir %(installroot)%(datadir)/pixmaps
 
