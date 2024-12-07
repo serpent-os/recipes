@@ -5,7 +5,7 @@
 #
 name        : jq
 version     : 1.7.1
-release     : 2
+release     : 3
 homepage    : https://github.com/jqlang/jq
 upstreams   :
     - https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-1.7.1.tar.gz : 478c9ca129fd2e3443fe27314b455e211e0d8c60bc8ff7df703873deeee580c2
@@ -15,7 +15,7 @@ description : |
 license     :
     - BSD-2-Clause
 builddeps   :
-    - oniguurma-devel
+    - pkgconfig(oniguruma)
 setup       : |
     %reconfigure --disable-static
 build       : |
