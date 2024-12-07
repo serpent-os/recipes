@@ -5,7 +5,7 @@
 #
 name        : libgusb
 version     : 0.4.9
-release     : 2
+release     : 3
 homepage    : https://github.com/hughsie/libgusb
 upstreams   :
     - https://github.com/hughsie/libgusb/releases/download/0.4.9/libgusb-0.4.9.tar.xz : 9df5ef301d6a4b361002aa52cce1165a87a89744055879bdbab31e7e86f1e846
