@@ -5,7 +5,7 @@
 #
 name        : json-glib
 version     : 1.10.0
-release     : 4
+release     : 5
 homepage    : https://wiki.gnome.org/action/show/Projects/JsonGlib
 upstreams   :
     - https://download.gnome.org/sources/json-glib/1.10/json-glib-1.10.0.tar.xz : 1bca8d66d96106ecc147df3133b95a5bb784f1fa6f15d06dd7c1a8fb4a10af7b

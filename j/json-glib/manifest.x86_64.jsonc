@@ -131,6 +131,6 @@
 		}
 	},
 	"source-name": "json-glib",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "1.10.0"
 }
