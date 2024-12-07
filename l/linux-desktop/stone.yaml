@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-desktop
-version     : 6.12.1
-release     : 58
+version     : 6.12.3
+release     : 59
 homepage    : https://kernel.org/
 upstreams   :
-    - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.1.tar.xz : 0193b1d86dd372ec891bae799f6da20deef16fc199f30080a4ea9de8cef0c619
+    - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.3.tar.xz : c89809cc777d50f1ea484a118630281a26383707a0e752c96fd834f6e765deae
 summary     : The Linux Kernel for desktop systems
 description : |
     The Linux Kernel for desktop systems
@@ -20,26 +20,36 @@ license     :
 builddeps   :
     - binary(bc)
     - binary(bison)
+    - binary(cryptsetup)
+    - binary(dash)
     - binary(dbus-broker)
     - binary(dracut)
     - binary(flex)
+    - binary(gpg)
     - binary(grep)
     - binary(gzip)
     - binary(kmod)
     - binary(less)
     - binary(m4)
     - binary(perl)
+    - binary(setfont)
+    - binary(loadkeys)
     - binary(python3)
+    - binary(tr)
     - binary(which)
     - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
     - intel-microcode
+    - linux-firmware
     - linux-firmware-amd
     - pkgconfig(gmp)
     - pkgconfig(libelf)
     - pkgconfig(libssl)
     - pkgconfig(libzstd)
     - pkgconfig(mpfr)
+    - sysbinary(lvm)
     - pkgconfig(ply-boot-client)
+    - font-cantarell
+    - serpent-artwork
 packages    :
     - "%(name)-devel":
         paths:
@@ -50,11 +60,12 @@ setup       : |
 
     %install_file %(pkgdir)/config-x86_64 .config
     %patch %(pkgdir)/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch
-    %make CC=clang ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0 oldconfig || exit 1
+    %patch %(pkgdir)/fix-modpost.patch
+    %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0 oldconfig || exit 1
 build       : |
     # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
-    %make VERBOSE=0 V=0 CC=clang ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
-    %make -C tools/objtool VERBOSE=0 V=0 CC=clang ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
+    %make VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
+    %make -C tools/objtool VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
 install     : |
     kernelVersion="%(version)-%(release).desktop"
     %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelVersion/vmlinuz
@@ -64,13 +75,14 @@ install     : |
 
     # Modules please
     %install_dir %(installroot)%(libdir)/modules/$kernelVersion
-    %make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
+    %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
     /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
 
     # Include early microcode
-    dracut --strip --tmpdir /tmp -N -f \
-        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs" \
-        --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode \
+    PATH="/usr/bin:/usr/sbin" dracut --strip --tmpdir /tmp -N -f \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs lvm dm" \
+        --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode --fwdir %(libdir)/firmware \
+        --fwdir %(libdir)/firmware \
         %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd
 
     # Temporary: Help with VMs
@@ -105,5 +117,7 @@ install     : |
     %install_exe tools/objtool/objtool $dstDir/tools/objtool/objtool
 
     # Set up module symlinks
+    rm -vf %(installroot)%(libdir)/modules/$kernelVersion/build || :
+    rm -vf %(installroot)%(libdir)/modules/$kernelVersion/source || :
     ln -svf build %(installroot)%(libdir)/modules/$kernelVersion/source
-    ln -srvf $headerRoot %(installroot)%(libdir)/modules/$kernelVersion/build
+    ln -svf $headerRoot %(installroot)%(libdir)/modules/$kernelVersion/build
