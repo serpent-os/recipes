@@ -5,7 +5,7 @@
 #
 name        : geoclue
 version     : 2.7.2
-release     : 2
+release     : 3
 homepage    : https://gitlab.freedesktop.org/geoclue/geoclue/-/wikis/home
 upstreams   :
     - https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.7.2/geoclue-2.7.2.tar.gz : 9c2f3626e3131abc037955cb38a8c0f28a29b4d6cc9992a067fe04be46e37fbe
@@ -24,6 +24,7 @@ builddeps   :
     - pkgconfig(json-glib-1.0)
     - pkgconfig(libnotify)
     - pkgconfig(libsoup-3.0)
+    - pkgconfig(libsystemd)
     - pkgconfig(mm-glib)
 setup       : |
     %meson -Dgtk-doc=false
@@ -31,5 +32,3 @@ build       : |
     %meson_build
 install     : |
     %meson_install
-# g-ir-scanner/compiler woes
-toolchain   : gnu

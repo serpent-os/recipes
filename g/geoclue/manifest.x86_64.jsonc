@@ -12,6 +12,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libnotify)",
 				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libsystemd)",
 				"pkgconfig(mm-glib)"
 			],
 			"depends": [
@@ -36,6 +37,7 @@
 				"/usr/lib/girepository-1.0/Geoclue-2.0.typelib",
 				"/usr/lib/libgeoclue-2.so.0",
 				"/usr/lib/libgeoclue-2.so.0.0.0",
+				"/usr/lib/systemd/system/geoclue.service",
 				"/usr/share/applications/geoclue-demo-agent.desktop",
 				"/usr/share/applications/geoclue-where-am-i.desktop",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.GeoClue2.Agent.xml",
@@ -67,6 +69,7 @@
 				"pkgconfig(json-glib-1.0)",
 				"pkgconfig(libnotify)",
 				"pkgconfig(libsoup-3.0)",
+				"pkgconfig(libsystemd)",
 				"pkgconfig(mm-glib)"
 			],
 			"depends": [
@@ -96,6 +99,6 @@
 		}
 	},
 	"source-name": "geoclue",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.7.2"
 }
