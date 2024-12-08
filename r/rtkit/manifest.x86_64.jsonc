@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"rtkit": {
+			"build-depends": [
+				"binary(sh)",
+				"binary(xxd)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(libcap)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(polkit-gobject-1)",
+				"pkgconfig(systemd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcap.so.2(x86_64))",
+				"soname(libdbus-1.so.3(x86_64))",
+				"soname(libsystemd.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/rtkitctl",
+				"/usr/lib/rtkit/rtkit-daemon",
+				"/usr/lib/systemd/system/rtkit-daemon.service",
+				"/usr/share/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml",
+				"/usr/share/dbus-1/system-services/org.freedesktop.RealtimeKit1.service",
+				"/usr/share/dbus-1/system.d/org.freedesktop.RealtimeKit1.conf",
+				"/usr/share/man/man8/rtkitctl.8",
+				"/usr/share/polkit-1/actions/org.freedesktop.RealtimeKit1.policy"
+			],
+			"name": "rtkit",
+			"provides": [
+				"binary(rtkitctl)"
+			]
+		}
+	},
+	"source-name": "rtkit",
+	"source-release": "1",
+	"source-version": "0.13"
+}

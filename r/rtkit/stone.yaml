@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : rtkit
+version     : 0.13
+release     : 1
+homepage    : https://github.com/heftig/rtkit
+upstreams   :
+    - https://github.com/heftig/rtkit/releases/download/v0.13/rtkit-0.13.tar.xz : a157144cd95cf6d25200e74b74a8f01e4fe51fd421bb63c1f00d471394b640ab
+summary     : Realtime Policy and Watchdog Daemon
+description : |
+    Realtime Policy and Watchdog Daemon
+license     : GPL-3.0
+builddeps   :
+    - binary(sh)
+    - binary(xxd)
+    - pkgconfig(dbus-1)
+    - pkgconfig(libcap)
+    - pkgconfig(libsystemd)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(systemd)
+setup       : |
+    %meson -Dinstalled_tests=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
