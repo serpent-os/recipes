@@ -8,6 +8,7 @@
 				"binary(msgfmt)",
 				"binary(perl)",
 				"binary(python3)",
+				"binary(rtkitctl)",
 				"binary(wireplumber)",
 				"pkgconfig(atk-bridge-2.0)",
 				"pkgconfig(gcr-4)",
@@ -272,6 +273,6 @@
 		}
 	},
 	"source-name": "gnome-shell",
-	"source-release": "24",
+	"source-release": "25",
 	"source-version": "47.2"
 }
