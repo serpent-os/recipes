@@ -23,6 +23,10 @@
 				"/usr/bin/rtkitctl",
 				"/usr/lib/rtkit/rtkit-daemon",
 				"/usr/lib/systemd/system/rtkit-daemon.service",
+				"/usr/lib/userdb/133.group",
+				"/usr/lib/userdb/133.user",
+				"/usr/lib/userdb/rtkit.group",
+				"/usr/lib/userdb/rtkit.user",
 				"/usr/share/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml",
 				"/usr/share/dbus-1/system-services/org.freedesktop.RealtimeKit1.service",
 				"/usr/share/dbus-1/system.d/org.freedesktop.RealtimeKit1.conf",
@@ -36,6 +40,6 @@
 		}
 	},
 	"source-name": "rtkit",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.13"
 }

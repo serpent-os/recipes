@@ -5,7 +5,7 @@
 #
 name        : rtkit
 version     : 0.13
-release     : 1
+release     : 2
 homepage    : https://github.com/heftig/rtkit
 upstreams   :
     - https://github.com/heftig/rtkit/releases/download/v0.13/rtkit-0.13.tar.xz : a157144cd95cf6d25200e74b74a8f01e4fe51fd421bb63c1f00d471394b640ab
@@ -27,3 +27,9 @@ build       : |
     %meson_build
 install     : |
     %meson_install
+
+    # userdb pls
+    %install_file %(pkgdir)/rtkit.group %(installroot)%(libdir)/userdb/rtkit.group
+    ln -s rtkit.group %(installroot)%(libdir)/userdb/133.group
+    %install_file %(pkgdir)/rtkit.user %(installroot)%(libdir)/userdb/rtkit.user
+    ln -s rtkit.user %(installroot)%(libdir)/userdb/133.user

@@ -1,0 +1,9 @@
+{
+    "userName" : "rtkit",
+    "realName" : "RealtimeKit",
+    "uid" : 133,
+    "gid" : 133,
+    "disposition" : "system",
+    "locked" : false,
+    "homeDirectory": "/proc"
+}
