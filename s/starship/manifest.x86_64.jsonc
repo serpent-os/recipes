@@ -9,6 +9,7 @@
 				"binary(make)"
 			],
 			"depends": [
+				"font-firacode-nerd",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -29,6 +30,6 @@
 		}
 	},
 	"source-name": "starship",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "1.21.1"
 }

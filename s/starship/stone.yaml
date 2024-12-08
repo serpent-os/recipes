@@ -5,7 +5,7 @@
 #
 name        : starship
 version     : "1.21.1"
-release     : 6
+release     : 7
 license     : ISC
 homepage    : https://starship.rs/
 upstreams   :
@@ -17,6 +17,8 @@ builddeps   :
     - binary(cargo)
     - binary(cmake)
     - binary(make)
+rundeps     :
+    - font-firacode-nerd
 networking  : yes
 tuning      :
     - optimize: speed
