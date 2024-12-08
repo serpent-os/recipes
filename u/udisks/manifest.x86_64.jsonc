@@ -10,12 +10,14 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libacl)",
 				"pkgconfig(libatasmart)",
 				"pkgconfig(polkit-gobject-1)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libacl.so.1(x86_64))",
 				"soname(libatasmart.so.4(x86_64))",
 				"soname(libbd_utils.so.3(x86_64))",
 				"soname(libblkid.so.1(x86_64))",
@@ -41,6 +43,8 @@
 				"/usr/lib/tmpfiles.d/udisks2.conf",
 				"/usr/lib/udev/rules.d/80-udisks2.rules",
 				"/usr/lib/udisks/udisks2/udisksd",
+				"/usr/lib/udisks2/modules/libudisks2_btrfs.so",
+				"/usr/lib/udisks2/modules/libudisks2_lvm2.so",
 				"/usr/sbin/umount.udisks2",
 				"/usr/share/bash-completion/completions/udisksctl",
 				"/usr/share/dbus-1/system-services/org.freedesktop.UDisks2.service",
@@ -117,6 +121,8 @@
 				"/usr/share/locale/zh_CN/LC_MESSAGES/udisks2.mo",
 				"/usr/share/locale/zh_HK/LC_MESSAGES/udisks2.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/udisks2.mo",
+				"/usr/share/polkit-1/actions/org.freedesktop.UDisks2.btrfs.policy",
+				"/usr/share/polkit-1/actions/org.freedesktop.UDisks2.lvm2.policy",
 				"/usr/share/polkit-1/actions/org.freedesktop.UDisks2.policy",
 				"/usr/share/zsh/site-functions/_udisks2"
 			],
@@ -124,6 +130,8 @@
 			"provides": [
 				"binary(udisksctl)",
 				"soname(libudisks2.so.0(x86_64))",
+				"soname(udisks2/modules/libudisks2_btrfs.so(x86_64))",
+				"soname(udisks2/modules/libudisks2_lvm2.so(x86_64))",
 				"sysbinary(umount.udisks2)"
 			]
 		},
@@ -135,6 +143,7 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libacl)",
 				"pkgconfig(libatasmart)",
 				"pkgconfig(polkit-gobject-1)"
 			],
@@ -155,11 +164,15 @@
 				"/usr/include/udisks2/udisks/udiskstypes.h",
 				"/usr/include/udisks2/udisks/udisksversion.h",
 				"/usr/lib/libudisks2.so",
+				"/usr/lib/pkgconfig/udisks2-btrfs.pc",
+				"/usr/lib/pkgconfig/udisks2-lvm2.pc",
 				"/usr/lib/pkgconfig/udisks2.pc"
 			],
 			"name": "udisks-devel",
 			"provides": [
-				"pkgconfig(udisks2)"
+				"pkgconfig(udisks2)",
+				"pkgconfig(udisks2-btrfs)",
+				"pkgconfig(udisks2-lvm2)"
 			]
 		},
 		"udisks-docs": {
@@ -170,6 +183,7 @@
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libacl)",
 				"pkgconfig(libatasmart)",
 				"pkgconfig(polkit-gobject-1)"
 			],
@@ -319,6 +333,6 @@
 		}
 	},
 	"source-name": "udisks",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.10.1"
 }
