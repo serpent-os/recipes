@@ -42,6 +42,7 @@
 				"soname(libgtk-3.so.0(x86_64))",
 				"soname(libjson-glib-1.0.so.0(x86_64))",
 				"soname(libsystemd.so.0(x86_64))",
+				"sound-theme-freedesktop",
 				"wireplumber"
 			],
 			"files": [
@@ -210,6 +211,6 @@
 		}
 	},
 	"source-name": "gnome-session",
-	"source-release": "12",
+	"source-release": "13",
 	"source-version": "47.0.1"
 }
