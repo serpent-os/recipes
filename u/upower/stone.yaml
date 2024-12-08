@@ -5,7 +5,7 @@
 #
 name        : upower
 version     : 1.90.4
-release     : 2
+release     : 3
 homepage    : https://upower.freedesktop.org/
 upstreams   :
     - https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.4/upower-v1.90.4.tar.gz : cd194dd278bd8d058b4728efd1d0a91cdf017378f025b558beb6f60a86af4781
@@ -21,8 +21,8 @@ builddeps   :
     - pkgconfig(gio-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gudev-1.0)
-    # pkgconfig(libimobiledevice-1.0)
-    # pkgconfig(libplist)
+    - pkgconfig(libimobiledevice-1.0)
+    - pkgconfig(libplist-2.0)
     - pkgconfig(systemd)
 setup       : |
     %patch %(pkgdir)/0001-Support-a-fully-stateless-configuration.patch

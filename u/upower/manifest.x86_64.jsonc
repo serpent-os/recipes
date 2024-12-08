@@ -10,6 +10,8 @@
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libimobiledevice-1.0)",
+				"pkgconfig(libplist-2.0)",
 				"pkgconfig(systemd)"
 			],
 			"depends": [
@@ -18,7 +20,9 @@
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
-				"soname(libgudev-1.0.so.0(x86_64))"
+				"soname(libgudev-1.0.so.0(x86_64))",
+				"soname(libimobiledevice-1.0.so.6(x86_64))",
+				"soname(libplist-2.0.so.4(x86_64))"
 			],
 			"files": [
 				"/usr/bin/upower",
@@ -69,6 +73,8 @@
 				"pkgconfig(gio-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libimobiledevice-1.0)",
+				"pkgconfig(libplist-2.0)",
 				"pkgconfig(systemd)"
 			],
 			"depends": [
@@ -95,6 +101,6 @@
 		}
 	},
 	"source-name": "upower",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.90.4"
 }
