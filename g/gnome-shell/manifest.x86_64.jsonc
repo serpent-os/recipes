@@ -42,6 +42,7 @@
 			"depends": [
 				"adwaita-icon-theme",
 				"binary(Xwayland)",
+				"binary(rtkitctl)",
 				"font-cantarell",
 				"geoclue",
 				"glib-networking",
@@ -273,6 +274,6 @@
 		}
 	},
 	"source-name": "gnome-shell",
-	"source-release": "25",
+	"source-release": "26",
 	"source-version": "47.2"
 }
