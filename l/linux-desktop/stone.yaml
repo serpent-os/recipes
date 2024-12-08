@@ -5,7 +5,7 @@
 #
 name        : linux-desktop
 version     : 6.12.3
-release     : 59
+release     : 60
 homepage    : https://kernel.org/
 upstreams   :
     - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.3.tar.xz : c89809cc777d50f1ea484a118630281a26383707a0e752c96fd834f6e765deae
@@ -47,9 +47,6 @@ builddeps   :
     - pkgconfig(libzstd)
     - pkgconfig(mpfr)
     - sysbinary(lvm)
-    - pkgconfig(ply-boot-client)
-    - font-cantarell
-    - serpent-artwork
 packages    :
     - "%(name)-devel":
         paths:
@@ -82,7 +79,6 @@ install     : |
     PATH="/usr/bin:/usr/sbin" dracut --strip --tmpdir /tmp -N -f \
         --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs lvm dm" \
         --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode --fwdir %(libdir)/firmware \
-        --fwdir %(libdir)/firmware \
         %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd
 
     # Temporary: Help with VMs
