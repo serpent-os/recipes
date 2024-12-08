@@ -11,12 +11,11 @@
 				"pkgconfig(xrandr)"
 			],
 			"depends": [
-				"soname(libc.so.6(x86_64))",
-				"soname(libm.so.6(x86_64))"
+				"soname(libc.so.6(x86_64))"
 			],
 			"files": [
 				"/usr/lib/libvulkan.so.1",
-				"/usr/lib/libvulkan.so.1.3.301"
+				"/usr/lib/libvulkan.so.1.4.303"
 			],
 			"name": "vulkan-loader",
 			"provides": [
@@ -49,6 +48,6 @@
 		}
 	},
 	"source-name": "vulkan-loader",
-	"source-release": "6",
-	"source-version": "1.3.301"
+	"source-release": "7",
+	"source-version": "1.4.303"
 }
