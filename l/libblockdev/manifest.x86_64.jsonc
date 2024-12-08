@@ -9,6 +9,7 @@
 				"pkgconfig(devmapper)",
 				"pkgconfig(ext2fs)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libcryptsetup)",
 				"pkgconfig(libkeyutils)",
 				"pkgconfig(libkmod)",
@@ -45,6 +46,7 @@
 			"files": [
 				"/usr/bin/lvm-cache-stats",
 				"/usr/bin/vfat-resize",
+				"/usr/lib/girepository-1.0/BlockDev-3.0.typelib",
 				"/usr/lib/libbd_btrfs.so.3",
 				"/usr/lib/libbd_btrfs.so.3.0.0",
 				"/usr/lib/libbd_crypto.so.3",
@@ -73,7 +75,8 @@
 				"/usr/lib/libbd_utils.so.3.0.0",
 				"/usr/lib/libblockdev.so.3",
 				"/usr/lib/libblockdev.so.3.0.0",
-				"/usr/lib/python3.11/site-packages/gi/overrides/BlockDev.py"
+				"/usr/lib/python3.11/site-packages/gi/overrides/BlockDev.py",
+				"/usr/share/gir-1.0/BlockDev-3.0.gir"
 			],
 			"name": "libblockdev",
 			"provides": [
@@ -102,6 +105,7 @@
 				"pkgconfig(devmapper)",
 				"pkgconfig(ext2fs)",
 				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libcryptsetup)",
 				"pkgconfig(libkeyutils)",
 				"pkgconfig(libkmod)",
@@ -173,6 +177,6 @@
 		}
 	},
 	"source-name": "libblockdev",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.1.1"
 }
