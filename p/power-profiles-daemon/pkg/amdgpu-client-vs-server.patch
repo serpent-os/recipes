@@ -1,0 +1,233 @@
+From 96e1a8a20bc63a1677d79da32040815b7831f87a Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Tue, 10 Sep 2024 10:58:27 -0500
+Subject: [PATCH] amd-pstate: drop detection for client vs server
+
+PPD doesn't force the SoC to active mode or to load.
+
+As the policy of whether amd-pstate is loaded is controlled by the
+kernel having another policy whether power-profiles-daemon isn't
+necessary.
+---
+ src/ppd-driver-amd-pstate.c | 33 ---------------
+ tests/integration_test.py   | 83 -------------------------------------
+ 2 files changed, 116 deletions(-)
+
+diff --git a/src/ppd-driver-amd-pstate.c b/src/ppd-driver-amd-pstate.c
+index 0c2a47b..b45a34a 100644
+--- a/src/ppd-driver-amd-pstate.c
++++ b/src/ppd-driver-amd-pstate.c
+@@ -17,20 +17,6 @@
+ 
+ #define CPUFREQ_POLICY_DIR "/sys/devices/system/cpu/cpufreq/"
+ #define PSTATE_STATUS_PATH "/sys/devices/system/cpu/amd_pstate/status"
+-#define ACPI_PM_PROFILE "/sys/firmware/acpi/pm_profile"
+-
+-enum acpi_preferred_pm_profiles {
+-  PM_UNSPECIFIED = 0,
+-  PM_DESKTOP = 1,
+-  PM_MOBILE = 2,
+-  PM_WORKSTATION = 3,
+-  PM_ENTERPRISE_SERVER = 4,
+-  PM_SOHO_SERVER = 5,
+-  PM_APPLIANCE_PC = 6,
+-  PM_PERFORMANCE_SERVER = 7,
+-  PM_TABLET = 8,
+-  NR_PM_PROFILES = 9
+-};
+ 
+ struct _PpdDriverAmdPstate
+ {
+@@ -73,9 +59,6 @@ probe_epp (PpdDriverAmdPstate *pstate)
+   g_autofree char *policy_dir = NULL;
+   g_autofree char *pstate_status_path = NULL;
+   g_autofree char *status = NULL;
+-  g_autofree char *pm_profile_path = NULL;
+-  g_autofree char *pm_profile_str = NULL;
+-  guint64 pm_profile;
+   const char *dirname;
+ 
+   /* Verify that AMD P-State is running in active mode */
+@@ -95,22 +78,6 @@ probe_epp (PpdDriverAmdPstate *pstate)
+     return PPD_PROBE_RESULT_FAIL;
+   }
+ 
+-  /* only run on things that we know aren't servers */
+-  pm_profile_path = ppd_utils_get_sysfs_path (ACPI_PM_PROFILE);
+-  if (!g_file_get_contents (pm_profile_path, &pm_profile_str, NULL, NULL))
+-    return PPD_PROBE_RESULT_FAIL;
+-  pm_profile = g_ascii_strtoull (pm_profile_str, NULL, 10);
+-  switch (pm_profile) {
+-  case PM_UNSPECIFIED:
+-  case PM_ENTERPRISE_SERVER:
+-  case PM_SOHO_SERVER:
+-  case PM_PERFORMANCE_SERVER:
+-    g_debug ("AMD-P-State not supported on PM profile %" G_GUINT64_FORMAT, pm_profile);
+-    return PPD_PROBE_RESULT_FAIL;
+-  default:
+-    break;
+-  }
+-
+   while ((dirname = g_dir_read_name (dir)) != NULL) {
+     g_autofree char *base = NULL;
+     g_autofree char *path = NULL;
+diff --git a/tests/integration_test.py b/tests/integration_test.py
+index 6c898fd..c27b4e3 100644
+--- a/tests/integration_test.py
++++ b/tests/integration_test.py
+@@ -1003,11 +1003,6 @@ class Tests(dbusmock.DBusTestCase):
+         )
+         self.assertNotEqual(profile, None)
+ 
+-        # desktop PM profile
+-        dir3 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir3, exist_ok=True)
+-        self.write_file_contents(os.path.join(dir3, "pm_profile"), "1\n")
+-
+         # block platform profile
+         self.start_daemon(["--block-driver", "platform_profile"])
+         # Verify that only amd-pstate is loaded
+@@ -1062,11 +1057,6 @@ class Tests(dbusmock.DBusTestCase):
+             self.testbed.get_root_dir(), "sys/firmware/acpi/platform_profile"
+         )
+ 
+-        # desktop PM profile
+-        dir3 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir3, exist_ok=True)
+-        self.write_file_contents(os.path.join(dir3, "pm_profile"), "1\n")
+-
+         self.start_daemon()
+ 
+         # Verify that both drivers are loaded
+@@ -1151,11 +1141,6 @@ class Tests(dbusmock.DBusTestCase):
+         os.makedirs(pstate_dir)
+         self.write_file_contents(os.path.join(pstate_dir, "status"), "active\n")
+ 
+-        # desktop PM profile
+-        dir3 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir3)
+-        self.write_file_contents(os.path.join(dir3, "pm_profile"), "1\n")
+-
+         self.start_daemon()
+ 
+         profiles = self.get_dbus_property("Profiles")
+@@ -1223,11 +1208,6 @@ class Tests(dbusmock.DBusTestCase):
+         os.makedirs(pstate_dir)
+         self.write_file_contents(os.path.join(pstate_dir, "status"), "active\n")
+ 
+-        # desktop PM profile
+-        dir3 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir3)
+-        self.write_file_contents(os.path.join(dir3, "pm_profile"), "1\n")
+-
+         self.start_daemon()
+ 
+         profiles = self.get_dbus_property("Profiles")
+@@ -1292,11 +1272,6 @@ class Tests(dbusmock.DBusTestCase):
+         os.makedirs(pstate_dir)
+         self.write_file_contents(os.path.join(pstate_dir, "status"), "active\n")
+ 
+-        # desktop PM profile
+-        dir3 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir3)
+-        self.write_file_contents(os.path.join(dir3, "pm_profile"), "1\n")
+-
+         self.start_daemon()
+ 
+         profiles = self.get_dbus_property("Profiles")
+@@ -1348,11 +1323,6 @@ class Tests(dbusmock.DBusTestCase):
+         os.makedirs(pstate_dir)
+         self.write_file_contents(os.path.join(pstate_dir, "status"), "active\n")
+ 
+-        # desktop PM profile
+-        dir2 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir2)
+-        self.write_file_contents(os.path.join(dir2, "pm_profile"), "1\n")
+-
+         self.start_dbus_template(
+             "upower",
+             {"DaemonVersion": "0.99", "OnBattery": False},
+@@ -1394,11 +1364,6 @@ class Tests(dbusmock.DBusTestCase):
+         # Make file non-writable to root
+         self.change_immutable(pref_path, True)
+ 
+-        # desktop PM profile
+-        dir2 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir2)
+-        self.write_file_contents(os.path.join(dir2, "pm_profile"), "1\n")
+-
+         self.start_daemon()
+ 
+         self.assertEqual(self.get_dbus_property("ActiveProfile"), "balanced")
+@@ -1432,11 +1397,6 @@ class Tests(dbusmock.DBusTestCase):
+         os.makedirs(pstate_dir)
+         self.write_file_contents(os.path.join(pstate_dir, "status"), "passive\n")
+ 
+-        # desktop PM profile
+-        dir2 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir2)
+-        self.write_file_contents(os.path.join(dir2, "pm_profile"), "1\n")
+-
+         self.start_daemon()
+ 
+         profiles = self.get_dbus_property("Profiles")
+@@ -1454,44 +1414,6 @@ class Tests(dbusmock.DBusTestCase):
+ 
+         self.assert_file_eventually_contains(energy_prefs, "performance\n")
+ 
+-    def test_amd_pstate_server(self):
+-        # Create 2 CPUs with preferences
+-        dir1 = os.path.join(
+-            self.testbed.get_root_dir(), "sys/devices/system/cpu/cpufreq/policy0/"
+-        )
+-        os.makedirs(dir1)
+-        self.write_file_contents(os.path.join(dir1, "scaling_governor"), "powersave\n")
+-        self.write_file_contents(
+-            os.path.join(dir1, "energy_performance_preference"), "performance\n"
+-        )
+-        dir2 = os.path.join(
+-            self.testbed.get_root_dir(), "sys/devices/system/cpu/cpufreq/policy1/"
+-        )
+-        os.makedirs(dir2)
+-        self.write_file_contents(os.path.join(dir2, "scaling_governor"), "powersave\n")
+-        self.write_file_contents(
+-            os.path.join(dir2, "energy_performance_preference"), "performance\n"
+-        )
+-
+-        # Create AMD P-State configuration
+-        pstate_dir = os.path.join(
+-            self.testbed.get_root_dir(), "sys/devices/system/cpu/amd_pstate"
+-        )
+-        os.makedirs(pstate_dir)
+-        self.write_file_contents(os.path.join(pstate_dir, "status"), "active\n")
+-
+-        # server PM profile
+-        dir3 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir3)
+-        self.write_file_contents(os.path.join(dir3, "pm_profile"), "4\n")
+-
+-        self.start_daemon()
+-
+-        profiles = self.get_dbus_property("Profiles")
+-        self.assertEqual(len(profiles), 2)
+-        with self.assertRaises(KeyError):
+-            print(profiles[0]["CpuDriver"])
+-
+     def test_dytc_performance_driver(self):
+         """Lenovo DYTC performance driver"""
+ 
+@@ -1580,11 +1502,6 @@ class Tests(dbusmock.DBusTestCase):
+         os.makedirs(pstate_dir)
+         self.write_file_contents(os.path.join(pstate_dir, "status"), "active\n")
+ 
+-        # desktop PM profile
+-        dir3 = os.path.join(self.testbed.get_root_dir(), "sys/firmware/acpi/")
+-        os.makedirs(dir3)
+-        self.write_file_contents(os.path.join(dir3, "pm_profile"), "1\n")
+-
+         _, _, stop_upowerd = self.start_dbus_template(
+             "upower",
+             {"DaemonVersion": "0.99", "OnBattery": True},
+-- 
+GitLab
+
