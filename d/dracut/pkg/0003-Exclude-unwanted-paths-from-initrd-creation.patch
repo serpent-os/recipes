@@ -1,7 +1,7 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From 085432f55954eb23111396d7dd18964a365a984e Mon Sep 17 00:00:00 2001
 From: Joey Riches <josephriches@gmail.com>
 Date: Fri, 4 Nov 2022 08:15:03 +0000
-Subject: [PATCH 3/4] Exclude unwanted paths from initrd creation
+Subject: [PATCH 3/6] Exclude unwanted paths from initrd creation
 
 The goal is to keep initrd as small as possible. With the introduction of avx2
 libraries for core packages, this results in multiple versions of the same
@@ -25,7 +25,7 @@ isn't in the path, then the path is unaltered.
  2 files changed, 41 insertions(+), 10 deletions(-)
 
 diff --git a/dracut-functions.sh b/dracut-functions.sh
-index 4535871b..5a512d52 100755
+index 1f7a905..d477c1c 100755
 --- a/dracut-functions.sh
 +++ b/dracut-functions.sh
 @@ -87,7 +87,7 @@ find_binary() {
@@ -38,10 +38,10 @@ index 4535871b..5a512d52 100755
  
  # Version comparison function.  Assumes Linux style version scheme.
 diff --git a/src/install/dracut-install.c b/src/install/dracut-install.c
-index 7473e87a..4ab8ea52 100644
+index ccb3200..222938b 100644
 --- a/src/install/dracut-install.c
 +++ b/src/install/dracut-install.c
-@@ -757,8 +757,39 @@ static int dracut_mkdir(const char *src)
+@@ -814,8 +814,39 @@ static int dracut_mkdir(const char *src)
          return 0;
  }
  
@@ -81,7 +81,7 @@ index 7473e87a..4ab8ea52 100644
          struct stat sb;
          _cleanup_free_ char *fullsrcpath = NULL;
          _cleanup_free_ char *fulldstpath = NULL;
-@@ -772,21 +803,21 @@ static int dracut_install(const char *orig_src, const char *orig_dst, bool isdir
+@@ -829,21 +860,21 @@ static int dracut_install(const char *orig_src, const char *orig_dst, bool isdir
          const char *src, *dst;
  
          if (sysrootdirlen) {
@@ -112,3 +112,6 @@ index 7473e87a..4ab8ea52 100644
          }
  
          log_debug("dracut_install('%s', '%s', %d, %d, %d)", src, dst, isdir, resolvedeps, hashdst);
+-- 
+2.47.1
+

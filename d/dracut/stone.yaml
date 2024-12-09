@@ -5,7 +5,7 @@
 #
 name        : dracut
 version     : '103'
-release     : 7
+release     : 8
 homepage    : https://github.com/dracut-ng/dracut-ng
 upstreams   :
     - https://github.com/dracut-ng/dracut-ng/archive/refs/tags/103.tar.gz : 9a92b4f0643926a65162171d68b9525fc93e6e82f455a4b3938db385a841bda8
@@ -23,11 +23,14 @@ rundeps     :
     - binary(cpio)
     - terminus-font
 setup       : |
-    %patch %(pkgdir)/patches/downstream/0001-Add-module-to-invalidate-depmod-index.patch
-    %patch %(pkgdir)/patches/downstream/0001-Support-stateless-glibc-ldconfig-configuration.patch
-    %patch %(pkgdir)/patches/downstream/0003-Exclude-unwanted-paths-from-initrd-creation.patch
-    %patch %(pkgdir)/patches/downstream/0004-Downstream-De-compress-kbd-files.patch
-    %patch %(pkgdir)/patches/downstream/0001-Allow-for-skipping-firmware-installation.patch
+    %patch %(pkgdir)/0001-solus-Add-module-to-invalidate-depmod-index.patch
+    %patch %(pkgdir)/0002-Support-stateless-glibc-ldconfig-configuration.patch
+    # revisit when the patch is improved
+    # %patch %(pkgdir)/0003-Exclude-unwanted-paths-from-initrd-creation.patch
+    %patch %(pkgdir)/0004-Downstream-De-compress-kbd-files.patch
+    %patch %(pkgdir)/0005-solus-Allow-for-skipping-firmware-installation.patch
+    %patch %(pkgdir)/0006-50plymouth-Generate-proper-OS-plymouth-for-generic-i.patch
+
     %configure --disable-documentation
 build       : |
     %make
