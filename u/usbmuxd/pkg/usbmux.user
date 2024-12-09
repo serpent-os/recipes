@@ -1,6 +1,6 @@
 {
     "userName" : "usbmux",
-    "realName" : usbmux,",
+    "realName" : "usbmux",
     "uid" : 140,
     "gid" : 140,
     "disposition" : "system",
