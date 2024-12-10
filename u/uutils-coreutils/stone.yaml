@@ -5,7 +5,7 @@
 #
 name        : uutils-coreutils
 version     : 0.0.28+git.a644724
-release     : 15
+release     : 16
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
     - git|https://github.com/uutils/coreutils.git : a6447241375976d9d7477de21eabe47461babbff
@@ -20,13 +20,13 @@ packages    :
         paths:
             - /usr/share/doc/uutils-coreutils/TRANSITION
         rundeps:
-            - uutils-coreutils-coreutils
+            - uutils-coreutils
     - coreutils-dbginfo:
         summary: Transitional package for uutils-coreutils-coreutils-dbginfo
         paths:
             - /usr/share/doc/uutils-coreutils/TRANSITION.dbginfo
         rundeps:
-            - uutils-coreutils-coreutils-dbginfo
+            - uutils-coreutils-dbginfo
 builddeps   :
     - binary(g++) # libstdc++...
     - pkgconfig(libacl)
