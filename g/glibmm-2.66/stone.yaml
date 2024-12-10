@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : glibmm-2.66
+version     : 2.66.7
+release     : 1
+homepage    : https://www.gtkmm.org
+upstreams   :
+    - https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.7.tar.xz : fe02c1e5f5825940d82b56b6ec31a12c06c05c1583cfe62f934d0763e1e542b3
+summary     : C++ bindings for GLib
+description : |
+    glibmm is the C++ binding for the GLib library.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - binary(m4)
+    - binary(mm-common-get)
+    - binary(perl)
+    - binary(python3)
+    - binary(xsltproc)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(sigc++-2.0)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/lib/*/proc/*
+            - /usr/lib/*/include/*
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
