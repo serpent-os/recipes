@@ -5,7 +5,7 @@
 #
 name        : colord
 version     : 1.4.7
-release     : 2
+release     : 3
 homepage    : https://www.freedesktop.org/software/colord/releases
 upstreams   :
     - https://www.freedesktop.org/software/colord/releases/colord-1.4.7.tar.xz : de02d9910634ae159547585cec414e450f711c27235453b4f9b38a9f2361a653
@@ -19,7 +19,7 @@ builddeps   :
     # binary(spotread) argyllcms
     - binary(vapigen)
     - pkgconfig(bash-completion)
-    # pkgconfig(colord-gtk)
+    - pkgconfig(colord-gtk)
     - pkgconfig(dbus-1)
     - pkgconfig(gio-2.0)
     - pkgconfig(gio-unix-2.0)
@@ -47,9 +47,8 @@ build       : |
 install     : |
     %meson_install
 
-    # Based on the meson_post_install file
-    # FIXME: TRIGGERS MOFO
     %tmpfiles "d /var/lib/colord/icc 0755 colord colord -"
-    %sysusers 'u colord 124 "Color Daemon" /var/empty'
-# clang g-ir-scanner woes
-toolchain   : gnu
+    %install_file %(pkgdir)/colord.group %(installroot)%(libdir)/userdb/colord.group
+    ln -s colord.group %(installroot)%(libdir)/userdb/124.group
+    %install_file %(pkgdir)/colord.user %(installroot)%(libdir)/userdb/colord.user
+    ln -s colord.user %(installroot)%(libdir)/userdb/124.user

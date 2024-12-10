@@ -1,0 +1,9 @@
+{
+    "userName" : "colord",
+    "realName" : "Color Daemon",
+    "uid" : 124,
+    "gid" : 124,
+    "disposition" : "system",
+    "locked" : false,
+    "homeDirectory": "/var/lib/colord"
+}
