@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : plymouth
-version     : 24.004.60
-release     : 4
+version     : 24.004.60+git.8bc9364c
+release     : 5
 homepage    : https://www.freedesktop.org/wiki/Software/Plymouth/
 upstreams   :
-    - https://gitlab.freedesktop.org/plymouth/plymouth/-/archive/24.004.60/plymouth-24.004.60.tar.gz : f59bc6dea9745c32e9ca03a717adc284b0ea5677243a7769eb8a7c6cc1eba801
+    - git|https://gitlab.freedesktop.org/plymouth/plymouth.git : 8bc9364cac02179ae55344e32e30a8b459872d25
 summary     : Graphical Boot Animation and Logger
 description : |
     Graphical Boot Animation and Logger

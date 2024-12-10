@@ -103,6 +103,7 @@
 				"/usr/share/locale/cy/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/da/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/de/LC_MESSAGES/plymouth.mo",
+				"/usr/share/locale/el/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/eo/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/es/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/eu/LC_MESSAGES/plymouth.mo",
@@ -119,6 +120,8 @@
 				"/usr/share/locale/ie/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/it/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/plymouth.mo",
+				"/usr/share/locale/kab/LC_MESSAGES/plymouth.mo",
+				"/usr/share/locale/kk/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/lt/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/ms/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/plymouth.mo",
@@ -130,6 +133,7 @@
 				"/usr/share/locale/ru/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/si/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/plymouth.mo",
+				"/usr/share/locale/sl/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/sr/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/plymouth.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/plymouth.mo",
@@ -460,6 +464,6 @@
 		}
 	},
 	"source-name": "plymouth",
-	"source-release": "4",
-	"source-version": "24.004.60"
+	"source-release": "5",
+	"source-version": "24.004.60+git.8bc9364c"
 }
