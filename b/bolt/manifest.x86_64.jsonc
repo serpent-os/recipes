@@ -1,0 +1,45 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"bolt": {
+			"build-depends": [
+				"binary(git)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gio-unix-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(libudev)",
+				"pkgconfig(polkit-gobject-1)",
+				"pkgconfig(systemd)",
+				"pkgconfig(udev)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libpolkit-gobject-1.so.0(x86_64))",
+				"soname(libudev.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/boltctl",
+				"/usr/lib/bolt/boltd",
+				"/usr/lib/systemd/system/bolt.service",
+				"/usr/lib/udev/rules.d/90-bolt.rules",
+				"/usr/share/dbus-1/interfaces/org.freedesktop.bolt.xml",
+				"/usr/share/dbus-1/system-services/org.freedesktop.bolt.service",
+				"/usr/share/dbus-1/system.d/org.freedesktop.bolt.conf",
+				"/usr/share/polkit-1/actions/org.freedesktop.bolt.policy",
+				"/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules"
+			],
+			"name": "bolt",
+			"provides": [
+				"binary(boltctl)"
+			]
+		}
+	},
+	"source-name": "bolt",
+	"source-release": "1",
+	"source-version": "0.9.8"
+}
