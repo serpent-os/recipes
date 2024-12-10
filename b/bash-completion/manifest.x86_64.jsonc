@@ -3,6 +3,9 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"bash-completion": {
+			"build-depends": [
+				"binary(coreutils)"
+			],
 			"files": [
 				"/usr/share/bash-completion/bash_completion",
 				"/usr/share/bash-completion/completions/2to3",
@@ -198,7 +201,6 @@
 				"/usr/share/bash-completion/completions/apt-mark",
 				"/usr/share/bash-completion/completions/aptitude",
 				"/usr/share/bash-completion/completions/aptitude-curses",
-				"/usr/share/bash-completion/completions/arch",
 				"/usr/share/bash-completion/completions/arm-koji",
 				"/usr/share/bash-completion/completions/arp",
 				"/usr/share/bash-completion/completions/arping",
@@ -224,7 +226,6 @@
 				"/usr/share/bash-completion/completions/avahi-browse",
 				"/usr/share/bash-completion/completions/avahi-browse-domains",
 				"/usr/share/bash-completion/completions/avctrl",
-				"/usr/share/bash-completion/completions/b2sum",
 				"/usr/share/bash-completion/completions/badblocks",
 				"/usr/share/bash-completion/completions/bind",
 				"/usr/share/bash-completion/completions/bk",
@@ -252,10 +253,7 @@
 				"/usr/share/bash-completion/completions/check_db",
 				"/usr/share/bash-completion/completions/check_perms",
 				"/usr/share/bash-completion/completions/checksec",
-				"/usr/share/bash-completion/completions/chgrp",
 				"/usr/share/bash-completion/completions/chkconfig",
-				"/usr/share/bash-completion/completions/chmod",
-				"/usr/share/bash-completion/completions/chown",
 				"/usr/share/bash-completion/completions/chpasswd",
 				"/usr/share/bash-completion/completions/chrome",
 				"/usr/share/bash-completion/completions/chromium",
@@ -294,7 +292,6 @@
 				"/usr/share/bash-completion/completions/cvs",
 				"/usr/share/bash-completion/completions/cvsps",
 				"/usr/share/bash-completion/completions/dcop",
-				"/usr/share/bash-completion/completions/dd",
 				"/usr/share/bash-completion/completions/declare",
 				"/usr/share/bash-completion/completions/deja-dup",
 				"/usr/share/bash-completion/completions/desktop-file-validate",
@@ -322,7 +319,6 @@
 				"/usr/share/bash-completion/completions/ebtables",
 				"/usr/share/bash-completion/completions/ecryptfs-migrate-home",
 				"/usr/share/bash-completion/completions/edquota",
-				"/usr/share/bash-completion/completions/env",
 				"/usr/share/bash-completion/completions/eog",
 				"/usr/share/bash-completion/completions/ether-wake",
 				"/usr/share/bash-completion/completions/etherwake",
@@ -439,7 +435,6 @@
 				"/usr/share/bash-completion/completions/hunspell",
 				"/usr/share/bash-completion/completions/iceweasel",
 				"/usr/share/bash-completion/completions/iconv",
-				"/usr/share/bash-completion/completions/id",
 				"/usr/share/bash-completion/completions/identify",
 				"/usr/share/bash-completion/completions/idn",
 				"/usr/share/bash-completion/completions/ifdown",
@@ -573,7 +568,6 @@
 				"/usr/share/bash-completion/completions/man",
 				"/usr/share/bash-completion/completions/mc",
 				"/usr/share/bash-completion/completions/mcrypt",
-				"/usr/share/bash-completion/completions/md5sum",
 				"/usr/share/bash-completion/completions/mdadm",
 				"/usr/share/bash-completion/completions/mdecrypt",
 				"/usr/share/bash-completion/completions/mdtool",
@@ -585,7 +579,6 @@
 				"/usr/share/bash-completion/completions/minicom",
 				"/usr/share/bash-completion/completions/mkinitrd",
 				"/usr/share/bash-completion/completions/mkisofs",
-				"/usr/share/bash-completion/completions/mktemp",
 				"/usr/share/bash-completion/completions/mmsitepass",
 				"/usr/share/bash-completion/completions/mogrify",
 				"/usr/share/bash-completion/completions/monodevelop",
@@ -616,7 +609,6 @@
 				"/usr/share/bash-completion/completions/newusers",
 				"/usr/share/bash-completion/completions/ngrep",
 				"/usr/share/bash-completion/completions/nmap",
-				"/usr/share/bash-completion/completions/nproc",
 				"/usr/share/bash-completion/completions/nslookup",
 				"/usr/share/bash-completion/completions/nsupdate",
 				"/usr/share/bash-completion/completions/ntpdate",
@@ -671,7 +663,6 @@
 				"/usr/share/bash-completion/completions/povray",
 				"/usr/share/bash-completion/completions/ppc-koji",
 				"/usr/share/bash-completion/completions/prelink",
-				"/usr/share/bash-completion/completions/printenv",
 				"/usr/share/bash-completion/completions/protoc",
 				"/usr/share/bash-completion/completions/ps",
 				"/usr/share/bash-completion/completions/psql",
@@ -692,7 +683,6 @@
 				"/usr/share/bash-completion/completions/pvs",
 				"/usr/share/bash-completion/completions/pvscan",
 				"/usr/share/bash-completion/completions/pwck",
-				"/usr/share/bash-completion/completions/pwd",
 				"/usr/share/bash-completion/completions/pwdx",
 				"/usr/share/bash-completion/completions/pwgen",
 				"/usr/share/bash-completion/completions/pxz",
@@ -790,11 +780,6 @@
 				"/usr/share/bash-completion/completions/setquota",
 				"/usr/share/bash-completion/completions/sftp",
 				"/usr/share/bash-completion/completions/sh",
-				"/usr/share/bash-completion/completions/sha1sum",
-				"/usr/share/bash-completion/completions/sha224sum",
-				"/usr/share/bash-completion/completions/sha256sum",
-				"/usr/share/bash-completion/completions/sha384sum",
-				"/usr/share/bash-completion/completions/sha512sum",
 				"/usr/share/bash-completion/completions/shasum",
 				"/usr/share/bash-completion/completions/shellcheck",
 				"/usr/share/bash-completion/completions/sidedoor",
@@ -841,13 +826,11 @@
 				"/usr/share/bash-completion/completions/tcpkill",
 				"/usr/share/bash-completion/completions/tcpnice",
 				"/usr/share/bash-completion/completions/tightvncviewer",
-				"/usr/share/bash-completion/completions/timeout",
 				"/usr/share/bash-completion/completions/tipc",
 				"/usr/share/bash-completion/completions/tox",
 				"/usr/share/bash-completion/completions/tracepath",
 				"/usr/share/bash-completion/completions/tracepath6",
 				"/usr/share/bash-completion/completions/tree",
-				"/usr/share/bash-completion/completions/truncate",
 				"/usr/share/bash-completion/completions/tshark",
 				"/usr/share/bash-completion/completions/tsig-keygen",
 				"/usr/share/bash-completion/completions/tune2fs",
@@ -941,6 +924,9 @@
 			]
 		},
 		"bash-completion-devel": {
+			"build-depends": [
+				"binary(coreutils)"
+			],
 			"depends": [
 				"bash-completion"
 			],
@@ -954,6 +940,6 @@
 		}
 	},
 	"source-name": "bash-completion",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "2.15.0"
 }

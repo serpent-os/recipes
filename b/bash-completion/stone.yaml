@@ -5,7 +5,7 @@
 #
 name        : bash-completion
 version     : 2.15.0
-release     : 4
+release     : 5
 homepage    : https://github.com/scop/bash-completion
 upstreams   :
     - https://github.com/scop/bash-completion/releases/download/2.15.0/bash-completion-2.15.0.tar.xz : 976a62ee6226970283cda85ecb9c7a4a88f62574c0a6f9e856126976decf1a06
@@ -14,6 +14,8 @@ description : |
     bash-completion is a collection of command line command completions for the Bash shell, collection of helper functions to assist in creating new completions, and set of facilities for loading completions automatically on demand, as well as installing them.
 license     :
     - GPL-2.0-or-later
+builddeps   :
+    - binary(coreutils)
 setup       : |
     %patch %(pkgdir)/0001-Use-a-stateless-configuration.patch
     %reconfigure
@@ -21,3 +23,15 @@ build       : |
     %make
 install     : |
     %make_install
+
+    # Remove conflicts with coreutils (uutils)
+    for i in $(coreutils --list) ; do
+        case $i in
+            uptime|kill|more|groups|hostname)
+                continue
+                ;;
+            *)
+                rm -vf %(installroot)%(datadir)/bash-completion/completions/$i
+                ;;
+        esac
+    done
