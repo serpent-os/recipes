@@ -8,7 +8,7 @@
 				"pkgconfig(libacl)"
 			],
 			"depends": [
-				"uuutils-coreutils"
+				"uutils-coreutils-coreutils"
 			],
 			"files": [
 				"/usr/share/doc/uutils-coreutils/TRANSITION"
@@ -704,6 +704,6 @@
 		}
 	},
 	"source-name": "uutils-coreutils",
-	"source-release": "14",
+	"source-release": "15",
 	"source-version": "0.0.28+git.a644724"
 }
