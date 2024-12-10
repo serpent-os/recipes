@@ -8,6 +8,32 @@
 				"pkgconfig(pam)"
 			],
 			"depends": [
+				"sudo-rs"
+			],
+			"files": [
+				"/usr/share/doc/sudo-rs/TRANSITION"
+			],
+			"name": "sudo"
+		},
+		"sudo-devel": {
+			"build-depends": [
+				"binary(go-md2man)",
+				"pkgconfig(pam)"
+			],
+			"depends": [
+				"sudo-rs"
+			],
+			"files": [
+				"/usr/share/doc/sudo-rs/TRANSITION.devel"
+			],
+			"name": "sudo-devel"
+		},
+		"sudo-rs": {
+			"build-depends": [
+				"binary(go-md2man)",
+				"pkgconfig(pam)"
+			],
+			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -29,28 +55,15 @@
 				"/usr/share/man/man8/sudo.8",
 				"/usr/share/man/man8/visudo.8"
 			],
-			"name": "sudo",
+			"name": "sudo-rs",
 			"provides": [
 				"binary(su)",
 				"binary(sudo)",
 				"sysbinary(visudo)"
 			]
-		},
-		"sudo-devel": {
-			"build-depends": [
-				"binary(go-md2man)",
-				"pkgconfig(pam)"
-			],
-			"depends": [
-				"sudo"
-			],
-			"files": [
-				"/usr/include/sudo_plugin.h"
-			],
-			"name": "sudo-devel"
 		}
 	},
-	"source-name": "sudo",
-	"source-release": "7",
+	"source-name": "sudo-rs",
+	"source-release": "8",
 	"source-version": "0.2.3"
 }

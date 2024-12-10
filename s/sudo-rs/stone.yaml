@@ -3,9 +3,9 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : sudo
+name        : sudo-rs
 version     : "0.2.3"
-release     : 7
+release     : 8
 homepage    : https://github.com/trifectatechfoundation/sudo-rs
 upstreams   :
     - https://github.com/trifectatechfoundation/sudo-rs/archive/refs/tags/v0.2.3.tar.gz : 2371c91644185c2bcf1f02408c2cc7a79b1dd1ba740088a9a16f0f947b649cdc
@@ -18,6 +18,25 @@ license     :
 builddeps   :
     - pkgconfig(pam)
     - binary(go-md2man)
+packages    :
+    - sudo:
+        summary: Transitional package for sudo-rs
+        paths:
+            - /usr/share/doc/sudo-rs/TRANSITION
+        rundeps:
+            - sudo-rs
+    - sudo-dbginfo:
+        summary: Transitional package for sudo-rs-dbginfo
+        paths:
+            - /usr/share/doc/sudo-rs/TRANSITION.dbginfo
+        rundeps:
+            - sudo-rs-dbginfo
+    - sudo-devel:
+        summary: Transitional package for sudo-rs-devel
+        paths:
+            - /usr/share/doc/sudo-rs/TRANSITION.devel
+        rundeps:
+            - sudo-rs
 networking  : true
 tuning      :
     - lto: thin
@@ -51,9 +70,11 @@ install     : |
     go-md2man -in docs/man/sudo.8.md -out %(installroot)%(mandir)/man8/sudo.8
     go-md2man -in docs/man/visudo.8.md -out %(installroot)%(mandir)/man8/visudo.8
 
-    # stub old sudo-devel
-    %install_dir %(installroot)%(includedir)
-    ln -s /dev/null %(installroot)%(includedir)/sudo_plugin.h
+    %install_dir %(installroot)%(docdir)/%(name)
+    TRANSITION="This is a transitional package. Please use sudo-rs"
+    echo "${TRANSITION}" > %(installroot)%(docdir)/%(name)/TRANSITION
+    echo "${TRANSITION}-dbginfo" > %(installroot)%(docdir)/%(name)/TRANSITION.dbginfo
+    echo "${TRANSITION}-devel" > %(installroot)%(docdir)/%(name)/TRANSITION.devel
 
 check       : |
     # Currently stateless will break some tests involving /etc/hosts
