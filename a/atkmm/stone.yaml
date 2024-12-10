@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : atkmm
+version     : 2.36.3
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/atkmm
+upstreams   :
+    - https://download.gnome.org/sources/atkmm/2.36/atkmm-2.36.3.tar.xz : 6ec264eaa0c4de0adb7202c600170bde9a7fbe4d466bfbe940eaf7faaa6c5974
+summary     : C++ bindings for ATK
+description : |
+    atkmm is the C++ binding for the ATK library.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - binary(m4)
+    - binary(mm-common-get)
+    - binary(perl)
+    - binary(python3)
+    - binary(xsltproc)
+    - pkgconfig(atk)
+    - pkgconfig(glibmm-2.68)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

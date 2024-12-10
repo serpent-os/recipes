@@ -1,0 +1,108 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"atkmm": {
+			"build-depends": [
+				"binary(m4)",
+				"binary(mm-common-get)",
+				"binary(perl)",
+				"binary(python3)",
+				"binary(xsltproc)",
+				"pkgconfig(atk)",
+				"pkgconfig(glibmm-2.68)"
+			],
+			"depends": [
+				"soname(libatk-1.0.so.0(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libglibmm-2.68.so.1(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libsigc-3.0.so.0(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/atkmm-2.36/include/atkmmconfig.h",
+				"/usr/lib/atkmm-2.36/proc/m4/convert.m4",
+				"/usr/lib/atkmm-2.36/proc/m4/convert_atk.m4",
+				"/usr/lib/libatkmm-2.36.so.1",
+				"/usr/lib/libatkmm-2.36.so.1.1.0"
+			],
+			"name": "atkmm",
+			"provides": [
+				"soname(libatkmm-2.36.so.1(x86_64))"
+			]
+		},
+		"atkmm-devel": {
+			"build-depends": [
+				"binary(m4)",
+				"binary(mm-common-get)",
+				"binary(perl)",
+				"binary(python3)",
+				"binary(xsltproc)",
+				"pkgconfig(atk)",
+				"pkgconfig(glibmm-2.68)"
+			],
+			"depends": [
+				"atkmm",
+				"pkgconfig(atk)",
+				"pkgconfig(glibmm-2.68)"
+			],
+			"files": [
+				"/usr/include/atkmm-2.36/atkmm.h",
+				"/usr/include/atkmm-2.36/atkmm/action.h",
+				"/usr/include/atkmm-2.36/atkmm/component.h",
+				"/usr/include/atkmm-2.36/atkmm/document.h",
+				"/usr/include/atkmm-2.36/atkmm/editabletext.h",
+				"/usr/include/atkmm-2.36/atkmm/hyperlink.h",
+				"/usr/include/atkmm-2.36/atkmm/hypertext.h",
+				"/usr/include/atkmm-2.36/atkmm/image.h",
+				"/usr/include/atkmm-2.36/atkmm/implementor.h",
+				"/usr/include/atkmm-2.36/atkmm/init.h",
+				"/usr/include/atkmm-2.36/atkmm/noopobject.h",
+				"/usr/include/atkmm-2.36/atkmm/object.h",
+				"/usr/include/atkmm-2.36/atkmm/objectaccessible.h",
+				"/usr/include/atkmm-2.36/atkmm/private/action_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/component_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/document_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/editabletext_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/hyperlink_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/hypertext_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/image_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/implementor_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/noopobject_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/object_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/objectaccessible_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/range_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/relation_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/relationset_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/selection_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/stateset_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/streamablecontent_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/table_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/text_p.h",
+				"/usr/include/atkmm-2.36/atkmm/private/value_p.h",
+				"/usr/include/atkmm-2.36/atkmm/range.h",
+				"/usr/include/atkmm-2.36/atkmm/relation.h",
+				"/usr/include/atkmm-2.36/atkmm/relationset.h",
+				"/usr/include/atkmm-2.36/atkmm/selection.h",
+				"/usr/include/atkmm-2.36/atkmm/stateset.h",
+				"/usr/include/atkmm-2.36/atkmm/streamablecontent.h",
+				"/usr/include/atkmm-2.36/atkmm/table.h",
+				"/usr/include/atkmm-2.36/atkmm/text.h",
+				"/usr/include/atkmm-2.36/atkmm/value.h",
+				"/usr/include/atkmm-2.36/atkmm/wrap_init.h",
+				"/usr/lib/libatkmm-2.36.so",
+				"/usr/lib/pkgconfig/atkmm-2.36.pc"
+			],
+			"name": "atkmm-devel",
+			"provides": [
+				"pkgconfig(atkmm-2.36)"
+			]
+		}
+	},
+	"source-name": "atkmm",
+	"source-release": "1",
+	"source-version": "2.36.3"
+}
