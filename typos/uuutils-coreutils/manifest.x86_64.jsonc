@@ -2,6 +2,15 @@
 {
 	"manifest-version": "0.2",
 	"packages": {
+		"uutils-coreutils-coreutils": {
+			"depends": [
+				"uutils-coreutils"
+			],
+			"files": [
+				"/usr/share/doc/typos/uuutils-coreutils/TRANSITION.derp"
+			],
+			"name": "uutils-coreutils-coreutils"
+		},
 		"uuutils-coreutils": {
 			"depends": [
 				"uutils-coreutils"
@@ -13,6 +22,6 @@
 		}
 	},
 	"source-name": "uuutils-coreutils",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1"
 }

@@ -5,7 +5,7 @@
 #
 name        : uuutils-coreutils
 version     : 1
-release     : 1
+release     : 2
 homepage    : https://uutils.github.io/coreutils/
 summary     : TYPO package - pending deletion
 description : |
@@ -13,6 +13,14 @@ description : |
 license     : MIT
 rundeps     :
     - uutils-coreutils
+packages    :
+    - uutils-coreutils-coreutils:
+        summary: Transitional package for uutils-coreutils
+        paths:
+            - /usr/share/doc/typos/%(name)/TRANSITION.derp
+        rundeps:
+            - uutils-coreutils
 install     : |
     %install_dir %(installroot)%(docdir)/typos/%(name)
     echo "uutils-coreutils" > %(installroot)%(docdir)/typos/%(name)/TRANSITION
+    echo "uutils-coreutils" > %(installroot)%(docdir)/typos/%(name)/TRANSITION.derp
