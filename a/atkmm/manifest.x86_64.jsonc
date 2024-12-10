@@ -23,9 +23,6 @@
 				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/atkmm-2.36/include/atkmmconfig.h",
-				"/usr/lib/atkmm-2.36/proc/m4/convert.m4",
-				"/usr/lib/atkmm-2.36/proc/m4/convert_atk.m4",
 				"/usr/lib/libatkmm-2.36.so.1",
 				"/usr/lib/libatkmm-2.36.so.1.1.0"
 			],
@@ -93,6 +90,9 @@
 				"/usr/include/atkmm-2.36/atkmm/text.h",
 				"/usr/include/atkmm-2.36/atkmm/value.h",
 				"/usr/include/atkmm-2.36/atkmm/wrap_init.h",
+				"/usr/lib/atkmm-2.36/include/atkmmconfig.h",
+				"/usr/lib/atkmm-2.36/proc/m4/convert.m4",
+				"/usr/lib/atkmm-2.36/proc/m4/convert_atk.m4",
 				"/usr/lib/libatkmm-2.36.so",
 				"/usr/lib/pkgconfig/atkmm-2.36.pc"
 			],
@@ -103,6 +103,6 @@
 		}
 	},
 	"source-name": "atkmm",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.36.3"
 }

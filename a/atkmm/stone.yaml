@@ -5,7 +5,7 @@
 #
 name        : atkmm
 version     : 2.36.3
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/atkmm
 upstreams   :
     - https://download.gnome.org/sources/atkmm/2.36/atkmm-2.36.3.tar.xz : 6ec264eaa0c4de0adb7202c600170bde9a7fbe4d466bfbe940eaf7faaa6c5974
@@ -21,6 +21,11 @@ builddeps   :
     - binary(xsltproc)
     - pkgconfig(atk)
     - pkgconfig(glibmm-2.68)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/lib/*/proc/*
+            - /usr/lib/*/include/*
 setup       : |
     %meson
 build       : |
