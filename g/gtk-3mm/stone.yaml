@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gtkmm
+version     : 3.24.9
+release     : 1
+homepage    : https://www.gtkmm.org
+upstreams   :
+    - https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.9.tar.xz : 30d5bfe404571ce566a8e938c8bac17576420eb508f1e257837da63f14ad44ce
+summary     : C++ bindings for GTK
+description : |
+    gtkmm is the C++ binding for the GTK library.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - binary(m4)
+    - binary(mm-common-get)
+    - binary(perl)
+    - binary(python3)
+    - binary(xsltproc)
+    - pkgconfig(atkmm-1.6)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(cairomm-1.0)
+    - pkgconfig(pangomm-1.4)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/lib/*/proc/*
+            - /usr/lib/*/include/*
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
