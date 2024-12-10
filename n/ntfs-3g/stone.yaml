@@ -1,0 +1,43 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ntfs-3g
+version     : 2022.10.3+git.71ecccf
+release     : 1
+homepage    : https://github.com/tuxera/ntfs-3g
+upstreams   :
+    - git|https://github.com/tuxera/ntfs-3g.git : 71ecccf279d3660812b18803a75f368d2f76eea6
+summary     : NTFS filesystem support
+description : |
+    NTFS-3G is an open source cross-platform implementation of the Microsoft Windows NTFS file system with read-write support.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - binary(intltool-update)
+    - pkgconfig(fuse)
+    - pkgconfig(gnutls)
+    - pkgconfig(libgcrypt)
+    - pkgconfig(gpg-error)
+    - pkgconfig(uuid)
+setup       : |
+    %patch %(pkgdir)/build.patch
+    %reconfigure --disable-warnings \
+                 --disable-library \
+                 --enable-posix-acls \
+                 --enable-extras \
+                 --enable-crypto \
+                 --exec-prefix=%(prefix) \
+                 --with-fuse=external \
+                 --enable-xattr-mappings \
+                 --disable-static \
+                 --disable-ldconfig \
+                 --sbin=%(sbindir) \
+                 CFLAGS="-lgcrypt -Wno-implicit-function-declaration"
+build       : |
+    %make
+install     : |
+    %make_install rootsbindir=%(sbindir) rootbindir=%(bindir)
+    rmdir %(installroot)/sbin -v
