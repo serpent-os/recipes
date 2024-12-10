@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"uuutils-coreutils": {
+			"depends": [
+				"uutils-coreutils"
+			],
+			"files": [
+				"/usr/share/doc/typos/uuutils-coreutils/TRANSITION"
+			],
+			"name": "uuutils-coreutils"
+		}
+	},
+	"source-name": "uuutils-coreutils",
+	"source-release": "1",
+	"source-version": "1"
+}

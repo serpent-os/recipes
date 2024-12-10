@@ -1,0 +1,18 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : uuutils-coreutils
+version     : 1
+release     : 1
+homepage    : https://uutils.github.io/coreutils/
+summary     : TYPO package - pending deletion
+description : |
+    TYPO package - pending deletion
+license     : MIT
+rundeps     :
+    - uutils-coreutils
+install     : |
+    %install_dir %(installroot)%(docdir)/typos/%(name)
+    echo "uutils-coreutils" > %(installroot)%(docdir)/typos/%(name)/TRANSITION
