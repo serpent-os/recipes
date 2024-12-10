@@ -5,7 +5,7 @@
 #
 name        : linux-desktop
 version     : 6.12.4
-release     : 62
+release     : 63
 homepage    : https://kernel.org/
 upstreams   :
     - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.4.tar.xz : 6f35f821433d8421be7167990747c7c4a0c451958fb96883446301af13d71152
@@ -69,6 +69,7 @@ build       : |
     %make VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
     %make -C tools/objtool VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
 install     : |
+    umask 022
     kernelVersion="%(version)-%(release).desktop"
     %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelVersion/vmlinuz
 
@@ -101,7 +102,11 @@ install     : |
     find . -type f \( -name 'Makefile*' -o -name 'Kconfig*' -o -name 'Kbuild*' -o -name '*.sh' -o -name '*.pl' -o -name '*.lds' \) -exec cp --parents {} $dstDir \;
 
     # Copy headers and essential directories
-    cp -a include scripts $dstDir/
+    for i in include scripts Documentation ; do
+        cp -R $i $dstDir/
+    done
+
+    # Copy architecture specific headers
     (find arch -name include -type d -print | xargs -n1 -i: find : -type f) | cpio -pd --preserve-modification-time $dstDir
 
     # Media driver headers
@@ -114,8 +119,11 @@ install     : |
     find $dstDir -name "*.o" -o -name "*.lds" -delete
 
     # Copy build requirements
-    %install_file Module.symvers System.map .config $dstDir/
+    for i in Module.symvers System.map .config ; do
+        %install_file $i $dstDir/
+    done
     %install_exe tools/objtool/objtool $dstDir/tools/objtool/objtool
+    chmod 00755 $dstDir/scripts/basic/fixdep
 
     # Set up module symlinks
     rm -vf %(installroot)%(libdir)/modules/$kernelVersion/build || :
