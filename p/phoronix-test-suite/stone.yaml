@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : phoronix-test-suite
-version     : 10.8.5
-release     : 2
+version     : 10.8.4+git.f665ba8
+release     : 3
 homepage    : https://www.phoronix-test-suite.com/
 upstreams   :
-    - git|https://github.com/phoronix-test-suite/phoronix-test-suite.git : f665ba8ee724331f5bc375715089ad6393bcf10e
+    - git|https://github.com/phoronix-test-suite/phoronix-test-suite.git : f665ba8
 summary     : Phoronix Test Suite
 description : |
     The Phoronix Test Suite is the most comprehensive testing and benchmarking platform available for the
@@ -19,7 +19,6 @@ rundeps     :
     - binary(php)
 install     : |
     DESTDIR=%(installroot) ./install-sh
-    # Not yet supporting automated testing via the Phoronix Test Suite
-    # Turns out it keeps rebooting the system and that's not cool :P
+    # Prevent phoromatic from being preinstalled
     rm -rf %(installroot)%(libdir)/systemd
     rmdir %(installroot)%(libdir)
