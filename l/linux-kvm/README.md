@@ -52,10 +52,10 @@ git apply ../../pkg/(...)
 cp ../../pkg/config-x86_64 .config
 
 # Update the existing kernel config to the new kernel version as your new starting point:
-make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 oldconfig
+make CC=clang ARCH=x86_64 LLVM=1 LD=ld.lld LLVM_IAS=1 WERROR=0 oldconfig
 
 # Make any adjustments you would like to make
-make CC=clang ARCH=x86_64 LLVM=1 WERROR=0 menuconfig
+make CC=clang ARCH=x86_64 LLVM=1 LD=ld.lld LLVM_IAS=1 WERROR=0 menuconfig
 
 # Ensure you save your new work/linux-(..)/.config file back to the serpent pkg/ dir
 cp .config ../../pkg/config-x86_64
