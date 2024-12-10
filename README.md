@@ -126,7 +126,7 @@ The aim for our desktop right now is to ship the following:
  - GNOME Shell
  - Flatpak w/ preconfigured flathub
  - GNOME Software (pending moss integration)
- - GNOME Console or Terminal
+ - Ptyxis
  - Nautilus
  - GNOME Control Center
  - Firefox
