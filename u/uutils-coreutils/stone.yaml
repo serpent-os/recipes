@@ -3,9 +3,9 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : coreutils
+name        : uutils-coreutils
 version     : 0.0.28+git.a644724
-release     : 13
+release     : 14
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
     - git|https://github.com/uutils/coreutils.git : a6447241375976d9d7477de21eabe47461babbff
@@ -14,6 +14,19 @@ description : |
     Cross-platform Rust rewrite of the GNU coreutils
 license     : MIT
 networking  : true
+packages    :
+    - coreutils:
+        summary: Transitional package for uuutils-coreutils
+        paths:
+            - /usr/share/doc/uutils-coreutils/TRANSITION
+        rundeps:
+            - uuutils-coreutils
+    - coreutils-dbginfo:
+        summary: Transitional package for uuutils-coreutils-dbginfo
+        paths:
+            - /usr/share/doc/uutils-coreutils/TRANSITION.dbginfo
+        rundeps:
+            - uuutils-coreutils-dbginfo
 builddeps   :
     - binary(g++) # libstdc++...
     - pkgconfig(libacl)
@@ -26,7 +39,7 @@ setup       : |
 build       : |
     %cargo_build --features $UUTILS_FEATURES
 install     : |
-    %cargo_install
+    %cargo_install coreutils
 
     %install_dir %(installroot)%(datadir)/bash-completion/completions
     %install_dir %(installroot)%(datadir)/zsh/site-functions
@@ -51,5 +64,10 @@ install     : |
                 ;;
         esac
     done
+
+    %install_dir %(installroot)%(docdir)/%(name)
+    TRANSITION="This is a transitional package. Please use uutils-coreutils"
+    echo "${TRANSITION}" > %(installroot)%(docdir)/%(name)/TRANSITION
+    echo "${TRANSITION}-dbginfo" > %(installroot)%(docdir)/%(name)/TRANSITION.dbginfo
 check       : |
     %cargo_test || :

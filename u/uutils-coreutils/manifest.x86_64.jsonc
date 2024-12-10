@@ -8,6 +8,19 @@
 				"pkgconfig(libacl)"
 			],
 			"depends": [
+				"uuutils-coreutils"
+			],
+			"files": [
+				"/usr/share/doc/uutils-coreutils/TRANSITION"
+			],
+			"name": "coreutils"
+		},
+		"uutils-coreutils": {
+			"build-depends": [
+				"binary(g++)",
+				"pkgconfig(libacl)"
+			],
+			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libacl.so.1(x86_64))",
@@ -573,7 +586,7 @@
 				"/usr/share/zsh/site-functions/_whoami",
 				"/usr/share/zsh/site-functions/_yes"
 			],
-			"name": "coreutils",
+			"name": "uutils-coreutils",
 			"provides": [
 				"binary([)",
 				"binary(arch)",
@@ -690,7 +703,7 @@
 			]
 		}
 	},
-	"source-name": "coreutils",
-	"source-release": "13",
+	"source-name": "uutils-coreutils",
+	"source-release": "14",
 	"source-version": "0.0.28+git.a644724"
 }
