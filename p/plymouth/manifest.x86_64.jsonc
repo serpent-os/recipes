@@ -46,6 +46,7 @@
 			],
 			"files": [
 				"/usr/bin/plymouth",
+				"/usr/lib/kernel/cmdline.d/10-splash.cmdline",
 				"/usr/lib/libply-boot-client.so.5",
 				"/usr/lib/libply-boot-client.so.5.0.0",
 				"/usr/lib/libply-splash-core.so.5",
@@ -464,6 +465,6 @@
 		}
 	},
 	"source-name": "plymouth",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "24.004.60+git.8bc9364c"
 }

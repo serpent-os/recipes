@@ -5,7 +5,7 @@
 #
 name        : plymouth
 version     : 24.004.60+git.8bc9364c
-release     : 5
+release     : 6
 homepage    : https://www.freedesktop.org/wiki/Software/Plymouth/
 upstreams   :
     - git|https://gitlab.freedesktop.org/plymouth/plymouth.git : 8bc9364cac02179ae55344e32e30a8b459872d25
@@ -44,3 +44,4 @@ build       : |
 install     : |
     %meson_install
     %install_file /usr/share/icons/serpent-logo-dark.png %(installroot)%(datadir)/plymouth/themes/spinner/watermark.png
+    %install_file %(pkgdir)/10-splash.cmdline %(installroot)%(libdir)/kernel/cmdline.d/10-splash.cmdline
