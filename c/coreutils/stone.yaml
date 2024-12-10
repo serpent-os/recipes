@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : coreutils
-version     : 0.0.28
-release     : 12
+version     : 0.0.28+git.a644724
+release     : 13
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
-    - https://github.com/uutils/coreutils/archive/refs/tags/0.0.28.tar.gz : b2e8b2531c52e9b09e55a6b41a8875e5770bcea6e5fa7a01d89d7904cf292cb9
+    - git|https://github.com/uutils/coreutils.git : a6447241375976d9d7477de21eabe47461babbff
 summary     : Cross-platform Rust rewrite of the GNU coreutils
 description : |
     Cross-platform Rust rewrite of the GNU coreutils
@@ -24,27 +24,32 @@ environment : |
 setup       : |
     %cargo_fetch
 build       : |
-    %make MULTICALL=y PROFILE=release CARGOFLAGS="%(options_cargo) --features $UUTILS_FEATURES" PREFIX=%(prefix)
+    %cargo_build --features $UUTILS_FEATURES
 install     : |
-    %make_install BUILDDIR=$(pwd)/%(cargo_target_dir) MULTICALL=y PROFILE=release CARGOFLAGS="%(options_cargo) --features $UUTILS_FEATURES" PREFIX=%(prefix)
+    %cargo_install
 
-    for item in md5sum sha1sum sha224sum sha256sum sha384sum sha512sum stty; do
-        ln -svf coreutils %(installroot)%(bindir)/${item}
+    %install_dir %(installroot)%(datadir)/bash-completion/completions
+    %install_dir %(installroot)%(datadir)/zsh/site-functions
+    %install_dir %(installroot)%(datadir)/fish/vendor_completions.d
+    %install_dir %(installroot)%(mandir)/man1
+
+    for item in $(./%(cargo_target_dir)/coreutils --list); do
+        case $item in
+            uptime|kill|more|groups|hostname)
+                continue
+                ;;
+            *)
+                # Install binaries
+                ln -svf coreutils %(installroot)%(bindir)/${item}
+                # Install completions
+                ./%(cargo_target_dir)/coreutils completion ${item} bash > %(installroot)%(datadir)/bash-completion/completions/${item} && [ -s %(installroot)%(datadir)/bash-completion/completions/${item} ] || rm -f %(installroot)%(datadir)/bash-completion/completions/${item}
+                ./%(cargo_target_dir)/coreutils completion ${item} zsh > %(installroot)%(datadir)/zsh/site-functions/_${item} && [ -s %(installroot)%(datadir)/zsh/site-functions/_${item} ] || rm -f %(installroot)%(datadir)/zsh/site-functions/_${item}
+                ./%(cargo_target_dir)/coreutils completion ${item} fish > %(installroot)%(datadir)/fish/vendor_completions.d/${item}.fish && [ -s %(installroot)%(datadir)/fish/vendor_completions.d/${item}.fish ] || rm -f %(installroot)%(datadir)/fish/vendor_completions.d/${item}.fish
+
+                # Now install manpages
+                ./%(cargo_target_dir)/coreutils manpage ${item} > %(installroot)%(mandir)/man1/${item}.1 && [ -s %(installroot)%(mandir)/man1/${item}.1 ] || rm -f %(installroot)%(mandir)/man1/${item}.1
+                ;;
+        esac
     done
-
-    # TEMP: unconflict with util-linux
-    rm %(installroot)%(bindir)/uptime -v
-    rm %(installroot)%(bindir)/kill -v
-    rm %(installroot)%(bindir)/more -v
-    rm %(installroot)%(bindir)/groups -v
-    rm %(installroot)%(bindir)/hostname -v
-    rm %(installroot)%(mandir)/man1/kill.1
-    rm %(installroot)%(mandir)/man1/hostname.1
-    rm %(installroot)%(mandir)/man1/more.1
-    rm %(installroot)%(mandir)/man1/uptime.1
-
-    # TODO: Rectify bash-completion conflicts!
-    rm -rf %(installroot)%(datadir)/bash-completion
 check       : |
-    # Issues with looking for /etc/fstab, setting date, using sudo, etc.
-    %make MULTICALL=y PROFILE=release CARGOFLAGS="%(options_cargo)" PREFIX=%(prefix) test || :
+    %cargo_test || :
