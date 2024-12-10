@@ -1,0 +1,95 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cairomm-1.14": {
+			"build-depends": [
+				"pkgconfig(cairo)",
+				"pkgconfig(mm-common-util)",
+				"pkgconfig(sigc++-2.0)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcairo.so.2(x86_64))",
+				"soname(libsigc-2.0.so.0(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/cairomm-1.0/include/cairommconfig.h",
+				"/usr/lib/libcairomm-1.0.so.1",
+				"/usr/lib/libcairomm-1.0.so.1.4.0"
+			],
+			"name": "cairomm-1.14",
+			"provides": [
+				"soname(libcairomm-1.0.so.1(x86_64))"
+			]
+		},
+		"cairomm-1.14-devel": {
+			"build-depends": [
+				"pkgconfig(cairo)",
+				"pkgconfig(mm-common-util)",
+				"pkgconfig(sigc++-2.0)"
+			],
+			"depends": [
+				"cairomm-1.14",
+				"pkgconfig(cairo)",
+				"pkgconfig(cairo-ft)",
+				"pkgconfig(cairo-pdf)",
+				"pkgconfig(cairo-png)",
+				"pkgconfig(cairo-ps)",
+				"pkgconfig(cairo-svg)",
+				"pkgconfig(cairo-xlib)",
+				"pkgconfig(cairo-xlib-xrender)",
+				"pkgconfig(sigc++-2.0)"
+			],
+			"files": [
+				"/usr/include/cairomm-1.0/cairomm/cairomm.h",
+				"/usr/include/cairomm-1.0/cairomm/context.h",
+				"/usr/include/cairomm-1.0/cairomm/device.h",
+				"/usr/include/cairomm-1.0/cairomm/enums.h",
+				"/usr/include/cairomm-1.0/cairomm/exception.h",
+				"/usr/include/cairomm-1.0/cairomm/fontface.h",
+				"/usr/include/cairomm-1.0/cairomm/fontoptions.h",
+				"/usr/include/cairomm-1.0/cairomm/matrix.h",
+				"/usr/include/cairomm-1.0/cairomm/path.h",
+				"/usr/include/cairomm-1.0/cairomm/pattern.h",
+				"/usr/include/cairomm-1.0/cairomm/quartz_font.h",
+				"/usr/include/cairomm-1.0/cairomm/quartz_surface.h",
+				"/usr/include/cairomm-1.0/cairomm/refptr.h",
+				"/usr/include/cairomm-1.0/cairomm/region.h",
+				"/usr/include/cairomm-1.0/cairomm/scaledfont.h",
+				"/usr/include/cairomm-1.0/cairomm/script.h",
+				"/usr/include/cairomm-1.0/cairomm/script_surface.h",
+				"/usr/include/cairomm-1.0/cairomm/surface.h",
+				"/usr/include/cairomm-1.0/cairomm/types.h",
+				"/usr/include/cairomm-1.0/cairomm/win32_font.h",
+				"/usr/include/cairomm-1.0/cairomm/win32_surface.h",
+				"/usr/include/cairomm-1.0/cairomm/xlib_surface.h",
+				"/usr/lib/libcairomm-1.0.so",
+				"/usr/lib/pkgconfig/cairomm-1.0.pc",
+				"/usr/lib/pkgconfig/cairomm-ft-1.0.pc",
+				"/usr/lib/pkgconfig/cairomm-pdf-1.0.pc",
+				"/usr/lib/pkgconfig/cairomm-png-1.0.pc",
+				"/usr/lib/pkgconfig/cairomm-ps-1.0.pc",
+				"/usr/lib/pkgconfig/cairomm-svg-1.0.pc",
+				"/usr/lib/pkgconfig/cairomm-xlib-1.0.pc",
+				"/usr/lib/pkgconfig/cairomm-xlib-xrender-1.0.pc"
+			],
+			"name": "cairomm-1.14-devel",
+			"provides": [
+				"pkgconfig(cairomm-1.0)",
+				"pkgconfig(cairomm-ft-1.0)",
+				"pkgconfig(cairomm-pdf-1.0)",
+				"pkgconfig(cairomm-png-1.0)",
+				"pkgconfig(cairomm-ps-1.0)",
+				"pkgconfig(cairomm-svg-1.0)",
+				"pkgconfig(cairomm-xlib-1.0)",
+				"pkgconfig(cairomm-xlib-xrender-1.0)"
+			]
+		}
+	},
+	"source-name": "cairomm-1.14",
+	"source-release": "1",
+	"source-version": "1.14.5"
+}

@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cairomm-1.14
+version     : 1.14.5
+release     : 1
+homepage    : https://www.cairographics.org
+upstreams   :
+    - https://www.cairographics.org/releases/cairomm-1.14.5.tar.xz : 70136203540c884e89ce1c9edfb6369b9953937f6cd596d97c78c9758a5d48db
+summary     : C++ bindings for Cairo
+description : |
+    cairomm is the C++ binding for the Cairo library.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(mm-common-util)
+    - pkgconfig(cairo)
+    - pkgconfig(sigc++-2.0)
+setup       : |
+    %autogen --disable-static \
+             --disable-documentation
+build       : |
+    %make
+install     : |
+    %make_install
