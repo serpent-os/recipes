@@ -2,6 +2,7 @@ format = """
 [░▒▓](#a3aed2)\
 [ 󰌽 ](bg:#a3aed2 fg:#090c0c)\
 $username\
+$hostname\
 [](bg:#769ff0 fg:#a3aed2)\
 $directory\
 [](fg:#769ff0 bg:#394260)\
@@ -33,12 +34,18 @@ truncation_symbol = "…/"
 "Videos" = " "
 
 [username]
-show_always = false
+show_always = true
 style_user = "bg:#a3aed2 fg:#090c0c"
 style_root = "bg:#a3aed2 fg:#090c0c"
-format = '[$user ]($style)'
+format = '[$user]($style)'
 disabled = false
 
+[hostname]
+ssh_only = false
+format = '[@$hostname $ssh_symbol ]($style)'
+ssh_symbol = "󰄙"
+style = "bg:#a3aed2 fg:#090c0c"
+disabled = false
 
 [git_branch]
 symbol = ""
