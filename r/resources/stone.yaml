@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : resources
+version     : 1.7.1
+release     : 1
+homepage    : https://github.com/nokyan/resources
+upstreams   :
+    - https://github.com/nokyan/resources/archive/refs/tags/v1.7.1.tar.gz : 09d7084a23518c19a47e462b341af8f5e912eb06126b4cd7a94d86bcac122f62
+summary     : Resources is a system information tool
+description : |
+    Resources is a system information tool written in Rust that displays information about your operating system, software and hardware.
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(appstreamcli)
+    - binary(cargo)
+    - binary(desktop-file-validate)
+    - binary(glib-compile-resources)
+    - binary(glib-compile-schemas)
+    - binary(msgfmt)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(libadwaita-1)
+networking  : true
+setup       : |
+    %meson --libexecdir=lib
+build       : |
+    %meson_build
+install     : |
+    %meson_install
