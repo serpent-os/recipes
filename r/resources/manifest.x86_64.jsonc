@@ -34,10 +34,10 @@
 				"/usr/lib/resources/resources-adjust",
 				"/usr/lib/resources/resources-kill",
 				"/usr/lib/resources/resources-processes",
-				"/usr/share/applications/net.nokyan.Resources.Devel.desktop",
-				"/usr/share/glib-2.0/schemas/net.nokyan.Resources.Devel.gschema.xml",
-				"/usr/share/icons/hicolor/scalable/apps/net.nokyan.Resources.Devel.svg",
-				"/usr/share/icons/hicolor/symbolic/apps/net.nokyan.Resources.Devel-symbolic.svg",
+				"/usr/share/applications/net.nokyan.Resources.desktop",
+				"/usr/share/glib-2.0/schemas/net.nokyan.Resources.gschema.xml",
+				"/usr/share/icons/hicolor/scalable/apps/net.nokyan.Resources.svg",
+				"/usr/share/icons/hicolor/symbolic/apps/net.nokyan.Resources-symbolic.svg",
 				"/usr/share/locale/cs/LC_MESSAGES/resources.mo",
 				"/usr/share/locale/de/LC_MESSAGES/resources.mo",
 				"/usr/share/locale/en_GB/LC_MESSAGES/resources.mo",
@@ -56,8 +56,8 @@
 				"/usr/share/locale/uk/LC_MESSAGES/resources.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/resources.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/resources.mo",
-				"/usr/share/metainfo/net.nokyan.Resources.Devel.metainfo.xml",
-				"/usr/share/polkit-1/actions/net.nokyan.Resources.Devel.policy",
+				"/usr/share/metainfo/net.nokyan.Resources.metainfo.xml",
+				"/usr/share/polkit-1/actions/net.nokyan.Resources.policy",
 				"/usr/share/resources/resources.gresource"
 			],
 			"name": "resources",
@@ -67,6 +67,6 @@
 		}
 	},
 	"source-name": "resources",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.7.1"
 }
