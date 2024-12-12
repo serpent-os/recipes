@@ -5,7 +5,7 @@
 #
 name        : linux-desktop
 version     : 6.12.4
-release     : 63
+release     : 64
 homepage    : https://kernel.org/
 upstreams   :
     - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.4.tar.xz : 6f35f821433d8421be7167990747c7c4a0c451958fb96883446301af13d71152
@@ -61,8 +61,6 @@ setup       : |
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
     %install_file %(pkgdir)/config-x86_64 .config
-    %patch %(pkgdir)/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch
-    %patch %(pkgdir)/fix-modpost.patch
     %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0 oldconfig || exit 1
 build       : |
     # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
