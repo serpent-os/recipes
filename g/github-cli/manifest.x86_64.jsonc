@@ -8,6 +8,7 @@
 				"binary(ssh)"
 			],
 			"depends": [
+				"binary(xdg-open)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -222,6 +223,6 @@
 		}
 	},
 	"source-name": "github-cli",
-	"source-release": "4",
-	"source-version": "2.63.1"
+	"source-release": "5",
+	"source-version": "2.63.2"
 }
