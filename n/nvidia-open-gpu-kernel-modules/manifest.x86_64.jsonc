@@ -1,0 +1,25 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"nvidia-open-gpu-kernel-modules": {
+			"build-depends": [
+				"binary(jq)",
+				"linux-desktop",
+				"linux-desktop-devel"
+			],
+			"files": [
+				"/usr/lib/kernel/6.12.4-65.desktop/20-nvidia.cmdline",
+				"/usr/lib/modules/6.12.4-65.desktop/kernel/drivers/video/nvidia-drm.ko.zst",
+				"/usr/lib/modules/6.12.4-65.desktop/kernel/drivers/video/nvidia-modeset.ko.zst",
+				"/usr/lib/modules/6.12.4-65.desktop/kernel/drivers/video/nvidia-peermem.ko.zst",
+				"/usr/lib/modules/6.12.4-65.desktop/kernel/drivers/video/nvidia-uvm.ko.zst",
+				"/usr/lib/modules/6.12.4-65.desktop/kernel/drivers/video/nvidia.ko.zst"
+			],
+			"name": "nvidia-open-gpu-kernel-modules"
+		}
+	},
+	"source-name": "nvidia-open-gpu-kernel-modules",
+	"source-release": "1",
+	"source-version": "565.77"
+}

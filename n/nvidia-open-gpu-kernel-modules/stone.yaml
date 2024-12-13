@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : nvidia-open-gpu-kernel-modules
+version     : 565.77
+release     : 1
+homepage    : https://github.com/NVIDIA/open-gpu-kernel-modules
+upstreams   :
+    - https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/565.77.tar.gz : d3342afbf327335a51096ce5de7b35b22ba84ee2127e84c2cc49624d88a3444f
+summary     : NVIDIA open GPU kernel modules
+description : |
+    NVIDIA open GPU kernel modules
+license     : GPL-2.0-only
+builddeps   :
+    - binary(jq)
+    - linux-desktop
+    - linux-desktop-devel
+tuning      :
+    - asneeded: false
+    - base: false
+    - bindnow: false
+    - icf: false
+    - relr: false
+    - symbolic: false
+environment : |
+    export KERNEL_UNAME=`jq --raw-output .version /usr/lib/kernel/*.desktop/boot.json` || exit 1
+build       : |
+    %make CC=%(cc) LD=%(ld) KERNEL_UNAME=$KERNEL_UNAME NV_VERBOSE=1 modules
+install     : |
+    %install_dir %(installroot)%(libdir)/modules/$KERNEL_UNAME/kernel/drivers/video
+
+    # zstd compress all .ko and install them to the video driver directory
+    for module in $(find . -name '*.ko'); do
+        zstd -19 -T0 -c $module -o %(installroot)%(libdir)/modules/$KERNEL_UNAME/kernel/drivers/video/$(basename $module).zst
+    done
+
+    %install_file %(pkgdir)/20-nvidia.cmdline %(installroot)%(libdir)/kernel/$KERNEL_UNAME/20-nvidia.cmdline
