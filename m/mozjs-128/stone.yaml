@@ -4,16 +4,17 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mozjs-128
-version     : 128.5.0
-release     : 3
+version     : 128.5.2
+release     : 4
 homepage    : https://mozilla.org
 upstreams   :
-    - https://archive.mozilla.org/pub/firefox/releases/128.5.0esr/source/firefox-128.5.0esr.source.tar.xz : 0bd18968314afdcc341edd2a9178e305c9d454560a42193154a0f994047fecb8
+    - https://archive.mozilla.org/pub/firefox/releases/128.5.2esr/source/firefox-128.5.2esr.source.tar.xz : 25d633eb81499cbda44b8c64fa1c1a5879d55024b864ef495d4997154d68358f
 summary     : Mozilla's Spidermonkey JS Engine
 description : |
-    Mozilla's Spidermonkey JS Engine (From Firefox)
-license     :
-    - MPL-2.0
+    SpiderMonkey is the code-name for the Mozilla's C++ implementation of JavaScript.
+    It is used in various Mozilla products, including Firefox, and is available under MPL-2.0.
+    Notably, it is used in the GNOME Shell for its JavaScript extensions and core functionality.
+license     : MPL-2.0
 packages    :
     - "%(name)":
         paths:
