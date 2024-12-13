@@ -11,13 +11,12 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libcrypt.so.1(x86_64))",
 				"soname(libncursesw.so.6(x86_64))",
 				"soname(libpam.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/screen",
-				"/usr/bin/screen-4.9.1",
+				"/usr/bin/screen-5.0.0",
 				"/usr/share/defaults/etc/pam.d/screen",
 				"/usr/share/info",
 				"/usr/share/man/man1/screen.1",
@@ -28,6 +27,7 @@
 				"/usr/share/screen/utf8encodings/18",
 				"/usr/share/screen/utf8encodings/19",
 				"/usr/share/screen/utf8encodings/a1",
+				"/usr/share/screen/utf8encodings/a3",
 				"/usr/share/screen/utf8encodings/bf",
 				"/usr/share/screen/utf8encodings/c2",
 				"/usr/share/screen/utf8encodings/c3",
@@ -42,11 +42,11 @@
 			"name": "screen",
 			"provides": [
 				"binary(screen)",
-				"binary(screen-4.9.1)"
+				"binary(screen-5.0.0)"
 			]
 		}
 	},
 	"source-name": "screen",
-	"source-release": "2",
-	"source-version": "4.9.1"
+	"source-release": "3",
+	"source-version": "5.0.0"
 }
