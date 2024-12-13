@@ -5,7 +5,7 @@
 #
 name        : wget
 version     : 2.2.0
-release     : 4
+release     : 5
 homepage    : https://www.gnu.org/software/wget
 upstreams   :
     - https://ftp.gnu.org/gnu/wget/wget2-2.2.0.tar.gz : 2b3b9c85b7fb26d33ca5f41f1f8daca71838d869a19b406063aa5c655294d357
@@ -26,9 +26,14 @@ builddeps   :
     - pkgconfig(libzstd)
     - pkgconfig(openssl)
     - pkgconfig(zlib)
+    - binary(autopoint)
     # pandoc for manpages
 setup       : |
-    %configure --disable-static --with-lzma
+    # we need to reconfigure, which means mangling the gettext version
+    # otherwise libwget soname is garbage
+    %patch %(pkgdir)/soname.patch
+    %reconfigure  --disable-static \
+                  --with-lzma
 build       : |
     %make
 install     : |

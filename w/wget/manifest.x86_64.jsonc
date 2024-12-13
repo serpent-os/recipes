@@ -4,6 +4,7 @@
 	"packages": {
 		"wget": {
 			"build-depends": [
+				"binary(autopoint)",
 				"pkgconfig(bzip2)",
 				"pkgconfig(gpgme)",
 				"pkgconfig(libbrotlidec)",
@@ -28,8 +29,7 @@
 				"soname(libpsl.so.5(x86_64))",
 				"soname(libssl.so.3(x86_64))",
 				"soname(libz.so.1(x86_64))",
-				"soname(libzstd.so.1(x86_64))",
-				"soname(x86_64/wget2-2.2.0.tar.gz/libwget/.libs/libwget.so.3(x86_64))"
+				"soname(libzstd.so.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/wget",
@@ -78,6 +78,7 @@
 		},
 		"wget-devel": {
 			"build-depends": [
+				"binary(autopoint)",
 				"pkgconfig(bzip2)",
 				"pkgconfig(gpgme)",
 				"pkgconfig(libbrotlidec)",
@@ -105,6 +106,6 @@
 		}
 	},
 	"source-name": "wget",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "2.2.0"
 }

@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index c77c060..ff18aff 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -419,7 +419,7 @@ m4_ifdef([AM_GNU_GETTEXT], [
+ ])
+ m4_ifdef([AM_GNU_GETTEXT_VERSION], [
+ #do not indent here
+-AM_GNU_GETTEXT_VERSION([0.22.5])
++AM_GNU_GETTEXT_VERSION([0.21.1])
+ ])
+ AM_CONDITIONAL([HAVE_PO], [ test "$have_po" = "yes" ])
+ 
