@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : alacritty
-version     : 0.13.2
-release     : 3
+version     : 0.14.0
+release     : 4
 homepage    : https://alacritty.org/
 upstreams   :
-    - https://github.com/alacritty/alacritty/archive/refs/tags/v0.13.2.tar.gz : e9a54aabc92bbdc25ab1659c2e5a1e9b76f27d101342c8219cc98a730fd46d90
+    - https://github.com/alacritty/alacritty/archive/refs/tags/v0.14.0.tar.gz : 2919767177c010339502085b4ac5d3f9f15ca27e6befc39aa9d20fefb93ebcdf
 summary     : A cross-platform, OpenGL terminal emulator.
 description : |
     Alacritty is a modern terminal emulator that comes with sensible defaults, but allows for extensive configuration.
@@ -31,7 +31,7 @@ build       : |
         scdoc < extra/man/${FILENAME}.scd > extra/man/${FILENAME}
     done
 install     : |
-    %install_exe target/*/debug/alacritty -t %(installroot)/usr/bin
+    %cargo_install
 
     %install_file extra/completions/alacritty.bash %(installroot)/usr/share/bash-completion/completions/alacritty
     %install_file extra/completions/_alacritty %(installroot)/usr/share/zsh/site-functions/_alacritty
