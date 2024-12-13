@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ca-certificates
-version     : 20241118
-release     : 4
+version     : 20241212
+release     : 5
 homepage    : https://wiki.mozilla.org/CA
 upstreams   :
     # https://hg.mozilla.org/releases/mozilla-release/file/default/security/nss/lib/ckfw/builtins/certdata.txt <-- for date
