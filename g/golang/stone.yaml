@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : golang
-version     : 1.23.3
-release     : 10
+version     : 1.23.4
+release     : 11
 homepage    : https://go.dev
 upstreams   :
-    - https://go.dev/dl/go1.23.3.linux-amd64.tar.gz : a0afb9744c00648bafb1b90b4aba5bdb86f424f02f9275399ce0c20b93a2c3a8
+    - https://go.dev/dl/go1.23.4.linux-amd64.tar.gz : 6924efde5de86fe277676e929dc9917d466efa02fb934197bc2eba35d5680971
 summary     : The Go programming language
 description : |
     Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
@@ -22,19 +22,25 @@ packages    :
         paths:
             - /usr/lib/*.a
 environment : |
-    export GOROOT="%(libdir)/%(name)"
+    # needed for bootstrap in the build phase
     export GOROOT_BOOTSTRAP="%(libdir)/%(name)"
 
     # Should this be set by boulder automatically?
     export XDG_CACHE_HOME="%(workdir)/.cache"
 setup       : |
     %patch %(pkgdir)/stateless/x509-certificate-path.patch
+    %patch %(pkgdir)/go.env-toolchain-local.patch
 build       : |
     # some tests just fail (some need networking)
-    cd src && ./make.bash -v
+    pushd src
+    ./make.bash -v
+    popd
+
+    # install to ./ for easier copying into the final destination later
+    GOROOT=${PWD} PATH=${PWD}/bin:${PATH} go install -buildmode=shared std
 # TODO: Properly filter unwanted content to achieve a clean package.
 install     : |
-    GOROOT=${PWD} PATH=${PWD}/bin:${PATH} go install -buildmode=shared std
+    # Don't need these
     rm -rf .cache go
     # Testdata searches for /libexec/ld-elf.so.1.
     # This is just data fed into tests, but boulder scans it regardless.
@@ -49,19 +55,18 @@ install     : |
     ln -srvf %(installroot)%(libdir)/%(name)/bin/gofmt %(installroot)%(bindir)/
     ln -srvf %(installroot)%(libdir)/%(name)/bin/go %(installroot)%(bindir)/
 
-    # needed assets
+    # Assets needed for proper installation
     find -mindepth 1 -maxdepth 1 -type d -not -name bin -exec cp -a {} %(installroot)/%(libdir)/%(name) \;
 
-    # Ensure that the present toolchain version is always used for building other go recipes
-    %install_file %(pkgdir)/go.env %(installroot)%(libdir)/%(name)/go.env
+    # verify that the present toolchain version is always used for building other go recipes
+    cat go.env
+    %install_file go.env %(installroot)%(libdir)/%(name)/go.env
 
-    # ensure go.env is visible in build
-    cat %(installroot)%(libdir)/%(name)/go.env
-
+    # HACK!
     # Ensure that relevant env vars are set in user sessions
     %install_dir %(installroot)%(vendordir)/etc/profile.d
     # GOROOT needs to be set or bad things will happen, because make.bash uses -trimpath
-    echo 'export GOROOT=%(libdir)/%(name)' >> %(installroot)%(vendordir)/etc/profile.d/golang-env.sh
-    cat %(installroot)%(vendordir)/etc/profile.d/golang-env.sh
+    echo 'export GOROOT=%(libdir)/%(name)' > %(installroot)%(vendordir)/etc/profile.d/golang-GOROOT.sh
+    cat %(installroot)%(vendordir)/etc/profile.d/golang-GOROOT.sh
 # check      : |
 #     cd src && ./run.bash -v -v -v -k

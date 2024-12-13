@@ -11728,7 +11728,7 @@
 				"/usr/lib/golang/test/writebarrier.go",
 				"/usr/lib/golang/test/zerodivide.go",
 				"/usr/lib/golang/test/zerosize.go",
-				"/usr/share/defaults/etc/profile.d/golang-env.sh"
+				"/usr/share/defaults/etc/profile.d/golang-GOROOT.sh"
 			],
 			"name": "golang",
 			"provides": [
@@ -11739,6 +11739,6 @@
 		}
 	},
 	"source-name": "golang",
-	"source-release": "10",
-	"source-version": "1.23.3"
+	"source-release": "11",
+	"source-version": "1.23.4"
 }
