@@ -558,11 +558,11 @@
 			"name": "file-roller",
 			"provides": [
 				"binary(file-roller)",
-				"soname(libnautilus-fileroller.so(x86_64))"
+				"soname(nautilus/extensions-4/libnautilus-fileroller.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "file-roller",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "44.3"
 }
