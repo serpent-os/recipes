@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ptyxis
-version     : 47.5
-release     : 2
+version     : 47.6
+release     : 3
 homepage    : https://gitlab.gnome.org/chergert/ptyxis
 upstreams   :
-    - https://download.gnome.org/sources/ptyxis/47/ptyxis-47.5.tar.xz : 1a6013ba12c8db898b73c606f84097630ece4b80f185de68f219047783fc6748
+    - https://download.gnome.org/sources/ptyxis/47/ptyxis-47.6.tar.xz : 9cf9f755bb8022884de7d8588a41f037e70af6765cab8abae084389afbd4a43b
 summary     : A terminal for a container-oriented desktop
 description : |
   Ptyxis is a terminal for GNOME with first-class support for containers.
