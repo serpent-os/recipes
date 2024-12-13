@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : pixman
-version     : 0.44.0
-release     : 5
+version     : 0.44.2
+release     : 6
 homepage    : http://www.pixman.org
 upstreams   :
-    - https://gitlab.freedesktop.org/pixman/pixman/-/archive/pixman-0.44.0/pixman-pixman-0.44.0.tar.gz : 4b50c306f4ad52decf9b68d1fcd03ad86312f066f0c785dd54f3dd6978a2b023
+    - https://gitlab.freedesktop.org/pixman/pixman/-/archive/pixman-0.44.2/pixman-pixman-0.44.2.tar.gz : 1ac33e229549f6341a677d530d1944431139d222ecad1554818788ae9ef32f6f
 summary     : Low-level library for pixel manipulation
 description : |
     Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.
