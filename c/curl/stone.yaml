@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : curl
-version     : 8.11.0
-release     : 16
+version     : 8.11.1
+release     : 17
 summary     : A utility for fetching files from remote servers
 license     : MIT
 homepage    : https://curl.se/
 description : |
     A utility for fetching files from remote servers.
 upstreams   :
-    - https://curl.se/download/curl-8.11.0.tar.gz: 264537d90e58d2b09dddc50944baf3c38e7089151c8986715e2aaeaaf2b8118f
+    - https://curl.se/download/curl-8.11.1.tar.gz: a889ac9dbba3644271bd9d1302b5c22a088893719b72be3487bc3d401e5c4e80
 builddeps:
     - pkgconfig(hyper)
     - pkgconfig(jansson)
