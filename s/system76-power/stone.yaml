@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : system76-power
-version     : 1.2.1
-release     : 1
+version     : 1.2.2
+release     : 2
 homepage    : https://github.com/pop-os/system76-power
 upstreams   :
-    - https://github.com/pop-os/system76-power/archive/refs/tags/1.2.1.tar.gz: 90b796e72a442a7968fc80b269ed2a936c6541bcba939a72612898082fbd7ec3
+    - https://github.com/pop-os/system76-power/archive/refs/tags/1.2.2.tar.gz: 7c11f5b5f63bfc93a9bae773b2fc8d2b94dc82efbc43cd31e23f6a94a52599ad
 summary     : system76-power is a utility for managing graphics and power profiles.
 description : |
     system76-power is a utility for managing graphics and power profiles.
