@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : bind-utils
-version     : '9.18.28'
-release     : 5
+version     : 9.18.32
+release     : 6
 homepage    : https://www.isc.org/bind/
 upstreams   :
-    - https://downloads.isc.org/isc/bind9/9.18.28/bind-9.18.28.tar.xz : e7cce9a165f7b619eefc4832f0a8dc16b005d29e3890aed6008c506ea286a5e7
+    - https://downloads.isc.org/isc/bind9/9.18.32/bind-9.18.32.tar.xz : dc840cdf9d54578d98400f2edf7008b1b33a1721be6e490eb1e42d0d11d9cff4
 summary     : Tools to interact with DNS services
 description : |
     BIND (Berkeley Internet Name Domain) is a complete, highly portable
