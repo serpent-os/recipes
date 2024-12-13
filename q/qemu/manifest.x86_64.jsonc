@@ -126,6 +126,8 @@
 				"/usr/share/qemu/edk2-i386-secure-code.fd",
 				"/usr/share/qemu/edk2-i386-vars.fd",
 				"/usr/share/qemu/edk2-licenses.txt",
+				"/usr/share/qemu/edk2-loongarch64-code.fd",
+				"/usr/share/qemu/edk2-loongarch64-vars.fd",
 				"/usr/share/qemu/edk2-riscv-code.fd",
 				"/usr/share/qemu/edk2-riscv-vars.fd",
 				"/usr/share/qemu/edk2-x86_64-code.fd",
@@ -143,6 +145,7 @@
 				"/usr/share/qemu/firmware/60-edk2-aarch64.json",
 				"/usr/share/qemu/firmware/60-edk2-arm.json",
 				"/usr/share/qemu/firmware/60-edk2-i386.json",
+				"/usr/share/qemu/firmware/60-edk2-loongarch64.json",
 				"/usr/share/qemu/firmware/60-edk2-x86_64.json",
 				"/usr/share/qemu/keymaps/ar",
 				"/usr/share/qemu/keymaps/bepo",
@@ -350,6 +353,6 @@
 		}
 	},
 	"source-name": "qemu",
-	"source-release": "10",
-	"source-version": "9.1.1"
+	"source-release": "11",
+	"source-version": "9.2.0"
 }
