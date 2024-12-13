@@ -33,7 +33,7 @@
 				"/usr/bin/wpctl",
 				"/usr/bin/wpexec",
 				"/usr/lib/libwireplumber-0.5.so.0",
-				"/usr/lib/libwireplumber-0.5.so.0.506.0",
+				"/usr/lib/libwireplumber-0.5.so.0.507.0",
 				"/usr/lib/systemd/user/wireplumber.service",
 				"/usr/lib/systemd/user/wireplumber@.service",
 				"/usr/lib/wireplumber-0.5/libwireplumber-module-dbus-connection.so",
@@ -272,6 +272,6 @@
 		}
 	},
 	"source-name": "wireplumber",
-	"source-release": "3",
-	"source-version": "0.5.6"
+	"source-release": "4",
+	"source-version": "0.5.7"
 }
