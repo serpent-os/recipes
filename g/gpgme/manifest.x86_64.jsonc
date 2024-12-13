@@ -25,9 +25,9 @@
 				"/usr/bin/gpgme-json",
 				"/usr/bin/gpgme-tool",
 				"/usr/lib/libgpgme.so.11",
-				"/usr/lib/libgpgme.so.11.33.0",
+				"/usr/lib/libgpgme.so.11.33.1",
 				"/usr/lib/libgpgmepp.so.6",
-				"/usr/lib/libgpgmepp.so.6.21.0",
+				"/usr/lib/libgpgmepp.so.6.21.1",
 				"/usr/share/info/gpgme.info",
 				"/usr/share/info/gpgme.info-1",
 				"/usr/share/info/gpgme.info-2",
@@ -118,6 +118,6 @@
 		}
 	},
 	"source-name": "gpgme",
-	"source-release": "2",
-	"source-version": "1.24.0"
+	"source-release": "3",
+	"source-version": "1.24.1"
 }
