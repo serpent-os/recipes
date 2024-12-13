@@ -198,8 +198,8 @@
 				"binary(nautilus)",
 				"binary(nautilus-autorun-software)",
 				"soname(libnautilus-extension.so.4(x86_64))",
-				"soname(libnautilus-image-properties.so(x86_64))",
-				"soname(libtotem-properties-page.so(x86_64))"
+				"soname(nautilus/extensions-4/libnautilus-image-properties.so(x86_64))",
+				"soname(nautilus/extensions-4/libtotem-properties-page.so(x86_64))"
 			]
 		},
 		"nautilus-devel": {
@@ -249,6 +249,6 @@
 		}
 	},
 	"source-name": "nautilus",
-	"source-release": "4",
-	"source-version": "47.0"
+	"source-release": "5",
+	"source-version": "47.1"
 }
