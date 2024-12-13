@@ -4,18 +4,20 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : zellij
-version     : "0.39.2"
+version     : 0.41.2
 release     : 2
 license     : MIT
 homepage    : https://zellij.dev/
 upstreams   :
-    - git|https://github.com/zellij-org/zellij.git : v0.39.2
+    - https://github.com/zellij-org/zellij/archive/refs/tags/v0.41.2.tar.gz : 12e7f0f80c1e39deed5638c4662fc070855cee0250a7eb1d76cefbeef8c2f376
 summary     : A terminal workspace with batteries included
 description : |
     Zellij is a workspace aimed at developers, ops-oriented people and anyone who loves the terminal. Similar programs are sometimes called "Terminal Multiplexers".
 builddeps   :
     - binary(cargo)
     - pkgconfig(openssl)
+tuning      :
+    - lto : thin
 networking  : yes
 setup       : |
     %cargo_fetch
@@ -23,5 +25,3 @@ build       : |
     OPENSSL_NO_VENDOR=1 %cargo_build
 install     : |
     %cargo_install
-tuning      :
-    - lto : thin
