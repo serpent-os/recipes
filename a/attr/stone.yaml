@@ -6,20 +6,20 @@
 name        : attr
 version     : '2.5.2'
 release     : 4
+homepage    : https://savannah.nongnu.org/projects/attr
+upstreams   :
+    - https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.xz : f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b
 summary     : Commands for Manipulating Extended Attributes
+description : |
+    Commands for Manipulating Extended Attributes
 license     :
     - GPL-2.0-or-later
     - LGPL-2.1-or-later
-homepage    : https://savannah.nongnu.org/projects/attr
-description : |
-    Commands for Manipulating Extended Attributes
-upstreams   :
-    - https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.xz : f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b
+emul32      : true
 setup       : |
     %patch %(pkgdir)/0001-Support-stateless-path.patch
 
-    %configure \
-               --enable-shared \
+    %configure --enable-shared \
                --disable-static
 build       : |
     %make

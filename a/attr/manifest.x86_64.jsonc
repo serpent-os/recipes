@@ -40,6 +40,35 @@
 				"soname(libattr.so.1(x86_64))"
 			]
 		},
+		"attr-32bit": {
+			"depends": [
+				"attr",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libattr.so.1",
+				"/usr/lib32/libattr.so.1.1.2502"
+			],
+			"name": "attr-32bit",
+			"provides": [
+				"soname(libattr.so.1(386))",
+				"soname(libattr.so.1(x86))"
+			]
+		},
+		"attr-32bit-devel": {
+			"depends": [
+				"attr-32bit",
+				"attr-devel"
+			],
+			"files": [
+				"/usr/lib32/libattr.so",
+				"/usr/lib32/pkgconfig/libattr.pc"
+			],
+			"name": "attr-32bit-devel",
+			"provides": [
+				"pkgconfig32(libattr)"
+			]
+		},
 		"attr-devel": {
 			"depends": [
 				"attr"
