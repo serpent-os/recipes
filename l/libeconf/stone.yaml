@@ -5,7 +5,7 @@
 #
 name        : libeconf
 version     : 0.7.6
-release     : 3
+release     : 4
 homepage    : https://github.com/openSUSE/libeconf
 upstreams   :
     - https://github.com/openSUSE/libeconf/archive/refs/tags/v0.7.6.tar.gz : 2733b6af7856efac3a030c02fb816103e4130e8ffcc403ff6ffced6f677a12e3
@@ -16,6 +16,10 @@ license     : MIT
 environment : |
     export LDFLAGS="${LDFLAGS} -Wl,--undefined-version"
 emul32      : true
+profiles    :
+    - emul32:
+        install: |
+            %cmake_install
 setup       : |
     %cmake -DCMAKE_INSTALL_LIBDIR=lib%(libsuffix)
 build       : |
@@ -23,6 +27,4 @@ build       : |
 install     : |
     %cmake_install
     %install_dir %(installroot)%(vendordir)
-    if [[ ! -d %(installroot)%(prefix)/vendor ]]; then
-        ln -svf share/defaults %(installroot)%(prefix)/vendor
-    fi
+    ln -sv share/defaults %(installroot)%(prefix)/vendor
