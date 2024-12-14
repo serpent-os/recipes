@@ -5,7 +5,7 @@
 #
 name        : bzip2
 version     : 1.0.8
-release     : 3
+release     : 4
 summary     : Common and high-quality data compressor
 license     : bzip2-1.0.6
 homepage    : https://www.sourceware.org/bzip2
@@ -13,6 +13,17 @@ description : |
     bzip2 is a patent free, high-quality data compressor. It typically compresses files to within 10% to 15% of the best available techniques (the PPM family of statistical compressors), whilst being around twice as fast at compression and six times faster at decompression.
 upstreams   :
     - https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz: ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269
+emul32      : true
+packages    :
+    - "%(name)-libs":
+        summary     : Runtime libraries for bzip2
+        description : |
+            Runtime libraries for bzip2
+        paths:
+            - /usr/lib/lib*.so.*
+tuning      :
+    - lto
+    - optimize: speed
 setup       : |
     %patch %(pkgdir)/serpent/0001-Makefile-Allow-to-override-compiler-and-flags.patch
 
@@ -23,28 +34,28 @@ build       : |
     %make bzip2recover
 install     : |
     %install_exe bzip2-shared %(installroot)/%(bindir)/bzip2
-    ln -s bzip2 %(installroot)/%(bindir)/bunzip2
-    ln -s bzip2 %(installroot)/%(bindir)/bzcat
+    ln -sf bzip2 %(installroot)/%(bindir)/bunzip2
+    ln -sf bzip2 %(installroot)/%(bindir)/bzcat
     %install_file bzip2.1 -t %(installroot)/%(mandir)/man1
-    ln -s bzip2.1 %(installroot)/%(mandir)/man1/bunzip2.1
-    ln -s bzip2.1 %(installroot)/%(mandir)/man1/bzcat.1
+    ln -sf bzip2.1 %(installroot)/%(mandir)/man1/bunzip2.1
+    ln -sf bzip2.1 %(installroot)/%(mandir)/man1/bzcat.1
 
     %install_bin bzdiff
-    ln -s bzdiff %(installroot)/%(bindir)/bzcmp
+    ln -sf bzdiff %(installroot)/%(bindir)/bzcmp
     %install_file bzdiff.1 -t %(installroot)/%(mandir)/man1
-    ln -s bzdiff.1 %(installroot)/%(mandir)/man1/bzcmp.1
+    ln -sf bzdiff.1 %(installroot)/%(mandir)/man1/bzcmp.1
 
     %install_bin bzgrep
-    ln -s bzgrep %(installroot)/%(bindir)/bzegrep
-    ln -s bzgrep %(installroot)/%(bindir)/bzfgrep
+    ln -sf bzgrep %(installroot)/%(bindir)/bzegrep
+    ln -sf bzgrep %(installroot)/%(bindir)/bzfgrep
     %install_file bzgrep.1 -t %(installroot)/%(mandir)/man1
-    ln -s bzgrep.1 %(installroot)/%(mandir)/man1/bzegrep.1
-    ln -s bzgrep.1 %(installroot)/%(mandir)/man1/bzfgrep.1
+    ln -sf bzgrep.1 %(installroot)/%(mandir)/man1/bzegrep.1
+    ln -sf bzgrep.1 %(installroot)/%(mandir)/man1/bzfgrep.1
 
     %install_bin bzmore
-    ln -s bzmore %(installroot)/%(bindir)/bzless
+    ln -sf bzmore %(installroot)/%(bindir)/bzless
     %install_file bzmore.1 -t %(installroot)/%(mandir)/man1
-    ln -s bzmore.1 %(installroot)/%(mandir)/man1/bzless.1
+    ln -sf bzmore.1 %(installroot)/%(mandir)/man1/bzless.1
 
     %install_bin bzip2recover
 
@@ -52,10 +63,3 @@ install     : |
     ln -s libbz2.so.%(version) %(installroot)/%(libdir)/libbz2.so
     %install_file bzlib.h -t %(installroot)/%(includedir)
     %install_file bzip2.pc -t %(installroot)/%(libdir)/pkgconfig/
-tuning      :
-    - lto
-    - optimize: speed
-packages    :
-    - "%(name)-libs":
-        paths:
-            - /usr/lib/lib*.so.*
