@@ -25,7 +25,8 @@
 				"binary(perl)"
 			],
 			"depends": [
-				"soname(libc.so.6(x86))"
+				"libxcrypt",
+				"soname(libc.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libcrypt.so.1",
@@ -34,12 +35,17 @@
 			],
 			"name": "libxcrypt-32bit",
 			"provides": [
+				"soname(libcrypt.so.1(386))",
 				"soname(libcrypt.so.1(x86))"
 			]
 		},
 		"libxcrypt-32bit-devel": {
 			"build-depends": [
 				"binary(perl)"
+			],
+			"depends": [
+				"libxcrypt-32bit",
+				"libxcrypt-devel"
 			],
 			"files": [
 				"/usr/lib32/libcrypt.so",
@@ -57,6 +63,9 @@
 		"libxcrypt-devel": {
 			"build-depends": [
 				"binary(perl)"
+			],
+			"depends": [
+				"libxcrypt"
 			],
 			"files": [
 				"/usr/include/crypt.h",
@@ -84,6 +93,6 @@
 		}
 	},
 	"source-name": "libxcrypt",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "4.4.36"
 }

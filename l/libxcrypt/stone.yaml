@@ -5,7 +5,7 @@
 #
 name        : libxcrypt
 version     : '4.4.36'
-release     : 5
+release     : 6
 homepage    : https://github.com/besser82/libxcrypt
 upstreams   :
     - https://github.com/besser82/libxcrypt/releases/download/v4.4.36/libxcrypt-4.4.36.tar.xz : e5e1f4caee0a01de2aee26e3138807d6d3ca2b8e67287966d1fefd65e1fd8943
