@@ -5,7 +5,7 @@
 #
 name        : util-linux
 version     : 2.40.2
-release     : 8
+release     : 9
 summary     : Random collection of Linux utilities
 license     :
     - BSD-3-Clause
@@ -21,15 +21,28 @@ description : |
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-2.40.2.tar.xz : d78b37a66f5922d70edf3bdfb01a6b33d34ed3c3cafd6628203b2a2b67c8e8b3
 builddeps   :
-    - pkgconfig(libcap-ng)
-    - pkgconfig(libcrypt)
     - pkgconfig(libsystemd)
-    - pkgconfig(ncursesw)
-    - pkgconfig(pam)
     - pkgconfig(python3)
-    - pkgconfig(zlib)
+    - pkgconfig32(libcap-ng)
+    - pkgconfig32(libcrypt)
+    - pkgconfig32(ncursesw)
+    - pkgconfig32(pam)
+    - pkgconfig32(zlib)
 rundeps     :
     - binary(su)
+emul32      : true
+profiles    :
+    - emul32:
+        setup: |
+            %configure --disable-makeinstall-chown \
+                       --disable-static \
+                       --disable-su \
+                       --disable-sulogin \
+                       --disable-liblastlog2 \
+                       --disable-uuidd \
+                       --without-python \
+                       --without-systemd \
+                       --with-vendordir=%(vendordir)
 setup       : |
     # Can fix these issues once fakeroot is implemented
     %configure --disable-makeinstall-chown \

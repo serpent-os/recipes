@@ -4,13 +4,13 @@
 	"packages": {
 		"util-linux": {
 			"build-depends": [
-				"pkgconfig(libcap-ng)",
-				"pkgconfig(libcrypt)",
 				"pkgconfig(libsystemd)",
-				"pkgconfig(ncursesw)",
-				"pkgconfig(pam)",
 				"pkgconfig(python3)",
-				"pkgconfig(zlib)"
+				"pkgconfig32(libcap-ng)",
+				"pkgconfig32(libcrypt)",
+				"pkgconfig32(ncursesw)",
+				"pkgconfig32(pam)",
+				"pkgconfig32(zlib)"
 			],
 			"depends": [
 				"binary(su)",
@@ -523,7 +523,7 @@
 				"soname(libmount.so.1(x86_64))",
 				"soname(libsmartcols.so.1(x86_64))",
 				"soname(libuuid.so.1(x86_64))",
-				"soname(pylibmount.so(x86_64))",
+				"soname(python3.11/site-packages/libmount/pylibmount.so(x86_64))",
 				"sysbinary(addpart)",
 				"sysbinary(agetty)",
 				"sysbinary(blkdiscard)",
@@ -567,15 +567,91 @@
 				"sysbinary(zramctl)"
 			]
 		},
+		"util-linux-32bit": {
+			"build-depends": [
+				"pkgconfig(libsystemd)",
+				"pkgconfig(python3)",
+				"pkgconfig32(libcap-ng)",
+				"pkgconfig32(libcrypt)",
+				"pkgconfig32(ncursesw)",
+				"pkgconfig32(pam)",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"soname(ld-linux.so.2(386))",
+				"soname(libc.so.6(386))",
+				"util-linux"
+			],
+			"files": [
+				"/usr/lib32/libblkid.so.1",
+				"/usr/lib32/libblkid.so.1.1.0",
+				"/usr/lib32/libfdisk.so.1",
+				"/usr/lib32/libfdisk.so.1.1.0",
+				"/usr/lib32/libmount.so.1",
+				"/usr/lib32/libmount.so.1.1.0",
+				"/usr/lib32/libsmartcols.so.1",
+				"/usr/lib32/libsmartcols.so.1.1.0",
+				"/usr/lib32/libuuid.so.1",
+				"/usr/lib32/libuuid.so.1.3.0"
+			],
+			"name": "util-linux-32bit",
+			"provides": [
+				"soname(libblkid.so.1(386))",
+				"soname(libblkid.so.1(x86))",
+				"soname(libfdisk.so.1(386))",
+				"soname(libfdisk.so.1(x86))",
+				"soname(libmount.so.1(386))",
+				"soname(libmount.so.1(x86))",
+				"soname(libsmartcols.so.1(386))",
+				"soname(libsmartcols.so.1(x86))",
+				"soname(libuuid.so.1(386))",
+				"soname(libuuid.so.1(x86))"
+			]
+		},
+		"util-linux-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(libsystemd)",
+				"pkgconfig(python3)",
+				"pkgconfig32(libcap-ng)",
+				"pkgconfig32(libcrypt)",
+				"pkgconfig32(ncursesw)",
+				"pkgconfig32(pam)",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"util-linux-32bit",
+				"util-linux-devel"
+			],
+			"files": [
+				"/usr/lib32/libblkid.so",
+				"/usr/lib32/libfdisk.so",
+				"/usr/lib32/libmount.so",
+				"/usr/lib32/libsmartcols.so",
+				"/usr/lib32/libuuid.so",
+				"/usr/lib32/pkgconfig/blkid.pc",
+				"/usr/lib32/pkgconfig/fdisk.pc",
+				"/usr/lib32/pkgconfig/mount.pc",
+				"/usr/lib32/pkgconfig/smartcols.pc",
+				"/usr/lib32/pkgconfig/uuid.pc"
+			],
+			"name": "util-linux-32bit-devel",
+			"provides": [
+				"pkgconfig32(blkid)",
+				"pkgconfig32(fdisk)",
+				"pkgconfig32(mount)",
+				"pkgconfig32(smartcols)",
+				"pkgconfig32(uuid)"
+			]
+		},
 		"util-linux-devel": {
 			"build-depends": [
-				"pkgconfig(libcap-ng)",
-				"pkgconfig(libcrypt)",
 				"pkgconfig(libsystemd)",
-				"pkgconfig(ncursesw)",
-				"pkgconfig(pam)",
 				"pkgconfig(python3)",
-				"pkgconfig(zlib)"
+				"pkgconfig32(libcap-ng)",
+				"pkgconfig32(libcrypt)",
+				"pkgconfig32(ncursesw)",
+				"pkgconfig32(pam)",
+				"pkgconfig32(zlib)"
 			],
 			"depends": [
 				"util-linux"
@@ -621,6 +697,6 @@
 		}
 	},
 	"source-name": "util-linux",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "2.40.2"
 }
