@@ -4,21 +4,22 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : sqlite
-version     : '3.45.0'
-release     : 6
+version     : 3.47.2
+release     : 7
 homepage    : https://www.sqlite.org
 upstreams   :
-    - https://www.sqlite.org/2024/sqlite-autoconf-3450000.tar.gz : 72887d57a1d8f89f52be38ef84a6353ce8c3ed55ada7864eb944abd9a495e436
+    - https://www.sqlite.org/2024/sqlite-autoconf-3470200.tar.gz : f1b2ee412c28d7472bc95ba996368d6f0cdcf00362affdadb27ed286c179540b
 summary     : Small, self-contained SQL database engine
 description : |
     SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. SQLite is the most used database engine in the world. SQLite is built into all mobile phones and most computers and comes bundled inside countless other applications that people use every day.
 license     : Public Domain
+tuning      :
+    - lto
+    - optimize: speed
+emul32      : true
 setup       : |
     %configure --disable-static
 build       : |
     %make
 install     : |
     %make_install
-tuning      :
-    - lto
-    - optimize: speed
