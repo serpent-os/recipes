@@ -5,7 +5,7 @@
 #
 name        : linux-pam
 version     : 1.6.1
-release     : 7
+release     : 8
 summary     : Pluggable Authentication Modules
 license     :
     - BSD-3-Clause
@@ -16,11 +16,24 @@ description : |
 upstreams   :
     - https://github.com/linux-pam/linux-pam/releases/download/v1.6.1/Linux-PAM-1.6.1.tar.xz: f8923c740159052d719dbfc2a2f81942d68dd34fcaf61c706a02c9b80feeef8e
 builddeps   :
-    - pkgconfig(libxcrypt)
-    - pkgconfig(libeconf)
-    - pkgconfig(libsystemd)
     - binary(autopoint)
+    - pkgconfig(libsystemd)
+    - pkgconfig32(libeconf)
+    - pkgconfig32(libxcrypt)
 toolchain   : gnu
+emul32      : true
+profiles    :
+    - emul32:
+        setup: |
+            %patch %(pkgdir)/pam_env_conf.patch
+            %reconfigure --disable-static \
+                       --disable-nis \
+                       --enable-econf \
+                       --disable-logind \
+                       --enable-lastlog \
+                       --enable-vendordir="%(vendordir)%(sysconfdir)" \
+                       --enable-read-both-confs \
+                       --with-kernel-overflow-uid=65534
 setup       : |
     %patch %(pkgdir)/pam_env_conf.patch
     %reconfigure --disable-static \
