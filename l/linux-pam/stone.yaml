@@ -5,7 +5,7 @@
 #
 name        : linux-pam
 version     : 1.6.1
-release     : 8
+release     : 9
 summary     : Pluggable Authentication Modules
 license     :
     - BSD-3-Clause
@@ -25,6 +25,7 @@ emul32      : true
 profiles    :
     - emul32:
         setup: |
+            # Disabling systemd right now until available in 32-bit
             %patch %(pkgdir)/pam_env_conf.patch
             %reconfigure --disable-static \
                        --disable-nis \
@@ -34,6 +35,10 @@ profiles    :
                        --enable-vendordir="%(vendordir)%(sysconfdir)" \
                        --enable-read-both-confs \
                        --with-kernel-overflow-uid=65534
+        build: |
+            %make
+        install: |
+            %make_install
 setup       : |
     %patch %(pkgdir)/pam_env_conf.patch
     %reconfigure --disable-static \
