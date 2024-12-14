@@ -73,6 +73,14 @@ function cpesearch() {
     fi
 }
 
+# Goes to the root directory of the serpent recipes
+# git repository from anywhere on the filesystem.
+# This function will only work if this script is sourced
+# by your bash shell.
+function gotoserpentrepo() {
+    cd "$(dirname "$(readlink "${BASH_SOURCE[0]}")")/../" || return 1
+}
+
 # Goes to the root directory of the git repository
 function goroot() {
     cd "$(git rev-parse --show-toplevel)" || return 1
