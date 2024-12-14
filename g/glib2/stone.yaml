@@ -5,7 +5,7 @@
 #
 name        : glib2
 version     : 2.82.4
-release     : 19
+release     : 20
 homepage    : https://gitlab.gnome.org/GNOME/glib
 upstreams   :
     - https://download.gnome.org/sources/glib/2.82/glib-2.82.4.tar.xz : 37dd0877fe964cd15e9a2710b044a1830fb1bd93652a6d0cb6b8b2dff187c709
@@ -26,17 +26,36 @@ builddeps   :
     - binary(xgettext)
     - pkgconfig(bash-completion)
     - pkgconfig(gobject-introspection-1.0)
-    - pkgconfig(libelf)
-    - pkgconfig(libffi)
-    - pkgconfig(libpcre2-8)
-    - pkgconfig(mount)
-    - pkgconfig(zlib)
+    - pkgconfig32(libelf)
+    - pkgconfig32(libffi)
+    - pkgconfig32(libpcre2-8)
+    - pkgconfig32(mount)
+    - pkgconfig32(zlib)
     - python-packaging
+packages    :
+    - "%(name)-32bit-devel":
+        paths:
+            - /usr/share/gdb/auto-load/usr/lib32
+            - /usr/lib32/glib-2.0/include
+    - "%(name)-devel":
+        paths:
+            - /usr/share/gdb/auto-load/usr/lib
+            - /usr/lib/glib-2.0/include
+emul32      : true
 rundeps     :
     - elfutils-libs
     - python-packaging
 environment : |
     export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
+profiles    :
+    - emul32:
+        setup: |
+            %patch %(pkgdir)/0001-glib-gutils-Support-stateless-fallback-XDG_CONFIG_DI.patch
+            %meson -Dtests=false -Dinstalled_tests=false -Dintrospection=disabled
+        build: |
+            %meson_build
+        install: |
+            %meson_install
 setup       : |
     %patch %(pkgdir)/0001-glib-gutils-Support-stateless-fallback-XDG_CONFIG_DI.patch
     %meson -Dtests=false -Dinstalled_tests=false
@@ -46,3 +65,4 @@ install     : |
     %meson_install
     %python_compile
     %install_file %(pkgdir)/trigger.yaml %(installroot)/usr/share/moss/triggers/tx.d/glib2.yaml
+    %install_file %(pkgdir)/glibconfig.h %(installroot)%(includedir)/glib-2.0/glibconfig.h

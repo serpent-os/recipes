@@ -7,11 +7,11 @@
 				"binary(xgettext)",
 				"pkgconfig(bash-completion)",
 				"pkgconfig(gobject-introspection-1.0)",
-				"pkgconfig(libelf)",
-				"pkgconfig(libffi)",
-				"pkgconfig(libpcre2-8)",
-				"pkgconfig(mount)",
-				"pkgconfig(zlib)",
+				"pkgconfig32(libelf)",
+				"pkgconfig32(libffi)",
+				"pkgconfig32(libpcre2-8)",
+				"pkgconfig32(mount)",
+				"pkgconfig32(zlib)",
 				"python-packaging"
 			],
 			"depends": [
@@ -54,7 +54,6 @@
 				"/usr/lib/girepository-1.0/GObject-2.0.typelib",
 				"/usr/lib/girepository-1.0/Gio-2.0.typelib",
 				"/usr/lib/girepository-1.0/GioUnix-2.0.typelib",
-				"/usr/lib/glib-2.0/include/glibconfig.h",
 				"/usr/lib/glib2/gio-launch-desktop",
 				"/usr/lib/libgio-2.0.so.0",
 				"/usr/lib/libgio-2.0.so.0.8200.4",
@@ -73,10 +72,6 @@
 				"/usr/share/bash-completion/completions/gio",
 				"/usr/share/bash-completion/completions/gresource",
 				"/usr/share/bash-completion/completions/gsettings",
-				"/usr/share/gdb/auto-load/usr/lib/__pycache__/libglib-2.0.so.0.8200.4-gdb.cpython-311.pyc",
-				"/usr/share/gdb/auto-load/usr/lib/__pycache__/libgobject-2.0.so.0.8200.4-gdb.cpython-311.pyc",
-				"/usr/share/gdb/auto-load/usr/lib/libglib-2.0.so.0.8200.4-gdb.py",
-				"/usr/share/gdb/auto-load/usr/lib/libgobject-2.0.so.0.8200.4-gdb.py",
 				"/usr/share/gettext/its/gschema.its",
 				"/usr/share/gettext/its/gschema.loc",
 				"/usr/share/gir-1.0/GIRepository-3.0.gir",
@@ -245,16 +240,122 @@
 				"soname(libgthread-2.0.so.0(x86_64))"
 			]
 		},
+		"glib2-32bit": {
+			"build-depends": [
+				"binary(xgettext)",
+				"pkgconfig(bash-completion)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig32(libelf)",
+				"pkgconfig32(libffi)",
+				"pkgconfig32(libpcre2-8)",
+				"pkgconfig32(mount)",
+				"pkgconfig32(zlib)",
+				"python-packaging"
+			],
+			"depends": [
+				"glib2",
+				"interpreter(/usr/lib32/ld-linux.so.2(386))",
+				"soname(ld-linux.so.2(386))",
+				"soname(libc.so.6(386))",
+				"soname(libffi.so.8(386))",
+				"soname(libm.so.6(386))",
+				"soname(libmount.so.1(386))",
+				"soname(libpcre2-8.so.0(386))",
+				"soname(libz.so.1(386))"
+			],
+			"files": [
+				"/usr/lib32/gio/modules",
+				"/usr/lib32/glib2/gio-launch-desktop",
+				"/usr/lib32/libgio-2.0.so.0",
+				"/usr/lib32/libgio-2.0.so.0.8200.4",
+				"/usr/lib32/libgirepository-2.0.so.0",
+				"/usr/lib32/libgirepository-2.0.so.0.8200.4",
+				"/usr/lib32/libglib-2.0.so.0",
+				"/usr/lib32/libglib-2.0.so.0.8200.4",
+				"/usr/lib32/libgmodule-2.0.so.0",
+				"/usr/lib32/libgmodule-2.0.so.0.8200.4",
+				"/usr/lib32/libgobject-2.0.so.0",
+				"/usr/lib32/libgobject-2.0.so.0.8200.4",
+				"/usr/lib32/libgthread-2.0.so.0",
+				"/usr/lib32/libgthread-2.0.so.0.8200.4"
+			],
+			"name": "glib2-32bit",
+			"provides": [
+				"soname(libgio-2.0.so.0(386))",
+				"soname(libgio-2.0.so.0(x86))",
+				"soname(libgirepository-2.0.so.0(386))",
+				"soname(libgirepository-2.0.so.0(x86))",
+				"soname(libglib-2.0.so.0(386))",
+				"soname(libglib-2.0.so.0(x86))",
+				"soname(libgmodule-2.0.so.0(386))",
+				"soname(libgmodule-2.0.so.0(x86))",
+				"soname(libgobject-2.0.so.0(386))",
+				"soname(libgobject-2.0.so.0(x86))",
+				"soname(libgthread-2.0.so.0(386))",
+				"soname(libgthread-2.0.so.0(x86))"
+			]
+		},
+		"glib2-32bit-devel": {
+			"build-depends": [
+				"binary(xgettext)",
+				"pkgconfig(bash-completion)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig32(libelf)",
+				"pkgconfig32(libffi)",
+				"pkgconfig32(libpcre2-8)",
+				"pkgconfig32(mount)",
+				"pkgconfig32(zlib)",
+				"python-packaging"
+			],
+			"depends": [
+				"glib2-32bit",
+				"glib2-devel",
+				"pkgconfig32(libffi)",
+				"pkgconfig32(libpcre2-8)",
+				"pkgconfig32(mount)",
+				"pkgconfig32(zlib)"
+			],
+			"files": [
+				"/usr/lib32/glib-2.0/include/glibconfig.h",
+				"/usr/lib32/libgio-2.0.so",
+				"/usr/lib32/libgirepository-2.0.so",
+				"/usr/lib32/libglib-2.0.so",
+				"/usr/lib32/libgmodule-2.0.so",
+				"/usr/lib32/libgobject-2.0.so",
+				"/usr/lib32/libgthread-2.0.so",
+				"/usr/lib32/pkgconfig/gio-2.0.pc",
+				"/usr/lib32/pkgconfig/gio-unix-2.0.pc",
+				"/usr/lib32/pkgconfig/girepository-2.0.pc",
+				"/usr/lib32/pkgconfig/glib-2.0.pc",
+				"/usr/lib32/pkgconfig/gmodule-2.0.pc",
+				"/usr/lib32/pkgconfig/gmodule-export-2.0.pc",
+				"/usr/lib32/pkgconfig/gmodule-no-export-2.0.pc",
+				"/usr/lib32/pkgconfig/gobject-2.0.pc",
+				"/usr/lib32/pkgconfig/gthread-2.0.pc"
+			],
+			"name": "glib2-32bit-devel",
+			"provides": [
+				"pkgconfig32(gio-2.0)",
+				"pkgconfig32(gio-unix-2.0)",
+				"pkgconfig32(girepository-2.0)",
+				"pkgconfig32(glib-2.0)",
+				"pkgconfig32(gmodule-2.0)",
+				"pkgconfig32(gmodule-export-2.0)",
+				"pkgconfig32(gmodule-no-export-2.0)",
+				"pkgconfig32(gobject-2.0)",
+				"pkgconfig32(gthread-2.0)"
+			]
+		},
 		"glib2-devel": {
 			"build-depends": [
 				"binary(xgettext)",
 				"pkgconfig(bash-completion)",
 				"pkgconfig(gobject-introspection-1.0)",
-				"pkgconfig(libelf)",
-				"pkgconfig(libffi)",
-				"pkgconfig(libpcre2-8)",
-				"pkgconfig(mount)",
-				"pkgconfig(zlib)",
+				"pkgconfig32(libelf)",
+				"pkgconfig32(libffi)",
+				"pkgconfig32(libpcre2-8)",
+				"pkgconfig32(mount)",
+				"pkgconfig32(zlib)",
 				"python-packaging"
 			],
 			"depends": [
@@ -544,6 +645,7 @@
 				"/usr/include/glib-2.0/glib/gvarianttype.h",
 				"/usr/include/glib-2.0/glib/gversion.h",
 				"/usr/include/glib-2.0/glib/gversionmacros.h",
+				"/usr/include/glib-2.0/glibconfig.h",
 				"/usr/include/glib-2.0/gmodule.h",
 				"/usr/include/glib-2.0/gmodule/gmodule-visibility.h",
 				"/usr/include/glib-2.0/gobject/gbinding.h",
@@ -570,6 +672,7 @@
 				"/usr/include/glib-2.0/gobject/gvaluearray.h",
 				"/usr/include/glib-2.0/gobject/gvaluecollector.h",
 				"/usr/include/glib-2.0/gobject/gvaluetypes.h",
+				"/usr/lib/glib-2.0/include/glibconfig.h",
 				"/usr/lib/libgio-2.0.so",
 				"/usr/lib/libgirepository-2.0.so",
 				"/usr/lib/libglib-2.0.so",
@@ -587,7 +690,15 @@
 				"/usr/lib/pkgconfig/gthread-2.0.pc",
 				"/usr/share/aclocal/glib-2.0.m4",
 				"/usr/share/aclocal/glib-gettext.m4",
-				"/usr/share/aclocal/gsettings.m4"
+				"/usr/share/aclocal/gsettings.m4",
+				"/usr/share/gdb/auto-load/usr/lib/__pycache__/libglib-2.0.so.0.8200.4-gdb.cpython-311.pyc",
+				"/usr/share/gdb/auto-load/usr/lib/__pycache__/libgobject-2.0.so.0.8200.4-gdb.cpython-311.pyc",
+				"/usr/share/gdb/auto-load/usr/lib/libglib-2.0.so.0.8200.4-gdb.py",
+				"/usr/share/gdb/auto-load/usr/lib/libgobject-2.0.so.0.8200.4-gdb.py",
+				"/usr/share/gdb/auto-load/usr/lib32/__pycache__/libglib-2.0.so.0.8200.4-gdb.cpython-311.pyc",
+				"/usr/share/gdb/auto-load/usr/lib32/__pycache__/libgobject-2.0.so.0.8200.4-gdb.cpython-311.pyc",
+				"/usr/share/gdb/auto-load/usr/lib32/libglib-2.0.so.0.8200.4-gdb.py",
+				"/usr/share/gdb/auto-load/usr/lib32/libgobject-2.0.so.0.8200.4-gdb.py"
 			],
 			"name": "glib2-devel",
 			"provides": [
@@ -604,6 +715,6 @@
 		}
 	},
 	"source-name": "glib2",
-	"source-release": "19",
+	"source-release": "20",
 	"source-version": "2.82.4"
 }
