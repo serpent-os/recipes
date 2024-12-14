@@ -4,7 +4,7 @@
 	"packages": {
 		"acl": {
 			"build-depends": [
-				"pkgconfig(libattr)"
+				"pkgconfig32(libattr)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -44,9 +44,45 @@
 				"soname(libacl.so.1(x86_64))"
 			]
 		},
+		"acl-32bit": {
+			"build-depends": [
+				"pkgconfig32(libattr)"
+			],
+			"depends": [
+				"acl",
+				"soname(libattr.so.1(386))",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libacl.so.1",
+				"/usr/lib32/libacl.so.1.1.2302"
+			],
+			"name": "acl-32bit",
+			"provides": [
+				"soname(libacl.so.1(386))",
+				"soname(libacl.so.1(x86))"
+			]
+		},
+		"acl-32bit-devel": {
+			"build-depends": [
+				"pkgconfig32(libattr)"
+			],
+			"depends": [
+				"acl-32bit",
+				"acl-devel"
+			],
+			"files": [
+				"/usr/lib32/libacl.so",
+				"/usr/lib32/pkgconfig/libacl.pc"
+			],
+			"name": "acl-32bit-devel",
+			"provides": [
+				"pkgconfig32(libacl)"
+			]
+		},
 		"acl-devel": {
 			"build-depends": [
-				"pkgconfig(libattr)"
+				"pkgconfig32(libattr)"
 			],
 			"depends": [
 				"acl"
@@ -103,6 +139,6 @@
 		}
 	},
 	"source-name": "acl",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.3.2"
 }

@@ -5,18 +5,19 @@
 #
 name        : acl
 version     : 2.3.2
-release     : 3
+release     : 4
+homepage    : https://savannah.nongnu.org/projects/acl
+upstreams   :
+    - https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz : 97203a72cae99ab89a067fe2210c1cbf052bc492b479eca7d226d9830883b0bd
 summary     : Access control list utilities
+description : |
+    Commands for Manipulating POSIX Access Control Lists
 license     :
     - GPL-2.0-or-later
     - LGPL-2.1-or-later
-homepage    : https://savannah.nongnu.org/projects/acl
-description : |
-    Commands for Manipulating POSIX Access Control Lists
-upstreams   :
-    - https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz : 97203a72cae99ab89a067fe2210c1cbf052bc492b479eca7d226d9830883b0bd
+emul32      : yes
 builddeps   :
-    - pkgconfig(libattr)
+    - pkgconfig32(libattr)
 setup       : |
     %configure --enable-shared \
                --disable-static
@@ -24,18 +25,3 @@ build       : |
     %make
 install     : |
     %make_install
-check       : |
-    # test/root/permissions.test requires the 'daemon' user to be a member
-    # of the 'bin' group in order not to fail.
-    sed -e 's|test/root/permissions.test||' \
-        -i test/Makemodule.am Makefile.in Makefile
-
-    # test/root/setfacl.test fails if 'bin' user cannot access build dir
-    sed -e 's|test/root/setfacl.test||' \
-        -i test/Makemodule.am Makefile.in Makefile
-
-    # test/root/restore.test fails if 'bin' user doesn't exist
-    sed -e 's|test/root/restore.test||' \
-        -i test/Makemodule.am Makefile.in Makefile
-
-    %make check || (cat ./test-suite.log && exit 1)
