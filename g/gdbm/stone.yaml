@@ -5,7 +5,7 @@
 #
 name        : gdbm
 version     : 1.24
-release     : 3
+release     : 4
 summary     : GNU database library
 license     : GPL-3.0-or-later
 homepage    : https://www.gnu.org.ua/software/gdbm/
@@ -14,7 +14,11 @@ description : |
 upstreams   :
     - https://ftp.gnu.org/gnu/gdbm/gdbm-1.24.tar.gz : 695e9827fdf763513f133910bc7e6cfdb9187943a4fec943e57449723d2b8dbf
 builddeps   :
-    - pkgconfig(readline)
+    - pkgconfig32(readline)
+tuning      :
+    - lto
+    - optimize: speed
+emul32      : true
 setup       : |
     %configure --disable-static \
                --disable-libgdbm-compat
@@ -24,6 +28,3 @@ install     : |
     %make_install
 check       : |
     %make check
-tuning      :
-    - lto
-    - optimize: speed
