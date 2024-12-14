@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : elfutils
-version     : '0.191'
-release     : 4
+version     : 0.192
+release     : 5
 homepage    : https://sourceware.org/elfutils
 upstreams   :
-    - https://sourceware.org/elfutils/ftp/0.191/elfutils-0.191.tar.bz2 : df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871
+    - https://sourceware.org/elfutils/ftp/0.192/elfutils-0.192.tar.bz2 : 616099beae24aba11f9b63d86ca6cc8d566d968b802391334c91df54eab416b4
 summary     : Collection of utilities and libraries to read, create and modify ELF binary files
 description : |
     elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.
@@ -16,29 +16,38 @@ license     :
     - GPL-2.0-or-later
 builddeps   :
     - binary(makeinfo)
-    - pkgconfig(bzip2)
     - pkgconfig(libcurl)
-    - pkgconfig(liblzma)
-    - pkgconfig(libzstd)
     - pkgconfig(sqlite3)
-    - pkgconfig(zlib)
-setup       : |
+    - pkgconfig32(bzip2)
+    - pkgconfig32(liblzma)
+    - pkgconfig32(libzstd)
+    - pkgconfig32(zlib)
+emul32      : true
+toolchain   : gnu  # Doesn't play nicely with libc++'
+packages    :
+    - "%(name)-libs":
+        summary: Libraries for elfutils
+        description: |
+            Libraries for elfutils
+        paths:
+            - /usr/lib/lib*-*.so
+            - /usr/lib/lib*.so.*
+    - "%(name)-32bit":
+        paths:
+            - /usr/lib32/lib*-*.so
+            - /usr/lib32/lib*.so.*
+setup: |
     %configure --disable-static \
-               --disable-debuginfod \
-               --enable-libdebuginfod \
-               --with-zlib \
-               --with-bzlib \
-               --with-lzma \
-               --with-zstd
+                --disable-debuginfod \
+                --disable-libdebuginfod \
+                --with-zlib \
+                --with-bzlib \
+                --with-lzma \
+                --with-zstd
 build       : |
-    %make
+    %make VERBOSE=1
 install     : |
     %make_install
     find %(installroot)/%(libdir) -type f -name '*.a' -delete
 #check       : |
 #    %make check
-packages    :
-    - "%(name)-libs":
-        paths:
-            - /usr/lib/lib*-*.so
-            - /usr/lib/lib*.so.*
