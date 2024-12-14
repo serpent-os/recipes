@@ -4,8 +4,10 @@
 	"packages": {
 		"openssl": {
 			"build-depends": [
+				"gcc",
+				"gcc-32bit",
 				"perl",
-				"pkgconfig(zlib)"
+				"pkgconfig32(zlib)"
 			],
 			"depends": [
 				"binary(perl)",
@@ -347,10 +349,79 @@
 				"soname(ossl-modules/legacy.so(x86_64))"
 			]
 		},
+		"openssl-32bit": {
+			"build-depends": [
+				"gcc",
+				"gcc-32bit",
+				"perl",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"openssl",
+				"soname(libatomic.so.1(386))",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/engines-3/afalg.so",
+				"/usr/lib32/engines-3/capi.so",
+				"/usr/lib32/engines-3/loader_attic.so",
+				"/usr/lib32/engines-3/padlock.so",
+				"/usr/lib32/libcrypto.so.3",
+				"/usr/lib32/libssl.so.3",
+				"/usr/lib32/ossl-modules/legacy.so"
+			],
+			"name": "openssl-32bit",
+			"provides": [
+				"soname(engines-3/afalg.so(386))",
+				"soname(engines-3/afalg.so(x86))",
+				"soname(engines-3/capi.so(386))",
+				"soname(engines-3/capi.so(x86))",
+				"soname(engines-3/loader_attic.so(386))",
+				"soname(engines-3/loader_attic.so(x86))",
+				"soname(engines-3/padlock.so(386))",
+				"soname(engines-3/padlock.so(x86))",
+				"soname(libcrypto.so.3(386))",
+				"soname(libcrypto.so.3(x86))",
+				"soname(libssl.so.3(386))",
+				"soname(libssl.so.3(x86))",
+				"soname(ossl-modules/legacy.so(386))",
+				"soname(ossl-modules/legacy.so(x86))"
+			]
+		},
+		"openssl-32bit-devel": {
+			"build-depends": [
+				"gcc",
+				"gcc-32bit",
+				"perl",
+				"pkgconfig32(zlib)"
+			],
+			"depends": [
+				"openssl-32bit",
+				"openssl-devel"
+			],
+			"files": [
+				"/usr/lib32/cmake/OpenSSL/OpenSSLConfig.cmake",
+				"/usr/lib32/cmake/OpenSSL/OpenSSLConfigVersion.cmake",
+				"/usr/lib32/libcrypto.so",
+				"/usr/lib32/libssl.so",
+				"/usr/lib32/pkgconfig/libcrypto.pc",
+				"/usr/lib32/pkgconfig/libssl.pc",
+				"/usr/lib32/pkgconfig/openssl.pc"
+			],
+			"name": "openssl-32bit-devel",
+			"provides": [
+				"cmake(OpenSSL)",
+				"pkgconfig32(libcrypto)",
+				"pkgconfig32(libssl)",
+				"pkgconfig32(openssl)"
+			]
+		},
 		"openssl-devel": {
 			"build-depends": [
+				"gcc",
+				"gcc-32bit",
 				"perl",
-				"pkgconfig(zlib)"
+				"pkgconfig32(zlib)"
 			],
 			"depends": [
 				"openssl"
@@ -6174,8 +6245,10 @@
 		},
 		"openssl-docs": {
 			"build-depends": [
+				"gcc",
+				"gcc-32bit",
 				"perl",
-				"pkgconfig(zlib)"
+				"pkgconfig32(zlib)"
 			],
 			"files": [
 				"/usr/share/doc/openssl/html/man1/CA.pl.html",
@@ -7042,6 +7115,6 @@
 		}
 	},
 	"source-name": "openssl",
-	"source-release": "18",
+	"source-release": "19",
 	"source-version": "3.3.2"
 }

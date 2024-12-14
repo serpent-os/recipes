@@ -5,7 +5,7 @@
 #
 name        : openssl
 version     : 3.3.2
-release     : 18
+release     : 19
 summary     : OpenSSL cryptography library
 license     : Apache-2.0
 homepage    : https://www.openssl.org
@@ -14,24 +14,41 @@ description : |
 upstreams   :
     - https://www.openssl.org/source/openssl-3.3.2.tar.gz: 2e8a40b01979afe8be0bbfb3de5dc1c6709fedb46d6c89c10da114ab5fc3d281
 builddeps   :
-    - pkgconfig(zlib)
+    - gcc        # libatomic
+    - gcc-32bit  # libatomic(386)
+    - pkgconfig32(zlib)
     - perl
 rundeps     :
     - ca-certificates
     - coreutils
     - binary(perl)
+emul32      : true
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*
+profiles    :
+    - emul32:
+        install: |
+            %make_install MANSUFFIX=openssl
+            rm -v %(installroot)%(libdir)/*.a
 setup       : |
+    if [[ %(target_triple) = i686* ]]; then
+        export OSSL_TARGET="linux-x86-clang"
+    else
+        export OSSL_TARGET=linux-x86_64-clang""
+    fi
     %patch %(pkgdir)/stateless/0001-Use-OS-provided-copy-of-openssl.cnf-as-fallback.patch
     %patch %(pkgdir)/config.patch
-    ./Configure shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 enable-ktls \
+    ./Configure $OSSL_TARGET shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 enable-ktls \
                 --prefix=/usr \
                 --openssldir=/etc/ssl \
-                --libdir=/usr/lib
+                --libdir=%(libdir)
 build       : |
     %make
 install     : |
     %make_install MANSUFFIX=openssl
-    rm %(installroot)/%(libdir)/*.a
+    rm -v %(installroot)%(libdir)/*.a
 
     # Stateless
     %install_dir %(installroot)/%(vendordir)/etc
@@ -45,7 +62,3 @@ install     : |
     %tmpfiles "# Create SSL compatibility link"
     %tmpfiles "d /etc/ssl 0755 - - -"
     %tmpfiles "L+ /etc/ssl/certs - - - - /usr/share/defaults/etc/ssl/certs"
-packages    :
-    - "%(name)-docs":
-        paths:
-            - /usr/share/doc/*
