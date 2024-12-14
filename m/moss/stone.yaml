@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : moss
-version     : 0.24.5
-release     : 58
-summary     : Ridiculously fast atomic package manager
+version     : 0.24.6
+release     : 59
+summary     : Serpent OS package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
 upstreams   :
-    - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.5.tar.gz : 09df8d9fc87eb1ff900eb673ef4dc7f623b2a16ea6e98fffcc0f851939ec2333
+    - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.6.tar.gz : d4a974bfef82c5d1cf3383ee682a084063045b1ff77ea0bf7cabe5cebb1a068e
 description : |
     The new package manager with an old school feel. Traditional interaction
     and management whilst using brand new technologies, including efficient
@@ -23,7 +23,6 @@ rundeps     :
 check       : |
     %cargo_test
 setup       : |
-    %patch %(pkgdir)/no-rustfmt.patch
     %cargo_fetch
 build       : |
     %cargo_build -p moss
@@ -43,4 +42,8 @@ install     : |
     %install_dir %(installroot)%(mandir)/man1
     cp man/*.1 %(installroot)%(mandir)/man1/.
 
-    %install_file %(pkgdir)/stone.xml %(installroot)%(datadir)/mime/packages/stone.xml
+    # Install the quiet cmdline snippet
+    %install_file %(pkgdir)/00-quiet.cmdline %(installroot)%(libdir)/kernel/cmdline.d/00-quiet.cmdline
+
+    # Install the mime type
+    %install_file stone.xml %(installroot)%(datadir)/mime/packages/stone.xml

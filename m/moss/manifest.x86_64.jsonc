@@ -16,6 +16,7 @@
 			],
 			"files": [
 				"/usr/bin/moss",
+				"/usr/lib/kernel/cmdline.d/00-quiet.cmdline",
 				"/usr/share/bash-completion/completions/moss",
 				"/usr/share/fish/completions/moss.fish",
 				"/usr/share/man/man1/moss-extract.1",
@@ -56,6 +57,6 @@
 		}
 	},
 	"source-name": "moss",
-	"source-release": "58",
-	"source-version": "0.24.5"
+	"source-release": "59",
+	"source-version": "0.24.6"
 }
