@@ -4,22 +4,25 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libeconf
-version     : 0.7.4
-release     : 2
+version     : 0.7.6
+release     : 3
 homepage    : https://github.com/openSUSE/libeconf
 upstreams   :
-    - https://github.com/openSUSE/libeconf/archive/refs/tags/v0.7.4.tar.gz : 4174ca94e958cbb6c8bb4ea9e6909877d6178e00b6a65349eade64a462534da0
+    - https://github.com/openSUSE/libeconf/archive/refs/tags/v0.7.6.tar.gz : 2733b6af7856efac3a030c02fb816103e4130e8ffcc403ff6ffced6f677a12e3
 summary     : Configuration file parser for hermetic systems
 description : |
     Enhanced config file parser, which merges config files placed in several locations into one.
 license     : MIT
 environment : |
     export LDFLAGS="${LDFLAGS} -Wl,--undefined-version"
+emul32      : true
 setup       : |
-    %cmake
+    %cmake -DCMAKE_INSTALL_LIBDIR=lib%(libsuffix)
 build       : |
     %cmake_build
 install     : |
     %cmake_install
     %install_dir %(installroot)%(vendordir)
-    ln -srv %(installroot)%(vendordir) %(installroot)%(prefix)/vendor
+    if [[ ! -d %(installroot)%(prefix)/vendor ]]; then
+        ln -svf share/defaults %(installroot)%(prefix)/vendor
+    fi

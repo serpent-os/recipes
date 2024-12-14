@@ -4,13 +4,15 @@
 	"packages": {
 		"libeconf": {
 			"depends": [
-				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libc.so.6(x86_64))"
+				"interpreter(/usr/lib32/ld-linux.so.2(386))",
+				"soname(libc.so.6(386))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libeconf.so.0(386))"
 			],
 			"files": [
 				"/usr/bin/econftool",
 				"/usr/lib/libeconf.so.0",
-				"/usr/lib/libeconf.so.0.7.4",
+				"/usr/lib/libeconf.so.0.7.6",
 				"/usr/share/defaults",
 				"/usr/share/man/man8/econftool.8",
 				"/usr/vendor"
@@ -19,6 +21,40 @@
 			"provides": [
 				"binary(econftool)",
 				"soname(libeconf.so.0(x86_64))"
+			]
+		},
+		"libeconf-32bit": {
+			"depends": [
+				"libeconf",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libeconf.so.0",
+				"/usr/lib32/libeconf.so.0.7.6"
+			],
+			"name": "libeconf-32bit",
+			"provides": [
+				"soname(libeconf.so.0(386))",
+				"soname(libeconf.so.0(x86))"
+			]
+		},
+		"libeconf-32bit-devel": {
+			"depends": [
+				"libeconf-32bit",
+				"libeconf-devel"
+			],
+			"files": [
+				"/usr/lib32/cmake/libeconf/libeconfConfig.cmake",
+				"/usr/lib32/cmake/libeconf/libeconfConfigVersion.cmake",
+				"/usr/lib32/cmake/libeconf/libeconfTargets-release.cmake",
+				"/usr/lib32/cmake/libeconf/libeconfTargets.cmake",
+				"/usr/lib32/libeconf.so",
+				"/usr/lib32/pkgconfig/libeconf.pc"
+			],
+			"name": "libeconf-32bit-devel",
+			"provides": [
+				"cmake(libeconf)",
+				"pkgconfig32(libeconf)"
 			]
 		},
 		"libeconf-devel": {
@@ -74,6 +110,6 @@
 		}
 	},
 	"source-name": "libeconf",
-	"source-release": "2",
-	"source-version": "0.7.4"
+	"source-release": "3",
+	"source-version": "0.7.6"
 }
