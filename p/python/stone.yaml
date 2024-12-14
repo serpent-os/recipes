@@ -5,7 +5,7 @@
 #
 name        : python
 version     : 3.11.9
-release     : 6
+release     : 7
 summary     : Python language interpreter
 license     : Python-2.0
 homepage    : https://www.python.org
@@ -14,18 +14,20 @@ description : |
 upstreams   :
     - https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tar.xz: 9b1e896523fc510691126c864406d9360a3d1e986acbda59cda57b5abda45b87
 builddeps   :
+    - gdbm-32bit-devel
     - gdbm-devel
     - llvm-bolt
-    - pkgconfig(bzip2)
-    - pkgconfig(expat)
-    - pkgconfig(libcrypt)
-    - pkgconfig(libffi)
-    - pkgconfig(liblzma)
-    - pkgconfig(libssl)
-    - pkgconfig(ncursesw)
-    - pkgconfig(sqlite3)
-    - pkgconfig(uuid)
-    - pkgconfig(zlib)
+    - pkgconfig32(bzip2)
+    - pkgconfig32(expat)
+    - pkgconfig32(libcrypt)
+    - pkgconfig32(libffi)
+    - pkgconfig32(liblzma)
+    - pkgconfig32(libssl)
+    - pkgconfig32(ncursesw)
+    - pkgconfig32(sqlite3)
+    - pkgconfig32(uuid)
+    - pkgconfig32(zlib)
+emul32      : true
 # FIXME: change to auxdeps, needed for python handlers
 #        this is an exception as it doesn't use python macros
 checkdeps   :
@@ -42,6 +44,7 @@ setup       : |
         --with-computed-gotos \
         --without-cxx-main \
         --with-system-expat \
+        --with-platlibdir=lib%(libsuffix) \
         ax_cv_c_float_words_bigendian=no
 build       : |
     %make
@@ -49,7 +52,7 @@ install     : |
     # Bolt section removed until the reason why it segfaults the install is found
     %make_install
 
-    ln -s %(bindir)/python3 %(installroot)/%(bindir)/python
+    ln -sf %(bindir)/python3 %(installroot)/%(bindir)/python
 packages    :
     - "%(name)-devel":
         rundeps:
