@@ -23,6 +23,7 @@
 				"pkgconfig(xmlb)"
 			],
 			"depends": [
+				"gnome-app-list",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libadwaita-1.so.0(x86_64))",
 				"soname(libappstream.so.5(x86_64))",
@@ -399,6 +400,6 @@
 		}
 	},
 	"source-name": "gnome-software",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "47.2"
 }
