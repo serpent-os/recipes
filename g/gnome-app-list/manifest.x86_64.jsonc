@@ -1,0 +1,20 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gnome-app-list": {
+			"build-depends": [
+				"binary(bash)",
+				"binary(python3)",
+				"binary(xmllint)"
+			],
+			"files": [
+				"/usr/share/swcatalog/xml/org.gnome.App-list.xml"
+			],
+			"name": "gnome-app-list"
+		}
+	},
+	"source-name": "gnome-app-list",
+	"source-release": "1",
+	"source-version": "1.0"
+}
