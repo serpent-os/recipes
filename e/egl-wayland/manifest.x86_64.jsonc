@@ -1,0 +1,65 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"egl-wayland": {
+			"build-depends": [
+				"pkgconfig(egl)",
+				"pkgconfig(eglexternalplatform)",
+				"pkgconfig(libdrm)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-egl-backend)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(wayland-server)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libdrm.so.2(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libwayland-server.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libnvidia-egl-wayland.so.1",
+				"/usr/lib/libnvidia-egl-wayland.so.1.1.17",
+				"/usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json",
+				"/usr/share/wayland-eglstream/wayland-drm.xml",
+				"/usr/share/wayland-eglstream/wayland-eglstream-controller.xml",
+				"/usr/share/wayland-eglstream/wayland-eglstream.xml"
+			],
+			"name": "egl-wayland",
+			"provides": [
+				"soname(libnvidia-egl-wayland.so.1(x86_64))"
+			]
+		},
+		"egl-wayland-devel": {
+			"build-depends": [
+				"pkgconfig(egl)",
+				"pkgconfig(eglexternalplatform)",
+				"pkgconfig(libdrm)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-egl-backend)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(wayland-server)"
+			],
+			"depends": [
+				"egl-wayland",
+				"pkgconfig(eglexternalplatform)"
+			],
+			"files": [
+				"/usr/lib/libnvidia-egl-wayland.so",
+				"/usr/lib/pkgconfig/wayland-eglstream.pc",
+				"/usr/share/pkgconfig/wayland-eglstream-protocols.pc"
+			],
+			"name": "egl-wayland-devel",
+			"provides": [
+				"pkgconfig(wayland-eglstream)",
+				"pkgconfig(wayland-eglstream-protocols)"
+			]
+		}
+	},
+	"source-name": "egl-wayland",
+	"source-release": "1",
+	"source-version": "1.1.17"
+}

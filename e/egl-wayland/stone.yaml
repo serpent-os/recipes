@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : egl-wayland
+version     : 1.1.17
+release     : 1
+homepage    : https://github.com/NVIDIA/egl-wayland
+upstreams   :
+    - https://github.com/NVIDIA/egl-wayland/archive/refs/tags/1.1.17.tar.gz : 974351af2057a385e98f4a0d4a40adab4480b77f4b65449d1bd6137c758c25b7
+summary     : The Wayland External Platform interface for EGL
+description : |
+    The EGL External Platform interface for Wayland
+license     : Apache-2.0
+builddeps   :
+    - pkgconfig(egl)
+    - pkgconfig(eglexternalplatform)
+    - pkgconfig(libdrm)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-egl-backend)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(wayland-scanner)
+    - pkgconfig(wayland-server)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
