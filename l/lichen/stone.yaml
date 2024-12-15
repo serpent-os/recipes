@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : lichen
-version     : "0.1.0"
-release     : 15
+version     : 0.1.0
+release     : 16
 summary     : Experimental OS installer
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/lichen
 upstreams   :
-    - git|https://github.com/serpent-os/lichen.git : f44a7c9e6faf48407d5d60b836517f40bae7b98b
+    - git|https://github.com/serpent-os/lichen.git : 145e8ebe49e0b4c89f1a02e11e62beceeb26ea4b
 description : |
     Experimental OS installer
 builddeps   :
