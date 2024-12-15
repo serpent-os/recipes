@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-firmware
-version     : 20241110
-release     : 19
+version     : 20241210
+release     : 20
 homepage    : https://kernel.org
 upstreams   :
-    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : b5885ec543f4d40938d8e1c054865456c6144b38 # 20441017
+    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : b00a7f7e525095e5aae663945253fc8c709cc084
 summary     : Firmware to allow devices to function correctly
 description : |
     Firmware to allow devices to function correctly
