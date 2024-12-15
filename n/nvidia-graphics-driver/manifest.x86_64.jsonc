@@ -57,6 +57,8 @@
 				"/usr/bin/nvidia-sleep.sh",
 				"/usr/bin/nvidia-smi",
 				"/usr/bin/nvidia-xconfig",
+				"/usr/lib/firmware/nvidia/565.77/gsp_ga10x.bin",
+				"/usr/lib/firmware/nvidia/565.77/gsp_tu10x.bin",
 				"/usr/lib/gbm/nvidia-drm_gbm.so",
 				"/usr/lib/libEGL_nvidia.so.0",
 				"/usr/lib/libEGL_nvidia.so.565.77",
@@ -204,6 +206,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "565.77"
 }
