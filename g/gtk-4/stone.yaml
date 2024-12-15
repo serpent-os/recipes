@@ -5,7 +5,7 @@
 #
 name        : gtk-4
 version     : 4.16.7
-release     : 16
+release     : 17
 homepage    : https://www.gtk.org/
 upstreams   :
     - https://download.gnome.org/sources/gtk/4.16/gtk-4.16.7.tar.xz : 5303c7624e15a48880591b9ddd43389afba3de4fb92a219719519bb1642ce3dc
@@ -79,7 +79,7 @@ setup       : |
             -Dintrospection=enabled \
             -Dmedia-gstreamer=enabled \
             -Dtracker=enabled \
-            -Dvulkan=disabled
+            -Dvulkan=enabled
 build       : |
     %meson_build
 install     : |
