@@ -23,6 +23,7 @@
 				"binary(switcherooctl)",
 				"binary(update-desktop-database)",
 				"binary(update-mime-database)",
+				"binary(xdg-open)",
 				"binary(xdg-user-dirs-gtk-update)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"power-profiles-daemon",
@@ -212,6 +213,6 @@
 		}
 	},
 	"source-name": "gnome-session",
-	"source-release": "14",
+	"source-release": "15",
 	"source-version": "47.0.1"
 }
