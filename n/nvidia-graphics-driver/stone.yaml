@@ -1,0 +1,61 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : nvidia-graphics-driver
+version     : 565.77
+release     : 3
+homepage    : https://www.nvidia.com/
+upstreams   :
+    - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
+        hash: 0a7aa742c46bcf34d766982402d17b3db1fdb3bc1b89344d70cd123c1cb3147c
+        unpack: false
+        rename: NVIDIA.run
+summary     : The proprietary NVIDIA graphics driver
+description : |
+    This package provides the NVIDIA graphics driver for desktop systems.
+license     : Proprietary
+strip       : false
+builddeps   :
+    - glibc-32bit
+    - binary(sh)
+    - pkgconfig32(libglvnd)
+    - pkgconfig(osmesa)
+    - pkgconfig(vulkan)
+    - pkgconfig(systemd)
+rundeps     :
+    - nvidia-open-gpu-kernel-modules
+packages    :
+    - "%(name)":
+        paths:
+            # Prevent emission of -devel subpackage
+            - /usr/lib/lib*.so*
+install     : |
+    sh %(sourcedir)/NVIDIA.run --skip-module-load \
+                               --no-questions \
+                               --x-prefix=%(installroot)%(prefix) \
+                               --opengl-prefix=%(installroot)%(prefix) \
+                               --utility-prefix=%(installroot)%(prefix) \
+                               --log-file-name=%(workdir)/nvidia-installer.log \
+                               --ui=none \
+                               --no-kernel-modules \
+                               --no-x-check \
+                               --no-nouveau-check \
+                               --no-disable-nouveau \
+                               --no-sigwinch-workaround \
+                               --no-distro-scripts \
+                               --no-check-for-alternate-installs \
+                               --skip-depmod \
+                               --no-rebuild-initramfs \
+                               --glvnd-egl-config-path=%(installroot)%(datadir)/glvnd/egl_vendor.d \
+                               --egl-external-platform-config-path=%(installroot)%(datadir)/egl/egl_external_platform.d \
+                               --systemd-unit-prefix=%(installroot)%(libdir)/systemd/system \
+                               --systemd-sleep-prefix=%(installroot)%(libdir)/systemd/systemd-sleep \
+                               --compat32-libdir=lib32
+    cat %(workdir)/nvidia-installer.log
+    rm %(installroot)%(bindir)/{nvidia-installer,nvidia-uninstall}
+
+    # Fix gbm
+    rm -v %(installroot)%(libdir)/gbm/nvidia-drm_gbm.so
+    ln -s ../libnvidia-allocator.so.1 %(installroot)%(libdir)/gbm/nvidia-drm_gbm.so
