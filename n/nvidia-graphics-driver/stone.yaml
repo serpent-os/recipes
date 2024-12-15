@@ -5,7 +5,7 @@
 #
 name        : nvidia-graphics-driver
 version     : 565.77
-release     : 3
+release     : 4
 homepage    : https://www.nvidia.com/
 upstreams   :
     - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
@@ -59,3 +59,7 @@ install     : |
     # Fix gbm
     rm -v %(installroot)%(libdir)/gbm/nvidia-drm_gbm.so
     ln -s ../libnvidia-allocator.so.1 %(installroot)%(libdir)/gbm/nvidia-drm_gbm.so
+
+    # unused
+    rm -v %(installroot)%(libdir)/libnvidia-gtk2.so*
+    rm -v %(installroot)%(libdir)/libnvidia-pkcs11.so*
