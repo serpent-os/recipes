@@ -5,7 +5,7 @@
 #
 name        : nvidia-graphics-driver
 version     : 565.77
-release     : 6
+release     : 7
 homepage    : https://www.nvidia.com/
 upstreams   :
     - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
@@ -25,6 +25,7 @@ builddeps   :
     - pkgconfig(vulkan)
     - pkgconfig(systemd)
 rundeps     :
+    - egl-wayland
     - nvidia-open-gpu-kernel-modules
 packages    :
     - "%(name)":
@@ -70,3 +71,7 @@ install     : |
     %install_file extracted/nvidia_icd.json %(installroot)%(datadir)/vulkan/icd.d/nvidia_icd.json
     %install_file extracted/nvidia_icd_vksc.json %(installroot)%(datadir)/vulkansc/icd.d/nvidia_icd.json
     %install_file extracted/nvidia_layers.json %(installroot)%(datadir)/vulkan/implicit_layer.d/nvidia_layers.json
+
+    # conflicts by egl-wayland
+    rm -v %(installroot)%(libdir)/libnvidia-egl-wayland*
+    rm -v %(installroot)%(datadir)/egl/egl_external_platform.d/10_nvidia_wayland.json

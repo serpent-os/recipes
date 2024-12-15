@@ -12,6 +12,7 @@
 				"pkgconfig32(libglvnd)"
 			],
 			"depends": [
+				"egl-wayland",
 				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))",
 				"nvidia-open-gpu-kernel-modules",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -39,7 +40,6 @@
 				"soname(librt.so.1(x86_64))",
 				"soname(libutil.so.1(x86_64))",
 				"soname(libwayland-client.so.0(x86_64))",
-				"soname(libwayland-server.so.0(x86_64))",
 				"soname(libxcb-dri3.so.0(x86_64))",
 				"soname(libxcb-present.so.0(x86_64))",
 				"soname(libxcb.so.1(x86_64))"
@@ -89,7 +89,6 @@
 				"/usr/lib/libnvidia-cfg.so.1",
 				"/usr/lib/libnvidia-cfg.so.565.77",
 				"/usr/lib/libnvidia-egl-gbm.so.1.1.2",
-				"/usr/lib/libnvidia-egl-wayland.so.1.1.17",
 				"/usr/lib/libnvidia-egl-xcb.so.1.0.0",
 				"/usr/lib/libnvidia-egl-xlib.so.1.0.0",
 				"/usr/lib/libnvidia-eglcore.so.565.77",
@@ -142,7 +141,6 @@
 				"/usr/lib/xorg/modules/extensions/libglxserver_nvidia.so",
 				"/usr/lib/xorg/modules/extensions/libglxserver_nvidia.so.565.77",
 				"/usr/share/applications/nvidia-settings.desktop",
-				"/usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json",
 				"/usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json",
 				"/usr/share/egl/egl_external_platform.d/20_nvidia_xcb.json",
 				"/usr/share/egl/egl_external_platform.d/20_nvidia_xlib.json",
@@ -178,7 +176,6 @@
 				"soname(libnvidia-api.so.1(x86_64))",
 				"soname(libnvidia-cfg.so.1(x86_64))",
 				"soname(libnvidia-egl-gbm.so.1(x86_64))",
-				"soname(libnvidia-egl-wayland.so.1(x86_64))",
 				"soname(libnvidia-egl-xcb.so.1(x86_64))",
 				"soname(libnvidia-egl-xlib.so.1(x86_64))",
 				"soname(libnvidia-eglcore.so.565.77(x86_64))",
@@ -209,6 +206,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "565.77"
 }
