@@ -5,7 +5,7 @@
 #
 name        : nvidia-graphics-driver
 version     : 565.77
-release     : 5
+release     : 6
 homepage    : https://www.nvidia.com/
 upstreams   :
     - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
@@ -66,3 +66,7 @@ install     : |
     # unused
     rm -v %(installroot)%(libdir)/libnvidia-gtk2.so*
     rm -v %(installroot)%(libdir)/libnvidia-pkcs11.so*
+
+    %install_file extracted/nvidia_icd.json %(installroot)%(datadir)/vulkan/icd.d/nvidia_icd.json
+    %install_file extracted/nvidia_icd_vksc.json %(installroot)%(datadir)/vulkansc/icd.d/nvidia_icd.json
+    %install_file extracted/nvidia_layers.json %(installroot)%(datadir)/vulkan/implicit_layer.d/nvidia_layers.json
