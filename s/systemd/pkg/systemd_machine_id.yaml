@@ -1,0 +1,14 @@
+name: systemd_machine_id
+description: |
+    Run systemd-tmpfiles
+before: systemd_etcfiles
+
+handlers:
+    systemd_machine_id:
+        run: /usr/bin/systemd-machine-id-setup
+        args: []
+
+paths:
+    "/usr/bin/systemd-machine-id-setup":
+        handlers:
+            - systemd_machine_id

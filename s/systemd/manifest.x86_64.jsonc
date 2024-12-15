@@ -1154,6 +1154,7 @@
 				"/usr/share/man/man8/telinit.8",
 				"/usr/share/man/man8/udevadm.8",
 				"/usr/share/moss/triggers/sys.d/systemd_etcfiles.yaml",
+				"/usr/share/moss/triggers/sys.d/systemd_machine_id.yaml",
 				"/usr/share/moss/triggers/sys.d/systemd_presets.yaml",
 				"/usr/share/moss/triggers/sys.d/systemd_sysusers.yaml",
 				"/usr/share/moss/triggers/sys.d/systemd_tmpfiles.yaml",
@@ -1248,18 +1249,18 @@
 				"binary(timedatectl)",
 				"binary(udevadm)",
 				"binary(userdbctl)",
-				"soname(libcryptsetup-token-systemd-pkcs11.so(x86_64))",
-				"soname(libcryptsetup-token-systemd-tpm2.so(x86_64))",
+				"soname(cryptsetup/libcryptsetup-token-systemd-pkcs11.so(x86_64))",
+				"soname(cryptsetup/libcryptsetup-token-systemd-tpm2.so(x86_64))",
 				"soname(libnss_myhostname.so.2(x86_64))",
 				"soname(libnss_mymachines.so.2(x86_64))",
 				"soname(libnss_resolve.so.2(x86_64))",
 				"soname(libnss_systemd.so.2(x86_64))",
-				"soname(libsystemd-core-254.so(x86_64))",
-				"soname(libsystemd-shared-254.so(x86_64))",
 				"soname(libsystemd.so.0(x86_64))",
 				"soname(libudev.so.1(x86_64))",
-				"soname(pam_systemd.so(x86_64))",
-				"soname(pam_systemd_home.so(x86_64))",
+				"soname(security/pam_systemd.so(x86_64))",
+				"soname(security/pam_systemd_home.so(x86_64))",
+				"soname(systemd/libsystemd-core-254.so(x86_64))",
+				"soname(systemd/libsystemd-shared-254.so(x86_64))",
 				"sysbinary(halt)",
 				"sysbinary(init)",
 				"sysbinary(mount.ddi)",
@@ -2172,7 +2173,7 @@
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libsystemd-shared-254.so(x86_64))"
+				"soname(systemd/libsystemd-shared-254.so(x86_64))"
 			],
 			"files": [
 				"/usr/bin/networkctl",
@@ -2221,6 +2222,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "41",
+	"source-release": "42",
 	"source-version": "254.18"
 }
