@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-desktop
-version     : 6.12.4
-release     : 65
+version     : 6.12.5
+release     : 66
 homepage    : https://kernel.org/
 upstreams   :
-    - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.4.tar.xz : 6f35f821433d8421be7167990747c7c4a0c451958fb96883446301af13d71152
+    - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.5.tar.xz : 39207fce1ce42838e085261bae0af5ce4a0843aa777cfc0f5c49bc7729602bcd
 summary     : The Linux Kernel for desktop systems
 description : |
     The Linux Kernel for desktop systems
@@ -58,6 +58,23 @@ packages    :
             - /usr/src
 setup       : |
     %patch %(pkgdir)/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch
+
+    # Surface Pro support
+    %patch %(pkgdir)/surface/0001-secureboot.patch
+    %patch %(pkgdir)/surface/0002-surface3-oemb.patch
+    %patch %(pkgdir)/surface/0003-mwifiex.patch
+    %patch %(pkgdir)/surface/0004-ath10k.patch
+    %patch %(pkgdir)/surface/0005-ipts.patch
+    %patch %(pkgdir)/surface/0006-ithc.patch
+    %patch %(pkgdir)/surface/0007-surface-sam-over-hid.patch
+    %patch %(pkgdir)/surface/0008-surface-button.patch
+    %patch %(pkgdir)/surface/0009-surface-typecover.patch
+    %patch %(pkgdir)/surface/0010-surface-shutdown.patch
+    %patch %(pkgdir)/surface/0011-surface-gpe.patch
+    %patch %(pkgdir)/surface/0012-cameras.patch
+    %patch %(pkgdir)/surface/0013-amd-gpio.patch
+    %patch %(pkgdir)/surface/0014-rtc.patch
+
     extraVersion="-%(release).desktop"
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
