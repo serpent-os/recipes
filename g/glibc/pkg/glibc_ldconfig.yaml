@@ -1,0 +1,14 @@
+name: glibc_ldconfig
+after: systemd_tmpfiles
+description: |
+    Update the dynamic linker cache.
+
+handlers:
+    glibc_ldconfig_libs:
+        run: /usr/sbin/ldconfig
+        args: ["-X"]
+
+paths:
+    "/usr/lib*/lib*.so.*":
+        handlers:
+            - glibc_ldconfig_libs

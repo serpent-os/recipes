@@ -5,7 +5,7 @@
 #
 name        : glibc
 version     : 2.39
-release     : 13
+release     : 14
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -97,8 +97,10 @@ install     : |
     rm %(installroot)/var/db/Makefile %(installroot)/etc/rpc
     rmdir %(installroot)/var/db %(installroot)/var %(installroot)/etc
 
-    %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)/ld.so.conf
-    %install_dir %(installroot)/%(vendordir)/ld.so.conf.d
+    %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)%(sysconfdir)/ld.so.conf
+    %install_dir %(installroot)/%(vendordir)%(sysconfdir)/ld.so.conf.d
+    %install_file %(pkgdir)/glibc_ldconfig.yaml %(installroot)/usr/share/moss/triggers/sys.d/glibc_ldconfig.yaml
+
 
     # Stateless: We need these directories to exist without including them
     %tmpfiles "# Create stateless directories"
