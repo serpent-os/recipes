@@ -35,7 +35,7 @@ builddeps   :
     - pkgconfig(polkit-gobject-1)
     - pkgconfig(xmlb)
     - docbook
-rundeps	    :
+rundeps     :
     - gnome-app-list
 setup       : |
     %meson \
