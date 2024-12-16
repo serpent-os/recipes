@@ -16,7 +16,7 @@ $ sudo usermod --add-subuids 1000000-1065535 --add-subgids 1000000-1065535 root
 $ sudo usermod --add-subuids 1065536-1131071 --add-subgids 1065536-1131071 "$USER"
 ```
 
-### Non-Serpent OS hosts
+### Non Serpent OS hosts
 
 If you are not building on Serpent OS, you're going to have to install `boulder` first.
 See [its readme][moss-boulder-readme] for instructions.
