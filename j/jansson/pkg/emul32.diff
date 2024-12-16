@@ -1,0 +1,33 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 39b9ad3..a3274b6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -573,7 +573,7 @@ endif ()
+ #
+ 
+ # Allow the user to override installation directories.
+-set(JANSSON_INSTALL_LIB_DIR       lib CACHE PATH "Installation directory for libraries")
++set(JANSSON_INSTALL_LIB_DIR       lib32 CACHE PATH "Installation directory for libraries")
+ set(JANSSON_INSTALL_BIN_DIR       bin CACHE PATH "Installation directory for executables")
+ set(JANSSON_INSTALL_INCLUDE_DIR   include CACHE PATH "Installation directory for header files")
+ 
+@@ -633,8 +633,8 @@ option(JANSSON_INSTALL "Generate installation target" ON)
+ if (JANSSON_INSTALL)
+   install(TARGETS jansson
+           EXPORT janssonTargets
+-          LIBRARY DESTINATION "lib"
+-          ARCHIVE DESTINATION "lib"
++          LIBRARY DESTINATION "lib32"
++          ARCHIVE DESTINATION "lib32"
+           RUNTIME DESTINATION "bin"
+           INCLUDES DESTINATION "include")
+ 
+@@ -644,7 +644,7 @@ if (JANSSON_INSTALL)
+   # Install the pkg-config.
+   install(FILES
+           ${CMAKE_CURRENT_BINARY_DIR}/jansson.pc
+-          DESTINATION lib/pkgconfig)
++          DESTINATION lib32/pkgconfig)
+ 
+   # Install the configs.
+   install(FILES

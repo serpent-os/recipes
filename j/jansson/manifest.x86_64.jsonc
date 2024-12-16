@@ -1,6 +1,6 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"jansson": {
 			"depends": [
@@ -15,7 +15,39 @@
 				"soname(libjansson.so.4(x86_64))"
 			]
 		},
+		"jansson-32bit": {
+			"depends": [
+				"jansson",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libjansson.so.4",
+				"/usr/lib32/libjansson.so.4.14.0"
+			],
+			"name": "jansson-32bit",
+			"provides": [
+				"soname(libjansson.so.4(386))",
+				"soname(libjansson.so.4(x86))"
+			]
+		},
+		"jansson-32bit-devel": {
+			"depends": [
+				"jansson-32bit",
+				"jansson-devel"
+			],
+			"files": [
+				"/usr/lib32/libjansson.so",
+				"/usr/lib32/pkgconfig/jansson.pc"
+			],
+			"name": "jansson-32bit-devel",
+			"provides": [
+				"pkgconfig32(jansson)"
+			]
+		},
 		"jansson-devel": {
+			"depends": [
+				"jansson"
+			],
 			"files": [
 				"/usr/include/jansson.h",
 				"/usr/include/jansson_config.h",
@@ -28,12 +60,12 @@
 			],
 			"name": "jansson-devel",
 			"provides": [
-				"pkgconfig(jansson)",
-				"cmake(jansson)"
+				"cmake(jansson)",
+				"pkgconfig(jansson)"
 			]
 		}
 	},
 	"source-name": "jansson",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.14"
 }
