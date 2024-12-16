@@ -5,7 +5,7 @@
 #
 name        : libcap
 version     : 2.71
-release     : 6
+release     : 7
 summary     : Library for getting and setting POSIX.1e capabilities
 license     : GPL-3.0-or-later
 homepage    : https://sites.google.com/site/fullycapable
@@ -14,13 +14,14 @@ description : |
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.71.tar.xz: b7006c9af5168315f35fc734bf1a8d2aa70766bd8b8c4340962e05b19c35b900
 builddeps   :
-    - pkgconfig(pam)
+    - pkgconfig32(pam)
     - linux-headers
+emul32      : true
 setup       : |
     # Static linking broken
     sed -i Makefile -e '/\-C tests/d'
 build       : |
-    %make BUILD_CC=clang CC=clang AR=llvm-ar RANLIB=llvm-ranlib OBJCOPY=llvm-objcopy DYNAMIC=yes KERNEL_HEADERS=/usr/include
+    %make BUILD_CC="%(cc)" CC="%(cc)" AR=%(ar) RANLIB=llvm-ranlib OBJCOPY=llvm-objcopy DYNAMIC=yes KERNEL_HEADERS=%(includedir)
 install     : |
-    %make_install RAISE_SETFCAP=no prefix=/usr lib=lib
+    %make_install RAISE_SETFCAP=no prefix=/usr lib=lib%(libsuffix)
     rm %(installroot)/%(libdir)/lib*.a
