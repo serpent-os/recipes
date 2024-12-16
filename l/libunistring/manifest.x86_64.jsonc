@@ -8,13 +8,38 @@
 			],
 			"files": [
 				"/usr/lib/libunistring.so.5",
-				"/usr/lib/libunistring.so.5.1.0",
+				"/usr/lib/libunistring.so.5.2.0",
 				"/usr/share/info/libunistring.info"
 			],
 			"name": "libunistring",
 			"provides": [
 				"soname(libunistring.so.5(x86_64))"
 			]
+		},
+		"libunistring-32bit": {
+			"depends": [
+				"libunistring",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libunistring.so.5",
+				"/usr/lib32/libunistring.so.5.2.0"
+			],
+			"name": "libunistring-32bit",
+			"provides": [
+				"soname(libunistring.so.5(386))",
+				"soname(libunistring.so.5(x86))"
+			]
+		},
+		"libunistring-32bit-devel": {
+			"depends": [
+				"libunistring-32bit",
+				"libunistring-devel"
+			],
+			"files": [
+				"/usr/lib32/libunistring.so"
+			],
+			"name": "libunistring-32bit-devel"
 		},
 		"libunistring-devel": {
 			"depends": [
@@ -35,7 +60,6 @@
 				"/usr/include/unistring/iconveh.h",
 				"/usr/include/unistring/inline.h",
 				"/usr/include/unistring/localcharset.h",
-				"/usr/include/unistring/stdbool.h",
 				"/usr/include/unistring/stdint.h",
 				"/usr/include/unistring/version.h",
 				"/usr/include/unistring/woe32dll.h",
@@ -79,6 +103,6 @@
 		}
 	},
 	"source-name": "libunistring",
-	"source-release": "2",
-	"source-version": "1.2"
+	"source-release": "3",
+	"source-version": "1.3"
 }
