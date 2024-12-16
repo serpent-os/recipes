@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-app-list
+version     : 1.0
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/gnome-app-list
+upstreams   :
+    - https://download.gnome.org/sources/gnome-app-list/1.0/gnome-app-list-1.0.tar.xz : b7c2eb35595033ac094a75d99fddaecf6219dec590ca96ee03920b6bbb2eab73
+summary     : This project provides app recommendation data for the GNOME project
+description : |
+    This project provides app recommendation data for the GNOME project, in the form of AppStream data which is installed in the standard system location. This is mainly used by the Software app
+license     : LGPL-2.1-or-later
+builddeps   :
+    - binary(bash)
+    - binary(python3)
+    - binary(xmllint)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install

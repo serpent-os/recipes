@@ -5,7 +5,7 @@
 #
 name        : gnome-software
 version     : 47.2
-release     : 10
+release     : 11
 homepage    : https://apps.gnome.org/Software/
 upstreams   :
     - https://download.gnome.org/sources/gnome-software/47/gnome-software-47.2.tar.xz : 112338f8a98e7e5125de3f57229873534215b77eeef37d3fd4262f02151c7cea
@@ -35,6 +35,8 @@ builddeps   :
     - pkgconfig(polkit-gobject-1)
     - pkgconfig(xmlb)
     - docbook
+rundeps	    :
+    - gnome-app-list
 setup       : |
     %meson \
         -Dfwupd=false \
