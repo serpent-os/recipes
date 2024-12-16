@@ -5,7 +5,7 @@
 #
 name        : hyper-ffi
 version     : 1.5.1
-release     : 2
+release     : 3
 homepage    : https://github.com/hyperium/hyper
 upstreams   :
     - https://github.com/hyperium/hyper/archive/refs/tags/v1.5.1.tar.gz : fc043aa072c7ed39740324b250047d8ef2cfb30bff3364fabeeb150c28406ec0
@@ -19,6 +19,8 @@ environment : |
 networking  : true
 builddeps   :
     - binary(cargo)
+    - rust-32bit
+emul32      : yes
 setup       : |
     cargo fetch
 build       : |

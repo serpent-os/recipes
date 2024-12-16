@@ -4,7 +4,8 @@
 	"packages": {
 		"hyper-ffi": {
 			"build-depends": [
-				"binary(cargo)"
+				"binary(cargo)",
+				"rust-32bit"
 			],
 			"depends": [
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -19,9 +20,48 @@
 				"soname(libhyper.so.0(x86_64))"
 			]
 		},
+		"hyper-ffi-32bit": {
+			"build-depends": [
+				"binary(cargo)",
+				"rust-32bit"
+			],
+			"depends": [
+				"hyper-ffi",
+				"soname(ld-linux.so.2(386))",
+				"soname(libc.so.6(386))",
+				"soname(libunwind.so.1(386))"
+			],
+			"files": [
+				"/usr/lib32/libhyper.so.0"
+			],
+			"name": "hyper-ffi-32bit",
+			"provides": [
+				"soname(libhyper.so.0(386))",
+				"soname(libhyper.so.0(x86))"
+			]
+		},
+		"hyper-ffi-32bit-devel": {
+			"build-depends": [
+				"binary(cargo)",
+				"rust-32bit"
+			],
+			"depends": [
+				"hyper-ffi-32bit",
+				"hyper-ffi-devel"
+			],
+			"files": [
+				"/usr/lib32/libhyper.so",
+				"/usr/lib32/pkgconfig/hyper.pc"
+			],
+			"name": "hyper-ffi-32bit-devel",
+			"provides": [
+				"pkgconfig32(hyper)"
+			]
+		},
 		"hyper-ffi-devel": {
 			"build-depends": [
-				"binary(cargo)"
+				"binary(cargo)",
+				"rust-32bit"
 			],
 			"depends": [
 				"hyper-ffi"
@@ -38,6 +78,6 @@
 		}
 	},
 	"source-name": "hyper-ffi",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "1.5.1"
 }
