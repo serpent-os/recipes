@@ -9,7 +9,7 @@ release     : 1
 summary     : Library for arbitrary precision arithmetic
 license     :
     - LGPL-3.0-or-later
-homepage    : http://www.multiprecision.org/mpc/
+homepage    : https://www.multiprecision.org/mpc/
 description : |
     Library for arbitrary precision arithmetic.
 upstreams   :
