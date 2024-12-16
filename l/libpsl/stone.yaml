@@ -5,20 +5,21 @@
 #
 name        : libpsl
 version     : 0.21.5
-release     : 2
+release     : 3
 homepage    : https://rockdaboot.github.io/libpsl/
 upstreams   :
-    - https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.lz : 9a9f6a8c6edba650cf9ea55475cd172dd28487316804e9c73202d97572cd3a2d
+    - https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz : 1dcc9ceae8b128f3c0b3f654decd0e1e891afc6ff81098f227ef260449dae208
 summary     : C library for the Public Suffix List
 description : |
     libpsl - C library to handle the Public Suffix List
 license     :
     - BSD-3-Clause-No-Nuclear-License-2014
     - MIT
+emul32      : true
 builddeps   :
-    - pkgconfig(icu-uc)
-    - pkgconfig(libidn2)
-    - libunistring-devel
+    - pkgconfig32(icu-uc)
+    - pkgconfig32(libidn2)
+    - libunistring-32bit-devel
 setup       : |
     %meson
 build       : |
