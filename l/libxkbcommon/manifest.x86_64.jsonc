@@ -6,12 +6,12 @@
 			"build-depends": [
 				"binary(bison)",
 				"binary(m4)",
-				"pkgconfig(libxml-2.0)",
-				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-protocols)",
-				"pkgconfig(wayland-scanner)",
-				"pkgconfig(xcb)",
-				"pkgconfig(xcb-xkb)"
+				"pkgconfig32(libxml-2.0)",
+				"pkgconfig32(wayland-client)",
+				"pkgconfig32(wayland-scanner)",
+				"pkgconfig32(xcb)",
+				"pkgconfig32(xcb-xkb)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -54,16 +54,94 @@
 				"soname(libxkbregistry.so.0(x86_64))"
 			]
 		},
+		"libxkbcommon-32bit": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(m4)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig32(libxml-2.0)",
+				"pkgconfig32(wayland-client)",
+				"pkgconfig32(wayland-scanner)",
+				"pkgconfig32(xcb)",
+				"pkgconfig32(xcb-xkb)"
+			],
+			"depends": [
+				"interpreter(/usr/lib32/ld-linux.so.2(386))",
+				"libxkbcommon",
+				"soname(libc.so.6(386))",
+				"soname(libwayland-client.so.0(386))",
+				"soname(libxcb-xkb.so.1(386))",
+				"soname(libxcb.so.1(386))",
+				"soname(libxml2.so.2(386))"
+			],
+			"files": [
+				"/usr/lib32/libxkbcommon-x11.so.0",
+				"/usr/lib32/libxkbcommon-x11.so.0.0.0",
+				"/usr/lib32/libxkbcommon.so.0",
+				"/usr/lib32/libxkbcommon.so.0.0.0",
+				"/usr/lib32/libxkbcommon/xkbcommon/xkbcli-compile-compose",
+				"/usr/lib32/libxkbcommon/xkbcommon/xkbcli-compile-keymap",
+				"/usr/lib32/libxkbcommon/xkbcommon/xkbcli-how-to-type",
+				"/usr/lib32/libxkbcommon/xkbcommon/xkbcli-interactive-evdev",
+				"/usr/lib32/libxkbcommon/xkbcommon/xkbcli-interactive-wayland",
+				"/usr/lib32/libxkbcommon/xkbcommon/xkbcli-interactive-x11",
+				"/usr/lib32/libxkbcommon/xkbcommon/xkbcli-list",
+				"/usr/lib32/libxkbregistry.so.0",
+				"/usr/lib32/libxkbregistry.so.0.0.0"
+			],
+			"name": "libxkbcommon-32bit",
+			"provides": [
+				"soname(libxkbcommon-x11.so.0(386))",
+				"soname(libxkbcommon-x11.so.0(x86))",
+				"soname(libxkbcommon.so.0(386))",
+				"soname(libxkbcommon.so.0(x86))",
+				"soname(libxkbregistry.so.0(386))",
+				"soname(libxkbregistry.so.0(x86))"
+			]
+		},
+		"libxkbcommon-32bit-devel": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(m4)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig32(libxml-2.0)",
+				"pkgconfig32(wayland-client)",
+				"pkgconfig32(wayland-scanner)",
+				"pkgconfig32(xcb)",
+				"pkgconfig32(xcb-xkb)"
+			],
+			"depends": [
+				"libxkbcommon-32bit",
+				"libxkbcommon-devel",
+				"pkgconfig32(libxml-2.0)",
+				"pkgconfig32(xcb)",
+				"pkgconfig32(xcb-xkb)"
+			],
+			"files": [
+				"/usr/lib32/libxkbcommon-x11.so",
+				"/usr/lib32/libxkbcommon.so",
+				"/usr/lib32/libxkbregistry.so",
+				"/usr/lib32/pkgconfig/xkbcommon-x11.pc",
+				"/usr/lib32/pkgconfig/xkbcommon.pc",
+				"/usr/lib32/pkgconfig/xkbregistry.pc"
+			],
+			"name": "libxkbcommon-32bit-devel",
+			"provides": [
+				"pkgconfig32(xkbcommon)",
+				"pkgconfig32(xkbcommon-x11)",
+				"pkgconfig32(xkbregistry)"
+			]
+		},
 		"libxkbcommon-devel": {
 			"build-depends": [
 				"binary(bison)",
 				"binary(m4)",
-				"pkgconfig(libxml-2.0)",
-				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-protocols)",
-				"pkgconfig(wayland-scanner)",
-				"pkgconfig(xcb)",
-				"pkgconfig(xcb-xkb)"
+				"pkgconfig32(libxml-2.0)",
+				"pkgconfig32(wayland-client)",
+				"pkgconfig32(wayland-scanner)",
+				"pkgconfig32(xcb)",
+				"pkgconfig32(xcb-xkb)"
 			],
 			"depends": [
 				"libxkbcommon",
@@ -95,6 +173,6 @@
 		}
 	},
 	"source-name": "libxkbcommon",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.7.0"
 }
