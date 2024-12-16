@@ -1,0 +1,56 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"sdl2-mixer": {
+			"build-depends": [
+				"pkgconfig(alsa)",
+				"pkgconfig(libpulse)",
+				"pkgconfig(opus)",
+				"pkgconfig(sdl2)",
+				"pkgconfig(vorbis)"
+			],
+			"depends": [
+				"soname(libSDL2-2.0.so.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libSDL2_mixer-2.0.so.0",
+				"/usr/lib/libSDL2_mixer-2.0.so.0.800.0"
+			],
+			"name": "sdl2-mixer",
+			"provides": [
+				"soname(libSDL2_mixer-2.0.so.0(x86_64))"
+			]
+		},
+		"sdl2-mixer-devel": {
+			"build-depends": [
+				"pkgconfig(alsa)",
+				"pkgconfig(libpulse)",
+				"pkgconfig(opus)",
+				"pkgconfig(sdl2)",
+				"pkgconfig(vorbis)"
+			],
+			"depends": [
+				"pkgconfig(sdl2)",
+				"sdl2-mixer"
+			],
+			"files": [
+				"/usr/include/SDL2/SDL_mixer.h",
+				"/usr/lib/cmake/SDL2_mixer/sdl2_mixer-config-version.cmake",
+				"/usr/lib/cmake/SDL2_mixer/sdl2_mixer-config.cmake",
+				"/usr/lib/libSDL2_mixer.so",
+				"/usr/lib/pkgconfig/SDL2_mixer.pc"
+			],
+			"name": "sdl2-mixer-devel",
+			"provides": [
+				"cmake(sdl2_mixer)",
+				"pkgconfig(SDL2_mixer)"
+			]
+		}
+	},
+	"source-name": "sdl2-mixer",
+	"source-release": "1",
+	"source-version": "2.8.0"
+}

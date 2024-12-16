@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name       : sdl2-mixer
+version    : '2.8.0'
+release    : 1
+upstreams  :
+    - https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.0/SDL2_mixer-2.8.0.tar.gz : 1cfb34c87b26dbdbc7afd68c4f545c0116ab5f90bbfecc5aebe2a9cb4bb31549
+homepage   : https://www.libsdl.org/
+license    : Zlib
+summary    : An SDL2 library for mixing and sound.
+description: |
+    An SDL2 library for sample mixing and sound.
+builddeps  :
+    - pkgconfig(vorbis)
+    - pkgconfig(opus)
+    - pkgconfig(libpulse)
+    - pkgconfig(alsa)
+    - pkgconfig(sdl2)
+setup      : |
+    %configure --disable-static
+build      : |
+    %make
+install    : |
+    %make_install
