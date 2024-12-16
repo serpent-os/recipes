@@ -6,7 +6,7 @@
 name        : python-tomli
 version     : 2.0.1
 release     : 1
-homepage    : https://pypi.io/packages/source/t/tomli
+homepage    : https://pypi.org/project/tomli/
 upstreams   :
     - https://pypi.io/packages/source/t/tomli/tomli-2.0.1.tar.gz : de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
 summary     : Lil' TOML parser
