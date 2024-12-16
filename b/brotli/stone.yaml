@@ -5,7 +5,7 @@
 #
 name        : brotli
 version     : '1.1.0'
-release     : 4
+release     : 5
 summary     : Generic-purpose lossless compression algorithm
 license     : MIT
 homepage    : https://github.com/google/brotli
@@ -15,16 +15,26 @@ upstreams   :
     - git|https://github.com/google/brotli: v1.1.0
 builddeps   :
     - pkgconfig(python3)
+emul32      : yes
+profiles    :
+    - emul32:
+        build: |
+            %cmake_build
+        install: |
+            %cmake_install
+        check: |
+            ninja -C %(builddir) test
 setup       : |
     %cmake -DBUILD_SHARED_LIBS=True \
-           -DCMAKE_C_FLAGS="$CFLAGS"
+           -DCMAKE_C_FLAGS="$CFLAGS" \
+           -DCMAKE_INSTALL_LIBDIR=%(libdir)
 build       : |
     %cmake_build
     %python_setup
 install     : |
     %cmake_install
     %python_install
-    install -Dm00644 docs/brotli.1 %(installroot)/%(mandir)/man1/brotli.1
+    %install_file docs/brotli.1 %(installroot)/%(mandir)/man1/brotli.1
 check       : |
     ninja -C %(builddir) test
     python3 setup.py test
