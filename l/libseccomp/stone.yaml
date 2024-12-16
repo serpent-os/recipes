@@ -5,7 +5,7 @@
 #
 name        : libseccomp
 version     : 2.5.5
-release     : 3
+release     : 4
 homepage    : https://github.com/seccomp/libseccomp
 upstreams   :
     - https://github.com/seccomp/libseccomp/releases/download/v2.5.5/libseccomp-2.5.5.tar.gz : 248a2c8a4d9b9858aa6baf52712c34afefcf9c9e94b76dce02c1c9aa25fb3375
@@ -18,6 +18,7 @@ builddeps   :
 checkdeps   :
     - binary(which) # make check uses 'which' to test if 'head' is available
     - pkgconfig(valgrind)
+emul32      : true
 setup       : |
     %configure --disable-static
 build       : |
