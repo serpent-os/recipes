@@ -4,10 +4,10 @@
 	"packages": {
 		"util-linux": {
 			"build-depends": [
-				"pkgconfig(libsystemd)",
 				"pkgconfig(python3)",
 				"pkgconfig32(libcap-ng)",
 				"pkgconfig32(libcrypt)",
+				"pkgconfig32(libsystemd)",
 				"pkgconfig32(ncursesw)",
 				"pkgconfig32(pam)",
 				"pkgconfig32(zlib)"
@@ -569,10 +569,10 @@
 		},
 		"util-linux-32bit": {
 			"build-depends": [
-				"pkgconfig(libsystemd)",
 				"pkgconfig(python3)",
 				"pkgconfig32(libcap-ng)",
 				"pkgconfig32(libcrypt)",
+				"pkgconfig32(libsystemd)",
 				"pkgconfig32(ncursesw)",
 				"pkgconfig32(pam)",
 				"pkgconfig32(zlib)"
@@ -610,10 +610,10 @@
 		},
 		"util-linux-32bit-devel": {
 			"build-depends": [
-				"pkgconfig(libsystemd)",
 				"pkgconfig(python3)",
 				"pkgconfig32(libcap-ng)",
 				"pkgconfig32(libcrypt)",
+				"pkgconfig32(libsystemd)",
 				"pkgconfig32(ncursesw)",
 				"pkgconfig32(pam)",
 				"pkgconfig32(zlib)"
@@ -645,10 +645,10 @@
 		},
 		"util-linux-devel": {
 			"build-depends": [
-				"pkgconfig(libsystemd)",
 				"pkgconfig(python3)",
 				"pkgconfig32(libcap-ng)",
 				"pkgconfig32(libcrypt)",
+				"pkgconfig32(libsystemd)",
 				"pkgconfig32(ncursesw)",
 				"pkgconfig32(pam)",
 				"pkgconfig32(zlib)"
@@ -697,6 +697,6 @@
 		}
 	},
 	"source-name": "util-linux",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "2.40.2"
 }

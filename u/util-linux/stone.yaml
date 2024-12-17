@@ -5,7 +5,7 @@
 #
 name        : util-linux
 version     : 2.40.2
-release     : 9
+release     : 10
 summary     : Random collection of Linux utilities
 license     :
     - BSD-3-Clause
@@ -21,7 +21,7 @@ description : |
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-2.40.2.tar.xz : d78b37a66f5922d70edf3bdfb01a6b33d34ed3c3cafd6628203b2a2b67c8e8b3
 builddeps   :
-    - pkgconfig(libsystemd)
+    - pkgconfig32(libsystemd)
     - pkgconfig(python3)
     - pkgconfig32(libcap-ng)
     - pkgconfig32(libcrypt)
