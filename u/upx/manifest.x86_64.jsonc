@@ -1,0 +1,33 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"upx": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/upx",
+				"/usr/share/doc/upx/COPYING",
+				"/usr/share/doc/upx/LICENSE",
+				"/usr/share/doc/upx/NEWS",
+				"/usr/share/doc/upx/README",
+				"/usr/share/doc/upx/THANKS.txt",
+				"/usr/share/doc/upx/upx-doc.html",
+				"/usr/share/doc/upx/upx-doc.txt",
+				"/usr/share/man/man1/upx.1"
+			],
+			"name": "upx",
+			"provides": [
+				"binary(upx)"
+			]
+		}
+	},
+	"source-name": "upx",
+	"source-release": "0",
+	"source-version": "4.2.4"
+}
