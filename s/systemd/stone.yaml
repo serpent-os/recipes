@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : 254.18
-release     : 43
+release     : 44
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -24,37 +24,37 @@ builddeps   :
     - docbook
     - gettext-devel
     - gnu-efi-devel
-    - pkgconfig(blkid)
-    - pkgconfig(dbus-1)
-    - pkgconfig(fdisk)
     - pkgconfig(gnutls)
     - pkgconfig(gpg-error)
     - pkgconfig(libcryptsetup)
     - pkgconfig(libdw)
-    - pkgconfig(libffi)
     - pkgconfig(libgcrypt)
     - pkgconfig(libkmod)
-    - pkgconfig32(libseccomp)
-    - pkgconfig(mount)
     - pkgconfig(polkit-gobject-1)
     - pkgconfig(pwquality)
     - pkgconfig(tss2-esys)
-    - pkgconfig(xkbcommon)
-    - pkgconfig(zlib)
+    - pkgconfig32(blkid)
     - pkgconfig32(bzip2)
+    - pkgconfig32(dbus-1)
+    - pkgconfig32(fdisk)
     - pkgconfig32(glib-2.0)
     - pkgconfig32(libacl)
     - pkgconfig32(libattr)
     - pkgconfig32(libcap)
     - pkgconfig32(libcurl)
+    - pkgconfig32(libffi)
     - pkgconfig32(libidn2)
     - pkgconfig32(liblz4)
     - pkgconfig32(liblzma)
     - pkgconfig32(libpcre2-8)
+    - pkgconfig32(libseccomp)
     - pkgconfig32(libxcrypt)
     - pkgconfig32(libzstd)
+    - pkgconfig32(mount)
     - pkgconfig32(openssl)
     - pkgconfig32(pam)
+    - pkgconfig32(xkbcommon)
+    - pkgconfig32(zlib)
     - python-jinja
 rundeps     :
     - binary(ntp-daemon)
@@ -120,7 +120,6 @@ profiles    :
                     -Dlibcryptsetup=false \
                     -Dgcrypt=false \
                     -Dtpm=false \
-                    -Dblkid=false \
                     -Dkmod=false \
                     -Dgnutls=false \
                     -Dkernel-install=false \
