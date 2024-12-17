@@ -1,0 +1,58 @@
+From b3f7ad61958489a4b46f164b6d16728c30b56faf Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Tue, 17 Dec 2024 04:20:22 +0000
+Subject: [PATCH] Cargo: Sync blsforme to enable per-kernel cmdlines
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ Cargo.lock | 6 +++---
+ Cargo.toml | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 119d728..ede1606 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -361,7 +361,7 @@ dependencies = [
+ [[package]]
+ name = "blsforme"
+ version = "0.1.0"
+-source = "git+https://github.com/serpent-os/blsforme.git?rev=5076b78850231a21431727fefedd16aaa9d87ee9#5076b78850231a21431727fefedd16aaa9d87ee9"
++source = "git+https://github.com/serpent-os/blsforme.git?rev=f3935d4aad57c07a261c7cc0a34dcddb9d6f30c7#f3935d4aad57c07a261c7cc0a34dcddb9d6f30c7"
+ dependencies = [
+  "blake3",
+  "gpt",
+@@ -2687,7 +2687,7 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
+ [[package]]
+ name = "superblock"
+ version = "0.1.0"
+-source = "git+https://github.com/serpent-os/blsforme.git?rev=5076b78850231a21431727fefedd16aaa9d87ee9#5076b78850231a21431727fefedd16aaa9d87ee9"
++source = "git+https://github.com/serpent-os/blsforme.git?rev=f3935d4aad57c07a261c7cc0a34dcddb9d6f30c7#f3935d4aad57c07a261c7cc0a34dcddb9d6f30c7"
+ dependencies = [
+  "log",
+  "thiserror 2.0.3",
+@@ -2948,7 +2948,7 @@ dependencies = [
+ [[package]]
+ name = "topology"
+ version = "0.1.0"
+-source = "git+https://github.com/serpent-os/blsforme.git?rev=5076b78850231a21431727fefedd16aaa9d87ee9#5076b78850231a21431727fefedd16aaa9d87ee9"
++source = "git+https://github.com/serpent-os/blsforme.git?rev=f3935d4aad57c07a261c7cc0a34dcddb9d6f30c7#f3935d4aad57c07a261c7cc0a34dcddb9d6f30c7"
+ dependencies = [
+  "gpt",
+  "log",
+diff --git a/Cargo.toml b/Cargo.toml
+index 9cecc5d..22247c2 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -15,7 +15,7 @@ edition = "2021"
+ rust-version = "1.78"
+ 
+ [workspace.dependencies]
+-blsforme = { git = "https://github.com/serpent-os/blsforme.git", rev = "5076b78850231a21431727fefedd16aaa9d87ee9" }
++blsforme = { git = "https://github.com/serpent-os/blsforme.git", rev = "f3935d4aad57c07a261c7cc0a34dcddb9d6f30c7" }
+ bytes = "1.6.0"
+ chrono = "0.4.38"
+ clap = { version = "4.5.8", features = ["derive", "string"] }
+-- 
+2.47.1
+
