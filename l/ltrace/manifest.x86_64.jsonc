@@ -1,0 +1,34 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"ltrace": {
+			"build-depends": [
+				"pkgconfig(libelf)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libelf.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/ltrace",
+				"/usr/share/doc/ltrace/COPYING",
+				"/usr/share/doc/ltrace/CREDITS",
+				"/usr/share/doc/ltrace/INSTALL",
+				"/usr/share/doc/ltrace/README",
+				"/usr/share/doc/ltrace/TODO",
+				"/usr/share/man/man1/ltrace.1",
+				"/usr/share/man/man5/ltrace.conf.5"
+			],
+			"name": "ltrace",
+			"provides": [
+				"binary(ltrace)"
+			]
+		}
+	},
+	"source-name": "ltrace",
+	"source-release": "1",
+	"source-version": "0.7.3"
+}

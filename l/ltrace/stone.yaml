@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ltrace
+version     : 0.7.3
+release     : 1
+homepage    : https://tracker.debian.org/pkg/ltrace
+upstreams   :
+    - https://ltrace.org/ltrace_0.7.3.orig.tar.bz2 : 0e6f8c077471b544c06def7192d983861ad2f8688dd5504beae62f0c5f5b9503
+summary     : A library call tracer
+description : |
+    ltrace is a program that simply runs the specified command until it exits. It intercepts and
+    records the dynamic library calls which are called by the executed process and the signals
+    which are received by that process. It can also intercept and print the system calls executed by the program.
+license     : GPL-2.0-or-later
+builddeps   :
+    - pkgconfig(libelf)
+setup       : |
+    %configure --without-libunwind
+build       : |
+    %make
+install     : |
+    %make_install
