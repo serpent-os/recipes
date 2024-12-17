@@ -20,13 +20,53 @@
 				"soname(libxcb-keysyms.so.1(x86_64))"
 			]
 		},
+		"xcb-util-keysyms-32bit": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(xcb)"
+			],
+			"depends": [
+				"soname(libc.so.6(386))",
+				"soname(libxcb.so.1(386))",
+				"xcb-util-keysyms"
+			],
+			"files": [
+				"/usr/lib32/libxcb-keysyms.so.1",
+				"/usr/lib32/libxcb-keysyms.so.1.0.0"
+			],
+			"name": "xcb-util-keysyms-32bit",
+			"provides": [
+				"soname(libxcb-keysyms.so.1(386))",
+				"soname(libxcb-keysyms.so.1(x86))"
+			]
+		},
+		"xcb-util-keysyms-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(xproto)",
+				"pkgconfig32(xcb)"
+			],
+			"depends": [
+				"pkgconfig32(xcb)",
+				"xcb-util-keysyms-32bit",
+				"xcb-util-keysyms-devel"
+			],
+			"files": [
+				"/usr/lib32/libxcb-keysyms.so",
+				"/usr/lib32/pkgconfig/xcb-keysyms.pc"
+			],
+			"name": "xcb-util-keysyms-32bit-devel",
+			"provides": [
+				"pkgconfig32(xcb-keysyms)"
+			]
+		},
 		"xcb-util-keysyms-devel": {
 			"build-depends": [
 				"pkgconfig(xproto)",
 				"pkgconfig32(xcb)"
 			],
 			"depends": [
-				"pkgconfig(xcb)"
+				"pkgconfig(xcb)",
+				"xcb-util-keysyms"
 			],
 			"files": [
 				"/usr/include/xcb/xcb_keysyms.h",
@@ -40,6 +80,6 @@
 		}
 	},
 	"source-name": "xcb-util-keysyms",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "0.4.1"
 }
