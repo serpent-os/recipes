@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : dbus
-version     : '1.14.10'
-release     : 8
+version     : 1.16.0
+release     : 9
 summary     : D-Bus Message Bus System
 license     :
     - AFL-2.1
@@ -14,25 +14,19 @@ homepage    : https://www.freedesktop.org/wiki/Software/dbus
 description : |
     D-Bus Message Bus System
 upstreams   :
-    - https://dbus.freedesktop.org/releases/dbus/dbus-1.14.10.tar.xz: ba1f21d2bd9d339da2d4aa8780c09df32fea87998b73da24f49ab9df1e36a50f
+    - https://dbus.freedesktop.org/releases/dbus/dbus-1.16.0.tar.xz: 9f8ca5eb51cbe09951aec8624b86c292990ae2428b41b856e2bed17ec65c8849
 builddeps   :
     # TODO build with audit
-    - pkgconfig(expat)
-    - pkgconfig(libsystemd)
-toolchain   : gnu
+    - pkgconfig32(expat)
+    - pkgconfig32(glib-2.0)
+    - pkgconfig32(libsystemd)
+emul32      : yes
 setup       : |
-    %configure --runstatedir=/run \
-        --disable-static \
-        --disable-asserts \
-        --enable-user-session \
-        --with-system-pid-file=/run/dbus/pid \
-        --with-system-socket=/run/dbus/system_bus_socket \
-        --with-systemdsystemunitdir=/usr/lib/systemd/system \
-        --with-systemduserunitdir=/usr/lib/systemd/user
+    %meson -Druntime_dir=/run
 build       : |
-    %make
+    %meson_build
 install     : |
-    %make_install
+    %meson_install
 
     # Need to ensure /var/run becomes a symlink to /run for compatibility
     %tmpfiles "# Create run/dbus directory"

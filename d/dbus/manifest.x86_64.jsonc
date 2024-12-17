@@ -4,8 +4,9 @@
 	"packages": {
 		"dbus": {
 			"build-depends": [
-				"pkgconfig(expat)",
-				"pkgconfig(libsystemd)"
+				"pkgconfig32(expat)",
+				"pkgconfig32(glib-2.0)",
+				"pkgconfig32(libsystemd)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -26,7 +27,7 @@
 				"/usr/lib/dbus-1.0/include/dbus/dbus-arch-deps.h",
 				"/usr/lib/dbus/dbus-daemon-launch-helper",
 				"/usr/lib/libdbus-1.so.3",
-				"/usr/lib/libdbus-1.so.3.32.4",
+				"/usr/lib/libdbus-1.so.3.38.3",
 				"/usr/lib/systemd/system/dbus-daemon.service",
 				"/usr/lib/systemd/system/dbus.socket",
 				"/usr/lib/systemd/system/sockets.target.wants/dbus.socket",
@@ -47,6 +48,7 @@
 				"/usr/share/doc/dbus/examples/example-session-disable-stats.conf",
 				"/usr/share/doc/dbus/examples/example-system-enable-stats.conf",
 				"/usr/share/doc/dbus/examples/example-system-hardening-without-traditional-activation.conf",
+				"/usr/share/doc/dbus/index.html",
 				"/usr/share/doc/dbus/system-activation.txt",
 				"/usr/share/xml/dbus-1/busconfig.dtd",
 				"/usr/share/xml/dbus-1/catalog.xml",
@@ -66,9 +68,62 @@
 				"soname(libdbus-1.so.3(x86_64))"
 			]
 		},
+		"dbus-32bit": {
+			"build-depends": [
+				"pkgconfig32(expat)",
+				"pkgconfig32(glib-2.0)",
+				"pkgconfig32(libsystemd)"
+			],
+			"depends": [
+				"dbus",
+				"interpreter(/usr/lib32/ld-linux.so.2(386))",
+				"soname(libc.so.6(386))",
+				"soname(libexpat.so.1(386))",
+				"soname(libsystemd.so.0(386))"
+			],
+			"files": [
+				"/usr/lib32/dbus-1.0/include/dbus/dbus-arch-deps.h",
+				"/usr/lib32/dbus/dbus-daemon-launch-helper",
+				"/usr/lib32/libdbus-1.so.3",
+				"/usr/lib32/libdbus-1.so.3.38.3"
+			],
+			"name": "dbus-32bit",
+			"provides": [
+				"soname(libdbus-1.so.3(386))",
+				"soname(libdbus-1.so.3(x86))"
+			]
+		},
+		"dbus-32bit-devel": {
+			"build-depends": [
+				"pkgconfig32(expat)",
+				"pkgconfig32(glib-2.0)",
+				"pkgconfig32(libsystemd)"
+			],
+			"depends": [
+				"dbus-32bit",
+				"dbus-devel",
+				"pkgconfig32(libsystemd)"
+			],
+			"files": [
+				"/usr/lib32/cmake/DBus1/DBus1Config.cmake",
+				"/usr/lib32/cmake/DBus1/DBus1ConfigVersion.cmake",
+				"/usr/lib32/libdbus-1.so",
+				"/usr/lib32/pkgconfig/dbus-1.pc"
+			],
+			"name": "dbus-32bit-devel",
+			"provides": [
+				"cmake(DBus1)",
+				"pkgconfig32(dbus-1)"
+			]
+		},
 		"dbus-devel": {
 			"build-depends": [
-				"pkgconfig(expat)",
+				"pkgconfig32(expat)",
+				"pkgconfig32(glib-2.0)",
+				"pkgconfig32(libsystemd)"
+			],
+			"depends": [
+				"dbus",
 				"pkgconfig(libsystemd)"
 			],
 			"files": [
@@ -102,6 +157,6 @@
 		}
 	},
 	"source-name": "dbus",
-	"source-release": "8",
-	"source-version": "1.14.10"
+	"source-release": "9",
+	"source-version": "1.16.0"
 }
