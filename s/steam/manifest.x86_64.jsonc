@@ -8,7 +8,18 @@
 				"binary(tar)",
 				"binary(zenity)",
 				"soname(libGL.so.1(386))",
-				"soname(libdrm.so.2(386))"
+				"soname(libGLX_mesa.so.0(386))",
+				"soname(libX11.so.6(386))",
+				"soname(libXext.so.6(386))",
+				"soname(libXxf86vm.so.1(386))",
+				"soname(libdrm.so.2(386))",
+				"soname(libelf.so.1(386))",
+				"soname(libgcc_s.so.1(386))",
+				"soname(libstdc++.so.6(386))",
+				"soname(libudev.so.1(386))",
+				"soname(libva.so.2(386))",
+				"soname(libvdpau.so.1(386))",
+				"soname(libz.so.1(386))"
 			],
 			"files": [
 				"/usr/bin/steam",
@@ -40,6 +51,6 @@
 		}
 	},
 	"source-name": "steam",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "1.0.0.82"
 }
