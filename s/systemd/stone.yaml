@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : 254.18
-release     : 42
+release     : 43
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -17,8 +17,6 @@ description : |
 upstreams   :
     - https://github.com/systemd/systemd-stable/archive/refs/tags/v254.18.tar.gz: eb8b615d7f507b322893d4585219b5eaa0cadc17de72335d2d755d7100aeb022
 builddeps   :
-    - acl-devel
-    - attr-devel
     - binary(gperf)
     - binary(m4)
     - binary(readelf.py)
@@ -27,41 +25,43 @@ builddeps   :
     - gettext-devel
     - gnu-efi-devel
     - pkgconfig(blkid)
-    - pkgconfig(bzip2)
     - pkgconfig(dbus-1)
     - pkgconfig(fdisk)
-    - pkgconfig(glib-2.0)
     - pkgconfig(gnutls)
     - pkgconfig(gpg-error)
-    - pkgconfig(libacl)
-    - pkgconfig(libcap)
     - pkgconfig(libcryptsetup)
-    - pkgconfig(libcurl)
     - pkgconfig(libdw)
     - pkgconfig(libffi)
     - pkgconfig(libgcrypt)
-    - pkgconfig(libidn2)
     - pkgconfig(libkmod)
-    - pkgconfig(liblz4)
-    - pkgconfig(liblzma)
-    - pkgconfig(libpcre2-8)
-    - pkgconfig(libseccomp)
-    - pkgconfig(libxcrypt)
-    - pkgconfig(libzstd)
+    - pkgconfig32(libseccomp)
     - pkgconfig(mount)
-    - pkgconfig(openssl)
-    - pkgconfig(pam)
     - pkgconfig(polkit-gobject-1)
     - pkgconfig(pwquality)
     - pkgconfig(tss2-esys)
     - pkgconfig(xkbcommon)
     - pkgconfig(zlib)
+    - pkgconfig32(bzip2)
+    - pkgconfig32(glib-2.0)
+    - pkgconfig32(libacl)
+    - pkgconfig32(libattr)
+    - pkgconfig32(libcap)
+    - pkgconfig32(libcurl)
+    - pkgconfig32(libidn2)
+    - pkgconfig32(liblz4)
+    - pkgconfig32(liblzma)
+    - pkgconfig32(libpcre2-8)
+    - pkgconfig32(libxcrypt)
+    - pkgconfig32(libzstd)
+    - pkgconfig32(openssl)
+    - pkgconfig32(pam)
     - python-jinja
 rundeps     :
     - binary(ntp-daemon)
     - binary(setfont)
     - system-accounts
     - tzdata
+emul32      : true
 packages    :
     - "%(name)-networkd":
         summary: systemd-networkd
@@ -82,6 +82,53 @@ packages    :
             - /usr/share/polkit-1/actions/*network*
             - /usr/share/polkit-1/rules.d/*network*
 toolchain   : gnu
+profiles    :
+    - emul32:
+        setup: |
+            %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
+            %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
+            %patch %(pkgdir)/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
+            %patch %(pkgdir)/0001-gpt-auto-generate-Stop-automounting-xbootldr-and-esp.patch
+            %patch %(pkgdir)/protocols.patch
+
+            %meson \
+                    -Dbpf-framework=false \
+                    -Defi=false \
+                    -Dbootloader=false \
+                    -Dfuzz-tests=false \
+                    -Dinstall-tests=false \
+                    -Dmode=release \
+                    -Dpamlibdir="%(libdir)/security" \
+                    -Dpamconfdir="%(vendordir)/etc/pam.d" \
+                    -Dpcre2=true \
+                    -Drpmmacrosdir=no \
+                    -Dslow-tests=false \
+                    -Dsplit-bin=true \
+                    -Dsplit-usr=false \
+                    -Dtests=false \
+                    -Drepart=false \
+                    -Dsysupdate=false \
+                    -Duserdb=false \
+                    -Dhomed=false \
+                    -Dlogind=false \
+                    -Dnetworkd=false \
+                    -Drfkill=false \
+                    -Dportabled=false \
+                    -Dmachined=false \
+                    -Dpstore=false \
+                    -Dcoredump=false \
+                    -Dlibcryptsetup=false \
+                    -Dgcrypt=false \
+                    -Dtpm=false \
+                    -Dblkid=false \
+                    -Dkmod=false \
+                    -Dgnutls=false \
+                    -Dkernel-install=false \
+                    -Dinstall-sysconfdir=false \
+                    -Dnss-systemd=true \
+                    -Dman=false
+        install: |
+            %meson_install
 setup       : |
     %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
     %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
@@ -167,3 +214,5 @@ install     : |
 
     # And transaction triggers
     %install_file %(pkgdir)/systemd_hwdb.yaml %(installroot)/usr/share/moss/triggers/tx.d/systemd_hwdb.yaml
+
+    rm -v %(installroot)%(libdir)/systemd/boot/efi/*32.efi*
