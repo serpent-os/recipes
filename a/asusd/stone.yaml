@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : asusd
+version     : 6.1.0-rc2
+release     : 1
+summary     : Control ASUS laptop features easily
+license     : MPL-2.0
+homepage    : https://asus-linux.org/
+upstreams   :
+    - git|https://gitlab.com/asus-linux/asusctl.git : a790d9a499b9c9481dfd2663a32ee6f7ac363789
+description : |
+    Control ASUS platform features such as LEDs, AniMe, fans and more.
+builddeps   :
+    - pkgconfig(libudev) # required for device handling
+    - pkgconfig(libinput) # following required by slint
+    - pkgconfig(libseat)
+    - pkgconfig(gbm)
+    - pkgconfig(xkbcommon)
+networking  : yes
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %make_install TARGET="%(target_triple)/release"
+
