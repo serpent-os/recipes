@@ -11,12 +11,12 @@
 			],
 			"files": [
 				"/usr/bin/meson",
-				"/usr/lib/python3.11/site-packages/meson-1.5.1-py3.11.egg-info/PKG-INFO",
-				"/usr/lib/python3.11/site-packages/meson-1.5.1-py3.11.egg-info/SOURCES.txt",
-				"/usr/lib/python3.11/site-packages/meson-1.5.1-py3.11.egg-info/dependency_links.txt",
-				"/usr/lib/python3.11/site-packages/meson-1.5.1-py3.11.egg-info/entry_points.txt",
-				"/usr/lib/python3.11/site-packages/meson-1.5.1-py3.11.egg-info/requires.txt",
-				"/usr/lib/python3.11/site-packages/meson-1.5.1-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.6.1-py3.11.egg-info/PKG-INFO",
+				"/usr/lib/python3.11/site-packages/meson-1.6.1-py3.11.egg-info/SOURCES.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.6.1-py3.11.egg-info/dependency_links.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.6.1-py3.11.egg-info/entry_points.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.6.1-py3.11.egg-info/requires.txt",
+				"/usr/lib/python3.11/site-packages/meson-1.6.1-py3.11.egg-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/mesonbuild/__init__.py",
 				"/usr/lib/python3.11/site-packages/mesonbuild/__pycache__/__init__.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/mesonbuild/__pycache__/_pathlib.cpython-311.pyc",
@@ -394,6 +394,7 @@
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/__pycache__/pycompile.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/__pycache__/python_info.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/__pycache__/regen_checker.cpython-311.pyc",
+				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/__pycache__/reprotest.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/__pycache__/run_tool.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/__pycache__/scanbuild.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/__pycache__/symbolextractor.cpython-311.pyc",
@@ -424,6 +425,7 @@
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/pycompile.py",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/python_info.py",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/regen_checker.py",
+				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/reprotest.py",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/run_tool.py",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/scanbuild.py",
 				"/usr/lib/python3.11/site-packages/mesonbuild/scripts/symbolextractor.py",
@@ -487,11 +489,13 @@
 			],
 			"name": "meson",
 			"provides": [
-				"binary(meson)"
+				"binary(meson)",
+				"python(meson(3.11))",
+				"python(meson)"
 			]
 		}
 	},
 	"source-name": "meson",
-	"source-release": "10",
-	"source-version": "1.5.1"
+	"source-release": "11",
+	"source-version": "1.6.1"
 }
