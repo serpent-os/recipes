@@ -5,7 +5,7 @@
 #
 name        : bzip2
 version     : 1.0.8
-release     : 4
+release     : 5
 summary     : Common and high-quality data compressor
 license     : bzip2-1.0.6
 homepage    : https://www.sourceware.org/bzip2
@@ -29,6 +29,7 @@ setup       : |
 
     cp %(pkgdir)/bzip2.pc bzip2.pc
     sed "s|@VERSION@|%(version)|" -i bzip2.pc
+    sed "s|@LIBSUFFIX@|%(libsuffix)|" -i bzip2.pc
 build       : |
     %make -f Makefile-libbz2_so
     %make bzip2recover
