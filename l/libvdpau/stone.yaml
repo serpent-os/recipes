@@ -5,7 +5,7 @@
 #
 name        : libvdpau
 version     : '1.5'
-release     : 1
+release     : 2
 homepage    : https://www.freedesktop.org/wiki/Software/VDPAU/
 upstreams   :
     - https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.5/libvdpau-1.5.tar.bz2 : a5d50a42b8c288febc07151ab643ac8de06a18446965c7241f89b4e810821913
@@ -13,17 +13,16 @@ summary     : Video Decode and Presentation API for Unix
 description : |
     VDPAU is the Video Decode and Presentation API for UNIX. It provides an interface to video decode acceleration and presentation hardware present in modern GPUs.
 license     : MIT
+emul32      : true
 builddeps   :
-    - pkgconfig(x11)
+    - pkgconfig32(x11)
 setup       : |
     %patch %(pkgdir)/0001-Set-default-configuration-in-absence-of-config-file.patch
-
     %meson
 build       : |
     %meson_build
 install     : |
     %meson_install
-
     # Stateless
     rm -v %(installroot)/etc/vdpau_wrapper.cfg
     rmdir -v %(installroot)/etc

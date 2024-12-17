@@ -4,7 +4,7 @@
 	"packages": {
 		"libvdpau": {
 			"build-depends": [
-				"pkgconfig(x11)"
+				"pkgconfig32(x11)"
 			],
 			"depends": [
 				"soname(libc.so.6(x86_64))"
@@ -19,12 +19,52 @@
 			"name": "libvdpau",
 			"provides": [
 				"soname(libvdpau.so.1(x86_64))",
-				"soname(libvdpau_trace.so.1(x86_64))"
+				"soname(vdpau/libvdpau_trace.so.1(x86_64))"
+			]
+		},
+		"libvdpau-32bit": {
+			"build-depends": [
+				"pkgconfig32(x11)"
+			],
+			"depends": [
+				"libvdpau",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libvdpau.so.1",
+				"/usr/lib32/libvdpau.so.1.0.0",
+				"/usr/lib32/vdpau/libvdpau_trace.so",
+				"/usr/lib32/vdpau/libvdpau_trace.so.1",
+				"/usr/lib32/vdpau/libvdpau_trace.so.1.0.0"
+			],
+			"name": "libvdpau-32bit",
+			"provides": [
+				"soname(libvdpau.so.1(386))",
+				"soname(libvdpau.so.1(x86))",
+				"soname(vdpau/libvdpau_trace.so.1(386))",
+				"soname(vdpau/libvdpau_trace.so.1(x86))"
+			]
+		},
+		"libvdpau-32bit-devel": {
+			"build-depends": [
+				"pkgconfig32(x11)"
+			],
+			"depends": [
+				"libvdpau-32bit",
+				"libvdpau-devel"
+			],
+			"files": [
+				"/usr/lib32/libvdpau.so",
+				"/usr/lib32/pkgconfig/vdpau.pc"
+			],
+			"name": "libvdpau-32bit-devel",
+			"provides": [
+				"pkgconfig32(vdpau)"
 			]
 		},
 		"libvdpau-devel": {
 			"build-depends": [
-				"pkgconfig(x11)"
+				"pkgconfig32(x11)"
 			],
 			"depends": [
 				"libvdpau"
@@ -42,6 +82,6 @@
 		}
 	},
 	"source-name": "libvdpau",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.5"
 }
