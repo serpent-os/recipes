@@ -5,7 +5,7 @@
 #
 name        : mesa
 version     : 24.3.1
-release     : 21
+release     : 22
 homepage    : https://mesa3d.org/
 upstreams   :
     - https://archive.mesa3d.org/mesa-24.3.1.tar.xz : 9c795900449ce5bc7c526ba0ab3532a22c3c951cab7e0dd9de5fcac41b0843af
@@ -22,47 +22,67 @@ packages    :
             - /usr/lib/libgallium*.so
             - /usr/lib/libVk*.so
             - /usr/lib/libvulkan_*.so
+    - "%(name)-32bit":
+        paths:
+            - /usr/lib32/libgallium*.so
+            - /usr/lib32/libVk*.so
+            - /usr/lib32/libvulkan_*.so
+            - /usr/share/vulkan/icd.d/*.i686.json
 networking  : true
 builddeps   :
     - binary(bindgen)
     - binary(bison)
     - binary(cbindgen)
     - binary(flex)
+    - binary(llvm-config32)
     - binary(python3)
     - binary(rustc)
+    - clang-32bit
+    - clang-devel
     - cmake(Clang)
-    - cmake(LLVM)
-    - cmake(SPIRV-Tools)
     - cmake(glslang)
-    - pkgconfig(LLVMSPIRVLib)
-    - pkgconfig(expat)
-    - pkgconfig(libclc)
-    - pkgconfig(libdrm)
-    - pkgconfig(libelf)
-    - pkgconfig(libglvnd)
-    - pkgconfig(libudev)
-    - pkgconfig(libunwind)
-    - pkgconfig(libva)
-    - pkgconfig(libzstd)
-    - pkgconfig(vdpau)
-    - pkgconfig(wayland-protocols)
-    - pkgconfig(x11)
-    - pkgconfig(xcb)
-    - pkgconfig(xcb-keysyms)
-    - pkgconfig(xext)
-    - pkgconfig(xfixes)
-    - pkgconfig(xrandr)
-    - pkgconfig(xshmfence)
-    - pkgconfig(xxf86vm)
-    - pkgconfig(zlib)
+    - gcc-32bit-devel
     - lm_sensors-devel
+    - pkgconfig(libclc)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig32(LLVMSPIRVLib)
+    - pkgconfig32(SPIRV-Tools)
+    - pkgconfig32(expat)
+    - pkgconfig32(libdrm)
+    - pkgconfig32(libelf)
+    - pkgconfig32(libglvnd)
+    - pkgconfig32(libudev)
+    - pkgconfig32(libunwind)
+    - pkgconfig32(libva)
+    - pkgconfig32(libzstd)
+    - pkgconfig32(vdpau)
+    - pkgconfig32(x11)
+    - pkgconfig32(xcb)
+    - pkgconfig32(xcb-keysyms)
+    - pkgconfig32(xext)
+    - pkgconfig32(xfixes)
+    - pkgconfig32(xrandr)
+    - pkgconfig32(xshmfence)
+    - pkgconfig32(xxf86vm)
+    - pkgconfig32(zlib)
     - python-mako
     - python-ply
     - python-pyyaml
+    - rust-32bit
 tuning      :
     - symbolic: false
     - optimize: speed
     - lto: thin
+emul32      : true
+profiles    :
+    - emul32:
+        environment: |
+            export LLVM_CONFIG="llvm-config32"
+            export RUSTC="rustc --target=%(target_triple)"
+            export BINDGEN_EXTRA_CLANG_ARGS="--target=%(target_triple)"
+            export EXTRA_VK_DRIVERS=""
+environment : |
+    export EXTRA_VK_DRIVERS=",nouveau"
 setup       : |
     %meson \
         -Degl=enabled \
@@ -82,7 +102,9 @@ setup       : |
         -Dplatforms=x11,wayland \
         -Dshared-llvm=enabled \
         -Dvideo-codecs=all \
-        -Dvulkan-drivers=amd,intel,intel_hasvk,nouveau,swrast,virtio \
+        -Dmicrosoft-clc=disabled \
+        -Dintel-clc=enabled \
+        -Dvulkan-drivers=amd,intel,intel_hasvk,swrast,virtio$EXTRA_VK_DRIVERS \
         -Dvulkan-layers=device-select,overlay
 build       : |
     %meson_build
