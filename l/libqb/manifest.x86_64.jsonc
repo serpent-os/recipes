@@ -1,0 +1,72 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libqb": {
+			"build-depends": [
+				"binary(date)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libsystemd.so.0(x86_64))",
+				"soname(libxml2.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/bin/doxygen2man",
+				"/usr/lib/libqb.so.100",
+				"/usr/lib/libqb.so.100.3.2",
+				"/usr/sbin/qb-blackbox",
+				"/usr/share/doc/libqb/COPYING",
+				"/usr/share/doc/libqb/INSTALL",
+				"/usr/share/doc/libqb/README.markdown",
+				"/usr/share/man/man1/doxygen2man.1",
+				"/usr/share/man/man8/qb-blackbox.8"
+			],
+			"name": "libqb",
+			"provides": [
+				"binary(doxygen2man)",
+				"soname(libqb.so.100(x86_64))",
+				"sysbinary(qb-blackbox)"
+			]
+		},
+		"libqb-devel": {
+			"build-depends": [
+				"binary(date)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"depends": [
+				"libqb"
+			],
+			"files": [
+				"/usr/include/qb/qbarray.h",
+				"/usr/include/qb/qbatomic.h",
+				"/usr/include/qb/qbconfig.h",
+				"/usr/include/qb/qbdefs.h",
+				"/usr/include/qb/qbhdb.h",
+				"/usr/include/qb/qbipc_common.h",
+				"/usr/include/qb/qbipcc.h",
+				"/usr/include/qb/qbipcs.h",
+				"/usr/include/qb/qblist.h",
+				"/usr/include/qb/qblog.h",
+				"/usr/include/qb/qbloop.h",
+				"/usr/include/qb/qbmap.h",
+				"/usr/include/qb/qbrb.h",
+				"/usr/include/qb/qbutil.h",
+				"/usr/lib/libqb.so",
+				"/usr/lib/pkgconfig/libqb.pc",
+				"/usr/share/man/man3"
+			],
+			"name": "libqb-devel",
+			"provides": [
+				"pkgconfig(libqb)"
+			]
+		}
+	},
+	"source-name": "libqb",
+	"source-release": "1",
+	"source-version": "2.0.8"
+}

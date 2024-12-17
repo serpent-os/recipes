@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libqb
+version     : 2.0.8
+release     : 1
+homepage    : https://github.com/ClusterLabs/libqb
+upstreams   :
+    - https://github.com/ClusterLabs/libqb/releases/download/v2.0.8/libqb-2.0.8.tar.xz : b42531fc20b8ac02f4c6d0a4dc49f7c4a1eef09bdb13af5f6927b7fc49522ee6
+summary     : A library for high performance inter-process communication
+description : |
+    A library for high performance inter-process communication
+license     : LGPL-2.1-or-later
+builddeps   :
+    - binary(date)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libxml-2.0)
+setup       : |
+    # Doesn't like `date` from uutils-coreutils
+    %configure --disable-static \
+                 ax_cv_prog_date_type=gnu \
+                 ax_cv_prog_date_gnu_utc=yes \
+                 ax_cv_prog_date_gnu_date=yes
+build       : |
+    %make
+install     : |
+    %make_install
