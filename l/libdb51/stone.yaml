@@ -1,0 +1,48 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libdb51
+version     : 5.1.29
+release     : 1
+summary     : Berkeley DB 5.1 (binary compatibility)
+license     : BSD-3-Clause
+homepage    : https://www.oracle.com/database/technologies/related/berkeleydb.html
+upstreams   :
+    - http://download.oracle.com/berkeley-db/db-5.1.29.tar.gz : a943cb4920e62df71de1069ddca486d408f6d7a09ddbbb5637afe7a229389182
+description : |
+    Berkeley DB 5.1
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/*.so*
+    - "%(name)-32bit":
+        paths:
+            - /usr/lib32/*.so*
+
+emul32      : true
+toolchain   : gnu
+setup       : |
+    %patch %(pkgdir)/CVE-2017-10140-cwd-db_config.patch
+    pushd src
+    %patch %(pkgdir)/db-atomic.patch
+    popd
+
+    ./dist/configure %(options_configure) \
+                     --enable-compat185 \
+                     --enable-shared \
+                     --disable-static \
+                     --disable-mutexsupport \
+                     --enable-dbm \
+                     --enable-cxx
+build       : |
+    %make
+install     : |
+    %make_install
+    rm -rf %(installroot)/usr/docs
+    rm -v %(installroot)%(libdir)/libdb.so
+    rm -v %(installroot)%(libdir)/libdb_cxx.so
+    rm -v %(installroot)%(libdir)/libdb-5.so
+    rm -v %(installroot)%(libdir)/libdb_cxx-5.so
+    rm -rf %(installroot)%(includedir)

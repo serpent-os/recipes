@@ -1,0 +1,73 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libdb51": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/db_archive",
+				"/usr/bin/db_checkpoint",
+				"/usr/bin/db_deadlock",
+				"/usr/bin/db_dump",
+				"/usr/bin/db_hotbackup",
+				"/usr/bin/db_load",
+				"/usr/bin/db_log_verify",
+				"/usr/bin/db_printlog",
+				"/usr/bin/db_recover",
+				"/usr/bin/db_replicate",
+				"/usr/bin/db_stat",
+				"/usr/bin/db_upgrade",
+				"/usr/bin/db_verify",
+				"/usr/lib/libdb-5.1.so",
+				"/usr/lib/libdb_cxx-5.1.so"
+			],
+			"name": "libdb51",
+			"provides": [
+				"binary(db_archive)",
+				"binary(db_checkpoint)",
+				"binary(db_deadlock)",
+				"binary(db_dump)",
+				"binary(db_hotbackup)",
+				"binary(db_load)",
+				"binary(db_log_verify)",
+				"binary(db_printlog)",
+				"binary(db_recover)",
+				"binary(db_replicate)",
+				"binary(db_stat)",
+				"binary(db_upgrade)",
+				"binary(db_verify)",
+				"soname(libdb-5.1.so(x86_64))",
+				"soname(libdb_cxx-5.1.so(x86_64))"
+			]
+		},
+		"libdb51-32bit": {
+			"depends": [
+				"libdb51",
+				"soname(libc.so.6(386))",
+				"soname(libgcc_s.so.1(386))",
+				"soname(libm.so.6(386))",
+				"soname(libstdc++.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libdb-5.1.so",
+				"/usr/lib32/libdb_cxx-5.1.so"
+			],
+			"name": "libdb51-32bit",
+			"provides": [
+				"soname(libdb-5.1.so(386))",
+				"soname(libdb-5.1.so(x86))",
+				"soname(libdb_cxx-5.1.so(386))",
+				"soname(libdb_cxx-5.1.so(x86))"
+			]
+		}
+	},
+	"source-name": "libdb51",
+	"source-release": "1",
+	"source-version": "5.1.29"
+}
