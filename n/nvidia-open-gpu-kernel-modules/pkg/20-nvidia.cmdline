@@ -1,1 +1,1 @@
-nvidia-drm.modset=1 rd.driver.blacklist=nouveau
+nvidia-drm.modeset=1 rd.driver.blacklist=nouveau
