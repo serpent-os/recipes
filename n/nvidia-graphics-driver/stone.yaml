@@ -5,7 +5,7 @@
 #
 name        : nvidia-graphics-driver
 version     : 565.77
-release     : 7
+release     : 8
 homepage    : https://www.nvidia.com/
 upstreams   :
     - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
@@ -21,9 +21,9 @@ builddeps   :
     - glibc-32bit
     - binary(sh)
     - pkgconfig32(libglvnd)
-    - pkgconfig(osmesa)
+    - pkgconfig32(osmesa)
     - pkgconfig(vulkan)
-    - pkgconfig(systemd)
+    - pkgconfig32(libsystemd)
 rundeps     :
     - egl-wayland
     - nvidia-open-gpu-kernel-modules
@@ -56,7 +56,7 @@ install     : |
                                --egl-external-platform-config-path=%(installroot)%(datadir)/egl/egl_external_platform.d \
                                --systemd-unit-prefix=%(installroot)%(libdir)/systemd/system \
                                --systemd-sleep-prefix=%(installroot)%(libdir)/systemd/systemd-sleep \
-                               --compat32-libdir=lib32
+                               --compat32-libdir=%(installroot)/usr/lib32
     cat %(workdir)/nvidia-installer.log
     rm %(installroot)%(bindir)/{nvidia-installer,nvidia-uninstall}
 
@@ -71,6 +71,15 @@ install     : |
     %install_file extracted/nvidia_icd.json %(installroot)%(datadir)/vulkan/icd.d/nvidia_icd.json
     %install_file extracted/nvidia_icd_vksc.json %(installroot)%(datadir)/vulkansc/icd.d/nvidia_icd.json
     %install_file extracted/nvidia_layers.json %(installroot)%(datadir)/vulkan/implicit_layer.d/nvidia_layers.json
+
+    # dbus config
+    %install_file extracted/nvidia-dbus.conf %(installroot)%(datadir)/dbus-1/system.d/nvidia-dbus.conf
+
+    # udev rules
+    %install_file %(pkgdir)/80-nvidia-pm.rules %(installroot)%(libdir)/udev/rules.d/80-nvidia.rules
+    %install_file extracted/nvidia-drm-outputclass.conf %(installroot)%(datadir)/X11/xorg.conf.d/20-nvidia.conf
+
+    install -m4755 extracted/nvidia-modprobe %(installroot)%(bindir)/nvidia-modprobe
 
     # conflicts by egl-wayland
     rm -v %(installroot)%(libdir)/libnvidia-egl-wayland*

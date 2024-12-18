@@ -6,10 +6,10 @@
 			"build-depends": [
 				"binary(sh)",
 				"glibc-32bit",
-				"pkgconfig(osmesa)",
-				"pkgconfig(systemd)",
 				"pkgconfig(vulkan)",
-				"pkgconfig32(libglvnd)"
+				"pkgconfig32(libglvnd)",
+				"pkgconfig32(libsystemd)",
+				"pkgconfig32(osmesa)"
 			],
 			"depends": [
 				"egl-wayland",
@@ -49,6 +49,7 @@
 				"/usr/bin/nvidia-cuda-mps-control",
 				"/usr/bin/nvidia-cuda-mps-server",
 				"/usr/bin/nvidia-debugdump",
+				"/usr/bin/nvidia-modprobe",
 				"/usr/bin/nvidia-ngx-updater",
 				"/usr/bin/nvidia-pcc",
 				"/usr/bin/nvidia-persistenced",
@@ -135,12 +136,15 @@
 				"/usr/lib/systemd/system/nvidia-resume.service",
 				"/usr/lib/systemd/system/nvidia-suspend.service",
 				"/usr/lib/systemd/systemd-sleep/nvidia",
+				"/usr/lib/udev/rules.d/80-nvidia.rules",
 				"/usr/lib/vdpau/libvdpau_nvidia.so.1",
 				"/usr/lib/vdpau/libvdpau_nvidia.so.565.77",
 				"/usr/lib/xorg/modules/drivers/nvidia_drv.so",
 				"/usr/lib/xorg/modules/extensions/libglxserver_nvidia.so",
 				"/usr/lib/xorg/modules/extensions/libglxserver_nvidia.so.565.77",
+				"/usr/share/X11/xorg.conf.d/20-nvidia.conf",
 				"/usr/share/applications/nvidia-settings.desktop",
+				"/usr/share/dbus-1/system.d/nvidia-dbus.conf",
 				"/usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json",
 				"/usr/share/egl/egl_external_platform.d/20_nvidia_xcb.json",
 				"/usr/share/egl/egl_external_platform.d/20_nvidia_xlib.json",
@@ -156,6 +160,7 @@
 				"binary(nvidia-cuda-mps-control)",
 				"binary(nvidia-cuda-mps-server)",
 				"binary(nvidia-debugdump)",
+				"binary(nvidia-modprobe)",
 				"binary(nvidia-ngx-updater)",
 				"binary(nvidia-pcc)",
 				"binary(nvidia-persistenced)",
@@ -206,6 +211,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "565.77"
 }
