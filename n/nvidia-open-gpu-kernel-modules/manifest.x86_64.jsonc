@@ -11,6 +11,7 @@
 			"files": [
 				"/usr/lib/kernel/6.12.5-67.desktop/20-nvidia.cmdline",
 				"/usr/lib/modprobe.d/nvidia-noview.conf",
+				"/usr/lib/modules-load.d/nvidia-uvm.conf",
 				"/usr/lib/modules/6.12.5-67.desktop/kernel/drivers/video/nvidia-drm.ko.zst",
 				"/usr/lib/modules/6.12.5-67.desktop/kernel/drivers/video/nvidia-modeset.ko.zst",
 				"/usr/lib/modules/6.12.5-67.desktop/kernel/drivers/video/nvidia-peermem.ko.zst",
@@ -21,6 +22,6 @@
 		}
 	},
 	"source-name": "nvidia-open-gpu-kernel-modules",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "565.77"
 }
