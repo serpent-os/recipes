@@ -12,6 +12,7 @@
 				"soname(libX11.so.6(386))",
 				"soname(libXext.so.6(386))",
 				"soname(libXxf86vm.so.1(386))",
+				"soname(libdb-5.1.so(386))",
 				"soname(libdrm.so.2(386))",
 				"soname(libelf.so.1(386))",
 				"soname(libgcc_s.so.1(386))",
@@ -51,6 +52,6 @@
 		}
 	},
 	"source-name": "steam",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "1.0.0.82"
 }
