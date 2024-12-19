@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Serpent OS
+GenericName=Install OS
+Comment=Install Serpent OS on your system
+Icon=system-software-install
+Exec=pkexec lichen_cli
+Terminal=true
+Categories=X-GNOME-Settings-Panel;GTK;System;ConsoleOnly;Settings;
+Keywords=Install;SystemSettings;
