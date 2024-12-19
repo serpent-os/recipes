@@ -1,0 +1,20 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : morewaita-icon-theme
+version     : 47.2
+release     : 1
+homepage    : https://github.com/somepaulo/MoreWaita
+upstreams   :
+    - https://github.com/somepaulo/MoreWaita/archive/refs/tags/v47.2.tar.gz : d84e75ae3973587b42b35d10649953ace53a51c15221048638b5786e44af77dd
+summary     : An expanded Adwaita-styled icon theme
+description : |
+    An expanded Adwaita-styled companion icon theme with extra icons for popular apps to complement Gnome Shell's original icons. 
+license     : GPL-3.0-or-later
+install     : |
+    install -dm0755 %(installroot)/usr/share/icons/MoreWaita
+    cp -r %(workdir)/scalable %(installroot)/usr/share/icons/MoreWaita/scalable
+    cp -r %(workdir)/symbolic %(installroot)/usr/share/icons/MoreWaita/symbolic
+    cp %(workdir)/index.theme  %(installroot)/usr/share/icons/MoreWaita/index.theme
