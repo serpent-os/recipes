@@ -1,7 +1,7 @@
 [org.gnome.desktop.background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/gnome/lcd-rainbow-d.jxl'
-picture-uri-dark='file:///usr/share/backgrounds/gnome/lcd-rainbow-d.jxl'
-primary-color='#26a269'
+picture-uri='file:///usr/share/backgrounds/serpent-os/marc-markstein-0kD1eHgyuPI-unsplash.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/serpent-os/marc-markstein-0kD1eHgyuPI-unsplash.jpg'
+primary-color='#86b6ef'
 secondary-color='#000000'
