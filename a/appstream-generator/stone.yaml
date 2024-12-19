@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : appstream-generator
+version     : 0.9.1
+release     : 1
+homepage    : https://github.com/ximion/appstream-generator
+upstreams   :
+    - https://github.com/ximion/appstream-generator/archive/refs/tags/v0.9.1.tar.gz : b3f8ea7c7cbcce3328319fc655a83e6464e9d1ba57d27e037043ff7123f6930d
+summary     : A fast AppStream metadata generator
+description : |
+    AppStream is an effort to provide additional metadata and unique IDs for all software available in a Linux system. This repository contains the server-side of the AppStream infrastructure, a tool to generate metadata from distribution packages.
+license     : LGPL-3.0-or-later
+builddeps   :
+    - binary(girtod)
+    - binary(xsltproc)
+    - pkgconfig(appstream)
+    - pkgconfig(appstream-compose)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(glibd-2.0)
+    - pkgconfig(libarchive)
+    - pkgconfig(libcurl)
+    - pkgconfig(lmdb)
+    - docbook
+    - ldc-devel
+setup       : |
+    %meson -Ddownload-js=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
