@@ -20,6 +20,7 @@
 				"soname(libudev.so.1(386))",
 				"soname(libva.so.2(386))",
 				"soname(libvdpau.so.1(386))",
+				"soname(libvulkan.so.1(386))",
 				"soname(libz.so.1(386))"
 			],
 			"files": [
@@ -53,6 +54,6 @@
 		}
 	},
 	"source-name": "steam",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "1.0.0.82"
 }
