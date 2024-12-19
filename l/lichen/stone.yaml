@@ -5,7 +5,7 @@
 #
 name        : lichen
 version     : 0.1.0
-release     : 17
+release     : 18
 summary     : Experimental OS installer
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/lichen
@@ -29,3 +29,4 @@ install     : |
     %cargo_install lichen_cli
     ln -sv lichen_cli %(installroot)%(bindir)/lichen
     %install_file %(pkgdir)/lichen.desktop %(installroot)/%(datadir)/applications/lichen.desktop
+    %install_file %(pkgdir)/org.freedesktop.policykit.pkexec.lichen.policy %(installroot)/%(datadir)/polkit-1/actions/org.freedesktop.policykit.pkexec.lichen.policy

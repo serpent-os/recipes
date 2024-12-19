@@ -20,7 +20,8 @@
 			"files": [
 				"/usr/bin/lichen",
 				"/usr/bin/lichen_cli",
-				"/usr/share/applications/lichen.desktop"
+				"/usr/share/applications/lichen.desktop",
+				"/usr/share/polkit-1/actions/org.freedesktop.policykit.pkexec.lichen.policy"
 			],
 			"name": "lichen",
 			"provides": [
@@ -30,6 +31,6 @@
 		}
 	},
 	"source-name": "lichen",
-	"source-release": "17",
+	"source-release": "18",
 	"source-version": "0.1.0"
 }
