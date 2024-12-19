@@ -5,7 +5,7 @@
 #
 name        : vulkan-loader
 version     : 1.4.303
-release     : 7
+release     : 8
 homepage    : https://vulkan.lunarg.com/doc/sdk
 upstreams   :
     - https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v1.4.303.tar.gz : 248a5f7dbf990609f61dac34d19e43f441ccc31fd5ec49b64e807740099057a9
@@ -17,11 +17,16 @@ license     :
 builddeps   :
     - binary(git)
     - cmake(VulkanHeaders)
-    - pkgconfig(wayland-client)
-    - pkgconfig(x11)
-    - pkgconfig(xrandr)
+    - pkgconfig32(wayland-client)
+    - pkgconfig32(x11)
+    - pkgconfig32(xrandr)
+emul32     : true
+profiles   :
+    - emul32:
+        environment: |
+            export ASFLAGS="-32"
 setup       : |
-    %cmake
+    %cmake -DCMAKE_INSTALL_LIBDIR=lib%(libsuffix)
 build       : |
     %cmake_build
 install     : |
