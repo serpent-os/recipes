@@ -4,19 +4,17 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : serpent-artwork
-version     : "0"
-release     : 5
+version     : 1
+release     : 6
 summary     : Serpent OS Artwork
 license     : Distributable
 homepage    : https://github.com/serpent-os/artwork
 upstreams   :
-    - https://github.com/serpent-os/artwork/archive/refs/tags/v0.tar.gz : 2fab1d61027b69bf8f9e07caeff93be4fe17c42b87a3af7f97ea6041bf0fecd8
+    - https://github.com/serpent-os/artwork/archive/refs/tags/v1.tar.gz : 34d2770f2bd59307d5fa9ff535ae260f2514ba858b9c4fce39b2ab45de56f3fe
 description : |
     Default artwork for Serpent OS
 builddeps   :
     - binary(just)
-setup       : |
-    %patch %(pkgdir)/0001-.xml-Fix-invalid-path.patch
 install     : |
     DESTDIR=%(installroot) just install
     %install_file %(pkgdir)/logo/black_notext_2x.png %(installroot)%(datadir)/icons/serpent-logo.png

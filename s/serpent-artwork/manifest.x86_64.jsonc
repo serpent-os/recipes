@@ -8,8 +8,10 @@
 			],
 			"files": [
 				"/usr/share/backgrounds/serpent-os/austin-d-JQ9-cbC4rDE-unsplash.jpg",
+				"/usr/share/backgrounds/serpent-os/marc-markstein-0kD1eHgyuPI-unsplash.jpg",
 				"/usr/share/backgrounds/serpent-os/mike-uderevsky-4fqXRDI4gXQ-unsplash.jpg",
 				"/usr/share/gnome-background-properties/austin.xml",
+				"/usr/share/gnome-background-properties/marc.xml",
 				"/usr/share/gnome-background-properties/mike.xml",
 				"/usr/share/icons/serpent-logo-dark.png",
 				"/usr/share/icons/serpent-logo.png",
@@ -19,6 +21,6 @@
 		}
 	},
 	"source-name": "serpent-artwork",
-	"source-release": "5",
-	"source-version": "0"
+	"source-release": "6",
+	"source-version": "1"
 }
