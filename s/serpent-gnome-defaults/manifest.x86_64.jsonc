@@ -9,6 +9,7 @@
 				"gnome-backgrounds",
 				"gnome-shell-extension-appindicator",
 				"gnome-shell-extension-tilingshell",
+				"papirus-icon-theme",
 				"serpent-artwork"
 			],
 			"files": [
@@ -17,12 +18,14 @@
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.interface.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.peripherals.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.wm.gschema.override",
-				"/usr/share/glib-2.0/schemas/10_org.gnome.shell.gschema.override"
+				"/usr/share/glib-2.0/schemas/10_org.gnome.shell.gschema.override",
+				"/usr/share/glib-2.0/schemas/10_org.gtk.Settings.FileCooser.gschema.override",
+				"/usr/share/glib-2.0/schemas/10_org.gtk.gtk4.Settings.FileCooser.gschema.override"
 			],
 			"name": "serpent-gnome-defaults"
 		}
 	},
 	"source-name": "serpent-gnome-defaults",
-	"source-release": "19",
+	"source-release": "20",
 	"source-version": "0.1.0"
 }

@@ -1,0 +1,2 @@
+[org.gtk.gtk4.Settings.FileChooser]
+sort-directories-first=true
