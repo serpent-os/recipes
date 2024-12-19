@@ -5,7 +5,7 @@
 #
 name        : nvidia-graphics-driver
 version     : 565.77
-release     : 8
+release     : 9
 homepage    : https://www.nvidia.com/
 upstreams   :
     - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
@@ -26,6 +26,7 @@ builddeps   :
     - pkgconfig32(libsystemd)
 rundeps     :
     - egl-wayland
+    - eglexternalplatform
     - nvidia-open-gpu-kernel-modules
 packages    :
     - "%(name)":

@@ -13,6 +13,7 @@
 			],
 			"depends": [
 				"egl-wayland",
+				"eglexternalplatform",
 				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))",
 				"nvidia-open-gpu-kernel-modules",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -211,6 +212,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "565.77"
 }
