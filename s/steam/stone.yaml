@@ -5,7 +5,7 @@
 #
 name        : steam
 version     : 1.0.0.82
-release     : 12
+release     : 13
 homepage    : https://store.steampowered.com/
 upstreams   :
     - https://repo.steampowered.com/steam/pool/steam/s/steam/steam_1.0.0.82.tar.gz : afa2f1dd6271fd2b645ba30b8f3ab40afd3654e354241a31cbd51000f7e6fc77
@@ -32,7 +32,12 @@ rundeps     :
     - soname(libvdpau.so.1(386))
     - soname(libvulkan.so.1(386))
     - soname(libz.so.1(386))
+setup      : |
+    %patch %(pkgdir)/rules.patch
 install     : |
     %make_install
     mv %(installroot)%(bindir)/steam %(installroot)%(libdir)/steam/steam
     %install_exe %(pkgdir)/steam.sh %(installroot)%(bindir)/steam
+    %install_dir %(installroot)%(libdir)/udev/rules.d
+    %install_file subprojects/steam-devices/* %(installroot)%(libdir)/udev/rules.d/.
+    rm -v %(installroot)%(libdir)/udev/rules.d/LICENSE
