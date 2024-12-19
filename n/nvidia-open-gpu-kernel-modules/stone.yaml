@@ -5,15 +5,21 @@
 #
 name        : nvidia-open-gpu-kernel-modules
 version     : 565.77
-release     : 5
+release     : 6
 homepage    : https://github.com/NVIDIA/open-gpu-kernel-modules
 upstreams   :
     - https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/565.77.tar.gz : d3342afbf327335a51096ce5de7b35b22ba84ee2127e84c2cc49624d88a3444f
+    - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
+        hash: 0a7aa742c46bcf34d766982402d17b3db1fdb3bc1b89344d70cd123c1cb3147c
+        unpack: false
+        rename: NVIDIA.run
 summary     : NVIDIA open GPU kernel modules
 description : |
     NVIDIA open GPU kernel modules
 license     : GPL-2.0-only
 builddeps   :
+    - binary(zstd)
+    - binary(cpio)
     - binary(jq)
     - linux-desktop
     - linux-desktop-devel
@@ -32,11 +38,24 @@ build       : |
     %make CC=%(cc) LD=%(ld) KERNEL_UNAME=$KERNEL_UNAME NV_VERBOSE=1 modules
 install     : |
     %install_dir %(installroot)%(libdir)/modules/$KERNEL_UNAME/kernel/drivers/video
+    %install_dir %(installroot)%(libdir)/kernel/$KERNEL_UNAME
 
     # zstd compress all .ko and install them to the video driver directory
     for module in $(find . -name '*.ko'); do
+        # llvm-strip --strip-unneeded $module
         zstd -19 -T0 -c $module -o %(installroot)%(libdir)/modules/$KERNEL_UNAME/kernel/drivers/video/$(basename $module).zst
     done
+
+    # Create an initrd for the firmware and .ko files
+    sh %(sourcedir)/NVIDIA.run --extract-only --target extracted
+    mkdir -p initrd/eb-nvidia
+    mkdir -p initrd/eb-nvidia-fw/%(version)
+    %install_file extracted/firmware/*.bin initrd/eb-nvidia-fw/%(version)/.
+    find . -name '*.ko' -exec cp -v {} initrd/eb-nvidia \;
+    touch initrd/.dracut-depmod-invalidate
+    pushd initrd
+    find . | cpio -o -H newc | zstd -19 -T0 -c > %(installroot)%(libdir)/kernel/$KERNEL_UNAME/20-nvidia.initrd
+    popd
 
     %install_file %(pkgdir)/20-nvidia.cmdline %(installroot)%(libdir)/kernel/$KERNEL_UNAME/20-nvidia.cmdline
     %install_file %(pkgdir)/nvidia-noview.conf %(installroot)%(libdir)/modprobe.d/nvidia-noview.conf
