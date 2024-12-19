@@ -5,7 +5,7 @@
 #
 name        : mesa
 version     : 24.3.1
-release     : 22
+release     : 23
 homepage    : https://mesa3d.org/
 upstreams   :
     - https://archive.mesa3d.org/mesa-24.3.1.tar.xz : 9c795900449ce5bc7c526ba0ab3532a22c3c951cab7e0dd9de5fcac41b0843af
@@ -51,6 +51,7 @@ builddeps   :
     - pkgconfig32(libdrm)
     - pkgconfig32(libelf)
     - pkgconfig32(libglvnd)
+    - pkgconfig32(libpng)
     - pkgconfig32(libudev)
     - pkgconfig32(libunwind)
     - pkgconfig32(libva)
@@ -72,7 +73,6 @@ builddeps   :
 tuning      :
     - symbolic: false
     - optimize: speed
-    - lto: thin
 emul32      : true
 profiles    :
     - emul32:
@@ -84,6 +84,7 @@ profiles    :
 environment : |
     export EXTRA_VK_DRIVERS=",nouveau"
 setup       : |
+    %patch %(pkgdir)/implicit-modifiers-fixes.patch
     %meson \
         -Degl=enabled \
         -Dgallium-drivers=crocus,i915,iris,llvmpipe,nouveau,r300,r600,radeonsi,softpipe,svga,virgl,zink \
@@ -98,15 +99,15 @@ setup       : |
         -Dllvm=enabled \
         -Dosmesa=true \
         -Dzstd=enabled \
-        -Dvulkan-beta=true \
         -Dplatforms=x11,wayland \
         -Dshared-llvm=enabled \
         -Dvideo-codecs=all \
         -Dmicrosoft-clc=disabled \
         -Dintel-clc=enabled \
         -Dvulkan-drivers=amd,intel,intel_hasvk,swrast,virtio$EXTRA_VK_DRIVERS \
-        -Dvulkan-layers=device-select,overlay
+        -Dvulkan-layers=device-select,overlay,screenshot
 build       : |
     %meson_build
 install     : |
     %meson_install
+    ln -sv libGLX_mesa.so.0 %(installroot)%(libdir)/libGLX_indirect.so.0
