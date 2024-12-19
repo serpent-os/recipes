@@ -1,0 +1,19 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : papirus-icon-theme
+version     : 20240501
+release     : 1
+homepage    : https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+upstreams   :
+    - https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/refs/tags/20240501.tar.gz : c12a64963639afffc5c5425c4d8fd09e9d5510bbc4c408a1fec9a1d617c5089b
+summary     : Papirus Icon Theme
+description : |
+    Papirus Icon Theme
+license     : GPL-3.0-or-later
+build       : |
+    %make
+install     : |
+    %make_install
