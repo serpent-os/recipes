@@ -11,8 +11,8 @@
 				"linux-desktop-devel"
 			],
 			"files": [
-				"/usr/lib/kernel/6.12.5-68.desktop/20-nvidia.cmdline",
-				"/usr/lib/kernel/6.12.5-68.desktop/20-nvidia.initrd",
+				"/usr/lib/kernel/6.12.5-68.desktop/60-nvidia.cmdline",
+				"/usr/lib/kernel/6.12.5-68.desktop/60-nvidia.initrd",
 				"/usr/lib/modprobe.d/nvidia-noview.conf",
 				"/usr/lib/modules-load.d/nvidia-uvm.conf",
 				"/usr/lib/modules/6.12.5-68.desktop/kernel/drivers/video/nvidia-drm.ko.zst",
@@ -25,6 +25,6 @@
 		}
 	},
 	"source-name": "nvidia-open-gpu-kernel-modules",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "565.77"
 }

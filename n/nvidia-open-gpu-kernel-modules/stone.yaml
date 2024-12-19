@@ -5,7 +5,7 @@
 #
 name        : nvidia-open-gpu-kernel-modules
 version     : 565.77
-release     : 6
+release     : 7
 homepage    : https://github.com/NVIDIA/open-gpu-kernel-modules
 upstreams   :
     - https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/565.77.tar.gz : d3342afbf327335a51096ce5de7b35b22ba84ee2127e84c2cc49624d88a3444f
@@ -54,9 +54,9 @@ install     : |
     find . -name '*.ko' -exec cp -v {} initrd/eb-nvidia \;
     touch initrd/.dracut-depmod-invalidate
     pushd initrd
-    find . | cpio -o -H newc | zstd -19 -T0 -c > %(installroot)%(libdir)/kernel/$KERNEL_UNAME/20-nvidia.initrd
+    find . | cpio -o -H newc | zstd -19 -T0 -c > %(installroot)%(libdir)/kernel/$KERNEL_UNAME/60-nvidia.initrd
     popd
 
-    %install_file %(pkgdir)/20-nvidia.cmdline %(installroot)%(libdir)/kernel/$KERNEL_UNAME/20-nvidia.cmdline
+    %install_file %(pkgdir)/20-nvidia.cmdline %(installroot)%(libdir)/kernel/$KERNEL_UNAME/60-nvidia.cmdline
     %install_file %(pkgdir)/nvidia-noview.conf %(installroot)%(libdir)/modprobe.d/nvidia-noview.conf
     %install_file %(pkgdir)/nvidia-uvm.conf %(installroot)%(libdir)/modules-load.d/nvidia-uvm.conf
