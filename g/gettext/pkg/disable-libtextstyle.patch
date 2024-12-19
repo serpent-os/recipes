@@ -1,45 +1,6 @@
-Subject: Completely disable libtextstyle.
-
-libtextstyle is not packaged for Debian and depends on libcroco, which
-is unmaintained and has known security bugs.  Do not build the
-embedded copy, and do not look for any version of it on the system.
-Use the Gnulib module libtextstyle-dummy to satisfy the gettext-tools'
-use of it; this module is already available in the upstream sources
-but needs one (relatively trivial) missing feature added.
-
-This patch is not suitable for upstream.  Upstream ought to split
-libtextstyle out to its own source tarball and overhaul it to remove
-the dependency on libcroco, at which point it could be packaged
-normally and gettext could build-depend on it normally, but I suspect
-they will not be in any hurry to do this.
-
-Author: Zack Weinberg <zackw@panix.com>
-Bug-Debian: https://bugs.debian.org/967028
-Origin: vendor
-Forwarded: no
-Last-Update: 2020-09-27
-
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -19,7 +19,7 @@
- AUTOMAKE_OPTIONS = 1.5 gnu no-dependencies
- ACLOCAL_AMFLAGS = -I m4
- 
--SUBDIRS = gnulib-local gettext-runtime libtextstyle gettext-tools
-+SUBDIRS = gnulib-local gettext-runtime gettext-tools
- 
- changelog_etc = \
-   gettext-runtime/ChangeLog.0 \
-@@ -123,7 +123,6 @@
- 	test "`sed 1,16d $(srcdir)/gettext-runtime/intl/xsize.h | md5sum`" = "`sed 1,16d $(srcdir)/gettext-tools/gnulib-lib/xsize.h | md5sum`"
- 	cmp -s $(srcdir)/gettext-runtime/man/help2man $(srcdir)/gettext-tools/man/help2man
- 	cmp -s $(srcdir)/gettext-runtime/man/x-to-1.in $(srcdir)/gettext-tools/man/x-to-1.in
--	cmp -s $(srcdir)/libtextstyle/m4/libtextstyle.m4 $(srcdir)/gettext-tools/gnulib-m4/libtextstyle.m4
- 	cmp -s $(srcdir)/gettext-tools/examples/hello-java-awt/m4/TestAWT.java $(srcdir)/gettext-tools/examples/hello-java-swing/m4/TestAWT.java
- 	cmp -s $(srcdir)/gettext-tools/examples/hello-java-awt/m4/TestAWT.class $(srcdir)/gettext-tools/examples/hello-java-swing/m4/TestAWT.class
- 	test "`sed 1,15d $(srcdir)/gnulib-local/lib/alloca.in.h | md5sum`" = "`sed 1,15d $(srcdir)/gettext-runtime/libasprintf/alloca.in.h | md5sum`"
---- a/configure.ac
-+++ b/configure.ac
+diff -ur gettext-0.22.4.orig/configure.ac gettext-0.22.4/configure.ac
+--- gettext-0.22.4.orig/configure.ac	2022-10-09 08:05:42.000000000 +0530
++++ gettext-0.22.4/configure.ac	2024-02-13 12:47:32.099238869 +0530
 @@ -37,7 +37,7 @@
  
  dnl Checks for library functions.
@@ -58,65 +19,54 @@ Last-Update: 2020-09-27
  
  AC_CONFIG_FILES([Makefile])
  
---- a/gettext-tools/Makefile.am
-+++ b/gettext-tools/Makefile.am
-@@ -19,7 +19,7 @@
- AUTOMAKE_OPTIONS = 1.5 gnu no-dependencies
- ACLOCAL_AMFLAGS = -I m4 -I ../gettext-runtime/m4 -I ../m4 -I gnulib-m4 -I libgrep/gnulib-m4 -I libgettextpo/gnulib-m4
+diff -ur gettext-0.22.4.orig/gettext-tools/libgettextpo/textstyle.in.h gettext-0.22.4/gettext-tools/libgettextpo/textstyle.in.h
+--- gettext-0.22.4.orig/gettext-tools/libgettextpo/textstyle.in.h	2023-09-19 02:06:31.000000000 +0530
++++ gettext-0.22.4/gettext-tools/libgettextpo/textstyle.in.h	2024-02-13 13:04:15.238643775 +0530
+@@ -254,8 +254,9 @@
  
--SUBDIRS = intl gnulib-lib libgrep src libgettextpo po its projects styles emacs misc man m4 tests system-tests gnulib-tests examples doc
-+SUBDIRS = intl gnulib-lib libgrep libgettextpo src po its projects styles emacs misc man m4 tests system-tests gnulib-tests examples doc
- 
- EXTRA_DIST = misc/DISCLAIM
- MOSTLYCLEANFILES = core *.stackdump
---- a/gettext-tools/libgettextpo/textstyle.in.h
-+++ b/gettext-tools/libgettextpo/textstyle.in.h
-@@ -213,7 +213,8 @@
  static inline file_ostream_t
  file_ostream_create (FILE *fp)
- {
+-{
 -  return fp;
++{	
 +  /* Closing the stream we return should not close 'fp'.  */
 +  return fdopen (dup (fileno (fp)), "w");
  }
  
- /* --------------------------- From fd-ostream.h --------------------------- */
-@@ -413,6 +414,30 @@
-   return NULL;
- }
- 
-+/* ----------------------- From noop-styled-ostream.h ----------------------- */
-+
-+/* noop_styled_ostream_t is a subtype of ostream_t.  */
-+typedef ostream_t noop_styled_ostream_t;
-+
-+#define noop_styled_ostream_write_mem ostream_write_mem
-+#define noop_styled_ostream_flush ostream_flush
-+#define noop_styled_ostream_free ostream_free
-+#define noop_styled_ostream_begin_use_class styled_ostream_begin_use_class
-+#define noop_styled_ostream_end_use_class styled_ostream_end_use_class
-+#define noop_styled_ostream_get_hyperlink_ref styled_ostream_get_hyperlink_ref
-+#define noop_styled_ostream_get_hyperlink_id styled_ostream_get_hyperlink_id
-+#define noop_styled_ostream_set_hyperlink styled_ostream_set_hyperlink
-+#define noop_styled_ostream_flush_to_current_style styled_ostream_flush_to_current_style
-+
-+static inline ostream_t
-+noop_styled_ostream_create (ostream_t destination, bool pass_ownership)
-+{
+ static inline bool
+@@ -676,10 +677,10 @@
+ static inline noop_styled_ostream_t
+ noop_styled_ostream_create (ostream_t destination, bool pass_ownership)
+ {
+-  if (!pass_ownership)
+-    /* Not supported without the real libtextstyle.  */
+-    abort ();
+-  return destination;
 +  if (pass_ownership)
 +    return destination;
 +  else
 +    return fdopen (dup (fileno (destination)), "w");
-+}
-+
- /* ------------------------------ From color.h ------------------------------ */
+ }
  
- #define color_test_mode false
---- a/gettext-tools/src/Makefile.am
-+++ b/gettext-tools/src/Makefile.am
-@@ -292,19 +292,9 @@
+ static inline bool
+diff -ur gettext-0.22.4.orig/gettext-tools/Makefile.am gettext-0.22.4/gettext-tools/Makefile.am
+--- gettext-0.22.4.orig/gettext-tools/Makefile.am	2023-09-19 01:38:31.000000000 +0530
++++ gettext-0.22.4/gettext-tools/Makefile.am	2024-02-13 12:49:27.145661060 +0530
+@@ -19,7 +19,7 @@
+ AUTOMAKE_OPTIONS = 1.5 gnu no-dependencies
+ ACLOCAL_AMFLAGS = -I m4 -I ../gettext-runtime/m4 -I ../m4 -I gnulib-m4 -I libgrep/gnulib-m4 -I libgettextpo/gnulib-m4
+ 
+-SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles emacs misc man m4 tests system-tests gnulib-tests examples doc
++SUBDIRS = gnulib-lib libgrep libgettextpo src po its projects styles emacs misc man m4 tests system-tests gnulib-tests examples doc
+ 
+ EXTRA_DIST = misc/DISCLAIM
+ MOSTLYCLEANFILES = core *.stackdump
+diff -ur gettext-0.22.4.orig/gettext-tools/src/Makefile.am gettext-0.22.4/gettext-tools/src/Makefile.am
+--- gettext-0.22.4.orig/gettext-tools/src/Makefile.am	2023-11-17 17:14:38.000000000 +0530
++++ gettext-0.22.4/gettext-tools/src/Makefile.am	2024-02-13 13:06:34.194367930 +0530
+@@ -311,19 +311,9 @@
  cldr_plurals_CFLAGS = $(AM_CFLAGS) $(INCXML)
- cldr_plurals_LDADD = libgettextsrc.la @LTLIBXML@ $(LDADD)
+ cldr_plurals_LDADD = libgettextsrc.la $(LDADD)
  
 -if USE_INSTALLED_LIBTEXTSTYLE
 -LT_LIBTEXTSTYLE = @LTLIBTEXTSTYLE@
@@ -137,3 +87,24 @@ Last-Update: 2020-09-27
  
  # How to build libgettextsrc.la.
  # Need ../gnulib-lib/libgettextlib.la.
+diff -ur gettext-0.22.4.orig/Makefile.am gettext-0.22.4/Makefile.am
+--- gettext-0.22.4.orig/Makefile.am	2023-11-17 17:39:11.000000000 +0530
++++ gettext-0.22.4/Makefile.am	2024-02-13 12:44:18.309841774 +0530
+@@ -19,7 +19,7 @@
+ AUTOMAKE_OPTIONS = 1.5 gnu no-dependencies
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = gnulib-local gettext-runtime libtextstyle gettext-tools
++SUBDIRS = gnulib-local gettext-runtime gettext-tools
+ 
+ changelog_etc = \
+   gettext-runtime/ChangeLog.0 \
+@@ -87,7 +87,7 @@
+ 	cmp -s $(srcdir)/gettext-runtime/m4/xsize.m4 $(srcdir)/gettext-tools/gnulib-m4/xsize.m4
+ 	cmp -s $(srcdir)/gettext-runtime/man/help2man $(srcdir)/gettext-tools/man/help2man
+ 	cmp -s $(srcdir)/gettext-runtime/man/x-to-1.in $(srcdir)/gettext-tools/man/x-to-1.in
+-	cmp -s $(srcdir)/libtextstyle/m4/libtextstyle.m4 $(srcdir)/gettext-tools/gnulib-m4/libtextstyle.m4
++#	cmp -s $(srcdir)/libtextstyle/m4/libtextstyle.m4 $(srcdir)/gettext-tools/gnulib-m4/libtextstyle.m4
+ 	cmp -s $(srcdir)/gettext-tools/examples/hello-java-awt/m4/TestAWT.java $(srcdir)/gettext-tools/examples/hello-java-swing/m4/TestAWT.java
+ 	cmp -s $(srcdir)/gettext-tools/examples/hello-java-awt/m4/TestAWT.class $(srcdir)/gettext-tools/examples/hello-java-swing/m4/TestAWT.class
+ # Verify that all files have appropriate copyright headers.
