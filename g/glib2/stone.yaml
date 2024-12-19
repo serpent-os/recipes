@@ -5,7 +5,7 @@
 #
 name        : glib2
 version     : 2.82.4
-release     : 20
+release     : 21
 homepage    : https://gitlab.gnome.org/GNOME/glib
 upstreams   :
     - https://download.gnome.org/sources/glib/2.82/glib-2.82.4.tar.xz : 37dd0877fe964cd15e9a2710b044a1830fb1bd93652a6d0cb6b8b2dff187c709
@@ -51,6 +51,7 @@ profiles    :
     - emul32:
         setup: |
             %patch %(pkgdir)/0001-glib-gutils-Support-stateless-fallback-XDG_CONFIG_DI.patch
+            %patch %(pkgdir)/0001-gdesktopappinfo-Support-ptyxis-for-executing-.deskto.patch
             %meson -Dtests=false -Dinstalled_tests=false -Dintrospection=disabled
         build: |
             %meson_build
@@ -58,6 +59,7 @@ profiles    :
             %meson_install
 setup       : |
     %patch %(pkgdir)/0001-glib-gutils-Support-stateless-fallback-XDG_CONFIG_DI.patch
+    %patch %(pkgdir)/0001-gdesktopappinfo-Support-ptyxis-for-executing-.deskto.patch
     %meson -Dtests=false -Dinstalled_tests=false
 build       : |
     %meson_build

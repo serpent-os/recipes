@@ -1,0 +1,28 @@
+From 70ae7ec43fef4891dd477e2452943783d33cb303 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Thu, 19 Dec 2024 11:10:05 +0000
+Subject: [PATCH] gdesktopappinfo: Support ptyxis for executing `.desktop`
+ files
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ gio/gdesktopappinfo.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gio/gdesktopappinfo.c b/gio/gdesktopappinfo.c
+index 343f309..74279e6 100644
+--- a/gio/gdesktopappinfo.c
++++ b/gio/gdesktopappinfo.c
+@@ -2710,7 +2710,8 @@ prepend_terminal_to_vector (int          *argc,
+     { "color-xterm", "-e" },
+     { "rxvt", "-e" },
+     { "dtterm", "-e" },
+-    { "xterm", "-e" }
++    { "xterm", "-e" },
++    { "ptyxis", "-x" }
+   };
+ 
+   g_return_val_if_fail (argc != NULL, FALSE);
+-- 
+2.47.1
+
