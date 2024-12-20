@@ -7,6 +7,7 @@
 				"binary(gnome-shell)",
 				"font-hack",
 				"gnome-backgrounds",
+				"gnome-browser-connector",
 				"gnome-shell-extension-appindicator",
 				"gnome-shell-extension-tilingshell",
 				"papirus-icon-theme",
@@ -26,6 +27,6 @@
 		}
 	},
 	"source-name": "serpent-gnome-defaults",
-	"source-release": "20",
+	"source-release": "21",
 	"source-version": "0.1.0"
 }
