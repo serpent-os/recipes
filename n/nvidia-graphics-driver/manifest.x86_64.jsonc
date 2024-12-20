@@ -247,7 +247,6 @@
 				"/usr/lib32/libGLESv1_CM_nvidia.so.565.77",
 				"/usr/lib32/libGLESv2_nvidia.so.2",
 				"/usr/lib32/libGLESv2_nvidia.so.565.77",
-				"/usr/lib32/libGLX_indirect.so.0",
 				"/usr/lib32/libGLX_nvidia.so.0",
 				"/usr/lib32/libGLX_nvidia.so.565.77",
 				"/usr/lib32/libOpenCL.so",
@@ -352,6 +351,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "14",
+	"source-release": "15",
 	"source-version": "565.77"
 }
