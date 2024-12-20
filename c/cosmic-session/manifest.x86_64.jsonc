@@ -44,6 +44,7 @@
 				"/usr/lib/systemd/system-preset/60-cosmic.preset",
 				"/usr/lib/systemd/user/cosmic-session.target",
 				"/usr/share/applications/cosmic-mimeapps.list",
+				"/usr/share/dconf/profile/cosmic",
 				"/usr/share/wayland-sessions/cosmic.desktop"
 			],
 			"name": "cosmic-session",
@@ -54,6 +55,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "17",
+	"source-release": "18",
 	"source-version": "1.0.0-alpha.4"
 }
