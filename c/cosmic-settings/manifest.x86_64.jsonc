@@ -156,6 +156,7 @@
 				"/usr/share/icons/hicolor/scalable/status/illustration-appearance-mode-dark.svg",
 				"/usr/share/icons/hicolor/scalable/status/illustration-appearance-mode-light.svg",
 				"/usr/share/metainfo/com.system76.CosmicSettings.metainfo.xml",
+				"/usr/share/polkit-1/actions/com.system76.CosmicSettings.Users.policy",
 				"/usr/share/polkit-1/rules.d/cosmic-settings.rules"
 			],
 			"name": "cosmic-settings",
@@ -165,6 +166,6 @@
 		}
 	},
 	"source-name": "cosmic-settings",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "1.0.0-alpha.4"
 }

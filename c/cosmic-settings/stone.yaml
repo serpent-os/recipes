@@ -5,12 +5,12 @@
 #
 name        : cosmic-settings
 version     : 1.0.0-alpha.4
-release     : 11
+release     : 12
 summary     : Cosmic Desktop Settings
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-settings
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-settings.git : d01e0d85fbd2836489d8092381fc4637fc51ce25
+    - git|https://github.com/pop-os/cosmic-settings.git : 89815018340ae5d70726ba98b393ef693269ac1c
 description : |
     Cosmic Desktop Settings
 builddeps   :
