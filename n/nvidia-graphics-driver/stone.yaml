@@ -5,13 +5,17 @@
 #
 name        : nvidia-graphics-driver
 version     : 565.77
-release     : 10
+release     : 11
 homepage    : https://www.nvidia.com/
 upstreams   :
     - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
         hash: 0a7aa742c46bcf34d766982402d17b3db1fdb3bc1b89344d70cd123c1cb3147c
         unpack: false
         rename: NVIDIA.run
+    - https://download.nvidia.com/XFree86/nvidia-persistenced/nvidia-persistenced-565.77.tar.bz2:
+        hash: b5230f5f6e34d5671add2ddeb0607a0fe4910bd24c4a3e3f48c81c3a6d366853
+        rename: nvidia-persistenced.tar.bz2
+        extract: false
 summary     : The proprietary NVIDIA graphics driver
 description : |
     This package provides the NVIDIA graphics driver for desktop systems.
@@ -81,6 +85,19 @@ install     : |
     %install_file extracted/nvidia-drm-outputclass.conf %(installroot)%(datadir)/X11/xorg.conf.d/20-nvidia.conf
 
     install -m4755 extracted/nvidia-modprobe %(installroot)%(bindir)/nvidia-modprobe
+
+    # sort out persistenced
+    %install_exe extracted/nvidia-persistenced %(installroot)%(bindir)/nvidia-persistenced
+    mkdir _nvp && tar xf %(sourcedir)/nvidia-persistenced.tar.bz2 -C _nvp --strip-components=1
+    pushd _nvp
+    %patch %(pkgdir)/0001-init-Set-the-systemd-user.patch
+    %install_file init/systemd/nvidia-persistenced.service.template %(installroot)%(libdir)/systemd/system/nvidia-persistenced.service
+    %install_file %(pkgdir)/nvidia-persistenced.group %(installroot)%(libdir)/userdb/nvidia-persistenced.group
+    ln -s nvidia-persistenced.group %(installroot)%(libdir)/userdb/143.group
+    %install_file %(pkgdir)/nvidia-persistenced.user %(installroot)%(libdir)/userdb/nvidia-persistenced.user
+    ln -s nvidia-persistenced.user %(installroot)%(libdir)/userdb/143.user
+    %tmpfiles "D /run/nvidia-persistenced 0755 nvidia-persistenced nvidia-persistenced -"
+    popd
 
     # conflicts by egl-wayland
     rm -v %(installroot)%(libdir)/libnvidia-egl-wayland*

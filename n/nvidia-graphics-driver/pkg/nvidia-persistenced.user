@@ -1,0 +1,9 @@
+{
+    "userName" : "nvidia-persistenced",
+    "realName" : "NVIDIA Persistence Daemon",
+    "uid" : 143,
+    "gid" : 143,
+    "disposition" : "system",
+    "locked" : false,
+    "homeDirectory": "/run/nvidia-persistenced",
+}

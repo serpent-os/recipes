@@ -132,11 +132,17 @@
 				"/usr/lib/libnvoptix.so.565.77",
 				"/usr/lib/libvdpau_nvidia.so",
 				"/usr/lib/systemd/system/nvidia-hibernate.service",
+				"/usr/lib/systemd/system/nvidia-persistenced.service",
 				"/usr/lib/systemd/system/nvidia-powerd.service",
 				"/usr/lib/systemd/system/nvidia-resume.service",
 				"/usr/lib/systemd/system/nvidia-suspend.service",
 				"/usr/lib/systemd/systemd-sleep/nvidia",
+				"/usr/lib/tmpfiles.d/nvidia-graphics-driver.conf",
 				"/usr/lib/udev/rules.d/80-nvidia.rules",
+				"/usr/lib/userdb/143.group",
+				"/usr/lib/userdb/143.user",
+				"/usr/lib/userdb/nvidia-persistenced.group",
+				"/usr/lib/userdb/nvidia-persistenced.user",
 				"/usr/lib/vdpau/libvdpau_nvidia.so.1",
 				"/usr/lib/vdpau/libvdpau_nvidia.so.565.77",
 				"/usr/lib/xorg/modules/drivers/nvidia_drv.so",
@@ -211,6 +217,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "565.77"
 }
