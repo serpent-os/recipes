@@ -5,10 +5,10 @@
 #
 name        : cosmic-term
 version     : 1.0.0-alpha.4
-release     : 10
+release     : 11
 homepage    : https://github.com/pop-os/cosmic-term
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-term : 77be96e1c20039511e29da4ba5b8ce457e098f3b
+    - git|https://github.com/pop-os/cosmic-term : ff42dd2a97945efbe19caab78b53547c301900c4
 summary     : Cosmic Desktop Terminal Application
 description : |
     Cosmic desktop Terminal Application
