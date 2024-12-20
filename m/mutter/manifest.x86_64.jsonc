@@ -54,7 +54,6 @@
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-cursor)",
 				"pkgconfig(wayland-egl)",
-				"pkgconfig(wayland-eglstream-protocols)",
 				"pkgconfig(wayland-protocols)",
 				"pkgconfig(wayland-server)",
 				"pkgconfig(x11)",
@@ -336,7 +335,6 @@
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-cursor)",
 				"pkgconfig(wayland-egl)",
-				"pkgconfig(wayland-eglstream-protocols)",
 				"pkgconfig(wayland-protocols)",
 				"pkgconfig(wayland-server)",
 				"pkgconfig(x11)",
@@ -592,6 +590,6 @@
 		}
 	},
 	"source-name": "mutter",
-	"source-release": "13",
+	"source-release": "14",
 	"source-version": "47.3"
 }
