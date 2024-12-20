@@ -5,7 +5,7 @@
 #
 name        : linux-desktop
 version     : 6.12.5
-release     : 68
+release     : 69
 homepage    : https://kernel.org/
 upstreams   :
     - https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.12.5.tar.xz : 39207fce1ce42838e085261bae0af5ce4a0843aa777cfc0f5c49bc7729602bcd
