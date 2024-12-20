@@ -5,10 +5,10 @@
 #
 name        : cosmic-files
 version     : 1.0.0-alpha.4
-release     : 11
+release     : 12
 homepage    : https://github.com/pop-os/cosmic-files
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-files : 2fa8e6adc44448bd5ac749302154f8f670e7f381
+    - git|https://github.com/pop-os/cosmic-files : ee7954e8d6f5cca93f0151aa920c95071ec1cae0
 summary     : Cosmic Desktop File Browser
 description : |
     Cosmic desktop File Browser
