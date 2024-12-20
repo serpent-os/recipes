@@ -5,12 +5,12 @@
 #
 name        : cosmic-notifications
 version     : 1.0.0-alpha.4
-release     : 8
+release     : 9
 summary     : Cosmic Desktop Notifications
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-notifications
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-notifications.git : d4d5f429337004c1721e0072ad1c25509229586f
+    - git|https://github.com/pop-os/cosmic-notifications.git : 76c237b0509ea6f724076db2195a7fab6942f33c
 description : |
     Cosmic Desktop Notifications
 builddeps   :
