@@ -5,12 +5,12 @@
 #
 name        : cosmic-settings-daemon
 version     : 1.0.0-alpha.4
-release     : 9
+release     : 10
 summary     : Cosmic Settings Daemon
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-settings-daemon
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-settings-daemon.git : f079ab7f98132787de385934915547f333dfbddc
+    - git|https://github.com/pop-os/cosmic-settings-daemon.git : 9d9ad8ee7fef1b60ae030c4c9089addf547d2d0a
 description : |
     Cosmic Settings Daemon
 builddeps   :
