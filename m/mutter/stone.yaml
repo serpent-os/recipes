@@ -5,7 +5,7 @@
 #
 name        : mutter
 version     : 47.3
-release     : 14
+release     : 15
 homepage    : https://gnome.org
 upstreams   :
     - https://download.gnome.org/sources/mutter/47/mutter-47.3.tar.xz : 76421af6f90509cfdf1ab851d5ee58271e27e94aa8f7db521d5aa06daea6c560
@@ -64,6 +64,7 @@ builddeps   :
     - pkgconfig(wayland-client)
     - pkgconfig(wayland-cursor)
     - pkgconfig(wayland-egl)
+    - pkgconfig(wayland-eglstream-protocols)
     - pkgconfig(wayland-protocols)
     - pkgconfig(wayland-server)
     - pkgconfig(x11)
@@ -93,7 +94,9 @@ setup       : |
     %patch %(pkgdir)/0001-compositor-plugins-Ensure-libdefault-has-valid-RPATH.patch
     %meson -Dtests=disabled \
            -Dprofiler=false \
-           -Dlibdisplay_info=true
+           -Dlibdisplay_info=true \
+           -Dwayland_eglstream=true \
+           -Degl_device=true
 build       : |
     %meson_build
 install     : |
