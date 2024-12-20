@@ -16,6 +16,7 @@
 				"soname(libdrm.so.2(386))",
 				"soname(libelf.so.1(386))",
 				"soname(libgcc_s.so.1(386))",
+				"soname(libglib-2.0.so.0(386))",
 				"soname(libstdc++.so.6(386))",
 				"soname(libudev.so.1(386))",
 				"soname(libva.so.2(386))",
@@ -56,6 +57,6 @@
 		}
 	},
 	"source-name": "steam",
-	"source-release": "13",
+	"source-release": "14",
 	"source-version": "1.0.0.82"
 }
