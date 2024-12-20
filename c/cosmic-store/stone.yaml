@@ -5,12 +5,12 @@
 #
 name        : cosmic-store
 version     : 1.0.0-alpha.4
-release     : 7
+release     : 8
 summary     : Cosmic Desktop Store
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-store
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-store.git : 9885eee8e7d052712bbbb8bf656727657ec590cd
+    - git|https://github.com/pop-os/cosmic-store.git : 803e27b82e3026b09479ad55bc7160ce93b43dea
 description : |
     Cosmic Desktop Store
 builddeps   :
