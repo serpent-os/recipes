@@ -5,12 +5,12 @@
 #
 name        : cosmic-panel
 version     : 1.0.0-alpha.4
-release     : 11
+release     : 12
 summary     : Cosmic Desktop Panel
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-panel
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-panel.git : 734e3fafe2eafea1cb3cece7d0b4ddf72a2c4323
+    - git|https://github.com/pop-os/cosmic-panel.git : b4c4d742321a623d7d3c58cb985ada2f3ee2f027
 description : |
     Cosmic Desktop panel
 builddeps   :
