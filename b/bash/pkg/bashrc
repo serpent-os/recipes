@@ -10,4 +10,19 @@ if [ -e /etc/bashrc ] ; then
     source /etc/bashrc
 fi
 
-# End /usr/share/defaults/etc/bash.bashrc
+# We want to source all files ending in sh, like *.sh or *.bash
+#
+# This enables users to add e.g. a `.disabled` extension to scripts
+# (or remove `sh` extensions from scripts or links to scripts) to disable
+# them temporarily, which can be handy when troubleshooting.
+#
+if [ "$(/usr/bin/readlink /proc/$$/exe)" = "/usr/bin/bash" -a -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*sh; do
+        if [ -f "$rc" ]; then
+            source "$rc"
+        fi
+    done
+    unset rc
+fi
+
+# End /usr/share/defaults/etc/bashrc
