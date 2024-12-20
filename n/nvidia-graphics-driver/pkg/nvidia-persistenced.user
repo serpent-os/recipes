@@ -5,5 +5,5 @@
     "gid" : 143,
     "disposition" : "system",
     "locked" : false,
-    "homeDirectory": "/run/nvidia-persistenced",
+    "homeDirectory": "/run/nvidia-persistenced"
 }
