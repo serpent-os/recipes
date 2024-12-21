@@ -1,2 +1,4 @@
 #!/bin/bash
-exec pkexec lichen_cli
+pkexec lichen_cli
+echo
+read -p "Press any key to close this window"
