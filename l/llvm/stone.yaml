@@ -1,7 +1,7 @@
 # TODO: Split out clang/etc and build statically against llvm package!
 name        : llvm
 version     : 18.1.8
-release     : 16
+release     : 17
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -267,6 +267,9 @@ packages    :
             clang package libraries.
         paths:
             - /usr/lib/clang/*/lib/linux/*i386*
+            - /usr/lib32/libclang.so.*
+            - /usr/lib32/libclang-cpp.so.*
+            - /usr/lib32/clang/*/include/*
 
     - "lld-libs":
         summary: "Library files for lld"
