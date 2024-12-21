@@ -16,4 +16,13 @@ if [ -d /etc/profile.d ] ; then
     unset script
 fi
 
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            source "$rc"
+        fi
+    done
+    unset rc
+fi
+
 # End /usr/share/defaults/etc/profile
