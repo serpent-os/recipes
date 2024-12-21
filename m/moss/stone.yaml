@@ -5,7 +5,7 @@
 #
 name        : moss
 version     : 0.24.6
-release     : 61
+release     : 62
 summary     : Serpent OS package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -24,6 +24,7 @@ check       : |
     %cargo_test
 setup       : |
     %patch %(pkgdir)/0001-Cargo-Sync-blsforme-to-enable-per-kernel-cmdlines.patch
+    %patch %(pkgdir)/0001-moss-client-Forbid-linking-of-empty-files-fixes-372.patch
     %cargo_fetch
 build       : |
     %cargo_build -p moss
