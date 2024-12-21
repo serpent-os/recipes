@@ -1,5 +1,5 @@
 [org.gnome.desktop.interface]
-accent-color='purple'
+accent-color='teal'
 color-scheme='prefer-dark'
 icon-theme='Papirus'
 monospace-font-name = "Hack 10"

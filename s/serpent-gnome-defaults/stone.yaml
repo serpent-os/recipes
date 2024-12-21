@@ -5,7 +5,7 @@
 #
 name        : serpent-gnome-defaults
 version     : "0.1.0"
-release     : 21
+release     : 22
 license     : MPL-2.0
 homepage    : https://serpentos.com
 summary     : Default settings and dependencies for GNOME desktop
