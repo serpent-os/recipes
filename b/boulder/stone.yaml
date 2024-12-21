@@ -5,7 +5,7 @@
 #
 name        : boulder
 version     : 0.24.6
-release     : 75
+release     : 76
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -22,6 +22,7 @@ networking  : yes
 check       : |
     %cargo_test
 setup       : |
+    %patch %(pkgdir)/0001-moss-client-Forbid-linking-of-empty-files-fixes-372.patch
     %cargo_fetch
 build       : |
     %cargo_build -p boulder
