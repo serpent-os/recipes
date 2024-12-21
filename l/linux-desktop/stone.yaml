@@ -5,7 +5,7 @@
 #
 name        : linux-desktop
 version     : 6.12.6
-release     : 70
+release     : 71
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.6.tar.xz : d450ab215de4e1f8bb85e0f4216760fa33fd024b4526b144f4ce0d9012b29c9e
@@ -52,6 +52,9 @@ builddeps   :
     - font-cantarell
     - pkgconfig(ply-boot-client)
     - serpent-artwork
+    - sysbinary(fsck.ext4)
+    - sysbinary(fsck.f2fs)
+    - sysbinary(fsck.xfs)
 packages    :
     - "%(name)-devel":
         paths:
@@ -104,7 +107,7 @@ install     : |
 
     # Include early microcode
     PATH="/usr/bin:/usr/sbin" dracut --strip --tmpdir /tmp -N -f \
-        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "dash bash systemd virtiofs lvm dm" \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "bash rescue systemd virtiofs lvm dm" \
         --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode --fwdir %(libdir)/firmware \
         --include %(pkgdir)/depmod.conf %(libdir)/depmod.d/depmod.conf \
         %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd
