@@ -15,7 +15,9 @@
 				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
 				"sysbinary(mkfs.ext4)",
-				"sysbinary(mkfs.vfat)"
+				"sysbinary(mkfs.f2fs)",
+				"sysbinary(mkfs.vfat)",
+				"sysbinary(mkfs.xfs)"
 			],
 			"files": [
 				"/usr/bin/lichen",
@@ -31,6 +33,6 @@
 		}
 	},
 	"source-name": "lichen",
-	"source-release": "20",
+	"source-release": "21",
 	"source-version": "0.1.0"
 }
