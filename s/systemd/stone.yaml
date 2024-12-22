@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : 254.18
-release     : 44
+release     : 45
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
