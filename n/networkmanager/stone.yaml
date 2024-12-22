@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : networkmanager
-version     : 1.48.8
-release     : 5
+version     : 1.50.0
+release     : 6
 homepage    : https://wiki.gnome.org/Projects/NetworkManager
 upstreams   :
-    - https://download.gnome.org/sources/NetworkManager/1.48/NetworkManager-1.48.8.tar.xz : 6200eac8f1d3fe6a3ea1f2c4158b3c95b3b9f91e74cd704e97b0b051b5a54878
+    - https://download.gnome.org/sources/NetworkManager/1.50/NetworkManager-1.50.0.tar.xz : fc03e7388a656cebc454c5d89481626122b1975d7c26babc64dc7e488faa66e3
 summary     : NetworkManager — network management daemon
 description : |
     NetworkManager attempts to keep an active network connection available at all times.  The point of NetworkManager is to make networking configuration and setup as painless and automatic as possible.  NetworkManager is intended to replace default route, replace other routes, set IP addresses, and in general configure networking as NM sees fit (with the possibility of manual override as necessary).  In effect, the goal of NetworkManager is to make networking Just Work with a minimum of user hassle, but still allow customization and a high level of manual network control.  If you have special needs, we'd like to hear about them, but understand that NetworkManager is not intended for every use-case.

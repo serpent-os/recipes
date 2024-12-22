@@ -54,13 +54,13 @@
 			"files": [
 				"/usr/bin/nm-online",
 				"/usr/bin/nmcli",
-				"/usr/lib/NetworkManager/1.48.8/libnm-device-plugin-adsl.so",
-				"/usr/lib/NetworkManager/1.48.8/libnm-device-plugin-bluetooth.so",
-				"/usr/lib/NetworkManager/1.48.8/libnm-device-plugin-ovs.so",
-				"/usr/lib/NetworkManager/1.48.8/libnm-device-plugin-wifi.so",
-				"/usr/lib/NetworkManager/1.48.8/libnm-device-plugin-wwan.so",
-				"/usr/lib/NetworkManager/1.48.8/libnm-ppp-plugin.so",
-				"/usr/lib/NetworkManager/1.48.8/libnm-wwan.so",
+				"/usr/lib/NetworkManager/1.50.0/libnm-device-plugin-adsl.so",
+				"/usr/lib/NetworkManager/1.50.0/libnm-device-plugin-bluetooth.so",
+				"/usr/lib/NetworkManager/1.50.0/libnm-device-plugin-ovs.so",
+				"/usr/lib/NetworkManager/1.50.0/libnm-device-plugin-wifi.so",
+				"/usr/lib/NetworkManager/1.50.0/libnm-device-plugin-wwan.so",
+				"/usr/lib/NetworkManager/1.50.0/libnm-ppp-plugin.so",
+				"/usr/lib/NetworkManager/1.50.0/libnm-wwan.so",
 				"/usr/lib/NetworkManager/VPN",
 				"/usr/lib/NetworkManager/conf.d",
 				"/usr/lib/NetworkManager/dispatcher.d/90-nm-cloud-setup.sh",
@@ -78,7 +78,7 @@
 				"/usr/lib/networkmanager/nm-dispatcher",
 				"/usr/lib/networkmanager/nm-initrd-generator",
 				"/usr/lib/networkmanager/nm-priv-helper",
-				"/usr/lib/pppd/2.5.0/nm-pppd-plugin.so",
+				"/usr/lib/pppd/2.5.1/nm-pppd-plugin.so",
 				"/usr/lib/systemd/system/NetworkManager-dispatcher.service",
 				"/usr/lib/systemd/system/NetworkManager-wait-online.service",
 				"/usr/lib/systemd/system/NetworkManager.service",
@@ -221,15 +221,15 @@
 			"provides": [
 				"binary(nm-online)",
 				"binary(nmcli)",
-				"soname(NetworkManager/1.48.8/libnm-device-plugin-adsl.so(x86_64))",
-				"soname(NetworkManager/1.48.8/libnm-device-plugin-bluetooth.so(x86_64))",
-				"soname(NetworkManager/1.48.8/libnm-device-plugin-ovs.so(x86_64))",
-				"soname(NetworkManager/1.48.8/libnm-device-plugin-wifi.so(x86_64))",
-				"soname(NetworkManager/1.48.8/libnm-device-plugin-wwan.so(x86_64))",
-				"soname(NetworkManager/1.48.8/libnm-ppp-plugin.so(x86_64))",
-				"soname(NetworkManager/1.48.8/libnm-wwan.so(x86_64))",
+				"soname(NetworkManager/1.50.0/libnm-device-plugin-adsl.so(x86_64))",
+				"soname(NetworkManager/1.50.0/libnm-device-plugin-bluetooth.so(x86_64))",
+				"soname(NetworkManager/1.50.0/libnm-device-plugin-ovs.so(x86_64))",
+				"soname(NetworkManager/1.50.0/libnm-device-plugin-wifi.so(x86_64))",
+				"soname(NetworkManager/1.50.0/libnm-device-plugin-wwan.so(x86_64))",
+				"soname(NetworkManager/1.50.0/libnm-ppp-plugin.so(x86_64))",
+				"soname(NetworkManager/1.50.0/libnm-wwan.so(x86_64))",
 				"soname(libnm.so.0(x86_64))",
-				"soname(pppd/2.5.0/nm-pppd-plugin.so(x86_64))",
+				"soname(pppd/2.5.1/nm-pppd-plugin.so(x86_64))",
 				"sysbinary(NetworkManager)"
 			]
 		},
@@ -401,6 +401,6 @@
 		}
 	},
 	"source-name": "networkmanager",
-	"source-release": "5",
-	"source-version": "1.48.8"
+	"source-release": "6",
+	"source-version": "1.50.0"
 }
