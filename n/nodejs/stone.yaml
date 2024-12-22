@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nodejs
-version     : '18.16.0'
-release     : 3
+version     : 22.12.0
+release     : 4
 homepage    : https://nodejs.org/
 upstreams   :
-    - https://nodejs.org/dist/v18.16.0/node-v18.16.0.tar.gz : 6a4f5c5d76e5c50cef673099e56f19bc3266ae363f56ca0ab77dd2f3c5088c6d
+    - https://nodejs.org/dist/v22.12.0/node-v22.12.0.tar.gz : 3157e7c002b6e964bdbefb331ec38db1e2dceb064ab11c038275155461b22ce3
 summary     : A JavaScript runtime environment.
 description : |
     Node.js is an open-source, cross-platform JavaScript runtime environment.
