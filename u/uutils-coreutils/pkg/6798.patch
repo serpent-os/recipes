@@ -1,0 +1,2174 @@
+From de454c5885a71bcd56f8576c1841b0b4a9e3ffd8 Mon Sep 17 00:00:00 2001
+From: Andrew Liebenow <andrewliebenow@gmail.com>
+Date: Sat, 19 Oct 2024 09:36:40 -0500
+Subject: [PATCH 1/9] stty: fix negated operands
+
+Also: use correct file descriptor (stdin) to look up tty
+Also: fix handling of end of options delimiter ("--")
+Also: use `StdoutLock` for printing
+---
+ src/uu/stty/src/stty.rs    | 226 +++++++++++++++++++++++++++----------
+ tests/by-util/test_stty.rs |  80 +++++++++++--
+ 2 files changed, 238 insertions(+), 68 deletions(-)
+
+diff --git a/src/uu/stty/src/stty.rs b/src/uu/stty/src/stty.rs
+index 5a5c31f5e60..313b3de6c87 100644
+--- a/src/uu/stty/src/stty.rs
++++ b/src/uu/stty/src/stty.rs
+@@ -3,7 +3,7 @@
+ // For the full copyright and license information, please view the LICENSE
+ // file that was distributed with this source code.
+ 
+-// spell-checker:ignore clocal erange tcgetattr tcsetattr tcsanow tiocgwinsz tiocswinsz cfgetospeed cfsetospeed ushort vmin vtime
++// spell-checker:ignore clocal erange tcgetattr tcsetattr tcsanow tiocgwinsz tiocswinsz cfgetospeed cfsetospeed ushort vmin vtime ixon
+ 
+ mod flags;
+ 
+@@ -14,8 +14,10 @@ use nix::sys::termios::{
+     OutputFlags, SpecialCharacterIndices, Termios,
+ };
+ use nix::{ioctl_read_bad, ioctl_write_ptr_bad};
++use std::ffi::OsStr;
+ use std::fs::File;
+-use std::io::{self, stdout, Stdout};
++use std::io::Write;
++use std::io::{self, Stdin, StdoutLock};
+ use std::ops::ControlFlow;
+ use std::os::fd::{AsFd, BorrowedFd};
+ use std::os::unix::fs::OpenOptionsExt;
+@@ -99,14 +101,14 @@ struct Options<'a> {
+ 
+ enum Device {
+     File(File),
+-    Stdout(Stdout),
++    Stdin(Stdin),
+ }
+ 
+ impl AsFd for Device {
+     fn as_fd(&self) -> BorrowedFd<'_> {
+         match self {
+             Self::File(f) => f.as_fd(),
+-            Self::Stdout(stdout) => stdout.as_fd(),
++            Self::Stdin(stdin) => stdin.as_fd(),
+         }
+     }
+ }
+@@ -115,7 +117,7 @@ impl AsRawFd for Device {
+     fn as_raw_fd(&self) -> RawFd {
+         match self {
+             Self::File(f) => f.as_raw_fd(),
+-            Self::Stdout(stdout) => stdout.as_raw_fd(),
++            Self::Stdin(stdin) => stdin.as_raw_fd(),
+         }
+     }
+ }
+@@ -141,7 +143,7 @@ impl<'a> Options<'a> {
+                         .custom_flags(O_NONBLOCK)
+                         .open(f)?,
+                 ),
+-                None => Device::Stdout(stdout()),
++                None => Device::Stdin(io::stdin()),
+             },
+             settings: matches
+                 .get_many::<String>(options::SETTINGS)
+@@ -176,7 +178,15 @@ ioctl_write_ptr_bad!(
+ 
+ #[uucore::main]
+ pub fn uumain(args: impl uucore::Args) -> UResult<()> {
+-    let matches = uu_app().try_get_matches_from(args)?;
++    // Manually fix this edge case:
++    //
++    // stty -- -ixon
++    let end_of_options_os_str = OsStr::new("--");
++
++    // Ignore the end of options delimiter ("--") and everything after, as GNU Core Utilities does
++    let fixed_args = args.take_while(|os| os.as_os_str() != end_of_options_os_str);
++
++    let matches = uu_app().try_get_matches_from(fixed_args)?;
+ 
+     let opts = Options::from(&matches)?;
+ 
+@@ -199,31 +209,67 @@ fn stty(opts: &Options) -> UResult<()> {
+     }
+ 
+     // TODO: Figure out the right error message for when tcgetattr fails
+-    let mut termios = tcgetattr(opts.file.as_fd()).expect("Could not get terminal attributes");
++    let mut termios = match tcgetattr(opts.file.as_fd()) {
++        Ok(te) => te,
++        Err(er) => {
++            return Err(USimpleError::new(
++                1,
++                format!("could not get terminal attributes: errno {er}"),
++            ));
++        }
++    };
+ 
+     if let Some(settings) = &opts.settings {
+         for setting in settings {
+-            if let ControlFlow::Break(false) = apply_setting(&mut termios, setting) {
+-                return Err(USimpleError::new(
+-                    1,
+-                    format!("invalid argument '{setting}'"),
+-                ));
++            match apply_setting(&mut termios, setting) {
++                ControlFlow::Break(re) => {
++                    if re? {
++                        // The setting was successfully applied
++                        continue;
++                    } else {
++                        // All attempts to apply the setting failed
++                        return Err(USimpleError::new(
++                            1,
++                            format!("invalid argument '{setting}'"),
++                        ));
++                    }
++                }
++                ControlFlow::Continue(()) => {
++                    // Should be unreachable
++                    debug_assert!(false);
++                }
+             }
+         }
+ 
+-        tcsetattr(
++        if let Err(er) = tcsetattr(
+             opts.file.as_fd(),
+             nix::sys::termios::SetArg::TCSANOW,
+             &termios,
+-        )
+-        .expect("Could not write terminal attributes");
++        ) {
++            return Err(USimpleError::new(
++                1,
++                format!("Could not write terminal attributes: errno {er}"),
++            ));
++        }
+     } else {
+-        print_settings(&termios, opts).expect("TODO: make proper error here from nix error");
++        //
++        #[allow(clippy::collapsible_else_if)]
++        if let Err(bo) = print_settings(&termios, opts) {
++            return Err(USimpleError::new(
++                1,
++                format!("failed to print settings: {bo}"),
++            ));
++        }
+     }
++
+     Ok(())
+ }
+ 
+-fn print_terminal_size(termios: &Termios, opts: &Options) -> nix::Result<()> {
++fn print_terminal_size(
++    stdout_lock: &mut StdoutLock,
++    termios: &Termios,
++    opts: &Options,
++) -> UResult<()> {
+     let speed = cfgetospeed(termios);
+ 
+     // BSDs use a u32 for the baud rate, so we can simply print it.
+@@ -235,7 +281,7 @@ fn print_terminal_size(termios: &Termios, opts: &Options) -> nix::Result<()> {
+         target_os = "netbsd",
+         target_os = "openbsd"
+     ))]
+-    print!("speed {speed} baud; ");
++    write!(stdout_lock, "speed {speed} baud; ")?;
+ 
+     // Other platforms need to use the baud rate enum, so printing the right value
+     // becomes slightly more complicated.
+@@ -249,15 +295,22 @@ fn print_terminal_size(termios: &Termios, opts: &Options) -> nix::Result<()> {
+     )))]
+     for (text, baud_rate) in BAUD_RATES {
+         if *baud_rate == speed {
+-            print!("speed {text} baud; ");
++            write!(stdout_lock, "speed {text} baud; ")?;
++
+             break;
+         }
+     }
+ 
+     if opts.all {
+         let mut size = TermSize::default();
++
+         unsafe { tiocgwinsz(opts.file.as_raw_fd(), &mut size as *mut _)? };
+-        print!("rows {}; columns {}; ", size.rows, size.columns);
++
++        write!(
++            stdout_lock,
++            "rows {}; columns {}; ",
++            size.rows, size.columns
++        )?;
+     }
+ 
+     #[cfg(any(target_os = "linux", target_os = "redox"))]
+@@ -266,10 +319,12 @@ fn print_terminal_size(termios: &Termios, opts: &Options) -> nix::Result<()> {
+         // so we get the underlying libc::termios struct to get that information.
+         let libc_termios: nix::libc::termios = termios.clone().into();
+         let line = libc_termios.c_line;
+-        print!("line = {line};");
++
++        write!(stdout_lock, "line = {line};")?;
+     }
+ 
+-    println!();
++    writeln!(stdout_lock)?;
++
+     Ok(())
+ }
+ 
+@@ -299,56 +354,78 @@ fn control_char_to_string(cc: nix::libc::cc_t) -> nix::Result<String> {
+     Ok(format!("{meta_prefix}{ctrl_prefix}{character}"))
+ }
+ 
+-fn print_control_chars(termios: &Termios, opts: &Options) -> nix::Result<()> {
++fn print_control_chars(
++    stdout_lock: &mut StdoutLock,
++    termios: &Termios,
++    opts: &Options,
++) -> UResult<()> {
+     if !opts.all {
+         // TODO: this branch should print values that differ from defaults
+         return Ok(());
+     }
+ 
+     for (text, cc_index) in CONTROL_CHARS {
+-        print!(
++        write!(
++            stdout_lock,
+             "{text} = {}; ",
+             control_char_to_string(termios.control_chars[*cc_index as usize])?
+-        );
++        )?;
+     }
+-    println!(
++
++    writeln!(
++        stdout_lock,
+         "min = {}; time = {};",
+         termios.control_chars[SpecialCharacterIndices::VMIN as usize],
+         termios.control_chars[SpecialCharacterIndices::VTIME as usize]
+-    );
++    )?;
++
+     Ok(())
+ }
+ 
+-fn print_in_save_format(termios: &Termios) {
+-    print!(
++fn print_in_save_format(stdout_lock: &mut StdoutLock, termios: &Termios) -> UResult<()> {
++    write!(
++        stdout_lock,
+         "{:x}:{:x}:{:x}:{:x}",
+         termios.input_flags.bits(),
+         termios.output_flags.bits(),
+         termios.control_flags.bits(),
+         termios.local_flags.bits()
+-    );
++    )?;
++
+     for cc in termios.control_chars {
+-        print!(":{cc:x}");
++        write!(stdout_lock, ":{cc:x}")?;
+     }
+-    println!();
++
++    writeln!(stdout_lock)?;
++
++    Ok(())
+ }
+ 
+-fn print_settings(termios: &Termios, opts: &Options) -> nix::Result<()> {
++fn print_settings(termios: &Termios, opts: &Options) -> UResult<()> {
++    let mut stdout_lock = io::stdout().lock();
++
+     if opts.save {
+-        print_in_save_format(termios);
++        print_in_save_format(&mut stdout_lock, termios)?;
+     } else {
+-        print_terminal_size(termios, opts)?;
+-        print_control_chars(termios, opts)?;
+-        print_flags(termios, opts, CONTROL_FLAGS);
+-        print_flags(termios, opts, INPUT_FLAGS);
+-        print_flags(termios, opts, OUTPUT_FLAGS);
+-        print_flags(termios, opts, LOCAL_FLAGS);
++        print_terminal_size(&mut stdout_lock, termios, opts)?;
++        print_control_chars(&mut stdout_lock, termios, opts)?;
++        print_flags(&mut stdout_lock, termios, opts, CONTROL_FLAGS)?;
++        print_flags(&mut stdout_lock, termios, opts, INPUT_FLAGS)?;
++        print_flags(&mut stdout_lock, termios, opts, OUTPUT_FLAGS)?;
++        print_flags(&mut stdout_lock, termios, opts, LOCAL_FLAGS)?;
+     }
++
+     Ok(())
+ }
+ 
+-fn print_flags<T: TermiosFlag>(termios: &Termios, opts: &Options, flags: &[Flag<T>]) {
++fn print_flags<T: TermiosFlag>(
++    stdout_lock: &mut StdoutLock,
++    termios: &Termios,
++    opts: &Options,
++    flags: &[Flag<T>],
++) -> UResult<()> {
+     let mut printed = false;
++
+     for &Flag {
+         name,
+         flag,
+@@ -360,41 +437,51 @@ fn print_flags<T: TermiosFlag>(termios: &Termios, opts: &Options, flags: &[Flag<
+         if !show {
+             continue;
+         }
++
+         let val = flag.is_in(termios, group);
++
+         if group.is_some() {
+             if val && (!sane || opts.all) {
+-                print!("{name} ");
++                write!(stdout_lock, "{name} ")?;
++
+                 printed = true;
+             }
+         } else if opts.all || val != sane {
+             if !val {
+-                print!("-");
++                write!(stdout_lock, "-")?;
+             }
+-            print!("{name} ");
++
++            write!(stdout_lock, "{name} ")?;
++
+             printed = true;
+         }
+     }
++
+     if printed {
+-        println!();
++        writeln!(stdout_lock)?;
+     }
++
++    Ok(())
+ }
+ 
+ /// Apply a single setting
+ ///
+ /// The value inside the `Break` variant of the `ControlFlow` indicates whether
+ /// the setting has been applied.
+-fn apply_setting(termios: &mut Termios, s: &str) -> ControlFlow<bool> {
+-    apply_baud_rate_flag(termios, s)?;
++fn apply_setting(termios: &mut Termios, setting: &str) -> ControlFlow<UResult<bool>> {
++    apply_baud_rate_flag(termios, setting)?;
+ 
+-    let (remove, name) = match s.strip_prefix('-') {
+-        Some(s) => (true, s),
+-        None => (false, s),
++    let (remove, name) = match setting.strip_prefix('-') {
++        Some(st) => (true, st),
++        None => (false, setting),
+     };
++
+     apply_flag(termios, CONTROL_FLAGS, name, remove)?;
+     apply_flag(termios, INPUT_FLAGS, name, remove)?;
+     apply_flag(termios, OUTPUT_FLAGS, name, remove)?;
+     apply_flag(termios, LOCAL_FLAGS, name, remove)?;
+-    ControlFlow::Break(false)
++
++    ControlFlow::Break(Ok(false))
+ }
+ 
+ /// Apply a flag to a slice of flags
+@@ -406,7 +493,7 @@ fn apply_flag<T: TermiosFlag>(
+     flags: &[Flag<T>],
+     input: &str,
+     remove: bool,
+-) -> ControlFlow<bool> {
++) -> ControlFlow<UResult<bool>> {
+     for Flag {
+         name, flag, group, ..
+     } in flags
+@@ -415,20 +502,24 @@ fn apply_flag<T: TermiosFlag>(
+             // Flags with groups cannot be removed
+             // Since the name matches, we can short circuit and don't have to check the other flags.
+             if remove && group.is_some() {
+-                return ControlFlow::Break(false);
++                return ControlFlow::Break(Ok(false));
+             }
++
+             // If there is a group, the bits for that group should be cleared before applying the flag
+             if let Some(group) = group {
+                 group.apply(termios, false);
+             }
++
+             flag.apply(termios, !remove);
+-            return ControlFlow::Break(true);
++
++            return ControlFlow::Break(Ok(true));
+         }
+     }
++
+     ControlFlow::Continue(())
+ }
+ 
+-fn apply_baud_rate_flag(termios: &mut Termios, input: &str) -> ControlFlow<bool> {
++fn apply_baud_rate_flag(termios: &mut Termios, input: &str) -> ControlFlow<UResult<bool>> {
+     // BSDs use a u32 for the baud rate, so any decimal number applies.
+     #[cfg(any(
+         target_os = "freebsd",
+@@ -439,8 +530,14 @@ fn apply_baud_rate_flag(termios: &mut Termios, input: &str) -> ControlFlow<bool>
+         target_os = "openbsd"
+     ))]
+     if let Ok(n) = input.parse::<u32>() {
+-        cfsetospeed(termios, n).expect("Failed to set baud rate");
+-        return ControlFlow::Break(true);
++        if let Err(er) = cfsetospeed(termios, n) {
++            return Err(USimpleError::new(
++                1,
++                format!("failed to set baud rate: errno {er}"),
++            ));
++        }
++
++        return ControlFlow::Break(Ok(true));
+     }
+ 
+     // Other platforms use an enum.
+@@ -454,10 +551,17 @@ fn apply_baud_rate_flag(termios: &mut Termios, input: &str) -> ControlFlow<bool>
+     )))]
+     for (text, baud_rate) in BAUD_RATES {
+         if *text == input {
+-            cfsetospeed(termios, *baud_rate).expect("Failed to set baud rate");
+-            return ControlFlow::Break(true);
++            if let Err(er) = cfsetospeed(termios, *baud_rate) {
++                return ControlFlow::Break(Err(USimpleError::new(
++                    1,
++                    format!("failed to set baud rate: errno {er}"),
++                )));
++            }
++
++            return ControlFlow::Break(Ok(true));
+         }
+     }
++
+     ControlFlow::Continue(())
+ }
+ 
+@@ -492,6 +596,8 @@ pub fn uu_app() -> Command {
+         .arg(
+             Arg::new(options::SETTINGS)
+                 .action(ArgAction::Append)
++                // Allows e.g. "stty -ixon" to work
++                .allow_hyphen_values(true)
+                 .help("settings to change"),
+         )
+ }
+diff --git a/tests/by-util/test_stty.rs b/tests/by-util/test_stty.rs
+index a9a9209b034..c9fb7ca9582 100644
+--- a/tests/by-util/test_stty.rs
++++ b/tests/by-util/test_stty.rs
+@@ -2,31 +2,39 @@
+ //
+ // For the full copyright and license information, please view the LICENSE
+ // file that was distributed with this source code.
+-// spell-checker:ignore parenb parmrk ixany iuclc onlcr ofdel icanon noflsh
++
++// spell-checker:ignore parenb parmrk ixany iuclc onlcr ofdel icanon noflsh ixon
+ 
+ use crate::common::util::TestScenario;
++use regex::Regex;
+ 
+ #[test]
+ fn test_invalid_arg() {
+-    new_ucmd!().arg("--definitely-invalid").fails().code_is(1);
++    new_ucmd!()
++        .args(&["--file=/dev/tty", "--definitely-invalid"])
++        .fails()
++        .code_is(1);
+ }
+ 
+ #[test]
+-#[ignore = "Fails because cargo test does not run in a tty"]
+ fn runs() {
+-    new_ucmd!().succeeds();
++    new_ucmd!().arg("--file=/dev/tty").succeeds();
+ }
+ 
+ #[test]
+-#[ignore = "Fails because cargo test does not run in a tty"]
+ fn print_all() {
+-    let res = new_ucmd!().succeeds();
++    let cmd_result = new_ucmd!().args(&["--file=/dev/tty", "-a"]).succeeds();
++
++    // "iuclc" removed due to this comment in stty.rs:
++    //
++    // not supported by nix
++    // Flag::new("iuclc", I::IUCLC),
+ 
+     // Random selection of flags to check for
+     for flag in [
+-        "parenb", "parmrk", "ixany", "iuclc", "onlcr", "ofdel", "icanon", "noflsh",
++        "parenb", "parmrk", "ixany", "onlcr", "ofdel", "icanon", "noflsh",
+     ] {
+-        res.stdout_contains(flag);
++        cmd_result.stdout_contains(flag);
+     }
+ }
+ 
+@@ -62,3 +70,59 @@ fn save_and_all() {
+             "the options for verbose and stty-readable output styles are mutually exclusive",
+         );
+ }
++
++// Make sure the "allow_hyphen_values" clap function has been called with true
++#[test]
++fn negation() {
++    new_ucmd!()
++        .args(&["--file=/dev/tty", "-ixon"])
++        .succeeds()
++        .stdout_is_bytes([])
++        .stderr_is_bytes([]);
++}
++
++fn succeeds_test_with_regex(args: &[&str], stdout_regex: &Regex) {
++    new_ucmd!()
++        .args(args)
++        .succeeds()
++        .stdout_str_check(|st| {
++            let Some(str) = st.lines().next() else {
++                return false;
++            };
++
++            stdout_regex.is_match(str)
++        })
++        .no_stderr();
++}
++
++// The end of options delimiter ("--") and everything after must be ignored
++#[test]
++fn ignore_end_of_options_and_after() {
++    {
++        // e.g.:
++        // speed 38400 baud; rows 54; columns 216; line = 0;
++        let regex =
++            Regex::new("speed [0-9]+ baud; rows [0-9]+; columns [0-9]+; line = [0-9]+;").unwrap();
++
++        // "stty -a -- -ixon" should behave like "stty -a"
++        // Should not abort with an error complaining about passing both "-a" and "-ixon" (since "-ixon" is after "--")
++        succeeds_test_with_regex(&["--file=/dev/tty", "-a", "--", "-ixon"], &regex);
++    }
++
++    {
++        // e.g.:
++        // speed 38400 baud; line = 0;
++        let regex = Regex::new("speed [0-9]+ baud; line = [0-9]+;").unwrap();
++
++        // "stty -- non-existent-option-that-must-be-ignore" should behave like "stty"
++        // Should not abort with an error complaining about an invalid argument, since the invalid argument is after "--"
++        succeeds_test_with_regex(
++            &[
++                "--file=/dev/tty",
++                "--",
++                "non-existent-option-that-must-be-ignored",
++            ],
++            &regex,
++        );
++    }
++}
+
+From 6c9416b28ae2d7839caf4897a8cfae4e952bf921 Mon Sep 17 00:00:00 2001
+From: Andrew Liebenow <andrewliebenow@gmail.com>
+Date: Sat, 19 Oct 2024 11:14:47 -0500
+Subject: [PATCH 2/9] Fix multiple issues in previous commit
+
+---
+ src/uu/stty/src/stty.rs    |  28 +++----
+ tests/by-util/test_stty.rs | 151 +++++++++++++++++++++++++++++++------
+ 2 files changed, 144 insertions(+), 35 deletions(-)
+
+diff --git a/src/uu/stty/src/stty.rs b/src/uu/stty/src/stty.rs
+index 313b3de6c87..ccacddfe209 100644
+--- a/src/uu/stty/src/stty.rs
++++ b/src/uu/stty/src/stty.rs
+@@ -520,6 +520,16 @@ fn apply_flag<T: TermiosFlag>(
+ }
+ 
+ fn apply_baud_rate_flag(termios: &mut Termios, input: &str) -> ControlFlow<UResult<bool>> {
++    fn map_cfsetospeed_result(result: nix::Result<()>) -> UResult<bool> {
++        match result {
++            Ok(()) => Ok(true),
++            Err(er) => Err(USimpleError::new(
++                1,
++                format!("failed to set baud rate: errno {er}"),
++            )),
++        }
++    }
++
+     // BSDs use a u32 for the baud rate, so any decimal number applies.
+     #[cfg(any(
+         target_os = "freebsd",
+@@ -530,14 +540,9 @@ fn apply_baud_rate_flag(termios: &mut Termios, input: &str) -> ControlFlow<UResu
+         target_os = "openbsd"
+     ))]
+     if let Ok(n) = input.parse::<u32>() {
+-        if let Err(er) = cfsetospeed(termios, n) {
+-            return Err(USimpleError::new(
+-                1,
+-                format!("failed to set baud rate: errno {er}"),
+-            ));
+-        }
++        let result = map_cfsetospeed_result(cfsetospeed(termios, n));
+ 
+-        return ControlFlow::Break(Ok(true));
++        return ControlFlow::Break(result);
+     }
+ 
+     // Other platforms use an enum.
+@@ -551,14 +556,9 @@ fn apply_baud_rate_flag(termios: &mut Termios, input: &str) -> ControlFlow<UResu
+     )))]
+     for (text, baud_rate) in BAUD_RATES {
+         if *text == input {
+-            if let Err(er) = cfsetospeed(termios, *baud_rate) {
+-                return ControlFlow::Break(Err(USimpleError::new(
+-                    1,
+-                    format!("failed to set baud rate: errno {er}"),
+-                )));
+-            }
++            let result = map_cfsetospeed_result(cfsetospeed(termios, *baud_rate));
+ 
+-            return ControlFlow::Break(Ok(true));
++            return ControlFlow::Break(result);
+         }
+     }
+ 
+diff --git a/tests/by-util/test_stty.rs b/tests/by-util/test_stty.rs
+index c9fb7ca9582..558633be951 100644
+--- a/tests/by-util/test_stty.rs
++++ b/tests/by-util/test_stty.rs
+@@ -5,25 +5,76 @@
+ 
+ // spell-checker:ignore parenb parmrk ixany iuclc onlcr ofdel icanon noflsh ixon
+ 
+-use crate::common::util::TestScenario;
++use crate::common::util::{TestScenario, UCommand};
++use nix::{
++    fcntl::{self, OFlag},
++    sys::stat::Mode,
++};
++use once_cell::sync::OnceCell;
+ use regex::Regex;
++use std::{io::Read, process::Stdio};
++
++const DEV_TTY: &str = "/dev/tty";
++
++fn get_print_first_line_regex() -> &'static Regex {
++    static ONCE_CELL: OnceCell<Regex> = OnceCell::<Regex>::new();
++
++    ONCE_CELL.get_or_init(|| {
++        // e.g.:
++        // speed 38400 baud; line = 0;
++        Regex::new("speed [0-9]+ baud; line = [0-9]+;").unwrap()
++    })
++}
++
++fn get_print_dash_a_first_line_regex() -> &'static Regex {
++    static ONCE_CELL: OnceCell<Regex> = OnceCell::<Regex>::new();
++
++    ONCE_CELL.get_or_init(|| {
++        // e.g.:
++        // speed 38400 baud; rows 54; columns 216; line = 0;
++        Regex::new("speed [0-9]+ baud; rows [0-9]+; columns [0-9]+; line = [0-9]+;").unwrap()
++    })
++}
++
++fn get_dev_tty_stdio() -> Stdio {
++    use std::os::fd::FromRawFd;
++
++    let dev_tty_raw_fd = fcntl::open(DEV_TTY, OFlag::O_NONBLOCK, Mode::empty()).unwrap();
++
++    // TODO
++    // Verify safety
++    unsafe { Stdio::from_raw_fd(dev_tty_raw_fd) }
++}
++
++impl UCommand {
++    fn set_stdin_to_dev_tty_stdio(&mut self) -> &mut Self {
++        self.set_stdin(get_dev_tty_stdio())
++    }
++}
+ 
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn test_invalid_arg() {
+     new_ucmd!()
+-        .args(&["--file=/dev/tty", "--definitely-invalid"])
++        .arg("--definitely-invalid")
++        .set_stdin_to_dev_tty_stdio()
+         .fails()
+         .code_is(1);
+ }
+ 
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn runs() {
+-    new_ucmd!().arg("--file=/dev/tty").succeeds();
++    new_ucmd!().set_stdin_to_dev_tty_stdio().succeeds();
+ }
+ 
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn print_all() {
+-    let cmd_result = new_ucmd!().args(&["--file=/dev/tty", "-a"]).succeeds();
++    let cmd_result = new_ucmd!()
++        .arg("-a")
++        .set_stdin_to_dev_tty_stdio()
++        .succeeds();
+ 
+     // "iuclc" removed due to this comment in stty.rs:
+     //
+@@ -73,9 +124,11 @@ fn save_and_all() {
+ 
+ // Make sure the "allow_hyphen_values" clap function has been called with true
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn negation() {
+     new_ucmd!()
+-        .args(&["--file=/dev/tty", "-ixon"])
++        .arg("-ixon")
++        .set_stdin_to_dev_tty_stdio()
+         .succeeds()
+         .stdout_is_bytes([])
+         .stderr_is_bytes([]);
+@@ -84,6 +137,7 @@ fn negation() {
+ fn succeeds_test_with_regex(args: &[&str], stdout_regex: &Regex) {
+     new_ucmd!()
+         .args(args)
++        .set_stdin_to_dev_tty_stdio()
+         .succeeds()
+         .stdout_str_check(|st| {
+             let Some(str) = st.lines().next() else {
+@@ -97,32 +151,87 @@ fn succeeds_test_with_regex(args: &[&str], stdout_regex: &Regex) {
+ 
+ // The end of options delimiter ("--") and everything after must be ignored
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn ignore_end_of_options_and_after() {
+     {
+-        // e.g.:
+-        // speed 38400 baud; rows 54; columns 216; line = 0;
+-        let regex =
+-            Regex::new("speed [0-9]+ baud; rows [0-9]+; columns [0-9]+; line = [0-9]+;").unwrap();
+-
+         // "stty -a -- -ixon" should behave like "stty -a"
+         // Should not abort with an error complaining about passing both "-a" and "-ixon" (since "-ixon" is after "--")
+-        succeeds_test_with_regex(&["--file=/dev/tty", "-a", "--", "-ixon"], &regex);
++        succeeds_test_with_regex(&["-a", "--", "-ixon"], get_print_dash_a_first_line_regex());
+     }
+ 
+     {
+-        // e.g.:
+-        // speed 38400 baud; line = 0;
+-        let regex = Regex::new("speed [0-9]+ baud; line = [0-9]+;").unwrap();
+-
+         // "stty -- non-existent-option-that-must-be-ignore" should behave like "stty"
+         // Should not abort with an error complaining about an invalid argument, since the invalid argument is after "--"
+         succeeds_test_with_regex(
+-            &[
+-                "--file=/dev/tty",
+-                "--",
+-                "non-existent-option-that-must-be-ignored",
+-            ],
+-            &regex,
++            &["--", "non-existent-option-that-must-be-ignored"],
++            get_print_first_line_regex(),
+         );
+     }
+ }
++
++#[test]
++fn f_file_option() {
++    for st in ["-F", "--file"] {
++        for bo in [false, true] {
++            let (args, regex): (&[&str], &'static Regex) = if bo {
++                (&[st, DEV_TTY, "-a"], get_print_dash_a_first_line_regex())
++            } else {
++                (&[st, DEV_TTY], get_print_first_line_regex())
++            };
++
++            new_ucmd!()
++                .args(args)
++                .set_stdin_to_dev_tty_stdio()
++                .succeeds()
++                .stdout_str_check(|st| {
++                    let Some(str) = st.lines().next() else {
++                        return false;
++                    };
++
++                    regex.is_match(str)
++                })
++                .no_stderr();
++        }
++    }
++}
++
++// Make sure stty is using stdin to look up terminal attributes, not stdout
++#[test]
++fn correct_file_descriptor_output_piped() {
++    const PIPE_STDOUT_TO: &str = "pipe_stdout_to";
++    const PIPE_STDERR_TO: &str = "pipe_stderr_to";
++
++    let test_scenario = TestScenario::new(util_name!());
++
++    let at_path = &test_scenario.fixtures;
++
++    let stdout_file = at_path.make_file(PIPE_STDOUT_TO);
++    let stderr_file = at_path.make_file(PIPE_STDERR_TO);
++
++    test_scenario
++        .ucmd()
++        .set_stdin_to_dev_tty_stdio()
++        .set_stdout(Stdio::from(stdout_file))
++        .set_stderr(Stdio::from(stderr_file))
++        .succeeds();
++
++    let mut read_to_string_buffer = String::new();
++
++    at_path
++        .open(PIPE_STDOUT_TO)
++        .read_to_string(&mut read_to_string_buffer)
++        .unwrap();
++
++    let stdout_first_line = read_to_string_buffer.lines().next().unwrap();
++
++    assert!(get_print_first_line_regex().is_match(stdout_first_line));
++
++    read_to_string_buffer.clear();
++
++    at_path
++        .open(PIPE_STDERR_TO)
++        .read_to_string(&mut read_to_string_buffer)
++        .unwrap();
++
++    assert!(read_to_string_buffer.is_empty());
++}
+
+From cf711c31d12ae3300ba2d710976de5bffe4a0a39 Mon Sep 17 00:00:00 2001
+From: Andrew Liebenow <andrewliebenow@gmail.com>
+Date: Sat, 19 Oct 2024 11:27:59 -0500
+Subject: [PATCH 3/9] Remove unnecessary unsafe code
+
+---
+ tests/by-util/test_stty.rs | 46 +++++++++++++-------------------------
+ 1 file changed, 15 insertions(+), 31 deletions(-)
+
+diff --git a/tests/by-util/test_stty.rs b/tests/by-util/test_stty.rs
+index 558633be951..75d681dd367 100644
+--- a/tests/by-util/test_stty.rs
++++ b/tests/by-util/test_stty.rs
+@@ -6,13 +6,9 @@
+ // spell-checker:ignore parenb parmrk ixany iuclc onlcr ofdel icanon noflsh ixon
+ 
+ use crate::common::util::{TestScenario, UCommand};
+-use nix::{
+-    fcntl::{self, OFlag},
+-    sys::stat::Mode,
+-};
+ use once_cell::sync::OnceCell;
+ use regex::Regex;
+-use std::{io::Read, process::Stdio};
++use std::{fs::File, io::Read, process::Stdio};
+ 
+ const DEV_TTY: &str = "/dev/tty";
+ 
+@@ -36,19 +32,13 @@ fn get_print_dash_a_first_line_regex() -> &'static Regex {
+     })
+ }
+ 
+-fn get_dev_tty_stdio() -> Stdio {
+-    use std::os::fd::FromRawFd;
+-
+-    let dev_tty_raw_fd = fcntl::open(DEV_TTY, OFlag::O_NONBLOCK, Mode::empty()).unwrap();
+-
+-    // TODO
+-    // Verify safety
+-    unsafe { Stdio::from_raw_fd(dev_tty_raw_fd) }
+-}
+-
+ impl UCommand {
+     fn set_stdin_to_dev_tty_stdio(&mut self) -> &mut Self {
+-        self.set_stdin(get_dev_tty_stdio())
++        let file = File::open(DEV_TTY).unwrap();
++
++        let stdio = Stdio::from(file);
++
++        self.set_stdin(stdio)
+     }
+ }
+ 
+@@ -134,7 +124,7 @@ fn negation() {
+         .stderr_is_bytes([]);
+ }
+ 
+-fn succeeds_test_with_regex(args: &[&str], stdout_regex: &Regex) {
++fn run_and_check_print_should_succeed(args: &[&str], stdout_regex: &Regex) {
+     new_ucmd!()
+         .args(args)
+         .set_stdin_to_dev_tty_stdio()
+@@ -156,13 +146,16 @@ fn ignore_end_of_options_and_after() {
+     {
+         // "stty -a -- -ixon" should behave like "stty -a"
+         // Should not abort with an error complaining about passing both "-a" and "-ixon" (since "-ixon" is after "--")
+-        succeeds_test_with_regex(&["-a", "--", "-ixon"], get_print_dash_a_first_line_regex());
++        run_and_check_print_should_succeed(
++            &["-a", "--", "-ixon"],
++            get_print_dash_a_first_line_regex(),
++        );
+     }
+ 
+     {
+         // "stty -- non-existent-option-that-must-be-ignore" should behave like "stty"
+         // Should not abort with an error complaining about an invalid argument, since the invalid argument is after "--"
+-        succeeds_test_with_regex(
++        run_and_check_print_should_succeed(
+             &["--", "non-existent-option-that-must-be-ignored"],
+             get_print_first_line_regex(),
+         );
+@@ -170,6 +163,7 @@ fn ignore_end_of_options_and_after() {
+ }
+ 
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn f_file_option() {
+     for st in ["-F", "--file"] {
+         for bo in [false, true] {
+@@ -179,24 +173,14 @@ fn f_file_option() {
+                 (&[st, DEV_TTY], get_print_first_line_regex())
+             };
+ 
+-            new_ucmd!()
+-                .args(args)
+-                .set_stdin_to_dev_tty_stdio()
+-                .succeeds()
+-                .stdout_str_check(|st| {
+-                    let Some(str) = st.lines().next() else {
+-                        return false;
+-                    };
+-
+-                    regex.is_match(str)
+-                })
+-                .no_stderr();
++            run_and_check_print_should_succeed(args, regex);
+         }
+     }
+ }
+ 
+ // Make sure stty is using stdin to look up terminal attributes, not stdout
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn correct_file_descriptor_output_piped() {
+     const PIPE_STDOUT_TO: &str = "pipe_stdout_to";
+     const PIPE_STDERR_TO: &str = "pipe_stderr_to";
+
+From 5ccba2fe4456ba3bfb11c22d81189a74ee417447 Mon Sep 17 00:00:00 2001
+From: Andrew Liebenow <andrewliebenow@gmail.com>
+Date: Sat, 19 Oct 2024 11:38:20 -0500
+Subject: [PATCH 4/9] Fix MSRV issue
+
+---
+ tests/by-util/test_stty.rs | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/tests/by-util/test_stty.rs b/tests/by-util/test_stty.rs
+index 75d681dd367..3cdfcb07949 100644
+--- a/tests/by-util/test_stty.rs
++++ b/tests/by-util/test_stty.rs
+@@ -167,10 +167,17 @@ fn ignore_end_of_options_and_after() {
+ fn f_file_option() {
+     for st in ["-F", "--file"] {
+         for bo in [false, true] {
++            let ar: [&str; 3];
++            let arr: [&str; 2];
++
+             let (args, regex): (&[&str], &'static Regex) = if bo {
+-                (&[st, DEV_TTY, "-a"], get_print_dash_a_first_line_regex())
++                ar = [st, DEV_TTY, "-a"];
++
++                (&ar, get_print_dash_a_first_line_regex())
+             } else {
+-                (&[st, DEV_TTY], get_print_first_line_regex())
++                arr = [st, DEV_TTY];
++
++                (&arr, get_print_first_line_regex())
+             };
+ 
+             run_and_check_print_should_succeed(args, regex);
+
+From 8a9d2f7dfc8796330f59851bf3ec38caed060235 Mon Sep 17 00:00:00 2001
+From: Andrew Liebenow <andrewliebenow@gmail.com>
+Date: Sat, 19 Oct 2024 12:05:28 -0500
+Subject: [PATCH 5/9] Disable tests that do not work in CI
+
+---
+ tests/by-util/test_stty.rs | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/tests/by-util/test_stty.rs b/tests/by-util/test_stty.rs
+index 3cdfcb07949..4cc09a81c00 100644
+--- a/tests/by-util/test_stty.rs
++++ b/tests/by-util/test_stty.rs
+@@ -40,10 +40,19 @@ impl UCommand {
+ 
+         self.set_stdin(stdio)
+     }
++
++    fn conditional_set_stdin_to_dev_tty_stdio(&mut self, set_stdin: bool) -> &mut Self {
++        if set_stdin {
++            self.set_stdin_to_dev_tty_stdio()
++        } else {
++            self
++        }
++    }
+ }
+ 
+ #[test]
+ #[cfg(not(target_os = "android"))]
++#[ignore = "These tests should work locally, but /dev/tty isn't configured when running in CI"]
+ fn test_invalid_arg() {
+     new_ucmd!()
+         .arg("--definitely-invalid")
+@@ -54,12 +63,14 @@ fn test_invalid_arg() {
+ 
+ #[test]
+ #[cfg(not(target_os = "android"))]
++#[ignore = "These tests should work locally, but /dev/tty isn't configured when running in CI"]
+ fn runs() {
+     new_ucmd!().set_stdin_to_dev_tty_stdio().succeeds();
+ }
+ 
+ #[test]
+ #[cfg(not(target_os = "android"))]
++#[ignore = "These tests should work locally, but /dev/tty isn't configured when running in CI"]
+ fn print_all() {
+     let cmd_result = new_ucmd!()
+         .arg("-a")
+@@ -115,6 +126,7 @@ fn save_and_all() {
+ // Make sure the "allow_hyphen_values" clap function has been called with true
+ #[test]
+ #[cfg(not(target_os = "android"))]
++#[ignore = "These tests should work locally, but /dev/tty isn't configured when running in CI"]
+ fn negation() {
+     new_ucmd!()
+         .arg("-ixon")
+@@ -124,10 +136,10 @@ fn negation() {
+         .stderr_is_bytes([]);
+ }
+ 
+-fn run_and_check_print_should_succeed(args: &[&str], stdout_regex: &Regex) {
++fn run_and_check_print_should_succeed(args: &[&str], stdout_regex: &Regex, set_stdin: bool) {
+     new_ucmd!()
+         .args(args)
+-        .set_stdin_to_dev_tty_stdio()
++        .conditional_set_stdin_to_dev_tty_stdio(set_stdin)
+         .succeeds()
+         .stdout_str_check(|st| {
+             let Some(str) = st.lines().next() else {
+@@ -142,6 +154,7 @@ fn run_and_check_print_should_succeed(args: &[&str], stdout_regex: &Regex) {
+ // The end of options delimiter ("--") and everything after must be ignored
+ #[test]
+ #[cfg(not(target_os = "android"))]
++#[ignore = "These tests should work locally, but /dev/tty isn't configured when running in CI"]
+ fn ignore_end_of_options_and_after() {
+     {
+         // "stty -a -- -ixon" should behave like "stty -a"
+@@ -149,6 +162,7 @@ fn ignore_end_of_options_and_after() {
+         run_and_check_print_should_succeed(
+             &["-a", "--", "-ixon"],
+             get_print_dash_a_first_line_regex(),
++            true,
+         );
+     }
+ 
+@@ -158,12 +172,14 @@ fn ignore_end_of_options_and_after() {
+         run_and_check_print_should_succeed(
+             &["--", "non-existent-option-that-must-be-ignored"],
+             get_print_first_line_regex(),
++            true,
+         );
+     }
+ }
+ 
+ #[test]
+ #[cfg(not(target_os = "android"))]
++#[ignore = "These tests should work locally, but /dev/tty isn't configured when running in CI"]
+ fn f_file_option() {
+     for st in ["-F", "--file"] {
+         for bo in [false, true] {
+@@ -180,7 +196,7 @@ fn f_file_option() {
+                 (&arr, get_print_first_line_regex())
+             };
+ 
+-            run_and_check_print_should_succeed(args, regex);
++            run_and_check_print_should_succeed(args, regex, false);
+         }
+     }
+ }
+@@ -188,6 +204,7 @@ fn f_file_option() {
+ // Make sure stty is using stdin to look up terminal attributes, not stdout
+ #[test]
+ #[cfg(not(target_os = "android"))]
++#[ignore = "These tests should work locally, but /dev/tty isn't configured when running in CI"]
+ fn correct_file_descriptor_output_piped() {
+     const PIPE_STDOUT_TO: &str = "pipe_stdout_to";
+     const PIPE_STDERR_TO: &str = "pipe_stderr_to";
+
+From 9c1c3f3e2a204d228f9427f8edefc393169eeeab Mon Sep 17 00:00:00 2001
+From: Andrew Liebenow <andrewliebenow@gmail.com>
+Date: Sun, 20 Oct 2024 09:51:40 -0500
+Subject: [PATCH 6/9] stty: add handling of special characters
+
+---
+ Cargo.lock                                    |  34 ++
+ src/uu/stty/Cargo.toml                        |   7 +-
+ src/uu/stty/build.rs                          | 136 +++++++
+ src/uu/stty/circumflex-control-characters.txt | 240 ++++++++++++
+ src/uu/stty/src/generated.rs                  |   4 +
+ src/uu/stty/src/stty.rs                       | 349 ++++++++++++++++--
+ 6 files changed, 736 insertions(+), 34 deletions(-)
+ create mode 100644 src/uu/stty/build.rs
+ create mode 100644 src/uu/stty/circumflex-control-characters.txt
+ create mode 100644 src/uu/stty/src/generated.rs
+
+diff --git a/Cargo.lock b/Cargo.lock
+index ef1704f0142..d249fa2ebaf 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1101,6 +1101,15 @@ dependencies = [
+  "version_check",
+ ]
+ 
++[[package]]
++name = "getopts"
++version = "0.2.21"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "14dbbfd5c71d70241ecf9e6f13737f7b5ce823821063188d7e46c41d371eebd5"
++dependencies = [
++ "unicode-width",
++]
++
+ [[package]]
+ name = "getrandom"
+ version = "0.2.9"
+@@ -2524,6 +2533,28 @@ version = "0.2.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "f962df74c8c05a667b5ee8bcf162993134c104e96440b663c8daa176dc772d8c"
+ 
++[[package]]
++name = "unicode_names2"
++version = "1.3.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d1673eca9782c84de5f81b82e4109dcfb3611c8ba0d52930ec4a9478f547b2dd"
++dependencies = [
++ "phf",
++ "unicode_names2_generator",
++]
++
++[[package]]
++name = "unicode_names2_generator"
++version = "1.3.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "b91e5b84611016120197efd7dc93ef76774f4e084cd73c9fb3ea4a86c570c56e"
++dependencies = [
++ "getopts",
++ "log",
++ "phf_codegen",
++ "rand",
++]
++
+ [[package]]
+ name = "unindent"
+ version = "0.2.3"
+@@ -3323,6 +3354,9 @@ version = "0.0.28"
+ dependencies = [
+  "clap",
+  "nix",
++ "phf",
++ "phf_codegen",
++ "unicode_names2",
+  "uucore",
+ ]
+ 
+diff --git a/src/uu/stty/Cargo.toml b/src/uu/stty/Cargo.toml
+index c38df5819d9..f8a7adf883f 100644
+--- a/src/uu/stty/Cargo.toml
++++ b/src/uu/stty/Cargo.toml
+@@ -18,8 +18,13 @@ path = "src/stty.rs"
+ 
+ [dependencies]
+ clap = { workspace = true }
++nix = { workspace = true, features = ["feature", "fs", "term", "ioctl"] }
++phf = { workspace = true }
+ uucore = { workspace = true }
+-nix = { workspace = true, features = ["term", "ioctl"] }
++
++[build-dependencies]
++phf_codegen = { workspace = true }
++unicode_names2 = "1.3.0"
+ 
+ [[bin]]
+ name = "stty"
+diff --git a/src/uu/stty/build.rs b/src/uu/stty/build.rs
+new file mode 100644
+index 00000000000..d055ca0a0be
+--- /dev/null
++++ b/src/uu/stty/build.rs
+@@ -0,0 +1,136 @@
++// spell-checker:ignore tbody
++
++use std::{
++    env,
++    error::Error,
++    fs::{self, File},
++    io::{BufWriter, Write},
++    path::Path,
++    process::ExitCode,
++};
++
++fn main() -> ExitCode {
++    if let Err(bo) = write_perfect_hash_map() {
++        eprintln!("Error occurred while building and writing perfect hash map: {bo:?}");
++
++        ExitCode::FAILURE
++    } else {
++        ExitCode::SUCCESS
++    }
++}
++
++fn write_perfect_hash_map() -> Result<(), Box<dyn Error>> {
++    const NUMBER_OF_VALUE_LINES_IN_PRELUDE: usize = 3_usize;
++
++    // `textContent` value of <tbody> node of the table with the heading
++    // "Table: Circumflex Control Characters in stty"
++    // in https://pubs.opengroup.org/onlinepubs/9799919799/utilities/stty.html
++    let text_content = fs::read_to_string("./circumflex-control-characters.txt")?;
++
++    let mut map = phf_codegen::Map::<u8>::new();
++
++    let mut value_encountered_count = 0_usize;
++
++    let mut peekable = text_content.lines().peekable();
++
++    while let Some(current_line) = peekable.peek().copied() {
++        peekable.next();
++
++        if current_line.is_empty() || current_line == "\u{00A0}" {
++            continue;
++        }
++
++        if value_encountered_count < NUMBER_OF_VALUE_LINES_IN_PRELUDE {
++            if current_line == "Value" {
++                value_encountered_count += 1_usize;
++            }
++
++            continue;
++        }
++
++        if value_encountered_count != NUMBER_OF_VALUE_LINES_IN_PRELUDE {
++            return Err(Box::from("Expectation violated"));
++        }
++
++        let keys = current_line;
++
++        loop {
++            let Some(str) = peekable.next() else {
++                return Err(Box::from("Expectation violated"));
++            };
++
++            if str.is_empty() {
++                continue;
++            }
++
++            let mut encoding_buffer = [0_u8; 4_usize];
++
++            let mut str_chars = str.chars();
++
++            if str_chars.next() != Some('<') || str_chars.next_back() != Some('>') {
++                return Err(Box::from("Expectation violated"));
++            }
++
++            let str_chars_str = str_chars.as_str();
++
++            // Look up value of alias
++            let Some(value_char) = unicode_names2::character(str_chars_str) else {
++                return Err(Box::from("Expectation violated"));
++            };
++
++            let value_encode_str = value_char.encode_utf8(&mut encoding_buffer);
++
++            let value_only_byte = match value_encode_str.as_bytes() {
++                &[ue] => ue,
++                _ => {
++                    return Err(Box::from("Expectation violated"));
++                }
++            };
++
++            let value_only_byte_string = format!("{value_only_byte}_u8");
++
++            let value_only_byte_str = value_only_byte_string.as_str();
++
++            for key in keys.split(",") {
++                let mut key_chars_skip_while = key.chars().skip_while(|&ch| ch == ' ');
++
++                let Some(key_only_char) = key_chars_skip_while.next() else {
++                    return Err(Box::from("Expectation violated"));
++                };
++
++                let None = key_chars_skip_while.next() else {
++                    return Err(Box::from("Expectation violated"));
++                };
++
++                let key_only_char_str = key_only_char.encode_utf8(&mut encoding_buffer);
++
++                match key_only_char_str.as_bytes() {
++                    &[key_only_char_only_byte] => {
++                        map.entry(key_only_char_only_byte, value_only_byte_str);
++                    }
++                    _ => {
++                        return Err(Box::from("Expectation violated"));
++                    }
++                }
++            }
++
++            break;
++        }
++    }
++
++    let display_map = map.build();
++
++    let out_dir = env::var("OUT_DIR")?;
++
++    let path_buf = Path::new(out_dir.as_str()).join("circumflex_control_characters_table.rs");
++
++    let mut buf_writer = BufWriter::new(File::create(path_buf.as_path())?);
++
++    writeln!(
++        &mut buf_writer,
++        "pub static CIRCUMFLEX_CONTROL_CHARACTERS_TABLE_MAP: phf::Map<u8, u8> = {};",
++        display_map
++    )?;
++
++    Ok(())
++}
+diff --git a/src/uu/stty/circumflex-control-characters.txt b/src/uu/stty/circumflex-control-characters.txt
+new file mode 100644
+index 00000000000..75afcfbb3bd
+--- /dev/null
++++ b/src/uu/stty/circumflex-control-characters.txt
+@@ -0,0 +1,240 @@
++
++
++^c
++
++
++Value
++
++
++^c
++
++
++Value
++
++
++^c
++
++
++Value
++
++
++
++
++a, A
++
++
++<SOH>
++
++
++l, L
++
++
++<FF>
++
++
++w, W
++
++
++<ETB>
++
++
++
++
++b, B
++
++
++<STX>
++
++
++m, M
++
++
++<CR>
++
++
++x, X
++
++
++<CAN>
++
++
++
++
++c, C
++
++
++<ETX>
++
++
++n, N
++
++
++<SO>
++
++
++y, Y
++
++
++<EM>
++
++
++
++
++d, D
++
++
++<EOT>
++
++
++o, O
++
++
++<SI>
++
++
++z, Z
++
++
++<SUB>
++
++
++
++
++e, E
++
++
++<ENQ>
++
++
++p, P
++
++
++<DLE>
++
++
++[
++
++
++<ESC>
++
++
++
++
++f, F
++
++
++<ACK>
++
++
++q, Q
++
++
++<DC1>
++
++
++\
++
++
++<FS>
++
++
++
++
++g, G
++
++
++<BEL>
++
++
++r, R
++
++
++<DC2>
++
++
++]
++
++
++<GS>
++
++
++
++
++h, H
++
++
++<BS>
++
++
++s, S
++
++
++<DC3>
++
++
++^
++
++
++<RS>
++
++
++
++
++i, I
++
++
++<HT>
++
++
++t, T
++
++
++<DC4>
++
++
++_
++
++
++<US>
++
++
++
++
++j, J
++
++
++<LF>
++
++
++u, U
++
++
++<NAK>
++
++
++?
++
++
++<DEL>
++
++
++
++
++k, K
++
++
++<VT>
++
++
++v, V
++
++
++<SYN>
++
++
++ 
++
++
++ 
++
++
+diff --git a/src/uu/stty/src/generated.rs b/src/uu/stty/src/generated.rs
+new file mode 100644
+index 00000000000..0b7e8e582c6
+--- /dev/null
++++ b/src/uu/stty/src/generated.rs
+@@ -0,0 +1,4 @@
++include!(concat!(
++    env!("OUT_DIR"),
++    "/circumflex_control_characters_table.rs"
++));
+diff --git a/src/uu/stty/src/stty.rs b/src/uu/stty/src/stty.rs
+index ccacddfe209..6f022ccfeb4 100644
+--- a/src/uu/stty/src/stty.rs
++++ b/src/uu/stty/src/stty.rs
+@@ -3,17 +3,22 @@
+ // For the full copyright and license information, please view the LICENSE
+ // file that was distributed with this source code.
+ 
+-// spell-checker:ignore clocal erange tcgetattr tcsetattr tcsanow tiocgwinsz tiocswinsz cfgetospeed cfsetospeed ushort vmin vtime ixon
++// spell-checker:ignore clocal erange tcgetattr tcsetattr tcsanow tiocgwinsz tiocswinsz cfgetospeed cfsetospeed ushort vmin vtime ixon pathconf endregion
+ 
+ mod flags;
++mod generated;
+ 
+ use clap::{crate_version, Arg, ArgAction, ArgMatches, Command};
+ use nix::libc::{c_ushort, O_NONBLOCK, TIOCGWINSZ, TIOCSWINSZ};
+ use nix::sys::termios::{
+     cfgetospeed, cfsetospeed, tcgetattr, tcsetattr, ControlFlags, InputFlags, LocalFlags,
+-    OutputFlags, SpecialCharacterIndices, Termios,
++    OutputFlags, SetArg, SpecialCharacterIndices, Termios,
+ };
++use nix::unistd::{pathconf, PathconfVar};
+ use nix::{ioctl_read_bad, ioctl_write_ptr_bad};
++use std::collections::HashMap;
++use std::env;
++use std::error::Error;
+ use std::ffi::OsStr;
+ use std::fs::File;
+ use std::io::Write;
+@@ -22,6 +27,7 @@ use std::ops::ControlFlow;
+ use std::os::fd::{AsFd, BorrowedFd};
+ use std::os::unix::fs::OpenOptionsExt;
+ use std::os::unix::io::{AsRawFd, RawFd};
++use std::sync::OnceLock;
+ use uucore::error::{UResult, USimpleError};
+ use uucore::{format_usage, help_about, help_usage};
+ 
+@@ -188,20 +194,20 @@ pub fn uumain(args: impl uucore::Args) -> UResult<()> {
+ 
+     let matches = uu_app().try_get_matches_from(fixed_args)?;
+ 
+-    let opts = Options::from(&matches)?;
++    let options = Options::from(&matches)?;
+ 
+-    stty(&opts)
++    stty(options)
+ }
+ 
+-fn stty(opts: &Options) -> UResult<()> {
+-    if opts.save && opts.all {
++fn stty(options: Options) -> UResult<()> {
++    if options.save && options.all {
+         return Err(USimpleError::new(
+             1,
+             "the options for verbose and stty-readable output styles are mutually exclusive",
+         ));
+     }
+ 
+-    if opts.settings.is_some() && (opts.save || opts.all) {
++    if options.settings.is_some() && (options.save || options.all) {
+         return Err(USimpleError::new(
+             1,
+             "when specifying an output style, modes may not be set",
+@@ -209,7 +215,7 @@ fn stty(opts: &Options) -> UResult<()> {
+     }
+ 
+     // TODO: Figure out the right error message for when tcgetattr fails
+-    let mut termios = match tcgetattr(opts.file.as_fd()) {
++    let mut termios = match tcgetattr(options.file.as_fd()) {
+         Ok(te) => te,
+         Err(er) => {
+             return Err(USimpleError::new(
+@@ -219,8 +225,44 @@ fn stty(opts: &Options) -> UResult<()> {
+         }
+     };
+ 
+-    if let Some(settings) = &opts.settings {
+-        for setting in settings {
++    if let Some(settings) = options.settings {
++        let settings_len = settings.len();
++
++        let mut special =
++            Vec::<(SpecialCharacterIndices, SpecialCharacterAssignment)>::with_capacity(
++                settings_len,
++            );
++        let mut rest = Vec::<&str>::with_capacity(settings_len);
++
++        let special_character_indices_hash_map = get_special_character_indices_hash_map();
++
++        let mut peekable = settings.into_iter().peekable();
++
++        while let Some(&st) = peekable.peek() {
++            peekable.next();
++
++            if let Some(&sp) = special_character_indices_hash_map.get(st) {
++                let Some(binding) = peekable.next() else {
++                    return Err(USimpleError::new(
++                        1_i32,
++                        format!("missing argument to '{st}'"),
++                    ));
++                };
++
++                let spe = match parse_special_character_assignment(binding) {
++                    Ok(spec) => spec,
++                    Err(st) => {
++                        return Err(USimpleError::new(1, st));
++                    }
++                };
++
++                special.push((sp, spe));
++            } else {
++                rest.push(st);
++            }
++        }
++
++        for setting in rest {
+             match apply_setting(&mut termios, setting) {
+                 ControlFlow::Break(re) => {
+                     if re? {
+@@ -241,20 +283,45 @@ fn stty(opts: &Options) -> UResult<()> {
+             }
+         }
+ 
+-        if let Err(er) = tcsetattr(
+-            opts.file.as_fd(),
+-            nix::sys::termios::SetArg::TCSANOW,
+-            &termios,
+-        ) {
++        for (sp, spe) in special {
++            let sp_usize = sp as usize;
++
++            let Some(control_char) = termios.control_chars.get_mut(sp_usize) else {
++                return Err(USimpleError::new(
++                    1,
++                    format!("failed to get special character to assign: '{sp_usize}'"),
++                ));
++            };
++
++            match spe {
++                SpecialCharacterAssignment::DisablingAssignment => {
++                    match get_disabling_assignment() {
++                        Ok(ue) => {
++                            *control_char = ue;
++                        }
++                        Err(bo) => {
++                            return Err(USimpleError::new(
++                                1,
++                                format!("failed to disable a special character: {bo}"),
++                            ));
++                        }
++                    }
++                }
++                SpecialCharacterAssignment::AssignTo(ue) => {
++                    *control_char = ue;
++                }
++            }
++        }
++
++        if let Err(er) = tcsetattr(options.file.as_fd(), SetArg::TCSANOW, &termios) {
+             return Err(USimpleError::new(
+                 1,
+                 format!("Could not write terminal attributes: errno {er}"),
+             ));
+         }
+     } else {
+-        //
+         #[allow(clippy::collapsible_else_if)]
+-        if let Err(bo) = print_settings(&termios, opts) {
++        if let Err(bo) = print_settings(&termios, &options) {
+             return Err(USimpleError::new(
+                 1,
+                 format!("failed to print settings: {bo}"),
+@@ -268,7 +335,7 @@ fn stty(opts: &Options) -> UResult<()> {
+ fn print_terminal_size(
+     stdout_lock: &mut StdoutLock,
+     termios: &Termios,
+-    opts: &Options,
++    options: &Options,
+ ) -> UResult<()> {
+     let speed = cfgetospeed(termios);
+ 
+@@ -301,10 +368,10 @@ fn print_terminal_size(
+         }
+     }
+ 
+-    if opts.all {
++    if options.all {
+         let mut size = TermSize::default();
+ 
+-        unsafe { tiocgwinsz(opts.file.as_raw_fd(), &mut size as *mut _)? };
++        unsafe { tiocgwinsz(options.file.as_raw_fd(), &mut size as *mut _)? };
+ 
+         write!(
+             stdout_lock,
+@@ -357,9 +424,9 @@ fn control_char_to_string(cc: nix::libc::cc_t) -> nix::Result<String> {
+ fn print_control_chars(
+     stdout_lock: &mut StdoutLock,
+     termios: &Termios,
+-    opts: &Options,
++    options: &Options,
+ ) -> UResult<()> {
+-    if !opts.all {
++    if !options.all {
+         // TODO: this branch should print values that differ from defaults
+         return Ok(());
+     }
+@@ -401,18 +468,18 @@ fn print_in_save_format(stdout_lock: &mut StdoutLock, termios: &Termios) -> URes
+     Ok(())
+ }
+ 
+-fn print_settings(termios: &Termios, opts: &Options) -> UResult<()> {
++fn print_settings(termios: &Termios, options: &Options) -> UResult<()> {
+     let mut stdout_lock = io::stdout().lock();
+ 
+-    if opts.save {
++    if options.save {
+         print_in_save_format(&mut stdout_lock, termios)?;
+     } else {
+-        print_terminal_size(&mut stdout_lock, termios, opts)?;
+-        print_control_chars(&mut stdout_lock, termios, opts)?;
+-        print_flags(&mut stdout_lock, termios, opts, CONTROL_FLAGS)?;
+-        print_flags(&mut stdout_lock, termios, opts, INPUT_FLAGS)?;
+-        print_flags(&mut stdout_lock, termios, opts, OUTPUT_FLAGS)?;
+-        print_flags(&mut stdout_lock, termios, opts, LOCAL_FLAGS)?;
++        print_terminal_size(&mut stdout_lock, termios, options)?;
++        print_control_chars(&mut stdout_lock, termios, options)?;
++        print_flags(&mut stdout_lock, termios, options, CONTROL_FLAGS)?;
++        print_flags(&mut stdout_lock, termios, options, INPUT_FLAGS)?;
++        print_flags(&mut stdout_lock, termios, options, OUTPUT_FLAGS)?;
++        print_flags(&mut stdout_lock, termios, options, LOCAL_FLAGS)?;
+     }
+ 
+     Ok(())
+@@ -421,7 +488,7 @@ fn print_settings(termios: &Termios, opts: &Options) -> UResult<()> {
+ fn print_flags<T: TermiosFlag>(
+     stdout_lock: &mut StdoutLock,
+     termios: &Termios,
+-    opts: &Options,
++    options: &Options,
+     flags: &[Flag<T>],
+ ) -> UResult<()> {
+     let mut printed = false;
+@@ -441,12 +508,12 @@ fn print_flags<T: TermiosFlag>(
+         let val = flag.is_in(termios, group);
+ 
+         if group.is_some() {
+-            if val && (!sane || opts.all) {
++            if val && (!sane || options.all) {
+                 write!(stdout_lock, "{name} ")?;
+ 
+                 printed = true;
+             }
+-        } else if opts.all || val != sane {
++        } else if options.all || val != sane {
+             if !val {
+                 write!(stdout_lock, "-")?;
+             }
+@@ -645,3 +712,219 @@ impl TermiosFlag for LocalFlags {
+         termios.local_flags.set(*self, val);
+     }
+ }
++
++enum SpecialCharacterAssignment {
++    DisablingAssignment,
++    AssignTo(u8),
++}
++
++// See explanation above "Table: Circumflex Control Characters in stty" in
++// https://pubs.opengroup.org/onlinepubs/9799919799/utilities/stty.html
++//
++// Also:
++//
++// "They are set with the syntax ‘name value’, where the names are listed below and the value can be given either literally, in hat notation (‘^c’), or as an integer which may start with ‘0x’ to indicate hexadecimal, ‘0’ to indicate octal, or any other digit to indicate decimal."
++// https://www.gnu.org/software/coreutils/manual/html_node/Characters.html
++//
++// GNU Core Utilities allows all of these for disabling assignment:
++// "", "^-", "undef"
++fn parse_special_character_assignment(
++    assignment_str: &str,
++) -> Result<SpecialCharacterAssignment, String> {
++    use crate::generated::CIRCUMFLEX_CONTROL_CHARACTERS_TABLE_MAP;
++
++    let make_error = || Err(format!("invalid integer argument: '{assignment_str}'"));
++
++    fn ensure_one_byte(ch: char) -> Result<u8, String> {
++        let mut encoding_buffer = [0_u8; 4_usize];
++
++        let st = ch.encode_utf8(&mut encoding_buffer);
++
++        match st.as_bytes() {
++            &[ue] => {
++                Ok(ue)
++            }
++            _ => {
++                Err(format!("Character '{ch:?}' cannot be used for special control character assignment, because it has a multi-byte UTF-8 representation"))
++            }
++        }
++    }
++
++    let mut chars = assignment_str.chars();
++
++    // e.g. GNU Core utilities treats:
++    //
++    // stty intr ''
++    //
++    // as a disabling assignment
++    let Some(first_char) = chars.next() else {
++        return Ok(SpecialCharacterAssignment::DisablingAssignment);
++    };
++
++    let first_char_byte = ensure_one_byte(first_char)?;
++
++    let after_first_char_chars = chars.clone();
++
++    let Some(second_char) = chars.next() else {
++        // Single character is treated literally
++        return Ok(SpecialCharacterAssignment::AssignTo(first_char_byte));
++    };
++
++    let second_char_byte = ensure_one_byte(second_char)?;
++
++    match (first_char_byte, second_char_byte) {
++        (b'0', b'x') => {
++            // Hexadecimal
++            let result = u8::from_str_radix(chars.as_str(), 16_u32);
++
++            return if let Ok(ue) = result {
++                Ok(SpecialCharacterAssignment::AssignTo(ue))
++            } else {
++                make_error()
++            };
++        }
++        (b'0', _) => {
++            // Octal
++            let result = u8::from_str_radix(after_first_char_chars.as_str(), 8_u32);
++
++            return if let Ok(ue) = result {
++                Ok(SpecialCharacterAssignment::AssignTo(ue))
++            } else {
++                make_error()
++            };
++        }
++        _ => {
++            // Continue
++        }
++    };
++
++    if let Some(third_char) = chars.next() {
++        let third_char_byte = ensure_one_byte(third_char)?;
++
++        if let (b'u', b'n', b'd') = (first_char_byte, second_char_byte, third_char_byte) {
++            // Look for "undef"
++            if chars.as_str() == "ef" {
++                return Ok(SpecialCharacterAssignment::DisablingAssignment);
++            }
++        }
++    } else {
++        match (first_char_byte, second_char_byte) {
++            (b'^', b'-') => return Ok(SpecialCharacterAssignment::DisablingAssignment),
++            (b'^', ue) => {
++                // Circumflex
++                let map: &'static phf::Map<u8, u8> = &CIRCUMFLEX_CONTROL_CHARACTERS_TABLE_MAP;
++
++                if let Some(uei) = map.get(&ue) {
++                    return Ok(SpecialCharacterAssignment::AssignTo(*uei));
++                }
++            }
++            _ => {}
++        }
++    }
++
++    make_error()
++}
++
++fn get_special_character_indices_hash_map() -> HashMap<&'static str, SpecialCharacterIndices> {
++    let mut hash_map = HashMap::<&'static str, SpecialCharacterIndices>::with_capacity(18_usize);
++
++    let mut insert = |key: &'static str, value: SpecialCharacterIndices| {
++        debug_assert!(hash_map.insert(key, value).is_none());
++    };
++
++    /* #region POSIX */
++    {
++        // "Table: Control Character Names in stty"
++        // https://pubs.opengroup.org/onlinepubs/9799919799/utilities/stty.html
++
++        // spell-checker:disable
++        insert("eof", SpecialCharacterIndices::VEOF);
++        insert("eol", SpecialCharacterIndices::VEOL);
++        insert("erase", SpecialCharacterIndices::VERASE);
++        insert("intr", SpecialCharacterIndices::VINTR);
++        insert("kill", SpecialCharacterIndices::VKILL);
++        insert("quit", SpecialCharacterIndices::VQUIT);
++        insert("susp", SpecialCharacterIndices::VSUSP);
++        insert("start", SpecialCharacterIndices::VSTART);
++        insert("stop", SpecialCharacterIndices::VSTOP);
++        // spell-checker:enable
++    }
++    /* #endregion */
++
++    /* #region Non-POSIX */
++    {
++        // https://www.gnu.org/software/coreutils/manual/html_node/Characters.html
++
++        // spell-checker:disable
++        insert("eol2", SpecialCharacterIndices::VEOL2);
++
++        #[cfg(not(any(target_os = "aix", target_os = "haiku")))]
++        {
++            insert("discard", SpecialCharacterIndices::VDISCARD);
++        }
++
++        #[cfg(target_os = "linux")]
++        {
++            insert("swtch", SpecialCharacterIndices::VSWTC);
++        }
++
++        // TODO
++        // Haiku and Solaris
++        // insert("swtch", SpecialCharacterIndices::VSWTCH);
++
++        // TODO
++        // BSD and Solaris
++        // insert("status", SpecialCharacterIndices::VSTATUS);
++
++        // TODO
++        // AIX, BSD, and Solaris
++        // insert("dsusp", SpecialCharacterIndices::VDSUSP);
++
++        #[cfg(not(target_os = "haiku"))]
++        {
++            insert("rprnt", SpecialCharacterIndices::VREPRINT);
++        }
++
++        #[cfg(not(any(target_os = "aix", target_os = "haiku")))]
++        {
++            insert("werase", SpecialCharacterIndices::VWERASE);
++        }
++
++        #[cfg(not(target_os = "haiku"))]
++        {
++            insert("lnext", SpecialCharacterIndices::VLNEXT);
++        }
++        // spell-checker:enable
++    }
++    /* #endregion */
++
++    hash_map
++}
++
++fn get_disabling_assignment() -> Result<u8, Box<dyn Error>> {
++    static ONCE_LOCK: OnceLock<Option<u8>> = OnceLock::<Option<u8>>::new();
++
++    let option = match ONCE_LOCK.get() {
++        Some(op) => op,
++        None => {
++            let path_buf = env::current_dir()?;
++
++            // spell-checker:disable-next-line
++            let op = pathconf(path_buf.as_path(), PathconfVar::_POSIX_VDISABLE)?;
++
++            let opt = match op {
++                Some(is) => Some(u8::try_from(is)?),
++                None => None,
++            };
++
++            ONCE_LOCK.get_or_init(|| opt)
++        }
++    };
++
++    match option {
++        Some(ue) => Ok(*ue),
++        None => Err(Box::from(
++            "Disabling special characters is not supported on this system",
++        )),
++    }
++}
+
+From c6632bcecc6c5ac656253db51b7a73bc1307b8ae Mon Sep 17 00:00:00 2001
+From: Andrew Liebenow <andrewliebenow@gmail.com>
+Date: Sun, 20 Oct 2024 11:59:23 -0500
+Subject: [PATCH 7/9] Add license header
+
+---
+ src/uu/stty/build.rs         | 5 +++++
+ src/uu/stty/src/generated.rs | 5 +++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/src/uu/stty/build.rs b/src/uu/stty/build.rs
+index d055ca0a0be..02ac5cd899b 100644
+--- a/src/uu/stty/build.rs
++++ b/src/uu/stty/build.rs
+@@ -1,3 +1,8 @@
++// This file is part of the uutils coreutils package.
++//
++// For the full copyright and license information, please view the LICENSE
++// file that was distributed with this source code.
++
+ // spell-checker:ignore tbody
+ 
+ use std::{
+diff --git a/src/uu/stty/src/generated.rs b/src/uu/stty/src/generated.rs
+index 0b7e8e582c6..1d72caf4d7b 100644
+--- a/src/uu/stty/src/generated.rs
++++ b/src/uu/stty/src/generated.rs
+@@ -1,3 +1,8 @@
++// This file is part of the uutils coreutils package.
++//
++// For the full copyright and license information, please view the LICENSE
++// file that was distributed with this source code.
++
+ include!(concat!(
+     env!("OUT_DIR"),
+     "/circumflex_control_characters_table.rs"
+
+From 7a391e501ec9219310cc364a1777690633c3e437 Mon Sep 17 00:00:00 2001
+From: Andrew Liebenow <andrewliebenow@gmail.com>
+Date: Sun, 20 Oct 2024 12:33:46 -0500
+Subject: [PATCH 8/9] Fix release profile bug
+
+---
+ src/uu/stty/src/stty.rs | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/uu/stty/src/stty.rs b/src/uu/stty/src/stty.rs
+index 6f022ccfeb4..05cd35aa812 100644
+--- a/src/uu/stty/src/stty.rs
++++ b/src/uu/stty/src/stty.rs
+@@ -829,7 +829,9 @@ fn get_special_character_indices_hash_map() -> HashMap<&'static str, SpecialChar
+     let mut hash_map = HashMap::<&'static str, SpecialCharacterIndices>::with_capacity(18_usize);
+ 
+     let mut insert = |key: &'static str, value: SpecialCharacterIndices| {
+-        debug_assert!(hash_map.insert(key, value).is_none());
++        let op = hash_map.insert(key, value);
++
++        debug_assert!(op.is_none());
+     };
+ 
+     /* #region POSIX */
+
+From cffaef064e7394d50b9d756bc572ac3325b78373 Mon Sep 17 00:00:00 2001
+From: Sylvestre Ledru <sylvestre@debian.org>
+Date: Wed, 4 Dec 2024 10:11:48 +0100
+Subject: [PATCH 9/9] fix cargo.lock
+
+---
+ Cargo.lock | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index d249fa2ebaf..947065c1c79 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1107,7 +1107,7 @@ version = "0.2.21"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "14dbbfd5c71d70241ecf9e6f13737f7b5ce823821063188d7e46c41d371eebd5"
+ dependencies = [
+- "unicode-width",
++ "unicode-width 0.1.13",
+ ]
+ 
+ [[package]]

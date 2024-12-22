@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : uutils-coreutils
-version     : 0.0.28+git.a644724
-release     : 16
+version     : 0.8.27+git.d3db8dc
+release     : 17
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
-    - git|https://github.com/uutils/coreutils.git : a6447241375976d9d7477de21eabe47461babbff
+    - git|https://github.com/uutils/coreutils.git : d3db8dc29fafa8697c41882f5cc706b0747dd238
 summary     : Cross-platform Rust rewrite of the GNU coreutils
 description : |
     Cross-platform Rust rewrite of the GNU coreutils
@@ -35,6 +35,7 @@ tuning      :
 environment : |
     export UUTILS_FEATURES="feat_acl,unix"
 setup       : |
+    %patch %(pkgdir)/6798.patch
     %cargo_fetch
 build       : |
     %cargo_build --features $UUTILS_FEATURES
