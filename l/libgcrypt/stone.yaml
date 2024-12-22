@@ -5,7 +5,7 @@
 #
 name        : libgcrypt
 version     : 1.11.0
-release     : 4
+release     : 5
 homepage    : https://gnupg.org/software/libgcrypt
 upstreams   :
     - https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.11.0.tar.bz2 : 09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
