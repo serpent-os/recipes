@@ -5,12 +5,12 @@
 		"libsm": {
 			"build-depends": [
 				"binary(xsltproc)",
-				"pkgconfig(ice)",
-				"pkgconfig(uuid)",
-				"pkgconfig(x11)",
 				"pkgconfig(xorg-macros)",
 				"pkgconfig(xproto)",
-				"pkgconfig(xtrans)"
+				"pkgconfig(xtrans)",
+				"pkgconfig32(ice)",
+				"pkgconfig32(uuid)",
+				"pkgconfig32(x11)"
 			],
 			"depends": [
 				"soname(libICE.so.6(x86_64))",
@@ -26,17 +26,70 @@
 				"soname(libSM.so.6(x86_64))"
 			]
 		},
+		"libsm-32bit": {
+			"build-depends": [
+				"binary(xsltproc)",
+				"pkgconfig(xorg-macros)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xtrans)",
+				"pkgconfig32(ice)",
+				"pkgconfig32(uuid)",
+				"pkgconfig32(x11)"
+			],
+			"depends": [
+				"libsm",
+				"soname(libICE.so.6(386))",
+				"soname(libc.so.6(386))",
+				"soname(libuuid.so.1(386))"
+			],
+			"files": [
+				"/usr/lib32/libSM.so.6",
+				"/usr/lib32/libSM.so.6.0.1"
+			],
+			"name": "libsm-32bit",
+			"provides": [
+				"soname(libSM.so.6(386))",
+				"soname(libSM.so.6(x86))"
+			]
+		},
+		"libsm-32bit-devel": {
+			"build-depends": [
+				"binary(xsltproc)",
+				"pkgconfig(xorg-macros)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xtrans)",
+				"pkgconfig32(ice)",
+				"pkgconfig32(uuid)",
+				"pkgconfig32(x11)"
+			],
+			"depends": [
+				"libsm-32bit",
+				"libsm-devel",
+				"pkgconfig(xproto)",
+				"pkgconfig32(ice)",
+				"pkgconfig32(uuid)"
+			],
+			"files": [
+				"/usr/lib32/libSM.so",
+				"/usr/lib32/pkgconfig/sm.pc"
+			],
+			"name": "libsm-32bit-devel",
+			"provides": [
+				"pkgconfig32(sm)"
+			]
+		},
 		"libsm-devel": {
 			"build-depends": [
 				"binary(xsltproc)",
-				"pkgconfig(ice)",
-				"pkgconfig(uuid)",
-				"pkgconfig(x11)",
 				"pkgconfig(xorg-macros)",
 				"pkgconfig(xproto)",
-				"pkgconfig(xtrans)"
+				"pkgconfig(xtrans)",
+				"pkgconfig32(ice)",
+				"pkgconfig32(uuid)",
+				"pkgconfig32(x11)"
 			],
 			"depends": [
+				"libsm",
 				"pkgconfig(ice)",
 				"pkgconfig(uuid)",
 				"pkgconfig(xproto)"
@@ -57,6 +110,6 @@
 		}
 	},
 	"source-name": "libsm",
-	"source-release": "1",
-	"source-version": "1.2.4"
+	"source-release": "2",
+	"source-version": "1.2.5"
 }
