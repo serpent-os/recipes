@@ -25,13 +25,13 @@
 				"/usr/bin/fdtoverlay",
 				"/usr/bin/fdtput",
 				"/usr/lib/libfdt.so.1",
-				"/usr/lib/libfdt.so.1.6.0",
+				"/usr/lib/libfdt.so.1.7.2",
 				"/usr/lib/python3.11/site-packages/__pycache__/libfdt.cpython-311.pyc",
 				"/usr/lib/python3.11/site-packages/_libfdt.cpython-311-x86_64-linux-gnu.so",
-				"/usr/lib/python3.11/site-packages/libfdt-1.7.0-py3.11.egg-info/PKG-INFO",
-				"/usr/lib/python3.11/site-packages/libfdt-1.7.0-py3.11.egg-info/SOURCES.txt",
-				"/usr/lib/python3.11/site-packages/libfdt-1.7.0-py3.11.egg-info/dependency_links.txt",
-				"/usr/lib/python3.11/site-packages/libfdt-1.7.0-py3.11.egg-info/top_level.txt",
+				"/usr/lib/python3.11/site-packages/libfdt-1.7.2-py3.11.egg-info/PKG-INFO",
+				"/usr/lib/python3.11/site-packages/libfdt-1.7.2-py3.11.egg-info/SOURCES.txt",
+				"/usr/lib/python3.11/site-packages/libfdt-1.7.2-py3.11.egg-info/dependency_links.txt",
+				"/usr/lib/python3.11/site-packages/libfdt-1.7.2-py3.11.egg-info/top_level.txt",
 				"/usr/lib/python3.11/site-packages/libfdt.py"
 			],
 			"name": "dtc",
@@ -43,8 +43,10 @@
 				"binary(fdtget)",
 				"binary(fdtoverlay)",
 				"binary(fdtput)",
-				"soname(_libfdt.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(libfdt.so.1(x86_64))"
+				"python(libfdt(3.11))",
+				"python(libfdt)",
+				"soname(libfdt.so.1(x86_64))",
+				"soname(python3.11/site-packages/_libfdt.cpython-311-x86_64-linux-gnu.so(x86_64))"
 			]
 		},
 		"dtc-devel": {
@@ -73,6 +75,6 @@
 		}
 	},
 	"source-name": "dtc",
-	"source-release": "1",
-	"source-version": "1.7.0"
+	"source-release": "2",
+	"source-version": "1.7.2"
 }
