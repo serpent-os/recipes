@@ -7,7 +7,7 @@ index 22fee70..88e24ad 100644
  				CPPFLAGS="$CPPFLAGS -DOPENSSL_API_COMPAT=0x10100000L"
  				;;
 -			301*|302*)
-+			301*|302*|303*)
++			301*|302*|303*|304*)
  				# OpenSSL development branch; request 1.1x API
  				CPPFLAGS="$CPPFLAGS -DOPENSSL_API_COMPAT=0x10100000L"
  				;;

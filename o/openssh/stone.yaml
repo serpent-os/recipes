@@ -5,7 +5,7 @@
 #
 name        : openssh
 version     : "9.3p1"
-release     : 6
+release     : 7
 summary     : OpenSSH (OpenBSD Secure Shell)
 license     :
     - BSD-2-Clause

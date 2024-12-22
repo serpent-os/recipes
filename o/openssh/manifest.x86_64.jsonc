@@ -96,6 +96,6 @@
 		}
 	},
 	"source-name": "openssh",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "9.3p1"
 }
