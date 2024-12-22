@@ -5,7 +5,7 @@
 #
 name        : git
 version     : 2.47.1
-release     : 11
+release     : 12
 summary     : Fast, scalable, distributed revision control system
 license     : GPL-2.0-only
 homepage    : https://git-scm.com
