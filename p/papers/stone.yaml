@@ -1,0 +1,46 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : papers
+version     : 47.0
+release     : 1
+homepage    : https://apps.gnome.org/Papers/
+upstreams   :
+    - https://download.gnome.org/sources/papers/47/papers-47.0.tar.xz : cf69eb0a3717fe354011616e2f602383814ff57b7a9eacf306c676e64d8f6666
+summary     : Read documents
+description : |
+    A document viewer for the GNOME desktop. You can view, search or annotate documents in many different formats.
+    Papers supports documents in: PDF, PS, EPS, XPS, DjVu, TIFF, and Comic Books archives (CBR, CBT, CBZ, CB7).
+license     : GPL-2.0-or-later
+networking  : yes
+builddeps   :
+    - binary(cargo)
+    - binary(itstool)
+    - binary(msgfmt)
+    - binary(update-desktop-database)
+    - pkgconfig(cairo)
+    # pkgconfig(ddjvuapi)
+    - pkgconfig(exempi-2.0)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(gthread-2.0)
+    - pkgconfig(gtk4-unix-print)
+    - pkgconfig(libarchive)
+    # pkgconfig(libgxps)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libnautilus-extension-4)
+    # pkgconfig(libspectre)
+    - pkgconfig(libtiff-4)
+    - pkgconfig(poppler-glib)
+    # pkgconfig(sysprof-capture-4)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+check       : |
+    %meson_test

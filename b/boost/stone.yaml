@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : boost
+version     : 1.87.0
+release     : 1
+homepage    : https://boost.org
+upstreams   :
+    - https://boostorg.jfrog.io/artifactory/main/release/1.87.0/source/boost_1_87_0.tar.gz : f55c340aa49763b1925ccf02b2e83f35fdcf634c9d5164a2acb87540173c741d
+summary     : Boost provides free peer-reviewed portable C++ source libraries.
+description : |
+    The Boost organization and wider Boost community supports research and education into the best possible uses of C++ and libraries developed for it, particularly, but not exclusively those contained in the Boost Library.
+license     : BSL-1.0
+builddeps   :
+    - binary(ar) # fixme: force it to use llvm-ar
+    - binary(which)
+    - pkgconfig(bzip2)
+    - pkgconfig(icu-i18n)
+    - pkgconfig(liblzma)
+    - pkgconfig(libzstd)
+    - pkgconfig(zlib)
+setup       : |
+    ./bootstrap.sh \
+      --prefix=%(installroot)/usr \
+      --with-python=/usr/bin/python3
+install     : |
+    ./b2 install \
+      variant=release \
+      threading=multi \
+      runtime-link=shared \
+      link=shared,static
