@@ -14,7 +14,7 @@
 				"/usr/lib/libjpeg.so.8",
 				"/usr/lib/libjpeg.so.8.3.2",
 				"/usr/lib/libturbojpeg.so.0",
-				"/usr/lib/libturbojpeg.so.0.3.0",
+				"/usr/lib/libturbojpeg.so.0.4.0",
 				"/usr/share/man/man1/cjpeg.1",
 				"/usr/share/man/man1/djpeg.1",
 				"/usr/share/man/man1/jpegtran.1",
@@ -75,6 +75,6 @@
 		}
 	},
 	"source-name": "libjpeg-turbo",
-	"source-release": "5",
-	"source-version": "3.0.4"
+	"source-release": "6",
+	"source-version": "3.1.0"
 }
