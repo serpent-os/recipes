@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libuv
-version     : 1.48.0
-release     : 3
+version     : 1.49.2
+release     : 4
 homepage    : https://libuv.org/
 upstreams   :
-    - https://dist.libuv.org/dist/v1.48.0/libuv-v1.48.0.tar.gz : 7f1db8ac368d89d1baf163bac1ea5fe5120697a73910c8ae6b2fffb3551d59fb
+    - https://dist.libuv.org/dist/v1.49.2/libuv-v1.49.2.tar.gz : 8c10706bd2cf129045c42b94799a92df9aaa75d05f07e99cf083507239bae5a8
 summary     : Cross-platform asynchronous I/O library
 description : |
     libuv is a multi-platform support library with a focus on asynchronous I/O.

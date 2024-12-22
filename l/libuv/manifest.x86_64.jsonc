@@ -49,6 +49,6 @@
 		}
 	},
 	"source-name": "libuv",
-	"source-release": "3",
-	"source-version": "1.48.0"
+	"source-release": "4",
+	"source-version": "1.49.2"
 }
