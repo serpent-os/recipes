@@ -5,7 +5,7 @@
 #
 name        : moss
 version     : 0.24.7
-release     : 63
+release     : 64
 summary     : Serpent OS package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -47,3 +47,6 @@ install     : |
 
     # Install the mime type
     %install_file stone.xml %(installroot)%(datadir)/mime/packages/stone.xml
+
+    # Install command-not-found helper
+    %install_file %(pkgdir)/80-command-not-found.sh %(installroot)%(vendordir)%(sysconfdir)/profile.d/80-command-not-found.sh

@@ -18,6 +18,7 @@
 				"/usr/bin/moss",
 				"/usr/lib/kernel/cmdline.d/00-quiet.cmdline",
 				"/usr/share/bash-completion/completions/moss",
+				"/usr/share/defaults/etc/profile.d/80-command-not-found.sh",
 				"/usr/share/fish/completions/moss.fish",
 				"/usr/share/man/man1/moss-extract.1",
 				"/usr/share/man/man1/moss-index.1",
@@ -57,6 +58,6 @@
 		}
 	},
 	"source-name": "moss",
-	"source-release": "63",
+	"source-release": "64",
 	"source-version": "0.24.7"
 }
