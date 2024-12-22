@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : moss
-version     : 0.24.6
-release     : 62
+version     : 0.24.7
+release     : 63
 summary     : Serpent OS package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
 upstreams   :
-    - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.6.tar.gz : d4a974bfef82c5d1cf3383ee682a084063045b1ff77ea0bf7cabe5cebb1a068e
+    - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.7.tar.gz : d0135e49e4b1e316bf178775cbb1cb69ee96aca4dc696256523863ee33c2d5a9
 description : |
     The new package manager with an old school feel. Traditional interaction
     and management whilst using brand new technologies, including efficient
@@ -23,8 +23,6 @@ rundeps     :
 check       : |
     %cargo_test
 setup       : |
-    %patch %(pkgdir)/0001-Cargo-Sync-blsforme-to-enable-per-kernel-cmdlines.patch
-    %patch %(pkgdir)/0001-moss-client-Forbid-linking-of-empty-files-fixes-372.patch
     %cargo_fetch
 build       : |
     %cargo_build -p moss
