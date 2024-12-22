@@ -5,7 +5,7 @@
 #
 name        : nss
 version     : 3.107
-release     : 20
+release     : 21
 summary     : Network Security Services
 license     : MPL-2.0
 homepage    : https://wiki.mozilla.org/NSS
