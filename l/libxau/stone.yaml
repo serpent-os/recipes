@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxau
-version     : 1.0.11
-release     : 3
+version     : 1.0.12
+release     : 4
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxau
 upstreams   :
-    - https://www.x.org/pub/individual/lib/libXau-1.0.11.tar.xz : f3fa3282f5570c3f6bd620244438dbfbdd580fc80f02f549587a0f8ab329bbeb
+    - https://www.x.org/pub/individual/lib/libXau-1.0.12.tar.xz : 74d0e4dfa3d39ad8939e99bda37f5967aba528211076828464d2777d477fc0fb
 summary     : X11 Authorization Protocol
 description : |
     The libxau package contains a library implementing the X11 Authorization Protocol.
