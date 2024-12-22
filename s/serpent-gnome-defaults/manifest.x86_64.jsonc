@@ -14,6 +14,7 @@
 				"serpent-artwork"
 			],
 			"files": [
+				"/usr/lib/environment.d/10-gsk-renderer.conf",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.a11y.keyboard.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.background.gschema.override",
 				"/usr/share/glib-2.0/schemas/10_org.gnome.desktop.interface.gschema.override",
@@ -28,6 +29,6 @@
 		}
 	},
 	"source-name": "serpent-gnome-defaults",
-	"source-release": "24",
+	"source-release": "25",
 	"source-version": "0.1.0"
 }
