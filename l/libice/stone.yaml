@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libice
-version     : 1.1.1
-release     : 1
+version     : 1.1.2
+release     : 2
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libice
 upstreams   :
-    - https://www.x.org/releases/individual/lib/libICE-1.1.1.tar.xz : 03e77afaf72942c7ac02ccebb19034e6e20f456dcf8dddadfeb572aa5ad3e451
+    - https://www.x.org/releases/individual/lib/libICE-1.1.2.tar.xz : 974e4ed414225eb3c716985df9709f4da8d22a67a2890066bc6dfc89ad298625
 summary     : Inter-Client Exchange Library
 description : |
     The Inter-Client Exchange (ICE) protocol is intended to provide a framework for building such protocols, allowing them to make use of common negotiation mechanisms and to be multiplexed over a single transport connection.
