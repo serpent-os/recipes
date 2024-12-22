@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxrender
-version     : 0.9.11
-release     : 4
+version     : 0.9.12
+release     : 5
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libxrender
 upstreams   :
-    - https://www.x.org/releases/individual/lib/libXrender-0.9.11.tar.gz : 6aec3ca02e4273a8cbabf811ff22106f641438eb194a12c0ae93c7e08474b667
+    - https://www.x.org/releases/individual/lib/libXrender-0.9.12.tar.gz : 0fff64125819c02d1102b6236f3d7d861a07b5216d8eea336c3811d31494ecf7
 summary     : X Rendering Extension client library
 description : |
     The X Rendering Extension (Render) introduces digital image composition as the foundation of a new rendering model within the X Window System. Rendering geometric figures is accomplished by client-side tessellation into either triangles or trapezoids. Text is drawn by loading glyphs into the server and rendering sets of them. The Xrender library exposes this extension to X clients.
