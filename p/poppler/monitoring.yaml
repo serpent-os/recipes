@@ -1,0 +1,6 @@
+releases:
+  id: 3686
+security:
+  cpe:
+  - vendor: freedesktop
+    product: poppler
