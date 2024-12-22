@@ -5,7 +5,7 @@
 #
 name        : libice
 version     : 1.1.2
-release     : 2
+release     : 3
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libice
 upstreams   :
     - https://www.x.org/releases/individual/lib/libICE-1.1.2.tar.xz : 974e4ed414225eb3c716985df9709f4da8d22a67a2890066bc6dfc89ad298625
@@ -20,6 +20,7 @@ builddeps   :
     - pkgconfig(xorg-macros)
     - pkgconfig(xtrans)
     - pkgconfig(xproto)
+emul32      : true
 setup       : |
     %configure --disable-static
 build       : |
