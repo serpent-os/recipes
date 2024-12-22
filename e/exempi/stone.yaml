@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : exempi
+version     : 2.6.5
+release     : 1
+homepage    : https://libopenraw.freedesktop.org/exempi/
+upstreams   :
+    - https://libopenraw.freedesktop.org/download/exempi-2.6.5.tar.xz : ff538114e82c51e5287064dfbec7d9790ac91479bf2390bcc6408fad4d77fb12
+summary     : Exempi is an implementation of XMP
+description : |
+  exempi is a port of Adobe XMP SDK to work on UNIX. It includes XMPCore and XMPFiles, libexempi, a C-based API and exempi a command line tool.
+license     : BSD-3-Clause
+builddeps   :
+    - cmake(Boost)
+    - pkgconfig(expat)
+    - pkgconfig(zlib)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check

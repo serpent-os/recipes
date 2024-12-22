@@ -1,0 +1,6 @@
+releases:
+  id: 767
+security:
+  cpe:
+  - vendor: exempi_project
+    product: exempi
