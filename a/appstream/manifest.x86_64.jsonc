@@ -37,7 +37,7 @@
 			"files": [
 				"/usr/bin/appstreamcli",
 				"/usr/lib/girepository-1.0/AppStream-1.0.typelib",
-				"/usr/lib/libappstream.so.1.0.3",
+				"/usr/lib/libappstream.so.1.0.4",
 				"/usr/lib/libappstream.so.5",
 				"/usr/share/appstream/appstream.conf",
 				"/usr/share/gettext/its/metainfo.its",
@@ -87,6 +87,7 @@
 				"/usr/share/locale/sr/LC_MESSAGES/appstream.mo",
 				"/usr/share/locale/sr@latin/LC_MESSAGES/appstream.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/appstream.mo",
+				"/usr/share/locale/ta/LC_MESSAGES/appstream.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/appstream.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/appstream.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/appstream.mo",
@@ -178,6 +179,6 @@
 		}
 	},
 	"source-name": "appstream",
-	"source-release": "3",
-	"source-version": "1.0.3"
+	"source-release": "4",
+	"source-version": "1.0.4"
 }
