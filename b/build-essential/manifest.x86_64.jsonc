@@ -1,0 +1,45 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"build-essential": {
+			"depends": [
+				"binary(bc)",
+				"binary(bison)",
+				"binary(bunzip2)",
+				"binary(cc)",
+				"binary(clang)",
+				"binary(clang++)",
+				"binary(cpio)",
+				"binary(diff)",
+				"binary(flex)",
+				"binary(g++)",
+				"binary(gcc)",
+				"binary(ld)",
+				"binary(ld.lld)",
+				"binary(make)",
+				"binary(patch)",
+				"binary(pkgconf)",
+				"binary(ps)",
+				"binary(renice)",
+				"binary(tar)",
+				"binary(unxz)",
+				"binary(unzip)",
+				"glibc-devel",
+				"layout",
+				"linux-headers",
+				"pkgconfig(libelf)",
+				"pkgconfig(libssl)",
+				"pkgconfig(libxcrypt)",
+				"pkgconfig(ncurses)"
+			],
+			"files": [
+				"/usr/share/doc/build-essential/README"
+			],
+			"name": "build-essential"
+		}
+	},
+	"source-name": "build-essential",
+	"source-release": "1",
+	"source-version": "0"
+}

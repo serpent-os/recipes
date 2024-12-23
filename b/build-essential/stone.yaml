@@ -1,0 +1,45 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : build-essential
+version     : 0
+release     : 1
+summary     : Essential build tools for Serpent OS
+license     : MPL-2.0
+homepage    : https://github.com/serpent-os
+description : |
+    This package provides the essential build tools for Serpent OS.
+rundeps     :
+    - binary(bc)
+    - binary(bison)
+    - binary(bunzip2)
+    - binary(cc)
+    - binary(clang)
+    - binary(clang++)
+    - binary(cpio)
+    - binary(diff)
+    - binary(flex)
+    - binary(g++)
+    - binary(gcc)
+    - binary(ld)
+    - binary(ld.lld)
+    - binary(make)
+    - binary(patch)
+    - binary(pkgconf)
+    - binary(ps)
+    - binary(renice)
+    - binary(tar)
+    - binary(unxz)
+    - binary(unzip)
+    - glibc-devel
+    - layout
+    - linux-headers
+    - pkgconfig(libelf)
+    - pkgconfig(libssl)
+    - pkgconfig(libxcrypt)
+    - pkgconfig(ncurses)
+install     : |
+    %install_dir %(installroot)%(docdir)/build-essential
+    echo "This file will disappear when virtual packages are introduced" > %(installroot)%(docdir)/build-essential/README
