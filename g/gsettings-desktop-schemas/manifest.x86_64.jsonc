@@ -126,6 +126,6 @@
 		}
 	},
 	"source-name": "gsettings-desktop-schemas",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "47.1"
 }
