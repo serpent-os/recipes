@@ -1,5 +1,6 @@
 # Begin /usr/share/defaults/etc/profile
 
+# files in the below dir MUST be in portable .sh format!
 if [ -d /usr/share/defaults/etc/profile.d ] ; then
     for script in /usr/share/defaults/etc/profile.d/*.sh
     do
@@ -8,6 +9,7 @@ if [ -d /usr/share/defaults/etc/profile.d ] ; then
     unset script
 fi
 
+# files in the below dir MUST be in portable .sh format!
 if [ -d /etc/profile.d ] ; then
     for script in /etc/profile.d/*.sh
     do
