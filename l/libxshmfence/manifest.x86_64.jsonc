@@ -24,7 +24,7 @@
 			],
 			"depends": [
 				"libxshmfence",
-				"soname(libc.so.6(x86))"
+				"soname(libc.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libxshmfence.so.1",
@@ -72,6 +72,6 @@
 		}
 	},
 	"source-name": "libxshmfence",
-	"source-release": "2",
-	"source-version": "1.3.2"
+	"source-release": "3",
+	"source-version": "1.3.3"
 }
