@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : snapshot
+version     : 47.0.1
+release     : 1
+homepage    : https://apps.gnome.org/Snapshot/
+upstreams   :
+    - https://download.gnome.org/sources/snapshot/47/snapshot-47.0.1.tar.xz : 62a7f10c9021ba2e49e7e68e7eb89ef540c09f2c7ddf77c205e542c9dae8ffb1
+summary     : Take pictures and videos
+description : |
+    Take pictures and videos on your computer, tablet, or phone.
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(appstreamcli)
+    - binary(cargo)
+    - binary(desktop-file-validate)
+    - binary(glib-compile-resources)
+    - binary(glib-compile-schemas)
+    - binary(msgfmt)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gstreamer-1.0)
+    - pkgconfig(gstreamer-plugins-bad-1.0)
+    - pkgconfig(gstreamer-video-1.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(gtk4-x11)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libseccomp)
+rundeps     :
+    - gst-plugins-rs
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
