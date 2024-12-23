@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : network-manager-applet
+version     : 1.36.0
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/network-manager-applet
+upstreams   :
+    - https://download.gnome.org/sources/network-manager-applet/1.36/network-manager-applet-1.36.0.tar.xz : a84704487ea3afe1485c47fb2ab598b8f779f540ae0dcbf0a1c5f85e64a7e253
+summary     : NetworkManager Applet
+description : |
+    NetworkManager Applet is a GTK3-based frontend for NetworkManager.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(desktop-file-validate)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gmodule-export-2.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(jansson)
+    - pkgconfig(libnm)
+    - pkgconfig(libnma)
+    - pkgconfig(libsecret-1)
+    - pkgconfig(mm-glib)
+setup       : |
+    %meson -Dappindicator=no \
+           -Dselinux=false
+build       : |
+    %meson_build
+install     : |
+    %meson_install
