@@ -1010,6 +1010,6 @@
 		}
 	},
 	"source-name": "linux-headers",
-	"source-release": "18",
-	"source-version": "6.12.1"
+	"source-release": "19",
+	"source-version": "6.12.6"
 }
