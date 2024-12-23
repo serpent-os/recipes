@@ -5,7 +5,7 @@
 #
 name        : network-manager-applet
 version     : 1.36.0
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/network-manager-applet
 upstreams   :
     - https://download.gnome.org/sources/network-manager-applet/1.36/network-manager-applet-1.36.0.tar.xz : a84704487ea3afe1485c47fb2ab598b8f779f540ae0dcbf0a1c5f85e64a7e253
@@ -31,3 +31,6 @@ build       : |
     %meson_build
 install     : |
     %meson_install
+    # provided by libnma
+    rm -v %(installroot)%(datadir)/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
+    rm -rvf %(installroot)%(datadir)/glib-2.0

@@ -40,7 +40,6 @@
 				"/usr/share/GConf/gsettings/nm-applet.convert",
 				"/usr/share/applications/nm-applet.desktop",
 				"/usr/share/applications/nm-connection-editor.desktop",
-				"/usr/share/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml",
 				"/usr/share/icons/hicolor/16x16/apps/nm-device-wired.png",
 				"/usr/share/icons/hicolor/16x16/apps/nm-no-connection.png",
 				"/usr/share/icons/hicolor/16x16/apps/nm-vpn-standalone-lock.png",
@@ -249,6 +248,6 @@
 		}
 	},
 	"source-name": "network-manager-applet",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.36.0"
 }
