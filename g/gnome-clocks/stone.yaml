@@ -1,0 +1,40 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-clocks
+version     : 47.0
+release     : 1
+homepage    : https://apps.gnome.org/Clocks/
+upstreams   :
+    - https://download.gnome.org/sources/gnome-clocks/47/gnome-clocks-47.0.tar.xz : 428bdf4bd17e26de6cef014cd7a7eebd89143c3f2732b24b7da69812baa52131
+summary     : Keep track of time
+description : |
+    A simple and elegant clock application. It includes world clocks, alarms, a stopwatch, and timers.
+
+    - Show the time in different cities around the world
+    - Set alarms to wake you up
+    - Measure elapsed time with an accurate stopwatch
+    - Set timers to properly cook your food
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(itstool)
+    - binary(msgfmt)
+    - binary(update-desktop-database)
+    - binary(valac)
+    - pkgconfig(geocode-glib-2.0)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gnome-desktop-4)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(gweather4)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libgeoclue-2.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
