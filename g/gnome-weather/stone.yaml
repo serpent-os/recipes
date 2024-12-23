@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-weather
+version     : 47.0
+release     : 1
+homepage    : https://apps.gnome.org/Weather/
+upstreams   :
+    - https://download.gnome.org/sources/gnome-weather/47/gnome-weather-47.0.tar.xz : 515f5862374dd346cbc85a9ddf0306b2d327657850bb60b6c9c9860fce9620e6
+summary     : Show weather conditions and forecast
+description : |
+    A small application that allows you to monitor the current weather conditions for your city, or anywhere in the world.
+    It provides access to detailed forecasts, up to 7 days, with hourly details for the current and next day, using various internet services.
+    It also optionally integrates with the GNOME Shell, allowing you to see the current conditions of the most recently searched cities by just typing the name in the Activities Overview.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - binary(update-desktop-database)
+    - pkgconfig(gjs-1.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(gweather4)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(libgeoclue-2.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
