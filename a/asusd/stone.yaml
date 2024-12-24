@@ -5,13 +5,13 @@
 #
 name        : asusd
 version     : 6.0.12
-release     : 26
+release     : 27
 summary     : Control ASUS laptop features easily
 license     :
     - MPL-2.0
 homepage    : https://zed.dev/
 upstreams   :
-    - git|https://gitlab.com/asus-linux/asusctl.git : ea9ca79a8f00c8662d3aa981ab1b75bdf9787ce2
+    - git|https://gitlab.com/asus-linux/asusctl.git : 6450d2cd957a57b66073bd3a53d903668f753e38
 description : |
     Control ASUS platform features such as LEDs, AniMe, fans and more.
 builddeps   :
