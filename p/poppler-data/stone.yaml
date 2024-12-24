@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : poppler-data
+version     : 0.4.12
+release     : 1
+homepage    : https://poppler.freedesktop.org
+upstreams   :
+    - https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz : c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74
+summary     : Encoding files for use with poppler
+description : |
+    This package consists of encoding files for use with poppler.  The
+    encoding files are optional and poppler will automatically read them
+    if they are present.  When installed, the encoding files enables
+    poppler to correctly render CJK and Cyrillic properly.
+license     : GPL-3.0-or-later
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
