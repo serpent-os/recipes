@@ -1,0 +1,8 @@
+releases:
+  id: 2550
+security:
+  cpe:
+  - vendor: openjpeg
+    product: openjpeg
+  - vendor: uclouvain
+    product: openjpeg
