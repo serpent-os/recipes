@@ -1,0 +1,42 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"iio-sensor-proxy": {
+			"build-depends": [
+				"binary(xmllint)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(gudev-1.0)",
+				"pkgconfig(polkit-gobject-1)",
+				"pkgconfig(systemd)",
+				"pkgconfig(udev)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libgudev-1.0.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpolkit-gobject-1.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/monitor-sensor",
+				"/usr/lib/iio-sensor-proxy/iio-sensor-proxy",
+				"/usr/lib/systemd/system/iio-sensor-proxy.service",
+				"/usr/lib/udev/rules.d/80-iio-sensor-proxy.rules",
+				"/usr/share/dbus-1/system.d/net.hadess.SensorProxy.conf",
+				"/usr/share/polkit-1/actions/net.hadess.SensorProxy.policy"
+			],
+			"name": "iio-sensor-proxy",
+			"provides": [
+				"binary(monitor-sensor)"
+			]
+		}
+	},
+	"source-name": "iio-sensor-proxy",
+	"source-release": "1",
+	"source-version": "3.5"
+}
