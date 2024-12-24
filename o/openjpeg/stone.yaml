@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : openjpeg
+version     : 2.5.3
+release     : 1
+homepage    : https://github.com/uclouvain/openjpeg
+upstreams   :
+    - https://github.com/uclouvain/openjpeg/archive/refs/tags/v2.5.3.tar.gz : 368fe0468228e767433c9ebdea82ad9d801a3ad1e4234421f352c8b06e7aa707
+summary     : OpenJPEG is an open-source JPEG 2000 codec written in C language
+description : |
+    OpenJPEG is an open-source JPEG 2000 codec written in C language. It has been developed in order to promote the use of JPEG 2000, a still-image compression standard from the Joint Photographic Experts Group (JPEG). Since April 2015, it is officially recognized by ISO/IEC and ITU-T as a JPEG 2000 Reference Software.
+license     : MIT
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
