@@ -1,0 +1,34 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"powerstation": {
+			"build-depends": [
+				"binary(cmake)",
+				"pciutils-devel",
+				"pkgconfig(libudev)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpci.so.3(x86_64))",
+				"soname(libudev.so.1(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/powerstation",
+				"/usr/lib/systemd/system/powerstation.service",
+				"/usr/share/dbus-1/system.d/org.shadowblip.PowerStation.conf"
+			],
+			"name": "powerstation",
+			"provides": [
+				"binary(powerstation)"
+			]
+		}
+	},
+	"source-name": "powerstation",
+	"source-release": "1",
+	"source-version": "v0.4.0"
+}
