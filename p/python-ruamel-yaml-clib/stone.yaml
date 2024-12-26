@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-ruamel-yaml-clib
+version     : 0.2.12
+release     : 1
+homepage    : https://yaml.readthedocs.io/
+upstreams   :
+    - https://files.pythonhosted.org/packages/20/84/80203abff8ea4993a87d823a5f632e4d92831ef75d404c9fc78d0176d2b5/ruamel.yaml.clib-0.2.12.tar.gz : 6c8fbb13ec503f99a91901ab46e0b07ae7941cd527393187039aec586fdfd36f
+summary     : Minimal C library for ruamel.yaml
+description : |
+    Minimal C library for ruamel.yaml
+license     : MIT
+builddeps   :
+    - pkgconfig(python3)
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
