@@ -3,7 +3,13 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"pop-os-icon-theme": {
+			"build-depends": [
+				"adwaita-icon-theme",
+				"binary(gtk-update-icon-cache)",
+				"hicolor-icon-theme"
+			],
 			"depends": [
+				"adwaita-icon-theme",
 				"hicolor-icon-theme"
 			],
 			"files": [
@@ -5938,6 +5944,7 @@
 				"/usr/share/icons/Pop/cursors/zoom-in.cur",
 				"/usr/share/icons/Pop/cursors/zoom-out",
 				"/usr/share/icons/Pop/cursors/zoom-out.cur",
+				"/usr/share/icons/Pop/icon-theme.cache",
 				"/usr/share/icons/Pop/index.theme",
 				"/usr/share/icons/Pop/scalable/actions/action-unavailable-symbolic.svg",
 				"/usr/share/icons/Pop/scalable/actions/address-book-new-symbolic.svg",
@@ -6546,6 +6553,6 @@
 		}
 	},
 	"source-name": "pop-os-icon-theme",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.5.0"
 }
