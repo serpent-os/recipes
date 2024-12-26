@@ -5,7 +5,7 @@
 #
 name        : adwaita-icon-theme
 version     : '47.0'
-release     : 5
+release     : 6
 homepage    : https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 upstreams   :
     - https://download.gnome.org/sources/adwaita-icon-theme/47/adwaita-icon-theme-47.0.tar.xz : ad088a22958cb8469e41d9f1bba0efb27e586a2102213cd89cc26db2e002bdfe
@@ -23,6 +23,8 @@ packages:
             - /usr/share/pkgconfig
 builddeps   :
     - binary(gtk-update-icon-cache)
+    - adwaita-icon-theme-legacy
+    - hicolor-icon-theme
 rundeps     :
     - binary(gtk-update-icon-cache)
     - adwaita-icon-theme-legacy
@@ -34,3 +36,7 @@ build       : |
 install     : |
     %meson_install
     %install_file %(pkgdir)/default.index.theme %(installroot)%(datadir)/icons/default/index.theme
+
+    for i in %(installroot)%(datadir)/icons/*/; do
+        gtk-update-icon-cache -f $i
+    done

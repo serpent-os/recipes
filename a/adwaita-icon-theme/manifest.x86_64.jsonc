@@ -4,7 +4,9 @@
 	"packages": {
 		"adwaita-icon-theme": {
 			"build-depends": [
-				"binary(gtk-update-icon-cache)"
+				"adwaita-icon-theme-legacy",
+				"binary(gtk-update-icon-cache)",
+				"hicolor-icon-theme"
 			],
 			"depends": [
 				"adwaita-icon-theme-legacy",
@@ -123,6 +125,7 @@
 				"/usr/share/icons/Adwaita/cursors/xterm",
 				"/usr/share/icons/Adwaita/cursors/zoom-in",
 				"/usr/share/icons/Adwaita/cursors/zoom-out",
+				"/usr/share/icons/Adwaita/icon-theme.cache",
 				"/usr/share/icons/Adwaita/index.theme",
 				"/usr/share/icons/Adwaita/scalable/devices/audio-headphones.svg",
 				"/usr/share/icons/Adwaita/scalable/devices/audio-headset.svg",
@@ -857,6 +860,6 @@
 		}
 	},
 	"source-name": "adwaita-icon-theme",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "47.0"
 }
