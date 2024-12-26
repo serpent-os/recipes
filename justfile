@@ -37,6 +37,7 @@ clean: (_clean build_file)
 # Init git hooks
 _init target:
     ln -sfv ../../tools/prepare-commit-msg.py $(git rev-parse --git-path hooks)/prepare-commit-msg
+    ln -sfv ../../tools/pre-commit.py $(git rev-parse --git-path hooks)/pre-commit
 init: (_init build_file)
 
 [confirm('This will delete ALL .stones in your local repo -- continue?')]

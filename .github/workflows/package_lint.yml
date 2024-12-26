@@ -1,0 +1,23 @@
+---
+name: Package Lint
+on:
+  pull_request:
+    paths-ignore:
+      - 'tools/**'
+      - 'releases/**'
+      - 'typos/**'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  Checks:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - run: |
+        sudo apt-get update
+        sudo apt-get install python3-ruamel.yaml
+        tools/CI/package_checks.py --base=origin/${{ github.event.pull_request.base.ref }}
