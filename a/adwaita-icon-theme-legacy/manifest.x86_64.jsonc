@@ -4,7 +4,8 @@
 	"packages": {
 		"adwaita-icon-theme-legacy": {
 			"build-depends": [
-				"binary(gtk-update-icon-cache)"
+				"binary(gtk-update-icon-cache)",
+				"hicolor-icon-theme"
 			],
 			"files": [
 				"/usr/share/icons/AdwaitaLegacy/16x16/actions/.placeholder",
@@ -1866,13 +1867,15 @@
 				"/usr/share/icons/AdwaitaLegacy/8x8/legacy/emblem-default.png",
 				"/usr/share/icons/AdwaitaLegacy/8x8/legacy/emblem-new.png",
 				"/usr/share/icons/AdwaitaLegacy/8x8/legacy/emblem-synchronizing.png",
+				"/usr/share/icons/AdwaitaLegacy/icon-theme.cache",
 				"/usr/share/icons/AdwaitaLegacy/index.theme"
 			],
 			"name": "adwaita-icon-theme-legacy"
 		},
 		"adwaita-icon-theme-legacy-devel": {
 			"build-depends": [
-				"binary(gtk-update-icon-cache)"
+				"binary(gtk-update-icon-cache)",
+				"hicolor-icon-theme"
 			],
 			"depends": [
 				"adwaita-icon-theme-legacy"
@@ -1887,6 +1890,6 @@
 		}
 	},
 	"source-name": "adwaita-icon-theme-legacy",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "46.2"
 }

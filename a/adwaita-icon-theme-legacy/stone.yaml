@@ -5,7 +5,7 @@
 #
 name        : adwaita-icon-theme-legacy
 version     : 46.2
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/adwaita-icon-theme-legacy/
 upstreams   :
     - https://download.gnome.org/sources/adwaita-icon-theme-legacy/46/adwaita-icon-theme-legacy-46.2.tar.xz : 548480f58589a54b72d18833b755b15ffbd567e3187249d74e2e1f8f99f22fb4
@@ -16,6 +16,7 @@ license     :
     - CC-BY-SA-3.0 OR LGPL-3.0-or-later
 builddeps   :
     - binary(gtk-update-icon-cache)
+    - hicolor-icon-theme
 setup       : |
     %meson
 build       : |
@@ -24,3 +25,6 @@ install     : |
     %meson_install
 
     rm -frv %(installroot)/usr/share/licenses/
+    for i in %(installroot)%(datadir)/icons/*/; do
+        gtk-update-icon-cache -f $i
+    done
