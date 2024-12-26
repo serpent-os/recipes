@@ -5,9 +5,9 @@ description: |
 handlers:
     gtk3_update_icon_cache:
         run: /usr/bin/gtk-update-icon-cache
-        args: ["-ftq", "/usr/share/icons/$(icon_theme)"]
+        args: ["-ftq", "/usr/share/icons/hicolor"]
 
 paths:
-    "/usr/share/icons/(icon_theme:*)/*/*" :
+    "/usr/share/icons/hicolor/*/*" :
         handlers:
             - gtk3_update_icon_cache
