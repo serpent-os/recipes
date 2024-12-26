@@ -5,7 +5,7 @@
 #
 name        : cosmic-icons
 version     : 1.0.0-alpha.4
-release     : 10
+release     : 11
 summary     : Cosmic Icons by System76
 license     : CC-BY-SA-4.0
 homepage    : https://github.com/pop-os/cosmic-icons
@@ -14,8 +14,15 @@ upstreams   :
 description : |
     Cosmic Icons by System76
 builddeps   :
+    - binary(gtk-update-icon-cache)
     - binary(just)
+    - hicolor-icon-theme
+    - pop-os-icon-theme
 rundeps     :
     - pop-os-icon-theme
 install     : |
     just rootdir=%(installroot) install
+
+    for i in %(installroot)%(datadir)/icons/*/; do
+        gtk-update-icon-cache -f $i
+    done

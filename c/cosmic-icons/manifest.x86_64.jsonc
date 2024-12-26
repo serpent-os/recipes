@@ -4,12 +4,16 @@
 	"packages": {
 		"cosmic-icons": {
 			"build-depends": [
-				"binary(just)"
+				"binary(gtk-update-icon-cache)",
+				"binary(just)",
+				"hicolor-icon-theme",
+				"pop-os-icon-theme"
 			],
 			"depends": [
 				"pop-os-icon-theme"
 			],
 			"files": [
+				"/usr/share/icons/Cosmic/icon-theme.cache",
 				"/usr/share/icons/Cosmic/index.theme",
 				"/usr/share/icons/Cosmic/scalable/actions/address-book-new-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/actions/application-exit-symbolic.svg",
@@ -618,6 +622,6 @@
 		}
 	},
 	"source-name": "cosmic-icons",
-	"source-release": "10",
+	"source-release": "11",
 	"source-version": "1.0.0-alpha.4"
 }
