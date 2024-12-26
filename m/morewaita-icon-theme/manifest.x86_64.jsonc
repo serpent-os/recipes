@@ -3,7 +3,18 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"morewaita-icon-theme": {
+			"build-depends": [
+				"adwaita-icon-theme",
+				"adwaita-icon-theme-legacy",
+				"binary(gtk-update-icon-cache)",
+				"hicolor-icon-theme"
+			],
+			"depends": [
+				"adwaita-icon-theme",
+				"hicolor-icon-theme"
+			],
 			"files": [
+				"/usr/share/icons/MoreWaita/icon-theme.cache",
 				"/usr/share/icons/MoreWaita/index.theme",
 				"/usr/share/icons/MoreWaita/scalable/apps/Alacritty.svg",
 				"/usr/share/icons/MoreWaita/scalable/apps/Ardour-Ardour_6.0.0.svg",
@@ -2691,6 +2702,6 @@
 		}
 	},
 	"source-name": "morewaita-icon-theme",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "47.2"
 }
