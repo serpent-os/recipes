@@ -3,6 +3,17 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"adwaita-colors-icon-theme": {
+			"build-depends": [
+				"adwaita-icon-theme",
+				"adwaita-icon-theme-legacy",
+				"binary(gtk-update-icon-cache)",
+				"hicolor-icon-theme"
+			],
+			"depends": [
+				"adwaita-icon-theme-legacy",
+				"hicolor-icon-theme",
+				"morewaita-icon-theme"
+			],
 			"files": [
 				"/usr/share/icons/Adwaita-blue/16x16/devices/audio-headphones.png",
 				"/usr/share/icons/Adwaita-blue/16x16/devices/audio-headset.png",
@@ -841,6 +852,7 @@
 				"/usr/share/icons/Adwaita-blue/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita-blue/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita-blue/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/Adwaita-brown/icon-theme.cache",
 				"/usr/share/icons/Adwaita-brown/index.theme",
 				"/usr/share/icons/Adwaita-brown/scalable/apps/org.gnome.Calendar.svg",
 				"/usr/share/icons/Adwaita-brown/scalable/apps/org.gnome.Logs.svg",
@@ -1664,6 +1676,7 @@
 				"/usr/share/icons/Adwaita-brown/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita-brown/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita-brown/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/Adwaita-green/icon-theme.cache",
 				"/usr/share/icons/Adwaita-green/index.theme",
 				"/usr/share/icons/Adwaita-green/scalable/apps/org.gnome.Calendar.svg",
 				"/usr/share/icons/Adwaita-green/scalable/apps/org.gnome.Logs.svg",
@@ -2487,6 +2500,7 @@
 				"/usr/share/icons/Adwaita-green/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita-green/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita-green/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/Adwaita-orange/icon-theme.cache",
 				"/usr/share/icons/Adwaita-orange/index.theme",
 				"/usr/share/icons/Adwaita-orange/scalable/apps/org.gnome.Calendar.svg",
 				"/usr/share/icons/Adwaita-orange/scalable/apps/org.gnome.Logs.svg",
@@ -3310,6 +3324,7 @@
 				"/usr/share/icons/Adwaita-orange/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita-orange/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita-orange/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/Adwaita-pink/icon-theme.cache",
 				"/usr/share/icons/Adwaita-pink/index.theme",
 				"/usr/share/icons/Adwaita-pink/scalable/apps/org.gnome.Calendar.svg",
 				"/usr/share/icons/Adwaita-pink/scalable/apps/org.gnome.Logs.svg",
@@ -4133,6 +4148,7 @@
 				"/usr/share/icons/Adwaita-pink/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita-pink/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita-pink/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/Adwaita-purple/icon-theme.cache",
 				"/usr/share/icons/Adwaita-purple/index.theme",
 				"/usr/share/icons/Adwaita-purple/scalable/apps/org.gnome.Logs.svg",
 				"/usr/share/icons/Adwaita-purple/scalable/apps/org.gnome.Nautilus.svg",
@@ -4955,6 +4971,7 @@
 				"/usr/share/icons/Adwaita-purple/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita-purple/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita-purple/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/Adwaita-red/icon-theme.cache",
 				"/usr/share/icons/Adwaita-red/index.theme",
 				"/usr/share/icons/Adwaita-red/scalable/apps/org.gnome.Calendar.svg",
 				"/usr/share/icons/Adwaita-red/scalable/apps/org.gnome.Logs.svg",
@@ -5778,6 +5795,7 @@
 				"/usr/share/icons/Adwaita-red/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita-red/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita-red/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/Adwaita-slate/icon-theme.cache",
 				"/usr/share/icons/Adwaita-slate/index.theme",
 				"/usr/share/icons/Adwaita-slate/scalable/apps/org.gnome.Calendar.svg",
 				"/usr/share/icons/Adwaita-slate/scalable/apps/org.gnome.Logs.svg",
@@ -6601,6 +6619,7 @@
 				"/usr/share/icons/Adwaita-slate/symbolic/ui/window-minimize-symbolic.svg",
 				"/usr/share/icons/Adwaita-slate/symbolic/ui/window-new-symbolic.svg",
 				"/usr/share/icons/Adwaita-slate/symbolic/ui/window-restore-symbolic.svg",
+				"/usr/share/icons/Adwaita-teal/icon-theme.cache",
 				"/usr/share/icons/Adwaita-teal/index.theme",
 				"/usr/share/icons/Adwaita-teal/scalable/apps/org.gnome.Calendar.svg",
 				"/usr/share/icons/Adwaita-teal/scalable/apps/org.gnome.Logs.svg",
@@ -6775,6 +6794,7 @@
 				"/usr/share/icons/Adwaita-teal/scalable/status/image-loading.svg",
 				"/usr/share/icons/Adwaita-teal/scalable/status/image-missing.svg",
 				"/usr/share/icons/Adwaita-teal/scalable/status/user-trash-full.svg",
+				"/usr/share/icons/Adwaita-yellow/icon-theme.cache",
 				"/usr/share/icons/Adwaita-yellow/index.theme",
 				"/usr/share/icons/Adwaita-yellow/scalable/apps/org.gnome.Calendar.svg",
 				"/usr/share/icons/Adwaita-yellow/scalable/apps/org.gnome.Logs.svg",
@@ -6954,6 +6974,6 @@
 		}
 	},
 	"source-name": "adwaita-colors-icon-theme",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.4.1"
 }
