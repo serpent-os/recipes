@@ -4,26 +4,23 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : qt5-declarative
-version     : 5.15.8-lts-lgpl
-release     : 1
+version     : 5.5.16
+release     : 2
 homepage    : https://www.qt.io
 upstreams   :
-    - git|https://invent.kde.org/qt/qt/qtdeclarative.git:
-        ref: 05c3f4921d81fb1b0eb497515c24ae56221d1e0a
-        # Relative submodules
-        staging: no
+    - https://download.qt.io/archive/qt/5.15/5.15.16/submodules/qtdeclarative-everywhere-opensource-src-5.15.16.tar.xz: 4e05de0747176a8a86a8c098ad215c2cdf1825a572b62a70b2e91cd81357408d
 summary     : Qt 5 Declarative Library
 description : |
     Qt is a set of libraries for developing applications. This package contains base tools, like string, xml, and network handling.
-license     : 
+license     :
     - LGPL-3.0-or-later
     - LGPL-3.0-or-later
     - GFDL-1.3-or-later
     - GPL-3.0-or-later
 builddeps   :
-    - binary(qmake)
     - binary(perl)
     - binary(python3)
+    - binary(qmake)
     - pkgconfig(gl)
     - vulkan-headers
 setup       : |
