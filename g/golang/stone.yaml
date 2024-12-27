@@ -5,7 +5,7 @@
 #
 name        : golang
 version     : 1.23.4
-release     : 11
+release     : 12
 homepage    : https://go.dev
 upstreams   :
     - https://go.dev/dl/go1.23.4.linux-amd64.tar.gz : 6924efde5de86fe277676e929dc9917d466efa02fb934197bc2eba35d5680971
@@ -22,6 +22,8 @@ packages    :
         paths:
             - /usr/lib/*.a
 environment : |
+    # to be on the safe side
+    export GOROOT="%(libdir)/%(name)"
     # needed for bootstrap in the build phase
     export GOROOT_BOOTSTRAP="%(libdir)/%(name)"
 
@@ -37,6 +39,7 @@ build       : |
     popd
 
     # install to ./ for easier copying into the final destination later
+    # umask is already 0022 FWIW
     GOROOT=${PWD} PATH=${PWD}/bin:${PATH} go install -buildmode=shared std
 # TODO: Properly filter unwanted content to achieve a clean package.
 install     : |
@@ -56,7 +59,10 @@ install     : |
     ln -srvf %(installroot)%(libdir)/%(name)/bin/go %(installroot)%(bindir)/
 
     # Assets needed for proper installation
-    find -mindepth 1 -maxdepth 1 -type d -not -name bin -exec cp -a {} %(installroot)/%(libdir)/%(name) \;
+    find -mindepth 1 -maxdepth 1 -type d -not -name bin -exec cp -a {} %(installroot)%(libdir)/%(name) \;
+
+    # Assets are for some reason not world readable ootb, which breaks e.g. `go install (...)` invocations (!)
+    chmod -Rc g+rX,o+rX %(installroot)%(libdir)/%(name)
 
     # verify that the present toolchain version is always used for building other go recipes
     cat go.env
