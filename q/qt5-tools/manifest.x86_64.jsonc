@@ -7,7 +7,7 @@
 				"binary(perl)",
 				"binary(qmake)",
 				"clang-devel",
-				"pkgconfig(gl)",
+				"llvm-devel",
 				"vulkan-headers"
 			],
 			"depends": [
@@ -25,20 +25,15 @@
 			"files": [
 				"/usr/bin/qdbus",
 				"/usr/bin/qtpaths",
-				"/usr/lib/libQt5Designer.prl",
 				"/usr/lib/libQt5Designer.so.5",
 				"/usr/lib/libQt5Designer.so.5.15",
 				"/usr/lib/libQt5Designer.so.5.15.16",
-				"/usr/lib/libQt5DesignerComponents.prl",
 				"/usr/lib/libQt5DesignerComponents.so.5",
 				"/usr/lib/libQt5DesignerComponents.so.5.15",
 				"/usr/lib/libQt5DesignerComponents.so.5.15.16",
-				"/usr/lib/libQt5Help.prl",
 				"/usr/lib/libQt5Help.so.5",
 				"/usr/lib/libQt5Help.so.5.15",
 				"/usr/lib/libQt5Help.so.5.15.16",
-				"/usr/lib/libQt5UiPlugin.prl",
-				"/usr/lib/libQt5UiTools.prl",
 				"/usr/lib/qt5/plugins/designer/libcontainerextension.so",
 				"/usr/lib/qt5/plugins/designer/libcustomwidgetplugin.so",
 				"/usr/lib/qt5/plugins/designer/libtaskmenuextension.so",
@@ -75,7 +70,7 @@
 				"binary(perl)",
 				"binary(qmake)",
 				"clang-devel",
-				"pkgconfig(gl)",
+				"llvm-devel",
 				"vulkan-headers"
 			],
 			"depends": [
@@ -240,7 +235,7 @@
 				"binary(perl)",
 				"binary(qmake)",
 				"clang-devel",
-				"pkgconfig(gl)",
+				"llvm-devel",
 				"vulkan-headers"
 			],
 			"depends": [
@@ -263,7 +258,8 @@
 				"soname(libQt5Widgets.so.5(x86_64))",
 				"soname(libQt5Xml.so.5(x86_64))",
 				"soname(libc++.so.1(x86_64))",
-				"soname(libc.so.6(x86_64))"
+				"soname(libc.so.6(x86_64))",
+				"soname(libclang.so.18.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/assistant",
@@ -278,6 +274,7 @@
 				"/usr/bin/pixeltool",
 				"/usr/bin/qcollectiongenerator",
 				"/usr/bin/qdbusviewer",
+				"/usr/bin/qdoc",
 				"/usr/bin/qhelpgenerator",
 				"/usr/bin/qtattributionsscanner",
 				"/usr/bin/qtdiag",
@@ -529,6 +526,8 @@
 				"/usr/lib/cmake/Qt5Designer/Qt5Designer_WorldTimeClockPlugin.cmake",
 				"/usr/lib/cmake/Qt5DesignerComponents/Qt5DesignerComponentsConfig.cmake",
 				"/usr/lib/cmake/Qt5DesignerComponents/Qt5DesignerComponentsConfigVersion.cmake",
+				"/usr/lib/cmake/Qt5DocTools/Qt5DocToolsConfig.cmake",
+				"/usr/lib/cmake/Qt5DocTools/Qt5DocToolsConfigVersion.cmake",
 				"/usr/lib/cmake/Qt5Help/Qt5HelpConfig.cmake",
 				"/usr/lib/cmake/Qt5Help/Qt5HelpConfigExtras.cmake",
 				"/usr/lib/cmake/Qt5Help/Qt5HelpConfigVersion.cmake",
@@ -539,10 +538,15 @@
 				"/usr/lib/cmake/Qt5UiPlugin/Qt5UiPluginConfigVersion.cmake",
 				"/usr/lib/cmake/Qt5UiTools/Qt5UiToolsConfig.cmake",
 				"/usr/lib/cmake/Qt5UiTools/Qt5UiToolsConfigVersion.cmake",
+				"/usr/lib/libQt5Designer.prl",
 				"/usr/lib/libQt5Designer.so",
+				"/usr/lib/libQt5DesignerComponents.prl",
 				"/usr/lib/libQt5DesignerComponents.so",
+				"/usr/lib/libQt5Help.prl",
 				"/usr/lib/libQt5Help.so",
+				"/usr/lib/libQt5UiPlugin.prl",
 				"/usr/lib/libQt5UiTools.a",
+				"/usr/lib/libQt5UiTools.prl",
 				"/usr/lib/pkgconfig/Qt5Designer.pc",
 				"/usr/lib/pkgconfig/Qt5Help.pc",
 				"/usr/lib/pkgconfig/Qt5UiPlugin.pc",
@@ -570,6 +574,7 @@
 				"binary(pixeltool)",
 				"binary(qcollectiongenerator)",
 				"binary(qdbusviewer)",
+				"binary(qdoc)",
 				"binary(qhelpgenerator)",
 				"binary(qtattributionsscanner)",
 				"binary(qtdiag)",
@@ -577,6 +582,7 @@
 				"cmake(Qt5AttributionsScannerTools)",
 				"cmake(Qt5Designer)",
 				"cmake(Qt5DesignerComponents)",
+				"cmake(Qt5DocTools)",
 				"cmake(Qt5Help)",
 				"cmake(Qt5LinguistTools)",
 				"cmake(Qt5UiPlugin)",
@@ -589,6 +595,6 @@
 		}
 	},
 	"source-name": "qt5-tools",
-	"source-release": "2",
-	"source-version": "5.5.16"
+	"source-release": "3",
+	"source-version": "5.15.16+kde.15deb8f2"
 }

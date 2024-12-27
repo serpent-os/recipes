@@ -4,11 +4,14 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : qt5-tools
-version     : 5.5.16
-release     : 2
+version     : 5.15.16+kde.15deb8f2
+release     : 3
 homepage    : https://www.qt.io
 upstreams   :
-    - https://download.qt.io/archive/qt/5.15/5.15.16/submodules/qttools-everywhere-opensource-src-5.15.16.tar.xz: 1cab11887faca54af59f4995ee435c9ad98d194e9e6889c846692c8b6815fc1c
+    - git|https://invent.kde.org/qt/qt/qttools.git:
+        ref: 15deb8f202b838b4dd1b2ff84e852171e8587881
+        # Relative submodules
+        staging: no
 summary     : Qt5 QtTools Module
 description : |
     Qt is a set of libraries for developing applications.  This package contains base tools, like string, xml, and network handling.
@@ -20,11 +23,15 @@ license     :
 builddeps   :
     - binary(perl)
     - binary(qmake)
-    - pkgconfig(gl)
     - clang-devel
+    - llvm-devel # Temporary until I fix the llvm deps
     - vulkan-headers
 setup       : |
-    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}"
+    export CFLAGS="$CFLAGS -ffat-lto-objects"
+    export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
+    export LDFLAGS="$LDFLAGS -ffat-lto-objects"
+
+    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" CONFIG+=release
 build       : |
     %make
 install     : |
@@ -54,6 +61,7 @@ packages    :
             - /usr/bin/qtattributionsscanner
             - /usr/bin/qtdiag
             - /usr/bin/qtplugininfo
+            - /usr/lib/*.prl
             - /usr/lib/qt5/mkspecs
     - "%(name)-demos" :
         paths:
