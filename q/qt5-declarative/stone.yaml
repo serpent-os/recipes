@@ -4,11 +4,14 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : qt5-declarative
-version     : 5.5.16
-release     : 2
+version     : 5.15.16+kde.e2b38659
+release     : 3
 homepage    : https://www.qt.io
 upstreams   :
-    - https://download.qt.io/archive/qt/5.15/5.15.16/submodules/qtdeclarative-everywhere-opensource-src-5.15.16.tar.xz: 4e05de0747176a8a86a8c098ad215c2cdf1825a572b62a70b2e91cd81357408d
+    - git|https://invent.kde.org/qt/qt/qtdeclarative.git:
+        ref: e2b38659cb79104f157e1d0099c01e545d04d0db
+        # Relative submodules
+        staging: no
 summary     : Qt 5 Declarative Library
 description : |
     Qt is a set of libraries for developing applications. This package contains base tools, like string, xml, and network handling.
@@ -21,10 +24,11 @@ builddeps   :
     - binary(perl)
     - binary(python3)
     - binary(qmake)
-    - pkgconfig(gl)
     - vulkan-headers
 setup       : |
-    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}"
+    %patch %(pkgdir)/qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
+
+    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" CONFIG+=release
 build       : |
     %make
 install     : |
@@ -33,6 +37,8 @@ packages    :
     - "%(name)-devel":
         paths:
             - /usr/bin
+            - /usr/lib/*.prl
+            - /usr/lib/metatypes
             - /usr/lib/qt5/mkspecs
     - "%(name)-demos" :
         paths:
