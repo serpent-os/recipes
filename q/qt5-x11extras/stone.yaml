@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qt5-x11extras
+version     : 5.15.16+kde.0c61151b
+release     : 1
+homepage    : https://www.qt.io
+upstreams   :
+    - git|https://invent.kde.org/qt/qt/qtx11extras.git: 0c61151bf14e5b4c74187608b6b47b9d0d6ca745
+summary    : Qt5 X11 Extra Components
+description: |
+    Qt X11 Extras enables the Qt programmer to write applications for the Linux/X11 platform. Applications developed with Qt can also be deployed across several other desktop and embedded operating systems without having to rewrite the source code.
+license     :
+    - LGPL-3.0-or-later
+    - GFDL-1.3-or-later
+    - GPL-3.0-or-later
+builddeps   :
+    - binary(perl)
+    - binary(qmake)
+    - pkgconfig(xcb)
+setup       : |
+    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" CONFIG+=release
+build       : |
+    %make
+install     : |
+    %make_install INSTALL_ROOT="%(installroot)"
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/lib/*.prl
+            - /usr/lib/qt5/mkspecs
