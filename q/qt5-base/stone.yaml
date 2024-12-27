@@ -4,15 +4,15 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : qt5-base
-version     : 5.15.8-lts-lgpl
-release     : 1
+version     : 5.15.16
+release     : 2
 homepage    : https://www.qt.io
 upstreams   :
-    - git|https://invent.kde.org/qt/qt/qtbase.git : 6c09620dc84900c31a2d307a8640dbc15b1fcfdd
+    - https://download.qt.io/archive/qt/5.15/5.15.16/submodules/qtbase-everywhere-opensource-src-5.15.16.tar.xz : b04815058c18058b6ba837206756a2c87d1391f07a0dcb0dd314f970fd041592
 summary     : Cross platform application and UI framework
 description : |
     Cross platform application and UI framework
-license     : 
+license     :
     - GPL-2.0
     - LGPL-2.1-or-later
     - LGPL-3.0-or-later
@@ -20,13 +20,13 @@ builddeps   :
     - binary(perl)
     - binary(which)
     - pkgconfig(dbus-1)
-    - pkgconfig(gl)
-    - pkgconfig(egl)
-    - pkgconfig(glesv2)
     - pkgconfig(dri)
+    - pkgconfig(egl)
     - pkgconfig(fontconfig)
     - pkgconfig(freetype2)
     - pkgconfig(gbm)
+    - pkgconfig(gl)
+    - pkgconfig(glesv2)
     - pkgconfig(libdrm)
     - pkgconfig(libinput)
     - pkgconfig(libjpeg)
@@ -37,6 +37,8 @@ builddeps   :
     - pkgconfig(libzstd)
     - pkgconfig(sqlite3)
     - pkgconfig(xkbcommon)
+    - pkgconfig(xcb)
+    - pkgconfig(x11)
     - pkgconfig(zlib)
     - vulkan-headers
 setup       : |
@@ -74,6 +76,8 @@ setup       : |
 build       : |
     %make
 install     : |
+    # Fails to install otherwise... *sigh*
+    %install_dir %(installroot)%(libdir)/qt5/examples/dbus/pingpong
     %make_install INSTALL_ROOT="%(installroot)"
 
     # We have the dedicated qt5-docs package for that.
