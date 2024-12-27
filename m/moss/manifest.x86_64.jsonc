@@ -17,6 +17,7 @@
 			"files": [
 				"/usr/bin/moss",
 				"/usr/lib/kernel/cmdline.d/00-quiet.cmdline",
+				"/usr/lib/kernel/cmdline.d/10-amdgpu.cmdline",
 				"/usr/share/bash-completion/completions/moss",
 				"/usr/share/defaults/etc/profile.d/80-command-not-found.sh",
 				"/usr/share/fish/completions/moss.fish",
@@ -58,6 +59,6 @@
 		}
 	},
 	"source-name": "moss",
-	"source-release": "65",
+	"source-release": "66",
 	"source-version": "0.24.7"
 }

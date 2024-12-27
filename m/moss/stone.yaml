@@ -5,7 +5,7 @@
 #
 name        : moss
 version     : 0.24.7
-release     : 65
+release     : 66
 summary     : Serpent OS package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -42,8 +42,9 @@ install     : |
     %install_dir %(installroot)%(mandir)/man1
     cp man/*.1 %(installroot)%(mandir)/man1/.
 
-    # Install the quiet cmdline snippet
+    # Install the base cmdline snippet
     %install_file %(pkgdir)/00-quiet.cmdline %(installroot)%(libdir)/kernel/cmdline.d/00-quiet.cmdline
+    %install_file %(pkgdir)/10-amdgpu.cmdline %(installroot)%(libdir)/kernel/cmdline.d/10-amdgpu.cmdline
 
     # Install the mime type
     %install_file stone.xml %(installroot)%(datadir)/mime/packages/stone.xml
