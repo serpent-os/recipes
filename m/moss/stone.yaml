@@ -5,7 +5,7 @@
 #
 name        : moss
 version     : 0.24.7
-release     : 66
+release     : 67
 summary     : Serpent OS package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -23,6 +23,7 @@ rundeps     :
 check       : |
     %cargo_test
 setup       : |
+    %patch %(pkgdir)/0001-cli-Add-rough-preliminary-boot-subcommand.patch
     %cargo_fetch
 build       : |
     %cargo_build -p moss

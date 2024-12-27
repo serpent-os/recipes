@@ -1,0 +1,177 @@
+From 2b66d7ba35d06cda9c9ea4053a8dcc1614dfb960 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Fri, 27 Dec 2024 10:14:57 +0000
+Subject: [PATCH] cli: Add rough, preliminary `boot` subcommand
+
+Right now we only have a super basic `status` command to
+offer insights into what blsforme is doing. In future we'll
+also add enumeration of cmdline snippets, control and edit,
+as well as further information on the disk topology.
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ Cargo.lock           |  6 ++--
+ Cargo.toml           |  2 +-
+ moss/src/cli/boot.rs | 67 ++++++++++++++++++++++++++++++++++++++++++++
+ moss/src/cli/mod.rs  |  6 ++++
+ 4 files changed, 77 insertions(+), 4 deletions(-)
+ create mode 100644 moss/src/cli/boot.rs
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 364d537..52a70d9 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -361,7 +361,7 @@ dependencies = [
+ [[package]]
+ name = "blsforme"
+ version = "0.1.0"
+-source = "git+https://github.com/serpent-os/blsforme.git?rev=0b4ff01baddba6be700df1ddda1342bfad9357d6#0b4ff01baddba6be700df1ddda1342bfad9357d6"
++source = "git+https://github.com/serpent-os/blsforme.git?rev=ca69d21d41bd437640614de432f47ddb152c05bf#ca69d21d41bd437640614de432f47ddb152c05bf"
+ dependencies = [
+  "blake3",
+  "gpt",
+@@ -2687,7 +2687,7 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
+ [[package]]
+ name = "superblock"
+ version = "0.1.0"
+-source = "git+https://github.com/serpent-os/blsforme.git?rev=0b4ff01baddba6be700df1ddda1342bfad9357d6#0b4ff01baddba6be700df1ddda1342bfad9357d6"
++source = "git+https://github.com/serpent-os/blsforme.git?rev=ca69d21d41bd437640614de432f47ddb152c05bf#ca69d21d41bd437640614de432f47ddb152c05bf"
+ dependencies = [
+  "log",
+  "thiserror 2.0.3",
+@@ -2948,7 +2948,7 @@ dependencies = [
+ [[package]]
+ name = "topology"
+ version = "0.1.0"
+-source = "git+https://github.com/serpent-os/blsforme.git?rev=0b4ff01baddba6be700df1ddda1342bfad9357d6#0b4ff01baddba6be700df1ddda1342bfad9357d6"
++source = "git+https://github.com/serpent-os/blsforme.git?rev=ca69d21d41bd437640614de432f47ddb152c05bf#ca69d21d41bd437640614de432f47ddb152c05bf"
+ dependencies = [
+  "gpt",
+  "log",
+diff --git a/Cargo.toml b/Cargo.toml
+index 130466b..565b201 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -15,7 +15,7 @@ edition = "2021"
+ rust-version = "1.78"
+ 
+ [workspace.dependencies]
+-blsforme = { git = "https://github.com/serpent-os/blsforme.git", rev = "0b4ff01baddba6be700df1ddda1342bfad9357d6" }
++blsforme = { git = "https://github.com/serpent-os/blsforme.git", rev = "ca69d21d41bd437640614de432f47ddb152c05bf" }
+ bytes = "1.6.0"
+ chrono = "0.4.38"
+ clap = { version = "4.5.8", features = ["derive", "string"] }
+diff --git a/moss/src/cli/boot.rs b/moss/src/cli/boot.rs
+new file mode 100644
+index 0000000..d41c329
+--- /dev/null
++++ b/moss/src/cli/boot.rs
+@@ -0,0 +1,67 @@
++// SPDX-FileCopyrightText: Copyright © 2020-2024 Serpent OS Developers
++//
++// SPDX-License-Identifier: MPL-2.0
++
++use blsforme::bootloader::systemd_boot::{self};
++use clap::{ArgMatches, Command};
++use thiserror::Error;
++
++use moss::Installation;
++
++pub fn command() -> Command {
++    Command::new("boot")
++        .about("Boot management")
++        .long_about("Manage boot configuration")
++        .subcommand_required(true)
++        .subcommand(Command::new("status").about("Status of boot configuration"))
++}
++
++/// Handle status for now
++pub fn handle(_args: &ArgMatches, installation: Installation) -> Result<(), Error> {
++    let root = installation.root.clone();
++    let is_native = root.to_string_lossy() == "/";
++    let config = blsforme::Configuration {
++        root: if is_native {
++            blsforme::Root::Native(root.clone())
++        } else {
++            blsforme::Root::Image(root.clone())
++        },
++        vfs: "/".into(),
++    };
++
++    let manager = blsforme::Manager::new(&config)?;
++    match manager.boot_environment().firmware {
++        blsforme::Firmware::UEFI => {
++            println!("ESP            : {:?}", manager.boot_environment().esp());
++            println!("XBOOTLDR       : {:?}", manager.boot_environment().xbootldr());
++            if is_native {
++                if let Ok(bootloader) = systemd_boot::interface::BootLoaderInterface::new(&config.vfs) {
++                    let v = bootloader.get_ucs2_string(systemd_boot::interface::VariableName::Info)?;
++                    println!("Bootloader     : {v}");
++                }
++            }
++        }
++        blsforme::Firmware::BIOS => {
++            println!("BOOT           : {:?}", manager.boot_environment().boot_partition());
++        }
++    }
++
++    println!("Global cmdline : {:?}", manager.cmdline());
++
++    Ok(())
++}
++
++#[derive(Debug, Error)]
++pub enum Error {
++    #[error("blsforme")]
++    Blsforme(#[from] blsforme::Error),
++
++    #[error("sd_boot")]
++    SdBoot(#[from] systemd_boot::interface::Error),
++
++    #[error("io")]
++    IO(#[from] std::io::Error),
++
++    #[error("os-release")]
++    OsRelease(#[from] blsforme::os_release::Error),
++}
+diff --git a/moss/src/cli/mod.rs b/moss/src/cli/mod.rs
+index 01478de..952233e 100644
+--- a/moss/src/cli/mod.rs
++++ b/moss/src/cli/mod.rs
+@@ -13,6 +13,7 @@ use clap_mangen::Man;
+ use moss::{installation, runtime, Installation};
+ use thiserror::Error;
+ 
++mod boot;
+ mod extract;
+ mod index;
+ mod info;
+@@ -81,6 +82,7 @@ fn command() -> Command {
+                 .hide(true),
+         )
+         .arg_required_else_help(true)
++        .subcommand(boot::command())
+         .subcommand(extract::command())
+         .subcommand(index::command())
+         .subcommand(info::command())
+@@ -166,6 +168,7 @@ pub fn process() -> Result<(), Error> {
+     let installation = Installation::open(root, cache.cloned())?;
+ 
+     match matches.subcommand() {
++        Some(("boot", args)) => boot::handle(args, installation).map_err(Error::Boot),
+         Some(("extract", args)) => extract::handle(args).map_err(Error::Extract),
+         Some(("index", args)) => index::handle(args).map_err(Error::Index),
+         Some(("info", args)) => info::handle(args, installation).map_err(Error::Info),
+@@ -224,6 +227,9 @@ fn replace_aliases(args: env::Args) -> Vec<String> {
+ 
+ #[derive(Debug, Error)]
+ pub enum Error {
++    #[error("boot")]
++    Boot(#[from] boot::Error),
++
+     #[error("index")]
+     Index(#[from] index::Error),
+ 
+-- 
+2.47.1
+
