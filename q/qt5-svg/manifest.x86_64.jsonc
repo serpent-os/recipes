@@ -22,13 +22,15 @@
 				"/usr/lib/libQt5Svg.prl",
 				"/usr/lib/libQt5Svg.so.5",
 				"/usr/lib/libQt5Svg.so.5.15",
-				"/usr/lib/libQt5Svg.so.5.15.8",
+				"/usr/lib/libQt5Svg.so.5.15.16",
 				"/usr/lib/qt5/plugins/iconengines/libqsvgicon.so",
 				"/usr/lib/qt5/plugins/imageformats/libqsvg.so"
 			],
 			"name": "qt5-svg",
 			"provides": [
-				"soname(libQt5Svg.so.5(x86_64))"
+				"soname(libQt5Svg.so.5(x86_64))",
+				"soname(qt5/plugins/iconengines/libqsvgicon.so(x86_64))",
+				"soname(qt5/plugins/imageformats/libqsvg.so(x86_64))"
 			]
 		},
 		"qt5-svg-demos": {
@@ -215,17 +217,18 @@
 			"depends": [
 				"pkgconfig(Qt5Core)",
 				"pkgconfig(Qt5Gui)",
-				"pkgconfig(Qt5Widgets)"
+				"pkgconfig(Qt5Widgets)",
+				"qt5-svg"
 			],
 			"files": [
-				"/usr/include/QtSvg/5.15.8/QtSvg/private/qsvgfont_p.h",
-				"/usr/include/QtSvg/5.15.8/QtSvg/private/qsvggraphics_p.h",
-				"/usr/include/QtSvg/5.15.8/QtSvg/private/qsvghandler_p.h",
-				"/usr/include/QtSvg/5.15.8/QtSvg/private/qsvgnode_p.h",
-				"/usr/include/QtSvg/5.15.8/QtSvg/private/qsvgstructure_p.h",
-				"/usr/include/QtSvg/5.15.8/QtSvg/private/qsvgstyle_p.h",
-				"/usr/include/QtSvg/5.15.8/QtSvg/private/qsvgtinydocument_p.h",
-				"/usr/include/QtSvg/5.15.8/QtSvg/private/qtsvgglobal_p.h",
+				"/usr/include/QtSvg/5.15.16/QtSvg/private/qsvgfont_p.h",
+				"/usr/include/QtSvg/5.15.16/QtSvg/private/qsvggraphics_p.h",
+				"/usr/include/QtSvg/5.15.16/QtSvg/private/qsvghandler_p.h",
+				"/usr/include/QtSvg/5.15.16/QtSvg/private/qsvgnode_p.h",
+				"/usr/include/QtSvg/5.15.16/QtSvg/private/qsvgstructure_p.h",
+				"/usr/include/QtSvg/5.15.16/QtSvg/private/qsvgstyle_p.h",
+				"/usr/include/QtSvg/5.15.16/QtSvg/private/qsvgtinydocument_p.h",
+				"/usr/include/QtSvg/5.15.16/QtSvg/private/qtsvgglobal_p.h",
 				"/usr/include/QtSvg/QGraphicsSvgItem",
 				"/usr/include/QtSvg/QSvgGenerator",
 				"/usr/include/QtSvg/QSvgRenderer",
@@ -250,12 +253,12 @@
 			],
 			"name": "qt5-svg-devel",
 			"provides": [
-				"pkgconfig(Qt5Svg)",
-				"cmake(Qt5Svg)"
+				"cmake(Qt5Svg)",
+				"pkgconfig(Qt5Svg)"
 			]
 		}
 	},
 	"source-name": "qt5-svg",
-	"source-release": "1",
-	"source-version": "5.15.8-lts-lgpl"
+	"source-release": "2",
+	"source-version": "5.5.16"
 }
