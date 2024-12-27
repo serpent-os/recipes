@@ -4,11 +4,14 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : qt5-svg
-version     : 5.5.16
-release     : 2
+version     : 5.15.16+kde.9c3d4062
+release     : 3
 homepage    : https://www.qt.io
 upstreams   :
-    - https://download.qt.io/archive/qt/5.15/5.15.16/submodules/qtsvg-everywhere-opensource-src-5.15.16.tar.xz: cc4e320084bc2882dc6e55229045ce99469946deab8c075aae06413e27100bc1
+    - git|https://invent.kde.org/qt/qt/qtsvg.git:
+        ref: 9c3d40626ddfccc87886966a59e5cd6b1b5ce739
+        # Relative submodules
+        staging: no
 summary     : Qt5 SVG Module
 description : |
     Scalable Vector Graphics (SVG) is an XML-based language for describing two-dimensional vector graphics. Qt provides classes for rendering and displaying SVG drawings in widgets and on other paint devices.
@@ -20,10 +23,9 @@ license     :
 builddeps   :
     - binary(perl)
     - binary(qmake)
-    - pkgconfig(gl)
     - pkgconfig(zlib)
 setup       : |
-    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}"
+    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" CONFIG+=release
 build       : |
     %make
 install     : |
@@ -32,6 +34,7 @@ packages    :
     - "%(name)-devel":
         paths:
             - /usr/bin
+            - /usr/lib/*.prl
             - /usr/lib/qt5/mkspecs
     - "%(name)-demos" :
         paths:

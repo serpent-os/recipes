@@ -6,7 +6,6 @@
 			"build-depends": [
 				"binary(perl)",
 				"binary(qmake)",
-				"pkgconfig(gl)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
@@ -19,7 +18,6 @@
 				"soname(libz.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libQt5Svg.prl",
 				"/usr/lib/libQt5Svg.so.5",
 				"/usr/lib/libQt5Svg.so.5.15",
 				"/usr/lib/libQt5Svg.so.5.15.16",
@@ -37,7 +35,6 @@
 			"build-depends": [
 				"binary(perl)",
 				"binary(qmake)",
-				"pkgconfig(gl)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
@@ -211,7 +208,6 @@
 			"build-depends": [
 				"binary(perl)",
 				"binary(qmake)",
-				"pkgconfig(gl)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
@@ -246,6 +242,7 @@
 				"/usr/lib/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake",
 				"/usr/lib/cmake/Qt5Svg/Qt5SvgConfig.cmake",
 				"/usr/lib/cmake/Qt5Svg/Qt5SvgConfigVersion.cmake",
+				"/usr/lib/libQt5Svg.prl",
 				"/usr/lib/libQt5Svg.so",
 				"/usr/lib/pkgconfig/Qt5Svg.pc",
 				"/usr/lib/qt5/mkspecs/modules/qt_lib_svg.pri",
@@ -259,6 +256,6 @@
 		}
 	},
 	"source-name": "qt5-svg",
-	"source-release": "2",
-	"source-version": "5.5.16"
+	"source-release": "3",
+	"source-version": "5.15.16+kde.9c3d4062"
 }
