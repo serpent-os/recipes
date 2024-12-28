@@ -1,0 +1,51 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"openjpeg": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/opj_compress",
+				"/usr/bin/opj_decompress",
+				"/usr/bin/opj_dump",
+				"/usr/lib/libopenjp2.so.2.5.3",
+				"/usr/lib/libopenjp2.so.7"
+			],
+			"name": "openjpeg",
+			"provides": [
+				"binary(opj_compress)",
+				"binary(opj_decompress)",
+				"binary(opj_dump)",
+				"soname(libopenjp2.so.7(x86_64))"
+			]
+		},
+		"openjpeg-devel": {
+			"depends": [
+				"openjpeg"
+			],
+			"files": [
+				"/usr/include/openjpeg-2.5/openjpeg.h",
+				"/usr/include/openjpeg-2.5/opj_config.h",
+				"/usr/lib/cmake/openjpeg-2.5/OpenJPEGConfig.cmake",
+				"/usr/lib/cmake/openjpeg-2.5/OpenJPEGConfigVersion.cmake",
+				"/usr/lib/cmake/openjpeg-2.5/OpenJPEGTargets-release.cmake",
+				"/usr/lib/cmake/openjpeg-2.5/OpenJPEGTargets.cmake",
+				"/usr/lib/libopenjp2.a",
+				"/usr/lib/libopenjp2.so",
+				"/usr/lib/pkgconfig/libopenjp2.pc"
+			],
+			"name": "openjpeg-devel",
+			"provides": [
+				"cmake(OpenJPEG)",
+				"pkgconfig(libopenjp2)"
+			]
+		}
+	},
+	"source-name": "openjpeg",
+	"source-release": "1",
+	"source-version": "2.5.3"
+}

@@ -6,8 +6,10 @@
 			"build-depends": [
 				"binary(python3)",
 				"cmake(Boost)",
+				"cmake(OpenJPEG)",
 				"pkgconfig(freetype2)",
 				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gpgme)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(lcms2)",
@@ -17,6 +19,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"poppler-data",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -33,6 +36,7 @@
 				"soname(libm.so.6(x86_64))",
 				"soname(libnspr4.so(x86_64))",
 				"soname(libnss3.so(x86_64))",
+				"soname(libopenjp2.so.7(x86_64))",
 				"soname(libplc4.so(x86_64))",
 				"soname(libpng16.so.16(x86_64))",
 				"soname(libsmime3.so(x86_64))",
@@ -53,12 +57,14 @@
 				"/usr/bin/pdftops",
 				"/usr/bin/pdftotext",
 				"/usr/bin/pdfunite",
+				"/usr/lib/girepository-1.0/Poppler-0.18.typelib",
 				"/usr/lib/libpoppler-cpp.so.1",
 				"/usr/lib/libpoppler-cpp.so.1.0.0",
 				"/usr/lib/libpoppler-glib.so.8",
 				"/usr/lib/libpoppler-glib.so.8.28.0",
 				"/usr/lib/libpoppler.so.144",
 				"/usr/lib/libpoppler.so.144.0.0",
+				"/usr/share/gir-1.0/Poppler-0.18.gir",
 				"/usr/share/man/man1/pdfattach.1",
 				"/usr/share/man/man1/pdfdetach.1",
 				"/usr/share/man/man1/pdffonts.1",
@@ -97,8 +103,10 @@
 			"build-depends": [
 				"binary(python3)",
 				"cmake(Boost)",
+				"cmake(OpenJPEG)",
 				"pkgconfig(freetype2)",
 				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(gpgme)",
 				"pkgconfig(gtk+-3.0)",
 				"pkgconfig(lcms2)",
@@ -158,6 +166,6 @@
 		}
 	},
 	"source-name": "poppler",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "24.12.0"
 }
