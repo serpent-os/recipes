@@ -2,6 +2,10 @@
 
 alias ls="ls --color=auto -F"
 
+if [ -e /usr/share/defaults/etc/profile ] ; then
+    source /usr/share/defaults/etc/profile
+fi
+
 if [ -e /etc/bashrc ] ; then
     source /etc/bashrc
 fi
