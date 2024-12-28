@@ -3,27 +3,31 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name: powerstation
-version: v0.4.0
-release: 1
-homepage: https://github.com/ShadowBlip/PowerStation
-upstreams:
-  - https://github.com/ShadowBlip/PowerStation/archive/refs/tags/v0.4.0.tar.gz: 86e2bf1c2499a8cf630f09884e0fede6fd15ff746c0b4f84480998364bd6cb0a
-summary: Open source TDP control and performance daemon with DBus interface
-license: GPL-3.0-or-later
-description: |
-  PowerStation is an open source TDP control and performance daemon for Linux that can be used to control CPU and GPU settings for better performance and battery life.
-  Performance control is done through DBus to provide a UI-agnostic interface to CPU and GPU settings.
-networking: yes
-builddeps:
-  - binary(cmake)
-  - pciutils-devel
-  - pkgconfig(libudev)
-setup: |
-  %cargo_fetch
-build: |
-  %cargo_build
-install: |
-  %make_install PREFIX=%(installroot)/usr NO_RELOAD=true
-check: |
-  %cargo_test
+name        : powerstation
+version     : 0.4.0
+release     : 1
+homepage    : https://github.com/ShadowBlip/PowerStation
+upstreams   :
+    - https://github.com/ShadowBlip/PowerStation/archive/refs/tags/v0.4.0.tar.gz : 86e2bf1c2499a8cf630f09884e0fede6fd15ff746c0b4f84480998364bd6cb0a
+summary     : Open source TDP control and performance daemon with DBus interface
+description : |
+    PowerStation is an open source TDP control and performance daemon for Linux that can be used to control CPU and GPU settings for better performance and battery life.
+    Performance control is done through DBus to provide a UI-agnostic interface to CPU and GPU settings.
+license     : GPL-3.0-or-later
+networking  : true
+builddeps   :
+    - binary(cmake)
+    - binary(make)
+    - pkgconfig(libpci)
+    - pkgconfig(libudev)
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %cargo_install
+    # preserve use of our own macros so we dont use the generic cargo invocations in the makefile,
+    # which basically just copies all of rootfs/ to the installroot
+    %install_dir %(installroot)/usr
+    cp -R rootfs/usr/* %(installroot)/usr/.
+    rm -rf %(installroot)%(datadir)/dbus-1/system-services

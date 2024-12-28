@@ -5,7 +5,8 @@
 		"powerstation": {
 			"build-depends": [
 				"binary(cmake)",
-				"pciutils-devel",
+				"binary(make)",
+				"pkgconfig(libpci)",
 				"pkgconfig(libudev)"
 			],
 			"depends": [
@@ -30,5 +31,5 @@
 	},
 	"source-name": "powerstation",
 	"source-release": "1",
-	"source-version": "v0.4.0"
+	"source-version": "0.4.0"
 }
