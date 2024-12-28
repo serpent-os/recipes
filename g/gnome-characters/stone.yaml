@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gnome-characters
+version     : 47.0
+release     : 1
+homepage    : https://apps.gnome.org/Characters/
+upstreams   :
+    - https://download.gnome.org/sources/gnome-characters/47/gnome-characters-47.0.tar.xz : 6bcf05a22f30f131d8a8035b0f63d86a9567007a5f6df5ce8556ba06777b7574
+summary     : Character map application
+description : |
+    Characters is a simple utility application to find and insert unusual characters. It allows you to quickly find the character you are looking for by searching for keywords.
+
+    You can also browse characters by categories, such as Punctuation, Pictures, etc.
+license     : BSD-3-Clause
+builddeps   :
+    - binary(msgfmt)
+    - binary(update-desktop-database)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gjs-1.0)
+    - pkgconfig(gtk4)
+    - pkgconfig(libadwaita-1)
+    - pkgconfig(pango)
+    - pkgconfig(pangoft2)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
