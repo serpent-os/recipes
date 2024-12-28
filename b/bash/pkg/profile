@@ -1,21 +1,5 @@
 # Begin /usr/share/defaults/etc/profile
 
-# files in the below dir MUST be in portable .sh format!
-if [ -d /usr/share/defaults/etc/profile.d ] ; then
-    for script in /usr/share/defaults/etc/profile.d/*.sh
-    do
-      source $script
-    done
-    unset script
-fi
-
-# files in the below dir MUST be in portable .sh format!
-if [ -d /etc/profile.d ] ; then
-    for script in /etc/profile.d/*.sh
-    do
-      source $script
-    done
-    unset script
-fi
+source /usr/share/defaults/etc/serpent-stateless-shell-conf.sh
 
 # End /usr/share/defaults/etc/profile

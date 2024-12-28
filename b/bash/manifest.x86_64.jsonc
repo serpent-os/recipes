@@ -59,6 +59,7 @@
 				"/usr/share/defaults/etc/bashrc",
 				"/usr/share/defaults/etc/profile",
 				"/usr/share/defaults/etc/profile.d/40-prompt.sh",
+				"/usr/share/defaults/etc/serpent-stateless-shell-conf.sh",
 				"/usr/share/doc/bash/CHANGES",
 				"/usr/share/doc/bash/COMPAT",
 				"/usr/share/doc/bash/FAQ",
@@ -197,6 +198,6 @@
 		}
 	},
 	"source-name": "bash",
-	"source-release": "18",
+	"source-release": "19",
 	"source-version": "5.2.37"
 }
