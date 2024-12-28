@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-desktop
-version     : 6.12.6
-release     : 71
+version     : 6.12.7
+release     : 72
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.6.tar.xz : d450ab215de4e1f8bb85e0f4216760fa33fd024b4526b144f4ce0d9012b29c9e
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.7.tar.xz : f785fb648a0e0b66a943bb3228a4b6ed62c90b985cd1ebf69da5d38e589da0cf
 summary     : The Linux Kernel for desktop systems
 description : |
     The Linux Kernel for desktop systems
@@ -30,58 +30,39 @@ builddeps   :
     - binary(gzip)
     - binary(kmod)
     - binary(less)
+    - binary(loadkeys)
     - binary(m4)
     - binary(perl)
-    - binary(setfont)
-    - binary(loadkeys)
     - binary(python3)
+    - binary(setfont)
     - binary(tr)
     - binary(which)
+    - pkgconfig(gmp)
+    - pkgconfig(libelf)
+    - pkgconfig(libssl)
+    - pkgconfig(libzstd)
+    - pkgconfig(mpfr)
+    - pkgconfig(ply-boot-client)
+    - sysbinary(fsck.ext4)
+    - sysbinary(fsck.f2fs)
+    - sysbinary(fsck.xfs)
+    - sysbinary(lvm)
+    - font-cantarell
     - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
     - intel-microcode
     - linux-firmware
     - linux-firmware-amd
     - linux-firmware-intel
     - linux-firmware-nvidia
-    - pkgconfig(gmp)
-    - pkgconfig(libelf)
-    - pkgconfig(libssl)
-    - pkgconfig(libzstd)
-    - pkgconfig(mpfr)
-    - sysbinary(lvm)
-    - font-cantarell
-    - pkgconfig(ply-boot-client)
     - serpent-artwork
-    - sysbinary(fsck.ext4)
-    - sysbinary(fsck.f2fs)
-    - sysbinary(fsck.xfs)
 packages    :
     - "%(name)-devel":
         paths:
             - /usr/src
 setup       : |
-    %patch %(pkgdir)/0001-firmware_loader-add-earlyboot-trees-for-firmware-loa.patch
-    %patch %(pkgdir)/asus-patch-series.patch
-    %patch %(pkgdir)/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch
-
-    # Surface Pro support
-    %patch %(pkgdir)/surface/0001-secureboot.patch
-    %patch %(pkgdir)/surface/0002-surface3-oemb.patch
-    %patch %(pkgdir)/surface/0003-mwifiex.patch
-    %patch %(pkgdir)/surface/0004-ath10k.patch
-    %patch %(pkgdir)/surface/0005-ipts.patch
-    %patch %(pkgdir)/surface/0006-ithc.patch
-    %patch %(pkgdir)/surface/0007-surface-sam-over-hid.patch
-    %patch %(pkgdir)/surface/0008-surface-button.patch
-    %patch %(pkgdir)/surface/0009-surface-typecover.patch
-    %patch %(pkgdir)/surface/0010-surface-shutdown.patch
-    %patch %(pkgdir)/surface/0011-surface-gpe.patch
-    %patch %(pkgdir)/surface/0012-cameras.patch
-    %patch %(pkgdir)/surface/0013-amd-gpio.patch
-    %patch %(pkgdir)/surface/0014-rtc.patch
-
-    # nvidia -_-
-    %patch %(pkgdir)/0001-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
+    for i in $(cat %(pkgdir)/series) ; do
+        %patch %(pkgdir)/$i
+    done
 
     extraVersion="-%(release).desktop"
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
