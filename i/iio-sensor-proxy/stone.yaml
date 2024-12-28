@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : iio-sensor-proxy
+version     : 3.5
+release     : 1
+homepage    : https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/
+upstreams   :
+    - https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/archive/3.5/iio-sensor-proxy-3.5.tar.gz : 8689425f2287626a95d95b1e1e5b62e497d09dd08cf411084ed22166d4a49da5
+summary     : Proxies sensor devices (accelerometers, light sensors, compass) to applications through D-Bus
+description : |
+    Proxies sensor devices (accelerometers, light sensors, compass) to applications through D-Bus
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(xmllint)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gudev-1.0)
+    - pkgconfig(polkit-gobject-1)
+    - pkgconfig(systemd)
+    - pkgconfig(udev)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
