@@ -6,7 +6,7 @@ after: systemd_sysusers
 handlers:
     systemd_tmpfiles:
         run: /usr/bin/systemd-tmpfiles
-        args: ["--create"]
+        args: ["--create", "-E"]
 
 paths:
     "/usr/lib/tmpfiles.d/*.conf":

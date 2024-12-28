@@ -5,7 +5,7 @@
 #
 name        : systemd
 version     : 254.18
-release     : 45
+release     : 46
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -21,9 +21,6 @@ builddeps   :
     - binary(m4)
     - binary(readelf.py)
     - binary(xsltproc)
-    - docbook
-    - gettext-devel
-    - gnu-efi-devel
     - pkgconfig(gnutls)
     - pkgconfig(gpg-error)
     - pkgconfig(libcryptsetup)
@@ -55,6 +52,9 @@ builddeps   :
     - pkgconfig32(pam)
     - pkgconfig32(xkbcommon)
     - pkgconfig32(zlib)
+    - docbook
+    - gettext-devel
+    - gnu-efi-devel
     - python-jinja
 rundeps     :
     - binary(ntp-daemon)

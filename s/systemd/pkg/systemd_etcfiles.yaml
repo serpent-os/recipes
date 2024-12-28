@@ -5,7 +5,7 @@ description: |
 handlers:
     systemd_etcfiles:
         run: /usr/bin/systemd-tmpfiles
-        args: ["--create", "/usr/lib/tmpfiles.d/etc.conf"]
+        args: ["--create", "/usr/lib/tmpfiles.d/etc.conf", "-E"]
 
 paths:
     "/usr/lib/tmpfiles.d/etc.conf":
