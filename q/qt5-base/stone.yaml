@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : qt5-base
-version     : 5.15.16
-release     : 2
+version     : 5.15.16+kde.2529f7f0
+release     : 3
 homepage    : https://www.qt.io
 upstreams   :
-    - https://download.qt.io/archive/qt/5.15/5.15.16/submodules/qtbase-everywhere-opensource-src-5.15.16.tar.xz : b04815058c18058b6ba837206756a2c87d1391f07a0dcb0dd314f970fd041592
+    - git|https://invent.kde.org/qt/qt/qtbase.git : 2529f7f0c2333d437089c775c9c30f624d1fd5bc
 summary     : Cross platform application and UI framework
 description : |
     Cross platform application and UI framework
@@ -27,6 +27,7 @@ builddeps   :
     - pkgconfig(gbm)
     - pkgconfig(gl)
     - pkgconfig(glesv2)
+    - pkgconfig(harfbuzz)
     - pkgconfig(libdrm)
     - pkgconfig(libinput)
     - pkgconfig(libjpeg)
@@ -35,10 +36,16 @@ builddeps   :
     - pkgconfig(libssl)
     - pkgconfig(libsystemd)
     - pkgconfig(libzstd)
+    - pkgconfig(shared-mime-info)
     - pkgconfig(sqlite3)
-    - pkgconfig(xkbcommon)
-    - pkgconfig(xcb)
     - pkgconfig(x11)
+    - pkgconfig(xcb)
+    - pkgconfig(xcb-icccm)
+    - pkgconfig(xcb-image)
+    - pkgconfig(xcb-keysyms)
+    - pkgconfig(xcb-randr)
+    - pkgconfig(xcb-renderutil)
+    - pkgconfig(xkbcommon)
     - pkgconfig(zlib)
     - vulkan-headers
 setup       : |
@@ -48,6 +55,32 @@ setup       : |
 
     %patch %(pkgdir)/qmake-cflags.patch
     %patch %(pkgdir)/stateless/0001-Support-stateless-config-directories.patch
+
+    # Various Fedora patches which improve the situation in Wayland and GNOME amongst other things. Most of these are backports from Qt6
+    %patch %(pkgdir)/fedora/0001-Use-Wayland-by-default-on-GNOME.patch
+    %patch %(pkgdir)/fedora/0002-Add-enum-class-Qt-Appearance.patch
+    %patch %(pkgdir)/fedora/0003-Sync-and-assert-StandardPixmap-enums-in-QPlatformThe.patch
+    %patch %(pkgdir)/fedora/0004-QGtk3Theme-subscribe-to-theme-hint-changes.patch
+    %patch %(pkgdir)/fedora/0005-Re-implement-palette-standardPixmap-file-icons-fonts.patch
+    %patch %(pkgdir)/fedora/0006-Fix-checkbox-and-radiobutton-background-in-QGtk3Them.patch
+    %patch %(pkgdir)/fedora/0007-Cleanup-QGtk3Theme.patch
+    %patch %(pkgdir)/fedora/0008-Detect-appearance-by-colors-unless-GTK-theme-name-co.patch
+    %patch %(pkgdir)/fedora/0009-Change-parsing-log-output-in-QGtk3Json-from-qCDebug-.patch
+    %patch %(pkgdir)/fedora/0010-Document-QGtk3Interface.patch
+    %patch %(pkgdir)/fedora/0011-Document-QGtk3Storage.patch
+    %patch %(pkgdir)/fedora/0012-QGtk3Theme-Improve-fixed-font-delivery.patch
+    %patch %(pkgdir)/fedora/0013-QGtk3Theme-Do-not-default-Active-WindowText-to-butto.patch
+    %patch %(pkgdir)/fedora/0014-Fix-memory-leak-in-QGtk3Interface-themeName.patch
+    %patch %(pkgdir)/fedora/0015-Fix-disabled-button-color-in-Linux-X11-Wayland.patch
+    %patch %(pkgdir)/fedora/0016-Fix-inactive-palette-in-gtk3-theme.patch
+    %patch %(pkgdir)/fedora/0017-Fix-tooltip-palette-issue-in-gtk3-theme.patch
+    %patch %(pkgdir)/fedora/0018-QGtk3Theme-define-light-midlight-mid-dark-and-shadow.patch
+
+    export CFLAGS="$CFLAGS -ffat-lto-objects"
+    export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
+    export LDFLAGS="$LDFLAGS -ffat-lto-objects"
+
+    sed -i -e 's/^gcc:ltcg/gcc/' src/corelib/global/global.pri
 
     ./configure -confirm-license -opensource -release \
                 -prefix %(prefix) \
@@ -68,17 +101,20 @@ setup       : |
                 -openssl-linked \
                 -platform linux-clang \
                 -system-freetype \
+                -system-harfbuzz \
                 -system-libjpeg \
                 -system-libpng \
                 -system-pcre \
                 -system-sqlite \
-                -system-zlib
+                -system-zlib \
+                -xcb
 build       : |
     %make
 install     : |
-    # Fails to install otherwise... *sigh*
-    %install_dir %(installroot)%(libdir)/qt5/examples/dbus/pingpong
     %make_install INSTALL_ROOT="%(installroot)"
+
+    # Avoid debug logging unless overridden by user
+    %install_file %(pkgdir)/qtlogging.ini %(installroot)/usr/share/qt5/qtlogging.ini
 
     # We have the dedicated qt5-docs package for that.
     rm -rfv %(installroot)/usr/share/qt5/doc
@@ -87,7 +123,15 @@ packages    :
     - "%(name)-devel":
         paths:
             - /usr/bin
+            - /usr/lib/*.prl
+            - /usr/lib/metatypes
             - /usr/lib/qt5/mkspecs
+        rundeps:
+            - pkgconfig(fontconfig)
+            - pkgconfig(freetype2)
+            - pkgconfig(gl)
+            - pkgconfig(glib-2.0)
+            - pkgconfig(xkbcommon)
     - "%(name)-demos" :
         paths:
             - /usr/lib/qt5/examples

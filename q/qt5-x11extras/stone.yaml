@@ -3,27 +3,23 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : qt5-svg
-version     : 5.15.16+kde.9c3d4062
-release     : 3
+name        : qt5-x11extras
+version     : 5.15.16+kde.0c61151b
+release     : 1
 homepage    : https://www.qt.io
 upstreams   :
-    - git|https://invent.kde.org/qt/qt/qtsvg.git:
-        ref: 9c3d40626ddfccc87886966a59e5cd6b1b5ce739
-        # Relative submodules
-        staging: no
-summary     : Qt5 SVG Module
-description : |
-    Scalable Vector Graphics (SVG) is an XML-based language for describing two-dimensional vector graphics. Qt provides classes for rendering and displaying SVG drawings in widgets and on other paint devices.
+    - git|https://invent.kde.org/qt/qt/qtx11extras.git: 0c61151bf14e5b4c74187608b6b47b9d0d6ca745
+summary    : Qt5 X11 Extra Components
+description: |
+    Qt X11 Extras enables the Qt programmer to write applications for the Linux/X11 platform. Applications developed with Qt can also be deployed across several other desktop and embedded operating systems without having to rewrite the source code.
 license     :
-    - LGPL-3.0-or-later
     - LGPL-3.0-or-later
     - GFDL-1.3-or-later
     - GPL-3.0-or-later
 builddeps   :
     - binary(perl)
     - binary(qmake)
-    - pkgconfig(zlib)
+    - pkgconfig(xcb)
 setup       : |
     qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" CONFIG+=release
 build       : |
@@ -33,9 +29,5 @@ install     : |
 packages    :
     - "%(name)-devel":
         paths:
-            - /usr/bin
             - /usr/lib/*.prl
             - /usr/lib/qt5/mkspecs
-    - "%(name)-demos" :
-        paths:
-            - /usr/lib/qt5/examples

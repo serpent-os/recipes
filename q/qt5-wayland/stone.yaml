@@ -3,30 +3,31 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : qt5-declarative
-version     : 5.15.16+kde.e2b38659
-release     : 3
+name        : qt5-wayland
+version     : 5.15.16+kde.9340737a
+release     : 1
 homepage    : https://www.qt.io
 upstreams   :
-    - git|https://invent.kde.org/qt/qt/qtdeclarative.git:
-        ref: e2b38659cb79104f157e1d0099c01e545d04d0db
-        # Relative submodules
-        staging: no
-summary     : Qt 5 Declarative Library
-description : |
-    Qt is a set of libraries for developing applications. This package contains base tools, like string, xml, and network handling.
+    - git|https://invent.kde.org/qt/qt/qtwayland.git: 9340737a208b5dd4eda98eb74808951ddaef66c5
+summary    : Qt 5 Wayland Library
+description: |
+    QtWayland is a Qt 5 module that wraps the functionality of Wayland
 license     :
     - LGPL-3.0-or-later
     - LGPL-3.0-or-later
     - GFDL-1.3-or-later
     - GPL-3.0-or-later
 builddeps   :
-    - binary(perl)
-    - binary(python3)
-    - binary(qmake)
+    - pkgconfig(Qt5Quick)
+    - pkgconfig(egl)
+    - pkgconfig(libdrm)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-egl-backend)
+    - pkgconfig(wayland-server)
+    - pkgconfig(xcomposite)
     - vulkan-headers
 setup       : |
-    %patch %(pkgdir)/qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
+    %patch %(pkgdir)/qtwayland-decoration-support-backports-from-qt6.patch
 
     qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" CONFIG+=release
 build       : |
@@ -36,9 +37,7 @@ install     : |
 packages    :
     - "%(name)-devel":
         paths:
-            - /usr/bin
             - /usr/lib/*.prl
-            - /usr/lib/metatypes
             - /usr/lib/qt5/mkspecs
     - "%(name)-demos" :
         paths:
