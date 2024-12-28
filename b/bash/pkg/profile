@@ -1,5 +1,10 @@
 # Begin /usr/share/defaults/etc/profile
 
+# check for bashrc and source it
+if [ -e /usr/share/defaults/etc/bashrc ] ; then
+    source /usr/share/defaults/etc/bashrc
+fi
+
 # files in the below dir MUST be in portable .sh format!
 if [ -d /usr/share/defaults/etc/profile.d ] ; then
     for script in /usr/share/defaults/etc/profile.d/*.sh
