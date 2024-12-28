@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : inputplumber
+version     : 0.40.0
+release     : 1
+homepage    : https://github.com/ShadowBlip/InputPlumber
+upstreams   :
+    - https://github.com/ShadowBlip/InputPlumber/archive/refs/tags/v0.40.0.tar.gz : b156bb188e3519e835f04793f1e11a9262e3014c8e8bdc61786f41c24f93f7d9
+summary     : Open source input router and remapper daemon for Linux
+description : |
+    InputPlumber is an open source input routing and control daemon for Linux.
+    It can be used to combine any number of input devices (like gamepads, mice, and keyboards)
+    and translate their input to a variety of virtual device formats.
+license     : GPL-3.0-or-later
+networking  : true
+builddeps   :
+    - binary(llvm-config)
+    - pkgconfig(libevdev)
+    - pkgconfig(libiio)
+    - pkgconfig(libudev)
+    - clang-devel
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %cargo_install
+    # preserve use of our own macros so we dont use the generic cargo invocations in the makefile,
+    # which basically just copies all of rootfs/ to the installroot
+    %install_dir %(installroot)/usr
+    cp -R rootfs/usr/* %(installroot)/usr/.
+    rm -rf %(installroot)%(datadir)/dbus-1/system-services
