@@ -30,6 +30,7 @@
 				"/usr/bin/iio_writedev",
 				"/usr/lib/libiio.so.0",
 				"/usr/lib/libiio.so.0.26",
+				"/usr/lib/udev/rules.d/90-libiio.rules",
 				"/usr/sbin/iiod"
 			],
 			"name": "libiio",
@@ -70,5 +71,5 @@
 	},
 	"source-name": "libiio",
 	"source-release": "1",
-	"source-version": "v0.26"
+	"source-version": "0.26"
 }

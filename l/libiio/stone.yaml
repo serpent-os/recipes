@@ -3,28 +3,28 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name: libiio
-version: v0.26
-release: 1
-homepage: https://github.com/analogdevicesinc/libiio
-upstreams:
-  - https://github.com/analogdevicesinc/libiio/archive/refs/tags/v0.26.tar.gz: fb445fb860ef1248759f45d4273a4eff360534480ec87af64c6b8db3b99be7e5
-summary: A cross platform library for interfacing with local and remote Linux IIO devices
-description: |
-  libiio is used to interface to the Linux Industrial Input/Output (IIO) Subsystem.
-license:
-  - GPL-2.0-or-later
-  - LGPL-2.1-or-later
-builddeps:
-  - binary(bison)
-  - binary(flex)
-  - libaio-devel
-  - pkgconfig(avahi-glib)
-  - pkgconfig(libusb-1.0)
-  - pkgconfig(libxml-2.0)
-setup: |
-  %cmake
-build: |
-  %cmake_build
-install: |
-  %cmake_install
+name        : libiio
+version     : 0.26
+release     : 1
+homepage    : https://github.com/analogdevicesinc/libiio
+upstreams   :
+    - https://github.com/analogdevicesinc/libiio/archive/refs/tags/v0.26.tar.gz : fb445fb860ef1248759f45d4273a4eff360534480ec87af64c6b8db3b99be7e5
+summary     : A cross platform library for interfacing with local and remote Linux IIO devices
+description : |
+    libiio is used to interface to the Linux Industrial Input/Output (IIO) Subsystem
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - pkgconfig(avahi-glib)
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(libxml-2.0)
+    - libaio-devel
+setup       : |
+    %cmake -DUDEV_RULES_INSTALL_DIR=%(libdir)/udev/rules.d
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
