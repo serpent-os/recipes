@@ -20,9 +20,9 @@ description : |
 license     :
     - GPL-3.0-or-later
 builddeps   :
-    - bison
     - pkgconfig(ncursesw)
     - pkgconfig(readline)
+    - bison
 setup       : |
     %patch %(pkgdir)/stateless.patch
 
