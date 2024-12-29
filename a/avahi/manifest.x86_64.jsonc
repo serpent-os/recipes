@@ -58,7 +58,9 @@
 				"/usr/lib/systemd/system/avahi-dnsconfd.service",
 				"/usr/lib/tmpfiles.d/avahi.conf",
 				"/usr/lib/userdb/170.group",
+				"/usr/lib/userdb/170.user",
 				"/usr/lib/userdb/84.group",
+				"/usr/lib/userdb/84.user",
 				"/usr/lib/userdb/avahi-autoipd.group",
 				"/usr/lib/userdb/avahi-autoipd.user",
 				"/usr/lib/userdb/avahi.group",
@@ -250,6 +252,6 @@
 		}
 	},
 	"source-name": "avahi",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "0.8"
 }

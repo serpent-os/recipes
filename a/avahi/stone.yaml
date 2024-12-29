@@ -5,7 +5,7 @@
 #
 name        : avahi
 version     : 0.8
-release     : 4
+release     : 5
 homepage    : https://www.avahi.org/
 upstreams   :
     # - https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz : 060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda
@@ -50,6 +50,8 @@ install     : |
     %install_file %(pkgdir)/avahi.user -t %(installroot)%(libdir)/userdb/
     %install_file %(pkgdir)/avahi.group -t %(installroot)%(libdir)/userdb/
     ln -s avahi.group %(installroot)%(libdir)/userdb/84.group
+    ln -s avahi.user %(installroot)%(libdir)/userdb/84.user
     %install_file %(pkgdir)/avahi-autoipd.user -t %(installroot)%(libdir)/userdb/
     %install_file %(pkgdir)/avahi-autoipd.group -t %(installroot)%(libdir)/userdb/
     ln -s avahi-autoipd.group %(installroot)%(libdir)/userdb/170.group
+    ln -s avahi-autoipd.user %(installroot)%(libdir)/userdb/170.user
