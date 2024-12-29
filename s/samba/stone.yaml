@@ -5,7 +5,7 @@
 #
 name        : samba
 version     : 4.19.5
-release     : 6
+release     : 7
 homepage    : https://www.samba.org/
 upstreams   :
     - https://download.samba.org/pub/samba/stable/samba-4.19.5.tar.gz : 0e2405b4cec29d0459621f4340a1a74af771ec7cffedff43250cad7f1f87605e
@@ -61,7 +61,8 @@ setup       : |
         --bundled-libraries=!cmocka,!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util \
         --enable-fhs \
         --disable-python \
-        --disable-rpath-install \
+        --libdir=%(libdir) \
+        --with-privatelibdir=%(libdir) \
         --systemd-install-services \
         --without-ad-dc \
         --without-regedit \
