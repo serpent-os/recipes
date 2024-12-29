@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libexif
+version     : 0.6.24
+release     : 1
+homepage    : https://github.com/libexif/libexif
+upstreams   :
+    - https://github.com/libexif/libexif/releases/download/v0.6.24/libexif-0.6.24.tar.bz2 : d47564c433b733d83b6704c70477e0a4067811d184ec565258ac563d8223f6ae
+summary     : A library for parsing, editing, and saving EXIF data
+description : |
+    libexif is a library for parsing, editing, and saving EXIF data. It is
+    intended to replace lots of redundant implementations in command-line
+    utilities and programs with GUIs.
+license     : LGPL-2.1-or-later
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
