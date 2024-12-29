@@ -1,0 +1,16 @@
+name        : dejavu-fonts-ttf
+version     : '2.37'
+release     : 1
+upstreams   :
+    - https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.tar.bz2 : fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7
+homepage    : https://dejavu-fonts.github.io/
+summary     : Font family based on the Bitstream Vera Fonts with a wider range of characters
+description : |
+    Font family based on the Bitstream Vera Fonts with a wider range of characters
+license     : Bitstream-Vera
+install     : |
+    %install_dir %(installroot)/usr/share/fontconfig/conf.avail
+    %install_dir %(installroot)/usr/share/fonts/dejavu
+
+    install -m00644 ttf/*.ttf %(installroot)/usr/share/fonts/dejavu/.
+    install -m00644 fontconfig/*.conf %(installroot)/usr/share/fontconfig/conf.avail/.
