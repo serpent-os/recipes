@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libcupsfilters
+version     : 2.1.0
+release     : 1
+homepage    : https://github.com/OpenPrinting/libcupsfilters
+upstreams   :
+    - https://github.com/OpenPrinting/libcupsfilters/releases/download/2.1.0/libcupsfilters-2.1.0.tar.gz : 33b35a3761f2adaaf1c4210e956255b4d9ba2d79008008537356bc34057b3471
+summary     : OpenPrinting CUPS Filters
+description : |
+    OpenPrinting CUPS Filters - contains all the code of the filters of the former cups-filters package as library functions
+license     : Apache-2.0 WITH LLVM-Exception
+builddeps   :
+    - binary(cups-config)
+    - binary(gs)
+    - pkgconfig(cups)
+    - pkgconfig(dbus-1)
+    - pkgconfig(fontconfig)
+    - pkgconfig(lcms2)
+    - pkgconfig(libexif)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpng)
+    - pkgconfig(libqpdf)
+    - pkgconfig(libtiff-4)
+    - pkgconfig(poppler-cpp)
+    - dejavu-fonts-ttf
+setup       : |
+    %configure --disable-static \
+      --disable-mutool \
+      --with-test-font-path=/usr/share/fonts/dejavu/DejaVuSerif.ttf
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check
