@@ -1,0 +1,9 @@
+{
+    "userName" : "avahi",
+    "realName" : "Avahi Daemon Owner",
+    "uid" : 84,
+    "gid" : 84,
+    "disposition" : "system",
+    "locked" : false,
+    "homeDirectory": "/run/avahi-daemon"
+}

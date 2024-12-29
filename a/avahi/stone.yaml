@@ -5,7 +5,7 @@
 #
 name        : avahi
 version     : 0.8
-release     : 3
+release     : 5
 homepage    : https://www.avahi.org/
 upstreams   :
     # - https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz : 060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda
@@ -29,6 +29,7 @@ builddeps  :
     - gdbm-devel
 toolchain   : gnu
 setup       : |
+    %patch %(pkgdir)/0001-Fall-back-to-stateless-directory.patch
     %reconfigure \
         --disable-static \
         --disable-gtk3 \
@@ -40,3 +41,17 @@ build       : |
     %make
 install     : |
     %make_install
+
+    %install_dir %(installroot)/usr/share/defaults/
+    mv %(installroot)/etc/avahi %(installroot)/usr/share/defaults/avahi
+
+    %tmpfiles "d /run/avahi-daemon 0755 - - -"
+
+    %install_file %(pkgdir)/avahi.user -t %(installroot)%(libdir)/userdb/
+    %install_file %(pkgdir)/avahi.group -t %(installroot)%(libdir)/userdb/
+    ln -s avahi.group %(installroot)%(libdir)/userdb/84.group
+    ln -s avahi.user %(installroot)%(libdir)/userdb/84.user
+    %install_file %(pkgdir)/avahi-autoipd.user -t %(installroot)%(libdir)/userdb/
+    %install_file %(pkgdir)/avahi-autoipd.group -t %(installroot)%(libdir)/userdb/
+    ln -s avahi-autoipd.group %(installroot)%(libdir)/userdb/170.group
+    ln -s avahi-autoipd.user %(installroot)%(libdir)/userdb/170.user

@@ -1,0 +1,5 @@
+{
+    "groupName" : "avahi-autoipd",
+    "gid" : 170,
+    "disposition" : "system"
+}
