@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qpdf
+version     : v11.9.1
+release     : 1
+homepage    : https://github.com/qpdf/qpdf
+upstreams   :
+    - https://github.com/qpdf/qpdf/archive/refs/tags/v11.9.1.tar.gz : 98d509e29def377d90ff4a34e48e8e20865600342006bff53e489f689bbbb15d
+summary     : A content-preserving PDF document transformer
+description : |
+    qpdf is a command-line tool and C++ library that performs content-preserving transformations on PDF files. It supports linearization, encryption, and numerous other features. It can also be used for splitting and merging files, creating PDF files (but you have to supply all the content yourself), and inspecting files for study or analysis. qpdf does not render PDFs or perform text extraction, and it does not contain higher-level interfaces for working with page contents. It is a low-level tool for working with the structure of PDF files and can be a valuable tool for anyone who wants to do programmatic or command-line-based manipulation of PDF files.
+license     : Apache-2.0
+builddeps   :
+    - pkgconfig(libjpeg)
+    - pkgconfig(openssl)
+    - pkgconfig(zlib)
+setup       : |
+    %cmake -DBUILD_STATIC_LIBS=OFF -DINSTALL_EXAMPLES=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+
+    %install_file completions/bash/qpdf %(installroot)/usr/share/bash-completion/completions/qpdf
+    %install_file completions/zsh/_qpdf %(installroot)/usr/share/zsh/site-functions/_qpdf
+check       : |
+    %cmake_test || :

@@ -1,0 +1,6 @@
+releases:
+  id: 5542
+security:
+  cpe:
+  - vendor: qpdf_project
+    product: qpdf
