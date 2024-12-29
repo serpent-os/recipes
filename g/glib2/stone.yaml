@@ -5,7 +5,7 @@
 #
 name        : glib2
 version     : 2.82.4
-release     : 21
+release     : 22
 homepage    : https://gitlab.gnome.org/GNOME/glib
 upstreams   :
     - https://download.gnome.org/sources/glib/2.82/glib-2.82.4.tar.xz : 37dd0877fe964cd15e9a2710b044a1830fb1bd93652a6d0cb6b8b2dff187c709
@@ -43,6 +43,7 @@ packages    :
             - /usr/lib/glib-2.0/include
 emul32      : true
 rundeps     :
+    - binary(python3)
     - elfutils-libs
     - python-packaging
 environment : |
