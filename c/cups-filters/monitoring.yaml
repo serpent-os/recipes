@@ -1,0 +1,6 @@
+releases:
+  id: 5541
+security:
+  cpe:
+  - vendor: linuxfoundation
+    product: cups-filters

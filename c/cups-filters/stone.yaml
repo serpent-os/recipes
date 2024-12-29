@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cups-filters
+version     : 2.0.1
+release     : 1
+homepage    : https://github.com/OpenPrinting/cups-filters
+upstreams   :
+    - https://github.com/OpenPrinting/cups-filters/releases/download/2.0.1/cups-filters-2.0.1.tar.gz : 3de1cbb889d06e5a6a945dcb921292544477ab89da95ca89f1eec2de29937afb
+summary     : Filters, backends, driverless utility, ... - Everything which CUPS 2.x needs
+description : |
+    This package contains backends, filters, and other software that was once part of the core CUPS distribution, but during the time when CUPS was developed at Apple, Apple stopped maintaining these parts as they were not needed by Mac OS.
+license     : Apache-2.0 WITH LLVM-Exception
+builddeps   :
+    - binary(gs)
+    - pkgconfig(cups)
+    - pkgconfig(libcupsfilters)
+    - pkgconfig(libppd)
+setup       : |
+    %configure --disable-static \
+      --disable-mutool
+build       : |
+    %make
+install     : |
+    # dumbass build system
+    %make_install -j1
+check       : |
+    %make check
