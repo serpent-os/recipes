@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"opengamepadui": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(godot)",
+				"binary(unzip)",
+				"binary(wget)",
+				"soname(libfontconfig.so.1(x86_64))",
+				"sysbinary(setcap)"
+			],
+			"depends": [
+				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))",
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libdl.so.2(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpthread.so.0(x86_64))",
+				"soname(librt.so.1(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/opengamepadui",
+				"/usr/lib/systemd/user/ogui-overlay-mode.service",
+				"/usr/lib/systemd/user/systemd-sysext-updater.service",
+				"/usr/share/applications/opengamepadui.desktop",
+				"/usr/share/icons/hicolor/scalable/apps/opengamepadui.svg",
+				"/usr/share/opengamepadui/libopengamepadui-core.linux.template_release.x86_64.so",
+				"/usr/share/opengamepadui/opengamepad-ui.pck",
+				"/usr/share/opengamepadui/opengamepad-ui.x86_64",
+				"/usr/share/opengamepadui/reaper",
+				"/usr/share/opengamepadui/scripts/make_nice",
+				"/usr/share/opengamepadui/scripts/manage_input",
+				"/usr/share/polkit-1/actions/org.shadowblip.manage_input.policy",
+				"/usr/share/polkit-1/actions/org.shadowblip.setcap.policy"
+			],
+			"name": "opengamepadui",
+			"provides": [
+				"binary(opengamepadui)",
+				"soname(opengamepadui/libopengamepadui_core.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "opengamepadui",
+	"source-release": "1",
+	"source-version": "0.35.4"
+}
