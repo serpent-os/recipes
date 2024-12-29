@@ -1,0 +1,26 @@
+From 257481d40981755497acc14395370ffb7de2d491 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Sun, 29 Dec 2024 14:20:54 +0000
+Subject: [PATCH] client: Bump os version
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ moss/src/client/mod.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/moss/src/client/mod.rs b/moss/src/client/mod.rs
+index d9243e9..42aa1aa 100644
+--- a/moss/src/client/mod.rs
++++ b/moss/src/client/mod.rs
+@@ -805,7 +805,7 @@ PRETTY_NAME="Serpent OS {version} (fstx #{tx})"
+ ANSI_COLOR="1;35"
+ HOME_URL="https://serpentos.com"
+ BUG_REPORT_URL="https://github.com/serpent-os""#,
+-        version = "0.24.5",
++        version = "0.24.6",
+         // TODO: Better id for ephemeral transactions
+         tx = state_id.unwrap_or_default()
+     );
+-- 
+2.47.1
+
