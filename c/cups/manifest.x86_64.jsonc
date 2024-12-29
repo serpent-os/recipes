@@ -6,17 +6,25 @@
 			"build-depends": [
 				"binary(xdg-open)",
 				"coreutils",
+				"pkgconfig(avahi-client)",
 				"pkgconfig(gnutls)",
-				"pkgconfig(libcrypt)"
+				"pkgconfig(libcrypt)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(pam)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libavahi-client.so.3(x86_64))",
+				"soname(libavahi-common.so.3(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcrypt.so.1(x86_64))",
+				"soname(libdbus-1.so.3(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libgnutls.so.30(x86_64))",
 				"soname(libm.so.6(x86_64))",
+				"soname(libpam.so.0(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
+				"soname(libsystemd.so.0(x86_64))",
 				"soname(libz.so.1(x86_64))"
 			],
 			"files": [
@@ -24,6 +32,7 @@
 				"/usr/bin/cups-config",
 				"/usr/bin/cupstestppd",
 				"/usr/bin/ippeveprinter",
+				"/usr/bin/ippfind",
 				"/usr/bin/ipptool",
 				"/usr/bin/lp",
 				"/usr/bin/lpoptions",
@@ -36,6 +45,7 @@
 				"/usr/bin/ppdi",
 				"/usr/bin/ppdmerge",
 				"/usr/bin/ppdpo",
+				"/usr/lib/cups/backend/dnssd",
 				"/usr/lib/cups/backend/http",
 				"/usr/lib/cups/backend/https",
 				"/usr/lib/cups/backend/ipp",
@@ -65,10 +75,18 @@
 				"/usr/lib/cups/filter/rastertopwg",
 				"/usr/lib/cups/monitor/bcp",
 				"/usr/lib/cups/monitor/tbcp",
+				"/usr/lib/cups/notifier/dbus",
 				"/usr/lib/cups/notifier/mailto",
 				"/usr/lib/cups/notifier/rss",
 				"/usr/lib/libcups.so.2",
 				"/usr/lib/libcupsimage.so.2",
+				"/usr/lib/systemd/system/cups-lpd.socket",
+				"/usr/lib/systemd/system/cups-lpd@.service",
+				"/usr/lib/systemd/system/cups.path",
+				"/usr/lib/systemd/system/cups.service",
+				"/usr/lib/systemd/system/cups.socket",
+				"/usr/lib/systemd/system/system-cups.slice",
+				"/usr/lib/systemd/user-preset/30-cups.preset",
 				"/usr/sbin/cupsaccept",
 				"/usr/sbin/cupsctl",
 				"/usr/sbin/cupsd",
@@ -738,6 +756,7 @@
 				"/usr/share/doc/cups/help/man-filter.html",
 				"/usr/share/doc/cups/help/man-ippevepcl.html",
 				"/usr/share/doc/cups/help/man-ippeveprinter.html",
+				"/usr/share/doc/cups/help/man-ippfind.html",
 				"/usr/share/doc/cups/help/man-ipptool.html",
 				"/usr/share/doc/cups/help/man-ipptoolfile.html",
 				"/usr/share/doc/cups/help/man-lp.html",
@@ -814,6 +833,7 @@
 				"/usr/share/man/man1/cups.1",
 				"/usr/share/man/man1/cupstestppd.1",
 				"/usr/share/man/man1/ippeveprinter.1",
+				"/usr/share/man/man1/ippfind.1",
 				"/usr/share/man/man1/ipptool.1",
 				"/usr/share/man/man1/lp.1",
 				"/usr/share/man/man1/lpoptions.1",
@@ -868,6 +888,7 @@
 				"binary(cups-config)",
 				"binary(cupstestppd)",
 				"binary(ippeveprinter)",
+				"binary(ippfind)",
 				"binary(ipptool)",
 				"binary(lp)",
 				"binary(lpoptions)",
@@ -899,11 +920,15 @@
 			"build-depends": [
 				"binary(xdg-open)",
 				"coreutils",
+				"pkgconfig(avahi-client)",
 				"pkgconfig(gnutls)",
-				"pkgconfig(libcrypt)"
+				"pkgconfig(libcrypt)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(pam)"
 			],
 			"depends": [
 				"cups",
+				"pkgconfig(avahi-client)",
 				"pkgconfig(gnutls)"
 			],
 			"files": [
@@ -933,6 +958,6 @@
 		}
 	},
 	"source-name": "cups",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.4.11"
 }

@@ -5,7 +5,7 @@
 #
 name        : cups
 version     : 2.4.11
-release     : 3
+release     : 4
 homepage    : https://openprinting.github.io/cups/
 upstreams   :
     - https://github.com/OpenPrinting/cups/releases/download/v2.4.11/cups-2.4.11-source.tar.gz : 9a88fe1da3a29a917c3fc67ce6eb3178399d68e1a548c6d86c70d9b13651fd71
@@ -16,8 +16,11 @@ license     :
     - Apache-2.0
 builddeps   :
     - binary(xdg-open)
+    - pkgconfig(avahi-client)
     - pkgconfig(gnutls)
     - pkgconfig(libcrypt)
+    - pkgconfig(libsystemd)
+    - pkgconfig(pam)
     - coreutils
 setup       : |
     %patch %(pkgdir)/0001-stateless-cupsd.patch
@@ -25,11 +28,14 @@ setup       : |
         --with-cups-user=lp \
         --with-cups-group=lp \
         --with-rundir=/run/cups \
-        --without-rcdir
+        --without-rcdir \
+        --with-ondemand=systemd \
 build       : |
     %make
 install     : |
     %make_install
+
+    %install_file %(pkgdir)/cups.preset %(installroot)%(libdir)/systemd/user-preset/30-cups.preset
 
     %install_dir %(installroot)/usr/share/defaults/etc/
     mv %(installroot)/etc/* %(installroot)/usr/share/defaults/etc/
