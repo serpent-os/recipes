@@ -1,0 +1,8 @@
+releases:
+  id: 1157
+security:
+  cpe:
+  - vendor: artifex
+    product: ghostscript
+  - vendor: ghostscript
+    product: ghostscript

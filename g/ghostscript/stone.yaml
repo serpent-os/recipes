@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ghostscript
+version     : 10.04.0
+release     : 1
+homepage    : https://www.ghostscript.com/
+upstreams   :
+    - https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostpdl-10.04.0.tar.gz : 8b1594b067e00e386f818270a255eef6baba593197173725951d5f0c316dc205
+summary     : Ghostscript is an interpreter for the PostScript®  language and PDF files
+description : |
+    Ghostscript is an interpreter for the PostScript®  language and PDF files. Ghostscript consists of a PostScript interpreter layer and a graphics library.
+license     : AGPL-3.0-or-later
+builddeps   :
+    - pkgconfig(cups)
+    - pkgconfig(fontconfig)
+    - pkgconfig(glu)
+    - pkgconfig(lcms2)
+    - pkgconfig(liblzma)
+    - pkgconfig(libopenjp2)
+    - pkgconfig(libpng)
+    - pkgconfig(libtiff-4)
+    - pkgconfig(libturbojpeg)
+    - pkgconfig(libzstd)
+    - pkgconfig(x11)
+setup       : |
+    %configure
+build       : |
+    %make
+    %make so
+install     : |
+    %make_install
+    %make soinstall DESTDIR=$installdir
