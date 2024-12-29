@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libppd
+version     : 2.1.0
+release     : 1
+homepage    : https://github.com/OpenPrinting/libppd
+upstreams   :
+    - https://github.com/OpenPrinting/libppd/releases/download/2.1.0/libppd-2.1.0.tar.gz : 4a950e7f0136e8a39e015b8eeefa7ce3cecad5b2c7e6038737dac71a2f423857
+summary     : Cups support for legacy PPD file support
+description : |
+    - Legacy filter executables for CUPS 2.x, the cups-filters package (version 2.x or newer). It allows updating to cups-filters/libcupsfilters 2.x while still using CUPS 2.x.
+    - CUPS-driver-retro-fitting Printer Applications based on PAPPL and pappl-retrofit. The currently 4 retro-fitting Printer Applications in the Snap Store contain all the drivers which are available as Debian package, for the above-mentioned ~10000 printer models!
+    - cups-browsed. Unfortunately, there are still many print dialogs around which do not support printers for which CUPS auto-generates a temporary print queue. Therefore cups-browsed still has to create permanent print queues for PPD-supporting CUPS 2.x and for this deal with PPD files. Conversion to a Printer Application without any PPD file handling is planned.
+license     : Apache-2.0 WITH LLVM-Exception
+builddeps   :
+    - binary(gs)
+    - pkgconfig(cups)
+    - pkgconfig(libcupsfilters)
+    - pkgconfig(zlib)
+setup       : |
+    %configure --disable-static \
+      --disable-mutool
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # empty
+    rm -frv %(installroot)/usr/bin
+check       : |
+    %make check

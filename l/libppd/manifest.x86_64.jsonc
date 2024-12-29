@@ -1,0 +1,73 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libppd": {
+			"build-depends": [
+				"binary(gs)",
+				"pkgconfig(cups)",
+				"pkgconfig(libcupsfilters)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcups.so.2(x86_64))",
+				"soname(libcupsfilters.so.2(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libppd.so.2",
+				"/usr/lib/libppd.so.2.0.0",
+				"/usr/share/doc/libppd/ABOUT-NLS",
+				"/usr/share/doc/libppd/AUTHORS",
+				"/usr/share/doc/libppd/CHANGES-1.x.md",
+				"/usr/share/doc/libppd/CHANGES.md",
+				"/usr/share/doc/libppd/CONTRIBUTING.md",
+				"/usr/share/doc/libppd/COPYING",
+				"/usr/share/doc/libppd/DEVELOPING.md",
+				"/usr/share/doc/libppd/INSTALL.md",
+				"/usr/share/doc/libppd/LICENSE",
+				"/usr/share/doc/libppd/NOTICE",
+				"/usr/share/doc/libppd/README.md",
+				"/usr/share/ppdc/epson.h",
+				"/usr/share/ppdc/font.defs",
+				"/usr/share/ppdc/hp.h",
+				"/usr/share/ppdc/label.h",
+				"/usr/share/ppdc/media.defs",
+				"/usr/share/ppdc/raster.defs"
+			],
+			"name": "libppd",
+			"provides": [
+				"soname(libppd.so.2(x86_64))"
+			]
+		},
+		"libppd-devel": {
+			"build-depends": [
+				"binary(gs)",
+				"pkgconfig(cups)",
+				"pkgconfig(libcupsfilters)",
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"libppd"
+			],
+			"files": [
+				"/usr/include/ppd/ppd-filter.h",
+				"/usr/include/ppd/ppd.h",
+				"/usr/include/ppd/ppdc.h",
+				"/usr/lib/libppd.so",
+				"/usr/lib/pkgconfig/libppd.pc"
+			],
+			"name": "libppd-devel",
+			"provides": [
+				"pkgconfig(libppd)"
+			]
+		}
+	},
+	"source-name": "libppd",
+	"source-release": "1",
+	"source-version": "2.1.0"
+}
