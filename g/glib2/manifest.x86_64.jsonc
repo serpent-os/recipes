@@ -15,6 +15,7 @@
 				"python-packaging"
 			],
 			"depends": [
+				"binary(python3)",
 				"elfutils-libs",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"python-packaging",
@@ -715,6 +716,6 @@
 		}
 	},
 	"source-name": "glib2",
-	"source-release": "21",
+	"source-release": "22",
 	"source-version": "2.82.4"
 }
