@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : pop-os-icon-theme
-version     : 3.5.0
-release     : 2
+version     : 3.5.1
+release     : 3
 homepage    : https://github.com/pop-os/icon-theme
 upstreams   :
-    - https://github.com/pop-os/icon-theme/archive/refs/tags/v3.5.0.tar.gz : 917f5e300e927fe2557355717793f3284aee869a6ae0b81cd31507f20090d796
+    - https://github.com/pop-os/icon-theme/archive/refs/tags/v3.5.1.tar.gz : 92e73f252e5e9c8a1124623a7d421410ef43c798a4a992955e6eb4f666f5c8a0
 summary     : Pop Icons by System76
 description : |
     Pop Icons by System76
