@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gutenprint
+version     : 5.3.4
+release     : 1
+homepage    : https://sourceforge.net/projects/gimp-print/files/gutenprint-5.3/5.3.4
+upstreams   :
+    - https://sourceforge.net/projects/gimp-print/files/gutenprint-5.3/5.3.4/gutenprint-5.3.4.tar.xz : db44a701d2b8e6a8931c83cec06c91226be266d23e5c189d20a39dd175f2023b
+summary     : Many printer drivers
+description : |
+  The Gutenprint (formerly Gimp-Print) package contains high quality drivers for many brands and models of printers
+license     : GPL-2.0-or-later
+builddeps   :
+    - pkgconfig(cups)
+setup       : |
+    %configure \
+      --disable-static \
+      --enable-cups-ppds \
+      --enable-simplified-cups-ppds=only \
+      --enable-translated-cups-ppds \
+      --enable-globalized-cups-ppds
+build       : |
+    %make
+install     : |
+    %make_install
