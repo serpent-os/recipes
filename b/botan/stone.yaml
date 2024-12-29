@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : botan
+version     : 3.6.1
+release     : 1
+homepage    : https://botan.randombit.net
+upstreams   :
+    - https://botan.randombit.net/releases/Botan-3.6.1.tar.xz : 7cb8575d88d232c77174769d7f9e24bb44444160585986eebd66e749cb9a9089
+summary     : A C++ cryptography library
+description : |
+    A C++ cryptography library
+license     : BSD-2-Clause
+builddeps   :
+    - binary(python3)
+    - pkgconfig(bzip2)
+    - pkgconfig(sqlite3)
+    - pkgconfig(zlib)
+    - xz
+toolchain   : gnu
+setup       : |
+    ./configure.py \
+        --prefix=/usr \
+        --with-bzip \
+        --with-zlib \
+        --with-sqlite3 \
+        --with-os-feature=getrandom
+
+build       : |
+    %make
+install     : |
+    %make_install
