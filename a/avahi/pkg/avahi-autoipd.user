@@ -1,0 +1,9 @@
+{
+    "userName" : "avahi-autoipd",
+    "realName" : "Avahi IPv4LL Stack",
+    "uid" : 170,
+    "gid" : 170,
+    "disposition" : "system",
+    "locked" : false,
+    "homeDirectory": "/var/lib/avahi-autoipd"
+}
