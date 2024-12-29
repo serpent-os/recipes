@@ -1,0 +1,42 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dejavu-fonts-ttf": {
+			"files": [
+				"/usr/share/fontconfig/conf.avail/20-unhint-small-dejavu-sans-mono.conf",
+				"/usr/share/fontconfig/conf.avail/20-unhint-small-dejavu-sans.conf",
+				"/usr/share/fontconfig/conf.avail/20-unhint-small-dejavu-serif.conf",
+				"/usr/share/fontconfig/conf.avail/57-dejavu-sans-mono.conf",
+				"/usr/share/fontconfig/conf.avail/57-dejavu-sans.conf",
+				"/usr/share/fontconfig/conf.avail/57-dejavu-serif.conf",
+				"/usr/share/fonts/dejavu/DejaVuMathTeXGyre.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSans-ExtraLight.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSans-Oblique.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSans.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSansCondensed-Bold.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSansCondensed-BoldOblique.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSansCondensed-Oblique.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSansMono-Bold.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSansMono-BoldOblique.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSansMono-Oblique.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSansMono.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSerif-Bold.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSerif-BoldItalic.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSerif-Italic.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSerif.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSerifCondensed-Bold.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSerifCondensed-BoldItalic.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSerifCondensed-Italic.ttf",
+				"/usr/share/fonts/dejavu/DejaVuSerifCondensed.ttf"
+			],
+			"name": "dejavu-fonts-ttf"
+		}
+	},
+	"source-name": "dejavu-fonts-ttf",
+	"source-release": "1",
+	"source-version": "2.37"
+}
