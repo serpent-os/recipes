@@ -1,0 +1,55 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cups-browsed": {
+			"build-depends": [
+				"binary(gdbus-codegen)",
+				"pkgconfig(avahi-client)",
+				"pkgconfig(cups)",
+				"pkgconfig(libcupsfilters)",
+				"pkgconfig(libppd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libavahi-client.so.3(x86_64))",
+				"soname(libavahi-common.so.3(x86_64))",
+				"soname(libavahi-glib.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcups.so.2(x86_64))",
+				"soname(libcupsfilters.so.2(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libppd.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/lib/cups/backend/implicitclass",
+				"/usr/lib/systemd/system/cups-browsed.service",
+				"/usr/lib/systemd/user-preset/50-cups-browsed.preset",
+				"/usr/sbin/cups-browsed",
+				"/usr/share/defaults/cups/cups-browsed.conf",
+				"/usr/share/doc/cups-browsed/ABOUT-NLS",
+				"/usr/share/doc/cups-browsed/AUTHORS",
+				"/usr/share/doc/cups-browsed/CHANGES-1.x.md",
+				"/usr/share/doc/cups-browsed/CHANGES.md",
+				"/usr/share/doc/cups-browsed/CONTRIBUTING.md",
+				"/usr/share/doc/cups-browsed/COPYING",
+				"/usr/share/doc/cups-browsed/DEVELOPING.md",
+				"/usr/share/doc/cups-browsed/INSTALL",
+				"/usr/share/doc/cups-browsed/LICENSE",
+				"/usr/share/doc/cups-browsed/NOTICE",
+				"/usr/share/doc/cups-browsed/README.md",
+				"/usr/share/man/man5/cups-browsed.conf.5",
+				"/usr/share/man/man8/cups-browsed.8"
+			],
+			"name": "cups-browsed",
+			"provides": [
+				"sysbinary(cups-browsed)"
+			]
+		}
+	},
+	"source-name": "cups-browsed",
+	"source-release": "1",
+	"source-version": "2.1.0"
+}
