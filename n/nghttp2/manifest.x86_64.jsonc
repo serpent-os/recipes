@@ -8,7 +8,7 @@
 			],
 			"files": [
 				"/usr/lib/libnghttp2.so.14",
-				"/usr/lib/libnghttp2.so.14.28.1",
+				"/usr/lib/libnghttp2.so.14.28.3",
 				"/usr/share/doc/nghttp2/README.rst",
 				"/usr/share/man/man1/h2load.1",
 				"/usr/share/man/man1/nghttp.1",
@@ -19,6 +19,37 @@
 			"name": "nghttp2",
 			"provides": [
 				"soname(libnghttp2.so.14(x86_64))"
+			]
+		},
+		"nghttp2-32bit": {
+			"depends": [
+				"nghttp2",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libnghttp2.so.14",
+				"/usr/lib32/libnghttp2.so.14.28.3"
+			],
+			"name": "nghttp2-32bit",
+			"provides": [
+				"soname(libnghttp2.so.14(386))",
+				"soname(libnghttp2.so.14(x86))"
+			]
+		},
+		"nghttp2-32bit-devel": {
+			"depends": [
+				"nghttp2-32bit",
+				"nghttp2-devel"
+			],
+			"files": [
+				"/usr/lib32/cmake/nghttp2/nghttp2-targets-release.cmake",
+				"/usr/lib32/cmake/nghttp2/nghttp2-targets.cmake",
+				"/usr/lib32/libnghttp2.so",
+				"/usr/lib32/pkgconfig/libnghttp2.pc"
+			],
+			"name": "nghttp2-32bit-devel",
+			"provides": [
+				"pkgconfig32(libnghttp2)"
 			]
 		},
 		"nghttp2-devel": {
@@ -40,6 +71,6 @@
 		}
 	},
 	"source-name": "nghttp2",
-	"source-release": "5",
-	"source-version": "1.62.1"
+	"source-release": "6",
+	"source-version": "1.64.0"
 }

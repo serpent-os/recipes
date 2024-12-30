@@ -4,19 +4,21 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nghttp2
-version     : 1.62.1
-release     : 5
+version     : 1.64.0
+release     : 6
 homepage    : https://nghttp2.org
 upstreams   :
-    - https://github.com/nghttp2/nghttp2/releases/download/v1.62.1/nghttp2-1.62.1.tar.xz : 2345d4dc136fda28ce243e0bb21f2e7e8ef6293d62c799abbf6f633a6887af72
+    - https://github.com/nghttp2/nghttp2/releases/download/v1.64.0/nghttp2-1.64.0.tar.xz : 88bb94c9e4fd1c499967f83dece36a78122af7d5fb40da2019c56b9ccc6eb9dd
 summary     : C implementation of the HTTP/2.0 protocol
 description : |
    nghttp2 is an implementation of the Hypertext Transfer Protocol version 2 in C.
 
    The framing layer of HTTP/2 is implemented as a reusable C library. On top of that, we have implemented an HTTP/2 client, server and proxy. We have also developed load test and benchmarking tools for HTTP/2.
 license     : MIT
+emul32      : true
 setup       : |
-    %cmake -DENABLE_STATIC_LIB=OFF
+    %cmake -DENABLE_STATIC_LIB=OFF \
+           -DCMAKE_INSTALL_LIBDIR=%(libdir)
 build       : |
     %cmake_build
 install     : |
