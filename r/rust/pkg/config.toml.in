@@ -1,14 +1,17 @@
 # At the end of the install phase Rust will print a message about the new change-id. Please
 # review any changed settings and then update the following field when updating to new Rust versions
-change-id = 125535
+change-id = 131075
+
+# Inherit from src/bootstrap/defaults/config.dist.toml
+profile = "dist"
 
 [llvm]
 link-shared = true
-targets = "X86;Aarch64"
+targets = "X86" # TODO get AARCH64 building
 
 [build]
-rustc = "/usr/bin/rustc"
-cargo = "/usr/bin/cargo"
+#rustc = "/usr/bin/rustc"
+#cargo = "/usr/bin/cargo"
 docs = false
 # Triggers the build of tools. Cargo, in our case.
 extended = true
@@ -36,13 +39,16 @@ prefix = "/usr"
 channel = "stable"
 default-linker = "clang"
 description = "Serpent OS"
+jemalloc = true
 lto = "@@LTO@@"
 new-symbol-mangling = true
 optimize = true
 rpath = false
 strip = false
-llvm-libunwind = 'system'
-use-lld = true
+llvm-libunwind = "system"
+lld = false
+use-lld = "external"
+llvm-bitcode-linker = false
 
 [target.i686-unknown-linux-gnu]
 cc = "clang"
