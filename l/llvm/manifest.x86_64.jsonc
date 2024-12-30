@@ -1959,7 +1959,6 @@
 			"depends": [
 				"llvm",
 				"soname(ld-linux.so.2(386))",
-				"soname(libPollyISL.so(386))",
 				"soname(libc++.so.1(386))",
 				"soname(libc.so.6(386))",
 				"soname(libffi.so.8(386))",
@@ -1975,6 +1974,7 @@
 				"/usr/lib32/LLVMgold.so",
 				"/usr/lib32/libLLVM.so.18.1",
 				"/usr/lib32/libLTO.so.18.1",
+				"/usr/lib32/libPollyISL.so",
 				"/usr/lib32/libRemarks.so.18.1",
 				"/usr/lib32/libear/__init__.py",
 				"/usr/lib32/libear/config.h.in",
@@ -2001,6 +2001,8 @@
 				"soname(libLLVM.so.18.1(x86))",
 				"soname(libLTO.so.18.1(386))",
 				"soname(libLTO.so.18.1(x86))",
+				"soname(libPollyISL.so(386))",
+				"soname(libPollyISL.so(x86))",
 				"soname(libRemarks.so.18.1(386))",
 				"soname(libRemarks.so.18.1(x86))"
 			]
@@ -2202,7 +2204,6 @@
 				"/usr/lib32/libLLVMipo.a",
 				"/usr/lib32/libLTO.so",
 				"/usr/lib32/libPolly.a",
-				"/usr/lib32/libPollyISL.so",
 				"/usr/lib32/libRemarks.so",
 				"/usr/lib32/libclang-cpp.so",
 				"/usr/lib32/libclang.so"
@@ -2212,9 +2213,7 @@
 				"binary(llvm-config32)",
 				"cmake(Clang)",
 				"cmake(LLVM)",
-				"cmake(Polly)",
-				"soname(libPollyISL.so(386))",
-				"soname(libPollyISL.so(x86))"
+				"cmake(Polly)"
 			]
 		},
 		"llvm-devel": {
@@ -4595,6 +4594,6 @@
 		}
 	},
 	"source-name": "llvm",
-	"source-release": "17",
+	"source-release": "18",
 	"source-version": "18.1.8"
 }
