@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : pv
+version     : 1.9.25
+release     : 1
+homepage    : https://www.ivarch.com/programs/pv.shtml
+upstreams   :
+    - https://www.ivarch.com/programs/sources/pv-1.9.25.tar.gz : 162495aabb1cb842186cb224995e3d5f60a9f527a49ccbd8212383cc72b7c36c
+summary     : Pipe Viewer
+description : |
+    pv (Pipe Viewer) allows a user to see the progress of data through a pipeline, by giving information such as time elapsed, percentage completed (with progress bar), current throughput rate, total data transferred, and ETA.
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(msgfmt)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

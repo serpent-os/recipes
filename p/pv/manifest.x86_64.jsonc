@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"pv": {
+			"build-depends": [
+				"binary(msgfmt)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/pv",
+				"/usr/share/doc/pv/ACKNOWLEDGEMENTS.md",
+				"/usr/share/doc/pv/COPYING",
+				"/usr/share/doc/pv/DEVELOPERS.md",
+				"/usr/share/doc/pv/INSTALL",
+				"/usr/share/doc/pv/NEWS.md",
+				"/usr/share/doc/pv/README.md",
+				"/usr/share/locale/cs/LC_MESSAGES/pv.mo",
+				"/usr/share/locale/de/LC_MESSAGES/pv.mo",
+				"/usr/share/locale/es/LC_MESSAGES/pv.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/pv.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/pv.mo",
+				"/usr/share/locale/pt/LC_MESSAGES/pv.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/pv.mo",
+				"/usr/share/locale/tr/LC_MESSAGES/pv.mo",
+				"/usr/share/man/man1/pv.1"
+			],
+			"name": "pv",
+			"provides": [
+				"binary(pv)"
+			]
+		}
+	},
+	"source-name": "pv",
+	"source-release": "1",
+	"source-version": "1.9.25"
+}
