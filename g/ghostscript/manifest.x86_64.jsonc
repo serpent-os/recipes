@@ -27,6 +27,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"poppler-data",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libXt.so.6(x86_64))",
 				"soname(libc++.so.1(x86_64))",
@@ -41,7 +42,8 @@
 				"soname(libpng16.so.16(x86_64))",
 				"soname(libtiff.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
-				"soname(libz.so.1(x86_64))"
+				"soname(libz.so.1(x86_64))",
+				"urw-base35-fonts"
 			],
 			"files": [
 				"/usr/bin/dvipdf",
@@ -302,6 +304,6 @@
 		}
 	},
 	"source-name": "ghostscript",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "10.04.0"
 }

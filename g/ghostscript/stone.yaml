@@ -5,7 +5,7 @@
 #
 name        : ghostscript
 version     : 10.04.0
-release     : 2
+release     : 3
 homepage    : https://www.ghostscript.com/
 upstreams   :
     - https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostscript-10.04.0.tar.xz : 527eef0b6cd04ecf1c8d7a11796c69a52d34ffe36afca86a400729a2fc01c887
@@ -34,11 +34,18 @@ builddeps   :
     - pkgconfig(xt)
     - pkgconfig(zlib)
     - libpaper-devel
+rundeps     :
+    - poppler-data
+    - urw-base35-fonts
 setup       : |
     rm -rf cups/libs expat freetype lcmsmt libpng jpeg zlib tiff expat openjpeg
+    rm -rf Resource/CMap
     %configure --disable-static \
                --with-system-libtiff \
                --without-local-zlib \
+               --with-fontpath=/usr/share/fonts/urw-base35 \
+               --enable-fontconfig \
+               --enable-freetype \
                --disable-contrib
 build       : |
     %make
