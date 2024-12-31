@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : boulder
-version     : 0.24.6
-release     : 76
+version     : 0.24.7+git.8fa3d1fb
+release     : 77
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -13,7 +13,7 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - https://github.com/serpent-os/tools/archive/refs/tags/v0.24.6.tar.gz : d4a974bfef82c5d1cf3383ee682a084063045b1ff77ea0bf7cabe5cebb1a068e
+    - git|https://github.com/serpent-os/tools.git : 8fa3d1fb5427c4376bcb8f78a31e5d908ca5d1ee
 builddeps   :
     - binary(cargo)
 rundeps     :
@@ -22,7 +22,6 @@ networking  : yes
 check       : |
     %cargo_test
 setup       : |
-    %patch %(pkgdir)/0001-moss-client-Forbid-linking-of-empty-files-fixes-372.patch
     %cargo_fetch
 build       : |
     %cargo_build -p boulder
