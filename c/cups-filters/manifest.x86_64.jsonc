@@ -45,7 +45,6 @@
 				"/usr/lib/cups/filter/pdftopdf",
 				"/usr/lib/cups/filter/pdftops",
 				"/usr/lib/cups/filter/pdftoraster",
-				"/usr/lib/cups/filter/pstops",
 				"/usr/lib/cups/filter/pwgtopclm",
 				"/usr/lib/cups/filter/pwgtopdf",
 				"/usr/lib/cups/filter/pwgtoraster",
@@ -92,6 +91,6 @@
 		}
 	},
 	"source-name": "cups-filters",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.0.1"
 }
