@@ -5,7 +5,7 @@
 #
 name        : moss
 version     : 0.24.7+git.8fa3d1fb
-release     : 69
+release     : 70
 summary     : Serpent OS package manager
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -18,8 +18,13 @@ description : |
 builddeps   :
     - binary(cargo)
 networking  : yes
+tuning      :
+    - optimize: size
+    - lto
 rundeps     :
     - layout
+environment : |
+    export RUSTFLAGS="$RUSTFLAGS -C codegen-units=1"
 check       : |
     %cargo_test
 setup       : |
