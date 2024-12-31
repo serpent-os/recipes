@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libpaper
+version     : 2.2.5
+release     : 1
+homepage    : https://github.com/rrthomas/libpaper/releases/download/v2.2.5
+upstreams   :
+    - https://github.com/rrthomas/libpaper/releases/download/v2.2.5/libpaper-2.2.5.tar.gz : 7be50974ce0df0c74e7587f10b04272cd53fd675cb6a1273ae1cc5c9cc9cab09
+summary     : Library for handling paper characteristics
+description : |
+    libpaper is a library for handling paper characteristics
+license     :
+    - GPL-3.0-or-later
+    - LGPL-2.1-or-later
+    - MIT
+setup       : |
+    %patch %(pkgdir)/0001-Enable-a-stateless-configuration.patch
+    %reconfigure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
