@@ -4,9 +4,9 @@
 	"packages": {
 		"ghostscript": {
 			"build-depends": [
-				"binary(cups-config)",
 				"binary(python3)",
 				"libpaper-devel",
+				"pkgconfig(cups)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(fontconfig)",
 				"pkgconfig(freetype2)",
@@ -31,6 +31,7 @@
 				"soname(libXt.so.6(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
+				"soname(libcups.so.2(x86_64))",
 				"soname(libfontconfig.so.1(x86_64))",
 				"soname(libfreetype.so.6(x86_64))",
 				"soname(libjpeg.so.8(x86_64))",
@@ -266,9 +267,9 @@
 		},
 		"ghostscript-devel": {
 			"build-depends": [
-				"binary(cups-config)",
 				"binary(python3)",
 				"libpaper-devel",
+				"pkgconfig(cups)",
 				"pkgconfig(dbus-1)",
 				"pkgconfig(fontconfig)",
 				"pkgconfig(freetype2)",
