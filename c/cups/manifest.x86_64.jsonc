@@ -24,6 +24,7 @@
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libpam.so.0(x86_64))",
+				"soname(libpaper.so.2(x86_64))",
 				"soname(libssl.so.3(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
 				"soname(libsystemd.so.0(x86_64))",
@@ -722,6 +723,8 @@
 				"/usr/share/defaults/etc/cups/snmp.conf",
 				"/usr/share/defaults/etc/cups/snmp.conf.default",
 				"/usr/share/defaults/etc/cups/ssl",
+				"/usr/share/defaults/etc/pam.d/cups",
+				"/usr/share/defaults/etc/pam.d/cups.N",
 				"/usr/share/doc/cups/apple-touch-icon.png",
 				"/usr/share/doc/cups/cups-printable.css",
 				"/usr/share/doc/cups/cups.css",
@@ -963,6 +966,6 @@
 		}
 	},
 	"source-name": "cups",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "2.4.11"
 }
