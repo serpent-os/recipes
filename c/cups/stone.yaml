@@ -5,7 +5,7 @@
 #
 name        : cups
 version     : 2.4.11
-release     : 4
+release     : 5
 homepage    : https://openprinting.github.io/cups/
 upstreams   :
     - https://github.com/OpenPrinting/cups/releases/download/v2.4.11/cups-2.4.11-source.tar.gz : 9a88fe1da3a29a917c3fc67ce6eb3178399d68e1a548c6d86c70d9b13651fd71
@@ -39,7 +39,7 @@ install     : |
 
     %tmpfiles "d     /etc/cups           0755 root lp      -   -"
     %tmpfiles "d     /run/cups           0755 root lp      -   -"
-    %tmpfiles "d     /run/cups/certs     0511 lp   lpadmin -   -"
+    %tmpfiles "d     /run/cups/certs     0511 lp   lp      -   -"
     %tmpfiles "d     /var/spool/cups     0710 root lp      -   -"
     %tmpfiles "d     /var/spool/cups/tmp 1770 root lp      30d -"
     %tmpfiles "d     /var/cache/cups     0750 root lp      -   -"
