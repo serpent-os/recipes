@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cups-pk-helper
+version     : 0.2.7
+release     : 1
+homepage    : https://www.freedesktop.org/software/cups-pk-helper
+upstreams   :
+    - https://www.freedesktop.org/software/cups-pk-helper/releases/cups-pk-helper-0.2.7.tar.xz : 66070ddb448fe9fcee76aa26be2ede5a80f85563e3a4afd59d2bfd79fbe2e831
+summary     : PolicyKit helper to configure cups with fine-grained privileges
+description : |
+    cups-pk-helper is a PolicyKit helper to configure cups with fine-grained privileges.
+    It provides a DBus service that you can use to allow a user to configure cups with
+    fine-grained privileges. It also provides a CUPS backend that authenticates against
+    this service.
+license     : GPL-2.0-or-later
+builddeps   :
+    - binary(msgfmt)
+    - pkgconfig(cups)
+    - pkgconfig(gio-unix-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(polkit-gobject-1)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
