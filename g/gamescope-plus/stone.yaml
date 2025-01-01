@@ -1,0 +1,81 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gamescope
+version     : 3.15.13.plus1
+release     : 1
+homepage    : https://github.com/ChimeraOS/gamescope
+upstreams   :
+    - git|https://github.com/ChimeraOS/gamescope.git : 426fc5865a5a00339ab17bf006fddcca8a68675f
+    - git|https://github.com/misyltoad/GamescopeShaders.git : 359e480c548fc3a38a612da2de314980c8329983
+summary     : SteamOS session compositing window manager with added patches
+description : |
+    In an embedded session usecase, gamescope does the same thing as steamcompmgr, but with less extra copies and latency. Added with patches by ChimeraOS team.
+license     : 
+    - BSD-2-Clause
+    - GPL-3.0-only
+networking: yes
+builddeps   :
+    - binary(git)
+    - pkgconfig(hwdata)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(vulkan)
+    - pkgconfig(wayland-client)
+    - pkgconfig(x11)
+    - pkgconfig(pixman-1)
+    - cmake(VulkanHeaders)
+    - wayland-protocols-devel
+    - libdrm-devel
+    - libxkbcommon-devel
+    - libxdamage-devel
+    - libxcomposite-devel
+    - libxcursor-devel
+    - libxext-devel
+    - libxxf86vm-devel
+    - libxtst-devel
+    - libxres-devel
+    - pkgconfig(libcap)
+    - pkgconfig(xmu)
+    - pkgconfig(lcms2)
+    - pkgconfig(libudev)
+    - pkgconfig(libseat)
+    - pkgconfig(libinput)
+    - pkgconfig(xwayland)
+    - pkgconfig(xcb-ewmh)
+    - pkgconfig(libdecor-0)
+    - binary(glslangValidator)
+    - pkgconfig(luajit)
+    # FROM WLROOTS
+    # TODO: xcb-errors
+    - binary(cmake)
+    - binary(glslangValidator)
+    - cmake(VulkanHeaders)
+    - pkgconfig(cairo)
+    - pkgconfig(egl)
+    - pkgconfig(gbm)
+    - pkgconfig(glesv2)
+    - pkgconfig(hwdata)
+    - pkgconfig(libdrm)
+    - pkgconfig(libinput)
+    - pkgconfig(libseat)
+    - pkgconfig(libudev)
+    - pkgconfig(pixman-1)
+    - pkgconfig(vulkan)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(wayland-server)
+    - pkgconfig(xcb-renderutil)
+    - pkgconfig(xkbcommon)
+setup       : |
+    cd %(workdir)
+    git submodule update --init --recursive
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %install_dir %(installroot)/usr/share/gamescope/reshade
+    cp -rv %(workdir)/../GamescopeShaders.git/* %(installroot)/usr/share/gamescope/reshade/
+    chmod -R 655 %(installroot)/usr/share/gamescope
+    %meson_install --skip-subprojects
+toolchain   : gnu

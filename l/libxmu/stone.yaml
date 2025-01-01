@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libxmu
+version     : 1.2.1
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxmu/-/archive/libXmu-1.2.1
+upstreams   :
+    - https://www.x.org/releases/individual/lib/libXmu-1.2.1.tar.gz : bf0902583dd1123856c11e0a5085bd3c6e9886fbbd44954464975fd7d52eb599
+summary     : X miscellaneous utility routines library
+description : |
+    This library contains miscellaneous utilities and is not part of the Xlib standard. It contains routines which only use public interfaces so that it
+    may be layered on top of any proprietary implementation of Xlib or Xt.
+license     : X11
+builddeps   :
+    - pkgconfig(x11)
+    - pkgconfig(xext)
+    - pkgconfig(xt)
+    - pkgconfig(xproto)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+
