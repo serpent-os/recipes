@@ -5,10 +5,10 @@
 #
 name        : gparted
 version     : 1.6.0
-release     : 1
+release     : 2
 homepage    : https://gparted.org/
 upstreams   :
-    - https://sourceforge.net/projects/gparted/files/gparted/gparted-1.6.0/gparted-1.6.0.tar.gz/download : 9b9f51b3ce494ddcb59a55e1ae6679c09436604e331dbf5a536d60ded6c6ea5b
+    - https://download.serpentos.com/howdoiwebserver/gparted-1.6.0.tar.gz : 9b9f51b3ce494ddcb59a55e1ae6679c09436604e331dbf5a536d60ded6c6ea5b
 summary     : GParted is a free partition editor for graphically managing your disk partitions
 description : |
     GParted is a free partition editor for graphically managing your disk partitions
@@ -21,8 +21,10 @@ builddeps   :
     - pkgconfig(uuid)
     - pkgconfig(gthread-2.0)
     - pkgconfig(gtkmm-3.0)
+rundeps     :
+    - binary(xhost)
 setup       : |
-    %configure
+    %configure --enable-xhost-root
 build       : |
     %make
 install     : |
