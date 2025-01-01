@@ -1,0 +1,34 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"xhost": {
+			"build-depends": [
+				"binary(xgettext)",
+				"pkgconfig(x11)",
+				"pkgconfig(xau)",
+				"pkgconfig(xext)",
+				"pkgconfig(xmu)",
+				"pkgconfig(xt)",
+				"pkgconfig(xtst)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libXmuu.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/xhost",
+				"/usr/share/man/man1/xhost.1"
+			],
+			"name": "xhost",
+			"provides": [
+				"binary(xhost)"
+			]
+		}
+	},
+	"source-name": "xhost",
+	"source-release": "1",
+	"source-version": "1.0.9"
+}
