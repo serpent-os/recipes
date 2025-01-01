@@ -1,15 +1,23 @@
 /** Human readable report. This is not consumed by boulder */
 {
-	"manifest-version": "0.1",
+	"manifest-version": "0.2",
 	"packages": {
 		"zsh": {
+			"build-depends": [
+				"binary(nroff)",
+				"gdbm-devel",
+				"pkgconfig(libcap)",
+				"pkgconfig(libpcre2-8)",
+				"pkgconfig(ncursesw)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcap.so.2(x86_64))",
 				"soname(libgdbm.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
-				"soname(libncursesw.so.6(x86_64))"
+				"soname(libncursesw.so.6(x86_64))",
+				"soname(libpcre2-8.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/bin/zsh",
@@ -36,6 +44,7 @@
 				"/usr/lib/zsh/5.9/zsh/newuser.so",
 				"/usr/lib/zsh/5.9/zsh/param/private.so",
 				"/usr/lib/zsh/5.9/zsh/parameter.so",
+				"/usr/lib/zsh/5.9/zsh/pcre.so",
 				"/usr/lib/zsh/5.9/zsh/regex.so",
 				"/usr/lib/zsh/5.9/zsh/rlimits.so",
 				"/usr/lib/zsh/5.9/zsh/sched.so",
@@ -51,10 +60,10 @@
 				"/usr/lib/zsh/5.9/zsh/zpty.so",
 				"/usr/lib/zsh/5.9/zsh/zselect.so",
 				"/usr/lib/zsh/5.9/zsh/zutil.so",
-				"/usr/share/defaults/etc/zsh/zlogin",
-				"/usr/share/defaults/etc/zsh/zlogout",
-				"/usr/share/defaults/etc/zsh/zprofile",
-				"/usr/share/defaults/etc/zsh/zshenv",
+				"/usr/share/defaults/zsh/zlogin",
+				"/usr/share/defaults/zsh/zlogout",
+				"/usr/share/defaults/zsh/zprofile",
+				"/usr/share/defaults/zsh/zshenv",
 				"/usr/share/man/man1/zsh.1",
 				"/usr/share/man/man1/zshall.1",
 				"/usr/share/man/man1/zshbuiltins.1",
@@ -1388,11 +1397,49 @@
 			"name": "zsh",
 			"provides": [
 				"binary(zsh)",
-				"binary(zsh-5.9)"
+				"binary(zsh-5.9)",
+				"soname(zsh/5.9/zsh/attr.so(x86_64))",
+				"soname(zsh/5.9/zsh/cap.so(x86_64))",
+				"soname(zsh/5.9/zsh/clone.so(x86_64))",
+				"soname(zsh/5.9/zsh/compctl.so(x86_64))",
+				"soname(zsh/5.9/zsh/complete.so(x86_64))",
+				"soname(zsh/5.9/zsh/complist.so(x86_64))",
+				"soname(zsh/5.9/zsh/computil.so(x86_64))",
+				"soname(zsh/5.9/zsh/curses.so(x86_64))",
+				"soname(zsh/5.9/zsh/datetime.so(x86_64))",
+				"soname(zsh/5.9/zsh/db/gdbm.so(x86_64))",
+				"soname(zsh/5.9/zsh/deltochar.so(x86_64))",
+				"soname(zsh/5.9/zsh/example.so(x86_64))",
+				"soname(zsh/5.9/zsh/files.so(x86_64))",
+				"soname(zsh/5.9/zsh/langinfo.so(x86_64))",
+				"soname(zsh/5.9/zsh/mapfile.so(x86_64))",
+				"soname(zsh/5.9/zsh/mathfunc.so(x86_64))",
+				"soname(zsh/5.9/zsh/nearcolor.so(x86_64))",
+				"soname(zsh/5.9/zsh/net/socket.so(x86_64))",
+				"soname(zsh/5.9/zsh/net/tcp.so(x86_64))",
+				"soname(zsh/5.9/zsh/newuser.so(x86_64))",
+				"soname(zsh/5.9/zsh/param/private.so(x86_64))",
+				"soname(zsh/5.9/zsh/parameter.so(x86_64))",
+				"soname(zsh/5.9/zsh/pcre.so(x86_64))",
+				"soname(zsh/5.9/zsh/regex.so(x86_64))",
+				"soname(zsh/5.9/zsh/rlimits.so(x86_64))",
+				"soname(zsh/5.9/zsh/sched.so(x86_64))",
+				"soname(zsh/5.9/zsh/stat.so(x86_64))",
+				"soname(zsh/5.9/zsh/system.so(x86_64))",
+				"soname(zsh/5.9/zsh/termcap.so(x86_64))",
+				"soname(zsh/5.9/zsh/terminfo.so(x86_64))",
+				"soname(zsh/5.9/zsh/watch.so(x86_64))",
+				"soname(zsh/5.9/zsh/zftp.so(x86_64))",
+				"soname(zsh/5.9/zsh/zle.so(x86_64))",
+				"soname(zsh/5.9/zsh/zleparameter.so(x86_64))",
+				"soname(zsh/5.9/zsh/zprof.so(x86_64))",
+				"soname(zsh/5.9/zsh/zpty.so(x86_64))",
+				"soname(zsh/5.9/zsh/zselect.so(x86_64))",
+				"soname(zsh/5.9/zsh/zutil.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "zsh",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "5.9"
 }
