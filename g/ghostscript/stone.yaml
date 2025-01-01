@@ -5,10 +5,10 @@
 #
 name        : ghostscript
 version     : 10.04.0
-release     : 3
+release     : 4
 homepage    : https://www.ghostscript.com/
 upstreams   :
-    - https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostscript-10.04.0.tar.xz : 527eef0b6cd04ecf1c8d7a11796c69a52d34ffe36afca86a400729a2fc01c887
+    - https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostpdl-10.04.0.tar.gz : 8b1594b067e00e386f818270a255eef6baba593197173725951d5f0c316dc205
 summary     : PostScript and PDF interpreter
 description : |
     Ghostscript is a suite of software based on an interpreter for Adobe Systems' PostScript and Portable Document Format (PDF) page description languages. Its main purposes are the rasterization or rendering of such page description language files, for the display or printing of document pages, and the conversion between PostScript and PDF files.
@@ -46,10 +46,12 @@ setup       : |
                --with-fontpath=/usr/share/fonts/urw-base35 \
                --enable-fontconfig \
                --enable-freetype \
-               --disable-contrib
+               --disable-compile-inits \
+               --without-versioned-path
 build       : |
     %make
     %make so
 install     : |
     %make_install
     %make soinstall DESTDIR=%(installroot)
+    ln -s ../../../poppler/cMap %(installroot)%(datadir)/ghostscript/Resource/CMap
