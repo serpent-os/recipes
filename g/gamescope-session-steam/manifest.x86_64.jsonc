@@ -1,0 +1,38 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gamescope-session-steam": {
+			"depends": [
+				"gamescope-session"
+			],
+			"files": [
+				"/usr/bin/jupiter-biosupdate",
+				"/usr/bin/steam-http-loader",
+				"/usr/bin/steamos-polkit-helpers/jupiter-biosupdate",
+				"/usr/bin/steamos-polkit-helpers/steamos-select-branch",
+				"/usr/bin/steamos-polkit-helpers/steamos-update",
+				"/usr/bin/steamos-select-branch",
+				"/usr/bin/steamos-session-select",
+				"/usr/share/applications/gamescope-mimeapps.list",
+				"/usr/share/applications/steam_http_loader.desktop",
+				"/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf",
+				"/usr/share/gamescope-session-plus/sessions.d/steam",
+				"/usr/share/polkit-1/actions/org.chimeraos.update.policy",
+				"/usr/share/wayland-sessions/gamescope-session-steam.desktop",
+				"/usr/share/wayland-sessions/gamescope-session.desktop"
+			],
+			"name": "gamescope-session-steam",
+			"provides": [
+				"binary(jupiter-biosupdate)",
+				"binary(steam-http-loader)",
+				"binary(steamos-select-branch)",
+				"binary(steamos-session-select)",
+				"binary(steamos-update)"
+			]
+		}
+	},
+	"source-name": "gamescope-session-steam",
+	"source-release": "1",
+	"source-version": "r10.1a3fdb7"
+}
