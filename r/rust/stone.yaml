@@ -4,11 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : rust
-version     : 1.81.0
-release     : 8
+version     : 1.83.0
+release     : 9
 homepage    : https://www.rust-lang.org/
 upstreams   :
-    - https://static.rust-lang.org/dist/rustc-1.81.0-src.tar.xz : 36217ef7e32f40a180e3d79bd666b4dfdaed49dd381023a5fb765fd12d0092ce
+    - https://static.rust-lang.org/dist/rustc-1.83.0-src.tar.xz : 7b11d4242dab0921a7d54758ad3fe805153c979c144625fecde11735760f97df
+    - git|https://github.com/rust-lang/llvm-project.git :
+        ref: c54cff0e6e4d1a0d0a2df7c1ce3d96cdd554763e # rustc/18.1-2024-05-19
 summary     : Rust programming language compiler + tools
 description : |
     Rust programming language compiler + tools
@@ -23,7 +25,8 @@ license     :
     - GPL-3.0-or-later
     - MIT
     - Zlib
-# networking  : true
+# Enable this when bootstrapping
+networking  : true
 builddeps   :
     - binary(FileCheck)
     - binary(cargo)
@@ -36,7 +39,10 @@ builddeps   :
     - binary(strip)
     - binary(which)
     - pkgconfig32(libunwind)
+    - pkgconfig(jemalloc)
+    - pkgconfig(libcurl)
     - pkgconfig(libffi)
+    - pkgconfig(libgit2)
     - pkgconfig(libxml-2.0)
     - pkgconfig(ncurses)
     - pkgconfig(openssl)
@@ -44,15 +50,27 @@ builddeps   :
     - pkgconfig(zlib)
     - gcc-32bit-devel
     - glibc-32bit-devel
-rundeps     :
-    - binary(cc)
 environment : |
     # Don't set these here, all configuration should come from config.toml or the package.yml
     unset RUSTFLAGS
 
-    # Force libsqlite3-sys to use the system deps
+    # Force use of libsqlite3, libgit2, and libssh2 system libs
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
+    export LIBGIT2_NO_VENDOR=1
+
+    # Todo: Figure out how to link this against a dynamic libjemalloc
+    export JEMALLOC_OVERRIDE=%(libdir)/libjemalloc.a
 setup       : |
+    # The build process for Rust seems to partially use the included LLVM source during the build
+    #  even if ultimately it links against the system LLVM. This causes a failure of the PGO build
+    #  due to the profiles being generated with a different version (the included LLVM) than what is
+    #  used for the final build (the system LLVM). To work around this we override the included LLVM
+    #  source with the rustc version that reasonably corresponds to the major version of our system
+    #  LLVM. This is also means that said source needs to be changed when the system LLVM changes.
+    rm -rf src/llvm-project
+    cp -r %(sourcedir)/llvm-project.git src/llvm-project
+
     sed -e 's|@@LTO@@|thin-local|g' %(pkgdir)/config.toml.in > config.toml.pgo
 
     sed -e 's|@@LTO@@|fat|g' %(pkgdir)/config.toml.in > config.toml.release
@@ -61,11 +79,21 @@ setup       : |
     %patch %(pkgdir)/0001-unbundle-sqlite.patch -d src/tools/cargo
     find ./vendor/libsqlite3-sys*/sqlite3/ -mindepth 1 -delete -print
 
-    # TODO package libgit2 and libssh2
+    # Remove unused vendored libraries
+    find ./vendor/curl-sys*/curl/ -mindepth 1 -delete -print
+    find ./vendor/libffi-sys*/libffi/ -mindepth 1 -delete -print
+    find ./vendor/libssh2-sys*/libssh2/ -mindepth 1 -delete -print
+    find ./vendor/libz-sys*/src/zlib{,-ng}/ -mindepth 1 -delete -print
+    find ./vendor/openssl-src*/openssl/ -mindepth 1 -delete -print
+    find ./vendor/libgit2-sys*/libgit2/ -mindepth 1 -delete -print
 
     # Fix bootstrap checking checksums for all the files we just deleted
     find vendor -name .cargo-checksum.json -print \
         -exec sed -i.uncheck -e 's/"files":{[^}]*}/"files":{ }/' '{}' '+'
+
+    # Backports for crashes discovered during testing
+    %patch %(pkgdir)/132613.patch
+    %patch %(pkgdir)/133194.patch
 build       : |
     python ./x.py build \
             --build-dir %(workdir)/build-pgo \
@@ -76,6 +104,9 @@ build       : |
 
     llvm-profdata merge -output=%(workdir)/rustc-pgo-profile-data/rustc-pgo.profdata %(workdir)/rustc-pgo-profile-data/default_*.profraw
 
+    # rust-bootstrap is very inconsistent with the stages of various tools that it wants to build between `dist` and `install`. This
+    # causes a lot of redundant and unnecessary builds if we attempt to do the build with various stages (IE build the compiler first, then the
+    # tools, then install it last). To prevent this from happening just let `install` figure out what it wants.
     DESTDIR=%(installroot) python3 x.py install \
             --build-dir %(workdir)/build-release \
             --config config.toml.release \
@@ -92,12 +123,16 @@ packages    :
         paths:
             - /usr/lib/lib*.so
             - /usr/lib/rustlib/x86_64-unknown-linux-gnu
+        rundeps:
+            - binary(clang)
+            - binary(lld)
 
     - "%(name)-32bit":
         paths:
             - /usr/lib/rustlib/i686-unknown-linux-gnu
         rundeps:
             - "%(name)"
+            - clang-32bit
 
     - "%(name)-devel":
         paths:
@@ -105,7 +140,6 @@ packages    :
             - /usr/bin/cargo-fmt
             - /usr/bin/clippy-driver
             - /usr/bin/rust-analyzer
-            - /usr/bin/rust-demangler
             - /usr/bin/rust-gdb*
             - /usr/bin/rust-lldb
             - /usr/bin/rustfmt

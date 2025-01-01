@@ -5,7 +5,7 @@
 #
 name        : curl
 version     : 8.11.1
-release     : 18
+release     : 19
 summary     : A utility for fetching files from remote servers
 license     : MIT
 homepage    : https://curl.se/
@@ -14,9 +14,9 @@ description : |
 upstreams   :
     - https://curl.se/download/curl-8.11.1.tar.gz: a889ac9dbba3644271bd9d1302b5c22a088893719b72be3487bc3d401e5c4e80
 builddeps:
-    - pkgconfig32(hyper)
     - pkgconfig32(jansson)
     - pkgconfig32(libbrotlidec)
+    - pkgconfig32(libnghttp2)
     - pkgconfig32(libpsl)
     - pkgconfig32(libzstd)
     - pkgconfig32(rustls)
@@ -27,7 +27,6 @@ setup       : |
         --disable-static \
         --with-ca-bundle=%(vendordir)/etc/ssl/certs/ca-certificates.crt \
         --with-rustls \
-        --with-hyper \
         --without-openssl
 build       : |
     %make

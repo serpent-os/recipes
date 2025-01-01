@@ -5,7 +5,7 @@
 #
 name        : zed
 version     : 0.166.1
-release     : 27
+release     : 28
 summary     : High performance, graphical code editor
 license     :
     - AGPL-3.0
@@ -27,7 +27,9 @@ builddeps   :
     - binary(mold)
     - pkgconfig(alsa)
     - pkgconfig(gl)
+    - pkgconfig(libcurl)
     - pkgconfig(libdrm)
+    - pkgconfig(libgit2)
     - pkgconfig(libelf)
     - pkgconfig(libssl)
     - pkgconfig(sqlite3)
@@ -43,6 +45,8 @@ environment : |
     export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
     export ZED_UPDATE_EXPLANATION="Package updates are provided via moss"
 setup       : |
+    %patch %(pkgdir)/0001-Use-system-libs.patch
+
     %cargo_fetch
 build       : |
     RUST_BACKTRACE=1 %cargo_build -p zed -p cli
