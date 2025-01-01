@@ -5,7 +5,7 @@
 #
 name        : xwayland
 version     : 24.1.4
-release     : 7
+release     : 8
 homepage    : https://www.x.org/pub/individual/xserver
 upstreams   :
     - https://www.x.org/pub/individual/xserver/xwayland-24.1.4.tar.xz : d96a78dbab819f55750173444444995b5031ebdcc15b77afebbd8dbc02af34f4
@@ -64,6 +64,7 @@ builddeps   :
     # - pkgconfig(wayland-eglstream-protocols)
     # - pkgconfig(xorg-sgml-doctools)
 rundeps     :
+    - binary(xhost)
     - binary(xkbcomp)
 setup       : |
     %meson
