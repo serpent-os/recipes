@@ -1,0 +1,46 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : sddm
+version     : 0.21.0
+release     : 1
+homepage    : https://github.com/sddm/sddm
+upstreams   :
+    - https://github.com/sddm/sddm/archive/refs/tags/v0.21.0.tar.gz : f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf
+summary     : QML based X11 and Wayland display manager
+description : |
+    SDDM is a modern display manager for X11 and Wayland sessions aiming to be fast, simple and beautiful.
+    It uses modern technologies like QtQuick, which in turn gives the designer the ability to create smooth,
+    animated user interfaces.
+license     : GPL-2.0-only
+builddeps   :
+    - pkgconfig(pam)
+    - pkgconfig(xau)
+    - pkgconfig(xcb)
+    - pkgconfig(Qt5Core)
+    - pkgconfig(Qt5Qml)
+    - pkgconfig(libsystemd)
+    - pkgconfig(gl)
+    - cmake(Qt5LinguistTools)
+setup       : |
+    %patch %(pkgdir)/dont-error-for-logindef.patch
+    %cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
+        -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
+        -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
+        -DBUILD_MAN_PAGES=OFF \
+        -DUID_MAX=60513
+
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+    %install_file %(pkgdir)/sddm.group %(installroot)%(libdir)/userdb/sddm.group
+    ln -s sddm.group %(installroot)%(libdir)/userdb/953.group
+    %install_file %(pkgdir)/sddm.user %(installroot)%(libdir)/userdb/sddm.user
+    ln -s sddm.user %(installroot)%(libdir)/userdb/953.user
+    mkdir -p %(installroot)%(vendordir)
+    mv -v %(installroot)/etc %(installroot)%(vendordir)
+
