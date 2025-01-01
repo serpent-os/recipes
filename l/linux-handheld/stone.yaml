@@ -1,0 +1,139 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : linux-handheld
+version     : 6.12.7
+release     : 1
+homepage    : https://kernel.org/
+upstreams   :
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.7.tar.xz : f785fb648a0e0b66a943bb3228a4b6ed62c90b985cd1ebf69da5d38e589da0cf
+summary     : The Linux Kernel for handheld systems
+description : |
+    The Linux Kernel for handheld systems
+
+    This package provides the Linux Kernel for handheld systems. It is built with
+    the LLVM compiler and the LLD linker, and is configured for handheld systems.
+license     :
+    - GPL-2.0-only
+builddeps   :
+    - binary(bc)
+    - binary(bison)
+    - binary(cryptsetup)
+    - binary(dash)
+    - binary(dbus-broker)
+    - binary(dracut)
+    - binary(flex)
+    - binary(gpg)
+    - binary(grep)
+    - binary(gzip)
+    - binary(kmod)
+    - binary(less)
+    - binary(m4)
+    - binary(perl)
+    - binary(setfont)
+    - binary(loadkeys)
+    - binary(python3)
+    - binary(tr)
+    - binary(which)
+    - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
+    - intel-microcode
+    - linux-firmware
+    - linux-firmware-amd
+    - linux-firmware-intel
+    - linux-firmware-nvidia
+    - pkgconfig(gmp)
+    - pkgconfig(libelf)
+    - pkgconfig(libssl)
+    - pkgconfig(libzstd)
+    - pkgconfig(mpfr)
+    - sysbinary(lvm)
+    - font-cantarell
+    - pkgconfig(ply-boot-client)
+    - serpent-artwork
+    - sysbinary(fsck.ext4)
+    - sysbinary(fsck.f2fs)
+    - sysbinary(fsck.xfs)
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/src
+setup       : |
+    for i in $(cat %(pkgdir)/series) ; do
+        %patch %(pkgdir)/$i
+    done
+
+    extraVersion="-%(release).handheld"
+    sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
+
+    %install_file %(pkgdir)/config-x86_64 .config
+    %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0 oldconfig || exit 1
+    cat .config
+build       : |
+    # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
+    %make VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
+    %make -C tools/objtool VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
+install     : |
+    umask 022
+    kernelVersion="%(version)-%(release).handheld"
+    %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelVersion/vmlinuz
+
+    %install_file .config %(installroot)%(libdir)/kernel/$kernelVersion/config
+    %install_file System.map %(installroot)%(libdir)/kernel/$kernelVersion/System.map
+
+    # Modules please
+    %install_dir %(installroot)%(libdir)/modules/$kernelVersion
+    %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
+    /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
+
+    # Include early microcode
+    PATH="/usr/bin:/usr/sbin" dracut --strip --tmpdir /tmp -N -f \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "bash rescue systemd virtiofs lvm dm" \
+        --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode --fwdir %(libdir)/firmware \
+        --include %(pkgdir)/depmod.conf %(libdir)/depmod.d/depmod.conf \
+        %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd
+
+    # Temporary: Help with VMs
+    ln -s $kernelVersion/50-default.initrd %(installroot)%(libdir)/kernel/current.handheld.initrd
+    ln -s $kernelVersion/vmlinuz %(installroot)%(libdir)/kernel/current.handheld.kernel
+    %install_file %(pkgdir)/boot.json %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
+    sed -e 's/@VERSION@/%(version)-%(release).handheld/g' -i %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
+
+    # Install kernel headers
+    headerRoot="/usr/src/linux-headers-%(version)-%(release).handheld"
+    dstDir="%(installroot)$headerRoot"
+    %install_dir $dstDir
+
+    # Copy core build files
+    find . -type f \( -name 'Makefile*' -o -name 'Kconfig*' -o -name 'Kbuild*' -o -name '*.sh' -o -name '*.pl' -o -name '*.lds' \) -exec cp --parents {} $dstDir \;
+
+    # Copy headers and essential directories
+    for i in include scripts Documentation ; do
+        cp -R $i $dstDir/
+    done
+
+    # Copy architecture specific headers
+    (find arch -name include -type d -print | xargs -n1 -i: find : -type f) | cpio -pd --preserve-modification-time $dstDir
+
+    # Media driver headers
+    for dir in "drivers/media/dvb-frontends" "drivers/media/tuners"; do
+        find $dir -name "*.h" -exec cp --parents {} $dstDir \;
+    done
+    find drivers/media/platform -name "*.h" -exec cp --parents {} $dstDir \;
+
+    # Clean unnecessary files
+    find $dstDir/scripts -name "*.o" -delete
+
+    # Copy build requirements
+    for i in Module.symvers System.map .config ; do
+        %install_file $i $dstDir/
+    done
+    %install_exe tools/objtool/objtool $dstDir/tools/objtool/objtool
+    chmod 00755 $dstDir/scripts/basic/fixdep
+
+    # Set up module symlinks
+    rm -vf %(installroot)%(libdir)/modules/$kernelVersion/build || :
+    rm -vf %(installroot)%(libdir)/modules/$kernelVersion/source || :
+    ln -svf build %(installroot)%(libdir)/modules/$kernelVersion/source
+    ln -svf $headerRoot %(installroot)%(libdir)/modules/$kernelVersion/build
