@@ -40,11 +40,11 @@
 			"name": "opengamepadui",
 			"provides": [
 				"binary(opengamepadui)",
-				"soname(opengamepadui/libopengamepadui_core.so(x86_64))"
+				"soname(opengamepadui/libopengamepadui-core.linux.template_release.x86_64.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "opengamepadui",
-	"source-release": "1",
-	"source-version": "0.35.4"
+	"source-release": "3",
+	"source-version": "0.35.5"
 }
