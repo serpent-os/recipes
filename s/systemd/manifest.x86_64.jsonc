@@ -177,6 +177,8 @@
 				"/usr/lib/systemd/portable/profile/strict/service.conf",
 				"/usr/lib/systemd/portable/profile/trusted/service.conf",
 				"/usr/lib/systemd/resolv.conf",
+				"/usr/lib/systemd/system-environment-generators/50-xdg-config-dirs",
+				"/usr/lib/systemd/system-environment-generators/50-xdg-data-dirs",
 				"/usr/lib/systemd/system-generators/systemd-bless-boot-generator",
 				"/usr/lib/systemd/system-generators/systemd-cryptsetup-generator",
 				"/usr/lib/systemd/system-generators/systemd-debug-generator",
@@ -2314,7 +2316,6 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(systemd/libsystemd-shared-254.so(x86_64))"
 			],
@@ -2365,6 +2366,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "46",
-	"source-version": "254.18"
+	"source-release": "47",
+	"source-version": "254.22"
 }
