@@ -1,0 +1,5 @@
+{
+  "name": "linux-handheld",
+  "version": "@VERSION@",
+  "variant": "handheld"
+}
