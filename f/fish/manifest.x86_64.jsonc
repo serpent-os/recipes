@@ -27,6 +27,7 @@
 				"/usr/etc/fish/functions",
 				"/usr/lib/tmpfiles.d/fish.conf",
 				"/usr/share/applications/fish.desktop",
+				"/usr/share/defaults/etc/profile.d/99-exec-fish-as-interactive-shell.conf",
 				"/usr/share/fish/__fish_build_paths.fish",
 				"/usr/share/fish/completions/..fish",
 				"/usr/share/fish/completions/7z.fish",
@@ -1602,6 +1603,6 @@
 		}
 	},
 	"source-name": "fish",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "3.7.1"
 }

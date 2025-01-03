@@ -7,7 +7,7 @@
 # TODO: Yes, I know this should be in community
 name        : fish
 version     : 3.7.1
-release     : 5
+release     : 6
 homepage    : https://fishshell.com/
 upstreams   :
     - https://github.com/fish-shell/fish-shell/releases/download/3.7.1/fish-3.7.1.tar.xz : 614c9f5643cd0799df391395fa6bbc3649427bb839722ce3b114d3bbc1a3b250
@@ -28,6 +28,11 @@ build       : |
     %cmake_build
 install     : |
     %cmake_install
+
+    # preconfigured to work with serpent so bash can stay as login shell
+    # (less work in terms of having env-var dropins and what not)
+    %install_dir %(installroot)%(vendordir)/etc/profile.d/
+    %install_file %(pkgdir)/99-exec-fish-as-interactive-shell.conf %(installroot)%(vendordir)/etc/profile.d/
     
     %tmpfiles "# Fish shell directories"
     %tmpfiles "d /etc/fish/completions 0755 root root -"
