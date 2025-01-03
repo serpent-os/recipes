@@ -3,10 +3,16 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"sqlite": {
+			"build-depends": [
+				"pkgconfig(readline)",
+				"pkgconfig32(zlib)"
+			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libm.so.6(x86_64))"
+				"soname(libm.so.6(x86_64))",
+				"soname(libreadline.so.8(x86_64))",
+				"soname(libz.so.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/sqlite3",
@@ -21,9 +27,14 @@
 			]
 		},
 		"sqlite-32bit": {
+			"build-depends": [
+				"pkgconfig(readline)",
+				"pkgconfig32(zlib)"
+			],
 			"depends": [
 				"soname(libc.so.6(386))",
 				"soname(libm.so.6(386))",
+				"soname(libz.so.1(386))",
 				"sqlite"
 			],
 			"files": [
@@ -37,6 +48,10 @@
 			]
 		},
 		"sqlite-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(readline)",
+				"pkgconfig32(zlib)"
+			],
 			"depends": [
 				"sqlite-32bit",
 				"sqlite-devel"
@@ -51,6 +66,10 @@
 			]
 		},
 		"sqlite-devel": {
+			"build-depends": [
+				"pkgconfig(readline)",
+				"pkgconfig32(zlib)"
+			],
 			"depends": [
 				"sqlite"
 			],
@@ -67,6 +86,6 @@
 		}
 	},
 	"source-name": "sqlite",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "3.47.2"
 }

@@ -1,0 +1,153 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 31 Dec 2024 13:23:32 -0600
+Subject: [PATCH] Adjust build flags
+
+---
+ configure                       |  2 ++
+ mkspecs/common/g++-unix.conf    |  3 ++-
+ mkspecs/common/gcc-base.conf    | 20 +++++++++++++-------
+ mkspecs/linux-g++-32/qmake.conf |  1 +
+ mkspecs/linux-g++-64/qmake.conf |  1 +
+ mkspecs/linux-g++/qmake.conf    |  1 +
+ qmake/Makefile.unix             |  4 ++--
+ src/corelib/global/global.pri   |  2 +-
+ 8 files changed, 23 insertions(+), 11 deletions(-)
+
+diff --git a/configure b/configure
+index a356427631..2885d3f155 100755
+--- a/configure
++++ b/configure
+@@ -738,8 +738,10 @@ setBootstrapVariable()
+         setBootstrapVariable QMAKE_CXXFLAGS
+         setBootstrapVariable QMAKE_CXXFLAGS_CXX11
+         setBootstrapVariable QMAKE_CXXFLAGS_SPLIT_SECTIONS
++        echo "CONFIGURE_CXXFLAGS = $CXXFLAGS" >> "$mkfile"
+         setBootstrapVariable QMAKE_LFLAGS
+         setBootstrapVariable QMAKE_LFLAGS_GCSECTIONS
++        echo "CONFIGURE_LFLAGS = $LDFLAGS" >> "$mkfile"
+ 
+         if [ "$CFG_DEBUG" = "no" ] || [ "$CFG_RELEASE_TOOLS" = "yes" ]; then
+             setBootstrapVariable QMAKE_CXXFLAGS_RELEASE
+diff --git a/mkspecs/common/g++-unix.conf b/mkspecs/common/g++-unix.conf
+index a493cd5984..73a2fc16ba 100644
+--- a/mkspecs/common/g++-unix.conf
++++ b/mkspecs/common/g++-unix.conf
+@@ -10,5 +10,6 @@
+ 
+ include(g++-base.conf)
+ 
+-QMAKE_LFLAGS_RELEASE   += -Wl,-O1
++SYSTEM_LDFLAGS = $$(LDFLAGS)
++!isEmpty(SYSTEM_LDFLAGS) { eval(QMAKE_LFLAGS_RELEASE += $$(LDFLAGS)) } else { QMAKE_LFLAGS_RELEASE   += -Wl,-O1 }
+ QMAKE_LFLAGS_NOUNDEF   += -Wl,--no-undefined
+diff --git a/mkspecs/common/gcc-base.conf b/mkspecs/common/gcc-base.conf
+index fa65c1dd37..e9396708dd 100644
+--- a/mkspecs/common/gcc-base.conf
++++ b/mkspecs/common/gcc-base.conf
+@@ -31,8 +31,10 @@
+ # you can use the manual test in tests/manual/mkspecs.
+ #
+ 
++CONFIG += nostrip ltcg
++
+ QMAKE_CFLAGS_OPTIMIZE      = -O2
+-QMAKE_CFLAGS_OPTIMIZE_FULL = -O3
++QMAKE_CFLAGS_OPTIMIZE_FULL = -O2
+ QMAKE_CFLAGS_OPTIMIZE_DEBUG = -Og
+ QMAKE_CFLAGS_OPTIMIZE_SIZE = -Os
+ 
+@@ -40,9 +42,11 @@ QMAKE_CFLAGS_OPTIMIZE_SIZE = -Os
+ QMAKE_CFLAGS_DEPS          += -M
+ QMAKE_CFLAGS_WARN_ON       += -Wall -Wextra
+ QMAKE_CFLAGS_WARN_OFF      += -w
+-QMAKE_CFLAGS_RELEASE       += $$QMAKE_CFLAGS_OPTIMIZE
+-QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_OPTIMIZE -g
+-QMAKE_CFLAGS_DEBUG         += -g
++SYSTEM_CFLAGS = $$(CFLAGS)
++SYSTEM_DEBUG_CFLAGS = $$(DEBUG_CFLAGS)
++!isEmpty(SYSTEM_CFLAGS) { eval(QMAKE_CFLAGS_RELEASE += $$(CFLAGS)) } else { QMAKE_CFLAGS_RELEASE += $$QMAKE_CFLAGS_OPTIMIZE }
++!isEmpty(SYSTEM_CFLAGS) { eval(QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -g $$(CFLAGS)) } else { QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_OPTIMIZE -g }
++!isEmpty(SYSTEM_DEBUG_CFLAGS) { eval(QMAKE_CFLAGS_DEBUG += $$(DEBUG_CFLAGS)) } else { QMAKE_CFLAGS_DEBUG += -g }
+ QMAKE_CFLAGS_SHLIB         += $$QMAKE_CFLAGS_PIC
+ QMAKE_CFLAGS_STATIC_LIB    += $$QMAKE_CFLAGS_PIC
+ QMAKE_CFLAGS_APP           += $$QMAKE_CFLAGS_PIC
+@@ -59,9 +63,11 @@ QMAKE_CXXFLAGS            += $$QMAKE_CFLAGS
+ QMAKE_CXXFLAGS_DEPS       += $$QMAKE_CFLAGS_DEPS
+ QMAKE_CXXFLAGS_WARN_ON    += $$QMAKE_CFLAGS_WARN_ON
+ QMAKE_CXXFLAGS_WARN_OFF   += $$QMAKE_CFLAGS_WARN_OFF
+-QMAKE_CXXFLAGS_RELEASE    += $$QMAKE_CFLAGS_RELEASE
+-QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO
+-QMAKE_CXXFLAGS_DEBUG      += $$QMAKE_CFLAGS_DEBUG
++SYSTEM_CXXFLAGS = $$(CXXFLAGS)
++SYSTEM_DEBUG_CXXFLAGS = $$(DEBUG_CXXFLAGS)
++!isEmpty(SYSTEM_CXXFLAGS) { eval(QMAKE_CXXFLAGS_RELEASE += $$(CXXFLAGS)) } else { QMAKE_CXXFLAGS_RELEASE += $$QMAKE_CFLAGS_OPTIMIZE }
++!isEmpty(SYSTEM_CXXFLAGS) { eval(QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO += -g $$(CXXFLAGS)) } else { QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_OPTIMIZE -g }
++!isEmpty(SYSTEM_DEBUG_CXXFLAGS) { eval(QMAKE_CXXFLAGS_DEBUG += $$(DEBUG_CXXFLAGS)) } else { QMAKE_CXXFLAGS_DEBUG += -g }
+ QMAKE_CXXFLAGS_SHLIB      += $$QMAKE_CFLAGS_SHLIB
+ QMAKE_CXXFLAGS_STATIC_LIB += $$QMAKE_CFLAGS_STATIC_LIB
+ QMAKE_CXXFLAGS_APP        += $$QMAKE_CFLAGS_APP
+diff --git a/mkspecs/linux-g++-32/qmake.conf b/mkspecs/linux-g++-32/qmake.conf
+index f09abeeec0..be83b32b4a 100644
+--- a/mkspecs/linux-g++-32/qmake.conf
++++ b/mkspecs/linux-g++-32/qmake.conf
+@@ -5,6 +5,7 @@
+ MAKEFILE_GENERATOR      = UNIX
+ CONFIG                 += incremental
+ QMAKE_INCREMENTAL_STYLE = sublib
++QMAKE_CFLAGS_RELEASE   += -O2
+ 
+ include(../common/linux.conf)
+ 
+diff --git a/mkspecs/linux-g++-64/qmake.conf b/mkspecs/linux-g++-64/qmake.conf
+index a79b69ff31..e0b4c0c992 100644
+--- a/mkspecs/linux-g++-64/qmake.conf
++++ b/mkspecs/linux-g++-64/qmake.conf
+@@ -8,6 +8,7 @@
+ MAKEFILE_GENERATOR      = UNIX
+ CONFIG                 += incremental
+ QMAKE_INCREMENTAL_STYLE = sublib
++QMAKE_CFLAGS_RELEASE   += -O2
+ 
+ include(../common/linux.conf)
+ 
+diff --git a/mkspecs/linux-g++/qmake.conf b/mkspecs/linux-g++/qmake.conf
+index 35bce8f064..1e809ad7c2 100644
+--- a/mkspecs/linux-g++/qmake.conf
++++ b/mkspecs/linux-g++/qmake.conf
+@@ -5,6 +5,7 @@
+ MAKEFILE_GENERATOR      = UNIX
+ CONFIG                 += incremental
+ QMAKE_INCREMENTAL_STYLE = sublib
++QMAKE_CFLAGS_RELEASE   += -O2
+ 
+ include(../common/linux.conf)
+ include(../common/gcc-base-unix.conf)
+diff --git a/qmake/Makefile.unix b/qmake/Makefile.unix
+index d282d7ed58..19535755ed 100644
+--- a/qmake/Makefile.unix
++++ b/qmake/Makefile.unix
+@@ -146,8 +146,8 @@ CPPFLAGS = -g $(EXTRA_CPPFLAGS) \
+ 	   -DQT_BUILD_QMAKE -DQT_BOOTSTRAPPED -DPROEVALUATOR_FULL \
+ 	   -DQT_NO_FOREACH
+ 
+-CXXFLAGS = $(EXTRA_CXXFLAGS) $(CONFIG_CXXFLAGS) $(CPPFLAGS)
+-LFLAGS = $(EXTRA_LFLAGS) $(CONFIG_LFLAGS)
++CXXFLAGS = $(EXTRA_CXXFLAGS) $(CONFIG_CXXFLAGS) $(CPPFLAGS) $(CONFIGURE_CXXFLAGS)
++LFLAGS = $(EXTRA_LFLAGS) $(CONFIG_LFLAGS) $(CONFIGURE_LFLAGS)
+ 
+ first all: $(BUILD_PATH)/bin/qmake$(EXEEXT)
+ qmake: $(BUILD_PATH)/bin/qmake$(EXEEXT)
+diff --git a/src/corelib/global/global.pri b/src/corelib/global/global.pri
+index 2ee8c44159..3f888345ea 100644
+--- a/src/corelib/global/global.pri
++++ b/src/corelib/global/global.pri
+@@ -114,7 +114,7 @@ qtConfig(slog2): \
+ qtConfig(journald): \
+     QMAKE_USE_PRIVATE += journald
+ 
+-gcc:ltcg {
++gcc {
+     versiontagging_compiler.commands = $$QMAKE_CXX -c $(CXXFLAGS) $(INCPATH)
+ 
+     # Disable LTO, as the symbols disappear somehow under GCC

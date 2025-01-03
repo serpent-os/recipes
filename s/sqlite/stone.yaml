@@ -5,7 +5,7 @@
 #
 name        : sqlite
 version     : 3.47.2
-release     : 7
+release     : 8
 homepage    : https://www.sqlite.org
 upstreams   :
     - https://www.sqlite.org/2024/sqlite-autoconf-3470200.tar.gz : f1b2ee412c28d7472bc95ba996368d6f0cdcf00362affdadb27ed286c179540b
@@ -13,12 +13,46 @@ summary     : Small, self-contained SQL database engine
 description : |
     SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. SQLite is the most used database engine in the world. SQLite is built into all mobile phones and most computers and comes bundled inside countless other applications that people use every day.
 license     : Public Domain
+builddeps   :
+    - pkgconfig32(zlib)
+    - pkgconfig(readline)
 tuning      :
-    - lto
+    - lto: full
     - optimize: speed
 emul32      : true
+profiles    :
+    - x86_64:
+        environment: |
+            # Used by sqlite3 command line
+            extra_args="--enable-readline"
 setup       : |
-    %configure --disable-static
+    # When this C-preprocessor macro is defined, SQLite includes some additional APIs that provide convenient access to meta-data about tables and queries
+    export CFLAGS+=" -DSQLITE_ENABLE_COLUMN_METADATA=1"
+
+    # This option enables the SQLITE_DBPAGE virtual table.
+    export CFLAGS+=" -DSQLITE_ENABLE_DBPAGE_VTAB=1"
+
+    # This option enables the dbstat virtual table.
+    export CFLAGS+=" -DSQLITE_ENABLE_DBSTAT_VTAB=1"
+
+    # This compile-time option enables the SQLITE_STMT virtual table logic.
+    export CFLAGS+=" -DSQLITE_ENABLE_STMTVTAB=1"
+
+    # This option enables the sqlite3_unlock_notify() interface and its associated functionality
+    export CFLAGS+=" -DSQLITE_ENABLE_UNLOCK_NOTIFY=1"
+
+    # When this option is present, secure_delete defaults to on
+    # https://www.sqlite.org/pragma.html#pragma_secure_delete
+    export CFLAGS+=" -DSQLITE_SECURE_DELETE=1"
+
+    # This option adds additional logic to the ANALYZE command and to the query planner that can help SQLite to chose a better query plan under certain situations
+    export CFLAGS+=" -DSQLITE_ENABLE_STAT4=1"
+
+    # --enable-session is required for nodejs to use the system sqlite3
+    %configure --disable-static \
+               --disable-static-shell \
+               --enable-session \
+               $extra_args
 build       : |
     %make
 install     : |
