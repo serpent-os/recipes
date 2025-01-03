@@ -1,0 +1,32 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"godot": {
+			"build-depends": [
+				"binary(as)",
+				"binary(g++)",
+				"binary(scons)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/godot",
+				"/usr/share/applications/org.godotengine.Godot.desktop",
+				"/usr/share/mime/packages/org.godotengine.Godot.xml",
+				"/usr/share/pixmaps/.svg"
+			],
+			"name": "godot",
+			"provides": [
+				"binary(godot)"
+			]
+		}
+	},
+	"source-name": "godot",
+	"source-release": "1",
+	"source-version": "4.3"
+}
