@@ -1,5 +1,15 @@
+# Begin /usr/share/defaults/zsh/zshenv
+
+# The present file is always sourced in zsh, making this a good
+# spot for sourcing the default serpent config so it is applied
+# to both login and non-login interactive shells, as well as ssh
+# logins
+source /usr/share/defaults/etc/serpent-stateless-shell-conf.sh
+
 if [ -f /etc/zshenv ]; then
 	source /etc/zshenv
 elif [ -f /etc/zsh/zshenv ]; then
 	source /etc/zsh/zshenv
 fi
+
+# End /usr/share/defaults/zsh/zshenv

@@ -5,7 +5,7 @@
 #
 name        : starship
 version     : "1.21.1"
-release     : 8
+release     : 9
 license     : ISC
 homepage    : https://starship.rs/
 upstreams   :
@@ -35,9 +35,9 @@ install     : |
     %install_dir %(installroot)/%(datadir)/zsh/site-functions
     %install_dir %(installroot)/%(datadir)/fish/vendor_completions.d
 
-    target/*/release/starship completions bash > %(installroot)/%(completionsdir)/starship.bash
-    target/*/release/starship completions zsh > %(installroot)/%(datadir)/zsh/site-functions/_starship
-    target/*/release/starship completions fish > %(installroot)/%(datadir)/fish/vendor_completions.d/starship.fish
+    target/*/debug/starship completions bash > %(installroot)/%(completionsdir)/starship.bash
+    target/*/debug/starship completions zsh > %(installroot)/%(datadir)/zsh/site-functions/_starship
+    target/*/debug/starship completions fish > %(installroot)/%(datadir)/fish/vendor_completions.d/starship.fish
 
     # Default initialisation
     %install_file %(pkgdir)/50-starship.sh %(installroot)%(vendordir)%(sysconfdir)/profile.d/50-starship.sh

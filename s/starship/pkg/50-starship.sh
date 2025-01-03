@@ -3,12 +3,12 @@
 ## Removing starship package will also remove this initialisation
 ##
 
-# Check for interactive shell
-[[ $- == *i* ]] || return 0
+# Check for interactive shell the POSIX sh way
+[ -t 0 ] || return 0
 
-# Make sure TERM isn't 'linux' ..
-case $TERM in
-    linux) return 0;;
+# The linux console terminal emulator can't show the default starship prompt...
+case "$TERM" in
+    "linux") return 0;;
 esac
 
 # Initialise starship prompt with serpent's default prompt
