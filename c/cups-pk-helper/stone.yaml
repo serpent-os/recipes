@@ -5,7 +5,7 @@
 #
 name        : cups-pk-helper
 version     : 0.2.7
-release     : 1
+release     : 2
 homepage    : https://www.freedesktop.org/software/cups-pk-helper
 upstreams   :
     - https://www.freedesktop.org/software/cups-pk-helper/releases/cups-pk-helper-0.2.7.tar.xz : 66070ddb448fe9fcee76aa26be2ede5a80f85563e3a4afd59d2bfd79fbe2e831
