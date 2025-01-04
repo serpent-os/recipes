@@ -5,7 +5,7 @@
 #
 name        : libpaper
 version     : 2.2.5
-release     : 1
+release     : 2
 homepage    : https://github.com/rrthomas/libpaper/releases/download/v2.2.5
 upstreams   :
     - https://github.com/rrthomas/libpaper/releases/download/v2.2.5/libpaper-2.2.5.tar.gz : 7be50974ce0df0c74e7587f10b04272cd53fd675cb6a1273ae1cc5c9cc9cab09

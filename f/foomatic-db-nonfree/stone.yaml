@@ -5,7 +5,7 @@
 #
 name        : foomatic-db-nonfree
 version     : 20240504
-release     : 1
+release     : 2
 homepage    : https://github.com/OpenPrinting/foomatic-db-nonfree
 upstreams   :
     - git|https://github.com/OpenPrinting/foomatic-db-nonfree : 6ddae02ac89240c019f8b5026cfe70e30fd2b3db

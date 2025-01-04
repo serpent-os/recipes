@@ -5,7 +5,7 @@
 #
 name        : uutils-coreutils
 version     : 0.8.27+git.2227330
-release     : 18
+release     : 19
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
     - git|https://github.com/uutils/coreutils.git : 2227330fe70f3c83974b7944abe925af8af95f02

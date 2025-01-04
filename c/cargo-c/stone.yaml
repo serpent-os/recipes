@@ -5,7 +5,7 @@
 #
 name        : cargo-c
 version     : 0.10.7
-release     : 2
+release     : 3
 homepage    : https://github.com/lu-zero/cargo-c
 upstreams   :
     - https://github.com/lu-zero/cargo-c/archive/refs/tags/v0.10.7.tar.gz : c4532dd2bf23769df5f64649d5b0c037fb2a29467c74d16a54bad3054d9f3f3a

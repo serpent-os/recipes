@@ -232,6 +232,6 @@
 		}
 	},
 	"source-name": "libssh2",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.11.1"
 }
