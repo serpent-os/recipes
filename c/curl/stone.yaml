@@ -5,7 +5,7 @@
 #
 name        : curl
 version     : 8.11.1
-release     : 19
+release     : 20
 summary     : A utility for fetching files from remote servers
 license     : MIT
 homepage    : https://curl.se/

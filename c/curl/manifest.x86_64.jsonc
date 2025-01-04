@@ -644,6 +644,6 @@
 		}
 	},
 	"source-name": "curl",
-	"source-release": "19",
+	"source-release": "20",
 	"source-version": "8.11.1"
 }
