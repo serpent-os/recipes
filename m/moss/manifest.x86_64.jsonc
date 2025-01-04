@@ -15,8 +15,11 @@
 			],
 			"files": [
 				"/usr/bin/moss",
+				"/usr/lib/dracut/modules.d/90moss/module-setup.sh",
 				"/usr/lib/kernel/cmdline.d/00-quiet.cmdline",
 				"/usr/lib/kernel/cmdline.d/10-amdgpu.cmdline",
+				"/usr/lib/moss/moss-fstx.sh",
+				"/usr/lib/systemd/system/moss-fstx.service",
 				"/usr/share/bash-completion/completions/moss",
 				"/usr/share/defaults/etc/profile.d/80-command-not-found.sh",
 				"/usr/share/fish/completions/moss.fish",
@@ -60,6 +63,6 @@
 		}
 	},
 	"source-name": "moss",
-	"source-release": "71",
-	"source-version": "0.24.7+git.00163ab4"
+	"source-release": "72",
+	"source-version": "0.24.7+git.b6c4ad6b"
 }
