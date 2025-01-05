@@ -33,35 +33,30 @@ builddeps   :
     - binary(gzip)
     - binary(kmod)
     - binary(less)
+    - binary(loadkeys)
     - binary(m4)
     - binary(moss)
     - binary(perl)
-    - binary(setfont)
-    - binary(loadkeys)
     - binary(python3)
+    - binary(setfont)
     - binary(tr)
     - binary(which)
-    - gcc
-    - intel-microcode
-    - linux-firmware
-    - linux-firmware-amd
-    - linux-firmware-intel
-    - linux-firmware-nvidia
     - pkgconfig(gmp)
     - pkgconfig(libelf)
     - pkgconfig(libssl)
     - pkgconfig(libzstd)
     - pkgconfig(mpfr)
-    - font-cantarell
     - pkgconfig(ply-boot-client)
-    - serpent-artwork
     - sysbinary(fsck.ext4)
     - sysbinary(fsck.f2fs)
     - sysbinary(fsck.xfs)
-packages    :
-    - "%(name)-devel":
-        paths:
-            - /usr/src
+    - font-cantarell
+    - intel-microcode
+    - linux-firmware
+    - linux-firmware-amd
+    - linux-firmware-intel
+    - linux-firmware-nvidia
+    - serpent-artwork
 setup       : |
     DISABLE_LTO="-Wno-error=odr -Wno-error=lto-type-mismatch -Wno-error=strict-aliasing -fno-lto"
     export CFLAGS="${CFLAGS} ${DISABLE_LTO}"
@@ -109,40 +104,6 @@ install     : |
     %install_file %(pkgdir)/boot.json %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
     sed -e 's/@VERSION@/%(version)-%(release).handheld/g' -i %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
 
-    # Install kernel headers
-    headerRoot="/usr/src/linux-headers-%(version)-%(release).handheld"
-    dstDir="%(installroot)$headerRoot"
-    %install_dir $dstDir
-
-    # Copy core build files
-    find . -type f \( -name 'Makefile*' -o -name 'Kconfig*' -o -name 'Kbuild*' -o -name '*.sh' -o -name '*.pl' -o -name '*.lds' \) -exec cp --parents {} $dstDir \;
-
-    # Copy headers and essential directories
-    for i in include scripts Documentation ; do
-        cp -R $i $dstDir/
-    done
-
-    # Copy architecture specific headers
-    (find arch -name include -type d -print | xargs -n1 -i: find : -type f) | cpio -pd --preserve-modification-time $dstDir
-
-    # Media driver headers
-    for dir in "drivers/media/dvb-frontends" "drivers/media/tuners"; do
-        find $dir -name "*.h" -exec cp --parents {} $dstDir \;
-    done
-    find drivers/media/platform -name "*.h" -exec cp --parents {} $dstDir \;
-
-    # Clean unnecessary files
-    find $dstDir/scripts -name "*.o" -delete
-
-    # Copy build requirements
-    for i in Module.symvers System.map .config ; do
-        %install_file $i $dstDir/
-    done
-    %install_exe tools/objtool/objtool $dstDir/tools/objtool/objtool
-    chmod 00755 $dstDir/scripts/basic/fixdep
-
     # Set up module symlinks
     rm -vf %(installroot)%(libdir)/modules/$kernelVersion/build || :
     rm -vf %(installroot)%(libdir)/modules/$kernelVersion/source || :
-    ln -svf build %(installroot)%(libdir)/modules/$kernelVersion/source
-    ln -svf $headerRoot %(installroot)%(libdir)/modules/$kernelVersion/build
