@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"blake3": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libblake3.so.0",
+				"/usr/lib/libblake3.so.1.5.5"
+			],
+			"name": "blake3",
+			"provides": [
+				"soname(libblake3.so.0(x86_64))"
+			]
+		},
+		"blake3-devel": {
+			"depends": [
+				"blake3"
+			],
+			"files": [
+				"/usr/include/blake3.h",
+				"/usr/lib/cmake/blake3/blake3-config-version.cmake",
+				"/usr/lib/cmake/blake3/blake3-config.cmake",
+				"/usr/lib/cmake/blake3/blake3-targets-release.cmake",
+				"/usr/lib/cmake/blake3/blake3-targets.cmake",
+				"/usr/lib/libblake3.so",
+				"/usr/lib/pkgconfig/libblake3.pc"
+			],
+			"name": "blake3-devel",
+			"provides": [
+				"cmake(blake3)",
+				"pkgconfig(libblake3)"
+			]
+		}
+	},
+	"source-name": "blake3",
+	"source-release": "1",
+	"source-version": "1.5.5"
+}
