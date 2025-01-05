@@ -1,0 +1,44 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : graphviz
+version     : 12.2.0
+release     : 1
+homepage    : https://www.graphviz.org
+upstreams   :
+    - https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/12.2.0/graphviz-12.2.0.tar.gz : bd56a15908567ae56f77fcad167f30416b12f4147f91467cbf27265ce11140ad
+summary     :  Graphviz is open source graph visualization software
+description : |
+     Graphviz is open source graph visualization software
+license     : EPL-1.0
+builddeps   :
+    - binary(groff)
+    # Enable later for gvedit
+    # pkgconfig(Qt5Core)
+    - pkgconfig(expat)
+    - pkgconfig(gdk-3.0)
+    - pkgconfig(gdk-pixbuf-2.0)
+    - pkgconfig(glu)
+    - pkgconfig(glut)
+    - pkgconfig(gts)
+    - pkgconfig(librsvg-2.0)
+    - pkgconfig(libwebp)
+    - pkgconfig(pango)
+    - pkgconfig(poppler)
+    - pkgconfig(xaw6)
+    - ghostscript-devel
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/lib/graphviz/*.so
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
