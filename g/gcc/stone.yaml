@@ -5,7 +5,7 @@
 #
 name        : gcc
 version     : 14.2.0
-release     : 6
+release     : 7
 summary     : GNU C++ standard library and compiler
 license     : GPL-3.0-or-later
 homepage    : https://gcc.gnu.org/
