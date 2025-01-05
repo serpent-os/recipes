@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : spdlog
+version     : 1.12.0
+release     : 1
+homepage    : https://github.com/gabime/spdlog
+upstreams   :
+    - https://github.com/gabime/spdlog/archive/refs/tags/v1.12.0.tar.gz : 4dccf2d10f410c1e2feaff89966bfc49a1abb29ef6f08246335b110e001e09a9
+summary     : Fast C++ logging library
+description : |
+    Fast C++ logging library
+license     : MIT
+builddeps  :
+    - pkgconfig(fmt)
+setup       : |
+    %patch %(pkgdir)/spdlog_fmt_external.patch
+    %patch %(pkgdir)/spdlog_constexpr.patch
+
+    %cmake \
+        -DSPDLOG_BUILD_BENCH=OFF \
+        -DSPDLOG_BUILD_EXAMPLES=OFF \
+        -DSPDLOG_BUILD_SHARED=ON \
+        -DSPDLOG_BUILD_STATIC=OFF \
+        -DSPDLOG_FMT_EXTERNAL=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
