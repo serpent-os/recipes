@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : systemd
-version     : 254.18
-release     : 46
+version     : 254.22
+release     : 47
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -15,7 +15,7 @@ homepage    : http://www.freedesktop.org/wiki/Software/systemd
 description : |
     A System and Service Manager
 upstreams   :
-    - https://github.com/systemd/systemd-stable/archive/refs/tags/v254.18.tar.gz: eb8b615d7f507b322893d4585219b5eaa0cadc17de72335d2d755d7100aeb022
+    - https://github.com/systemd/systemd-stable/archive/refs/tags/v254.22.tar.gz: 37612df85fda7c02094b6225814eeb8d6beeeea15b43e8d085f428adef124809
 builddeps   :
     - binary(gperf)
     - binary(m4)
@@ -85,11 +85,12 @@ toolchain   : gnu
 profiles    :
     - emul32:
         setup: |
-            %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
-            %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
-            %patch %(pkgdir)/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
-            %patch %(pkgdir)/0001-gpt-auto-generate-Stop-automounting-xbootldr-and-esp.patch
-            %patch %(pkgdir)/protocols.patch
+            %patch %(pkgdir)/patches/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
+            %patch %(pkgdir)/patches/systemd-245-disable-audit-by-default.patch
+            %patch %(pkgdir)/patches/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
+            %patch %(pkgdir)/patches/0001-gpt-auto-generate-Stop-automounting-xbootldr-and-esp.patch
+            %patch %(pkgdir)/patches/0009-path-lookup-Include-stateless-xdg-path-by-default.patch
+            %patch %(pkgdir)/patches/protocols.patch
 
             %meson \
                     -Dbpf-framework=false \
@@ -129,11 +130,12 @@ profiles    :
         install: |
             %meson_install
 setup       : |
-    %patch %(pkgdir)/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
-    %patch %(pkgdir)/systemd-245-disable-audit-by-default.patch
-    %patch %(pkgdir)/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
-    %patch %(pkgdir)/0001-gpt-auto-generate-Stop-automounting-xbootldr-and-esp.patch
-    %patch %(pkgdir)/protocols.patch
+    %patch %(pkgdir)/patches/0016-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
+    %patch %(pkgdir)/patches/systemd-245-disable-audit-by-default.patch
+    %patch %(pkgdir)/patches/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
+    %patch %(pkgdir)/patches/0001-gpt-auto-generate-Stop-automounting-xbootldr-and-esp.patch
+    %patch %(pkgdir)/patches/0009-path-lookup-Include-stateless-xdg-path-by-default.patch
+    %patch %(pkgdir)/patches/protocols.patch
 
     %meson \
         -Dbpf-framework=false \
@@ -215,3 +217,5 @@ install     : |
     %install_file %(pkgdir)/systemd_hwdb.yaml %(installroot)/usr/share/moss/triggers/tx.d/systemd_hwdb.yaml
 
     rm -v %(installroot)%(libdir)/systemd/boot/efi/*32.efi*
+
+    %install_exe -t %(installroot)/usr/lib/systemd/system-environment-generators %(pkgdir)/config/50-xdg-{config,data}-dirs
