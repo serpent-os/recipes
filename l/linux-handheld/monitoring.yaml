@@ -1,0 +1,6 @@
+releases:
+  id: 315000
+security:
+  cpe:
+  - vendor: linux
+    product: kernel
