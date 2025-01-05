@@ -15,6 +15,7 @@ surface/0011-surface-gpe.patch
 surface/0012-cameras.patch
 surface/0013-amd-gpio.patch
 surface/0014-rtc.patch
+asus-patch-series.patch
 0001-hda-tas2781-add-speaker-id-check-for-ASUS-projects.patch
 0001-iio_imu_Add_driver_for_Bosch_BMI260_IMU.patch
 0001-steam-deck.patch

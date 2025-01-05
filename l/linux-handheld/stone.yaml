@@ -5,7 +5,9 @@
 #
 name        : linux-handheld
 version     : 6.12.8
-release     : 1
+release     : 2
+tuning      :
+    - lto: false
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.8.tar.xz : 2291da065ca04b715c89ee50362aec3f021a7414bc963f1b56736682c8122979
@@ -14,9 +16,10 @@ description : |
     The Linux Kernel for handheld systems
 
     This package provides the Linux Kernel for handheld systems. It is built with
-    the LLVM compiler and the LLD linker, and is configured for handheld systems.
+    the GCC compiler and is configured for handheld systems.
 license     :
     - GPL-2.0-only
+toolchain   : gnu
 builddeps   :
     - binary(bc)
     - binary(bison)
@@ -31,13 +34,14 @@ builddeps   :
     - binary(kmod)
     - binary(less)
     - binary(m4)
+    - binary(moss)
     - binary(perl)
     - binary(setfont)
     - binary(loadkeys)
     - binary(python3)
     - binary(tr)
     - binary(which)
-    - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
+    - gcc
     - intel-microcode
     - linux-firmware
     - linux-firmware-amd
@@ -48,7 +52,6 @@ builddeps   :
     - pkgconfig(libssl)
     - pkgconfig(libzstd)
     - pkgconfig(mpfr)
-    - sysbinary(lvm)
     - font-cantarell
     - pkgconfig(ply-boot-client)
     - serpent-artwork
@@ -60,6 +63,12 @@ packages    :
         paths:
             - /usr/src
 setup       : |
+    DISABLE_LTO="-Wno-error=odr -Wno-error=lto-type-mismatch -Wno-error=strict-aliasing -fno-lto"
+    export CFLAGS="${CFLAGS} ${DISABLE_LTO}"
+    export CXXFLAGS="${CXXFLAGS} ${DISABLE_LTO}"
+    export FCFLAGS="${FCFLAGS} ${DISABLE_LTO}"
+    export FFLAGS="${FFLAGS} ${DISABLE_LTO}"
+    echo $FCFLAGS
     for i in $(cat %(pkgdir)/series) ; do
         %patch %(pkgdir)/$i
     done
@@ -68,12 +77,12 @@ setup       : |
     sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
 
     %install_file %(pkgdir)/config-x86_64 .config
-    %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0 oldconfig || exit 1
+    %make CC=%(cc) LD=%(ld) ARCH=x86_64 WERROR=0 oldconfig || exit 1
     cat .config
 build       : |
     # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
-    %make VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
-    %make -C tools/objtool VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
+    %make VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 WERROR=0
+    %make -C tools/objtool VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 WERROR=0
 install     : |
     umask 022
     kernelVersion="%(version)-%(release).handheld"
@@ -84,12 +93,12 @@ install     : |
 
     # Modules please
     %install_dir %(installroot)%(libdir)/modules/$kernelVersion
-    %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
+    %make CC=%(cc) LD=%(ld) ARCH=x86_64 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
     /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
 
     # Include early microcode
     PATH="/usr/bin:/usr/sbin" dracut --strip --tmpdir /tmp -N -f \
-        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "bash rescue systemd virtiofs lvm dm" \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "bash rescue systemd virtiofs lvm dm moss" \
         --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode --fwdir %(libdir)/firmware \
         --include %(pkgdir)/depmod.conf %(libdir)/depmod.d/depmod.conf \
         %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd
