@@ -5,7 +5,7 @@
 #
 name        : binutils
 version     : 2.43.0+git.5f8987d3
-release     : 14
+release     : 15
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
