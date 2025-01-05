@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mesa
-version     : 24.3.2
-release     : 25
+version     : 24.3.3
+release     : 26
 homepage    : https://mesa3d.org/
 upstreams   :
-    - https://archive.mesa3d.org/mesa-24.3.2.tar.xz : ad9f5f3a6d2169e4786254ee6eb5062f746d11b826739291205d360f1f3ff716
+    - https://archive.mesa3d.org/mesa-24.3.3.tar.xz : 105afc00a4496fa4d29da74e227085544919ec7c86bd92b0b6e7fcc32c7125f4
 summary     : Mesa 3D graphics library
 description : |
     The Mesa project began as an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics. Over the years the project has grown to implement more graphics APIs, including OpenGL ES, OpenCL, OpenMAX, VDPAU, VA-API, Vulkan and EGL. A variety of device drivers allows the Mesa libraries to be used in many different environments ranging from software emulation to complete hardware acceleration for modern GPUs. Mesa ties into several other open-source projects: the Direct Rendering Infrastructure, X.org, and Wayland to provide OpenGL support on Linux, FreeBSD, and other operating systems.
