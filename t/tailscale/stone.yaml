@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #                
 name        : tailscale
-version     : v1.72.1
-release     : 5
+version     : v1.78.1
+release     : 6
 homepage    : https://github.com/tailscale/tailscale
 upstreams   :
-    - https://github.com/tailscale/tailscale/archive/refs/tags/v1.72.1.tar.gz : 21b529e85144f526b61e0998c8b7885d53f17cba21252e5c7252c4014f5f507b
+    - https://github.com/tailscale/tailscale/archive/refs/tags/v1.78.1.tar.gz : dbc25cc241bb233f183475f003d5508af7b45add1ca548b35a6a6fea91fb91af
 summary     :  Private WireGuard® networks made easy
 description : |
     The easiest, most secure way to use WireGuard and 2FA.
