@@ -23,6 +23,11 @@ See [its readme][moss-boulder-readme] for instructions.
 
 [moss-boulder-readme]: https://github.com/serpent-os/moss?tab=readme-ov-file#onboarding
 
+### Setting up Lints and Hooks
+
+Ensuring `just` is installed run `just init`. This will setup git hooks that will lint for the most common packaging errors upon `git commit` as well as
+pre-fillout commit messages for you.
+
 ### Add a local repository
 
 Our `justfile` defaults to `local-x86_64` profile with boulder. While we traditionally shipped this pre-enabled configuration, we figured that mandating
