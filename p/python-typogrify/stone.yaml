@@ -1,0 +1,19 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-typogrify
+version     : 2.0.7
+release     : 1
+homepage    : https://github.com/mintchaos/typogrify
+upstreams   :
+    - https://files.pythonhosted.org/packages/source/t/typogrify/typogrify-2.0.7.tar.gz : 8be4668cda434163ce229d87ca273a11922cb1614cb359970b7dc96eed13cb38
+summary     : A set of Django template filters to make caring about typography on the web a bit easier
+description : |
+    Typogrify provides a set of custom filters that automatically apply various transformations to plain text in order to yield typographically-improved HTML. While often used in conjunction with Jinja and Django template systems, the filters can be used in any environment.
+license     : BSD-3-Clause
+build       : |
+    %python_setup
+install     : |
+    %python_install
