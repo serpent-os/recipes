@@ -9,7 +9,8 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(libc.so.6(x86_64))"
+				"soname(libc.so.6(x86_64))",
+				"sysbinary(iptables)"
 			],
 			"files": [
 				"/usr/bin/tailscale",
@@ -25,6 +26,6 @@
 		}
 	},
 	"source-name": "tailscale",
-	"source-release": "5",
-	"source-version": "v1.72.1"
+	"source-release": "6",
+	"source-version": "v1.78.1"
 }
