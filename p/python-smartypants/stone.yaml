@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-smartypants
+version     : 2.0.1
+release     : 1
+homepage    : https://github.com/leohemsted/smartypants.py
+upstreams   :
+    - https://github.com/leohemsted/smartypants.py/archive/refs/tags/v2.0.1.tar.gz : b98191911ff3b4144ef8ad53e776a2d0ad24bd508a905c6ce523597c40022773
+summary     : Translate plain ASCII punctuation characters into “smart” typographic punctuation HTML entities.
+description : |
+    Translate plain ASCII punctuation characters into “smart” typographic punctuation HTML entities.
+license     :
+    - BSD-2-Clause
+    - BSD-3-Clause
+build       : |
+    %python_setup
+install     : |
+    %python_install
