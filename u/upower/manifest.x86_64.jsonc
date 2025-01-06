@@ -4,6 +4,7 @@
 	"packages": {
 		"upower": {
 			"build-depends": [
+				"binary(gtkdoc-scan)",
 				"binary(msgfmt)",
 				"binary(xmlto)",
 				"binary(xsltproc)",
@@ -67,6 +68,7 @@
 		},
 		"upower-devel": {
 			"build-depends": [
+				"binary(gtkdoc-scan)",
 				"binary(msgfmt)",
 				"binary(xmlto)",
 				"binary(xsltproc)",
@@ -98,9 +100,54 @@
 			"provides": [
 				"pkgconfig(upower-glib)"
 			]
+		},
+		"upower-docs": {
+			"build-depends": [
+				"binary(gtkdoc-scan)",
+				"binary(msgfmt)",
+				"binary(xmlto)",
+				"binary(xsltproc)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gudev-1.0)",
+				"pkgconfig(libimobiledevice-1.0)",
+				"pkgconfig(libplist-2.0)",
+				"pkgconfig(systemd)"
+			],
+			"files": [
+				"/usr/share/gtk-doc/html/UPower/Device.html",
+				"/usr/share/gtk-doc/html/UPower/KbdBacklight.html",
+				"/usr/share/gtk-doc/html/UPower/UPower-up-types.html",
+				"/usr/share/gtk-doc/html/UPower/UPower.7.html",
+				"/usr/share/gtk-doc/html/UPower/UPower.devhelp2",
+				"/usr/share/gtk-doc/html/UPower/UPower.html",
+				"/usr/share/gtk-doc/html/UPower/UpClient.html",
+				"/usr/share/gtk-doc/html/UPower/UpDevice.html",
+				"/usr/share/gtk-doc/html/UPower/UpHistoryItem.html",
+				"/usr/share/gtk-doc/html/UPower/UpStatsItem.html",
+				"/usr/share/gtk-doc/html/UPower/annotation-glossary.html",
+				"/usr/share/gtk-doc/html/UPower/home.png",
+				"/usr/share/gtk-doc/html/UPower/index.html",
+				"/usr/share/gtk-doc/html/UPower/ix01.html",
+				"/usr/share/gtk-doc/html/UPower/left-insensitive.png",
+				"/usr/share/gtk-doc/html/UPower/left.png",
+				"/usr/share/gtk-doc/html/UPower/libupower-glib-helpers.html",
+				"/usr/share/gtk-doc/html/UPower/libupower-glib.html",
+				"/usr/share/gtk-doc/html/UPower/license.html",
+				"/usr/share/gtk-doc/html/UPower/ref-dbus.html",
+				"/usr/share/gtk-doc/html/UPower/right-insensitive.png",
+				"/usr/share/gtk-doc/html/UPower/right.png",
+				"/usr/share/gtk-doc/html/UPower/style.css",
+				"/usr/share/gtk-doc/html/UPower/tools-fileformats.html",
+				"/usr/share/gtk-doc/html/UPower/up-insensitive.png",
+				"/usr/share/gtk-doc/html/UPower/up.png",
+				"/usr/share/gtk-doc/html/UPower/upower.1.html",
+				"/usr/share/gtk-doc/html/UPower/upowerd.8.html"
+			],
+			"name": "upower-docs"
 		}
 	},
 	"source-name": "upower",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.90.4"
 }
