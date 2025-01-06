@@ -17,6 +17,8 @@ networking  : yes
 builddeps   :
     - git
     - golang
+rundeps     :
+    - sysbinary(iptables)
 environment: |
    export VERSION_LONG=%(version)
    export VERSION_SHORT=%(version)
