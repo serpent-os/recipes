@@ -5,7 +5,7 @@
 #
 name        : file-roller
 version     : 44.3
-release     : 2
+release     : 3
 homepage    : https://gitlab.gnome.org/GNOME/file-roller
 upstreams   :
     - https://download.gnome.org/sources/file-roller/44/file-roller-44.3.tar.xz : 04c8a74625fec84267fdec40306afb4104bd332d85061e0d36d4ab0533adfa4a
@@ -15,8 +15,8 @@ description : |
 license     : GPL-2.0-or-later
 builddeps   :
     - binary(cpio)
-    - binary(msgfmt)
     - binary(itstool)
+    - binary(msgfmt)
     - binary(update-desktop-database)
     - pkgconfig(glib-2.0)
     - pkgconfig(gobject-introspection-1.0)
@@ -29,6 +29,7 @@ builddeps   :
     - pkgconfig(libportal)
     - pkgconfig(libportal-gtk4)
 setup       : |
+    %patch %(pkgdir)/0001-stone-mime.patch
     %meson
 build       : |
     %meson_build
