@@ -68,6 +68,10 @@ index-local: create-local
 ls-local: create-local
     cd {{ invocation_directory() }} && ls -AFcghlot {{local_repo}}
 
+# check the entire tree for packages missing monitoring.yaml files
+monitoring-status:
+    find . -mindepth 2 -maxdepth 2 -type d ! -exec test -e '{}/monitoring.yaml' \; -print |grep -vE '^\./\.git|^\./tools' |sort -n
+
 # move .stones to LOCAL_REPO (create if it doesn't exist) and reindex it
 mv-local: create-local
     cd {{ invocation_directory() }} && mv -v *.stone {{local_repo}}/ && moss index {{local_repo}}
