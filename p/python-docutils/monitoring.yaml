@@ -1,0 +1,6 @@
+releases:
+  id: 3849
+security:
+  cpe:
+  - vendor: nim-lang
+    product: docutils
