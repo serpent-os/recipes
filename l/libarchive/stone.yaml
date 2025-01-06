@@ -5,7 +5,7 @@
 #
 name        : libarchive
 version     : 3.7.7
-release     : 7
+release     : 8
 summary     : Multi-format archive and compression library
 license     : BSD-2-Clause
 homepage    : https://www.libarchive.org
@@ -18,15 +18,18 @@ builddeps   :
     - pkgconfig(libcrypto)
     - pkgconfig(liblz4)
     - pkgconfig(liblzma)
+    - pkgconfig(libstone)
     - pkgconfig(libxml-2.0)
     - pkgconfig(libzstd)
     - pkgconfig(zlib)
 setup       : |
-    %configure --disable-rpath \
+    %patch %(pkgdir)/stone-read-support.patch
+    %reconfigure --disable-rpath \
                --disable-static \
                --enable-bsdcpio=static \
                --enable-bsdtar=static \
-               --enable-shared
+               --enable-shared \
+               --with-libstone
 build       : |
     %make
 install     : |
