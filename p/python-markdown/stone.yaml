@@ -1,0 +1,19 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : python-markdown
+version     : 3.7
+release     : 1
+homepage    : https://python-markdown.github.io/
+upstreams   :
+    - https://github.com/Python-Markdown/markdown/archive/refs/tags/3.7.tar.gz : c736153e1c93246ec566d960d614abe308c6f5b80e89697105076af507bc47b3
+summary     : A Python implementation of John Gruber’s Markdown with Extension support.
+description : |
+    This is a Python implementation of John Gruber's Markdown. It is almost completely compliant with the reference implementation, though there are a few known issues. See Features for information on what exactly is supported and what is not. Additional features are supported by the Available Extensions.
+license     : BSD-3-Clause
+build       : |
+    %pyproject_build
+install     : |
+    %pyproject_install
