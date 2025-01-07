@@ -5,7 +5,7 @@
 #
 name        : discord
 version     : 0.0.79
-release     : 6
+release     : 7
 summary     : Group chat, video, and voice calling app
 license     : Distributable
 homepage    : https://discord.com/
@@ -21,6 +21,7 @@ builddeps   :
     - binary(ln)
     - binary(tar)
 rundeps     :
+    - binary(xdg-open)
     - soname(libXss.so.1(x86_64))
     - soname(libatomic.so.1(x86_64))
 strip       : false
