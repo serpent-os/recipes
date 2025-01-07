@@ -24,6 +24,41 @@ _bump target:
     cd {{ invocation_directory() }}; {{boulder}} {{boulder_args}} recipe bump
 bump: (_bump build_file)
 
+# check existing monitoring.yaml files in the tree for missing mandatory fields
+check-monitoring-fields:
+    #!/usr/bin/env bash
+    for f in $(find -type f -name "monitoring.yaml" 2>/dev/null |sort -n ); do
+        cpe="$( grep "cpe:" "${f}" )"
+        id="$( grep "id:" "${f}" )"
+        rss="$( grep "rss:" "${f}" )"
+        if [[ "${cpe}" == "" || "${id}" == "" || "${rss}" == "" ]]; then
+             echo -en "\n${f} is missing mandatory fields:\n>> "
+             [[ "${cpe}" == "" ]] && echo -n "cpe "
+             [[ "${id}" == "" ]] && echo -n "id "
+             [[ "${rss}" == "" ]] && echo -n "rss "
+             echo -e "<<\nContents:\n---------"
+             cat "${f}"
+             echo "---------"
+        fi
+    done
+
+# check the entire tree for package recipes missing monitoring.yaml files
+check-monitoring-missing:
+    #!/usr/bin/env bash
+    OUTPUT=/tmp/check-monitoring-missing.txt
+
+    # find all dirs with a stone.yaml file
+    find -mindepth 3 -maxdepth 3 -type f -name 'stone.yaml' -exec /usr/bin/dirname '{}' \; 2>/dev/null > "${OUTPUT}"
+    # find all dirs with a monitoring.yaml file
+    find -mindepth 3 -maxdepth 3 -type f -name 'monitoring.yaml' -exec /usr/bin/dirname '{}' \; 2>/dev/null >> "${OUTPUT}"
+    echo "The following directories have a stone.yaml recipe but no monitoring.yaml file:"
+    # the non-duplicate lines are most likely dirs with no monitoring.yaml
+    for d in $( sort -n ${OUTPUT} | uniq -u ); do
+        [[ -f ${d}/monitoring.yml ]] && echo -n " (has .yml) " || echo -n "            "
+        echo -en "${d}\n"
+    done
+    [[ -f "${OUTPUT}" ]] && rm -f "${OUTPUT}"
+
 # Chroot into pkg from the current directory
 chroot: (_chroot build_file)
 
