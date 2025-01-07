@@ -28,8 +28,10 @@ bump: (_bump build_file)
 check-monitoring-fields:
     #!/usr/bin/env bash
 
-    count=0
+    total_count=0
+    missing_count=0
     for f in $(find -type f -name "monitoring.yaml" 2>/dev/null |sort -n ); do
+        let "total_count=total_count+1"
         cpe="$( grep "cpe:" "${f}" )"
         id="$( grep "id:" "${f}" )"
         rss="$( grep "rss:" "${f}" )"
@@ -41,20 +43,22 @@ check-monitoring-fields:
              echo -e "<<\nContents:\n---------"
              cat "${f}"
              echo "---------"
-             let "count=count+1"
+             let "missing_count=missing_count+1"
         fi
     done
-    echo -e "\n${count} monitoring.yaml files are missing mandatory fields.\n"
-    unset count
+    echo -e "\nOut of ${total_count} monitoring.yaml files, ${missing_count} are missing mandatory fields.\n"
+    unset missing_count
+    unset total_count
     # end
 
 # check the entire tree for package recipes missing monitoring.yaml files
 check-monitoring-missing:
     #!/usr/bin/env bash
     OUTPUT=/tmp/check-monitoring-missing.txt
-    count=0
+    missing_count=0
     # find all dirs with a stone.yaml file
     find -mindepth 3 -maxdepth 3 -type f -name 'stone.yaml' -exec /usr/bin/dirname '{}' \; 2>/dev/null > "${OUTPUT}"
+    total_count=$( wc -l "${OUTPUT}" |cut -f1 -d' ' )
     # find all dirs with a monitoring.yaml file
     find -mindepth 3 -maxdepth 3 -type f -name 'monitoring.yaml' -exec /usr/bin/dirname '{}' \; 2>/dev/null >> "${OUTPUT}"
     echo "The following directories have a stone.yaml recipe but no monitoring.yaml file:"
@@ -62,10 +66,11 @@ check-monitoring-missing:
     for d in $( sort -n ${OUTPUT} | uniq -u ); do
         [[ -f ${d}/monitoring.yml ]] && echo -n " (has .yml) " || echo -n "            "
         echo -en "${d}\n"
-        let "count=count+1"
+        let "missing_count=missing_count+1"
     done
-    echo -e "\n${count} missing monitoring.yaml files in total.\n"
-    unset count
+    echo -e "\nOut of ${total_count} package recipes, ${missing_count} are missing monitoring.yaml files.\n"
+    unset missing_count
+    unset total_count
     [[ -f "${OUTPUT}" ]] && rm -f "${OUTPUT}"
     # end
 
