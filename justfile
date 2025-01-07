@@ -27,6 +27,8 @@ bump: (_bump build_file)
 # check existing monitoring.yaml files in the tree for missing mandatory fields
 check-monitoring-fields:
     #!/usr/bin/env bash
+
+    count=0
     for f in $(find -type f -name "monitoring.yaml" 2>/dev/null |sort -n ); do
         cpe="$( grep "cpe:" "${f}" )"
         id="$( grep "id:" "${f}" )"
@@ -39,14 +41,18 @@ check-monitoring-fields:
              echo -e "<<\nContents:\n---------"
              cat "${f}"
              echo "---------"
+             let "count=count+1"
         fi
     done
+    echo -e "\n${count} monitoring.yaml files are missing mandatory fields.\n"
+    unset count
+    # end
 
 # check the entire tree for package recipes missing monitoring.yaml files
 check-monitoring-missing:
     #!/usr/bin/env bash
     OUTPUT=/tmp/check-monitoring-missing.txt
-
+    count=0
     # find all dirs with a stone.yaml file
     find -mindepth 3 -maxdepth 3 -type f -name 'stone.yaml' -exec /usr/bin/dirname '{}' \; 2>/dev/null > "${OUTPUT}"
     # find all dirs with a monitoring.yaml file
@@ -56,8 +62,12 @@ check-monitoring-missing:
     for d in $( sort -n ${OUTPUT} | uniq -u ); do
         [[ -f ${d}/monitoring.yml ]] && echo -n " (has .yml) " || echo -n "            "
         echo -en "${d}\n"
+        let "count=count+1"
     done
+    echo -e "\n${count} missing monitoring.yaml files in total.\n"
+    unset count
     [[ -f "${OUTPUT}" ]] && rm -f "${OUTPUT}"
+    # end
 
 # Chroot into pkg from the current directory
 chroot: (_chroot build_file)
@@ -102,10 +112,6 @@ index-local: create-local
 # list .stones in LOCAL_REPO (create it if it doesn't exist)
 ls-local: create-local
     cd {{ invocation_directory() }} && ls -AFcghlot {{local_repo}}
-
-# check the entire tree for packages missing monitoring.yaml files
-monitoring-status:
-    find . -mindepth 2 -maxdepth 2 -type d ! -exec test -e '{}/monitoring.yaml' \; -print |grep -vE '^\./\.git|^\./tools' |sort -n
 
 # move .stones to LOCAL_REPO (create if it doesn't exist) and reindex it
 mv-local: create-local
