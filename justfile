@@ -1,3 +1,8 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
 default: (_build build_file)
 
 set dotenv-load
