@@ -1,7 +1,7 @@
-From a2b90e8d5388842dafae8c3a97fa353ecedf923b Mon Sep 17 00:00:00 2001
+From 75ffd91fb4a2da8683a438f0ea23a2fe20dd97ca Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Fri, 24 May 2024 10:54:36 +1200
-Subject: [PATCH 20/45] platform/x86: asus-wmi: don't fail if platform_profile
+Subject: [PATCH 02/28] platform/x86: asus-wmi: don't fail if platform_profile
  already registered
 
 On some newer laptops it appears that an AMD driver can register a
@@ -19,10 +19,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 89f5f44857d5..9fb3db881b3b 100644
+index 1101e5b2488e..293ecd228a5a 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -4776,7 +4776,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4769,7 +4769,7 @@ static int asus_wmi_add(struct platform_device *pdev)
  		goto fail_fan_boost_mode;
  
  	err = platform_profile_setup(asus);

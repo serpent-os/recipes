@@ -1,7 +1,7 @@
-From b02ee25c8064a0ff469ef812a54b62fa5da4e6bb Mon Sep 17 00:00:00 2001
+From 1508da1b03bedecbe0a991bece7c1797b14fe055 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 18 Sep 2024 21:19:12 +1200
-Subject: [PATCH 29/45] platform/x86: asus-armoury: add core count control
+Subject: [PATCH 11/28] platform/x86: asus-armoury: add core count control
 
 Implement Intel core enablement under the asus-armoury module using the
 fw_attributes class.
