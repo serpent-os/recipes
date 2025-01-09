@@ -5,7 +5,7 @@
 #
 name        : cosmic-session
 version     : 1.0.0-alpha.4
-release     : 18
+release     : 19
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
@@ -46,6 +46,7 @@ networking  : yes
 tuning      :
     - lto: thin
 setup       : |
+    %patch %(pkgdir)/0001-systemd-env.patch
     %cargo_fetch
 build       : |
     %cargo_build

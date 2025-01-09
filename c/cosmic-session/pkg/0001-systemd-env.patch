@@ -1,0 +1,104 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Thu, 2 Jan 2025 13:47:34 -0600
+Subject: [PATCH] Import systemd environment
+
+---
+ src/main.rs    | 31 ++++++++++++++++++++++++++++++-
+ src/systemd.rs | 27 +++++++++++++++++++++++++++
+ 2 files changed, 57 insertions(+), 1 deletion(-)
+
+diff --git a/src/main.rs b/src/main.rs
+index 9765eb0..90b8605 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -24,7 +24,7 @@ use futures_util::StreamExt;
+ use launch_pad::{process::Process, ProcessManager};
+ use service::SessionRequest;
+ #[cfg(feature = "systemd")]
+-use systemd::{is_systemd_used, spawn_scope};
++use systemd::{get_systemd_env, is_systemd_used, spawn_scope};
+ use tokio::{
+ 	net::UnixStream,
+ 	sync::{
+@@ -160,6 +160,35 @@ async fn start(
+ 	env_vars.push(("XDG_SESSION_TYPE".to_string(), "wayland".to_string()));
+ 	systemd::set_systemd_environment("XDG_SESSION_TYPE", "wayland").await;
+ 
++	#[cfg(feature = "systemd")]
++	if *is_systemd_used() {
++		match get_systemd_env().await {
++			Ok(env) => {
++				for systemd_env in env {
++					// Only update the envvar if unset
++					if std::env::var_os(&systemd_env.key) == None {
++						// Blacklist of envvars that we shouldn't touch (taken from KDE)
++						if (!systemd_env.key.starts_with("XDG_") || systemd_env.key == "XDG_DATA_DIRS" || systemd_env.key == "XDG_CONFIG_DIRS") &&
++						    systemd_env.key != "DISPLAY" &&
++						    systemd_env.key != "XAUTHORITY" &&
++						    systemd_env.key != "WAYLAND_DISPLAY" &&
++						    systemd_env.key != "WAYLAND_SOCKET" &&
++						    systemd_env.key != "_" &&
++						    systemd_env.key != "SHELL" &&
++						    systemd_env.key != "SHLVL" {
++								std::env::set_var(systemd_env.key, systemd_env.value);
++						   }
++					}
++				}
++			}
++			Err(err) => {
++				warn!(
++					"Failed to sync systemd environment {}.", err
++				);
++			}
++		}
++	}
++
+ 	let stdout_span = info_span!(parent: None, "cosmic-settings-daemon");
+ 	let stderr_span = stdout_span.clone();
+ 	let (settings_exit_tx, settings_exit_rx) = oneshot::channel();
+diff --git a/src/systemd.rs b/src/systemd.rs
+index 6ef02e4..aea7a94 100644
+--- a/src/systemd.rs
++++ b/src/systemd.rs
+@@ -7,6 +7,18 @@ use std::sync::OnceLock;
+ use zbus::zvariant::{Array, OwnedValue};
+ use zbus::Connection;
+ 
++#[derive(Debug)]
++pub struct EnvVar {
++    pub key: String,
++    pub value: String,
++}
++
++impl Into<EnvVar> for (&str, &str) {
++    fn into(self) -> EnvVar {
++        EnvVar { key: self.0.to_owned(), value: self.1.to_owned() }
++    }
++}
++
+ #[cfg(feature = "systemd")]
+ use zbus_systemd::systemd1::ManagerProxy as SystemdManagerProxy;
+ 
+@@ -37,6 +49,21 @@ pub fn is_systemd_used() -> &'static bool {
+ 	IS_SYSTEMD_USED.get_or_init(|| Path::new("/run/systemd/system").exists())
+ }
+ 
++#[cfg(feature = "systemd")]
++pub async fn get_systemd_env() -> Result<Vec<EnvVar>, zbus::Error> {
++	let connection = Connection::session().await?;
++	let systemd_manager = SystemdManagerProxy::new(&connection).await?;
++	let systemd_env = systemd_manager.environment().await?;
++
++	let mut out: Vec<EnvVar> = Vec::new();
++	for i in systemd_env {
++		if let Some(b) = i.split_once("=") {
++			out.push(b.into());
++		}
++	}
++	return Ok(out);
++}
++
+ #[cfg(feature = "systemd")]
+ ///Spawn a systemd scope unit with the given name and PIDs.
+ pub async fn spawn_scope(mut command: String, pids: Vec<u32>) -> Result<(), zbus::Error> {
