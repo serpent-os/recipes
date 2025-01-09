@@ -1,5 +1,6 @@
 releases:
   id: 5832
+  rss: ~
 security:
   cpe:
   - vendor: pcre

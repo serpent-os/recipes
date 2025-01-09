@@ -1,2 +1,5 @@
 releases:
-    id: 2050
+  id: 2050
+  rss: ~
+security:
+  cpe: ~

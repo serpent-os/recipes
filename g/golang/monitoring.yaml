@@ -1,6 +1,7 @@
 releases:
   id: 1227
+  rss: ~
 security:
   cpe:
-    - vendor: golang
-      product: go
+  - vendor: golang
+    product: go

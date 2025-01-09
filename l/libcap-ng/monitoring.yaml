@@ -1,5 +1,6 @@
 releases:
   id: 1570
+  rss: ~
 security:
   cpe:
   - vendor: libcap-ng_project

@@ -1,5 +1,6 @@
 releases:
   id: 1560
+  rss: ~
 security:
   cpe:
   - vendor: libass_project

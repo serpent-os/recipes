@@ -1,6 +1,7 @@
 releases:
-    id: 1299
+  id: 1299
+  rss: ~
 security:
-    cpe:
-    - vendor: harfbuzz_project
-      product: harfbuzz
+  cpe:
+  - vendor: harfbuzz_project
+    product: harfbuzz

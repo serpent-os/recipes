@@ -1,5 +1,6 @@
 releases:
   id: 394
+  rss: ~
 security:
   cpe:
   - vendor: dash_project
