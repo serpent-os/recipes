@@ -1,0 +1,6 @@
+releases:
+  id: 3986
+security:
+  cpe:
+  - vendor: pygments
+    product: pygments
