@@ -1,6 +1,7 @@
 releases:
-    id: 13299
+  id: 13299
+  rss: ~
 security:
-    cpe:
-        - vendor: libdaemon_project
-          product: libdaemon
+  cpe:
+  - vendor: libdaemon_project
+    product: libdaemon

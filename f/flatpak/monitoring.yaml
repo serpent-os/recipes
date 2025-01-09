@@ -1,2 +1,7 @@
 releases:
-    id: 6377
+  id: 6377
+  rss: ~
+security:
+  cpe:
+  - vendor: flatpak
+    product: flatpak

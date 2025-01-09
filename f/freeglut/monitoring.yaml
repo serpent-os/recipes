@@ -1,3 +1,5 @@
 releases:
-    id: 846
-security: {}
+  id: 846
+  rss: ~
+security:
+  cpe: ~ # Last checked 2025/01/09

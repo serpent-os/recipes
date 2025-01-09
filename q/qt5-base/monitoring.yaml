@@ -1,11 +1,12 @@
 releases:
-    id: 320206
-    ignore:
+  id: 320206
+  ignore:
     # This packages is only for qt 5.15
-    - '^6\..*'
+  - ^6\..*
+  rss: ~
 security:
-    cpe:
-    - vendor: qt
-      product: qt
-    - vendor: qt
-      product: qtbase
+  cpe:
+  - vendor: qt
+    product: qt
+  - vendor: qt
+    product: qtbase

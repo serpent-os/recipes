@@ -1,5 +1,6 @@
 releases:
   id: 5350
+  rss: ~
 security:
   cpe:
   - vendor: git

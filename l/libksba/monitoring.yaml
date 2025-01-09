@@ -1,5 +1,6 @@
 releases:
   id: 1649
+  rss: ~
 security:
   cpe:
   - vendor: libksba_project

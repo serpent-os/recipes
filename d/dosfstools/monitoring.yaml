@@ -1,5 +1,6 @@
 releases:
   id: 455
+  rss: ~
 security:
   cpe:
   - vendor: dosfstools_project

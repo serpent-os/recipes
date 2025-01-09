@@ -1,2 +1,7 @@
 releases:
   id: 13942
+  rss: ~
+security:
+  cpe:
+  - vendor: gnome
+    product: gtk

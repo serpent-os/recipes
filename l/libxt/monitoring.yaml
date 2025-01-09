@@ -1,6 +1,7 @@
 releases:
-    id: 1793
+  id: 1793
+  rss: ~
 security:
-    cpe:
-        - vendor: x
-          product: libxt
+  cpe:
+  - vendor: x
+    product: libxt

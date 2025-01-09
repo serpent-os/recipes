@@ -1,4 +1,5 @@
 releases:
   id: 418
+  rss: ~
 security:
   cpe: ~

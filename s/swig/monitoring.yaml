@@ -1,3 +1,6 @@
 releases:
   id: 4919
 # No known CPE. Last checked 20230110
+  rss: ~
+security:
+  cpe: ~

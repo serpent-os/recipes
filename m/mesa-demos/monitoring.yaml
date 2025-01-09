@@ -1,3 +1,5 @@
 releases:
-    id: 16781
-security: {}
+  id: 16781
+  rss: ~
+security:
+  cpe: ~

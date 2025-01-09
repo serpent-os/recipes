@@ -1,6 +1,7 @@
 releases:
   id: 9533
+  rss: ~
 security:
-    cpe:
-    - vendor: gnome
-      product: gdk-pixbuf
+  cpe:
+  - vendor: gnome
+    product: gdk-pixbuf

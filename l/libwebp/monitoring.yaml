@@ -1,6 +1,7 @@
 releases:
-    id: 1761
+  id: 1761
+  rss: ~
 security:
-    cpe:
-    - vendor: webmproject
-      product: libwebp
+  cpe:
+  - vendor: webmproject
+    product: libwebp

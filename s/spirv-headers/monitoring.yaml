@@ -2,5 +2,7 @@ releases:
   id: 230542
   ignore:
     # Old tags that predate sdk-* versioning
-    - "^1.*"
-security: {}
+  - ^1.*
+  rss: ~
+security:
+  cpe: ~

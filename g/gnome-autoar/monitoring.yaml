@@ -1,2 +1,7 @@
 releases:
   id: 15236
+  rss: ~
+security:
+  cpe:
+  - vendor: gnome
+    product: gnome-autoar

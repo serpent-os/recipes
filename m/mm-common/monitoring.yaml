@@ -1,5 +1,5 @@
 releases:
-    id: 13152
-# last checked 24/08/02
+  id: 13152
+  rss: ~
 security:
-    cpe: ~
+  cpe: ~ # last checked 24/08/02
