@@ -114,12 +114,12 @@
 			"name": "python-markdown",
 			"provides": [
 				"binary(markdown_py)",
-				"python(Markdown(3.11))",
-				"python(Markdown)"
+				"python(markdown(3.11))",
+				"python(markdown)"
 			]
 		}
 	},
 	"source-name": "python-markdown",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.7"
 }
