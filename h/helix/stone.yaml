@@ -4,12 +4,12 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : helix
-version     : '24.07'
-release     : 3
+version     : 25.01
+release     : 4
 license     : MPL-2.0
 homepage    : https://helix-editor.com/
 upstreams   :
-    - git|https://github.com/helix-editor/helix.git : 079f544260f4f5eaff08104bf07abd57bfb7b611
+    - git|https://github.com/helix-editor/helix.git : dabfb6ceeae1da57fb93efcd254e917db49655e6
 summary     : A post-modern modal text editor.
 description : |
     Helix is a Neovim / Kakoune (object-verb) inspired modal, console-based text editor written in Rust, with built-in support for multiple selections, Language Server Protocol (LSP), tree-sitter, and experimental support for Debug Adapter Protocol (DAP).
