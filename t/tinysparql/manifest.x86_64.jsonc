@@ -21,7 +21,7 @@
 				"pkgconfig(libxml-2.0)",
 				"pkgconfig(sqlite3)",
 				"pkgconfig(systemd)",
-				"python(PyGObject)"
+				"python(pygobject)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -399,7 +399,7 @@
 				"pkgconfig(libxml-2.0)",
 				"pkgconfig(sqlite3)",
 				"pkgconfig(systemd)",
-				"python(PyGObject)"
+				"python(pygobject)"
 			],
 			"depends": [
 				"pkgconfig(gio-2.0)",
@@ -445,6 +445,6 @@
 		}
 	},
 	"source-name": "tinysparql",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "3.8.1"
 }
