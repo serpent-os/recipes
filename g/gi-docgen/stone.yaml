@@ -5,7 +5,7 @@
 #
 name        : gi-docgen
 version     : 2024.1
-release     : 1
+release     : 2
 homepage    : https://gitlab.gnome.org/GNOME/gi-docgen
 upstreams   :
     - https://download.gnome.org/sources/gi-docgen/2024/gi-docgen-2024.1.tar.xz : 870c77f9620462cce49e35542a42dc1612fc858733e83dbbe248c535458aec1e
@@ -17,14 +17,10 @@ description : |
     reference of these libraries, as well as other ancillary documentation.
 license     : CC0-1.0
 builddeps   :
-    - python(Pygments)
-setup       : |
-    # FIXME: pip is capital insensitive, our providers need to be too!
-    sed -i 's/jinja2/Jinja2/g' setup.cfg
+    - python(pygments)
 build       : |
     %pyproject_build
 install     : |
     %pyproject_install
-# just a .pc file in the -devel subpackage
 paths       :
-    - /*
+    - /usr/share/pkgconfig/

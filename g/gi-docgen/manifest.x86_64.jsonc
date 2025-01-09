@@ -4,14 +4,14 @@
 	"packages": {
 		"gi-docgen": {
 			"build-depends": [
-				"python(Pygments)"
+				"python(pygments)"
 			],
 			"depends": [
-				"python(Jinja2(3.11))",
-				"python(Markdown(3.11))",
-				"python(MarkupSafe(3.11))",
-				"python(Pygments(3.11))",
+				"python(jinja2(3.11))",
+				"python(markdown(3.11))",
+				"python(markupsafe(3.11))",
 				"python(packaging(3.11))",
+				"python(pygments(3.11))",
 				"python(typogrify(3.11))"
 			],
 			"files": [
@@ -144,6 +144,6 @@
 		}
 	},
 	"source-name": "gi-docgen",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2024.1"
 }
