@@ -1,6 +1,5 @@
 releases:
   id: 1675
-  rss: ~
 security:
   cpe:
   - vendor: netfilter

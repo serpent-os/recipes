@@ -1,6 +1,5 @@
 releases:
   id: 1648
-  rss: ~
 security:
   cpe:
   - vendor: libjpeg-turbo

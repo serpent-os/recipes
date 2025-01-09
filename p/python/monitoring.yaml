@@ -1,6 +1,5 @@
 releases:
   id: 13254
-  rss: ~
 security:
   cpe:
   - vendor: python

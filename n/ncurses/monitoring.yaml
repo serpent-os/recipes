@@ -1,6 +1,5 @@
 releases:
   id: 373226
-  rss: ~
 security:
   cpe:
   - vendor: gnu

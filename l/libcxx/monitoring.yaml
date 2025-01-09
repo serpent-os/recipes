@@ -2,8 +2,7 @@ releases:
   id: 1830
   ignore:
     # Not yet ready for LLVM 15
-  - 15.*
-  rss: ~
+    - 15.*
 security:
   cpe:
   - vendor: llvm

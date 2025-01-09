@@ -1,6 +1,5 @@
 releases:
   id: 4877
-  rss: ~
 security:
   cpe:
   - vendor: sqlite

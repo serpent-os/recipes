@@ -1,6 +1,5 @@
 releases:
   id: 374113
-  rss: ~
 security:
   cpe:
   - vendor: mozilla

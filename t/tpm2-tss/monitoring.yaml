@@ -1,6 +1,5 @@
 releases:
   id: 12683
-  rss: ~
 security:
   cpe:
   - vendor: tpm2_software_stack_project

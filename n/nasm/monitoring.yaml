@@ -1,6 +1,5 @@
 releases:
   id: 2048
-  rss: ~
 security:
   cpe:
   - vendor: nasm

@@ -2,8 +2,7 @@ releases:
   id: 4802
   ignore:
     # Give 4.13 a few bugfix releases to stabilize first
-  - '4.13'
-  rss: ~
+    - "4.13"
 security:
   cpe:
   - vendor: shadow_project

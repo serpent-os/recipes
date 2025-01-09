@@ -1,6 +1,5 @@
 releases:
   id: 5354
-  rss: ~
 security:
   cpe:
   - vendor: redhat

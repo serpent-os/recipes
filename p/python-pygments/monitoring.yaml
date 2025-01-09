@@ -1,6 +1,5 @@
 releases:
   id: 3986
-  rss: ~
 security:
   cpe:
   - vendor: pygments

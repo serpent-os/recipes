@@ -1,6 +1,5 @@
 releases:
   id: 5277
-  rss: ~
 security:
   cpe:
   - vendor: tukaani

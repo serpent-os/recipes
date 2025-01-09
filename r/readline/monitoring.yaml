@@ -1,6 +1,5 @@
 releases:
   id: 4173
-  rss: ~
 security:
   cpe:
   - vendor: gnu

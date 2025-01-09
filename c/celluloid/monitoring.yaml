@@ -1,6 +1,5 @@
 releases:
   id: 193876
-  rss: ~
 security:
   cpe:
   - vendor: celluloidapp

@@ -1,6 +1,5 @@
 releases:
   id: 1569
-  rss: ~
 security:
   cpe:
   - vendor: libcap_project

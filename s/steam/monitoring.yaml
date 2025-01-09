@@ -1,6 +1,5 @@
 releases:
   id: 12318
-  rss: ~
 security:
   cpe:
   - vendor: valvesoftware

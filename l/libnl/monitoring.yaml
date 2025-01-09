@@ -1,6 +1,5 @@
 releases:
   id: 1684
-  rss: ~
 security:
   cpe:
   - vendor: libnl_project

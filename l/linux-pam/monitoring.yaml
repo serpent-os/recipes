@@ -1,6 +1,5 @@
 releases:
   id: 12244
-  rss: ~
 security:
   cpe:
   - vendor: linux-pam

@@ -1,5 +1,3 @@
 releases:
-  id: 6090
-  rss: ~
-security:
-  cpe: ~
+    id: 6090
+security: {}

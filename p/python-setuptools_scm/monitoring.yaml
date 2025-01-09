@@ -1,5 +1,4 @@
 releases:
-  id: 7874
-  rss: ~
-security:
-  cpe: ~ # No known CPE. Checked 20230323
+    id: 7874
+# No known CPE. Checked 20230323
+security : {}

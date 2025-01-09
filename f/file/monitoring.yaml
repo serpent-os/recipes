@@ -1,6 +1,5 @@
 releases:
   id: 807
-  rss: ~
 security:
   cpe:
   - vendor: file_project

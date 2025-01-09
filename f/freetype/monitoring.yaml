@@ -1,6 +1,5 @@
 releases:
   id: 854
-  rss: ~
 security:
   cpe:
   - vendor: freetype

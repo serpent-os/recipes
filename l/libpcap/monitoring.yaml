@@ -1,6 +1,5 @@
 releases:
   id: 1702
-  rss: ~
 security:
   cpe:
   - vendor: tcpdump

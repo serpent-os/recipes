@@ -1,6 +1,5 @@
 releases:
   id: 5348
-  rss: ~
 security:
   cpe:
   - vendor: mpv

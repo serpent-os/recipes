@@ -1,6 +1,5 @@
 releases:
   id: 4980
-  rss: ~
 security:
   cpe:
   - vendor: tmux_project

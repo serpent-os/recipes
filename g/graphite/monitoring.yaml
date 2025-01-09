@@ -1,6 +1,5 @@
 releases:
   id: 15637
-  rss: ~
 security:
   cpe:
   - vendor: graphite_project

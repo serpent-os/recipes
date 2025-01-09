@@ -1,5 +1,3 @@
 releases:
-  id: 16887
-  rss: ~
-security:
-  cpe: ~ # No CPE as of 2023-03-27.
+    id: 16887
+# No CPE as of 2023-03-27.

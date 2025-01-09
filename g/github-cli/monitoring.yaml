@@ -1,6 +1,5 @@
 releases:
   id: 135615
-  rss: ~
 security:
   cpe:
   - vendor: github

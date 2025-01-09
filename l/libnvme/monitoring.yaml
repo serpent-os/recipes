@@ -1,5 +1,5 @@
 releases:
-  id: 242763
-  rss: ~
+    id: 242763
+# last checked 24/08/02
 security:
-  cpe: ~ # last checked 24/08/02
+    cpe: ~

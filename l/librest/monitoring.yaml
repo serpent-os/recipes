@@ -1,6 +1,5 @@
 releases:
   id: 4194
-  rss: ~
 security:
   cpe:
   - vendor: gnome

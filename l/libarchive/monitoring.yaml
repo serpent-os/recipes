@@ -1,6 +1,5 @@
 releases:
   id: 1558
-  rss: ~
 security:
   cpe:
   - vendor: libarchive

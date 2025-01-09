@@ -1,7 +1,6 @@
 releases:
   id: 7462
-  rss: ~
 security:
   cpe:
-  - vendor: linuxfoundation
-    product: runc
+    - vendor: linuxfoundation
+      product: runc

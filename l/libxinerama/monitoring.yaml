@@ -1,6 +1,5 @@
 releases:
   id: 1779
-  rss: ~
 security:
   cpe:
   - vendor: x

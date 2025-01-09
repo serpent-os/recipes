@@ -1,6 +1,5 @@
 releases:
   id: 6502
-  rss: ~
 security:
   cpe:
   - vendor: gnu

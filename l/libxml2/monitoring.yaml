@@ -1,6 +1,5 @@
 releases:
   id: 1783
-  rss: ~
 security:
   cpe:
   - vendor: xmlsoft

@@ -1,6 +1,5 @@
 releases:
   id: 13639
-  rss: ~
 security:
   cpe:
   - vendor: valgrind

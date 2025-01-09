@@ -1,6 +1,5 @@
 releases:
   id: 3686
-  rss: ~
 security:
   cpe:
   - vendor: freedesktop

@@ -1,6 +1,5 @@
 releases:
   id: 1789
-  rss: ~
 security:
   cpe:
   - vendor: x.org

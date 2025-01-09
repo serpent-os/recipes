@@ -1,6 +1,5 @@
 releases:
   id: 4223
-  rss: ~
 security:
   cpe:
   - vendor: ruby-lang

@@ -1,6 +1,5 @@
 releases:
   id: 306
-  rss: ~
 security:
   cpe:
   - vendor: cmake_project

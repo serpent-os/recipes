@@ -1,5 +1,3 @@
 releases:
-  id: 1406
-  rss: ~
-security:
-  cpe: ~
+    id: 1406
+security: {}

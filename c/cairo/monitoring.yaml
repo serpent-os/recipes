@@ -1,9 +1,8 @@
 releases:
-  id: 247
-  rss: ~
+    id: 247
 security:
-  cpe:
-  - vendor: redhat
-    product: cairo
-  - vendor: cairographics
-    product: cairo
+    cpe:
+    - vendor: redhat
+      product: cairo
+    - vendor: cairographics
+      product: cairo

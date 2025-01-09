@@ -1,5 +1,5 @@
 releases:
   id: 13126
-  rss: ~
+# checked 2024/12/05
 security:
-  cpe: ~ # checked 2024/12/05
+  cpe: ~

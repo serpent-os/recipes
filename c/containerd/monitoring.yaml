@@ -2,8 +2,7 @@ releases:
   id: 16460
   ignore:
     # Give 1.7 a few bugfix releases to stabilize first
-  - 1.7.0
-  rss: ~
+    - "1.7.0"
 security:
   cpe:
   - vendor: linuxfoundation

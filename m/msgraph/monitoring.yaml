@@ -1,6 +1,5 @@
 releases:
-  id: 371973
+  id : 371973
 # last checked 24/08/01
-  rss: ~
 security:
-  cpe: ~
+  cpe : ~

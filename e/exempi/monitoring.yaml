@@ -1,6 +1,5 @@
 releases:
   id: 767
-  rss: ~
 security:
   cpe:
   - vendor: exempi_project

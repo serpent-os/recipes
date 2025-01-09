@@ -1,6 +1,3 @@
 releases:
   id: 1667
 # No known CPE. Last checked 20230219
-  rss: ~
-security:
-  cpe: ~

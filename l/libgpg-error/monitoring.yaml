@@ -1,6 +1,5 @@
 releases:
   id: 1628
-  rss: ~
 security:
   cpe:
   - vendor: gnupg

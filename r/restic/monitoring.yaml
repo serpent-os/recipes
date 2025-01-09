@@ -1,5 +1,3 @@
 releases:
   id: 16643
-  rss: ~
-security:
-  cpe: ~ # No known CPE. Last checked 20230129
+# No known CPE. Last checked 20230129

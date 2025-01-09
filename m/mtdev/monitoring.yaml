@@ -1,5 +1,3 @@
 releases:
   id: 8868
-  rss: ~
-security:
-  cpe: ~ # Last checked 2025/01/09
+# NVD is down at the time of writing... cannot fetch CPE if any.

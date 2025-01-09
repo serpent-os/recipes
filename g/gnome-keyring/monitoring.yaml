@@ -1,7 +1,6 @@
 releases:
-  id: 13133
-  rss: ~
+    id: 13133
 security:
-  cpe:
-  - vendor: gnome
-    product: gnome-keyring
+    cpe:
+    - vendor: gnome
+      product: gnome-keyring

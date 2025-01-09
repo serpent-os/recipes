@@ -1,7 +1,6 @@
 releases:
-  id: 1638
-  rss: ~
+    id: 1638
 security:
-  cpe:
-  - vendor: freedesktop
-    product: libice
+    cpe:
+        - vendor: freedesktop
+          product: libice

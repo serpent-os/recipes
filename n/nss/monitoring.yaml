@@ -1,6 +1,5 @@
 releases:
   id: 2503
-  rss: ~
 security:
   cpe:
   - vendor: mozilla

@@ -1,6 +1,5 @@
 releases:
   id: 1611
-  rss: ~
 security:
   cpe:
   - vendor: libffi_project

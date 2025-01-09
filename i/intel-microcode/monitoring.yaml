@@ -1,6 +1,5 @@
 releases:
   id: 20614
-  rss: ~
 security:
   cpe:
   - vendor: intel

@@ -1,5 +1,4 @@
 releases:
   id: 6472
-  rss: ~
-security:
-  cpe: ~ # No known CPE. Checked 20230323
+# No known CPE. Checked 20230323
+security : {}

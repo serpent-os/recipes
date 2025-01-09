@@ -1,5 +1,5 @@
 releases:
-  id: 370600
-  rss: ~
+   id: 370600
+# last checked 24/07/24
 security:
-  cpe: ~ # last checked 24/07/24
+    cpe: ~

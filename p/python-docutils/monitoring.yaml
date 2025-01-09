@@ -1,6 +1,5 @@
 releases:
   id: 3849
-  rss: ~
 security:
   cpe:
   - vendor: nim-lang

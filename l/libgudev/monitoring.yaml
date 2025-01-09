@@ -1,5 +1,4 @@
 releases:
-  id: 7735
-  rss: ~
-security:
-  cpe: ~ # No CPE found 26/03/23
+    id: 7735
+# No CPE found 26/03/23
+security: {}

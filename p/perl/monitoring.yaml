@@ -1,6 +1,5 @@
 releases:
   id: 13599
-  rss: ~
 security:
   cpe:
   - vendor: perl

@@ -1,6 +1,5 @@
 releases:
   id: 315000
-  rss: ~
 security:
   cpe:
   - vendor: linux

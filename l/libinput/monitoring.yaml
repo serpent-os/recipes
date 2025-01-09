@@ -1,7 +1,3 @@
 releases:
   id: 5781
-  rss: ~
-security:
-  cpe:
-  - vendor: freedesktop
-    product: libinput
+# NVD is down at the time of writing...

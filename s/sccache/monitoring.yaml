@@ -1,5 +1,5 @@
 releases:
-  id: 227267
-  rss: ~
+    id: 227267
+# last checked 24/07/24
 security:
-  cpe: ~ # last checked 24/07/24
+    cpe: ~

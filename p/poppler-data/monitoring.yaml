@@ -1,5 +1,5 @@
 releases:
   id: 3687
-  rss: ~
+# Last checked 2024/12/24
 security:
-  cpe: ~ # Last checked 2024/12/24
+  cpe: ~

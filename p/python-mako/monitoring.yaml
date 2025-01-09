@@ -1,6 +1,5 @@
 releases:
-  id: 3915
-  rss: ~
+    id: 3915
 security:
   cpe:
   - vendor: sqlalchemy

@@ -1,7 +1,6 @@
 releases:
   id: 13301
-  rss: ~
 security:
-  cpe:
+  cpe: 
   - vendor: xmlsoft
     product: libxslt

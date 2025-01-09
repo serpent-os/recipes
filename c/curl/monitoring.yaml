@@ -1,6 +1,5 @@
 releases:
   id: 381
-  rss: ~
 security:
   cpe:
   - vendor: curl

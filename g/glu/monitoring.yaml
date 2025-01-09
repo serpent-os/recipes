@@ -1,5 +1,3 @@
 releases:
-  id: 13518
-  rss: ~
-security:
-  cpe: ~
+    id: 13518
+security: {}

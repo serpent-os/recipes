@@ -1,6 +1,5 @@
 releases:
   id: 12753
-  rss: ~
 security:
   cpe:
   - vendor: pkgconf

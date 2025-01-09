@@ -1,6 +1,5 @@
 releases:
   id: 14893
-  rss: ~
 security:
   cpe:
   - vendor: spice-space

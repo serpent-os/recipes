@@ -1,6 +1,5 @@
 releases:
   id: 10937
-  rss: ~
 security:
   cpe:
   - vendor: projectatomic

@@ -1,9 +1,8 @@
 releases:
-  id: 11783
-  rss: ~
+    id: 11783
 security:
-  cpe:
-  - vendor: gnome
-    product: pango
-  - vendor: pango
-    product: pango
+    cpe:
+        - vendor: gnome
+          product: pango
+        - vendor: pango
+          product: pango

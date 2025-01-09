@@ -1,5 +1,4 @@
 releases:
   id: 13577
-  rss: ~
-security:
-  cpe: ~ # No known CPE. Last checked 20230104
+# No known CPE. Last checked 20230104
+# Is it even possible for this package to have a vulnerability?

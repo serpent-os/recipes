@@ -1,6 +1,5 @@
 releases:
   id: 3648
-  rss: ~
 security:
   cpe:
   - vendor: pixman
