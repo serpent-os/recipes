@@ -1,0 +1,107 @@
+From 2e75ac94a6dc0a156936055540de7bfe9b5c4717 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Tue, 7 Jan 2025 17:43:57 +1300
+Subject: [PATCH] hid-asus-ally: fix missing NULL termination of arrays
+
+---
+ drivers/hid/hid-asus-ally.h | 72 +++++++++++++++++++------------------
+ drivers/hid/hid-asus.c      |  2 +-
+ 2 files changed, 38 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
+index 518d8db3af5ef1..740af14e7d8a5e 100644
+--- a/drivers/hid/hid-asus-ally.h
++++ b/drivers/hid/hid-asus-ally.h
+@@ -347,42 +347,44 @@ static ssize_t _fname##_store(struct device *dev,                        \
+ 	ALLY_RESP_CURVE_STORE(_fname##_##_mname##_##_num, _mname##_pct_##_num); \
+ 	ALLY_DEVICE_ATTR_RW(_fname##_##_mname##_##_num, curve_##_mname##_pct_##_num)
+ 
+-#define ALLY_BTN_ATTRS_GROUP(_name, _fname)                               \
+-	static struct attribute *_fname##_attrs[] = {                     \
+-		&dev_attr_##_fname.attr,                                  \
+-		&dev_attr_##_fname##_macro.attr,                          \
+-	};                                                                \
+-	static const struct attribute_group _fname##_attr_group = {       \
+-		.name = __stringify(_name),                               \
+-		.attrs = _fname##_attrs,                                  \
+-	}
+-
+-#define ALLY_BTN_ATTRS_GROUP_WITH_TURBO(_name, _fname)                    \
+-	static struct attribute *_fname##_attrs[] = {                     \
+-		&dev_attr_##_fname.attr,                                  \
+-		&dev_attr_##_fname##_macro.attr,                          \
+-		&dev_attr_##_fname##_turbo.attr,                          \
+-	};                                                                \
+-	static const struct attribute_group _fname##_attr_group = {       \
+-		.name = __stringify(_name),                               \
+-		.attrs = _fname##_attrs,                                  \
+-	}
++#define _ALLY_BTN_REMAP(_fname, _btn_name)                              \
++	ALLY_BTN_SHOW(btn_mapping_##_fname##_remap, _btn_name, false);  \
++	ALLY_BTN_STORE(btn_mapping_##_fname##_remap, _btn_name, false); \
++	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname##_remap, remap);
+ 
+-#define _ALLY_BTN_MAPPING(_fname, _mname)                               \
+-	ALLY_BTN_SHOW(btn_mapping_##_fname, _mname, false);             \
+-	ALLY_BTN_STORE(btn_mapping_##_fname, _mname, false);            \
+-	ALLY_BTN_SHOW(btn_mapping_##_fname##_macro, _mname, true);      \
+-	ALLY_BTN_STORE(btn_mapping_##_fname##_macro, _mname, true);     \
+-	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname, remap);               \
++#define _ALLY_BTN_MACRO(_fname, _btn_name)                             \
++	ALLY_BTN_SHOW(btn_mapping_##_fname##_macro, _btn_name, true);  \
++	ALLY_BTN_STORE(btn_mapping_##_fname##_macro, _btn_name, true); \
+ 	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname##_macro, macro_remap);
+ 
+-#define ALLY_BTN_MAPPING_NO_TURBO(_fname, _mname)                          \
+-	_ALLY_BTN_MAPPING(_fname, _mname)                                  \
+-	ALLY_BTN_ATTRS_GROUP(btn_##_fname, btn_mapping_##_fname)
++#define ALLY_BTN_MAPPING_NO_TURBO(_fname, _btn_name)         \
++	_ALLY_BTN_REMAP(_fname, _btn_name)                   \
++	_ALLY_BTN_MACRO(_fname, _btn_name)                   \
++	static struct attribute *_fname##_attrs[] = {        \
++		&dev_attr_btn_mapping_##_fname##_remap.attr, \
++		&dev_attr_btn_mapping_##_fname##_macro.attr, \
++		NULL,                                        \
++	};                                                   \
++	static const struct attribute_group                  \
++		btn_mapping_##_fname##_attr_group = {        \
++			.name = __stringify(btn_##_fname),   \
++			.attrs = _fname##_attrs,             \
++		}
+ 
+-#define ALLY_BTN_MAPPING_WITH_TURBO(_fname, _mname)                        \
+-	_ALLY_BTN_MAPPING(_fname, _mname)                                  \
+-	ALLY_TURBO_SHOW(btn_mapping_##_fname##_turbo, _mname);             \
+-	ALLY_TURBO_STORE(btn_mapping_##_fname##_turbo, _mname);            \
+-	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname##_turbo, turbo);          \
+-	ALLY_BTN_ATTRS_GROUP_WITH_TURBO(btn_##_fname, btn_mapping_##_fname)
++#define ALLY_BTN_MAPPING_WITH_TURBO(_fname, _btn_name)             \
++	_ALLY_BTN_REMAP(_fname, _btn_name)                         \
++	_ALLY_BTN_MACRO(_fname, _btn_name)                         \
++	ALLY_TURBO_SHOW(btn_mapping_##_fname##_turbo, _btn_name);  \
++	ALLY_TURBO_STORE(btn_mapping_##_fname##_turbo, _btn_name); \
++	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname##_turbo, turbo);  \
++	static struct attribute *_fname##_turbo_attrs[] = {        \
++		&dev_attr_btn_mapping_##_fname##_remap.attr,       \
++		&dev_attr_btn_mapping_##_fname##_macro.attr,       \
++		&dev_attr_btn_mapping_##_fname##_turbo.attr,       \
++		NULL,                                              \
++	};                                                         \
++	static const struct attribute_group                        \
++		btn_mapping_##_fname##_attr_group = {              \
++			.name = __stringify(btn_##_fname),         \
++			.attrs = _fname##_turbo_attrs,             \
++		}
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index e495ccf6aa6cb7..69df4f1f62103e 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -442,7 +442,7 @@ static void asus_kbd_disable_oobe(struct hid_device *hdev) {
+ 	int ret;
+ 
+ 	ret = asus_kbd_set_report(hdev, buf, sizeof(buf));
+-	if (!ret)
++	if (ret >= 0)
+ 		hid_info(hdev, "Disabled OOBE mode");
+ }
+ 

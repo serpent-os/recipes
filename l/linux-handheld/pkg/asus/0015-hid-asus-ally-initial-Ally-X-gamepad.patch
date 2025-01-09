@@ -1,7 +1,7 @@
-From 1fcd4e8ef3e089d4163c730c9bd4d70c8203bf24 Mon Sep 17 00:00:00 2001
+From caab298317491b6b6b8a7a9000116e114cd860b6 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 2 Oct 2024 23:32:46 +1300
-Subject: [PATCH 32/45] hid-asus-ally: initial Ally-X gamepad
+Subject: [PATCH 15/28] hid-asus-ally: initial Ally-X gamepad
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---

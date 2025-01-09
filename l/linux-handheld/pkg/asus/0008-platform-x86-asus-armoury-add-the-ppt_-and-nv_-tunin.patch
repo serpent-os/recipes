@@ -1,7 +1,7 @@
-From b364ae578920603d3de13c83abed9c357f8b8c46 Mon Sep 17 00:00:00 2001
+From 9065f2a2b500e211cd0893304b44d2a238e1b971 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Thu, 19 Sep 2024 17:19:37 +1200
-Subject: [PATCH 26/45] platform/x86: asus-armoury: add the ppt_* and nv_*
+Subject: [PATCH 08/28] platform/x86: asus-armoury: add the ppt_* and nv_*
  tuning knobs
 
 Adds the ppt_* and nv_* tuning knobs that are available via WMI methods

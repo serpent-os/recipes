@@ -1,0 +1,58 @@
+From 36f49bf146f0eec18b7db5f547df6a203d905aec Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Mon, 6 Jan 2025 11:22:43 +1300
+Subject: [PATCH 28/28] hid-asus: Disable OOBE mode on the ProArt P16
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus.c                     | 10 ++++++++++
+ include/linux/platform_data/x86/asus-wmi.h |  5 +++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index 7c5269cd4d76..e495ccf6aa6c 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -437,6 +437,15 @@ static int asus_kbd_get_functions(struct hid_device *hdev,
+ 	return ret;
+ }
+ 
++static void asus_kbd_disable_oobe(struct hid_device *hdev) {
++	const u8 buf[] = { FEATURE_KBD_REPORT_ID, 0xd0, 0x8f, 0x1 };
++	int ret;
++
++	ret = asus_kbd_set_report(hdev, buf, sizeof(buf));
++	if (!ret)
++		hid_info(hdev, "Disabled OOBE mode");
++}
++
+ static void asus_schedule_work(struct asus_kbd_leds *led)
+ {
+ 	unsigned long flags;
+@@ -507,6 +516,7 @@ static bool asus_kbd_wmi_led_control_present(struct hid_device *hdev)
+ 	if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD &&
+ 			dmi_check_system(asus_use_hid_led_dmi_ids)) {
+ 		hid_info(hdev, "using HID for asus::kbd_backlight\n");
++		asus_kbd_disable_oobe(hdev);
+ 		return false;
+ 	}
+ 
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index cc21e4272460..c427b6c20d3f 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -206,6 +206,11 @@ static const struct dmi_system_id asus_use_hid_led_dmi_ids[] = {
+ 			DMI_MATCH(DMI_PRODUCT_FAMILY, "ROG Flow"),
+ 		},
+ 	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_PRODUCT_FAMILY, "ProArt P16"),
++		},
++	},
+ 	{
+ 		.matches = {
+ 			DMI_MATCH(DMI_BOARD_NAME, "GA403U"),
+-- 
+2.47.1
+

@@ -1,7 +1,7 @@
-From eba7f15155c376aa31669f2e1e5f946f8a69278e Mon Sep 17 00:00:00 2001
+From 46b09168305051c1274b670d1d40526347a501a7 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 14:58:33 +1300
-Subject: [PATCH 34/45] hid-asus-ally: add button remap attributes
+Subject: [PATCH 17/28] hid-asus-ally: add button remap attributes
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---

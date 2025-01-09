@@ -1,7 +1,7 @@
-From 49a2429558e23e979701608486d2f3933c59bf34 Mon Sep 17 00:00:00 2001
+From e44288e88b8fa2f4f2e33522e0b2666b467b31aa Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Mon, 26 Aug 2024 12:49:35 +1200
-Subject: [PATCH 31/45] hid-asus-ally: Add joystick LED ring support
+Subject: [PATCH 14/28] hid-asus-ally: Add joystick LED ring support
 
 Adds basic support for the joystick RGB LED rings as a multicolour LED
 device with 4 LEDs.
