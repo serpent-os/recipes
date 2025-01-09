@@ -28,13 +28,13 @@
 			],
 			"name": "python-markupsafe",
 			"provides": [
-				"python(MarkupSafe(3.11))",
-				"python(MarkupSafe)",
-				"soname(_speedups.cpython-311-x86_64-linux-gnu.so(x86_64))"
+				"python(markupsafe(3.11))",
+				"python(markupsafe)",
+				"soname(python3.11/site-packages/markupsafe/_speedups.cpython-311-x86_64-linux-gnu.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "python-markupsafe",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.1.5"
 }

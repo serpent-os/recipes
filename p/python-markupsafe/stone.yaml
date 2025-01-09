@@ -5,7 +5,7 @@
 #
 name        : python-markupsafe
 version     : 2.1.5
-release     : 3
+release     : 4
 summary     : Implements a XML/HTML/XHTML Markup safe string for Python
 license     : BSD-3-Clause
 homepage    : https://palletsprojects.com/p/markupsafe/
