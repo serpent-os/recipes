@@ -91,10 +91,10 @@
 			],
 			"name": "python-pygobject",
 			"provides": [
-				"python(PyGObject(3.11))",
-				"python(PyGObject)",
-				"soname(_gi.cpython-311-x86_64-linux-gnu.so(x86_64))",
-				"soname(_gi_cairo.cpython-311-x86_64-linux-gnu.so(x86_64))"
+				"python(pygobject(3.11))",
+				"python(pygobject)",
+				"soname(python3.11/site-packages/gi/_gi.cpython-311-x86_64-linux-gnu.so(x86_64))",
+				"soname(python3.11/site-packages/gi/_gi_cairo.cpython-311-x86_64-linux-gnu.so(x86_64))"
 			]
 		},
 		"python-pygobject-devel": {
@@ -130,6 +130,6 @@
 		}
 	},
 	"source-name": "python-pygobject",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "3.50.0"
 }
