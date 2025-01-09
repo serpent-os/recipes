@@ -1,2 +1,5 @@
 releases:
   id: 13709
+  rss: ~
+security:
+  cpe: ~

@@ -1,3 +1,5 @@
 releases:
-    id: 7841
-security: {}
+  id: 7841
+  rss: ~
+security:
+  cpe: ~

@@ -1,5 +1,6 @@
 releases:
   id: 271475
+  rss: ~
 security:
   cpe:
   - vendor: dbus-broker_project

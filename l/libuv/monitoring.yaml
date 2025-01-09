@@ -1,5 +1,6 @@
 releases:
   id: 10784
+  rss: ~
 security:
   cpe:
   - vendor: libuv_project

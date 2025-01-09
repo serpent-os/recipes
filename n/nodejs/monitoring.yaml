@@ -1,5 +1,6 @@
 releases:
   id: 12594
+  rss: ~
 security:
   cpe:
   - vendor: nodejs

@@ -1,3 +1,5 @@
 releases:
-    id: 5166
-security: {}
+  id: 5166
+  rss: ~
+security:
+  cpe: ~

@@ -1,5 +1,6 @@
 releases:
   id: 8651
+  rss: ~
 security:
   cpe:
   - vendor: nghttp2

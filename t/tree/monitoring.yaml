@@ -1,3 +1,6 @@
 releases:
   id: 5006
 # No known CPE. Last checked 20230213
+  rss: ~
+security:
+  cpe: ~
