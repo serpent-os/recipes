@@ -1029,12 +1029,12 @@
 			"name": "python-pygments",
 			"provides": [
 				"binary(pygmentize)",
-				"python(Pygments(3.11))",
-				"python(Pygments)"
+				"python(pygments(3.11))",
+				"python(pygments)"
 			]
 		}
 	},
 	"source-name": "python-pygments",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.19.1"
 }
