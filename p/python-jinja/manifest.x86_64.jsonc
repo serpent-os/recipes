@@ -7,7 +7,7 @@
 				"python(flit_core)"
 			],
 			"depends": [
-				"python(MarkupSafe(3.11))"
+				"python(markupsafe(3.11))"
 			],
 			"files": [
 				"/usr/lib/python3.11/site-packages/jinja2-3.1.5.dist-info/LICENSE.txt",
@@ -94,12 +94,12 @@
 			],
 			"name": "python-jinja",
 			"provides": [
-				"python(Jinja2(3.11))",
-				"python(Jinja2)"
+				"python(jinja2(3.11))",
+				"python(jinja2)"
 			]
 		}
 	},
 	"source-name": "python-jinja",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "3.1.5"
 }

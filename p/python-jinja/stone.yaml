@@ -5,7 +5,7 @@
 #
 name        : python-jinja
 version     : 3.1.5
-release     : 3
+release     : 4
 summary     : Jinja2 is a template engine written in pure Python.
 license     : BSD-3-Clause
 homepage    : https://palletsprojects.com/p/jinja/
