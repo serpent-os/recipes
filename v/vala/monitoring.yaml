@@ -2,4 +2,6 @@ releases:
   id: 5065
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: gnome
+    product: vala

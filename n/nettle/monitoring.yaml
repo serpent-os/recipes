@@ -2,4 +2,6 @@ releases:
   id: 2073
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: nettle_project
+    product: nettle

@@ -2,4 +2,6 @@ releases:
   id: 3689
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: popt_project
+    product: popt

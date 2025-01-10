@@ -2,4 +2,6 @@ releases:
   id: 1800
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: pyyaml
+    product: libyaml

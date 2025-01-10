@@ -2,4 +2,8 @@ releases:
   id: 1263
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: gstreamer_project
+    product: gstreamer
+  - vendor: gstreamer
+    product: gstreamer

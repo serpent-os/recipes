@@ -2,4 +2,6 @@ releases:
   id: 12742
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: libproxy_project
+    product: libproxy

@@ -2,4 +2,6 @@ releases:
   id: 4772
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: gnu
+    product: screen

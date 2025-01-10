@@ -2,4 +2,6 @@ releases:
   id: 15461
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: ripgrep_project
+    product: ripgrep

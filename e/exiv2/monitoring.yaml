@@ -2,4 +2,6 @@ releases:
   id: 769
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: exiv2
+    product: exiv2

@@ -2,4 +2,6 @@ releases:
   id: 7307
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: libqmi_project
+    product: libqmi

@@ -2,4 +2,6 @@ releases:
   id: 232764
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: libjxl_project
+    product: libjxl

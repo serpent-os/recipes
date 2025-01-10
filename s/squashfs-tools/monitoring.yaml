@@ -2,4 +2,8 @@ releases:
   id: 4879
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: squashfs-tools_project
+    product: squashfs-tools
+  - vendor: squashfs_project
+    product: squashfs-tools

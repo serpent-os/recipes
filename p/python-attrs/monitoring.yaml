@@ -2,4 +2,6 @@ releases:
   id: 126632
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: attrs_project
+    product: attrs

@@ -2,4 +2,6 @@ releases:
   id: 141585
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: tailscale
+    product: tailscale

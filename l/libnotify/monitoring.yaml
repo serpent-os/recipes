@@ -2,4 +2,6 @@ releases:
   id: 13149
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: libnotify_project
+    product: libnotify

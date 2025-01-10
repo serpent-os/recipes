@@ -2,4 +2,6 @@ releases:
   id: 13277
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: libsndfile_project
+    product: libsndfile

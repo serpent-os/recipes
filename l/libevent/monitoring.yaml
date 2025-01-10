@@ -2,4 +2,6 @@ releases:
   id: 1606
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: libevent_project
+    product: libevent

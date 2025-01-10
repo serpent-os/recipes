@@ -2,4 +2,8 @@ releases:
   id: 1969
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: mercurial
+    product: mercurial
+  - vendor: mercurial-scm
+    product: mercurial
