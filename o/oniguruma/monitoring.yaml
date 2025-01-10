@@ -2,4 +2,6 @@ releases:
   id: 11184
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: oniguruma_project
+    product: oniguruma

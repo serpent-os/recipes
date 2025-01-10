@@ -2,4 +2,6 @@ releases:
   id: 11483
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: gnome
+    product: libsoup

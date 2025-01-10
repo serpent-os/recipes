@@ -2,4 +2,6 @@ releases:
   id: 1865
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: lz4_project
+    product: lz4

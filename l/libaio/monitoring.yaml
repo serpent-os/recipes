@@ -2,4 +2,6 @@ releases:
   id: 1557
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: libaio_project
+    product: libaio

@@ -2,4 +2,6 @@ releases:
   id: 2597
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: gnu
+    product: patch

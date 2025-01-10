@@ -2,4 +2,6 @@ releases:
   id: 9548
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: gnome
+    product: seahorse

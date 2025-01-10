@@ -2,4 +2,6 @@ releases:
   id: 13607
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: qemu
+    product: qemu

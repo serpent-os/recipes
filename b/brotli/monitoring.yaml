@@ -2,4 +2,6 @@ releases:
   id: 15235
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: google
+    product: brotli

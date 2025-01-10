@@ -2,4 +2,6 @@ releases:
   id: 1637
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: libical_project
+    product: libical

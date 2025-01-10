@@ -2,4 +2,8 @@ releases:
   id: 4939
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: tar_project
+    product: tar
+  - vendor: gnu
+    product: tar

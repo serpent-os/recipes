@@ -2,4 +2,6 @@ releases:
   id: 1868
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: lzo_project
+    product: lzo

@@ -2,4 +2,6 @@ releases:
   id: 5542
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: qpdf_project
+    product: qpdf

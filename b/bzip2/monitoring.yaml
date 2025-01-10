@@ -2,4 +2,8 @@ releases:
   id: 237
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: bzip
+    product: bzip2
+  - vendor: bzip2_project
+    product: bzip2

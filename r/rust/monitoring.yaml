@@ -2,4 +2,6 @@ releases:
   id: 7635
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: rust-lang
+    product: rust

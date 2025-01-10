@@ -2,4 +2,8 @@ releases:
   id: 5028
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: freedesktop
+    product: udisks
+  - vendor: udisks_project
+    product: udisks

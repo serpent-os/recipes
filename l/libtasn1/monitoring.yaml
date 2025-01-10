@@ -2,4 +2,6 @@ releases:
   id: 1734
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: gnu
+    product: libtasn1

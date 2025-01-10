@@ -2,4 +2,8 @@ releases:
   id: 3729
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: pulseaudio_project
+    product: pulseaudio
+  - vendor: pulseaudio
+    product: pulseaudio

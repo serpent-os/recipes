@@ -2,4 +2,6 @@ releases:
   id: 3703
   rss: ~
 security:
-  cpe: ~
+  cpe:
+  - vendor: samba
+    product: ppp
