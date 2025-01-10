@@ -5,7 +5,7 @@
 #
 name        : gtk-4
 version     : 4.16.12
-release     : 18
+release     : 19
 homepage    : https://www.gtk.org/
 upstreams   :
     - https://download.gnome.org/sources/gtk/4.16/gtk-4.16.12.tar.xz : ef31bdbd6f082c4401634a20c850b0050c9bf252ef1e079764ee95a2a0c4c95a
