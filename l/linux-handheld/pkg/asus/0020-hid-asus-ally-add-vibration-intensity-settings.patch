@@ -1,4 +1,4 @@
-From 43db4a44bf3117ad747d115aa1a4e0c686925d07 Mon Sep 17 00:00:00 2001
+From 5dd0a575d36ce31154d93e76193b91cda0888137 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 20:46:00 +1300
 Subject: [PATCH 20/28] hid-asus-ally: add vibration intensity settings
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 99 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 7f0000a2db3c..cdc45e2c79b4 100644
+index b0fcad91f2b7..724bf3e8639a 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -267,6 +267,11 @@ struct ally_gamepad_cfg {
@@ -135,7 +135,7 @@ index 7f0000a2db3c..cdc45e2c79b4 100644
  	if (sysfs_create_groups(&hdev->dev.kobj, gamepad_device_attr_groups)) {
  		err = -ENODEV;
 diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
-index 4e60e4c8f6d9..eea4696850fa 100644
+index 63a3b5caa71c..6ac79ad3c5f2 100644
 --- a/drivers/hid/hid-asus-ally.h
 +++ b/drivers/hid/hid-asus-ally.h
 @@ -22,6 +22,7 @@ enum xpad_mode {

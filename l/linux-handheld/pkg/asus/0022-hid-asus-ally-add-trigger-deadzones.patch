@@ -1,4 +1,4 @@
-From 69c3ab14765884fb4e572275dd8ce020406d4460 Mon Sep 17 00:00:00 2001
+From 0e1e99bd457064942e9023bb823b56a14892be0f Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 21:37:27 +1300
 Subject: [PATCH 22/28] hid-asus-ally: add trigger deadzones
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 44 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 9bb9ac3ce87b..2e34cb47972e 100644
+index a813b2972a66..fc5620e63b06 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -281,6 +281,8 @@ struct ally_gamepad_cfg {
@@ -100,7 +100,7 @@ index 9bb9ac3ce87b..2e34cb47972e 100644
  	&btn_mapping_m2_attr_group,
  	&btn_mapping_a_attr_group,
 diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
-index 76ba5fcd593a..f103b5ecff36 100644
+index 3dc14a5226f3..32ed5caa3759 100644
 --- a/drivers/hid/hid-asus-ally.h
 +++ b/drivers/hid/hid-asus-ally.h
 @@ -23,6 +23,7 @@ enum xpad_cmd {

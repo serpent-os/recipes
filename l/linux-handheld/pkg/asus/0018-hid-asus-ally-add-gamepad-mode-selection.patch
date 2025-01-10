@@ -1,4 +1,4 @@
-From 23c21b0f434d7a13df7d3db1242f1b100e62cd30 Mon Sep 17 00:00:00 2001
+From 3a019f986fbec2ab488303f992fbe40389d26524 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Fri, 25 Oct 2024 08:56:54 +0200
 Subject: [PATCH 18/28] hid-asus-ally: add gamepad mode selection
@@ -96,7 +96,7 @@ index 56cc7abc397f..7cecdc10ba2c 100644
  	NULL
  };
 diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
-index 127db570a827..caec424c52e3 100644
+index f985cbd698c3..f7e21be50d8e 100644
 --- a/drivers/hid/hid-asus-ally.h
 +++ b/drivers/hid/hid-asus-ally.h
 @@ -20,6 +20,7 @@ enum xpad_mode {

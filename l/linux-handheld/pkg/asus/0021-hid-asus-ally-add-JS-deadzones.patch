@@ -1,4 +1,4 @@
-From d7ecc1f8767c1439e2cc8d5f81e74c93fe0aa4b4 Mon Sep 17 00:00:00 2001
+From b060d13d6fdd1f7bf488d72fa705517fc0fd1545 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 21:32:41 +1300
 Subject: [PATCH 21/28] hid-asus-ally: add JS deadzones
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 123 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index cdc45e2c79b4..9bb9ac3ce87b 100644
+index 724bf3e8639a..a813b2972a66 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -257,6 +257,11 @@ struct btn_mapping {
@@ -140,7 +140,7 @@ index cdc45e2c79b4..9bb9ac3ce87b 100644
  	drvdata.gamepad_cfg = ally_cfg; // Must asign before attr group setup
  	if (sysfs_create_groups(&hdev->dev.kobj, gamepad_device_attr_groups)) {
 diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
-index eea4696850fa..76ba5fcd593a 100644
+index 6ac79ad3c5f2..3dc14a5226f3 100644
 --- a/drivers/hid/hid-asus-ally.h
 +++ b/drivers/hid/hid-asus-ally.h
 @@ -22,6 +22,7 @@ enum xpad_mode {
