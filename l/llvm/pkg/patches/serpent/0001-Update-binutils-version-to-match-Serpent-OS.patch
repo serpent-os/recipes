@@ -3,7 +3,13 @@ From: Peter O'Connor <sunnyflunk@serpentos.com>
 Date: Mon, 8 Nov 2021 09:07:17 +1100
 Subject: [PATCH] Update binutils version to match Serpent OS
 
-Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+By default Clang will not use certain ELF features since it strives to keep compatibility with older versions of binutils.
+
+This is intended to be overridden via a flag, but since we know that we'll never use older versions of binutils we can just change the default value.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
 ---
  clang/include/clang/Driver/Options.td | 2 +-
  llvm/include/llvm/MC/MCAsmInfo.h      | 2 +-
@@ -18,7 +24,7 @@ index 175bedbfb4d..b8d1608a145 100644
    "binutils version and newer. If -fno-integrated-as is specified, the "
    "generated assembly will consider GNU as support. 'none' means that all ELF "
 -  "features can be used, regardless of binutils support. Defaults to 2.26.">;
-+  "features can be used, regardless of binutils support. Defaults to 2.42.">;
++  "features can be used, regardless of binutils support. Defaults to 2.43.">;
  def fuse_ld_EQ : Joined<["-"], "fuse-ld=">, Group<f_Group>,
    Flags<[LinkOption]>, Visibility<[ClangOption, FlangOption, CLOption]>;
  def ld_path_EQ : Joined<["--"], "ld-path=">, Group<Link_Group>;
@@ -31,7 +37,7 @@ index 56492368bd9..254657af82c 100644
    // regardless of GNU ld support. The default value is referenced by
    // clang/Driver/Options.td.
 -  std::pair<int, int> BinutilsVersion = {2, 26};
-+  std::pair<int, int> BinutilsVersion = {2, 42};
++  std::pair<int, int> BinutilsVersion = {2, 43};
  
    /// Should we use the integrated assembler?
    /// The integrated assembler should be enabled by default (by the

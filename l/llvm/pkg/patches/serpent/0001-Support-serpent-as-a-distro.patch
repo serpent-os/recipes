@@ -3,6 +3,9 @@ From: Joey Riches <josephriches@gmail.com>
 Date: Fri, 8 Jul 2022 17:39:54 +0100
 Subject: [PATCH] Support serpent as a distro
 
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
 ---
  clang/include/clang/Driver/Distro.h | 3 +++
  clang/lib/Driver/Distro.cpp         | 1 +

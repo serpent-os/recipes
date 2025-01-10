@@ -3,6 +3,9 @@ From: Reilly Brogan <reilly@reillybrogan.com>
 Date: Fri, 2 Aug 2024 17:24:39 -0500
 Subject: [PATCH] Build polly libraries shared
 
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
 ---
  polly/cmake/polly_macros.cmake | 4 +---
  2 files changed, 1 insertion(+), 5 deletions(-)

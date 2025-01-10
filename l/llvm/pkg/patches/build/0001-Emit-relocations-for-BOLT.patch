@@ -3,6 +3,11 @@ From: Reilly Brogan <reilly@reillybrogan.com>
 Date: Sun, 26 May 2024 16:08:54 -0500
 Subject: [PATCH] Emit relocations for BOLT
 
+Ensure that relocations are always emitted for the libraries/binaries that we want to BOLT. This allows us to not have them emitted for all other files.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
 ---
  clang/tools/clang-shlib/CMakeLists.txt | 2 ++
  clang/tools/driver/CMakeLists.txt      | 2 ++
