@@ -1,4 +1,4 @@
-From 6ef23d23c406d6180419020a05a3a5a83e9f5662 Mon Sep 17 00:00:00 2001
+From e63cb120c18461beca50d4890fd92141a7b6f001 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Thu, 10 Oct 2024 11:15:36 +1300
 Subject: [PATCH 25/28] hid-asus-ally: add calibrations (wip)
@@ -9,7 +9,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  1 file changed, 95 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 4d9954362625..03603695c484 100644
+index 9f9a7516b774..5a8458e232d3 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -275,6 +275,28 @@ struct response_curve {

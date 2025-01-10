@@ -1,4 +1,4 @@
-From e555f19f30d5dc8616d53f35d92f9c8d8dd8092a Mon Sep 17 00:00:00 2001
+From de3341e021d14f75ae701dc6463036ef84e37024 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Tue, 17 Dec 2024 09:31:08 +1300
 Subject: [PATCH 27/28] Tmp: add GA605W & H7606W to AMD-PMF quirks.

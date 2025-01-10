@@ -1,4 +1,4 @@
-From 08a94025c7c606b3f19dc9c4d432014471078aa9 Mon Sep 17 00:00:00 2001
+From f3d319113cf5e4b203476d329b6a1d30a555752f Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 6 Oct 2024 21:22:40 +1300
 Subject: [PATCH 24/28] hid-asus-ally: add JS response curves
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 141 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 3e4d9b19dc41..4d9954362625 100644
+index 9d8bd0afaa68..9f9a7516b774 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -5,8 +5,10 @@
@@ -172,7 +172,7 @@ index 3e4d9b19dc41..4d9954362625 100644
  	drvdata.gamepad_cfg = ally_cfg; // Must asign before attr group setup
  	if (sysfs_create_groups(&hdev->dev.kobj, gamepad_device_attr_groups)) {
 diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
-index 9c13de73749c..518d8db3af5e 100644
+index 69f59592dd50..c83817589082 100644
 --- a/drivers/hid/hid-asus-ally.h
 +++ b/drivers/hid/hid-asus-ally.h
 @@ -28,6 +28,7 @@ enum xpad_cmd {

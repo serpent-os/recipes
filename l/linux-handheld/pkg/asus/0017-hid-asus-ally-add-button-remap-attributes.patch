@@ -1,4 +1,4 @@
-From 46b09168305051c1274b670d1d40526347a501a7 Mon Sep 17 00:00:00 2001
+From e55ed327e70cd92738bf5b63efd92bb88f82c7bc Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 14:58:33 +1300
 Subject: [PATCH 17/28] hid-asus-ally: add button remap attributes
@@ -6,8 +6,8 @@ Subject: [PATCH 17/28] hid-asus-ally: add button remap attributes
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
  drivers/hid/hid-asus-ally.c | 393 ++++++++++++++++++++++++++++++++++--
- drivers/hid/hid-asus-ally.h | 197 ++++++++++++++++++
- 2 files changed, 572 insertions(+), 18 deletions(-)
+ drivers/hid/hid-asus-ally.h | 211 +++++++++++++++++++
+ 2 files changed, 586 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
 index eed1bc84026d..56cc7abc397f 100644
@@ -476,7 +476,7 @@ index eed1bc84026d..56cc7abc397f 100644
  	hid_hw_stop(hdev);
  }
 diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
-index 2b298ad4da0e..127db570a827 100644
+index 2b298ad4da0e..f985cbd698c3 100644
 --- a/drivers/hid/hid-asus-ally.h
 +++ b/drivers/hid/hid-asus-ally.h
 @@ -33,11 +33,155 @@ enum xpad_cmd_len {
@@ -635,7 +635,7 @@ index 2b298ad4da0e..127db570a827 100644
  
  #define ALLY_DEVICE_ATTR_WO(_name, _sysfs_name)    \
  	struct device_attribute dev_attr_##_name = \
-@@ -47,3 +191,56 @@ enum btn_pair_index {
+@@ -47,3 +191,70 @@ enum btn_pair_index {
  #define ALLY_DEVICE_ATTR_RW(_name, _sysfs_name)    \
  	struct device_attribute dev_attr_##_name = \
  		__ATTR(_sysfs_name, 0644, _name##_show, _name##_store)
@@ -684,14 +684,28 @@ index 2b298ad4da0e..127db570a827 100644
 +		.attrs = _fname##_attrs,                                  \
 +	}
 +
-+#define ALLY_BTN_MAPPING(_fname, _mname)                                \
-+	ALLY_BTN_SHOW(btn_mapping_##_fname, _mname, false);             \
-+	ALLY_BTN_STORE(btn_mapping_##_fname, _mname, false);            \
-+	ALLY_BTN_SHOW(btn_mapping_##_fname##_macro, _mname, true);      \
-+	ALLY_BTN_STORE(btn_mapping_##_fname##_macro, _mname, true);     \
-+	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname, remap);               \
-+	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname##_macro, macro_remap); \
-+	ALLY_BTN_ATTRS_GROUP(btn_##_fname, btn_mapping_##_fname)
++#define _ALLY_BTN_REMAP(_fname, _btn_name)                              \
++	ALLY_BTN_SHOW(btn_mapping_##_fname##_remap, _btn_name, false);  \
++	ALLY_BTN_STORE(btn_mapping_##_fname##_remap, _btn_name, false); \
++	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname##_remap, remap);
++
++#define _ALLY_BTN_MACRO(_fname, _btn_name)                             \
++	ALLY_BTN_SHOW(btn_mapping_##_fname##_macro, _btn_name, true);  \
++	ALLY_BTN_STORE(btn_mapping_##_fname##_macro, _btn_name, true); \
++	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname##_macro, macro_remap);
++
++#define ALLY_BTN_MAPPING(_fname, _btn_name)                                       \
++	_ALLY_BTN_REMAP(_fname, _btn_name)                                        \
++	_ALLY_BTN_MACRO(_fname, _btn_name)                                        \
++	static struct attribute *_fname##_attrs[] = {                             \
++		&dev_attr_btn_mapping_##_fname##_remap.attr,                      \
++		&dev_attr_btn_mapping_##_fname##_macro.attr,                      \
++		NULL,                                                             \
++	};                                                                        \
++	static const struct attribute_group btn_mapping_##_fname##_attr_group = { \
++		.name = __stringify(btn_##_fname),                                \
++		.attrs = _fname##_attrs,                                          \
++	}
 -- 
 2.47.1
 

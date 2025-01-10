@@ -63,5 +63,3 @@ asus/0025-hid-asus-ally-add-calibrations-wip.patch
 asus/0026-debug-by-default.patch
 asus/0027-Tmp-add-GA605W-H7606W-to-AMD-PMF-quirks.patch
 asus/0028-hid-asus-Disable-OOBE-mode-on-the-ProArt-P16.patch
-asus/0029-hid-asus-ally-fix-missing-NULL-termination-of-arrays.patch
-

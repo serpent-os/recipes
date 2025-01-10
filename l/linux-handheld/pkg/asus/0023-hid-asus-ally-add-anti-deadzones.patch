@@ -1,4 +1,4 @@
-From 62b7c65cf2d3e0ce6eb8851a27673980f0910705 Mon Sep 17 00:00:00 2001
+From e60cb0bb587e7b6c549353000a2fd0eff019aaef Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 6 Oct 2024 19:49:24 +1300
 Subject: [PATCH 23/28] hid-asus-ally: add anti-deadzones
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 112 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 2e34cb47972e..3e4d9b19dc41 100644
+index fc5620e63b06..9d8bd0afaa68 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -283,6 +283,9 @@ struct ally_gamepad_cfg {
@@ -160,7 +160,7 @@ index 2e34cb47972e..3e4d9b19dc41 100644
  	drvdata.gamepad_cfg = ally_cfg; // Must asign before attr group setup
  	if (sysfs_create_groups(&hdev->dev.kobj, gamepad_device_attr_groups)) {
 diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
-index f103b5ecff36..9c13de73749c 100644
+index 32ed5caa3759..69f59592dd50 100644
 --- a/drivers/hid/hid-asus-ally.h
 +++ b/drivers/hid/hid-asus-ally.h
 @@ -28,6 +28,7 @@ enum xpad_cmd {
