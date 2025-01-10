@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-handheld
-version     : 6.12.8
-release     : 2
+version     : 6.12.9
+release     : 3
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.8.tar.xz : 2291da065ca04b715c89ee50362aec3f021a7414bc963f1b56736682c8122979
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.9.tar.xz : 87be0360df0931b340d2bac35161a548070fbc3a8c352c49e21e96666c26aeb4
 summary     : The Linux Kernel for handheld systems
 description : |
     The Linux Kernel for handheld systems
@@ -33,7 +33,7 @@ builddeps   :
     - binary(less)
     - binary(loadkeys)
     - binary(m4)
-    - binary(perl)  
+    - binary(perl)
     - binary(python3)
     - binary(setfont)
     - binary(tr)
