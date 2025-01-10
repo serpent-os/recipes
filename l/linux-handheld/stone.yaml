@@ -5,7 +5,7 @@
 #
 name        : linux-handheld
 version     : 6.12.9
-release     : 3
+release     : 4
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.9.tar.xz : 87be0360df0931b340d2bac35161a548070fbc3a8c352c49e21e96666c26aeb4
