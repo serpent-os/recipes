@@ -18,7 +18,7 @@
 			],
 			"files": [
 				"/usr/lib/libSDL2_ttf-2.0.so.0",
-				"/usr/lib/libSDL2_ttf-2.0.so.0.2200.0"
+				"/usr/lib/libSDL2_ttf-2.0.so.0.2400.0"
 			],
 			"name": "sdl2-ttf",
 			"provides": [
@@ -53,6 +53,6 @@
 		}
 	},
 	"source-name": "sdl2-ttf",
-	"source-release": "1",
-	"source-version": "2.22.0"
+	"source-release": "2",
+	"source-version": "2.24.0"
 }
