@@ -1,4 +1,7 @@
 # Warning: broken tracking
 # Last checked: 07/03/24
-#releases:
-#    id: 10671
+releases:
+  id: 10671
+  rss: ~
+security:
+  cpe: ~

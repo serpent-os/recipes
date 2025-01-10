@@ -1,2 +1,7 @@
 releases:
   id: 1235
+  rss: ~
+security:
+  cpe:
+  - vendor: gparted
+    product: gparted

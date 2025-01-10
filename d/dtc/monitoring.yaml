@@ -1,2 +1,7 @@
 releases:
   id: 16911
+  rss: ~
+security:
+  cpe:
+  - vendor: dtc_project
+    product: dtc

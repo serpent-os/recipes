@@ -1,5 +1,6 @@
 releases:
   id: 9397
 # last checked 24/08/02
+  rss: ~
 security:
   cpe: ~

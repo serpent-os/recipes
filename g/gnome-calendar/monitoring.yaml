@@ -1,4 +1,5 @@
 releases:
   id: 10906
+  rss: ~
 security:
   cpe: ~ # Last checked 2024-12-28

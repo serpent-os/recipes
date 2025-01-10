@@ -1,2 +1,5 @@
 releases:
   id: 18650
+  rss: ~
+security:
+  cpe: ~

@@ -1,5 +1,6 @@
 releases:
   id: 14599
 # last checked 24/08/02
+  rss: ~
 security:
   cpe: ~

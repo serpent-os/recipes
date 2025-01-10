@@ -1,2 +1,11 @@
 releases:
   id: 1239
+  rss: ~
+security:
+  cpe:
+  - vendor: gnupg
+    product: gpgme
+  - vendor: gnu
+    product: gpgme
+  - vendor: gpgme_project
+    product: gpgme

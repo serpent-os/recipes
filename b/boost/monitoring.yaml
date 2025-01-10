@@ -1,5 +1,6 @@
 releases:
   id: 6845
+  rss: ~
 security:
   cpe:
   - vendor: boost

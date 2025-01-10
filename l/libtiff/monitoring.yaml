@@ -1,8 +1,9 @@
 releases:
-    id: 1738
+  id: 1738
+  rss: ~
 security:
-    cpe:
-    - vendor: simplesystems
-      product: libtiff
-    - vendor: libtiff
-      product: libtiff
+  cpe:
+  - vendor: simplesystems
+    product: libtiff
+  - vendor: libtiff
+    product: libtiff

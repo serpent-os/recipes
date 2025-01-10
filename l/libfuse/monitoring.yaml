@@ -1,5 +1,6 @@
 releases:
   id: 861
+  rss: ~
 security:
   cpe:
   - vendor: libfuse_project

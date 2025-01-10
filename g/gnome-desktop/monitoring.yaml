@@ -1,2 +1,7 @@
 releases:
-    id: 13127
+  id: 13127
+  rss: ~
+security:
+  cpe:
+  - vendor: gnome
+    product: gnome-desktop

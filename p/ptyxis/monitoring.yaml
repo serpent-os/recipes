@@ -1,5 +1,5 @@
 releases:
   id: 371673
-# No known CPE, checked 2024-10-20
+  rss: ~
 security:
-  cpe: ~
+  cpe: ~ # No known CPE, checked 2024-10-20

@@ -1,5 +1,6 @@
 releases:
   id: 2550
+  rss: ~
 security:
   cpe:
   - vendor: openjpeg

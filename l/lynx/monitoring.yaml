@@ -1,8 +1,9 @@
 releases:
-    id: 1863
+  id: 1863
+  rss: ~
 security:
-    cpe:
-        - vendor: lynx_project
-          product: lynx
-        - vendor: lynx
-          product: lynx
+  cpe:
+  - vendor: lynx_project
+    product: lynx
+  - vendor: lynx
+    product: lynx

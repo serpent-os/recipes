@@ -1,3 +1,5 @@
 releases:
   id: 4779
-
+  rss: ~
+security:
+  cpe: ~ # last checked 2025/01/09

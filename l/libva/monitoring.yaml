@@ -1,3 +1,6 @@
 releases:
   id: 1752
 # No CPE as of 2023-03-25.
+  rss: ~
+security:
+  cpe: ~

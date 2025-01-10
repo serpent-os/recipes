@@ -1,5 +1,5 @@
 releases:
   id: 320474
-# last checked 2024/08/13
+  rss: ~
 security:
-  cpe: ~
+  cpe: ~ # last checked 2024/08/13

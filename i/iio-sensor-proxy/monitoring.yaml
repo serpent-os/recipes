@@ -1,5 +1,5 @@
 releases:
   id: 6467
-# last check 2024/12/24
+  rss: ~
 security:
-  cpe: ~
+  cpe: ~ # last check 2024/12/24

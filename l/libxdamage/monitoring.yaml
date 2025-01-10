@@ -1,4 +1,5 @@
 releases:
-    id: 1771
-# No known CPE. Last checked 20230323
-security: {}
+  id: 1771
+  rss: ~
+security:
+  cpe: ~ # No known CPE. Last checked 20230323
