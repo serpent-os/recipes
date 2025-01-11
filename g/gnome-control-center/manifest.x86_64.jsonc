@@ -21,6 +21,7 @@
 				"pkgconfig(gnome-desktop-4)",
 				"pkgconfig(gnome-rr-4)",
 				"pkgconfig(gnome-settings-daemon)",
+				"pkgconfig(gnutls)",
 				"pkgconfig(goa-backend-1.0)",
 				"pkgconfig(gsettings-desktop-schemas)",
 				"pkgconfig(gsound)",
@@ -49,6 +50,7 @@
 				"pkgconfig(xi)"
 			],
 			"depends": [
+				"cups-pk-helper",
 				"gnome-remote-desktop",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
@@ -469,6 +471,7 @@
 				"pkgconfig(gnome-desktop-4)",
 				"pkgconfig(gnome-rr-4)",
 				"pkgconfig(gnome-settings-daemon)",
+				"pkgconfig(gnutls)",
 				"pkgconfig(goa-backend-1.0)",
 				"pkgconfig(gsettings-desktop-schemas)",
 				"pkgconfig(gsound)",
@@ -509,6 +512,6 @@
 		}
 	},
 	"source-name": "gnome-control-center",
-	"source-release": "14",
+	"source-release": "15",
 	"source-version": "47.2"
 }

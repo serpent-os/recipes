@@ -1,2 +1,7 @@
 releases:
   id: 13737
+  rss: ~
+security:
+  cpe:
+  - vendor: upx_project
+    product: upx

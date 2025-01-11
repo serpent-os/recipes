@@ -4,16 +4,16 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : binutils
-version     : '2.42.0'
-release     : 13
+version     : 2.43.0+git.5f8987d3
+release     : 15
 summary     : A GNU collection of binary utilities
 license     : GPL-3.0-or-later
 homepage    : https://sourceware.org/binutils
 description : |
     A GNU collection of binary utilities
 upstreams   :
-    # binutils-2_42-branch
-    - git|https://sourceware.org/git/binutils-gdb.git : 8a6764d35e5c15d78de8aef8f27af3eefd9d7544
+    # binutils-2_43-branch
+    - git|https://sourceware.org/git/binutils-gdb.git : 5f8987d3999edb26e757115fe87be55787d510b9
 builddeps   :
     - binary(bison)
     - binary(flex)
@@ -24,13 +24,14 @@ builddeps   :
     - binary(perl)
     - binary(yacc)
     - pkgconfig(jansson)
+    - pkgconfig(libblake3)
     - pkgconfig(libzstd)
     - pkgconfig(ncursesw)
     - pkgconfig(readline)
     - pkgconfig(zlib)
 setup       : |
-    %patch %(pkgdir)/zlib-level.patch
-    %patch %(pkgdir)/compilespeed.patch
+    %patch %(pkgdir)/0001-Proper-stateless.patch
+    %patch %(pkgdir)/0001-Use-BLAKE3-for-build-id-hashing.patch
 
     # Non release builds mess up the sonames
     sed -i '/^development=/s/true/false/' bfd/development.sh
@@ -40,27 +41,42 @@ setup       : |
         --disable-gdb \
         --disable-gdbserver \
         --disable-libdecnumber \
+        --disable-rpath \
         --disable-sim \
         --disable-static \
-        --enable-shared \
         --enable-64-bit-bfd \
+        --enable-compressed-debug-sections=all \
+        --enable-default-compressed-debug-sections-algorithm=zstd \
+        --enable-default-execstack=no \
+        --enable-default-hash-style=gnu \
         --enable-deterministic-archives \
+        --enable-jansson \
         --enable-ld=default \
         --enable-multilib \
+        --enable-new-dtags \
         --enable-pgo-build=lto \
         --enable-plugins \
+        --enable-relro=yes \
         --enable-secureplt \
+        --enable-shared \
         --enable-targets="x86_64-pep,bpf-unknown-none" \
         --enable-threads \
         --with-lib-path="/usr/lib:/usr/lib32" \
+        --with-blake3=yes \
         --with-system-readline \
         --with-system-zlib \
+        --with-zstd=yes \
         --without-debuginfod
 build       : |
     %make tooldir=/usr -C %(builddir)
 install     : |
     %make_install tooldir=/usr -C %(builddir)
     rm -f %(installroot)/usr/share/info/dir
+
+    # Stateless
+    %install_dir %(installroot)/usr/share/defaults/gprofng
+    mv %(installroot)/etc/gprofng.rc %(installroot)/usr/share/defaults/gprofng
+    rmdir %(installroot)/etc
 toolchain   : gnu
 tuning      :
     - lto

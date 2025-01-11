@@ -1,0 +1,83 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"foomatic-db-engine": {
+			"build-depends": [
+				"pkgconfig(libxml-2.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libxml2.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/bin/foomatic-combo-xml",
+				"/usr/bin/foomatic-compiledb",
+				"/usr/bin/foomatic-configure",
+				"/usr/bin/foomatic-datafile",
+				"/usr/bin/foomatic-perl-data",
+				"/usr/bin/foomatic-ppd-options",
+				"/usr/bin/foomatic-ppd-to-xml",
+				"/usr/bin/foomatic-ppdfile",
+				"/usr/bin/foomatic-printjob",
+				"/usr/bin/foomatic-searchprinter",
+				"/usr/lib/perl5/site_perl/5.38/Foomatic/DB.pm",
+				"/usr/lib/perl5/site_perl/5.38/Foomatic/Defaults.pm",
+				"/usr/lib/perl5/site_perl/5.38/Foomatic/PPD.pm",
+				"/usr/lib/perl5/site_perl/5.38/Foomatic/UIElem.pm",
+				"/usr/lib/perl5/site_perl/5.38/x86_64-linux-thread-multi/auto/Foomatic/.packlist",
+				"/usr/sbin/foomatic-addpjloptions",
+				"/usr/sbin/foomatic-cleanupdrivers",
+				"/usr/sbin/foomatic-extract-text",
+				"/usr/sbin/foomatic-fix-xml",
+				"/usr/sbin/foomatic-getpjloptions",
+				"/usr/sbin/foomatic-kitload",
+				"/usr/sbin/foomatic-nonumericalids",
+				"/usr/sbin/foomatic-preferred-driver",
+				"/usr/sbin/foomatic-printermap-to-gutenprint-xml",
+				"/usr/sbin/foomatic-replaceoldprinterids",
+				"/usr/share/foomatic/templates/pjl_enum_choice.xml",
+				"/usr/share/foomatic/templates/pjl_enum_option.xml",
+				"/usr/share/foomatic/templates/pjl_num_option.xml",
+				"/usr/share/man/man1/foomatic-combo-xml.1",
+				"/usr/share/man/man1/foomatic-compiledb.1",
+				"/usr/share/man/man1/foomatic-configure.1",
+				"/usr/share/man/man1/foomatic-perl-data.1",
+				"/usr/share/man/man1/foomatic-ppd-options.1",
+				"/usr/share/man/man1/foomatic-ppdfile.1",
+				"/usr/share/man/man1/foomatic-printjob.1",
+				"/usr/share/man/man8/foomatic-addpjloptions.8",
+				"/usr/share/man/man8/foomatic-getpjloptions.8",
+				"/usr/share/man/man8/foomatic-kitload.8",
+				"/usr/share/man/man8/foomatic-preferred-driver.8"
+			],
+			"name": "foomatic-db-engine",
+			"provides": [
+				"binary(foomatic-combo-xml)",
+				"binary(foomatic-compiledb)",
+				"binary(foomatic-configure)",
+				"binary(foomatic-datafile)",
+				"binary(foomatic-perl-data)",
+				"binary(foomatic-ppd-options)",
+				"binary(foomatic-ppd-to-xml)",
+				"binary(foomatic-ppdfile)",
+				"binary(foomatic-printjob)",
+				"binary(foomatic-searchprinter)",
+				"sysbinary(foomatic-addpjloptions)",
+				"sysbinary(foomatic-cleanupdrivers)",
+				"sysbinary(foomatic-extract-text)",
+				"sysbinary(foomatic-fix-xml)",
+				"sysbinary(foomatic-getpjloptions)",
+				"sysbinary(foomatic-kitload)",
+				"sysbinary(foomatic-nonumericalids)",
+				"sysbinary(foomatic-preferred-driver)",
+				"sysbinary(foomatic-printermap-to-gutenprint-xml)",
+				"sysbinary(foomatic-replaceoldprinterids)"
+			]
+		}
+	},
+	"source-name": "foomatic-db-engine",
+	"source-release": "2",
+	"source-version": "4.0.13"
+}

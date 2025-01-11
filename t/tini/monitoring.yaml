@@ -1,6 +1,7 @@
 releases:
   id: 13826
+  rss: ~
 security:
   cpe:
-    - vendor: tini_project
-      product: tini
+  - vendor: tini_project
+    product: tini

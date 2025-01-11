@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : shaderc
-version     : 2024.3
-release     : 3
+version     : 2024.4
+release     : 4
 homepage    : https://github.com/google/shaderc
 upstreams   :
-    - https://github.com/google/shaderc/archive/refs/tags/v2024.3.tar.gz : d5c68b5de5d4c7859d9699054493e0a42a2a5eb21b425d63f7b7dd543db0d708
+    - https://github.com/google/shaderc/archive/refs/tags/v2024.4.tar.gz : 989a46c0bc0e58ab8ac9ef9c1fb8000e0209d482b242a514b385d8f8c4cbfa06
 summary     : A collection of tools, libraries, and tests for Vulkan shader compilation.
 description : |
     A collection of tools, libraries and tests for shader compilation. At the moment it includes:

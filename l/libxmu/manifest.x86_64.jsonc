@@ -1,0 +1,136 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxmu": {
+			"build-depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xt)"
+			],
+			"depends": [
+				"soname(libX11.so.6(x86_64))",
+				"soname(libXext.so.6(x86_64))",
+				"soname(libXt.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libXmu.so.6",
+				"/usr/lib/libXmu.so.6.2.0",
+				"/usr/lib/libXmuu.so.1",
+				"/usr/lib/libXmuu.so.1.0.0",
+				"/usr/share/doc/libXmu/Xmu.xml",
+				"/usr/share/doc/libXmu/xlogo.svg"
+			],
+			"name": "libxmu",
+			"provides": [
+				"soname(libXmu.so.6(x86_64))",
+				"soname(libXmuu.so.1(x86_64))"
+			]
+		},
+		"libxmu-32bit": {
+			"build-depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xt)"
+			],
+			"depends": [
+				"libxmu",
+				"soname(libX11.so.6(386))",
+				"soname(libXext.so.6(386))",
+				"soname(libXt.so.6(386))",
+				"soname(libc.so.6(386))"
+			],
+			"files": [
+				"/usr/lib32/libXmu.so.6",
+				"/usr/lib32/libXmu.so.6.2.0",
+				"/usr/lib32/libXmuu.so.1",
+				"/usr/lib32/libXmuu.so.1.0.0"
+			],
+			"name": "libxmu-32bit",
+			"provides": [
+				"soname(libXmu.so.6(386))",
+				"soname(libXmu.so.6(x86))",
+				"soname(libXmuu.so.1(386))",
+				"soname(libXmuu.so.1(x86))"
+			]
+		},
+		"libxmu-32bit-devel": {
+			"build-depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xt)"
+			],
+			"depends": [
+				"libxmu-32bit",
+				"libxmu-devel",
+				"pkgconfig(xproto)",
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xt)"
+			],
+			"files": [
+				"/usr/lib32/libXmu.so",
+				"/usr/lib32/libXmuu.so",
+				"/usr/lib32/pkgconfig/xmu.pc",
+				"/usr/lib32/pkgconfig/xmuu.pc"
+			],
+			"name": "libxmu-32bit-devel",
+			"provides": [
+				"pkgconfig32(xmu)",
+				"pkgconfig32(xmuu)"
+			]
+		},
+		"libxmu-devel": {
+			"build-depends": [
+				"pkgconfig32(x11)",
+				"pkgconfig32(xext)",
+				"pkgconfig32(xt)"
+			],
+			"depends": [
+				"libxmu",
+				"pkgconfig(x11)",
+				"pkgconfig(xext)",
+				"pkgconfig(xproto)",
+				"pkgconfig(xt)"
+			],
+			"files": [
+				"/usr/include/X11/Xmu/Atoms.h",
+				"/usr/include/X11/Xmu/CharSet.h",
+				"/usr/include/X11/Xmu/CloseHook.h",
+				"/usr/include/X11/Xmu/Converters.h",
+				"/usr/include/X11/Xmu/CurUtil.h",
+				"/usr/include/X11/Xmu/CvtCache.h",
+				"/usr/include/X11/Xmu/DisplayQue.h",
+				"/usr/include/X11/Xmu/Drawing.h",
+				"/usr/include/X11/Xmu/Editres.h",
+				"/usr/include/X11/Xmu/EditresP.h",
+				"/usr/include/X11/Xmu/Error.h",
+				"/usr/include/X11/Xmu/ExtAgent.h",
+				"/usr/include/X11/Xmu/Initer.h",
+				"/usr/include/X11/Xmu/Lookup.h",
+				"/usr/include/X11/Xmu/Misc.h",
+				"/usr/include/X11/Xmu/StdCmap.h",
+				"/usr/include/X11/Xmu/StdSel.h",
+				"/usr/include/X11/Xmu/SysUtil.h",
+				"/usr/include/X11/Xmu/WhitePoint.h",
+				"/usr/include/X11/Xmu/WidgetNode.h",
+				"/usr/include/X11/Xmu/WinUtil.h",
+				"/usr/include/X11/Xmu/Xct.h",
+				"/usr/include/X11/Xmu/Xmu.h",
+				"/usr/lib/libXmu.so",
+				"/usr/lib/libXmuu.so",
+				"/usr/lib/pkgconfig/xmu.pc",
+				"/usr/lib/pkgconfig/xmuu.pc"
+			],
+			"name": "libxmu-devel",
+			"provides": [
+				"pkgconfig(xmu)",
+				"pkgconfig(xmuu)"
+			]
+		}
+	},
+	"source-name": "libxmu",
+	"source-release": "2",
+	"source-version": "1.2.1"
+}

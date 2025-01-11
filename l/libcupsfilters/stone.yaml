@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libcupsfilters
+version     : 2.1.0
+release     : 2
+homepage    : https://github.com/OpenPrinting/libcupsfilters
+upstreams   :
+    - https://github.com/OpenPrinting/libcupsfilters/releases/download/2.1.0/libcupsfilters-2.1.0.tar.xz : cbe900c7783e4aab0b1681629fad7322d82d082a51e8bae7e1c741d26bdcd294
+summary     : CUPS filters library
+description : |
+    libcupsfilters is a library for CUPS filters.
+license     : Apache-2.0
+builddeps   :
+    - binary(gs)
+    - pkgconfig(cups)
+    - pkgconfig(fontconfig)
+    - pkgconfig(lcms2)
+    - pkgconfig(libexif)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpng)
+    - pkgconfig(libqpdf)
+    - pkgconfig(libtiff-4)
+    - pkgconfig(poppler-cpp)
+setup       : |
+    %configure --disable-static \
+               --disable-mutool
+build       : |
+    %make
+install     : |
+    %make_install

@@ -1,6 +1,7 @@
 releases:
-    id: 9815
+  id: 9815
+  rss: ~
 security:
-    cpe:
-    - vendor: littlecms
-      product: little_cms
+  cpe:
+  - vendor: littlecms
+    product: little_cms

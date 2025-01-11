@@ -139,9 +139,9 @@
 			],
 			"files": [
 				"/usr/lib/libhogweed.so.6",
-				"/usr/lib/libhogweed.so.6.9",
+				"/usr/lib/libhogweed.so.6.10",
 				"/usr/lib/libnettle.so.8",
-				"/usr/lib/libnettle.so.8.9"
+				"/usr/lib/libnettle.so.8.10"
 			],
 			"name": "nettle-libs",
 			"provides": [
@@ -151,6 +151,6 @@
 		}
 	},
 	"source-name": "nettle",
-	"source-release": "3",
-	"source-version": "3.10"
+	"source-release": "4",
+	"source-version": "3.10.1"
 }

@@ -1,5 +1,6 @@
 releases:
   id: 1221
+  rss: ~
 security:
   cpe:
   - vendor: gnu

@@ -1,5 +1,5 @@
 releases:
-    id: 7959
-# last checked 24/08/02
+  id: 7959
+  rss: ~
 security:
-    cpe: ~
+  cpe: ~ # last checked 24/08/02

@@ -22,7 +22,6 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
-				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libacl.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
@@ -704,6 +703,6 @@
 		}
 	},
 	"source-name": "uutils-coreutils",
-	"source-release": "17",
-	"source-version": "0.8.27+git.d3db8dc"
+	"source-release": "19",
+	"source-version": "0.8.27+git.2227330"
 }

@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : docutils
+version     : 0.20.1
+release     : 1
+homepage    : https://www.docutils.org/
+upstreams   :
+    - https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.20.1.tar.gz : f08a4e276c3a1583a86dce3e34aba3fe04d02bba2dd51ed16106244e8a923e3b
+summary     : Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, OpenDocument, or XML
+description : |
+    Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, OpenDocument, or XML. It includes reStructuredText, the easy to read, easy to use, what-you-see-is-what-you-get plaintext markup language.
+license     :
+    - CC0-1.0
+    - BSD-2-Clause
+    - GPL-3.0-or-later
+    - Python-2.0
+build       : |
+    %python_setup
+install     : |
+    %python_install
+    # Remove .py extension
+    for f in %(installroot)%(bindir)/*.py; do
+      mv -v "$f" "${f%.py}"
+    done

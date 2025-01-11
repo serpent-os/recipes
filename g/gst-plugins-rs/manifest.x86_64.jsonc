@@ -246,6 +246,6 @@
 		}
 	},
 	"source-name": "gst-plugins-rs",
-	"source-release": "2",
-	"source-version": "1.24.10"
+	"source-release": "3",
+	"source-version": "1.24.11"
 }

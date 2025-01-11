@@ -13,6 +13,7 @@
 				"pkgconfig(uuid)"
 			],
 			"depends": [
+				"binary(xhost)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libatkmm-1.6.so.1(x86_64))",
 				"soname(libc++.so.1(x86_64))",
@@ -156,6 +157,6 @@
 		}
 	},
 	"source-name": "gparted",
-	"source-release": "1",
+	"source-release": "3",
 	"source-version": "1.6.0"
 }

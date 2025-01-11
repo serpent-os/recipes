@@ -1,0 +1,83 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libexif": {
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libexif.so.12",
+				"/usr/lib/libexif.so.12.3.4",
+				"/usr/share/doc/libexif/ABOUT-NLS",
+				"/usr/share/doc/libexif/AUTHORS",
+				"/usr/share/doc/libexif/COPYING",
+				"/usr/share/doc/libexif/ChangeLog",
+				"/usr/share/doc/libexif/NEWS",
+				"/usr/share/doc/libexif/README",
+				"/usr/share/doc/libexif/SECURITY.md",
+				"/usr/share/locale/be/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/bs/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/cs/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/da/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/de/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/en_AU/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/en_CA/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/en_GB/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/es/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/it/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/ja/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/ms/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/pt/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/pt_BR/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/sk/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/sq/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/tr/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/vi/LC_MESSAGES/libexif-12.mo",
+				"/usr/share/locale/zh_CN/LC_MESSAGES/libexif-12.mo"
+			],
+			"name": "libexif",
+			"provides": [
+				"soname(libexif.so.12(x86_64))"
+			]
+		},
+		"libexif-devel": {
+			"depends": [
+				"libexif"
+			],
+			"files": [
+				"/usr/include/libexif/_stdint.h",
+				"/usr/include/libexif/exif-byte-order.h",
+				"/usr/include/libexif/exif-content.h",
+				"/usr/include/libexif/exif-data-type.h",
+				"/usr/include/libexif/exif-data.h",
+				"/usr/include/libexif/exif-entry.h",
+				"/usr/include/libexif/exif-format.h",
+				"/usr/include/libexif/exif-ifd.h",
+				"/usr/include/libexif/exif-loader.h",
+				"/usr/include/libexif/exif-log.h",
+				"/usr/include/libexif/exif-mem.h",
+				"/usr/include/libexif/exif-mnote-data.h",
+				"/usr/include/libexif/exif-tag.h",
+				"/usr/include/libexif/exif-utils.h",
+				"/usr/lib/libexif.so",
+				"/usr/lib/pkgconfig/libexif.pc"
+			],
+			"name": "libexif-devel",
+			"provides": [
+				"pkgconfig(libexif)"
+			]
+		}
+	},
+	"source-name": "libexif",
+	"source-release": "2",
+	"source-version": "0.6.24"
+}

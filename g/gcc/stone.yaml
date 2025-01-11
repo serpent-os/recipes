@@ -5,7 +5,7 @@
 #
 name        : gcc
 version     : 14.2.0
-release     : 5
+release     : 7
 summary     : GNU C++ standard library and compiler
 license     : GPL-3.0-or-later
 homepage    : https://gcc.gnu.org/
@@ -47,6 +47,7 @@ setup       : |
     %patch %(pkgdir)/perf/use-highest-optimize-value.patch
     %patch %(pkgdir)/serpent/0001-Use-modern-linker-locations-for-Serpent-OS.patch
     %patch %(pkgdir)/serpent/0001-Install-libraries-into-lib-rather-than-lib64.patch
+    %patch %(pkgdir)/serpent/disable-rpath.patch
 
     mkdir build && cd build
     ../configure \

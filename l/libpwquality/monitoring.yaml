@@ -1,2 +1,7 @@
 releases:
   id: 15580
+  rss: ~
+security:
+  cpe:
+  - vendor: libpwquality_project
+    product: libpwquality

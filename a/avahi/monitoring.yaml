@@ -1,6 +1,7 @@
 releases:
-    id: 147
+  id: 147
+  rss: ~
 security:
-    cpe:
-        - vendor: avahi
-          product: avahi
+  cpe:
+  - vendor: avahi
+    product: avahi

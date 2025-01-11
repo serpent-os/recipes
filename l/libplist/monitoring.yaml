@@ -1,2 +1,7 @@
 releases:
   id: 11675
+  rss: ~
+security:
+  cpe:
+  - vendor: libimobiledevice
+    product: libplist

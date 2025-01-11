@@ -5,7 +5,7 @@
 #
 name        : qt5-base
 version     : 5.15.16+kde.2529f7f0
-release     : 3
+release     : 4
 homepage    : https://www.qt.io
 upstreams   :
     - git|https://invent.kde.org/qt/qt/qtbase.git : 2529f7f0c2333d437089c775c9c30f624d1fd5bc
@@ -19,6 +19,8 @@ license     :
 builddeps   :
     - binary(perl)
     - binary(which)
+    - pkgconfig(atspi-2)
+    - pkgconfig(cups)
     - pkgconfig(dbus-1)
     - pkgconfig(dri)
     - pkgconfig(egl)
@@ -27,6 +29,7 @@ builddeps   :
     - pkgconfig(gbm)
     - pkgconfig(gl)
     - pkgconfig(glesv2)
+    - pkgconfig(gtk+-3.0)
     - pkgconfig(harfbuzz)
     - pkgconfig(libdrm)
     - pkgconfig(libinput)
@@ -53,7 +56,7 @@ setup       : |
     # TODO harfbuzz, system DoubleConversion, gtk
     # TODO figure out proper ccache/sccache support
 
-    %patch %(pkgdir)/qmake-cflags.patch
+    %patch %(pkgdir)/0001-Adjust-build-flags.patch
     %patch %(pkgdir)/stateless/0001-Support-stateless-config-directories.patch
 
     # Various Fedora patches which improve the situation in Wayland and GNOME amongst other things. Most of these are backports from Qt6
@@ -80,8 +83,6 @@ setup       : |
     export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
     export LDFLAGS="$LDFLAGS -ffat-lto-objects"
 
-    sed -i -e 's/^gcc:ltcg/gcc/' src/corelib/global/global.pri
-
     ./configure -confirm-license -opensource -release \
                 -prefix %(prefix) \
                 -libdir %(libdir) \
@@ -99,6 +100,7 @@ setup       : |
                 -no-strip \
                 -no-use-gold-linker \
                 -openssl-linked \
+                -optimized-tools \
                 -platform linux-clang \
                 -system-freetype \
                 -system-harfbuzz \
@@ -107,7 +109,10 @@ setup       : |
                 -system-pcre \
                 -system-sqlite \
                 -system-zlib \
-                -xcb
+                -xcb \
+                QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+                QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+                QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
 build       : |
     %make
 install     : |
@@ -120,6 +125,9 @@ install     : |
     rm -rfv %(installroot)/usr/share/qt5/doc
     rmdir -p %(installroot)/usr/share/qt5 || :
 packages    :
+    - "%(name)":
+        rundeps:
+            - shared-mime-info
     - "%(name)-devel":
         paths:
             - /usr/bin
@@ -135,3 +143,5 @@ packages    :
     - "%(name)-demos" :
         paths:
             - /usr/lib/qt5/examples
+tuning     :
+    - lto: thin

@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ppp
-version     : 2.5.1
-release     : 3
+version     : 2.5.2
+release     : 4
 homepage    : https://ppp.samba.org/
 upstreams   :
-    - https://download.samba.org/pub/ppp/ppp-2.5.1.tar.gz : 733b7f5840b613da4eab0429a5081293275f06ba8b528e1b8eea6964faf0243a
+    - https://download.samba.org/pub/ppp/ppp-2.5.2.tar.gz : 47da358de54a10cb10bf6ff2cf9b1c03c0d3555518f6182e8f701b8e55733cb2
 summary     : Point-to-Point Protocol (PPP)
 description : |
     ppp (Paul's PPP Package) is an open source package which implements the Point-to-Point Protocol (PPP) on Linux and Solaris systems.

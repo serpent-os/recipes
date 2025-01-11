@@ -1,5 +1,6 @@
 releases:
   id: 21345
+  rss: ~
 security:
   cpe:
   - vendor: duktape_project

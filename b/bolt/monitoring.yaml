@@ -1,2 +1,7 @@
 releases:
   id: 17645
+  rss: ~
+security:
+  cpe:
+  - vendor: bolt
+    product: bolt

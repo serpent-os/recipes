@@ -27,6 +27,7 @@
 				"pkgconfig(opengl)"
 			],
 			"depends": [
+				"glu",
 				"pkgconfig(opengl)"
 			],
 			"files": [
@@ -42,6 +43,6 @@
 		}
 	},
 	"source-name": "glu",
-	"source-release": "1",
-	"source-version": "9.0.2"
+	"source-release": "2",
+	"source-version": "9.0.3"
 }

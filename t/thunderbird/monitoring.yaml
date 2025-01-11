@@ -1,2 +1,7 @@
 releases:
   id: 235205
+  rss: ~
+security:
+  cpe:
+  - vendor: mozilla
+    product: thunderbird

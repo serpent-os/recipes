@@ -1,6 +1,5 @@
 releases:
   id: 241732
-  rss: https://github.com/rui314/mold/releases.atom
+  rss: ~
 security:
-  # No known CPE, checked 20241218
-  cpe: ~
+  cpe: ~ # No known CPE. Last checked 20230219

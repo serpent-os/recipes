@@ -1,0 +1,23 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : foomatic-db-engine
+version     : 4.0.13
+release     : 2
+homepage    : https://openprinting.github.io/projects/02-foomatic/
+upstreams   :
+    - https://www.openprinting.org/download/foomatic/foomatic-db-engine-4.0.13.tar.gz : b5c89027aa26967d2e6db62e2af7db0c4039d2480d4fbf2476a6ddcf609a5faf
+summary     : Foomatic is a database-driven system for integrating free software printer drivers with the CUPS printing system and also with an easy-to-use command-line interface for direct, spooler-less printing.
+description : |
+    Foomatic’s database engine generates PPD files from the data in Foomatic’s XML database. It also contains scripts to directly configure print queues and handle jobs.
+license     : GPL-2.0-or-later
+builddeps   :
+    - pkgconfig(libxml-2.0)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

@@ -52,6 +52,7 @@
 				"pkgconfig(xwaylandproto)"
 			],
 			"depends": [
+				"binary(xhost)",
 				"binary(xkbcomp)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libGL.so.1(x86_64))",
@@ -147,6 +148,6 @@
 		}
 	},
 	"source-name": "xwayland",
-	"source-release": "7",
+	"source-release": "9",
 	"source-version": "24.1.4"
 }

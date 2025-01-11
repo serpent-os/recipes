@@ -1,0 +1,94 @@
+From c7830ed6aab4d7739825855669c09c8813ba27ad Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Tue, 31 Dec 2024 01:46:04 +0000
+Subject: [PATCH] Enable a stateless configuration
+
+Forwarded: not-needed
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ lib/Makefile.am      |  5 +++--
+ lib/libpaper.c.in.in | 16 ++++++++--------
+ man/paperspecs.5.in  |  2 +-
+ 3 files changed, 12 insertions(+), 11 deletions(-)
+
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 642fb58..bba72fa 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -22,8 +22,9 @@ include $(top_srcdir)/prefix.am
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/libgnu -I$(top_builddir)/libgnu -DIN_LIBRARY -DENABLE_COSTLY_RELOCATABLE -DREAL_INSTALLPREFIX="\"$(REAL_INSTALLPREFIX)\""
+ 
+-sysconf_DATA = paperspecs
+-EXTRA_DIST = $(sysconf_DATA)
++vendordir = $(datadir)/defaults/etc
++vendor_DATA = paperspecs
++EXTRA_DIST = $(vendor_DATA)
+ 
+ include_HEADERS = paper.h
+ lib_LTLIBRARIES = libpaper.la
+diff --git a/lib/libpaper.c.in.in b/lib/libpaper.c.in.in
+index 9294f3f..f450d90 100644
+--- a/lib/libpaper.c.in.in
++++ b/lib/libpaper.c.in.in
+@@ -49,8 +49,8 @@ static const char *PAPERSIZE_FILENAME = "papersize";
+ static const char *PAPERSPECS_FILENAME = "paperspecs";
+ static struct paper *papers = NULL;
+ static struct paper *default_paper = NULL;
+-static char *xdg_config_home, *sysconfdir_alloc;
+-static const char *sysconfdir;
++static char *xdg_config_home, *vendordir_alloc;
++static const char *vendordir;
+ static bool free_xdg_config_home = false;
+ 
+ #define MAX_PAPERNAME_LEN 255
+@@ -369,7 +369,7 @@ const char *defaultpapername(void) {
+     if (paperstr == NULL)
+         paperstr = localepapername();
+     if (paperstr == NULL) {
+-        char *papersize = file_join(sysconfdir, PAPERSIZE_FILENAME);
++        char *papersize = file_join(vendordir, PAPERSIZE_FILENAME);
+         if (papersize != NULL) {
+             paperstr = papernamefile(papersize);
+             free(papersize);
+@@ -413,9 +413,9 @@ int paperinit(void)
+ 
+     /* Read system paperspecs. */
+     struct paper *system_papers = NULL;
+-    sysconfdir = relocate2("@sysconfdir@", &sysconfdir_alloc);
+-    if (sysconfdir != NULL) {
+-        char *system_paperspecs = file_join(sysconfdir, PAPERSPECS_FILENAME);
++    vendordir = relocate2("@datadir@/defaults/etc", &vendordir_alloc);
++    if (vendordir != NULL) {
++        char *system_paperspecs = file_join(vendordir, PAPERSPECS_FILENAME);
+         if (system_paperspecs == NULL)
+             return PAPER_NOMEM;
+         ret = readspecs(&system_papers, system_paperspecs, NULL, &paper_lineno);
+@@ -481,8 +481,8 @@ int paperinit(void)
+ int paperdone(void)
+ {
+     if (initialized) {
+-        free(sysconfdir_alloc);
+-        sysconfdir = sysconfdir_alloc = NULL;
++        free(vendordir_alloc);
++        vendordir = vendordir_alloc = NULL;
+         if (free_xdg_config_home)
+             free(xdg_config_home);
+         xdg_config_home = NULL;
+diff --git a/man/paperspecs.5.in b/man/paperspecs.5.in
+index 2021c24..6f06cb0 100644
+--- a/man/paperspecs.5.in
++++ b/man/paperspecs.5.in
+@@ -38,7 +38,7 @@ which results in a definition for Letter size that does not exactly
+ match the definition in inches.
+ .SH FILES
+ .TP
+-.B @sysconfdir@/paperspecs
++.B @datadir@/defaults/etc/paperspecs
+ System list of paper sizes.
+ .TP
+ .B $XDG_CONFIG_HOME/paperspecs
+-- 
+2.47.1
+

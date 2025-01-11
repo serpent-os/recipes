@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libppd
+version     : 2.1.0
+release     : 2
+homepage    : https://github.com/OpenPrinting/libppd
+upstreams   :
+    - https://github.com/OpenPrinting/libppd/releases/download/2.1.0/libppd-2.1.0.tar.xz : bc4d7f8b749a8809f532459a5dd2f3513556ea2b96b3e12aced3e078c2697cba
+summary     : CUPS PostScript Printer Description library
+description : |
+    libppd is a library for handling PostScript Printer Description (PPD) files.
+    It is used by the CUPS printing system to support printer-specific features
+    and capabilities.
+license     : Apache-2.0
+builddeps   :
+    - binary(gs)
+    - pkgconfig(cups)
+    - pkgconfig(libcupsfilters)
+    - pkgconfig(zlib)
+setup       : |
+    %configure --disable-static \
+               --disable-mutool
+build       : |
+    %make
+install     : |
+    %make_install
+    rmdir %(installroot)%(bindir)

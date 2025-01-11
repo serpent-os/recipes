@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : uutils-coreutils
-version     : 0.8.27+git.d3db8dc
-release     : 17
+version     : 0.8.27+git.2227330
+release     : 19
 homepage    : https://uutils.github.io/coreutils/
 upstreams   :
-    - git|https://github.com/uutils/coreutils.git : d3db8dc29fafa8697c41882f5cc706b0747dd238
+    - git|https://github.com/uutils/coreutils.git : 2227330fe70f3c83974b7944abe925af8af95f02
 summary     : Cross-platform Rust rewrite of the GNU coreutils
 description : |
     Cross-platform Rust rewrite of the GNU coreutils
@@ -31,9 +31,11 @@ builddeps   :
     - binary(g++) # libstdc++...
     - pkgconfig(libacl)
 tuning      :
-    - lto: thin
+    - optimize: size
+    - lto
 environment : |
     export UUTILS_FEATURES="feat_acl,unix"
+    export RUSTFLAGS="$RUSTFLAGS -C codegen-units=1"
 setup       : |
     %patch %(pkgdir)/6798.patch
     %cargo_fetch
@@ -54,7 +56,7 @@ install     : |
                 ;;
             *)
                 # Install binaries
-                ln -svf coreutils %(installroot)%(bindir)/${item}
+                ln -v %(installroot)%(bindir)/coreutils %(installroot)%(bindir)/${item}
                 # Install completions
                 ./%(cargo_target_dir)/coreutils completion ${item} bash > %(installroot)%(datadir)/bash-completion/completions/${item} && [ -s %(installroot)%(datadir)/bash-completion/completions/${item} ] || rm -f %(installroot)%(datadir)/bash-completion/completions/${item}
                 ./%(cargo_target_dir)/coreutils completion ${item} zsh > %(installroot)%(datadir)/zsh/site-functions/_${item} && [ -s %(installroot)%(datadir)/zsh/site-functions/_${item} ] || rm -f %(installroot)%(datadir)/zsh/site-functions/_${item}

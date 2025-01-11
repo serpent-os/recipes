@@ -1,3 +1,7 @@
 releases:
   id: 8637
-
+  rss: ~
+security:
+  cpe:
+  - vendor: freedesktop
+    product: xdg-user-dirs

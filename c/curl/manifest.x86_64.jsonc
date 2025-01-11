@@ -4,9 +4,9 @@
 	"packages": {
 		"curl": {
 			"build-depends": [
-				"pkgconfig32(hyper)",
 				"pkgconfig32(jansson)",
 				"pkgconfig32(libbrotlidec)",
+				"pkgconfig32(libnghttp2)",
 				"pkgconfig32(libpsl)",
 				"pkgconfig32(libzstd)",
 				"pkgconfig32(rustls)",
@@ -16,8 +16,8 @@
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libbrotlidec.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libhyper.so.0(x86_64))",
 				"soname(libidn2.so.0(x86_64))",
+				"soname(libnghttp2.so.14(x86_64))",
 				"soname(libpsl.so.5(x86_64))",
 				"soname(librustls.so.0.14.0(x86_64))",
 				"soname(libz.so.1(x86_64))",
@@ -40,9 +40,9 @@
 		},
 		"curl-32bit": {
 			"build-depends": [
-				"pkgconfig32(hyper)",
 				"pkgconfig32(jansson)",
 				"pkgconfig32(libbrotlidec)",
+				"pkgconfig32(libnghttp2)",
 				"pkgconfig32(libpsl)",
 				"pkgconfig32(libzstd)",
 				"pkgconfig32(rustls)",
@@ -52,8 +52,8 @@
 				"curl",
 				"soname(libbrotlidec.so.1(386))",
 				"soname(libc.so.6(386))",
-				"soname(libhyper.so.0(386))",
 				"soname(libidn2.so.0(386))",
+				"soname(libnghttp2.so.14(386))",
 				"soname(libpsl.so.5(386))",
 				"soname(librustls.so.0.14.0(386))",
 				"soname(libz.so.1(386))",
@@ -71,9 +71,9 @@
 		},
 		"curl-32bit-devel": {
 			"build-depends": [
-				"pkgconfig32(hyper)",
 				"pkgconfig32(jansson)",
 				"pkgconfig32(libbrotlidec)",
+				"pkgconfig32(libnghttp2)",
 				"pkgconfig32(libpsl)",
 				"pkgconfig32(libzstd)",
 				"pkgconfig32(rustls)",
@@ -82,9 +82,9 @@
 			"depends": [
 				"curl-32bit",
 				"curl-devel",
-				"pkgconfig32(hyper)",
 				"pkgconfig32(libbrotlidec)",
 				"pkgconfig32(libidn2)",
+				"pkgconfig32(libnghttp2)",
 				"pkgconfig32(libpsl)",
 				"pkgconfig32(libzstd)",
 				"pkgconfig32(rustls)",
@@ -101,9 +101,9 @@
 		},
 		"curl-devel": {
 			"build-depends": [
-				"pkgconfig32(hyper)",
 				"pkgconfig32(jansson)",
 				"pkgconfig32(libbrotlidec)",
+				"pkgconfig32(libnghttp2)",
 				"pkgconfig32(libpsl)",
 				"pkgconfig32(libzstd)",
 				"pkgconfig32(rustls)",
@@ -111,9 +111,9 @@
 			],
 			"depends": [
 				"curl",
-				"pkgconfig(hyper)",
 				"pkgconfig(libbrotlidec)",
 				"pkgconfig(libidn2)",
+				"pkgconfig(libnghttp2)",
 				"pkgconfig(libpsl)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(rustls)",
@@ -644,6 +644,6 @@
 		}
 	},
 	"source-name": "curl",
-	"source-release": "18",
+	"source-release": "20",
 	"source-version": "8.11.1"
 }

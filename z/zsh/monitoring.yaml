@@ -1,2 +1,7 @@
 releases:
   id: 5307
+  rss: ~
+security:
+  cpe:
+  - vendor: zsh
+    product: zsh

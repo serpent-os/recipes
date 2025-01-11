@@ -1,5 +1,6 @@
 releases:
-    id: 7960
+  id: 7960
 # last checked 24/08/02
+  rss: ~
 security:
-    cpe: ~
+  cpe: ~

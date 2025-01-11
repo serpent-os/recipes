@@ -1,0 +1,41 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libpaper": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/paper",
+				"/usr/bin/paperconf",
+				"/usr/lib/libpaper.so.2",
+				"/usr/lib/libpaper.so.2.2.5",
+				"/usr/share/defaults/etc/paperspecs",
+				"/usr/share/doc/libpaper/README.md",
+				"/usr/share/man/man1/paper.1",
+				"/usr/share/man/man5/paperspecs.5"
+			],
+			"name": "libpaper",
+			"provides": [
+				"binary(paper)",
+				"binary(paperconf)",
+				"soname(libpaper.so.2(x86_64))"
+			]
+		},
+		"libpaper-devel": {
+			"depends": [
+				"libpaper"
+			],
+			"files": [
+				"/usr/include/paper.h",
+				"/usr/lib/libpaper.so"
+			],
+			"name": "libpaper-devel"
+		}
+	},
+	"source-name": "libpaper",
+	"source-release": "2",
+	"source-version": "2.2.5"
+}

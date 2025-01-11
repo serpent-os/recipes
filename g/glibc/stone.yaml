@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : glibc
-version     : 2.39
-release     : 14
+version     : 2.40+git.7648e3c8
+release     : 16
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -15,7 +15,7 @@ homepage    : https://www.gnu.org/software/libc
 description : |
     The GNU libc libraries
 upstreams   :
-    - git|https://sourceware.org/git/glibc.git: 4bdcc1963bc2b5ba5f8e319e402d9eb2cb6096c1
+    - git|https://sourceware.org/git/glibc.git: 7648e3c8e80b3f1b3b43506b2fbe370e4824ab97
 builddeps   :
     - binary(bison)
     - binary(gperf)
@@ -27,9 +27,20 @@ builddeps   :
     - binary(python3)
     - gcc-32bit
 packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/bin/mtrace
+            - /usr/bin/pcprofiledump
+            - /usr/bin/xtrace
+            - /usr/lib/*.o
+            - /usr/lib/libc_malloc_debug.so.0
     - "%(name)-32bit":
         paths:
             - /usr/lib/ld-linux.so.2
+    - "%(name)-32bit-devel":
+        paths:
+            - /usr/lib32/*.o
+            - /usr/lib32/libc_malloc_debug.so.0
 toolchain   : gnu
 emul32      : true
 tuning      :
@@ -44,24 +55,13 @@ tuning      :
 environment : |
     export COMMON_GLIBC_OPTIONS="\
         %(options_configure) \
-                --disable-crypt \
-                --disable-obsolete-rpc \
-                --disable-profile \
-                --disable-werror \
-                --enable-add-ons \
+                --disable-build-nscd \
+                --disable-nscd \
                 --enable-bind-now \
-                --enable-gnu-indirect-function \
                 --enable-kernel=5.15 \
-                --enable-lock-elision \
                 --enable-multi-arch \
-                --enable-plugin \
-                --enable-stack-protector \
-                --enable-stackguard-randomization \
-                --enable-static-pie \
-                --enable-threads=posix \
-                --enable-tunables \
-                --without-selinux \
-                libc_cv_include_x86_isa_level=no \
+                --enable-stack-protector=strong \
+                --with-selinux=no
     "
 setup       : |
     %patch %(pkgdir)/perf/0001-Remove-RELR-dependency-check.patch
@@ -91,11 +91,18 @@ install     : |
     # Make gconv cache
     LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux-x86-64.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
 
-    %make localedata/install-locales DESTDIR="%(installroot)" -C build
+    %make localedata/install-locale-files DESTDIR="%(installroot)" -C build
+
+    # We don't support nss_db/hesiod currently
+    rm -v %(installroot)/%(bindir)/makedb \
+          %(installroot)/%(libdir)/libnss_db.so* \
+          %(installroot)/%(libdir)/libnss_hesiod.so* \
+          %(installroot)/var/db/Makefile
+    rmdir -v %(installroot)/var/db %(installroot)/var
 
     # Stateless: Remove obsolete rpc
-    rm %(installroot)/var/db/Makefile %(installroot)/etc/rpc
-    rmdir %(installroot)/var/db %(installroot)/var %(installroot)/etc
+    rm -v %(installroot)/etc/rpc
+    rmdir -v %(installroot)/etc
 
     %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)%(sysconfdir)/ld.so.conf
     %install_dir %(installroot)/%(vendordir)%(sysconfdir)/ld.so.conf.d
@@ -136,6 +143,13 @@ profiles    :
 
             # Make gconv cache
             LD_LIBRARY_PATH=%(installroot)/%(libdir) %(installroot)/%(libdir)/ld-linux.so.2 %(installroot)/usr/sbin/iconvconfig --prefix=%(installroot)
+
+            # We don't support nss_db/hesiod currently
+            rm -v %(installroot)/%(bindir)/makedb \
+                %(installroot)/%(libdir)/libnss_db.so* \
+                %(installroot)/%(libdir)/libnss_hesiod.so* \
+                %(installroot)/var/db/Makefile
+            rmdir -v %(installroot)/var/db %(installroot)/var
 
             # Support old compiled 32bit binaries
             %install_dir %(installroot)/usr/lib

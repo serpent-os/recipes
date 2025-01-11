@@ -1,5 +1,6 @@
 releases:
   id: 21076
+  rss: ~
 security:
   cpe:
   - vendor: docker

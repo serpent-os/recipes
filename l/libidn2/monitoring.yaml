@@ -1,2 +1,9 @@
 releases:
   id: 5597
+  rss: ~
+security:
+  cpe:
+  - vendor: libidn2_project
+    product: libidn2
+  - vendor: gnu
+    product: libidn2

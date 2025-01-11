@@ -1,2 +1,9 @@
 releases:
   id: 15968
+  rss: ~
+security:
+  cpe:
+  - vendor: virglrenderer_project
+    product: virglrenderer
+  - vendor: freedesktop
+    product: virglrenderer

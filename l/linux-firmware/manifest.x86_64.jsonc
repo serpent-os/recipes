@@ -4,6 +4,7 @@
 	"packages": {
 		"linux-firmware": {
 			"build-depends": [
+				"binary(make)",
 				"binary(python3)",
 				"binary(rdfind)",
 				"binary(unzstd)",
@@ -389,7 +390,9 @@
 				"/usr/lib/firmware/brcm/brcmfmac43455-sdio.raspberrypi,3-model-b-plus.txt.zst",
 				"/usr/lib/firmware/brcm/brcmfmac43455-sdio.raspberrypi,4-compute-module.txt.zst",
 				"/usr/lib/firmware/brcm/brcmfmac43455-sdio.raspberrypi,4-model-b.txt.zst",
+				"/usr/lib/firmware/brcm/brcmfmac43455-sdio.raspberrypi,5-compute-module.txt.zst",
 				"/usr/lib/firmware/brcm/brcmfmac43455-sdio.raspberrypi,5-model-b.txt.zst",
+				"/usr/lib/firmware/brcm/brcmfmac43455-sdio.raspberrypi,500.txt.zst",
 				"/usr/lib/firmware/brcm/brcmfmac4350-pcie.bin.zst",
 				"/usr/lib/firmware/brcm/brcmfmac4350c2-pcie.bin.zst",
 				"/usr/lib/firmware/brcm/brcmfmac4354-sdio.bin.zst",
@@ -1136,6 +1139,8 @@
 				"/usr/lib/firmware/cirrus/cs35l41-dsp1-spk-prot-17aa38fa-spkid0-l0.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l41-dsp1-spk-prot-17aa38fa-spkid0-r0.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l41-dsp1-spk-prot-17aa38fa.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l41-dsp1-spk-prot-1f660105.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l41-dsp1-spk-prot-1f660105.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l41-dsp1-spk-prot.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l41-dsp1-spk-prot.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l41/bincfgs/cs35l41-dsp1-14_5dB.bincfg.zst",
@@ -1300,6 +1305,9 @@
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-103c8e2c-amp1.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-103c8e2c-amp2.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-103c8e2c.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431264-amp1.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431264-amp2.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431264.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431b13-spkid0-amp1.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431b13-spkid0-amp2.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431b13-spkid0.wmfw.zst",
@@ -1339,19 +1347,39 @@
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431f43-amp3.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431f43-amp4.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-10431f43.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233b-spkid0-ampl.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233b-spkid0-ampr.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233b-spkid0.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233b-spkid1-ampl.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233b-spkid1-ampr.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233b-spkid1.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233c-amp1.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233c-amp2.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa233c.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa380e-spkid0-ampl.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa380e-spkid0-ampr.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa380e-spkid0.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa380e-spkid1-ampl.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa380e-spkid1-ampr.bin.zst",
 				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa380e-spkid1.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3832-spkid0-ampl.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3832-spkid0-ampr.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3832-spkid0.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3832-spkid1-ampl.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3832-spkid1-ampr.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3832-spkid1.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3905-amp1.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3905-amp2.bin.zst",
+				"/usr/lib/firmware/cirrus/cs35l56-b0-dsp1-misc-17aa3905.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.11.1.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.11.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.16.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.18.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.20.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.25.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.26.wmfw.zst",
 				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.27.wmfw.zst",
+				"/usr/lib/firmware/cirrus/cs35l56/CS35L56_Rev3.11.28.wmfw.zst",
 				"/usr/lib/firmware/cis/3CCFEM556.cis.zst",
 				"/usr/lib/firmware/cis/3CXEM556.cis.zst",
 				"/usr/lib/firmware/cis/COMpad2.cis.zst",
@@ -2050,7 +2078,6 @@
 				"/usr/lib/firmware/qcom/venus-5.2/venus.mdt.zst",
 				"/usr/lib/firmware/qcom/venus-5.4/venus.mbn.zst",
 				"/usr/lib/firmware/qcom/venus-5.4/venus.mdt.zst",
-				"/usr/lib/firmware/qcom/venus-5.4/venus_s6.mbn.zst",
 				"/usr/lib/firmware/qcom/venus-6.0/venus.mbn.zst",
 				"/usr/lib/firmware/qcom/vpu-1.0/venus.mbn.zst",
 				"/usr/lib/firmware/qcom/vpu-1.0/venus.mdt.zst",
@@ -2154,7 +2181,9 @@
 				"/usr/lib/firmware/rtl_nic/rtl8125a-3.fw.zst",
 				"/usr/lib/firmware/rtl_nic/rtl8125b-1.fw.zst",
 				"/usr/lib/firmware/rtl_nic/rtl8125b-2.fw.zst",
+				"/usr/lib/firmware/rtl_nic/rtl8125bp-2.fw.zst",
 				"/usr/lib/firmware/rtl_nic/rtl8125d-1.fw.zst",
+				"/usr/lib/firmware/rtl_nic/rtl8125d-2.fw.zst",
 				"/usr/lib/firmware/rtl_nic/rtl8126a-2.fw.zst",
 				"/usr/lib/firmware/rtl_nic/rtl8126a-3.fw.zst",
 				"/usr/lib/firmware/rtl_nic/rtl8153a-2.fw.zst",
@@ -2416,6 +2445,7 @@
 		},
 		"linux-firmware-amd": {
 			"build-depends": [
+				"binary(make)",
 				"binary(python3)",
 				"binary(rdfind)",
 				"binary(unzstd)",
@@ -3331,6 +3361,7 @@
 		},
 		"linux-firmware-intel": {
 			"build-depends": [
+				"binary(make)",
 				"binary(python3)",
 				"binary(rdfind)",
 				"binary(unzstd)",
@@ -3663,6 +3694,7 @@
 		},
 		"linux-firmware-iwlwifi": {
 			"build-depends": [
+				"binary(make)",
 				"binary(python3)",
 				"binary(rdfind)",
 				"binary(unzstd)",
@@ -3827,6 +3859,7 @@
 		},
 		"linux-firmware-nvidia": {
 			"build-depends": [
+				"binary(make)",
 				"binary(python3)",
 				"binary(rdfind)",
 				"binary(unzstd)",
@@ -4290,6 +4323,6 @@
 		}
 	},
 	"source-name": "linux-firmware",
-	"source-release": "20",
-	"source-version": "20241210"
+	"source-release": "21",
+	"source-version": "20250109"
 }

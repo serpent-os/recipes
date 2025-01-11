@@ -1,0 +1,102 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : linux-handheld
+version     : 6.12.9
+release     : 4
+homepage    : https://kernel.org/
+upstreams   :
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.9.tar.xz : 87be0360df0931b340d2bac35161a548070fbc3a8c352c49e21e96666c26aeb4
+summary     : The Linux Kernel for handheld systems
+description : |
+    The Linux Kernel for handheld systems
+
+    This package provides the Linux Kernel for handheld systems. It is built with
+    the LLVM compiler and the LLD linker, and is configured for handheld systems.
+license     :
+    - GPL-2.0-only
+builddeps   :
+    - binary(bc)
+    - binary(bison)
+    - binary(cryptsetup)
+    - binary(dash)
+    - binary(dbus-broker)
+    - binary(dracut)
+    - binary(flex)
+    - binary(gpg)
+    - binary(grep)
+    - binary(gzip)
+    - binary(kmod)
+    - binary(moss)
+    - binary(less)
+    - binary(loadkeys)
+    - binary(m4)
+    - binary(perl)
+    - binary(python3)
+    - binary(setfont)
+    - binary(tr)
+    - binary(which)
+    - pkgconfig(gmp)
+    - pkgconfig(libelf)
+    - pkgconfig(libssl)
+    - pkgconfig(libzstd)
+    - pkgconfig(mpfr)
+    - pkgconfig(ply-boot-client)
+    - sysbinary(fsck.ext4)
+    - sysbinary(fsck.f2fs)
+    - sysbinary(fsck.xfs)
+    - sysbinary(lvm)
+    - gcc # libgcc_s.so.1 - needed until we get llvm-libgcc
+    - font-cantarell
+    - intel-microcode
+    - linux-firmware
+    - linux-firmware-amd
+    - linux-firmware-intel
+    - linux-firmware-nvidia
+    - serpent-artwork
+setup       : |
+    for i in $(cat %(pkgdir)/series) ; do
+        %patch %(pkgdir)/$i
+    done
+
+    extraVersion="-%(release).handheld"
+    sed -e "s/EXTRAVERSION =.*/EXTRAVERSION = $extraVersion/" -i Makefile
+
+    %install_file %(pkgdir)/config-x86_64 .config
+    %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0 oldconfig || exit 1
+    cat .config
+build       : |
+    # Do NOT use CONFIG_DEBUG_SECTION_MISMATCH as it is GCC specific
+    %make VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
+    %make -C tools/objtool VERBOSE=0 V=0 CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 LLVM_IAS=1 WERROR=0
+install     : |
+    umask 022
+    kernelVersion="%(version)-%(release).handheld"
+    %install_exe arch/x86/boot/bzImage %(installroot)%(libdir)/kernel/$kernelVersion/vmlinuz
+
+    %install_file .config %(installroot)%(libdir)/kernel/$kernelVersion/config
+    %install_file System.map %(installroot)%(libdir)/kernel/$kernelVersion/System.map
+
+    # Modules please
+    %install_dir %(installroot)%(libdir)/modules/$kernelVersion
+    %make CC=%(cc) LD=%(ld) ARCH=x86_64 LLVM=1 WERROR=0 INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%(installroot)/usr modules_install KERNELRELEASE="$kernelVersion" mod-fw= DEPMOD=/usr/bin/true
+    /usr/sbin/depmod -b %(installroot)/usr ${kernelVersion} -a
+
+    # Include early microcode
+    PATH="/usr/bin:/usr/sbin" dracut --strip --tmpdir /tmp -N -f \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "bash rescue systemd virtiofs lvm dm moss" \
+        --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode --fwdir %(libdir)/firmware \
+        --include %(pkgdir)/depmod.conf %(libdir)/depmod.d/depmod.conf \
+        %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd
+
+    # Temporary: Help with VMs
+    ln -s $kernelVersion/50-default.initrd %(installroot)%(libdir)/kernel/current.handheld.initrd
+    ln -s $kernelVersion/vmlinuz %(installroot)%(libdir)/kernel/current.handheld.kernel
+    %install_file %(pkgdir)/boot.json %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
+    sed -e 's/@VERSION@/%(version)-%(release).handheld/g' -i %(installroot)%(libdir)/kernel/$kernelVersion/boot.json
+
+    # Set up module symlinks
+    rm -vf %(installroot)%(libdir)/modules/$kernelVersion/build || :
+    rm -vf %(installroot)%(libdir)/modules/$kernelVersion/source || :

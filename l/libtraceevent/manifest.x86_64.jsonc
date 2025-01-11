@@ -14,7 +14,7 @@
 			],
 			"files": [
 				"/usr/lib/libtraceevent.so.1",
-				"/usr/lib/libtraceevent.so.1.8.3",
+				"/usr/lib/libtraceevent.so.1.8.4",
 				"/usr/lib/traceevent/plugins/libtraceevent-dynamic-list",
 				"/usr/lib/traceevent/plugins/plugin_cfg80211.so",
 				"/usr/lib/traceevent/plugins/plugin_function.so",
@@ -32,18 +32,18 @@
 			"name": "libtraceevent",
 			"provides": [
 				"soname(libtraceevent.so.1(x86_64))",
-				"soname(plugin_cfg80211.so(x86_64))",
-				"soname(plugin_function.so(x86_64))",
-				"soname(plugin_futex.so(x86_64))",
-				"soname(plugin_hrtimer.so(x86_64))",
-				"soname(plugin_jbd2.so(x86_64))",
-				"soname(plugin_kmem.so(x86_64))",
-				"soname(plugin_kvm.so(x86_64))",
-				"soname(plugin_mac80211.so(x86_64))",
-				"soname(plugin_sched_switch.so(x86_64))",
-				"soname(plugin_scsi.so(x86_64))",
-				"soname(plugin_tlb.so(x86_64))",
-				"soname(plugin_xen.so(x86_64))"
+				"soname(traceevent/plugins/plugin_cfg80211.so(x86_64))",
+				"soname(traceevent/plugins/plugin_function.so(x86_64))",
+				"soname(traceevent/plugins/plugin_futex.so(x86_64))",
+				"soname(traceevent/plugins/plugin_hrtimer.so(x86_64))",
+				"soname(traceevent/plugins/plugin_jbd2.so(x86_64))",
+				"soname(traceevent/plugins/plugin_kmem.so(x86_64))",
+				"soname(traceevent/plugins/plugin_kvm.so(x86_64))",
+				"soname(traceevent/plugins/plugin_mac80211.so(x86_64))",
+				"soname(traceevent/plugins/plugin_sched_switch.so(x86_64))",
+				"soname(traceevent/plugins/plugin_scsi.so(x86_64))",
+				"soname(traceevent/plugins/plugin_tlb.so(x86_64))",
+				"soname(traceevent/plugins/plugin_xen.so(x86_64))"
 			]
 		},
 		"libtraceevent-devel": {
@@ -71,6 +71,6 @@
 		}
 	},
 	"source-name": "libtraceevent",
-	"source-release": "1",
-	"source-version": "1.8.3"
+	"source-release": "2",
+	"source-version": "1.8.4"
 }

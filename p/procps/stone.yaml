@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : procps
-version     : '4.0.4'
-release     : 3
+version     : 4.0.5
+release     : 4
 homepage    : https://gitlab.com/procps-ng/procps
 upstreams   :
-    - https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-4.0.4.tar.xz : 22870d6feb2478adb617ce4f09a787addaf2d260c5a8aa7b17d889a962c5e42e
+    - https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-4.0.5.tar.xz : c2e6d193cc78f84cd6ddb72aaf6d5c6a9162f0470e5992092057f5ff518562fa
 summary     : Utilities for monitoring your system and its processes
 description : |
     Utilities for monitoring your system and its processes

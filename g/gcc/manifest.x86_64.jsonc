@@ -1795,14 +1795,14 @@
 				"binary(x86_64-serpent-linux-gcc-ar)",
 				"binary(x86_64-serpent-linux-gcc-nm)",
 				"binary(x86_64-serpent-linux-gcc-ranlib)",
+				"soname(gcc/x86_64-serpent-linux/14/liblto_plugin.so(x86_64))",
+				"soname(gcc/x86_64-serpent-linux/14/plugin/libcc1plugin.so.0(x86_64))",
+				"soname(gcc/x86_64-serpent-linux/14/plugin/libcp1plugin.so.0(x86_64))",
 				"soname(libasan.so.8(x86_64))",
 				"soname(libcc1.so.0(x86_64))",
-				"soname(libcc1plugin.so.0(x86_64))",
-				"soname(libcp1plugin.so.0(x86_64))",
 				"soname(libhwasan.so.0(x86_64))",
 				"soname(libitm.so.1(x86_64))",
 				"soname(liblsan.so.0(x86_64))",
-				"soname(liblto_plugin.so(x86_64))",
 				"soname(libtsan.so.2(x86_64))",
 				"soname(libubsan.so.1(x86_64))"
 			]
@@ -1832,11 +1832,11 @@
 				"libgfortran-32bit",
 				"libgomp-32bit",
 				"libquadmath-32bit",
-				"soname(ld-linux.so.2(x86))",
-				"soname(libc.so.6(x86))",
-				"soname(libgcc_s.so.1(x86))",
-				"soname(libm.so.6(x86))",
-				"soname(libstdc++.so.6(x86))"
+				"soname(ld-linux.so.2(386))",
+				"soname(libc.so.6(386))",
+				"soname(libgcc_s.so.1(386))",
+				"soname(libm.so.6(386))",
+				"soname(libstdc++.so.6(386))"
 			],
 			"files": [
 				"/usr/lib/gcc/x86_64-serpent-linux/14/32/crtbegin.o",
@@ -2087,7 +2087,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
-				"soname(libc.so.6(x86))"
+				"soname(libc.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libatomic.so.1",
@@ -2148,8 +2148,8 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
-				"soname(ld-linux.so.2(x86))",
-				"soname(libc.so.6(x86))"
+				"soname(ld-linux.so.2(386))",
+				"soname(libc.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libgcc_s.so.1"
@@ -2212,10 +2212,10 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
-				"soname(ld-linux.so.2(x86))",
-				"soname(libc.so.6(x86))",
-				"soname(libgcc_s.so.1(x86))",
-				"soname(libm.so.6(x86))"
+				"soname(ld-linux.so.2(386))",
+				"soname(libc.so.6(386))",
+				"soname(libgcc_s.so.1(386))",
+				"soname(libm.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libgfortran.so.5",
@@ -2276,7 +2276,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
-				"soname(libc.so.6(x86))"
+				"soname(libc.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libgomp.so.1",
@@ -2338,8 +2338,8 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
-				"soname(libc.so.6(x86))",
-				"soname(libm.so.6(x86))"
+				"soname(libc.so.6(386))",
+				"soname(libm.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libquadmath.so.0",
@@ -2408,10 +2408,10 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
-				"soname(ld-linux.so.2(x86))",
-				"soname(libc.so.6(x86))",
-				"soname(libgcc_s.so.1(x86))",
-				"soname(libm.so.6(x86))"
+				"soname(ld-linux.so.2(386))",
+				"soname(libc.so.6(386))",
+				"soname(libgcc_s.so.1(386))",
+				"soname(libm.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libstdc++.so.6",
@@ -2426,6 +2426,6 @@
 		}
 	},
 	"source-name": "gcc",
-	"source-release": "5",
+	"source-release": "7",
 	"source-version": "14.2.0"
 }

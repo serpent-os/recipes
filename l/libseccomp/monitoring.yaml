@@ -1,2 +1,7 @@
 releases:
   id: 13823
+  rss: ~
+security:
+  cpe:
+  - vendor: libseccomp_project
+    product: libseccomp

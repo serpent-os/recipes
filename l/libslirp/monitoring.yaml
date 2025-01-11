@@ -1,2 +1,7 @@
 releases:
   id: 96796
+  rss: ~
+security:
+  cpe:
+  - vendor: libslirp_project
+    product: libslirp

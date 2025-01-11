@@ -1,6 +1,7 @@
 releases:
-    id: 2596
+  id: 2596
+  rss: ~
 security:
   cpe:
-    - vendor: parted_project
-      product: parted
+  - vendor: parted_project
+    product: parted

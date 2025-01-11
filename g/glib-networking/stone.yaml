@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : glib-networking
-version     : 2.80.0
-release     : 5
+version     : 2.80.1
+release     : 6
 homepage    : https://gitlab.gnome.org/GNOME/glib-networking
 upstreams   :
-    - https://download.gnome.org/sources/glib-networking/2.80/glib-networking-2.80.0.tar.xz : d8f4f1aab213179ae3351617b59dab5de6bcc9e785021eee178998ebd4bb3acf
+    - https://download.gnome.org/sources/glib-networking/2.80/glib-networking-2.80.1.tar.xz : b80e2874157cd55071f1b6710fa0b911d5ac5de106a9ee2a4c9c7bee61782f8e
 summary     : Network extensions for GLib
 description : |
     glib-networking contains the implementations of certain GLib networking features that cannot be implemented directly in GLib itself because of their dependencies.

@@ -1,0 +1,9 @@
+releases:
+  id: 380
+  rss: ~
+security:
+  cpe:
+  - vendor: cups
+    product: cups
+  - vendor: openprinting
+    product: cups

@@ -1,2 +1,7 @@
 releases:
   id: 234933
+  rss: ~
+security:
+  cpe:
+  - vendor: gnu
+    product: wget

@@ -1,6 +1,7 @@
 releases:
-    id: 857
+  id: 857
+  rss: ~
 security:
-    cpe:
-    - vendor: gnu
-      product: fribidi
+  cpe:
+  - vendor: gnu
+    product: fribidi

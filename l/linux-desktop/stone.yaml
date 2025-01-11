@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-desktop
-version     : 6.12.7
-release     : 72
+version     : 6.12.9
+release     : 76
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.7.tar.xz : f785fb648a0e0b66a943bb3228a4b6ed62c90b985cd1ebf69da5d38e589da0cf
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.9.tar.xz : 87be0360df0931b340d2bac35161a548070fbc3a8c352c49e21e96666c26aeb4
 summary     : The Linux Kernel for desktop systems
 description : |
     The Linux Kernel for desktop systems
@@ -32,6 +32,7 @@ builddeps   :
     - binary(less)
     - binary(loadkeys)
     - binary(m4)
+    - binary(moss)
     - binary(perl)
     - binary(python3)
     - binary(setfont)
@@ -88,7 +89,7 @@ install     : |
 
     # Include early microcode
     PATH="/usr/bin:/usr/sbin" dracut --strip --tmpdir /tmp -N -f \
-        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "bash rescue systemd virtiofs lvm dm" \
+        --kmoddir %(installroot)%(libdir)/modules/${kernelVersion} --kver $kernelVersion --add "bash rescue systemd virtiofs lvm dm moss" \
         --strip --hardlink --nomdadmconf --nolvmconf --add-drivers "qxl virtio-gpu" --zstd --early-microcode --fwdir %(libdir)/firmware \
         --include %(pkgdir)/depmod.conf %(libdir)/depmod.d/depmod.conf \
         %(installroot)%(libdir)/kernel/$kernelVersion/50-default.initrd

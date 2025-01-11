@@ -1,2 +1,11 @@
 releases:
-    id: 21197
+  id: 21197
+  rss: ~
+security:
+  cpe:
+  - vendor: gnome
+    product: networkmanager
+  - vendor: networkmanager_project
+    product: networkmanager
+  - vendor: redhat
+    product: networkmanager

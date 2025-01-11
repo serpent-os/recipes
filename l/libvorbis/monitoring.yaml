@@ -1,2 +1,9 @@
 releases:
   id: 1758
+  rss: ~
+security:
+  cpe:
+  - vendor: xiph.org
+    product: libvorbis
+  - vendor: xiph
+    product: libvorbis

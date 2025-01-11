@@ -5,7 +5,7 @@
 #
 name        : golang
 version     : 1.23.4
-release     : 12
+release     : 14
 homepage    : https://go.dev
 upstreams   :
     - https://go.dev/dl/go1.23.4.linux-amd64.tar.gz : 6924efde5de86fe277676e929dc9917d466efa02fb934197bc2eba35d5680971
@@ -22,8 +22,9 @@ packages    :
         paths:
             - /usr/lib/*.a
 environment : |
-    # to be on the safe side
-    export GOROOT="%(libdir)/%(name)"
+    # This can mess up the automatic goroot detection if set
+    unset GOROOT
+
     # needed for bootstrap in the build phase
     export GOROOT_BOOTSTRAP="%(libdir)/%(name)"
 
@@ -67,12 +68,5 @@ install     : |
     # verify that the present toolchain version is always used for building other go recipes
     cat go.env
     %install_file go.env %(installroot)%(libdir)/%(name)/go.env
-
-    # HACK!
-    # Ensure that relevant env vars are set in user sessions
-    %install_dir %(installroot)%(vendordir)/etc/profile.d
-    # GOROOT needs to be set or bad things will happen, because make.bash uses -trimpath
-    echo 'export GOROOT=%(libdir)/%(name)' > %(installroot)%(vendordir)/etc/profile.d/golang-GOROOT.sh
-    cat %(installroot)%(vendordir)/etc/profile.d/golang-GOROOT.sh
 # check      : |
 #     cd src && ./run.bash -v -v -v -k

@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qpdf
+version     : 11.9.1
+release     : 2
+homepage    : https://qpdf.sf.net
+upstreams   :
+    - https://github.com/qpdf/qpdf/releases/download/v11.9.1/qpdf-11.9.1.tar.gz : 2ba4d248f9567a27c146b9772ef5dc93bd9622317978455ffe91b259340d13d1
+summary     : Command-line tools and library for transforming PDF files
+description : |
+    Command-line tools and library for transforming PDF files
+license     : Apache-2.0
+builddeps   :
+    - pkgconfig(libjpeg)
+    - pkgconfig(libssl)
+    - pkgconfig(zlib)
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/qpdf
+setup       : |
+    %cmake -DBUILD_STATIC_LIBS=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

@@ -125,13 +125,13 @@
 			],
 			"name": "python-brotli",
 			"provides": [
-				"python(Brotli(3.11))",
-				"python(Brotli)",
+				"python(brotli(3.11))",
+				"python(brotli)",
 				"soname(python3.11/site-packages/_brotli.cpython-311-x86_64-linux-gnu.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "brotli",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "1.1.0"
 }
