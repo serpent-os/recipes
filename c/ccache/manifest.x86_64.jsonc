@@ -7,11 +7,13 @@
 				"binary(eu-elfcmp)",
 				"binary(objdump)",
 				"binary(perl)",
+				"pkgconfig(libblake3)",
 				"pkgconfig(libxxhash)",
 				"pkgconfig(libzstd)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libblake3.so.0(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
@@ -29,7 +31,7 @@
 				"/usr/lib/ccache/bin/x86_64-serpent-linux-c++",
 				"/usr/lib/ccache/bin/x86_64-serpent-linux-g++",
 				"/usr/lib/ccache/bin/x86_64-serpent-linux-gcc",
-				"/usr/share/defaults/etc/ccache/ccache.conf"
+				"/usr/share/defaults/ccache/ccache.conf"
 			],
 			"name": "ccache",
 			"provides": [
@@ -38,6 +40,6 @@
 		}
 	},
 	"source-name": "ccache",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "4.10.2"
 }
