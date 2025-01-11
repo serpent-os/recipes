@@ -1,0 +1,54 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"ladspa": {
+			"build-depends": [
+				"pkgconfig(sndfile)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libsndfile.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/analyseplugin",
+				"/usr/bin/applyplugin",
+				"/usr/bin/listplugins",
+				"/usr/lib/ladspa/amp.so",
+				"/usr/lib/ladspa/delay.so",
+				"/usr/lib/ladspa/filter.so",
+				"/usr/lib/ladspa/noise.so",
+				"/usr/lib/ladspa/sine.so"
+			],
+			"name": "ladspa",
+			"provides": [
+				"binary(analyseplugin)",
+				"binary(applyplugin)",
+				"binary(listplugins)",
+				"soname(ladspa/amp.so(x86_64))",
+				"soname(ladspa/delay.so(x86_64))",
+				"soname(ladspa/filter.so(x86_64))",
+				"soname(ladspa/noise.so(x86_64))",
+				"soname(ladspa/sine.so(x86_64))"
+			]
+		},
+		"ladspa-devel": {
+			"build-depends": [
+				"pkgconfig(sndfile)"
+			],
+			"depends": [
+				"ladspa"
+			],
+			"files": [
+				"/usr/include/ladspa.h"
+			],
+			"name": "ladspa-devel"
+		}
+	},
+	"source-name": "ladspa",
+	"source-release": "1",
+	"source-version": "1.17"
+}
