@@ -18,9 +18,9 @@
 			],
 			"name": "seatd",
 			"provides": [
-				"soname(libseat.so.1(x86_64))",
 				"binary(seatd)",
-				"binary(seatd-launch)"
+				"binary(seatd-launch)",
+				"soname(libseat.so.1(x86_64))"
 			]
 		},
 		"seatd-devel": {
@@ -28,7 +28,8 @@
 				"pkgconfig(libsystemd)"
 			],
 			"depends": [
-				"pkgconfig(libsystemd)"
+				"pkgconfig(libsystemd)",
+				"seatd"
 			],
 			"files": [
 				"/usr/include/libseat.h",
@@ -42,6 +43,6 @@
 		}
 	},
 	"source-name": "seatd",
-	"source-release": "1",
-	"source-version": "0.8.0"
+	"source-release": "2",
+	"source-version": "0.9.1"
 }
