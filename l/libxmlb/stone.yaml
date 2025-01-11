@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : libxmlb
-version     : 0.3.19
-release     : 2
+version     : 0.3.21
+release     : 3
 homepage    : https://github.com/hughsie/libxmlb
 upstreams   :
-    - https://github.com/hughsie/libxmlb/releases/download/0.3.19/libxmlb-0.3.19.tar.xz : 0a3ec258b12dbf10e5fe840b2421c84137eb7cc1b09c3de6210f3f7d51733733
+    - https://github.com/hughsie/libxmlb/releases/download/0.3.21/libxmlb-0.3.21.tar.xz : 642343c9b3eca5c234ef83d3d5f6307c78d024f2545f3cc2fa252c9e14e4efd1
 summary     : A library to help create and query binary XML blobs
 description : |
     A library to help create and query binary XML blobs
