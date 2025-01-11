@@ -5,7 +5,7 @@
 #
 name        : ccache
 version     : 4.10.2
-release     : 6
+release     : 7
 summary     : ccache - a fast C/C++ compiler cache
 license     : GPL-3.0-or-later
 homepage    : https://ccache.dev/
@@ -16,6 +16,7 @@ upstreams   :
 builddeps   :
     # pkgconfig(fmt)
     # pkgconfig(hiredis)
+    - pkgconfig(libblake3)
     - pkgconfig(libxxhash)
     - pkgconfig(libzstd)
     # TODO asciidoctor for man pages
@@ -24,6 +25,8 @@ checkdeps   :
     - binary(objdump)
     - binary(perl)
 setup       : |
+    %patch %(pkgdir)/0001-ccache-Add-vendor-dir.patch
+
     # avoid packaging hiredis for now...
     %cmake \
         -DVENDORDIR="%(vendordir)/ccache" \
@@ -44,7 +47,7 @@ install     : |
     done
 
     # Install our default config
-    %install_file %(pkgdir)/ccache.conf %(installroot)/%(vendordir)%(sysconfdir)/ccache/ccache.conf
+    %install_file %(pkgdir)/ccache.conf %(installroot)/%(vendordir)/ccache/ccache.conf
 #check       : |
 #    needs doctest packaged
 #    %cmake_test
