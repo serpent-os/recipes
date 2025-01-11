@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : seatd
-version     : '0.8.0'
-release     : 1
+version     : 0.9.1
+release     : 2
 homepage    : https://git.sr.ht/~kennylevinsen/seatd
 upstreams   :
-    - https://git.sr.ht/~kennylevinsen/seatd/archive/0.8.0.tar.gz : a562a44ee33ccb20954a1c1ec9a90ecb2db7a07ad6b18d0ac904328efbcf65a0
+    - https://git.sr.ht/~kennylevinsen/seatd/archive/0.9.1.tar.gz : 819979c922a0be258aed133d93920bce6a3d3565a60588d6d372ce9db2712cd3
 summary     : Seat management daemon and library
 description : |
     A minimal seat management daemon, and a universal seat management library.
