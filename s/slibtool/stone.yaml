@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : slibtool
-version     : 0.6.0
-release     : 6
+version     : 0.6.1
+release     : 7
 homepage    : https://github.com/midipix-project/slibtool
 upstreams   :
-    - https://dl.midipix.org/slibtool/slibtool-0.6.0.tar.gz : afe87a71655aedf241062271b0e881ef8987e421f5a8d1273da735656c65972c
+    - https://dl.midipix.org/slibtool/slibtool-0.6.1.tar.gz : 6266f64d726ac92d69e03fec262408a34b970e10be39efc245662febd76cb079
 summary     : a surrogate libtool implementation, written in C
 description : |
     `slibtool` is an independent reimplementation of the widely used libtool,
