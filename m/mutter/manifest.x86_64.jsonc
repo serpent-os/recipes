@@ -571,6 +571,7 @@
 				"/usr/include/mutter-15/mtk/mtk/mtk-monitor-transform.h",
 				"/usr/include/mutter-15/mtk/mtk/mtk-rectangle.h",
 				"/usr/include/mutter-15/mtk/mtk/mtk-region.h",
+				"/usr/include/mutter-15/mtk/mtk/mtk-utils.h",
 				"/usr/include/mutter-15/mtk/mtk/mtk-x11-errors.h",
 				"/usr/include/mutter-15/mtk/mtk/mtk-x11.h",
 				"/usr/include/mutter-15/mtk/mtk/mtk.h",
@@ -593,5 +594,5 @@
 	},
 	"source-name": "mutter",
 	"source-release": "15",
-	"source-version": "47.3"
+	"source-version": "47.4"
 }
