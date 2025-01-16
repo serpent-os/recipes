@@ -103,6 +103,6 @@
 		}
 	},
 	"source-name": "zstd",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "1.5.6"
 }
