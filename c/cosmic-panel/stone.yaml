@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-panel
-version     : 1.0.0-alpha.4
-release     : 12
+version     : 1.0.0-alpha.5.1
+release     : 13
 summary     : Cosmic Desktop Panel
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-panel
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-panel.git : b4c4d742321a623d7d3c58cb985ada2f3ee2f027
+    - git|https://github.com/pop-os/cosmic-panel.git : 21e66d51e9fe76c154acfcca1de6d09862545084
 description : |
     Cosmic Desktop panel
 builddeps   :
