@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-notifications
-version     : 1.0.0-alpha.4
-release     : 9
+version     : 1.0.0-alpha.5.1
+release     : 10
 summary     : Cosmic Desktop Notifications
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-notifications
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-notifications.git : 76c237b0509ea6f724076db2195a7fab6942f33c
+    - git|https://github.com/pop-os/cosmic-notifications.git : 5c33113c242a482b7618262be07a1b39d267f999
 description : |
     Cosmic Desktop Notifications
 builddeps   :
