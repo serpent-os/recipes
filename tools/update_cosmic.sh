@@ -6,7 +6,7 @@ set -x
 REPO="pop-os"
 
 # The version of the cosmic desktop
-VERSION="1.0.0-alpha.4"
+VERSION="1.0.0-alpha.5.1"
 
 # Find all `stone.yaml` files that contain pop-os in the upstreams section
 # and update the upstream to the latest commit
