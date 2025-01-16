@@ -260,7 +260,7 @@
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-vpn-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-vpn.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-window-management-symbolic.svg",
-				"/usr/share/icons/Cosmic/scalable/apps/preferences-window-managment.svg",
+				"/usr/share/icons/Cosmic/scalable/apps/preferences-window-management.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-wired-symbolic.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-wired.svg",
 				"/usr/share/icons/Cosmic/scalable/apps/preferences-wireless-symbolic.svg",
@@ -622,6 +622,6 @@
 		}
 	},
 	"source-name": "cosmic-icons",
-	"source-release": "11",
-	"source-version": "1.0.0-alpha.4"
+	"source-release": "12",
+	"source-version": "1.0.0-alpha.5.1"
 }
