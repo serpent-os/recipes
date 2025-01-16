@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : cosmic-player
+version     : 1.0.0-alpha.5.1
+release     : 1
+summary     : Cosmic Desktop Compositor
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-player
+upstreams   :
+    - git|https://github.com/pop-os/cosmic-player.git : 7c080feb86c0605e7497be7eeb08879abfe301ab
+description : |
+    Cosmic Desktop Media Player
+builddeps   :
+    - binary(cargo)
+    - binary(just)
+    - pkgconfig(gstreamer-1.0)
+    - pkgconfig(gstreamer-plugins-base-1.0)
+    - pkgconfig(xkbcommon)
+networking  : yes
+tuning      :
+    - lto: thin
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    CARGO_TARGET_DIR="target/%(target_triple)" just rootdir=%(installroot) install
