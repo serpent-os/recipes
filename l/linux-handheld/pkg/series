@@ -35,6 +35,8 @@ handheld/0017-ALSA-hda-tas2781-Add-speaker-id-check-for-ASUS-proje.patch
 handheld/0018-drm-amdgpu-display-fix-backlight-brightness-overflow.patch
 handheld/0019-ALSA-hda-tas278-Ignore-SUBSYS_ID-not-found-for-tas2563-projects.patch
 handheld/0020-iio_imu_Add_driver_for_Bosch_BMI260_IMU.patch
+handheld/0021-xpad-add-support-for-ZOTAC-Gaming-Zone.patch
+handheld/0022-drm-panel-orientation-quirks-Add-Zotac-Gaming-Zone-quirk.patch
 asus/0001-Input-xpad-add-support-for-ASUS-ROG-RAIKIRI-PRO.patch
 asus/0002-platform-x86-asus-wmi-don-t-fail-if-platform_profile.patch
 asus/0003-platform-x86-asus-wmi-Refactor-Ally-suspend-resume.patch
