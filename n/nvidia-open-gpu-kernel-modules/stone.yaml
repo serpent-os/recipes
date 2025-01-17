@@ -5,7 +5,7 @@
 #
 name        : nvidia-open-gpu-kernel-modules
 version     : 565.77
-release     : 16
+release     : 17
 homepage    : https://github.com/NVIDIA/open-gpu-kernel-modules
 upstreams   :
     - https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/565.77.tar.gz : d3342afbf327335a51096ce5de7b35b22ba84ee2127e84c2cc49624d88a3444f
@@ -30,6 +30,9 @@ tuning      :
     - icf: false
     - relr: false
     - symbolic: false
+    - build-id: false
+    - lto: false
+    - compress-debug: false
 environment : |
     export KERNEL_UNAME=`jq --raw-output .version /usr/lib/kernel/*.desktop/boot.json` || exit 1
 setup       : |
