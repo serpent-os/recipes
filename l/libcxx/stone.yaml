@@ -1,6 +1,6 @@
 name        : libcxx
-version     : 18.1.8
-release     : 10
+version     : 19.1.6
+release     : 11
 summary     : Modern C++ standard library
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -12,7 +12,7 @@ description : |
     This is the default C++ library in Serpent OS used in conjunction with the LLVM
     toolchain.
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz: 0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/llvm-project-19.1.6.src.tar.xz: e3f79317adaa9196d2cfffe1c869d7c100b7540832bc44fe0d3f44a12861fa34
 builddeps   :
     - binary(python3)
     - pkgconfig(libxcrypt)
@@ -23,23 +23,16 @@ emul32      : yes
 tuning      :
     - lto: full
 setup       : |
-    export CFLAGS="$CFLAGS -ffat-lto-objects"
-    export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
-    export LDFLAGS="$LDFLAGS -ffat-lto-objects"
-
     # Context on CMAKE_ vars: https://reviews.llvm.org/D112155#3353869
     %cmake -S runtimes \
         -DCMAKE_ASM_COMPILER_TARGET=%(build_platform) \
         -DCMAKE_CXX_COMPILER_TARGET=%(build_platform) \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCOMPILER_RT_USE_LIBCXX=ON \
         -DLIBCXX_ENABLE_ASSERTIONS=OFF \
-        -DLIBCXX_ENABLE_PARALLEL_ALGORITHMS=OFF \
         -DLIBCXX_ENABLE_SHARED=ON \
         -DLIBCXX_ENABLE_STATIC=OFF \
         -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
         -DLIBCXX_HAS_ATOMIC_LIB=ON \
-        -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
         -DLIBCXX_STATICALLY_LINK_ABI_IN_SHARED_LIBRARY=ON \
         -DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON \
         -DLIBCXX_USE_COMPILER_RT=ON \
@@ -80,3 +73,12 @@ install     : |
     sed -e 's@\@LIBDIR\@@%(libdir)@g' -e 's/@VERSION@/%(version)/g' %(pkgdir)/libunwind.pc.in > %(installroot)%(libdir)/pkgconfig/libunwind.pc
 workload    : |
     %cmake_build check-runtimes -k 1000 ||:
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/lib/libc++*.json
+            - /usr/share/libc++
+
+    - "%(name)-32bit-devel":
+        paths:
+            - /usr/lib32/libc++*.json
