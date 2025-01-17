@@ -3,6 +3,9 @@ From: Tom Stellard <tstellar@redhat.com>
 Date: Fri, 31 Jan 2020 11:04:57 -0800
 Subject: [PATCH][clang] Don't install static libraries
 
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
 ---
  clang/cmake/modules/AddClang.cmake | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

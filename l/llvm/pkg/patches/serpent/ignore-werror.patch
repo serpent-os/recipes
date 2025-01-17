@@ -5,7 +5,9 @@ Subject: [PATCH 1/1] clang/lib: Ignore Werror if CLANG_IGNORE_WERROR is set.
 
 Useful when projects force append -Werror to FLAGS
 
-Downstream, Solus only.
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
 ---
  clang/lib/Basic/Warnings.cpp | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)

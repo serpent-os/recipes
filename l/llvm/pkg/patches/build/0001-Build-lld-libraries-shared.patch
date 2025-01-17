@@ -3,6 +3,11 @@ From: Reilly Brogan <reilly@reillybrogan.com>
 Date: Fri, 2 Aug 2024 15:55:23 -0500
 Subject: [PATCH] Build lld libraries shared
 
+We don't want to enable `ENABLE_SHARED` since it causes every LLVM library to be built shared even if they're intended to be private.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
 ---
  lld/cmake/modules/AddLLD.cmake | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

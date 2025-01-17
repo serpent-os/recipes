@@ -3,7 +3,9 @@ From: Peter O'Connor <sunnyflunk@serpentos.com>
 Date: Tue, 5 Oct 2021 09:43:05 +1100
 Subject: [PATCH] Use correct Serpent OS multilib paths for ld
 
-Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
 ---
  clang/lib/Driver/ToolChains/Linux.cpp | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
