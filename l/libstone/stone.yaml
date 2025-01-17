@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libstone
+version     : 0.0.1
+release     : 1
+homepage    : https://github.com/serpent-os/tools
+upstreams   :
+    - https://github.com/serpent-os/tools/archive/64eafc2a67b9a46fbf35f025bb4908363894cdba.tar.gz : e3969499ca7a11fd99e757f1ae5ef8cb3d33d580874efcbeb5a22a0bebe255df
+summary     : Library to read .stone archives
+description : |
+    Library to read .stone archives
+license     : MPL-2.0
+networking  : yes
+builddeps   :
+    - cargo-c
+setup       : |
+    %cargo_fetch
+build       : |
+    cargo cbuild \
+              -p libstone \
+              --prefix=/usr \
+              --frozen \
+              --release
+install     : |
+    cargo cinstall \
+      -p libstone \
+      --destdir=%(installroot) \
+      --libdir=%(libdir) \
+      --release \
+      --frozen \
+      --prefix=/usr
+
+    rm -v %(installroot)%(libdir)/*.a

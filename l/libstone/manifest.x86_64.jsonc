@@ -1,0 +1,44 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libstone": {
+			"build-depends": [
+				"cargo-c"
+			],
+			"depends": [
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libstone.so.0.24",
+				"/usr/lib/libstone.so.0.24.7"
+			],
+			"name": "libstone",
+			"provides": [
+				"soname(libstone.so.0.24(x86_64))"
+			]
+		},
+		"libstone-devel": {
+			"build-depends": [
+				"cargo-c"
+			],
+			"depends": [
+				"libstone"
+			],
+			"files": [
+				"/usr/include/stone.h",
+				"/usr/lib/libstone.so",
+				"/usr/lib/pkgconfig/libstone.pc"
+			],
+			"name": "libstone-devel",
+			"provides": [
+				"pkgconfig(libstone)"
+			]
+		}
+	},
+	"source-name": "libstone",
+	"source-release": "1",
+	"source-version": "0.0.1"
+}

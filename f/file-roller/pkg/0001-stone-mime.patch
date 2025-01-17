@@ -1,0 +1,66 @@
+From d05f13645caea11b3a76a027a9ac48655660770d Mon Sep 17 00:00:00 2001
+From: Joey Riches <josephriches@gmail.com>
+Date: Mon, 6 Jan 2025 14:15:18 +0000
+Subject: [PATCH 1/1] Support .stone file type
+
+---
+ data/supported-mime-types   | 1 +
+ src/fr-archive-libarchive.c | 2 ++
+ src/fr-init.c               | 2 ++
+ 3 files changed, 5 insertions(+)
+
+diff --git a/data/supported-mime-types b/data/supported-mime-types
+index f8c4eac0..1d048b3b 100644
+--- a/data/supported-mime-types
++++ b/data/supported-mime-types
+@@ -49,6 +49,7 @@ application/x-rar;
+ application/x-rar-compressed;
+ application/x-rpm;
+ application/x-source-rpm;
++application/x-stone-binary;
+ application/x-rzip;
+ application/x-rzip-compressed-tar;
+ application/x-tar;
+diff --git a/src/fr-archive-libarchive.c b/src/fr-archive-libarchive.c
+index 14045729..d48e99ae 100644
+--- a/src/fr-archive-libarchive.c
++++ b/src/fr-archive-libarchive.c
+@@ -115,6 +115,7 @@ const char *libarchiver_mime_types[] = {
+ 	"application/x-lzma-compressed-tar",
+ 	"application/x-rar",
+ 	"application/x-rpm",
++	"application/x-stone-binary",
+ 	"application/x-tar",
+ 	"application/x-tarz",
+ 	"application/x-tzo",
+@@ -208,6 +209,7 @@ fr_archive_libarchive_get_capabilities (FrArchive  *archive,
+ 	    || (strcmp (mime_type, "application/x-lha") == 0)
+ 	    || (strcmp (mime_type, "application/x-rar") == 0)
+ 	    || (strcmp (mime_type, "application/x-rpm") == 0)
++	    || (strcmp (mime_type, "application/x-stone-binary") == 0)
+ 	    || (strcmp (mime_type, "application/x-xar") == 0))
+ 	{
+ 		return capabilities;
+diff --git a/src/fr-init.c b/src/fr-init.c
+index 91d6bd07..1c677eaa 100644
+--- a/src/fr-init.c
++++ b/src/fr-init.c
+@@ -111,6 +111,7 @@ FrMimeTypeDescription mime_type_desc[] = {
+ 	{ "application/x-rpm",                     ".rpm",      0 },
+ 	{ "application/x-rzip",                    ".rz",       0 },
+ 	{ "application/x-rzip-compressed-tar",     ".tar.rz",   0 },
++	{ "application/x-stone-binary",            ".stone",    0 },
+ 	{ "application/x-tar",                     ".tar",      0 },
+ 	{ "application/x-tarz",                    ".tar.Z",    0 },
+ 	{ "application/x-tzo",                     ".tar.lzo",  0 },
+@@ -165,6 +166,7 @@ FrExtensionType file_ext_type[] = {
+ 	{ ".sit", "application/x-stuffit" },
+ 	{ ".snap", "application/vnd.snap" },
+ 	{ ".sqsh", "application/vnd.squashfs" },
++	{ ".stone", "application/x-stone-binary" },
+ 	{ ".swm", "application/x-ms-wim" },
+ 	{ ".tar", "application/x-tar" },
+ 	{ ".tar.br", "application/x-brotli-compressed-tar" },
+-- 
+2.47.0
+

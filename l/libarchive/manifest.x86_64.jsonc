@@ -8,6 +8,7 @@
 				"pkgconfig(libcrypto)",
 				"pkgconfig(liblz4)",
 				"pkgconfig(liblzma)",
+				"pkgconfig(libstone)",
 				"pkgconfig(libxml-2.0)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(zlib)"
@@ -19,6 +20,7 @@
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(liblz4.so.1(x86_64))",
 				"soname(liblzma.so.5(x86_64))",
+				"soname(libstone.so.0.24(x86_64))",
 				"soname(libxml2.so.2(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
@@ -54,6 +56,7 @@
 				"pkgconfig(libcrypto)",
 				"pkgconfig(liblz4)",
 				"pkgconfig(liblzma)",
+				"pkgconfig(libstone)",
 				"pkgconfig(libxml-2.0)",
 				"pkgconfig(libzstd)",
 				"pkgconfig(zlib)"
@@ -112,6 +115,6 @@
 		}
 	},
 	"source-name": "libarchive",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "3.7.7"
 }
