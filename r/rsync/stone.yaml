@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : rsync
-version     : 3.3.0
-release     : 1
+version     : 3.4.1
+release     : 2
 homepage    : https://rsync.samba.org/
 upstreams   :
-    - https://rsync.samba.org/ftp/rsync/src/rsync-3.3.0.tar.gz : 7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90
+    - https://rsync.samba.org/ftp/rsync/src/rsync-3.4.1.tar.gz : 2924bcb3a1ed8b551fc101f740b9f0fe0a202b115027647cf69850d65fd88c52
 summary     : File transfer program to keep remote files in sync.
 description : |
     Rsync is an open source utility that provides fast incremental file transfer.
