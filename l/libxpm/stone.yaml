@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libxpm
+version     : 3.5.17
+release     : 1
+homepage    : https://gitlab.freedesktop.org/xorg/lib/libxpm
+upstreams   :
+    - https://www.x.org/releases/individual/lib/libXpm-3.5.17.tar.gz : 959466c7dfcfcaa8a65055bfc311f74d4c43d9257900f85ab042604d286df0c6
+summary     : X Pixmap (XPM) image file format library
+description : |
+    libXpm provides support and common operations for the XPM pixmap format, which is commonly used in legacy X applications. XPM is an extension of the monochrome XBM bitmap specified in the X protocol.
+license     : MIT
+builddeps  :
+    - pkgconfig(x11)
+    - gettext-devel
+checkdeps  :
+    - pkgconfig(glib-2.0)
+setup       : |
+    %configure --disable-open-zfile \
+               --disable-static \
+               --enable-unit-tests
+build       : |
+    %make
+install     : |
+    %make_install
+check      : |
+    %make check
