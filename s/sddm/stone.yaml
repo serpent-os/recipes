@@ -16,19 +16,19 @@ description : |
     animated user interfaces.
 license     : GPL-2.0-only
 builddeps   :
+    - cmake(Qt5LinguistTools)
+    - pkgconfig(Qt5Core)
+    - pkgconfig(Qt5Qml)
+    - pkgconfig(gl)
+    - pkgconfig(libsystemd)
     - pkgconfig(pam)
     - pkgconfig(xau)
     - pkgconfig(xcb)
-    - pkgconfig(Qt5Core)
-    - pkgconfig(Qt5Qml)
-    - pkgconfig(libsystemd)
-    - pkgconfig(gl)
-    - cmake(Qt5LinguistTools)
 setup       : |
     %patch %(pkgdir)/dont-error-for-logindef.patch
     %cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
-        -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
+        -DCMAKE_INSTALL_LIBEXECDIR=%(libdir)/sddm \
+        -DDBUS_CONFIG_DIR=%(datadir)/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=OFF \
         -DUID_MAX=60513
@@ -43,4 +43,3 @@ install     : |
     ln -s sddm.user %(installroot)%(libdir)/userdb/953.user
     mkdir -p %(installroot)%(vendordir)
     mv -v %(installroot)/etc %(installroot)%(vendordir)
-
