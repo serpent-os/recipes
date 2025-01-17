@@ -14,10 +14,10 @@ upstreams   :
 description : |
     Control ASUS platform features such as LEDs, AniMe, fans and more.
 builddeps   :
-    - pkgconfig(libudev) # required for device handling
+    - pkgconfig(gbm)
     - pkgconfig(libinput) # following required by slint
     - pkgconfig(libseat)
-    - pkgconfig(gbm)
+    - pkgconfig(libudev) # required for device handling
     - pkgconfig(xkbcommon)
 networking  : yes
 setup       : |
@@ -26,4 +26,3 @@ build       : |
     %cargo_build
 install     : |
     %make_install TARGET="%(target_triple)/release"
-
