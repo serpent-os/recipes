@@ -5,7 +5,7 @@
 #
 name        : gstreamer
 version     : 1.24.11
-release     : 6
+release     : 7
 homepage    : https://gstreamer.freedesktop.org/
 upstreams   :
     - https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.11/gstreamer-1.24.11.tar.gz : a7b9bf0904d3ae103291fc586679f55bd78dd96a1e871d8a58acfae7c71c7105
@@ -24,6 +24,7 @@ builddeps   :
     - binary(xgettext)
     - binary(valac)
     - lame-devel
+    - ladspa-devel
     - pkgconfig(alsa)
     - pkgconfig(bash-completion)
     - pkgconfig(fdk-aac)

@@ -12,6 +12,7 @@
 				"binary(nasm)",
 				"binary(valac)",
 				"binary(xgettext)",
+				"ladspa-devel",
 				"lame-devel",
 				"pkgconfig(alsa)",
 				"pkgconfig(bash-completion)",
@@ -260,6 +261,7 @@
 				"/usr/lib/gstreamer-1.0/libgstjpeg.so",
 				"/usr/lib/gstreamer-1.0/libgstjpegformat.so",
 				"/usr/lib/gstreamer-1.0/libgstkms.so",
+				"/usr/lib/gstreamer-1.0/libgstladspa.so",
 				"/usr/lib/gstreamer-1.0/libgstlame.so",
 				"/usr/lib/gstreamer-1.0/libgstlegacyrawparse.so",
 				"/usr/lib/gstreamer-1.0/libgstlevel.so",
@@ -875,6 +877,7 @@
 				"soname(gstreamer-1.0/libgstjpeg.so(x86_64))",
 				"soname(gstreamer-1.0/libgstjpegformat.so(x86_64))",
 				"soname(gstreamer-1.0/libgstkms.so(x86_64))",
+				"soname(gstreamer-1.0/libgstladspa.so(x86_64))",
 				"soname(gstreamer-1.0/libgstlame.so(x86_64))",
 				"soname(gstreamer-1.0/libgstlegacyrawparse.so(x86_64))",
 				"soname(gstreamer-1.0/libgstlevel.so(x86_64))",
@@ -1027,6 +1030,7 @@
 				"binary(nasm)",
 				"binary(valac)",
 				"binary(xgettext)",
+				"ladspa-devel",
 				"lame-devel",
 				"pkgconfig(alsa)",
 				"pkgconfig(bash-completion)",
@@ -1744,6 +1748,6 @@
 		}
 	},
 	"source-name": "gstreamer",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "1.24.11"
 }
