@@ -5,15 +5,15 @@ Subject: [PATCH] Support serpent as a distro
 
 Origin: vendor
 Forwarded: not-needed
-Last-Update: 2025-01-10
+Last-Update: 2025-01-14
 ---
  clang/include/clang/Driver/Distro.h | 3 +++
  clang/lib/Driver/Distro.cpp         | 1 +
- clang/lib/Driver/ToolChains/Gnu.cpp | 2 +-
- 3 files changed, 5 insertions(+), 1 deletion(-)
+ clang/lib/Driver/ToolChains/Gnu.cpp | 3 ++-
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/clang/include/clang/Driver/Distro.h b/clang/include/clang/Driver/Distro.h
-index 01d66b30b038..142f61d8ac37 100644
+index 1404e1686848..359c3990bd49 100644
 --- a/clang/include/clang/Driver/Distro.h
 +++ b/clang/include/clang/Driver/Distro.h
 @@ -46,6 +46,7 @@ public:
@@ -24,17 +24,17 @@ index 01d66b30b038..142f61d8ac37 100644
      UbuntuHardy,
      UbuntuIntrepid,
      UbuntuJaunty,
-@@ -122,6 +123,8 @@ public:
+@@ -138,6 +139,8 @@ public:
  
-   bool IsOpenSUSE() const { return DistroVal == OpenSUSE; }
+   bool IsGentoo() const { return DistroVal == Gentoo; }
  
 +  bool IsSerpentOS() const { return DistroVal == SerpentOS; }
 +
-   bool IsDebian() const {
-     return DistroVal >= DebianLenny && DistroVal <= DebianTrixie;
-   }
+   /// @}
+ };
+ 
 diff --git a/clang/lib/Driver/Distro.cpp b/clang/lib/Driver/Distro.cpp
-index 1898667279cc..47fc7f8f4b1d 100644
+index 6f49e641104c..c99f56b85cda 100644
 --- a/clang/lib/Driver/Distro.cpp
 +++ b/clang/lib/Driver/Distro.cpp
 @@ -43,6 +43,7 @@ static Distro::DistroType DetectOsRelease(llvm::vfs::FileSystem &VFS) {
@@ -46,18 +46,16 @@ index 1898667279cc..47fc7f8f4b1d 100644
                      .Default(Distro::UnknownDistro);
    return Version;
 diff --git a/clang/lib/Driver/ToolChains/Gnu.cpp b/clang/lib/Driver/ToolChains/Gnu.cpp
-index 665cdc3132fb..5c3b6c787c7c 100644
+index 5e9a655eaf82..abb55fe1edef 100644
 --- a/clang/lib/Driver/ToolChains/Gnu.cpp
 +++ b/clang/lib/Driver/ToolChains/Gnu.cpp
-@@ -2208,7 +2208,7 @@ void Generic_GCC::GCCInstallationDetector::AddDefaultGCCPrefixes(
+@@ -2492,7 +2492,8 @@ void Generic_GCC::GCCInstallationDetector::AddDefaultGCCPrefixes(
+       "x86_64-pc-linux-gnu",    "x86_64-redhat-linux6E",
        "x86_64-redhat-linux",    "x86_64-suse-linux",
-       "x86_64-manbo-linux-gnu", "x86_64-linux-gnu",
-       "x86_64-slackware-linux", "x86_64-unknown-linux",
--      "x86_64-amazon-linux"};
-+      "x86_64-amazon-linux",    "x86_64-serpent-linux"};
+       "x86_64-manbo-linux-gnu", "x86_64-slackware-linux",
+-      "x86_64-unknown-linux",   "x86_64-amazon-linux"};
++      "x86_64-unknown-linux",   "x86_64-amazon-linux",
++      "x86_64-serpent-linux"};
    static const char *const X32Triples[] = {"x86_64-linux-gnux32",
                                             "x86_64-pc-linux-gnux32"};
    static const char *const X32LibDirs[] = {"/libx32", "/lib"};
--- 
-2.39.0
-
