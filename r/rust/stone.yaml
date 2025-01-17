@@ -5,12 +5,12 @@
 #
 name        : rust
 version     : 1.83.0
-release     : 10
+release     : 11
 homepage    : https://www.rust-lang.org/
 upstreams   :
     - https://static.rust-lang.org/dist/rustc-1.83.0-src.tar.xz : 7b11d4242dab0921a7d54758ad3fe805153c979c144625fecde11735760f97df
     - git|https://github.com/rust-lang/llvm-project.git :
-        ref: c54cff0e6e4d1a0d0a2df7c1ce3d96cdd554763e # rustc/18.1-2024-05-19
+        ref: 3a17f74904a74565c54cfac0d67026362d038698 # rustc/19.1-2024-09-17
 summary     : Rust programming language compiler + tools
 description : |
     Rust programming language compiler + tools
@@ -44,7 +44,6 @@ builddeps   :
     - pkgconfig(libffi)
     - pkgconfig(libgit2)
     - pkgconfig(libxml-2.0)
-    - pkgconfig(ncurses)
     - pkgconfig(openssl)
     - pkgconfig(sqlite3)
     - pkgconfig(zlib)
@@ -143,8 +142,8 @@ packages    :
             - /usr/bin/rust-gdb*
             - /usr/bin/rust-lldb
             - /usr/bin/rustfmt
-            - /usr/lib/rustlib/etc/
-            - /usr/lib/rustlib/src/
+            - /usr/lib/rustlib/etc
+            - /usr/lib/rustlib/src
             - /usr/libexec/rust-analyzer-proc-macro-srv
 
     - "%(name)-docs":
