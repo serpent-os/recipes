@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ladspa
+version     : 1.17
+release     : 1
+homepage    : https://www.ladspa.org
+upstreams   :
+      - http://www.ladspa.org/download/ladspa_sdk_1.17.tgz : 27d24f279e4b81bd17ecbdcc38e4c42991bb388826c0b200067ce0eb59d3da5b
+summary     : Linux Audio Developer's Simple Plugin API
+description : |
+    Linux Audio Developer's Simple Plugin API
+license     : LGPL-2.1-or-later
+builddeps   :
+    - pkgconfig(sndfile)
+tuning      :
+    - lto: full
+    # 2025-01-13 bindnow prevents filter.so from showing up in the output of listplugins
+    - bindnow: false
+setup       : |
+    %patch %(pkgdir)/0001-Respect-build-environment.patch
+build       : |
+    %make -C src targets PLUGINS_DIR="%(libdir)/ladspa"
+install     : |
+    %make_install -C src \
+        INSTALL_BINARY_DIR="%(installroot)/%(bindir)/" \
+        INSTALL_INCLUDE_DIR="%(installroot)/%(includedir)/" \
+        INSTALL_PLUGINS_DIR="%(installroot)/%(libdir)/ladspa"

@@ -5,7 +5,6 @@
 		"libcxx": {
 			"build-depends": [
 				"binary(python3)",
-				"clang-32bit",
 				"gcc-32bit-devel",
 				"libcxx-32bit-devel",
 				"pkgconfig(libxcrypt)",
@@ -30,7 +29,6 @@
 		"libcxx-32bit": {
 			"build-depends": [
 				"binary(python3)",
-				"clang-32bit",
 				"gcc-32bit-devel",
 				"libcxx-32bit-devel",
 				"pkgconfig(libxcrypt)",
@@ -38,7 +36,7 @@
 			],
 			"depends": [
 				"libcxx",
-				"soname(libc.so.6(x86))"
+				"soname(libc.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libc++.so.1",
@@ -58,7 +56,6 @@
 		"libcxx-32bit-devel": {
 			"build-depends": [
 				"binary(python3)",
-				"clang-32bit",
 				"gcc-32bit-devel",
 				"libcxx-32bit-devel",
 				"pkgconfig(libxcrypt)",
@@ -73,6 +70,7 @@
 				"/usr/lib32/libc++abi.a",
 				"/usr/lib32/libc++abi.so",
 				"/usr/lib32/libc++experimental.a",
+				"/usr/lib32/libunwind.a",
 				"/usr/lib32/libunwind.so",
 				"/usr/lib32/pkgconfig/libunwind.pc"
 			],
@@ -84,7 +82,6 @@
 		"libcxx-devel": {
 			"build-depends": [
 				"binary(python3)",
-				"clang-32bit",
 				"gcc-32bit-devel",
 				"libcxx-32bit-devel",
 				"pkgconfig(libxcrypt)",
@@ -1123,6 +1120,7 @@
 				"/usr/lib/libc++abi.a",
 				"/usr/lib/libc++abi.so",
 				"/usr/lib/libc++experimental.a",
+				"/usr/lib/libunwind.a",
 				"/usr/lib/libunwind.so",
 				"/usr/lib/pkgconfig/libunwind.pc"
 			],
@@ -1133,6 +1131,6 @@
 		}
 	},
 	"source-name": "libcxx",
-	"source-release": "9",
+	"source-release": "10",
 	"source-version": "18.1.8"
 }

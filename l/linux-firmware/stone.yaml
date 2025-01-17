@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-firmware
-version     : 20241210
-release     : 20
+version     : 20250109
+release     : 21
 homepage    : https://kernel.org
 upstreams   :
-    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : b00a7f7e525095e5aae663945253fc8c709cc084
+    - git|https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git : 7673dffd5e3324a726caf8bfc0f1a005862f5f16
 summary     : Firmware to allow devices to function correctly
 description : |
     Firmware to allow devices to function correctly
@@ -16,6 +16,7 @@ license     :
     - GPL-2.0-or-later
     - Distributable
 builddeps   :
+    - binary(make)
     - binary(python3)
     - binary(rdfind)
     - binary(unzstd)
@@ -40,7 +41,7 @@ packages    :
         paths:
             - /usr/lib/firmware/iwlwifi
 install     : |
-    %make install-zst FIRMWAREDIR=/usr/lib/firmware DESTDIR=%(installroot)
+    make install-zst FIRMWAREDIR=/usr/lib/firmware DESTDIR=%(installroot)
     # Remove conflicting and/or forbidden assets
     for forbidden in carl9170fw netronome liquidio qed Makefile GPL-3 ; do
         rm -rvf "%(installroot)/%(libdir)/firmware/${forbidden}"

@@ -2,13 +2,13 @@
 # SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
 #
 # SPDX-License-Identifier: MPL-2.0
-#                
+#
 name        : tailscale
-version     : v1.72.1
-release     : 5
+version     : v1.78.3
+release     : 6
 homepage    : https://github.com/tailscale/tailscale
 upstreams   :
-    - https://github.com/tailscale/tailscale/archive/refs/tags/v1.72.1.tar.gz : 21b529e85144f526b61e0998c8b7885d53f17cba21252e5c7252c4014f5f507b
+    - https://github.com/tailscale/tailscale/archive/refs/tags/v1.78.3.tar.gz : bac059152e3fa8ab379ee5ec7a03940114e7ac65c6e1baea4f840f6fadd17d57
 summary     :  Private WireGuard® networks made easy
 description : |
     The easiest, most secure way to use WireGuard and 2FA.
@@ -17,6 +17,8 @@ networking  : yes
 builddeps   :
     - git
     - golang
+rundeps     :
+    - sysbinary(iptables)
 environment: |
    export VERSION_LONG=%(version)
    export VERSION_SHORT=%(version)
@@ -30,4 +32,3 @@ install     : |
    %install_exe %(workdir)/tailscaled %(installroot)/usr/sbin/tailscaled
    %install_file %(workdir)/cmd/tailscaled/tailscaled.service %(installroot)/%(libdir)/systemd/system/tailscaled.service
    %install_file %(workdir)/cmd/tailscaled/tailscaled.defaults %(installroot)/usr/share/defaults/tailscale/tailscaled
-   

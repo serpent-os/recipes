@@ -1,0 +1,94 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libxpm": {
+			"build-depends": [
+				"gettext-devel",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cxpm",
+				"/usr/lib/libXpm.so.4",
+				"/usr/lib/libXpm.so.4.11.0",
+				"/usr/share/man/man1/cxpm.1",
+				"/usr/share/man/man1/sxpm.1"
+			],
+			"name": "libxpm",
+			"provides": [
+				"binary(cxpm)",
+				"soname(libXpm.so.4(x86_64))"
+			]
+		},
+		"libxpm-devel": {
+			"build-depends": [
+				"gettext-devel",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"libxpm",
+				"pkgconfig(x11)"
+			],
+			"files": [
+				"/usr/include/X11/xpm.h",
+				"/usr/lib/libXpm.so",
+				"/usr/lib/pkgconfig/xpm.pc",
+				"/usr/share/man/man3/XpmAttributesSize.3",
+				"/usr/share/man/man3/XpmCreateBuffer.3",
+				"/usr/share/man/man3/XpmCreateBufferFromImage.3",
+				"/usr/share/man/man3/XpmCreateBufferFromPixmap.3",
+				"/usr/share/man/man3/XpmCreateBufferFromXpmImage.3",
+				"/usr/share/man/man3/XpmCreateData.3",
+				"/usr/share/man/man3/XpmCreateDataFromImage.3",
+				"/usr/share/man/man3/XpmCreateDataFromPixmap.3",
+				"/usr/share/man/man3/XpmCreateDataFromXpmImage.3",
+				"/usr/share/man/man3/XpmCreateImage.3",
+				"/usr/share/man/man3/XpmCreateImageFromBuffer.3",
+				"/usr/share/man/man3/XpmCreateImageFromData.3",
+				"/usr/share/man/man3/XpmCreateImageFromXpmImage.3",
+				"/usr/share/man/man3/XpmCreatePixmap.3",
+				"/usr/share/man/man3/XpmCreatePixmapFromBuffer.3",
+				"/usr/share/man/man3/XpmCreatePixmapFromData.3",
+				"/usr/share/man/man3/XpmCreatePixmapFromXpmImage.3",
+				"/usr/share/man/man3/XpmCreateXpmImage.3",
+				"/usr/share/man/man3/XpmCreateXpmImageFromBuffer.3",
+				"/usr/share/man/man3/XpmCreateXpmImageFromData.3",
+				"/usr/share/man/man3/XpmCreateXpmImageFromImage.3",
+				"/usr/share/man/man3/XpmCreateXpmImageFromPixmap.3",
+				"/usr/share/man/man3/XpmFree.3",
+				"/usr/share/man/man3/XpmFreeAttributes.3",
+				"/usr/share/man/man3/XpmFreeExtensions.3",
+				"/usr/share/man/man3/XpmFreeXpmImage.3",
+				"/usr/share/man/man3/XpmFreeXpmInfo.3",
+				"/usr/share/man/man3/XpmGetErrorString.3",
+				"/usr/share/man/man3/XpmLibraryVersion.3",
+				"/usr/share/man/man3/XpmMisc.3",
+				"/usr/share/man/man3/XpmRead.3",
+				"/usr/share/man/man3/XpmReadFileToBuffer.3",
+				"/usr/share/man/man3/XpmReadFileToData.3",
+				"/usr/share/man/man3/XpmReadFileToImage.3",
+				"/usr/share/man/man3/XpmReadFileToPixmap.3",
+				"/usr/share/man/man3/XpmReadFileToXpmImage.3",
+				"/usr/share/man/man3/XpmWrite.3",
+				"/usr/share/man/man3/XpmWriteFileFromBuffer.3",
+				"/usr/share/man/man3/XpmWriteFileFromImage.3",
+				"/usr/share/man/man3/XpmWriteFileFromPixmap.3",
+				"/usr/share/man/man3/XpmWriteFileFromXpmImage.3"
+			],
+			"name": "libxpm-devel",
+			"provides": [
+				"pkgconfig(xpm)"
+			]
+		}
+	},
+	"source-name": "libxpm",
+	"source-release": "1",
+	"source-version": "3.5.17"
+}

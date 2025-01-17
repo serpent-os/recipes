@@ -1,2 +1,7 @@
 releases:
   id: 819
+  rss: ~
+security:
+  cpe:
+  - vendor: flex_project
+    product: flex

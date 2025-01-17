@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Fri, 2 Aug 2024 17:24:39 -0500
+Subject: [PATCH] Build polly libraries shared
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
+---
+ polly/cmake/polly_macros.cmake | 4 +---
+ 2 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/polly/cmake/polly_macros.cmake b/polly/cmake/polly_macros.cmake
+index df541eeccc4..5a9556aef56 100644
+--- a/polly/cmake/polly_macros.cmake
++++ b/polly/cmake/polly_macros.cmake
+@@ -15,10 +15,8 @@ macro(add_polly_library name)
+   endif(MSVC_IDE OR XCODE)
+   if (MODULE)
+     set(libkind MODULE)
+-  elseif (SHARED_LIBRARY)
+-    set(libkind SHARED)
+   else()
+-    set(libkind)
++    set(libkind SHARED)
+   endif()
+   add_library( ${name} ${libkind} ${srcs} )
+   set_target_properties(${name} PROPERTIES FOLDER "Polly")

@@ -1,2 +1,7 @@
 releases:
   id: 193
+  rss: ~
+security:
+  cpe:
+  - vendor: gnu
+    product: bison

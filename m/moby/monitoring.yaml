@@ -1,5 +1,6 @@
 releases:
   id: 11719
+  rss: ~
 security:
   cpe:
   - vendor: mobyproject

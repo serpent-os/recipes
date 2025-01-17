@@ -1,2 +1,7 @@
 releases:
-    id: 14944
+  id: 14944
+  rss: ~
+security:
+  cpe:
+  - vendor: libndp
+    product: libndp

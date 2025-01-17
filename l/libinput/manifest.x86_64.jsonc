@@ -148,6 +148,6 @@
 		}
 	},
 	"source-name": "libinput",
-	"source-release": "4",
-	"source-version": "1.27.0"
+	"source-release": "5",
+	"source-version": "1.27.1"
 }

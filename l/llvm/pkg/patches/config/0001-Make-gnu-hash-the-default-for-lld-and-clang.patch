@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Peter O'Connor <sunnyflunk@serpentos.com>
+Date: Mon, 5 Jul 2021 14:22:14 +1000
+Subject: [PATCH] Make gnu hash the default for lld and clang
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-10
+---
+ lld/ELF/Driver.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lld/ELF/Driver.cpp b/lld/ELF/Driver.cpp
+index 8b2c32b1534..0545b7b5662 100644
+--- a/lld/ELF/Driver.cpp
++++ b/lld/ELF/Driver.cpp
+@@ -2664,7 +2664,7 @@ void LinkerDriver::link(opt::InputArgList &args) {
+     if (config->emachine == EM_MIPS)
+       config->sysvHash = true;
+     else
+-      config->sysvHash = config->gnuHash = true;
++      config->gnuHash = true;
+   }
+ 
+   // Default output filename is "a.out" by the Unix tradition.

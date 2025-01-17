@@ -1,2 +1,7 @@
 releases:
   id: 10017
+  rss: ~
+security:
+  cpe:
+  - vendor: libmtp_project
+    product: libmtp

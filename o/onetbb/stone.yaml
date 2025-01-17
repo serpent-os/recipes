@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : onetbb
+version     : 2022.0.0
+release     : 1
+summary     : Thread Building Blocks library
+license     : Apache-2.0 AND BSD-3-Clause
+homepage    : https://uxlfoundation.github.io/oneTBB/
+description : |
+    The Threading Building Blocks library abstracts low-level threading details
+upstreams   :
+    - https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2022.0.0.tar.gz: e8e89c9c345415b17b30a2db3095ba9d47647611662073f7fbf54ad48b7f3c2a
+builddeps   :
+    - pkgconfig(hwloc)
+setup       : |
+    # https://github.com/uxlfoundation/oneTBB/issues/1274
+    export LDFLAGS="$LDFLAGS -Wl,--undefined-version"
+
+    %cmake -DTBB_STRICT=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+tuning      :
+    - lto
+packages    :
+    - "%(name)-bind":
+        summary: "NUMA support library for %(name)"
+        description: |
+            NUMA support library for %(name)
+        paths:
+            - /usr/lib/libtbbbind*.so.*
+    - "%(name)-devel":
+        rundeps:
+            - "%(name)-bind"

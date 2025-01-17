@@ -1,2 +1,7 @@
 releases:
   id: 4781
+  rss: ~
+security:
+  cpe:
+  - vendor: libsdl
+    product: sdl2_image

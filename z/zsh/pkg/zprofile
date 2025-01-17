@@ -1,5 +1,10 @@
+# Begin /usr/share/defaults/zsh/zprofile
+
+# These can be used to override stateless defaults or add to them
 if [ -f /etc/zprofile ]; then
 	source /etc/zprofile
 elif [ -f /etc/zsh/zprofile ]; then
 	source /etc/zsh/zprofile
 fi
+
+# End /usr/share/defaults/zsh/zprofile

@@ -1,5 +1,6 @@
 releases:
   id: 1417
+  rss: ~
 security:
   cpe:
   - vendor: jansson_project

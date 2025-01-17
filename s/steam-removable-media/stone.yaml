@@ -1,0 +1,43 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : steam-removable-media
+version     : 24.07+git.314c0bd
+release     : 1
+homepage    : https://github.com/ShadowBlip/steam-removable-media
+upstreams   :
+    - https://github.com/ShadowBlip/steam-removable-media/archive/314c0bd2ca8eb46dcf138bce829b8821386975e8.tar.gz : daf1e542d64c0e220d859506fef406e17a9d8884f5f667fc8831bae7285a2a4e
+summary     : Automounts and imports removable media as a Steam library
+description : |
+    Automounts and imports removable media as a Steam library. Devices must be formated as ext4 or they will not work. Supported device types: mmcblkX, nvmeX, sdX
+license     : GPL-3.0-or-later
+rundeps     :
+    - binary(f3read)
+    - binary(f3write)
+    - binary(jq)
+install     : |
+    mkdir -p %(installroot)/usr/bin/shadowblip
+    install -m 755 usr/bin/shadowblip/* %(installroot)/usr/bin/shadowblip/
+
+    mkdir -p %(installroot)/usr/bin/steamos-polkit-helpers
+    install -m 755 usr/bin/steamos-polkit-helpers/* %(installroot)/usr/bin/steamos-polkit-helpers/
+
+    mkdir -p %(installroot)/usr/lib/media-support
+    install -m 744 usr/lib/media-support/* %(installroot)/usr/lib/media-support/
+
+    mkdir -p %(installroot)/usr/lib/hwsupport
+    install -m 744 usr/lib/hwsupport/* %(installroot)/usr/lib/hwsupport/
+
+    mkdir -p %(installroot)/usr/lib/systemd/system
+    install -m 644 "usr/lib/systemd/system/media-mount@.service" "%(installroot)/usr/lib/systemd/system/media-mount@.service"
+
+    mkdir -p %(installroot)/usr/lib/udev/rules.d/
+    install -m 644 usr/lib/udev/rules.d/* %(installroot)/usr/lib/udev/rules.d/
+
+    mkdir -p %(installroot)/usr/share/polkit-1/actions
+    install -m 644 usr/share/polkit-1/actions/* %(installroot)/usr/share/polkit-1/actions/
+
+    mkdir -p %(installroot)/usr/share/polkit-1/rules.d
+    install -m 644 usr/share/polkit-1/rules.d/* %(installroot)/usr/share/polkit-1/rules.d/

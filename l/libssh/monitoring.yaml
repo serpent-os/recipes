@@ -1,2 +1,7 @@
 releases:
   id: 1729
+  rss: ~
+security:
+  cpe:
+  - vendor: libssh
+    product: libssh

@@ -1,0 +1,55 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"fmt": {
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libfmt.so.10",
+				"/usr/lib/libfmt.so.10.2.1"
+			],
+			"name": "fmt",
+			"provides": [
+				"soname(libfmt.so.10(x86_64))"
+			]
+		},
+		"fmt-devel": {
+			"depends": [
+				"fmt"
+			],
+			"files": [
+				"/usr/include/fmt/args.h",
+				"/usr/include/fmt/chrono.h",
+				"/usr/include/fmt/color.h",
+				"/usr/include/fmt/compile.h",
+				"/usr/include/fmt/core.h",
+				"/usr/include/fmt/format-inl.h",
+				"/usr/include/fmt/format.h",
+				"/usr/include/fmt/os.h",
+				"/usr/include/fmt/ostream.h",
+				"/usr/include/fmt/printf.h",
+				"/usr/include/fmt/ranges.h",
+				"/usr/include/fmt/std.h",
+				"/usr/include/fmt/xchar.h",
+				"/usr/lib/cmake/fmt/fmt-config-version.cmake",
+				"/usr/lib/cmake/fmt/fmt-config.cmake",
+				"/usr/lib/cmake/fmt/fmt-targets-release.cmake",
+				"/usr/lib/cmake/fmt/fmt-targets.cmake",
+				"/usr/lib/libfmt.so",
+				"/usr/lib/pkgconfig/fmt.pc"
+			],
+			"name": "fmt-devel",
+			"provides": [
+				"cmake(fmt)",
+				"pkgconfig(fmt)"
+			]
+		}
+	},
+	"source-name": "fmt",
+	"source-release": "1",
+	"source-version": "10.2.1"
+}

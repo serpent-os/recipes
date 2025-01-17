@@ -1,0 +1,5 @@
+releases:
+  id: 376254
+  rss: https://sourceforge.net/projects/gts/rss?limit=200
+security:
+  cpe: ~

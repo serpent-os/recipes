@@ -9,6 +9,7 @@
 				"binary(tar)"
 			],
 			"depends": [
+				"binary(xdg-open)",
 				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
@@ -139,6 +140,6 @@
 		}
 	},
 	"source-name": "discord",
-	"source-release": "5",
-	"source-version": "0.0.78"
+	"source-release": "8",
+	"source-version": "0.0.80"
 }

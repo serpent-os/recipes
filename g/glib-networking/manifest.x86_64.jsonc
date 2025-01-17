@@ -29,13 +29,13 @@
 			],
 			"name": "glib-networking",
 			"provides": [
-				"soname(libgiognomeproxy.so(x86_64))",
-				"soname(libgiolibproxy.so(x86_64))",
-				"soname(libgioopenssl.so(x86_64))"
+				"soname(gio/modules/libgiognomeproxy.so(x86_64))",
+				"soname(gio/modules/libgiolibproxy.so(x86_64))",
+				"soname(gio/modules/libgioopenssl.so(x86_64))"
 			]
 		}
 	},
 	"source-name": "glib-networking",
-	"source-release": "5",
-	"source-version": "2.80.0"
+	"source-release": "6",
+	"source-version": "2.80.1"
 }

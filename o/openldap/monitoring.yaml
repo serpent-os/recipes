@@ -1,2 +1,7 @@
 releases:
-    id: 2551
+  id: 2551
+  rss: ~
+security:
+  cpe:
+  - vendor: openldap
+    product: openldap

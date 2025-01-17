@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : hwloc
+version     : 2.11.2
+release     : 1
+summary     : Portable Hardware Locality
+license     : BSD-3-Clause
+homepage    : https://www.open-mpi.org/projects/hwloc/
+description : |
+    Portable Hardware Locality - portable abstraction of hierarchical architectures
+upstreams   :
+    - https://download.open-mpi.org/release/hwloc/v2.11/hwloc-2.11.2.tar.gz: 866ac8ef07b350a6a2ba0c6826c37d78e8994dcbcd443bdd2b436350de19d540
+builddeps   :
+    - pkgconfig(cairo)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(ncursesw)
+    - pkgconfig(pciaccess)
+    - pkgconfig(udev)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+packages    :
+    - "%(name)-libs":
+        summary: "Library files for %(name)"
+        description: |
+            Library files for %(name), typically pulled in as a dependency of another package.
+        paths:
+            - /usr/lib/libhwloc.so.*
+            - /usr/share/hwloc/hwloc*.dtd
+            - /usr/share/hwloc/hwloc-valgrind.supp
+            - /usr/share/man/man7

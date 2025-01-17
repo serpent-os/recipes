@@ -1,5 +1,6 @@
 releases:
   id: 1882
+  rss: ~
 security:
   cpe:
   - vendor: man-db_project

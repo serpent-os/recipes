@@ -38,6 +38,6 @@
 		}
 	},
 	"source-name": "rsync",
-	"source-release": "1",
-	"source-version": "3.3.0"
+	"source-release": "2",
+	"source-version": "3.4.1"
 }

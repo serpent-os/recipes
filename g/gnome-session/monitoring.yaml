@@ -1,2 +1,7 @@
 releases:
-    id: 13136
+  id: 13136
+  rss: ~
+security:
+  cpe:
+  - vendor: gnome
+    product: gnome-session

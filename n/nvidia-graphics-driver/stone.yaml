@@ -5,7 +5,7 @@
 #
 name        : nvidia-graphics-driver
 version     : 565.77
-release     : 15
+release     : 16
 homepage    : https://www.nvidia.com/
 upstreams   :
     - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
@@ -109,5 +109,9 @@ install     : |
     rm -v %(installroot)%(libdir)/libnvidia-egl-wayland*
     rm -v %(installroot)/usr/lib32/libnvidia-egl-wayland*
     rm -v %(installroot)%(datadir)/egl/egl_external_platform.d/10_nvidia_wayland.json
+
+    # Finally, documentation files for nvidia-settings
+    %install_file extracted/nvidia-application-profiles-%(version)-key-documentation %(installroot)%(datadir)/nvidia/nvidia-application-profiles-%(version)-key-documentation
+    %install_file extracted/nvidia-application-profiles-%(version)-rc %(installroot)%(datadir)/nvidia/nvidia-application-profiles-%(version)-rc
 
     chmod 4755 %(installroot)%(bindir)/nvidia-modprobe

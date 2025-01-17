@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : vulkan-headers
-version     : 1.4.303
-release     : 8
+version     : 1.4.304
+release     : 9
 homepage    : https://www.vulkan.org/
 upstreams   :
-    - https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.4.303.tar.gz : fdf0e2e05356b455137ff97f837c9689ba253ec7d20f87ad81575b9bdbe7fdd4
+    - https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.4.304.tar.gz : 5e1a06b3f27e7581b55d1dea176fd97ee0a2f299406db2f437c1d2f297ceba5b
 summary     : Vulkan Header files and API registry
 description : |
     Vulkan header files and API registry. Vulkan-Headers are shipped as part of the official Vulkan-SDK.

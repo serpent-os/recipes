@@ -1,0 +1,70 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gts": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/delaunay",
+				"/usr/bin/gts-config",
+				"/usr/bin/gts2dxf",
+				"/usr/bin/gts2oogl",
+				"/usr/bin/gts2stl",
+				"/usr/bin/gtscheck",
+				"/usr/bin/gtscompare",
+				"/usr/bin/gtstemplate",
+				"/usr/bin/stl2gts",
+				"/usr/bin/transform",
+				"/usr/lib/libgts-0.7.so.5",
+				"/usr/lib/libgts-0.7.so.5.0.1"
+			],
+			"name": "gts",
+			"provides": [
+				"binary(delaunay)",
+				"binary(gts-config)",
+				"binary(gts2dxf)",
+				"binary(gts2oogl)",
+				"binary(gts2stl)",
+				"binary(gtscheck)",
+				"binary(gtscompare)",
+				"binary(gtstemplate)",
+				"binary(stl2gts)",
+				"binary(transform)",
+				"soname(libgts-0.7.so.5(x86_64))"
+			]
+		},
+		"gts-devel": {
+			"build-depends": [
+				"pkgconfig(glib-2.0)"
+			],
+			"depends": [
+				"gts",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gmodule-2.0)",
+				"pkgconfig(gthread-2.0)"
+			],
+			"files": [
+				"/usr/include/gts.h",
+				"/usr/include/gtsconfig.h",
+				"/usr/lib/libgts.so",
+				"/usr/lib/pkgconfig/gts.pc",
+				"/usr/share/aclocal/gts.m4"
+			],
+			"name": "gts-devel",
+			"provides": [
+				"pkgconfig(gts)"
+			]
+		}
+	},
+	"source-name": "gts",
+	"source-release": "1",
+	"source-version": "0.7.6"
+}

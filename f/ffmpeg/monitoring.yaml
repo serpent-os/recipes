@@ -1,2 +1,7 @@
 releases:
   id: 5405
+  rss: ~
+security:
+  cpe:
+  - vendor: ffmpeg
+    product: ffmpeg

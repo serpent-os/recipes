@@ -1,2 +1,7 @@
 releases:
   id: 17717
+  rss: ~
+security:
+  cpe:
+  - vendor: cups-pk-helper_project
+    product: cups-pk-helper

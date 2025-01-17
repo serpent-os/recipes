@@ -1,5 +1,6 @@
 releases:
   id: 10627
+  rss: ~
 security:
   cpe:
   - vendor: dracut_project

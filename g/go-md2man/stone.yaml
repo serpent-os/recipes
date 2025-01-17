@@ -4,20 +4,21 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : go-md2man
-version     : 2.0.2
-release     : 2
+version     : 2.0.6
+release     : 3
 homepage    : https://github.com/cpuguy83/go-md2man
 upstreams   :
-    - https://github.com/cpuguy83/go-md2man/archive/refs/tags/v2.0.2.tar.gz : 2f52e37101ea2734b02f2b54a53c74305b95b3a9a27792fdac962b5354aa3e4a
+    - https://github.com/cpuguy83/go-md2man/archive/refs/tags/v2.0.6.tar.gz : 5fa29154237bc840a10a06231c066f9ddbe06bb31d1c3372eab12e1ed977271f
 summary     : Converts markdown into roff (man pages).
 description : |
     Converts markdown into roff (man pages).
 license     :
     - MIT
+networking  : yes
 builddeps   :
     - binary(go)
 build       : |
-    export GOFLAGS="-buildmode=pie -mod=vendor -trimpath"
+    export GOFLAGS="-buildmode=pie -trimpath"
     go build -o go-md2man .
 
     # Bonus, this also checks that go-md2man is working:

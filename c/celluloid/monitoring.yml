@@ -1,6 +1,0 @@
-releases:
-  id: 193876
-security:
-  cpe:
-  - vendor: celluloidapp
-    product: celluloid

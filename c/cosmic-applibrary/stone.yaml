@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-applibrary
-version     : 1.0.0-alpha.4
-release     : 9
+version     : 1.0.0-alpha.5.1
+release     : 10
 summary     : Cosmic Desktop App Launcher
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-applibrary
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-applibrary.git : 676656da1eca2110db22f11f5a26e1d70628fdbd
+    - git|https://github.com/pop-os/cosmic-applibrary.git : c01d98d629bf53a961dd37880cebe9a2c23df13c
 description : |
     Cosmic Desktop App Launcher
 builddeps   :

@@ -1,2 +1,7 @@
 releases:
   id: 11083
+  rss: ~
+security:
+  cpe:
+  - vendor: webmproject
+    product: libvpx

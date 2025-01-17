@@ -5,7 +5,13 @@ from source.
 
 [![Repository status](https://repology.org/badge/repository-big/serpentos.svg)](https://repology.org/repository/serpentos)
 
-## Quick start for boulder
+## Onboarding for people using a Serpent OS host system
+
+See https://serpentos.com/docs/packaging/workflow/
+
+## Onboarding for people not using a Serpent OS host system
+
+### Quick start for boulder
 
 `boulder` and `moss` rely on so-called `subuid` and `subgid` support.
 If you do not already have this set up for your user in `/etc/subuid` and `/etc/subuid`, run this:
@@ -16,17 +22,24 @@ $ sudo usermod --add-subuids 1000000-1065535 --add-subgids 1000000-1065535 root
 $ sudo usermod --add-subuids 1065536-1131071 --add-subgids 1065536-1131071 "$USER"
 ```
 
-### Non Serpent OS hosts
-
 If you are not building on Serpent OS, you're going to have to install `boulder` first.
 See [its readme][moss-boulder-readme] for instructions.
 
-[moss-boulder-readme]: https://github.com/serpent-os/moss?tab=readme-ov-file#onboarding
+[moss-boulder-readme]: https://github.com/serpent-os/tools?tab=readme-ov-file#onboarding
+
+### Setting up Lints and Hooks
+
+Ensuring that the `just` cli application is installed, run `just init`.
+
+This will setup git hooks that will lint for the most common packaging errors upon `git commit`, as well as
+fill out commit message templates for you.
 
 ### Add a local repository
 
-Our `justfile` defaults to `local-x86_64` profile with boulder. While we traditionally shipped this pre-enabled configuration, we figured that mandating
-`root`-user and world-accessible directories was generally a Bad Move.
+Our `justfile` defaults to using the `local-x86_64` build profile with boulder.
+
+While we traditionally shipped this pre-enabled configuration, we figured that mandating `root`-user and world-accessible directories was generally a Bad Move.
+
 
 **Create an empty local repository**
 
@@ -39,6 +52,7 @@ $ mkdir -pv ~/.cache/local_repo/x86_64/
 $ moss index ~/.cache/local_repo/x86_64/
 ```
 
+
 **Add the local repository to the repositories known to `moss`**
 
 If you're on Serpent OS, you will want to make the local repository available for package
@@ -47,8 +61,9 @@ installation.
 To do so, run the following command:
 
 ```bash
-$ sudo moss repo add local file://${HOME}/.cache/local_repo/x86_64/stone.index -p 10
+$ sudo moss repo add local file://${HOME}/.cache/local_repo/x86_64/stone.index -p 100
 ```
+
 
 **Create a boulder build profile**
 
@@ -56,10 +71,14 @@ We'll add the (unversioned) volatile repository¹ at the bottom layer, and eleva
 local repository priority to take precedence.
 
 ```bash
-$ boulder profile add local-x86_64 --repo name=volatile,uri=https://packages.serpentos.com/volatile/x86_64/stone.index,priority=0 --repo name=local,uri=file://${HOME}/.cache/local_repo/x86_64/stone.index,priority=10
+$ boulder profile add \
+    --repo name=volatile,uri=https://packages.serpentos.com/volatile/x86_64/stone.index,priority=0 \
+    --repo name=local,uri=file://${HOME}/.cache/local_repo/x86_64/stone.index,priority=100 \
+    local-x86_64
 ```
 
-¹ the current one and only official online repository that you usually get all your packages from
+¹ this repository should not be used for anything but packaging!
+
 
 **Specifying `just` default variables in the `.env` file**
 
@@ -78,6 +97,7 @@ _Example:_
 
     BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder" just build
 
+
 **Overriding default boulder arguments**
 
 If you are not building on Serpent OS using the os-supplied boulder package, or if you want to specify custom arguments
@@ -89,9 +109,10 @@ to your `.env` file in recipes/ root next to the `justfile`:
     # Uncomment this if you want to explicitly override the shipped boulder configuration
     # BOULDER_ARGS="--data-dir=${HOME}/.local/share/boulder --config-dir=${HOME}/.config/boulder --moss-root=${HOME}/.cache/boulder"
 
-## Go go go
+## Do a test build
 
-Well, actually Rust.. Anyway, quickly try to `pushd m/m4/ && just build` or `pushd n/nano && just build` for a quick and easy confirmation that everything works OK.
+Try invoking `pushd m/m4/ && just build` or `pushd n/nano && just build` for a quick and easy confirmation that everything works OK.
+
 
 ## Git summary requirements
 
@@ -100,15 +121,19 @@ To keep git summaries readable, serpent-os requires the following git summary fo
 - `name: Add at v<version>`
 - `name: Update to v<version>`
 - `name: Fix <...>`
-- `name: [NFC] <description of no functional change>`
+- `[NFC] name: <description of no functional change commit>`
 
 The use of the `Initial inclusion` verbiage is _strongly discouraged_.
 
+
 ## Using `jq`
 
-We provide `.jsonc` (JSON with comments) manifest files, the popular `jq` tool doesn't currently support `.jsonc` files; however, you can use the C preprocessor to strip any comments before passing to `jq` e.g.
+We provide `.jsonc` (JSON with comments) manifest files, however, the popular `jq` tool doesn't currently support `.jsonc` files.
+
+That said, you can use the C preprocessor to strip any comments before passing to `jq` as follows:
 
 `cpp -P -E manifest.x86_64.jsonc | jq .packages`
+
 
 ## Current focus
 
@@ -132,7 +157,8 @@ The aim for our desktop right now is to ship the following:
  - Firefox
  - Thunderbird
 
-### License
+
+## License
 
 Unless otherwise specified, all packaging recipes are available under
 the terms of the [MPL-2.0](https://spdx.org/licenses/MPL-2.0.html) license.
@@ -144,4 +170,4 @@ Individual software releases are available under the terms specified
 upstream, collected in each `stone.yaml` recipe. Any patches against
 a software package is under the relevant license for each upstream.
 
-Copyright © 2020-2024 Serpent OS Developers.
+Copyright © 2020-2025 Serpent OS Developers.

@@ -1,6 +1,7 @@
 releases:
-    id: 5176
+  id: 5176
+  rss: ~
 security:
-    cpe:
-        - vendor: freedesktop
-          product: xdg-utils
+  cpe:
+  - vendor: freedesktop
+    product: xdg-utils

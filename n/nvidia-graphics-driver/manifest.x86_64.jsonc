@@ -155,6 +155,8 @@
 				"/usr/share/egl/egl_external_platform.d/20_nvidia_xlib.json",
 				"/usr/share/glvnd/egl_vendor.d/10_nvidia.json",
 				"/usr/share/icons/hicolor/128x128/apps/nvidia-settings.png",
+				"/usr/share/nvidia/nvidia-application-profiles-565.77-key-documentation",
+				"/usr/share/nvidia/nvidia-application-profiles-565.77-rc",
 				"/usr/share/vulkan/icd.d/nvidia_icd.json",
 				"/usr/share/vulkan/implicit_layer.d/nvidia_layers.json",
 				"/usr/share/vulkansc/icd.d/nvidia_icd.json"
@@ -351,6 +353,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "15",
+	"source-release": "16",
 	"source-version": "565.77"
 }

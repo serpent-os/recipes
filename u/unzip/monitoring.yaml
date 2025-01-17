@@ -1,2 +1,9 @@
 releases:
   id: 8684
+  rss: ~
+security:
+  cpe:
+  - vendor: info-zip
+    product: unzip
+  - vendor: unzip_project
+    product: unzip

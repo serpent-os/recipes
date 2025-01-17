@@ -1,2 +1,7 @@
 releases:
   id: 370767
+  rss: ~
+security:
+  cpe:
+  - vendor: tweedegolf
+    product: ntpd-rs

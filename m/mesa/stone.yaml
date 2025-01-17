@@ -5,7 +5,7 @@
 #
 name        : mesa
 version     : 24.3.3
-release     : 26
+release     : 27
 homepage    : https://mesa3d.org/
 upstreams   :
     - https://archive.mesa3d.org/mesa-24.3.3.tar.xz : 105afc00a4496fa4d29da74e227085544919ec7c86bd92b0b6e7fcc32c7125f4

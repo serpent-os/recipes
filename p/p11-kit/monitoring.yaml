@@ -1,2 +1,7 @@
 releases:
   id: 2582
+  rss: ~
+security:
+  cpe:
+  - vendor: p11-kit_project
+    product: p11-kit

@@ -5,7 +5,7 @@
 #
 name        : msgraph
 version     : 0.2.3
-release     : 2
+release     : 3
 homepage    : https://gitlab.gnome.org/GNOME/msgraph
 upstreams   :
     - https://download.gnome.org/sources/msgraph/0.2/msgraph-0.2.3.tar.xz : ed42e800cb7f0a07477cd9e3e744cdc1a240a6ad7ab96b8a875806267a9fddb0
@@ -14,6 +14,7 @@ description : |
     libmsgraph is a GLib-based library for accessing online service APIs using MS Graph protocol.
 license     : LGPL-3.0-or-later
 builddeps   :
+    - binary(gi-docgen)
     - pkgconfig(gio-2.0)
     - pkgconfig(glib-2.0)
     - pkgconfig(goa-1.0)
@@ -23,7 +24,7 @@ builddeps   :
     - pkgconfig(libuhttpmock-1.0)
     - pkgconfig(rest-1.0)
 setup       : |
-    %meson -Dgtk_doc=false
+    %meson
 build       : |
     %meson_build
 install     : |
