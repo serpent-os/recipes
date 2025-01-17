@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : f3
+version     : 8.0
+release     : 1
+homepage    : https://github.com/AltraMayor/f3
+upstreams   :
+    - https://github.com/AltraMayor/f3/archive/refs/tags/v8.0.tar.gz : fb5e0f3b0e0b0bff2089a4ea6af53278804dfe0b87992499131445732e311ab4
+summary     : Simple tool that tests flash cards capacity and performance to see if they live up to claimed specifications
+description : |
+    f3 is a simple tool that tests flash cards capacity and performance to see if they live up to claimed specifications. It fills the device with pseudorandom data and then checks if it returns the same on reading.
+license     : GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(libparted)
+    - pkgconfig(libsystemd)
+build       : |
+    %make
+install     : |
+    %make_install PREFIX=%(prefix)

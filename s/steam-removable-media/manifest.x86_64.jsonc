@@ -1,0 +1,40 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"steam-removable-media": {
+			"depends": [
+				"binary(f3read)",
+				"binary(f3write)",
+				"binary(jq)"
+			],
+			"files": [
+				"/usr/bin/shadowblip/format-media",
+				"/usr/bin/shadowblip/init-media",
+				"/usr/bin/steamos-polkit-helpers/steamos-format-sdcard",
+				"/usr/bin/steamos-polkit-helpers/steamos-retrigger-automounts",
+				"/usr/bin/steamos-polkit-helpers/steamos-trim-devices",
+				"/usr/lib/hwsupport/format-sdcard.sh",
+				"/usr/lib/hwsupport/trim-devices.sh",
+				"/usr/lib/media-support/format-media.sh",
+				"/usr/lib/media-support/init-media.sh",
+				"/usr/lib/media-support/mount-media.sh",
+				"/usr/lib/systemd/system/media-mount@.service",
+				"/usr/lib/udev/rules.d/99-media-mount.rules",
+				"/usr/share/polkit-1/actions/org.shadowblip.media-support.policy",
+				"/usr/share/polkit-1/rules.d/org.shadowblip.media-support.rules"
+			],
+			"name": "steam-removable-media",
+			"provides": [
+				"binary(format-media)",
+				"binary(init-media)",
+				"binary(steamos-format-sdcard)",
+				"binary(steamos-retrigger-automounts)",
+				"binary(steamos-trim-devices)"
+			]
+		}
+	},
+	"source-name": "steam-removable-media",
+	"source-release": "1",
+	"source-version": "24.07+git.314c0bd"
+}
