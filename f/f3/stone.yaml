@@ -12,12 +12,11 @@ upstreams   :
 summary     : Simple tool that tests flash cards capacity and performance to see if they live up to claimed specifications
 description : |
     f3 is a simple tool that tests flash cards capacity and performance to see if they live up to claimed specifications. It fills the device with pseudorandom data and then checks if it returns the same on reading.
-license     : GPL-3.0 license
+license     : GPL-3.0-or-later
 builddeps   :
     - pkgconfig(libparted)
     - pkgconfig(libsystemd)
 build       : |
     %make
 install     : |
-    %make_install PREFIX='/usr'
-
+    %make_install PREFIX=%(prefix)
