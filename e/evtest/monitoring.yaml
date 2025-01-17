@@ -1,2 +1,5 @@
 releases:
-  id: 
+  id: 21347
+  rss: ~
+security:
+  cpe: ~ # Last checked 2025-01-17
