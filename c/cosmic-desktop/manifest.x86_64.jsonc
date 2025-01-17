@@ -15,6 +15,7 @@
 				"binary(cosmic-notifications)",
 				"binary(cosmic-osd)",
 				"binary(cosmic-panel)",
+				"binary(cosmic-player)",
 				"binary(cosmic-randr)",
 				"binary(cosmic-screenshot)",
 				"binary(cosmic-session)",
@@ -39,6 +40,6 @@
 		}
 	},
 	"source-name": "cosmic-desktop",
-	"source-release": "7",
-	"source-version": "1.0.0-alpha.4"
+	"source-release": "8",
+	"source-version": "1.0.0-alpha.5.1"
 }

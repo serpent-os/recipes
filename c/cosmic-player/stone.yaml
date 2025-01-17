@@ -3,21 +3,21 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : cosmic-screenshot
+name        : cosmic-player
 version     : 1.0.0-alpha.5.1
-release     : 9
-summary     : Cosmic Screenshot Tool
+release     : 1
+summary     : Cosmic Desktop Compositor
 license     : GPL-3.0
-homepage    : https://github.com/pop-os/cosmic-screenshot
+homepage    : https://github.com/pop-os/cosmic-player
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-screenshot.git : 10a564d9db675b2a0a5c58a3055b0ac578ae9f22
+    - git|https://github.com/pop-os/cosmic-player.git : 7c080feb86c0605e7497be7eeb08879abfe301ab
 description : |
-    Cosmic Screenshot Tool
+    Cosmic Desktop Media Player
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - pkgconfig(dbus-1)
-    - pkgconfig(libudev)
+    - pkgconfig(gstreamer-1.0)
+    - pkgconfig(gstreamer-plugins-base-1.0)
     - pkgconfig(xkbcommon)
 networking  : yes
 tuning      :
