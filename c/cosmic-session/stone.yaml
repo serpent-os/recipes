@@ -5,7 +5,7 @@
 #
 name        : cosmic-session
 version     : 1.0.0-alpha.5.1
-release     : 20
+release     : 21
 summary     : Cosmic Session Management
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-session
@@ -40,6 +40,7 @@ rundeps     :
     - binary(xdg-user-dirs-gtk-update)
     - accountsservice
     - font-firacode
+    - pciutils
     - wireplumber
     - xdg-desktop-portal-cosmic
 networking  : yes
