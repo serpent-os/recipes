@@ -5,7 +5,7 @@
 #
 name        : gnome-settings-daemon
 version     : 47.2
-release     : 7
+release     : 8
 homepage    : https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 upstreams   :
     - https://download.gnome.org/sources/gnome-settings-daemon/47/gnome-settings-daemon-47.2.tar.xz : 1eb758862e888f55a0869193087f1cfbcc7a1163654e630099ff4342dd3f6a5a
@@ -45,6 +45,7 @@ builddeps   :
     - pkgconfig(x11)
     - pkgconfig(xfixes)
 rundeps     :
+    - sysbinary(usbguard-daemon)
     - cups-filters
 setup       : |
     %meson

@@ -51,7 +51,6 @@
 				"soname(libgck-2.so.2(x86_64))",
 				"soname(libgcr-4.so.4(x86_64))",
 				"soname(libgdk-3.so.0(x86_64))",
-				"soname(libgdk_pixbuf-2.0.so.0(x86_64))",
 				"soname(libgeoclue-2.so.0(x86_64))",
 				"soname(libgeocode-glib-2.so.0(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
@@ -74,7 +73,8 @@
 				"soname(libsystemd.so.0(x86_64))",
 				"soname(libupower-glib.so.3(x86_64))",
 				"soname(libwacom.so.9(x86_64))",
-				"soname(libwayland-client.so.0(x86_64))"
+				"soname(libwayland-client.so.0(x86_64))",
+				"sysbinary(usbguard-daemon)"
 			],
 			"files": [
 				"/usr/lib/gnome-settings-daemon-47/libgsd.so",
@@ -318,6 +318,6 @@
 		}
 	},
 	"source-name": "gnome-settings-daemon",
-	"source-release": "7",
+	"source-release": "8",
 	"source-version": "47.2"
 }
