@@ -1,0 +1,26 @@
+From 7f626edae9cbb3061e8d6fe50d38af313cf784a0 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@serpentos.com>
+Date: Sat, 18 Jan 2025 11:18:43 +0000
+Subject: [PATCH] usbguard-daemon: Fix default config
+
+Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+---
+ usbguard-daemon.conf.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usbguard-daemon.conf.in b/usbguard-daemon.conf.in
+index f53f03b..21996cd 100644
+--- a/usbguard-daemon.conf.in
++++ b/usbguard-daemon.conf.in
+@@ -152,7 +152,7 @@ IPCAllowedUsers=root
+ #
+ # IPCAllowedGroups=groupname1 groupname2 ...
+ #
+-IPCAllowedGroups=
++IPCAllowedGroups=wheel
+ 
+ #
+ # IPC access control definition files path.
+-- 
+2.47.1
+
