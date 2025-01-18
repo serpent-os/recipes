@@ -26,6 +26,7 @@
 				"binary(xdg-open)",
 				"binary(xdg-user-dirs-gtk-update)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"pciutils",
 				"power-profiles-daemon",
 				"soname(libEGL.so.1(x86_64))",
 				"soname(libGL.so.1(x86_64))",
@@ -213,6 +214,6 @@
 		}
 	},
 	"source-name": "gnome-session",
-	"source-release": "15",
+	"source-release": "16",
 	"source-version": "47.0.1"
 }
