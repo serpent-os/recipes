@@ -5,7 +5,7 @@
 #
 name        : qt5-tools
 version     : 5.15.16+kde.15deb8f2
-release     : 3
+release     : 4
 homepage    : https://www.qt.io
 upstreams   :
     - git|https://invent.kde.org/qt/qt/qttools.git:
@@ -24,13 +24,8 @@ builddeps   :
     - binary(perl)
     - binary(qmake)
     - clang-devel
-    - llvm-devel # Temporary until I fix the llvm deps
     - vulkan-headers
 setup       : |
-    export CFLAGS="$CFLAGS -ffat-lto-objects"
-    export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
-    export LDFLAGS="$LDFLAGS -ffat-lto-objects"
-
     qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" CONFIG+=release
 build       : |
     %make
