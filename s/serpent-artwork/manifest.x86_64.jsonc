@@ -15,12 +15,13 @@
 				"/usr/share/gnome-background-properties/mike.xml",
 				"/usr/share/icons/serpent-logo-dark.png",
 				"/usr/share/icons/serpent-logo.png",
+				"/usr/share/icons/serpentos-logo.svg",
 				"/usr/share/pixmaps/system-logo-white.png"
 			],
 			"name": "serpent-artwork"
 		}
 	},
 	"source-name": "serpent-artwork",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "1"
 }

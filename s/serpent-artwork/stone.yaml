@@ -5,7 +5,7 @@
 #
 name        : serpent-artwork
 version     : 1
-release     : 6
+release     : 7
 summary     : Serpent OS Artwork
 license     : Distributable
 homepage    : https://github.com/serpent-os/artwork
@@ -19,6 +19,9 @@ install     : |
     DESTDIR=%(installroot) just install
     %install_file %(pkgdir)/logo/black_notext_2x.png %(installroot)%(datadir)/icons/serpent-logo.png
     %install_file %(pkgdir)/logo/white_notext_2x.png %(installroot)%(datadir)/icons/serpent-logo-dark.png
+    %install_file %(pkgdir)/logo/logo.svg %(installroot)%(datadir)/icons/serpentos-logo.svg
+
+    # TODO: Install 24x24 and 48x48 icons for the system logo by mutating the SVG
 
     %install_dir %(installroot)%(datadir)/pixmaps
 
