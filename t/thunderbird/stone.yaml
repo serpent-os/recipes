@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : thunderbird
-version     : 128.5.2
-release     : 15
+version     : 128.6.0
+release     : 16
 homepage    : https://www.thunderbird.net/
 upstreams   :
-    - https://releases.mozilla.org/pub/thunderbird/releases/128.5.2esr/source/thunderbird-128.5.2esr.source.tar.xz : ef932fe30fcc3f90f465feffcf641147d678ec3ecda220f317046e715a905547
+    - https://releases.mozilla.org/pub/thunderbird/releases/128.6.0esr/source/thunderbird-128.6.0esr.source.tar.xz : 1ab6155cd756f905d9b3a85b47b106e5a32626a3eec006c263b811772c4682f3
 summary     : Thunderbird Email Client
 description : |
     Thunderbird Email Client
@@ -47,6 +47,7 @@ environment : |
     export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
     # Not working with libc++ 18, reevaluate with LLVM 19
     export CXXFLAGS="${CXXFLAGS} -stdlib=libstdc++"
+    unset RUSTFLAGS
 setup       : |
     %patch %(pkgdir)/icu74.patch
     %install_file %(pkgdir)/mozconfig .
