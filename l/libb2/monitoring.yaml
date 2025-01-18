@@ -1,0 +1,6 @@
+releases:
+  id: 21574
+  rss: https://github.com/BLAKE2/libb2/releases.atom
+security:
+   # No known CPE. Last checked 2025-01-17
+  cpe: ~

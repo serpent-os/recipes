@@ -5,7 +5,7 @@
 #
 name        : libarchive
 version     : 3.7.7
-release     : 8
+release     : 9
 summary     : Multi-format archive and compression library
 license     : BSD-2-Clause
 homepage    : https://www.libarchive.org
@@ -14,23 +14,38 @@ description : |
 upstreams   :
     - https://www.libarchive.org/downloads/libarchive-3.7.4.tar.gz: 7875d49596286055b52439ed42f044bd8ad426aa4cc5aabd96bfe7abb971d5e8
 builddeps   :
+    - pkgconfig(bzip2)
+    - pkgconfig(ext2fs)
     - pkgconfig(libacl)
+    - pkgconfig(libb2)
     - pkgconfig(libcrypto)
     - pkgconfig(liblz4)
     - pkgconfig(liblzma)
-    - pkgconfig(libstone)
+    # - pkgconfig(libstone)
     - pkgconfig(libxml-2.0)
     - pkgconfig(libzstd)
+    - pkgconfig(lzo2)
     - pkgconfig(zlib)
+tuning      :
+    - lto: full
 setup       : |
-    %patch %(pkgdir)/stone-read-support.patch
+    # libstone support disabled until it doesn't break zip files
+    # %patch %(pkgdir)/stone-read-support.patch
+
     %reconfigure --disable-rpath \
                --disable-static \
                --enable-bsdcpio=static \
                --enable-bsdtar=static \
                --enable-shared \
-               --with-libstone
+               --with-lzo2
 build       : |
     %make
 install     : |
     %make_install
+check       : |
+    # Note, the test suite MUST succeed at all times
+
+    # This skips a file descriptor test that fails in boulder. We may need to change how /tmp is mounted
+    export SKIP_OPEN_FD_ERR_TEST=1
+
+    %make check || (cat /tmp/libarchive_test*/*.log && exit 1)

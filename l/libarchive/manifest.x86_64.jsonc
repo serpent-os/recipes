@@ -4,23 +4,28 @@
 	"packages": {
 		"libarchive": {
 			"build-depends": [
+				"pkgconfig(bzip2)",
+				"pkgconfig(ext2fs)",
 				"pkgconfig(libacl)",
+				"pkgconfig(libb2)",
 				"pkgconfig(libcrypto)",
 				"pkgconfig(liblz4)",
 				"pkgconfig(liblzma)",
-				"pkgconfig(libstone)",
 				"pkgconfig(libxml-2.0)",
 				"pkgconfig(libzstd)",
+				"pkgconfig(lzo2)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libacl.so.1(x86_64))",
+				"soname(libb2.so.1(x86_64))",
+				"soname(libbz2.so.1.0(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(liblz4.so.1(x86_64))",
 				"soname(liblzma.so.5(x86_64))",
-				"soname(libstone.so.0.24(x86_64))",
+				"soname(liblzo2.so.2(x86_64))",
 				"soname(libxml2.so.2(x86_64))",
 				"soname(libz.so.1(x86_64))",
 				"soname(libzstd.so.1(x86_64))"
@@ -52,13 +57,16 @@
 		},
 		"libarchive-devel": {
 			"build-depends": [
+				"pkgconfig(bzip2)",
+				"pkgconfig(ext2fs)",
 				"pkgconfig(libacl)",
+				"pkgconfig(libb2)",
 				"pkgconfig(libcrypto)",
 				"pkgconfig(liblz4)",
 				"pkgconfig(liblzma)",
-				"pkgconfig(libstone)",
 				"pkgconfig(libxml-2.0)",
 				"pkgconfig(libzstd)",
+				"pkgconfig(lzo2)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
@@ -115,6 +123,6 @@
 		}
 	},
 	"source-name": "libarchive",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "3.7.7"
 }
