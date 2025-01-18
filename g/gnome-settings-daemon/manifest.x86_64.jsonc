@@ -73,8 +73,7 @@
 				"soname(libsystemd.so.0(x86_64))",
 				"soname(libupower-glib.so.3(x86_64))",
 				"soname(libwacom.so.9(x86_64))",
-				"soname(libwayland-client.so.0(x86_64))",
-				"sysbinary(usbguard-daemon)"
+				"soname(libwayland-client.so.0(x86_64))"
 			],
 			"files": [
 				"/usr/lib/gnome-settings-daemon-47/libgsd.so",
@@ -93,7 +92,6 @@
 				"/usr/lib/gnome-settings-daemon/gsd-sharing",
 				"/usr/lib/gnome-settings-daemon/gsd-smartcard",
 				"/usr/lib/gnome-settings-daemon/gsd-sound",
-				"/usr/lib/gnome-settings-daemon/gsd-usb-protection",
 				"/usr/lib/gnome-settings-daemon/gsd-wacom",
 				"/usr/lib/gnome-settings-daemon/gsd-wacom-oled-helper",
 				"/usr/lib/gnome-settings-daemon/gsd-wwan",
@@ -126,8 +124,6 @@
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Smartcard.target",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Sound.service",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Sound.target",
-				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.UsbProtection.service",
-				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.UsbProtection.target",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Wacom.service",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Wacom.target",
 				"/usr/lib/systemd/user/org.gnome.SettingsDaemon.Wwan.service",
@@ -318,6 +314,6 @@
 		}
 	},
 	"source-name": "gnome-settings-daemon",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "47.2"
 }
