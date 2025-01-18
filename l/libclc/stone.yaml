@@ -1,6 +1,6 @@
 name        : libclc
-version     : 18.1.8
-release     : 1
+version     : 19.1.7
+release     : 2
 summary     : libclc is an open source implementation of the OpenCL 1.1 Specification
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -8,7 +8,7 @@ homepage    : https://libclc.llvm.org
 description : |
     libclc is an open source implementation of the OpenCL 1.1 Specification
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/libclc-18.1.8.src.tar.xz: 905bd59e9f810d6bd0ae6874725a8f8a3c91cb416199c03f2b98b57437cfb32e
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/libclc-19.1.7.src.tar.xz: 77e2d71f5cea1d0b1014ba88186299d1a0848eb3dc20948baae649db9e7641cb
 builddeps   :
     - binary(python3)
     - cmake(LLVM)
@@ -19,3 +19,5 @@ build       : |
     %cmake_build
 install     : |
     %cmake_install
+# I'm pretty sure this is a devel-only package and the .bc files can be merged into the devel one
+# TODO: Do that after we have proper renaming support
