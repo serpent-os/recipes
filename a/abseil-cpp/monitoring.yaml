@@ -1,0 +1,5 @@
+releases:
+  id: 115295
+  rss: https://github.com/abseil/abseil-cpp/releases.atom
+security:
+  cpe: ~ # Last checked 2025-01-18
