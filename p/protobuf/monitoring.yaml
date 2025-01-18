@@ -1,0 +1,13 @@
+releases:
+  id: 236278
+  rss: https://github.com/protocolbuffers/protobuf/releases.atom
+security:
+  cpe:
+  - vendor: google
+    product: protobuf
+  - vendor: protobuf_project
+    product: protobuf
+  - vendor: golang
+    product: protobuf
+  - vendor: protobuf
+    product: protobuf
