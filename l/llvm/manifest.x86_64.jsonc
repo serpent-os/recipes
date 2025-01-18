@@ -1351,7 +1351,7 @@
 				"/usr/lib/clang/19/include/zos_wrappers/builtins.h",
 				"/usr/lib/libclang-cpp.so.19.1",
 				"/usr/lib/libclang.so.19.1",
-				"/usr/lib/libclang.so.19.1.6"
+				"/usr/lib/libclang.so.19.1.7"
 			],
 			"name": "clang-libs",
 			"provides": [
@@ -4649,6 +4649,6 @@
 		}
 	},
 	"source-name": "llvm",
-	"source-release": "20",
-	"source-version": "19.1.6"
+	"source-release": "21",
+	"source-version": "19.1.7"
 }
