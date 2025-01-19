@@ -7,13 +7,13 @@ We don't want to enable `ENABLE_SHARED` since it causes every LLVM library to be
 
 Origin: vendor
 Forwarded: not-needed
-Last-Update: 2025-01-10
+Last-Update: 2025-01-14
 ---
  lld/cmake/modules/AddLLD.cmake | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/lld/cmake/modules/AddLLD.cmake b/lld/cmake/modules/AddLLD.cmake
-index 2ee066b4153..dc3b1a8afe2 100644
+index 9f2684b6f933..dbb7309a7e0b 100644
 --- a/lld/cmake/modules/AddLLD.cmake
 +++ b/lld/cmake/modules/AddLLD.cmake
 @@ -10,7 +10,7 @@ macro(add_lld_library name)
@@ -22,6 +22,6 @@ index 2ee066b4153..dc3b1a8afe2 100644
    endif()
 -  llvm_add_library(${name} ${ARG_ENABLE_SHARED} ${ARG_UNPARSED_ARGUMENTS})
 +  llvm_add_library(${name} SHARED ${ARG_UNPARSED_ARGUMENTS})
-   set_target_properties(${name} PROPERTIES FOLDER "lld libraries")
  
    if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY)
+     get_target_export_arg(${name} LLD export_to_lldtargets)

@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 14 Jan 2025 16:58:09 -0600
+Subject: [PATCH] bolt: Skip RPATH
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-01-14
+---
+ bolt/cmake/modules/AddBOLT.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bolt/cmake/modules/AddBOLT.cmake b/bolt/cmake/modules/AddBOLT.cmake
+index c7ac662c6b12..aad1ee5cf7f0 100644
+--- a/bolt/cmake/modules/AddBOLT.cmake
++++ b/bolt/cmake/modules/AddBOLT.cmake
+@@ -2,7 +2,7 @@ include(GNUInstallDirs)
+ include(LLVMDistributionSupport)
+ 
+ macro(add_bolt_executable name)
+-  add_llvm_executable(${name} ${ARGN})
++  add_llvm_executable(${name} ${ARGN} NO_INSTALL_RPATH)
+ endmacro()
+ 
+ macro(add_bolt_tool name)

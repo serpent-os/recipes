@@ -9,7 +9,7 @@ Downstream-only because upstream prefers to support this by passing in a static 
 
 Origin: vendor
 Forwarded: not-needed
-Last-Update: 2025-01-10
+Last-Update: 2025-01-14
 ---
  bolt/tools/driver/CMakeLists.txt             |  1 +
  bolt/tools/driver/llvm-bolt.cpp              |  3 +++
@@ -44,7 +44,7 @@ index 9bf9ff85edc7..612a81e16849 100644
  
  add_bolt_tool_symlink(perf2bolt llvm-bolt)
 diff --git a/bolt/tools/driver/llvm-bolt.cpp b/bolt/tools/driver/llvm-bolt.cpp
-index cc215a5256d2..b703f64ada4c 100644
+index 9b03524e9f18..09a0bfafe9c4 100644
 --- a/bolt/tools/driver/llvm-bolt.cpp
 +++ b/bolt/tools/driver/llvm-bolt.cpp
 @@ -17,6 +17,7 @@
@@ -55,7 +55,7 @@ index cc215a5256d2..b703f64ada4c 100644
  #include "llvm/Object/Binary.h"
  #include "llvm/Support/CommandLine.h"
  #include "llvm/Support/Errc.h"
-@@ -182,6 +183,8 @@ int main(int argc, char **argv) {
+@@ -187,6 +188,8 @@ int main(int argc, char **argv) {
    sys::PrintStackTraceOnErrorSignal(argv[0]);
    PrettyStackTraceProgram X(argc, argv);
  
@@ -65,10 +65,10 @@ index cc215a5256d2..b703f64ada4c 100644
  
    std::string ToolPath = GetExecutablePath(argv[0]);
 diff --git a/clang/tools/driver/CMakeLists.txt b/clang/tools/driver/CMakeLists.txt
-index 99186d09db6f..c6ba97412f18 100644
+index a46d0df0d5df..6e9e303440fb 100644
 --- a/clang/tools/driver/CMakeLists.txt
 +++ b/clang/tools/driver/CMakeLists.txt
-@@ -45,6 +45,11 @@ clang_target_link_libraries(clang
+@@ -48,6 +48,11 @@ clang_target_link_libraries(clang
    clangSerialization
    )
  
@@ -81,18 +81,18 @@ index 99186d09db6f..c6ba97412f18 100644
    # Prevent versioning if the buildhost is targeting for Win32.
  else()
 diff --git a/clang/tools/driver/driver.cpp b/clang/tools/driver/driver.cpp
-index 1407c7fcdab7..35504050a109 100644
+index 83b5bbb71f52..8e0ac5d9dccf 100644
 --- a/clang/tools/driver/driver.cpp
 +++ b/clang/tools/driver/driver.cpp
-@@ -28,6 +28,7 @@
- #include "llvm/ADT/ArrayRef.h"
+@@ -29,6 +29,7 @@
  #include "llvm/ADT/SmallString.h"
  #include "llvm/ADT/SmallVector.h"
+ #include "llvm/ADT/StringSet.h"
 +#include "llvm/Mimalloc/Mimalloc.h"
  #include "llvm/Option/ArgList.h"
  #include "llvm/Option/OptTable.h"
  #include "llvm/Option/Option.h"
-@@ -376,6 +377,7 @@ static int ExecuteCC1Tool(SmallVectorImpl<const char *> &ArgV,
+@@ -227,6 +228,7 @@ static int ExecuteCC1Tool(SmallVectorImpl<const char *> &ArgV,
  
  int clang_main(int Argc, char **Argv, const llvm::ToolContext &ToolContext) {
    noteBottomOfStack();
@@ -101,7 +101,7 @@ index 1407c7fcdab7..35504050a109 100644
                          " and include the crash backtrace, preprocessed "
                          "source, and associated run script.\n");
 diff --git a/lld/tools/lld/CMakeLists.txt b/lld/tools/lld/CMakeLists.txt
-index 4dd1c6ffb6cb..5ea9cafcca8d 100644
+index 3e7b95c3953a..90a39b2e8d0d 100644
 --- a/lld/tools/lld/CMakeLists.txt
 +++ b/lld/tools/lld/CMakeLists.txt
 @@ -34,6 +34,11 @@ lld_target_link_libraries(lld
@@ -137,10 +137,10 @@ index d6800fa1eea4..4a134e337011 100644
  
    if (::getenv("FORCE_LLD_DIAGNOSTICS_CRASH")) {
 diff --git a/llvm/CMakeLists.txt b/llvm/CMakeLists.txt
-index 909a965cd86c..a52b23f33c19 100644
+index 12618966c4ad..4920467fdb40 100644
 --- a/llvm/CMakeLists.txt
 +++ b/llvm/CMakeLists.txt
-@@ -534,6 +534,8 @@ else()
+@@ -552,6 +552,8 @@ else()
    option(LLVM_ENABLE_THREADS "Use threads if available." ON)
  endif()
  
@@ -150,7 +150,7 @@ index 909a965cd86c..a52b23f33c19 100644
  
  set(LLVM_ENABLE_ZSTD "ON" CACHE STRING "Use zstd for compression/decompression if available. Can be ON, OFF, or FORCE_ON")
 diff --git a/llvm/cmake/config-ix.cmake b/llvm/cmake/config-ix.cmake
-index bf1b110245bb..4d160d2bdc60 100644
+index 0aae13e30f2a..cce8f3e6689e 100644
 --- a/llvm/cmake/config-ix.cmake
 +++ b/llvm/cmake/config-ix.cmake
 @@ -126,6 +126,23 @@ if(HAVE_LIBPTHREAD)
@@ -178,7 +178,7 @@ index bf1b110245bb..4d160d2bdc60 100644
    if(LLVM_ENABLE_ZLIB STREQUAL FORCE_ON)
      find_package(ZLIB REQUIRED)
 diff --git a/llvm/include/llvm/Config/llvm-config.h.cmake b/llvm/include/llvm/Config/llvm-config.h.cmake
-index 6605ea60df99..7c4de1bbf8ce 100644
+index 629977cc11d6..530c46d2bd69 100644
 --- a/llvm/include/llvm/Config/llvm-config.h.cmake
 +++ b/llvm/include/llvm/Config/llvm-config.h.cmake
 @@ -167,6 +167,9 @@
@@ -210,10 +210,10 @@ index 000000000000..e9bf4ef87b16
 +
 +#endif
 diff --git a/llvm/lib/CMakeLists.txt b/llvm/lib/CMakeLists.txt
-index ea22ff21820a..5a50372670c9 100644
+index 638c3bd6f90f..c08331ab87ec 100644
 --- a/llvm/lib/CMakeLists.txt
 +++ b/llvm/lib/CMakeLists.txt
-@@ -22,6 +22,7 @@ add_subdirectory(Analysis)
+@@ -24,6 +24,7 @@ add_subdirectory(Analysis)
  add_subdirectory(LTO)
  add_subdirectory(MC)
  add_subdirectory(MCA)
@@ -281,7 +281,7 @@ index 4d0718f8cefe..763512760a46 100644
  add_llvm_tool_symlink(llvm-lib llvm-ar)
  add_llvm_tool_symlink(llvm-dlltool llvm-ar)
 diff --git a/llvm/tools/llvm-ar/llvm-ar.cpp b/llvm/tools/llvm-ar/llvm-ar.cpp
-index c8800303bc1e..0919fb367ca1 100644
+index 3b842b76d5c8..d7a167d04b77 100644
 --- a/llvm/tools/llvm-ar/llvm-ar.cpp
 +++ b/llvm/tools/llvm-ar/llvm-ar.cpp
 @@ -18,6 +18,7 @@
@@ -292,7 +292,7 @@ index c8800303bc1e..0919fb367ca1 100644
  #include "llvm/Support/Chrono.h"
  #include "llvm/Support/CommandLine.h"
  #include "llvm/Support/ConvertUTF.h"
-@@ -1501,6 +1502,8 @@ static int ranlib_main(int argc, char **argv) {
+@@ -1511,6 +1512,8 @@ static int ranlib_main(int argc, char **argv) {
  int llvm_ar_main(int argc, char **argv, const llvm::ToolContext &) {
    ToolName = argv[0];
  

@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : llvm
-version     : 18.1.8
-release     : 19
+version     : 19.1.6
+release     : 20
 summary     : Low Level Virtual Machine
 license     :
     - Apache-2.0 WITH LLVM-exception
@@ -14,7 +14,7 @@ homepage    : https://www.llvm.org
 description : |
     Low Level Virtual Machine
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz : 0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/llvm-project-19.1.6.src.tar.xz : e3f79317adaa9196d2cfffe1c869d7c100b7540832bc44fe0d3f44a12861fa34
 builddeps   :
     - binary(ninja)
     - binary(perl)
@@ -27,7 +27,6 @@ builddeps   :
     - pkgconfig32(libxcrypt)
     - pkgconfig32(libxml-2.0)
     - pkgconfig32(libzstd)
-    - pkgconfig32(ncursesw)
     - pkgconfig32(zlib)
     - binutils-devel
     - clang-32bit
@@ -100,9 +99,7 @@ environment : |
         %patch %(pkgdir)/patches/perf/0001-Use-mimalloc-for-clang-lld-llvm.patch
 
         # Upstream backports
-        %patch %(pkgdir)/patches/upstream/llvm-SelectionDAG.patch
-        %patch %(pkgdir)/patches/upstream/0016-llvm-exegesis-Use-correct-rseq-struct-size-100804.patch
-        %patch %(pkgdir)/patches/upstream/99574.patch
+        ## Empty (for now)
     }
 
     function cmake_llvm_configure() {
@@ -281,6 +278,7 @@ packages    :
             - /usr/bin/llvm-*
             - /usr/bin/obj2yaml
             - /usr/bin/opt
+            - /usr/bin/reduce-chunk-list
             - /usr/bin/sancov
             - /usr/bin/sanstats
             - /usr/bin/split-file
@@ -373,8 +371,10 @@ packages    :
             - /usr/bin/clang-extdef-mapping
             - /usr/bin/clang-format
             - /usr/bin/clang-include-*
+            - /usr/bin/clang-installapi
             - /usr/bin/clang-linker-wrapper
             - /usr/bin/clang-move
+            - /usr/bin/clang-nvlink-wrapper
             - /usr/bin/clang-offload-*
             - /usr/bin/clang-pseudo
             - /usr/bin/clang-query
@@ -398,13 +398,12 @@ packages    :
             - /usr/lib/libear
             - /usr/lib/libscanbuild
             - /usr/libexec
-            - /usr/share/clang/clang-doc*
             - /usr/share/clang/clang-format*
             - /usr/share/clang/clang-include-fixer*
             - /usr/share/clang/clang-rename*
             - /usr/share/clang/clang-tidy-diff*
-            - /usr/share/clang/index.js
             - /usr/share/clang/run-find-all-symbols*
+            - /usr/share/clang-doc
             - /usr/share/man
             - /usr/share/scan-*
 
@@ -469,8 +468,6 @@ packages    :
             - /usr/lib/libarcher.so
             - /usr/lib/libomp.so
             - /usr/lib/libompd.so
-            - /usr/lib/libomptarget.so.*
-            - /usr/lib/libomptarget.rtl.*.so.*
 
     - "openmp-devel":
         summary: "LLVM OpenMP runtime - Development files"
@@ -481,10 +478,6 @@ packages    :
         paths:
             - /usr/lib/cmake/openmp
             - /usr/lib/clang/*/include/omp*.h
-            - /usr/lib/libomptarget*.a
-            - /usr/lib/libomptarget*.bc
-            - /usr/lib/libomptarget.so
-            - /usr/lib/libomptarget.rtl.*.so
 
     - "polly":
         summary: "LLVM Framework for High-Level Loop and Data-Locality Optimizations"

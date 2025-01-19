@@ -12,15 +12,15 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
-				"soname(libLLVM.so.18.1(x86_64))",
+				"soname(libLLVM.so.19.1(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(liblldCOFF.so.18.1(x86_64))",
-				"soname(liblldCommon.so.18.1(x86_64))",
-				"soname(liblldELF.so.18.1(x86_64))",
-				"soname(liblldMachO.so.18.1(x86_64))",
-				"soname(liblldMinGW.so.18.1(x86_64))",
-				"soname(liblldWasm.so.18.1(x86_64))",
+				"soname(liblldCOFF.so.19.1(x86_64))",
+				"soname(liblldCommon.so.19.1(x86_64))",
+				"soname(liblldELF.so.19.1(x86_64))",
+				"soname(liblldMachO.so.19.1(x86_64))",
+				"soname(liblldMinGW.so.19.1(x86_64))",
+				"soname(liblldWasm.so.19.1(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))"
 			],
@@ -611,6 +611,7 @@
 				"/usr/include/d/ldc/eh_msvc.d",
 				"/usr/include/d/ldc/gccbuiltins_aarch64.di",
 				"/usr/include/d/ldc/gccbuiltins_amdgcn.di",
+				"/usr/include/d/ldc/gccbuiltins_arm.di",
 				"/usr/include/d/ldc/gccbuiltins_x86.di",
 				"/usr/include/d/ldc/intrinsics.di",
 				"/usr/include/d/ldc/libfuzzer.di",
@@ -799,6 +800,6 @@
 		}
 	},
 	"source-name": "ldc",
-	"source-release": "13",
+	"source-release": "14",
 	"source-version": "1.39.0"
 }

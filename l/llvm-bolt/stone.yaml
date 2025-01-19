@@ -4,26 +4,30 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : llvm-bolt
-version     : 18.1.8
-release     : 6
+version     : 19.1.6
+release     : 7
 summary     : Binary Optimization and Layout Tool
 license     : Apache-2.0
 homepage    : https://github.com/facebookincubator/BOLT
 description : |
     Binary Optimization and Layout Tool.
 upstreams   :
-    - https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz: 0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a
+    - https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/llvm-project-19.1.6.src.tar.xz: e3f79317adaa9196d2cfffe1c869d7c100b7540832bc44fe0d3f44a12861fa34
 builddeps   :
     - binary(python)
-    - cmake(LLVM)
-    - pkgconfig(ncursesw)
+    - binary(readelf)
     - pkgconfig(zlib)
+    - llvm-devel
 setup       : |
+    %patch %(pkgdir)/0001-bolt-Set-version-string.patch
+    %patch %(pkgdir)/0001-bolt-Skip-RPATH.patch
+
     %cmake -S llvm \
-        -DLLVM_INSTALL_UTILS=ON \
+        -DBOLT_PACKAGE_VERSION=%(version) \
         -DBUILD_SHARED_LIBS:BOOL=OFF \
-        -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_ENABLE_PROJECTS="bolt" \
+        -DLLVM_INSTALL_UTILS=ON \
+        -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_TARGETS_TO_BUILD="X86;AArch64"
 build       : |
     %cmake_build

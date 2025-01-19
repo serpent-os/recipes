@@ -7,16 +7,16 @@ The libraries for openmp are installed into libdir, so RUNPATH is unnecessary. I
 
 Origin: vendor
 Forwarded: not-needed
-Last-Update: 2025-01-10
+Last-Update: 2025-01-14
 ---
- openmp/libomptarget/tools/CMakeLists.txt | 2 +-
+ offload/tools/CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/openmp/libomptarget/tools/CMakeLists.txt b/openmp/libomptarget/tools/CMakeLists.txt
-index a850647fbd58..1eaa784e5f50 100644
---- a/openmp/libomptarget/tools/CMakeLists.txt
-+++ b/openmp/libomptarget/tools/CMakeLists.txt
-@@ -17,7 +17,7 @@ mark_as_advanced(OPENMP_TOOLS_INSTALL_DIR)
+diff --git a/offload/tools/CMakeLists.txt b/offload/tools/CMakeLists.txt
+index 13772a4a675e..b6814dafa7d2 100644
+--- a/offload/tools/CMakeLists.txt
++++ b/offload/tools/CMakeLists.txt
+@@ -5,7 +5,7 @@ mark_as_advanced(OPENMP_TOOLS_INSTALL_DIR)
  # Move these macros to AddOpenMP if such a CMake module is ever created.
  
  macro(add_openmp_tool name)
