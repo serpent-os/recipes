@@ -7,7 +7,6 @@
 				"binary(perl)",
 				"binary(qmake)",
 				"clang-devel",
-				"llvm-devel",
 				"vulkan-headers"
 			],
 			"depends": [
@@ -70,7 +69,6 @@
 				"binary(perl)",
 				"binary(qmake)",
 				"clang-devel",
-				"llvm-devel",
 				"vulkan-headers"
 			],
 			"depends": [
@@ -235,7 +233,6 @@
 				"binary(perl)",
 				"binary(qmake)",
 				"clang-devel",
-				"llvm-devel",
 				"vulkan-headers"
 			],
 			"depends": [
@@ -259,7 +256,7 @@
 				"soname(libQt5Xml.so.5(x86_64))",
 				"soname(libc++.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libclang.so.18.1(x86_64))"
+				"soname(libclang.so.19.1(x86_64))"
 			],
 			"files": [
 				"/usr/bin/assistant",
@@ -595,6 +592,6 @@
 		}
 	},
 	"source-name": "qt5-tools",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "5.15.16+kde.15deb8f2"
 }

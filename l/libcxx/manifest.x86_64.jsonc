@@ -1272,6 +1272,6 @@
 		}
 	},
 	"source-name": "libcxx",
-	"source-release": "11",
-	"source-version": "19.1.6"
+	"source-release": "12",
+	"source-version": "19.1.7"
 }

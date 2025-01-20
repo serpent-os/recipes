@@ -8,6 +8,7 @@
 				"binary(bison)",
 				"binary(cbindgen)",
 				"binary(flex)",
+				"binary(intel_clc)",
 				"binary(llvm-config32)",
 				"binary(python3)",
 				"binary(rustc)",
@@ -47,7 +48,7 @@
 			],
 			"depends": [
 				"soname(ld-linux-x86-64.so.2(x86_64))",
-				"soname(libLLVM.so.18.1(x86_64))",
+				"soname(libLLVM.so.19.1(x86_64))",
 				"soname(libSPIRV-Tools.so(x86_64))",
 				"soname(libX11-xcb.so.1(x86_64))",
 				"soname(libX11.so.6(x86_64))",
@@ -188,6 +189,7 @@
 				"binary(bison)",
 				"binary(cbindgen)",
 				"binary(flex)",
+				"binary(intel_clc)",
 				"binary(llvm-config32)",
 				"binary(python3)",
 				"binary(rustc)",
@@ -227,8 +229,7 @@
 			],
 			"depends": [
 				"mesa",
-				"soname(ld-linux.so.2(386))",
-				"soname(libLLVM.so.18.1(386))",
+				"soname(libLLVM.so.19.1(386))",
 				"soname(libSPIRV-Tools.so(386))",
 				"soname(libX11-xcb.so.1(386))",
 				"soname(libX11.so.6(386))",
@@ -374,6 +375,7 @@
 				"binary(bison)",
 				"binary(cbindgen)",
 				"binary(flex)",
+				"binary(intel_clc)",
 				"binary(llvm-config32)",
 				"binary(python3)",
 				"binary(rustc)",
@@ -444,6 +446,7 @@
 				"binary(bison)",
 				"binary(cbindgen)",
 				"binary(flex)",
+				"binary(intel_clc)",
 				"binary(llvm-config32)",
 				"binary(python3)",
 				"binary(rustc)",
@@ -520,6 +523,6 @@
 		}
 	},
 	"source-name": "mesa",
-	"source-release": "27",
+	"source-release": "28",
 	"source-version": "24.3.3"
 }

@@ -5,7 +5,7 @@
 #
 name        : mesa
 version     : 24.3.3
-release     : 27
+release     : 28
 homepage    : https://mesa3d.org/
 upstreams   :
     - https://archive.mesa3d.org/mesa-24.3.3.tar.xz : 105afc00a4496fa4d29da74e227085544919ec7c86bd92b0b6e7fcc32c7125f4
@@ -34,6 +34,7 @@ builddeps   :
     - binary(bison)
     - binary(cbindgen)
     - binary(flex)
+    - binary(intel_clc)
     - binary(llvm-config32)
     - binary(python3)
     - binary(rustc)
@@ -71,6 +72,7 @@ builddeps   :
     - python-pyyaml
     - rust-32bit
 tuning      :
+    - lto: false
     - symbolic: false
     - optimize: speed
 emul32      : true
@@ -102,7 +104,7 @@ setup       : |
         -Dshared-llvm=enabled \
         -Dvideo-codecs=all \
         -Dmicrosoft-clc=disabled \
-        -Dintel-clc=enabled \
+        -Dintel-clc=system \
         -Dvulkan-drivers=amd,intel,intel_hasvk,swrast,virtio$EXTRA_VK_DRIVERS \
         -Dvulkan-layers=device-select,overlay,screenshot
 build       : |
