@@ -3,12 +3,6 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"qt5-declarative": {
-			"build-depends": [
-				"binary(perl)",
-				"binary(python3)",
-				"binary(qmake)",
-				"vulkan-headers"
-			],
 			"depends": [
 				"soname(libGL.so.1(x86_64))",
 				"soname(libQt5Core.so.5(x86_64))",
@@ -156,12 +150,6 @@
 			]
 		},
 		"qt5-declarative-demos": {
-			"build-depends": [
-				"binary(perl)",
-				"binary(python3)",
-				"binary(qmake)",
-				"vulkan-headers"
-			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libQt5Core.so.5(x86_64))",
@@ -1287,12 +1275,6 @@
 			]
 		},
 		"qt5-declarative-devel": {
-			"build-depends": [
-				"binary(perl)",
-				"binary(python3)",
-				"binary(qmake)",
-				"vulkan-headers"
-			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"pkgconfig(Qt5Core)",
@@ -2211,6 +2193,6 @@
 		}
 	},
 	"source-name": "qt5-declarative",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "5.15.16+kde.e2b38659"
 }
