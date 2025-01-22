@@ -4,8 +4,6 @@
 	"packages": {
 		"qt5-x11extras": {
 			"build-depends": [
-				"binary(perl)",
-				"binary(qmake)",
 				"pkgconfig(xcb)"
 			],
 			"depends": [
@@ -25,8 +23,6 @@
 		},
 		"qt5-x11extras-devel": {
 			"build-depends": [
-				"binary(perl)",
-				"binary(qmake)",
 				"pkgconfig(xcb)"
 			],
 			"depends": [
@@ -58,6 +54,6 @@
 		}
 	},
 	"source-name": "qt5-x11extras",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "5.15.16+kde.0c61151b"
 }
