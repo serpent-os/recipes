@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : md4c
+version     : 3.3.0
+release     : 1
+homepage    : https://github.com/mity/md4c
+upstreams   :
+    - https://github.com/mity/md4c/archive/refs/tags/release-0.5.2.tar.gz : 55d0111d48fb11883aaee91465e642b8b640775a4d6993c2d0e7a8092758ef21
+summary     : C Markdown parser and library
+description : |
+    C Markdown parser. Fast. SAX-like interface. Compliant to CommonMark specification.
+license     : MIT
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
