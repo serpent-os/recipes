@@ -76,6 +76,7 @@
 				"/usr/share/inputplumber/devices/50-rog_ally.yaml",
 				"/usr/share/inputplumber/devices/50-rog_ally_x.yaml",
 				"/usr/share/inputplumber/devices/50-steam_deck.yaml",
+				"/usr/share/inputplumber/devices/60-horipad_steam.yaml",
 				"/usr/share/inputplumber/devices/60-ps4_gamepad.yaml",
 				"/usr/share/inputplumber/devices/60-ps5_ds-edge_gamepad.yaml",
 				"/usr/share/inputplumber/devices/60-ps5_ds_gamepad.yaml",
@@ -101,6 +102,6 @@
 		}
 	},
 	"source-name": "inputplumber",
-	"source-release": "1",
-	"source-version": "0.40.0"
+	"source-release": "2",
+	"source-version": "0.41.0"
 }
