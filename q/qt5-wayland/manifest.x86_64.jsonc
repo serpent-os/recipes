@@ -10,8 +10,7 @@
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-egl-backend)",
 				"pkgconfig(wayland-server)",
-				"pkgconfig(xcomposite)",
-				"vulkan-headers"
+				"pkgconfig(xcomposite)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -123,8 +122,7 @@
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-egl-backend)",
 				"pkgconfig(wayland-server)",
-				"pkgconfig(xcomposite)",
-				"vulkan-headers"
+				"pkgconfig(xcomposite)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -275,8 +273,7 @@
 				"pkgconfig(wayland-client)",
 				"pkgconfig(wayland-egl-backend)",
 				"pkgconfig(wayland-server)",
-				"pkgconfig(xcomposite)",
-				"vulkan-headers"
+				"pkgconfig(xcomposite)"
 			],
 			"depends": [
 				"pkgconfig(Qt5Core)",
@@ -618,6 +615,6 @@
 		}
 	},
 	"source-name": "qt5-wayland",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "5.15.16+kde.9340737a"
 }
