@@ -4,8 +4,6 @@
 	"packages": {
 		"qt5-svg": {
 			"build-depends": [
-				"binary(perl)",
-				"binary(qmake)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
@@ -33,8 +31,6 @@
 		},
 		"qt5-svg-demos": {
 			"build-depends": [
-				"binary(perl)",
-				"binary(qmake)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
@@ -206,8 +202,6 @@
 		},
 		"qt5-svg-devel": {
 			"build-depends": [
-				"binary(perl)",
-				"binary(qmake)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
@@ -256,6 +250,6 @@
 		}
 	},
 	"source-name": "qt5-svg",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "5.15.16+kde.9c3d4062"
 }
