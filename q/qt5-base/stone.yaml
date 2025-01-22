@@ -5,7 +5,7 @@
 #
 name        : qt5-base
 version     : 5.15.16+kde.2529f7f0
-release     : 4
+release     : 5
 homepage    : https://www.qt.io
 upstreams   :
     - git|https://invent.kde.org/qt/qt/qtbase.git : 2529f7f0c2333d437089c775c9c30f624d1fd5bc
@@ -18,7 +18,9 @@ license     :
     - LGPL-3.0-or-later
 builddeps   :
     - binary(perl)
+    - binary(sed)
     - binary(which)
+    - cmake(double-conversion)
     - pkgconfig(atspi-2)
     - pkgconfig(cups)
     - pkgconfig(dbus-1)
@@ -39,6 +41,7 @@ builddeps   :
     - pkgconfig(libssl)
     - pkgconfig(libsystemd)
     - pkgconfig(libzstd)
+    - pkgconfig(md4c)
     - pkgconfig(shared-mime-info)
     - pkgconfig(sqlite3)
     - pkgconfig(x11)
@@ -52,9 +55,7 @@ builddeps   :
     - pkgconfig(zlib)
     - vulkan-headers
 setup       : |
-    # TODO build with CUPS, MariaDB/Mysql, Postgresql
-    # TODO harfbuzz, system DoubleConversion, gtk
-    # TODO figure out proper ccache/sccache support
+    # TODO build with MariaDB/Mysql, Postgresql
 
     %patch %(pkgdir)/0001-Adjust-build-flags.patch
     %patch %(pkgdir)/stateless/0001-Support-stateless-config-directories.patch
@@ -79,9 +80,10 @@ setup       : |
     %patch %(pkgdir)/fedora/0017-Fix-tooltip-palette-issue-in-gtk3-theme.patch
     %patch %(pkgdir)/fedora/0018-QGtk3Theme-define-light-midlight-mid-dark-and-shadow.patch
 
-    export CFLAGS="$CFLAGS -ffat-lto-objects"
-    export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
-    export LDFLAGS="$LDFLAGS -ffat-lto-objects"
+    _extra_args=-no-ccache
+    if [[ " ${PATH[*]} " =~ "ccache" ]]; then
+        _extra_args=-ccache
+    fi
 
     ./configure -confirm-license -opensource -release \
                 -prefix %(prefix) \
@@ -110,16 +112,24 @@ setup       : |
                 -system-sqlite \
                 -system-zlib \
                 -xcb \
+                $_extra_args \
                 QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
                 QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
                 QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
 build       : |
+    %ccache_zero
+
     %make
+
+    %ccache_stats
 install     : |
     %make_install INSTALL_ROOT="%(installroot)"
 
     # Avoid debug logging unless overridden by user
     %install_file %(pkgdir)/qtlogging.ini %(installroot)/usr/share/qt5/qtlogging.ini
+
+    # If we used ccache during this build then the ccache config key will be used for EVERY qt5 package build. We want to avoid that.
+    sed -i "s|ccache ||g" %(installroot)/%(libdir)/qt5/mkspecs/qmodule.pri
 
     # We have the dedicated qt5-docs package for that.
     rm -rfv %(installroot)/usr/share/qt5/doc
@@ -131,17 +141,10 @@ packages    :
     - "%(name)-devel":
         paths:
             - /usr/bin
-            - /usr/lib/*.prl
-            - /usr/lib/metatypes
-            - /usr/lib/qt5/mkspecs
         rundeps:
             - pkgconfig(fontconfig)
             - pkgconfig(freetype2)
             - pkgconfig(gl)
             - pkgconfig(glib-2.0)
             - pkgconfig(xkbcommon)
-    - "%(name)-demos" :
-        paths:
-            - /usr/lib/qt5/examples
-tuning     :
-    - lto: thin
+            - vulkan-headers
