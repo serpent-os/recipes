@@ -1,0 +1,153 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qt6-base
+version     : 6.8.1
+release     : 1
+homepage    : https://www.qt.io
+upstreams   :
+    - https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtbase-everywhere-src-6.8.1.tar.xz : 40b14562ef3bd779bc0e0418ea2ae08fa28235f8ea6e8c0cb3bce1d6ad58dcaf
+summary     : Cross platform application and UI framework
+description : |
+    Cross platform application and UI framework
+license     :
+    - GPL-2.0
+    - LGPL-2.1-or-later
+    - LGPL-3.0-or-later
+builddeps   :
+    - cmake(VulkanHeaders)
+    - cmake(double-conversion)
+    - pkgconfig(atspi-2)
+    - pkgconfig(cups)
+    - pkgconfig(dbus-1)
+    - pkgconfig(fontconfig)
+    - pkgconfig(freetype2)
+    - pkgconfig(gbm)
+    - pkgconfig(gl)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(harfbuzz)
+    - pkgconfig(icu-uc)
+    - pkgconfig(krb5-gssapi)
+    - pkgconfig(libb2)
+    - pkgconfig(libbrotlicommon)
+    - pkgconfig(libcrypto)
+    - pkgconfig(libdrm)
+    - pkgconfig(libinput)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libpcre2-16)
+    - pkgconfig(libpng)
+    - pkgconfig(libproxy-1.0)
+    - pkgconfig(libsystemd)
+    - pkgconfig(libudev)
+    - pkgconfig(libzstd)
+    - pkgconfig(md4c)
+    - pkgconfig(mtdev)
+    - pkgconfig(sqlite3)
+    - pkgconfig(vulkan)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-egl-backend)
+    - pkgconfig(wayland-server)
+    - pkgconfig(xcb)
+    - pkgconfig(xcb-atom)
+    - pkgconfig(xcb-cursor)
+    - pkgconfig(xcb-icccm)
+    - pkgconfig(xcb-image)
+    - pkgconfig(xcb-keysyms)
+    - pkgconfig(xcb-randr)
+    - pkgconfig(xcb-renderutil)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(zlib)
+    # TODO: Package and use lttng-ust and mariadb/postgres
+setup       : |
+    %patch %(pkgdir)/0001-Adjust-build-flags.patch
+    %patch %(pkgdir)/0001-Support-stateless-config-directories.patch
+
+    # Backport emojisegmenter feature from 6.9
+    %patch %(pkgdir)/QTBUG-111801.patch
+    %patch %(pkgdir)/QTBUG-111801-2.patch
+    %patch %(pkgdir)/QTBUG-111801-3.patch
+
+    ## 2024-01-18 Note
+    # Enabling -DQT_FEATURE_openssl_hash=ON with Qt 6.6.1 seems to break some applications use of TLS.
+    # This can be reproduced in rssguard by starting it and trying to pull some feeds. You'll see the following message right before a ton of SSL errors:
+    # "Random number generator not seeded, disabling SSL support"
+    ## 2024-12-03 update: Still fucked
+
+    %cmake_qt6 \
+               -DQT_QMAKE_TARGET_MKSPEC=linux-clang-libc++ \
+               -DFEATURE_stdlib_libcpp=ON \
+               -DQT_FEATURE_accessibility=ON \
+               -DQT_FEATURE_brotli=ON \
+               -DQT_FEATURE_dbus_linked=ON \
+               -DQT_FEATURE_emojisegmenter=ON \
+               -DQT_FEATURE_gssapi=ON \
+               -DQT_FEATURE_harfbuzz=ON \
+               -DQT_FEATURE_journald=ON \
+               -DQT_FEATURE_libproxy=ON \
+               -DQT_FEATURE_mimetype_database=OFF \
+               -DQT_FEATURE_mtdev=ON \
+               -DQT_FEATURE_openssl_linked=ON \
+               -DQT_FEATURE_optimize_full=ON \
+               -DQT_FEATURE_pcre2=ON \
+               -DQT_FEATURE_system_harfbuzz=ON \
+               -DQT_FEATURE_system_sqlite=ON \
+               -DQT_FEATURE_system_xcb_xinput=ON \
+               -DQT_FEATURE_zstd=ON
+build       : |
+    %ccache_zero
+
+    %cmake_build
+
+    %ccache_stats
+install     : |
+    %cmake_install
+
+    # Setup user-facing binaries (like qmake6)
+    %qt_user_facing_links
+
+    # Avoid debug logging unless overridden by user
+    %install_file %(pkgdir)/qtlogging.ini %(installroot)/usr/share/qt6/qtlogging.ini
+
+    # If we used ccache during this build then the ccache config key will be used for EVERY qt6 package build. We want to avoid that.
+    sed -i "s| ccache||g" %(installroot)/%(libdir)/qt6/mkspecs/qmodule.pri
+    sed -i "s| ccache||g" %(installroot)/%(libdir)/qt6/mkspecs/modules/qt_lib_core_private.pri
+
+    # We have the dedicated qt6-docs package for that.
+    rm -rfv %(installroot)/%(datadir)/doc
+packages    :
+    - "%(name)":
+        rundeps:
+            - shared-mime-info
+    - "%(name)-devel":
+        paths:
+            - /usr/bin
+            - /usr/lib/objects-*
+            - /usr/lib/qt6/*.cmake
+            - /usr/lib/qt6/android_emulator_launcher.sh
+            - /usr/lib/qt6/bin
+            - /usr/lib/qt6/cmake_automoc_parser
+            - /usr/lib/qt6/moc
+            - /usr/lib/qt6/qlalr
+            - /usr/lib/qt6/qt-android-runner.py
+            - /usr/lib/qt6/qt-cmake-private*
+            - /usr/lib/qt6/qt-cmake-standalone-test
+            - /usr/lib/qt6/qt-internal-configure-examples
+            - /usr/lib/qt6/qt-internal-configure-tests
+            - /usr/lib/qt6/qt-testrunner.py
+            - /usr/lib/qt6/rcc
+            - /usr/lib/qt6/qvkgen
+            - /usr/lib/qt6/sanitizer-testrunner.py
+            - /usr/lib/qt6/syncqt
+            - /usr/lib/qt6/tracegen
+            - /usr/lib/qt6/tracepointgen
+            - /usr/lib/qt6/uic
+        rundeps:
+            - cmake(VulkanHeaders)
+            - pkgconfig(cups)
+            - pkgconfig(gl)
+            - pkgconfig(libzstd)
+            - pkgconfig(vulkan)
+            - pkgconfig(xkbcommon)

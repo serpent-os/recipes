@@ -1,0 +1,9 @@
+releases:
+  id: 7927
+  rss: https://invent.kde.org/qt/qt/qtbase/-/tags?format=atom
+security:
+  cpe:
+  - vendor: qt
+    product: qt
+  - vendor: qt
+    product: qtbase
