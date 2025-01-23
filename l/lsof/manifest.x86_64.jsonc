@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"lsof": {
+			"build-depends": [
+				"binary(soelim)",
+				"pkgconfig(libtirpc)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libtirpc.so.3(x86_64))"
+			],
+			"files": [
+				"/usr/bin/lsof",
+				"/usr/lib/liblsof.so.0",
+				"/usr/lib/liblsof.so.0.0.0",
+				"/usr/share/man/man8/lsof.8"
+			],
+			"name": "lsof",
+			"provides": [
+				"binary(lsof)",
+				"soname(liblsof.so.0(x86_64))"
+			]
+		},
+		"lsof-devel": {
+			"build-depends": [
+				"binary(soelim)",
+				"pkgconfig(libtirpc)"
+			],
+			"depends": [
+				"lsof"
+			],
+			"files": [
+				"/usr/include/lsof.h",
+				"/usr/include/lsof_fields.h",
+				"/usr/lib/liblsof.a",
+				"/usr/lib/liblsof.so"
+			],
+			"name": "lsof-devel"
+		}
+	},
+	"source-name": "lsof",
+	"source-release": "1",
+	"source-version": "4.99.4"
+}
