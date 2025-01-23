@@ -1,0 +1,149 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 21 Jan 2025 17:50:30 -0600
+Subject: [PATCH] Adjust build flags
+
+Signed-off-by: Reilly Brogan <reilly@reillybrogan.com>
+---
+ mkspecs/common/clang.conf         |  3 +++
+ mkspecs/common/g++-unix.conf      |  3 ++-
+ mkspecs/common/gcc-base.conf      | 19 ++++++++++++-------
+ mkspecs/linux-clang-32/qmake.conf |  1 +
+ mkspecs/linux-clang/qmake.conf    |  1 +
+ mkspecs/linux-g++-32/qmake.conf   |  1 +
+ mkspecs/linux-g++-64/qmake.conf   |  1 +
+ mkspecs/linux-g++/qmake.conf      |  1 +
+ 8 files changed, 22 insertions(+), 8 deletions(-)
+
+diff --git a/mkspecs/common/clang.conf b/mkspecs/common/clang.conf
+index 6eb08a9d2f..562cffa08c 100644
+--- a/mkspecs/common/clang.conf
++++ b/mkspecs/common/clang.conf
+@@ -47,6 +47,9 @@ QMAKE_LFLAGS_CXX14      =
+ QMAKE_LFLAGS_CXX1Z      =
+ QMAKE_LFLAGS_LTCG       = $$QMAKE_CFLAGS_LTCG
+ 
++SYSTEM_LDFLAGS = $$(LDFLAGS)
++!isEmpty(SYSTEM_LDFLAGS) { eval(QMAKE_LFLAGS_RELEASE += $$(LDFLAGS)) }
++
+ # Wrapper tools that understand .o/.a files with LLVM bytecode instead of machine code
+ QMAKE_AR_LTCG           = llvm-ar cqs
+ QMAKE_NM_LTCG           = llvm-nm -P
+diff --git a/mkspecs/common/g++-unix.conf b/mkspecs/common/g++-unix.conf
+index a493cd5984..73a2fc16ba 100644
+--- a/mkspecs/common/g++-unix.conf
++++ b/mkspecs/common/g++-unix.conf
+@@ -10,5 +10,6 @@
+ 
+ include(g++-base.conf)
+ 
+-QMAKE_LFLAGS_RELEASE   += -Wl,-O1
++SYSTEM_LDFLAGS = $$(LDFLAGS)
++!isEmpty(SYSTEM_LDFLAGS) { eval(QMAKE_LFLAGS_RELEASE += $$(LDFLAGS)) } else { QMAKE_LFLAGS_RELEASE   += -Wl,-O1 }
+ QMAKE_LFLAGS_NOUNDEF   += -Wl,--no-undefined
+diff --git a/mkspecs/common/gcc-base.conf b/mkspecs/common/gcc-base.conf
+index ae58326289..3e30b9f095 100644
+--- a/mkspecs/common/gcc-base.conf
++++ b/mkspecs/common/gcc-base.conf
+@@ -30,9 +30,10 @@
+ # To verify that your change has the desired effect on the final configuration
+ # you can use the manual test in tests/manual/mkspecs.
+ #
++CONFIG += nostrip
+ 
+ QMAKE_CFLAGS_OPTIMIZE      = -O2
+-QMAKE_CFLAGS_OPTIMIZE_FULL = -O3
++QMAKE_CFLAGS_OPTIMIZE_FULL = -O2
+ QMAKE_CFLAGS_OPTIMIZE_DEBUG = -Og
+ QMAKE_CFLAGS_OPTIMIZE_SIZE = -Os
+ 
+@@ -40,9 +41,11 @@ QMAKE_CFLAGS_OPTIMIZE_SIZE = -Os
+ QMAKE_CFLAGS_DEPS          += -M
+ QMAKE_CFLAGS_WARN_ON       += -Wall -Wextra
+ QMAKE_CFLAGS_WARN_OFF      += -w
+-QMAKE_CFLAGS_RELEASE       += $$QMAKE_CFLAGS_OPTIMIZE
+-QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_OPTIMIZE -g
+-QMAKE_CFLAGS_DEBUG         += -g
++SYSTEM_CFLAGS = $$(CFLAGS)
++SYSTEM_DEBUG_CFLAGS = $$(DEBUG_CFLAGS)
++!isEmpty(SYSTEM_CFLAGS) { eval(QMAKE_CFLAGS_RELEASE += $$(CFLAGS)) } else { QMAKE_CFLAGS_RELEASE += $$QMAKE_CFLAGS_OPTIMIZE }
++!isEmpty(SYSTEM_CFLAGS) { eval(QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -g $$(CFLAGS)) } else { QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_OPTIMIZE -g }
++!isEmpty(SYSTEM_DEBUG_CFLAGS) { eval(QMAKE_CFLAGS_DEBUG += $$(DEBUG_CFLAGS)) } else { QMAKE_CFLAGS_DEBUG += -g }
+ QMAKE_CFLAGS_SHLIB         += $$QMAKE_CFLAGS_PIC
+ QMAKE_CFLAGS_STATIC_LIB    += $$QMAKE_CFLAGS_PIC
+ QMAKE_CFLAGS_APP           +=
+@@ -59,9 +62,11 @@ QMAKE_CXXFLAGS            += $$QMAKE_CFLAGS
+ QMAKE_CXXFLAGS_DEPS       += $$QMAKE_CFLAGS_DEPS
+ QMAKE_CXXFLAGS_WARN_ON    += $$QMAKE_CFLAGS_WARN_ON
+ QMAKE_CXXFLAGS_WARN_OFF   += $$QMAKE_CFLAGS_WARN_OFF
+-QMAKE_CXXFLAGS_RELEASE    += $$QMAKE_CFLAGS_RELEASE
+-QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO
+-QMAKE_CXXFLAGS_DEBUG      += $$QMAKE_CFLAGS_DEBUG
++SYSTEM_CXXFLAGS = $$(CXXFLAGS)
++SYSTEM_DEBUG_CXXFLAGS = $$(DEBUG_CXXFLAGS)
++!isEmpty(SYSTEM_CXXFLAGS) { eval(QMAKE_CXXFLAGS_RELEASE += $$(CXXFLAGS)) } else { QMAKE_CXXFLAGS_RELEASE += $$QMAKE_CFLAGS_OPTIMIZE }
++!isEmpty(SYSTEM_CXXFLAGS) { eval(QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO += -g $$(CXXFLAGS)) } else { QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_OPTIMIZE -g }
++!isEmpty(SYSTEM_DEBUG_CXXFLAGS) { eval(QMAKE_CXXFLAGS_DEBUG += $$(DEBUG_CXXFLAGS)) } else { QMAKE_CXXFLAGS_DEBUG += -g }
+ QMAKE_CXXFLAGS_SHLIB      += $$QMAKE_CFLAGS_SHLIB
+ QMAKE_CXXFLAGS_STATIC_LIB += $$QMAKE_CFLAGS_STATIC_LIB
+ QMAKE_CXXFLAGS_APP        += $$QMAKE_CFLAGS_APP
+diff --git a/mkspecs/linux-clang-32/qmake.conf b/mkspecs/linux-clang-32/qmake.conf
+index de872e7431..1737a8fe4d 100644
+--- a/mkspecs/linux-clang-32/qmake.conf
++++ b/mkspecs/linux-clang-32/qmake.conf
+@@ -6,6 +6,7 @@ MAKEFILE_GENERATOR = UNIX
+ CONFIG += incremental
+ 
+ QMAKE_INCREMENTAL_STYLE = sublib
++QMAKE_CFLAGS_RELEASE   += -O2
+ 
+ include(../common/linux.conf)
+ 
+diff --git a/mkspecs/linux-clang/qmake.conf b/mkspecs/linux-clang/qmake.conf
+index 77d913f8a5..09c8192203 100644
+--- a/mkspecs/linux-clang/qmake.conf
++++ b/mkspecs/linux-clang/qmake.conf
+@@ -6,6 +6,7 @@ MAKEFILE_GENERATOR = UNIX
+ CONFIG += incremental
+ 
+ QMAKE_INCREMENTAL_STYLE = sublib
++QMAKE_CFLAGS_RELEASE   += -O2
+ 
+ include(../common/linux.conf)
+ include(../common/gcc-base-unix.conf)
+diff --git a/mkspecs/linux-g++-32/qmake.conf b/mkspecs/linux-g++-32/qmake.conf
+index f09abeeec0..be83b32b4a 100644
+--- a/mkspecs/linux-g++-32/qmake.conf
++++ b/mkspecs/linux-g++-32/qmake.conf
+@@ -5,6 +5,7 @@
+ MAKEFILE_GENERATOR      = UNIX
+ CONFIG                 += incremental
+ QMAKE_INCREMENTAL_STYLE = sublib
++QMAKE_CFLAGS_RELEASE   += -O2
+ 
+ include(../common/linux.conf)
+ 
+diff --git a/mkspecs/linux-g++-64/qmake.conf b/mkspecs/linux-g++-64/qmake.conf
+index a79b69ff31..e0b4c0c992 100644
+--- a/mkspecs/linux-g++-64/qmake.conf
++++ b/mkspecs/linux-g++-64/qmake.conf
+@@ -8,6 +8,7 @@
+ MAKEFILE_GENERATOR      = UNIX
+ CONFIG                 += incremental
+ QMAKE_INCREMENTAL_STYLE = sublib
++QMAKE_CFLAGS_RELEASE   += -O2
+ 
+ include(../common/linux.conf)
+ 
+diff --git a/mkspecs/linux-g++/qmake.conf b/mkspecs/linux-g++/qmake.conf
+index 35bce8f064..1e809ad7c2 100644
+--- a/mkspecs/linux-g++/qmake.conf
++++ b/mkspecs/linux-g++/qmake.conf
+@@ -5,6 +5,7 @@
+ MAKEFILE_GENERATOR      = UNIX
+ CONFIG                 += incremental
+ QMAKE_INCREMENTAL_STYLE = sublib
++QMAKE_CFLAGS_RELEASE   += -O2
+ 
+ include(../common/linux.conf)
+ include(../common/gcc-base-unix.conf)

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Qt6 Linguist
+GenericName=Translation tool
+Comment=Add translations to Qt6 applications
+Exec=linguist6
+Icon=linguist6
+MimeType=text/vnd.trolltech.linguist;application/x-linguist;
+Terminal=false
+Type=Application
+Categories=Qt;Development;

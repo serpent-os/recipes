@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "F. von Gellhorn" <flinux@vongellhorn.ch>
+Date: Sun, 8 Nov 2020 20:56:39 +0100
+Subject: [PATCH] Support stateless config directories
+
+---
+ src/corelib/io/qstandardpaths_unix.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/corelib/io/qstandardpaths_unix.cpp b/src/corelib/io/qstandardpaths_unix.cpp
+index e38f670895..6d58e21612 100644
+--- a/src/corelib/io/qstandardpaths_unix.cpp
++++ b/src/corelib/io/qstandardpaths_unix.cpp
+@@ -405,8 +405,11 @@ static QStringList xdgConfigDirs()
+     const QString xdgConfigDirs = QFile::decodeName(qgetenv("XDG_CONFIG_DIRS"));
+ 
+     QStringList dirs = dirsList(xdgConfigDirs);
+-    if (dirs.isEmpty())
++    if (dirs.isEmpty()) {
++        dirs.push_back(u"/run/xdg"_s);
+         dirs.push_back(u"/etc/xdg"_s);
++        dirs.push_back(u"/usr/share/xdg"_s);
++    }
+ 
+     return dirs;
+ }

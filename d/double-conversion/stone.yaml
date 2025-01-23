@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : double-conversion
+version     : 3.3.0
+release     : 1
+homepage    : https://github.com/google/double-conversion
+upstreams   :
+    - https://github.com/google/double-conversion/archive/refs/tags/v3.3.0.tar.gz : 04ec44461850abbf33824da84978043b22554896b552c5fd11a9c5ae4b4d296e
+summary     : Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.
+description : |
+    Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.
+license     : BSD-3-Clause
+setup       : |
+    %cmake -DBUILD_SHARED_LIBS=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

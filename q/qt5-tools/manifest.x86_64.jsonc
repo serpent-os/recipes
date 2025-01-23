@@ -4,10 +4,7 @@
 	"packages": {
 		"qt5-tools": {
 			"build-depends": [
-				"binary(perl)",
-				"binary(qmake)",
-				"clang-devel",
-				"vulkan-headers"
+				"clang-devel"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -66,10 +63,7 @@
 		},
 		"qt5-tools-demos": {
 			"build-depends": [
-				"binary(perl)",
-				"binary(qmake)",
-				"clang-devel",
-				"vulkan-headers"
+				"clang-devel"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -230,10 +224,7 @@
 		},
 		"qt5-tools-devel": {
 			"build-depends": [
-				"binary(perl)",
-				"binary(qmake)",
-				"clang-devel",
-				"vulkan-headers"
+				"clang-devel"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -592,6 +583,6 @@
 		}
 	},
 	"source-name": "qt5-tools",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "5.15.16+kde.15deb8f2"
 }

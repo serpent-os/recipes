@@ -1,0 +1,57 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qt6-declarative
+version     : 6.8.1
+release     : 1
+homepage    : https://www.qt.io
+upstreams   :
+    - https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtdeclarative-everywhere-src-6.8.1.tar.xz : 95d15d5c1b6adcedb1df6485219ad13b8dc1bb5168b5151f2f1f7246a4c039fc
+summary     : Classes for QML and JavaScript languages
+description : |
+    The Qt Quick module is the standard library for writing QML applications. While the Qt QML module provides the QML engine and language infrastructure, the Qt Quick module provides all the basic types necessary for creating user interfaces with QML.
+license     :
+    - GFDL-1.3-or-later
+    - GPL-3.0-or-later
+    - LGPL-3.0-or-later
+builddeps   :
+    - pkgconfig(Qt6ShaderTools)
+    - pkgconfig(Qt6Svg)
+    - qt6-languageserver-devel
+setup       : |
+    %patch %(pkgdir)/0001-Revert-CMake-Make-Qml-look-for-qmlsc-rather-than-Qt6.patch
+
+    # Note that due to our build modifications Qt6LinguistTools will be reported as missing, but it uses it just fine
+    # TODO fix that
+    %cmake_qt6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+
+    # Setup user-facing binaries
+    %qt_user_facing_links
+    ln -srv %(installroot)/%(libdir)/qt6/qmlcachegen %(installroot)/%(bindir)/qmlcachegen6
+
+    # We can't use the macro to generate pre-compiled qml since this package provides the binary for that
+    export LD_LIBRARY_PATH="%(installroot)/%(libdir)"
+    cd %(installroot)
+    find . -type f -name "*.qml" -print0 | while IFS= read -r -d '' i; do
+        if ! [ -a "${i}"c ]; then
+            %(installroot)/%(libdir)/qt6/qmlcachegen -o "${i}"c "${i}" $*
+        fi
+    done
+packages    :
+    - "%(name)-devel":
+        paths:
+          - /usr/bin/qml*
+          - /usr/lib/objects-*
+          - /usr/lib/qt6/bin/qml*
+          - /usr/lib/qt6/bin/svgtoqml
+          - /usr/lib/qt6/qmlaotstats
+          - /usr/lib/qt6/qmlcachegen
+          - /usr/lib/qt6/qmlimportscanner
+          - /usr/lib/qt6/qmljsrootgen
+          - /usr/lib/qt6/qmltyperegistrar

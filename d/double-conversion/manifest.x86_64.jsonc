@@ -1,0 +1,51 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"double-conversion": {
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libdouble-conversion.so.3",
+				"/usr/lib/libdouble-conversion.so.3.3.0"
+			],
+			"name": "double-conversion",
+			"provides": [
+				"soname(libdouble-conversion.so.3(x86_64))"
+			]
+		},
+		"double-conversion-devel": {
+			"depends": [
+				"double-conversion"
+			],
+			"files": [
+				"/usr/include/double-conversion/bignum.h",
+				"/usr/include/double-conversion/cached-powers.h",
+				"/usr/include/double-conversion/diy-fp.h",
+				"/usr/include/double-conversion/double-conversion.h",
+				"/usr/include/double-conversion/double-to-string.h",
+				"/usr/include/double-conversion/fast-dtoa.h",
+				"/usr/include/double-conversion/fixed-dtoa.h",
+				"/usr/include/double-conversion/ieee.h",
+				"/usr/include/double-conversion/string-to-double.h",
+				"/usr/include/double-conversion/strtod.h",
+				"/usr/include/double-conversion/utils.h",
+				"/usr/lib/cmake/double-conversion/double-conversionConfig.cmake",
+				"/usr/lib/cmake/double-conversion/double-conversionConfigVersion.cmake",
+				"/usr/lib/cmake/double-conversion/double-conversionTargets-release.cmake",
+				"/usr/lib/cmake/double-conversion/double-conversionTargets.cmake",
+				"/usr/lib/libdouble-conversion.so"
+			],
+			"name": "double-conversion-devel",
+			"provides": [
+				"cmake(double-conversion)"
+			]
+		}
+	},
+	"source-name": "double-conversion",
+	"source-release": "1",
+	"source-version": "3.3.0"
+}

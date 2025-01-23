@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"md4c": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/md2html",
+				"/usr/lib/libmd4c-html.so.0",
+				"/usr/lib/libmd4c-html.so.0.5.2",
+				"/usr/lib/libmd4c.so.0",
+				"/usr/lib/libmd4c.so.0.5.2",
+				"/usr/share/man/man1/md2html.1"
+			],
+			"name": "md4c",
+			"provides": [
+				"binary(md2html)",
+				"soname(libmd4c-html.so.0(x86_64))",
+				"soname(libmd4c.so.0(x86_64))"
+			]
+		},
+		"md4c-devel": {
+			"depends": [
+				"md4c"
+			],
+			"files": [
+				"/usr/include/md4c-html.h",
+				"/usr/include/md4c.h",
+				"/usr/lib/cmake/md4c/md4cConfig-release.cmake",
+				"/usr/lib/cmake/md4c/md4cConfig.cmake",
+				"/usr/lib/libmd4c-html.so",
+				"/usr/lib/libmd4c.so",
+				"/usr/lib/pkgconfig/md4c-html.pc",
+				"/usr/lib/pkgconfig/md4c.pc"
+			],
+			"name": "md4c-devel",
+			"provides": [
+				"cmake(md4c)",
+				"pkgconfig(md4c)",
+				"pkgconfig(md4c-html)"
+			]
+		}
+	},
+	"source-name": "md4c",
+	"source-release": "1",
+	"source-version": "3.3.0"
+}

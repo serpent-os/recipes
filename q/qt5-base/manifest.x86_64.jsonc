@@ -5,7 +5,9 @@
 		"qt5-base": {
 			"build-depends": [
 				"binary(perl)",
+				"binary(sed)",
 				"binary(which)",
+				"cmake(double-conversion)",
 				"pkgconfig(atspi-2)",
 				"pkgconfig(cups)",
 				"pkgconfig(dbus-1)",
@@ -26,6 +28,7 @@
 				"pkgconfig(libssl)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(libzstd)",
+				"pkgconfig(md4c)",
 				"pkgconfig(shared-mime-info)",
 				"pkgconfig(sqlite3)",
 				"pkgconfig(x11)",
@@ -51,6 +54,7 @@
 				"soname(libcrypto.so.3(x86_64))",
 				"soname(libcups.so.2(x86_64))",
 				"soname(libdbus-1.so.3(x86_64))",
+				"soname(libdouble-conversion.so.3(x86_64))",
 				"soname(libdrm.so.2(x86_64))",
 				"soname(libfontconfig.so.1(x86_64))",
 				"soname(libfreetype.so.6(x86_64))",
@@ -67,6 +71,7 @@
 				"soname(libinput.so.10(x86_64))",
 				"soname(libjpeg.so.8(x86_64))",
 				"soname(libm.so.6(x86_64))",
+				"soname(libmd4c.so.0(x86_64))",
 				"soname(libpango-1.0.so.0(x86_64))",
 				"soname(libpcre2-16.so.0(x86_64))",
 				"soname(libpng16.so.16(x86_64))",
@@ -223,7 +228,9 @@
 		"qt5-base-demos": {
 			"build-depends": [
 				"binary(perl)",
+				"binary(sed)",
 				"binary(which)",
+				"cmake(double-conversion)",
 				"pkgconfig(atspi-2)",
 				"pkgconfig(cups)",
 				"pkgconfig(dbus-1)",
@@ -244,6 +251,7 @@
 				"pkgconfig(libssl)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(libzstd)",
+				"pkgconfig(md4c)",
 				"pkgconfig(shared-mime-info)",
 				"pkgconfig(sqlite3)",
 				"pkgconfig(x11)",
@@ -2523,7 +2531,9 @@
 		"qt5-base-devel": {
 			"build-depends": [
 				"binary(perl)",
+				"binary(sed)",
 				"binary(which)",
+				"cmake(double-conversion)",
 				"pkgconfig(atspi-2)",
 				"pkgconfig(cups)",
 				"pkgconfig(dbus-1)",
@@ -2544,6 +2554,7 @@
 				"pkgconfig(libssl)",
 				"pkgconfig(libsystemd)",
 				"pkgconfig(libzstd)",
+				"pkgconfig(md4c)",
 				"pkgconfig(shared-mime-info)",
 				"pkgconfig(sqlite3)",
 				"pkgconfig(x11)",
@@ -2573,7 +2584,8 @@
 				"soname(libm.so.6(x86_64))",
 				"soname(libunwind.so.1(x86_64))",
 				"soname(libz.so.1(x86_64))",
-				"soname(libzstd.so.1(x86_64))"
+				"soname(libzstd.so.1(x86_64))",
+				"vulkan-headers"
 			],
 			"files": [
 				"/usr/bin/fixqt4headers.pl",
@@ -5947,6 +5959,6 @@
 		}
 	},
 	"source-name": "qt5-base",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "5.15.16+kde.2529f7f0"
 }

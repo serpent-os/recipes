@@ -1,0 +1,6 @@
+releases:
+  id: 7927
+  rss: https://invent.kde.org/qt/qt/qtsvg/-/tags?format=atom
+security:
+  # Last checked 2025-01-21
+  cpe: ~
