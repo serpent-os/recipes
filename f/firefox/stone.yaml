@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : firefox
-version     : '134.0'
-release     : 16
+version     : 134.0.2
+release     : 17
 homepage    : https://www.mozilla.org/
 upstreams   :
-    - https://ftp.mozilla.org/pub/firefox/releases/134.0/source/firefox-134.0.source.tar.xz : ca88068bd72784c10de16df62359b2dc354672a1a427b4fd6a5fcdb34c06457e
+    - https://ftp.mozilla.org/pub/firefox/releases/134.0.2/source/firefox-134.0.2.source.tar.xz : 6c6eb7ff13fa689c5cace23a28533361d1ca29158329b6f1c2f2d1c91c53dd27
 summary     : Firefox web browser
 description : |
     Firefox web browser
