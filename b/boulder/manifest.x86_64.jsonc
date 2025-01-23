@@ -19,12 +19,14 @@
 				"/usr/share/bash-completion/completions/boulder",
 				"/usr/share/boulder/macros/actions/autotools.yaml",
 				"/usr/share/boulder/macros/actions/cargo.yaml",
+				"/usr/share/boulder/macros/actions/ccache.yaml",
 				"/usr/share/boulder/macros/actions/cmake.yaml",
 				"/usr/share/boulder/macros/actions/meson.yaml",
 				"/usr/share/boulder/macros/actions/misc.yaml",
 				"/usr/share/boulder/macros/actions/perl.yaml",
 				"/usr/share/boulder/macros/actions/pgo.yaml",
 				"/usr/share/boulder/macros/actions/python.yaml",
+				"/usr/share/boulder/macros/actions/qt-kde.yaml",
 				"/usr/share/boulder/macros/arch/aarch64.yaml",
 				"/usr/share/boulder/macros/arch/base.yaml",
 				"/usr/share/boulder/macros/arch/emul32/x86_64.yaml",
@@ -57,6 +59,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "81",
-	"source-version": "0.25.1+git.e5ea34d"
+	"source-release": "82",
+	"source-version": "0.25.1+git.cb1207e"
 }
