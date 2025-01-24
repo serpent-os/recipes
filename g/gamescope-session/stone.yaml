@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gamescope-session
-version     : r304.4ad912c
+version     : r308.5ff18af
 release     : 1
 homepage    : https://github.com/ChimeraOS/gamescope-session
 upstreams   :
-    - git|https://github.com/ChimeraOS/gamescope-session.git : 4ad912c4a3c09c91551f21617981b878f7084058
+    - git|https://github.com/ChimeraOS/gamescope-session.git : 5ff18afa7e4a9a0cce772663f1faf5ca8f92626e
 summary     : Common gamescope session files
 description : |
     This project is not affiliated with Valve (wide inspiration was taken from their work on the SteamDeck).
