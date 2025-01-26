@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : drm-info
+version     : 2.7.0
+release     : 1
+homepage    : https://gitlab.freedesktop.org/emersion/drm_info
+upstreams   :
+    - https://gitlab.freedesktop.org/emersion/drm_info/-/archive/v2.7.0/drm_info-v2.7.0.tar.gz : ec1695dd2e620350e1f4a7073304311caa00f4ebc95f746d4b6588dbc1e6512f
+summary     : Small utility to dump info about DRM devices
+description : |
+    Small utility to dump info about DRM devices
+license     : MIT
+builddeps   :
+    - binary(sh)
+    - pkgconfig(json-c)
+    - pkgconfig(libdrm)
+    - pkgconfig(libpci)
+    - pkgconfig(scdoc)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
