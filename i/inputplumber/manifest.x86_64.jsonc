@@ -65,6 +65,7 @@
 				"/usr/share/inputplumber/devices/50-gpd_winmax2.yaml",
 				"/usr/share/inputplumber/devices/50-gpd_winmini.yaml",
 				"/usr/share/inputplumber/devices/50-legion_go.yaml",
+				"/usr/share/inputplumber/devices/50-legion_go_s.yaml",
 				"/usr/share/inputplumber/devices/50-msi_claw.yaml",
 				"/usr/share/inputplumber/devices/50-onexplayer_2.yaml",
 				"/usr/share/inputplumber/devices/50-onexplayer_amd.yaml",
@@ -102,6 +103,6 @@
 		}
 	},
 	"source-name": "inputplumber",
-	"source-release": "2",
-	"source-version": "0.41.0"
+	"source-release": "3",
+	"source-version": "0.42.0"
 }
