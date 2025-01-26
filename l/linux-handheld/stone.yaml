@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : linux-handheld
-version     : 6.12.10
-release     : 5
+version     : 6.12.11
+release     : 6
 homepage    : https://kernel.org/
 upstreams   :
-    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.10.tar.xz : 4a516e5ed748537a73cb42ec47fbbeb6df8b1298e8892c29c0e91de79095b297
+    - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.11.tar.xz : 475172fdbd87a153f123a57952672e773bdb6daf5b58a417d1a5e419fcfeec49
 summary     : The Linux Kernel for handheld systems
 description : |
     The Linux Kernel for handheld systems

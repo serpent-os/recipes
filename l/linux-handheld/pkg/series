@@ -49,7 +49,6 @@ asus/0009-platform-x86-asus-armoury-add-dgpu-tgp-control.patch
 asus/0010-platform-x86-asus-armoury-add-apu-mem-control-suppor.patch
 asus/0011-platform-x86-asus-armoury-add-core-count-control.patch
 asus/0012-platform-x86-asus-wmi-deprecate-bios-features.patch
-asus/0013-ALSA-hda-realtek-fixup-ASUS-GA605W.patch
 asus/0014-hid-asus-ally-Add-joystick-LED-ring-support.patch
 asus/0015-hid-asus-ally-initial-Ally-X-gamepad.patch
 asus/0016-hid-asus-ally-initial-gamepad-configuration.patch
