@@ -5,7 +5,7 @@
 #
 name        : qemu
 version     : 9.2.0
-release     : 11
+release     : 12
 homepage    : http://www.qemu.org/
 upstreams   :
     - https://download.qemu.org/qemu-9.2.0.tar.xz : f859f0bc65e1f533d040bbe8c92bcfecee5af2c921a6687c652fb44d089bd894
@@ -20,6 +20,7 @@ builddeps   :
     - binary(ninja)
     - binary(nm)
     - binary(python3)
+    - pkgconfig(SDL2_image)
     - pkgconfig(alsa)
     - pkgconfig(epoxy)
     - pkgconfig(fuse3)
@@ -45,8 +46,7 @@ builddeps   :
     - pkgconfig(libusb-1.0)
     - pkgconfig(libzstd)
     - pkgconfig(pixman-1)
-    - pkgconfig(sdl2)
-    - pkgconfig(SDL2_image)
+    - pkgconfig(sdl2_compat)
     - pkgconfig(spice-protocol)
     - pkgconfig(spice-server)
     - pkgconfig(virglrenderer)
