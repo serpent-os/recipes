@@ -28,7 +28,7 @@
 				"pkgconfig(libpulse)",
 				"pkgconfig(libswresample)",
 				"pkgconfig(libswscale)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(shaderc)",
 				"pkgconfig(sndio)",
 				"pkgconfig(vulkan)",
@@ -121,7 +121,7 @@
 				"pkgconfig(libpulse)",
 				"pkgconfig(libswresample)",
 				"pkgconfig(libswscale)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(shaderc)",
 				"pkgconfig(sndio)",
 				"pkgconfig(vulkan)",
@@ -199,7 +199,7 @@
 				"pkgconfig(libpulse)",
 				"pkgconfig(libswresample)",
 				"pkgconfig(libswscale)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(shaderc)",
 				"pkgconfig(sndio)",
 				"pkgconfig(vulkan)",
@@ -258,6 +258,6 @@
 		}
 	},
 	"source-name": "mpv",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "0.39.0"
 }
