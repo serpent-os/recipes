@@ -5,7 +5,7 @@
 #
 name        : libnetfilter_conntrack
 version     : 1.1.0
-release     : 3
+release     : 4
 homepage    : https://www.netfilter.org/projects/libnetfilter_conntrack/
 upstreams   :
     - https://netfilter.org/pub/libnetfilter_conntrack/libnetfilter_conntrack-1.1.0.tar.xz : 67edcb4eb826c2f8dc98af08dabff68f3b3d0fe6fb7d9d0ac1ee7ecce0fe694e
@@ -14,12 +14,10 @@ description : |
     Library providing an API to the in-kernel connection tracking state table
 license     :
     - GPL-2.0-or-later
-
 builddeps   :
+    - binary(doxygen)
     - pkgconfig(libmnl)
     - pkgconfig(libnfnetlink)
-# TODO build with doxygen for documentationQ
-#     - doxygen
 setup       : |
     %configure
 build       : |
@@ -27,7 +25,7 @@ build       : |
 install     : |
     %make_install
 tuning      :
-    - lto
+    - lto: full
     - nosemantic
     - optimize: speed
     - sections
