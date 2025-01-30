@@ -1,0 +1,5 @@
+releases:
+  id: 98206
+  rss: https://github.com/ammen99/wf-recorder/releases.atom
+security:
+  cpe: ~ # Last checked 2025-01-30

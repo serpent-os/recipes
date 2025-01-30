@@ -1,0 +1,51 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"wf-recorder": {
+			"build-depends": [
+				"pkgconfig(gbm)",
+				"pkgconfig(libavcodec)",
+				"pkgconfig(libavdevice)",
+				"pkgconfig(libavfilter)",
+				"pkgconfig(libavformat)",
+				"pkgconfig(libavutil)",
+				"pkgconfig(libdrm)",
+				"pkgconfig(libpipewire-0.3)",
+				"pkgconfig(libpulse-simple)",
+				"pkgconfig(libswresample)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(wayland-protocols)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libavcodec.so.61(x86_64))",
+				"soname(libavdevice.so.61(x86_64))",
+				"soname(libavfilter.so.10(x86_64))",
+				"soname(libavformat.so.61(x86_64))",
+				"soname(libavutil.so.59(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libdrm.so.2(x86_64))",
+				"soname(libgbm.so.1(x86_64))",
+				"soname(libpipewire-0.3.so.0(x86_64))",
+				"soname(libpulse-simple.so.0(x86_64))",
+				"soname(libpulse.so.0(x86_64))",
+				"soname(libswresample.so.5(x86_64))",
+				"soname(libunwind.so.1(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/wf-recorder",
+				"/usr/share/man/man1/wf-recorder.1"
+			],
+			"name": "wf-recorder",
+			"provides": [
+				"binary(wf-recorder)"
+			]
+		}
+	},
+	"source-name": "wf-recorder",
+	"source-release": "1",
+	"source-version": "0.5.0+git.560bb92"
+}
