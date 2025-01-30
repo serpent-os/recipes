@@ -7,7 +7,7 @@
 				"pkgconfig(alsa)",
 				"pkgconfig(libpulse)",
 				"pkgconfig(opus)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(vorbis)"
 			],
 			"depends": [
@@ -29,11 +29,11 @@
 				"pkgconfig(alsa)",
 				"pkgconfig(libpulse)",
 				"pkgconfig(opus)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(vorbis)"
 			],
 			"depends": [
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"sdl2-mixer"
 			],
 			"files": [
@@ -51,6 +51,6 @@
 		}
 	},
 	"source-name": "sdl2-mixer",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "2.8.0"
 }
