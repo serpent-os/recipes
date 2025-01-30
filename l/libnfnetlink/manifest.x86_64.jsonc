@@ -3,6 +3,9 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"libnfnetlink": {
+			"build-depends": [
+				"binary(doxygen)"
+			],
 			"depends": [
 				"soname(libc.so.6(x86_64))"
 			],
@@ -16,6 +19,12 @@
 			]
 		},
 		"libnfnetlink-devel": {
+			"build-depends": [
+				"binary(doxygen)"
+			],
+			"depends": [
+				"libnfnetlink"
+			],
 			"files": [
 				"/usr/include/libnfnetlink/libnfnetlink.h",
 				"/usr/include/libnfnetlink/linux_nfnetlink.h",
@@ -30,6 +39,6 @@
 		}
 	},
 	"source-name": "libnfnetlink",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.0.2"
 }
