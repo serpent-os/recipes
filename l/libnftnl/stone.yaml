@@ -5,7 +5,7 @@
 #
 name        : libnftnl
 version     : 1.2.8
-release     : 5
+release     : 6
 homepage    : https://www.netfilter.org/projects/libnftnl/
 upstreams   :
     - https://netfilter.org/pub/libnftnl/libnftnl-1.2.8.tar.xz : 37fea5d6b5c9b08de7920d298de3cdc942e7ae64b1a3e8b880b2d390ae67ad95
@@ -15,9 +15,8 @@ description : |
 license     :
     - GPL-2.0-or-later
 builddeps   :
+    - binary(doxygen)
     - pkgconfig(libmnl)
-# TODO build with doxygen for documentationQ
-#     - doxygen
 setup       : |
     %configure
 build       : |
@@ -25,5 +24,5 @@ build       : |
 install     : |
     %make_install
 tuning      :
-    - lto
+    - lto: full
     - optimize: speed
