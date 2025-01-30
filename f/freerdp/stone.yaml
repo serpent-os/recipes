@@ -5,7 +5,7 @@
 #
 name        : freerdp
 version     : '3.7.0'
-release     : 1
+release     : 2
 homepage    : www.freerdp.com
 upstreams   :
     - https://github.com/FreeRDP/FreeRDP/releases/download/3.7.0/freerdp-3.7.0.tar.gz : 53e392b4a3f38a874322e611608f925e8041eef7e0060a58982fa419e58d4dd2
@@ -33,7 +33,7 @@ builddeps   :
     - pkgconfig(mit-krb5)
     - pkgconfig(openssl)
     - pkgconfig(opus)
-    - pkgconfig(sdl2)
+    - pkgconfig(sdl2_compat)
     - pkgconfig(wayland-scanner)
     - pkgconfig(x11)
     - pkgconfig(xcursor)
@@ -47,6 +47,7 @@ builddeps   :
     - pkgconfig(xv)
 setup       : |
     %cmake \
+      -DCMAKE_SKIP_INSTALL_RPATH=ON \
       -DWITH_CAIRO=ON \
       -DWITH_FDK_AAC=ON \
       -DWITH_FFMPEG=OFF \
