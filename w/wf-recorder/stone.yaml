@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : wf-recorder
+version     : 0.5.0+git.560bb92
+release     : 1
+homepage    : https://github.com/ammen99/wf-recorder/
+upstreams   :
+    - git|https://github.com/ammen99/wf-recorder.git: 560bb92d3ddaeb31d7af77d22d01b0050b45bebe
+summary     : Screen recorder for wl-roots
+description : |
+    wf-recorder is a utility program for screen recording of wlroots-based compositors
+license     : MIT
+builddeps   :
+    - pkgconfig(gbm)
+    - pkgconfig(libavcodec)
+    - pkgconfig(libavdevice)
+    - pkgconfig(libavfilter)
+    - pkgconfig(libavformat)
+    - pkgconfig(libavutil)
+    - pkgconfig(libdrm)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libpulse-simple)
+    - pkgconfig(libswresample)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-protocols)
+setup       : |
+    %meson -Ddefault_codec='libvpx-vp9'
+build       : |
+    %meson_build
+install     : |
+    %meson_install
