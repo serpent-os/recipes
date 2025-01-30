@@ -4,6 +4,7 @@
 	"packages": {
 		"glibmm": {
 			"build-depends": [
+				"binary(doxygen)",
 				"binary(m4)",
 				"binary(perl)",
 				"binary(python3)",
@@ -86,6 +87,7 @@
 		},
 		"glibmm-devel": {
 			"build-depends": [
+				"binary(doxygen)",
 				"binary(m4)",
 				"binary(perl)",
 				"binary(python3)",
@@ -513,6 +515,6 @@
 		}
 	},
 	"source-name": "glibmm",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "2.82.0"
 }
