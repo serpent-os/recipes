@@ -4,6 +4,7 @@
 	"packages": {
 		"cairomm": {
 			"build-depends": [
+				"binary(doxygen)",
 				"binary(mm-common-get)",
 				"binary(perl)",
 				"binary(python3)",
@@ -31,6 +32,7 @@
 		},
 		"cairomm-devel": {
 			"build-depends": [
+				"binary(doxygen)",
 				"binary(mm-common-get)",
 				"binary(perl)",
 				"binary(python3)",
@@ -98,6 +100,6 @@
 		}
 	},
 	"source-name": "cairomm",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.18.0"
 }
