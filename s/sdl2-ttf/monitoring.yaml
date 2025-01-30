@@ -1,6 +1,7 @@
 releases:
   id: 4784
-# No known CPE. Last checked 20240820
-  rss: ~
+  rss: https://github.com/libsdl-org/SDL_ttf/releases.atom
 security:
-  cpe: ~
+  cpe:
+  - vendor: libsdl
+    product: sdl_ttf

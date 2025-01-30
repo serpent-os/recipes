@@ -6,7 +6,7 @@
 			"build-depends": [
 				"pkgconfig(freetype2)",
 				"pkgconfig(harfbuzz)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(xshmfence)"
 			],
 			"depends": [
@@ -29,13 +29,13 @@
 			"build-depends": [
 				"pkgconfig(freetype2)",
 				"pkgconfig(harfbuzz)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(xshmfence)"
 			],
 			"depends": [
 				"pkgconfig(freetype2)",
 				"pkgconfig(harfbuzz)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"sdl2-ttf"
 			],
 			"files": [
@@ -53,6 +53,6 @@
 		}
 	},
 	"source-name": "sdl2-ttf",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.24.0"
 }
