@@ -1,8 +1,8 @@
-From a5117fccbe1ac50e789610dabd8a9733165158ad Mon Sep 17 00:00:00 2001
+From 94524a331c082c66d37b2b8d1e475745d5896f90 Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Sat, 1 Feb 2025 14:19:33 +1300
-Subject: [PATCH] backport: asus-wmi: fix symbol 'ASUS_WMI' after cherry-pick
- from wip/ally-master
+Subject: [PATCH 28/28] backport: asus-wmi: fix symbol 'ASUS_WMI' after
+ cherry-pick from wip/ally-master
 
 Signed-off-by: Luke Jones <luke@ljones.dev>
 ---
@@ -23,10 +23,10 @@ index 9aa7a0fa43f0..979b0a7e92b5 100644
 +MODULE_IMPORT_NS(ASUS_WMI);
  MODULE_LICENSE("GPL");
 diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
-index 3e213c5cdedf..32c2c1fe61fd 100644
+index 05412414dc5f..2dcf3ed20b2f 100644
 --- a/drivers/platform/x86/asus-armoury.c
 +++ b/drivers/platform/x86/asus-armoury.c
-@@ -1065,7 +1065,7 @@ static void __exit asus_fw_exit(void)
+@@ -1077,7 +1077,7 @@ static void __exit asus_fw_exit(void)
  module_init(asus_fw_init);
  module_exit(asus_fw_exit);
  
