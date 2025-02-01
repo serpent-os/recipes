@@ -1,7 +1,7 @@
-From c5c2a336f1bb31484e91de16d0bcbef2febeb903 Mon Sep 17 00:00:00 2001
+From 9380bb0065b66799939cee9266f552bf1643d0f1 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Mon, 6 Jan 2025 11:22:43 +1300
-Subject: [PATCH 27/29] hid-asus: Disable OOBE mode on the ProArt P16
+Subject: [PATCH 02/28] hid-asus: Disable OOBE mode on the ProArt P16
 
 The new ASUS ProArt 16" laptop series come with their keyboards stuck in
 an Out-Of-Box-Experience mode. While in this mode most functions will
@@ -21,10 +21,10 @@ Tested-by: Jan Schmidt <jan@centricular.com>
  2 files changed, 31 insertions(+)
 
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index ef18f721e2ff..b89329f78257 100644
+index a4b47319ad8e..bcdd168cdc6d 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
-@@ -437,6 +437,26 @@ static int asus_kbd_get_functions(struct hid_device *hdev,
+@@ -432,6 +432,26 @@ static int asus_kbd_get_functions(struct hid_device *hdev,
  	return ret;
  }
  
@@ -51,7 +51,7 @@ index ef18f721e2ff..b89329f78257 100644
  static void asus_schedule_work(struct asus_kbd_leds *led)
  {
  	unsigned long flags;
-@@ -539,6 +559,12 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
+@@ -534,6 +554,12 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
  		ret = asus_kbd_init(hdev, FEATURE_KBD_LED_REPORT_ID2);
  		if (ret < 0)
  			return ret;
@@ -65,10 +65,10 @@ index ef18f721e2ff..b89329f78257 100644
  		/* Initialize keyboard */
  		ret = asus_kbd_init(hdev, FEATURE_KBD_REPORT_ID);
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index cc21e4272460..c427b6c20d3f 100644
+index 365e119bebaa..783e2a336861 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -206,6 +206,11 @@ static const struct dmi_system_id asus_use_hid_led_dmi_ids[] = {
+@@ -184,6 +184,11 @@ static const struct dmi_system_id asus_use_hid_led_dmi_ids[] = {
  			DMI_MATCH(DMI_PRODUCT_FAMILY, "ROG Flow"),
  		},
  	},
@@ -81,5 +81,5 @@ index cc21e4272460..c427b6c20d3f 100644
  		.matches = {
  			DMI_MATCH(DMI_BOARD_NAME, "GA403U"),
 -- 
-2.47.1
+2.48.1
 

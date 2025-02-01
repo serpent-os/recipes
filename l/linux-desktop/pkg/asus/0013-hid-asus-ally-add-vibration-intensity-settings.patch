@@ -1,7 +1,7 @@
-From fa6774a485d5f30085a9e073fb5431a12ae98cc7 Mon Sep 17 00:00:00 2001
+From e87e3093d69270cfa4f3a24064f466db46a40cb4 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 20:46:00 +1300
-Subject: [PATCH 19/29] hid-asus-ally: add vibration intensity settings
+Subject: [PATCH 13/28] hid-asus-ally: add vibration intensity settings
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,10 +10,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 99 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index b0fcad91f2b7..724bf3e8639a 100644
+index 53c2b36c14fb..8b40b806631c 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
-@@ -267,6 +267,11 @@ struct ally_gamepad_cfg {
+@@ -270,6 +270,11 @@ struct ally_gamepad_cfg {
  	 * index: [mode]
  	 */
  	struct btn_mapping key_mapping[xpad_mode_mouse];
@@ -25,7 +25,7 @@ index b0fcad91f2b7..724bf3e8639a 100644
  };
  
  /* The hatswitch outputs integers, we use them to index this X|Y pair */
-@@ -438,6 +443,89 @@ static int ally_gamepad_check_ready(struct hid_device *hdev)
+@@ -441,6 +446,89 @@ static int ally_gamepad_check_ready(struct hid_device *hdev)
  	return ret;
  }
  
@@ -115,7 +115,7 @@ index b0fcad91f2b7..724bf3e8639a 100644
  /* A HID packet conatins mappings for two buttons: btn1, btn1_macro, btn2, btn2_macro */
  static void _btn_pair_to_hid_pkt(struct ally_gamepad_cfg *ally_cfg,
  				enum btn_pair_index pair,
-@@ -765,6 +853,8 @@ static struct attribute *gamepad_device_attrs[] = {
+@@ -768,6 +856,8 @@ static struct attribute *gamepad_device_attrs[] = {
  	&dev_attr_btn_mapping_reset.attr,
  	&dev_attr_gamepad_mode.attr,
  	&dev_attr_gamepad_apply_all.attr,
@@ -124,7 +124,7 @@ index b0fcad91f2b7..724bf3e8639a 100644
  	NULL
  };
  
-@@ -837,6 +927,9 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
+@@ -840,6 +930,9 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
  	ally_cfg->key_mapping[ally_cfg->mode - 1].btn_m2.button = BTN_KB_M2;
  	_gamepad_apply_btn_pair(hdev, ally_cfg, btn_pair_m1_m2);
  
@@ -166,5 +166,5 @@ index 63a3b5caa71c..6ac79ad3c5f2 100644
  #define ALLY_BTN_SHOW(_fname, _btn_name, _secondary)                           \
  	static ssize_t _fname##_show(struct device *dev,                       \
 -- 
-2.47.1
+2.48.1
 

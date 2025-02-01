@@ -1,7 +1,7 @@
-From 7a1b658bb59f7946b947448baa73e07031f37753 Mon Sep 17 00:00:00 2001
+From 631a44cbdb74c6db5623391cc42ef09ee11e5102 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 21:37:27 +1300
-Subject: [PATCH 21/29] hid-asus-ally: add trigger deadzones
+Subject: [PATCH 15/28] hid-asus-ally: add trigger deadzones
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,10 +10,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 44 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index a813b2972a66..fc5620e63b06 100644
+index 64f4b466f0bb..4a3e7cea1c5e 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
-@@ -281,6 +281,8 @@ struct ally_gamepad_cfg {
+@@ -284,6 +284,8 @@ struct ally_gamepad_cfg {
  	/* deadzones */
  	struct deadzone ls_dz; // left stick
  	struct deadzone rs_dz; // right stick
@@ -22,7 +22,7 @@ index a813b2972a66..fc5620e63b06 100644
  };
  
  /* The hatswitch outputs integers, we use them to index this X|Y pair */
-@@ -560,7 +562,20 @@ static ssize_t _gamepad_apply_deadzones(struct hid_device *hdev,
+@@ -563,7 +565,20 @@ static ssize_t _gamepad_apply_deadzones(struct hid_device *hdev,
  	hidbuf[7] = ally_cfg->rs_dz.outer;
  
  	ret = asus_dev_set_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
@@ -43,7 +43,7 @@ index a813b2972a66..fc5620e63b06 100644
  	kfree(hidbuf);
  	return ret;
  }
-@@ -571,6 +586,10 @@ static void _gamepad_set_deadzones_default(struct ally_gamepad_cfg *ally_cfg)
+@@ -574,6 +589,10 @@ static void _gamepad_set_deadzones_default(struct ally_gamepad_cfg *ally_cfg)
  	ally_cfg->ls_dz.outer = 0x64;
  	ally_cfg->rs_dz.inner = 0x00;
  	ally_cfg->rs_dz.outer = 0x64;
@@ -54,7 +54,7 @@ index a813b2972a66..fc5620e63b06 100644
  }
  
  static ssize_t axis_xyz_deadzone_index_show(struct device *dev, struct device_attribute *attr,
-@@ -583,6 +602,8 @@ ALLY_DEVICE_ATTR_RO(axis_xyz_deadzone_index, deadzone_index);
+@@ -586,6 +605,8 @@ ALLY_DEVICE_ATTR_RO(axis_xyz_deadzone_index, deadzone_index);
  
  ALLY_DEADZONES(axis_xy_left, ls_dz);
  ALLY_DEADZONES(axis_xy_right, rs_dz);
@@ -63,7 +63,7 @@ index a813b2972a66..fc5620e63b06 100644
  
  static struct attribute *axis_xy_left_attrs[] = {
  	&dev_attr_axis_xy_left_deadzone.attr,
-@@ -604,6 +625,26 @@ static const struct attribute_group axis_xy_right_attr_group = {
+@@ -607,6 +628,26 @@ static const struct attribute_group axis_xy_right_attr_group = {
  	.attrs = axis_xy_right_attrs,
  };
  
@@ -90,7 +90,7 @@ index a813b2972a66..fc5620e63b06 100644
  /* A HID packet conatins mappings for two buttons: btn1, btn1_macro, btn2, btn2_macro */
  static void _btn_pair_to_hid_pkt(struct ally_gamepad_cfg *ally_cfg,
  				enum btn_pair_index pair,
-@@ -947,6 +988,8 @@ static const struct attribute_group *gamepad_device_attr_groups[] = {
+@@ -950,6 +991,8 @@ static const struct attribute_group *gamepad_device_attr_groups[] = {
  	&ally_controller_attr_group,
  	&axis_xy_left_attr_group,
  	&axis_xy_right_attr_group,
@@ -112,5 +112,5 @@ index 3dc14a5226f3..32ed5caa3759 100644
  	xpad_cmd_set_leds = 0x08,
  	xpad_cmd_check_ready = 0x0A,
 -- 
-2.47.1
+2.48.1
 
