@@ -1,4 +1,4 @@
-From bd66f5b50dc73f022c85c0be40648fa2e7e65247 Mon Sep 17 00:00:00 2001
+From b596a820a1bbe4be2cc86767debcf80e2bdde2a1 Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Sat, 1 Feb 2025 11:28:50 +1300
 Subject: [PATCH 27/28] backport: asus-armoury: fix fw_attributes_class after
@@ -10,7 +10,7 @@ Signed-off-by: Luke Jones <luke@ljones.dev>
  1 file changed, 12 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
-index 281dd1b78179..3e213c5cdedf 100644
+index 5768997ea2d3..05412414dc5f 100644
 --- a/drivers/platform/x86/asus-armoury.c
 +++ b/drivers/platform/x86/asus-armoury.c
 @@ -82,6 +82,8 @@ struct rog_tunables {
@@ -37,7 +37,7 @@ index 281dd1b78179..3e213c5cdedf 100644
  	if (IS_ERR(asus_armoury.fw_attr_dev)) {
  		err = PTR_ERR(asus_armoury.fw_attr_dev);
  		goto fail_class_get;
-@@ -918,8 +925,9 @@ static int asus_fw_attr_add(void)
+@@ -928,8 +935,9 @@ static int asus_fw_attr_add(void)
  err_destroy_kset:
  	kset_unregister(asus_armoury.fw_attr_kset);
  err_destroy_classdev:
@@ -48,7 +48,7 @@ index 281dd1b78179..3e213c5cdedf 100644
  	return err;
  }
  
-@@ -1048,7 +1056,8 @@ static void __exit asus_fw_exit(void)
+@@ -1060,7 +1068,8 @@ static void __exit asus_fw_exit(void)
  
  	sysfs_remove_file(&asus_armoury.fw_attr_kset->kobj, &pending_reboot.attr);
  	kset_unregister(asus_armoury.fw_attr_kset);
