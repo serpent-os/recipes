@@ -1,19 +1,19 @@
-From 8979ec97f0cc311dea7a46bfa2ecdcee36e8e9ca Mon Sep 17 00:00:00 2001
+From 840a660ab0226f6b9e769ae3ef5c37fc9da4f1b4 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 2 Oct 2024 23:32:46 +1300
-Subject: [PATCH 14/29] hid-asus-ally: initial Ally-X gamepad
+Subject: [PATCH 08/28] hid-asus-ally: initial Ally-X gamepad
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/hid/hid-asus-ally.c | 399 +++++++++++++++++++++++++++++++++++-
+ drivers/hid/hid-asus-ally.c | 385 +++++++++++++++++++++++++++++++++++-
  drivers/hid/hid-asus-ally.h |   5 +
- 2 files changed, 403 insertions(+), 1 deletion(-)
+ 2 files changed, 389 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index bfadf5cd700d..33d9ac0c6bd5 100644
+index 4ceb4aab8084..3d950535c3e2 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
-@@ -49,6 +49,51 @@ static const struct hid_device_id rog_ally_devices[] = {
+@@ -50,6 +50,51 @@ static const struct hid_device_id rog_ally_devices[] = {
  	{}
  };
  
@@ -65,7 +65,7 @@ index bfadf5cd700d..33d9ac0c6bd5 100644
  struct ally_rgb_dev {
  	struct hid_device *hdev;
  	struct led_classdev_mc led_rgb_dev;
-@@ -73,6 +118,7 @@ struct ally_rgb_data {
+@@ -74,6 +119,7 @@ struct ally_rgb_data {
  
  static struct ally_drvdata {
  	struct hid_device *hdev;
@@ -73,7 +73,7 @@ index bfadf5cd700d..33d9ac0c6bd5 100644
  	struct ally_rgb_dev *led_rgb_dev;
  	struct ally_rgb_data led_rgb_data;
  } drvdata;
-@@ -127,6 +173,309 @@ static u8 get_endpoint_address(struct hid_device *hdev)
+@@ -128,6 +174,309 @@ static u8 get_endpoint_address(struct hid_device *hdev)
  	return -ENODEV;
  }
  
@@ -383,14 +383,13 @@ index bfadf5cd700d..33d9ac0c6bd5 100644
  /**************************************************************************************************/
  /* ROG Ally LED control                                                                           */
  /**************************************************************************************************/
-@@ -377,6 +726,32 @@ static void ally_rgb_remove(struct hid_device *hdev)
+@@ -378,6 +727,24 @@ static void ally_rgb_remove(struct hid_device *hdev)
  /* ROG Ally driver init                                                                           */
  /**************************************************************************************************/
  
 +static int ally_raw_event(struct hid_device *hdev, struct hid_report *report, u8 *data,
 +			  int size)
 +{
-+	// struct ally_gamepad_cfg *cfg = drvdata.gamepad_cfg;
 +	struct ally_x_device *ally_x = drvdata.ally_x;
 +
 +	if (ally_x) {
@@ -402,36 +401,29 @@ index bfadf5cd700d..33d9ac0c6bd5 100644
 +			return -1;
 +		}
 +	}
-+	// if (cfg && !ally_x) {
-+	// 	input_report_key(cfg->input, KEY_PROG1, data[1] == 0x38);
-+	// 	input_report_key(cfg->input, KEY_F16, data[1] == 0xA6);
-+	// 	input_report_key(cfg->input, KEY_F17, data[1] == 0xA7);
-+	// 	input_report_key(cfg->input, KEY_F18, data[1] == 0xA8);
-+	// 	input_sync(cfg->input);
-+	// }
 +
 +	return 0;
 +}
 +
  /*
-  * Very simple parse. We don't care about any other part of the string except the version section.
+  * We don't care about any other part of the string except the version section.
   * Example strings: FGA80100.RC72LA.312_T01, FGA80100.RC71LS.318_T01
-@@ -491,7 +866,8 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+@@ -493,7 +860,8 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
  	if (ep < 0)
  		return ep;
  
--	if (ep != ALLY_CFG_INTF_IN_ADDRESS)
-+	if (ep != ALLY_CFG_INTF_IN_ADDRESS ||
-+	    ep != ALLY_X_INTERFACE_ADDRESS)
+-	if (ep != ROG_ALLY_CFG_INTF_IN)
++	if (ep != ROG_ALLY_CFG_INTF_IN &&
++	    ep != ROG_ALLY_X_INTF_IN)
  		return -ENODEV;
  
  	ret = hid_parse(hdev);
-@@ -534,6 +910,23 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+@@ -536,6 +904,17 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
  			goto err_close;
  	}
  
 +	/* May or may not exist */
-+	if (ep == ALLY_X_INTERFACE_ADDRESS) {
++	if (ep == ROG_ALLY_X_INTF_IN) {
 +		drvdata.ally_x = ally_x_create(hdev);
 +		if (IS_ERR(drvdata.ally_x)) {
 +			hid_err(hdev, "Failed to create Ally X gamepad.\n");
@@ -439,18 +431,12 @@ index bfadf5cd700d..33d9ac0c6bd5 100644
 +			goto err_close;
 +		}
 +		hid_info(hdev, "Created Ally X controller.\n");
-+
-+		// Not required since we send this inputs ep through the gamepad input dev
-+		// if (drvdata.gamepad_cfg && drvdata.gamepad_cfg->input) {
-+		// 	input_unregister_device(drvdata.gamepad_cfg->input);
-+		// 	hid_info(hdev, "Ally X removed unrequired input dev.\n");
-+		// }
 +	}
 +
  	return 0;
  
  err_close:
-@@ -548,6 +941,9 @@ static void ally_hid_remove(struct hid_device *hdev)
+@@ -550,6 +929,9 @@ static void ally_hid_remove(struct hid_device *hdev)
  	if (drvdata.led_rgb_dev)
  		ally_rgb_remove(hdev);
  
@@ -460,7 +446,7 @@ index bfadf5cd700d..33d9ac0c6bd5 100644
  	hid_hw_close(hdev);
  	hid_hw_stop(hdev);
  }
-@@ -600,6 +996,7 @@ static struct hid_driver
+@@ -602,6 +984,7 @@ static struct hid_driver
  			 .id_table = rog_ally_devices,
  			 .probe = ally_hid_probe,
  			 .remove = ally_hid_remove,
@@ -482,5 +468,5 @@ index eb8617c80c2a..458d02996bca 100644
 +	struct device_attribute dev_attr_##_name = \
 +		__ATTR(_sysfs_name, 0644, _name##_show, _name##_store)
 -- 
-2.47.1
+2.48.1
 
