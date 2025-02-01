@@ -1,7 +1,7 @@
-From e60cb0bb587e7b6c549353000a2fd0eff019aaef Mon Sep 17 00:00:00 2001
+From 927954a804a39d03862ae263741ddd82e057e1b6 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 6 Oct 2024 19:49:24 +1300
-Subject: [PATCH 23/28] hid-asus-ally: add anti-deadzones
+Subject: [PATCH 16/28] hid-asus-ally: add anti-deadzones
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,10 +10,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 112 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index fc5620e63b06..9d8bd0afaa68 100644
+index 4a3e7cea1c5e..ff1c2cf61e66 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
-@@ -283,6 +283,9 @@ struct ally_gamepad_cfg {
+@@ -286,6 +286,9 @@ struct ally_gamepad_cfg {
  	struct deadzone rs_dz; // right stick
  	struct deadzone lt_dz; // left trigger
  	struct deadzone rt_dz; // right trigger
@@ -23,7 +23,7 @@ index fc5620e63b06..9d8bd0afaa68 100644
  };
  
  /* The hatswitch outputs integers, we use them to index this X|Y pair */
-@@ -605,7 +608,109 @@ ALLY_DEADZONES(axis_xy_right, rs_dz);
+@@ -608,7 +611,109 @@ ALLY_DEADZONES(axis_xy_right, rs_dz);
  ALLY_DEADZONES(axis_z_left, lt_dz);
  ALLY_DEADZONES(axis_z_right, rt_dz);
  
@@ -133,7 +133,7 @@ index fc5620e63b06..9d8bd0afaa68 100644
  	&dev_attr_axis_xy_left_deadzone.attr,
  	&dev_attr_axis_xyz_deadzone_index.attr,
  	NULL
-@@ -616,6 +721,7 @@ static const struct attribute_group axis_xy_left_attr_group = {
+@@ -619,6 +724,7 @@ static const struct attribute_group axis_xy_left_attr_group = {
  };
  
  static struct attribute *axis_xy_right_attrs[] = {
@@ -141,7 +141,7 @@ index fc5620e63b06..9d8bd0afaa68 100644
  	&dev_attr_axis_xy_right_deadzone.attr,
  	&dev_attr_axis_xyz_deadzone_index.attr,
  	NULL
-@@ -810,6 +916,9 @@ static ssize_t _gamepad_apply_all(struct hid_device *hdev, struct ally_gamepad_c
+@@ -813,6 +919,9 @@ static ssize_t _gamepad_apply_all(struct hid_device *hdev, struct ally_gamepad_c
  	if (ret < 0)
  		return ret;
  	ret = _gamepad_apply_deadzones(hdev, ally_cfg);
@@ -151,7 +151,7 @@ index fc5620e63b06..9d8bd0afaa68 100644
  	if (ret < 0)
  		return ret;
  
-@@ -1056,6 +1165,7 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
+@@ -1059,6 +1168,7 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
  	ally_cfg->vibration_intensity[0] = 0x64;
  	ally_cfg->vibration_intensity[1] = 0x64;
  	_gamepad_set_deadzones_default(ally_cfg);
@@ -180,5 +180,5 @@ index 32ed5caa3759..69f59592dd50 100644
  
  /* Values correspond to the actual HID byte value required */
 -- 
-2.47.1
+2.48.1
 

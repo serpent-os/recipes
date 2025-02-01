@@ -1,33 +1,29 @@
-From 13ccb06fd0af8663cc3d54699fd1caccb983a5a0 Mon Sep 17 00:00:00 2001
+From 061f4d99e305898805c48e9b09d5ddeaab2c7e0e Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 2 Oct 2024 23:51:36 +1300
-Subject: [PATCH 16/28] hid-asus-ally: initial gamepad configuration
+Subject: [PATCH 09/28] hid-asus-ally: initial gamepad configuration
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/hid/hid-asus-ally.c | 259 +++++++++++++++++++++++++++++++++---
+ drivers/hid/hid-asus-ally.c | 246 +++++++++++++++++++++++++++++++++++-
  drivers/hid/hid-asus-ally.h |  38 +++---
- 2 files changed, 264 insertions(+), 33 deletions(-)
+ 2 files changed, 266 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 33d9ac0c6bd5..eed1bc84026d 100644
+index 3d950535c3e2..822139e2a5c0 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
-@@ -6,11 +6,8 @@
-  */
- 
- #include "linux/device.h"
--#include "linux/err.h"
--#include "linux/kstrtox.h"
+@@ -10,7 +10,6 @@
+ #include <linux/platform_device.h>
  #include "linux/pm.h"
  #include "linux/slab.h"
 -#include "linux/stddef.h"
  #include <linux/hid.h>
  #include <linux/types.h>
  #include <linux/usb.h>
-@@ -38,6 +35,9 @@
- #define ALLY_MIN_BIOS 319
- #define ALLY_X_MIN_BIOS 313
+@@ -39,6 +38,9 @@
+ #define FEATURE_KBD_LED_REPORT_ID1 0x5d
+ #define FEATURE_KBD_LED_REPORT_ID2 0x5e
  
 +#define BTN_DATA_LEN 11;
 +#define BTN_CODE_BYTES_LEN 8
@@ -35,7 +31,7 @@ index 33d9ac0c6bd5..eed1bc84026d 100644
  static const u8 EC_INIT_STRING[] = { 0x5A, 'A', 'S', 'U', 'S', ' ', 'T', 'e','c', 'h', '.', 'I', 'n', 'c', '.', '\0' };
  static const u8 EC_MODE_LED_APPLY[] = { 0x5A, 0xB4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
  static const u8 EC_MODE_LED_SET[] = { 0x5A, 0xB5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-@@ -49,6 +49,58 @@ static const struct hid_device_id rog_ally_devices[] = {
+@@ -50,6 +52,58 @@ static const struct hid_device_id rog_ally_devices[] = {
  	{}
  };
  
@@ -94,7 +90,7 @@ index 33d9ac0c6bd5..eed1bc84026d 100644
  /* The hatswitch outputs integers, we use them to index this X|Y pair */
  static const int hat_values[][2] = {
  	{ 0, 0 }, { 0, -1 }, { 1, -1 }, { 1, 0 },   { 1, 1 },
-@@ -119,6 +171,7 @@ struct ally_rgb_data {
+@@ -120,6 +174,7 @@ struct ally_rgb_data {
  static struct ally_drvdata {
  	struct hid_device *hdev;
  	struct ally_x_device *ally_x;
@@ -102,7 +98,7 @@ index 33d9ac0c6bd5..eed1bc84026d 100644
  	struct ally_rgb_dev *led_rgb_dev;
  	struct ally_rgb_data led_rgb_data;
  } drvdata;
-@@ -173,6 +226,172 @@ static u8 get_endpoint_address(struct hid_device *hdev)
+@@ -174,6 +229,172 @@ static u8 get_endpoint_address(struct hid_device *hdev)
  	return -ENODEV;
  }
  
@@ -275,26 +271,18 @@ index 33d9ac0c6bd5..eed1bc84026d 100644
  /**************************************************************************************************/
  /* ROG Ally gamepad i/o and force-feedback                                                        */
  /**************************************************************************************************/
-@@ -729,7 +948,7 @@ static void ally_rgb_remove(struct hid_device *hdev)
+@@ -730,6 +951,7 @@ static void ally_rgb_remove(struct hid_device *hdev)
  static int ally_raw_event(struct hid_device *hdev, struct hid_report *report, u8 *data,
  			  int size)
  {
--	// struct ally_gamepad_cfg *cfg = drvdata.gamepad_cfg;
 +	struct ally_gamepad_cfg *cfg = drvdata.gamepad_cfg;
  	struct ally_x_device *ally_x = drvdata.ally_x;
  
  	if (ally_x) {
-@@ -741,13 +960,13 @@ static int ally_raw_event(struct hid_device *hdev, struct hid_report *report, u8
- 			return -1;
+@@ -742,6 +964,14 @@ static int ally_raw_event(struct hid_device *hdev, struct hid_report *report, u8
  		}
  	}
--	// if (cfg && !ally_x) {
--	// 	input_report_key(cfg->input, KEY_PROG1, data[1] == 0x38);
--	// 	input_report_key(cfg->input, KEY_F16, data[1] == 0xA6);
--	// 	input_report_key(cfg->input, KEY_F17, data[1] == 0xA7);
--	// 	input_report_key(cfg->input, KEY_F18, data[1] == 0xA8);
--	// 	input_sync(cfg->input);
--	// }
+ 
 +	if (cfg && !ally_x) {
 +		input_report_key(cfg->input, KEY_PROG1, data[1] == 0x38);
 +		input_report_key(cfg->input, KEY_F16, data[1] == 0xA6);
@@ -302,19 +290,11 @@ index 33d9ac0c6bd5..eed1bc84026d 100644
 +		input_report_key(cfg->input, KEY_F18, data[1] == 0xA8);
 +		input_sync(cfg->input);
 +	}
- 
++
  	return 0;
  }
-@@ -866,7 +1085,7 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
- 	if (ep < 0)
- 		return ep;
  
--	if (ep != ALLY_CFG_INTF_IN_ADDRESS ||
-+	if (ep != ALLY_CFG_INTF_IN_ADDRESS &&
- 	    ep != ALLY_X_INTERFACE_ADDRESS)
- 		return -ENODEV;
- 
-@@ -906,7 +1125,13 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+@@ -900,7 +1130,13 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
  		else
  			hid_info(hdev, "Created Ally RGB LED controls.\n");
  
@@ -329,14 +309,12 @@ index 33d9ac0c6bd5..eed1bc84026d 100644
  			goto err_close;
  	}
  
-@@ -921,10 +1146,10 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+@@ -913,6 +1149,12 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+ 			goto err_close;
+ 		}
  		hid_info(hdev, "Created Ally X controller.\n");
- 
- 		// Not required since we send this inputs ep through the gamepad input dev
--		// if (drvdata.gamepad_cfg && drvdata.gamepad_cfg->input) {
--		// 	input_unregister_device(drvdata.gamepad_cfg->input);
--		// 	hid_info(hdev, "Ally X removed unrequired input dev.\n");
--		// }
++
++		// Not required since we send this inputs ep through the gamepad input dev
 +		if (drvdata.gamepad_cfg && drvdata.gamepad_cfg->input) {
 +			input_unregister_device(drvdata.gamepad_cfg->input);
 +			hid_info(hdev, "Ally X removed unrequired input dev.\n");
@@ -407,5 +385,5 @@ index 458d02996bca..2b298ad4da0e 100644
  #define ALLY_DEVICE_ATTR_RW(_name, _sysfs_name)    \
  	struct device_attribute dev_attr_##_name = \
 -- 
-2.47.1
+2.48.1
 

@@ -1,7 +1,7 @@
-From e63cb120c18461beca50d4890fd92141a7b6f001 Mon Sep 17 00:00:00 2001
+From 3f10c6d4a97f895becb1dbbdacc614131cee3357 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Thu, 10 Oct 2024 11:15:36 +1300
-Subject: [PATCH 25/28] hid-asus-ally: add calibrations (wip)
+Subject: [PATCH 18/28] hid-asus-ally: add calibrations (wip)
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  1 file changed, 95 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 9f9a7516b774..5a8458e232d3 100644
+index aad965e069ee..a1015713c245 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
-@@ -275,6 +275,28 @@ struct response_curve {
+@@ -278,6 +278,28 @@ struct response_curve {
  	uint8_t response_pct_4;
  } __packed;
  
@@ -41,7 +41,7 @@ index 9f9a7516b774..5a8458e232d3 100644
  /* ROG Ally has many settings related to the gamepad, all using the same n-key endpoint */
  struct ally_gamepad_cfg {
  	struct hid_device *hdev;
-@@ -302,6 +324,9 @@ struct ally_gamepad_cfg {
+@@ -305,6 +327,9 @@ struct ally_gamepad_cfg {
  	/* joystick response curves */
  	struct response_curve ls_rc;
  	struct response_curve rs_rc;
@@ -51,7 +51,7 @@ index 9f9a7516b774..5a8458e232d3 100644
  };
  
  /* The hatswitch outputs integers, we use them to index this X|Y pair */
-@@ -379,6 +404,18 @@ static struct ally_drvdata {
+@@ -382,6 +407,18 @@ static struct ally_drvdata {
  	struct ally_rgb_data led_rgb_data;
  } drvdata;
  
@@ -67,10 +67,10 @@ index 9f9a7516b774..5a8458e232d3 100644
 +	}
 +}
 +
- static int asus_dev_get_report(struct hid_device *hdev, u8 *out_buf, size_t out_buf_size)
- {
- 	return hid_hw_raw_request(hdev, FEATURE_REPORT_ID, out_buf, out_buf_size,
-@@ -792,6 +829,63 @@ ALLY_JS_RC_POINT(axis_xy_right, response, 2);
+ /**
+  * asus_dev_set_report - send set report request to device.
+  *
+@@ -795,6 +832,63 @@ ALLY_JS_RC_POINT(axis_xy_right, response, 2);
  ALLY_JS_RC_POINT(axis_xy_right, response, 3);
  ALLY_JS_RC_POINT(axis_xy_right, response, 4);
  
@@ -134,7 +134,7 @@ index 9f9a7516b774..5a8458e232d3 100644
  static struct attribute *axis_xy_left_attrs[] = {
  	&dev_attr_axis_xy_left_anti_deadzone.attr,
  	&dev_attr_axis_xy_left_deadzone.attr,
-@@ -1263,6 +1357,7 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
+@@ -1266,6 +1360,7 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
  	ally_cfg->key_mapping[ally_cfg->mode - 1].btn_m1.button = BTN_KB_M1;
  	ally_cfg->key_mapping[ally_cfg->mode - 1].btn_m2.button = BTN_KB_M2;
  	_gamepad_apply_btn_pair(hdev, ally_cfg, btn_pair_m1_m2);
@@ -143,5 +143,5 @@ index 9f9a7516b774..5a8458e232d3 100644
  	ally_cfg->vibration_intensity[0] = 0x64;
  	ally_cfg->vibration_intensity[1] = 0x64;
 -- 
-2.47.1
+2.48.1
 

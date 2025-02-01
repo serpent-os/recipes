@@ -1,7 +1,7 @@
-From 755e9eca472fb56ae53c2df8bde024e21ddc991c Mon Sep 17 00:00:00 2001
+From a685d0419c912260916dd2c57f4609d12f3b68b6 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 22 Sep 2024 21:39:43 +1200
-Subject: [PATCH 06/28] platform/x86: asus-armoury: move existing tunings to
+Subject: [PATCH 20/28] platform/x86: asus-armoury: move existing tunings to
  asus-armoury module
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -36,11 +36,11 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
  drivers/platform/x86/Kconfig               |  12 +
  drivers/platform/x86/Makefile              |   1 +
- drivers/platform/x86/asus-armoury.c        | 573 +++++++++++++++++++++
+ drivers/platform/x86/asus-armoury.c        | 553 +++++++++++++++++++++
  drivers/platform/x86/asus-armoury.h        | 147 ++++++
  drivers/platform/x86/asus-wmi.c            |   4 -
  include/linux/platform_data/x86/asus-wmi.h |   3 +
- 6 files changed, 736 insertions(+), 4 deletions(-)
+ 6 files changed, 716 insertions(+), 4 deletions(-)
  create mode 100644 drivers/platform/x86/asus-armoury.c
  create mode 100644 drivers/platform/x86/asus-armoury.h
 
@@ -81,10 +81,10 @@ index e1b142947067..fe3e7e7dede8 100644
  obj-$(CONFIG_ASUS_TF103C_DOCK)	+= asus-tf103c-dock.o
 diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
 new file mode 100644
-index 000000000000..0dd0af6c97e4
+index 000000000000..d2e8c21d62dc
 --- /dev/null
 +++ b/drivers/platform/x86/asus-armoury.c
-@@ -0,0 +1,573 @@
+@@ -0,0 +1,553 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
 + * Asus Armoury (WMI) attributes driver. This driver uses the fw_attributes
@@ -126,20 +126,6 @@ index 000000000000..0dd0af6c97e4
 +#define ASUS_MINI_LED_2024_WEAK   0x00
 +#define ASUS_MINI_LED_2024_STRONG 0x01
 +#define ASUS_MINI_LED_2024_OFF    0x02
-+
-+/* Default limits for tunables available on ASUS ROG laptops */
-+#define NVIDIA_BOOST_MIN      5
-+#define NVIDIA_BOOST_MAX      25
-+#define NVIDIA_TEMP_MIN       75
-+#define NVIDIA_TEMP_MAX       87
-+#define PPT_CPU_LIMIT_MIN     5
-+#define PPT_CPU_LIMIT_MAX     150
-+#define PPT_CPU_LIMIT_DEFAULT 80
-+#define PPT_PLATFORM_MIN      5
-+#define PPT_PLATFORM_MAX      100
-+#define PPT_PLATFORM_DEFAULT  80
-+
-+static const struct class *fw_attr_class;
 +
 +struct asus_armoury_priv {
 +	struct device *fw_attr_dev;
@@ -525,11 +511,7 @@ index 000000000000..0dd0af6c97e4
 +{
 +	int err, i;
 +
-+	err = fw_attributes_class_get(&fw_attr_class);
-+	if (err)
-+		return err;
-+
-+	asus_armoury.fw_attr_dev = device_create(fw_attr_class, NULL, MKDEV(0, 0),
++	asus_armoury.fw_attr_dev = device_create(&firmware_attributes_class, NULL, MKDEV(0, 0),
 +						NULL, "%s", DRIVER_NAME);
 +	if (IS_ERR(asus_armoury.fw_attr_dev)) {
 +		err = PTR_ERR(asus_armoury.fw_attr_dev);
@@ -607,9 +589,8 @@ index 000000000000..0dd0af6c97e4
 +err_destroy_kset:
 +	kset_unregister(asus_armoury.fw_attr_kset);
 +err_destroy_classdev:
-+	device_destroy(fw_attr_class, MKDEV(0, 0));
 +fail_class_get:
-+	fw_attributes_class_put();
++	device_destroy(&firmware_attributes_class, MKDEV(0, 0));
 +	return err;
 +}
 +
@@ -644,8 +625,7 @@ index 000000000000..0dd0af6c97e4
 +
 +	sysfs_remove_file(&asus_armoury.fw_attr_kset->kobj, &pending_reboot.attr);
 +	kset_unregister(asus_armoury.fw_attr_kset);
-+	device_destroy(fw_attr_class, MKDEV(0, 0));
-+	fw_attributes_class_put();
++	device_destroy(&firmware_attributes_class, MKDEV(0, 0));
 +
 +	mutex_unlock(&asus_armoury.mutex);
 +}
@@ -653,14 +633,14 @@ index 000000000000..0dd0af6c97e4
 +module_init(asus_fw_init);
 +module_exit(asus_fw_exit);
 +
-+MODULE_IMPORT_NS(ASUS_WMI);
++MODULE_IMPORT_NS("ASUS_WMI");
 +MODULE_AUTHOR("Luke Jones <luke@ljones.dev>");
 +MODULE_DESCRIPTION("ASUS BIOS Configuration Driver");
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("wmi:" ASUS_NB_WMI_EVENT_GUID);
 diff --git a/drivers/platform/x86/asus-armoury.h b/drivers/platform/x86/asus-armoury.h
 new file mode 100644
-index 000000000000..b00d829c9da0
+index 000000000000..440f41c5df3b
 --- /dev/null
 +++ b/drivers/platform/x86/asus-armoury.h
 @@ -0,0 +1,147 @@
@@ -810,9 +790,9 @@ index 000000000000..b00d829c9da0
 +		.name = _fsname, .attrs = _attrname##_attrs               \
 +	}
 +
-+#endif /* _ASUS_BIOSCFG_H_ */
++#endif /* _ASUS_ARMOURY_H_ */
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 6da2c7715a9f..525629097b9f 100644
+index ee12b1a06529..bcf4941b2ae1 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -55,8 +55,6 @@ module_param(fnlock_default, bool, 0444);
@@ -834,12 +814,12 @@ index 6da2c7715a9f..525629097b9f 100644
  
  #define FAN_CURVE_POINTS		8
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index 6ea4dedfb85e..21313e1eb6c9 100644
+index 67ef5c8d35ca..53abf5cde1ea 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -6,6 +6,9 @@
- #include <linux/types.h>
- #include <linux/dmi.h>
+@@ -143,6 +143,9 @@ struct asus_wmi {
+ 	struct asus_wmi_driver *driver;
+ };
  
 +#define ASUS_WMI_MGMT_GUID	"97845ED0-4E6D-11DE-8A39-0800200C9A66"
 +#define ASUS_ACPI_UID_ASUSWMI	"ASUSWMI"
@@ -848,5 +828,5 @@ index 6ea4dedfb85e..21313e1eb6c9 100644
  #define ASUS_WMI_METHODID_SPEC	        0x43455053 /* BIOS SPECification */
  #define ASUS_WMI_METHODID_SFBD		0x44424653 /* Set First Boot Device */
 -- 
-2.47.1
+2.48.1
 
