@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Wed, 29 Jan 2025 19:45:24 -0600
+Subject: [PATCH] pkgconfig: Require sdl2_compat
+
+---
+ SDL2_image.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SDL2_image.pc.in b/SDL2_image.pc.in
+index 8711dd7..380b9b1 100644
+--- a/SDL2_image.pc.in
++++ b/SDL2_image.pc.in
+@@ -6,7 +6,7 @@ includedir=@includedir@
+ Name: @PACKAGE@
+ Description: image loading library for Simple DirectMedia Layer
+ Version: @VERSION@
+-Requires: sdl2 >= @SDL_VERSION@
++Requires: sdl2_compat >= @SDL_VERSION@
+ Libs: -L${libdir} -lSDL2_image
+ Requires.private: @PC_REQUIRES@
+ Libs.private: @PC_LIBS@
