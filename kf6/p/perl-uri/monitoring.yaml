@@ -1,0 +1,9 @@
+releases:
+  id: ~ # https://release-monitoring.org/ and use the numeric id in the url of project
+  rss: ~
+security:
+  cpe:
+  - vendor: gaiwan
+    product: uri
+  - vendor: ruby-lang
+    product: uri

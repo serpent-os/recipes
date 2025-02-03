@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : karchive
+version     : 6.10.0
+release     : 1
+homepage    : https://download.kde.org/stable/frameworks/6.10
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/karchive-6.10.0.tar.xz : ac5160c19dd110bbdadeba9c5355cbfd3b5c1bd00ce3dbdc4a085776698c8a48
+summary     : UPDATE SUMMARY
+description : |
+    UPDATE DESCRIPTION
+license     : UPDATE LICENSE
+builddeps   :
+    - cmake(ECM)
+    - cmake(Qt6)
+    - cmake(Qt6LinguistTools)
+    - pkgconfig(bzip2)
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+

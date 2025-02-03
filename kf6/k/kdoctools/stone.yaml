@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kdoctools
+version     : 6.10.0
+release     : 1
+homepage    : https://download.kde.org/stable/frameworks/6.10
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/kdoctools-6.10.0.tar.xz : 03fa98e1213235ee4d4839d16e3edb22ee56849b9ab03d140639cf9facb6b038
+summary     : UPDATE SUMMARY
+description : |
+    UPDATE DESCRIPTION
+license     : UPDATE LICENSE
+builddeps   :
+    - cmake(ECM)
+    - cmake(Qt6)
+    - cmake(KF6Archive)
+    - cmake(KF6I18n)
+    - soname(libgettextlib-0.21.1.so(x86_64))
+    - cmake(libxslt)
+    - docbook
+    - perl-uri
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+

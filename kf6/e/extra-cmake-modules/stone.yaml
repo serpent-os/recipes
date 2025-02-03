@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : extra-cmake-modules
+version     : 6.10.0
+release     : 1
+homepage    : https://download.kde.org/stable/frameworks/6.10
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/extra-cmake-modules-6.10.0.tar.xz : 506989a0d400913403e669c1912238db053cd6b38dff74b17e2e6f879c79cca0
+summary     : UPDATE SUMMARY
+description : |
+    UPDATE DESCRIPTION
+license     : UPDATE LICENSE
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+

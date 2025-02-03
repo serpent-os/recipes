@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : perl-uri
+version     : 5.31
+release     : 1
+homepage    : https://cpan.metacpan.org/authors/id/O/OA/OALDERS
+upstreams   :
+    - https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.31.tar.gz : b9c4d58b2614b8611ae03a95a6d60ed996f4b311ef3cd5a937b92f1825ecc564
+summary     : Uniform Resource Identifiers (absolute and relative)
+description : |
+    UPDATE DESCRIPTION
+license     : PerlArtistic
+builddeps   :
+    - binary(perl)
+setup       : |
+    perl Makefile.PL INSTALLDIRS=vendor
+build       : |
+    %make
+install     : |
+    %make_install
+
