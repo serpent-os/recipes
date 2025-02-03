@@ -4,16 +4,16 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nvidia-graphics-driver
-version     : 565.77
-release     : 16
+version     : 570.86.16
+release     : 17
 homepage    : https://www.nvidia.com/
 upstreams   :
-    - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
-        hash: 0a7aa742c46bcf34d766982402d17b3db1fdb3bc1b89344d70cd123c1cb3147c
+    - https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run:
+        hash: 4563ea4bb654247f491005a57c72c676aacd95abe1691d71332cecf25261cbd5
         unpack: false
         rename: NVIDIA.run
-    - https://download.nvidia.com/XFree86/nvidia-persistenced/nvidia-persistenced-565.77.tar.bz2:
-        hash: b5230f5f6e34d5671add2ddeb0607a0fe4910bd24c4a3e3f48c81c3a6d366853
+    - https://download.nvidia.com/XFree86/nvidia-persistenced/nvidia-persistenced-570.86.16.tar.bz2:
+        hash: 3abb4188fd87cfb375df9a0161b8f24f962dcb0ec83d4a2bae51559838063350
         rename: nvidia-persistenced.tar.bz2
         extract: false
 summary     : The proprietary NVIDIA graphics driver
@@ -71,7 +71,7 @@ install     : |
     # Fix gbm
     rm -v %(installroot)%(libdir)/gbm/nvidia-drm_gbm.so
     ln -s ../libnvidia-allocator.so.1 %(installroot)%(libdir)/gbm/nvidia-drm_gbm.so
-    %install_dir %(installroot)/usr/lib32/gbm
+    rm -v %(installroot)/usr/lib32/gbm/nvidia-drm_gbm.so
     ln -s ../libnvidia-allocator.so.1 %(installroot)/usr/lib32/gbm/nvidia-drm_gbm.so
 
     # unused
