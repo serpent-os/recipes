@@ -1,0 +1,35 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"eza": {
+			"build-depends": [
+				"binary(cargo)",
+				"binary(go-md2man)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/eza",
+				"/usr/share/bash-completion/completions/eza",
+				"/usr/share/fish/completions/eza.fish",
+				"/usr/share/man/man1/eza.1",
+				"/usr/share/man/man5/eza_colors-explanation.5",
+				"/usr/share/man/man5/eza_colors.5",
+				"/usr/share/zsh/site-funtions/_eza"
+			],
+			"name": "eza",
+			"provides": [
+				"binary(eza)"
+			]
+		}
+	},
+	"source-name": "eza",
+	"source-release": "1",
+	"source-version": "v0.20.19"
+}
