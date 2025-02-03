@@ -1,0 +1,59 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"bzip3": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/bunzip3",
+				"/usr/bin/bz3cat",
+				"/usr/bin/bz3grep",
+				"/usr/bin/bz3less",
+				"/usr/bin/bz3more",
+				"/usr/bin/bz3most",
+				"/usr/bin/bzip3",
+				"/usr/lib/libbzip3.so.1",
+				"/usr/lib/libbzip3.so.1.0.0",
+				"/usr/share/man/man1/bunzip3.1",
+				"/usr/share/man/man1/bz3cat.1",
+				"/usr/share/man/man1/bz3grep.1",
+				"/usr/share/man/man1/bz3less.1",
+				"/usr/share/man/man1/bz3more.1",
+				"/usr/share/man/man1/bz3most.1",
+				"/usr/share/man/man1/bzip3.1"
+			],
+			"name": "bzip3",
+			"provides": [
+				"binary(bunzip3)",
+				"binary(bz3cat)",
+				"binary(bz3grep)",
+				"binary(bz3less)",
+				"binary(bz3more)",
+				"binary(bz3most)",
+				"binary(bzip3)",
+				"soname(libbzip3.so.1(x86_64))"
+			]
+		},
+		"bzip3-devel": {
+			"depends": [
+				"bzip3"
+			],
+			"files": [
+				"/usr/include/libbz3.h",
+				"/usr/lib/libbzip3.a",
+				"/usr/lib/libbzip3.so",
+				"/usr/lib/pkgconfig/bzip3.pc"
+			],
+			"name": "bzip3-devel",
+			"provides": [
+				"pkgconfig(bzip3)"
+			]
+		}
+	},
+	"source-name": "bzip3",
+	"source-release": "1",
+	"source-version": "1.5.1"
+}

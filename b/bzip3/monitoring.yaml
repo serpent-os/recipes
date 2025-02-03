@@ -1,0 +1,7 @@
+releases:
+  id: 301351
+  rss: https://github.com/kspalaiologos/bzip3/releases.atom
+security:
+  cpe:
+  - vendor: bzip3_project
+    product: bzip3
