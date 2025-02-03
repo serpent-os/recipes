@@ -1,0 +1,5 @@
+releases:
+  id: 98400
+  rss: https://github.com/ajeetdsouza/zoxide/releases.atom
+security:
+  cpe: ~ # Last checked 2025-02-02
