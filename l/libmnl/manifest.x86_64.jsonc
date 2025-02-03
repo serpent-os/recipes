@@ -3,6 +3,9 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"libmnl": {
+			"build-depends": [
+				"binary(doxygen)"
+			],
 			"depends": [
 				"soname(libc.so.6(x86_64))"
 			],
@@ -16,10 +19,84 @@
 			]
 		},
 		"libmnl-devel": {
+			"build-depends": [
+				"binary(doxygen)"
+			],
+			"depends": [
+				"libmnl"
+			],
 			"files": [
 				"/usr/include/libmnl/libmnl.h",
 				"/usr/lib/libmnl.so",
-				"/usr/lib/pkgconfig/libmnl.pc"
+				"/usr/lib/pkgconfig/libmnl.pc",
+				"/usr/share/man/man3/mnl_attr_get_len.3",
+				"/usr/share/man/man3/mnl_attr_get_payload.3",
+				"/usr/share/man/man3/mnl_attr_get_payload_len.3",
+				"/usr/share/man/man3/mnl_attr_get_str.3",
+				"/usr/share/man/man3/mnl_attr_get_type.3",
+				"/usr/share/man/man3/mnl_attr_get_u16.3",
+				"/usr/share/man/man3/mnl_attr_get_u32.3",
+				"/usr/share/man/man3/mnl_attr_get_u64.3",
+				"/usr/share/man/man3/mnl_attr_get_u8.3",
+				"/usr/share/man/man3/mnl_attr_nest_cancel.3",
+				"/usr/share/man/man3/mnl_attr_nest_end.3",
+				"/usr/share/man/man3/mnl_attr_nest_start.3",
+				"/usr/share/man/man3/mnl_attr_nest_start_check.3",
+				"/usr/share/man/man3/mnl_attr_next.3",
+				"/usr/share/man/man3/mnl_attr_ok.3",
+				"/usr/share/man/man3/mnl_attr_parse.3",
+				"/usr/share/man/man3/mnl_attr_parse_nested.3",
+				"/usr/share/man/man3/mnl_attr_parse_payload.3",
+				"/usr/share/man/man3/mnl_attr_put.3",
+				"/usr/share/man/man3/mnl_attr_put_check.3",
+				"/usr/share/man/man3/mnl_attr_put_str.3",
+				"/usr/share/man/man3/mnl_attr_put_str_check.3",
+				"/usr/share/man/man3/mnl_attr_put_strz.3",
+				"/usr/share/man/man3/mnl_attr_put_strz_check.3",
+				"/usr/share/man/man3/mnl_attr_put_u16.3",
+				"/usr/share/man/man3/mnl_attr_put_u16_check.3",
+				"/usr/share/man/man3/mnl_attr_put_u32.3",
+				"/usr/share/man/man3/mnl_attr_put_u32_check.3",
+				"/usr/share/man/man3/mnl_attr_put_u64.3",
+				"/usr/share/man/man3/mnl_attr_put_u64_check.3",
+				"/usr/share/man/man3/mnl_attr_put_u8.3",
+				"/usr/share/man/man3/mnl_attr_put_u8_check.3",
+				"/usr/share/man/man3/mnl_attr_type_valid.3",
+				"/usr/share/man/man3/mnl_attr_validate.3",
+				"/usr/share/man/man3/mnl_attr_validate2.3",
+				"/usr/share/man/man3/mnl_cb_run.3",
+				"/usr/share/man/man3/mnl_cb_run2.3",
+				"/usr/share/man/man3/mnl_nlmsg_batch_current.3",
+				"/usr/share/man/man3/mnl_nlmsg_batch_head.3",
+				"/usr/share/man/man3/mnl_nlmsg_batch_is_empty.3",
+				"/usr/share/man/man3/mnl_nlmsg_batch_next.3",
+				"/usr/share/man/man3/mnl_nlmsg_batch_reset.3",
+				"/usr/share/man/man3/mnl_nlmsg_batch_size.3",
+				"/usr/share/man/man3/mnl_nlmsg_batch_start.3",
+				"/usr/share/man/man3/mnl_nlmsg_batch_stop.3",
+				"/usr/share/man/man3/mnl_nlmsg_fprintf.3",
+				"/usr/share/man/man3/mnl_nlmsg_get_payload.3",
+				"/usr/share/man/man3/mnl_nlmsg_get_payload_len.3",
+				"/usr/share/man/man3/mnl_nlmsg_get_payload_offset.3",
+				"/usr/share/man/man3/mnl_nlmsg_get_payload_tail.3",
+				"/usr/share/man/man3/mnl_nlmsg_next.3",
+				"/usr/share/man/man3/mnl_nlmsg_ok.3",
+				"/usr/share/man/man3/mnl_nlmsg_portid_ok.3",
+				"/usr/share/man/man3/mnl_nlmsg_put_extra_header.3",
+				"/usr/share/man/man3/mnl_nlmsg_put_header.3",
+				"/usr/share/man/man3/mnl_nlmsg_seq_ok.3",
+				"/usr/share/man/man3/mnl_nlmsg_size.3",
+				"/usr/share/man/man3/mnl_socket_bind.3",
+				"/usr/share/man/man3/mnl_socket_close.3",
+				"/usr/share/man/man3/mnl_socket_fdopen.3",
+				"/usr/share/man/man3/mnl_socket_get_fd.3",
+				"/usr/share/man/man3/mnl_socket_get_portid.3",
+				"/usr/share/man/man3/mnl_socket_getsockopt.3",
+				"/usr/share/man/man3/mnl_socket_open.3",
+				"/usr/share/man/man3/mnl_socket_open2.3",
+				"/usr/share/man/man3/mnl_socket_recvfrom.3",
+				"/usr/share/man/man3/mnl_socket_sendto.3",
+				"/usr/share/man/man3/mnl_socket_setsockopt.3"
 			],
 			"name": "libmnl-devel",
 			"provides": [
@@ -28,6 +105,6 @@
 		}
 	},
 	"source-name": "libmnl",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.0.5"
 }

@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : doxygen
+version     : 1.13.2
+release     : 1
+homepage    :  https://www.doxygen.org/
+upstreams   :
+    - https://github.com/doxygen/doxygen/archive/refs/tags/Release_1_13_2.tar.gz : 4c9d9c8e95c2af4163ee92bcb0f3af03b2a4089402a353e4715771e8d3701c48
+summary     : The de-facto standard tool for generating documentation from annotated C++ sources
+description : |
+    The de-facto standard tool for generating documentation from annotated C++ sources
+license     : GPL-2.0-only
+builddeps  :
+    - binary(bison)
+    - binary(flex)
+    - pkgconfig(Qt6Core)
+    - pkgconfig(spdlog)
+    - pkgconfig(sqlite3)
+    - clang-devel
+rundeps    :
+    - graphviz
+setup      : |
+    %patch %(pkgdir)/ftbfs-llvm-19.patch
+    %cmake \
+          -Dbuild_wizard=ON \
+          -Duse_libclang:BOOL=ON \
+          -Duse_sys_spdlog:BOOL=ON \
+          -Duse_sys_sqlite3:BOOL=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+    %install_file %(builddir)/man/doxy{gen,wizard}.1 -t %(installroot)%(mandir)/man1
+packages    :
+    - "doxywizard":
+        # TODO needs a .desktop file and metainfo
+        description: |
+            Doxywizard is a graphical front-end to read/edit/write doxygen configuration files and to launch doxygen
+        paths:
+            - /usr/bin/doxywizard
+            - /usr/share/man/man1/doxywizard.1
+        rundeps:
+            - binary(doxygen)
+            - qt6-wayland

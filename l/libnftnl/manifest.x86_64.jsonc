@@ -4,6 +4,7 @@
 	"packages": {
 		"libnftnl": {
 			"build-depends": [
+				"binary(doxygen)",
 				"pkgconfig(libmnl)"
 			],
 			"depends": [
@@ -21,6 +22,7 @@
 		},
 		"libnftnl-devel": {
 			"build-depends": [
+				"binary(doxygen)",
 				"pkgconfig(libmnl)"
 			],
 			"depends": [
@@ -51,6 +53,6 @@
 		}
 	},
 	"source-name": "libnftnl",
-	"source-release": "5",
+	"source-release": "6",
 	"source-version": "1.2.8"
 }

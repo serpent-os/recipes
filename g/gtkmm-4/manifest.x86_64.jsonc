@@ -4,6 +4,7 @@
 	"packages": {
 		"gtkmm-4": {
 			"build-depends": [
+				"binary(doxygen)",
 				"binary(m4)",
 				"binary(perl)",
 				"binary(python3)",
@@ -50,6 +51,7 @@
 		},
 		"gtkmm-4-devel": {
 			"build-depends": [
+				"binary(doxygen)",
 				"binary(m4)",
 				"binary(perl)",
 				"binary(python3)",
@@ -760,6 +762,6 @@
 		}
 	},
 	"source-name": "gtkmm-4",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "4.16.0"
 }

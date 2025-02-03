@@ -4,6 +4,7 @@
 	"packages": {
 		"pangomm": {
 			"build-depends": [
+				"binary(doxygen)",
 				"binary(m4)",
 				"binary(perl)",
 				"binary(python3)",
@@ -40,6 +41,7 @@
 		},
 		"pangomm-devel": {
 			"build-depends": [
+				"binary(doxygen)",
 				"binary(m4)",
 				"binary(perl)",
 				"binary(python3)",
@@ -120,6 +122,6 @@
 		}
 	},
 	"source-name": "pangomm",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.54.0"
 }

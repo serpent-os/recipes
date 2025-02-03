@@ -4,6 +4,7 @@
 	"packages": {
 		"libnetfilter_conntrack": {
 			"build-depends": [
+				"binary(doxygen)",
 				"pkgconfig(libmnl)",
 				"pkgconfig(libnfnetlink)"
 			],
@@ -23,6 +24,7 @@
 		},
 		"libnetfilter_conntrack-devel": {
 			"build-depends": [
+				"binary(doxygen)",
 				"pkgconfig(libmnl)",
 				"pkgconfig(libnfnetlink)"
 			],
@@ -51,6 +53,6 @@
 		}
 	},
 	"source-name": "libnetfilter_conntrack",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.1.0"
 }

@@ -1,0 +1,25 @@
+# Can't be built with LLVM 19 due to removal of generic char_traits implementation.
+# See https://github.com/doxygen/doxygen/issues/10928#issuecomment-2151810423
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f1103d6..af394ec 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -81,8 +81,8 @@ if (build_wizard)
+     endif()
+ endif()
+ 
+-# use C++17 standard for compiling
+-set(CMAKE_CXX_STANDARD 17)
++# use C++20 standard for compiling
++set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS ON)
+ 
+@@ -165,7 +165,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+ endif()
+ 
+ # needed for JavaCC
+-set(JAVA_CC_EXTRA_FLAGS "-DJAVACC_CHAR_TYPE=\"unsigned char\"")
++set(JAVA_CC_EXTRA_FLAGS "-DJAVACC_CHAR_TYPE=\"char8_t\"")
+ set(CMAKE_CXX_FLAGS       "${CMAKE_CXX_FLAGS}       ${JAVA_CC_EXTRA_FLAGS}")
+ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${JAVA_CC_EXTRA_FLAGS}")

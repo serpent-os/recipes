@@ -5,7 +5,7 @@
 #
 name        : libxkbcommon
 version     : 1.7.0
-release     : 4
+release     : 5
 homepage    : https://xkbcommon.org
 upstreams   :
     - https://xkbcommon.org/download/libxkbcommon-1.7.0.tar.xz : 65782f0a10a4b455af9c6baab7040e2f537520caa2ec2092805cdfd36863b247
@@ -25,7 +25,6 @@ builddeps   :
     - pkgconfig32(wayland-scanner)
     - pkgconfig32(xcb)
     - pkgconfig32(xcb-xkb)
-    # TODO: Docs require doxygen
 setup       : |
     %meson -Denable-docs=false
 build       : |

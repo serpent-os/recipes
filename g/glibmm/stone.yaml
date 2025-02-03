@@ -5,7 +5,7 @@
 #
 name        : glibmm
 version     : 2.82.0
-release     : 3
+release     : 4
 homepage    : https://gtkmm.org
 upstreams   :
     - https://download.gnome.org/sources/glibmm/2.82/glibmm-2.82.0.tar.xz : 38684cff317273615c67b8fa9806f16299d51e5506d9b909bae15b589fa99cb6
@@ -14,7 +14,7 @@ description : |
     C++ interface for the GLib library (2.68 ABI)
 license     : LGPL-2.1-or-later AND GPL-2.0-or-later
 builddeps   :
-    # binary(doxygen)
+    - binary(doxygen)
     - binary(m4)
     - binary(perl)
     - binary(python3)
