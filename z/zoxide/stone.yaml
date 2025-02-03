@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : zoxide
+version     : v0.9.6
+release     : 1
+homepage    : https://github.com/ajeetdsouza/zoxide
+upstreams   :
+    - https://github.com/ajeetdsouza/zoxide/archive/refs/tags/v0.9.6.tar.gz : e1811511a4a9caafa18b7d1505147d4328b39f6ec88b88097fe0dad59919f19c
+summary     : A smarter cd command
+description : |
+    zoxide is a smarter cd command, inspired by z and autojump.
+    It remembers which directories you use most frequently,
+    so you can "jump" to them in just a few keystrokes.
+license     : MIT
+networking  : true
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %cargo_install
+
+    %install_file contrib/completions/_zoxide %(installroot)%(datadir)/zsh/site_functions/_zoxide
+    %install_file contrib/completions/zoxide.bash %(installroot)%(datadir)/bash-completion/completions/zoxide.bash
+    %install_file contrib/completions/zoxide.fish %(installroot)%(datadir)/fish/completions/zoxide.fish
+
+    %install_dir %(installroot)%(mandir)/man1
+    cp man/man1/*.1 %(installroot)%(mandir)/man1/.
+check       : |
+    %cargo_test
+

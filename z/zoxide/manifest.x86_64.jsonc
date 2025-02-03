@@ -1,0 +1,34 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"zoxide": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/zoxide",
+				"/usr/share/bash-completion/completions/zoxide.bash",
+				"/usr/share/fish/completions/zoxide.fish",
+				"/usr/share/man/man1/zoxide-add.1",
+				"/usr/share/man/man1/zoxide-import.1",
+				"/usr/share/man/man1/zoxide-init.1",
+				"/usr/share/man/man1/zoxide-query.1",
+				"/usr/share/man/man1/zoxide-remove.1",
+				"/usr/share/man/man1/zoxide.1",
+				"/usr/share/zsh/site_functions/_zoxide"
+			],
+			"name": "zoxide",
+			"provides": [
+				"binary(zoxide)"
+			]
+		}
+	},
+	"source-name": "zoxide",
+	"source-release": "1",
+	"source-version": "v0.9.6"
+}
