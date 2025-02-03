@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : mesa
-version     : 24.3.3
-release     : 29
+version     : 24.3.4
+release     : 30
 homepage    : https://mesa3d.org/
 upstreams   :
-    - https://archive.mesa3d.org/mesa-24.3.3.tar.xz : 105afc00a4496fa4d29da74e227085544919ec7c86bd92b0b6e7fcc32c7125f4
+    - https://archive.mesa3d.org/mesa-24.3.4.tar.xz : e641ae27191d387599219694560d221b7feaa91c900bcec46bf444218ed66025
 summary     : Mesa 3D graphics library
 description : |
     The Mesa project began as an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics. Over the years the project has grown to implement more graphics APIs, including OpenGL ES, OpenCL, OpenMAX, VDPAU, VA-API, Vulkan and EGL. A variety of device drivers allows the Mesa libraries to be used in many different environments ranging from software emulation to complete hardware acceleration for modern GPUs. Mesa ties into several other open-source projects: the Direct Rendering Infrastructure, X.org, and Wayland to provide OpenGL support on Linux, FreeBSD, and other operating systems.
@@ -86,6 +86,11 @@ profiles    :
 environment : |
     export EXTRA_VK_DRIVERS=",nouveau"
 setup       : |
+    # Include package release in version string so Chromium invalidates
+    # its GPU cache; otherwise it can cause pages to render incorrectly.
+    # https://bugs.launchpad.net/ubuntu/+source/chromium-browser/+bug/2020604
+    echo "%(version)-serpentos.%(release)" >VERSION
+
     %meson \
         -Degl=enabled \
         -Dgallium-drivers=crocus,i915,iris,llvmpipe,nouveau,r300,r600,radeonsi,softpipe,svga,virgl,zink \
