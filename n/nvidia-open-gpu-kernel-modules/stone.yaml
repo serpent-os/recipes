@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : nvidia-open-gpu-kernel-modules
-version     : 565.77
-release     : 17
+version     : 570.86.16
+release     : 18
 homepage    : https://github.com/NVIDIA/open-gpu-kernel-modules
 upstreams   :
-    - https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/565.77.tar.gz : d3342afbf327335a51096ce5de7b35b22ba84ee2127e84c2cc49624d88a3444f
-    - https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run:
-        hash: 0a7aa742c46bcf34d766982402d17b3db1fdb3bc1b89344d70cd123c1cb3147c
+    - https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/570.86.16.tar.gz : 36c373c2ce695e2b6590f9cddad4a0825e448a5556688ed0be240bf2c9101ad7
+    - https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run:
+        hash: 4563ea4bb654247f491005a57c72c676aacd95abe1691d71332cecf25261cbd5
         unpack: false
         rename: NVIDIA.run
 summary     : NVIDIA open GPU kernel modules
@@ -37,9 +37,6 @@ environment : |
     export KERNEL_UNAME=`jq --raw-output .version /usr/lib/kernel/*.desktop/boot.json` || exit 1
 setup       : |
     %patch %(pkgdir)/fix-hdmi-names.patch
-    pushd kernel-open
-    %patch %(pkgdir)/make-modeset-fbdev-default.patch
-    popd
 build       : |
     %make CC=%(cc) LD=%(ld) KERNEL_UNAME=$KERNEL_UNAME NV_VERBOSE=1 modules
 install     : |
