@@ -1,0 +1,7 @@
+releases:
+  id: 10907
+  rss: ~
+security:
+  cpe:
+  - vendor: baobab_project
+    product: baobab
