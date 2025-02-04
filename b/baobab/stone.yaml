@@ -5,7 +5,7 @@
 #
 name        : baobab
 version     : 47.0
-release     : 1
+release     : 2
 homepage    : https://apps.gnome.org/Baobab/
 upstreams   :
     - https://gitlab.gnome.org/GNOME/baobab/-/archive/47.0/baobab-47.0.tar.gz : 2d5dd4aa5e708d7582985d0be74210af2b4f26d5524471b58e4a38213af35eae
@@ -16,21 +16,15 @@ description : |
     making it easy to identify where disk space is wasted.
 license     : GPL-2.0-or-later
 builddeps   :
-    - binary(valac)
+    - binary(itstool)
     - binary(msgfmt)
     - binary(update-desktop-database)
-    - binary(itstool)
-    - pkgconfig(gio-2.0)
-    - pkgconfig(glib-2.0)
-    - pkgconfig(gobject-2.0)
+    - binary(valac)
     - pkgconfig(gtk4)
     - pkgconfig(libadwaita-1)
-rundeps     :
-    - gsettings-desktop-schemas
 setup       : |
     %meson
 build       : |
     %meson_build
 install     : |
     %meson_install
-
