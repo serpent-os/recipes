@@ -332,7 +332,11 @@
 				"/usr/lib32/pkgconfig/gmodule-export-2.0.pc",
 				"/usr/lib32/pkgconfig/gmodule-no-export-2.0.pc",
 				"/usr/lib32/pkgconfig/gobject-2.0.pc",
-				"/usr/lib32/pkgconfig/gthread-2.0.pc"
+				"/usr/lib32/pkgconfig/gthread-2.0.pc",
+				"/usr/share/gdb/auto-load/usr/lib32/__pycache__/libglib-2.0.so.0.8200.4-gdb.cpython-311.pyc",
+				"/usr/share/gdb/auto-load/usr/lib32/__pycache__/libgobject-2.0.so.0.8200.4-gdb.cpython-311.pyc",
+				"/usr/share/gdb/auto-load/usr/lib32/libglib-2.0.so.0.8200.4-gdb.py",
+				"/usr/share/gdb/auto-load/usr/lib32/libgobject-2.0.so.0.8200.4-gdb.py"
 			],
 			"name": "glib2-32bit-devel",
 			"provides": [
@@ -695,11 +699,7 @@
 				"/usr/share/gdb/auto-load/usr/lib/__pycache__/libglib-2.0.so.0.8200.4-gdb.cpython-311.pyc",
 				"/usr/share/gdb/auto-load/usr/lib/__pycache__/libgobject-2.0.so.0.8200.4-gdb.cpython-311.pyc",
 				"/usr/share/gdb/auto-load/usr/lib/libglib-2.0.so.0.8200.4-gdb.py",
-				"/usr/share/gdb/auto-load/usr/lib/libgobject-2.0.so.0.8200.4-gdb.py",
-				"/usr/share/gdb/auto-load/usr/lib32/__pycache__/libglib-2.0.so.0.8200.4-gdb.cpython-311.pyc",
-				"/usr/share/gdb/auto-load/usr/lib32/__pycache__/libgobject-2.0.so.0.8200.4-gdb.cpython-311.pyc",
-				"/usr/share/gdb/auto-load/usr/lib32/libglib-2.0.so.0.8200.4-gdb.py",
-				"/usr/share/gdb/auto-load/usr/lib32/libgobject-2.0.so.0.8200.4-gdb.py"
+				"/usr/share/gdb/auto-load/usr/lib/libgobject-2.0.so.0.8200.4-gdb.py"
 			],
 			"name": "glib2-devel",
 			"provides": [
@@ -716,6 +716,6 @@
 		}
 	},
 	"source-name": "glib2",
-	"source-release": "22",
+	"source-release": "23",
 	"source-version": "2.82.4"
 }
