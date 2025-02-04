@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : chezmoi
-version     : v2.59.0
-release     : 1
+version     : 2.59.0
+release     : 2
 homepage    : https://github.com/twpayne/chezmoi
 upstreams   :
     - https://github.com/twpayne/chezmoi/archive/refs/tags/v2.59.0.tar.gz : af1244c07ff5f3b04d6a2af186a9f2bdd33044399c94a051b64162f238a6b8bb
@@ -16,16 +16,11 @@ description : |
 license     : MIT
 networking  : true
 builddeps   :
-    - binary(go)
     - binary(git)
+    - binary(go)
 setup       : |
     go mod download
 build       : |
-    export CGO_LDFLAGS="$LDFLAGS"
-    export CGO_CFLAGS="$CFLAGS"
-    export CGO_CPPFLAGS="$CPPFLAGS"
-    export CGO_CXXFLAGS="$CXXFLAGS"
-    export GOPROXY=off
     go build \
         -buildmode=pie \
         -mod=readonly \
@@ -38,4 +33,3 @@ install     : |
     %install_file completions/chezmoi-completion.bash %(installroot)%(datadir)/bash-completion/completions/chezmoi
     %install_file completions/chezmoi.fish %(installroot)%(datadir)/fish/completions/chezmoi.fish
     %install_file completions/chezmoi.zsh %(installroot)%(datadir)/zsh/site-functions/_chezmoi
-
