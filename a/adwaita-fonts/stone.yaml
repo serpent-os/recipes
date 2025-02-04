@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : adwaita-fonts
+version     : 48.2
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/adwaita-fonts
+upstreams   :
+    - https://gitlab.gnome.org/GNOME/adwaita-fonts/-/archive/48.2/adwaita-fonts-48.2.tar : 482d04ffe1bc046df58312c3afe7a4257f35b70815e9fbac4106588a244ebdaa
+summary     : The typefaces for GNOME
+description : |
+    Adwaita Fonts includes Adwaita Sans, a variation of Inter, 
+    and Adwaita Mono, Iosevka customized to match Inter.
+license     : |
+    GPL-3.0-or-later
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
