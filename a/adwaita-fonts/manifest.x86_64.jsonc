@@ -1,0 +1,20 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"adwaita-fonts": {
+			"files": [
+				"/usr/share/fonts/Adwaita/AdwaitaMono-Bold.ttf",
+				"/usr/share/fonts/Adwaita/AdwaitaMono-BoldItalic.ttf",
+				"/usr/share/fonts/Adwaita/AdwaitaMono-Italic.ttf",
+				"/usr/share/fonts/Adwaita/AdwaitaMono-Regular.ttf",
+				"/usr/share/fonts/Adwaita/AdwaitaSans-Italic.ttf",
+				"/usr/share/fonts/Adwaita/AdwaitaSans-Regular.ttf"
+			],
+			"name": "adwaita-fonts"
+		}
+	},
+	"source-name": "adwaita-fonts",
+	"source-release": "1",
+	"source-version": "48.2"
+}
