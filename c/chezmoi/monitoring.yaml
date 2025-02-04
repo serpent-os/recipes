@@ -1,0 +1,5 @@
+releases:
+  id: 232604
+  rss: https://github.com/twpayne/chezmoi/releases.atom
+security:
+  cpe: ~ # Last checked 2025-02-04
