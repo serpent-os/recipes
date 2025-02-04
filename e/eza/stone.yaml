@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : eza
-version     : v0.20.19
-release     : 1
+version     : 0.20.19
+release     : 2
 homepage    : https://github.com/eza-community/eza
 upstreams   :
     - https://github.com/eza-community/eza/archive/refs/tags/v0.20.19.tar.gz : b749e7b04c173f33cf15f0022d103bb59e79e7d2a88ec00721f2be0316cc9ef9
