@@ -5,7 +5,7 @@
 #
 name        : nvidia-open-gpu-kernel-modules
 version     : 570.86.16
-release     : 18
+release     : 19
 homepage    : https://github.com/NVIDIA/open-gpu-kernel-modules
 upstreams   :
     - https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/570.86.16.tar.gz : 36c373c2ce695e2b6590f9cddad4a0825e448a5556688ed0be240bf2c9101ad7
