@@ -5,7 +5,7 @@
 #
 name        : font-noto-cjk
 version     : 2.003
-release     : 1
+release     : 2
 homepage    : https://notofonts.github.io/
 upstreams   :
     - https://github.com/notofonts/noto-cjk/releases/download/Serif2.003/03_NotoSerifCJK-TTF-VF.zip : ad58364bca7c70a15b40e941df0ce0da85b1e4a882ab176f14e661cf1a0af05e
@@ -16,4 +16,4 @@ license     :
     - OFL-1.1
 install     : |
     # Packager Note: We may want to slim this package down more, e.g. split off serif fonts
-    %install_file Variable/*/*.tt[fc] -t %(installroot)%(datadir)/fonts/truetype/noto-cjk
+    install -Dm00644 Variable/*/*.tt[fc] -t %(installroot)%(datadir)/fonts/truetype/noto-cjk
