@@ -5,7 +5,7 @@
 #
 name        : mpv
 version     : 0.39.0
-release     : 2
+release     : 3
 homepage    : https://mpv.io/
 upstreams   :
     - https://github.com/mpv-player/mpv/archive/refs/tags/v0.39.0.tar.gz : 2ca92437affb62c2b559b4419ea4785c70d023590500e8a52e95ea3ab4554683
@@ -50,7 +50,7 @@ builddeps   :
     # pkgconfig(mujs)
     # pkgconfig(openal)
     # pkgconfig(rubberband)
-    - pkgconfig(sdl2)
+    - pkgconfig(sdl2_compat)
     - pkgconfig(shaderc)
     - pkgconfig(sndio)
     # pkgconfig(spirv-cross-c-shared)

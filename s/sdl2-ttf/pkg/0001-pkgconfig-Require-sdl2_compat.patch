@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Wed, 29 Jan 2025 19:47:03 -0600
+Subject: [PATCH] pkgconfig: Require sdl2_compat
+
+---
+ SDL2_ttf.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SDL2_ttf.pc.in b/SDL2_ttf.pc.in
+index 71d3d1b..3f84dd2 100644
+--- a/SDL2_ttf.pc.in
++++ b/SDL2_ttf.pc.in
+@@ -6,7 +6,7 @@ includedir=@includedir@
+ Name: SDL2_ttf
+ Description: ttf library for Simple DirectMedia Layer with FreeType 2 support
+ Version: @VERSION@
+-Requires: sdl2 >= @SDL_VERSION@
++Requires: sdl2_compat >= @SDL_VERSION@
+ Libs: -L${libdir} -lSDL2_ttf
+ Cflags: -I${includedir}/SDL2
+ Requires.private: @PC_REQUIRES@
