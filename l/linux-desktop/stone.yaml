@@ -5,7 +5,7 @@
 #
 name        : linux-desktop
 version     : 6.12.12
-release     : 79
+release     : 80
 homepage    : https://kernel.org/
 upstreams   :
     - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.12.tar.xz : e98942d17ef7063b3f2d6d7692bf24899e2e021cf832d19b55308ec8e8e08eff
