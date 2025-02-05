@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : rust
-version     : 1.83.0
-release     : 13
+version     : 1.84.1
+release     : 14
 homepage    : https://www.rust-lang.org/
 upstreams   :
-    - https://static.rust-lang.org/dist/rustc-1.83.0-src.tar.xz : 7b11d4242dab0921a7d54758ad3fe805153c979c144625fecde11735760f97df
+    - https://static.rust-lang.org/dist/rustc-1.84.1-src.tar.xz : e23ec747a06ffd3e94155046f40b6664ac152c9ee3c2adfd90353a7ccff24226
     - git|https://github.com/rust-lang/llvm-project.git :
-        ref: 3a17f74904a74565c54cfac0d67026362d038698 # rustc/19.1-2024-09-17
+        ref: 1268e87bdbaed0693a9d782ccd5a21e2cab2de33 # rustc/19.1-2024-12-03
 summary     : Rust programming language compiler + tools
 description : |
     Rust programming language compiler + tools
@@ -89,10 +89,6 @@ setup       : |
     # Fix bootstrap checking checksums for all the files we just deleted
     find vendor -name .cargo-checksum.json -print \
         -exec sed -i.uncheck -e 's/"files":{[^}]*}/"files":{ }/' '{}' '+'
-
-    # Backports for crashes discovered during testing
-    %patch %(pkgdir)/132613.patch
-    %patch %(pkgdir)/133194.patch
 build       : |
     python ./x.py build \
             --build-dir %(workdir)/build-pgo \
