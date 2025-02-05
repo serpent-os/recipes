@@ -11,6 +11,7 @@
 				"binary(vapigen)",
 				"binary(xsltproc)",
 				"docbook",
+				"pkgconfig(Qt6UiTools)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libcurl)",
@@ -112,6 +113,7 @@
 				"binary(vapigen)",
 				"binary(xsltproc)",
 				"docbook",
+				"pkgconfig(Qt6UiTools)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
 				"pkgconfig(libcurl)",
@@ -176,9 +178,108 @@
 			"provides": [
 				"pkgconfig(appstream)"
 			]
+		},
+		"appstream-qt6": {
+			"build-depends": [
+				"binary(cmake)",
+				"binary(gperf)",
+				"binary(itstool)",
+				"binary(msgfmt)",
+				"binary(vapigen)",
+				"binary(xsltproc)",
+				"docbook",
+				"pkgconfig(Qt6UiTools)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(librsvg-2.0)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(xmlb)",
+				"pkgconfig(yaml-0.1)"
+			],
+			"depends": [
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libappstream.so.5(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libAppStreamQt.so.1.0.4",
+				"/usr/lib/libAppStreamQt.so.3"
+			],
+			"name": "appstream-qt6",
+			"provides": [
+				"soname(libAppStreamQt.so.3(x86_64))"
+			]
+		},
+		"appstream-qt6-devel": {
+			"build-depends": [
+				"binary(cmake)",
+				"binary(gperf)",
+				"binary(itstool)",
+				"binary(msgfmt)",
+				"binary(vapigen)",
+				"binary(xsltproc)",
+				"docbook",
+				"pkgconfig(Qt6UiTools)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(librsvg-2.0)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(libxml-2.0)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(xmlb)",
+				"pkgconfig(yaml-0.1)"
+			],
+			"depends": [
+				"appstream-devel",
+				"appstream-qt6"
+			],
+			"files": [
+				"/usr/include/AppStreamQt/appstreamqt_export.h",
+				"/usr/include/AppStreamQt/branding.h",
+				"/usr/include/AppStreamQt/bundle.h",
+				"/usr/include/AppStreamQt/category.h",
+				"/usr/include/AppStreamQt/component-box.h",
+				"/usr/include/AppStreamQt/component.h",
+				"/usr/include/AppStreamQt/contentrating.h",
+				"/usr/include/AppStreamQt/developer.h",
+				"/usr/include/AppStreamQt/icon.h",
+				"/usr/include/AppStreamQt/image.h",
+				"/usr/include/AppStreamQt/launchable.h",
+				"/usr/include/AppStreamQt/metadata.h",
+				"/usr/include/AppStreamQt/pool.h",
+				"/usr/include/AppStreamQt/provided.h",
+				"/usr/include/AppStreamQt/relation-check-result.h",
+				"/usr/include/AppStreamQt/relation.h",
+				"/usr/include/AppStreamQt/release-list.h",
+				"/usr/include/AppStreamQt/release.h",
+				"/usr/include/AppStreamQt/screenshot.h",
+				"/usr/include/AppStreamQt/spdx.h",
+				"/usr/include/AppStreamQt/suggested.h",
+				"/usr/include/AppStreamQt/systeminfo.h",
+				"/usr/include/AppStreamQt/translation.h",
+				"/usr/include/AppStreamQt/utils.h",
+				"/usr/include/AppStreamQt/version.h",
+				"/usr/include/AppStreamQt/video.h",
+				"/usr/lib/cmake/AppStreamQt/AppStreamQtConfig.cmake",
+				"/usr/lib/cmake/AppStreamQt/AppStreamQtConfigVersion.cmake",
+				"/usr/lib/libAppStreamQt.so"
+			],
+			"name": "appstream-qt6-devel",
+			"provides": [
+				"cmake(AppStreamQt)"
+			]
 		}
 	},
 	"source-name": "appstream",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "1.0.4"
 }

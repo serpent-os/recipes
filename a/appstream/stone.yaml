@@ -5,7 +5,7 @@
 #
 name        : appstream
 version     : 1.0.4
-release     : 4
+release     : 5
 homepage    : https://www.freedesktop.org/wiki/Distributions/AppStream/
 upstreams   :
     - https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.4.tar.xz : 2d218348067f98c4f34a3ffe2d8219ad9f504b1b2481f1872dec66c77bf37509
@@ -23,6 +23,7 @@ builddeps   :
     - binary(msgfmt)
     - binary(vapigen)
     - binary(xsltproc)
+    - pkgconfig(Qt6UiTools)
     - pkgconfig(glib-2.0)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(libcurl)
@@ -36,9 +37,32 @@ environment : |
     pushd AppStream-%(version)
     export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
 setup       : |
-    %meson -Dstemming=false -Dvapi=true -Dapidocs=false -Dinstall-docs=false --sysconfdir=%(datadir)/appstream
+    %meson \
+           --sysconfdir=%(datadir)/appstream \
+           -Dapidocs=false \
+           -Dinstall-docs=false \
+           -Dqt=true \
+           -Dstemming=false \
+           -Dvapi=true
 build       : |
     %meson_build
 install     : |
     %meson_install
-toolchain   : gnu
+packages    :
+    - "%(name)-qt6":
+        summary: "Tools and libraries to work with AppStream metadata - Qt6 bindings"
+        description: |
+            Tools and libraries to work with AppStream metadata - Qt6 bindings
+        paths:
+            - /usr/lib/libAppStreamQt.so.*
+    - "%(name)-qt6-devel":
+        summary: "Tools and libraries to work with AppStream metadata - Qt6 bindings (development files)"
+        description: |
+            Tools and libraries to work with AppStream metadata - Qt6 bindings (development files)
+        rundeps:
+            - "%(name)-qt6"
+            - "%(name)-devel"
+        paths:
+            - /usr/include/AppStreamQt/
+            - /usr/lib/cmake/AppStreamQt/
+            - /usr/lib/libAppStreamQt.so
