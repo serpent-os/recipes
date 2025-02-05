@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : qt6-base
-version     : 6.8.1
-release     : 1
+version     : 6.8.2
+release     : 2
 homepage    : https://www.qt.io
 upstreams   :
-    - https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtbase-everywhere-src-6.8.1.tar.xz : 40b14562ef3bd779bc0e0418ea2ae08fa28235f8ea6e8c0cb3bce1d6ad58dcaf
+    - https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtbase-everywhere-src-6.8.2.tar.xz : 012043ce6d411e6e8a91fdc4e05e6bedcfa10fcb1347d3c33908f7fdd10dfe05
 summary     : Cross platform application and UI framework
 description : |
     Cross platform application and UI framework
@@ -69,6 +69,16 @@ setup       : |
     %patch %(pkgdir)/QTBUG-111801.patch
     %patch %(pkgdir)/QTBUG-111801-2.patch
     %patch %(pkgdir)/QTBUG-111801-3.patch
+    %patch %(pkgdir)/QTBUG-131632.patch
+    %patch %(pkgdir)/QTBUG-111801-4.patch
+    %patch %(pkgdir)/QTBUG-132821.patch
+    %patch %(pkgdir)/QTBUG-132377.patch
+    %patch %(pkgdir)/QTBUG-132377-2.patch
+
+    # Backports recommended by KDE
+    %patch %(pkgdir)/QTBUG-133206.patch
+    %patch %(pkgdir)/QTBUG-133206-2.patch
+    %patch %(pkgdir)/QTBUG-133206-3.patch
 
     ## 2024-01-18 Note
     # Enabling -DQT_FEATURE_openssl_hash=ON with Qt 6.6.1 seems to break some applications use of TLS.
