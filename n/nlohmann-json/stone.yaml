@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : nlohmann-json
+version     : 3.11.3
+release     : 1
+homepage    : https://github.com/nlohmann/json
+upstreams   :
+    - git|https://github.com/nlohmann/json.git : 9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03
+    - https://github.com/nlohmann/json_test_data/archive/v3.1.0.tar.gz : 884b1e21f38cfd6a62c159f1b7e0a8f5168ae5daaa384ed4dc0c0fa6660f21bd
+summary     : JSON for Modern C++
+description : |
+    There are myriads of JSON libraries out there, and each may even have its reason to exist. Our class had these design goals:
+    Intuitive syntax, trivial integration and serious testing.
+license     : MIT
+setup       : |
+    mkdir -vp build-test/
+    mv -v %(workdir)/../v3.1.0.tar.gz/ build-test/json_test_data/
+    %cmake
+build       : |
+    %cmake_build
+    ctest --test-dir %(workdir) --output-on-failure
+install     : |
+    %cmake_install
+
