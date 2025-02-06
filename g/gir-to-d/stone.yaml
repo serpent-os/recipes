@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gir-to-d
+version     : 0.23.2
+release     : 1
+homepage    : https://github.com/gtkd-developers/gir-to-d
+upstreams   :
+    - https://github.com/gtkd-developers/gir-to-d/archive/refs/tags/v0.23.2.tar.gz : fc94f1f52b5338bff8631cc140957457c43b6613fb38e43e0788d4ad57ad01ab
+summary     : Create D bindings from GObject introspection files
+description : |
+    Create D bindings from GObject introspection files
+license     : LGPL-3.0-or-later
+environment :
+    # ld.lld: error: undefined symbol: _D6object__T8opEqualsTxC3gtd11GirFunctionQnTxQwZQBkFxQBexQBiZb
+    export DFLAGS="${DFLAGS} --allinst"
+builddeps   :
+    - ldc-devel
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
