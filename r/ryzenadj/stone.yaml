@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : ryzenadj
+version     : 0.16.0
+release     : 1
+homepage    : https://github.com/FlyGoat/RyzenAdj
+upstreams   :
+    - https://github.com/FlyGoat/RyzenAdj/archive/refs/tags/v0.16.0.tar.gz : 7bef7dbde006afbe316091d8da8c8c551d5d7d43185d9e62281671959b7a3ca2
+summary     : Adjust power management settings for Ryzen APUs
+description : |
+    Adjust power management settings for Ryzen Mobile Processors.
+license     : LGPL-3.0-only
+builddeps   :
+    - pkgconfig(libpci)
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+
