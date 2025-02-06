@@ -1,0 +1,10 @@
+[Unit]
+Description=Time to prime moss asset store in vfs cache in the background
+RequiresMountsFor=/
+# Avoid the present service being started by accident and slowing down boot
+ConditionKernelCommandLine=moss.debug
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c "sync && echo 3 > /proc/sys/vm/drop_caches"
+ExecStart=/usr/bin/bash -c "time nice -n20 ionice -c Idle find /.moss/assets |xargs --max-lines=1000 --max-procs=$(if [[ $(nproc) -ge 8 ]]; then echo 8; else echo $(nproc); fi) stat -t >/dev/null"

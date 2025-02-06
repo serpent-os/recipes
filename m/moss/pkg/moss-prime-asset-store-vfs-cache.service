@@ -1,0 +1,10 @@
+[Unit]
+Description=Prime moss asset store in vfs cache in the background
+RequiresMountsFor=/
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c "time nice -n20 ionice -c Idle find /.moss/assets |xargs --max-lines=1000 --max-procs=$(if [[ $(nproc) -ge 8 ]]; then echo 8; else echo $(nproc); fi) stat -t >/dev/null"
+
+[Install]
+WantedBy=basic.target
