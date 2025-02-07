@@ -5,7 +5,7 @@
 #
 name        : appstream
 version     : 1.0.4
-release     : 4
+release     : 5
 homepage    : https://www.freedesktop.org/wiki/Distributions/AppStream/
 upstreams   :
     - https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.4.tar.xz : 2d218348067f98c4f34a3ffe2d8219ad9f504b1b2481f1872dec66c77bf37509
@@ -30,15 +30,15 @@ builddeps   :
     - pkgconfig(libsystemd)
     - pkgconfig(libxml-2.0)
     - pkgconfig(libzstd)
+    - pkgconfig(pango)
     - pkgconfig(xmlb)
     - pkgconfig(yaml-0.1)
 environment : |
     pushd AppStream-%(version)
     export CFLAGS="${CFLAGS} -Wno-error=missing-include-dirs"
 setup       : |
-    %meson -Dstemming=false -Dvapi=true -Dapidocs=false -Dinstall-docs=false --sysconfdir=%(datadir)/appstream
+    %meson -Dstemming=false -Dvapi=true -Dapidocs=false -Dinstall-docs=false --sysconfdir=%(datadir)/appstream -Dcompose=true
 build       : |
     %meson_build
 install     : |
     %meson_install
-toolchain   : gnu
