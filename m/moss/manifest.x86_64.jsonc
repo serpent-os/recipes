@@ -20,7 +20,9 @@
 				"/usr/lib/kernel/cmdline.d/00-quiet.cmdline",
 				"/usr/lib/kernel/cmdline.d/10-amdgpu.cmdline",
 				"/usr/lib/moss/moss-fstx.sh",
+				"/usr/lib/systemd/system/moss-benchmark-time-to-prime-asset-store-vfs-cache.service",
 				"/usr/lib/systemd/system/moss-fstx.service",
+				"/usr/lib/systemd/system/moss-prime-asset-store-vfs-cache.service",
 				"/usr/share/bash-completion/completions/moss",
 				"/usr/share/defaults/etc/profile.d/80-command-not-found.sh",
 				"/usr/share/fish/completions/moss.fish",
@@ -64,6 +66,6 @@
 		}
 	},
 	"source-name": "moss",
-	"source-release": "77",
-	"source-version": "0.25.1+git.e5ea34d"
+	"source-release": "78",
+	"source-version": "0.25.1+git.cb1207e"
 }
