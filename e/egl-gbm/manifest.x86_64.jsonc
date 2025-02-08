@@ -1,0 +1,55 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"egl-gbm": {
+			"build-depends": [
+				"pkgconfig(eglexternalplatform)",
+				"pkgconfig32(egl)",
+				"pkgconfig32(gbm)",
+				"pkgconfig32(libdrm)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libdrm.so.2(x86_64))",
+				"soname(libgbm.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libnvidia-egl-gbm.so",
+				"/usr/lib/libnvidia-egl-gbm.so.1",
+				"/usr/lib/libnvidia-egl-gbm.so.1.1.2"
+			],
+			"name": "egl-gbm",
+			"provides": [
+				"soname(libnvidia-egl-gbm.so.1(x86_64))"
+			]
+		},
+		"egl-gbm-32bit": {
+			"build-depends": [
+				"pkgconfig(eglexternalplatform)",
+				"pkgconfig32(egl)",
+				"pkgconfig32(gbm)",
+				"pkgconfig32(libdrm)"
+			],
+			"depends": [
+				"egl-gbm",
+				"soname(libc.so.6(386))",
+				"soname(libdrm.so.2(386))",
+				"soname(libgbm.so.1(386))"
+			],
+			"files": [
+				"/usr/lib32/libnvidia-egl-gbm.so",
+				"/usr/lib32/libnvidia-egl-gbm.so.1",
+				"/usr/lib32/libnvidia-egl-gbm.so.1.1.2"
+			],
+			"name": "egl-gbm-32bit",
+			"provides": [
+				"soname(libnvidia-egl-gbm.so.1(386))",
+				"soname(libnvidia-egl-gbm.so.1(x86))"
+			]
+		}
+	},
+	"source-name": "egl-gbm",
+	"source-release": "1",
+	"source-version": "1.1.2"
+}

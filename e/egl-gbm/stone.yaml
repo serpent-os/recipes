@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : egl-gbm
+version     : 1.1.2
+release     : 1
+homepage    : https://github.com/NVIDIA/egl-gbm
+upstreams   :
+    - https://github.com/NVIDIA/egl-gbm/archive/refs/tags/1.1.2.tar.gz : 40c8a1a3df0639ea83031a92e9adcbef92ed696445307aa23cfc5895e63d11f0
+summary     : EGL External Platform for GBM
+description : |
+    EGL External Platform for GBM
+license     : MIT
+emul32      : true
+builddeps   :
+    - pkgconfig(eglexternalplatform)
+    - pkgconfig32(egl)
+    - pkgconfig32(gbm)
+    - pkgconfig32(libdrm)
+packages    :
+    # Suppress devel subpackages
+    - "%(name)":
+        paths:
+            - /usr/lib/*.so*
+    - "%(name)-32bit":
+        paths:
+            - /usr/lib32/*.so*
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
