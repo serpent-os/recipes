@@ -5,7 +5,7 @@
 #
 name        : eglexternalplatform
 version     : 1.2
-release     : 1
+release     : 2
 homepage    : https://github.com/NVIDIA/eglexternalplatform
 upstreams   :
     - https://github.com/NVIDIA/eglexternalplatform/archive/refs/tags/1.2.tar.gz : aba414e6f441b1253684b4bb838b3fecde2a851374a71f32a7ba2ca80daf1709
