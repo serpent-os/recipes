@@ -353,6 +353,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "18",
+	"source-release": "19",
 	"source-version": "570.86.16"
 }

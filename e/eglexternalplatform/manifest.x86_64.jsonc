@@ -12,9 +12,22 @@
 			"provides": [
 				"pkgconfig(eglexternalplatform)"
 			]
+		},
+		"eglexternalplatform-32bit-devel": {
+			"depends": [
+				"eglexternalplatform-32bit",
+				"eglexternalplatform-devel"
+			],
+			"files": [
+				"/usr/lib32/pkgconfig/eglexternalplatform.pc"
+			],
+			"name": "eglexternalplatform-32bit-devel",
+			"provides": [
+				"pkgconfig32(eglexternalplatform)"
+			]
 		}
 	},
 	"source-name": "eglexternalplatform",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.2"
 }
