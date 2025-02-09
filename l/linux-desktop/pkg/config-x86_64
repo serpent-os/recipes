@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 6.12.12 Kernel Configuration
+# Linux/x86_64 6.12.13 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 19.1.7 (Serpent 19.1.7-21)"
 CONFIG_GCC_VERSION=0
@@ -5356,7 +5356,6 @@ CONFIG_SND_SEQ_MIDI_EVENT=m
 CONFIG_SND_SEQ_MIDI=m
 CONFIG_SND_SEQ_VIRMIDI=m
 # CONFIG_SND_SEQ_UMP is not set
-CONFIG_SND_SEQ_UMP_CLIENT=m
 CONFIG_SND_DRIVERS=y
 # CONFIG_SND_PCSP is not set
 # CONFIG_SND_DUMMY is not set

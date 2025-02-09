@@ -5,7 +5,7 @@
 #
 name        : egl-wayland
 version     : 1.1.17
-release     : 1
+release     : 2
 homepage    : https://github.com/NVIDIA/egl-wayland
 upstreams   :
     - https://github.com/NVIDIA/egl-wayland/archive/refs/tags/1.1.17.tar.gz : 974351af2057a385e98f4a0d4a40adab4480b77f4b65449d1bd6137c758c25b7
@@ -13,18 +13,20 @@ summary     : The Wayland External Platform interface for EGL
 description : |
     The EGL External Platform interface for Wayland
 license     : Apache-2.0
+emul32      : true
 builddeps   :
-    - pkgconfig(egl)
     - pkgconfig(eglexternalplatform)
-    - pkgconfig(libdrm)
-    - pkgconfig(wayland-client)
-    - pkgconfig(wayland-egl-backend)
     - pkgconfig(wayland-protocols)
     - pkgconfig(wayland-scanner)
     - pkgconfig(wayland-server)
+    - pkgconfig32(egl)
+    - pkgconfig32(libdrm)
+    - pkgconfig32(wayland-client)
+    - pkgconfig32(wayland-egl-backend)
 setup       : |
     %meson
 build       : |
     %meson_build
 install     : |
     %meson_install
+    rm -v %(installroot)%(datadir)/egl/egl_external_platform.d/10_nvidia_wayland.json

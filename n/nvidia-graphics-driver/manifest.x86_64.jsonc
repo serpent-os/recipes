@@ -11,6 +11,7 @@
 				"pkgconfig32(vulkan)"
 			],
 			"depends": [
+				"egl-gbm",
 				"egl-wayland",
 				"eglexternalplatform",
 				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))",
@@ -88,7 +89,6 @@
 				"/usr/lib/libnvidia-cfg.so",
 				"/usr/lib/libnvidia-cfg.so.1",
 				"/usr/lib/libnvidia-cfg.so.570.86.16",
-				"/usr/lib/libnvidia-egl-gbm.so.1.1.2",
 				"/usr/lib/libnvidia-egl-xcb.so.1.0.0",
 				"/usr/lib/libnvidia-egl-xlib.so.1.0.0",
 				"/usr/lib/libnvidia-eglcore.so.570.86.16",
@@ -151,6 +151,7 @@
 				"/usr/share/X11/xorg.conf.d/20-nvidia.conf",
 				"/usr/share/applications/nvidia-settings.desktop",
 				"/usr/share/dbus-1/system.d/nvidia-dbus.conf",
+				"/usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json",
 				"/usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json",
 				"/usr/share/egl/egl_external_platform.d/20_nvidia_xcb.json",
 				"/usr/share/egl/egl_external_platform.d/20_nvidia_xlib.json",
@@ -188,7 +189,6 @@
 				"soname(libnvidia-allocator.so.1(x86_64))",
 				"soname(libnvidia-api.so.1(x86_64))",
 				"soname(libnvidia-cfg.so.1(x86_64))",
-				"soname(libnvidia-egl-gbm.so.1(x86_64))",
 				"soname(libnvidia-egl-xcb.so.1(x86_64))",
 				"soname(libnvidia-egl-xlib.so.1(x86_64))",
 				"soname(libnvidia-eglcore.so.570.86.16(x86_64))",
@@ -226,6 +226,8 @@
 				"pkgconfig32(vulkan)"
 			],
 			"depends": [
+				"egl-gbm-32bit",
+				"egl-wayland-32bit",
 				"nvidia-graphics-driver",
 				"soname(ld-linux.so.2(386))",
 				"soname(libX11-xcb.so.1(386))",
@@ -265,7 +267,6 @@
 				"/usr/lib32/libnvidia-allocator.so",
 				"/usr/lib32/libnvidia-allocator.so.1",
 				"/usr/lib32/libnvidia-allocator.so.570.86.16",
-				"/usr/lib32/libnvidia-egl-gbm.so.1.1.2",
 				"/usr/lib32/libnvidia-egl-xcb.so.1.0.0",
 				"/usr/lib32/libnvidia-egl-xlib.so.1.0.0",
 				"/usr/lib32/libnvidia-eglcore.so.570.86.16",
@@ -316,8 +317,6 @@
 				"soname(libnvcuvid.so.1(x86))",
 				"soname(libnvidia-allocator.so.1(386))",
 				"soname(libnvidia-allocator.so.1(x86))",
-				"soname(libnvidia-egl-gbm.so.1(386))",
-				"soname(libnvidia-egl-gbm.so.1(x86))",
 				"soname(libnvidia-egl-xcb.so.1(386))",
 				"soname(libnvidia-egl-xcb.so.1(x86))",
 				"soname(libnvidia-egl-xlib.so.1(386))",
@@ -354,6 +353,6 @@
 		}
 	},
 	"source-name": "nvidia-graphics-driver",
-	"source-release": "17",
+	"source-release": "19",
 	"source-version": "570.86.16"
 }

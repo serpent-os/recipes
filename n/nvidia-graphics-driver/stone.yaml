@@ -5,7 +5,7 @@
 #
 name        : nvidia-graphics-driver
 version     : 570.86.16
-release     : 17
+release     : 19
 homepage    : https://www.nvidia.com/
 upstreams   :
     - https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run:
@@ -28,6 +28,7 @@ builddeps   :
     - pkgconfig32(vulkan)
     - pkgconfig32(osmesa)
 rundeps     :
+    - egl-gbm
     - egl-wayland
     - eglexternalplatform
     - nvidia-open-gpu-kernel-modules
@@ -39,6 +40,9 @@ packages    :
     - "%(name)-32bit":
         paths:
             - /usr/lib32/lib*.so*
+        rundeps:
+            - egl-gbm-32bit
+            - egl-wayland-32bit
 install     : |
     sh %(sourcedir)/NVIDIA.run --extract-only --target extracted
     %install_dir %(installroot)%(libdir)/firmware/nvidia/%(version)
@@ -105,10 +109,11 @@ install     : |
     %tmpfiles "D /run/nvidia-persistenced 0755 nvidia-persistenced nvidia-persistenced -"
     popd
 
-    # conflicts by egl-wayland
+    # conflicts by egl-wayland/egl-gbm
     rm -v %(installroot)%(libdir)/libnvidia-egl-wayland*
     rm -v %(installroot)/usr/lib32/libnvidia-egl-wayland*
-    rm -v %(installroot)%(datadir)/egl/egl_external_platform.d/10_nvidia_wayland.json
+    rm -v %(installroot)%(libdir)/libnvidia-egl-gbm*
+    rm -v %(installroot)/usr/lib32/libnvidia-egl-gbm*
 
     # Finally, documentation files for nvidia-settings
     %install_file extracted/nvidia-application-profiles-%(version)-key-documentation %(installroot)%(datadir)/nvidia/nvidia-application-profiles-%(version)-key-documentation

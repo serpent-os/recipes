@@ -4,14 +4,14 @@
 	"packages": {
 		"egl-wayland": {
 			"build-depends": [
-				"pkgconfig(egl)",
 				"pkgconfig(eglexternalplatform)",
-				"pkgconfig(libdrm)",
-				"pkgconfig(wayland-client)",
-				"pkgconfig(wayland-egl-backend)",
 				"pkgconfig(wayland-protocols)",
 				"pkgconfig(wayland-scanner)",
-				"pkgconfig(wayland-server)"
+				"pkgconfig(wayland-server)",
+				"pkgconfig32(egl)",
+				"pkgconfig32(libdrm)",
+				"pkgconfig32(wayland-client)",
+				"pkgconfig32(wayland-egl-backend)"
 			],
 			"depends": [
 				"soname(libc.so.6(x86_64))",
@@ -22,7 +22,7 @@
 			"files": [
 				"/usr/lib/libnvidia-egl-wayland.so.1",
 				"/usr/lib/libnvidia-egl-wayland.so.1.1.17",
-				"/usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json",
+				"/usr/share/egl/egl_external_platform.d",
 				"/usr/share/wayland-eglstream/wayland-drm.xml",
 				"/usr/share/wayland-eglstream/wayland-eglstream-controller.xml",
 				"/usr/share/wayland-eglstream/wayland-eglstream.xml"
@@ -32,16 +32,69 @@
 				"soname(libnvidia-egl-wayland.so.1(x86_64))"
 			]
 		},
-		"egl-wayland-devel": {
+		"egl-wayland-32bit": {
 			"build-depends": [
-				"pkgconfig(egl)",
 				"pkgconfig(eglexternalplatform)",
-				"pkgconfig(libdrm)",
-				"pkgconfig(wayland-client)",
-				"pkgconfig(wayland-egl-backend)",
 				"pkgconfig(wayland-protocols)",
 				"pkgconfig(wayland-scanner)",
-				"pkgconfig(wayland-server)"
+				"pkgconfig(wayland-server)",
+				"pkgconfig32(egl)",
+				"pkgconfig32(libdrm)",
+				"pkgconfig32(wayland-client)",
+				"pkgconfig32(wayland-egl-backend)"
+			],
+			"depends": [
+				"egl-wayland",
+				"soname(libc.so.6(386))",
+				"soname(libdrm.so.2(386))",
+				"soname(libwayland-client.so.0(386))",
+				"soname(libwayland-server.so.0(386))"
+			],
+			"files": [
+				"/usr/lib32/libnvidia-egl-wayland.so.1",
+				"/usr/lib32/libnvidia-egl-wayland.so.1.1.17"
+			],
+			"name": "egl-wayland-32bit",
+			"provides": [
+				"soname(libnvidia-egl-wayland.so.1(386))",
+				"soname(libnvidia-egl-wayland.so.1(x86))"
+			]
+		},
+		"egl-wayland-32bit-devel": {
+			"build-depends": [
+				"pkgconfig(eglexternalplatform)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(wayland-server)",
+				"pkgconfig32(egl)",
+				"pkgconfig32(libdrm)",
+				"pkgconfig32(wayland-client)",
+				"pkgconfig32(wayland-egl-backend)"
+			],
+			"depends": [
+				"egl-wayland-32bit",
+				"egl-wayland-devel",
+				"pkgconfig(eglexternalplatform)"
+			],
+			"files": [
+				"/usr/lib32/libnvidia-egl-wayland.so",
+				"/usr/lib32/pkgconfig/wayland-eglstream.pc"
+			],
+			"name": "egl-wayland-32bit-devel",
+			"provides": [
+				"pkgconfig32(wayland-eglstream)"
+			]
+		},
+		"egl-wayland-devel": {
+			"build-depends": [
+				"pkgconfig(eglexternalplatform)",
+				"pkgconfig(wayland-protocols)",
+				"pkgconfig(wayland-scanner)",
+				"pkgconfig(wayland-server)",
+				"pkgconfig32(egl)",
+				"pkgconfig32(libdrm)",
+				"pkgconfig32(wayland-client)",
+				"pkgconfig32(wayland-egl-backend)"
 			],
 			"depends": [
 				"egl-wayland",
@@ -60,6 +113,6 @@
 		}
 	},
 	"source-name": "egl-wayland",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "1.1.17"
 }
