@@ -1,0 +1,15 @@
+name: 7zip
+version: 24.09
+release: 1
+summary: 7-Zip command-line version for Linux
+license: LGPL-2.1-or-later
+homepage: https://www.7-zip.org/
+description: |
+  7-Zip is a file archiver with a high compression ratio. This package provides the command-line version for Linux.
+upstreams:
+  - https://github.com/ip7z/7zip/archive/refs/tags/24.09.tar.gz: e4757b307925227724a2044651193664ba3d04e9ac13b8e631f1667896014bbf
+build: |
+  cd %(workdir)/CPP/7zip/Bundles/Alone2
+  %make -f makefile.gcc
+install: |
+
