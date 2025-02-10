@@ -1,7 +1,28 @@
 /** Human readable report. This is not consumed by boulder */
 {
 	"manifest-version": "0.2",
-	"packages": {},
+	"packages": {
+		"7zip": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/7za",
+				"/usr/bin/7zr",
+				"/usr/bin/7zz"
+			],
+			"name": "7zip",
+			"provides": [
+				"binary(7za)",
+				"binary(7zr)",
+				"binary(7zz)"
+			]
+		}
+	},
 	"source-name": "7zip",
 	"source-release": "1",
 	"source-version": "24.09"

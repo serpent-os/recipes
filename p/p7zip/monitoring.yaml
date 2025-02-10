@@ -1,7 +1,7 @@
 releases:
-  id: 2782
+  id: 2582
   rss: ~
 security:
   cpe:
-  - vendor: p7zip
-    product: p7zip
+  - vendor: pzip
+    product: pz7ip

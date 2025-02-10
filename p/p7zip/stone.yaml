@@ -11,10 +11,14 @@ upstreams:
 build: |
   cd %(workdir)/CPP/7zip/Bundles/Alone2
   %make -f makefile.gcc
+  cd %(workdir)/CPP/7zip/Bundles/Alone
+  %make -f makefile.gcc
+  cd %(workdir)/CPP/7zip/Bundles/Alone7z
+  %make -f makefile.gcc
 install: |
-  mkdir -p %(prefix)/bin
-  mkdir -p %(prefix)/man/man1
-  mkdir -p /mason/install
-  cp %(workdir)/CPP/7zip/Bundles/Alone2/_o/7zz %(prefix)/bin/
-
-
+  cd %(workdir)/CPP/7zip/Bundles/Alone2/_o
+  %install_bin 7zz
+  cd %(workdir)/CPP/7zip/Bundles/Alone/_o
+  %install_bin 7za
+  cd %(workdir)/CPP/7zip/Bundles/Alone7z/_o
+  %install_bin 7zr
