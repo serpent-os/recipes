@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libunwind
+version     : 1.8.1
+release     : 1
+homepage: https://www.nongnu.org/libunwind/
+upstreams   :
+    - https://github.com/libunwind/libunwind/releases/download/v1.8.1/libunwind-1.8.1.tar.gz : ddf0e32dd5fafe5283198d37e4bf9decf7ba1770b6e7e006c33e6df79e6a6157
+summary     : A portable and efficient C programming interface to determine the call-chain of a program.
+description : |
+    libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program. It is useful for debugging, profiling, and exception handling.
+license     :
+    - MIT
+setup       : |
+    mkdir -p build
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+
