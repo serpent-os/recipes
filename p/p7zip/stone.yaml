@@ -2,7 +2,7 @@ name: 7zip
 version: 24.09
 release: 1
 summary: 7-Zip command-line version for Linux
-license: LGPL-2.1-or-later
+license: LGPL-2.1-or-later and BSD 3-clause License
 homepage: https://www.7-zip.org/
 description: |
   7-Zip is a file archiver with a high compression ratio. This package provides the command-line version for Linux.
