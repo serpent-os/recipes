@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kwidgetsaddons
+version     : 6.10.0
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/kwidgetsaddons-6.10.0.tar.xz : e0fa4943d7874287fd2c2c254f1ef21edf7e573b6b19354df5fdef8cbbefe74e
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - BSD-3-Clause
+    - GPL-2.0-or-later
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - LGPL-2.1-only
+    - LGPL-2.1-or-later
+    - LGPL-3.0-or-later
+summary     : Large set of desktop widgets.
+description : |
+    Large set of desktop widgets.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    # TODO package pyside bindings, note that they need to be subpackaged. Let's wait till something needs them
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
