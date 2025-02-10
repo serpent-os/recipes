@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-breeze-icons
+version     : 6.10.0
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/breeze-icons-6.10.0.tar.xz : fe458eb957be655ea801d41f1dd3c4cfa829e7ba6040b38d69d09f6b69c31e2a
+homepage    : https://community.kde.org/Frameworks
+license     : LGPL-3.0-or-later
+summary     : Breeze icon theme
+description : |
+    Breeze-icons is a freedesktop.org compatible icon theme.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - python(lxml)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    # Separate out the icons because in the future KF7 could be providing the icon theme while we still build the KF6 library
+    - "breeze-icons":
+        paths:
+            - /usr/share/icons/
+    - "%(name)":
+        rundeps:
+            - breeze-icons
