@@ -1,0 +1,8 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {},
+	"source-name": "7zip",
+	"source-release": "1",
+	"source-version": "24.09"
+}
