@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-ki18n
+version     : 6.10.0
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/ki18n-6.10.0.tar.xz : 2f59f093f8ce340ab46c556b35c2ead2b96dfeb2ff0024c553ac8c53e9b8a11a
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - BSD-3-Clause
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - LGPL-2.1-only
+summary     : KDE Gettext-based UI text internationalization.
+description : |
+    KDE Gettext-based UI text internationalization.
+builddeps   :
+    - binary(msgmerge) # gettext
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(Qt6Qml)
+    - pkgconfig(iso-codes)
+rundeps     :
+    - binary(msgmerge)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

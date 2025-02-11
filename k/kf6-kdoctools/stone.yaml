@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kdoctools
+version     : 6.10.0
+release     : 2
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/kdoctools-6.10.0.tar.xz : 03fa98e1213235ee4d4839d16e3edb22ee56849b9ab03d140639cf9facb6b038
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - BSD-3-Clause
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+    - LGPL-2.1-only
+summary     : Create documentation from DocBook
+description : |
+    Create documentation from DocBook
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6I18n)
+    - pkgconfig(libxslt)
+    - docbook
+    - perl-uri
+rundeps     :
+    - docbook
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
