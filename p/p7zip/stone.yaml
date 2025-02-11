@@ -17,6 +17,10 @@ build: |
   %make -f makefile.gcc
   cd %(workdir)/CPP/7zip/Bundles/Alone7z
   %make -f makefile.gcc
+  cd %(workdir)/CPP/7zip/Bundles/Format7zF
+  %make -f makefile.gcc
+  cd %(workdir)/CPP/7zip/UI/Console
+  %make -f makefile.gcc
 install: |
   cd %(workdir)/CPP/7zip/Bundles/Alone2/_o
   %install_bin 7zz
@@ -24,3 +28,7 @@ install: |
   %install_bin 7za
   cd %(workdir)/CPP/7zip/Bundles/Alone7z/_o
   %install_bin 7zr
+  cd %(workdir)/CPP/7zip/Bundles/Format7zF/_o
+  %install_bin 7z.so
+  cd %(workdir)/CPP/7zip/UI/Console/_o
+  %install_bin 7z
