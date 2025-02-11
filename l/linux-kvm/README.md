@@ -1,6 +1,6 @@
 ## Kernel packaging
 
-As with any package, update your `stone.yml` to point to the latest tarball.
+As with any package, update your `stone.yaml` to point to the latest tarball.
 It is recommended you keep it somewhere local:
 
 
