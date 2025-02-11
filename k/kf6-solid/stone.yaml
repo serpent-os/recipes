@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-solid
+version     : 6.10.0
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/solid-6.10.0.tar.xz : 24892e81a3047f753519dbd384b47635c5a2543d8ee0bf3c299b0fcfef318e8c
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - BSD-3-Clause
+    - LGPL-2.1-only
+    - LGPL-2.1-or-later
+summary     : Desktop hardware abstraction.
+description : |
+    Desktop hardware abstraction.
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - pkgconfig(mount)
+    # TODO add imobiledevice and plist for IOS support
+    # TODO add mediaplayerinfo
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

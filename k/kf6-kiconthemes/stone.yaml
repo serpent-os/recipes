@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kiconthemes
+version     : 6.10.0
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.10/kiconthemes-6.10.0.tar.xz : 15807e785183c048810af0141b3a560085f2bbf00f3a21fe962eb37a673f9314
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - GPL-2.0-only
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - LGPL-2.1-only
+summary     : Icon GUI utilities.
+description : |
+    Icon GUI utilities.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6BreezeIcons)
+    - cmake(KF6ColorScheme)
+    - cmake(KF6I18n)
+    - cmake(KF6WidgetsAddons)
+    - cmake(Qt6Qml)
+    - cmake(Qt6Svg)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

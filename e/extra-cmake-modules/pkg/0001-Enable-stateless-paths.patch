@@ -1,0 +1,84 @@
+From 79c29786332ab8b6a63a18f46b168ca11e8d5fe3 Mon Sep 17 00:00:00 2001
+From: "F. von Gellhorn" <flinux@vongellhorn.ch>
+Date: Sat, 18 Dec 2021 14:14:32 +0100
+Subject: [PATCH] Enable stateless paths
+
+Set default place files in /usr/share/xdg
+    - correct placement for xdg and xdg/autostart
+    - use absolute paths for compatibility
+Use better libexec dir /usr/share/kf5 for KF5
+---
+ kde-modules/KDEInstallDirs5.cmake      | 4 ++--
+ kde-modules/KDEInstallDirs6.cmake      | 4 ++--
+ kde-modules/KDEInstallDirsCommon.cmake | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/kde-modules/KDEInstallDirs5.cmake b/kde-modules/KDEInstallDirs5.cmake
+index 5a0354e0..f17ec814 100644
+--- a/kde-modules/KDEInstallDirs5.cmake
++++ b/kde-modules/KDEInstallDirs5.cmake
+@@ -140,7 +140,7 @@ deprecated variable name in square brackets):
+     (``etc``, or ``/etc`` if ``CMAKE_INSTALL_PREFIX`` is ``/usr``)
+     [``SYSCONF_INSTALL_DIR``]
+ ``CONFDIR``
+-    application configuration files (``SYSCONFDIR/xdg``)
++    application configuration files (``/usr/share/xdg``)
+     [``CONFIG_INSTALL_DIR``]
+ ``AUTOSTARTDIR``
+     autostart files (``CONFDIR/autostart``) [``AUTOSTART_INSTALL_DIR``]
+@@ -231,7 +231,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/KDEInstallDirsCommon.cmake)
+ if(WIN32)
+     _define_non_cache(LIBEXECDIR_KF5 "${CMAKE_INSTALL_LIBEXECDIR}")
+ else()
+-    _define_non_cache(LIBEXECDIR_KF5 "${CMAKE_INSTALL_LIBEXECDIR}/kf5")
++    _define_non_cache(LIBEXECDIR_KF5 "${CMAKE_INSTALL_LIBEXECDIR}")
+ endif()
+ if(NOT KDE_INSTALL_DIRS_NO_DEPRECATED)
+     set(KF5_LIBEXEC_INSTALL_DIR "${CMAKE_INSTALL_LIBEXECDIR_KF5}")
+diff --git a/kde-modules/KDEInstallDirs6.cmake b/kde-modules/KDEInstallDirs6.cmake
+index 4428de9c..0411ae4c 100644
+--- a/kde-modules/KDEInstallDirs6.cmake
++++ b/kde-modules/KDEInstallDirs6.cmake
+@@ -118,7 +118,7 @@ where ``<dir>`` is one of (default values in parentheses):
+     read-only single-machine data
+     (``etc``, or ``/etc`` if ``CMAKE_INSTALL_PREFIX`` is ``/usr``)
+ ``CONFDIR``
+-    application configuration files (``SYSCONFDIR/xdg``)
++    application configuration files (``/usr/share/xdg``)
+ ``AUTOSTARTDIR``
+     autostart files (``CONFDIR/autostart``)
+ ``LOGGINGCATEGORIESDIR``
+@@ -192,7 +192,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/KDEInstallDirsCommon.cmake)
+ if(WIN32)
+     _define_non_cache(LIBEXECDIR_KF "${CMAKE_INSTALL_LIBEXECDIR}")
+ else()
+-    _define_non_cache(LIBEXECDIR_KF "${CMAKE_INSTALL_LIBEXECDIR}/kf6")
++    _define_non_cache(LIBEXECDIR_KF "${CMAKE_INSTALL_LIBEXECDIR}")
+ endif()
+ 
+ include(${ECM_MODULE_DIR}/ECMQueryQt.cmake)
+diff --git a/kde-modules/KDEInstallDirsCommon.cmake b/kde-modules/KDEInstallDirsCommon.cmake
+index cf266719..b2b7dd5f 100644
+--- a/kde-modules/KDEInstallDirsCommon.cmake
++++ b/kde-modules/KDEInstallDirsCommon.cmake
+@@ -248,7 +248,7 @@ if(WIN32)
+         "executables for internal use by programs and libraries"
+         LIBEXEC_INSTALL_DIR)
+ else()
+-    _define_relative(LIBEXECDIR LIBDIR "libexec"
++    _define_relative(LIBEXECDIR LIBDIR "kf5"
+         "executables for internal use by programs and libraries"
+         LIBEXEC_INSTALL_DIR)
+ endif()
+@@ -363,7 +363,7 @@ endif()
+ _define_absolute(SYSCONFDIR "${_default_sysconf_dir}"
+     "read-only single-machine data"
+     SYSCONF_INSTALL_DIR)
+-_define_relative(CONFDIR SYSCONFDIR "xdg"
++_define_relative(CONFDIR DATAROOTDIR "xdg"
+     "application configuration files"
+     CONFIG_INSTALL_DIR)
+ _define_relative(AUTOSTARTDIR CONFDIR "autostart"
+-- 
+2.43.0
+

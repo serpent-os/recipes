@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : plasma-wayland-protocols
+version     : 1.16.0
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.16.0.tar.xz : da3fbbe3fa5603f9dc9aabe948a6fc8c3b451edd1958138628e96c83649c1f16
+homepage    : https://kde.org/plasma-desktop
+license     : LGPL-2.1-or-later
+summary     : Persistent platform-independent application settings.
+description : |
+    Persistent platform-independent application settings.
+builddeps   :
+    - cmake(ECM)
+    - pkgconfig(wayland-scanner)
+setup       : |
+    # For whatever reason one of the cmake options added by the cmake_kf6 macro tries to make this pull in qt5
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
