@@ -11,15 +11,20 @@
 				"soname(libunwind.so.1(x86_64))"
 			],
 			"files": [
+				"/usr/bin/7z",
+				"/usr/bin/7z.so",
 				"/usr/bin/7za",
 				"/usr/bin/7zr",
 				"/usr/bin/7zz"
 			],
 			"name": "7zip",
 			"provides": [
+				"binary(7z)",
+				"binary(7z.so)",
 				"binary(7za)",
 				"binary(7zr)",
-				"binary(7zz)"
+				"binary(7zz)",
+				"soname(7z.so(x86_64))"
 			]
 		}
 	},
