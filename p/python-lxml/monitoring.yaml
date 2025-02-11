@@ -1,0 +1,7 @@
+releases:
+  id: 3914
+  rss: https://pypi.org/rss/project/lxml/releases.xml
+security:
+  cpe:
+  - vendor: lxml
+    product: lxml

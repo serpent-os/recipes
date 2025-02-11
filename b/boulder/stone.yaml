@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : boulder
-version     : 0.25.1+git.cb1207e
-release     : 82
+version     : 0.25.1+git.fe4f9a7
+release     : 83
 summary     : Package creation tool for Serpent OS
 license     : MPL-2.0
 homepage    : https://github.com/serpent-os/tools
@@ -13,7 +13,7 @@ description : |
     Extremely flexible and powerful, yet simple to use, package build
     tool for the Serpent OS project.
 upstreams   :
-    - git|https://github.com/serpent-os/tools.git : cb1207e88abcef7c739d4f20b2f10285626be38b
+    - git|https://github.com/serpent-os/tools.git : fe4f9a74d0e043f12acbc049a39bbcf2e65720d6
 builddeps   :
     - binary(cargo)
 rundeps     :
