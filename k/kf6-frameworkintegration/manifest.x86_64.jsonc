@@ -1,0 +1,72 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"kf6-frameworkintegration": {
+			"build-depends": [
+				"cmake(AppStreamQt)",
+				"cmake(ECM)",
+				"cmake(KF6ColorScheme)",
+				"cmake(KF6Config)",
+				"cmake(KF6IconThemes)",
+				"cmake(KF6Notifications)",
+				"cmake(KF6WidgetsAddons)"
+			],
+			"depends": [
+				"soname(libKF6ColorScheme.so.6(x86_64))",
+				"soname(libKF6ConfigCore.so.6(x86_64))",
+				"soname(libKF6IconThemes.so.6(x86_64))",
+				"soname(libKF6Notifications.so.6(x86_64))",
+				"soname(libKF6WidgetsAddons.so.6(x86_64))",
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
+				"soname(libQt6Widgets.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libKF6Style.so.6",
+				"/usr/lib/libKF6Style.so.6.10.0",
+				"/usr/lib/qt6/plugins/kf6/FrameworkIntegrationPlugin.so",
+				"/usr/share/knotifications6/plasma_workspace.notifyrc"
+			],
+			"name": "kf6-frameworkintegration",
+			"provides": [
+				"soname(libKF6Style.so.6(x86_64))",
+				"soname(qt6/plugins/kf6/FrameworkIntegrationPlugin.so(x86_64))"
+			]
+		},
+		"kf6-frameworkintegration-devel": {
+			"build-depends": [
+				"cmake(AppStreamQt)",
+				"cmake(ECM)",
+				"cmake(KF6ColorScheme)",
+				"cmake(KF6Config)",
+				"cmake(KF6IconThemes)",
+				"cmake(KF6Notifications)",
+				"cmake(KF6WidgetsAddons)"
+			],
+			"depends": [
+				"kf6-frameworkintegration"
+			],
+			"files": [
+				"/usr/include/KF6/FrameworkIntegration/frameworkintegration_version.h",
+				"/usr/include/KF6/KStyle/KStyle",
+				"/usr/include/KF6/KStyle/kstyle.h",
+				"/usr/include/KF6/KStyle/kstyle_export.h",
+				"/usr/lib/cmake/KF6FrameworkIntegration/KF6FrameworkIntegrationConfig.cmake",
+				"/usr/lib/cmake/KF6FrameworkIntegration/KF6FrameworkIntegrationConfigVersion.cmake",
+				"/usr/lib/cmake/KF6FrameworkIntegration/KF6FrameworkIntegrationTargets-release.cmake",
+				"/usr/lib/cmake/KF6FrameworkIntegration/KF6FrameworkIntegrationTargets.cmake",
+				"/usr/lib/libKF6Style.so"
+			],
+			"name": "kf6-frameworkintegration-devel",
+			"provides": [
+				"cmake(KF6FrameworkIntegration)"
+			]
+		}
+	},
+	"source-name": "kf6-frameworkintegration",
+	"source-release": "1",
+	"source-version": "6.10.0"
+}

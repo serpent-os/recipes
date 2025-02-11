@@ -1,0 +1,7 @@
+releases:
+  id: 8762
+  rss: https://invent.kde.org/frameworks/kconfig/-/tags?format=atom
+security:
+  cpe:
+  - vendor: kde
+    product: kconfig
