@@ -1,0 +1,7 @@
+releases:
+  id: 2582
+  rss: ~
+security:
+  cpe:
+  - vendor: pzip
+    product: pz7ip
