@@ -5,7 +5,7 @@
 #
 name       : sdl2-ttf
 version    : 2.24.0
-release    : 2
+release    : 3
 upstreams  :
     - https://github.com/libsdl-org/SDL_ttf/archive/refs/tags/release-2.24.0.tar.gz : 2c45241a56203a59d66ec6b4eae9457e5675fc609376566a257391fd29d341a2
 homepage   : https://www.libsdl.org/
@@ -16,9 +16,11 @@ description: |
 builddeps  :
     - pkgconfig(freetype2)
     - pkgconfig(harfbuzz)
-    - pkgconfig(sdl2)
+    - pkgconfig(sdl2_compat)
     - pkgconfig(xshmfence)
 setup      : |
+    %patch %(pkgdir)/0001-pkgconfig-Require-sdl2_compat.patch
+
     %configure --disable-static --enable-freetype-builtin=no --enable-harfbuzz-builtin=no
 build      : |
     %make
