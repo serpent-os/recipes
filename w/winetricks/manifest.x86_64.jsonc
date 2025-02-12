@@ -1,0 +1,23 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"winetricks": {
+			"files": [
+				"/usr/bin/winetricks",
+				"/usr/share/applications/winetricks.desktop",
+				"/usr/share/bash-completion/completions/winetricks",
+				"/usr/share/icons/hicolor/scalable/apps/winetricks.svg",
+				"/usr/share/man/man1/winetricks.1",
+				"/usr/share/metainfo/io.github.winetricks.Winetricks.metainfo.xml"
+			],
+			"name": "winetricks",
+			"provides": [
+				"binary(winetricks)"
+			]
+		}
+	},
+	"source-name": "winetricks",
+	"source-release": "1",
+	"source-version": "20250102"
+}
