@@ -1,6 +1,6 @@
 releases:
   id: 4781
-  rss: ~
+  rss: https://github.com/libsdl-org/SDL_image/releases.atom
 security:
   cpe:
   - vendor: libsdl

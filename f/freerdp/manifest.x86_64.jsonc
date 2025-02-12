@@ -19,7 +19,7 @@
 				"pkgconfig(mit-krb5)",
 				"pkgconfig(openssl)",
 				"pkgconfig(opus)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(wayland-scanner)",
 				"pkgconfig(x11)",
 				"pkgconfig(xcursor)",
@@ -118,6 +118,9 @@
 				"binary(winpr-makecert)",
 				"binary(wlfreerdp)",
 				"binary(xfreerdp)",
+				"soname(freerdp3/proxy/proxy-bitmap-filter-plugin.so(x86_64))",
+				"soname(freerdp3/proxy/proxy-demo-plugin.so(x86_64))",
+				"soname(freerdp3/proxy/proxy-dyn-channel-dump-plugin.so(x86_64))",
 				"soname(libfreerdp-client3.so.3(x86_64))",
 				"soname(libfreerdp-server-proxy3.so.3(x86_64))",
 				"soname(libfreerdp-server3.so.3(x86_64))",
@@ -127,10 +130,7 @@
 				"soname(librdtk0.so.0(x86_64))",
 				"soname(libuwac0.so.0(x86_64))",
 				"soname(libwinpr-tools3.so.3(x86_64))",
-				"soname(libwinpr3.so.3(x86_64))",
-				"soname(proxy-bitmap-filter-plugin.so(x86_64))",
-				"soname(proxy-demo-plugin.so(x86_64))",
-				"soname(proxy-dyn-channel-dump-plugin.so(x86_64))"
+				"soname(libwinpr3.so.3(x86_64))"
 			]
 		},
 		"freerdp-devel": {
@@ -150,7 +150,7 @@
 				"pkgconfig(mit-krb5)",
 				"pkgconfig(openssl)",
 				"pkgconfig(opus)",
-				"pkgconfig(sdl2)",
+				"pkgconfig(sdl2_compat)",
 				"pkgconfig(wayland-scanner)",
 				"pkgconfig(x11)",
 				"pkgconfig(xcursor)",
@@ -517,6 +517,6 @@
 		}
 	},
 	"source-name": "freerdp",
-	"source-release": "1",
+	"source-release": "2",
 	"source-version": "3.7.0"
 }
