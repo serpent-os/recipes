@@ -17,8 +17,7 @@
 		},
 		"zlib-32bit": {
 			"depends": [
-				"soname(libc.so.6(386))",
-				"zlib"
+				"soname(libc.so.6(386))"
 			],
 			"files": [
 				"/usr/lib32/libz.so.1",
@@ -69,9 +68,43 @@
 				"cmake(zlib)",
 				"pkgconfig(zlib)"
 			]
+		},
+		"zlib-ng": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libz-ng.so.2",
+				"/usr/lib/libz-ng.so.2.2.4"
+			],
+			"name": "zlib-ng",
+			"provides": [
+				"soname(libz-ng.so.2(x86_64))"
+			]
+		},
+		"zlib-ng-devel": {
+			"depends": [
+				"zlib-ng"
+			],
+			"files": [
+				"/usr/include/zconf-ng.h",
+				"/usr/include/zlib-ng.h",
+				"/usr/include/zlib_name_mangling-ng.h",
+				"/usr/lib/cmake/zlib-ng/zlib-ng-config-version.cmake",
+				"/usr/lib/cmake/zlib-ng/zlib-ng-config.cmake",
+				"/usr/lib/cmake/zlib-ng/zlib-ng-release.cmake",
+				"/usr/lib/cmake/zlib-ng/zlib-ng.cmake",
+				"/usr/lib/libz-ng.so",
+				"/usr/lib/pkgconfig/zlib-ng.pc"
+			],
+			"name": "zlib-ng-devel",
+			"provides": [
+				"cmake(zlib-ng)",
+				"pkgconfig(zlib-ng)"
+			]
 		}
 	},
-	"source-name": "zlib",
-	"source-release": "16",
-	"source-version": "2.2.3"
+	"source-name": "zlib-ng",
+	"source-release": "17",
+	"source-version": "2.2.4"
 }

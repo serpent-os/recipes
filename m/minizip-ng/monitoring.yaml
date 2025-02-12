@@ -1,0 +1,7 @@
+releases:
+  id: 301509
+  rss: https://github.com/zlib-ng/minizip-ng/releases.atom
+security:
+  cpe:
+  - vendor: minizip_project
+    product: minizip

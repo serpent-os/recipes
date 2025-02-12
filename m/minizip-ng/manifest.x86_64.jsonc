@@ -1,0 +1,146 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"minizip": {
+			"build-depends": [
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib-ng)"
+			],
+			"depends": [
+				"soname(libbz2.so.1.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
+				"soname(libz-ng.so.2(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libminizip.so.1",
+				"/usr/lib/libminizip.so.4.0.8"
+			],
+			"name": "minizip",
+			"provides": [
+				"soname(libminizip.so.1(x86_64))"
+			]
+		},
+		"minizip-devel": {
+			"build-depends": [
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib-ng)"
+			],
+			"depends": [
+				"minizip",
+				"pkgconfig(zlib-ng)"
+			],
+			"files": [
+				"/usr/include/minizip/ioapi.h",
+				"/usr/include/minizip/mz.h",
+				"/usr/include/minizip/mz_crypt.h",
+				"/usr/include/minizip/mz_os.h",
+				"/usr/include/minizip/mz_strm.h",
+				"/usr/include/minizip/mz_strm_buf.h",
+				"/usr/include/minizip/mz_strm_bzip.h",
+				"/usr/include/minizip/mz_strm_lzma.h",
+				"/usr/include/minizip/mz_strm_mem.h",
+				"/usr/include/minizip/mz_strm_os.h",
+				"/usr/include/minizip/mz_strm_pkcrypt.h",
+				"/usr/include/minizip/mz_strm_split.h",
+				"/usr/include/minizip/mz_strm_wzaes.h",
+				"/usr/include/minizip/mz_strm_zlib.h",
+				"/usr/include/minizip/mz_strm_zstd.h",
+				"/usr/include/minizip/mz_zip.h",
+				"/usr/include/minizip/mz_zip_rw.h",
+				"/usr/include/minizip/unzip.h",
+				"/usr/include/minizip/zip.h",
+				"/usr/lib/cmake/minizip/minizip-config-version.cmake",
+				"/usr/lib/cmake/minizip/minizip-config.cmake",
+				"/usr/lib/cmake/minizip/minizip-release.cmake",
+				"/usr/lib/cmake/minizip/minizip.cmake",
+				"/usr/lib/libminizip.so",
+				"/usr/lib/pkgconfig/minizip.pc"
+			],
+			"name": "minizip-devel",
+			"provides": [
+				"cmake(minizip)",
+				"pkgconfig(minizip)"
+			]
+		},
+		"minizip-ng": {
+			"build-depends": [
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib-ng)"
+			],
+			"depends": [
+				"soname(libbz2.so.1.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(liblzma.so.5(x86_64))",
+				"soname(libz-ng.so.2(x86_64))",
+				"soname(libzstd.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libminizip-ng.so.4",
+				"/usr/lib/libminizip-ng.so.4.0.8"
+			],
+			"name": "minizip-ng",
+			"provides": [
+				"soname(libminizip-ng.so.4(x86_64))"
+			]
+		},
+		"minizip-ng-devel": {
+			"build-depends": [
+				"pkgconfig(bzip2)",
+				"pkgconfig(libcrypto)",
+				"pkgconfig(liblzma)",
+				"pkgconfig(libzstd)",
+				"pkgconfig(zlib-ng)"
+			],
+			"depends": [
+				"minizip-ng",
+				"pkgconfig(zlib-ng)"
+			],
+			"files": [
+				"/usr/include/minizip-ng/mz.h",
+				"/usr/include/minizip-ng/mz_crypt.h",
+				"/usr/include/minizip-ng/mz_os.h",
+				"/usr/include/minizip-ng/mz_strm.h",
+				"/usr/include/minizip-ng/mz_strm_buf.h",
+				"/usr/include/minizip-ng/mz_strm_bzip.h",
+				"/usr/include/minizip-ng/mz_strm_lzma.h",
+				"/usr/include/minizip-ng/mz_strm_mem.h",
+				"/usr/include/minizip-ng/mz_strm_os.h",
+				"/usr/include/minizip-ng/mz_strm_pkcrypt.h",
+				"/usr/include/minizip-ng/mz_strm_split.h",
+				"/usr/include/minizip-ng/mz_strm_wzaes.h",
+				"/usr/include/minizip-ng/mz_strm_zlib.h",
+				"/usr/include/minizip-ng/mz_strm_zstd.h",
+				"/usr/include/minizip-ng/mz_zip.h",
+				"/usr/include/minizip-ng/mz_zip_rw.h",
+				"/usr/lib/cmake/minizip-ng/minizip-ng-config-version.cmake",
+				"/usr/lib/cmake/minizip-ng/minizip-ng-config.cmake",
+				"/usr/lib/cmake/minizip-ng/minizip-ng-release.cmake",
+				"/usr/lib/cmake/minizip-ng/minizip-ng.cmake",
+				"/usr/lib/libminizip-ng.so",
+				"/usr/lib/pkgconfig/minizip-ng.pc"
+			],
+			"name": "minizip-ng-devel",
+			"provides": [
+				"cmake(minizip-ng)",
+				"pkgconfig(minizip-ng)"
+			]
+		}
+	},
+	"source-name": "minizip-ng",
+	"source-release": "1",
+	"source-version": "4.0.8"
+}
