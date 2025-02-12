@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qtkeychain
+version     : 0.15.0
+release     : 1
+homepage    : https://www.qt.io
+upstreams   :
+    - https://github.com/frankosterfeld/qtkeychain/archive/refs/tags/0.15.0.tar.gz : f4254dc8f0933b06d90672d683eab08ef770acd8336e44dfa030ce041dc2ca22
+summary     : QtKeychain is a Qt API to store passwords and other secret data securely
+description : |
+    QtKeychain is a Qt API to store passwords and other secret data securely
+license     : BSD-3-Clause
+builddeps   :
+    - cmake(Qt6LinguistTools)
+    - pkgconfig(libsecret-1)
+setup       : |
+    %cmake -DBUILD_WITH_QT6=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-qt6":
+        summary: QtKeychain is a Qt API to store passwords and other secret data securely - Qt6 bindings
+        description: QtKeychain is a Qt API to store passwords and other secret data securely - Qt6 bindings
+        paths:
+            - /usr/lib/libqt6keychain.so.*
+            - /usr/share/qt6keychain
+    - "%(name)-qt6-devel":
+        summary: Development files for %(name)-qt6
+        description: Development files for %(name)-qt6
+        paths:
+            - /usr/include/qt6keychain
+            - /usr/lib/cmake/Qt6Keychain
+            - /usr/lib/libqt6keychain.so
+            - /usr/lib/qt6/mkspecs/
+        rundeps:
+            - "%(name)-qt6"
