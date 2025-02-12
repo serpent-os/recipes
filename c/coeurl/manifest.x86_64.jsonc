@@ -1,0 +1,59 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"coeurl": {
+			"build-depends": [
+				"pkgconfig(libcurl)",
+				"pkgconfig(libevent_core)",
+				"pkgconfig(spdlog)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcurl.so.4(x86_64))",
+				"soname(libevent_core-2.1.so.7(x86_64))",
+				"soname(libevent_pthreads-2.1.so.7(x86_64))",
+				"soname(libfmt.so.10(x86_64))",
+				"soname(libspdlog.so.1.12(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libcoeurl.so.0.3"
+			],
+			"name": "coeurl",
+			"provides": [
+				"soname(libcoeurl.so.0.3(x86_64))"
+			]
+		},
+		"coeurl-devel": {
+			"build-depends": [
+				"pkgconfig(libcurl)",
+				"pkgconfig(libevent_core)",
+				"pkgconfig(spdlog)"
+			],
+			"depends": [
+				"coeurl",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libevent_core)",
+				"pkgconfig(libevent_pthreads)",
+				"pkgconfig(spdlog)"
+			],
+			"files": [
+				"/usr/include/coeurl/client.hpp",
+				"/usr/include/coeurl/errors.hpp",
+				"/usr/include/coeurl/headers.hpp",
+				"/usr/include/coeurl/request.hpp",
+				"/usr/lib/libcoeurl.so",
+				"/usr/lib/pkgconfig/coeurl.pc"
+			],
+			"name": "coeurl-devel",
+			"provides": [
+				"pkgconfig(coeurl)"
+			]
+		}
+	},
+	"source-name": "coeurl",
+	"source-release": "1",
+	"source-version": "0.3.1"
+}
