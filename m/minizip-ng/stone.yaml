@@ -1,0 +1,51 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : minizip-ng
+version     : 4.0.8
+release     : 1
+summary     : Fork of the zlib zip library
+license     : Zlib
+homepage    : https://github.com/zlib-ng/minizip-ng
+description : |
+    Fork of the popular zip manipulation library found in the zlib distribution
+upstreams   :
+    - https://github.com/zlib-ng/minizip-ng/archive/refs/tags/4.0.8.tar.gz : c3e9ceab2bec26cb72eba1cf46d0e2c7cad5d2fe3adf5df77e17d6bbfea4ec8f
+builddeps   :
+    - pkgconfig(bzip2)
+    - pkgconfig(libcrypto)
+    - pkgconfig(liblzma)
+    - pkgconfig(libzstd)
+    - pkgconfig(zlib-ng)
+tuning      :
+    - lto : full
+setup       : |
+    %cmake -B compat \
+        -DBUILD_SHARED_LIBS=ON \
+        -DMZ_COMPAT=ON \
+        -DMZ_LIBBSD=OFF
+
+    %cmake -B ng \
+        -DBUILD_SHARED_LIBS=ON \
+        -DMZ_COMPAT=OFF \
+        -DMZ_LIBBSD=OFF
+build       : |
+    %cmake_build -C compat
+    %cmake_build -C ng
+install     : |
+    %cmake_install -C compat
+    %cmake_install -C ng
+packages    :
+    - "minizip":
+        paths:
+            - /usr/lib/libminizip.so.*
+    - "minizip-devel":
+        paths:
+            - /usr/include/minizip
+            - /usr/lib/cmake/minizip
+            - /usr/lib/libminizip.so
+            - /usr/lib/pkgconfig/minizip.pc
+        rundeps:
+            - minizip
