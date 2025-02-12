@@ -1,0 +1,20 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gamescope-session-steam-plus": {
+			"depends": [
+				"gamescope-session-steam"
+			],
+			"files": [
+				"/usr/share/gamescope-session-plus/sessions.d/steam-plus",
+				"/usr/share/wayland-sessions/gamepadui-with-qam-session.desktop",
+				"/usr/share/wayland-sessions/gamescope-session-steam-plus.desktop"
+			],
+			"name": "gamescope-session-steam-plus"
+		}
+	},
+	"source-name": "gamescope-session-steam-plus",
+	"source-release": "1",
+	"source-version": "r1.6835776"
+}

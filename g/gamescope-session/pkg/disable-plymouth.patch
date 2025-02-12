@@ -1,0 +1,13 @@
+diff -Npur gamescope-session/usr/bin/gamescope-session-plus gamescope-session/usr/bin/gamescope-session-plus
+--- gamescope-session/usr/bin/gamescope-session-plus	2024-03-04 13:54:37.783799532 +0700
++++ gamescope-session/usr/bin/gamescope-session-plus	2024-03-04 13:53:07.546086532 +0700
+@@ -4,6 +4,9 @@ declare -r CLIENT=$1
+ 
+ # Script to start the session used by Valve with minor tweaks for ChimeraOS.
+ 
++# Make sure plymouth is killed
++[[ -e /usr/bin/plymouth ]] && /usr/bin/plymouth quit --retain-splash
++
+ # Window managers sets this to wayland but apps using Gamescope must use x11
+ export XDG_SESSION_TYPE=x11
+ 
