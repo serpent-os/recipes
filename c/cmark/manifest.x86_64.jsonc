@@ -1,0 +1,47 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"cmark": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cmark",
+				"/usr/lib/libcmark.so.0.31.1",
+				"/usr/share/man/man1/cmark.1"
+			],
+			"name": "cmark",
+			"provides": [
+				"binary(cmark)",
+				"soname(libcmark.so.0.31.1(x86_64))"
+			]
+		},
+		"cmark-devel": {
+			"depends": [
+				"cmark"
+			],
+			"files": [
+				"/usr/include/cmark.h",
+				"/usr/include/cmark_export.h",
+				"/usr/include/cmark_version.h",
+				"/usr/lib/cmake/cmark/cmark-config-version.cmake",
+				"/usr/lib/cmake/cmark/cmark-config.cmake",
+				"/usr/lib/cmake/cmark/cmark-targets-release.cmake",
+				"/usr/lib/cmake/cmark/cmark-targets.cmake",
+				"/usr/lib/libcmark.so",
+				"/usr/lib/pkgconfig/libcmark.pc",
+				"/usr/share/man/man3/cmark.3"
+			],
+			"name": "cmark-devel",
+			"provides": [
+				"cmake(cmark)",
+				"pkgconfig(libcmark)"
+			]
+		}
+	},
+	"source-name": "cmark",
+	"source-release": "1",
+	"source-version": "0.31.1"
+}
