@@ -1,0 +1,64 @@
+diff '--color=auto' -crB a/doc/Makefile.in b/doc/Makefile.in
+*** a/doc/Makefile.in	2025-02-10 15:54:14.321864419 +0100
+--- b/doc/Makefile.in	2025-02-10 21:15:38.999659187 +0100
+***************
+*** 114,125 ****
+  	$(MKDIR) $(man1dir) $(man7dir) $(man8dir) $(infodir)	
+  
+  install:	all installdirs
+! 	$(INSTALL_DATA) -m 644 mev.1          $(man1dir)
+! 	$(INSTALL_DATA) -m 644 mouse-test.1   $(man1dir)
+! 	$(INSTALL_DATA) -m 644 gpm-root.1     $(man1dir)
+! 	$(INSTALL_DATA) -m 644 gpm-types.7    $(man7dir)
+! 	$(INSTALL_DATA) -m 644 gpm.8          $(man8dir)
+! 	$(INSTALL_DATA) -m 644 $(srcdir)/gpm.info       $(infodir)
+  	# Use install-info if available
+  	-if $(SHELL) -c 'install-info --version' >/dev/null 2>&1; then \
+  	  if [ -f $(infodir)/dir ] ; then \
+--- 114,125 ----
+  	$(MKDIR) $(man1dir) $(man7dir) $(man8dir) $(infodir)	
+  
+  install:	all installdirs
+! 	$(INSTALL_DATA) mev.1          $(man1dir)
+! 	$(INSTALL_DATA) mouse-test.1   $(man1dir)
+! 	$(INSTALL_DATA) gpm-root.1     $(man1dir)
+! 	$(INSTALL_DATA) gpm-types.7    $(man7dir)
+! 	$(INSTALL_DATA) gpm.8          $(man8dir)
+! 	$(INSTALL_DATA) $(srcdir)/gpm.info       $(infodir)
+  	# Use install-info if available
+  	-if $(SHELL) -c 'install-info --version' >/dev/null 2>&1; then \
+  	  if [ -f $(infodir)/dir ] ; then \
+diff '--color=auto' -crB a/src/Makefile.in b/src/Makefile.in
+*** a/src/Makefile.in	2025-02-10 15:54:14.325864442 +0100
+--- b/src/Makefile.in	2025-02-10 21:13:12.525678923 +0100
+***************
+*** 106,119 ****
+  install:	check 
+  	$(INSTALL_PROGRAM) gpm $(sbindir)/gpm
+  	if [ -f lib/libgpm.a ] ; then \
+! 	$(INSTALL_DATA) -m 644 lib/libgpm.a $(libdir)/libgpm.a ; \
+  	fi
+! 	$(INSTALL_DATA) -m 644 $(srcdir)/headers/gpm.h $(includedir)/gpm.h
+  	# POSIX requires the range of a for loop be nonempty and Bash
+  	# 2.x goes along; unfortunately that means an additional
+  	# headache in cases like this
+  	if test "x@SHLIB@" != "x" ; then \
+! 		$(INSTALL_DATA) -m 644 lib/libgpm.so.@abi_full@ $(libdir)/libgpm.so.@abi_full@	;	\
+  		cd $(libdir) && $(LN_S) -f libgpm.so.@abi_full@ libgpm.so.@abi_lev@ 					;	\
+        echo "WARNING: We installed a lib, you should now call ldconfig" 						; 	\
+        echo "f.i.: ldconfig -n -l $(libdir)/libgpm.so.@abi_full@" 								;	\
+--- 106,119 ----
+  install:	check 
+  	$(INSTALL_PROGRAM) gpm $(sbindir)/gpm
+  	if [ -f lib/libgpm.a ] ; then \
+! 	$(INSTALL_DATA) lib/libgpm.a $(libdir)/libgpm.a ; \
+  	fi
+! 	$(INSTALL_DATA) $(srcdir)/headers/gpm.h $(includedir)/gpm.h
+  	# POSIX requires the range of a for loop be nonempty and Bash
+  	# 2.x goes along; unfortunately that means an additional
+  	# headache in cases like this
+  	if test "x@SHLIB@" != "x" ; then \
+! 		$(INSTALL_DATA) lib/libgpm.so.@abi_full@ $(libdir)/libgpm.so.@abi_full@	;	\
+  		cd $(libdir) && $(LN_S) -f libgpm.so.@abi_full@ libgpm.so.@abi_lev@ 					;	\
+        echo "WARNING: We installed a lib, you should now call ldconfig" 						; 	\
+        echo "f.i.: ldconfig -n -l $(libdir)/libgpm.so.@abi_full@" 								;	\

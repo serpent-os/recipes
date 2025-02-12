@@ -1,0 +1,20 @@
+diff '--color=auto' -crB a/src/headers/daemon.h b/src/headers/daemon.h
+*** a/src/headers/daemon.h	2025-02-10 15:54:14.332864482 +0100
+--- b/src/headers/daemon.h	2025-02-10 15:55:06.653164848 +0100
+***************
+*** 180,186 ****
+  extern Gpm_Type         mice[];
+  extern Gpm_Type         *repeated_type;
+  
+! time_t                  last_selection_time;
+  
+  
+  
+--- 180,186 ----
+  extern Gpm_Type         mice[];
+  extern Gpm_Type         *repeated_type;
+  
+! extern time_t           last_selection_time;
+  
+  
+  
