@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name: scons
+version: 4.8.1
+release: 1
+homepage: https://github.com/SCons/scons
+upstreams:
+  - https://github.com/SCons/scons/archive/refs/tags/4.8.1.tar.gz: 9735ac24f345a11c76561991e3c3bdf943f97c772ded54156243e7f4ea5f4bc5
+summary: SCons - a software construction tool
+description: |
+  SCons is an Open Source software construction tool which orchestrates the construction of software (and other tangible products such as
+  documentation files) by determining which component pieces must be built or rebuilt and invoking the necessary commands to build them.
+license: MIT
+rundeps:
+  - binary(python3)
+build: |
+  %pyproject_build
+install: |
+  %python_install
