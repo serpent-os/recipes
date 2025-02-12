@@ -1,0 +1,18 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : winetricks
+version     : 20250102
+release     : 1
+homepage    : https://github.com/Winetricks/winetricks
+upstreams   :
+    - https://github.com/Winetricks/winetricks/archive/refs/tags/20250102.tar.gz : 24d339806e3309274ee70743d76ff7b965fef5a534c001916d387c924eebe42e
+summary     : Winetricks
+description : |
+    Winetricks is an easy way to work around problems in Wine.
+license     :
+    - lgpl
+install     : |
+    %make_install \
