@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"lmdbxx": {
+			"depends": [
+				"pkgconfig(lmdb)"
+			],
+			"files": [
+				"/usr/include/lmdb++.h"
+			],
+			"name": "lmdbxx"
+		}
+	},
+	"source-name": "lmdbxx",
+	"source-release": "1",
+	"source-version": "1.0.0"
+}

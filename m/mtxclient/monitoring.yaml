@@ -1,0 +1,6 @@
+releases:
+  id: 18303
+  rss: https://github.com/Nheko-Reborn/mtxclient/releases.atom
+security:
+  # last checked 2024/02/12
+  cpe: ~

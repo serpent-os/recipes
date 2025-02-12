@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qt6-multimedia
+version     : 6.8.2
+release     : 1
+homepage    : https://www.qt.io
+upstreams   :
+    - https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtmultimedia-everywhere-src-6.8.2.tar.xz : 34f561fdc07b158bcc4ad040b596fc6086c48908060e854b473b557e4feb1569
+summary     : Qt6 Multimedia Components
+description : |
+    Qt Multimedia is an essential module that provides a rich set of QML types and C++ classes to handle multimedia content. It also provides necessary APIs to access the camera and radio functionality. The included Qt Audio Engine provides types for 3D positional audio playback and content management.
+license     :
+    - GFDL-1.3-or-later
+    - GPL-3.0-or-later
+    - LGPL-3.0-or-later
+builddeps   :
+    - pkgconfig(Qt6Quick3D)
+    - pkgconfig(Qt6ShaderTools)
+    - pkgconfig(Qt6Svg)
+    - pkgconfig(alsa)
+    - pkgconfig(gstreamer-plugins-bad-1.0)
+    - pkgconfig(libavcodec)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libpulse)
+    - pkgconfig(libva)
+    - pkgconfig(xext)
+    - pkgconfig(xrandr)
+setup       : |
+    %cmake_qt6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+    %qml_cache_qt6

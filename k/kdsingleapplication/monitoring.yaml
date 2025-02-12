@@ -1,0 +1,6 @@
+releases:
+  id: 370439
+  rss: https://github.com/KDAB/KDSingleApplication/releases.atom
+security:
+  # last checked 2024/02/12
+  cpe: ~

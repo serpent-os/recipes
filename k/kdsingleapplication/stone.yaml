@@ -1,0 +1,44 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kdsingleapplication
+version     : 1.1.0
+release     : 1
+upstreams   :
+    - https://github.com/KDAB/KDSingleApplication/releases/download/v1.1.0/kdsingleapplication-1.1.0.tar.gz : 31029fffa4873e2769c555668e8edaa6bd5721edbc445bff5e66cc6af3b9ed78
+license     : MIT
+homepage    : https://github.com/KDAB/KDSingleApplication
+summary     : KDAB's helper class for single-instance policy applications
+description : |
+    KDAB's helper class for single-instance policy applications
+tuning      :
+    - lto: full
+builddeps   :
+    - cmake(Qt6)
+setup       : |
+    %cmake -DKDSingleApplication_QT6=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-qt6":
+        summary: "KDAB's helper class for single-instance policy applications - Qt6 bindings"
+        description: |
+            KDAB's helper class for single-instance policy applications - Qt6 bindings
+        paths:
+            - /usr/lib/libkdsingleapplication-qt6.so.*
+            - /usr/share/doc/KDSingleApplication-qt6
+    - "%(name)-qt6-devel":
+        summary: "KDAB's helper class for single-instance policy applications - Qt6 bindings (development files)"
+        description: |
+            KDAB's helper class for single-instance policy applications - Qt6 bindings (development files)
+        rundeps:
+            - "%(name)-qt6"
+        paths:
+            - /usr/include/kdsingleapplication-qt6
+            - /usr/lib/cmake/KDSingleApplication-qt6
+            - /usr/lib/libkdsingleapplication-qt6.so
+            - /usr/lib/qt6/mkspecs
