@@ -5,7 +5,7 @@
 #
 name        : sddm
 version     : 0.21.0
-release     : 2
+release     : 3
 homepage    : https://github.com/sddm/sddm
 upstreams   :
     - https://github.com/sddm/sddm/archive/refs/tags/v0.21.0.tar.gz : f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf
@@ -30,6 +30,7 @@ setup       : |
     %patch %(pkgdir)/dont-error-for-logindef.patch
     %patch %(pkgdir)/make-qt6-themes-default.patch
     %patch %(pkgdir)/qt6-themes.patch
+    %patch %(pkgdir)/1969.patch
 
     %cmake -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_INSTALL_LIBEXECDIR=%(libdir)/sddm \
