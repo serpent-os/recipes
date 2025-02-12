@@ -1,0 +1,53 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"glfw": {
+			"build-depends": [
+				"binary(wayland-scanner)",
+				"pkgconfig(x11)",
+				"pkgconfig(xcursor)",
+				"pkgconfig(xi)",
+				"pkgconfig(xinerama)",
+				"pkgconfig(xkbcommon)",
+				"pkgconfig(xrandr)"
+			],
+			"files": [
+				"/usr/share/licenses/LICENSE.md"
+			],
+			"name": "glfw"
+		},
+		"glfw-devel": {
+			"build-depends": [
+				"binary(wayland-scanner)",
+				"pkgconfig(x11)",
+				"pkgconfig(xcursor)",
+				"pkgconfig(xi)",
+				"pkgconfig(xinerama)",
+				"pkgconfig(xkbcommon)",
+				"pkgconfig(xrandr)"
+			],
+			"depends": [
+				"glfw"
+			],
+			"files": [
+				"/usr/include/GLFW/glfw3.h",
+				"/usr/include/GLFW/glfw3native.h",
+				"/usr/lib/cmake/glfw3/glfw3Config.cmake",
+				"/usr/lib/cmake/glfw3/glfw3ConfigVersion.cmake",
+				"/usr/lib/cmake/glfw3/glfw3Targets-release.cmake",
+				"/usr/lib/cmake/glfw3/glfw3Targets.cmake",
+				"/usr/lib/libglfw3.a",
+				"/usr/lib/pkgconfig/glfw3.pc"
+			],
+			"name": "glfw-devel",
+			"provides": [
+				"cmake(glfw3)",
+				"pkgconfig(glfw3)"
+			]
+		}
+	},
+	"source-name": "glfw",
+	"source-release": "1",
+	"source-version": "3.4"
+}
