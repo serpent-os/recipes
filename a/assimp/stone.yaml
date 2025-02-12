@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : assimp
+version     : 5.4.3
+release     : 1
+homepage    : https://www.assimp.org/
+upstreams   :
+    - https://github.com/assimp/assimp/archive/refs/tags/v5.4.3.tar.gz : 66dfbaee288f2bc43172440a55d0235dfc7bf885dda6435c038e8000e79582cb
+summary     : Open Asset Import Library
+description : |
+    A library to import and export various 3d-model-formats including scene-post-processing to generate missing render data.
+license     : BSD-3-Clause
+builddeps   :
+    - pkgconfig(minizip)
+    - pkgconfig(zlib)
+setup       : |
+    %cmake \
+           -DASSIMP_BUILD_ZLIB=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+tuning      :
+    - lto : full
