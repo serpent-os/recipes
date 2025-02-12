@@ -1,0 +1,47 @@
+diff '--color=auto' -crB a/configure.ac b/configure.ac
+*** a/configure.ac	2025-02-09 13:28:00.247099584 +0100
+--- b/configure.ac	2025-02-09 13:29:01.699509673 +0100
+***************
+*** 153,159 ****
+  AC_SUBST(release)
+  AC_SUBST(release_date)
+  
+! CPPFLAGS="$CPPFLAGS "'-I$(srcdir) $(DEFS) -include headers/config.h -Wall -DSYSCONFDIR="\"$(sysconfdir)\"" -DSBINDIR="\"$(sbindir)\"" -D_GNU_SOURCE'
+  LDFLAGS="$LDFLAGS "'-L$(srcdir)'
+  
+  dnl AC_DEFINE_UNQUOTED(SYSCONFDIR,"$sysconfdir")
+--- 153,159 ----
+  AC_SUBST(release)
+  AC_SUBST(release_date)
+  
+! CPPFLAGS="$CPPFLAGS "'-I$(srcdir) -I$(srcdir)/headers $(DEFS) -include headers/config.h -Wall -DSYSCONFDIR="\"$(sysconfdir)\"" -DSBINDIR="\"$(sbindir)\"" -D_GNU_SOURCE'
+  LDFLAGS="$LDFLAGS "'-L$(srcdir)'
+  
+  dnl AC_DEFINE_UNQUOTED(SYSCONFDIR,"$sysconfdir")
+diff '--color=auto' -crB a/src/daemon/open_console.c b/src/daemon/open_console.c
+*** a/src/daemon/open_console.c	2025-02-09 13:28:00.237099517 +0100
+--- b/src/daemon/open_console.c	2025-02-09 13:57:10.397049831 +0100
+***************
+*** 27,36 ****
+  #include <linux/serial.h>           /* for serial console check */
+  #include <asm/ioctls.h>            /* for serial console check */
+  
+- 
+  #include "headers/message.h"        /* messaging in gpm  */
+  #include "headers/daemon.h"         /* daemon internals  */
+  
+  int open_console(const int mode)
+  {
+     int                  fd;
+--- 27,38 ----
+  #include <linux/serial.h>           /* for serial console check */
+  #include <asm/ioctls.h>            /* for serial console check */
++  #include <sys/sysmacros.h>  
++  #include <signal.h>
+  #include "headers/message.h"        /* messaging in gpm  */
+  #include "headers/daemon.h"         /* daemon internals  */
++
+
+  int open_console(const int mode)
+  {
+     int                  fd;
