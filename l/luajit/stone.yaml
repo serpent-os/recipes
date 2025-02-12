@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : luajit
+version     : 2.1-20250117
+release     : 1
+homepage    : https://luajit.org/
+upstreams   :
+    - https://github.com/openresty/luajit2/archive/refs/tags/v2.1-20250117.tar.gz : 68ff3dc2cc97969f7385679da7c9ff96738aa9cc275fa6bab77316eb3340ea8e
+summary     : Just-in-time compiler and drop-in replacement for Lua 5.1
+description : |
+    LuaJIT is a Just-In-Time (JIT) compiler for the Lua programming language.
+license     : MIT
+tuning      :
+    - icf: false
+build       : |
+    # Stupid build system
+    %make amalg \
+                CC="${CC}" \
+                TARGET_CFLAGS="${CFLAGS}" \
+                TARGET_LDFLAGS="${CFLAGS} ${LDFLAGS}" \
+                TARGET_SHLDFLAGS="${CFLAGS} ${LDFLAGS}" \
+                PREFIX=/usr \
+                BUILDMODE=dynamic \
+                TARGET_STRIP=: \
+                Q= E=@:
+install     : |
+    %make_install PREFIX=/usr

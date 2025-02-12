@@ -1,0 +1,69 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gamescope-plus
+version     : 3.15.13.plus1
+release     : 1
+homepage    : https://github.com/ChimeraOS/gamescope
+upstreams   :
+    - git|https://github.com/ChimeraOS/gamescope.git : bfdccf935a35bde65ebcbb345315b46e9ac5337b
+    - git|https://github.com/misyltoad/GamescopeShaders.git : 359e480c548fc3a38a612da2de314980c8329983
+summary     : SteamOS session compositing window manager with added patches
+description : |
+    In an embedded session usecase, gamescope does the same thing as steamcompmgr, but with less extra copies and latency. Added with patches by ChimeraOS team.
+license     :
+    - BSD-2-Clause
+    - GPL-3.0-only
+networking: yes
+builddeps   :
+    - binary(g++) # For libstdc++
+    - binary(glslangValidator)
+    - cmake(VulkanHeaders)
+    - pkgconfig(egl)
+    - pkgconfig(gbm)
+    - pkgconfig(glesv2)
+    - pkgconfig(hwdata)
+    - pkgconfig(lcms2)
+    - pkgconfig(libcap)
+    - pkgconfig(libdecor-0)
+    - pkgconfig(libeis-1.0)
+    - pkgconfig(libinput)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libseat)
+    - pkgconfig(libudev)
+    - pkgconfig(luajit)
+    - pkgconfig(pixman-1)
+    - pkgconfig(vulkan)
+    - pkgconfig(wayland-client)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(x11)
+    - pkgconfig(xcb-ewmh)
+    - pkgconfig(xcomposite)
+    - pkgconfig(xcursor)
+    - pkgconfig(xdamage)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(xmu)
+    - pkgconfig(xres)
+    - pkgconfig(xtst)
+    - pkgconfig(xwayland)
+    - pkgconfig(xxf86vm)
+    # TODO: Use system glm
+    # TODO: xcb-errors
+setup       : |
+    # Doesn't work with libc++
+    # https://github.com/ValveSoftware/gamescope/issues/1509
+    export CXXFLAGS="${CXXFLAGS} -stdlib=libstdc++"
+
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %install_dir %(installroot)/usr/share/gamescope/reshade
+    cp -rv %(workdir)/../GamescopeShaders.git/* %(installroot)/usr/share/gamescope/reshade/
+    %meson_install --skip-subprojects
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/*.so

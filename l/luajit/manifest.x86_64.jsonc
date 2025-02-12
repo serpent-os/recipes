@@ -1,0 +1,71 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"luajit": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/luajit",
+				"/usr/bin/luajit-2.1.1737090214",
+				"/usr/lib/libluajit-5.1.so.2",
+				"/usr/lib/libluajit-5.1.so.2.1.1737090214",
+				"/usr/lib/lua/5.1",
+				"/usr/share/lua/5.1",
+				"/usr/share/luajit-2.1/jit/bc.lua",
+				"/usr/share/luajit-2.1/jit/bcsave.lua",
+				"/usr/share/luajit-2.1/jit/dis_arm.lua",
+				"/usr/share/luajit-2.1/jit/dis_arm64.lua",
+				"/usr/share/luajit-2.1/jit/dis_arm64be.lua",
+				"/usr/share/luajit-2.1/jit/dis_mips.lua",
+				"/usr/share/luajit-2.1/jit/dis_mips64.lua",
+				"/usr/share/luajit-2.1/jit/dis_mips64el.lua",
+				"/usr/share/luajit-2.1/jit/dis_mips64r6.lua",
+				"/usr/share/luajit-2.1/jit/dis_mips64r6el.lua",
+				"/usr/share/luajit-2.1/jit/dis_mipsel.lua",
+				"/usr/share/luajit-2.1/jit/dis_ppc.lua",
+				"/usr/share/luajit-2.1/jit/dis_x64.lua",
+				"/usr/share/luajit-2.1/jit/dis_x86.lua",
+				"/usr/share/luajit-2.1/jit/dump.lua",
+				"/usr/share/luajit-2.1/jit/p.lua",
+				"/usr/share/luajit-2.1/jit/v.lua",
+				"/usr/share/luajit-2.1/jit/vmdef.lua",
+				"/usr/share/luajit-2.1/jit/zone.lua",
+				"/usr/share/man/man1/luajit.1"
+			],
+			"name": "luajit",
+			"provides": [
+				"binary(luajit)",
+				"binary(luajit-2.1.1737090214)",
+				"soname(libluajit-5.1.so.2(x86_64))"
+			]
+		},
+		"luajit-devel": {
+			"depends": [
+				"luajit"
+			],
+			"files": [
+				"/usr/include/luajit-2.1/lauxlib.h",
+				"/usr/include/luajit-2.1/lua.h",
+				"/usr/include/luajit-2.1/lua.hpp",
+				"/usr/include/luajit-2.1/luaconf.h",
+				"/usr/include/luajit-2.1/luajit.h",
+				"/usr/include/luajit-2.1/lualib.h",
+				"/usr/lib/libluajit-5.1.so",
+				"/usr/lib/pkgconfig/luajit.pc"
+			],
+			"name": "luajit-devel",
+			"provides": [
+				"pkgconfig(luajit)"
+			]
+		}
+	},
+	"source-name": "luajit",
+	"source-release": "1",
+	"source-version": "2.1-20250117"
+}

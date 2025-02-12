@@ -1,0 +1,7 @@
+releases:
+  id: 6444
+  rss: https://github.com/openresty/luajit2/tags.atom
+security:
+  cpe:
+  - vendor: luajit
+    product: luajit
