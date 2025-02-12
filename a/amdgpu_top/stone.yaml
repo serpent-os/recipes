@@ -1,7 +1,7 @@
 #
 # SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
 #
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: MPL-2.0
 #
 name        : amdgpu_top
 version     : 0.10.3
