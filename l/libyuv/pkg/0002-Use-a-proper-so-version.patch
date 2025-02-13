@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Peter Lemenkov <lemenkov@gmail.com>
+Date: Fri, 21 Sep 2018 12:45:55 +0200
+Subject: [PATCH 2/6] Use a proper so-version
+
+Signed-off-by: Peter Lemenkov <lemenkov@gmail.com>
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7b0284c..8b4bbf8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -183,6 +183,7 @@ add_library( ${ly_lib_static} STATIC ${ly_lib_parts})
+ add_library( ${ly_lib_shared} SHARED ${ly_lib_parts})
+ set_target_properties( ${ly_lib_shared} PROPERTIES OUTPUT_NAME "${ly_lib_name}" )
+ set_target_properties( ${ly_lib_shared} PROPERTIES PREFIX "lib" )
++set_target_properties( ${ly_lib_shared} PROPERTIES VERSION "${YUV_VERSION}" SOVERSION "${YUV_VER_MAJOR}" )
+ if(WIN32)
+   set_target_properties( ${ly_lib_shared} PROPERTIES IMPORT_PREFIX "lib" )
+ endif()

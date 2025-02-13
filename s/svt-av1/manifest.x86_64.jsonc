@@ -1,0 +1,49 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"svt-av1": {
+			"build-depends": [
+				"binary(nasm)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libSvtAv1Enc.so.2",
+				"/usr/lib/libSvtAv1Enc.so.2.3.0"
+			],
+			"name": "svt-av1",
+			"provides": [
+				"soname(libSvtAv1Enc.so.2(x86_64))"
+			]
+		},
+		"svt-av1-devel": {
+			"build-depends": [
+				"binary(nasm)"
+			],
+			"depends": [
+				"svt-av1"
+			],
+			"files": [
+				"/usr/include/svt-av1/EbDebugMacros.h",
+				"/usr/include/svt-av1/EbSvtAv1.h",
+				"/usr/include/svt-av1/EbSvtAv1Enc.h",
+				"/usr/include/svt-av1/EbSvtAv1ErrorCodes.h",
+				"/usr/include/svt-av1/EbSvtAv1ExtFrameBuf.h",
+				"/usr/include/svt-av1/EbSvtAv1Formats.h",
+				"/usr/include/svt-av1/EbSvtAv1Metadata.h",
+				"/usr/lib/libSvtAv1Enc.so",
+				"/usr/lib/pkgconfig/SvtAv1Enc.pc"
+			],
+			"name": "svt-av1-devel",
+			"provides": [
+				"pkgconfig(SvtAv1Enc)"
+			]
+		}
+	},
+	"source-name": "svt-av1",
+	"source-release": "1",
+	"source-version": "2.3.0"
+}
