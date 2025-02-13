@@ -1,0 +1,40 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libyuv
+version     : 0.0.1905 # version string comes from version.h
+release     : 1
+upstreams   :
+    - git|https://chromium.googlesource.com/libyuv/libyuv : 61354d2671d9b5c73cc964415fe25bc76cea051a
+summary     : YUV conversion and scaling functionality library
+license     : BSD-3-Clause
+homepage    : https://chromium.googlesource.com/libyuv/libyuv/
+description : |
+    YUV conversion and scaling functionality library
+builddeps   :
+    - pkgconfig(gtest)
+    - pkgconfig(libjpeg)
+tuning      :
+    - lto: full
+setup       : |
+    %patch %(pkgdir)/0001-Move-Linux-variables-to-the-top.patch
+    %patch %(pkgdir)/0002-Use-a-proper-so-version.patch
+    %patch %(pkgdir)/0003-Link-against-shared-library.patch
+    %patch %(pkgdir)/0004-Disable-static-library.patch
+    %patch %(pkgdir)/0005-Use-library-suffix-during-installation.patch
+    %patch %(pkgdir)/0006-Link-against-math-library-for-roundf.patch
+
+    %cmake \
+           -DUNIT_TEST=TRUE
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+
+    # Not used
+    rm -fv %(installroot)/usr/bin/yuvconvert
+    rmdir -v %(installroot)/usr/bin
+check       : |
+    %(builddir)/libyuv_unittest
