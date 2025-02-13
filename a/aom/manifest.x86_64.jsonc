@@ -1,0 +1,61 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"aom": {
+			"build-depends": [
+				"binary(doxygen)",
+				"binary(nasm)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/aomdec",
+				"/usr/bin/aomenc",
+				"/usr/lib/libaom.so.3",
+				"/usr/lib/libaom.so.3.12.0"
+			],
+			"name": "aom",
+			"provides": [
+				"binary(aomdec)",
+				"binary(aomenc)",
+				"soname(libaom.so.3(x86_64))"
+			]
+		},
+		"aom-devel": {
+			"build-depends": [
+				"binary(doxygen)",
+				"binary(nasm)"
+			],
+			"depends": [
+				"aom"
+			],
+			"files": [
+				"/usr/include/aom/aom.h",
+				"/usr/include/aom/aom_codec.h",
+				"/usr/include/aom/aom_decoder.h",
+				"/usr/include/aom/aom_encoder.h",
+				"/usr/include/aom/aom_external_partition.h",
+				"/usr/include/aom/aom_frame_buffer.h",
+				"/usr/include/aom/aom_image.h",
+				"/usr/include/aom/aom_integer.h",
+				"/usr/include/aom/aomcx.h",
+				"/usr/include/aom/aomdx.h",
+				"/usr/lib/libaom.so",
+				"/usr/lib/pkgconfig/aom.pc"
+			],
+			"name": "aom-devel",
+			"provides": [
+				"pkgconfig(aom)"
+			]
+		}
+	},
+	"source-name": "aom",
+	"source-release": "1",
+	"source-version": "3.12.0"
+}
