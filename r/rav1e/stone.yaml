@@ -1,0 +1,38 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : rav1e
+version     : 0.7.1
+release     : 1
+homepage    : https://crates.io/crates/rav1e
+upstreams   :
+    - https://github.com/xiph/rav1e/archive/refs/tags/v0.7.1.tar.gz : da7ae0df2b608e539de5d443c096e109442cdfa6c5e9b4014361211cf61d030c
+    - https://github.com/xiph/rav1e/releases/download/v0.7.1/Cargo.lock :
+        hash: 4482976bfb7647d707f9a01fa1a3848366988f439924b5c8ac7ab085fba24240
+        unpack: false
+summary     : The fastest and safest AV1 encoder
+description : |
+    rav1e is an AV1 video encoder. It is designed to eventually cover all use cases, though in its current form it is most suitable for cases where libaom (the reference encoder) is too slow.
+license     : BSD-2-Clause
+builddeps   :
+    - binary(cargo-cbuild)
+    - binary(nasm)
+networking  : yes
+setup       : |
+    %install_file %(sourcedir)/Cargo.lock .
+    %cargo_fetch
+build       : |
+    %cargo_build
+    cargo cbuild %(options_cargo_release) \
+                 --prefix=%(prefix)
+install     : |
+    %cargo_install
+    cargo cinstall %(options_cargo_release) \
+                   --destdir=%(installroot) \
+                   --prefix=%(prefix) \
+                   --libdir=%(libdir)
+
+    # KILL IT WITH FIRE
+    rm -v %(installroot)/%(libdir)/*.a
