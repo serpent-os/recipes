@@ -1,0 +1,69 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libyuv": {
+			"build-depends": [
+				"pkgconfig(gtest)",
+				"pkgconfig(libjpeg)"
+			],
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libjpeg.so.8(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libyuv.so.0",
+				"/usr/lib/libyuv.so.0.0.1905"
+			],
+			"name": "libyuv",
+			"provides": [
+				"soname(libyuv.so.0(x86_64))"
+			]
+		},
+		"libyuv-devel": {
+			"build-depends": [
+				"pkgconfig(gtest)",
+				"pkgconfig(libjpeg)"
+			],
+			"depends": [
+				"libyuv"
+			],
+			"files": [
+				"/usr/include/libyuv.h",
+				"/usr/include/libyuv/basic_types.h",
+				"/usr/include/libyuv/compare.h",
+				"/usr/include/libyuv/compare_row.h",
+				"/usr/include/libyuv/convert.h",
+				"/usr/include/libyuv/convert_argb.h",
+				"/usr/include/libyuv/convert_from.h",
+				"/usr/include/libyuv/convert_from_argb.h",
+				"/usr/include/libyuv/cpu_id.h",
+				"/usr/include/libyuv/cpu_support.h",
+				"/usr/include/libyuv/loongson_intrinsics.h",
+				"/usr/include/libyuv/macros_msa.h",
+				"/usr/include/libyuv/mjpeg_decoder.h",
+				"/usr/include/libyuv/planar_functions.h",
+				"/usr/include/libyuv/rotate.h",
+				"/usr/include/libyuv/rotate_argb.h",
+				"/usr/include/libyuv/rotate_row.h",
+				"/usr/include/libyuv/row.h",
+				"/usr/include/libyuv/row_sve.h",
+				"/usr/include/libyuv/scale.h",
+				"/usr/include/libyuv/scale_argb.h",
+				"/usr/include/libyuv/scale_rgb.h",
+				"/usr/include/libyuv/scale_row.h",
+				"/usr/include/libyuv/scale_uv.h",
+				"/usr/include/libyuv/version.h",
+				"/usr/include/libyuv/video_common.h",
+				"/usr/lib/libyuv.so"
+			],
+			"name": "libyuv-devel"
+		}
+	},
+	"source-name": "libyuv",
+	"source-release": "1",
+	"source-version": "0.0.1905"
+}

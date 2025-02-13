@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Peter Lemenkov <lemenkov@gmail.com>
+Date: Mon, 24 Sep 2018 15:15:09 +0200
+Subject: [PATCH 5/6] Use library suffix during installation
+
+Signed-off-by: Peter Lemenkov <lemenkov@gmail.com>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f0de5f5..4156653 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -247,6 +247,6 @@ endif()
+ 
+ # install the conversion tool, .so, and all the header files
+ install ( TARGETS yuvconvert DESTINATION bin )
+-install ( TARGETS ${ly_lib_shared} LIBRARY DESTINATION lib RUNTIME DESTINATION bin ARCHIVE DESTINATION lib )
++install ( TARGETS ${ly_lib_shared} LIBRARY DESTINATION lib${LIB_SUFFIX} )
+ install ( DIRECTORY ${PROJECT_SOURCE_DIR}/include/		DESTINATION include )
+ 
