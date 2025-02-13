@@ -1,6 +1,6 @@
 releases:
   id: 4223
-  rss: ~
+  rss: https://github.com/ruby/ruby/releases.atom
 security:
   cpe:
   - vendor: ruby-lang

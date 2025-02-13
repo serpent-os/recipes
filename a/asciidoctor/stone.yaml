@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : asciidoctor
+version     : 2.0.23
+release     : 1
+upstreams   :
+    - https://github.com/asciidoctor/asciidoctor/archive/refs/tags/v2.0.23.tar.gz : 72d271de1fccd3610e6f12bba29be1a3b6c8c813c5b2f3a12491ffc423090518
+homepage    : https://asciidoctor.org/
+summary     : A fast text processor and publishing toolchain for converting AsciiDoc content to HTML 5, DocBook 5, and other formats.
+description : |
+    A fast text processor and publishing toolchain for converting AsciiDoc content to HTML 5, DocBook 5, and other formats.
+license     : MIT
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add gem manually
+    - binary(gem)
+rundeps     :
+    - binary(ruby)
+build       : |
+    %gem_build
+install     : |
+    %gem_install
+    rm -rf %(installroot)/$geminstalldir/gems/asciidoctor-*/{CHANGELOG.adoc,LICENSE,README*}
+
+    %install_dir %(installroot)/%(mandir)/man1
+    ln -srv %(installroot)/$geminstalldir/man1/asciidoctor.1 %(installroot)/%(mandir)/man1/asciidoctor.1
+
+    # Delete any empty directories to prevent path conflicts
+    find %(installroot) -type d -empty -print -delete
