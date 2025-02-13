@@ -1,0 +1,6 @@
+releases:
+  id: 24271
+  rss: https://gitlab.com/AOMediaCodec/SVT-AV1/-/tags?format=atom
+security:
+  # Last checked 2025-02-13
+  cpe: ~
