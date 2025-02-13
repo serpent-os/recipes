@@ -5,7 +5,7 @@
 #
 name        : ffmpeg
 version     : 7.1
-release     : 1
+release     : 2
 homepage    : https://ffmpeg.org/releases
 upstreams   :
     - https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz : 40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6
@@ -19,7 +19,10 @@ license     :
     - LGPL-3.0
 builddeps   :
     - binary(nasm)
-    - lame-devel
+    - cmake(VulkanHeaders)
+    - pkgconfig(SvtAv1Enc)
+    - pkgconfig(aom)
+    - pkgconfig(dav1d)
     - pkgconfig(fdk-aac)
     - pkgconfig(fontconfig)
     - pkgconfig(freetype2)
@@ -28,15 +31,18 @@ builddeps   :
     - pkgconfig(libpng)
     - pkgconfig(libpulse)
     - pkgconfig(libssl)
+    - pkgconfig(libva)
     - pkgconfig(libwebp)
     - pkgconfig(libxml-2.0)
     - pkgconfig(opus)
+    - pkgconfig(rav1e)
     - pkgconfig(sndio)
     - pkgconfig(vorbis)
     - pkgconfig(vpx)
     - pkgconfig(vulkan)
     - pkgconfig(x11)
     - pkgconfig(xcb)
+    - lame-devel
 tuning      :
     - lto: thin
     - optimize: speed
@@ -47,26 +53,32 @@ packages    :
             - /usr/share/man/man3
 setup       : |
     ./configure --prefix=%(prefix) \
-                --enable-shared \
-                --disable-static \
                 --cc=%(cc) \
                 --cxx=%(cxx) \
                 --ld=%(cxx) \
                 --nm=%(nm) \
-                --strip=%(strip) \
-                --extra-libs=-lpthread \
+                --disable-static \
+                --disable-stripping \
+                --enable-lto \
+                --enable-shared \
                 --enable-gpl \
+                --enable-libaom \
+                --enable-libdav1d \
+                --enable-libfdk-aac \
+                --enable-libfontconfig \
+                --enable-libfreetype \
+                --enable-libmp3lame \
+                --enable-libopus \
+                --enable-libpulse \
+                --enable-librav1e \
+                --enable-libsvtav1 \
+                --enable-libvorbis \
+                --enable-libvpx \
+                --enable-libwebp \
                 --enable-nonfree \
                 --enable-openssl \
-                --enable-libopus \
-                --enable-libvorbis \
-                --enable-libfdk-aac \
-                --enable-libmp3lame \
-                --enable-libvpx \
-                --enable-libfreetype \
-                --enable-libfontconfig \
-                --enable-libpulse \
-                --enable-libwebp
+                --enable-vaapi \
+                --enable-vulkan
 build       : |
     %make
 install     : |
