@@ -5,7 +5,7 @@
 #
 name        : abseil-cpp
 version     : 20240722.0
-release     : 1
+release     : 2
 homepage    : https://abseil.io/
 upstreams   :
     - https://github.com/abseil/abseil-cpp/releases/download/20240722.0/abseil-cpp-20240722.0.tar.gz : f50e5ac311a81382da7fa75b97310e4b9006474f9560ac46f54a9967f07d4ae3
@@ -13,9 +13,39 @@ summary     : Abseil Common Libraries
 description : |
     Abseil Common Libraries
 license     : Apache-2.0
+builddeps   :
+    - pkgconfig(gtest)
 setup       : |
-    %cmake -DBUILD_SHARED_LIBS=ON
+    # Note that if we ever need this in 32bit form that all of the test args should be disabled for that build
+    %cmake -DBUILD_SHARED_LIBS=ON \
+           -DABSL_USE_EXTERNAL_GOOGLETEST=ON \
+           -DABSL_FIND_GOOGLETEST=ON \
+           -DABSL_BUILD_TEST_HELPERS=ON \
+           -DABSL_BUILD_TESTING=ON
 build       : |
     %cmake_build
 install     : |
     %cmake_install
+check      : |
+    ctest %(builddir)
+packages    :
+    - "%(name)-devel":
+        paths:
+            # List taken from Fedora. These are not needed at runtime and would introduce a transitive dependency on gtest if they were in the main package
+            - /usr/lib/libabsl_atomic_hook_test_helper.so.*
+            - /usr/lib/libabsl_exception_safety_testing.so.*
+            - /usr/lib/libabsl_hash_generator_testing.so.*
+            - /usr/lib/libabsl_log_internal_test_actions.so.*
+            - /usr/lib/libabsl_log_internal_test_helpers.so.*
+            - /usr/lib/libabsl_log_internal_test_matchers.so.*
+            - /usr/lib/libabsl_per_thread_sem_test_common.so.*
+            - /usr/lib/libabsl_pow10_helper.so.*
+            - /usr/lib/libabsl_scoped_mock_log.so.*
+            - /usr/lib/libabsl_spinlock_test_common.so.*
+            - /usr/lib/libabsl_stack_consumption.so.*
+            - /usr/lib/libabsl_status_matchers.so.*
+            - /usr/lib/libabsl_test_instance_tracker.so.*
+            - /usr/lib/libabsl_time_internal_test_util.so.*
+        rundeps:
+            - pkgconfig(gmock)
+            - pkgconfig(gtest)
