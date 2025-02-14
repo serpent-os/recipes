@@ -1,0 +1,31 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"atuin": {
+			"build-depends": [
+				"binary(cargo)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/atuin",
+				"/usr/share/bash-completion/completions/atuin",
+				"/usr/share/fish/completions/atuin.fish",
+				"/usr/share/zsh/site-funtions/_atuin"
+			],
+			"name": "atuin",
+			"provides": [
+				"binary(atuin)"
+			]
+		}
+	},
+	"source-name": "atuin",
+	"source-release": "1",
+	"source-version": "18.4.0"
+}
