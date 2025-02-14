@@ -1,0 +1,45 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : atuin
+version     : 18.4.0
+release     : 1
+homepage    : https://github.com/atuinsh/atuin
+upstreams   :
+    - https://github.com/atuinsh/atuin/archive/refs/tags/v18.4.0.tar.gz : de6d2bcf10de4d757916c7e92a70f15929fc1dea75abc4df09b0baedf26a53b2
+license     : MIT
+summary     : ✨ Magical shell history
+description : |
+    Atuin replaces your existing shell history with a SQLite database, and records additional context 
+    for your commands. Additionally, it provides optional and fully encrypted synchronisation of your 
+    history between machines, via an Atuin server
+builddeps   :
+    - binary(cargo)
+networking  : true
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build
+install     : |
+    %cargo_install
+
+    # create the completions
+    echo 'eval "$(atuin init zsh)"' >> completions_zsh
+    echo 'eval "$(atuin init bash)"' >> completions_bash
+    echo 'eval "$(atuin init fish)"' >> completions_fish
+    # todo nushell xonsh
+
+    # install the completions
+    %install_file completions_zsh %(installroot)%(datadir)/zsh/site-funtions/_atuin
+    %install_file completions_bash %(installroot)%(datadir)/bash-completion/completions/atuin
+    %install_file completions_fish %(installroot)%(datadir)/fish/completions/atuin.fish
+    # todo nushell xonsh
+    # rm completions_*
+
+check       : |
+    # test fails - requires a pre-configured enbironment
+    # since we don't patch anything we can rely on the upstream having already tested this release
+    # %cargo_test
+
