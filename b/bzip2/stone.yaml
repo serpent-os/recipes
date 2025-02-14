@@ -62,5 +62,6 @@ install     : |
 
     %install_file  -t %(installroot)/%(libdir) libbz2.so*
     ln -s libbz2.so.%(version) %(installroot)/%(libdir)/libbz2.so
+    ln -s libbz2.so.%(version) %(installroot)/%(libdir)/libbz2.so.1
     %install_file bzlib.h -t %(installroot)/%(includedir)
     %install_file bzip2.pc -t %(installroot)/%(libdir)/pkgconfig/
