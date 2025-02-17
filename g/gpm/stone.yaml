@@ -1,0 +1,32 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gpm
+version     : 1.20.7
+release     : 2
+summary     : General Purpose Mouse (gpm)
+license     :
+    - GPL-2.0-or-later
+homepage    : https://www.nico.schottelius.org/software/gpm/
+description : |
+    The gpm (general purpose mouse) daemon tries to be a useful mouse
+    server for applications running on the Linux console.
+upstreams   :
+    - https://github.com/telmich/gpm/archive/refs/tags/1.20.7.tar.gz : fa199e5c7745506df32ebe84d5454385cd6b82cc5036e9247763e41eb4983259
+builddeps   :
+    - binary(ar)
+    - binary(makeinfo)
+    - binary(yacc)
+setup       : |
+    ./autogen.sh
+    %patch %(pkgdir)/patches/0001-fix-include-paths.patch
+    %patch %(pkgdir)/patches/0002-fix-duplicate-symbol.patch
+    %patch %(pkgdir)/patches/0003-fix-sigemptyset.patch
+    %patch %(pkgdir)/patches/0004-fix-installdata.patch
+    %reconfigure
+build       : |
+    make
+install     : |
+    %make_install
