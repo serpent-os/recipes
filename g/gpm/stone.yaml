@@ -5,7 +5,7 @@
 #
 name        : gpm
 version     : 1.20.7
-release     : 1
+release     : 2
 summary     : General Purpose Mouse (gpm)
 license     :
     - GPL-2.0-or-later
@@ -16,9 +16,9 @@ description : |
 upstreams   :
     - https://github.com/telmich/gpm/archive/refs/tags/1.20.7.tar.gz : fa199e5c7745506df32ebe84d5454385cd6b82cc5036e9247763e41eb4983259
 builddeps   :
-    - binary(yacc)
     - binary(ar)
     - binary(makeinfo)
+    - binary(yacc)
 setup       : |
     ./autogen.sh
     %patch %(pkgdir)/patches/0001-fix-include-paths.patch
