@@ -2,7 +2,6 @@
 0001-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
 more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch
 asus/0001-Tmp-add-GA605W-H7606W-to-AMD-PMF-quirks.patch
-asus/0002-hid-asus-Disable-OOBE-mode-on-the-ProArt-P16.patch
 asus/0003-platform-x86-asus-wmi-Remove-all-ROG-Ally-CSEE-hacks.patch
 asus/0004-platform-x86-asus-wmi-export-symbols-used-for-read-w.patch
 asus/0005-hid-asus-check-ROG-Ally-MCU-version-and-warn.patch
