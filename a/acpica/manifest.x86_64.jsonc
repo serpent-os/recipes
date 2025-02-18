@@ -1,0 +1,42 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"acpica": {
+			"build-depends": [
+				"binary(bison)",
+				"binary(flex)",
+				"binary(m4)",
+				"binary(strip)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/acpibin",
+				"/usr/bin/acpidump",
+				"/usr/bin/acpiexamples",
+				"/usr/bin/acpiexec",
+				"/usr/bin/acpihelp",
+				"/usr/bin/acpisrc",
+				"/usr/bin/acpixtract",
+				"/usr/bin/iasl"
+			],
+			"name": "acpica",
+			"provides": [
+				"binary(acpibin)",
+				"binary(acpidump)",
+				"binary(acpiexamples)",
+				"binary(acpiexec)",
+				"binary(acpihelp)",
+				"binary(acpisrc)",
+				"binary(acpixtract)",
+				"binary(iasl)"
+			]
+		}
+	},
+	"source-name": "acpica",
+	"source-release": "1",
+	"source-version": "20241212"
+}
