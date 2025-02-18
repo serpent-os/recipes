@@ -4,17 +4,16 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : ruby
-version     : '3.3.0'
-release     : 5
+version     : '3.4.1'
+release     : 6
 summary     : An object-oriented language for quick and easy programming
 license     : Ruby
 homepage    : https://www.ruby-lang.org/en/
 description : |
     An object-oriented language for quick and easy programming
 upstreams   :
-    - https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz: 96518814d9832bece92a85415a819d4893b307db5921ae1f0f751a9a89a56b7d
+    - https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.1.tar.gz: 3d385e5d22d368b064c817a13ed8e3cc3f71a7705d7ed1bae78013c33aa7c87f
 builddeps   :
-    - gdbm-devel
     - binary(rustc) # for yjit compiler
     - pkgconfig(gmp)
     - pkgconfig(libcrypt)
@@ -22,18 +21,31 @@ builddeps   :
     - pkgconfig(libssl)
     - pkgconfig(yaml-0.1)
     - pkgconfig(zlib)
+environment : |
+    major_version=$(echo %(version) | cut -d. -f1)
+    minor_version=$(echo %(version) | cut -d. -f2)
 setup       : |
     export LDFLAGS="$(echo ${LDFLAGS} | sed --expression='s/-Wl,--icf=safe //')"
+
     %configure --disable-rpath \
                --enable-shared \
-               --with-dbm-type=gdbm_compat \
                --with-sitedir=%(libdir)/ruby/site_ruby \
-               --disable-install-doc
+               --disable-install-doc \
+               --with-ruby-version="${major_version}.${minor_version}"
     ## TODO: Figure out why docs won't build (the --disable-install-doc flag above)
 build       : |
     %make
 install     : |
     %make_install
+
+    # Remove unreproducible files
+    rm -fvr %(installroot)/usr/lib/ruby/gems/${major_version}.${minor_version}/cache
+
+    # Provide an unversioned pkgconfig so we don't need to update it in revdeps when doing a major update
+    ln -s ruby-${major_version}.${minor_version}.pc %(installroot)/%(libdir)/pkgconfig/ruby.pc
+
+    # Delete any empty directories to prevent path conflicts
+    find %(installroot) -type d -empty -print -delete
 # TODO test suite (needs networking)
 # check       : |
 #     %make check
