@@ -11,7 +11,7 @@
 				"/usr/lib/sysctl.d/30-syncthing.conf",
 				"/usr/lib/systemd/system/syncthing@.service",
 				"/usr/lib/systemd/user/syncthing.service",
-				"/usr/share/licenses/syncthing/LICENSE",
+				"/usr/share/doc/syncthing/LICENSE",
 				"/usr/share/man/man1/syncthing.1",
 				"/usr/share/man/man5/syncthing-config.5",
 				"/usr/share/man/man5/syncthing-stignore.5",
