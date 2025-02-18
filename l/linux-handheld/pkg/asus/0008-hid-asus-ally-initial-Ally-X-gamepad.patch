@@ -1,7 +1,7 @@
-From 840a660ab0226f6b9e769ae3ef5c37fc9da4f1b4 Mon Sep 17 00:00:00 2001
+From 015528d08cf534c3e46532849030167735cd0f8e Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 2 Oct 2024 23:32:46 +1300
-Subject: [PATCH 08/28] hid-asus-ally: initial Ally-X gamepad
+Subject: [PATCH 08/30] hid-asus-ally: initial Ally-X gamepad
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 389 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 4ceb4aab8084..3d950535c3e2 100644
+index 86b0c7deb719..b7d22c1747b0 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -50,6 +50,51 @@ static const struct hid_device_id rog_ally_devices[] = {
@@ -408,7 +408,7 @@ index 4ceb4aab8084..3d950535c3e2 100644
  /*
   * We don't care about any other part of the string except the version section.
   * Example strings: FGA80100.RC72LA.312_T01, FGA80100.RC71LS.318_T01
-@@ -493,7 +860,8 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+@@ -485,7 +852,8 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
  	if (ep < 0)
  		return ep;
  
@@ -418,7 +418,7 @@ index 4ceb4aab8084..3d950535c3e2 100644
  		return -ENODEV;
  
  	ret = hid_parse(hdev);
-@@ -536,6 +904,17 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+@@ -528,6 +896,17 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
  			goto err_close;
  	}
  
@@ -436,7 +436,7 @@ index 4ceb4aab8084..3d950535c3e2 100644
  	return 0;
  
  err_close:
-@@ -550,6 +929,9 @@ static void ally_hid_remove(struct hid_device *hdev)
+@@ -542,6 +921,9 @@ static void ally_hid_remove(struct hid_device *hdev)
  	if (drvdata.led_rgb_dev)
  		ally_rgb_remove(hdev);
  
@@ -446,7 +446,7 @@ index 4ceb4aab8084..3d950535c3e2 100644
  	hid_hw_close(hdev);
  	hid_hw_stop(hdev);
  }
-@@ -602,6 +984,7 @@ static struct hid_driver
+@@ -594,6 +976,7 @@ static struct hid_driver
  			 .id_table = rog_ally_devices,
  			 .probe = ally_hid_probe,
  			 .remove = ally_hid_remove,

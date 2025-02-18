@@ -1,7 +1,7 @@
-From f7586706c37fd927c622b8c3891cf3dd3d08536e Mon Sep 17 00:00:00 2001
+From 370f58fc6b816bdffcd2ad8a8e42a4385a276c0d Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 6 Oct 2024 21:22:40 +1300
-Subject: [PATCH 17/28] hid-asus-ally: add JS response curves
+Subject: [PATCH 17/30] hid-asus-ally: add JS response curves
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 141 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index ff1c2cf61e66..aad965e069ee 100644
+index 8d2165b52b3b..705e6ab62d85 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -5,10 +5,12 @@
