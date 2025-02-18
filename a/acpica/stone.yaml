@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+# https://github.com/acpica/acpica/issues/888
+# https://github.com/acpica/acpica/issues/886
+# https://github.com/acpica/acpica/issues/883
+# https://github.com/acpica/acpica/issues/857
+name        : acpica
+version     : 20241212
+release     : 1
+homepage    : https://acpica.org
+upstreams   :
+    - https://github.com/user-attachments/files/18117992/acpica-unix-20241212.tar.gz : 9dca83cfee390b710485fbdf787048370049c05723b10cc220cfef6e13c31961
+summary     : ACPI tools, including Intel ACPI Source Language compiler
+description : |
+    ACPI Component Architecture (ACPICA) is a reference implementation of the Advanced Configuration and Power Interface (ACPI) specification.
+    This implementation simplifies complex ACPI operating system implementations by integrating it directly as a kernel-resident subsystem, without changes to the core ACPICA code.
+license     : GPL-2.0-only
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - binary(m4)
+    - binary(strip)
+build       : |
+    NOWERROR=TRUE %make
+install     : |
+    %make_install
+
