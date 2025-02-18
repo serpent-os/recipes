@@ -1,7 +1,7 @@
-From 3e87fb607cff782133322cdd326c866ef21bffcd Mon Sep 17 00:00:00 2001
+From 74c30b20e1c86c31a43d6d6344c8c3ba466309e6 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Mon, 26 Aug 2024 12:49:35 +1200
-Subject: [PATCH 07/28] hid-asus-ally: Add joystick LED ring support
+Subject: [PATCH 07/30] hid-asus-ally: Add joystick LED ring support
 
 Adds basic support for the joystick RGB LED rings as a multicolour LED
 device with 4 LEDs.
@@ -13,10 +13,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
  drivers/hid/Kconfig         |   9 +
  drivers/hid/Makefile        |   1 +
- drivers/hid/hid-asus-ally.c | 627 ++++++++++++++++++++++++++++++++++++
+ drivers/hid/hid-asus-ally.c | 619 ++++++++++++++++++++++++++++++++++++
  drivers/hid/hid-asus-ally.h |  38 +++
- drivers/hid/hid-asus.c      | 116 +------
- 5 files changed, 689 insertions(+), 102 deletions(-)
+ drivers/hid/hid-asus.c      | 107 +------
+ 5 files changed, 681 insertions(+), 93 deletions(-)
  create mode 100644 drivers/hid/hid-asus-ally.c
  create mode 100644 drivers/hid/hid-asus-ally.h
 
@@ -54,10 +54,10 @@ index 496dab54c73a..5fa65e1e1e3b 100644
  obj-$(CONFIG_HID_BETOP_FF)	+= hid-betopff.o
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
 new file mode 100644
-index 000000000000..4ceb4aab8084
+index 000000000000..86b0c7deb719
 --- /dev/null
 +++ b/drivers/hid/hid-asus-ally.c
-@@ -0,0 +1,627 @@
+@@ -0,0 +1,619 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
 + *  HID driver for Asus ROG laptops and Ally
@@ -509,19 +509,11 @@ index 000000000000..4ceb4aab8084
 +
 +	hid_info(hdev, "Ally device MCU version: %d\n", version);
 +	if (version < min_version) {
++		set_ally_mcu_hack_available(false);
 +		hid_warn(hdev,
 +			 "The MCU version must be %d or greater\n"
 +			 "Please update your MCU with official ASUS firmware release\n",
 +			 min_version);
-+		/* Get the asus platform device */
-+		dev = bus_find_device_by_name(&platform_bus_type, NULL, "asus-nb-wmi");
-+		if (dev) {
-+			asus = dev_get_drvdata(dev);
-+			/* Do not show the powersave attribute if MCU version too low */
-+			if (asus)
-+				asus->mcu_powersave_available = false;
-+			put_device(dev);
-+		}
 +	}
 +}
 +
@@ -584,7 +576,7 @@ index 000000000000..4ceb4aab8084
 +
 +	/* This should almost always exist */
 +	if (ep == ROG_ALLY_CFG_INTF_IN) {
-+		mcu_maybe_warn_version(hdev, idProduct);
++		validate_mcu_fw_version(hdev, idProduct);
 +
 +		drvdata.led_rgb_dev = ally_rgb_create(hdev);
 +		if (IS_ERR(drvdata.led_rgb_dev))
@@ -730,10 +722,10 @@ index 000000000000..eb8617c80c2a
 +	xpad_cmd_len_adz = 0x02,
 +};
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index 9aa4d44b71f4..9aa7a0fa43f0 100644
+index 0bf9822599b9..2519ee2d71b1 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
-@@ -53,9 +53,9 @@ MODULE_DESCRIPTION("Asus HID Keyboard and TouchPad");
+@@ -52,9 +52,9 @@ MODULE_DESCRIPTION("Asus HID Keyboard and TouchPad");
  #define FEATURE_KBD_LED_REPORT_ID1 0x5d
  #define FEATURE_KBD_LED_REPORT_ID2 0x5e
  
@@ -746,7 +738,7 @@ index 9aa4d44b71f4..9aa7a0fa43f0 100644
  
  #define SUPPORT_KBD_BACKLIGHT BIT(0)
  
-@@ -540,100 +540,9 @@ static bool asus_kbd_wmi_led_control_present(struct hid_device *hdev)
+@@ -539,91 +539,9 @@ static bool asus_kbd_wmi_led_control_present(struct hid_device *hdev)
  	return !!(value & ASUS_WMI_DSTS_PRESENCE_BIT);
  }
  
@@ -805,8 +797,6 @@ index 9aa4d44b71f4..9aa7a0fa43f0 100644
 -static void mcu_maybe_warn_version(struct hid_device *hdev, int idProduct)
 -{
 -	int min_version, version;
--	struct asus_wmi *asus;
--	struct device *dev;
 -
 -	min_version = ROG_ALLY_X_MIN_MCU;
 -	version = mcu_request_version(hdev);
@@ -827,15 +817,8 @@ index 9aa4d44b71f4..9aa7a0fa43f0 100644
 -			 "The MCU version must be %d or greater\n"
 -			 "Please update your MCU with official ASUS firmware release\n",
 -			 min_version);
--		/* Get the asus platform device */
--		dev = bus_find_device_by_name(&platform_bus_type, NULL, "asus-nb-wmi");
--		if (dev) {
--			asus = dev_get_drvdata(dev);
--			/* Do not show the powersave attribute if MCU version too low */
--			if (asus)
--				asus->mcu_powersave_available = false;
--			put_device(dev);
--		}
+-	} else {
+-		set_ally_mcu_hack_available(false);
 -	}
 -}
 -
@@ -847,7 +830,7 @@ index 9aa4d44b71f4..9aa7a0fa43f0 100644
  	unsigned char kbd_func;
  	int ret;
  
-@@ -657,14 +566,6 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
+@@ -647,14 +565,6 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
  			if (ret < 0)
  				return ret;
  		}
@@ -862,7 +845,7 @@ index 9aa4d44b71f4..9aa7a0fa43f0 100644
  	} else {
  		/* Initialize keyboard */
  		ret = asus_kbd_init(hdev, FEATURE_KBD_REPORT_ID);
-@@ -1134,6 +1035,17 @@ static int asus_probe(struct hid_device *hdev, const struct hid_device_id *id)
+@@ -1124,6 +1034,17 @@ static int asus_probe(struct hid_device *hdev, const struct hid_device_id *id)
  
  	drvdata->quirks = id->driver_data;
  

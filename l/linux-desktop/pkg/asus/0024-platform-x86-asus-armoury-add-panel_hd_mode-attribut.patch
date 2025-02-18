@@ -1,7 +1,7 @@
-From 2184020bbc2c1a32927bf035c79d1354d67dea17 Mon Sep 17 00:00:00 2001
+From e51af083a0782d6d1c08e8bf3b289786a53d6122 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Thu, 19 Sep 2024 17:23:35 +1200
-Subject: [PATCH 21/28] platform/x86: asus-armoury: add panel_hd_mode attribute
+Subject: [PATCH 24/30] platform/x86: asus-armoury: add panel_hd_mode attribute
 
 Add panel_hd_mode to toggle the panel mode between single and high
 definition modes.
@@ -45,10 +45,10 @@ index d2e8c21d62dc..716bf96b6b58 100644
  
  static int asus_fw_attr_add(void)
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index 53abf5cde1ea..74a6e06f9535 100644
+index 3fd11c782ee2..e1ae2c1e229c 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -213,6 +213,7 @@ struct asus_wmi {
+@@ -76,6 +76,7 @@
  #define ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO 0x00110019
  
  /* Misc */

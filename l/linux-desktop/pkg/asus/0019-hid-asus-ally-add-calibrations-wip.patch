@@ -1,7 +1,7 @@
-From 3f10c6d4a97f895becb1dbbdacc614131cee3357 Mon Sep 17 00:00:00 2001
+From 81b6357af732b1335a054211d23455ec9ccbe144 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Thu, 10 Oct 2024 11:15:36 +1300
-Subject: [PATCH 18/28] hid-asus-ally: add calibrations (wip)
+Subject: [PATCH 19/30] hid-asus-ally: add calibrations (wip)
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  1 file changed, 95 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index aad965e069ee..a1015713c245 100644
+index 2783cc054acd..79a3cfffc01d 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -278,6 +278,28 @@ struct response_curve {
@@ -51,8 +51,8 @@ index aad965e069ee..a1015713c245 100644
  };
  
  /* The hatswitch outputs integers, we use them to index this X|Y pair */
-@@ -382,6 +407,18 @@ static struct ally_drvdata {
- 	struct ally_rgb_data led_rgb_data;
+@@ -383,6 +408,18 @@ static struct ally_drvdata {
+ 	uint mcu_version;
  } drvdata;
  
 +static void reverse_bytes_in_pairs(u8 *buf, size_t size) {
@@ -70,7 +70,7 @@ index aad965e069ee..a1015713c245 100644
  /**
   * asus_dev_set_report - send set report request to device.
   *
-@@ -795,6 +832,63 @@ ALLY_JS_RC_POINT(axis_xy_right, response, 2);
+@@ -796,6 +833,63 @@ ALLY_JS_RC_POINT(axis_xy_right, response, 2);
  ALLY_JS_RC_POINT(axis_xy_right, response, 3);
  ALLY_JS_RC_POINT(axis_xy_right, response, 4);
  
@@ -134,7 +134,7 @@ index aad965e069ee..a1015713c245 100644
  static struct attribute *axis_xy_left_attrs[] = {
  	&dev_attr_axis_xy_left_anti_deadzone.attr,
  	&dev_attr_axis_xy_left_deadzone.attr,
-@@ -1266,6 +1360,7 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
+@@ -1275,6 +1369,7 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
  	ally_cfg->key_mapping[ally_cfg->mode - 1].btn_m1.button = BTN_KB_M1;
  	ally_cfg->key_mapping[ally_cfg->mode - 1].btn_m2.button = BTN_KB_M2;
  	_gamepad_apply_btn_pair(hdev, ally_cfg, btn_pair_m1_m2);

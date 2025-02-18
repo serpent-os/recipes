@@ -1,7 +1,7 @@
-From b596a820a1bbe4be2cc86767debcf80e2bdde2a1 Mon Sep 17 00:00:00 2001
+From 47b7ca23591ee5eee05575ed57075cf692d0b824 Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Sat, 1 Feb 2025 11:28:50 +1300
-Subject: [PATCH 27/28] backport: asus-armoury: fix fw_attributes_class after
+Subject: [PATCH 29/30] backport: asus-armoury: fix fw_attributes_class after
  cherry-pick from wip/ally-master
 
 Signed-off-by: Luke Jones <luke@ljones.dev>
@@ -10,18 +10,18 @@ Signed-off-by: Luke Jones <luke@ljones.dev>
  1 file changed, 12 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
-index 5768997ea2d3..05412414dc5f 100644
+index 5768997ea2d3..f952521df513 100644
 --- a/drivers/platform/x86/asus-armoury.c
 +++ b/drivers/platform/x86/asus-armoury.c
-@@ -82,6 +82,8 @@ struct rog_tunables {
- 	u32 nv_tgp;
+@@ -94,6 +94,8 @@ struct asus_armoury_priv {
+ 	struct mutex mutex;
  };
  
 +static const struct class *fw_attr_class;
 +
- struct asus_armoury_priv {
- 	struct device *fw_attr_dev;
- 	struct kset *fw_attr_kset;
+ static struct asus_armoury_priv asus_armoury = {
+ 	.mutex = __MUTEX_INITIALIZER(asus_armoury.mutex)
+ };
 @@ -812,8 +814,13 @@ static int asus_fw_attr_add(void)
  	const char *name;
  	int err, i;

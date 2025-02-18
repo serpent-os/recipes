@@ -1,7 +1,7 @@
-From 504704fb55eaeb9f8f26e7bb845e401289c740ca Mon Sep 17 00:00:00 2001
+From ae9eafe291518663c30a377dab33b302e688097e Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 22 Sep 2024 21:40:46 +1200
-Subject: [PATCH 04/28] platform/x86: asus-wmi: export symbols used for
+Subject: [PATCH 22/30] platform/x86: asus-wmi: export symbols used for
  read/write WMI
 
 Export some rather helpful read/write WMI symbols using a namespace.
@@ -12,26 +12,15 @@ Also does a slight refactor of internals of these functions.
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 ---
- drivers/hid/hid-asus.c                     |  1 +
  drivers/platform/x86/asus-wmi.c            | 44 ++++++++++++++++++++--
  include/linux/platform_data/x86/asus-wmi.h | 10 +++++
- 3 files changed, 52 insertions(+), 3 deletions(-)
+ 2 files changed, 51 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index bcdd168cdc6d..acf5e96e4d95 100644
---- a/drivers/hid/hid-asus.c
-+++ b/drivers/hid/hid-asus.c
-@@ -1327,4 +1327,5 @@ static struct hid_driver asus_driver = {
- };
- module_hid_driver(asus_driver);
- 
-+MODULE_IMPORT_NS("ASUS_WMI");
- MODULE_LICENSE("GPL");
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index a5ef6d7fa40d..768431dc041f 100644
+index b083bea26cf2..391549342296 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -377,7 +377,7 @@ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval)
+@@ -398,7 +398,7 @@ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval)
  {
  	return asus_wmi_evaluate_method3(method_id, arg0, arg1, 0, retval);
  }
@@ -40,7 +29,7 @@ index a5ef6d7fa40d..768431dc041f 100644
  
  static int asus_wmi_evaluate_method5(u32 method_id,
  		u32 arg0, u32 arg1, u32 arg2, u32 arg3, u32 arg4, u32 *retval)
-@@ -541,12 +541,50 @@ static int asus_wmi_get_devstate(struct asus_wmi *asus, u32 dev_id, u32 *retval)
+@@ -562,12 +562,50 @@ static int asus_wmi_get_devstate(struct asus_wmi *asus, u32 dev_id, u32 *retval)
  	return 0;
  }
  
@@ -94,17 +83,20 @@ index a5ef6d7fa40d..768431dc041f 100644
  /* Helper for special devices with magic return codes */
  static int asus_wmi_get_devstate_bits(struct asus_wmi *asus,
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index 783e2a336861..466781cbb4bb 100644
+index f1b96f90e8e2..7c886a93d554 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -158,8 +158,18 @@
- #define ASUS_WMI_DSTS_LIGHTBAR_MASK	0x0000000F
+@@ -159,11 +159,21 @@
  
  #if IS_REACHABLE(CONFIG_ASUS_WMI)
+ void set_ally_mcu_hack_available(bool enabled);
 +int asus_wmi_get_devstate_dsts(u32 dev_id, u32 *retval);
 +int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param, u32 *retval);
  int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval);
  #else
+ static inline void set_ally_mcu_hack_available(bool enabled) {
+ 	return -ENODEV;
+ }
 +static inline int asus_wmi_get_devstate_dsts(u32 dev_id, u32 *retval)
 +{
 +	return -ENODEV;

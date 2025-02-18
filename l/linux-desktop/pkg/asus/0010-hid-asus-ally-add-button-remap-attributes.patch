@@ -1,7 +1,7 @@
-From 98ff21076e184cea25d3698ccd19ff584b7f050e Mon Sep 17 00:00:00 2001
+From 6324fd7c3506257888e0c183576cac205a877475 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 14:58:33 +1300
-Subject: [PATCH 10/28] hid-asus-ally: add button remap attributes
+Subject: [PATCH 10/30] hid-asus-ally: add button remap attributes
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 586 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 822139e2a5c0..884cb688197e 100644
+index 4935ab36aa35..f5a50eaa7e75 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -57,6 +57,152 @@ struct btn_code_map {
@@ -465,7 +465,7 @@ index 822139e2a5c0..884cb688197e 100644
  /**************************************************************************************************/
  /* ROG Ally gamepad i/o and force-feedback                                                        */
  /**************************************************************************************************/
-@@ -1174,6 +1528,9 @@ static void ally_hid_remove(struct hid_device *hdev)
+@@ -1166,6 +1520,9 @@ static void ally_hid_remove(struct hid_device *hdev)
  	if (drvdata.ally_x)
  		ally_x_remove(hdev);
  
