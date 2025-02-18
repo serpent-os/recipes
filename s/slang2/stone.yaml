@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : slang2
+version     : 2.3.3
+release     : 1
+homepage    : https://jedsoft.org/slang
+upstreams   :
+    - https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2 : f9145054ae131973c61208ea82486d5dd10e3c5cdad23b7c4a0617743c8f5a18
+summary     : S-Lang programmer's Library
+description : |
+    S-Lang is a multi-platform programmer's library designed to allow a developer to create robust multi-platform software.
+    It provides facilities required by interactive applications such as display/screen management, keyboard input, keymaps,
+    and so on. The most exciting feature of the library is the slang interpreter that may be easily embedded into a program
+    to make it extensible. While the emphasis has always been on the embedded nature of the interpreter, it may also be
+    used in a stand-alone fashion through the use of slsh, which is part of the S-Lang distribution.
+license     :
+    - GPL-3.0-or-later
+# builddeps   :
+setup       : |
+    %patch %(pkgdir)/patches/0001-remove-undefined-symbol-from-version-script.patch
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install

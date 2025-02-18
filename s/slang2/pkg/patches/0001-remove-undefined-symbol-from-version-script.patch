@@ -1,0 +1,13 @@
+diff '--color=auto' -crB a/src/slang.ver b/src/slang.ver
+*** a/src/slang.ver	2025-02-09 08:11:00.813901710 +0100
+--- b/src/slang.ver	2025-02-09 08:11:32.306135568 +0100
+***************
+*** 70,76 ****
+  		SLang_Last_Key_Char;
+  		SLang_Load_File_Hook;
+  		SLang_Num_Function_Args;
+- 		SLang_Rline_Quit;
+  		SLang_TT_Baud_Rate;
+  		SLang_TT_Read_FD;
+  		SLang_TT_Write_FD;
+--- 70,75 ----
