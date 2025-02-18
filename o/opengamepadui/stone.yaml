@@ -15,22 +15,21 @@ description : |
     Its goal is to provide an open and extendable foundation to launch and play games. It also implements a gamepad input system that can allow you to remap
     gamepad input to mouse and keyboard inputs.
 license     : GPL-3.0-or-later
-networking: yes
-builddeps:
-  - binary(cargo)
-  - binary(godot)
-  - binary(wget)
-  - binary(unzip)
-  - sysbinary(setcap)
-  - soname(libfontconfig.so.1(x86_64))
+networking  : yes
+builddeps   :
+    - binary(cargo)
+    - binary(godot)
+    - binary(unzip)
+    - binary(wget)
+    - pkgconfig(fontconfig)
+    - sysbinary(setcap)
 environment : |
-  export PATH="/usr/bin:/usr/sbin"
+    export PATH="/usr/bin:/usr/sbin"
 setup       : |
     %patch %(pkgdir)/use-chimeraos-defaults.patch
     %patch %(pkgdir)/fix-prefix.patch
     %patch %(pkgdir)/419.patch
-build: |
-  %make
+build       : |
+    %make
 install     : |
-  %make_install PREFIX=%(installroot)/usr
-
+    %make_install PREFIX=%(installroot)/usr

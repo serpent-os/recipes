@@ -8,7 +8,7 @@
 				"binary(godot)",
 				"binary(unzip)",
 				"binary(wget)",
-				"soname(libfontconfig.so.1(x86_64))",
+				"pkgconfig(fontconfig)",
 				"sysbinary(setcap)"
 			],
 			"depends": [
