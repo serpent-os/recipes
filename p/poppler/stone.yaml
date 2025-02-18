@@ -5,12 +5,12 @@
 #
 name        : poppler
 version     : 24.12.0
-release     : 2
+release     : 3
 homepage    : https://poppler.freedesktop.org
 upstreams   :
     - https://poppler.freedesktop.org/poppler-24.12.0.tar.xz : 1cf374c3146f3f685d9257701bf0c2866c61d6c202c14d1f5c01a1f3a089028a
     - git|git://git.freedesktop.org/git/poppler/test.git : ff3133cdb6cb496ee1d2c3231bfa35006a5e8410
-summary     : Poppler is a PDF rendering library based on the xpdf-3.0 code base
+summary     : A PDF rendering library
 description : |
     Poppler is a PDF rendering library based on the xpdf-3.0 code base
 license     : GPL-2.0-or-later
@@ -18,6 +18,7 @@ builddeps   :
     - binary(python3)
     - cmake(Boost)
     - cmake(OpenJPEG)
+    - cmake(Qt6)
     - pkgconfig(freetype2)
     - pkgconfig(gdk-pixbuf-2.0)
     - pkgconfig(gobject-introspection-1.0)
@@ -32,7 +33,6 @@ rundeps     :
 setup       : |
     %cmake \
       -DENABLE_QT5=OFF \
-      -DENABLE_QT6=OFF \
       -DTESTDATADIR=%(workdir)/../test.git
 build       : |
     %cmake_build
@@ -42,3 +42,19 @@ check       : |
     %cmake_test
 workload    : |
     %cmake_test
+packages    :
+    - "%(name)-qt6":
+        summary: A PDF rendering library - Qt6 bindings
+        description: Poppler is a PDF rendering library based on the xpdf-3.0 code base - Qt6 bindings
+        paths:
+            - /usr/lib/libpoppler-qt6.so.*
+    - "%(name)-qt6-devel":
+        summary: Development files for %(name)-qt6
+        description: Development files for %(name)-qt6
+        paths:
+            - /usr/lib/libpoppler-qt6.so
+            - /usr/include/poppler/qt6
+            - /usr/lib/pkgconfig/poppler-qt6.pc
+        rundeps:
+            - "%(name)-qt6"
+            - "%(name)-devel"
