@@ -1,0 +1,7 @@
+releases:
+  id: 16950
+  rss: https://github.com/Nheko-Reborn/nheko/releases.atom
+security:
+  cpe:
+  - vendor: nheko-reborn
+    product: nheko
