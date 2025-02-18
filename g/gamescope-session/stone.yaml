@@ -1,0 +1,24 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gamescope-session
+version     : r310.533e51f
+release     : 1
+homepage    : https://github.com/ChimeraOS/gamescope-session
+upstreams   :
+    - git|https://github.com/ChimeraOS/gamescope-session.git : 533e51f2f50aebc4457d04372ab9b05a9c56ac10
+summary     : Common gamescope session files
+description : |
+    This project is not affiliated with Valve (wide inspiration was taken from their work on the SteamDeck).
+    It is part of the ChimeraOS project, but aims to be usable on any distribution.
+license     : 
+    - GPL-3.0-or-later
+rundeps     :
+    - binary(gamescope)
+setup       : |
+    %patch %(pkgdir)/disable-plymouth.patch
+install     : |
+    %install_dir %(installroot)
+    cp -rv %(workdir)/usr %(installroot)

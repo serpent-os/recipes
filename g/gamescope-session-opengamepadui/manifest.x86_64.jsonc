@@ -1,0 +1,25 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gamescope-session-opengamepadui": {
+			"depends": [
+				"gamescope-session"
+			],
+			"files": [
+				"/usr/bin/opengamepadui-session-select",
+				"/usr/share/gamescope-session-plus/sessions.d/opengamepadui",
+				"/usr/share/polkit-1/actions/org.shadowblip.opengamepadui-session.policy",
+				"/usr/share/wayland-sessions/gamescope-session-opengamepadui.desktop",
+				"/usr/share/wayland-sessions/opengamepadui-session.desktop"
+			],
+			"name": "gamescope-session-opengamepadui",
+			"provides": [
+				"binary(opengamepadui-session-select)"
+			]
+		}
+	},
+	"source-name": "gamescope-session-opengamepadui",
+	"source-release": "1",
+	"source-version": "r22.f9aafe5"
+}
