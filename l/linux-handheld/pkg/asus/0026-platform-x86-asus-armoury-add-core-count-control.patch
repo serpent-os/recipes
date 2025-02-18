@@ -1,7 +1,7 @@
-From 7de7648845a09d6b718ed747f88befce8dae0128 Mon Sep 17 00:00:00 2001
+From e40ef2fe87987bfa3b4c345b595747799e83edd0 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 18 Sep 2024 21:19:12 +1200
-Subject: [PATCH 23/28] platform/x86: asus-armoury: add core count control
+Subject: [PATCH 26/30] platform/x86: asus-armoury: add core count control
 
 Implement Intel core enablement under the asus-armoury module using the
 fw_attributes class.
@@ -347,10 +347,10 @@ index 440f41c5df3b..5d6bef6d2b12 100644
 +
  #endif /* _ASUS_ARMOURY_H_ */
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index 9f9e2fc16a7e..d2c563171d8c 100644
+index b7e2582763a8..0f45d5549e10 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -274,6 +274,11 @@ struct asus_wmi {
+@@ -137,6 +137,11 @@
  /* dgpu on/off */
  #define ASUS_WMI_DEVID_DGPU		0x00090020
  

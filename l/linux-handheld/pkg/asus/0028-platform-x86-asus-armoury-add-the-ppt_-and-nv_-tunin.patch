@@ -1,7 +1,7 @@
-From b7f3ad0e20d6a06ac3a6375ec9bfe047da18852e Mon Sep 17 00:00:00 2001
+From 4d0ef72ce70645e4849bb16a23d124122e14f14a Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Thu, 19 Sep 2024 17:19:37 +1200
-Subject: [PATCH 26/28] platform/x86: asus-armoury: add the ppt_* and nv_*
+Subject: [PATCH 28/30] platform/x86: asus-armoury: add the ppt_* and nv_*
  tuning knobs
 
 Adds the ppt_* and nv_* tuning knobs that are available via WMI methods
@@ -9,10 +9,10 @@ and adds proper min/max levels plus defaults.
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/platform/x86/asus-armoury.c        | 182 ++++-
- drivers/platform/x86/asus-armoury.h        | 778 ++++++++++++++++++++-
- include/linux/platform_data/x86/asus-wmi.h |   3 +
- 3 files changed, 950 insertions(+), 13 deletions(-)
+ drivers/platform/x86/asus-armoury.c        |  182 +++-
+ drivers/platform/x86/asus-armoury.h        | 1028 +++++++++++++++++++-
+ include/linux/platform_data/x86/asus-wmi.h |    3 +
+ 3 files changed, 1200 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
 index 49e1788d8bba..5768997ea2d3 100644
@@ -266,7 +266,7 @@ index 49e1788d8bba..5768997ea2d3 100644
  	if (err)
  		return err;
 diff --git a/drivers/platform/x86/asus-armoury.h b/drivers/platform/x86/asus-armoury.h
-index 5d6bef6d2b12..9adc07ba6d6b 100644
+index 5d6bef6d2b12..60c36529c11e 100644
 --- a/drivers/platform/x86/asus-armoury.h
 +++ b/drivers/platform/x86/asus-armoury.h
 @@ -8,6 +8,7 @@
@@ -334,7 +334,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
  #define ATTR_GROUP_BOOL_RO(_attrname, _fsname, _wmi, _dispname) \
  	__ATTR_CURRENT_INT_RO(_attrname, _wmi);                 \
  	__ATTR_GROUP_ENUM(_attrname, _fsname, "0;1", _dispname)
-@@ -178,4 +197,751 @@ static ssize_t int_type_show(struct kobject *kobj, struct kobj_attribute *attr,
+@@ -178,4 +197,1001 @@ static ssize_t int_type_show(struct kobject *kobj, struct kobj_attribute *attr,
  		.name = _fsname, .attrs = _attrname##_attrs             \
  	}
  
@@ -426,7 +426,6 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.name = _fsname, .attrs = _attrname##_attrs                 \
 +	}
 +
-+
 +/* Default is always the maximum value unless *_def is specified */
 +struct power_limits {
 +	u32 ppt_pl1_spl_min;
@@ -459,6 +458,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +struct power_data {
 +		const struct power_limits *ac_data;
 +		const struct power_limits *dc_data;
++		bool requires_fan_curve;
 +};
 +
 +/*
@@ -468,10 +468,41 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +static const struct dmi_system_id power_limits[] = {
 +	{
 +		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "FA401W"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_max = 80,
++				.ppt_pl2_sppt_min = 35,
++				.ppt_pl2_sppt_max = 80,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_max = 80,
++				.nv_dynamic_boost_min = 5,
++				.nv_dynamic_boost_max = 25,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++				.nv_tgp_min = 55,
++				.nv_tgp_max = 75,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 25,
++				.ppt_pl1_spl_max = 30,
++				.ppt_pl2_sppt_min = 31,
++				.ppt_pl2_sppt_max = 44,
++				.ppt_pl3_fppt_min = 45,
++				.ppt_pl3_fppt_max = 65,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++		},
++	},
++	{
++		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "FA507R"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 80,
 +				.ppt_pl2_sppt_min = 25,
@@ -486,8 +517,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "FA507X"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 80,
 +				.ppt_pl2_sppt_min = 35,
@@ -501,7 +532,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_tgp_min = 55,
 +				.nv_tgp_max = 85,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_def = 45,
 +				.ppt_pl1_spl_max = 65,
@@ -519,8 +550,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "FA507Z"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 28,
 +				.ppt_pl1_spl_max = 65,
 +				.ppt_pl2_sppt_min = 28,
@@ -532,7 +563,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_tgp_min = 55,
 +				.nv_tgp_max = 85,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 45,
 +				.ppt_pl2_sppt_min = 35,
@@ -546,8 +577,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "FA607P"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 30,
 +				.ppt_pl1_spl_def = 100,
 +				.ppt_pl1_spl_max = 135,
@@ -563,7 +594,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_tgp_min = 55,
 +				.nv_tgp_max = 115,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_def = 45,
 +				.ppt_pl1_spl_max = 80,
@@ -581,14 +612,14 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "FA617NS"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_apu_sppt_min = 15,
 +				.ppt_apu_sppt_max = 80,
 +				.ppt_platform_sppt_min = 30,
 +				.ppt_platform_sppt_max = 120
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_apu_sppt_min = 25,
 +				.ppt_apu_sppt_max = 35,
 +				.ppt_platform_sppt_min = 45,
@@ -600,14 +631,14 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "FA617NT"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_apu_sppt_min = 15,
 +				.ppt_apu_sppt_max = 80,
 +				.ppt_platform_sppt_min = 30,
 +				.ppt_platform_sppt_max = 115
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_apu_sppt_min = 15,
 +				.ppt_apu_sppt_max = 45,
 +				.ppt_platform_sppt_min = 30,
@@ -619,8 +650,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "FA617XS"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_apu_sppt_min = 15,
 +				.ppt_apu_sppt_max = 80,
 +				.ppt_platform_sppt_min = 30,
@@ -628,7 +659,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_apu_sppt_min = 25,
 +				.ppt_apu_sppt_max = 35,
 +				.ppt_platform_sppt_min = 45,
@@ -642,8 +673,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "FX507Z"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 28,
 +				.ppt_pl1_spl_max = 90,
 +				.ppt_pl2_sppt_min = 28,
@@ -651,20 +682,21 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_dynamic_boost_min = 5,
 +				.nv_dynamic_boost_max = 15,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 45,
 +				.ppt_pl2_sppt_min = 35,
 +				.ppt_pl2_sppt_max = 60,
-+			}
++			},
++			.requires_fan_curve = true,
 +		},
 +	},
 +	{
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "GA401Q"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 80,
 +				.ppt_pl2_sppt_min = 15,
@@ -678,14 +710,14 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +			// This model is full AMD. No Nvidia dGPU.
 +			DMI_MATCH(DMI_BOARD_NAME, "GA402R"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_apu_sppt_min = 15,
 +				.ppt_apu_sppt_max = 80,
 +				.ppt_platform_sppt_min = 30,
 +				.ppt_platform_sppt_max = 115,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_apu_sppt_min = 25,
 +				.ppt_apu_sppt_def = 30,
 +				.ppt_apu_sppt_max = 45,
@@ -698,8 +730,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "GA402X"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_def = 35,
 +				.ppt_pl1_spl_max = 80,
@@ -711,7 +743,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 35,
 +				.ppt_pl2_sppt_min = 25,
@@ -720,15 +752,16 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.ppt_pl3_fppt_max = 65,
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
-+			}
++			},
++			.requires_fan_curve = true,
 +		},
 +	},
 +	{
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "GA403U"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 80,
 +				.ppt_pl2_sppt_min = 25,
@@ -736,22 +769,23 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.ppt_pl3_fppt_min = 35,
 +				.ppt_pl3_fppt_max = 80
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 35,
 +				.ppt_pl2_sppt_min = 25,
 +				.ppt_pl2_sppt_max = 35,
 +				.ppt_pl3_fppt_min = 35,
 +				.ppt_pl3_fppt_max = 65
-+			}
++			},
++			.requires_fan_curve = true,
 +		},
 +	},
 +	{
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "GA503R"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_def = 35,
 +				.ppt_pl1_spl_max = 80,
@@ -765,7 +799,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_def = 25,
 +				.ppt_pl1_spl_max = 65,
@@ -781,8 +815,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "GA605W"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 80,
 +				.ppt_pl2_sppt_min = 35,
@@ -796,13 +830,40 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_tgp_min = 55,
 +				.nv_tgp_max = 85,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 35,
 +				.ppt_pl2_sppt_min = 31,
 +				.ppt_pl2_sppt_max = 44,
 +				.ppt_pl3_fppt_min = 45,
 +				.ppt_pl3_fppt_max = 65,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.requires_fan_curve = true,
++		},
++	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "GU603Z"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 25,
++				.ppt_pl1_spl_max = 60,
++				.ppt_pl2_sppt_min = 25,
++				.ppt_pl2_sppt_max = 135,
++				/* Only allowed in AC mode */
++				.nv_dynamic_boost_min = 5,
++				.nv_dynamic_boost_max = 20,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 25,
++				.ppt_pl1_spl_max = 40,
++				.ppt_pl2_sppt_min = 25,
++				.ppt_pl2_sppt_max = 40,
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			}
@@ -812,8 +873,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "GU604V"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 65,
 +				.ppt_pl1_spl_max = 120,
 +				.ppt_pl2_sppt_min = 65,
@@ -824,7 +885,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 40,
 +				.ppt_pl2_sppt_min = 35,
@@ -839,8 +900,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "GU605M"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 28,
 +				.ppt_pl1_spl_max = 90,
 +				.ppt_pl2_sppt_min = 28,
@@ -850,11 +911,89 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 35,
 +				.ppt_pl2_sppt_min = 38,
 +				.ppt_pl2_sppt_max = 53,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.requires_fan_curve = true,
++		},
++	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "GV301Q"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_max = 45,
++				.ppt_pl2_sppt_min = 65,
++				.ppt_pl2_sppt_max = 80,
++			},
++			.dc_data = NULL
++		},
++	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "GV301R"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_max = 45,
++				.ppt_pl2_sppt_min = 25,
++				.ppt_pl2_sppt_max = 54,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_max = 65,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_max = 35,
++				.ppt_pl2_sppt_min = 25,
++				.ppt_pl2_sppt_max = 35,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_max = 65,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			}
++		},
++	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "GV601R"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_def = 35,
++				.ppt_pl1_spl_max = 90,
++				.ppt_pl2_sppt_min = 35,
++				.ppt_pl2_sppt_def = 54,
++				.ppt_pl2_sppt_max = 100,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_def = 80,
++				.ppt_pl3_fppt_max = 125,
++				.nv_dynamic_boost_min = 5,
++				.nv_dynamic_boost_max = 25,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_def = 28,
++				.ppt_pl1_spl_max = 65,
++				.ppt_pl2_sppt_min = 35,
++				.ppt_pl2_sppt_def = 54,
++				.ppt_pl2_sppt_def = 40,
++				.ppt_pl2_sppt_max = 60,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_def = 80,
++				.ppt_pl3_fppt_max = 65,
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			}
@@ -864,20 +1003,19 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "GV601V"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 28,
 +				.ppt_pl1_spl_def = 100,
 +				.ppt_pl1_spl_max = 110,
 +				.ppt_pl2_sppt_min = 28,
 +				.ppt_pl2_sppt_max = 135,
-+				/* Only allowed in AC mode */
 +				.nv_dynamic_boost_min = 5,
 +				.nv_dynamic_boost_max = 20,
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 40,
 +				.ppt_pl2_sppt_min = 35,
@@ -890,25 +1028,107 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +	},
 +	{
 +		.matches = {
-+			DMI_MATCH(DMI_BOARD_NAME, "G513Q"),
++			DMI_MATCH(DMI_BOARD_NAME, "GX650P"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_def = 110,
++				.ppt_pl1_spl_max = 130,
++				.ppt_pl2_sppt_min = 35,
++				.ppt_pl2_sppt_def = 125,
++				.ppt_pl2_sppt_max = 130,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_def = 125,
++				.ppt_pl3_fppt_max = 135,
++				.nv_dynamic_boost_min = 5,
++				.nv_dynamic_boost_max = 25,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_def = 25,
++				.ppt_pl1_spl_max = 65,
++				.ppt_pl2_sppt_min = 35,
++				.ppt_pl2_sppt_def = 35,
++				.ppt_pl2_sppt_max = 65,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_def = 42,
++				.ppt_pl3_fppt_max = 65,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			}
++		},
++	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "G513I"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				/* Yes this laptop is very limited */
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 80,
 +				.ppt_pl2_sppt_min = 15,
 +				.ppt_pl2_sppt_max = 80,
 +			},
-+			.dc_data = NULL
++			.dc_data = NULL,
++			.requires_fan_curve = true,
++		},
++	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "G513QM"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				/* Yes this laptop is very limited */
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_max = 100,
++				.ppt_pl2_sppt_min = 15,
++				.ppt_pl2_sppt_max = 190,
++			},
++			.dc_data = NULL,
++			.requires_fan_curve = true,
++		},
++	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "G513R"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 35,
++				.ppt_pl1_spl_max = 90,
++				.ppt_pl2_sppt_min = 54,
++				.ppt_pl2_sppt_max = 100,
++				.ppt_pl3_fppt_min = 54,
++				.ppt_pl3_fppt_max = 125,
++				.nv_dynamic_boost_min = 5,
++				.nv_dynamic_boost_max = 25,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 28,
++				.ppt_pl1_spl_max = 50,
++				.ppt_pl2_sppt_min = 28,
++				.ppt_pl2_sppt_max = 50,
++				.ppt_pl3_fppt_min = 28,
++				.ppt_pl3_fppt_max = 65,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.requires_fan_curve = true,
 +		},
 +	},
 +	{
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "G614J"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 28,
 +				.ppt_pl1_spl_max = 140,
 +				.ppt_pl2_sppt_min = 28,
@@ -918,22 +1138,23 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_dynamic_boost_min = 5,
 +				.nv_dynamic_boost_max = 25,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 55,
 +				.ppt_pl2_sppt_min = 25,
 +				.ppt_pl2_sppt_max = 70,
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
-+			}
++			},
++			.requires_fan_curve = true,
 +		},
 +	},
 +	{
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "G634J"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 28,
 +				.ppt_pl1_spl_max = 140,
 +				.ppt_pl2_sppt_min = 28,
@@ -943,22 +1164,49 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_dynamic_boost_min = 5,
 +				.nv_dynamic_boost_max = 25,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 55,
 +				.ppt_pl2_sppt_min = 25,
 +				.ppt_pl2_sppt_max = 70,
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
-+			}
++			},
++			.requires_fan_curve = true,
++		},
++	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "G733C"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 28,
++				.ppt_pl1_spl_max = 170,
++				.ppt_pl2_sppt_min = 28,
++				.ppt_pl2_sppt_max = 175,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++				.nv_dynamic_boost_min = 5,
++				.nv_dynamic_boost_max = 25,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 28,
++				.ppt_pl1_spl_max = 35,
++				.ppt_pl2_sppt_min = 28,
++				.ppt_pl2_sppt_max = 35,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.requires_fan_curve = true,
 +		},
 +	},
 +	{
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "G814J"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 28,
 +				.ppt_pl1_spl_max = 140,
 +				.ppt_pl2_sppt_min = 28,
@@ -966,20 +1214,21 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_dynamic_boost_min = 5,
 +				.nv_dynamic_boost_max = 25,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 55,
 +				.ppt_pl2_sppt_min = 25,
 +				.ppt_pl2_sppt_max = 70,
-+			}
++			},
++			.requires_fan_curve = true,
 +		},
 +	},
 +	{
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "G834J"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 28,
 +				.ppt_pl1_spl_max = 140,
 +				.ppt_pl2_sppt_min = 28,
@@ -989,22 +1238,23 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 55,
 +				.ppt_pl2_sppt_min = 25,
 +				.ppt_pl2_sppt_max = 70,
 +				.nv_temp_target_min = 75,
 +				.nv_temp_target_max = 87,
-+			}
++			},
++			.requires_fan_curve = true,
 +		},
 +	},
 +	{
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "H7606W"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 15,
 +				.ppt_pl1_spl_max = 80,
 +				.ppt_pl2_sppt_min = 35,
@@ -1018,7 +1268,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.nv_tgp_min = 55,
 +				.nv_tgp_max = 85,
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 25,
 +				.ppt_pl1_spl_max = 35,
 +				.ppt_pl2_sppt_min = 31,
@@ -1034,8 +1284,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "RC71"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 7,
 +				.ppt_pl1_spl_max = 30,
 +				.ppt_pl2_sppt_min = 15,
@@ -1043,7 +1293,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.ppt_pl3_fppt_min = 15,
 +				.ppt_pl3_fppt_max = 53
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 7,
 +				.ppt_pl1_spl_def = 15,
 +				.ppt_pl1_spl_max = 25,
@@ -1060,8 +1310,8 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +		.matches = {
 +			DMI_MATCH(DMI_BOARD_NAME, "RC72"),
 +		},
-+		.driver_data = &(struct power_data){
-+			.ac_data = &(struct power_limits){
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 7,
 +				.ppt_pl1_spl_max = 30,
 +				.ppt_pl2_sppt_min = 15,
@@ -1069,7 +1319,7 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +				.ppt_pl3_fppt_min = 15,
 +				.ppt_pl3_fppt_max = 53
 +			},
-+			.dc_data = &(struct power_limits){
++			.dc_data = &(struct power_limits) {
 +				.ppt_pl1_spl_min = 7,
 +				.ppt_pl1_spl_def = 17,
 +				.ppt_pl1_spl_max = 25,
@@ -1087,10 +1337,10 @@ index 5d6bef6d2b12..9adc07ba6d6b 100644
 +
  #endif /* _ASUS_ARMOURY_H_ */
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index b22480adb8f1..5e27f551f552 100644
+index 0f45d5549e10..8e90d2221706 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -284,6 +284,9 @@ struct asus_wmi {
+@@ -144,6 +144,9 @@
  
  #define ASUS_WMI_DEVID_APU_MEM		0x000600C1
  

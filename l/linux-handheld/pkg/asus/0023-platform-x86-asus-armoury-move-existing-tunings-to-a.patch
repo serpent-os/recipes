@@ -1,7 +1,7 @@
-From a685d0419c912260916dd2c57f4609d12f3b68b6 Mon Sep 17 00:00:00 2001
+From 2f32bd955b2f5e2432c1c3b31395e78a98c0d859 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 22 Sep 2024 21:39:43 +1200
-Subject: [PATCH 20/28] platform/x86: asus-armoury: move existing tunings to
+Subject: [PATCH 23/30] platform/x86: asus-armoury: move existing tunings to
  asus-armoury module
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -792,7 +792,7 @@ index 000000000000..440f41c5df3b
 +
 +#endif /* _ASUS_ARMOURY_H_ */
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index ee12b1a06529..bcf4941b2ae1 100644
+index 391549342296..0ba38e5bf8c3 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -55,8 +55,6 @@ module_param(fnlock_default, bool, 0444);
@@ -814,12 +814,12 @@ index ee12b1a06529..bcf4941b2ae1 100644
  
  #define FAN_CURVE_POINTS		8
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index 67ef5c8d35ca..53abf5cde1ea 100644
+index 7c886a93d554..3fd11c782ee2 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -143,6 +143,9 @@ struct asus_wmi {
- 	struct asus_wmi_driver *driver;
- };
+@@ -6,6 +6,9 @@
+ #include <linux/types.h>
+ #include <linux/dmi.h>
  
 +#define ASUS_WMI_MGMT_GUID	"97845ED0-4E6D-11DE-8A39-0800200C9A66"
 +#define ASUS_ACPI_UID_ASUSWMI	"ASUSWMI"

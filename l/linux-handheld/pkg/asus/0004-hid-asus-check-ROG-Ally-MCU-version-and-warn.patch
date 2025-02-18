@@ -1,7 +1,7 @@
-From 23a666b965fe18f4a1c55d7534c64f26b8ff1530 Mon Sep 17 00:00:00 2001
+From b7a4b1f01e4e3758b946adcab82d07c4dddce306 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Tue, 28 Jan 2025 19:29:27 +1300
-Subject: [PATCH 05/28] hid-asus: check ROG Ally MCU version and warn
+Subject: [PATCH 04/30] hid-asus: check ROG Ally MCU version and warn
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  1 file changed, 95 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index acf5e96e4d95..51898df04ff0 100644
+index bcdd168cdc6d..9e9e78164714 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
 @@ -52,6 +52,10 @@ MODULE_DESCRIPTION("Asus HID Keyboard and TouchPad");
