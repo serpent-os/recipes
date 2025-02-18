@@ -16,7 +16,7 @@ description : |
 license     : 
     - GPL-3.0-or-later
 rundeps     :
-    - gamescope
+    - binary(gamescope)
 setup       : |
     %patch %(pkgdir)/disable-plymouth.patch
 install     : |
