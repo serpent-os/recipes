@@ -5,7 +5,7 @@
 #
 name        : opengamepadui
 version     : 0.35.8
-release     : 1
+release     : 2
 homepage    : https://github.com/ShadowBlip/OpenGamepadUI
 upstreams   :
     - https://github.com/ShadowBlip/OpenGamepadUI/archive/refs/tags/v0.35.8.tar.gz : e7723e2c70a5d29ad03312c2f4ccd37b1196f07f1742642843327a141c02a377
@@ -23,6 +23,10 @@ builddeps   :
     - binary(wget)
     - pkgconfig(fontconfig)
     - sysbinary(setcap)
+rundeps     :
+    - binary(glxinfo)
+    - binary(inputplumber)
+    - binary(vulkaninfo)
 environment : |
     export PATH="/usr/bin:/usr/sbin"
 setup       : |
