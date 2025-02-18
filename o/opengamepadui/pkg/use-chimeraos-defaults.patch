@@ -1,0 +1,13 @@
+diff --git a/core/global/platform.gd b/core/global/platform.gd
+index beab13ec..7038b434 100644
+--- a/core/global/platform.gd
++++ b/core/global/platform.gd
+@@ -285,6 +285,8 @@ func _read_os() -> Array[PLATFORM]:
+ 		flags.append(PLATFORM.STEAMOS)
+ 	if os_info.id == "chimeraos":
+ 		flags.append(PLATFORM.CHIMERAOS)
++	if os_info.id == "serpentos":
++		flags.append(PLATFORM.CHIMERAOS)
+ 	if os_info.id == "manjaro":
+ 		flags.append(PLATFORM.MANJARO)
+ 	if os_info.id_like == "arch":
