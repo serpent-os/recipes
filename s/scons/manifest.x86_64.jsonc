@@ -1795,8 +1795,8 @@
 				"binary(scons)",
 				"binary(scons-configure-cache)",
 				"binary(sconsign)",
-				"python(SCons(3.11))",
-				"python(SCons)"
+				"python(scons(3.11))",
+				"python(scons)"
 			]
 		}
 	},
