@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : sdl2-compat
+version     : 2.30.51
+release     : 1
+homepage    : https://github.com/libsdl-org/sdl2-compat
+upstreams   :
+    - https://github.com/libsdl-org/sdl2-compat/releases/download/release-2.30.51/sdl2-compat-2.30.51.tar.gz : 6154a1b29d3ee0ef483e0b575819a2b5b413daeae7bd782085387943bbee17d2
+summary     : Simple DirectMedia Library - Compat library
+description : |
+    Simple DirectMedia Library - Compat library
+license     :
+    - Zlib
+builddeps   :
+    - pkgconfig(sdl3)
+    - pkgconfig(x11)
+rundeps     :
+    - sdl3 # dlopen()s sdl3 so we need to manually rundep on it
+tuning      :
+    - lto: full
+setup       : |
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/bin
