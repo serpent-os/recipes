@@ -1,0 +1,6 @@
+releases:
+  id: 75048
+  rss: https://github.com/xiph/rav1e/releases.atom
+security:
+  # Last checked 2025-02-13
+  cpe: ~

@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"rav1e": {
+			"build-depends": [
+				"binary(cargo-cbuild)",
+				"binary(nasm)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/rav1e",
+				"/usr/lib/librav1e.so.0.7",
+				"/usr/lib/librav1e.so.0.7.1"
+			],
+			"name": "rav1e",
+			"provides": [
+				"binary(rav1e)",
+				"soname(librav1e.so.0.7(x86_64))"
+			]
+		},
+		"rav1e-devel": {
+			"build-depends": [
+				"binary(cargo-cbuild)",
+				"binary(nasm)"
+			],
+			"depends": [
+				"rav1e"
+			],
+			"files": [
+				"/usr/include/rav1e/rav1e.h",
+				"/usr/lib/librav1e.so",
+				"/usr/lib/pkgconfig/rav1e.pc"
+			],
+			"name": "rav1e-devel",
+			"provides": [
+				"pkgconfig(rav1e)"
+			]
+		}
+	},
+	"source-name": "rav1e",
+	"source-release": "1",
+	"source-version": "0.7.1"
+}
