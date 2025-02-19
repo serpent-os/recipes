@@ -1,7 +1,7 @@
-From 4a1b90062c8bf375b617c9c79a13f944da6401ba Mon Sep 17 00:00:00 2001
+From 45887c57ece549599e3aa07f90f49d358ced8584 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Tue, 17 Dec 2024 09:31:08 +1300
-Subject: [PATCH 02/30] Tmp: add GA605W & H7606W to AMD-PMF quirks.
+Subject: [PATCH 02/29] Tmp: add GA605W & H7606W to AMD-PMF quirks.
 
 This will not be submitted upstream as the entire
 quirk system is being removed in 6.14 kernel.
