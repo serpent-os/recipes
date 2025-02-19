@@ -25,19 +25,19 @@
 			],
 			"files": [
 				"/usr/lib/libKirigami.so.6",
-				"/usr/lib/libKirigami.so.6.10.0",
+				"/usr/lib/libKirigami.so.6.11.0",
 				"/usr/lib/libKirigamiDelegates.so.6",
-				"/usr/lib/libKirigamiDelegates.so.6.10.0",
+				"/usr/lib/libKirigamiDelegates.so.6.11.0",
 				"/usr/lib/libKirigamiDialogs.so.6",
-				"/usr/lib/libKirigamiDialogs.so.6.10.0",
+				"/usr/lib/libKirigamiDialogs.so.6.11.0",
 				"/usr/lib/libKirigamiLayouts.so.6",
-				"/usr/lib/libKirigamiLayouts.so.6.10.0",
+				"/usr/lib/libKirigamiLayouts.so.6.11.0",
 				"/usr/lib/libKirigamiPlatform.so.6",
-				"/usr/lib/libKirigamiPlatform.so.6.10.0",
+				"/usr/lib/libKirigamiPlatform.so.6.11.0",
 				"/usr/lib/libKirigamiPrimitives.so.6",
-				"/usr/lib/libKirigamiPrimitives.so.6.10.0",
+				"/usr/lib/libKirigamiPrimitives.so.6.11.0",
 				"/usr/lib/libKirigamiPrivate.so.6",
-				"/usr/lib/libKirigamiPrivate.so.6.10.0",
+				"/usr/lib/libKirigamiPrivate.so.6.11.0",
 				"/usr/lib/qt6/qml/org/kde/kirigami/AboutItem.qml",
 				"/usr/lib/qt6/qml/org/kde/kirigami/AboutItem.qmlc",
 				"/usr/lib/qt6/qml/org/kde/kirigami/AboutPage.qml",
@@ -386,6 +386,6 @@
 		}
 	},
 	"source-name": "kf6-kirigami",
-	"source-release": "1",
-	"source-version": "6.10.0"
+	"source-release": "2",
+	"source-version": "6.11"
 }
