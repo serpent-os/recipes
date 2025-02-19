@@ -1,7 +1,7 @@
-From 4f04a0136e748c03039a8e73bb48c633b8b2fe4e Mon Sep 17 00:00:00 2001
+From ae88ba6aab93e5d83893acbd849ae4ece762136d Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Tue, 11 Feb 2025 13:24:02 +1300
-Subject: [PATCH 20/30] hid-asus-ally: set default backface btns to F14/15
+Subject: [PATCH 19/29] hid-asus-ally: set default backface btns to F14/15
 
 Signed-off-by: Luke Jones <luke@ljones.dev>
 ---

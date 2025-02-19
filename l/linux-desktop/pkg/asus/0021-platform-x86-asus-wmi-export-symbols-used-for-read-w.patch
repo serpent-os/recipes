@@ -1,7 +1,7 @@
-From ae9eafe291518663c30a377dab33b302e688097e Mon Sep 17 00:00:00 2001
+From 80f312cb766c6b3a2244429ea092818c5f7076b9 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 22 Sep 2024 21:40:46 +1200
-Subject: [PATCH 22/30] platform/x86: asus-wmi: export symbols used for
+Subject: [PATCH 21/29] platform/x86: asus-wmi: export symbols used for
  read/write WMI
 
 Export some rather helpful read/write WMI symbols using a namespace.

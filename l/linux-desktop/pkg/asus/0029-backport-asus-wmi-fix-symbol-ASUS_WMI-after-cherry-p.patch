@@ -1,7 +1,7 @@
-From b67a239cb3b2be9a646a07a794f767c316d222bc Mon Sep 17 00:00:00 2001
+From c9a1c10dfb6c4404624fa2c9dd8648164b71c882 Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Sat, 1 Feb 2025 14:19:33 +1300
-Subject: [PATCH 30/30] backport: asus-wmi: fix symbol 'ASUS_WMI' after
+Subject: [PATCH 29/29] backport: asus-wmi: fix symbol 'ASUS_WMI' after
  cherry-pick from wip/ally-master
 
 Signed-off-by: Luke Jones <luke@ljones.dev>

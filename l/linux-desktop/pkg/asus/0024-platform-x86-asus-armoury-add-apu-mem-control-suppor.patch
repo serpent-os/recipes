@@ -1,7 +1,7 @@
-From 77ab1ab3408bd4caf62a71714d41c652ccbd4f14 Mon Sep 17 00:00:00 2001
+From 056065fee2891dab21bf0d75dcd3182e2d13eefc Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 2 Jun 2024 14:44:31 +1200
-Subject: [PATCH 25/30] platform/x86: asus-armoury: add apu-mem control support
+Subject: [PATCH 24/29] platform/x86: asus-armoury: add apu-mem control support
 
 Implement the APU memory size control under the asus-armoury module using
 the fw_attributes class.

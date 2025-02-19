@@ -1,7 +1,7 @@
-From e0a5132164c47587527d710bea1278f8000a7c10 Mon Sep 17 00:00:00 2001
+From 767c4eb46ba93be91516c72c67101d4c38d1a2df Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 1 Sep 2024 14:30:37 +1200
-Subject: [PATCH 05/30] platform/x86: asus-wmi: Refactor Ally suspend/resume
+Subject: [PATCH 04/29] platform/x86: asus-wmi: Refactor Ally suspend/resume
 
 The CSEE method from ACPI is now called only on module load. This fixes
 an issues with USB device loss on Ally 1 after reboot.

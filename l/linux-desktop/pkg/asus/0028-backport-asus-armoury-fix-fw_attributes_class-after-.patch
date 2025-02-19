@@ -1,7 +1,7 @@
-From 47b7ca23591ee5eee05575ed57075cf692d0b824 Mon Sep 17 00:00:00 2001
+From 701480184523ce7565f10bacd12bb1da588e0575 Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Sat, 1 Feb 2025 11:28:50 +1300
-Subject: [PATCH 29/30] backport: asus-armoury: fix fw_attributes_class after
+Subject: [PATCH 28/29] backport: asus-armoury: fix fw_attributes_class after
  cherry-pick from wip/ally-master
 
 Signed-off-by: Luke Jones <luke@ljones.dev>

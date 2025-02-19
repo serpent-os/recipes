@@ -1,7 +1,7 @@
-From e589d855d5d2cba1703f593a438afb951853bc53 Mon Sep 17 00:00:00 2001
+From 0fe318668b804dc466d42cebea2c1742f62aa5d9 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 15:40:09 +1300
-Subject: [PATCH 12/30] hid-asus-ally: Turbo settings for buttons
+Subject: [PATCH 11/29] hid-asus-ally: Turbo settings for buttons
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---

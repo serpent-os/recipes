@@ -1,7 +1,7 @@
-From 8ef265154f099f0854385997662dbcd859819a79 Mon Sep 17 00:00:00 2001
+From aa99e6386bfe28c672565bf07f3715066373901e Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Tue, 11 Feb 2025 00:05:08 +1300
-Subject: [PATCH 06/30] hid-asus: set mcu hack to off if required MCU version
+Subject: [PATCH 05/29] hid-asus: set mcu hack to off if required MCU version
 
 Signed-off-by: Luke Jones <luke@ljones.dev>
 ---
