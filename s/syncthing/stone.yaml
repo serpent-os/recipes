@@ -1,0 +1,57 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : syncthing
+version     : 1.29.2
+release     : 1
+homepage    : https://syncthing.net
+upstreams   :
+    - https://github.com/syncthing/syncthing/archive/refs/tags/v1.29.2.tar.gz : 6446e52cb5ca6584710c3abd9250e0d9708486d2dc2264f7c869ade169876a57
+summary     : Continuous file synchronization program
+description : |
+    It synchronizes files between two or more computers in real time,
+    safely protected from prying eyes. Your data is your data alone
+    and you deserve to choose where it is stored, whether it is shared with
+    some third party, and how it’s transmitted over the internet.
+license     : MPL-2.0
+networking  : true
+builddeps   :
+    - binary(go)
+build       : |
+    go run build.go --no-upgrade
+install     : |
+    %install_bin bin/syncthing
+    %install_bin bin/stdiscosrv
+    %install_bin bin/strelaysrv
+
+    %install_dir %(installroot)%(docdir)/%(name)
+    %install_file etc/linux-systemd/system/syncthing@.service %(installroot)%(libdir)/systemd/system/syncthing@.service
+    %install_file etc/linux-systemd/user/syncthing.service %(installroot)%(libdir)/systemd/user/syncthing.service
+    %install_file etc/linux-sysctl/30-syncthing.conf %(installroot)%(libdir)/sysctl.d/30-syncthing.conf
+    %install_file LICENSE %(installroot)%(docdir)/%(name)/.
+
+    %install_file man/syncthing.1 %(installroot)%(mandir)/man1/syncthing.1
+    %install_dir %(installroot)%(mandir)/man5
+    cp man/syncthing*.5 %(installroot)%(mandir)/man5/.
+    %install_dir %(installroot)%(mandir)/man7
+    cp man/syncthing*.7 %(installroot)%(mandir)/man7/.
+    %install_file man/stdiscosrv.1 %(installroot)%(mandir)/man1/stdiscosrv.1
+    %install_file man/strelaysrv.1 %(installroot)%(mandir)/man1/strelaysrv.1
+packages:
+    - "%(name)-stdiscosrv":
+        summary: Discovery server
+        description: Discovery server
+        paths:
+            - /usr/bin/stdiscosrv
+            - /usr/share/man/man1/stdiscosrv.1
+    - "%(name)-strelaysrv":
+        summary: Relay server
+        description: Relay server
+        paths:
+            - /usr/bin/strelaysrv
+            - /usr/share/man/man1/strelaysrv.1
+        
+check       : |
+    go run build.go test

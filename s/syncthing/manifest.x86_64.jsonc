@@ -1,0 +1,65 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"syncthing": {
+			"build-depends": [
+				"binary(go)"
+			],
+			"files": [
+				"/usr/bin/syncthing",
+				"/usr/lib/sysctl.d/30-syncthing.conf",
+				"/usr/lib/systemd/system/syncthing@.service",
+				"/usr/lib/systemd/user/syncthing.service",
+				"/usr/share/doc/syncthing/LICENSE",
+				"/usr/share/man/man1/syncthing.1",
+				"/usr/share/man/man5/syncthing-config.5",
+				"/usr/share/man/man5/syncthing-stignore.5",
+				"/usr/share/man/man7/syncthing-bep.7",
+				"/usr/share/man/man7/syncthing-device-ids.7",
+				"/usr/share/man/man7/syncthing-event-api.7",
+				"/usr/share/man/man7/syncthing-faq.7",
+				"/usr/share/man/man7/syncthing-globaldisco.7",
+				"/usr/share/man/man7/syncthing-localdisco.7",
+				"/usr/share/man/man7/syncthing-networking.7",
+				"/usr/share/man/man7/syncthing-relay.7",
+				"/usr/share/man/man7/syncthing-rest-api.7",
+				"/usr/share/man/man7/syncthing-security.7",
+				"/usr/share/man/man7/syncthing-versioning.7"
+			],
+			"name": "syncthing",
+			"provides": [
+				"binary(syncthing)"
+			]
+		},
+		"syncthing-stdiscosrv": {
+			"build-depends": [
+				"binary(go)"
+			],
+			"files": [
+				"/usr/bin/stdiscosrv",
+				"/usr/share/man/man1/stdiscosrv.1"
+			],
+			"name": "syncthing-stdiscosrv",
+			"provides": [
+				"binary(stdiscosrv)"
+			]
+		},
+		"syncthing-strelaysrv": {
+			"build-depends": [
+				"binary(go)"
+			],
+			"files": [
+				"/usr/bin/strelaysrv",
+				"/usr/share/man/man1/strelaysrv.1"
+			],
+			"name": "syncthing-strelaysrv",
+			"provides": [
+				"binary(strelaysrv)"
+			]
+		}
+	},
+	"source-name": "syncthing",
+	"source-release": "1",
+	"source-version": "1.29.2"
+}

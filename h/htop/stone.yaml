@@ -5,7 +5,7 @@
 #
 name        : htop
 version     : '3.3.0'
-release     : 3
+release     : 4
 homepage    : https://htop.dev/
 upstreams   :
     - https://github.com/htop-dev/htop/releases/download/3.3.0/htop-3.3.0.tar.xz : a69acf9b42ff592c4861010fce7d8006805f0d6ef0e8ee647a6ee6e59b743d5c
@@ -15,7 +15,11 @@ description : |
     about CPU & memory usage on the console
 license     : GPL-2.0-or-later
 builddeps   :
-   - pkgconfig(ncursesw)
+    - pkgconfig(libcap)
+    - pkgconfig(ncursesw)
+    - lm_sensors-devel
+rundeps     :
+    - lm_sensors
 setup       : |
     %configure
 build       : |

@@ -1,7 +1,7 @@
-From 061f4d99e305898805c48e9b09d5ddeaab2c7e0e Mon Sep 17 00:00:00 2001
+From b2fe50793b348fde681123f0265830b7b26513cc Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 2 Oct 2024 23:51:36 +1300
-Subject: [PATCH 09/28] hid-asus-ally: initial gamepad configuration
+Subject: [PATCH 09/30] hid-asus-ally: initial gamepad configuration
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 266 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 3d950535c3e2..822139e2a5c0 100644
+index b7d22c1747b0..4935ab36aa35 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -10,7 +10,6 @@
@@ -294,7 +294,7 @@ index 3d950535c3e2..822139e2a5c0 100644
  	return 0;
  }
  
-@@ -900,7 +1130,13 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+@@ -892,7 +1122,13 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
  		else
  			hid_info(hdev, "Created Ally RGB LED controls.\n");
  
@@ -309,7 +309,7 @@ index 3d950535c3e2..822139e2a5c0 100644
  			goto err_close;
  	}
  
-@@ -913,6 +1149,12 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+@@ -905,6 +1141,12 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
  			goto err_close;
  		}
  		hid_info(hdev, "Created Ally X controller.\n");

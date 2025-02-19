@@ -5,7 +5,7 @@
 #
 name        : pipewire
 version     : 1.2.7
-release     : 7
+release     : 8
 homepage    : https://pipewire.org/
 upstreams   :
     - https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.2.7/pipewire-1.2.7.tar.gz : e75568ed18bcbe75e9779af57cb9cc256fd7ebfaadc12bb347a0717055d1d3a9
@@ -42,8 +42,10 @@ builddeps   :
     - pkgconfig(libavcodec)
     - pkgconfig(opus)
     - pkgconfig(sbc)
-    - pkgconfig(sdl2)
+    - pkgconfig(sdl2_compat)
 setup       : |
+    %patch %(pkgdir)/0001-Fix-clang-build-error.patch
+
     %meson -Dsession-managers=[] \
            -Dvulkan=enabled \
            -Dudev=enabled \

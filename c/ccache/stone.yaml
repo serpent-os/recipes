@@ -5,7 +5,7 @@
 #
 name        : ccache
 version     : 4.10.2
-release     : 7
+release     : 8
 summary     : ccache - a fast C/C++ compiler cache
 license     : GPL-3.0-or-later
 homepage    : https://ccache.dev/
@@ -14,12 +14,12 @@ description : |
 upstreams   :
     - https://github.com/ccache/ccache/releases/download/v4.10.2/ccache-4.10.2.tar.xz: c0b85ddfc1a3e77b105ec9ada2d24aad617fa0b447c6a94d55890972810f0f5a
 builddeps   :
-    # pkgconfig(fmt)
+    - binary(asciidoctor)
+    - pkgconfig(fmt)
     # pkgconfig(hiredis)
     - pkgconfig(libblake3)
     - pkgconfig(libxxhash)
     - pkgconfig(libzstd)
-    # TODO asciidoctor for man pages
 checkdeps   :
     - binary(eu-elfcmp)
     - binary(objdump)
@@ -31,7 +31,6 @@ setup       : |
     %cmake \
         -DVENDORDIR="%(vendordir)/ccache" \
         -DREDIS_STORAGE_BACKEND=OFF \
-        -DENABLE_DOCUMENTATION=OFF \
         -DENABLE_TESTING=OFF \
         -DDEPS=LOCAL
 build       : |
@@ -52,5 +51,5 @@ install     : |
 #    needs doctest packaged
 #    %cmake_test
 tuning      :
-    - lto
+    - lto: full
     - optimize: speed

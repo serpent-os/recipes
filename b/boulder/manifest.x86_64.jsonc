@@ -27,6 +27,7 @@
 				"/usr/share/boulder/macros/actions/pgo.yaml",
 				"/usr/share/boulder/macros/actions/python.yaml",
 				"/usr/share/boulder/macros/actions/qt-kde.yaml",
+				"/usr/share/boulder/macros/actions/ruby.yaml",
 				"/usr/share/boulder/macros/arch/aarch64.yaml",
 				"/usr/share/boulder/macros/arch/base.yaml",
 				"/usr/share/boulder/macros/arch/emul32/x86_64.yaml",
@@ -59,6 +60,6 @@
 		}
 	},
 	"source-name": "boulder",
-	"source-release": "83",
-	"source-version": "0.25.1+git.fe4f9a7"
+	"source-release": "84",
+	"source-version": "0.25.1+git.1354b67"
 }

@@ -1,7 +1,7 @@
-From 635e66fa99e94009a65b6f39dfd1e2e5625e4235 Mon Sep 17 00:00:00 2001
+From cd12a1047f4e02905a3c1b4c695cbf0e00b9c0e2 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 21:32:41 +1300
-Subject: [PATCH 14/28] hid-asus-ally: add JS deadzones
+Subject: [PATCH 14/30] hid-asus-ally: add JS deadzones
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 123 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 8b40b806631c..64f4b466f0bb 100644
+index 01d0ff6169fd..08d66a179523 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -260,6 +260,11 @@ struct btn_mapping {

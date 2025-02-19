@@ -1,0 +1,7 @@
+releases:
+  id: 29706
+  rss: https://gitlab.matrix.org/matrix-org/olm/-/tags?format=atom
+security:
+  cpe:
+  - vendor: matrix
+    product: olm

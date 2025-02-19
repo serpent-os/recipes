@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : opengamepadui
+version     : 0.35.8
+release     : 2
+homepage    : https://github.com/ShadowBlip/OpenGamepadUI
+upstreams   :
+    - https://github.com/ShadowBlip/OpenGamepadUI/archive/refs/tags/v0.35.8.tar.gz : e7723e2c70a5d29ad03312c2f4ccd37b1196f07f1742642843327a141c02a377
+summary     : Open source gamepad-native game launcher and overlay
+description : |
+    Open Gamepad UI is a free and open source game launcher and overlay written using the Godot Game Engine 4 designed with a gamepad native experience in mind.
+    Its goal is to provide an open and extendable foundation to launch and play games. It also implements a gamepad input system that can allow you to remap
+    gamepad input to mouse and keyboard inputs.
+license     : GPL-3.0-or-later
+networking  : yes
+builddeps   :
+    - binary(cargo)
+    - binary(godot)
+    - binary(unzip)
+    - binary(wget)
+    - pkgconfig(fontconfig)
+    - sysbinary(setcap)
+rundeps     :
+    - binary(glxinfo)
+    - binary(inputplumber)
+    - binary(vulkaninfo)
+environment : |
+    export PATH="/usr/bin:/usr/sbin"
+setup       : |
+    %patch %(pkgdir)/use-chimeraos-defaults.patch
+    %patch %(pkgdir)/fix-prefix.patch
+    %patch %(pkgdir)/419.patch
+build       : |
+    %make
+install     : |
+    %make_install PREFIX=%(installroot)/usr

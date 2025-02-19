@@ -1,0 +1,59 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"kdsingleapplication-qt6": {
+			"build-depends": [
+				"cmake(Qt6)"
+			],
+			"depends": [
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Network.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libkdsingleapplication-qt6.so.1.1",
+				"/usr/lib/libkdsingleapplication-qt6.so.1.1.0",
+				"/usr/share/doc/KDSingleApplication-qt6/LICENSE.txt",
+				"/usr/share/doc/KDSingleApplication-qt6/LICENSES/BSD-3-Clause.txt",
+				"/usr/share/doc/KDSingleApplication-qt6/LICENSES/MIT.txt",
+				"/usr/share/doc/KDSingleApplication-qt6/README.md"
+			],
+			"name": "kdsingleapplication-qt6",
+			"provides": [
+				"soname(libkdsingleapplication-qt6.so.1.1(x86_64))"
+			]
+		},
+		"kdsingleapplication-qt6-devel": {
+			"build-depends": [
+				"cmake(Qt6)"
+			],
+			"depends": [
+				"kdsingleapplication-qt6"
+			],
+			"files": [
+				"/usr/include/kdsingleapplication-qt6/KDSingleApplication",
+				"/usr/include/kdsingleapplication-qt6/kdsingleapplication.h",
+				"/usr/include/kdsingleapplication-qt6/kdsingleapplication_lib.h",
+				"/usr/include/kdsingleapplication-qt6/kdsingleapplication_version.h",
+				"/usr/lib/cmake/KDSingleApplication-qt6/KDSingleApplication-qt6Config.cmake",
+				"/usr/lib/cmake/KDSingleApplication-qt6/KDSingleApplication-qt6ConfigVersion.cmake",
+				"/usr/lib/cmake/KDSingleApplication-qt6/KDSingleApplication-qt6Targets-release.cmake",
+				"/usr/lib/cmake/KDSingleApplication-qt6/KDSingleApplication-qt6Targets.cmake",
+				"/usr/lib/cmake/KDSingleApplication-qt6/KDSingleApplicationTargets-release.cmake",
+				"/usr/lib/cmake/KDSingleApplication-qt6/KDSingleApplicationTargets.cmake",
+				"/usr/lib/libkdsingleapplication-qt6.so",
+				"/usr/lib/qt6/mkspecs/modules/qt_KDSingleApplication.pri"
+			],
+			"name": "kdsingleapplication-qt6-devel",
+			"provides": [
+				"cmake(KDSingleApplication-qt6)"
+			]
+		}
+	},
+	"source-name": "kdsingleapplication",
+	"source-release": "1",
+	"source-version": "1.1.0"
+}

@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : olm
+version     : 3.2.16
+release     : 1
+upstreams   :
+    - https://gitlab.matrix.org/matrix-org/olm/-/archive/3.2.16/olm-3.2.16.tar.gz : 1e90f9891009965fd064be747616da46b232086fe270b77605ec9bda34272a68
+license     : Apache-2.0
+homepage    : https://gitlab.matrix.org/matrix-org/olm
+summary     : Implementation of the Olm and Megolm cryptographic ratchets
+description : |
+    Implementation of the Olm and Megolm cryptographic ratchets
+tuning      :
+    - lto: full
+setup       : |
+    %patch %(pkgdir)/ftbfs-llvm.patch
+
+    %cmake
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
