@@ -1,7 +1,7 @@
-From e51af083a0782d6d1c08e8bf3b289786a53d6122 Mon Sep 17 00:00:00 2001
+From a8719ffe78bfcd3ef54df609b7367af98e6f95bc Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Thu, 19 Sep 2024 17:23:35 +1200
-Subject: [PATCH 24/30] platform/x86: asus-armoury: add panel_hd_mode attribute
+Subject: [PATCH 23/29] platform/x86: asus-armoury: add panel_hd_mode attribute
 
 Add panel_hd_mode to toggle the panel mode between single and high
 definition modes.

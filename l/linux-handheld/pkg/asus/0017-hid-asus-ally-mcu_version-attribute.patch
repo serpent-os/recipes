@@ -1,7 +1,7 @@
-From 08b22f05f278794446fd36289c0497023866b573 Mon Sep 17 00:00:00 2001
+From 34c149c9e122faee82928933d896de6f1313d87f Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Mon, 10 Feb 2025 17:15:01 +1300
-Subject: [PATCH 18/30] hid-asus-ally: mcu_version attribute
+Subject: [PATCH 17/29] hid-asus-ally: mcu_version attribute
 
 Signed-off-by: Luke Jones <luke@ljones.dev>
 ---

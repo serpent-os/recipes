@@ -1,7 +1,7 @@
-From 55e4923fecdb1beb521ba44c4dee5e3b511bfac3 Mon Sep 17 00:00:00 2001
+From f3329836a02a88a3c5bd35bb2057aaad6589b74f Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Mon, 3 Jun 2024 12:04:41 +1200
-Subject: [PATCH 27/30] platform/x86: asus-wmi: deprecate bios features
+Subject: [PATCH 26/29] platform/x86: asus-wmi: deprecate bios features
 
 With the existence of the asus-armoury module the attributes no-longer
 need to live under the /sys/devices/platform/asus-nb-wmi/ path.

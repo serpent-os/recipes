@@ -1,7 +1,7 @@
-From b2fe50793b348fde681123f0265830b7b26513cc Mon Sep 17 00:00:00 2001
+From a449800566b870cd99b98fc5b57a9bdb9887d884 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 2 Oct 2024 23:51:36 +1300
-Subject: [PATCH 09/30] hid-asus-ally: initial gamepad configuration
+Subject: [PATCH 08/29] hid-asus-ally: initial gamepad configuration
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
