@@ -13,6 +13,8 @@
 				"/usr/share/icons/breeze-dark/actions/12/object-fill.svg",
 				"/usr/share/icons/breeze-dark/actions/12/object-stroke-style.svg",
 				"/usr/share/icons/breeze-dark/actions/12/object-stroke.svg",
+				"/usr/share/icons/breeze-dark/actions/12/open-link-symbolic.svg",
+				"/usr/share/icons/breeze-dark/actions/12/open-link.svg",
 				"/usr/share/icons/breeze-dark/actions/12/transform-affect-gradient.svg",
 				"/usr/share/icons/breeze-dark/actions/12/transform-affect-pattern.svg",
 				"/usr/share/icons/breeze-dark/actions/12/transform-affect-rounded-corners.svg",
@@ -9541,6 +9543,7 @@
 				"/usr/share/icons/breeze-dark/applets/48/weather-storm-night.svg",
 				"/usr/share/icons/breeze-dark/applets/48/weather-storm-symbolic.svg",
 				"/usr/share/icons/breeze-dark/applets/48/weather-storm.svg",
+				"/usr/share/icons/breeze-dark/applets/64/applets-screenshooter.svg",
 				"/usr/share/icons/breeze-dark/applets/64/osd-duplicate.svg",
 				"/usr/share/icons/breeze-dark/applets/64/osd-rotate-ccw.svg",
 				"/usr/share/icons/breeze-dark/applets/64/osd-rotate-cw.svg",
@@ -16115,6 +16118,8 @@
 				"/usr/share/icons/breeze/actions/12/object-fill.svg",
 				"/usr/share/icons/breeze/actions/12/object-stroke-style.svg",
 				"/usr/share/icons/breeze/actions/12/object-stroke.svg",
+				"/usr/share/icons/breeze/actions/12/open-link-symbolic.svg",
+				"/usr/share/icons/breeze/actions/12/open-link.svg",
 				"/usr/share/icons/breeze/actions/12/transform-affect-gradient.svg",
 				"/usr/share/icons/breeze/actions/12/transform-affect-pattern.svg",
 				"/usr/share/icons/breeze/actions/12/transform-affect-rounded-corners.svg",
@@ -25656,6 +25661,7 @@
 				"/usr/share/icons/breeze/applets/48/weather-storm-night.svg",
 				"/usr/share/icons/breeze/applets/48/weather-storm-symbolic.svg",
 				"/usr/share/icons/breeze/applets/48/weather-storm.svg",
+				"/usr/share/icons/breeze/applets/64/applets-screenshooter.svg",
 				"/usr/share/icons/breeze/applets/64/osd-duplicate.svg",
 				"/usr/share/icons/breeze/applets/64/osd-rotate-ccw.svg",
 				"/usr/share/icons/breeze/applets/64/osd-rotate-cw.svg",
@@ -32556,7 +32562,7 @@
 			],
 			"files": [
 				"/usr/lib/libKF6BreezeIcons.so.6",
-				"/usr/lib/libKF6BreezeIcons.so.6.10.0"
+				"/usr/lib/libKF6BreezeIcons.so.6.11.0"
 			],
 			"name": "kf6-breeze-icons",
 			"provides": [
@@ -32589,6 +32595,6 @@
 		}
 	},
 	"source-name": "kf6-breeze-icons",
-	"source-release": "1",
-	"source-version": "6.10.0"
+	"source-release": "2",
+	"source-version": "6.11"
 }
