@@ -22,7 +22,7 @@
 			],
 			"files": [
 				"/usr/lib/libKF6ColorScheme.so.6",
-				"/usr/lib/libKF6ColorScheme.so.6.10.0",
+				"/usr/lib/libKF6ColorScheme.so.6.11.0",
 				"/usr/share/locale/ar/LC_MESSAGES/kcolorscheme6.mo",
 				"/usr/share/locale/ast/LC_MESSAGES/kcolorscheme6.mo",
 				"/usr/share/locale/be/LC_MESSAGES/kcolorscheme6.mo",
@@ -111,6 +111,6 @@
 		}
 	},
 	"source-name": "kf6-kcolorscheme",
-	"source-release": "1",
-	"source-version": "6.10.0"
+	"source-release": "2",
+	"source-version": "6.11"
 }
