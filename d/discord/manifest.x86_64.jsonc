@@ -43,6 +43,7 @@
 				"soname(libpango-1.0.so.0(x86_64))",
 				"soname(libpthread.so.0(x86_64))",
 				"soname(libsmime3.so(x86_64))",
+				"soname(libudev.so.1(x86_64))",
 				"soname(libxcb.so.1(x86_64))",
 				"soname(libxkbcommon.so.0(x86_64))"
 			],
@@ -140,6 +141,6 @@
 		}
 	},
 	"source-name": "discord",
-	"source-release": "11",
-	"source-version": "0.0.84"
+	"source-release": "12",
+	"source-version": "0.0.86"
 }
