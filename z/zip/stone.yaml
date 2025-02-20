@@ -1,0 +1,42 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : zip
+version     : "3.0"
+release     : 1
+upstreams   :
+    - https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz : f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369
+homepage    : https://infozip.sourceforge.net/
+license     : Info-ZIP
+summary     : Archiver for .zip files
+description : |
+    This is InfoZIP's zip program. It produces files that are fully compatible with the popular PKZIP program; however, the command line options are not identical. In other words, the end result is the same, but the methods differ.
+builddeps   :
+    - pkgconfig(bzip2)
+rundeps     :
+    - binary(unzip) # zip -T
+environment : |
+    make_args="-f unix/Makefile prefix=%(prefix)"
+
+    # Make sure we build with large file support and bzip2 support. The configure script would ordinarily handle this but we're not using that
+    export CFLAGS="${CFLAGS} -DLARGE_FILE_SUPPORT -DBZIP2_SUPPORT"
+    export LDFLAGS="${LDFLAGS} -lbz2"
+setup       : |
+    %patch %(pkgdir)/clang-configure.patch
+    %patch %(pkgdir)/currdir.patch
+    %patch %(pkgdir)/exec-shield.patch
+    %patch %(pkgdir)/fix-close.patch
+    %patch %(pkgdir)/fix-install.patch
+    %patch %(pkgdir)/format-security.patch
+    %patch %(pkgdir)/reproducible.patch
+build       : |
+    %make zips $make_args \
+               CC=%(cc) CPP=%(cxx) \
+               LOCAL_ZIP="${CFLAGS}" \
+               LFLAGS2="${LDFLAGS}"
+install     : |
+    %make_install $make_args
+tuning      :
+    - lto: full

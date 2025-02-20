@@ -1,0 +1,45 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : coreutils
+version     : "9.6"
+release     : 1
+upstreams   :
+    - https://ftp.gnu.org/gnu/coreutils/coreutils-9.6.tar.xz : 7a0124327b398fd9eb1a6abde583389821422c744ffa10734b24f557610d3283
+homepage    : https://www.gnu.org/software/coreutils/
+license     : GPL-3.0-or-later
+summary     : GNU core utilities
+description : |
+    This package provides those coreutils programs where the uutils implementation is not sufficient
+builddeps   :
+    - pkgconfig(gmp)
+    - pkgconfig(libacl)
+    - pkgconfig(libattr)
+    - pkgconfig(libcap)
+    - pkgconfig(libcrypto)
+setup       : |
+    export FORCE_UNSAFE_CONFIGURE=1
+    # There HAS to be a better way to do this
+    %configure --enable-install-program=sort \
+               --enable-no-install-program=[,b2sum,base32,base64,basename,basenc,cat,chcon,chgrp,chmod,chown,chroot,cksum,comm,cp,csplit,cut,date,dd,df,dir,dircolors,dirname,du,echo,env,expand,expr,factor,false,fmt,fold,groups,head,hostid,id,install,join,kill,link,ln,logname,ls,md5sum,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,numfmt,od,paste,pathchk,pinky,pr,printenv,printf,ptx,pwd,readlink,realpath,rm,rmdir,runcon,seq,sha1sum,sha224sum,sha256sum,sha384sum,sha512sum,shred,shuf,sleep,split,stat,stdbuf,stty,sum,sync,tac,tail,tee,test,timeout,touch,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,vdir,wc,who,whoami,yes,
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Why isn't this removed by the above list?
+    rm -v %(installroot)/%(bindir)/install \
+          %(installroot)/%(mandir)/man1/install.1
+
+    # Rename so they don't conflict with uutils
+    cd %(installroot)/%(bindir)
+    for i in *; do
+        mv ${i} cu-${i}
+    done
+
+    cd %(installroot)/%(mandir)/man1/
+    for i in *; do
+        mv ${i} cu-${i}
+    done
