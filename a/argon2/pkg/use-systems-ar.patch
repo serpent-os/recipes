@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 837e7f7..2ebc401 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,6 +39,8 @@ OBJ = $(SRC:.c=.o)
+ 
+ CFLAGS += -std=c89 -O3 -Wall -g -Iinclude -Isrc
+ 
++AR?="ar"
++
+ ifeq ($(NO_THREADS), 1)
+ CFLAGS += -DARGON2_NO_THREADS
+ else
+@@ -182,7 +184,7 @@ $(LIB_SH): 	$(SRC)
+ 		$(CC) $(CFLAGS) $(LIB_CFLAGS) $(LDFLAGS) $(SO_LDFLAGS) $^ -o $@
+ 
+ $(LIB_ST): 	$(OBJ)
+-		ar rcs $@ $^
++		$(AR) rcs $@ $^
+ 
+ .PHONY: clean
+ clean:

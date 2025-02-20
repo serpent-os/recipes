@@ -1,0 +1,7 @@
+releases:
+  id: 15244
+  rss: https://github.com/P-H-C/phc-winner-argon2/releases.atom
+security:
+  cpe:
+  - vendor: argon2_project
+    product: argon2
