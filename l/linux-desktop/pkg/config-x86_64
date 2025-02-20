@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 6.12.14 Kernel Configuration
+# Linux/x86_64 6.12.15 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 19.1.7 (Serpent 19.1.7-21)"
 CONFIG_GCC_VERSION=0
