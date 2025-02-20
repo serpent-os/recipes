@@ -1,0 +1,50 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : botan
+version     : 3.7.1
+release     : 1
+homepage    : https://botan.randombit.net
+upstreams   :
+    - https://botan.randombit.net/releases/Botan-3.7.1.tar.xz : fc0620463461caaea8e60f06711d7e437a3ad1eebd6de4ac29c14bbd901ccd1b
+summary     : A C++ cryptography library
+description : |
+    A C++ cryptography library
+license     : BSD-2-Clause
+builddeps   :
+    - binary(python3)
+    - pkgconfig(bzip2)
+    - pkgconfig(liblzma)
+    - pkgconfig(sqlite3)
+    - pkgconfig(zlib)
+setup       : |
+    ./configure.py               \
+        --prefix=%(prefix)       \
+        --libdir=%(libdir)       \
+        --enable-shared-library  \
+        --with-bzip              \
+        --with-lzma              \
+        --with-zlib              \
+        --with-sqlite3           \
+        --with-os-feature=getrandom
+
+build       : |
+    %make
+install     : |
+    %make_install
+    %python_compile
+    rm %(installroot)/%(libdir)/*.a    
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
+    - "python-%(name)3":
+        summary: "A C++ cryptography library - Python library"
+        description: |
+            A C++ cryptography library - Python library
+        rundeps:
+            - binary(python3)
+        paths:
+            - /usr/lib/python*
