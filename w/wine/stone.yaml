@@ -1,0 +1,77 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : wine
+version     : 10.1
+release     : 1
+homepage    : https://dl.winehq.org/wine/source/10.x
+upstreams   :
+    - https://dl.winehq.org/wine/source/10.x/wine-10.1.tar.xz : 63471e37b1a515795ff3368d26a039261660e1377cb427d1b61b3a7b76091663
+summary     : Wine is a program which allows running Microsoft Windows programs on Unix.
+description : |
+    Wine is a program which allows running Microsoft Windows programs
+    (including DOS, Windows 3.x, Win32, and Win64 executables) on Unix.
+    It consists of a program loader which loads and executes a Microsoft
+    Windows binary, and a library (called Winelib) that implements Windows
+    API calls using their Unix, X11 or Mac equivalents.  The library may also
+    be used for porting Windows code into native Unix executables.
+license     : LGPL-2.1-or-later
+rundeps     :
+    - dbus
+    - gnutls
+    - krb5
+    - ffmpeg
+    - mesa
+    - libusb
+    - libxcursor
+    - libxcomposite
+    - libxkbcommon
+    - libxinerama
+    - libxrandr
+    - unixodbc
+    - vulkan-loader
+    - wayland
+builddeps   :
+    - binary(bison)
+    - binary(flex)
+    - binary(wayland-scanner)
+    - clang-32bit
+    - pkgconfig(dbus-1)
+    - pkgconfig(d3d)
+    - pkgconfig(dri)
+    - pkgconfig(gbm)
+    - pkgconfig(gnutls)
+    - pkgconfig(krb5)
+    - pkgconfig(libavcodec)
+    - pkgconfig(libavformat)
+    - pkgconfig(libavutil)
+    - pkgconfig(libudev)
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(odbc)
+    - pkgconfig(osmesa)
+    # - pkgconfig(sdl2) # does not work; used sdl2-devel
+    - pkgconfig(vulkan)
+    - pkgconfig(wayland-eglstream)
+    - pkgconfig(wayland-client)
+    - pkgconfig(xcursor)
+    - pkgconfig(xcomposite)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(xrandr)
+    - pkgconfig(xxf86vm)
+    - pkgconfig(xinerama)
+    - pkgconfig32(freetype2)
+    - sdl2-devel
+    - egl-gbm
+    - egl-gbm-32bit
+    - vulkan-headers
+    - pulseaudio-devel
+    - gstreamer-devel
+setup       : |
+    %configure --enable-archs=i386,x86_64 --without-unwind
+build       : |
+    %make
+install     : |
+    %make_install
+
