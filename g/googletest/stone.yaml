@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : googletest
+version     : 1.16.0
+release     : 1
+upstreams   :
+    - https://github.com/google/googletest/archive/refs/tags/v1.16.0.tar.gz : 78c676fc63881529bf97bf9d45948d905a66833fbfa5318ea2cd7478cb98f399
+homepage    : https://google.github.io/googletest/
+license     : BSD-3-Clause
+summary     : Google's C++ test framework
+description : |
+    GoogleTest is Google's C++ testing and mocking framework.
+setup       : |
+    # Set the version correctly
+    sed -e "s/set(GOOGLETEST_VERSION .*)/set(GOOGLETEST_VERSION %(version))/" -i CMakeLists.txt
+
+    %cmake \
+           -DBUILD_SHARED_LIBS=ON \
+           -Dgtest_build_tests=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check       : |
+    %cmake_test

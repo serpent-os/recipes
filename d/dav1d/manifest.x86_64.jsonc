@@ -1,0 +1,53 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dav1d": {
+			"build-depends": [
+				"binary(nasm)",
+				"pkgconfig(libxxhash)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dav1d",
+				"/usr/lib/libdav1d.so.7",
+				"/usr/lib/libdav1d.so.7.0.0"
+			],
+			"name": "dav1d",
+			"provides": [
+				"binary(dav1d)",
+				"soname(libdav1d.so.7(x86_64))"
+			]
+		},
+		"dav1d-devel": {
+			"build-depends": [
+				"binary(nasm)",
+				"pkgconfig(libxxhash)"
+			],
+			"depends": [
+				"dav1d"
+			],
+			"files": [
+				"/usr/include/dav1d/common.h",
+				"/usr/include/dav1d/data.h",
+				"/usr/include/dav1d/dav1d.h",
+				"/usr/include/dav1d/headers.h",
+				"/usr/include/dav1d/picture.h",
+				"/usr/include/dav1d/version.h",
+				"/usr/lib/libdav1d.so",
+				"/usr/lib/pkgconfig/dav1d.pc"
+			],
+			"name": "dav1d-devel",
+			"provides": [
+				"pkgconfig(dav1d)"
+			]
+		}
+	},
+	"source-name": "dav1d",
+	"source-release": "1",
+	"source-version": "1.5.0"
+}

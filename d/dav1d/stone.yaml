@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : dav1d
+version     : 1.5.0
+release     : 1
+homepage    : https://code.videolan.org/videolan/dav1d
+upstreams   :
+    - https://code.videolan.org/videolan/dav1d/-/archive/1.5.0/dav1d-1.5.0.tar.bz2 : a6ca64e34cec56ae1c2d359e1da5c5386ecd7a3a62f931d026ac4f2ff72ade64
+    - https://code.videolan.org/videolan/dav1d-test-data/-/archive/1.5.0/dav1d-test-data-1.5.0.tar.gz :
+        hash: acdbbdac30ea4e9df61530f8d8cab3245a34c89ab0c0b18bc8e8122cde79ca09
+        rename: dav1d-test-data.tar.gz
+        unpack: false
+summary     : AV1 decoder targeted to be small and fast
+description : |
+    dav1d is a new AV1 cross-platform Decoder, open-source, and focused on speed and correctness.
+license     : BSD-2-Clause
+builddeps   :
+    - binary(nasm)
+    - pkgconfig(libxxhash)
+tuning      :
+    - lto: full
+setup       : |
+    mkdir tests/dav1d-test-data
+    tar -xf %(sourcedir)/dav1d-test-data.tar.gz --strip-components=1 -C tests/dav1d-test-data
+    %meson -Dtestdata_tests=true
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+check       : |
+    %meson_test

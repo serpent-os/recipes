@@ -1,0 +1,97 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"googletest": {
+			"depends": [
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libgmock.so.1.16.0",
+				"/usr/lib/libgmock_main.so.1.16.0",
+				"/usr/lib/libgtest.so.1.16.0",
+				"/usr/lib/libgtest_main.so.1.16.0"
+			],
+			"name": "googletest",
+			"provides": [
+				"soname(libgmock.so.1.16.0(x86_64))",
+				"soname(libgmock_main.so.1.16.0(x86_64))",
+				"soname(libgtest.so.1.16.0(x86_64))",
+				"soname(libgtest_main.so.1.16.0(x86_64))"
+			]
+		},
+		"googletest-devel": {
+			"depends": [
+				"googletest"
+			],
+			"files": [
+				"/usr/include/gmock/gmock-actions.h",
+				"/usr/include/gmock/gmock-cardinalities.h",
+				"/usr/include/gmock/gmock-function-mocker.h",
+				"/usr/include/gmock/gmock-matchers.h",
+				"/usr/include/gmock/gmock-more-actions.h",
+				"/usr/include/gmock/gmock-more-matchers.h",
+				"/usr/include/gmock/gmock-nice-strict.h",
+				"/usr/include/gmock/gmock-spec-builders.h",
+				"/usr/include/gmock/gmock.h",
+				"/usr/include/gmock/internal/custom/README.md",
+				"/usr/include/gmock/internal/custom/gmock-generated-actions.h",
+				"/usr/include/gmock/internal/custom/gmock-matchers.h",
+				"/usr/include/gmock/internal/custom/gmock-port.h",
+				"/usr/include/gmock/internal/gmock-internal-utils.h",
+				"/usr/include/gmock/internal/gmock-port.h",
+				"/usr/include/gmock/internal/gmock-pp.h",
+				"/usr/include/gtest/gtest-assertion-result.h",
+				"/usr/include/gtest/gtest-death-test.h",
+				"/usr/include/gtest/gtest-matchers.h",
+				"/usr/include/gtest/gtest-message.h",
+				"/usr/include/gtest/gtest-param-test.h",
+				"/usr/include/gtest/gtest-printers.h",
+				"/usr/include/gtest/gtest-spi.h",
+				"/usr/include/gtest/gtest-test-part.h",
+				"/usr/include/gtest/gtest-typed-test.h",
+				"/usr/include/gtest/gtest.h",
+				"/usr/include/gtest/gtest_pred_impl.h",
+				"/usr/include/gtest/gtest_prod.h",
+				"/usr/include/gtest/internal/custom/README.md",
+				"/usr/include/gtest/internal/custom/gtest-port.h",
+				"/usr/include/gtest/internal/custom/gtest-printers.h",
+				"/usr/include/gtest/internal/custom/gtest.h",
+				"/usr/include/gtest/internal/gtest-death-test-internal.h",
+				"/usr/include/gtest/internal/gtest-filepath.h",
+				"/usr/include/gtest/internal/gtest-internal.h",
+				"/usr/include/gtest/internal/gtest-param-util.h",
+				"/usr/include/gtest/internal/gtest-port-arch.h",
+				"/usr/include/gtest/internal/gtest-port.h",
+				"/usr/include/gtest/internal/gtest-string.h",
+				"/usr/include/gtest/internal/gtest-type-util.h",
+				"/usr/lib/cmake/GTest/GTestConfig.cmake",
+				"/usr/lib/cmake/GTest/GTestConfigVersion.cmake",
+				"/usr/lib/cmake/GTest/GTestTargets-release.cmake",
+				"/usr/lib/cmake/GTest/GTestTargets.cmake",
+				"/usr/lib/libgmock.so",
+				"/usr/lib/libgmock_main.so",
+				"/usr/lib/libgtest.so",
+				"/usr/lib/libgtest_main.so",
+				"/usr/lib/pkgconfig/gmock.pc",
+				"/usr/lib/pkgconfig/gmock_main.pc",
+				"/usr/lib/pkgconfig/gtest.pc",
+				"/usr/lib/pkgconfig/gtest_main.pc"
+			],
+			"name": "googletest-devel",
+			"provides": [
+				"cmake(GTest)",
+				"pkgconfig(gmock)",
+				"pkgconfig(gmock_main)",
+				"pkgconfig(gtest)",
+				"pkgconfig(gtest_main)"
+			]
+		}
+	},
+	"source-name": "googletest",
+	"source-release": "1",
+	"source-version": "1.16.0"
+}
