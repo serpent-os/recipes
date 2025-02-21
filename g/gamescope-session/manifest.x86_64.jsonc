@@ -1,0 +1,26 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"gamescope-session": {
+			"depends": [
+				"binary(gamescope)"
+			],
+			"files": [
+				"/usr/bin/export-gpu",
+				"/usr/bin/gamescope-session-plus",
+				"/usr/lib/systemd/user/gamescope-session-plus@.service",
+				"/usr/share/gamescope-session-plus/device-quirks",
+				"/usr/share/gamescope-session-plus/gamescope-session-plus"
+			],
+			"name": "gamescope-session",
+			"provides": [
+				"binary(export-gpu)",
+				"binary(gamescope-session-plus)"
+			]
+		}
+	},
+	"source-name": "gamescope-session",
+	"source-release": "1",
+	"source-version": "r310.533e51f"
+}

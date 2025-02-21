@@ -285,10 +285,6 @@
 				"/usr/lib/samba/vfs/worm.so",
 				"/usr/lib/samba/vfs/xattr_tdb.so",
 				"/usr/lib/security/pam_winbind.so",
-				"/usr/lib/systemd/system/nmb.service",
-				"/usr/lib/systemd/system/samba.service",
-				"/usr/lib/systemd/system/smb.service",
-				"/usr/lib/systemd/system/winbind.service",
 				"/usr/lib/tmpfiles.d/samba.conf",
 				"/usr/lib/userdb/65532.group",
 				"/usr/lib/userdb/65533.group",
@@ -826,6 +822,6 @@
 		}
 	},
 	"source-name": "samba",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "4.19.5"
 }
