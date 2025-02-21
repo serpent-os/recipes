@@ -1,0 +1,5 @@
+releases:
+  id: 2611
+  rss: https://github.com/LudovicRousseau/PCSC/releases.atom
+security:
+  cpe: ~ # No Results: Last checked 2025-02-20
