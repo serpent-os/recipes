@@ -5,7 +5,7 @@
 #
 name        : gnupg
 version     : 2.4.7
-release     : 6
+release     : 7
 homepage    : https://gnupg.org/software/index.html
 upstreams   :
     - https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.7.tar.bz2 : 7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46
@@ -26,10 +26,11 @@ builddeps   :
     - pkgconfig(npth)
     - pkgconfig(readline)
     - pkgconfig(sqlite3)
+    - pkgconfig(zlib)
 rundeps     :
     - pinentry
 setup       : |
-    export CFLAGS="${CFLAGS} -lgcrypt -lksba -lassuan -lnpth"
+    export LDFLAGS="${LDFLAGS} -lgcrypt -lksba -lassuan -lnpth"
     %configure
 build       : |
     %make
