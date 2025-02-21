@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kdbusaddons
+version     : 6.11
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.11/kdbusaddons-6.11.0.tar.xz : 62e0f3b0487ef1ab729fc85bcb5498c9449e0b74fe8049779434158bb8b12a87
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - LGPL-2.1-only
+summary     : Convenience classes for DBus.
+description : |
+    Convenience classes for DBus.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
