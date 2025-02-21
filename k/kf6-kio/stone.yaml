@@ -1,0 +1,63 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kio
+version     : 6.11
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.11/kio-6.11.0.tar.xz : fe511e43a5386f963c9afef93a21c0df44a2c24fcc417777e4d0569102477ff8
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - GPL-2.0-only
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - LGPL-2.1-only
+summary     : Network transparent access to files and data.
+description : |
+    Network transparent access to files and data.
+builddeps   :
+    - binary(bzip2)
+    - binary(switcherooctl)
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6Auth)
+    - cmake(KF6Bookmarks)
+    - cmake(KF6ColorScheme)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6ItemViews)
+    - cmake(KF6JobWidgets)
+    - cmake(KF6KDED)
+    - cmake(KF6Service)
+    - cmake(KF6Solid)
+    - cmake(KF6Wallet)
+    - cmake(KF6WindowSystem)
+    - pkgconfig(libacl)
+    - pkgconfig(libattr)
+    - pkgconfig(libxslt)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)":
+        paths:
+            - /usr/lib/libkuriikwsfiltereng_private.so
+        rundeps:
+            - binary(kded6)
+            - binary(switcherooctl)
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc/*
