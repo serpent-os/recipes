@@ -1,0 +1,31 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : glfw
+version     : 3.4
+release     : 1
+homepage    : https://www.glfw.org/
+upstreams   :
+    - https://github.com/glfw/glfw/archive/3.4.tar.gz : c038d34200234d071fae9345bc455e4a8f2f544ab60150765d7704e08f3dac01
+summary     : A free, open source, portable framework for graphical application development
+description : |
+    GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and surfaces, reading input, handling events, etc.
+license     : Zlib
+builddeps   :
+    - binary(wayland-scanner)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(x11)
+    - pkgconfig(xrandr)
+    - pkgconfig(xinerama)
+    - pkgconfig(xcursor)
+    - pkgconfig(xi)
+setup       : |
+    %cmake -DBUILD_SHARED_LIBS=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+    install -Dm644 LICENSE.md "%(installroot)/usr/share/licenses/$pkgname/LICENSE.md"
+
