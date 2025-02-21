@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kjobwidgets
+version     : 6.11
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.11/kjobwidgets-6.11.0.tar.xz : 2bb342e554f8ecf84d7218a6567628dcc73c1b914d0c5aad1c8bf7753986ddd7
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+summary     : Widgets for showing progress of asynchronous jobs.
+description : |
+    Widgets for showing progress of asynchronous jobs.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Notifications)
+    - cmake(KF6WidgetsAddons)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
