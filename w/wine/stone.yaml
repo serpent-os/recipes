@@ -6,7 +6,7 @@
 name        : wine
 version     : 10.1
 release     : 1
-homepage    : https://dl.winehq.org/wine/source/10.x
+homepage    : https://www.winehq.org
 upstreams   :
     - https://dl.winehq.org/wine/source/10.x/wine-10.1.tar.xz : 63471e37b1a515795ff3368d26a039261660e1377cb427d1b61b3a7b76091663
 summary     : Wine is a program which allows running Microsoft Windows programs on Unix.
