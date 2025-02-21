@@ -1,0 +1,78 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"kf6-kded": {
+			"build-depends": [
+				"cmake(ECM)",
+				"cmake(KF6Config)",
+				"cmake(KF6CoreAddons)",
+				"cmake(KF6Crash)",
+				"cmake(KF6DBusAddons)",
+				"cmake(KF6DocTools)",
+				"cmake(KF6Service)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libKF6ConfigCore.so.6(x86_64))",
+				"soname(libKF6CoreAddons.so.6(x86_64))",
+				"soname(libKF6Crash.so.6(x86_64))",
+				"soname(libKF6DBusAddons.so.6(x86_64))",
+				"soname(libKF6Service.so.6(x86_64))",
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6DBus.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
+				"soname(libQt6Widgets.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/kded6",
+				"/usr/lib/systemd/user/plasma-kded6.service",
+				"/usr/share/applications/org.kde.kded6.desktop",
+				"/usr/share/dbus-1/interfaces/org.kde.kded6.xml",
+				"/usr/share/dbus-1/services/org.kde.kded6.service",
+				"/usr/share/man/ca/man8/kded6.8",
+				"/usr/share/man/es/man8/kded6.8",
+				"/usr/share/man/fr/man8/kded6.8",
+				"/usr/share/man/it/man8/kded6.8",
+				"/usr/share/man/man8/kded6.8",
+				"/usr/share/man/nl/man8/kded6.8",
+				"/usr/share/man/sl/man8/kded6.8",
+				"/usr/share/man/tr/man8/kded6.8",
+				"/usr/share/man/uk/man8/kded6.8",
+				"/usr/share/qlogging-categories6/kded.categories",
+				"/usr/share/qlogging-categories6/kded.renamecategories"
+			],
+			"name": "kf6-kded",
+			"provides": [
+				"binary(kded6)"
+			]
+		},
+		"kf6-kded-devel": {
+			"build-depends": [
+				"cmake(ECM)",
+				"cmake(KF6Config)",
+				"cmake(KF6CoreAddons)",
+				"cmake(KF6Crash)",
+				"cmake(KF6DBusAddons)",
+				"cmake(KF6DocTools)",
+				"cmake(KF6Service)"
+			],
+			"depends": [
+				"kf6-kded"
+			],
+			"files": [
+				"/usr/lib/cmake/KF6KDED/KF6KDEDConfig.cmake",
+				"/usr/lib/cmake/KF6KDED/KF6KDEDConfigVersion.cmake"
+			],
+			"name": "kf6-kded-devel",
+			"provides": [
+				"cmake(KF6KDED)"
+			]
+		}
+	},
+	"source-name": "kf6-kded",
+	"source-release": "1",
+	"source-version": "6.11"
+}
