@@ -1,0 +1,86 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"qca-qt6": {
+			"build-depends": [
+				"cmake(Qt6)",
+				"cmake(Qt6Core5Compat)",
+				"pkgconfig(nss)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Core5Compat.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.3(x86_64))",
+				"soname(libnss3.so(x86_64))",
+				"soname(libssl.so.3(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libqca-qt6.so.2",
+				"/usr/lib/libqca-qt6.so.2.3.9",
+				"/usr/lib/qt6/bin/mozcerts-qt6",
+				"/usr/lib/qt6/bin/qcatool-qt6",
+				"/usr/lib/qt6/plugins/crypto/libqca-gnupg.so",
+				"/usr/lib/qt6/plugins/crypto/libqca-logger.so",
+				"/usr/lib/qt6/plugins/crypto/libqca-nss.so",
+				"/usr/lib/qt6/plugins/crypto/libqca-ossl.so",
+				"/usr/lib/qt6/plugins/crypto/libqca-softstore.so",
+				"/usr/share/man/man1/qcatool-qt6.1"
+			],
+			"name": "qca-qt6",
+			"provides": [
+				"soname(libqca-qt6.so.2(x86_64))",
+				"soname(qt6/plugins/crypto/libqca-gnupg.so(x86_64))",
+				"soname(qt6/plugins/crypto/libqca-logger.so(x86_64))",
+				"soname(qt6/plugins/crypto/libqca-nss.so(x86_64))",
+				"soname(qt6/plugins/crypto/libqca-ossl.so(x86_64))",
+				"soname(qt6/plugins/crypto/libqca-softstore.so(x86_64))"
+			]
+		},
+		"qca-qt6-devel": {
+			"build-depends": [
+				"cmake(Qt6)",
+				"cmake(Qt6Core5Compat)",
+				"pkgconfig(nss)"
+			],
+			"depends": [
+				"qca-qt6"
+			],
+			"files": [
+				"/usr/include/qt6/Qca-qt6/QtCrypto/QtCrypto",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_basic.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_cert.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_core.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_export.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_keystore.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_publickey.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_safetimer.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_securelayer.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_securemessage.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_support.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_textfilter.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_tools.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qca_version.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qcaprovider.h",
+				"/usr/include/qt6/Qca-qt6/QtCrypto/qpipe.h",
+				"/usr/lib/cmake/Qca-qt6/Qca-qt6Config.cmake",
+				"/usr/lib/cmake/Qca-qt6/Qca-qt6ConfigVersion.cmake",
+				"/usr/lib/cmake/Qca-qt6/Qca-qt6Targets-release.cmake",
+				"/usr/lib/cmake/Qca-qt6/Qca-qt6Targets.cmake",
+				"/usr/lib/libqca-qt6.so"
+			],
+			"name": "qca-qt6-devel",
+			"provides": [
+				"cmake(Qca-qt6)"
+			]
+		}
+	},
+	"source-name": "qca",
+	"source-release": "1",
+	"source-version": "2.3.9"
+}

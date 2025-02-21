@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qca
+version     : 2.3.9
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/qca/2.3.9/qca-2.3.9.tar.xz : c555d5298cdd7b6bafe2b1f96106f30cfa543a23d459d50c8a91eac33c476e4e
+homepage    : https://userbase.kde.org/QCA
+license     : LGPL-2.1-only
+summary     : Cryptographic library with an easy API
+description : |
+    QCA is a library that provides an easy API for a range of cryptographic features, including SSL/TLS, X.509 certificates, SASL, OpenPGP, smartcards, and much more.
+builddeps   :
+    - cmake(Qt6)
+    - cmake(Qt6Core5Compat)
+    - pkgconfig(nss)
+    # Maybe build with botan3 support at some point? NSS/libcrypto/gnupg is probably sufficient for now
+setup       : |
+    %cmake -DQT6=ON \
+           -DQCA_INSTALL_IN_QT_PREFIX=ON \
+           -DQCA_MAN_INSTALL_DIR=/usr/share/man
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-qt6":
+        summary: Cryptographic library with an easy API - Qt6 bindings
+        description: Cryptographic library with an easy API - Qt6 bindings
+        paths:
+            - /usr/lib/libqca-qt6.so.*
+            - /usr/lib/qt6/bin
+            - /usr/lib/qt6/plugins
+            - /usr/share/man/man1
+    - "%(name)-qt6-devel":
+        summary: Development files for %(name)-qt6
+        description: Development files for %(name)-qt6
+        paths:
+            - /usr/include/qt6/Qca-qt6
+            - /usr/lib/cmake/Qca-qt6
+            - /usr/lib/libqca-qt6.so
+        rundeps:
+            - "%(name)-qt6"
+# TODO: Once we can exclude dependencies we can remove the plugin autodeps
