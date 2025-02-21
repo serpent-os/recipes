@@ -1,0 +1,7 @@
+releases:
+  id: 214
+  rss: https://github.com/randombit/botan/releases.atom
+security:
+  cpe:
+  - vendor: botan_project
+    product: botan

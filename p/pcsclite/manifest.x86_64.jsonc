@@ -1,0 +1,83 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"pcsclite": {
+			"build-depends": [
+				"binary(doxygen)",
+				"binary(flex)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libusb-1.0)",
+				"pkgconfig(polkit-gobject-1)",
+				"pkgconfig(systemd)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libpolkit-gobject-1.so.0(x86_64))",
+				"soname(libsystemd.so.0(x86_64))",
+				"soname(libudev.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/pcsc-spy",
+				"/usr/lib/libpcsclite.so.1",
+				"/usr/lib/libpcsclite_real.so.1",
+				"/usr/lib/libpcscspy.so.0",
+				"/usr/lib/systemd/user/pcscd.service",
+				"/usr/lib/systemd/user/pcscd.socket",
+				"/usr/sbin/pcscd",
+				"/usr/share/doc/pcsc-lite/setup_spy.sh",
+				"/usr/share/man/man1/pcsc-spy.1",
+				"/usr/share/man/man5/reader.conf.5",
+				"/usr/share/man/man8/pcscd.8",
+				"/usr/share/metainfo/fr.apdu.pcsclite.metainfo.xml",
+				"/usr/share/polkit-1/actions/org.debian.pcsc-lite.policy"
+			],
+			"name": "pcsclite",
+			"provides": [
+				"binary(pcsc-spy)",
+				"soname(libpcsclite.so.1(x86_64))",
+				"soname(libpcsclite_real.so.1(x86_64))",
+				"soname(libpcscspy.so.0(x86_64))",
+				"sysbinary(pcscd)"
+			]
+		},
+		"pcsclite-devel": {
+			"build-depends": [
+				"binary(doxygen)",
+				"binary(flex)",
+				"pkgconfig(libsystemd)",
+				"pkgconfig(libudev)",
+				"pkgconfig(libusb-1.0)",
+				"pkgconfig(polkit-gobject-1)",
+				"pkgconfig(systemd)"
+			],
+			"depends": [
+				"pcsclite"
+			],
+			"files": [
+				"/usr/include/PCSC/debuglog.h",
+				"/usr/include/PCSC/ifdhandler.h",
+				"/usr/include/PCSC/pcsclite.h",
+				"/usr/include/PCSC/reader.h",
+				"/usr/include/PCSC/winscard.h",
+				"/usr/include/PCSC/wintypes.h",
+				"/usr/lib/libpcsclite.so",
+				"/usr/lib/libpcsclite_real.so",
+				"/usr/lib/libpcscspy.so",
+				"/usr/lib/pkgconfig/libpcsclite.pc"
+			],
+			"name": "pcsclite-devel",
+			"provides": [
+				"pkgconfig(libpcsclite)"
+			]
+		}
+	},
+	"source-name": "pcsclite",
+	"source-release": "1",
+	"source-version": "2.3.1"
+}

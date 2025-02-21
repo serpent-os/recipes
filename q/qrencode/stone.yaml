@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : qrencode
+version     : 4.1.1
+release     : 1
+homepage    : https://fukuchi.org/works/qrencode
+upstreams   :
+    - https://fukuchi.org/works/qrencode/qrencode-4.1.1.tar.gz : da448ed4f52aba6bcb0cd48cac0dd51b8692bccc4cd127431402fca6f8171e8e
+summary     : Fast and compact library for encoding data in QR codes
+description : |
+    Fast and compact library for encoding data in QR codes
+license     : LGPL-2.1-or-later
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+

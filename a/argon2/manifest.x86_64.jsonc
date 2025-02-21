@@ -1,0 +1,39 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"argon2": {
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/argon2",
+				"/usr/lib/libargon2.so.1",
+				"/usr/share/man/man1/argon2.1"
+			],
+			"name": "argon2",
+			"provides": [
+				"binary(argon2)",
+				"soname(libargon2.so.1(x86_64))"
+			]
+		},
+		"argon2-devel": {
+			"depends": [
+				"argon2"
+			],
+			"files": [
+				"/usr/include/argon2.h",
+				"/usr/lib/libargon2.so",
+				"/usr/lib/pkgconfig/libargon2.pc"
+			],
+			"name": "argon2-devel",
+			"provides": [
+				"pkgconfig(libargon2)"
+			]
+		}
+	},
+	"source-name": "argon2",
+	"source-release": "1",
+	"source-version": "20190702"
+}

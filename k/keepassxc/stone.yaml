@@ -1,0 +1,46 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : keepassxc
+version     : 2.7.9
+release     : 1
+homepage    : https://keepassxc.org/
+upstreams   :
+    - https://github.com/keepassxreboot/keepassxc/archive/refs/tags/2.7.9.tar.gz : 129dca68ef5a4744ff7fb8eb117c4b39bbaf32b9c87d18ecc494b548c5f64858
+summary     : Cross-platform community-driven port of Keepass password manager
+description : |
+    Cross-platform community-driven port of Keepass password manager
+license     : 
+    - GPL-2.0
+    - GPL-3.0
+    - LGPL-2.1
+builddeps   :
+    - binary(asciidoctor)
+    - pkgconfig(Qt5Core)
+    - pkgconfig(Qt5Qml)
+    - pkgconfig(Qt5Svg)
+    - pkgconfig(Qt5UiTools)
+    - pkgconfig(Qt5X11Extras)
+    - pkgconfig(botan-3)
+    - pkgconfig(libargon2)
+    - pkgconfig(libpcsclite)
+    - pkgconfig(libqrencode)
+    - pkgconfig(libusb-1.0)
+    - pkgconfig(minizip)
+    - pkgconfig(xtst)
+rundeps     :
+    - qt5-wayland
+setup       : |
+    %cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DKEEPASSXC_BUILD_TYPE=Release \
+        -DWITH_XC_ALL=ON \
+        -DWITH_GUI_TESTS=ON \
+        -DWITH_XC_UPDATECHECK=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+

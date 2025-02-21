@@ -1,0 +1,28 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : argon2
+version     : 20190702
+release     : 1
+homepage    : https://github.com/P-H-C/phc-winner-argon2
+upstreams   :
+    - https://github.com/P-H-C/phc-winner-argon2/archive/refs/tags/20190702.tar.gz : daf972a89577f8772602bf2eb38b6a3dd3d922bf5724d45e7f9589b5e830442c
+summary     : The password hash Argon2, winner of PHC 
+description : |
+    The password hash Argon2, winner of PHC 
+license     : 
+    - Apache-2.0
+    - CC0-1.0
+environment :
+    export LIBRARY_REL=lib
+setup       : |
+    %patch %(pkgdir)/use-systems-ar.patch
+build       : |
+    %make
+install     : |
+    %make_install
+    %install_file man/argon2.1 -t %(installroot)/%(mandir)/man1
+
+    rm %(installroot)/%(libdir)/*.a
