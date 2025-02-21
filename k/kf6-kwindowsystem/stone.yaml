@@ -1,0 +1,40 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kwindowsystem
+version     : 6.11
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.11/kwindowsystem-6.11.0.tar.xz : d872e85d0915dd5cf1e2baf89fbef62e9855ff3317ecc5939882bc1724628d5a
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - LGPL-2.0-only
+    - LGPL-2.1-only
+    - LGPL-2.1-or-later
+    - MIT
+summary     : Access to the windowing system.
+description : |
+    Access to the windowing system.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(PlasmaWaylandProtocols)
+    - cmake(Qt6Qml)
+    - cmake(Qt6WaylandClient)
+    - pkgconfig(wayland-protocols)
+    - pkgconfig(x11)
+    - pkgconfig(xcb-icccm)
+    - pkgconfig(xcb-keysyms)
+    - pkgconfig(xfixes)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-devel":
+        rundeps:
+            - pkgconfig(x11)
