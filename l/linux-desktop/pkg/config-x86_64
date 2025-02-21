@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 6.12.13 Kernel Configuration
+# Linux/x86_64 6.12.15 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 19.1.7 (Serpent 19.1.7-21)"
 CONFIG_GCC_VERSION=0
@@ -2376,6 +2376,7 @@ CONFIG_MD=y
 CONFIG_BLK_DEV_MD=y
 CONFIG_MD_AUTODETECT=y
 CONFIG_MD_BITMAP_FILE=y
+# CONFIG_MD_LINEAR is not set
 CONFIG_MD_RAID0=m
 CONFIG_MD_RAID1=m
 CONFIG_MD_RAID10=m
@@ -7799,7 +7800,6 @@ CONFIG_HID_SENSOR_PRESS=m
 #
 CONFIG_IRQCHIP=y
 # CONFIG_AL_FIC is not set
-# CONFIG_LAN966X_OIC is not set
 # CONFIG_XILINX_INTC is not set
 # end of IRQ chip support
 

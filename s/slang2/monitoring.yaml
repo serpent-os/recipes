@@ -1,0 +1,5 @@
+releases:
+  id: 4829
+  rss: http://www.jedsoft.org/releases/slang/
+security:
+  cpe: ~

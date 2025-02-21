@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : libxres
+version     : 1.2.2
+release     : 1
+homepage    : https://www.x.org/releases/individual/lib
+upstreams   :
+    - https://www.x.org/releases/individual/lib/libXres-1.2.2.tar.gz : 8abce597ced4a7ab89032aee91f6f784d9960adc772b2b59f17e515cd4127950
+summary     : Xlib-based X-Resource extension client library
+description : |
+    libXRes - X-Resource extension client library
+license     : X11
+builddeps   :
+    - pkgconfig(x11)
+    - pkgconfig(xext)
+    - pkgconfig(xproto)
+setup       : |
+    %configure --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

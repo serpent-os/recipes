@@ -1,0 +1,80 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : zlib-ng
+version     : 2.2.4
+release     : 17
+summary     : zlib replacement with optimizations for "next generation" systems.
+license     : Zlib
+homepage    : https://github.com/zlib-ng/zlib-ng
+description : |
+    zlib data compression library for the next generation systems
+upstreams   :
+    - https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.2.4.tar.gz : a73343c3093e5cdc50d9377997c3815b878fd110bf6511c2c7759f2afb90f5a3
+emul32      : yes
+tuning      :
+    - lto : full
+setup       : |
+    %cmake -B build-zlib \
+        -DZLIB_COMPAT=ON \
+        -DWITH_GTEST=OFF \
+        -DBUILD_SHARED_LIBS=ON \
+        -DINSTALL_LIB_DIR=%(libdir)
+
+    %cmake -B build-zlib-ng \
+        -DZLIB_COMPAT=OFF \
+        -DWITH_GTEST=OFF \
+        -DBUILD_SHARED_LIBS=ON \
+        -DINSTALL_LIB_DIR=%(libdir)
+build       : |
+    %cmake_build -C build-zlib
+    %cmake_build -C build-zlib-ng
+install     : |
+    %cmake_install -C build-zlib
+    %cmake_install -C build-zlib-ng
+check       : |
+    %cmake_test -C build-zlib
+    %cmake_test -C build-zlib-ng
+profiles    :
+    - emul32:
+        setup       : |
+            %cmake \
+                -DZLIB_COMPAT=ON \
+                -DWITH_GTEST=OFF \
+                -DBUILD_SHARED_LIBS=ON \
+                -DINSTALL_LIB_DIR=%(libdir)
+        build       : |
+            %cmake_build
+        install     : |
+            %cmake_install
+        check       : |
+            %cmake_test
+packages    :
+    - "zlib":
+        paths:
+            - /usr/lib/libz.so.*
+    - "zlib-devel":
+        paths:
+            - /usr/include/*.h
+            - /usr/lib/cmake/ZLIB
+            - /usr/lib/libz.so
+            - /usr/lib/pkgconfig/zlib.pc
+        rundeps:
+            - zlib
+    - "zlib-32bit":
+        paths:
+            - /usr/lib32/libz.so.*
+    - "zlib-32bit-devel":
+        paths:
+            - /usr/lib32/cmake
+            - /usr/lib32/libz.so
+            - /usr/lib32/pkgconfig
+        rundeps:
+            - zlib-32bit
+            - zlib-devel
+    - "%(name)-devel":
+        paths:
+            - /usr/include/*-ng.h
+# TODO Delete zlib-dbginfo package

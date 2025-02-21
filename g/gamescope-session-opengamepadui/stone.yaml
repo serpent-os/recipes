@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gamescope-session-opengamepadui
+version     : r22.f9aafe5
+release     : 1
+homepage    : https://github.com/ShadowBlip/gamescope-session-opengamepadui
+upstreams   :
+    - git|https://github.com/ShadowBlip/gamescope-session-opengamepadui.git : f9aafe5fd7ec7adedf7e7cd06d03709e5ec601ef
+summary     : Gamescope session for running OpenGamepadUI
+description : |
+    This project is not affiliated with Valve (wide inspiration was taken from their work on the SteamDeck).
+    This configuration depends on gamescope-session from the ChimeraOS project.
+license     : 
+    - GPL-3.0-or-later
+rundeps     :
+    - gamescope-session
+install     : |
+    %install_dir %(installroot)
+    cp -rv %(workdir)/usr %(installroot)

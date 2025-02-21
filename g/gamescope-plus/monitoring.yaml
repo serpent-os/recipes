@@ -1,0 +1,6 @@
+releases:
+  id: ~
+  rss: https://github.com/ChimeraOS/gamescope/tags
+security:
+  # No known CPE, last checked 2025-02-11
+  cpe: ~

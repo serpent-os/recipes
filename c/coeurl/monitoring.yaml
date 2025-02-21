@@ -1,0 +1,6 @@
+releases:
+  id: 237772
+  rss: https://nheko.im/nheko-reborn/coeurl/-/tags?format=atom
+security:
+  # last checked 2024/02/12
+  cpe: ~

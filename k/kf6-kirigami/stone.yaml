@@ -1,0 +1,33 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kirigami
+version     : 6.11
+release     : 2
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.11/kirigami-6.11.0.tar.xz : 22392c95bb835f11626250f0728ce73590db638814e7181148fcf66a1f442ea6
+homepage    : https://community.kde.org/Frameworks
+license     : LGPL-2.0-or-later
+summary     : QtQuick components for mobile and desktop UI development.
+description : |
+    Kirigami is a set of QtQuick components for the creation of applications that look and feel great on mobile as well as desktop devices and follow the Kirigami Human Interface Guidelines.
+builddeps   :
+    - binary(bzip2)
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(Qt6Quick)
+    - cmake(Qt6ShaderTools)
+    - cmake(Qt6Svg)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+    %qml_cache_qt6
+packages    :
+    - "%(name)-devel":
+        paths:
+            - /usr/share/kdevappwizard

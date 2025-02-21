@@ -1,0 +1,29 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : godot
+version     : 4.3
+release     : 1
+homepage    : https://godotengine.org
+upstreams   :
+    - https://github.com/godotengine/godot/archive/refs/tags/4.3-stable.tar.gz: 6a441d02957432d76343052296dc514b1b6bd72af920c9f2518b1ec3cb534874
+summary     : Godot Engine – Multi-platform 2D and 3D game engine
+description : |
+  Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.
+  It provides a comprehensive set of common tools, so that users can focus on making games without having to reinvent the wheel.
+  Games can be exported with one click to a number of platforms, including the major desktop platforms (Linux, macOS, Windows),
+  mobile platforms (Android, iOS), as well as Web-based platforms and consoles.
+license    : MIT
+builddeps  :
+    - binary(as)
+    - binary(g++)
+    - binary(scons)
+build: |
+    scons platform=linuxbsd
+install: |
+    %install_exe %(workdir)/bin/godot.linuxbsd.editor.x86_64 %(installroot)/usr/bin/godot
+    %install_file %(workdir)/icon.svg %(installroot)/usr/share/pixmaps/$pkgname.svg
+    %install_file %(workdir)/misc/dist/linux/org.godotengine.Godot.desktop %(installroot)/usr/share/applications/org.godotengine.Godot.desktop
+    %install_file %(workdir)/misc/dist/linux/org.godotengine.Godot.xml %(installroot)/usr/share/mime/packages/org.godotengine.Godot.xml

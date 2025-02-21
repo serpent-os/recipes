@@ -1,0 +1,20 @@
+diff '--color=auto' -crB a/src/prog/gpm-root.y b/src/prog/gpm-root.y
+*** a/src/prog/gpm-root.y	2025-02-10 15:54:14.333864487 +0100
+--- b/src/prog/gpm-root.y	2025-02-10 21:06:11.298005018 +0100
+***************
+*** 1197,1203 ****
+     /* reap your zombies */
+     childaction.sa_handler=reap_children;
+  #if defined(__GLIBC__)
+!    __sigemptyset(&childaction.sa_mask);
+  #else /* __GLIBC__ */
+     childaction.sa_mask=0;
+  #endif /* __GLIBC__ */
+--- 1197,1203 ----
+     /* reap your zombies */
+     childaction.sa_handler=reap_children;
+  #if defined(__GLIBC__)
+!    sigemptyset(&childaction.sa_mask);
+  #else /* __GLIBC__ */
+     childaction.sa_mask=0;
+  #endif /* __GLIBC__ */

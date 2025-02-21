@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : gamescope-session-steam-plus
+version     : r1.6835776
+release     : 1
+homepage    : https://github.com/ChimeraOS/gamescope
+upstreams   :
+    - git|https://github.com/ShadowBlip/gamescope-session-steam-plus.git : 6835776876a2b9e5fc819bd8d98f06ae51fa6394
+summary     : Gamescope session for running OpenGamepadUI in overlay mode with Steam
+description : |
+    This project is not affiliated with Valve (wide inspiration was taken from their work on the SteamDeck).
+    This configuration depends on gamescope-session from the ChimeraOS project.
+license     : 
+    - GPL-3.0-or-later
+rundeps     :
+    - gamescope-session-steam
+install     : |
+    %install_dir %(installroot)
+    cp -rv %(workdir)/usr %(installroot)

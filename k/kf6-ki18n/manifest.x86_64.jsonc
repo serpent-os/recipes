@@ -18,11 +18,11 @@
 			],
 			"files": [
 				"/usr/lib/libKF6I18n.so.6",
-				"/usr/lib/libKF6I18n.so.6.10.0",
+				"/usr/lib/libKF6I18n.so.6.11.0",
 				"/usr/lib/libKF6I18nLocaleData.so.6",
-				"/usr/lib/libKF6I18nLocaleData.so.6.10.0",
+				"/usr/lib/libKF6I18nLocaleData.so.6.11.0",
 				"/usr/lib/libKF6I18nQml.so.6",
-				"/usr/lib/libKF6I18nQml.so.6.10.0",
+				"/usr/lib/libKF6I18nQml.so.6.11.0",
 				"/usr/lib/qt6/plugins/kf6/ktranscript.so",
 				"/usr/lib/qt6/qml/org/kde/i18n/localeData/kde-qmlmodule.version",
 				"/usr/lib/qt6/qml/org/kde/i18n/localeData/ki18nlocaledataqmlplugin.qmltypes",
@@ -227,6 +227,6 @@
 		}
 	},
 	"source-name": "kf6-ki18n",
-	"source-release": "1",
-	"source-version": "6.10.0"
+	"source-release": "2",
+	"source-version": "6.11"
 }

@@ -1,0 +1,11 @@
+releases:
+  id: 115592
+  rss: https://github.com/zlib-ng/zlib-ng/releases.atom
+# note: this is currently tracking canoncial zlib upstream whose CVEs
+# may or may not affect zlib-ng. No CPE exists for zlib-ng currently.
+security:
+  cpe:
+  - vendor: gnu
+    product: zlib
+  - vendor: zlib
+    product: zlib

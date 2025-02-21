@@ -1,9 +1,0 @@
-releases:
-  id: 115592
-  rss: ~
-# note: this is currently tracking canoncial zlib upstream whose CVEs
-# may or may not affect zlib-ng. No CPE exists for zlib-ng currently.
-security:
-  cpe:
-  - vendor: gnu
-    product: zlib

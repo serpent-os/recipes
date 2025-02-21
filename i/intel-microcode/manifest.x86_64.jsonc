@@ -101,8 +101,6 @@
 				"/usr/lib/firmware/intel-ucode/06-8e-0a",
 				"/usr/lib/firmware/intel-ucode/06-8e-0b",
 				"/usr/lib/firmware/intel-ucode/06-8e-0c",
-				"/usr/lib/firmware/intel-ucode/06-8f-05",
-				"/usr/lib/firmware/intel-ucode/06-8f-06",
 				"/usr/lib/firmware/intel-ucode/06-8f-07",
 				"/usr/lib/firmware/intel-ucode/06-8f-08",
 				"/usr/lib/firmware/intel-ucode/06-96-01",
@@ -123,10 +121,10 @@
 				"/usr/lib/firmware/intel-ucode/06-a6-01",
 				"/usr/lib/firmware/intel-ucode/06-a7-01",
 				"/usr/lib/firmware/intel-ucode/06-aa-04",
+				"/usr/lib/firmware/intel-ucode/06-af-03",
 				"/usr/lib/firmware/intel-ucode/06-b7-01",
 				"/usr/lib/firmware/intel-ucode/06-ba-02",
 				"/usr/lib/firmware/intel-ucode/06-ba-03",
-				"/usr/lib/firmware/intel-ucode/06-ba-08",
 				"/usr/lib/firmware/intel-ucode/06-be-00",
 				"/usr/lib/firmware/intel-ucode/06-bf-02",
 				"/usr/lib/firmware/intel-ucode/06-bf-05",
@@ -162,6 +160,6 @@
 		}
 	},
 	"source-name": "intel-microcode",
-	"source-release": "9",
-	"source-version": "20241112"
+	"source-release": "10",
+	"source-version": "20250211"
 }

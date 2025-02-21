@@ -15,6 +15,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
 				"soname(libKF6Archive.so.6(x86_64))",
 				"soname(libKF6BreezeIcons.so.6(x86_64))",
 				"soname(libKF6ColorScheme.so.6(x86_64))",
@@ -35,9 +36,9 @@
 			"files": [
 				"/usr/bin/kiconfinder6",
 				"/usr/lib/libKF6IconThemes.so.6",
-				"/usr/lib/libKF6IconThemes.so.6.10.0",
+				"/usr/lib/libKF6IconThemes.so.6.11.0",
 				"/usr/lib/libKF6IconWidgets.so.6",
-				"/usr/lib/libKF6IconWidgets.so.6.10.0",
+				"/usr/lib/libKF6IconWidgets.so.6.11.0",
 				"/usr/lib/qt6/plugins/kiconthemes6/iconengines/KIconEnginePlugin.so",
 				"/usr/lib/qt6/qml/org/kde/iconthemes/iconthemesplugin.qmltypes",
 				"/usr/lib/qt6/qml/org/kde/iconthemes/kde-qmlmodule.version",
@@ -205,6 +206,6 @@
 		}
 	},
 	"source-name": "kf6-kiconthemes",
-	"source-release": "1",
-	"source-version": "6.10.0"
+	"source-release": "2",
+	"source-version": "6.11"
 }

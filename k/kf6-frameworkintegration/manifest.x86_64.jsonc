@@ -26,7 +26,7 @@
 			],
 			"files": [
 				"/usr/lib/libKF6Style.so.6",
-				"/usr/lib/libKF6Style.so.6.10.0",
+				"/usr/lib/libKF6Style.so.6.11.0",
 				"/usr/lib/qt6/plugins/kf6/FrameworkIntegrationPlugin.so",
 				"/usr/share/knotifications6/plasma_workspace.notifyrc"
 			],
@@ -67,6 +67,6 @@
 		}
 	},
 	"source-name": "kf6-frameworkintegration",
-	"source-release": "1",
-	"source-version": "6.10.0"
+	"source-release": "2",
+	"source-version": "6.11"
 }

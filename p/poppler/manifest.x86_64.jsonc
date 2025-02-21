@@ -7,6 +7,7 @@
 				"binary(python3)",
 				"cmake(Boost)",
 				"cmake(OpenJPEG)",
+				"cmake(Qt6)",
 				"pkgconfig(freetype2)",
 				"pkgconfig(gdk-pixbuf-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
@@ -104,6 +105,7 @@
 				"binary(python3)",
 				"cmake(Boost)",
 				"cmake(OpenJPEG)",
+				"cmake(Qt6)",
 				"pkgconfig(freetype2)",
 				"pkgconfig(gdk-pixbuf-2.0)",
 				"pkgconfig(gobject-introspection-1.0)",
@@ -163,9 +165,83 @@
 				"pkgconfig(poppler-cpp)",
 				"pkgconfig(poppler-glib)"
 			]
+		},
+		"poppler-qt6": {
+			"build-depends": [
+				"binary(python3)",
+				"cmake(Boost)",
+				"cmake(OpenJPEG)",
+				"cmake(Qt6)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gpgme)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(lcms2)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libtiff-4)",
+				"pkgconfig(nss)"
+			],
+			"depends": [
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libfreetype.so.6(x86_64))",
+				"soname(liblcms2.so.2(x86_64))",
+				"soname(libpoppler.so.144(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libpoppler-qt6.so.3",
+				"/usr/lib/libpoppler-qt6.so.3.9.0"
+			],
+			"name": "poppler-qt6",
+			"provides": [
+				"soname(libpoppler-qt6.so.3(x86_64))"
+			]
+		},
+		"poppler-qt6-devel": {
+			"build-depends": [
+				"binary(python3)",
+				"cmake(Boost)",
+				"cmake(OpenJPEG)",
+				"cmake(Qt6)",
+				"pkgconfig(freetype2)",
+				"pkgconfig(gdk-pixbuf-2.0)",
+				"pkgconfig(gobject-introspection-1.0)",
+				"pkgconfig(gpgme)",
+				"pkgconfig(gtk+-3.0)",
+				"pkgconfig(lcms2)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libtiff-4)",
+				"pkgconfig(nss)"
+			],
+			"depends": [
+				"pkgconfig(poppler)",
+				"poppler-devel",
+				"poppler-qt6"
+			],
+			"files": [
+				"/usr/include/poppler/qt6/poppler-annotation.h",
+				"/usr/include/poppler/qt6/poppler-converter.h",
+				"/usr/include/poppler/qt6/poppler-export.h",
+				"/usr/include/poppler/qt6/poppler-form.h",
+				"/usr/include/poppler/qt6/poppler-link.h",
+				"/usr/include/poppler/qt6/poppler-media.h",
+				"/usr/include/poppler/qt6/poppler-optcontent.h",
+				"/usr/include/poppler/qt6/poppler-page-transition.h",
+				"/usr/include/poppler/qt6/poppler-qt6.h",
+				"/usr/include/poppler/qt6/poppler-version.h",
+				"/usr/lib/libpoppler-qt6.so",
+				"/usr/lib/pkgconfig/poppler-qt6.pc"
+			],
+			"name": "poppler-qt6-devel",
+			"provides": [
+				"pkgconfig(poppler-qt6)"
+			]
 		}
 	},
 	"source-name": "poppler",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "24.12.0"
 }
