@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kcrash
+version     : 6.11.0
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.11/kcrash-6.11.0.tar.xz : ba13e9f5dd2b40125d5d61d29b612db6383315dc0f510cc1f0e33bb6c9b0ae89
+homepage    : https://community.kde.org/Frameworks
+license     : LGPL-2.0-or-later
+summary     : Graceful handling of application crashes.
+description : |
+    Graceful handling of application crashes.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6CoreAddons)
+    - pkgconfig(x11)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

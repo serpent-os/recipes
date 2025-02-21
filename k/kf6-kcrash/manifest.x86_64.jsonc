@@ -1,0 +1,63 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"kf6-kcrash": {
+			"build-depends": [
+				"cmake(ECM)",
+				"cmake(KF6CoreAddons)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"soname(libKF6CoreAddons.so.6(x86_64))",
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libKF6Crash.so.6",
+				"/usr/lib/libKF6Crash.so.6.11.0",
+				"/usr/share/qlogging-categories6/kcrash.categories",
+				"/usr/share/qlogging-categories6/kcrash.renamecategories"
+			],
+			"name": "kf6-kcrash",
+			"provides": [
+				"soname(libKF6Crash.so.6(x86_64))"
+			]
+		},
+		"kf6-kcrash-devel": {
+			"build-depends": [
+				"cmake(ECM)",
+				"cmake(KF6CoreAddons)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"kf6-kcrash"
+			],
+			"files": [
+				"/usr/include/KF6/KCrash/KCrash",
+				"/usr/include/KF6/KCrash/kcrash.h",
+				"/usr/include/KF6/KCrash/kcrash_export.h",
+				"/usr/include/KF6/KCrash/kcrash_version.h",
+				"/usr/lib/cmake/KF6Crash/KF6CrashConfig.cmake",
+				"/usr/lib/cmake/KF6Crash/KF6CrashConfigVersion.cmake",
+				"/usr/lib/cmake/KF6Crash/KF6CrashQchTargets.cmake",
+				"/usr/lib/cmake/KF6Crash/KF6CrashTargets-release.cmake",
+				"/usr/lib/cmake/KF6Crash/KF6CrashTargets.cmake",
+				"/usr/lib/libKF6Crash.so",
+				"/usr/share/doc/qt6/KF6Crash.qch",
+				"/usr/share/doc/qt6/KF6Crash.tags"
+			],
+			"name": "kf6-kcrash-devel",
+			"provides": [
+				"cmake(KF6Crash)"
+			]
+		}
+	},
+	"source-name": "kf6-kcrash",
+	"source-release": "1",
+	"source-version": "6.11.0"
+}
