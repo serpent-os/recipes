@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : gpgme
-version     : 1.24.1
-release     : 3
+version     : 1.24.2
+release     : 4
 homepage    : https://gnupg.org/software/gpgme/index.html
 upstreams   :
-    - https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.24.1.tar.bz2 : ea05d0258e71061d61716584ec34cef59330a91340571edc46b78374973ba85f
+    - https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.24.2.tar.bz2 : e11b1a0e361777e9e55f48a03d89096e2abf08c63d84b7017cfe1dce06639581
 summary     : Library to provide easy access to GnuPG
 description : |
     GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier
@@ -18,20 +18,39 @@ license     :
     - GPL-2.0-or-later
     - LGPL-2.1-or-later
 builddeps   :
+    - binary(doxygen)
     - binary(gpg)
     - binary(swig)
+    - pkgconfig(Qt6Core)
     - pkgconfig(gpg-error)
     - pkgconfig(libassuan)
     - pkgconfig(python3)
 rundeps     :
     - binary(gpg)
 setup       : |
-    export CFLAGS="${CFLAGS} -lassuan"
+    export LDFLAGS="${LDFLAGS} -lassuan"
 
     # TODO: Enable python support
     %configure --disable-static \
-               --enable-languages=cpp
+               --enable-languages=cpp,qt6
 build       : |
     %make
 install     : |
     %make_install
+packages    :
+    - "%(name)-qt6":
+        summary: Library to provide easy access to GnuPG - Qt6 bindings
+        description: Library to provide easy access to GnuPG - Qt6 bindings
+        paths:
+            - /usr/lib/libqgpgmeqt6.so.*
+
+    - "%(name)-qt6-devel":
+        summary: Development files for %(name)-qt6
+        description: Development files for %(name)-qt6
+        paths:
+            - /usr/include/qgpgme-qt6
+            - /usr/lib/cmake/QGpgmeQt6
+            - /usr/lib/libqgpgmeqt6.so
+        rundeps:
+            - "%(name)-qt6"
+            - "%(name)-devel"
