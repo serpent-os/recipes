@@ -1,0 +1,7 @@
+releases:
+  id: 5134
+  rss: ~
+security:
+  cpe:
+  - vendor: winehq
+    product: wine
