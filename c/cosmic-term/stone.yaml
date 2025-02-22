@@ -4,11 +4,11 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-term
-version     : 1.0.0-alpha.5.1
-release     : 12
+version     : 1.0.0-alpha.6
+release     : 13
 homepage    : https://github.com/pop-os/cosmic-term
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-term : df1e7dd1f2998b826325dc78c706d1a45ad37e6f
+    - git|https://github.com/pop-os/cosmic-term : b05076be655dfeecdd1c7f9493ad0da1807c7dd3
 summary     : Cosmic Desktop Terminal Application
 description : |
     Cosmic desktop Terminal Application
