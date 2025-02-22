@@ -1,7 +1,7 @@
-From 767c4eb46ba93be91516c72c67101d4c38d1a2df Mon Sep 17 00:00:00 2001
+From 55b7c848f36ab09fdc1bd2bf2335038c4b7a3bda Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 1 Sep 2024 14:30:37 +1200
-Subject: [PATCH 04/29] platform/x86: asus-wmi: Refactor Ally suspend/resume
+Subject: [PATCH 05/28] platform/x86: asus-wmi: Refactor Ally suspend/resume
 
 The CSEE method from ACPI is now called only on module load. This fixes
 an issues with USB device loss on Ally 1 after reboot.
@@ -23,7 +23,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  1 file changed, 48 insertions(+), 38 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 1101e5b2488e..8c414ca3ef3f 100644
+index 8bd187e8b47f..5033dd45103c 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -142,16 +142,20 @@ module_param(fnlock_default, bool, 0444);
@@ -70,7 +70,7 @@ index 1101e5b2488e..8c414ca3ef3f 100644
  /* WMI ************************************************************************/
  
  static int asus_wmi_evaluate_method3(u32 method_id,
-@@ -4729,6 +4732,17 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4707,6 +4710,17 @@ static int asus_wmi_add(struct platform_device *pdev)
  	if (err)
  		goto fail_platform;
  
@@ -88,7 +88,7 @@ index 1101e5b2488e..8c414ca3ef3f 100644
  	/* ensure defaults for tunables */
  	asus->ppt_pl2_sppt = 5;
  	asus->ppt_pl1_spl = 5;
-@@ -4741,8 +4755,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4719,8 +4733,6 @@ static int asus_wmi_add(struct platform_device *pdev)
  	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
  	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
  	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
@@ -97,7 +97,7 @@ index 1101e5b2488e..8c414ca3ef3f 100644
  
  	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE))
  		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE;
-@@ -4933,34 +4945,6 @@ static int asus_hotk_resume(struct device *device)
+@@ -4911,34 +4923,6 @@ static int asus_hotk_resume(struct device *device)
  	return 0;
  }
  
@@ -132,7 +132,7 @@ index 1101e5b2488e..8c414ca3ef3f 100644
  static int asus_hotk_restore(struct device *device)
  {
  	struct asus_wmi *asus = dev_get_drvdata(device);
-@@ -5001,11 +4985,32 @@ static int asus_hotk_restore(struct device *device)
+@@ -4979,11 +4963,32 @@ static int asus_hotk_restore(struct device *device)
  	return 0;
  }
  
@@ -166,7 +166,7 @@ index 1101e5b2488e..8c414ca3ef3f 100644
  	.prepare = asus_hotk_prepare,
  };
  
-@@ -5033,6 +5038,10 @@ static int asus_wmi_probe(struct platform_device *pdev)
+@@ -5011,6 +5016,10 @@ static int asus_wmi_probe(struct platform_device *pdev)
  			return ret;
  	}
  
@@ -177,7 +177,7 @@ index 1101e5b2488e..8c414ca3ef3f 100644
  	return asus_wmi_add(pdev);
  }
  
-@@ -5065,6 +5074,7 @@ EXPORT_SYMBOL_GPL(asus_wmi_register_driver);
+@@ -5043,6 +5052,7 @@ EXPORT_SYMBOL_GPL(asus_wmi_register_driver);
  
  void asus_wmi_unregister_driver(struct asus_wmi_driver *driver)
  {

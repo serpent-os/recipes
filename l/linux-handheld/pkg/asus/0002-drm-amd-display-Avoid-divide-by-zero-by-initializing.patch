@@ -1,7 +1,7 @@
-From 589b417ef8f52bde499509ce3bcebc4869415c9a Mon Sep 17 00:00:00 2001
+From f2bcf1ee4c0bedfdc7e7611887372b62edd8a172 Mon Sep 17 00:00:00 2001
 From: Mario Limonciello <mario.limonciello@amd.com>
 Date: Tue, 21 Jan 2025 16:03:52 -0600
-Subject: [PATCH 01/29] drm/amd/display: Avoid divide by zero by initializing
+Subject: [PATCH 02/28] drm/amd/display: Avoid divide by zero by initializing
  dummy pitch to 1
 
 If the dummy values in `populate_dummy_dml_surface_cfg()` aren't updated

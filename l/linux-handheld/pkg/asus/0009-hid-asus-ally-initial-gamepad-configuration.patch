@@ -1,7 +1,7 @@
-From a449800566b870cd99b98fc5b57a9bdb9887d884 Mon Sep 17 00:00:00 2001
+From c1836bdc693c477dbda3df225f1136c7cd1a8520 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 2 Oct 2024 23:51:36 +1300
-Subject: [PATCH 08/29] hid-asus-ally: initial gamepad configuration
+Subject: [PATCH 09/28] hid-asus-ally: initial gamepad configuration
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 266 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index b7d22c1747b0..4935ab36aa35 100644
+index 7a5b031bd4e5..f1f8a8841d2b 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -10,7 +10,6 @@

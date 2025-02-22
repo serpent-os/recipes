@@ -1,7 +1,7 @@
-From f9b1979ab3445dc3de1a196548717bca87c9e7e1 Mon Sep 17 00:00:00 2001
+From eb61afda943eb07d5c5b6f529738eb2b2d071b9f Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 22 Sep 2024 21:39:43 +1200
-Subject: [PATCH 22/29] platform/x86: asus-armoury: move existing tunings to
+Subject: [PATCH 22/28] platform/x86: asus-armoury: move existing tunings to
  asus-armoury module
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -45,10 +45,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  create mode 100644 drivers/platform/x86/asus-armoury.h
 
 diff --git a/drivers/platform/x86/Kconfig b/drivers/platform/x86/Kconfig
-index 3875abba5a79..80ec8b45022d 100644
+index 0258dd879d64..294364cc7478 100644
 --- a/drivers/platform/x86/Kconfig
 +++ b/drivers/platform/x86/Kconfig
-@@ -265,6 +265,18 @@ config ASUS_WIRELESS
+@@ -267,6 +267,18 @@ config ASUS_WIRELESS
  	  If you choose to compile this driver as a module the module will be
  	  called asus-wireless.
  
@@ -792,7 +792,7 @@ index 000000000000..440f41c5df3b
 +
 +#endif /* _ASUS_ARMOURY_H_ */
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 391549342296..0ba38e5bf8c3 100644
+index c39b79571ec2..9f0153ee8601 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -55,8 +55,6 @@ module_param(fnlock_default, bool, 0444);

@@ -1,15 +1,18 @@
-From 34c149c9e122faee82928933d896de6f1313d87f Mon Sep 17 00:00:00 2001
+From 19749710370dd5da0d976b996b72facb78cdab2b Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Mon, 10 Feb 2025 17:15:01 +1300
-Subject: [PATCH 17/29] hid-asus-ally: mcu_version attribute
+Subject: [PATCH 18/28] hid-asus-ally: mcu_version attribute
+
+Add the mcu_version sysfs attribute so that userspace has a way to check
+the MCU FW version.
 
 Signed-off-by: Luke Jones <luke@ljones.dev>
 ---
- drivers/hid/hid-asus-ally.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+ drivers/hid/hid-asus-ally.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 705e6ab62d85..2783cc054acd 100644
+index ad1181e12410..b77b837de729 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -380,6 +380,7 @@ static struct ally_drvdata {
@@ -42,16 +45,7 @@ index 705e6ab62d85..2783cc054acd 100644
  	NULL
  };
  
-@@ -1929,14 +1938,13 @@ static int mcu_request_version(struct hid_device *hdev)
- 	return ret;
- }
- 
--static void mcu_maybe_warn_version(struct hid_device *hdev, int idProduct)
-+static void validate_mcu_fw_version(struct hid_device *hdev, int idProduct)
- {
- 	int min_version, version;
--	struct asus_wmi *asus;
--	struct device *dev;
+@@ -1935,6 +1944,7 @@ static void validate_mcu_fw_version(struct hid_device *hdev, int idProduct)
  
  	min_version = ROG_ALLY_X_MIN_MCU;
  	version = mcu_request_version(hdev);
@@ -59,21 +53,7 @@ index 705e6ab62d85..2783cc054acd 100644
  	if (version) {
  		switch (idProduct) {
  		case USB_DEVICE_ID_ASUSTEK_ROG_NKEY_ALLY:
-@@ -1950,11 +1958,12 @@ static void mcu_maybe_warn_version(struct hid_device *hdev, int idProduct)
- 
- 	hid_info(hdev, "Ally device MCU version: %d\n", version);
- 	if (version < min_version) {
--		set_ally_mcu_hack_available(false);
- 		hid_warn(hdev,
- 			 "The MCU version must be %d or greater\n"
- 			 "Please update your MCU with official ASUS firmware release\n",
- 			 min_version);
-+	} else {
-+		set_ally_mcu_hack_available(false);
- 	}
- }
- 
-@@ -2146,6 +2155,7 @@ static void __exit rog_ally_exit(void)
+@@ -2155,6 +2165,7 @@ static void __exit rog_ally_exit(void)
  module_init(rog_ally_init);
  module_exit(rog_ally_exit);
  

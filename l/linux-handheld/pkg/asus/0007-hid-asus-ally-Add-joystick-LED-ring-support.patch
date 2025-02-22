@@ -1,7 +1,7 @@
-From bbe70aa00f823e238df988d8466e3b0fb1c2b329 Mon Sep 17 00:00:00 2001
+From 95b7249442aae720698f3faef19df8d0da9adef3 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Mon, 26 Aug 2024 12:49:35 +1200
-Subject: [PATCH 06/29] hid-asus-ally: Add joystick LED ring support
+Subject: [PATCH 07/28] hid-asus-ally: Add joystick LED ring support
 
 Adds basic support for the joystick RGB LED rings as a multicolour LED
 device with 4 LEDs.
@@ -13,15 +13,15 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
  drivers/hid/Kconfig         |   9 +
  drivers/hid/Makefile        |   1 +
- drivers/hid/hid-asus-ally.c | 619 ++++++++++++++++++++++++++++++++++++
+ drivers/hid/hid-asus-ally.c | 628 ++++++++++++++++++++++++++++++++++++
  drivers/hid/hid-asus-ally.h |  38 +++
- drivers/hid/hid-asus.c      | 107 +------
- 5 files changed, 681 insertions(+), 93 deletions(-)
+ drivers/hid/hid-asus.c      | 107 +-----
+ 5 files changed, 690 insertions(+), 93 deletions(-)
  create mode 100644 drivers/hid/hid-asus-ally.c
  create mode 100644 drivers/hid/hid-asus-ally.h
 
 diff --git a/drivers/hid/Kconfig b/drivers/hid/Kconfig
-index f8a56d631242..d477df3a3f35 100644
+index 4d2a89d65b65..89357822c27b 100644
 --- a/drivers/hid/Kconfig
 +++ b/drivers/hid/Kconfig
 @@ -164,6 +164,15 @@ config HID_ASUS
@@ -41,7 +41,7 @@ index f8a56d631242..d477df3a3f35 100644
  	tristate "Aureal"
  	help
 diff --git a/drivers/hid/Makefile b/drivers/hid/Makefile
-index 496dab54c73a..5fa65e1e1e3b 100644
+index 24de45f3677d..f338c9eb4600 100644
 --- a/drivers/hid/Makefile
 +++ b/drivers/hid/Makefile
 @@ -31,6 +31,7 @@ obj-$(CONFIG_HID_APPLE)		+= hid-apple.o
@@ -54,10 +54,10 @@ index 496dab54c73a..5fa65e1e1e3b 100644
  obj-$(CONFIG_HID_BETOP_FF)	+= hid-betopff.o
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
 new file mode 100644
-index 000000000000..86b0c7deb719
+index 000000000000..27b2b47521e9
 --- /dev/null
 +++ b/drivers/hid/hid-asus-ally.c
-@@ -0,0 +1,619 @@
+@@ -0,0 +1,628 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
 + *  HID driver for Asus ROG laptops and Ally
@@ -488,11 +488,9 @@ index 000000000000..86b0c7deb719
 +	return ret;
 +}
 +
-+static void mcu_maybe_warn_version(struct hid_device *hdev, int idProduct)
++static void validate_mcu_fw_version(struct hid_device *hdev, int idProduct)
 +{
 +	int min_version, version;
-+	struct asus_wmi *asus;
-+	struct device *dev;
 +
 +	min_version = ROG_ALLY_X_MIN_MCU;
 +	version = mcu_request_version(hdev);
@@ -509,11 +507,13 @@ index 000000000000..86b0c7deb719
 +
 +	hid_info(hdev, "Ally device MCU version: %d\n", version);
 +	if (version < min_version) {
-+		set_ally_mcu_hack_available(false);
 +		hid_warn(hdev,
 +			 "The MCU version must be %d or greater\n"
 +			 "Please update your MCU with official ASUS firmware release\n",
 +			 min_version);
++	}  else {
++		set_ally_mcu_hack(false);
++		set_ally_mcu_powersave(true);
 +	}
 +}
 +
@@ -608,7 +608,15 @@ index 000000000000..86b0c7deb719
 +
 +static int ally_hid_resume(struct hid_device *hdev)
 +{
-+	ally_rgb_resume();
++	struct ally_gamepad_cfg *ally_cfg = drvdata.gamepad_cfg;
++	int err;
++
++	if (!ally_cfg)
++		return 0;
++
++	err = _gamepad_apply_all(hdev,ally_cfg);
++	if (err)
++		return err;
 +
 +	return 0;
 +}
@@ -622,7 +630,7 @@ index 000000000000..86b0c7deb719
 +	ally_hid_init(hdev);
 +	ally_rgb_resume();
 +
-+	return 0;
++	return ally_hid_resume(hdev);
 +}
 +
 +static int ally_pm_thaw(struct device *dev)
@@ -656,6 +664,7 @@ index 000000000000..86b0c7deb719
 +			 .remove = ally_hid_remove,
 +			 /* HID is the better place for resume functions, not pm_ops */
 +			 .resume = ally_hid_resume,
++			/* ALLy 1 requires this to reset device state correctly */
 +			 .reset_resume = ally_hid_reset_resume,
 +			 .driver = {
 +				 .pm = &ally_pm_ops,
@@ -722,7 +731,7 @@ index 000000000000..eb8617c80c2a
 +	xpad_cmd_len_adz = 0x02,
 +};
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index 0bf9822599b9..2519ee2d71b1 100644
+index 93217442b4b6..fb29486478f7 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
 @@ -52,9 +52,9 @@ MODULE_DESCRIPTION("Asus HID Keyboard and TouchPad");

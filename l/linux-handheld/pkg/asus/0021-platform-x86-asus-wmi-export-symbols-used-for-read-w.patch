@@ -1,7 +1,7 @@
-From 80f312cb766c6b3a2244429ea092818c5f7076b9 Mon Sep 17 00:00:00 2001
+From 925961098216ea72e912a26050ce878380f02468 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 22 Sep 2024 21:40:46 +1200
-Subject: [PATCH 21/29] platform/x86: asus-wmi: export symbols used for
+Subject: [PATCH 21/28] platform/x86: asus-wmi: export symbols used for
  read/write WMI
 
 Export some rather helpful read/write WMI symbols using a namespace.
@@ -17,7 +17,7 @@ Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
  2 files changed, 51 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index b083bea26cf2..391549342296 100644
+index 2afb949ac397..c39b79571ec2 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -398,7 +398,7 @@ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval)

@@ -1,7 +1,7 @@
-From aa99e6386bfe28c672565bf07f3715066373901e Mon Sep 17 00:00:00 2001
+From 1126142cbdcbdee93c721e590e0b7e07bf40ca71 Mon Sep 17 00:00:00 2001
 From: Luke Jones <luke@ljones.dev>
 Date: Tue, 11 Feb 2025 00:05:08 +1300
-Subject: [PATCH 05/29] hid-asus: set mcu hack to off if required MCU version
+Subject: [PATCH 06/28] hid-asus: set mcu hack to off if required MCU version
 
 Signed-off-by: Luke Jones <luke@ljones.dev>
 ---
@@ -11,7 +11,7 @@ Signed-off-by: Luke Jones <luke@ljones.dev>
  3 files changed, 18 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index 9e9e78164714..0bf9822599b9 100644
+index 040eeb25f706..93217442b4b6 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
 @@ -614,6 +614,8 @@ static void mcu_maybe_warn_version(struct hid_device *hdev, int idProduct)
@@ -30,7 +30,7 @@ index 9e9e78164714..0bf9822599b9 100644
 +MODULE_IMPORT_NS("ASUS_WMI");
  MODULE_LICENSE("GPL");
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 8c414ca3ef3f..b083bea26cf2 100644
+index 5033dd45103c..2afb949ac397 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -338,6 +338,16 @@ struct asus_wmi {
@@ -50,7 +50,7 @@ index 8c414ca3ef3f..b083bea26cf2 100644
  /* WMI ************************************************************************/
  
  static int asus_wmi_evaluate_method3(u32 method_id,
-@@ -4734,7 +4744,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4712,7 +4722,7 @@ static int asus_wmi_add(struct platform_device *pdev)
  
  	ally_mcu_usb_plug = acpi_has_method(NULL, ASUS_USB0_PWR_EC0_CSEE)
  				&& dmi_check_system(asus_rog_ally_device);

@@ -1,14 +1,14 @@
-From d648e51cf411771c50e3530a2ab4f417d1dd2499 Mon Sep 17 00:00:00 2001
+From 98f9e082f1d79e82027a8c8bfe2f195ab80e1ca1 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 6 Nov 2024 00:27:03 +0300
-Subject: [PATCH 20/29] debug by default
+Subject: [PATCH 20/28] debug by default
 
 ---
  drivers/hid/hid-asus-ally.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index f4d852c0481d..b5688f1401a5 100644
+index 1418ea756028..4f1e205f8a9f 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -21,6 +21,8 @@
