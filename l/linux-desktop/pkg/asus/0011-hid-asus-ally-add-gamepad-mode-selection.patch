@@ -1,7 +1,7 @@
-From 07acf2628370fd6ccc65b28252f97a06501d4f8a Mon Sep 17 00:00:00 2001
+From 062f2463a23713df97da240af6a675a5dd563b9d Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Fri, 25 Oct 2024 08:56:54 +0200
-Subject: [PATCH 10/29] hid-asus-ally: add gamepad mode selection
+Subject: [PATCH 11/28] hid-asus-ally: add gamepad mode selection
 
 ---
  drivers/hid/hid-asus-ally.c | 73 +++++++++++++++++++++++++++++++++++++
@@ -9,7 +9,7 @@ Subject: [PATCH 10/29] hid-asus-ally: add gamepad mode selection
  2 files changed, 75 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index f5a50eaa7e75..8a49d37c20e7 100644
+index c13cedda3536..5edb67359a4e 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -647,9 +647,82 @@ static ssize_t btn_mapping_reset_store(struct device *dev, struct device_attribu

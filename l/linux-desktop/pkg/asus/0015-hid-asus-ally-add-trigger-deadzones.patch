@@ -1,7 +1,7 @@
-From eb56b5260a1dd02fab2dae6a342c8cc70e7045ba Mon Sep 17 00:00:00 2001
+From 2aba4cb8837a9b30bc089cb8e291b70882e904e8 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 21:37:27 +1300
-Subject: [PATCH 14/29] hid-asus-ally: add trigger deadzones
+Subject: [PATCH 15/28] hid-asus-ally: add trigger deadzones
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 44 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 08d66a179523..066956922e17 100644
+index fc912a053cd1..4ba945940940 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -284,6 +284,8 @@ struct ally_gamepad_cfg {

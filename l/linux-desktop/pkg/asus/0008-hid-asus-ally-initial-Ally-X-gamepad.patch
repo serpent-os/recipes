@@ -1,7 +1,7 @@
-From 8c0983b928c12608d8cf5bd592ddd7e75254e491 Mon Sep 17 00:00:00 2001
+From 3ff2c34a5662605e1d3c6292755bb104240f11c4 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Wed, 2 Oct 2024 23:32:46 +1300
-Subject: [PATCH 07/29] hid-asus-ally: initial Ally-X gamepad
+Subject: [PATCH 08/28] hid-asus-ally: initial Ally-X gamepad
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 389 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 86b0c7deb719..b7d22c1747b0 100644
+index 27b2b47521e9..7a5b031bd4e5 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -50,6 +50,51 @@ static const struct hid_device_id rog_ally_devices[] = {
@@ -446,14 +446,14 @@ index 86b0c7deb719..b7d22c1747b0 100644
  	hid_hw_close(hdev);
  	hid_hw_stop(hdev);
  }
-@@ -594,6 +976,7 @@ static struct hid_driver
+@@ -602,6 +984,7 @@ static struct hid_driver
  			 .id_table = rog_ally_devices,
  			 .probe = ally_hid_probe,
  			 .remove = ally_hid_remove,
 +			 .raw_event = ally_raw_event,
  			 /* HID is the better place for resume functions, not pm_ops */
  			 .resume = ally_hid_resume,
- 			 .reset_resume = ally_hid_reset_resume,
+ 			/* ALLy 1 requires this to reset device state correctly */
 diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
 index eb8617c80c2a..458d02996bca 100644
 --- a/drivers/hid/hid-asus-ally.h

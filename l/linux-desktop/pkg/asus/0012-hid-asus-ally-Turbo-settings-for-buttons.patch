@@ -1,7 +1,7 @@
-From 0fe318668b804dc466d42cebea2c1742f62aa5d9 Mon Sep 17 00:00:00 2001
+From e6e2368dd5119a223e45bdfe69b348855f0568a5 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 15:40:09 +1300
-Subject: [PATCH 11/29] hid-asus-ally: Turbo settings for buttons
+Subject: [PATCH 12/28] hid-asus-ally: Turbo settings for buttons
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 108 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 8a49d37c20e7..4812c060afa2 100644
+index 5edb67359a4e..528fdac01836 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -236,6 +236,7 @@ static const char* btn_to_name(u64 key)

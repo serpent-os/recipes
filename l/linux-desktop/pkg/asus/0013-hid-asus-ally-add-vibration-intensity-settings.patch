@@ -1,7 +1,7 @@
-From b0cc20eb8afe842ada30bff064db0c9cec522dde Mon Sep 17 00:00:00 2001
+From c66fdbb5d50f140c6732ac95d939a5aee892516f Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 20:46:00 +1300
-Subject: [PATCH 12/29] hid-asus-ally: add vibration intensity settings
+Subject: [PATCH 13/28] hid-asus-ally: add vibration intensity settings
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 99 insertions(+)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 4812c060afa2..01d0ff6169fd 100644
+index 528fdac01836..54c629ef22e4 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -270,6 +270,11 @@ struct ally_gamepad_cfg {

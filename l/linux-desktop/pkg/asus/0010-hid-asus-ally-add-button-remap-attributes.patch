@@ -1,7 +1,7 @@
-From 9c2faf346ae999e815207c930bf76e17a47c095e Mon Sep 17 00:00:00 2001
+From 4ead0d157d5264127b695fcb59b6c1f9903ce285 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sat, 5 Oct 2024 14:58:33 +1300
-Subject: [PATCH 09/29] hid-asus-ally: add button remap attributes
+Subject: [PATCH 10/28] hid-asus-ally: add button remap attributes
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 586 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
-index 4935ab36aa35..f5a50eaa7e75 100644
+index f1f8a8841d2b..c13cedda3536 100644
 --- a/drivers/hid/hid-asus-ally.c
 +++ b/drivers/hid/hid-asus-ally.c
 @@ -57,6 +57,152 @@ struct btn_code_map {
