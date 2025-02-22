@@ -1,0 +1,63 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"mangohud": {
+			"build-depends": [
+				"cmake(VulkanHeaders)",
+				"cmake(glslang)",
+				"pkgconfig(cmocka)",
+				"pkgconfig(dbus-1)",
+				"pkgconfig(glew)",
+				"pkgconfig(glfw3)",
+				"pkgconfig(nlohmann_json)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(x11)",
+				"pkgconfig(xkbcommon)",
+				"pkgconfig(xrandr)",
+				"python(mako)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libGL.so.1(x86_64))",
+				"soname(libGLEW.so.2.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/mangoapp",
+				"/usr/bin/mangohud",
+				"/usr/bin/mangohudctl",
+				"/usr/bin/mangoplot",
+				"/usr/lib/mangohud/libMangoHud.so",
+				"/usr/lib/mangohud/libMangoHud_opengl.so",
+				"/usr/lib/mangohud/libMangoHud_shim.so",
+				"/usr/share/doc/mangohud/MangoHud.conf.example",
+				"/usr/share/doc/mangohud/presets.conf.example",
+				"/usr/share/icons/hicolor/scalable/apps/io.github.flightlessmango.mangohud.svg",
+				"/usr/share/man/man1/mangoapp.1",
+				"/usr/share/man/man1/mangohud.1",
+				"/usr/share/metainfo/io.github.flightlessmango.mangohud.metainfo.xml",
+				"/usr/share/vulkan/implicit_layer.d/MangoHud.x86_64.json"
+			],
+			"name": "mangohud",
+			"provides": [
+				"binary(mangoapp)",
+				"binary(mangohud)",
+				"binary(mangohudctl)",
+				"binary(mangoplot)",
+				"soname(mangohud/libMangoHud.so(x86_64))",
+				"soname(mangohud/libMangoHud_opengl.so(x86_64))",
+				"soname(mangohud/libMangoHud_shim.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "mangohud",
+	"source-release": "1",
+	"source-version": "0.8.0"
+}

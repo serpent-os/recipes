@@ -1,0 +1,47 @@
+#
+# SPDX-FileCopyrightText: © 2020-2024 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : mangohud
+version     : 0.8.0
+release     : 1
+homepage    : https://github.com/flightlessmango/MangoHud
+upstreams   :
+    - https://github.com/flightlessmango/MangoHud/releases/download/v0.8.0/MangoHud-v0.8.0-Source.tar.xz : c860c733b1328f0fb479fc880281110799ebc13a4183033affc591c6d10719d9
+summary     : A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more
+description : |
+    A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
+license     : MIT
+toolchain   : gnu # Due to: ld.lld: error: unable to find library -lc++
+builddeps   :
+    - cmake(VulkanHeaders)
+    - cmake(glslang)
+    - pkgconfig(cmocka)
+    - pkgconfig(dbus-1)
+    - pkgconfig(glew)
+    - pkgconfig(glfw3)
+    #- pkgconfig(imgui)
+    #- pkgconfig(implot)
+    #- pkgconfig(minhook)
+    - pkgconfig(nlohmann_json)
+    #- pkgconfig(spdlog)
+    #- pkgconfig(threads)
+    - pkgconfig(wayland-client)
+    - pkgconfig(x11)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(xrandr)
+    - python(mako)
+setup       : |
+    # Use system cmocka instead of subproject
+    sed -i "s/  cmocka = subproject('cmocka')//g" meson.build
+    sed -i "s/cmocka_dep = cmocka.get_variable('cmocka_dep')/cmocka_dep = dependency('cmocka')/g" meson.build
+
+    %meson -Dmangoapp=true \
+        -Dmangohudctl=true \
+        -Dwith_xnvctrl=disabled # for now. needs nvidia-settings
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+
