@@ -27,8 +27,8 @@
 				"binary(update-mime-database)",
 				"binary(xdg-user-dirs-gtk-update)",
 				"cosmic-icons",
-				"font-fira",
-				"font-firacode",
+				"font-noto",
+				"font-opensans",
 				"networkmanager",
 				"wireplumber",
 				"xdg-desktop-portal-cosmic"
@@ -40,6 +40,6 @@
 		}
 	},
 	"source-name": "cosmic-desktop",
-	"source-release": "8",
-	"source-version": "1.0.0-alpha.5.1"
+	"source-release": "9",
+	"source-version": "1.0.0-alpha.6"
 }

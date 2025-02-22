@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 name        : cosmic-player
-version     : 1.0.0-alpha.5.1
-release     : 1
+version     : 1.0.0-alpha.6
+release     : 2
 summary     : Cosmic Desktop Compositor
 license     : GPL-3.0
 homepage    : https://github.com/pop-os/cosmic-player
 upstreams   :
-    - git|https://github.com/pop-os/cosmic-player.git : 7c080feb86c0605e7497be7eeb08879abfe301ab
+    - git|https://github.com/pop-os/cosmic-player.git : 5796e09704e6039544207ecde411a0d2492abc58
 description : |
     Cosmic Desktop Media Player
 builddeps   :

@@ -30,7 +30,8 @@
 				"binary(update-mime-database)",
 				"binary(upower)",
 				"binary(xdg-user-dirs-gtk-update)",
-				"font-firacode",
+				"font-noto",
+				"font-opensans",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"pciutils",
 				"soname(ld-linux-x86-64.so.2(x86_64))",
@@ -56,6 +57,6 @@
 		}
 	},
 	"source-name": "cosmic-session",
-	"source-release": "21",
-	"source-version": "1.0.0-alpha.5.1"
+	"source-release": "22",
+	"source-version": "1.0.0-alpha.6"
 }

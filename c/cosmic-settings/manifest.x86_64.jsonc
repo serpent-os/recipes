@@ -26,6 +26,7 @@
 			"files": [
 				"/usr/bin/cosmic-settings",
 				"/usr/share/applications/com.system76.CosmicSettings.About.desktop",
+				"/usr/share/applications/com.system76.CosmicSettings.Accessibility.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Appearance.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.Bluetooth.desktop",
 				"/usr/share/applications/com.system76.CosmicSettings.DateTime.desktop",
@@ -73,6 +74,7 @@
 				"/usr/share/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/window_hint",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Dark/v1/accent",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Dark/v1/accent_button",
+				"/usr/share/cosmic/com.system76.CosmicTheme.Dark/v1/accent_text",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Dark/v1/active_hint",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Dark/v1/background",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Dark/v1/button",
@@ -115,6 +117,7 @@
 				"/usr/share/cosmic/com.system76.CosmicTheme.Light.Builder/v1/window_hint",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Light/v1/accent",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Light/v1/accent_button",
+				"/usr/share/cosmic/com.system76.CosmicTheme.Light/v1/accent_text",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Light/v1/active_hint",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Light/v1/background",
 				"/usr/share/cosmic/com.system76.CosmicTheme.Light/v1/button",
@@ -148,6 +151,7 @@
 				"/usr/share/icons/hicolor/32x32/apps/com.system76.CosmicSettings.svg",
 				"/usr/share/icons/hicolor/48x48/apps/com.system76.CosmicSettings.svg",
 				"/usr/share/icons/hicolor/64x64/apps/com.system76.CosmicSettings.svg",
+				"/usr/share/icons/hicolor/scalable/status/illustration-accessibility-magnifier-applet.svg",
 				"/usr/share/icons/hicolor/scalable/status/illustration-appearance-dark-style-round.svg",
 				"/usr/share/icons/hicolor/scalable/status/illustration-appearance-dark-style-slightly-round.svg",
 				"/usr/share/icons/hicolor/scalable/status/illustration-appearance-dark-style-square.svg",
@@ -167,6 +171,6 @@
 		}
 	},
 	"source-name": "cosmic-settings",
-	"source-release": "15",
-	"source-version": "1.0.0-alpha.5.1"
+	"source-release": "16",
+	"source-version": "1.0.0-alpha.6"
 }
