@@ -1,0 +1,54 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"font-opensans": {
+			"files": [
+				"/usr/share/fonts/truetype/opensans/OpenSans-Bold.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-BoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedBold.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedExtraBold.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedExtraBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedLight.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedLightItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedRegular.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedSemiBold.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-CondensedSemiBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-ExtraBold.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-ExtraBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-Italic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-Light.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-LightItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-Regular.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-SemiBold.ttf",
+				"/usr/share/fonts/truetype/opensans/OpenSans-SemiBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-Bold.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-BoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedBold.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedExtraBold.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedExtraBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedLight.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedLightItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedRegular.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedSemiBold.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-CondensedSemiBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-ExtraBold.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-ExtraBoldItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-Italic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-Light.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-LightItalic.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-Regular.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-SemiBold.ttf",
+				"/usr/share/fonts/truetype/opensans/noto-set/OpenSans-SemiBoldItalic.ttf"
+			],
+			"name": "font-opensans"
+		}
+	},
+	"source-name": "font-opensans",
+	"source-release": "1",
+	"source-version": "3.003"
+}

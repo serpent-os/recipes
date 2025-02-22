@@ -1,0 +1,18 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : font-opensans
+version     : 3.003
+release     : 1
+homepage    : https://fonts.google.com/specimen/Open+Sans
+upstreams   :
+    - https://github.com/googlefonts/opensans/archive/bd7e37632246368c60fdcbd374dbf9bad11969b6.tar.gz : a1b16d859522daa826fb093d791ee252a1627274ef1b90f2773d670eb73a2a92
+summary     : Open Sans Font
+description : |
+    Open Sans Font
+license     : OFL-1.1
+install     : |
+    %install_file fonts/ttf/*.tt[fc] -t %(installroot)/usr/share/fonts/truetype/opensans
+    %install_file fonts/noto-set/ttf/*.tt[fc] -t %(installroot)/usr/share/fonts/truetype/opensans/noto-set
