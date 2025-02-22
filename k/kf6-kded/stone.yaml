@@ -3,32 +3,30 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : kf6-kbookmarks
+name        : kf6-kded
 version     : 6.11
-release     : 3
+release     : 1
 upstreams   :
-    - https://download.kde.org/stable/frameworks/6.11/kbookmarks-6.11.0.tar.xz : b5c677453c70314b9eecc0011a73103f045eabc94bc5f2f223b5979780c801c7
+    - https://download.kde.org/stable/frameworks/6.11/kded-6.11.0.tar.xz : 55c9921114299abd9bdc5e601ccc6a750ff2d331fc0836d79670ccbc508e06a4
 homepage    : https://community.kde.org/Frameworks
 license     :
-    - GPL-2.0-or-later
     - LGPL-2.0-only
     - LGPL-2.0-or-later
-summary     : Bookmarks management library.
+summary     : Central daemon of KDE work spaces
 description : |
-    Bookmarks management library.
+    KDED runs in the background and performs a number of small tasks. Some of these tasks are built in, others are started on demand.
 builddeps   :
     # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
     - cmake(ECM)
     - cmake(KF6Config)
     - cmake(KF6CoreAddons)
-    - cmake(KF6WidgetsAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6Service)
 setup       : |
     %cmake_kf6
 build       : |
     %cmake_build
 install     : |
     %cmake_install
-packages    :
-    - "%(name)-devel":
-        rundeps:
-            - cmake(KF6WidgetsAddons)

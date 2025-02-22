@@ -1,0 +1,6 @@
+releases:
+  id: 229051
+  rss: https://invent.kde.org/libraries/polkit-qt-1/-/tags?format=atom
+security:
+  # Last checked 2025-02-21
+  cpe: ~

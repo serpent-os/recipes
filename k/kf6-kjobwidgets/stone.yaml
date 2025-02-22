@@ -3,24 +3,23 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 #
-name        : kf6-kbookmarks
+name        : kf6-kjobwidgets
 version     : 6.11
-release     : 3
+release     : 1
 upstreams   :
-    - https://download.kde.org/stable/frameworks/6.11/kbookmarks-6.11.0.tar.xz : b5c677453c70314b9eecc0011a73103f045eabc94bc5f2f223b5979780c801c7
+    - https://download.kde.org/stable/frameworks/6.11/kjobwidgets-6.11.0.tar.xz : 2bb342e554f8ecf84d7218a6567628dcc73c1b914d0c5aad1c8bf7753986ddd7
 homepage    : https://community.kde.org/Frameworks
 license     :
-    - GPL-2.0-or-later
     - LGPL-2.0-only
     - LGPL-2.0-or-later
-summary     : Bookmarks management library.
+summary     : Widgets for showing progress of asynchronous jobs.
 description : |
-    Bookmarks management library.
+    Widgets for showing progress of asynchronous jobs.
 builddeps   :
     # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
     - cmake(ECM)
-    - cmake(KF6Config)
     - cmake(KF6CoreAddons)
+    - cmake(KF6Notifications)
     - cmake(KF6WidgetsAddons)
 setup       : |
     %cmake_kf6
@@ -28,7 +27,3 @@ build       : |
     %cmake_build
 install     : |
     %cmake_install
-packages    :
-    - "%(name)-devel":
-        rundeps:
-            - cmake(KF6WidgetsAddons)

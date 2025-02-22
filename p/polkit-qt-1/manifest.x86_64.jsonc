@@ -1,0 +1,101 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"polkit-qt-1-qt6": {
+			"build-depends": [
+				"cmake(Qt6)",
+				"pkgconfig(polkit-agent-1)"
+			],
+			"depends": [
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6DBus.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
+				"soname(libQt6Widgets.so.6(x86_64))",
+				"soname(libc++.so.1(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(libpolkit-agent-1.so.0(x86_64))",
+				"soname(libpolkit-gobject-1.so.0(x86_64))",
+				"soname(libunwind.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libpolkit-qt6-agent-1.so.1",
+				"/usr/lib/libpolkit-qt6-agent-1.so.1.200.0",
+				"/usr/lib/libpolkit-qt6-core-1.so.1",
+				"/usr/lib/libpolkit-qt6-core-1.so.1.200.0",
+				"/usr/lib/libpolkit-qt6-gui-1.so.1",
+				"/usr/lib/libpolkit-qt6-gui-1.so.1.200.0"
+			],
+			"name": "polkit-qt-1-qt6",
+			"provides": [
+				"soname(libpolkit-qt6-agent-1.so.1(x86_64))",
+				"soname(libpolkit-qt6-core-1.so.1(x86_64))",
+				"soname(libpolkit-qt6-gui-1.so.1(x86_64))"
+			]
+		},
+		"polkit-qt-1-qt6-devel": {
+			"build-depends": [
+				"cmake(Qt6)",
+				"pkgconfig(polkit-agent-1)"
+			],
+			"depends": [
+				"pkgconfig(Qt6Core)",
+				"pkgconfig(Qt6Gui)",
+				"polkit-qt-1-qt6"
+			],
+			"files": [
+				"/usr/include/polkit-qt6-1/PolkitQt1/ActionDescription",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Agent/Listener",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Agent/Session",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Authority",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Details",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Gui/Action",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Gui/ActionButton",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Gui/ActionButtons",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Identity",
+				"/usr/include/polkit-qt6-1/PolkitQt1/Subject",
+				"/usr/include/polkit-qt6-1/PolkitQt1/TemporaryAuthorization",
+				"/usr/include/polkit-qt6-1/polkitqt1-actiondescription.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-agent-export.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-agent-listener.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-agent-session.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-authority.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-core-export.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-details.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-gui-action.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-gui-actionbutton.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-gui-actionbuttons.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-gui-export.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-identity.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-subject.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-temporaryauthorization.h",
+				"/usr/include/polkit-qt6-1/polkitqt1-version.h",
+				"/usr/lib/cmake/PolkitQt6-1/PolkitQt6-1Config.cmake",
+				"/usr/lib/cmake/PolkitQt6-1/PolkitQt6-1ConfigVersion.cmake",
+				"/usr/lib/cmake/PolkitQt6-1/PolkitQt6-1Targets-release.cmake",
+				"/usr/lib/cmake/PolkitQt6-1/PolkitQt6-1Targets.cmake",
+				"/usr/lib/libpolkit-qt6-agent-1.so",
+				"/usr/lib/libpolkit-qt6-core-1.so",
+				"/usr/lib/libpolkit-qt6-gui-1.so",
+				"/usr/lib/pkgconfig/polkit-qt6-1.pc",
+				"/usr/lib/pkgconfig/polkit-qt6-agent-1.pc",
+				"/usr/lib/pkgconfig/polkit-qt6-core-1.pc",
+				"/usr/lib/pkgconfig/polkit-qt6-gui-1.pc"
+			],
+			"name": "polkit-qt-1-qt6-devel",
+			"provides": [
+				"cmake(PolkitQt6-1)",
+				"pkgconfig(polkit-qt6-1)",
+				"pkgconfig(polkit-qt6-agent-1)",
+				"pkgconfig(polkit-qt6-core-1)",
+				"pkgconfig(polkit-qt6-gui-1)"
+			]
+		}
+	},
+	"source-name": "polkit-qt-1",
+	"source-release": "1",
+	"source-version": "0.200.0"
+}

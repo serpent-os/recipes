@@ -1,0 +1,7 @@
+releases:
+  id: 8762
+  rss: https://invent.kde.org/frameworks/kauth/-/tags?format=atom
+security:
+  cpe:
+  - vendor: kde
+    product: kauth

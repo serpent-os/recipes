@@ -1,0 +1,44 @@
+#
+# SPDX-FileCopyrightText: © 2020-2025 Serpent OS Developers
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+name        : kf6-kwallet
+version     : 6.11
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/frameworks/6.11/kwallet-6.11.0.tar.xz : ce94b032446ed1e1383e673185b5a4372deeab71df8b7a49083a1b6ead822e09
+homepage    : https://community.kde.org/Frameworks
+license     :
+    - BSD-3-Clause
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - LGPL-3.0-or-later
+    - LGPL-2.1-or-later
+summary     : Safe desktop-wide storage for passwords
+description : |
+    This framework contains two main components:
+    * Interface to KWallet, the safe desktop-wide storage for passwords on KDE work spaces.
+    * The kwalletd used to safely store the passwords on KDE work spaces.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6ColorScheme)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6Notifications)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(Qca-qt6)
+    - pkgconfig(gpgmepp)
+    - pkgconfig(libgcrypt)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install

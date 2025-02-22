@@ -132,6 +132,7 @@
 				"cmake(KF6WidgetsAddons)"
 			],
 			"depends": [
+				"cmake(KF6WidgetsAddons)",
 				"kf6-kbookmarks"
 			],
 			"files": [
@@ -175,6 +176,6 @@
 		}
 	},
 	"source-name": "kf6-kbookmarks",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "6.11"
 }

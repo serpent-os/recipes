@@ -1,0 +1,6 @@
+releases:
+  id: 7927
+  rss: https://invent.kde.org/qt/qt/qt5compat/-/tags?format=atom
+security:
+  # Last checked 2025-02-21
+  cpe: ~
