@@ -1,7 +1,7 @@
-From f3329836a02a88a3c5bd35bb2057aaad6589b74f Mon Sep 17 00:00:00 2001
+From d1d36ad0e6730665f32a30fe565e0c7a9de5789f Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Mon, 3 Jun 2024 12:04:41 +1200
-Subject: [PATCH 26/29] platform/x86: asus-wmi: deprecate bios features
+Subject: [PATCH 26/28] platform/x86: asus-wmi: deprecate bios features
 
 With the existence of the asus-armoury module the attributes no-longer
 need to live under the /sys/devices/platform/asus-nb-wmi/ path.
@@ -14,8 +14,8 @@ Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 ---
  .../ABI/testing/sysfs-platform-asus-wmi       |  17 +++
  drivers/platform/x86/Kconfig                  |   9 ++
- drivers/platform/x86/asus-wmi.c               | 113 ++++++++++++++----
- 3 files changed, 119 insertions(+), 20 deletions(-)
+ drivers/platform/x86/asus-wmi.c               | 123 ++++++++++++++----
+ 3 files changed, 124 insertions(+), 25 deletions(-)
 
 diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
 index 28144371a0f1..765d50b0d9df 100644
@@ -158,10 +158,10 @@ index 28144371a0f1..765d50b0d9df 100644
  			* 0 - False,
  			* 1 - True
 diff --git a/drivers/platform/x86/Kconfig b/drivers/platform/x86/Kconfig
-index 80ec8b45022d..d0fc68d93f48 100644
+index 294364cc7478..b160173a530e 100644
 --- a/drivers/platform/x86/Kconfig
 +++ b/drivers/platform/x86/Kconfig
-@@ -299,6 +299,15 @@ config ASUS_WMI
+@@ -301,6 +301,15 @@ config ASUS_WMI
  	  To compile this driver as a module, choose M here: the module will
  	  be called asus-wmi.
  
@@ -178,7 +178,7 @@ index 80ec8b45022d..d0fc68d93f48 100644
  	tristate "Asus Notebook WMI Driver"
  	depends on ASUS_WMI
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 0ba38e5bf8c3..e7b66ba39d01 100644
+index 9f0153ee8601..bcf0cab8f9ae 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -344,6 +344,15 @@ void set_ally_mcu_hack_available(bool enabled)
@@ -463,15 +463,15 @@ index 0ba38e5bf8c3..e7b66ba39d01 100644
  
  /* Quirks *********************************************************************/
  
-@@ -3817,6 +3879,7 @@ static int throttle_thermal_policy_switch_next(struct asus_wmi *asus)
- 	return 0;
+@@ -3795,6 +3857,7 @@ static int throttle_thermal_policy_set_default(struct asus_wmi *asus)
+ 	return throttle_thermal_policy_write(asus);
  }
  
 +#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
  static ssize_t throttle_thermal_policy_show(struct device *dev,
  				   struct device_attribute *attr, char *buf)
  {
-@@ -3860,6 +3923,7 @@ static ssize_t throttle_thermal_policy_store(struct device *dev,
+@@ -3838,6 +3901,7 @@ static ssize_t throttle_thermal_policy_store(struct device *dev,
   * Throttle thermal policy: 0 - default, 1 - overboost, 2 - silent
   */
  static DEVICE_ATTR_RW(throttle_thermal_policy);
@@ -479,7 +479,7 @@ index 0ba38e5bf8c3..e7b66ba39d01 100644
  
  /* Platform profile ***********************************************************/
  static int asus_wmi_platform_profile_get(struct platform_profile_handler *pprof,
-@@ -4457,27 +4521,29 @@ static struct attribute *platform_attributes[] = {
+@@ -4435,27 +4499,29 @@ static struct attribute *platform_attributes[] = {
  	&dev_attr_camera.attr,
  	&dev_attr_cardr.attr,
  	&dev_attr_touchpad.attr,
@@ -527,7 +527,7 @@ index 0ba38e5bf8c3..e7b66ba39d01 100644
  	NULL
  };
  
-@@ -4499,7 +4565,11 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -4477,7 +4543,11 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  		devid = ASUS_WMI_DEVID_LID_RESUME;
  	else if (attr == &dev_attr_als_enable.attr)
  		devid = ASUS_WMI_DEVID_ALS_ENABLE;
@@ -540,7 +540,7 @@ index 0ba38e5bf8c3..e7b66ba39d01 100644
  		devid = ASUS_WMI_DEVID_CHARGE_MODE;
  	else if (attr == &dev_attr_egpu_enable.attr)
  		ok = asus->egpu_enable_available;
-@@ -4537,6 +4607,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -4515,6 +4585,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  		ok = asus->mini_led_dev_id != 0;
  	else if (attr == &dev_attr_available_mini_led_mode.attr)
  		ok = asus->mini_led_dev_id != 0;
@@ -548,7 +548,7 @@ index 0ba38e5bf8c3..e7b66ba39d01 100644
  
  	if (devid != -1) {
  		ok = !(asus_wmi_get_devstate_simple(asus, devid) < 0);
-@@ -4788,6 +4859,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4766,6 +4837,7 @@ static int asus_wmi_add(struct platform_device *pdev)
  	}
  
  	/* ensure defaults for tunables */
@@ -556,14 +556,30 @@ index 0ba38e5bf8c3..e7b66ba39d01 100644
  	asus->ppt_pl2_sppt = 5;
  	asus->ppt_pl1_spl = 5;
  	asus->ppt_apu_sppt = 5;
-@@ -4809,6 +4881,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4787,17 +4859,18 @@ static int asus_wmi_add(struct platform_device *pdev)
  		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX;
  	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX_VIVO))
  		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX_VIVO;
+-
+-	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE))
+-		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE;
+-	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE2))
+-		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE2;
 +#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
  
- 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE))
- 		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE;
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY))
+ 		asus->throttle_thermal_policy_dev = ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY;
+ 	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO))
+ 		asus->throttle_thermal_policy_dev = ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO;
+ 
++	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE))
++		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE;
++	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE2))
++		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE2;
++
+ 	err = fan_boost_mode_check_present(asus);
+ 	if (err)
+ 		goto fail_fan_boost_mode;
 -- 
 2.48.1
 
