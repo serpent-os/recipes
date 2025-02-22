@@ -16,13 +16,13 @@ description : |
 builddeps   :
     - binary(cargo)
     - binary(just)
-    - clang-devel
     - pkgconfig(dbus-1)
     - pkgconfig(libinput)
     - pkgconfig(libseat)
     - pkgconfig(libudev)
     - pkgconfig(pam)
     - pkgconfig(xkbcommon)
+    - clang-devel
 rundeps     :
     - binary(greetd)
     - cosmic-wallpapers
