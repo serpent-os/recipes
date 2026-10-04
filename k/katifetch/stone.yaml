@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MIT
+
+name        : katifetch
+version     : "13.1"
+release     : 1
+homepage    : https://katifetch.pages.dev/
+upstreams   :
+    - https://github.com/ximimoments/katifetch/releases/download/13.1/katifetch-13.1.tar.gz : 9e0f8d6e20cd7dc874c748732e500121b4c6de0f1ea8438ec7d52d461936410c
+summary     : A cross-platform system information tool written in Bash
+description : |
+    Katifetch is a system information tool written in Bash with implementations supporting multi-platform operating systems.
+license     : MIT
+rundeps     :
+    - binary(bash)
+    - binary(lscpu)
+    - binary(lspci)
+install     : |
+    %install_exe katifetch-main/katifetch.sh %(installroot)%(bindir)/katifetch
+    %install_dir %(installroot)%(datadir)/%(name)
+    cp -a katifetch-main/logos katifetch-main/themes %(installroot)%(datadir)/%(name)/
+    %install_file katifetch-main/LICENSE %(installroot)%(datadir)/licenses/%(name)/LICENSE
