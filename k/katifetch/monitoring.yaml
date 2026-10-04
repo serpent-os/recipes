@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MIT
+
+releases:
+    id: 392618
+    rss: https://github.com/ximimoments/katifetch/releases.atom
+security:
+    cpe: ~
