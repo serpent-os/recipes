@@ -211,12 +211,12 @@ index edb37b4c867e..4d0ab2d7b0e2 100644
  
  	ret = sysfs_create_group(&hdev->dev.kobj, &mt_attribute_group);
  	if (ret)
-@@ -2241,6 +2331,7 @@ static void mt_remove(struct hid_device *hdev)
+@@ -2350,6 +2350,7 @@ static void mt_remove(struct hid_device
  {
  	struct mt_device *td = hid_get_drvdata(hdev);
  
 +	unregister_pm_notifier(&td->pm_notifier);
- 	timer_delete_sync(&td->release_timer);
+ 	timer_shutdown_sync(&td->release_timer);
  
  	sysfs_remove_group(&hdev->dev.kobj, &mt_attribute_group);
 @@ -2708,6 +2799,11 @@ static const struct hid_device_id mt_devices[] = {
