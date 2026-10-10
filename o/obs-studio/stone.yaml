@@ -1,0 +1,81 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : obs-studio
+version     : "32.2.2"
+release     : 1
+homepage    : https://github.com/obsproject/obs-studio
+upstreams   :
+    - https://github.com/obsproject/obs-studio/releases/download/32.2.2/OBS-Studio-32.2.2-Sources.tar.gz:
+        hash: ec81fb66b03e75ddb3076b576f62679c39262e0e9960cef3e17a40dc5d68e6b4
+        unpackdir: obs
+    # Check for bundled version of CEF in 'build-aux/com.obsproject.Studio.json'
+    # Example for v32.2.2: https://github.com/obsproject/obs-studio/blob/ba2f32b/build-aux/com.obsproject.Studio.json#L123
+    - https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz:
+        hash: 7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146
+        unpackdir: cef
+summary     : Free and open source software for live streaming and screen recording
+description : |
+    OBS Studio is software designed for capturing, compositing, encoding, recording, and streaming video content, efficiently.
+license     : GPL-2.0-only
+builddeps   :
+    - binary(gio)
+    - binary(objdump)
+    - binary(swig)
+    - cmake(ECM)
+    - cmake(LibDataChannel)
+    - cmake(Qt6Svg)
+    - cmake(ajantv2)
+    - cmake(fdk-aac)
+    - cmake(jansson)
+    - cmake(nlohmann_json)
+    - cmake(qrcodegencpp)
+    - cmake(websocketpp)
+    - pkgconfig(alsa)
+    - pkgconfig(asio)
+    - pkgconfig(ffnvcodec)
+    - pkgconfig(fontconfig)
+    - pkgconfig(freetype2)
+    - pkgconfig(jack)
+    - pkgconfig(libavcodec)
+    - pkgconfig(libavdevice)
+    - pkgconfig(libavfilter)
+    - pkgconfig(libavformat)
+    - pkgconfig(libavutil)
+    - pkgconfig(libcurl)
+    - pkgconfig(libdrm)
+    - pkgconfig(libpci)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libpulse)
+    - pkgconfig(librist)
+    - pkgconfig(libswresample)
+    - pkgconfig(libswscale)
+    - pkgconfig(libv4l2)
+    - pkgconfig(libva)
+    - pkgconfig(libvlc)
+    - pkgconfig(luajit)
+    - pkgconfig(mbedtls)
+    - pkgconfig(python3)
+    - pkgconfig(rnnoise)
+    - pkgconfig(simde)
+    - pkgconfig(sndio)
+    - pkgconfig(speexdsp)
+    - pkgconfig(srt)
+    - pkgconfig(uuid)
+    - pkgconfig(vpl)
+    - pkgconfig(x264)
+    - uthash
+tuning      :
+    - optimize: speed
+setup       : |
+    %cmake \
+        -DCEF_ROOT_DIR="%(buildroot)/cef" \
+        -DENABLE_BROWSER=ON \
+        -DENABLE_JACK=ON \
+        -DENABLE_LIBFDK=ON \
+        -DENABLE_SNDIO=ON \
+        -DOBS_VERSION_OVERRIDE="%(version)" \
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
