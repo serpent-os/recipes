@@ -1,0 +1,108 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"python-qrcodegen": {
+			"build-depends": [
+				"python(setuptools)"
+			],
+			"depends": [
+				"python-libs"
+			],
+			"files": [
+				"/usr/lib/python3.14/site-packages/__pycache__/qrcodegen.cpython-314.opt-1.pyc",
+				"/usr/lib/python3.14/site-packages/__pycache__/qrcodegen.cpython-314.pyc",
+				"/usr/lib/python3.14/site-packages/qrcodegen-1.8.0.dist-info/METADATA",
+				"/usr/lib/python3.14/site-packages/qrcodegen-1.8.0.dist-info/RECORD",
+				"/usr/lib/python3.14/site-packages/qrcodegen-1.8.0.dist-info/WHEEL",
+				"/usr/lib/python3.14/site-packages/qrcodegen-1.8.0.dist-info/top_level.txt",
+				"/usr/lib/python3.14/site-packages/qrcodegen.py"
+			],
+			"name": "python-qrcodegen",
+			"provides": [
+				"python(qrcodegen)"
+			]
+		},
+		"qrcodegen": {
+			"build-depends": [
+				"python(setuptools)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libqrcodegen.so.1",
+				"/usr/lib/libqrcodegen.so.1.8.0"
+			],
+			"name": "qrcodegen",
+			"provides": [
+				"soname(libqrcodegen.so.1(x86_64))"
+			]
+		},
+		"qrcodegen-devel": {
+			"build-depends": [
+				"python(setuptools)"
+			],
+			"depends": [
+				"qrcodegen"
+			],
+			"files": [
+				"/usr/include/qrcodegen/qrcodegen.h",
+				"/usr/lib/cmake/qrcodegen/qrcodegen-config-version.cmake",
+				"/usr/lib/cmake/qrcodegen/qrcodegen-config.cmake",
+				"/usr/lib/cmake/qrcodegen/qrcodegen-targets-release.cmake",
+				"/usr/lib/cmake/qrcodegen/qrcodegen-targets.cmake",
+				"/usr/lib/libqrcodegen.so",
+				"/usr/lib/pkgconfig/qrcodegen.pc"
+			],
+			"name": "qrcodegen-devel",
+			"provides": [
+				"cmake(qrcodegen)",
+				"pkgconfig(qrcodegen)"
+			]
+		},
+		"qrcodegencpp": {
+			"build-depends": [
+				"python(setuptools)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libqrcodegencpp.so.1",
+				"/usr/lib/libqrcodegencpp.so.1.8.0"
+			],
+			"name": "qrcodegencpp",
+			"provides": [
+				"soname(libqrcodegencpp.so.1(x86_64))"
+			]
+		},
+		"qrcodegencpp-devel": {
+			"build-depends": [
+				"python(setuptools)"
+			],
+			"depends": [
+				"qrcodegencpp"
+			],
+			"files": [
+				"/usr/include/qrcodegencpp/qrcodegen.hpp",
+				"/usr/lib/cmake/qrcodegencpp/qrcodegencpp-config-version.cmake",
+				"/usr/lib/cmake/qrcodegencpp/qrcodegencpp-config.cmake",
+				"/usr/lib/cmake/qrcodegencpp/qrcodegencpp-targets-release.cmake",
+				"/usr/lib/cmake/qrcodegencpp/qrcodegencpp-targets.cmake",
+				"/usr/lib/libqrcodegencpp.so",
+				"/usr/lib/pkgconfig/qrcodegencpp.pc"
+			],
+			"name": "qrcodegencpp-devel",
+			"provides": [
+				"cmake(qrcodegencpp)",
+				"pkgconfig(qrcodegencpp)"
+			]
+		}
+	},
+	"source-name": "qrcodegen",
+	"source-release": "1",
+	"source-version": "1.8.0"
+}

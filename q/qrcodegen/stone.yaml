@@ -1,0 +1,61 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : qrcodegen
+version     : "1.8.0"
+release     : 1
+homepage    : https://github.com/nayuki/QR-Code-generator
+upstreams   :
+    - https://github.com/nayuki/QR-Code-generator/archive/refs/tags/v1.8.0.tar.gz:
+        hash: 2ec0a4d33d6f521c942eeaf473d42d5fe139abcfa57d2beffe10c5cf7d34ae60
+        unpackdir: qrcodegen
+    - https://github.com/EasyCoding/qrcodegen-cmake/archive/refs/tags/v1.8.0-cmake5.tar.gz:
+        hash: 4934809f7aec62aafe6fc4346d6402ef6c6fa26659ba5161682b5bbac0029640
+        unpackdir: qrcodegen-cmake
+summary     : High-quality QR Code generator library
+description : |
+    This project aims to be the best, clearest QR Code generator library in multiple languages.
+license     : MIT
+builddeps   :
+    - python(setuptools)
+setup       : |
+    ln -s ../qrcodegen-cmake/{cmake,CMakeLists.txt} ./
+    %cmake \
+        -DBUILD_SHARED_LIBS:BOOL=ON \
+        -DQRCODEGEN_BUILD_TESTS:BOOL=ON
+build       : |
+    pushd python; %pyproject_build; popd
+    %cmake_build
+install     : |
+    pushd python; %pyproject_install; popd
+    %cmake_install
+check       : |
+    %cmake_test
+packages    :
+    - "%(name)cpp":
+        summary: C++ library for %(name)
+        description: |
+            C++ library for %(name)
+        paths:
+            - /usr/lib/libqrcodegencpp.so.1*
+
+    - "%(name)cpp-devel":
+        summary: Development files of the C++ library for %(name)
+        description: |
+            Development files of the C++ library for %(name)
+        rundeps:
+            - "%(name)cpp"
+        paths:
+            - /usr/include/qrcodegencpp/
+            - /usr/lib/cmake/qrcodegencpp/
+            - /usr/lib/libqrcodegencpp.so
+            - /usr/lib/pkgconfig/qrcodegencpp.pc
+
+    - "python-%(name)":
+        summary: Python bindings for %(name)
+        description: |
+            Python bindings for %(name)
+        rundeps:
+            - python-libs
+        paths:
+            - /usr/lib/python*
