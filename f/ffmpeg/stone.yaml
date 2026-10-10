@@ -3,7 +3,7 @@
 
 name        : ffmpeg
 version     : "9.0.2"
-release     : 41
+release     : 42
 homepage    : https://ffmpeg.org/releases
 upstreams   :
     - https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz:
@@ -56,6 +56,7 @@ builddeps   :
     - pkgconfig(libpng)
     - pkgconfig(libpulse)
     - pkgconfig(libqrencode)
+    - pkgconfig(librist)
     - pkgconfig(librsvg-2.0)
     - pkgconfig(libssh)
     - pkgconfig(libssl)
@@ -73,6 +74,7 @@ builddeps   :
     - pkgconfig(sndio)
     - pkgconfig(soxr)
     - pkgconfig(speex)
+    - pkgconfig(srt)
     - pkgconfig(tesseract)
     - pkgconfig(theoradec)
     - pkgconfig(vapoursynth)
@@ -97,7 +99,6 @@ builddeps   :
 # - libopenjpeg
 # - libopenmpt
 # - librubberband
-# - libsrt
 # - libvidstab
 # - libvmaf
 # - libxvid
@@ -172,9 +173,11 @@ setup       : |
             --enable-libpulse \
             --enable-libqrencode \
             --enable-librav1e \
+            --enable-librist \
             --enable-librsvg \
             --enable-libshaderc \
             --enable-libsnappy \
+            --enable-libsrt \
             --enable-libsoxr \
             --enable-libspeex \
             --enable-libssh \
@@ -242,10 +245,12 @@ setup       : |
         --enable-libpulse \
         --enable-libqrencode \
         --enable-librav1e \
+        --enable-librist \
         --enable-librsvg \
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
+        --enable-libsrt \
         --enable-libssh \
         --enable-libsvtav1 \
         --enable-libtesseract \
