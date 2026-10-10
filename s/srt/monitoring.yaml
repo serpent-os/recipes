@@ -1,0 +1,10 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 236296
+  rss: https://github.com/Haivision/srt/releases.atom
+security:
+  cpe:
+  - vendor: srtalliance
+    product: secure_reliable_transport

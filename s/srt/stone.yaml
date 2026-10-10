@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : srt
+version     : "1.5.7"
+release     : 1
+homepage    : https://www.srtalliance.org/
+upstreams   :
+    - https://github.com/Haivision/srt/archive/refs/tags/v1.5.7.tar.gz : 017cd1e437ef2073a4dd10ddf7b55e86bc3d6ebac0393d13bd22f6a57055d32b
+summary     : Secure Reliable Transport library
+description : |
+    Secure Reliable Transport (SRT) is a transport protocol for ultra low (sub-second) latency live video and audio streaming, as well as for generic bulk data transfer.
+license     : MPL-2.0
+builddeps   :
+    # since openssl is chosen, these are not required (pick 1)
+    # - cmake(botan)
+    # - cmake(MbedTLS)
+    - cmake(OpenSSL)
+checkdeps   :
+    - cmake(GTest)
+    - sysbinary(ip)
+setup       : |
+    %cmake \
+        -DENABLE_STATIC=OFF \
+        -DENABLE_UNITTESTS=ON \
+        -DUSE_CXX_STD=17
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check: |
+    export PATH="$PATH:/usr/sbin"
+    ip link add dtls0 type dummy
+    ip addr add 192.0.2.1/24 dev dtls0
+    ip link set dtls0 up
+
+    # Serial due to port collisions; skip flaky SyncEvent tests (timing/spurious wakeups)
+    # https://github.com/Haivision/srt/issues/1321
+    %cmake_test --parallel 1 -E 'SyncEvent'
+packages    :
+    - "%(name)-tools":
+        paths:
+            - /usr/bin
