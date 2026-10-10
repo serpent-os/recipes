@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : librist
+version     : "0.2.20"
+release     : 1
+homepage    : https://code.videolan.org/rist/librist/
+upstreams   :
+    - https://code.videolan.org/rist/librist/-/archive/v0.2.20/librist-v0.2.20.tar.gz : 9e40eeb87f014790531ad41326cc271b930a65962e4b15231b301fc59b29fe31
+summary     : A library that can be used to add the RIST protocol to applications
+description : |
+    A library that can be used to add the RIST protocol to applications
+license     : BSD-2-Clause
+builddeps   :
+    # - binary(objcopy) Unused
+    - pkgconfig(gmp)
+    - pkgconfig(gnutls)
+    - pkgconfig(hogweed)
+    - pkgconfig(libcjson)
+    - pkgconfig(liblz4)
+    - pkgconfig(libmicrohttpd)
+    - pkgconfig(nettle)
+checkdeps   :
+    - pkgconfig(cmocka)
+setup       : |
+    %meson \
+        -Dfallback_builtin=false \
+        -Duse_gnutls=true \
+        -Duse_mbedtls=false \
+        -Duse_nettle=true
+# TODO: Revisit when librist supports mbedtls > 4
+build       : |
+    %meson_build
+install     : |
+    %meson_install
+check       : |
+    %meson_test \
+        --no-suite multicast
+packages    :
+    - "rist-tools":
+        paths:
+            - /usr/bin

@@ -1,0 +1,122 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"librist": {
+			"build-depends": [
+				"pkgconfig(cmocka)",
+				"pkgconfig(gmp)",
+				"pkgconfig(gnutls)",
+				"pkgconfig(hogweed)",
+				"pkgconfig(libcjson)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(libmicrohttpd)",
+				"pkgconfig(nettle)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libcjson.so.1(x86_64))",
+				"soname(libgmp.so.10(x86_64))",
+				"soname(libgnutls.so.30(x86_64))",
+				"soname(libhogweed.so.7(x86_64))",
+				"soname(liblz4.so.1(x86_64))",
+				"soname(libnettle.so.9(x86_64))"
+			],
+			"files": [
+				"/usr/lib/librist.so.4",
+				"/usr/lib/librist.so.4.12.1"
+			],
+			"name": "librist",
+			"provides": [
+				"soname(librist.so.4(x86_64))"
+			]
+		},
+		"librist-devel": {
+			"build-depends": [
+				"pkgconfig(cmocka)",
+				"pkgconfig(gmp)",
+				"pkgconfig(gnutls)",
+				"pkgconfig(hogweed)",
+				"pkgconfig(libcjson)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(libmicrohttpd)",
+				"pkgconfig(nettle)"
+			],
+			"depends": [
+				"librist",
+				"pkgconfig(gmp)",
+				"pkgconfig(gnutls)",
+				"pkgconfig(hogweed)",
+				"pkgconfig(libcjson)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(nettle)"
+			],
+			"files": [
+				"/usr/include/librist/common.h",
+				"/usr/include/librist/headers.h",
+				"/usr/include/librist/librist.h",
+				"/usr/include/librist/librist_config.h",
+				"/usr/include/librist/librist_srp.h",
+				"/usr/include/librist/logging.h",
+				"/usr/include/librist/oob.h",
+				"/usr/include/librist/opt.h",
+				"/usr/include/librist/peer.h",
+				"/usr/include/librist/receiver.h",
+				"/usr/include/librist/sender.h",
+				"/usr/include/librist/stats.h",
+				"/usr/include/librist/transport.h",
+				"/usr/include/librist/tun.h",
+				"/usr/include/librist/tunnel.h",
+				"/usr/include/librist/udpsocket.h",
+				"/usr/include/librist/urlparam.h",
+				"/usr/include/librist/version.h",
+				"/usr/lib/librist.so",
+				"/usr/lib/pkgconfig/librist.pc"
+			],
+			"name": "librist-devel",
+			"provides": [
+				"pkgconfig(librist)"
+			]
+		},
+		"rist-tools": {
+			"build-depends": [
+				"pkgconfig(cmocka)",
+				"pkgconfig(gmp)",
+				"pkgconfig(gnutls)",
+				"pkgconfig(hogweed)",
+				"pkgconfig(libcjson)",
+				"pkgconfig(liblz4)",
+				"pkgconfig(libmicrohttpd)",
+				"pkgconfig(nettle)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcjson.so.1(x86_64))",
+				"soname(libmicrohttpd.so.12(x86_64))",
+				"soname(libnettle.so.9(x86_64))",
+				"soname(librist.so.4(x86_64))"
+			],
+			"files": [
+				"/usr/bin/rist2rist",
+				"/usr/bin/ristreceiver",
+				"/usr/bin/ristsender",
+				"/usr/bin/ristsrppasswd",
+				"/usr/bin/risttunnel",
+				"/usr/bin/udp2udp"
+			],
+			"name": "rist-tools",
+			"provides": [
+				"binary(rist2rist)",
+				"binary(ristreceiver)",
+				"binary(ristsender)",
+				"binary(ristsrppasswd)",
+				"binary(risttunnel)",
+				"binary(udp2udp)"
+			]
+		}
+	},
+	"source-name": "librist",
+	"source-release": "1",
+	"source-version": "0.2.20"
+}
