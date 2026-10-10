@@ -1,0 +1,10 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 15388
+  rss: https://github.com/zaphoyd/websocketpp/releases.atom
+security:
+  cpe:
+  - vendor: zaphoyd
+    product: websocketpp
