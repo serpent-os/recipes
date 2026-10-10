@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : rage
+version     : "0.12.1"
+release     : 1
+homepage    : https://github.com/str4d/rage
+upstreams   :
+    - https://github.com/str4d/rage/archive/refs/tags/v0.12.1.tar.gz : 3684e7e269a677180db116cb8115b008ea462dbb6f223f6983dd6750a863afaa
+summary     : File encryption tool
+description : |
+    A simple and featureful file encryption tool based on Age/v1 protocol and UNIX-style composability
+license     :
+    - Apache-2.0
+    - MIT
+networking  : true
+builddeps   :
+   - pkgconfig(fuse3)
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build --all-features
+install     : |
+    %cargo_install rage rage-keygen rage-mount
+    # Completions
+    %install_file %(cargo_target_dir)/completions/rage.bash %(installroot)%(bashcompletionsdir)/rage
+    %install_file %(cargo_target_dir)/completions/rage-keygen.bash %(installroot)%(bashcompletionsdir)/rage-keygen
+    %install_file %(cargo_target_dir)/completions/rage-mount.bash %(installroot)%(bashcompletionsdir)/rage-mount
+    %install_file %(cargo_target_dir)/completions/rage.fish %(installroot)%(fishcompletionsdir)/rage.fish
+    %install_file %(cargo_target_dir)/completions/rage-keygen.fish %(installroot)%(fishcompletionsdir)/rage-keygen.fish
+    %install_file %(cargo_target_dir)/completions/rage-mount.fish %(installroot)%(fishcompletionsdir)/rage-mount.fish
+    %install_file %(cargo_target_dir)/completions/_rage %(installroot)%(zshcompletionsdir)/_rage
+    %install_file %(cargo_target_dir)/completions/_rage-keygen %(installroot)%(zshcompletionsdir)/_rage-keygen
+    %install_file %(cargo_target_dir)/completions/_rage-mount %(installroot)%(zshcompletionsdir)/_rage-mount
+    %install_file %(cargo_target_dir)/completions/rage.elv %(installroot)%(elvishcompletionsdir)/rage.elv
+    %install_file %(cargo_target_dir)/completions/rage-keygen.elv %(installroot)%(elvishcompletionsdir)/rage-keygen.elv
+    %install_file %(cargo_target_dir)/completions/rage-mount.elv %(installroot)%(elvishcompletionsdir)/rage-mount.elv
+    # Manpages
+    %install_file %(cargo_target_dir)/manpages/man1/rage.1.gz %(installroot)%(mandir)/man1/rage.1.gz
+    %install_file %(cargo_target_dir)/manpages/man1/rage-keygen.1.gz %(installroot)%(mandir)/man1/rage-keygen.1.gz
+    %install_file %(cargo_target_dir)/manpages/man1/rage-mount.1.gz %(installroot)%(mandir)/man1/rage-mount.1.gz
+check       : |
+    %cargo_test --all-features
