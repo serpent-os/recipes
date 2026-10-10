@@ -3,10 +3,10 @@
 
 name        : powerstation
 version     : "0.8.4"
-release     : 14
+release     : 15
 homepage    : https://github.com/ShadowBlip/PowerStation
 upstreams   :
-    - https://github.com/ShadowBlip/PowerStation/archive/refs/tags/v0.8.4.tar.gz : 80c6e91e998dcace7616c0a31c9d57a43be7af353ef82e81c483572477bee3d1
+    - https://github.com/ShadowBlip/PowerStation/archive/refs/tags/v0.8.4.tar.gz : 56c37b64ffb8b83ed0094dd09b2dc4ec757093e9f1a5908806e29b1f53d2d4b4
 summary     : Open source TDP control and performance daemon with DBus interface
 description : |
     PowerStation is an open source TDP control and performance daemon for Linux that can be used to control CPU and GPU settings for better performance and battery life.
