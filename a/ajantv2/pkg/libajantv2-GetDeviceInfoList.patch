@@ -1,0 +1,23 @@
+From 860d38b3eb5759172e4f32fcf03958ca82410c67 Mon Sep 17 00:00:00 2001
+From: MrBill <bills@aja.com>
+Date: Sat, 20 Jun 2026 11:40:58 -0700
+Subject: [PATCH] SDK: Fixed missing implementation of
+ CNTV2DeviceScanner::GetDeviceInfoList
+
+---
+ ajantv2/src/ntv2devicescanner.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ajantv2/src/ntv2devicescanner.cpp b/ajantv2/src/ntv2devicescanner.cpp
+index 68c2d5dec..7e186e064 100644
+--- a/ajantv2/src/ntv2devicescanner.cpp
++++ b/ajantv2/src/ntv2devicescanner.cpp
+@@ -100,7 +100,7 @@ CNTV2DeviceScanner::CNTV2DeviceScanner (const bool inScanNow)
+ 		}
+ 	#endif	//	!defined(NTV2_DEPRECATE_16_3)
+ 
+-NTV2DeviceInfoList	GetDeviceInfoList (void)
++NTV2DeviceInfoList	CNTV2DeviceScanner::GetDeviceInfoList (void)
+ {
+ 	AJAAutoLock tmpLock(&sDevInfoListLock);
+ 	return sDevInfoList;
