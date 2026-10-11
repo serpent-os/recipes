@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : virt-viewer
+version     : "11.0"
+release     : 1
+homepage    : https://virt-manager.org/
+upstreams   :
+    - https://releases.pagure.org/virt-viewer/virt-viewer-11.0.tar.xz : a43fa2325c4c1c77a5c8c98065ac30ef0511a21ac98e590f22340869bad9abd0
+summary     : A lightweight interface for interacting with the graphical display of virtualized guests
+description : |
+    Virt Viewer provides a graphical viewer for the guest OS display. It supports a range of protocols, including SPICE, VNC and the oVirt REST API.
+license     : GPL-3.0-or-later
+builddeps   :
+    - binary(gtk-update-icon-cache)
+    - binary(msgfmt)
+    - binary(pod2man)
+    - binary(python3)
+    - binary(update-desktop-database)
+    - binary(update-mime-database)
+    - pkgconfig(bash-completion)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gmodule-2.0)
+    - pkgconfig(govirt-1.0)
+    - pkgconfig(gtk+-3.0)
+    - pkgconfig(gtk-vnc-2.0)
+    - pkgconfig(libvirt)
+    - pkgconfig(libvirt-glib-1.0)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(rest-1.0)
+    - pkgconfig(spice-client-glib-2.0)
+    - pkgconfig(spice-client-gtk-3.0)
+    - pkgconfig(spice-protocol)
+    - pkgconfig(vte-2.91)
+setup       : |
+    %patch %(pkgdir)/ftbfs-librest-1.0.patch
+    %patch %(pkgdir)/ftbfs-meson-0.60.patch
+
+    %meson \
+        -Dbash_completion=enabled \
+        -Dgit_werror=disabled \
+        -Dlibvirt=enabled \
+        -Dovirt=enabled \
+        -Dspice=enabled \
+        -Dvnc=enabled \
+        -Dvte=enabled
+build       : |
+    %meson_build
+install     : |
+    %meson_install

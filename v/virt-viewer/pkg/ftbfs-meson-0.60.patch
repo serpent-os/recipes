@@ -1,0 +1,44 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Sat, 10 Oct 2026 00:00:00 -0500
+Subject: [PATCH] data: remove bogus param for meson i18n.merge_file
+
+The positional parameter is redundant with 'input' and is an error with
+modern meson.
+
+Backport of upstream commit 98d9f20.
+Origin: upstream, https://gitlab.com/virt-viewer/virt-viewer/-/commit/98d9f202ef768f22ae21b5c43a080a1aa64a7107
+Forwarded: not-needed
+Last-Update: 2026-10-10
+---
+ data/meson.build | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index d718491..4325108 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -2,7 +2,6 @@ if host_machine.system() != 'windows'
+   desktop = 'remote-viewer.desktop'
+ 
+   i18n.merge_file (
+-    desktop,
+     type: 'desktop',
+     input: desktop + '.in',
+     output: desktop,
+@@ -14,7 +13,6 @@ if host_machine.system() != 'windows'
+   mimetypes = 'virt-viewer-mime.xml'
+ 
+   i18n.merge_file (
+-    mimetypes,
+     type: 'xml',
+     input: mimetypes + '.in',
+     output: mimetypes,
+@@ -27,7 +25,6 @@ if host_machine.system() != 'windows'
+   metainfo = 'remote-viewer.appdata.xml'
+ 
+   i18n.merge_file (
+-    metainfo,
+     type: 'xml',
+     input: metainfo + '.in',
+     output: metainfo,

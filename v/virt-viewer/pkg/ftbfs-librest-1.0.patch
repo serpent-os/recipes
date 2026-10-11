@@ -1,0 +1,158 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Sat, 10 Oct 2026 00:00:00 -0500
+Subject: [PATCH] remote-viewer: Update to libgovirt 0.3.9 / librest 1.0
+
+With libgovirt 0.3.9 the oVirt support pulls in librest 1.0 (libsoup3)
+instead of the old librest 0.7 (libsoup2), and the OvirtProxy
+authentication API changed accordingly.
+
+Backport of upstream commit 16dab63.
+Origin: upstream, https://gitlab.com/virt-viewer/virt-viewer/-/commit/16dab63117fbb530c343197cd05ef7b2d020202b
+Forwarded: not-needed
+Last-Update: 2026-10-10
+---
+ config.h.in              |  3 ---
+ meson.build              | 19 ++++---------------
+ src/ovirt-foreign-menu.c |  4 ----
+ src/remote-viewer.c      | 15 +++++----------
+ 4 files changed, 9 insertions(+), 32 deletions(-)
+
+diff --git a/config.h.in b/config.h.in
+index 0032cba..855f45b 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -39,9 +39,6 @@
+ /* Have libgovirt? */
+ #mesondefine HAVE_OVIRT
+ 
+-/* Have ovirt_storage_domain_get_disks function? */
+-#mesondefine HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
+-
+ /* Have spice-gtk? */
+ #mesondefine HAVE_SPICE_GTK
+ 
+diff --git a/meson.build b/meson.build
+index 800d15a..6a9709c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -38,8 +38,8 @@ libvirt_glib_min_version='>=0.1.8'
+ gtk_vnc_min_version='>=0.4.0'
+ spice_gtk_min_version='>=0.35'
+ spice_protocol_min_version='>=0.12.7'
+-govirt_min_version='>=0.3.7'
+-rest_min_version='>=0.8'
++govirt_min_version='>=0.3.9'
++rest_min_version='>=0.10.2'
+ vte_min_version='>=0.46.0'
+ bash_completion_version='2.0'
+ 
+@@ -436,19 +436,8 @@ if spice_gtk_dep.found()
+ endif
+ 
+ govirt_dep = dependency('govirt-1.0', version: govirt_min_version, required: get_option('ovirt'))
+-rest_dep = dependency('rest-0.7', version: rest_min_version, required: get_option('ovirt'))
+-if get_option('ovirt').auto()
+-  if govirt_dep.found() and not rest_dep.found()
+-    govirt_dep = dependency('', required: false)
+-  endif
+-  if not govirt_dep.found() and rest_dep.found()
+-    rest_dep = dependency('', required: false)
+-  endif
+-endif
+-if govirt_dep.found()
+-  if cc.has_function('ovirt_storage_domain_get_disks', dependencies: govirt_dep)
+-    conf_data.set('HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS', '1')
+-  endif
++rest_dep = dependency('rest-1.0', version: rest_min_version, required: get_option('ovirt'))
++if govirt_dep.found() and rest_dep.found()
+   conf_data.set('HAVE_OVIRT', '1')
+ endif
+ 
+diff --git a/src/ovirt-foreign-menu.c b/src/ovirt-foreign-menu.c
+index 77ee057..1503dc1 100644
+--- a/src/ovirt-foreign-menu.c
++++ b/src/ovirt-foreign-menu.c
+@@ -525,7 +525,6 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
+         char *name = NULL, *id = NULL;
+         g_object_get(it->data, "name", &name, "guid", &id, NULL);
+ 
+-#ifdef HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
+         if (OVIRT_IS_DISK(it->data)) {
+             OvirtDiskContentType content_type;
+             g_object_get(it->data, "content-type", &content_type, NULL);
+@@ -534,7 +533,6 @@ static void ovirt_foreign_menu_set_files(OvirtForeignMenu *menu,
+                 goto loop_end;
+             }
+         }
+-#endif
+ 
+         /* The oVirt REST API is supposed to have a 'type' node
+          * associated with file resources , but as of 3.2, this node
+@@ -750,10 +748,8 @@ static OvirtCollection *storage_domain_get_files(OvirtStorageDomain *domain)
+ 
+     if (type == OVIRT_STORAGE_DOMAIN_TYPE_ISO)
+         files = ovirt_storage_domain_get_files(domain);
+-#ifdef HAVE_OVIRT_STORAGE_DOMAIN_GET_DISKS
+     else if (type == OVIRT_STORAGE_DOMAIN_TYPE_DATA)
+         files = ovirt_storage_domain_get_disks(domain);
+-#endif
+ 
+     return files;
+ }
+diff --git a/src/remote-viewer.c b/src/remote-viewer.c
+index ab99a23..303193f 100644
+--- a/src/remote-viewer.c
++++ b/src/remote-viewer.c
+@@ -311,9 +311,8 @@ parse_ovirt_uri(const gchar *uri_str, char **rest_uri, char **name, char **usern
+     return TRUE;
+ }
+ 
+-static gboolean
+-authenticate_cb(RestProxy *proxy, RestProxyAuth *rstauth,
+-                G_GNUC_UNUSED gboolean retrying, gpointer user_data)
++static void
++remote_viewer_authenticate(VirtViewerApp *app, OvirtProxy *proxy)
+ {
+     gchar *username = NULL;
+     gchar *password = NULL;
+@@ -326,12 +325,12 @@ authenticate_cb(RestProxy *proxy, RestProxyAuth *rstauth,
+                  "username", &username,
+                  NULL);
+ 
+-    g_object_get(G_OBJECT(user_data), "kiosk", &kiosk, NULL);
++    g_object_get(app, "kiosk", &kiosk, NULL);
+ 
+     if (username == NULL || *username == '\0')
+         username = g_strdup(g_get_user_name());
+ 
+-    window = virt_viewer_app_get_main_window(VIRT_VIEWER_APP(user_data));
++    window = virt_viewer_app_get_main_window(app);
+     auth = virt_viewer_auth_new(virt_viewer_window_get_window(window));
+     do {
+ 
+@@ -346,14 +345,11 @@ authenticate_cb(RestProxy *proxy, RestProxyAuth *rstauth,
+                      "username", username,
+                      "password", password,
+                      NULL);
+-    } else {
+-        rest_proxy_auth_cancel(rstauth);
+     }
+ 
+     gtk_widget_destroy(GTK_WIDGET(auth));
+     g_free(username);
+     g_free(password);
+-    return success;
+ }
+ 
+ static void
+@@ -443,8 +439,7 @@ create_ovirt_session(VirtViewerApp *app, const char *uri, GError **err)
+                  "username", username,
+                  NULL);
+     ovirt_set_proxy_options(proxy);
+-    g_signal_connect(G_OBJECT(proxy), "authenticate",
+-                     G_CALLBACK(authenticate_cb), app);
++    remote_viewer_authenticate(app, proxy);
+ 
+     api = ovirt_proxy_fetch_api(proxy, &error);
+     if (error != NULL) {
