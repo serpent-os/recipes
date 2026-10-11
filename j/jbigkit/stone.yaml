@@ -1,25 +1,18 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : jbigkit
-version     : "2.1"
-release     : 2
+version     : "2.2"
+release     : 3
 upstreams   :
-    - https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-2.1.tar.gz : de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932
+    - https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-2.2.tar.gz : 3302109c93b7befbffa3cfe8bceb4355f19dea0ee7dcb5f33710b1648bf6645c
 homepage    : https://www.cl.cam.ac.uk/~mgk25/jbigkit
 license     : GPL-2.0-or-later
 summary     : JBIG1 lossless image compression tools
 description : |
     JBIG1 lossless image compression tools
 setup       : |
-    %patch %(pkgdir)/jbigkit-2.1-shared_lib.patch
-    %patch %(pkgdir)/jbigkit-2.1-build_warnings.patch
-    %patch %(pkgdir)/jbigkit-2.1-coverity.patch
-    %patch %(pkgdir)/jbigkit-2.1-ldflags.patch
-
-    # Security fixes
-    %patch %(pkgdir)/0013-new-jbig.c-limit-s-maxmem-maximum-decoded-image-size.patch
-    %patch %(pkgdir)/0015-jbg_newlen-check-for-end-of-file-within-MARKER_NEWLE.patch
+    %patch %(pkgdir)/jbigkit-2.2-shared_lib.patch
 build       : |
     %make \
         CC=%(cc) \

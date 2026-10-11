@@ -6,8 +6,8 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libjbig.so.2.1(x86_64))",
-				"soname(libjbig85.so.2.1(x86_64))"
+				"soname(libjbig.so.2.2(x86_64))",
+				"soname(libjbig85.so.2.2(x86_64))"
 			],
 			"files": [
 				"/usr/bin/jbgtopbm",
@@ -43,17 +43,17 @@
 				"soname(libc.so.6(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libjbig.so.2.1",
-				"/usr/lib/libjbig85.so.2.1"
+				"/usr/lib/libjbig.so.2.2",
+				"/usr/lib/libjbig85.so.2.2"
 			],
 			"name": "jbigkit-libs",
 			"provides": [
-				"soname(libjbig.so.2.1(x86_64))",
-				"soname(libjbig85.so.2.1(x86_64))"
+				"soname(libjbig.so.2.2(x86_64))",
+				"soname(libjbig85.so.2.2(x86_64))"
 			]
 		}
 	},
 	"source-name": "jbigkit",
-	"source-release": "2",
-	"source-version": "2.1"
+	"source-release": "3",
+	"source-version": "2.2"
 }
