@@ -1,15 +1,15 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : pnpm
-version     : "12.3.4"
-release     : 9
+version     : "12.12.1"
+release     : 10
 homepage    : https://pnpm.io
 upstreams   :
-    - https://github.com/pnpm/pnpm/archive/refs/tags/v12.3.4.tar.gz : 4f400669b36259278efe44278e4adfc7f449fbccb4c255670c66332a7a792aa1
+    - https://github.com/pnpm/pnpm/archive/refs/tags/v12.12.1.tar.gz : eb5bce64814aa741288a39ca2079624010e75601d4509325d9c482f151651c67
     # Frozen node-gyp tree from the same release; the binary looks for dist/ beside itself
-    - https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-linux-x64.tar.gz:
-        hash: 9705e5704b4679fb503c963a18d1ac4f105e39aafafca8a2ed346facdf820cd0
+    - https://github.com/pnpm/pnpm/releases/download/v12.12.1/pnpm-linux-x64.tar.gz:
+        hash: f61657f53f7891f76ae5cf11e924ee3e9ae1659affcaf7deb9622d4d7ea5637e
         unpack: false
         rename: pnpm-linux-x64.tar.gz
 summary     : Fast, disk space efficient package manager
@@ -17,12 +17,24 @@ description : |
     Fast, disk space efficient package manager
 license     : MIT
 networking  : true
+builddeps   :
+    - binary(node)
 rundeps     :
     - binary(make)
     - binary(node)
     - binary(python)
 setup       : |
     %cargo_fetch
+
+    # deps-restorer embeds a bundle generated from the ESM loader; generate it
+    # with the pnpm binary shipped in the release tarball before the cargo build.
+    mkdir -p .bootstrap
+    bsdtar-static -xf %(sourcedir)/pnpm-linux-x64.tar.gz -C .bootstrap pnpm dist
+    .bootstrap/pnpm install \
+        --frozen-lockfile \
+        --filter @pnpm/esm-loader \
+        --ignore-scripts
+    node pnpm/esm-loader/scripts/bundle-runtime.mjs
 build       : |
     %cargo_build -p pnpm-cli --bin pnpm
 install     : |

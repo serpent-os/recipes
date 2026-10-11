@@ -3,6 +3,9 @@
 	"manifest-version": "0.2",
 	"packages": {
 		"pnpm": {
+			"build-depends": [
+				"binary(node)"
+			],
 			"depends": [
 				"binary(make)",
 				"binary(node)",
@@ -19,13 +22,11 @@
 				"/usr/bin/pnpx",
 				"/usr/bin/pnx",
 				"/usr/lib/pnpm/dist/node-gyp-bin/node-gyp",
-				"/usr/lib/pnpm/dist/node-gyp-bin/node-gyp.cmd",
 				"/usr/lib/pnpm/dist/node_modules/.bin/get-pnpm",
 				"/usr/lib/pnpm/dist/node_modules/.bin/node-gyp",
 				"/usr/lib/pnpm/dist/node_modules/.bin/node-which",
 				"/usr/lib/pnpm/dist/node_modules/.bin/nopt",
 				"/usr/lib/pnpm/dist/node_modules/.bin/semver",
-				"/usr/lib/pnpm/dist/node_modules/.package-map.json",
 				"/usr/lib/pnpm/dist/node_modules/.pnpm-workspace-state-v1.json",
 				"/usr/lib/pnpm/dist/node_modules/@isaacs/fs-minipass/LICENSE",
 				"/usr/lib/pnpm/dist/node_modules/@isaacs/fs-minipass/dist/commonjs/index.js",
@@ -476,6 +477,6 @@
 		}
 	},
 	"source-name": "pnpm",
-	"source-release": "9",
-	"source-version": "12.3.4"
+	"source-release": "10",
+	"source-version": "12.12.1"
 }
