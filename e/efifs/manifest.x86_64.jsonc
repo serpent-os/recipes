@@ -6,12 +6,10 @@
 			"build-depends": [
 				"binary(as)",
 				"binary(nasm)",
-				"binary(patch)",
 				"binary(python3)",
 				"pkgconfig(uuid)"
 			],
 			"files": [
-				"/usr/lib/efifs-x64/affs.efi",
 				"/usr/lib/efifs-x64/afs.efi",
 				"/usr/lib/efifs-x64/bfs.efi",
 				"/usr/lib/efifs-x64/btrfs.efi",
@@ -54,6 +52,6 @@
 		}
 	},
 	"source-name": "efifs",
-	"source-release": "3",
-	"source-version": "1.12"
+	"source-release": "4",
+	"source-version": "1.13"
 }
