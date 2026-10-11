@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : imagemagick
 version     : "7.1.2-33"
-release     : 27
+release     : 28
 homepage    : https://imagemagick.org/
 upstreams   :
     - https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.2-33.tar.gz : c768ff077cccff1b682aa56653b54247b268752427ca998992b24cc7c597d9e7

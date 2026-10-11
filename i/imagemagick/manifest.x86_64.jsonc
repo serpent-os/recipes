@@ -720,7 +720,7 @@
 				"soname(libgvc.so.7(x86_64))",
 				"soname(libharfbuzz.so.0(x86_64))",
 				"soname(libheif.so.1(x86_64))",
-				"soname(libjbig.so.2.1(x86_64))",
+				"soname(libjbig.so.2.2(x86_64))",
 				"soname(libjpeg.so.8(x86_64))",
 				"soname(libjxl.so.0.12(x86_64))",
 				"soname(libjxl_threads.so.0.12(x86_64))",
@@ -1258,6 +1258,6 @@
 		}
 	},
 	"source-name": "imagemagick",
-	"source-release": "27",
+	"source-release": "28",
 	"source-version": "7.1.2-33"
 }
