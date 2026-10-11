@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : iio-niri
-version     : 2.3.1
-release     : 1
+version     : "2.3.2"
+release     : 2
 homepage    : https://github.com/Zhaith-Izaliel/iio-niri
 upstreams   :
-    - https://github.com/Zhaith-Izaliel/iio-niri/archive/refs/tags/v2.3.1.tar.gz : b30cb1934a9a0a8e1be3b0f89e37349b6b3f7f87d25a2a526d92dabf4a5a22b1
+    - https://github.com/Zhaith-Izaliel/iio-niri/archive/refs/tags/v2.3.2.tar.gz : d8caf5724c84deebdb62b077f485aba65ea90477f6d6556677e4d0dbf6bd6bf6
 summary     : iio-sensor-proxy integration for Niri
 description : |
     Listens to iio-sensor-proxy and updates Niri output orientation depending on the accelerometer orientation.
@@ -17,9 +17,6 @@ rundeps     :
     - iio-sensor-proxy
 networking  : true
 setup       : |
-    # Needed to fetch dependencies with the `--locked` flag, as the lock is outdated in the release.
-    %patch %(pkgdir)/update-lock.patch
-
     %cargo_fetch
 build       : |
     %cargo_build
