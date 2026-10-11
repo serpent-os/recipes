@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : m17n-db
-version     : "1.8.14"
-release     : 1
+version     : "1.8.15"
+release     : 2
 homepage    : https://www.nongnu.org/m17n/
 upstreams   :
-    - https://download.savannah.nongnu.org/releases/m17n/m17n-db-1.8.14.tar.gz : 783e1a9440be2c9221cdded9dd9b276a8c51d34559feaf62017aedb5dc43da41
+    - https://download.savannah.nongnu.org/releases/m17n/m17n-db-1.8.15.tar.gz : e16b22aea4384cc4c16a084352afdd7cf6a3ec9aef298520e8ddd0eaf2e4edf1
 summary     : Multilingual text processing library (database)
 description : |
     Multilingual text processing library (database)
