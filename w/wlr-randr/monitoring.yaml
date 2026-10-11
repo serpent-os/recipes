@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 137707
+  rss: https://gitlab.freedesktop.org/emersion/wlr-randr/-/releases.atom
+security:
+  cpe: ~ # No CPE found, last checked (2026-10-10)
