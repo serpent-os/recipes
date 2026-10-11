@@ -6,16 +6,18 @@
 # https://github.com/acpica/acpica/issues/883
 # https://github.com/acpica/acpica/issues/857
 name        : acpica
-version     : "20241212"
-release     : 3
+version     : "20260930"
+release     : 4
 homepage    : https://acpica.org
 upstreams   :
-    - https://github.com/user-attachments/files/18117992/acpica-unix-20241212.tar.gz : 9dca83cfee390b710485fbdf787048370049c05723b10cc220cfef6e13c31961
+    - https://github.com/open-acpica/acpica/releases/download/20260930/acpica-unix-20260930.tar.gz : aa18901b92e30749be0edc3081c8d550c61fce4fa37546fc6a65d367a4ae71a5
 summary     : ACPI tools, including Intel ACPI Source Language compiler
 description : |
     ACPI Component Architecture (ACPICA) is a reference implementation of the Advanced Configuration and Power Interface (ACPI) specification.
     This implementation simplifies complex ACPI operating system implementations by integrating it directly as a kernel-resident subsystem, without changes to the core ACPICA code.
-license     : GPL-2.0-only
+license     :
+    - BSD-3-Clause
+    - GPL-2.0-only
 builddeps   :
     - binary(bison)
     - binary(flex)

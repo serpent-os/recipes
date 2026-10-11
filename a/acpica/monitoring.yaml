@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
-  id: ~ # https://release-monitoring.org/ and use the numeric id in the url of project
+  id: 18
   rss: https://github.com/acpica/acpica/releases.atom
 security:
   cpe: ~ # Last checked 2025-02-18
