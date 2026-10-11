@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-platformdirs
-version     : "4.11.8"
-release     : 10
+version     : "4.13.0"
+release     : 11
 homepage    : https://github.com/tox-dev/platformdirs
 upstreams   :
-    - https://pypi.debian.net/platformdirs/platformdirs-4.11.8.tar.gz : f23abafea7dd4276d1f29104b83598d7dcc567cafd07c9c951e66665645437fc
+    - https://pypi.debian.net/platformdirs/platformdirs-4.13.0.tar.gz : 1aa0b0d3f224c1f07c295121e312a5a24a180d6ae5a8425ea1784b3e3863e9c0
 summary     : A library to determine platform-specific system directories
 description : |
     A library to determine platform-specific system directories
@@ -26,4 +26,6 @@ install     : |
     %pyproject_install
 check       : |
     # TODO replace with pytest macro
-    PYTHONPATH="$PWD"/src pytest
+    # tests/test_pytest_plugin.py needs the plugin's pytest11 entry point, which
+    # isn't registered when testing straight from the source tree.
+    PYTHONPATH="$PWD"/src PYTEST_PLUGINS=platformdirs.pytest_plugin pytest
