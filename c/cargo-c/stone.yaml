@@ -1,15 +1,15 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : cargo-c
-version     : "0.10.25"
-release     : 18
+version     : "0.10.26"
+release     : 19
 homepage    : https://github.com/lu-zero/cargo-c
 upstreams   :
-    - https://github.com/lu-zero/cargo-c/archive/refs/tags/v0.10.25.tar.gz : 8054b12ae8b64259e7b63e40368406dd6b6510d5d92b658152b361c5d816a5de
-    - https://github.com/lu-zero/cargo-c/releases/download/v0.10.25/Cargo.lock :
+    - https://github.com/lu-zero/cargo-c/archive/refs/tags/v0.10.26.tar.gz : 57700786539a322a50f1848332e3465bf15efa5af2fd8b6113f36cbfce46c830
+    - https://github.com/lu-zero/cargo-c/releases/download/v0.10.26/Cargo.lock :
         unpack: false
-        hash: 8a5d9bad62a910c65f542842a9df4376973f439a332da79e28bb7f818c8abe36
+        hash: d3cb865d40625de197b71fa591f1f24c0593b5a24b46b7c126eae7fecf7be315
 summary     : Generate C Libraries using Cargo
 description : |
     Generate C Libraries using Cargo
