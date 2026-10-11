@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 15257
-  rss: ~
+  rss: https://git.kernel.org/pub/scm/linux/kernel/git/wens/wireless-regdb.git/atom/
 security:
-  # Last checked 20250919
+  # Last checked 20261011
   cpe: ~

@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : wireless-regdb
-version     : "2025.07.10"
-release     : 2
+version     : "2026.09.03"
+release     : 3
 upstreams   :
-    - git|https://git.kernel.org/pub/scm/linux/kernel/git/wens/wireless-regdb.git : e05260afb7203dd0a7ba6faf9a30c86faf19a24e
+    - git|https://git.kernel.org/pub/scm/linux/kernel/git/wens/wireless-regdb.git : 389b9b702cf9018e9a9078ccc4fa8eaae2e054e3
 homepage    : https://wireless.wiki.kernel.org/en/developers/regulatory/wireless-regdb
 license     : ISC
 summary     : Central Regulatory Domain Database
