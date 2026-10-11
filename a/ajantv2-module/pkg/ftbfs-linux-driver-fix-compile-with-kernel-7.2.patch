@@ -1,0 +1,26 @@
+From 434ea72bca772275100ec0556cf4a53d5a3494f6 Mon Sep 17 00:00:00 2001
+From: Sean Long <seanl@aja.com>
+Date: Mon, 17 Aug 2026 12:53:56 -0700
+Subject: [PATCH] linux_driver: Fix compile with kernel 7.2
+
+With kernel 7.2 strncpy() was removed, replace usage with strscpy().
+
+strscpy() was added to the kernel on Sep 10 2015, in kernel 4.3 with commit:
+https://github.com/torvalds/linux/commit/30035e45753b708e7d47a98398500ca005e02b86
+---
+ driver/linux/ntv2driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/driver/linux/ntv2driver.c b/driver/linux/ntv2driver.c
+index fab4ed371..097e2ff47 100644
+--- a/driver/linux/ntv2driver.c
++++ b/driver/linux/ntv2driver.c
+@@ -3334,7 +3334,7 @@ static int __init aja_ntv2_module_init(void)
+ #endif    
+ 
+     // determine driver mode
+-    strncpy(versionString, DriverMode, STRMAX);
++    strscpy(versionString, DriverMode, STRMAX);
+     versionString[STRMAX - 1] = '\0';
+     driverModeString = strstrip(versionString);
+     if (strcmp(driverModeString, "all") == 0)

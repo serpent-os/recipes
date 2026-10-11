@@ -1,0 +1,63 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"ajantv2-module-gaming": {
+			"build-depends": [
+				"binary(eu-readelf)",
+				"binary(zstd)",
+				"linux-gaming-devel",
+				"linux-lts-devel",
+				"linux-stable-devel"
+			],
+			"depends": [
+				"linux-gaming",
+				"sysbinary(depmod)"
+			],
+			"files": [
+				"/usr/lib/modules/7.2.9-43.gaming/extra/drivers/aja/ajantv2.ko.zst",
+				"/usr/lib/modules/7.2.9-43.gaming/extra/drivers/aja/ajardma.ko.zst"
+			],
+			"name": "ajantv2-module-gaming"
+		},
+		"ajantv2-module-lts": {
+			"build-depends": [
+				"binary(eu-readelf)",
+				"binary(zstd)",
+				"linux-gaming-devel",
+				"linux-lts-devel",
+				"linux-stable-devel"
+			],
+			"depends": [
+				"linux-lts",
+				"sysbinary(depmod)"
+			],
+			"files": [
+				"/usr/lib/modules/6.18.55-42.lts/extra/drivers/aja/ajantv2.ko.zst",
+				"/usr/lib/modules/6.18.55-42.lts/extra/drivers/aja/ajardma.ko.zst"
+			],
+			"name": "ajantv2-module-lts"
+		},
+		"ajantv2-module-stable": {
+			"build-depends": [
+				"binary(eu-readelf)",
+				"binary(zstd)",
+				"linux-gaming-devel",
+				"linux-lts-devel",
+				"linux-stable-devel"
+			],
+			"depends": [
+				"linux-stable",
+				"sysbinary(depmod)"
+			],
+			"files": [
+				"/usr/lib/modules/7.2.9-66.stable/extra/drivers/aja/ajantv2.ko.zst",
+				"/usr/lib/modules/7.2.9-66.stable/extra/drivers/aja/ajardma.ko.zst"
+			],
+			"name": "ajantv2-module-stable"
+		}
+	},
+	"source-name": "ajantv2-module",
+	"source-release": "1",
+	"source-version": "18.0.0"
+}

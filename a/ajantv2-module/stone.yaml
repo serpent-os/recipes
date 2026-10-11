@@ -1,0 +1,118 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : ajantv2-module
+version     : "18.0.0"
+release     : 1
+homepage    : https://github.com/aja-video/libajantv2
+upstreams   :
+    - https://github.com/aja-video/libajantv2/archive/refs/tags/ntv2_18_0_0.tar.gz:
+        hash: 46ea35f131ac795107d953d86de63fe3a490594b8abb109ad2d1efcb2eeaf1fa
+        unpack: false
+        rename: ajantv2.tar.gz
+summary     : Kernel module for NTV2 professional video I/O devices
+description : |
+    Linux kernel module for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc
+license     : MIT
+builddeps   :
+    - binary(eu-readelf)
+    - binary(zstd)
+    - linux-gaming-devel
+    - linux-lts-devel
+    - linux-stable-devel
+environment : |
+    # Create list of kernels to build for
+    declare -a kernels=()
+    for dir in %(libdir)/kernel/*/; do
+        dir=${dir%*/}
+        kernels+=(${dir##*/})
+    done
+setup       : |
+    for _kernel in ${kernels[@]}; do
+        mkdir ${_kernel}
+        bsdtar-static -xf %(sourcedir)/ajantv2.tar.gz --strip-components=1 -C ${_kernel}
+
+        pushd ${_kernel}
+        # This is where patches would go
+        # Linux 7.2 removed strncpy() in favor of strscpy().
+        # https://github.com/aja-video/libajantv2/commit/434ea72bca772275100ec0556cf4a53d5a3494f6
+        # TODO: Remove in next update
+        %patch %(pkgdir)/ftbfs-linux-driver-fix-compile-with-kernel-7.2.patch
+        popd
+    done
+build       : |
+    for _kernel in ${kernels[@]}; do
+        pushd ${_kernel}/driver
+        %ccache_zero
+        export CCACHE_BASEDIR="${PWD}"
+        %make -C linux \
+            KDIR="%(libdir)/modules/${_kernel}/build" \
+            KVERSION="${_kernel}" \
+            LLVM=1
+        %ccache_stats
+        popd
+    done
+install     : |
+    for _kernel in ${kernels[@]}; do
+        pushd ${_kernel}
+        %install_file driver/bin/ajantv2.ko -t %(installroot)%(libdir)/modules/${_kernel}/extra/drivers/aja/
+        %install_file driver/bin/ajardma.ko -t %(installroot)%(libdir)/modules/${_kernel}/extra/drivers/aja/
+
+        # Manually construct the debug info from the kernel modules
+        %install_dir %(installroot)%(libdir)/debug/.build-id
+        pushd %(installroot)%(libdir)/modules/${_kernel}
+        module_list=()
+        while IFS=  read -r -d $'\0'; do
+            module_list+=("$REPLY")
+        done < <(find . -type f -name "*.ko" -print0)
+        for module in "${module_list[@]}"; do
+            build_id=$(eu-readelf -n ${module} | awk '/Bui/ {print $3}')
+            debug_path="%(libdir)/debug/.build-id/${build_id:0:2}/${build_id: 2}.debug"
+
+            pushd $(dirname ${module})
+            file=$(basename ${module})
+
+            llvm-objcopy --only-keep-debug "${file}" "${file}.debug"
+            llvm-objcopy --add-gnu-debuglink "${file}.debug" "${file}"
+            llvm-strip -g --strip-unneeded "${file}"
+            %install_file "${file}.debug" "%(installroot)/${debug_path}"
+            rm -v "${file}.debug"
+
+            popd
+        done
+        popd
+
+        # Compress modules with zstd
+        find "%(installroot)%(libdir)/modules/${_kernel}/" -name '*.ko' -print -exec zstd {} \; -exec rm -v {} \;
+
+        popd
+    done
+packages    :
+    # TODO: Make %(name) a virtual package that uses conditional rundeps to pull in the correct package depending on kernel(s) installed
+
+    - "%(name)-gaming":
+        summary: "%(name) built for gaming kernel"
+        description: "%(name) built for gaming kernel"
+        rundeps:
+            - sysbinary(depmod)
+            - linux-gaming
+        paths:
+            - /usr/lib/modules/*.gaming/
+
+    - "%(name)-lts":
+        summary: "%(name) built for LTS kernel"
+        description: "%(name) built for LTS kernel"
+        rundeps:
+            - sysbinary(depmod)
+            - linux-lts
+        paths:
+            - /usr/lib/modules/*.lts/
+
+    - "%(name)-stable":
+        summary: "%(name) built for stable kernel"
+        description: "%(name) built for stable kernel"
+        rundeps:
+            - sysbinary(depmod)
+            - linux-stable
+        paths:
+            - /usr/lib/modules/*.stable/

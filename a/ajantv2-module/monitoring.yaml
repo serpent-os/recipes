@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 391409
+  rss: https://github.com/aja-video/libajantv2/releases.atom
+security:
+  cpe: ~ # No CPE found, last checked (2026-10-11)
