@@ -1,0 +1,118 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libgovirt": {
+			"build-depends": [
+				"binary(g-ir-scanner)",
+				"binary(msgfmt)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gthread-2.0)",
+				"pkgconfig(rest-1.0)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgio-2.0.so.0(x86_64))",
+				"soname(libglib-2.0.so.0(x86_64))",
+				"soname(libgobject-2.0.so.0(x86_64))",
+				"soname(librest-1.0.so.0(x86_64))",
+				"soname(libsoup-3.0.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/girepository-1.0/GoVirt-1.0.typelib",
+				"/usr/lib/libgovirt.so.2",
+				"/usr/lib/libgovirt.so.2.3.2",
+				"/usr/share/locale/bg/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/bs/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/ca/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/cs/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/da/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/de/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/el/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/es/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/eu/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/fi/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/fr/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/fur/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/hi/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/hr/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/hu/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/id/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/it/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/ka/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/ko/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/kw/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/lt/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/nl/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/oc/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/pl/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/pt/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/pt_BR/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/ro/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/sl/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/tr/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/uk/LC_MESSAGES/libgovirt.mo",
+				"/usr/share/locale/zh_CN/LC_MESSAGES/libgovirt.mo"
+			],
+			"name": "libgovirt",
+			"provides": [
+				"soname(libgovirt.so.2(x86_64))"
+			]
+		},
+		"libgovirt-devel": {
+			"build-depends": [
+				"binary(g-ir-scanner)",
+				"binary(msgfmt)",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(glib-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gthread-2.0)",
+				"pkgconfig(rest-1.0)"
+			],
+			"depends": [
+				"libgovirt",
+				"pkgconfig(gio-2.0)",
+				"pkgconfig(gobject-2.0)",
+				"pkgconfig(gthread-2.0)",
+				"pkgconfig(rest-1.0)"
+			],
+			"files": [
+				"/usr/include/govirt-1.0/govirt/govirt.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-api.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-cdrom.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-cluster.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-collection.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-data-center.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-disk.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-enum-types.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-error.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-host.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-options.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-proxy.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-resource.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-rest-call-error.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-storage-domain.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-types.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-vm-display.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-vm-pool.h",
+				"/usr/include/govirt-1.0/govirt/ovirt-vm.h",
+				"/usr/lib/libgovirt.so",
+				"/usr/lib/pkgconfig/govirt-1.0.pc",
+				"/usr/share/gir-1.0/GoVirt-1.0.gir"
+			],
+			"name": "libgovirt-devel",
+			"provides": [
+				"pkgconfig(govirt-1.0)"
+			]
+		}
+	},
+	"source-name": "libgovirt",
+	"source-release": "1",
+	"source-version": "0.3.11"
+}

@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libgovirt
+version     : "0.3.11"
+release     : 1
+homepage    : https://gitlab.gnome.org/GNOME/libgovirt
+upstreams   :
+    - https://download.gnome.org/sources/libgovirt/0.3/libgovirt-0.3.11.tar.xz : 081c1fb5091cb8a1660ea9c152b689de9ba191d10a1109df503f5754f318af7e
+summary     : GObject wrapper for the oVirt REST API
+description : |
+    libgovirt is a library that allows you to use the oVirt REST API from GObject based applications.
+license     : LGPL-2.1-or-later
+builddeps   :
+    - binary(g-ir-scanner)
+    - binary(msgfmt)
+    - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
+    - pkgconfig(gthread-2.0)
+    - pkgconfig(rest-1.0)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
