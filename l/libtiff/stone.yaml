@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libtiff
 version     : "4.7.2"
-release     : 11
+release     : 12
 homepage    : https://download.osgeo.org/libtiff
 upstreams   :
     - https://download.osgeo.org/libtiff/tiff-4.7.2.tar.xz : 4996f0c4f93094719b1ca5c6279b20e588773ba8a247533e486416fb662ddb88
