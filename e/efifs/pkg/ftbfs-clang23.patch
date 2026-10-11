@@ -1,0 +1,39 @@
+diff --git a/BaseTools/Source/C/GenFw/Elf32Convert.c b/BaseTools/Source/C/GenFw/Elf32Convert.c
+index 7b4fb44..4384916 100644
+--- a/BaseTools/Source/C/GenFw/Elf32Convert.c
++++ b/BaseTools/Source/C/GenFw/Elf32Convert.c
+@@ -86,7 +86,7 @@ typedef Elf32_Dyn Elf_Dyn;
+ //
+ STATIC Elf_Ehdr *mEhdr;
+ STATIC Elf_Shdr *mShdrBase;
+-STATIC Elf_Phdr *mPhdrBase;
++[[maybe_unused]] STATIC Elf_Phdr *mPhdrBase;
+ 
+ //
+ // Coff information
+diff --git a/BaseTools/Source/C/GenFw/Elf64Convert.c b/BaseTools/Source/C/GenFw/Elf64Convert.c
+index 1208137..a030a7c 100644
+--- a/BaseTools/Source/C/GenFw/Elf64Convert.c
++++ b/BaseTools/Source/C/GenFw/Elf64Convert.c
+@@ -94,7 +94,7 @@ typedef Elf64_Dyn Elf_Dyn;
+ //
+ STATIC Elf_Ehdr *mEhdr;
+ STATIC Elf_Shdr *mShdrBase;
+-STATIC Elf_Phdr *mPhdrBase;
++[[maybe_unused]] STATIC Elf_Phdr *mPhdrBase;
+ 
+ //
+ // GOT information
+diff --git a/EfiFsPkg/grub/grub-core/fs/minix.c b/EfiFsPkg/grub/grub-core/fs/minix.c
+index 4440fcc..61625d5 100644
+--- a/EfiFsPkg/grub/grub-core/fs/minix.c
++++ b/EfiFsPkg/grub/grub-core/fs/minix.c
+@@ -169,7 +169,7 @@ struct grub_minix_data
+   grub_size_t block_size;
+ };
+ 
+-static grub_dl_t my_mod;
++[[maybe_unused]] static grub_dl_t my_mod;
+ 
+ static grub_err_t grub_minix_find_file (struct grub_minix_data *data,
+ 					const char *path);

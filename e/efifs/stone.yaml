@@ -2,18 +2,18 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : efifs
-version     : "1.12"
-release     : 3
+version     : "1.13"
+release     : 4
 homepage    : https://github.com/pbatard/EfiFs
 upstreams   :
-    - https://github.com/pbatard/EfiFs/archive/refs/tags/v1.12.tar.gz:
-        hash: cad55d6b136cc19079aeb80b3d447dbb6b22e14a7f5ed2fc1e045ac3cc475bd8
+    - https://github.com/pbatard/EfiFs/archive/refs/tags/v1.13.tar.gz:
+        hash: 39f0e7f55e68d747ad66b1054cd1629e5b9ce9760a5d59020577ae2121f39723
         unpackdir: edk2/EfiFsPkg
-    - https://gitlab.freedesktop.org/gnu-grub/grub/-/archive/grub-2.14/grub-grub-2.14.tar.gz:
-        hash: cbc914542f276ca7a0836accb6c0defcfea5caeeb9578bb86023671ba1f80862
+    - https://gitlab.freedesktop.org/gnu-grub/grub/-/archive/grub-2.16/grub-grub-2.16.tar.gz:
+        hash: 14a222a275971030999a3604fd6cc9403dcdb236540dce7ebaf44cd5324622b4
         unpackdir: edk2/EfiFsPkg/grub
-    - https://github.com/tianocore/edk2/archive/refs/tags/edk2-stable202602.tar.gz:
-        hash: fa466183db22969dc952dcb5517a186ad055e0b355da42799d2944120216fa7a
+    - https://github.com/tianocore/edk2/archive/refs/tags/edk2-stable202608.tar.gz:
+        hash: bac40812213576c3025cf780c33d882f9e087a44201b1cd28a07f6d1eb54b76a
         unpackdir: edk2
 summary     : EFI FileSystem drivers
 description : |
@@ -23,17 +23,16 @@ license     : GPL-3.0-or-later
 builddeps   :
     - binary(as)
     - binary(nasm)
-    - binary(patch)
     - binary(python3)
     - pkgconfig(uuid)
 setup       : |
-    # FTBFS Fix from danjujan: https://github.com/pbatard/EfiFs/pull/53
-    %patch %(pkgdir)/ftbfs-error-4000.patch
-
     %patch %(pkgdir)/use-clang.patch
 
     # change into edk2 folder
     cd ..
+
+    # error: variable '_' set but not used
+    %patch %(pkgdir)/ftbfs-clang23.patch
 
     # Do not build BrotliCompress (because it's unused) (from fedora)
     sed -e '/BrotliCompress/d' -i BaseTools/Source/C/GNUmakefile
@@ -42,7 +41,7 @@ setup       : |
     sed -e '/mipisyst/d' -i MdePkg/MdePkg.dec
 
     cd EfiFsPkg/grub
-    patch -Np1 -i ../0001-GRUB-fixes.patch
+    %patch ../0001-GRUB-fixes.patch
 build       : |
     chmod +x set_grub_cpu.sh
     cd ..
@@ -67,4 +66,4 @@ build       : |
     build "${_build_options[@]}"
 install     : |
     cd ..
-    %install_bin Build/EfiFs/RELEASE_CLANGDWARF/X64/*.efi -t %(installroot)/usr/lib/efifs-x64
+    %install_exe Build/EfiFs/RELEASE_CLANGDWARF/X64/*.efi -t %(installroot)%(libdir)/efifs-x64
