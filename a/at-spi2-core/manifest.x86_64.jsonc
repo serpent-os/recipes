@@ -251,7 +251,7 @@
 			"files": [
 				"/usr/lib/girepository-1.0/Atk-1.0.typelib",
 				"/usr/lib/libatk-1.0.so.0",
-				"/usr/lib/libatk-1.0.so.0.26209.1"
+				"/usr/lib/libatk-1.0.so.0.26210.1"
 			],
 			"name": "at-spi2-core-atk",
 			"provides": [
@@ -394,6 +394,6 @@
 		}
 	},
 	"source-name": "at-spi2-core",
-	"source-release": "29",
-	"source-version": "2.62.0.1"
+	"source-release": "30",
+	"source-version": "2.62.1"
 }
