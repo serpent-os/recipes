@@ -9,12 +9,15 @@
 			],
 			"files": [
 				"/usr/lib/libfdk-aac.so.2",
-				"/usr/lib/libfdk-aac.so.2.0.3",
+				"/usr/lib/libfdk-aac.so.2.0.4",
+				"/usr/lib/libfdk-xhe-aac.so.0",
+				"/usr/lib/libfdk-xhe-aac.so.0.0.0",
 				"/usr/share/licenses/fdk-aac/NOTICE"
 			],
 			"name": "fdk-aac",
 			"provides": [
-				"soname(libfdk-aac.so.2(x86_64))"
+				"soname(libfdk-aac.so.2(x86_64))",
+				"soname(libfdk-xhe-aac.so.0(x86_64))"
 			]
 		},
 		"fdk-aac-devel": {
@@ -28,21 +31,30 @@
 				"/usr/include/fdk-aac/genericStds.h",
 				"/usr/include/fdk-aac/machine_type.h",
 				"/usr/include/fdk-aac/syslib_channelMapDescr.h",
+				"/usr/include/fdk-xhe-aac/xHEAACEnc.h",
 				"/usr/lib/cmake/fdk-aac/fdk-aac-config-version.cmake",
 				"/usr/lib/cmake/fdk-aac/fdk-aac-config.cmake",
 				"/usr/lib/cmake/fdk-aac/fdk-aac-targets-release.cmake",
 				"/usr/lib/cmake/fdk-aac/fdk-aac-targets.cmake",
+				"/usr/lib/cmake/fdk-xhe-aac/fdk-xhe-aac-config-version.cmake",
+				"/usr/lib/cmake/fdk-xhe-aac/fdk-xhe-aac-config.cmake",
+				"/usr/lib/cmake/fdk-xhe-aac/fdk-xhe-aac-targets-release.cmake",
+				"/usr/lib/cmake/fdk-xhe-aac/fdk-xhe-aac-targets.cmake",
 				"/usr/lib/libfdk-aac.so",
-				"/usr/lib/pkgconfig/fdk-aac.pc"
+				"/usr/lib/libfdk-xhe-aac.so",
+				"/usr/lib/pkgconfig/fdk-aac.pc",
+				"/usr/lib/pkgconfig/fdk-xhe-aac.pc"
 			],
 			"name": "fdk-aac-devel",
 			"provides": [
 				"cmake(fdk-aac)",
-				"pkgconfig(fdk-aac)"
+				"cmake(fdk-xhe-aac)",
+				"pkgconfig(fdk-aac)",
+				"pkgconfig(fdk-xhe-aac)"
 			]
 		}
 	},
 	"source-name": "fdk-aac",
-	"source-release": "3",
-	"source-version": "2.0.3"
+	"source-release": "4",
+	"source-version": "3.0.0"
 }
