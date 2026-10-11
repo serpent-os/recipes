@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-virtualenv
-version     : "21.7.9"
-release     : 10
+version     : "21.14.6"
+release     : 11
 homepage    : https://virtualenv.pypa.io/
 upstreams:
-  - https://pypi.debian.net/virtualenv/virtualenv-21.7.9.tar.gz: a7e42d81d779dec8afd7dc4be71640fb959ea861bccfa5980cb4ad9f92e30675
+  - https://pypi.debian.net/virtualenv/virtualenv-21.14.6.tar.gz: c6b74616e64bffa9532cfa9dfd54ffbab0dc9b999df2bb8ec0d75e559b983661
 license     : MIT
 summary     : Tool to create isolated 'virtual' python environments
 description : |

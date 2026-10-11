@@ -11,6 +11,7 @@
 				"binary(python3)",
 				"python(distlib)",
 				"python(filelock)",
+				"python(packaging)",
 				"python(platformdirs)",
 				"python(python-discovery)",
 				"python-pip-wheel",
@@ -18,11 +19,13 @@
 			],
 			"files": [
 				"/usr/bin/virtualenv",
-				"/usr/lib/python3.14/site-packages/virtualenv-21.7.9.dist-info/METADATA",
-				"/usr/lib/python3.14/site-packages/virtualenv-21.7.9.dist-info/RECORD",
-				"/usr/lib/python3.14/site-packages/virtualenv-21.7.9.dist-info/WHEEL",
-				"/usr/lib/python3.14/site-packages/virtualenv-21.7.9.dist-info/entry_points.txt",
-				"/usr/lib/python3.14/site-packages/virtualenv-21.7.9.dist-info/licenses/LICENSE",
+				"/usr/lib/python3.14/site-packages/virtualenv-21.14.6.dist-info/METADATA",
+				"/usr/lib/python3.14/site-packages/virtualenv-21.14.6.dist-info/RECORD",
+				"/usr/lib/python3.14/site-packages/virtualenv-21.14.6.dist-info/WHEEL",
+				"/usr/lib/python3.14/site-packages/virtualenv-21.14.6.dist-info/entry_points.txt",
+				"/usr/lib/python3.14/site-packages/virtualenv-21.14.6.dist-info/licenses/LICENSE",
+				"/usr/lib/python3.14/site-packages/virtualenv-21.14.6.dist-info/licenses/THIRD-PARTY-NOTICES.md",
+				"/usr/lib/python3.14/site-packages/virtualenv-21.14.6.dist-info/sboms/virtualenv.cdx.json",
 				"/usr/lib/python3.14/site-packages/virtualenv/__init__.py",
 				"/usr/lib/python3.14/site-packages/virtualenv/__main__.py",
 				"/usr/lib/python3.14/site-packages/virtualenv/__pycache__/__init__.cpython-314.opt-1.pyc",
@@ -57,6 +60,7 @@
 				"/usr/lib/python3.14/site-packages/virtualenv/activation/cshell/__pycache__/__init__.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/activation/cshell/__pycache__/__init__.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/activation/cshell/activate.csh",
+				"/usr/lib/python3.14/site-packages/virtualenv/activation/cshell/deactivate.csh",
 				"/usr/lib/python3.14/site-packages/virtualenv/activation/fish/__init__.py",
 				"/usr/lib/python3.14/site-packages/virtualenv/activation/fish/__pycache__/__init__.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/activation/fish/__pycache__/__init__.cpython-314.pyc",
@@ -288,6 +292,8 @@
 				"/usr/lib/python3.14/site-packages/virtualenv/util/__pycache__/error.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/util/__pycache__/lock.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/util/__pycache__/lock.cpython-314.pyc",
+				"/usr/lib/python3.14/site-packages/virtualenv/util/__pycache__/text.cpython-314.opt-1.pyc",
+				"/usr/lib/python3.14/site-packages/virtualenv/util/__pycache__/text.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/util/__pycache__/zipapp.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/util/__pycache__/zipapp.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/util/error.py",
@@ -310,6 +316,7 @@
 				"/usr/lib/python3.14/site-packages/virtualenv/util/subprocess/__init__.py",
 				"/usr/lib/python3.14/site-packages/virtualenv/util/subprocess/__pycache__/__init__.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/virtualenv/util/subprocess/__pycache__/__init__.cpython-314.pyc",
+				"/usr/lib/python3.14/site-packages/virtualenv/util/text.py",
 				"/usr/lib/python3.14/site-packages/virtualenv/util/zipapp.py",
 				"/usr/lib/python3.14/site-packages/virtualenv/version.py"
 			],
@@ -321,6 +328,6 @@
 		}
 	},
 	"source-name": "python-virtualenv",
-	"source-release": "10",
-	"source-version": "21.7.9"
+	"source-release": "11",
+	"source-version": "21.14.6"
 }
