@@ -33,6 +33,7 @@ rundeps     :
     - spice-glib
     - spice-gtk3
     - vte-gtk3
+    # TODO: Add virt-viewer as optional/recommended once moss supports that
 setup       : |
     %meson
 build       : |
