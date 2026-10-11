@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : man-pages
-version     : "6.18"
-release     : 2
+version     : "6.19"
+release     : 3
 homepage    : https://www.kernel.org/pub/linux/docs/man-pages
 upstreams   :
-    - https://www.kernel.org/pub/linux/docs/man-pages/man-pages-6.18.tar.xz : c934fadc8b59748c68227a34f6581d2ddf8282b73cdcd52546c8cd88b74b24d1
+    - https://www.kernel.org/pub/linux/docs/man-pages/man-pages-6.19.tar.xz : 88a7c42ad2e03d8b96dc72d95e451f2d875ff0f43103a8eb8ac8242133bdcb05
 summary     : Linux kernel and C library interfaces man-pages
 description : |
     The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.
