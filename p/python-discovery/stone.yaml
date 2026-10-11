@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-discovery
-version     : "1.6.1"
-release     : 9
+version     : "1.6.2"
+release     : 10
 homepage    : https://github.com/tox-dev/python-discovery
 upstreams   :
-    - https://pypi.debian.net/python-discovery/python_discovery-1.6.1.tar.gz : cf87d3627dfb4412437fdd5b13eae402607722998d21567993aedbc59b23c15e
+    - https://pypi.debian.net/python-discovery/python_discovery-1.6.2.tar.gz : cd1738ca1d37c86ef9d0b654dd46fcee1e41c97c6add12575e8501ced39afdb4
 summary     : Python interpreter discovery
 description : |
     A library for discovering Python interpreters installed on your machine
