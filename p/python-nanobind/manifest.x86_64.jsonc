@@ -16,10 +16,10 @@
 			"files": [
 				"/usr/include/nanobind",
 				"/usr/lib/cmake/nanobind",
-				"/usr/lib/python3.14/site-packages/nanobind-3.0.1.dist-info/METADATA",
-				"/usr/lib/python3.14/site-packages/nanobind-3.0.1.dist-info/RECORD",
-				"/usr/lib/python3.14/site-packages/nanobind-3.0.1.dist-info/WHEEL",
-				"/usr/lib/python3.14/site-packages/nanobind-3.0.1.dist-info/licenses/LICENSE",
+				"/usr/lib/python3.14/site-packages/nanobind-3.1.0.dist-info/METADATA",
+				"/usr/lib/python3.14/site-packages/nanobind-3.1.0.dist-info/RECORD",
+				"/usr/lib/python3.14/site-packages/nanobind-3.1.0.dist-info/WHEEL",
+				"/usr/lib/python3.14/site-packages/nanobind-3.1.0.dist-info/licenses/LICENSE",
 				"/usr/lib/python3.14/site-packages/nanobind/__init__.py",
 				"/usr/lib/python3.14/site-packages/nanobind/__main__.py",
 				"/usr/lib/python3.14/site-packages/nanobind/__pycache__/__init__.cpython-314.opt-1.pyc",
@@ -124,6 +124,6 @@
 		}
 	},
 	"source-name": "python-nanobind",
-	"source-release": "3",
-	"source-version": "3.0.1"
+	"source-release": "4",
+	"source-version": "3.1.0"
 }

@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-nanobind
-version     : "3.0.1"
-release     : 3
+version     : "3.1.0"
+release     : 4
 homepage    : https://nanobind.readthedocs.org
 upstreams   :
-    - https://pypi.debian.net/nanobind/nanobind-3.0.1.tar.gz : f7f0a889c8fb80deaacb95e918d88e05148850a32d2b8eda28446291b2bf7c35
+    - https://pypi.debian.net/nanobind/nanobind-3.1.0.tar.gz : 6661e3dc1434d78781ccf7913442d90361dab395c3424efadb63bbb6ddea7ea3
 summary     : Tiny and efficient C++/Python bindings
 description : |
     Tiny and efficient C++/Python bindings
