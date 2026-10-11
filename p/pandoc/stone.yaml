@@ -1,14 +1,14 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : pandoc
-version     : "3.10.2"
-release     : 3
+version     : "3.12.1"
+release     : 4
 homepage    : https://pandoc.org/
 upstreams   :
-    - https://github.com/jgm/pandoc/archive/refs/tags/3.10.2.tar.gz : ec4c5d36e355785802601986637369ada24079ac20af6c0ee85c79502d77b3f0
-    - https://github.com/jgm/pandoc/releases/download/3.10.2/pandoc-3.10.2-linux-amd64.tar.gz:
-        hash: c7edd535941c48be6a362081a748272837de81ae11777202d9c341d3d8261c9a
+    - https://github.com/jgm/pandoc/archive/refs/tags/3.12.1.tar.gz : cf9b3725b90e471aa70c99ac3b351adcb6e40cd904d36fcbb0f70d712e135686
+    - https://github.com/jgm/pandoc/releases/download/3.12.1/pandoc-3.12.1-linux-amd64.tar.gz:
+        hash: d0c90410e90204c9ca83b8539fac5c7aed01fd537207e4585849f8abc5df20b8
         unpack: false
         rename: pandoc.tar.gz
 summary     : Universal markup converter
