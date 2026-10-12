@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : firefox
-version     : "157.0.1"
-release     : 89
+version     : "158.0"
+release     : 90
 homepage    : https://www.mozilla.org/
 upstreams   :
-    - https://releases.mozilla.org/pub/firefox/releases/157.0.1/source/firefox-157.0.1.source.tar.xz:
-        hash: 483bedee9059df2479e4531c443b1073c6ebaed3570bda0c164eb562ee241c4c
+    - https://releases.mozilla.org/pub/firefox/releases/158.0/source/firefox-158.0.source.tar.xz:
+        hash: fc77f7801d7580a600af683cc367e261eb1ec74647e84a91b4a1e3c1dd5aa2bb
         unpackdir: firefox
 
     # This should _usually_ be the latest version unless it's somehow incompatible with the used LLVM toolchain
@@ -175,7 +175,7 @@ install     : |
 
     # Use a wrapper script to configure langpacks
     rm -v %(installroot)/%(bindir)/firefox
-    install -D -m 00755 %(pkgdir)/install/firefox-wrapper.sh %(installroot)/%(bindir)/firefox
+    %install_exe %(pkgdir)/install/firefox-wrapper.sh %(installroot)/%(bindir)/firefox
 tuning      :
     - lto: false # Controlled by the build
     - thread-exceptions: false # #  error "STL code can only be used with -fno-exceptions"
