@@ -3658,6 +3658,9 @@
 				"/usr/share/man/man3/mitem_value.3x",
 				"/usr/share/man/man3/mitem_visible.3x",
 				"/usr/share/man/man3/mmask_t.3x",
+				"/usr/share/man/man3/mouse_get.3x",
+				"/usr/share/man/man3/mouse_mask.3x",
+				"/usr/share/man/man3/mouse_test.3x",
 				"/usr/share/man/man3/mouse_trafo.3x",
 				"/usr/share/man/man3/mouseinterval.3x",
 				"/usr/share/man/man3/mouseinterval_sp.3x",
@@ -4182,6 +4185,6 @@
 		}
 	},
 	"source-name": "ncurses",
-	"source-release": "30",
-	"source-version": "6.6-20260926"
+	"source-release": "31",
+	"source-version": "6.6-20261010"
 }
