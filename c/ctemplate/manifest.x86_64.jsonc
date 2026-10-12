@@ -1,0 +1,106 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"ctemplate": {
+			"build-depends": [
+				"binary(python3)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libctemplate_nothreads.so.3(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/diff_tpl_auto_escape",
+				"/usr/bin/make_tpl_varnames_h",
+				"/usr/bin/template-converter"
+			],
+			"name": "ctemplate",
+			"provides": [
+				"binary(diff_tpl_auto_escape)",
+				"binary(make_tpl_varnames_h)",
+				"binary(template-converter)"
+			]
+		},
+		"ctemplate-docs": {
+			"build-depends": [
+				"binary(python3)"
+			],
+			"files": [
+				"/usr/share/doc/ctemplate/AUTHORS",
+				"/usr/share/doc/ctemplate/ChangeLog",
+				"/usr/share/doc/ctemplate/NEWS",
+				"/usr/share/doc/ctemplate/README",
+				"/usr/share/doc/ctemplate/auto_escape.html",
+				"/usr/share/doc/ctemplate/designstyle.css",
+				"/usr/share/doc/ctemplate/example.html",
+				"/usr/share/doc/ctemplate/guide.html",
+				"/usr/share/doc/ctemplate/howto.html",
+				"/usr/share/doc/ctemplate/index.html",
+				"/usr/share/doc/ctemplate/reference.html",
+				"/usr/share/doc/ctemplate/tips.html",
+				"/usr/share/doc/ctemplate/xss_resources.html"
+			],
+			"name": "ctemplate-docs"
+		},
+		"libctemplate": {
+			"build-depends": [
+				"binary(python3)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libctemplate.so.3",
+				"/usr/lib/libctemplate.so.3.0.0",
+				"/usr/lib/libctemplate_nothreads.so.3",
+				"/usr/lib/libctemplate_nothreads.so.3.0.0"
+			],
+			"name": "libctemplate",
+			"provides": [
+				"soname(libctemplate.so.3(x86_64))",
+				"soname(libctemplate_nothreads.so.3(x86_64))"
+			]
+		},
+		"libctemplate-devel": {
+			"build-depends": [
+				"binary(python3)"
+			],
+			"depends": [
+				"libctemplate"
+			],
+			"files": [
+				"/usr/include/ctemplate/per_expand_data.h",
+				"/usr/include/ctemplate/str_ref.h",
+				"/usr/include/ctemplate/template.h",
+				"/usr/include/ctemplate/template_annotator.h",
+				"/usr/include/ctemplate/template_cache.h",
+				"/usr/include/ctemplate/template_dictionary.h",
+				"/usr/include/ctemplate/template_dictionary_interface.h",
+				"/usr/include/ctemplate/template_emitter.h",
+				"/usr/include/ctemplate/template_enums.h",
+				"/usr/include/ctemplate/template_modifiers.h",
+				"/usr/include/ctemplate/template_namelist.h",
+				"/usr/include/ctemplate/template_pathops.h",
+				"/usr/include/ctemplate/template_string.h",
+				"/usr/lib/libctemplate.so",
+				"/usr/lib/libctemplate_nothreads.so",
+				"/usr/lib/pkgconfig/libctemplate.pc",
+				"/usr/lib/pkgconfig/libctemplate_nothreads.pc"
+			],
+			"name": "libctemplate-devel",
+			"provides": [
+				"pkgconfig(libctemplate)",
+				"pkgconfig(libctemplate_nothreads)"
+			]
+		}
+	},
+	"source-name": "ctemplate",
+	"source-release": "1",
+	"source-version": "2.4"
+}

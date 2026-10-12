@@ -1,0 +1,49 @@
+# SPDX-FileCopyrightText: 2026 aerynOS
+# SPDX-License-Identifier: MPL-2.0
+
+name        : ctemplate
+version     : "2.4"
+release     : 1
+homepage    : https://github.com/OlafvdSpek/ctemplate
+upstreams   :
+    - https://github.com/OlafvdSpek/ctemplate/archive/refs/tags/ctemplate-2.4.tar.gz : ccc4105b3dc51c82b0f194499979be22d5a14504f741115be155bd991ee93cfa
+summary     : C++ template library for HTML and other text output
+description : |
+    ctemplate is a C++ library implementing a templating system. It turns data
+    structures into HTML, XML or plain text using templates that keep logic out
+    of the presentation layer.
+license     : BSD-3-Clause
+builddeps   :
+    - binary(python3)
+setup       : |
+    %reconfigure \
+        --disable-static
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    # The unittests are order and parallelism sensitive, so run them serially
+    %make check -j1
+packages    :
+    - "lib%(name)":
+        summary: Shared library for %(name)
+        description: Shared library for %(name)
+        paths:
+            - /usr/lib/libctemplate*.so.*
+
+    - "%(name)":
+        paths:
+            - /usr/bin
+
+    - "lib%(name)-devel":
+        rundeps:
+            - "lib%(name)"
+        paths:
+            - /usr/include/ctemplate
+            - /usr/lib/libctemplate*.so
+            - /usr/lib/pkgconfig
+
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
