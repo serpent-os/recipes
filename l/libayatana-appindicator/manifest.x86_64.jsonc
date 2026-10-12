@@ -12,7 +12,6 @@
 				"pkgconfig(gtk+-3.0)"
 			],
 			"depends": [
-				"soname(libayatana-indicator3.so.7(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libdbusmenu-glib.so.4(x86_64))",
 				"soname(libdbusmenu-gtk3.so.4(x86_64))",
@@ -46,7 +45,6 @@
 			],
 			"depends": [
 				"libayatana-appindicator",
-				"pkgconfig(ayatana-indicator3-0.4)",
 				"pkgconfig(dbusmenu-glib-0.4)",
 				"pkgconfig(glib-2.0)",
 				"pkgconfig(gtk+-3.0)"
@@ -69,6 +67,6 @@
 		}
 	},
 	"source-name": "libayatana-appindicator",
-	"source-release": "3",
-	"source-version": "0.6.0"
+	"source-release": "4",
+	"source-version": "0.6.1"
 }
