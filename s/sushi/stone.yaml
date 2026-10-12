@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : sushi
-version     : "51.1"
-release     : 4
+version     : "51.2"
+release     : 5
 homepage    : https://gitlab.gnome.org/GNOME/sushi
 upstreams   :
-    - https://gitlab.gnome.org/GNOME/sushi/-/archive/51.1/sushi-51.1.tar.gz : f369f04c98e11583cd39368b50b1441bac75b322812f42566f9ab70de0caa065
+    - https://gitlab.gnome.org/GNOME/sushi/-/archive/51.2/sushi-51.2.tar.gz : 3e5aeda3fa5f7bb5e8a7fb000593d9f91795ce312e5bab1d7d78ab6cbba2377e
 summary     : A file previewer for the GNOME desktop environment
 description : |
     A file previewer for the GNOME desktop environment
@@ -16,12 +16,12 @@ builddeps   :
     - binary(blueprint-compiler)
     - binary(gjs)
     - binary(msgfmt)
-    - pkgconfig(gtk4)
     - pkgconfig(glycin-2)
     - pkgconfig(glycin-gtk4-2)
     - pkgconfig(gobject-introspection-1.0)
     - pkgconfig(gstreamer-1.0)
     - pkgconfig(gstreamer-pbutils-1.0)
+    - pkgconfig(gtk4)
     - pkgconfig(gtksourceview-5)
     - pkgconfig(papers-document-4.0)
     - pkgconfig(webkitgtk-6.0)

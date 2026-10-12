@@ -42,6 +42,7 @@
 				"/usr/lib/sushi/libsushi-1.0.so",
 				"/usr/lib/sushi/org.gnome.NautilusPreviewer",
 				"/usr/lib/sushi/web-process-extensions/libsushiwebprocessextension.so",
+				"/usr/share/applications/org.gnome.NautilusPreviewer.desktop",
 				"/usr/share/dbus-1/services/org.gnome.NautilusPreviewer.service",
 				"/usr/share/icons/hicolor/scalable/apps/org.gnome.NautilusPreviewer.svg",
 				"/usr/share/locale/ab/LC_MESSAGES/sushi.mo",
@@ -143,6 +144,6 @@
 		}
 	},
 	"source-name": "sushi",
-	"source-release": "4",
-	"source-version": "51.1"
+	"source-release": "5",
+	"source-version": "51.2"
 }
