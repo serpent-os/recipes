@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 aerynOS
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 389475
+  rss: https://github.com/Foundry376/Mailspring/releases.atom
+security:
+  # Last checked 2026-10-11
+  cpe: ~

@@ -1,0 +1,29 @@
+From 696de310bcc181e04416c4879828d151a841b24e Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Sun, 11 Oct 2026 22:28:27 -0500
+Subject: [PATCH] Use the hicolor icon path
+
+Mailspring looks for its window icon in /usr/share/pixmaps, which the package
+does not populate. Point it at the icon we install under the hicolor theme
+instead so the window icon resolves.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-11
+---
+ app/src/browser/mailspring-window.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/src/browser/mailspring-window.ts b/app/src/browser/mailspring-window.ts
+index 739642d..def861d 100644
+--- a/app/src/browser/mailspring-window.ts
++++ b/app/src/browser/mailspring-window.ts
+@@ -145,7 +145,7 @@ export default class MailspringWindow extends EventEmitter {
+       if (!WindowIconPath) {
+         WindowIconPath = getFirstExistingPath(
+           XDG_DATA_PATHS,
+-          path.join('pixmaps', 'mailspring.png')
++          path.join('icons', 'hicolor', '512x512', 'apps', 'mailspring.png')
+         );
+         if (!WindowIconPath) {
+           WindowIconPath = path.resolve(this.resourcePath, 'static', 'images', 'mailspring.png');

@@ -1,0 +1,120 @@
+# SPDX-FileCopyrightText: 2026 aerynOS
+# SPDX-License-Identifier: MPL-2.0
+
+name        : mailspring
+version     : "1.26.0"
+release     : 1
+homepage    : https://getmailspring.com/
+upstreams   :
+    - git|https://github.com/Foundry376/Mailspring.git :
+        ref: 3b46a5b114c62698027aa0dcd43b5a8812af6779
+summary     : A beautiful, fast email client
+description : |
+    Mailspring is an email client forked from Nylas Mail and built with Electron.
+    Its sync engine (mailsync) is written in C++ and runs locally, storing mail in
+    a local SQLite database.
+license     : GPL-3.0-only
+networking  : true
+builddeps   :
+    - binary(cmake)
+    - binary(ninja)
+    - binary(nm)
+    - binary(npm)
+    - binary(python3)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(icu-i18n)
+    - pkgconfig(icu-uc)
+    - pkgconfig(libcares)
+    - pkgconfig(libctemplate)
+    - pkgconfig(libcurl)
+    - pkgconfig(liblzma)
+    - pkgconfig(libsasl2)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(openssl)
+    - pkgconfig(tidy)
+    - pkgconfig(uuid)
+    - pkgconfig(zlib)
+rundeps     :
+    # mailsync dlopen()s libtidy.so.58 at runtime, so it is not a detected soname
+    - soname(libtidy.so.58(x86_64))
+setup       : |
+    %patch %(pkgdir)/0001-hicolor-icon.patch
+    %patch %(pkgdir)/0002-disable-update-check.patch
+    %patch %(pkgdir)/ftbfs-static-libstdcxx.patch
+
+    # node 24: pin yauzl to fix an extract-zip deadlock during `npm install`
+    node -e "const fs = require('fs'); \
+        ['package.json', 'app/package.json'].forEach(f => { \
+            const pkg = JSON.parse(fs.readFileSync(f)); \
+            pkg.overrides = pkg.overrides || {}; \
+            pkg.overrides.yauzl = '^3.3.2'; \
+            fs.writeFileSync(f, JSON.stringify(pkg, null, 2) + '\n'); \
+        });"
+
+    # The mailsync submodule is checked out, so postinstall.js will not download
+    # a prebuilt binary and we build the engine ourselves in the build phase.
+    npm install
+build       : |
+    _deps="%(buildroot)/mailsync-deps"
+
+    # Build the vendored, Mailspring-patched libetpan that mailsync links
+    # statically. MailCore2 and mailsync both need it before they configure.
+    pushd mailsync/Vendor/libetpan
+    # autoconf 2.72 selects C23, where libetpan's old-style (K&R) function
+    # definitions no longer parse. Build it as C17.
+    export CFLAGS="${CFLAGS} -std=gnu17"
+    %autogen
+    %make
+    %make install DESTDIR="${_deps}"
+    popd
+
+    export CFLAGS="${CFLAGS} -I${_deps}/usr/include"
+    export CXXFLAGS="${CXXFLAGS} -I${_deps}/usr/include"
+
+    # The engine's CMakeLists expects MailCore2's build tree at
+    # Vendor/mailcore2/build.
+    pushd mailsync/Vendor/mailcore2
+    cmake -G Ninja \
+        -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INCLUDE_PATH="${_deps}/usr/include" \
+        -DCMAKE_LIBRARY_PATH="${_deps}/usr/lib"
+    ninja -C build MailCore
+    popd
+
+    pushd mailsync
+    %cmake \
+        -DCMAKE_INCLUDE_PATH="${_deps}/usr/include" \
+        -DCMAKE_LIBRARY_PATH="${_deps}/usr/lib" \
+        -DCMAKE_SKIP_RPATH=ON \
+        -DETPAN_LIB="${_deps}/usr/lib/libetpan.a"
+    %cmake_build
+    popd
+
+    # electron-packager picks this up as resources/app.asar.unpacked/mailsync
+    cp mailsync/%(builddir)/mailsync app/mailsync
+
+    npm run build -- --skip-installers
+install     : |
+    mailspringdir=%(libdir)/%(name)
+
+    %install_dir %(installroot)$mailspringdir
+    cp -a app/dist/mailspring-linux-x64/* %(installroot)$mailspringdir
+
+    %install_dir %(installroot)%(bindir)
+    ln -srv %(installroot)$mailspringdir/mailspring %(installroot)%(bindir)/mailspring
+
+    for i in "Mailspring.desktop" "mailspring.metainfo.xml"; do
+        sed -e "s|<%%= productName %%>|Mailspring|g" \
+            -e "s|<%%= name %%>|mailspring|g" \
+            -e "s|<%%= description %%>|The best email app for people and teams at work|g" \
+            app/build/resources/linux/${i}.in > ./$i
+    done
+
+    %install_file Mailspring.desktop -t %(installroot)/usr/share/applications/
+    %install_file mailspring.metainfo.xml -t %(installroot)/usr/share/metainfo/
+
+    for i in 16 32 64 128 256 512; do
+        %install_dir %(installroot)/%(datadir)/icons/hicolor/${i}x${i}/apps
+        %install_file app/build/resources/linux/icons/${i}.png %(installroot)/%(datadir)/icons/hicolor/${i}x${i}/apps/mailspring.png
+    done

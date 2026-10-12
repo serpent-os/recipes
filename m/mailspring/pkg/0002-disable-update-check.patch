@@ -1,0 +1,32 @@
+From a091ff5ccf08557baa695103cd0205ddbb007c09 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Sun, 11 Oct 2026 22:28:14 -0500
+Subject: [PATCH] Disable the update check
+
+Distro packages are updated through the system package manager, so the in-app
+update check only produces a nagging notification banner pointing users at the
+upstream download page. Report that updates are unsupported so no update feed
+request is made and the notification is never shown.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-11
+---
+ app/src/browser/autoupdate-impl-base.ts | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/app/src/browser/autoupdate-impl-base.ts b/app/src/browser/autoupdate-impl-base.ts
+index a345e56..b11643b 100644
+--- a/app/src/browser/autoupdate-impl-base.ts
++++ b/app/src/browser/autoupdate-impl-base.ts
+@@ -26,7 +26,9 @@ export default class AutoupdateImplBase extends EventEmitter {
+     if (process.env.SNAP) {
+       return false;
+     }
+-    return true;
++    // aerynOS packages are updated through the system package manager, so
++    // disable the in-app update check and its notification banner.
++    return false;
+   }
+ 
+   /* Public: Set the feed URL where we retrieve update information. */

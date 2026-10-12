@@ -1,0 +1,31 @@
+From 43578c53124ed7f58732a759f2cf48ac4e48b84a Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Sun, 11 Oct 2026 22:37:52 -0500
+Subject: [PATCH] Don't force static libstdc++/libgcc
+
+Linking with -static-libstdc++ requires the static C++ runtime archive, which
+aerynOS does not ship, so the final link fails with "unable to find library
+-lstdc++". Link the shared runtime from the system instead, as the distribution
+is updated in lockstep with the toolchain.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-11
+---
+ mailsync/CMakeLists.txt | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/mailsync/CMakeLists.txt b/mailsync/CMakeLists.txt
+index 62f1e82..aa80c56 100644
+--- a/mailsync/CMakeLists.txt
++++ b/mailsync/CMakeLists.txt
+@@ -7,9 +7,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+ SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unknown-pragmas")
+ 
+-#Set Linker flags
+-set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+-
+ 
+ find_package (PkgConfig REQUIRED)
+ pkg_check_modules (GLIB REQUIRED glib-2.0)
