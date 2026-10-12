@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : papers
-version     : "51.0"
-release     : 21
+version     : "51.1"
+release     : 22
 homepage    : https://apps.gnome.org/Papers/
 upstreams   :
-    - https://download.gnome.org/sources/papers/51/papers-51.0.tar.xz : 4b8caf527d85f7eabc63ebe9d2320e0490653c2e138b88fbf42e6f41dd3e451c
+    - https://download.gnome.org/sources/papers/51/papers-51.1.tar.xz : ac0db229883b3d2aacbbda1700dc12aa69716664df201120926096f066e4796b
 summary     : Read documents
 description : |
     A document viewer for the GNOME desktop. You can view, search or annotate documents in many different formats.
@@ -40,8 +40,6 @@ builddeps   :
     - pkgconfig(poppler-glib)
     - pkgconfig(sysprof-capture-4)
 setup       : |
-    %patch %(pkgdir)/0001-meson-Fix-missing-symbols-causing-issues-with-Sushi.patch
-
     %meson
 build       : |
     %meson_build
