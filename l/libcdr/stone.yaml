@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libcdr
+version     : "0.1.9"
+release     : 1
+upstreams   :
+    - https://dev-www.libreoffice.org/src/libcdr/libcdr-0.1.9.tar.xz : f7bb6abdd7f226820f288a93dd8d07759833c0250d9e202af90f9b312c4665a3
+homepage    : https://wiki.documentfoundation.org/DLP/Libraries/libcdr
+license     : MPL-2.0
+summary     : A library for parsing CorelDRAW files
+description : |
+    libcdr is a library for parsing the CorelDRAW file format structure.
+builddeps   :
+    - binary(doxygen)
+    - cmake(Boost)
+    - pkgconfig(cppunit)
+    - pkgconfig(icu-i18n)
+    - pkgconfig(icu-uc)
+    - pkgconfig(lcms2)
+    - pkgconfig(librevenge-0.0)
+    - pkgconfig(zlib)
+setup       : |
+    %configure
+build       : |
+    %make
+check       : |
+    %make check
+install     : |
+    %make_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
+
+    - "%(name)-tools":
+        summary: Tools to transform CorelDRAW files into other formats
+        description: Tools to transform CorelDRAW files into other formats
+        paths:
+            - /usr/bin/
