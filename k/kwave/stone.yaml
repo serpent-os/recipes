@@ -1,0 +1,57 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kwave
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kwave-26.08.2.tar.xz : d4ff633303e870e0e9c59eb7adfc4b2f5ad82b6cfb34a4b36de6548c70845a78
+homepage    : https://apps.kde.org/kwave/
+license     : GPL-2.0-or-later
+summary     : Sound editor
+description : |
+    With Kwave you can record, play back, import and edit many sorts of audio files including multi channel files.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6KIO)
+    - cmake(KF6TextWidgets)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6XmlGui)
+    - cmake(Qt6Multimedia)
+    - cmake(Qt6Test)
+    - pkgconfig(alsa)
+    - pkgconfig(audiofile)
+    - pkgconfig(fftw3)
+    - pkgconfig(flac)
+    - pkgconfig(libpulse)
+    - pkgconfig(mad)
+    - pkgconfig(opus)
+    - pkgconfig(samplerate)
+    - pkgconfig(vorbis)
+    - id3lib-devel
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6 \
+        -DBUILD_TESTING=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check       : |
+    env QT_QPA_PLATFORM=offscreen %cmake_test
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
