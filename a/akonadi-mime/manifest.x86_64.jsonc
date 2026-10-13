@@ -126,7 +126,8 @@
 				"pkgconfig(libxslt)"
 			],
 			"depends": [
-				"akonadi-mime"
+				"akonadi-mime",
+				"cmake(KPim6Akonadi)"
 			],
 			"files": [
 				"/usr/include/KPim6/AkonadiMime/Akonadi/AddressAttribute",
@@ -192,6 +193,6 @@
 		}
 	},
 	"source-name": "akonadi-mime",
-	"source-release": "26",
+	"source-release": "27",
 	"source-version": "26.08.2"
 }

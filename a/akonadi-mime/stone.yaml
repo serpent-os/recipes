@@ -3,7 +3,7 @@
 
 name        : akonadi-mime
 version     : "26.08.2"
-release     : 26
+release     : 27
 upstreams   :
     - https://download.kde.org/stable/release-service/26.08.2/src/akonadi-mime-26.08.2.tar.xz : 1f260c099b01ff5eefcba3c9d706b7ece17b251a5719afa43d8f40cdef0daaf5
 homepage    : https://kde.org
@@ -28,3 +28,8 @@ build       : |
     %cmake_build
 install     : |
     %cmake_install
+packages    :
+    # KPim6AkonadiMimeConfig.cmake find_dependency()s KPim6Akonadi, so consumers need it present
+    - "%(name)-devel":
+        rundeps:
+            - cmake(KPim6Akonadi)
