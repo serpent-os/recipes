@@ -1,0 +1,85 @@
+From 3966f1946153a89081186f601da5aeb7941fb1fb Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 3/4] Remove obsolete MIPS constraint for GCC 4.4 and newer
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ fixed.h | 18 ++++++++++++++++++
+ mad.h   | 18 ++++++++++++++++++
+ 2 files changed, 36 insertions(+)
+
+diff --git a/fixed.h b/fixed.h
+index 4b58abf..6c38b80 100644
+--- a/fixed.h
++++ b/fixed.h
+@@ -299,6 +299,23 @@ mad_fixed_t mad_f_mul_inline(mad_fixed_t x, mad_fixed_t y)
+ 
+ # elif defined(FPM_MIPS)
+ 
++/* Test for gcc >= maj.min, as per __GNUC_PREREQ in glibc */
++#if defined (__GNUC__) && defined (__GNUC_MINOR__)
++#define __GNUC_PREREQ(maj, min) \
++	((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
++#else
++#define __GNUC_PREREQ(maj, min)  0
++#endif
++
++#if __GNUC_PREREQ(4,4)
++  typedef unsigned int u64_di_t __attribute__ ((mode (DI)));
++# define MAD_F_MLX(hi, lo, x, y) \
++   do { \
++      u64_di_t __ll = (u64_di_t) (x) * (y); \
++      hi = __ll >> 32; \
++      lo = __ll; \
++   } while (0) 
++#else
+ /*
+  * This MIPS version is fast and accurate; the disposition of the least
+  * significant bit depends on OPT_ACCURACY via mad_f_scale64().
+@@ -328,6 +345,7 @@ mad_fixed_t mad_f_mul_inline(mad_fixed_t x, mad_fixed_t y)
+ 	 : "%r" ((x) >> 12), "r" ((y) >> 16))
+ #  define MAD_F_MLZ(hi, lo)  ((mad_fixed_t) (lo))
+ # endif
++#endif /* __GNU_PREREQ(4,4) */
+ 
+ # if defined(OPT_SPEED)
+ #  define mad_f_scale64(hi, lo)  \
+diff --git a/mad.h b/mad.h
+index 9ef6cc8..483f25f 100644
+--- a/mad.h
++++ b/mad.h
+@@ -344,6 +344,23 @@ mad_fixed_t mad_f_mul_inline(mad_fixed_t x, mad_fixed_t y)
+ 
+ # elif defined(FPM_MIPS)
+ 
++/* Test for gcc >= maj.min, as per __GNUC_PREREQ in glibc */
++#if defined (__GNUC__) && defined (__GNUC_MINOR__)
++#define __GNUC_PREREQ(maj, min) \
++	((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
++#else
++#define __GNUC_PREREQ(maj, min)  0
++#endif
++
++#if __GNUC_PREREQ(4,4)
++  typedef unsigned int u64_di_t __attribute__ ((mode (DI)));
++# define MAD_F_MLX(hi, lo, x, y) \
++   do { \
++      u64_di_t __ll = (u64_di_t) (x) * (y); \
++      hi = __ll >> 32; \
++      lo = __ll; \
++   } while (0) 
++#else
+ /*
+  * This MIPS version is fast and accurate; the disposition of the least
+  * significant bit depends on OPT_ACCURACY via mad_f_scale64().
+@@ -373,6 +390,7 @@ mad_fixed_t mad_f_mul_inline(mad_fixed_t x, mad_fixed_t y)
+ 	 : "%r" ((x) >> 12), "r" ((y) >> 16))
+ #  define MAD_F_MLZ(hi, lo)  ((mad_fixed_t) (lo))
+ # endif
++#endif /* __GNU_PREREQ(4,4) */
+ 
+ # if defined(OPT_SPEED)
+ #  define mad_f_scale64(hi, lo)  \

@@ -1,0 +1,36 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libmad": {
+			"depends": [
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libmad.so.0",
+				"/usr/lib/libmad.so.0.2.1"
+			],
+			"name": "libmad",
+			"provides": [
+				"soname(libmad.so.0(x86_64))"
+			]
+		},
+		"libmad-devel": {
+			"depends": [
+				"libmad"
+			],
+			"files": [
+				"/usr/include/mad.h",
+				"/usr/lib/libmad.so",
+				"/usr/lib/pkgconfig/mad.pc"
+			],
+			"name": "libmad-devel",
+			"provides": [
+				"pkgconfig(mad)"
+			]
+		}
+	},
+	"source-name": "libmad",
+	"source-release": "1",
+	"source-version": "0.15.1b"
+}

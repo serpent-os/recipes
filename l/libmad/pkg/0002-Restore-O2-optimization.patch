@@ -1,0 +1,25 @@
+From 17757e0deffa37454d62e4da8b99c2ce9903880b Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 2/4] Restore -O2 optimization
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index da949cb..366e9b4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -105,7 +105,7 @@ do
+ 	    shift
+ 	    ;;
+ 	-O2)
+-	    optimize="-O"
++	    optimize="-O2"
+ 	    shift
+ 	    ;;
+ 	-fomit-frame-pointer)
