@@ -3,7 +3,7 @@
 
 name        : wireplumber
 version     : "0.5.18"
-release     : 18
+release     : 19
 homepage    : https://gitlab.freedesktop.org/pipewire/wireplumber/
 upstreams   :
     - https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.18/wireplumber-0.5.18.tar.gz : 8c8a326a5b2a570681c1503c83f1fce0cc54ba862019815604b2bc92a7d483a1
@@ -34,6 +34,8 @@ rundeps     :
 setup       : |
     #https://github.com/ValveSoftware/steam-for-linux/issues/11901
     %patch %(pkgdir)/block_steam_clear_default.patch
+    # Backport, drop once in a release
+    %patch %(pkgdir)/upstream-01.patch
 
     %meson \
         -Dsystem-lua=true
