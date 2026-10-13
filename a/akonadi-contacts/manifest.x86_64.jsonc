@@ -208,6 +208,7 @@
 			],
 			"depends": [
 				"akonadi-contacts",
+				"cmake(KPim6Akonadi)",
 				"cmake(KPim6GrantleeTheme)"
 			],
 			"files": [
@@ -308,6 +309,6 @@
 		}
 	},
 	"source-name": "akonadi-contacts",
-	"source-release": "20",
+	"source-release": "21",
 	"source-version": "26.08.2"
 }
