@@ -1,0 +1,63 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kasts
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kasts-26.08.2.tar.xz : 667c3bfbccfa62a6ac761ae17f0ee617f0f8e74803e134931067940d1a278da1
+homepage    : https://apps.kde.org/kasts/
+license     :
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - CC-BY-SA-4.0
+    - CC0-1.0
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - GPL-3.0-or-later
+    - LGPL-2.1-only
+    - LGPL-2.1-or-later
+    - LGPL-3.0-only
+    - LGPL-3.0-or-later
+summary     : Podcast client
+description : |
+    Kasts is a convergent podcast application that looks good on desktop and mobile, with features such as episode management through a play queue, sync through gpodder.net and variable playback speed.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6BreezeIcons)
+    - cmake(KF6ColorScheme)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6Kirigami)
+    - cmake(KF6KirigamiAddons)
+    - cmake(KF6Syndication)
+    - cmake(KF6ThreadWeaver)
+    - cmake(KF6WindowSystem)
+    - cmake(Qt6CorePrivate)
+    - cmake(Qt6Keychain)
+    - cmake(Qt6Multimedia)
+    - cmake(Qt6QuickControls2)
+    - cmake(Qt6Svg)
+    - pkgconfig(gstreamer-1.0)
+    - pkgconfig(taglib)
+    - pkgconfig(vlc-plugin)
+rundeps     :
+    - kf6-kirigami-addons
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    # libKMediaSession is an internal, unversioned library used by the QML plugin; keep it with the app
+    - "%(name)":
+        paths:
+            - /usr/lib/libKMediaSession.so
