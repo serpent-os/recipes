@@ -1,0 +1,107 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kmail
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kmail-26.08.2.tar.xz : 107c5b3a4c605250f76073c01e0e8eb73cfac969bd853d2e1fddd011c94f4e78
+homepage    : https://apps.kde.org/kmail2/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GFDL-1.2-or-later
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - MIT
+summary     : Email client supporting POP3 and IMAP mailboxes
+description : |
+    KMail is the email component of Kontact, the integrated personal information manager from KDE.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(Gpgmepp)
+    - cmake(KF6Bookmarks)
+    - cmake(KF6CalendarCore)
+    - cmake(KF6Codecs)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6Contacts)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6ItemModels)
+    - cmake(KF6ItemViews)
+    - cmake(KF6JobWidgets)
+    - cmake(KF6KCMUtils)
+    - cmake(KF6KIO)
+    - cmake(KF6Mime)
+    - cmake(KF6Notifications)
+    - cmake(KF6NotifyConfig)
+    - cmake(KF6Parts)
+    - cmake(KF6Service)
+    - cmake(KF6Sonnet)
+    - cmake(KF6StatusNotifierItem)
+    - cmake(KF6SyntaxHighlighting)
+    - cmake(KF6TextAddonsWidgets)
+    - cmake(KF6TextAutoCorrectionWidgets)
+    - cmake(KF6TextAutoGenerateText)
+    - cmake(KF6TextCustomEditor)
+    - cmake(KF6TextEditTextToSpeech)
+    - cmake(KF6TextUtils)
+    - cmake(KF6UserFeedback)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+    - cmake(KPim6Akonadi)
+    - cmake(KPim6AkonadiContactWidgets)
+    - cmake(KPim6AkonadiMime)
+    - cmake(KPim6AkonadiSearch)
+    - cmake(KPim6CalendarUtils)
+    - cmake(KPim6Gravatar)
+    - cmake(KPim6IdentityManagementCore)
+    - cmake(KPim6KSieveUi)
+    - cmake(KPim6KontactInterface)
+    - cmake(KPim6LdapWidgets)
+    - cmake(KPim6Libkdepim)
+    - cmake(KPim6Libkleo)
+    - cmake(KPim6MailCommon)
+    - cmake(KPim6MailTransport)
+    - cmake(KPim6MailTransportDBusService)
+    - cmake(KPim6MessageComposer)
+    - cmake(KPim6MessageCore)
+    - cmake(KPim6MessageList)
+    - cmake(KPim6MessageViewer)
+    - cmake(KPim6PimCommonActivities)
+    - cmake(KPim6PimCommonAkonadi)
+    - cmake(KPim6TemplateParser)
+    - cmake(KPim6TextEdit)
+    - cmake(KPim6Tnef)
+    - cmake(KPim6WebEngineViewer)
+    - cmake(Qt6Keychain)
+    - cmake(Qt6WebEngineCore)
+    - pkgconfig(gpg-error)
+rundeps     :
+    - akonadi-import-wizard
+    - kdepim-runtime
+    - kleopatra
+    - kmail-account-wizard
+    - pim-data-exporter
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
