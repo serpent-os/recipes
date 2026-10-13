@@ -1,34 +1,80 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : lmdb
-version     : "0.9.35"
-release     : 15
+version     : "1.0.2"
+release     : 16
 homepage    : https://www.symas.com/lmdb
 upstreams   :
-    - https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.35/openldap-LMDB_0.9.35.tar.gz : 0d090c6a7c85a4f31a2ab0d734554c21097f24752393a190b0e51996b08f48c4
+    - https://git.openldap.org/openldap/openldap/-/archive/LMDB_1.0.2/openldap-LMDB_1.0.2.tar.gz : 38a029bb3e29820380e18a2dfdbe906bbc5b322132c63274c5e4ed7833821752
+
+    - https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.36/openldap-LMDB_0.9.36.tar.gz :
+        hash: 90a595ea500074af61b213464452d8d212405261094667a686357467ae7b57b9
+        unpackdir: compat
 summary     : Symas Lightning Memory-Mapped Database
 description : |
     Symas Lightning Memory-Mapped Database
-license     :
-    - OLDAP-2.8
+license     : OLDAP-2.8
 setup       : |
-    %patch %(pkgdir)/lmdb-make.patch
-build       : |
-    %make -C libraries/liblmdb XCFLAGS="${CFLAGS}" CC=clang AR=llvm-ar
-install     : |
-    %make_install -C libraries/liblmdb XCFLAGS="${CFLAGS}" prefix=%(prefix) libdir=%(libdir) CC=clang AR=llvm-ar
+    %patch %(pkgdir)/lmdb-1.0-shared-tools.patch
 
-    # boulder hides redirection in the log, so cp first instead and do in-place sed
+    if [ -d ../compat ]; then
+        pushd ../compat
+        %patch %(pkgdir)/lmdb-0.9-soname.patch
+        popd
+    fi
+build       : |
+    # LMDB 1.0 hardcodes LDFLAGS in its Makefile, hiding the distro link flags
+    %make -C libraries/liblmdb \
+        AR=%(ar) \
+        CC=%(cc) \
+        LDFLAGS="${LDFLAGS}" \
+        XCFLAGS="${CFLAGS}"
+
+    if [ -d ../compat ]; then
+        %make -C ../compat/libraries/liblmdb \
+            AR=%(ar) \
+            CC=%(cc) \
+            XCFLAGS="${CFLAGS}"
+    fi
+install     : |
+    %make_install -C libraries/liblmdb \
+        AR=%(ar) \
+        CC=%(cc) \
+        LDFLAGS="${LDFLAGS}" \
+        XCFLAGS="${CFLAGS}" \
+        libdir=%(libdir) \
+        prefix=%(prefix)
+
+    # We do not ship static libraries
+    rm -v %(installroot)%(libdir)/liblmdb.a
+
+    # Upstream generates, but does not install, a pkg-config file
     cp %(pkgdir)/lmdb.pc.in ./lmdb.pc
     sed -e 's|@PKGVER@|%(version)|g' -i ./lmdb.pc
     %install_file ./lmdb.pc %(installroot)%(libdir)/pkgconfig/lmdb.pc
+
+    if [ -d ../compat ]; then
+        pushd ../compat/libraries/liblmdb
+        %install_exe liblmdb.so.0.0.0 %(installroot)%(libdir)/liblmdb.so.0.0.0
+        for prog in mdb_copy mdb_dump mdb_load mdb_stat; do
+            %install_exe ${prog} %(installroot)%(bindir)/${prog}-0.9
+            %install_file ${prog}.1 %(installroot)%(mandir)/man1/${prog}-0.9.1
+        done
+        popd
+    fi
 check       : |
-    cd libraries/liblmdb
+    pushd libraries/liblmdb
     export LD_LIBRARY_PATH="."
-    %make XCFLAGS="${CFLAGS}" CC=clang AR=llvm-ar test
+    %make AR=%(ar) CC=%(cc) XCFLAGS="${CFLAGS}" test
+    popd
+
+    if [ -d ../compat ]; then
+        pushd ../compat/libraries/liblmdb
+        %make AR=%(ar) CC=%(cc) XCFLAGS="${CFLAGS}" test
+        popd
+    fi
 tuning      :
-    - lto
     - optimize: speed
 packages    :
     - "%(name)-libs":

@@ -1,0 +1,67 @@
+From 90d836c5b6d209d263938d247f845533f364acf8 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 00:00:00 -0500
+Subject: [PATCH] Link the command line tools against the shared library
+
+Upstream links the mdb_* tools against the static liblmdb.a, which means
+they never record a dependency on the library soname. Link them against
+the shared library instead so that they are rebuilt along with it.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-12
+---
+ libraries/liblmdb/Makefile | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/libraries/liblmdb/Makefile b/libraries/liblmdb/Makefile
+index dfa647f..388d5da 100644
+--- a/libraries/liblmdb/Makefile
++++ b/libraries/liblmdb/Makefile
+@@ -92,24 +92,24 @@ liblmdb$(SOFULL):	mdb.lo midl.lo module.lo
+ 	rm -f liblmdb$(SOEXT); ln -s $@ liblmdb$(SOEXT)
+ 	rm -f $(SOVER); ln -s $@ $(SOVER)
+ 
+-mdb_stat: mdb_stat.o liblmdb.a
++mdb_stat: mdb_stat.o liblmdb$(SOFULL)
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(LDL)
+-mdb_copy: mdb_copy.o liblmdb.a
++mdb_copy: mdb_copy.o liblmdb$(SOFULL)
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(LDL)
+-mdb_dump: mdb_dump.o liblmdb.a
++mdb_dump: mdb_dump.o liblmdb$(SOFULL)
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(LDL)
+-mdb_load: mdb_load.o liblmdb.a
++mdb_load: mdb_load.o liblmdb$(SOFULL)
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(LDL)
+-mdb_drop: mdb_drop.o liblmdb.a
++mdb_drop: mdb_drop.o liblmdb$(SOFULL)
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(LDL)
+-mtest:    mtest.o    liblmdb.a
+-mtest2:	mtest2.o liblmdb.a
+-mtest3:	mtest3.o liblmdb.a
+-mtest4:	mtest4.o liblmdb.a
+-mtest5:	mtest5.o liblmdb.a
+-mtest6:	mtest6.o liblmdb.a
+-mtest_remap:  mtest_remap.o liblmdb.a
+-mtest_enc:    mtest_enc.o chacha8.o liblmdb.a
++mtest:    mtest.o    liblmdb$(SOFULL)
++mtest2:	mtest2.o liblmdb$(SOFULL)
++mtest3:	mtest3.o liblmdb$(SOFULL)
++mtest4:	mtest4.o liblmdb$(SOFULL)
++mtest5:	mtest5.o liblmdb$(SOFULL)
++mtest6:	mtest6.o liblmdb$(SOFULL)
++mtest_remap:  mtest_remap.o liblmdb$(SOFULL)
++mtest_enc:    mtest_enc.o chacha8.o liblmdb$(SOFULL)
+ mtest_enc2:	  mtest_enc2.o liblmdb.a crypto.lm
+ 	$(CC) $(LDFLAGS) -pthread -o $@ $@.o liblmdb.a $(LDL)
+ mtest_enc3:	  mtest_enc3.o liblmdb.a crypto.lm
+@@ -117,7 +117,7 @@ mtest_enc3:	  mtest_enc3.o liblmdb.a crypto.lm
+ mtest_enc4:	  mtest_enc4.o liblmdb.a crypto.lm
+ 	$(CC) $(LDFLAGS) -pthread -o $@ $@.o liblmdb.a $(LDL)
+ 
+-mplay:	mplay.o liblmdb.a
++mplay:	mplay.o liblmdb$(SOFULL)
+ 
+ crypto.lm:	crypto.c
+ 	$(CC) -shared $(CFLAGS) -o $@ $^ -lsodium

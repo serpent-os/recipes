@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : ldb
 version     : "2.9.2"
-release     : 5
+release     : 6
 homepage    : https://ldb.samba.org
 upstreams   :
     - https://www.samba.org/ftp/ldb/ldb-2.9.2.tar.gz : d155884002c79dbb1c3d8642f8b1013f2e520b3aeefd6e96412adec5b8d6cbc0
@@ -24,7 +24,8 @@ builddeps   :
     - lmdb-devel
 environment : |
     # ld.bfd is required here, but we can still build with clang.
-    export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
+    # boulder's LTO cache flag is lld-only, so drop it before switching to bfd.
+    export LDFLAGS="${LDFLAGS/ -Wl,--thinlto-cache-dir=*/} -fuse-ld=bfd"
 setup       : |
     # from https://github.com/samba-team/samba/commit/04e0fb9b2d1d87516f1331096c78e8355b4fa9f3
     %patch %(pkgdir)/ftbfs-04e0fb9.patch

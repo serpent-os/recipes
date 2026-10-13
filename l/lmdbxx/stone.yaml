@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : lmdbxx
-version     : "1.0.0"
-release     : 3
+version     : "1.0.3"
+release     : 4
 upstreams   :
-    - https://github.com/hoytech/lmdbxx/archive/refs/tags/1.0.0.tar.gz : 5e12eb3aefe9050068af7df2c663edabc977ef34c9e7ba7b9d2c43e0ad47d8df
+    - https://github.com/hoytech/lmdbxx/archive/refs/tags/1.0.3.tar.gz : 565cc859c47ad5dff1c10ecb66e88303f905da189efc9828bc0f968efccfff13
 license     : CC-PDDC
 homepage    : https://github.com/hoytech/lmdbxx
 summary     : C++ headers for LMDB

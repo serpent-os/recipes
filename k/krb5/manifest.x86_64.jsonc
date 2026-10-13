@@ -33,7 +33,7 @@
 				"soname(libkrb5support.so.0(x86_64))",
 				"soname(liblber.so.2(x86_64))",
 				"soname(libldap.so.2(x86_64))",
-				"soname(liblmdb.so.0.0.0(x86_64))",
+				"soname(liblmdb.so.1(x86_64))",
 				"soname(libresolv.so.2(x86_64))",
 				"soname(libss.so.2(x86_64))",
 				"soname(libverto.so.0(x86_64))"
@@ -326,6 +326,6 @@
 		}
 	},
 	"source-name": "krb5",
-	"source-release": "8",
+	"source-release": "9",
 	"source-version": "1.22.2"
 }

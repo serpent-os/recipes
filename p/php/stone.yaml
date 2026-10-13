@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : php
 version     : "8.5.11"
-release     : 22
+release     : 23
 homepage    : https://www.php.net/
 upstreams   :
     - https://www.php.net/distributions/php-8.5.11.tar.xz : d9be75c08e8c316f4c8f4194d8fbe1750a15f6a6d9d4e3fe72082abeeb800360

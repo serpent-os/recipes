@@ -52,7 +52,7 @@
 				"soname(libgstsdp-1.0.so.0(x86_64))",
 				"soname(libgstwebrtc-1.0.so.0(x86_64))",
 				"soname(libkdsingleapplication-qt6.so.1.2(x86_64))",
-				"soname(liblmdb.so.0.0.0(x86_64))",
+				"soname(liblmdb.so.1(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libmatrix_client.so.0.10.1(x86_64))",
 				"soname(libolm.so.3(x86_64))",
@@ -84,6 +84,6 @@
 		}
 	},
 	"source-name": "nheko",
-	"source-release": "22",
+	"source-release": "23",
 	"source-version": "0.12.1"
 }

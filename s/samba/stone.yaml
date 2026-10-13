@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : samba
 version     : "4.22.11"
-release     : 20
+release     : 21
 homepage    : https://www.samba.org/
 upstreams   :
     - https://download.samba.org/pub/samba/stable/samba-4.22.11.tar.gz : d569b298a81cc212a39e9d1813bc4ca5c71ac93c4ceb2eec03db178096958d00

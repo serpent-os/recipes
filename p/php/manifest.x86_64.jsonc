@@ -53,7 +53,7 @@
 				"soname(libicuuc.so.78(x86_64))",
 				"soname(liblber.so.2(x86_64))",
 				"soname(libldap.so.2(x86_64))",
-				"soname(liblmdb.so.0.0.0(x86_64))",
+				"soname(liblmdb.so.1(x86_64))",
 				"soname(libm.so.6(x86_64))",
 				"soname(libodbc.so.2(x86_64))",
 				"soname(libonig.so.5(x86_64))",
@@ -529,6 +529,6 @@
 		}
 	},
 	"source-name": "php",
-	"source-release": "22",
+	"source-release": "23",
 	"source-version": "8.5.11"
 }
