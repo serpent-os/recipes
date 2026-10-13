@@ -1,0 +1,63 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libkdegames
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/libkdegames-26.08.2.tar.xz : 64f5c1a0c79833057ff23fa246a93873ad65730c825c2ba46296741bc079d3ae
+homepage    : https://invent.kde.org/games/libkdegames
+license     :
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - CC0-1.0
+    - GFDL-1.2-or-later
+    - GPL-2.0-or-later
+    - ISC
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+summary     : General purpose games code for KDE
+description : |
+    A collection of general-purpose code, data and QML components used by many KDE games, including card decks, high scores and common game widgets.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6ColorScheme)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6DNSSD)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6NewStuff)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6XmlGui)
+    - cmake(OpenAL)
+    - cmake(Qt6CorePrivate)
+    - cmake(Qt6Qml)
+    - cmake(Qt6Quick)
+    - cmake(Qt6Svg)
+    - pkgconfig(sndfile)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    # KDEGames6Config.cmake find_dependency()s these, so consumers need them present
+    - "%(name)-devel":
+        rundeps:
+            - cmake(KF6Completion)
+            - cmake(KF6Config)
+            - cmake(KF6ConfigWidgets)
+            - cmake(Qt6Qml)
+
+    # Not all games using libkdegames need the card decks, so they are shipped separately
+    # (as recommended by upstream's README)
+    - "%(name)-carddecks":
+        paths:
+            - /usr/share/carddecks
