@@ -1,0 +1,28 @@
+From cdf1b8e8944feab6082d9e85c522e0afb449e632 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 13 Oct 2026 12:00:00 -0500
+Subject: [PATCH] Fix narrowing conversion in the Sign test
+
+clang rejects the implicit conversion of the negated INT32_MIN to uint32_t
+(-Wc++11-narrowing). Use an explicit cast, which yields the same value.
+
+Origin: not-needed
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ test/Sign.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/Sign.cpp b/test/Sign.cpp
+index 7275399..ed8b17e 100644
+--- a/test/Sign.cpp
++++ b/test/Sign.cpp
+@@ -157,7 +157,7 @@ TEST_F(SignConversionTest, Int32)
+ 	AFframecount framesRead = afReadFrames(file, AF_DEFAULT_TRACK, readData, frameCount);
+ 	ASSERT_EQ(framesRead, frameCount);
+ 	afCloseFile(file);
+-	const uint32_t expectedData[] = { 0, -kMinInt32, kMaxUInt32 };
++	const uint32_t expectedData[] = { 0, static_cast<uint32_t>(kMinInt32), kMaxUInt32 };
+ 	for (int i=0; i<frameCount; i++)
+ 		EXPECT_EQ(readData[i], expectedData[i]);
+ }

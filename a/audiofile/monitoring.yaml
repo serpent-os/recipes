@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 15224
+  rss: https://github.com/mpruett/audiofile/tags.atom
+security:
+  # Last checked 2026-10-12
+  cpe:
+  - vendor: audiofile
+    product: audiofile

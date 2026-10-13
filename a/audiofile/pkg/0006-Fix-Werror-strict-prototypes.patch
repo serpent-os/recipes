@@ -1,0 +1,74 @@
+From 519f6c19d3bcfa048fc468f0094ab4235e7c77b2 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 10 Oct 2022 11:13:10 -0700
+Subject: [PATCH 6/6] Fix -Werror=strict-prototypes
+
+Required for upcoming GCC and Clang versions.
+
+Origin: https://github.com/mpruett/audiofile/pull/64
+Forwarded: not-needed
+Last-Update: 2026-10-12
+---
+ libaudiofile/g711.c | 12 +++---------
+ sfcommands/sfinfo.c |  4 ++--
+ 2 files changed, 5 insertions(+), 11 deletions(-)
+
+diff --git a/libaudiofile/g711.c b/libaudiofile/g711.c
+index f65e99b..91f08df 100644
+--- a/libaudiofile/g711.c
++++ b/libaudiofile/g711.c
+@@ -80,11 +80,7 @@ static const unsigned char _a2u[128] = {		/* A- to u-law conversions */
+ static const short seg_end[8] = {0xFF, 0x1FF, 0x3FF, 0x7FF,
+ 			    0xFFF, 0x1FFF, 0x3FFF, 0x7FFF};
+ 
+-static int
+-search(val, table, size)
+-	int		val;
+-	short		*table;
+-	int		size;
++static int search(int val, const short *table, int size)
+ {
+ 	int		i;
+ 
+@@ -115,8 +111,7 @@ search(val, table, size)
+  * John Wiley & Sons, pps 98-111 and 472-476.
+  */
+ unsigned char
+-_af_linear2alaw(pcm_val)
+-	int		pcm_val;	/* 2's complement (16-bit range) */
++_af_linear2alaw(int pcm_val)		/* 2's complement (16-bit range) */
+ {
+ 	int		mask;
+ 	int		seg;
+@@ -151,8 +146,7 @@ _af_linear2alaw(pcm_val)
+  *
+  */
+ int
+-_af_alaw2linear(a_val)
+-	unsigned char	a_val;
++_af_alaw2linear(unsigned char a_val)
+ {
+ 	int		t;
+ 	int		seg;
+diff --git a/sfcommands/sfinfo.c b/sfcommands/sfinfo.c
+index c8fb913..91221a5 100644
+--- a/sfcommands/sfinfo.c
++++ b/sfcommands/sfinfo.c
+@@ -48,7 +48,7 @@ void errorHandler(long error, const char *message)
+ 		fprintf(stderr, "sfinfo: %s [error %ld]\n", message, error);
+ }
+ 
+-void printusage()
++void printusage(void)
+ {
+ 	printf("usage: sfinfo [options...] soundfiles...\n");
+ 	printf("options:\n");
+@@ -58,7 +58,7 @@ void printusage()
+ 	printf("  -v, --version      Print version\n");
+ }
+ 
+-void printversion()
++void printversion(void)
+ {
+ 	printf("sfinfo: Audio File Library version %s\n", VERSION);
+ }
