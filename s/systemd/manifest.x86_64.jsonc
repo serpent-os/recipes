@@ -687,7 +687,6 @@
 				"/usr/share/doc/systemd/UIDS-GIDS.md",
 				"/usr/share/factory/etc/issue",
 				"/usr/share/factory/etc/locale.conf",
-				"/usr/share/factory/etc/nsswitch.conf",
 				"/usr/share/factory/etc/vconsole.conf",
 				"/usr/share/locale/ar/LC_MESSAGES/systemd.mo",
 				"/usr/share/locale/be/LC_MESSAGES/systemd.mo",
@@ -4175,6 +4174,6 @@
 		}
 	},
 	"source-name": "systemd",
-	"source-release": "102",
+	"source-release": "103",
 	"source-version": "261.3"
 }

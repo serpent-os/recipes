@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : systemd
 version     : "261.3"
-release     : 102
+release     : 103
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -79,7 +79,8 @@ environment : |
     %export_docbook_catalogs
 setup       : |
     %patch %(pkgdir)/patches/downstream/0001-tmpfiles-Make-var-cache-ldconfig-world-readable.patch
-    %patch %(pkgdir)/patches/downstream/0001-tmpfiles-Allow-nsswitch-clobber-at-non-boot-interval.patch
+    %patch %(pkgdir)/patches/downstream/0001-factory-Don-t-ship-nsswitch.conf.patch
+    %patch %(pkgdir)/patches/downstream/0001-tmpfiles-Don-t-create-etc-nsswitch.conf.patch
     %patch %(pkgdir)/patches/downstream/0001-gpt-auto-generate-Stop-automounting-xbootldr-and-esp.patch
     %patch %(pkgdir)/patches/downstream/0001-path-lookup-Include-stateless-xdg-path-by-default.patch
     # Needed because we conservatively enable agetty on all ttys for now
@@ -300,6 +301,21 @@ install     : |
 
     %install_dir %(installroot)%(docdir)/%(name)-devel/
     echo "DEPRECATED" > %(installroot)%(docdir)/%(name)-devel/README
+check       : |
+    # glibc ships the stateless default; fail if systemd's upstream template drifts from it
+    if [[ %(target_triple) = i686* ]]; then
+        exit 0
+    fi
+    if [[ ! -f /usr/share/defaults/nsswitch.conf ]]; then
+        echo "error: glibc does not ship /usr/share/defaults/nsswitch.conf"
+        exit 1
+    fi
+    grep -vE '^[[:space:]]*(#|$)' %(workdir)/factory/templates/nsswitch.conf > nsswitch.upstream
+    grep -vE '^[[:space:]]*(#|$)' /usr/share/defaults/nsswitch.conf > nsswitch.glibc
+    diff -u nsswitch.upstream nsswitch.glibc || {
+        echo "nsswitch.conf drift: update glibc's /usr/share/defaults/nsswitch.conf to match systemd's factory template"
+        exit 1
+    }
 tuning      :
     - fortify: lvl2 # lvl3 causes segfaults on boot with Clang
 packages    :

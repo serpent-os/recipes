@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 13 Oct 2026 15:27:00 -0500
+Subject: [PATCH] factory: Don't ship nsswitch.conf
+
+glibc now provides the stateless default at /usr/share/defaults/nsswitch.conf,
+so stop installing systemd's own copy at /usr/share/factory/etc/nsswitch.conf.
+The template stays in the tree as the upstream reference that the recipe's
+check phase diffs against.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ factory/templates/meson.build | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/factory/templates/meson.build b/factory/templates/meson.build
+index 0f53217..3db9f25 100644
+--- a/factory/templates/meson.build
++++ b/factory/templates/meson.build
+@@ -15,9 +15,3 @@ custom_target(
+         command : [jinja2_cmdline, '@INPUT@', '@OUTPUT@'],
+         install : true,
+         install_dir : factory_etc_dir)
+-
+-if conf.get('ENABLE_NSS') == 1
+-        install_data(
+-                'nsswitch.conf',
+-                install_dir : factory_etc_dir)
+-endif

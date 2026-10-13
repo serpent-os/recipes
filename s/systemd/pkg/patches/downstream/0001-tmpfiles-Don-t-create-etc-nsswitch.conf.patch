@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 13 Oct 2026 15:27:00 -0500
+Subject: [PATCH] tmpfiles: Don't create /etc/nsswitch.conf
+
+/etc/nsswitch.conf is now optional: glibc falls back to
+/usr/share/defaults/nsswitch.conf when it is absent, so stop provisioning it
+from the factory file.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ tmpfiles.d/etc.conf.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tmpfiles.d/etc.conf.in b/tmpfiles.d/etc.conf.in
+index 9c1ed67..019c695 100644
+--- a/tmpfiles.d/etc.conf.in
++++ b/tmpfiles.d/etc.conf.in
+@@ -13,7 +13,6 @@ L+ /etc/mtab - - - - ../proc/self/mounts
+ t /etc/mtab - - - - security.SMACK64=_
+ {% endif %}
+ C! /etc/locale.conf - - - -
+-C! /etc/nsswitch.conf - - - -
+ C! /etc/vconsole.conf - - - -
+ {% if HAVE_PAM %}
+ C! /etc/pam.d - - - -
