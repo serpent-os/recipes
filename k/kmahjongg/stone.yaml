@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kmahjongg
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kmahjongg-26.08.2.tar.xz : d104bc6517cd459cf671785e618cfb78c156566d43089012d8d8f57459dac3a1
+homepage    : https://apps.kde.org/kmahjongg/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GFDL-1.2-or-later
+    - GPL-2.0-or-later
+summary     : Mahjongg solitaire game
+description : |
+    Mahjongg is a solitaire (one player) version of the classic Eastern tile game, Mahjongg.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KDEGames6)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6NewStuff)
+    - cmake(KF6XmlGui)
+    - cmake(KMahjongglib6)
+    - cmake(Qt6Svg)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
