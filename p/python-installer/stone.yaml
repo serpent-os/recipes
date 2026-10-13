@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-installer
-version     : "1.0.1"
-release     : 8
+version     : "1.1.0"
+release     : 9
 homepage    : https://github.com/pypa/installer
 upstreams   :
-    - https://pypi.debian.net/installer/installer-1.0.1.tar.gz:
-        hash: 052c7fc3721d54c696e2dea019be67539d7b144e924f559f54beb3121831c364
+    - https://pypi.debian.net/installer/installer-1.1.0.tar.gz:
+        hash: 5adc0c01ce62d809989e246987cd68944fe5df8af562d0358f65b2ab15cb5de7
         rename: installer.tar.gz
 
     # Comment out if not bootstrapping
@@ -16,8 +16,7 @@ upstreams   :
 summary     : Low-level library for installing from a Python wheel distribution
 description : |
     python-installer is a low-level library for installing a Python package from a wheel distribution. It provides basic functionality and abstractions for handling wheels and installing packages from wheels.
-license     :
-    - MIT
+license     : MIT
 builddeps   :
     - python-flit-core
     - python-pyproject-hooks
@@ -29,8 +28,6 @@ environment : |
         cd ../python-bootstrap.git
     fi
 setup       : |
-    # Workaround for flit-core 4
-    %patch %(pkgdir)/flit-core-4.patch
     if [[ ${_bootstrap} == "1" ]]; then
         rm -rf external/installer
 
