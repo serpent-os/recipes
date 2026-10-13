@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : skanpage
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/skanpage-26.08.2.tar.xz : 1e06c842ee774de21a02772c5bb646088c6de970af22e9b3e879273b615bfe6e
+homepage    : https://apps.kde.org/skanpage/
+license     :
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - CC0-1.0
+    - GPL-2.0-only
+    - GPL-3.0-only
+summary     : Document scanner application
+description : |
+    Skanpage is a simple scanning application optimized for multi-page document scanning. It can also scan and save single-page documents and images.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6I18n)
+    - cmake(KF6KIO)
+    - cmake(KF6Kirigami)
+    - cmake(KF6Purpose)
+    - cmake(KF6XmlGui)
+    - cmake(KQuickImageEditor)
+    - cmake(KSaneCore6)
+    - cmake(Qt6Pdf)
+    - cmake(Qt6Qml)
+    - cmake(Qt6QuickControls2)
+    - pkgconfig(lept)
+    - pkgconfig(tesseract)
+rundeps     :
+    - kf6-kirigami
+    - kf6-purpose
+    - kquickimageeditor
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
