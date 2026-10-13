@@ -3,7 +3,7 @@
 
 name        : gdm
 version     : "51.0"
-release     : 37
+release     : 38
 homepage    : https://gitlab.gnome.org/GNOME/gdm
 upstreams   :
     - https://download.gnome.org/sources/gdm/51/gdm-51.0.tar.xz : 2ce5acf5a438b8f6dc1d14fd777a911be5eeb2f7ab9a7c4600166205b15d6536
@@ -39,8 +39,6 @@ rundeps     :
     - gnome-settings-daemon
     - systemd-userdbd
 setup       : |
-    %patch %(pkgdir)/0001-revert.patch
-
     %meson \
         -Ddbus-sys=%(datadir)/dbus-1/system.d \
         -Ddefault-pam-config=lfs \
