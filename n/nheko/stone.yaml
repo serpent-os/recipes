@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : nheko
 version     : "0.12.1"
-release     : 22
+release     : 23
 upstreams   :
     - https://nheko.im/nheko-reborn/nheko/-/archive/v0.12.1/nheko-v0.12.1.tar.gz : 8e66c23d515239626b15753b773f236c34340880e6f4642c0856ddb00ff5a531
 license     : GPL-2.0-or-later
