@@ -1,0 +1,150 @@
+From cb327e5762d06d50b44bb0d84b53802f66571ccf Mon Sep 17 00:00:00 2001
+From: Arun Raghavan <arunr@valvesoftware.com>
+Date: Fri, 5 Jun 2026 19:05:47 -0700
+Subject: [PATCH] spa: alsa: Detect ports for HDMI AC3 profiles
+
+Because the a52 plugin (being an ioplug) does not proxy snd_pcm_info for
+its slave PCM, we need a different way to figure out the card associated
+with the device. It turns out we do have access to the card index
+already in the caller, so let's pass that index down as a fallback.
+
+This is done as a fallback rather than replacing the existing lookup in
+case there are situations where they might be mismatched. We could
+possibly just replace the existing lookup, but the cost seems low enough
+to not merit the risk of changing this.
+Origin: upstream, https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/cb327e5762d06d50b44bb0d84b53802f66571ccf
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ spa/plugins/alsa/acp/acp.c        |  2 +-
+ spa/plugins/alsa/acp/alsa-mixer.c | 13 ++++++++-----
+ spa/plugins/alsa/acp/alsa-mixer.h |  2 +-
+ spa/plugins/alsa/acp/alsa-util.c  |  9 ++++++---
+ spa/plugins/alsa/acp/alsa-util.h  |  2 +-
+ 5 files changed, 17 insertions(+), 11 deletions(-)
+
+diff --git a/spa/plugins/alsa/acp/acp.c b/spa/plugins/alsa/acp/acp.c
+index 8f5ea18c2..f81131278 100644
+--- a/spa/plugins/alsa/acp/acp.c
++++ b/spa/plugins/alsa/acp/acp.c
+@@ -2021,7 +2021,7 @@ struct acp_card *acp_card_new(uint32_t index, const struct acp_dict *props)
+ 	impl->profile_set->ignore_dB = impl->ignore_dB;
+ 
+ 	pa_alsa_profile_set_probe(impl->profile_set, impl->ucm.mixers,
+-			device_id,
++			index,
+ 			&impl->ucm.default_sample_spec,
+ 			impl->ucm.default_n_fragments,
+ 			impl->ucm.default_fragment_size_msec);
+diff --git a/spa/plugins/alsa/acp/alsa-mixer.c b/spa/plugins/alsa/acp/alsa-mixer.c
+index b18d7c6c9..b655e1fec 100644
+--- a/spa/plugins/alsa/acp/alsa-mixer.c
++++ b/spa/plugins/alsa/acp/alsa-mixer.c
+@@ -4466,7 +4466,7 @@ static void profile_set_set_availability_groups(pa_alsa_profile_set *ps) {
+ 
+ static void mapping_paths_probe(pa_alsa_mapping *m, pa_alsa_profile *profile,
+                                 pa_alsa_direction_t direction, pa_hashmap *used_paths,
+-                                pa_hashmap *mixers) {
++                                pa_hashmap *mixers, uint32_t card_index) {
+ 
+     pa_alsa_path *p;
+     void *state;
+@@ -4491,7 +4491,7 @@ static void mapping_paths_probe(pa_alsa_mapping *m, pa_alsa_profile *profile,
+ 
+     pa_assert(pcm_handle);
+ 
+-    mixer_handle = pa_alsa_open_mixer_for_pcm(mixers, pcm_handle, true);
++    mixer_handle = pa_alsa_open_mixer_for_pcm(mixers, pcm_handle, true, card_index);
+     if (!mixer_handle) {
+         /* Cannot open mixer, remove all entries */
+         pa_hashmap_remove_all(ps->paths);
+@@ -5105,7 +5105,7 @@ static void mapping_query_hw_device(pa_alsa_mapping *mapping, snd_pcm_t *pcm) {
+ void pa_alsa_profile_set_probe(
+         pa_alsa_profile_set *ps,
+         pa_hashmap *mixers,
+-        const char *dev_id,
++        uint32_t card_index,
+         const pa_sample_spec *ss,
+         unsigned default_n_fragments,
+         unsigned default_fragment_size_msec) {
+@@ -5118,6 +5118,9 @@ void pa_alsa_profile_set_probe(
+     pa_hashmap *broken_inputs, *broken_outputs, *used_paths;
+     pa_alsa_mapping *selected_fallback_input = NULL, *selected_fallback_output = NULL;
+ 
++    char dev_id[16];
++    snprintf(dev_id, sizeof(dev_id), "%d", card_index);
++
+     pa_assert(ps);
+     pa_assert(dev_id);
+     pa_assert(ss);
+@@ -5243,7 +5246,7 @@ void pa_alsa_profile_set_probe(
+                     if (p->fallback_output && selected_fallback_output == NULL) {
+                         selected_fallback_output = m;
+                     }
+-                    mapping_paths_probe(m, p, PA_ALSA_DIRECTION_OUTPUT, used_paths, mixers);
++                    mapping_paths_probe(m, p, PA_ALSA_DIRECTION_OUTPUT, used_paths, mixers, card_index);
+                 }
+ 
+         if (p->input_mappings)
+@@ -5253,7 +5256,7 @@ void pa_alsa_profile_set_probe(
+                     if (p->fallback_input && selected_fallback_input == NULL) {
+                         selected_fallback_input = m;
+                     }
+-                    mapping_paths_probe(m, p, PA_ALSA_DIRECTION_INPUT, used_paths, mixers);
++                    mapping_paths_probe(m, p, PA_ALSA_DIRECTION_INPUT, used_paths, mixers, card_index);
+                 }
+     }
+ 
+diff --git a/spa/plugins/alsa/acp/alsa-mixer.h b/spa/plugins/alsa/acp/alsa-mixer.h
+index 75d4a03db..83c052067 100644
+--- a/spa/plugins/alsa/acp/alsa-mixer.h
++++ b/spa/plugins/alsa/acp/alsa-mixer.h
+@@ -431,7 +431,7 @@ void pa_alsa_mapping_free (pa_alsa_mapping *m);
+ void pa_alsa_profile_free (pa_alsa_profile *p);
+ 
+ pa_alsa_profile_set* pa_alsa_profile_set_new(const char *fname, const pa_channel_map *bonus);
+-void pa_alsa_profile_set_probe(pa_alsa_profile_set *ps, pa_hashmap *mixers, const char *dev_id, const pa_sample_spec *ss, unsigned default_n_fragments, unsigned default_fragment_size_msec);
++void pa_alsa_profile_set_probe(pa_alsa_profile_set *ps, pa_hashmap *mixers, uint32_t card_index, const pa_sample_spec *ss, unsigned default_n_fragments, unsigned default_fragment_size_msec);
+ void pa_alsa_profile_set_free(pa_alsa_profile_set *s);
+ void pa_alsa_profile_set_dump(pa_alsa_profile_set *s);
+ void pa_alsa_profile_set_drop_unsupported(pa_alsa_profile_set *s);
+diff --git a/spa/plugins/alsa/acp/alsa-util.c b/spa/plugins/alsa/acp/alsa-util.c
+index 51d792e0a..6a74bd25c 100644
+--- a/spa/plugins/alsa/acp/alsa-util.c
++++ b/spa/plugins/alsa/acp/alsa-util.c
+@@ -1923,16 +1923,19 @@ __close:
+     return NULL;
+ }
+ 
+-snd_mixer_t *pa_alsa_open_mixer_for_pcm(pa_hashmap *mixers, snd_pcm_t *pcm, bool probe) {
++snd_mixer_t *pa_alsa_open_mixer_for_pcm(pa_hashmap *mixers, snd_pcm_t *pcm, bool probe, uint32_t fallback_index) {
+     snd_pcm_info_t* info;
+     snd_pcm_info_alloca(&info);
+ 
+     pa_assert(pcm);
+ 
+     if (snd_pcm_info(pcm, info) >= 0) {
+-        int card_idx;
++        int card_idx = snd_pcm_info_get_card(info);
+ 
+-        if ((card_idx = snd_pcm_info_get_card(info)) >= 0)
++        if (card_idx < 0)
++            card_idx = fallback_index;
++
++        if (card_idx >= 0)
+             return pa_alsa_open_mixer(mixers, card_idx, probe);
+     }
+ 
+diff --git a/spa/plugins/alsa/acp/alsa-util.h b/spa/plugins/alsa/acp/alsa-util.h
+index f8c8622b5..87e463c42 100644
+--- a/spa/plugins/alsa/acp/alsa-util.h
++++ b/spa/plugins/alsa/acp/alsa-util.h
+@@ -166,7 +166,7 @@ snd_mixer_elem_t *pa_alsa_mixer_find_pcm(snd_mixer_t *mixer, const char *name, u
+ 
+ snd_mixer_t *pa_alsa_open_mixer(pa_hashmap *mixers, int alsa_card_index, bool probe);
+ snd_mixer_t *pa_alsa_open_mixer_by_name(pa_hashmap *mixers, const char *dev, bool probe);
+-snd_mixer_t *pa_alsa_open_mixer_for_pcm(pa_hashmap *mixers, snd_pcm_t *pcm, bool probe);
++snd_mixer_t *pa_alsa_open_mixer_for_pcm(pa_hashmap *mixers, snd_pcm_t *pcm, bool probe, uint32_t fallback_index);
+ #if 0
+ void pa_alsa_mixer_set_fdlist(pa_hashmap *mixers, snd_mixer_t *mixer, pa_mainloop_api *ml);
+ #endif

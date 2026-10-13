@@ -3,7 +3,7 @@
 
 name        : pipewire
 version     : "1.6.9"
-release     : 40
+release     : 41
 homepage    : https://pipewire.org/
 upstreams   :
    - https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.6.9/pipewire-1.6.9.tar.gz : dbc3624cf71215c26a22fc98f6f71f7b8599f5f6b415eab4a5c90ca96c170c7c
@@ -62,6 +62,15 @@ builddeps   :
     # libselinux
 setup       : |
     %patch %(pkgdir)/0001-stateless.patch
+
+    # HDMI/ELD profile-selection backports; drop once they land in a release
+    %patch %(pkgdir)/upstream-01.patch
+    %patch %(pkgdir)/upstream-02.patch
+    %patch %(pkgdir)/upstream-03.patch
+    %patch %(pkgdir)/upstream-04.patch
+    %patch %(pkgdir)/upstream-05.patch
+    %patch %(pkgdir)/upstream-06.patch
+
     # `jack` means integration with a separate JACK server, not the built-in JACK server (`pipewire-jack`)
     %meson \
         -Dbluez5=enabled \

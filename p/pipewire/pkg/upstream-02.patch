@@ -1,0 +1,478 @@
+From 2a7bd1aed2818d280ba34384f8b893e358cf0e92 Mon Sep 17 00:00:00 2001
+From: Julian Bouzas <julian.bouzas@collabora.com>
+Date: Fri, 24 Jul 2026 10:45:22 -0400
+Subject: [PATCH] spa: alsa: recheck ACP profile-set on HDMI ELD changes
+
+Currently, if the system starts with an HDMI stereo ELD device and later
+switches to an HDMI surround ELD device, the surround profile is not listed
+in the spa-device because the profile set is only probed during initialization.
+
+This patch re-checks ACP HDMI profile availability when HDMI ELD data changes
+at runtime, instead of relying only on the startup probe result.
+
+The check parses the ELD file and verifies that its channel count matches the
+one from the mapping.
+Origin: upstream, https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/2a7bd1aed2818d280ba34384f8b893e358cf0e92
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ spa/plugins/alsa/acp/acp.c         | 222 ++++++++++++++++-------------
+ spa/plugins/alsa/acp/alsa-mixer.c  | 110 +++++++++++++-
+ spa/plugins/alsa/acp/alsa-mixer.h  |   1 +
+ spa/plugins/alsa/acp/alsa-ucm.c    |   2 -
+ spa/plugins/alsa/alsa-acp-device.c |   3 +-
+ 5 files changed, 237 insertions(+), 101 deletions(-)
+
+diff --git a/spa/plugins/alsa/acp/acp.c b/spa/plugins/alsa/acp/acp.c
+index f81131278..8df0fb7fd 100644
+--- a/spa/plugins/alsa/acp/acp.c
++++ b/spa/plugins/alsa/acp/acp.c
+@@ -548,6 +548,11 @@ static void add_profiles(pa_card *impl)
+ 		cp->description = ap->description;
+ 		cp->priority = ap->priority ? ap->priority : 1;
+ 
++		if (!ap->supported) {
++			cp->available = ACP_AVAILABLE_NO;
++			cp->flags |= ACP_PROFILE_HIDDEN;
++		}
++
+ 		pa_dynarray_init(&ap->out.devices, NULL);
+ 
+ 		if (ap->output_mappings) {
+@@ -742,100 +747,22 @@ struct temp_port_avail {
+ 	pa_available_t avail;
+ };
+ 
+-static int report_jack_state(snd_mixer_elem_t *melem, unsigned int mask)
++static void update_profile_availabilities(pa_card *impl)
+ {
+-	pa_card *impl = snd_mixer_elem_get_callback_private(melem);
+-	snd_hctl_elem_t **_elem = snd_mixer_elem_get_private(melem), *elem;
+-	snd_ctl_elem_value_t *elem_value;
+-	bool plugged_in, any_input_port_available;
+-	void *state;
+-	pa_alsa_jack *jack;
+-	struct temp_port_avail *tp, *tports;
+ 	pa_alsa_profile *profile;
++	void *state;
++	bool any_input_port_available;
+ 	enum acp_available active_available = ACP_AVAILABLE_UNKNOWN;
+-	size_t size;
+-
+-	pa_assert(_elem);
+-	elem = *_elem;
+-#if 0
+-	/* Changing the jack state may cause a port change, and a port change will
+-	 * make the sink or source change the mixer settings. If there are multiple
+-	 * users having pulseaudio running, the mixer changes done by inactive
+-	 * users may mess up the volume settings for the active users, because when
+-	 * the inactive users change the mixer settings, those changes are picked
+-	 * up by the active user's pulseaudio instance and the changes are
+-	 * interpreted as if the active user changed the settings manually e.g.
+-	 * with alsamixer. Even single-user systems suffer from this, because gdm
+-	 * runs its own pulseaudio instance.
+-	 *
+-	 * We rerun this function when being unsuspended to catch up on jack state
+-	 * changes */
+-	if (u->card->suspend_cause & PA_SUSPEND_SESSION)
+-		return 0;
+-#endif
+-
+-	if (mask == SND_CTL_EVENT_MASK_REMOVE)
+-		return 0;
+-
+-	snd_ctl_elem_value_alloca(&elem_value);
+-	if (snd_hctl_elem_read(elem, elem_value) < 0) {
+-		pa_log_warn("Failed to read jack detection from '%s'", pa_strnull(snd_hctl_elem_get_name(elem)));
+-		return 0;
+-	}
+-
+-	plugged_in = !!snd_ctl_elem_value_get_boolean(elem_value, 0);
+-
+-	pa_log_debug("Jack '%s' is now %s", pa_strnull(snd_hctl_elem_get_name(elem)),
+-			plugged_in ? "plugged in" : "unplugged");
+-
+-	size = sizeof(struct temp_port_avail) * (pa_hashmap_size(impl->jacks)+1);
+-	tports = tp = alloca(size);
+-	memset(tports, 0, size);
++	const char *hidden_profiles;
+ 
+-	PA_HASHMAP_FOREACH(jack, impl->jacks, state)
+-		if (jack->melem == melem) {
+-			pa_alsa_jack_set_plugged_in(jack, plugged_in);
+-
+-			if (impl->use_ucm) {
+-				/* When using UCM, pa_alsa_jack_set_plugged_in() maps the jack
+-				 * state to port availability. */
+-				continue;
+-			}
+-
+-			/* When not using UCM, we have to do the jack state -> port
+-			 * availability mapping ourselves. */
+-			pa_assert_se(tp->port = jack->path->port);
+-			tp->avail = calc_port_state(tp->port, impl);
+-			tp++;
+-		}
+-
+-	/* Report available ports before unavailable ones: in case port 1
+-	 * becomes available when port 2 becomes unavailable,
+-	 * this prevents an unnecessary switch port 1 -> port 3 -> port 2 */
+-
+-	for (tp = tports; tp->port; tp++)
+-		if (tp->avail != PA_AVAILABLE_NO)
+-			pa_device_port_set_available(tp->port, tp->avail);
+-	for (tp = tports; tp->port; tp++)
+-		if (tp->avail == PA_AVAILABLE_NO)
+-			pa_device_port_set_available(tp->port, tp->avail);
+-
+-	for (tp = tports; tp->port; tp++) {
+-		pa_alsa_port_data *data;
+-
+-		data = PA_DEVICE_PORT_DATA(tp->port);
+-
+-		if (!data->suspend_when_unavailable)
+-			continue;
+-
+-#if 0
+-		pa_sink *sink;
+-		uint32_t idx;
+-		PA_IDXSET_FOREACH(sink, u->core->sinks, idx) {
+-			if (sink->active_port == tp->port)
+-				pa_sink_suspend(sink, tp->avail == PA_AVAILABLE_NO, PA_SUSPEND_UNAVAILABLE);
+-		}
+-#endif
++	/* Unhide profiles that became supported after re-probing, but not profiles
++	 * hidden by the user via api.acp.hidden-profiles */
++	hidden_profiles = pa_proplist_gets(impl->proplist, "api.acp.hidden-profiles");
++	PA_HASHMAP_FOREACH(profile, impl->profiles, state) {
++		if (profile->supported &&
++				(profile->profile.flags & ACP_PROFILE_HIDDEN) &&
++				!contains_string(hidden_profiles, profile->profile.name))
++			profile->profile.flags &= ~ACP_PROFILE_HIDDEN;
+ 	}
+ 
+ 	/* Update profile availabilities. Ideally we would mark all profiles
+@@ -860,9 +787,7 @@ static int report_jack_state(snd_mixer_elem_t *melem, unsigned int mask)
+ 	if (impl->card.active_profile_index != ACP_INVALID_INDEX)
+ 		active_available = impl->card.profiles[impl->card.active_profile_index]->available;
+ 
+-	/* First round - detect, if we have any input port available.
+-	   If the hardware can report the state for all I/O jacks, only speakers
+-	   may be plugged in. */
++	/* First round - detect, if we have any input port available. */
+ 	any_input_port_available = false;
+ 	PA_HASHMAP_FOREACH(profile, impl->profiles, state) {
+ 		pa_device_port *port;
+@@ -923,9 +848,10 @@ input_port_found:
+ 		if (has_output_port && has_input_port && found_available_output_port && found_available_input_port)
+ 			available = ACP_AVAILABLE_YES;
+ 
+-		/* We want to update the active profile's status last, so logic that
+-		 * may change the active profile based on profile availability status
+-		 * has an updated view of all profiles' availabilities. */
++		/* If hardware re-probe found this profile unsupported, force unavailable */
++		if (!(profile->profile.flags & ACP_PROFILE_PRO) && !profile->supported)
++			available = ACP_AVAILABLE_NO;
++
+ 		if (profile->profile.index == impl->card.active_profile_index)
+ 			active_available = available;
+ 		else
+@@ -934,6 +860,103 @@ input_port_found:
+ 
+ 	if (impl->card.active_profile_index != ACP_INVALID_INDEX)
+ 		profile_set_available(impl, impl->card.active_profile_index, active_available, true);
++}
++
++static int report_jack_state(snd_mixer_elem_t *melem, unsigned int mask)
++{
++	pa_card *impl = snd_mixer_elem_get_callback_private(melem);
++	snd_hctl_elem_t **_elem = snd_mixer_elem_get_private(melem), *elem;
++	snd_ctl_elem_value_t *elem_value;
++	bool plugged_in;
++	void *state;
++	pa_alsa_jack *jack;
++	struct temp_port_avail *tp, *tports;
++	size_t size;
++
++	pa_assert(_elem);
++	elem = *_elem;
++#if 0
++	/* Changing the jack state may cause a port change, and a port change will
++	 * make the sink or source change the mixer settings. If there are multiple
++	 * users having pulseaudio running, the mixer changes done by inactive
++	 * users may mess up the volume settings for the active users, because when
++	 * the inactive users change the mixer settings, those changes are picked
++	 * up by the active user's pulseaudio instance and the changes are
++	 * interpreted as if the active user changed the settings manually e.g.
++	 * with alsamixer. Even single-user systems suffer from this, because gdm
++	 * runs its own pulseaudio instance.
++	 *
++	 * We rerun this function when being unsuspended to catch up on jack state
++	 * changes */
++	if (u->card->suspend_cause & PA_SUSPEND_SESSION)
++		return 0;
++#endif
++
++	if (mask == SND_CTL_EVENT_MASK_REMOVE)
++		return 0;
++
++	snd_ctl_elem_value_alloca(&elem_value);
++	if (snd_hctl_elem_read(elem, elem_value) < 0) {
++		pa_log_warn("Failed to read jack detection from '%s'", pa_strnull(snd_hctl_elem_get_name(elem)));
++		return 0;
++	}
++
++	plugged_in = !!snd_ctl_elem_value_get_boolean(elem_value, 0);
++
++	pa_log_debug("Jack '%s' is now %s", pa_strnull(snd_hctl_elem_get_name(elem)),
++			plugged_in ? "plugged in" : "unplugged");
++
++	size = sizeof(struct temp_port_avail) * (pa_hashmap_size(impl->jacks)+1);
++	tports = tp = alloca(size);
++	memset(tports, 0, size);
++
++	PA_HASHMAP_FOREACH(jack, impl->jacks, state)
++		if (jack->melem == melem) {
++			pa_alsa_jack_set_plugged_in(jack, plugged_in);
++
++			if (impl->use_ucm) {
++				/* When using UCM, pa_alsa_jack_set_plugged_in() maps the jack
++				 * state to port availability. */
++				continue;
++			}
++
++			/* When not using UCM, we have to do the jack state -> port
++			 * availability mapping ourselves. */
++			pa_assert_se(tp->port = jack->path->port);
++			tp->avail = calc_port_state(tp->port, impl);
++			tp++;
++		}
++
++	/* Report available ports before unavailable ones: in case port 1
++	 * becomes available when port 2 becomes unavailable,
++	 * this prevents an unnecessary switch port 1 -> port 3 -> port 2 */
++
++	for (tp = tports; tp->port; tp++)
++		if (tp->avail != PA_AVAILABLE_NO)
++			pa_device_port_set_available(tp->port, tp->avail);
++	for (tp = tports; tp->port; tp++)
++		if (tp->avail == PA_AVAILABLE_NO)
++			pa_device_port_set_available(tp->port, tp->avail);
++
++	for (tp = tports; tp->port; tp++) {
++		pa_alsa_port_data *data;
++
++		data = PA_DEVICE_PORT_DATA(tp->port);
++
++		if (!data->suspend_when_unavailable)
++			continue;
++
++#if 0
++		pa_sink *sink;
++		uint32_t idx;
++		PA_IDXSET_FOREACH(sink, u->core->sinks, idx) {
++			if (sink->active_port == tp->port)
++				pa_sink_suspend(sink, tp->avail == PA_AVAILABLE_NO, PA_SUSPEND_UNAVAILABLE);
++		}
++#endif
++	}
++
++	update_profile_availabilities(impl);
+ 
+ 	return 0;
+ }
+@@ -1194,6 +1217,12 @@ static int hdmi_eld_changed(snd_mixer_elem_t *melem, unsigned int mask)
+ 
+ 	if (changed && mask != 0 && impl->events && impl->events->props_changed)
+ 		impl->events->props_changed(impl->user_data);
++
++	if (changed && mask != 0) {
++		pa_alsa_profile_set_recheck_hdmi_eld(impl->profile_set, impl->card.index);
++		update_profile_availabilities(impl);
++	}
++
+ 	return 0;
+ }
+ 
+@@ -2164,6 +2193,7 @@ int acp_card_handle_events(struct acp_card *card)
+ 			return n;
+ 		count += n;
+ 	}
++
+ 	return count;
+ }
+ 
+diff --git a/spa/plugins/alsa/acp/alsa-mixer.c b/spa/plugins/alsa/acp/alsa-mixer.c
+index b655e1fec..eff00bf0e 100644
+--- a/spa/plugins/alsa/acp/alsa-mixer.c
++++ b/spa/plugins/alsa/acp/alsa-mixer.c
+@@ -20,6 +20,7 @@
+ 
+ #include "config.h"
+ 
++#include <dirent.h>
+ #include <sys/types.h>
+ #include <alsa/asoundlib.h>
+ #include <math.h>
+@@ -5263,8 +5264,6 @@ void pa_alsa_profile_set_probe(
+     /* Clean up */
+     profile_finalize_probing(last, NULL);
+ 
+-    pa_alsa_profile_set_drop_unsupported(ps);
+-
+     paths_drop_unused(ps->input_paths, used_paths);
+     paths_drop_unused(ps->output_paths, used_paths);
+     pa_hashmap_free(broken_inputs);
+@@ -5277,6 +5276,113 @@ void pa_alsa_profile_set_probe(
+     ps->probed = true;
+ }
+ 
++static int get_hdmi_eld_lpcm_channels(uint32_t card_index)
++{
++    char dir_path[256];
++    DIR *dir;
++    struct dirent *de;
++
++    snprintf(dir_path, sizeof(dir_path), "/proc/asound/card%u", card_index);
++
++    if ((dir = opendir(dir_path)) == NULL)
++        return -1;
++
++    while ((de = readdir(dir)) != NULL) {
++        int card, eld_idx;
++        char path[512];
++        FILE *f;
++        char line[256];
++        int monitor_present = 0, eld_valid = 0;
++        int lpcm_channels = 0;
++        bool next_channels_is_lpcm = false;
++
++        if (sscanf(de->d_name, "eld#%d.%d", &card, &eld_idx) != 2)
++            continue;
++
++        snprintf(path, sizeof(path), "%s/%s", dir_path, de->d_name);
++        if ((f = fopen(path, "r")) == NULL)
++            continue;
++
++        while (fgets(line, sizeof(line), f)) {
++            int val;
++
++            if (sscanf(line, "monitor_present %d", &val) == 1)
++                monitor_present = val;
++            else if (sscanf(line, "eld_valid %d", &val) == 1)
++                eld_valid = val;
++            else if (strstr(line, "_coding_type"))
++                next_channels_is_lpcm = strstr(line, "LPCM") != NULL;
++            else if (next_channels_is_lpcm &&
++                     sscanf(line, "sad%*u_channels %d", &val) == 1) {
++                lpcm_channels = val;
++		break;
++            }
++        }
++
++        fclose(f);
++
++        if (monitor_present && eld_valid) {
++            closedir(dir);
++            return lpcm_channels;
++        }
++    }
++
++    closedir(dir);
++    return -1;
++}
++
++void pa_alsa_profile_set_recheck_hdmi_eld(
++        pa_alsa_profile_set *ps,
++        uint32_t card_index) {
++
++    pa_alsa_profile *p;
++    void *state;
++
++    pa_assert(ps);
++
++    pa_log_debug("Refreshing HDMI profile-set support on card %u", card_index);
++
++    /* For each profile containing output HDMI mappings, use the ELD channel
++     * count to determine if the profile is supported by the connected sink.
++     * Other profiles are left untouched. */
++    PA_HASHMAP_FOREACH(p, ps->profiles, state) {
++        uint32_t idx;
++        pa_alsa_mapping *m;
++        bool supports_hdmi_output_mapping = false;
++
++        if (p->profile.flags & (ACP_PROFILE_OFF | ACP_PROFILE_PRO))
++            continue;
++
++	/* Skip profiles with input mappings as HDMI ELD is only for playback */
++	if (p->input_mappings)
++	    continue;
++
++        if (p->output_mappings) {
++            PA_IDXSET_FOREACH(m, p->output_mappings, idx) {
++                int lpcm_channels;
++
++		/* Only handle HDMI mappings */
++                if (strcmp (m->device_strings[0], "hdmi:%f") != 0)
++                    continue;
++
++                lpcm_channels = get_hdmi_eld_lpcm_channels(card_index);
++                if (lpcm_channels < (int)m->channel_map.channels) {
++                    p->supported = false;
++                    pa_log_debug("HDMI profile %s disabled (ELD channels did not match)", p->name);
++                    break;
++                }
++
++                supports_hdmi_output_mapping = true;
++            }
++        }
++
++        if (supports_hdmi_output_mapping) {
++            p->supported = true;
++            pa_log_debug("HDMI profile %s enabled (ELD channels matched)", p->name);
++        }
++    }
++}
++
+ void pa_alsa_profile_set_dump(pa_alsa_profile_set *ps) {
+     pa_alsa_profile *p;
+     pa_alsa_mapping *m;
+diff --git a/spa/plugins/alsa/acp/alsa-mixer.h b/spa/plugins/alsa/acp/alsa-mixer.h
+index 83c052067..9da453fa7 100644
+--- a/spa/plugins/alsa/acp/alsa-mixer.h
++++ b/spa/plugins/alsa/acp/alsa-mixer.h
+@@ -432,6 +432,7 @@ void pa_alsa_profile_free (pa_alsa_profile *p);
+ 
+ pa_alsa_profile_set* pa_alsa_profile_set_new(const char *fname, const pa_channel_map *bonus);
+ void pa_alsa_profile_set_probe(pa_alsa_profile_set *ps, pa_hashmap *mixers, uint32_t card_index, const pa_sample_spec *ss, unsigned default_n_fragments, unsigned default_fragment_size_msec);
++void pa_alsa_profile_set_recheck_hdmi_eld(pa_alsa_profile_set *ps, uint32_t card_index);
+ void pa_alsa_profile_set_free(pa_alsa_profile_set *s);
+ void pa_alsa_profile_set_dump(pa_alsa_profile_set *s);
+ void pa_alsa_profile_set_drop_unsupported(pa_alsa_profile_set *s);
+diff --git a/spa/plugins/alsa/acp/alsa-ucm.c b/spa/plugins/alsa/acp/alsa-ucm.c
+index d67ac91b5..30c1fe24d 100644
+--- a/spa/plugins/alsa/acp/alsa-ucm.c
++++ b/spa/plugins/alsa/acp/alsa-ucm.c
+@@ -2637,8 +2637,6 @@ static void ucm_probe_profile_set(pa_alsa_ucm_config *ucm, pa_alsa_profile_set *
+ 
+     /* restore ucm state */
+     snd_use_case_set(ucm->ucm_mgr, "_verb", SND_USE_CASE_VERB_INACTIVE);
+-
+-    pa_alsa_profile_set_drop_unsupported(ps);
+ }
+ 
+ pa_alsa_profile_set* pa_alsa_ucm_add_profile_set(pa_alsa_ucm_config *ucm, pa_channel_map *default_channel_map) {
+diff --git a/spa/plugins/alsa/alsa-acp-device.c b/spa/plugins/alsa/alsa-acp-device.c
+index 17742a649..f5033f3b9 100644
+--- a/spa/plugins/alsa/alsa-acp-device.c
++++ b/spa/plugins/alsa/alsa-acp-device.c
+@@ -454,7 +454,8 @@ static struct spa_pod *build_route(struct spa_pod_builder *b, uint32_t id,
+ 	spa_pod_builder_prop(b, SPA_PARAM_ROUTE_profiles, 0);
+ 	spa_pod_builder_push_array(b, &f[1]);
+ 	for (i = 0; i < p->n_profiles; i++)
+-		spa_pod_builder_int(b, p->profiles[i]->index);
++		if (!SPA_FLAG_IS_SET(p->profiles[i]->flags, ACP_PROFILE_HIDDEN))
++			spa_pod_builder_int(b, p->profiles[i]->index);
+ 	spa_pod_builder_pop(b, &f[1]);
+ 	if (dev != NULL) {
+ 		uint32_t channels = dev->format.channels;

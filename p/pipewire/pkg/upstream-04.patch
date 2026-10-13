@@ -1,0 +1,104 @@
+From 25193624b1e27e3c36824a632bc759c8523da434 Mon Sep 17 00:00:00 2001
+From: Arun Raghavan <arunr@valvesoftware.com>
+Date: Fri, 9 Oct 2026 13:13:26 -0700
+Subject: [PATCH] spa: alsa: Limit ELD initiated changes to related profiles
+
+Prior to this, if a device had more than one HDMI/DP connector, more
+than one of those was connected, and then one was unplugged, then the
+ELD removal would be applied to _all_ profiles, instead of just the ones
+associated with the disconnected port.
+
+We need to jump through a few hoops to get to the right mappings, as
+documented in the code.
+Origin: upstream, https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/25193624b1e27e3c36824a632bc759c8523da434
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ spa/plugins/alsa/acp/acp.c        |  2 +-
+ spa/plugins/alsa/acp/alsa-mixer.c | 25 +++++++++++++++++++++----
+ spa/plugins/alsa/acp/alsa-mixer.h |  2 +-
+ 3 files changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/spa/plugins/alsa/acp/acp.c b/spa/plugins/alsa/acp/acp.c
+index 651b27c2e..fd12c6c9b 100644
+--- a/spa/plugins/alsa/acp/acp.c
++++ b/spa/plugins/alsa/acp/acp.c
+@@ -1219,7 +1219,7 @@ static int hdmi_eld_changed(snd_mixer_elem_t *melem, unsigned int mask)
+ 		impl->events->props_changed(impl->user_data);
+ 
+ 	if (changed && mask != 0) {
+-		pa_alsa_profile_set_recheck_hdmi_eld(impl->profile_set, impl->card.index, &eld);
++		pa_alsa_profile_set_recheck_hdmi_eld(impl->profile_set, impl->card.index, device, &eld);
+ 		update_profile_availabilities(impl);
+ 	}
+ 
+diff --git a/spa/plugins/alsa/acp/alsa-mixer.c b/spa/plugins/alsa/acp/alsa-mixer.c
+index afea1d9e9..670d7a020 100644
+--- a/spa/plugins/alsa/acp/alsa-mixer.c
++++ b/spa/plugins/alsa/acp/alsa-mixer.c
+@@ -5278,21 +5278,39 @@ void pa_alsa_profile_set_probe(
+ void pa_alsa_profile_set_recheck_hdmi_eld(
+         pa_alsa_profile_set *ps,
+         uint32_t card_index,
++        int device_index,
+         const struct pa_hdmi_eld *eld) {
+ 
+     pa_alsa_profile *p;
++    pa_alsa_mapping *m;
++    const char *device_string = NULL;
+     void *state;
+ 
+     pa_assert(ps);
+ 
+     pa_log_debug("Refreshing HDMI profile-set support on card %u", card_index);
+ 
++    /* First identify the device we are dealing with. If we only had stereo at
++     * probe time, for example, the hw_device_index for other profiles might be
++     * -1. So we match based on the actual device string when iterating over
++     * mappings below. */
++    PA_HASHMAP_FOREACH(m, ps->mappings, state) {
++        if (m->direction != PA_ALSA_DIRECTION_INPUT && m->hw_device_index == device_index) {
++            device_string = m->device_strings[0];
++            break;
++        }
++    }
++
++    if (!device_string) {
++        pa_log_debug("Could not find device string for %d", device_index);
++        return;
++    }
++
+     /* For each profile containing output HDMI mappings, use the ELD channel
+      * count to determine if the profile is supported by the connected sink.
+      * Other profiles are left untouched. */
+     PA_HASHMAP_FOREACH(p, ps->profiles, state) {
+         uint32_t idx;
+-        pa_alsa_mapping *m;
+         bool supports_hdmi_output_mapping = false;
+ 
+         if (p->profile.flags & (ACP_PROFILE_OFF | ACP_PROFILE_PRO))
+@@ -5304,9 +5322,8 @@ void pa_alsa_profile_set_recheck_hdmi_eld(
+ 
+         if (p->output_mappings) {
+             PA_IDXSET_FOREACH(m, p->output_mappings, idx) {
+-
+-                /* Only handle HDMI mappings */
+-                if (strcmp (m->device_strings[0], "hdmi:%f") != 0)
++                /* Only handle mappings for the device whose ELD changed */
++                if (!pa_streq(m->device_strings[0], device_string))
+                     continue;
+ 
+                 if (eld->lpcm_channels < (int)m->channel_map.channels) {
+diff --git a/spa/plugins/alsa/acp/alsa-mixer.h b/spa/plugins/alsa/acp/alsa-mixer.h
+index 7945b0432..7dc86f4f8 100644
+--- a/spa/plugins/alsa/acp/alsa-mixer.h
++++ b/spa/plugins/alsa/acp/alsa-mixer.h
+@@ -432,7 +432,7 @@ void pa_alsa_profile_free (pa_alsa_profile *p);
+ 
+ pa_alsa_profile_set* pa_alsa_profile_set_new(const char *fname, const pa_channel_map *bonus);
+ void pa_alsa_profile_set_probe(pa_alsa_profile_set *ps, pa_hashmap *mixers, uint32_t card_index, const pa_sample_spec *ss, unsigned default_n_fragments, unsigned default_fragment_size_msec);
+-void pa_alsa_profile_set_recheck_hdmi_eld(pa_alsa_profile_set *ps, uint32_t card_index, const struct pa_hdmi_eld *eld);
++void pa_alsa_profile_set_recheck_hdmi_eld(pa_alsa_profile_set *ps, uint32_t card_index, int device_index, const struct pa_hdmi_eld *eld);
+ void pa_alsa_profile_set_free(pa_alsa_profile_set *s);
+ void pa_alsa_profile_set_dump(pa_alsa_profile_set *s);
+ void pa_alsa_profile_set_drop_unsupported(pa_alsa_profile_set *s);

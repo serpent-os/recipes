@@ -1,0 +1,165 @@
+From 5d3de178c41705d1fb1ac35ee27543dcee476f0f Mon Sep 17 00:00:00 2001
+From: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+Date: Wed, 30 Sep 2026 23:30:48 +0000
+Subject: [PATCH] spa: acp: follow a mixer control that comes back
+
+When a control goes away from a card and comes back while the card
+stays -- the driver that provides it unbound and bound again -- the
+device keeps writing the control but no longer follows it: turning the
+knob on the hardware no longer moves the volume on the desktop, while
+the desktop volume still moves the hardware.
+
+setup_mixer() attaches mixer_callback() once, to the element object
+found at that moment. When the control is removed, alsa-lib frees that
+object and mixer_callback() ignores the REMOVE. When it comes back,
+alsa-lib creates a new element and reports it with
+SND_CTL_EVENT_MASK_ADD to the mixer's own callback, which ACP does not
+set, so the new element has no callback and its changes go unseen.
+Writes are not affected because they look the element up by name each
+time.
+
+Set a mixer callback next to the element callbacks. For an added
+simple element it attaches mixer_callback() again for each active
+device on that mixer whose path contains the element, then reads the
+current volume and mute.
+
+Fixes #5501
+
+Signed-off-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+Origin: upstream, https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/5d3de178c41705d1fb1ac35ee27543dcee476f0f
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ spa/plugins/alsa/acp/acp.c        | 42 +++++++++++++++++++++++++++++++
+ spa/plugins/alsa/acp/alsa-mixer.c | 39 ++++++++++++++++++++++++++++
+ spa/plugins/alsa/acp/alsa-mixer.h |  2 ++
+ 3 files changed, 83 insertions(+)
+
+diff --git a/spa/plugins/alsa/acp/acp.c b/spa/plugins/alsa/acp/acp.c
+index fd12c6c9b..c6bd65d76 100644
+--- a/spa/plugins/alsa/acp/acp.c
++++ b/spa/plugins/alsa/acp/acp.c
+@@ -1370,6 +1370,46 @@ static int mixer_callback(snd_mixer_elem_t *elem, unsigned int mask)
+ 	return 0;
+ }
+ 
++/*
++ * A control can leave the card and come back while the card stays, for
++ * instance when the driver that provides it is unbound and bound again.
++ * The element that comes back is a new object without mixer_callback()
++ * on it: the device would still write the control but no longer see it
++ * change. Attach the callback again and pick up the current value.
++ */
++static int mixer_elem_added(snd_mixer_t *mixer, unsigned int mask, snd_mixer_elem_t *elem)
++{
++	pa_card *impl = snd_mixer_get_callback_private(mixer);
++	pa_alsa_device *dev;
++	uint32_t idx;
++	bool attached;
++
++	if (!(mask & SND_CTL_EVENT_MASK_ADD))
++		return 0;
++
++	PA_DYNARRAY_FOREACH(dev, &impl->out.devices, idx) {
++		if (dev->mixer_handle != mixer || !(dev->device.flags & ACP_DEVICE_ACTIVE))
++			continue;
++
++		if (dev->mixer_path_set)
++			attached = pa_alsa_path_set_attach_callback(dev->mixer_path_set, elem, mixer_callback, dev);
++		else if (dev->mixer_path)
++			attached = pa_alsa_path_attach_callback(dev->mixer_path, elem, mixer_callback, dev);
++		else
++			attached = false;
++
++		if (!attached)
++			continue;
++
++		pa_log_info("%p mixer element returned", dev);
++		if (dev->read_volume)
++			dev->read_volume(dev);
++		if (dev->read_mute)
++			dev->read_mute(dev);
++	}
++	return 0;
++}
++
+ static int read_volume(pa_alsa_device *dev)
+ {
+ 	pa_card *impl = dev->card;
+@@ -1705,6 +1745,8 @@ static int setup_mixer(pa_card *impl, pa_alsa_device *dev, bool ignore_dB)
+ 			pa_alsa_path_set_set_callback(dev->mixer_path_set, dev->mixer_handle, mixer_callback, dev);
+ 		else
+ 			pa_alsa_path_set_callback(dev->mixer_path, dev->mixer_handle, mixer_callback, dev);
++		snd_mixer_set_callback(dev->mixer_handle, mixer_elem_added);
++		snd_mixer_set_callback_private(dev->mixer_handle, impl);
+ 	}
+ 	return 0;
+ }
+diff --git a/spa/plugins/alsa/acp/alsa-mixer.c b/spa/plugins/alsa/acp/alsa-mixer.c
+index 670d7a020..a1162ae50 100644
+--- a/spa/plugins/alsa/acp/alsa-mixer.c
++++ b/spa/plugins/alsa/acp/alsa-mixer.c
+@@ -3373,6 +3373,45 @@ void pa_alsa_path_set_set_callback(pa_alsa_path_set *ps, snd_mixer_t *m, snd_mix
+         pa_alsa_path_set_callback(p, m, cb, userdata);
+ }
+ 
++/* Attach the callback to an element that has just been added to the mixer,
++ * if it is one of the path's elements. Returns whether it was. */
++bool pa_alsa_path_attach_callback(pa_alsa_path *p, snd_mixer_elem_t *me, snd_mixer_elem_callback_t cb, void *userdata) {
++    pa_alsa_element *e;
++
++    pa_assert(p);
++    pa_assert(me);
++    pa_assert(cb);
++
++    /* The mixer also holds elements of our own class, for jacks and ELD. */
++    if (snd_mixer_elem_get_type(me) != SND_MIXER_ELEM_SIMPLE)
++        return false;
++
++    PA_LLIST_FOREACH(e, p->elements) {
++        if (pa_streq(snd_mixer_selem_get_name(me), e->alsa_id.name) &&
++            snd_mixer_selem_get_index(me) == (unsigned int) e->alsa_id.index) {
++            snd_mixer_elem_set_callback(me, cb);
++            snd_mixer_elem_set_callback_private(me, userdata);
++            return true;
++        }
++    }
++
++    return false;
++}
++
++bool pa_alsa_path_set_attach_callback(pa_alsa_path_set *ps, snd_mixer_elem_t *me, snd_mixer_elem_callback_t cb, void *userdata) {
++    pa_alsa_path *p;
++    void *state;
++    bool attached = false;
++
++    pa_assert(ps);
++
++    PA_HASHMAP_FOREACH(p, ps->paths, state)
++        if (pa_alsa_path_attach_callback(p, me, cb, userdata))
++            attached = true;
++
++    return attached;
++}
++
+ static pa_alsa_path *profile_set_get_path(pa_alsa_profile_set *ps, const char *path_name) {
+     pa_alsa_path *path;
+ 
+diff --git a/spa/plugins/alsa/acp/alsa-mixer.h b/spa/plugins/alsa/acp/alsa-mixer.h
+index 7dc86f4f8..b2bff677d 100644
+--- a/spa/plugins/alsa/acp/alsa-mixer.h
++++ b/spa/plugins/alsa/acp/alsa-mixer.h
+@@ -270,11 +270,13 @@ int pa_alsa_path_set_volume(pa_alsa_path *path, snd_mixer_t *m, const pa_channel
+ int pa_alsa_path_set_mute(pa_alsa_path *path, snd_mixer_t *m, bool muted);
+ int pa_alsa_path_select(pa_alsa_path *p, pa_alsa_setting *s, snd_mixer_t *m, bool device_is_muted);
+ void pa_alsa_path_set_callback(pa_alsa_path *p, snd_mixer_t *m, snd_mixer_elem_callback_t cb, void *userdata);
++bool pa_alsa_path_attach_callback(pa_alsa_path *p, snd_mixer_elem_t *me, snd_mixer_elem_callback_t cb, void *userdata);
+ void pa_alsa_path_free(pa_alsa_path *p);
+ 
+ pa_alsa_path_set *pa_alsa_path_set_new(pa_alsa_mapping *m, pa_alsa_direction_t direction, const char *paths_dir);
+ void pa_alsa_path_set_dump(pa_alsa_path_set *s);
+ void pa_alsa_path_set_set_callback(pa_alsa_path_set *ps, snd_mixer_t *m, snd_mixer_elem_callback_t cb, void *userdata);
++bool pa_alsa_path_set_attach_callback(pa_alsa_path_set *ps, snd_mixer_elem_t *me, snd_mixer_elem_callback_t cb, void *userdata);
+ void pa_alsa_path_set_free(pa_alsa_path_set *s);
+ int pa_alsa_path_set_is_empty(pa_alsa_path_set *s);
+ 
