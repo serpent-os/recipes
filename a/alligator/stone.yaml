@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : alligator
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/alligator-26.08.2.tar.xz : f40097bcc6d8ab388c0a9287c40c886214a4ec648daf783e955d079f3abc7b53
+homepage    : https://apps.kde.org/alligator/
+license     :
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - CC-BY-SA-4.0
+    - CC0-1.0
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - GPL-3.0-or-later
+summary     : RSS/Atom feed reader
+description : |
+    Alligator is a convergent, cross-platform feed reader supporting standard RSS/Atom feeds.
+builddeps   :
+    - binary(python3)
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6ColorScheme)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6I18n)
+    - cmake(KF6Kirigami)
+    - cmake(KF6KirigamiAddons)
+    - cmake(KF6Syndication)
+    - cmake(Qt6QuickControls2)
+    - cmake(Qt6Svg)
+    - pkgconfig(openssl)
+    - pkgconfig(sqlite3)
+rundeps     :
+    - kf6-kirigami-addons
+    - qqc2-breeze-style
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
