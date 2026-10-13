@@ -13,7 +13,8 @@
 				"binary(patch)",
 				"binary(python3)",
 				"binary(zstd)",
-				"gcc-32bit"
+				"gcc-32bit",
+				"linux-headers"
 			],
 			"depends": [
 				"iana-etc"
@@ -6337,8 +6338,10 @@
 				"/usr/sbin/ldconfig",
 				"/usr/sbin/sln",
 				"/usr/sbin/zic",
-				"/usr/share/defaults/etc/ld.so.conf",
-				"/usr/share/defaults/etc/ld.so.conf.d",
+				"/usr/share/defaults/hosts",
+				"/usr/share/defaults/ld.so.conf",
+				"/usr/share/defaults/ld.so.conf.d",
+				"/usr/share/defaults/nsswitch.conf",
 				"/usr/share/i18n/charmaps/ANSI_X3.110-1983.zst",
 				"/usr/share/i18n/charmaps/ANSI_X3.4-1968.zst",
 				"/usr/share/i18n/charmaps/ARMSCII-8.zst",
@@ -7318,7 +7321,8 @@
 				"binary(patch)",
 				"binary(python3)",
 				"binary(zstd)",
-				"gcc-32bit"
+				"gcc-32bit",
+				"linux-headers"
 			],
 			"depends": [
 				"glibc"
@@ -7896,7 +7900,8 @@
 				"binary(patch)",
 				"binary(python3)",
 				"binary(zstd)",
-				"gcc-32bit"
+				"gcc-32bit",
+				"linux-headers"
 			],
 			"depends": [
 				"glibc-32bit",
@@ -7955,7 +7960,8 @@
 				"binary(patch)",
 				"binary(python3)",
 				"binary(zstd)",
-				"gcc-32bit"
+				"gcc-32bit",
+				"linux-headers"
 			],
 			"depends": [
 				"glibc",
@@ -8501,6 +8507,6 @@
 		}
 	},
 	"source-name": "glibc",
-	"source-release": "45",
+	"source-release": "46",
 	"source-version": "2.44+git.34106fee"
 }

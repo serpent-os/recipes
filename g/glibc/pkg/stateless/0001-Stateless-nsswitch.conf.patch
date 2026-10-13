@@ -1,0 +1,52 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 13 Oct 2026 12:00:00 -0500
+Subject: [PATCH] Stateless nsswitch.conf
+
+Fall back to the vendor nsswitch.conf when /etc/nsswitch.conf is absent,
+and base reload detection on whichever file is actually in use.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ nss/nss_database.c | 4 ++--
+ resolv/netdb.h     | 1 +
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/nss/nss_database.c b/nss/nss_database.c
+index 076d5a63fe..2ac507790d 100644
+--- a/nss/nss_database.c
++++ b/nss/nss_database.c
+@@ -297,6 +297,8 @@ nss_database_reload (struct nss_database_data *staging,
+                      struct file_change_detection *initial)
+ {
+   FILE *fp = fopen (_PATH_NSSWITCH_CONF, "rce");
++  if (fp == NULL)
++    fp = fopen (_VENDOR_NSSWITCH_CONF, "rce");
+   if (fp == NULL)
+     switch (errno)
+       {
+@@ -397,7 +399,8 @@ nss_database_check_reload_and_get (struct nss_database_state *local,
+     }
+ 
+   struct file_change_detection initial;
+-  if (!__file_change_detection_for_path (&initial, _PATH_NSSWITCH_CONF))
++  if (!__file_change_detection_for_path (&initial, _PATH_NSSWITCH_CONF)
++      && !__file_change_detection_for_path (&initial, _VENDOR_NSSWITCH_CONF))
+     return false;
+ 
+   __libc_lock_lock (local->lock);
+diff --git a/resolv/netdb.h b/resolv/netdb.h
+index 2b3cdfd412..b88d4d461a 100644
+--- a/resolv/netdb.h
++++ b/resolv/netdb.h
+@@ -44,6 +44,7 @@
+ #define	_PATH_HOSTS		"/etc/hosts"
+ #define	_PATH_NETWORKS		"/etc/networks"
+ #define	_PATH_NSSWITCH_CONF	"/etc/nsswitch.conf"
++#define	_VENDOR_NSSWITCH_CONF	"/usr/share/defaults/nsswitch.conf"
+ #define	_PATH_PROTOCOLS		"/etc/protocols"
+ #define	_PATH_SERVICES		"/etc/services"
+ 
+

@@ -9,6 +9,10 @@ file in the absence of a local admin file, ensuring that the function works
 in accordance with the stateless policy.
 
 Signed-off-by: Ikey Doherty <michael.i.doherty@intel.com>
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-13
 ---
  misc/getusershell.c             | 3 +++
  sysdeps/unix/sysv/linux/paths.h | 1 +
@@ -22,7 +26,7 @@ index 41ebb556d7..30ed1e3b5a 100644
    nextshell = NULL;
  
    struct __stat64_t64 fstat;
-+  /* Attempt /etc/shells, otherwise fall back to /usr/share/defaults/etc/shells */
++  /* Attempt /etc/shells, otherwise fall back to /usr/share/defaults/shells */
    FILE *fp = fopen (_PATH_SHELLS, "rce");
 +  if (fp == NULL)
 +    fp = fopen(_PATH_SHELLS2, "rce");

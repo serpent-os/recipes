@@ -1,4 +1,7 @@
-fall back to /usr/share/defaults/etc/hosts if no such file exists in /etc
+Description: fall back to /usr/share/defaults/hosts if /etc/hosts is absent
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-13
 
 
 --- glibc-2.25/nss/nss_files/files-XXX.c~	2017-02-05 15:28:43.000000000 +0000
@@ -7,7 +10,7 @@ fall back to /usr/share/defaults/etc/hosts if no such file exists in /etc
  #define ENTNAME_r	CONCAT(ENTNAME,_r)
  
  #define DATAFILE	"/etc/" DATABASE
-+#define ALTDATAFILE	"/usr/share/defaults/etc/" DATABASE
++#define ALTDATAFILE	"/usr/share/defaults/" DATABASE
  
  #ifdef NEED_H_ERRNO
  # include <netdb.h>

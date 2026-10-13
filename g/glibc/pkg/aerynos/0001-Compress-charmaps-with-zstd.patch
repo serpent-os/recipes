@@ -5,6 +5,9 @@ Subject: [PATCH] Compress charmaps with zstd
 
 Taken from OpenMandriva. This saves a whole 1.1MB on user systems.
 
+Origin: OpenMandriva Lx
+Forwarded: not-needed
+Last-Update: 2025-03-31
 ---
  Makerules                     |  1 +
  locale/programs/charmap-dir.c |  9 +++++++--

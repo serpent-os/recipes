@@ -8,6 +8,10 @@ In Serpent OS, we use /usr/lib for our 64bit libs and /usr/lib32 for our 32bit i
 Teach glibc these paths natively so it knows where to find them.
 
 Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-03-31
 ---
  sysdeps/unix/sysv/linux/x86_64/dl-cache.h | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)

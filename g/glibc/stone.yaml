@@ -3,15 +3,27 @@
 
 name        : glibc
 version     : "2.44+git.34106fee"
-release     : 45
+release     : 46
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
     - LGPL-2.1-or-later
     - LGPL-2.1-or-later WITH GCC-exception-2.0
+    - BSD-3-Clause
+    - CMU-Mach
+    - GFDL-1.3-or-later
+    - HPND
+    - Inner-Net-2.0
+    - ISC
+    - MIT
+    - SunPro
 homepage    : https://www.gnu.org/software/libc
 description : |
-    The GNU libc libraries
+    The GNU C Library provides the standard C library and the system-call
+    interface used by most programs on aerynOS. It contains the dynamic
+    linker, the core C and POSIX APIs, math and threading libraries, charset
+    conversion and locale support, the Name Service Switch, and timezone
+    utilities.
 upstreams   :
     - git|https://sourceware.org/git/glibc.git :
         ref : 34106fee698c83eb0af71d4d0381e66b399be746
@@ -26,6 +38,8 @@ builddeps   :
     - binary(python3)
     - binary(zstd)
     - gcc-32bit
+    - linux-headers
+    # - pkgconfig(gdlib) # enables memusagestat, but pulls in gd's imaging/X dependency chain
 toolchain   : gnu
 emul32      : true
 tuning      :
@@ -39,13 +53,14 @@ tuning      :
     - optimize: speed
     - symbolic: nonweak
 environment : |
-    # TODO: Enable sframe once LLVM supports it
+    # --enable-kernel tracks the fourth-most-recent LTS kernel (kernel.org longterm)
+    # TODO: systemtap support (--enable-systemtap and sys/sdt.h) once a systemtap package exists
     export COMMON_GLIBC_OPTIONS="\
         %(options_configure) \
             --disable-build-nscd \
             --disable-nscd \
-            --disable-sframe \
             --enable-bind-now \
+            --enable-fortify-source \
             --enable-kernel=6.1 \
             --enable-multi-arch \
             --enable-stack-protector=strong \
@@ -60,7 +75,7 @@ setup       : |
     %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
     %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
     %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
-    #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
+    %patch %(pkgdir)/stateless/0001-Stateless-nsswitch.conf.patch
     %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
 
     mkdir build && cd build
@@ -71,9 +86,16 @@ setup       : |
     echo "rootsbindir=%(sbindir)" >> configparms
     # Note this deliberately excludes libsuffix and is not an error
     echo "complocaledir=/usr/lib/locale" >> configparms
+
+    # CET is strict (cet_elf_property): IBT/SHSTK are enabled for modules that
+    # advertise them, and dlopen() of a non-CET library fails while SHSTK is
+    # active. All our 64-bit packages are built with -fcf-protection; the 32-bit
+    # profile stays --disable-cet.
+    # SFrame is only supported on x86_64/aarch64 (not the 32-bit target)
     ../configure \
         $COMMON_GLIBC_OPTIONS \
-        --enable-cet=permissive
+        --enable-cet \
+        --enable-sframe
 build       : |
     %make -C build
 install     : |
@@ -95,8 +117,12 @@ install     : |
     rm -v %(installroot)/etc/rpc
     rmdir -v %(installroot)/etc
 
-    %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)%(sysconfdir)/ld.so.conf
-    %install_dir %(installroot)/%(vendordir)%(sysconfdir)/ld.so.conf.d
+    %install_file %(pkgdir)/ld.so.conf  %(installroot)/%(vendordir)/ld.so.conf
+    %install_dir %(installroot)/%(vendordir)/ld.so.conf.d
+    # Vendor NSS default used when /etc/nsswitch.conf is absent; keep in sync with systemd's /usr/share/factory/etc/nsswitch.conf
+    %install_file %(pkgdir)/nsswitch.conf %(installroot)/%(vendordir)/nsswitch.conf
+    # Vendor hosts default read by the stateless nss_files fallback
+    %install_file %(pkgdir)/hosts %(installroot)/%(vendordir)/hosts
     %install_file %(pkgdir)/glibc_ldconfig.yaml %(installroot)/usr/share/moss/triggers/sys.d/glibc_ldconfig.yaml
 
 
@@ -104,7 +130,6 @@ install     : |
     %tmpfiles "# Create stateless directories"
     %tmpfiles "d /etc/ld.so.conf.d 0755 - - -"
     %tmpfiles "d /var/cache/ldconfig 0755 - - -"
-    %tmpfiles "d /var/cache/locale 0755 - - -"
     %tmpfiles "d /var/db 0755 - - -"
 profiles    :
     - emul32:
@@ -117,7 +142,7 @@ profiles    :
             %patch %(pkgdir)/stateless/make-hosts-file-stateless.patch
             %patch %(pkgdir)/stateless/Support-fallback-stateless-shells-path.patch
             %patch %(pkgdir)/stateless/Use-a-stateless-ld.so.conf.patch
-            #%patch %(pkgdir)/stateless/make-locale-cache-stateless.patch
+            %patch %(pkgdir)/stateless/0001-Stateless-nsswitch.conf.patch
             %patch %(pkgdir)/stateless/ld-so-cache-in-var.patch
 
             mkdir build && cd build

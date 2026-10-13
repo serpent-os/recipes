@@ -4,6 +4,10 @@ Date: Mon, 5 Jul 2021 11:15:25 +1000
 Subject: [PATCH] Force correct RTLDLIST for ldd
 
 Signed-off-by: Peter O'Connor <sunnyflunk@serpentos.com>
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-03-31
 ---
  elf/ldd.bash.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

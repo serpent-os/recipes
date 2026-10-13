@@ -3,6 +3,9 @@ From: Reilly Brogan <reilly@reillybrogan.com>
 Date: Tue, 26 Aug 2025 13:35:25 -0500
 Subject: [PATCH] downstream: Update default PATH
 
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-08-26
 ---
  sysdeps/unix/confstr.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

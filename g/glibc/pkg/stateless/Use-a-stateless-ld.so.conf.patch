@@ -8,6 +8,10 @@ and from /etc/ld.so.conf.d if the user provides files there. This
 is part of our effort to make Solus stateless by default.
 
 Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-13
 ---
  elf/ldconfig.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -21,7 +25,7 @@ index 99caf9e..d73ff29 100644
  
  #ifndef LD_SO_CONF
 -# define LD_SO_CONF SYSCONFDIR "/ld.so.conf"
-+# define LD_SO_CONF "/usr/share/defaults/etc/ld.so.conf"
++# define LD_SO_CONF "/usr/share/defaults/ld.so.conf"
  #endif
  
  /* Get libc version number.  */
