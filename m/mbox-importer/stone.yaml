@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : mbox-importer
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/mbox-importer-26.08.2.tar.xz : 48ef7b90a7ce35fe2253d262d17e7d74f78391bc566048bf521450e491f8b65d
+homepage    : https://invent.kde.org/pim/mbox-importer
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GPL-2.0-or-later
+    - MIT
+summary     : Wizard to import mbox email archives into Akonadi
+description : |
+    An assistant that imports mbox files into Akonadi for use with KDE PIM applications.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6Service)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KPim6Akonadi)
+    - cmake(KPim6IdentityManagementCore)
+    - cmake(KPim6MailCommon)
+    - cmake(KPim6MailImporterAkonadi)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
