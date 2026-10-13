@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kcharselect
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kcharselect-26.08.2.tar.xz : ce50299a111f8a6e346a52cbf65d77c90d991fb94c5219a19d339e17a6b3fa9b
+homepage    : https://apps.kde.org/kcharselect/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GPL-2.0-or-later
+summary     : Character and Unicode selector
+description : |
+    KCharSelect is a tool to select special characters from all installed fonts and copy them into the clipboard.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Bookmarks)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6XmlGui)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
