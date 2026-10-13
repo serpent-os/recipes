@@ -281,6 +281,15 @@
 			"name": "font-zed-mono-nerd"
 		},
 		"nerd-fonts": {
+			"depends": [
+				"font-cascadia-code",
+				"font-firacode-nerd",
+				"font-ibmplex-mono-nerd",
+				"font-roboto-mono-nerd",
+				"font-symbols-nerd",
+				"font-terminus-nerd",
+				"font-zed-mono-nerd"
+			],
 			"files": [
 				"/usr/share/fonts/truetype/LICENSE.md"
 			],
@@ -288,6 +297,6 @@
 		}
 	},
 	"source-name": "nerd-fonts",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "3.5.1"
 }
