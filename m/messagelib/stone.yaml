@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : messagelib
 version     : "26.08.2"
-release     : 25
+release     : 26
 upstreams   :
     - https://download.kde.org/stable/release-service/26.08.2/src/messagelib-26.08.2.tar.xz : 7a6003d027042ad9f69a16f84cb0132cb8a306c28ac0fa70087b505dccca6e3b
 homepage    : https://kde.org
@@ -55,11 +55,23 @@ build       : |
 install     : |
     %cmake_install
 packages    :
+    # KPim6Message*Config.cmake find_dependency()s these, so consumers need them present
     - "%(name)-devel":
         rundeps:
+            - cmake(KF6ColorScheme)
+            - cmake(KF6Contacts)
+            - cmake(KF6I18n)
             - cmake(KF6Mime)
+            - cmake(KF6Service)
+            - cmake(KF6TextAutoCorrectionWidgets)
+            - cmake(KF6TextCustomEditor)
+            - cmake(KPim6Akonadi)
             - cmake(KPim6AkonadiMime)
+            - cmake(KPim6IdentityManagementCore)
             - cmake(KPim6IdentityManagementWidgets)
             - cmake(KPim6Libkleo)
+            - cmake(KPim6Mbox)
+            - cmake(KPim6MimeTreeParser)
             - cmake(KPim6PimCommon)
+            - cmake(KPim6PimCommonAkonadi)
             - cmake(Qt6WebEngineWidgets)

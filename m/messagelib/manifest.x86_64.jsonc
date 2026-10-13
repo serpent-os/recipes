@@ -644,11 +644,22 @@
 				"cmake(Qt6WebEngineWidgets)"
 			],
 			"depends": [
+				"cmake(KF6ColorScheme)",
+				"cmake(KF6Contacts)",
+				"cmake(KF6I18n)",
 				"cmake(KF6Mime)",
+				"cmake(KF6Service)",
+				"cmake(KF6TextAutoCorrectionWidgets)",
+				"cmake(KF6TextCustomEditor)",
+				"cmake(KPim6Akonadi)",
 				"cmake(KPim6AkonadiMime)",
+				"cmake(KPim6IdentityManagementCore)",
 				"cmake(KPim6IdentityManagementWidgets)",
 				"cmake(KPim6Libkleo)",
+				"cmake(KPim6Mbox)",
+				"cmake(KPim6MimeTreeParser)",
 				"cmake(KPim6PimCommon)",
+				"cmake(KPim6PimCommonAkonadi)",
 				"cmake(Qt6WebEngineWidgets)",
 				"messagelib"
 			],
@@ -1237,6 +1248,6 @@
 		}
 	},
 	"source-name": "messagelib",
-	"source-release": "25",
+	"source-release": "26",
 	"source-version": "26.08.2"
 }
