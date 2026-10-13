@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : falkon
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/falkon-26.08.2.tar.xz : f59ed0b6fb12aee5a3ed310e489104b815e35a19278bd7e80f9c5ef444616f07
+homepage    : https://apps.kde.org/falkon/
+license     :
+    - GPL-3.0-or-later
+summary     : Web browser
+description : |
+    Falkon is a cross-platform Qt-based web browser using the QtWebEngine engine, with support for extensions, bookmarks and a built-in ad blocker.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6I18n)
+    - cmake(KF6JobWidgets)
+    - cmake(KF6KIO)
+    - cmake(KF6Purpose)
+    - cmake(KF6Wallet)
+    - cmake(Qt6NetworkPrivate)
+    - cmake(Qt6QuickWidgets)
+    - cmake(Qt6WebChannel)
+    - cmake(Qt6WebEngineCore)
+    - cmake(Qt6WebEngineWidgets)
+    - pkgconfig(openssl)
+    - pkgconfig(xcb)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6 \
+        -DBUILD_PYTHON_SUPPORT=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
