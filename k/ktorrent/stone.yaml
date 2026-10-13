@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : ktorrent
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/ktorrent-26.08.2.tar.xz : 5b85388c87ae6173cf8744ce43a34b1d04f3e0c21e0af413f270c927de3a19fb
+homepage    : https://apps.kde.org/ktorrent/
+license     :
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - LGPL-2.0-only
+summary     : BitTorrent client
+description : |
+    KTorrent is a BitTorrent application by KDE which allows you to download files using the BitTorrent protocol. It enables you to run multiple torrents at the same time and comes with extended features to make it a full-featured client.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DNSSD)
+    - cmake(KF6DocTools)
+    - cmake(KF6GlobalAccel)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6ItemViews)
+    - cmake(KF6KCMUtils)
+    - cmake(KF6KIO)
+    - cmake(KF6Notifications)
+    - cmake(KF6NotifyConfig)
+    - cmake(KF6Parts)
+    - cmake(KF6Plotting)
+    - cmake(KF6StatusNotifierItem)
+    - cmake(KF6Syndication)
+    - cmake(KF6TextWidgets)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+    - cmake(KTorrent6)
+    - cmake(Qt6Core5Compat)
+    - cmake(Qt6WebEngineWidgets)
+    - pkgconfig(libmaxminddb)
+    - pkgconfig(taglib)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6 \
+        -DBUILD_TESTING=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check       : |
+    env QT_QPA_PLATFORM=offscreen %cmake_test
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
