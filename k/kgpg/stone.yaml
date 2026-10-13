@@ -1,0 +1,52 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kgpg
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kgpg-26.08.2.tar.xz : 31d9c98e353882eff6b8218572eec1918f7fb4d1d4b6ce595a02c877be3d985c
+homepage    : https://apps.kde.org/kgpg/
+license     :
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+summary     : Graphical interface for GnuPG
+description : |
+    KGpg is a GUI frontend for GnuPG based on the KDE stack.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6Codecs)
+    - cmake(KF6Contacts)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6JobWidgets)
+    - cmake(KF6KIO)
+    - cmake(KF6Notifications)
+    - cmake(KF6Service)
+    - cmake(KF6StatusNotifierItem)
+    - cmake(KF6TextWidgets)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+    - cmake(KPim6AkonadiContactWidgets)
+    - pkgconfig(gpgme)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %patch %(pkgdir)/0001-Restrict-the-autostart-entry-to-KDE.patch
+
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
