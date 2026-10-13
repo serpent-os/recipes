@@ -3,7 +3,7 @@
 
 name        : nerd-fonts
 version     : "3.5.1"
-release     : 6
+release     : 7
 homepage    : https://github.com/ryanoasis/nerd-fonts
 upstreams   :
     - https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/NerdFontsSymbolsOnly.tar.xz:
@@ -47,6 +47,16 @@ install     : |
            %(installroot)%(datadir)/fonts/truetype/README.md
 
 packages    :
+    - "%(name)":
+        rundeps:
+            - "font-symbols-nerd"
+            - "font-firacode-nerd"
+            - "font-cascadia-code"
+            - "font-ibmplex-mono-nerd"
+            - "font-roboto-mono-nerd"
+            - "font-terminus-nerd"
+            - "font-zed-mono-nerd"
+
     - "font-symbols-nerd":
         summary: Symbols only nerd font
         description: Nerd font with symbols only
