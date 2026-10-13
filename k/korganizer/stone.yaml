@@ -1,0 +1,71 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : korganizer
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/korganizer-26.08.2.tar.xz : e0b736e452a0203e265255a1e46c27526fe23d85e8aa8b8b62c40cd79b21dcce
+homepage    : https://apps.kde.org/korganizer/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GPL-2.0-or-later
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - LGPL-2.1-or-later
+    - LGPL-3.0-only
+    - MIT
+summary     : Calendar and scheduling program
+description : |
+    KOrganizer provides management of events and tasks, alarm notification, web export, network transparent handling of data, group scheduling, import and export of calendar files and more.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6CalendarCore)
+    - cmake(KF6Config)
+    - cmake(KF6Contacts)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DocTools)
+    - cmake(KF6Holidays)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6ItemViews)
+    - cmake(KF6JobWidgets)
+    - cmake(KF6KCMUtils)
+    - cmake(KF6KIO)
+    - cmake(KF6Mime)
+    - cmake(KF6Parts)
+    - cmake(KF6TextAddonsWidgets)
+    - cmake(KF6UserFeedback)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+    - cmake(KPim6Akonadi)
+    - cmake(KPim6AkonadiCalendar)
+    - cmake(KPim6AkonadiContactWidgets)
+    - cmake(KPim6CalendarSupport)
+    - cmake(KPim6CalendarUtils)
+    - cmake(KPim6EventViews)
+    - cmake(KPim6IncidenceEditor)
+    - cmake(KPim6KontactInterface)
+    - cmake(KPim6LdapWidgets)
+    - cmake(KPim6Libkdepim)
+    - cmake(KPim6MailTransport)
+    - cmake(KPim6PimCommonActivities)
+    - cmake(KPim6PimCommonAkonadi)
+    - pkgconfig(x11)
+rundeps     :
+    - kdepim-runtime
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
