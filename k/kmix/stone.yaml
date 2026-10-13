@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kmix
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kmix-26.08.2.tar.xz : 25e52a2f513afdec3b6c742bd5a279f227bcfe174555dcb288b6c61e088091a2
+homepage    : https://apps.kde.org/kmix/
+license     : GPL-2.0-or-later
+summary     : Volume control and mixer
+description : |
+    KMix is a sound channel mixer and volume control for KDE.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6GlobalAccel)
+    - cmake(KF6I18n)
+    - cmake(KF6Notifications)
+    - cmake(KF6Solid)
+    - cmake(KF6StatusNotifierItem)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+    - cmake(Qt6Xml)
+    - pkgconfig(alsa)
+    - pkgconfig(libcanberra)
+    - pkgconfig(libpulse)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
