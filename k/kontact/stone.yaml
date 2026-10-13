@@ -1,0 +1,52 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kontact
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kontact-26.08.2.tar.xz : 3d26032dad5f07739c5c24c62ba56a5948a4e25840df2b01f781eaf65000c5fc
+homepage    : https://apps.kde.org/kontact/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GFDL-1.2-or-later
+    - GPL-2.0-or-later
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - MIT
+summary     : Integrated personal information manager
+description : |
+    Kontact is the integrated solution to your personal information management (PIM) needs. It combines well-known KDE applications like KMail, KOrganizer and KAddressBook into a single interface.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6KCMUtils)
+    - cmake(KF6TextAddonsWidgets)
+    - cmake(KPim6GrantleeTheme)
+    - cmake(KPim6KontactInterface)
+    - cmake(KPim6Libkdepim)
+    - cmake(KPim6PimCommon)
+    - cmake(Qt6WebEngineCore)
+rundeps     :
+    - akregator
+    - kaddressbook
+    - kmail
+    - korganizer
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
