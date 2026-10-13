@@ -157,8 +157,13 @@
 				"cmake(PlasmaActivities)"
 			],
 			"depends": [
+				"cmake(KF6Completion)",
+				"cmake(KF6Config)",
 				"cmake(KF6Contacts)",
+				"cmake(KF6KIO)",
+				"cmake(KF6TextAddonsWidgets)",
 				"cmake(KF6TextAutoCorrectionWidgets)",
+				"cmake(KF6TextCustomEditor)",
 				"cmake(KPim6Akonadi)",
 				"cmake(KPim6AkonadiContactWidgets)",
 				"cmake(KPim6IMAP)",
@@ -304,6 +309,6 @@
 		}
 	},
 	"source-name": "pimcommon",
-	"source-release": "24",
+	"source-release": "25",
 	"source-version": "26.08.2"
 }
