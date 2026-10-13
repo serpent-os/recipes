@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kgraphviewer
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kgraphviewer-26.08.2.tar.xz : 2841af8c2228f933febd0c3ae89923690923b29b7b9a0e0fb2ebeec74d153177
+homepage    : https://apps.kde.org/kgraphviewer/
+license     : GPL-2.0-only
+summary     : Graphviz dot graph file viewer
+description : |
+    Graphviz dot graph file viewer.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(Boost)
+    - cmake(ECM)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6Parts)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6XmlGui)
+    - cmake(Qt6Core5Compat)
+    - cmake(Qt6Svg)
+    - pkgconfig(libgvc)
+rundeps     :
+    # - binary(dot) - only needed for the "external" parsing mode; could be an optional/recommends dependency
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
