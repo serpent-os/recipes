@@ -1,0 +1,86 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"audiofile": {
+			"build-depends": [
+				"pkgconfig(flac)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libFLAC.so.14(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/sfconvert",
+				"/usr/bin/sfinfo",
+				"/usr/lib/libaudiofile.so.1",
+				"/usr/lib/libaudiofile.so.1.0.0",
+				"/usr/share/man/man1/sfconvert.1",
+				"/usr/share/man/man1/sfinfo.1"
+			],
+			"name": "audiofile",
+			"provides": [
+				"binary(sfconvert)",
+				"binary(sfinfo)",
+				"soname(libaudiofile.so.1(x86_64))"
+			]
+		},
+		"audiofile-devel": {
+			"build-depends": [
+				"pkgconfig(flac)"
+			],
+			"depends": [
+				"audiofile"
+			],
+			"files": [
+				"/usr/include/af_vfs.h",
+				"/usr/include/audiofile.h",
+				"/usr/include/aupvlist.h",
+				"/usr/lib/libaudiofile.so",
+				"/usr/lib/pkgconfig/audiofile.pc",
+				"/usr/share/man/man3/afCloseFile.3",
+				"/usr/share/man/man3/afGetDataOffset.3",
+				"/usr/share/man/man3/afGetFrameCount.3",
+				"/usr/share/man/man3/afGetFrameSize.3",
+				"/usr/share/man/man3/afGetTrackBytes.3",
+				"/usr/share/man/man3/afInitAESChannelData.3",
+				"/usr/share/man/man3/afInitAESChannelDataTo.3",
+				"/usr/share/man/man3/afInitByteOrder.3",
+				"/usr/share/man/man3/afInitChannels.3",
+				"/usr/share/man/man3/afInitCompression.3",
+				"/usr/share/man/man3/afInitFileFormat.3",
+				"/usr/share/man/man3/afInitRate.3",
+				"/usr/share/man/man3/afInitSampleFormat.3",
+				"/usr/share/man/man3/afNewFileSetup.3",
+				"/usr/share/man/man3/afOpenFile.3",
+				"/usr/share/man/man3/afQuery.3",
+				"/usr/share/man/man3/afQueryDouble.3",
+				"/usr/share/man/man3/afQueryLong.3",
+				"/usr/share/man/man3/afQueryPointer.3",
+				"/usr/share/man/man3/afReadFrames.3",
+				"/usr/share/man/man3/afReadMisc.3",
+				"/usr/share/man/man3/afSeekFrame.3",
+				"/usr/share/man/man3/afSeekMisc.3",
+				"/usr/share/man/man3/afSetErrorHandler.3",
+				"/usr/share/man/man3/afSetVirtualByteOrder.3",
+				"/usr/share/man/man3/afSetVirtualChannels.3",
+				"/usr/share/man/man3/afSetVirtualPCMMapping.3",
+				"/usr/share/man/man3/afSetVirtualSampleFormat.3",
+				"/usr/share/man/man3/afTellFrame.3",
+				"/usr/share/man/man3/afWriteFrames.3",
+				"/usr/share/man/man3/afWriteMisc.3"
+			],
+			"name": "audiofile-devel",
+			"provides": [
+				"pkgconfig(audiofile)"
+			]
+		}
+	},
+	"source-name": "audiofile",
+	"source-release": "1",
+	"source-version": "0.3.6"
+}

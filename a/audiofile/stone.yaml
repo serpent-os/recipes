@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : audiofile
+version     : "0.3.6"
+release     : 1
+upstreams   :
+    - https://download.gnome.org/sources/audiofile/0.3/audiofile-0.3.6.tar.xz : ea2449ad3f201ec590d811db9da6d02ffc5e87a677d06b92ab15363d8cb59782
+homepage    : https://audiofile.68k.org/
+license     :
+    - Apache-2.0
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+summary     : Library for reading and writing audio file formats
+description : |
+    The Audio File Library provides a uniform and elegant API for accessing a variety of audio file formats, such as AIFF/AIFF-C, WAVE, NeXT/Sun .snd/.au, Berkeley/IRCAM/CARL Sound File, and FLAC.
+builddeps   :
+    - pkgconfig(flac)
+setup       : |
+    %patch %(pkgdir)/0001-Fix-deprecation-warnings-with-Clang.patch
+    %patch %(pkgdir)/0002-Fix-buffer-overflow-when-changing-sample-format-and-.patch
+    %patch %(pkgdir)/0003-Fix-multiple-vulnerabilities-CVE-2017-6827-through-C.patch
+    %patch %(pkgdir)/0004-Fix-CVE-2018-13440-and-CVE-2018-17095.patch
+    %patch %(pkgdir)/0005-Fix-undefined-behaviour-and-narrowing-conversions-fo.patch
+    %patch %(pkgdir)/0006-Fix-Werror-strict-prototypes.patch
+    %patch %(pkgdir)/0007-Fix-CVE-2019-13147.patch
+    %patch %(pkgdir)/0008-Fix-CVE-2022-24599.patch
+    %patch %(pkgdir)/0009-Fix-narrowing-conversion-in-the-Sign-test.patch
+
+    %reconfigure \
+        --enable-static
+build       : |
+    %make
+check       : |
+    %make check
+install     : |
+    %make_install
+
+    # The tests link the static library; it is not needed at runtime
+    rm -f %(installroot)%(libdir)/libaudiofile.a

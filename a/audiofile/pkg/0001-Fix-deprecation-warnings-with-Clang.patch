@@ -1,0 +1,83 @@
+From 7f47585f82729df548de5998e948b38c5d0e8519 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 1/6] Fix deprecation warnings with Clang
+
+Address -Wdeprecated-copy warnings with Clang.
+
+Origin: https://github.com/mpruett/audiofile/issues/65
+Forwarded: not-needed
+Last-Update: 2026-10-12
+---
+ libaudiofile/modules/SimpleModule.h | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/libaudiofile/modules/SimpleModule.h b/libaudiofile/modules/SimpleModule.h
+index 03c6c69..a3c3eac 100644
+--- a/libaudiofile/modules/SimpleModule.h
++++ b/libaudiofile/modules/SimpleModule.h
+@@ -125,13 +125,17 @@ struct signConverter
+ 	static const int kScaleBits = (Format + 1) * CHAR_BIT - 1;
+ 	static const int kMinSignedValue = -1 << kScaleBits;
+ 
+-	struct signedToUnsigned : public std::unary_function<SignedType, UnsignedType>
++	struct signedToUnsigned
+ 	{
++		typedef SignedType argument_type;
++		typedef UnsignedType result_type;
+ 		UnsignedType operator()(SignedType x) { return x - kMinSignedValue; }
+ 	};
+ 
+-	struct unsignedToSigned : public std::unary_function<SignedType, UnsignedType>
++	struct unsignedToSigned
+ 	{
++		typedef SignedType argument_type;
++		typedef UnsignedType result_type;
+ 		SignedType operator()(UnsignedType x) { return x + kMinSignedValue; }
+ 	};
+ };
+@@ -323,8 +327,10 @@ private:
+ };
+ 
+ template <typename Arg, typename Result>
+-struct intToFloat : public std::unary_function<Arg, Result>
++struct intToFloat
+ {
++	typedef Arg argument_type;
++	typedef Result result_type;
+ 	Result operator()(Arg x) const { return x; }
+ };
+ 
+@@ -389,14 +395,18 @@ private:
+ };
+ 
+ template <typename Arg, typename Result, unsigned shift>
+-struct lshift : public std::unary_function<Arg, Result>
++struct lshift
+ {
++	typedef Arg argument_type;
++	typedef Result result_type;
+ 	Result operator()(const Arg &x) const { return x << shift; }
+ };
+ 
+ template <typename Arg, typename Result, unsigned shift>
+-struct rshift : public std::unary_function<Arg, Result>
++struct rshift
+ {
++	typedef Arg argument_type;
++	typedef Result result_type;
+ 	Result operator()(const Arg &x) const { return x >> shift; }
+ };
+ 
+@@ -491,8 +501,10 @@ private:
+ };
+ 
+ template <typename Arg, typename Result>
+-struct floatToFloat : public std::unary_function<Arg, Result>
++struct floatToFloat
+ {
++	typedef Arg argument_type;
++	typedef Result result_type;
+ 	Result operator()(Arg x) const { return x; }
+ };
+ 
