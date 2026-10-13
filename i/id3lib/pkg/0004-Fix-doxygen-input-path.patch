@@ -1,0 +1,35 @@
+From faac4a634521896a55c237205ca19ee748870bbe Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 04/11] Fix doxygen input path
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ doc/Doxyfile | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/doc/Doxyfile b/doc/Doxyfile
+index 72478b3..bd11d42 100644
+--- a/doc/Doxyfile
++++ b/doc/Doxyfile
+@@ -262,17 +262,7 @@ WARN_FORMAT            = "$file:$line: $text"
+ # with spaces. 
+ 
+ INPUT                  = ../src \
+-                         ../include/id3/field.h \
+-                         ../include/id3/frame.h \
+-                         ../include/id3/globals.h \
+-                         ../include/id3/misc_support.h \
+-                         ../include/id3/reader.h \
+-                         ../include/id3/readers.h \
+-                         ../include/id3/sized_types.h \
+-                         ../include/id3/tag.h \
+-                         ../include/id3/tag.h \
+-                         ../include/id3/writer.h \
+-                         ../include/id3/writers.h
++                         ../include/id3 \
+ 
+ 
+ # If the value of the INPUT tag contains directories, you can use the 

@@ -1,0 +1,63 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"id3lib": {
+			"build-depends": [
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libstdc++.so.6(x86_64))",
+				"soname(libz.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/bin/id3convert",
+				"/usr/bin/id3cp",
+				"/usr/bin/id3info",
+				"/usr/bin/id3tag",
+				"/usr/lib/libid3-3.8.so.3",
+				"/usr/lib/libid3-3.8.so.3.0.0"
+			],
+			"name": "id3lib",
+			"provides": [
+				"binary(id3convert)",
+				"binary(id3cp)",
+				"binary(id3info)",
+				"binary(id3tag)",
+				"soname(libid3-3.8.so.3(x86_64))"
+			]
+		},
+		"id3lib-devel": {
+			"build-depends": [
+				"pkgconfig(zlib)"
+			],
+			"depends": [
+				"id3lib"
+			],
+			"files": [
+				"/usr/include/id3.h",
+				"/usr/include/id3/field.h",
+				"/usr/include/id3/globals.h",
+				"/usr/include/id3/id3lib_frame.h",
+				"/usr/include/id3/id3lib_streams.h",
+				"/usr/include/id3/id3lib_strings.h",
+				"/usr/include/id3/misc_support.h",
+				"/usr/include/id3/reader.h",
+				"/usr/include/id3/readers.h",
+				"/usr/include/id3/sized_types.h",
+				"/usr/include/id3/tag.h",
+				"/usr/include/id3/utils.h",
+				"/usr/include/id3/writer.h",
+				"/usr/include/id3/writers.h",
+				"/usr/lib/libid3.so"
+			],
+			"name": "id3lib-devel"
+		}
+	},
+	"source-name": "id3lib",
+	"source-release": "1",
+	"source-version": "3.8.3"
+}

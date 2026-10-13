@@ -1,0 +1,107 @@
+From c77dfc8e500c76d6ea228e70ea682f354fb65b65 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 06/11] Fix build with GCC 4.3 and newer
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ configure.in                 | 1 -
+ examples/demo_convert.cpp    | 2 +-
+ examples/demo_copy.cpp       | 2 +-
+ examples/demo_info.cpp       | 2 +-
+ examples/demo_tag.cpp        | 2 +-
+ include/id3/id3lib_strings.h | 1 +
+ include/id3/writers.h        | 2 +-
+ 7 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index fc8cdf3..53415dd 100644
+--- a/configure.in
++++ b/configure.in
+@@ -227,7 +227,6 @@ AC_CHECK_HEADERS(fstream iostream iomanip vector \
+ )
+ AC_CHECK_HEADERS(               \
+   string                        \
+-  iomanip.h                     \
+   ,,AC_MSG_ERROR([Missing a vital header file for id3lib])
+ )
+ 
+diff --git a/examples/demo_convert.cpp b/examples/demo_convert.cpp
+index a0d1cee..af9e11d 100644
+--- a/examples/demo_convert.cpp
++++ b/examples/demo_convert.cpp
+@@ -84,7 +84,7 @@ void DisplayTags(ostream &os, luint nTags)
+   }
+ }
+ 
+-int main( unsigned int argc, char * const argv[])
++int main( int argc, char * const argv[])
+ {
+   flags_t ulFlag = ID3TT_ALL;
+   gengetopt_args_info args;
+diff --git a/examples/demo_copy.cpp b/examples/demo_copy.cpp
+index b24e09c..ef05aae 100644
+--- a/examples/demo_copy.cpp
++++ b/examples/demo_copy.cpp
+@@ -81,7 +81,7 @@ void DisplayTags(ostream &os, luint nTags)
+   }
+ }
+ 
+-int main( unsigned int argc, char * const argv[])
++int main( int argc, char * const argv[])
+ {
+   int ulFlag = ID3TT_ID3;
+   ID3D_INIT_DOUT();
+diff --git a/examples/demo_info.cpp b/examples/demo_info.cpp
+index 37f4e73..ec97ae2 100644
+--- a/examples/demo_info.cpp
++++ b/examples/demo_info.cpp
+@@ -309,7 +309,7 @@ void PrintInformation(const ID3_Tag &myTag)
+ 
+ #define DEBUG
+ 
+-int main( unsigned int argc, char * const argv[])
++int main( int argc, char * const argv[])
+ {
+   ID3D_INIT_DOUT();
+ 
+diff --git a/examples/demo_tag.cpp b/examples/demo_tag.cpp
+index 0b0ee72..5bfe426 100644
+--- a/examples/demo_tag.cpp
++++ b/examples/demo_tag.cpp
+@@ -46,7 +46,7 @@ void DisplayTags(ostream &os, luint nTags)
+     os << "v2";
+ }
+ 
+-int main( unsigned int argc, char * const argv[])
++int main( int argc, char * const argv[])
+ {
+   int ulFlag = ID3TT_ID3;
+   ID3D_INIT_DOUT();
+diff --git a/include/id3/id3lib_strings.h b/include/id3/id3lib_strings.h
+index f326cdf..044599d 100644
+--- a/include/id3/id3lib_strings.h
++++ b/include/id3/id3lib_strings.h
+@@ -30,6 +30,7 @@
+ #define _ID3LIB_STRINGS_H_
+ 
+ #include <string>
++#include <cstring>
+ 
+ #if (defined(__GNUC__) && (__GNUC__ >= 3) || (defined(_MSC_VER) && _MSC_VER > 1000))
+ namespace std
+diff --git a/include/id3/writers.h b/include/id3/writers.h
+index 1cbb0dc..4bc8f77 100644
+--- a/include/id3/writers.h
++++ b/include/id3/writers.h
+@@ -30,7 +30,7 @@
+ 
+ #include "id3/writer.h"
+ #include "id3/id3lib_streams.h"
+-//#include <string.h>
++#include <string.h>
+ 
+ class ID3_CPP_EXPORT ID3_OStreamWriter : public ID3_Writer
+ {

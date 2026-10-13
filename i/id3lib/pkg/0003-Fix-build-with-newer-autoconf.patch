@@ -1,0 +1,43 @@
+From 3146d4aa65f446d42c2bcbfa0359950e44c62320 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 03/11] Fix build with newer autoconf
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ configure.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index c857735..fc8cdf3 100644
+--- a/configure.in
++++ b/configure.in
+@@ -168,7 +168,7 @@ if test $has_iconv = 1; then
+ 		iconv_oldstyle=1, iconv_oldstyle=0)
+   if test $iconv_oldstyle = 1; then
+     AC_MSG_RESULT(const char **)
+-    AC_DEFINE(ID3LIB_ICONV_OLDSTYLE)
++    AC_DEFINE(ID3LIB_ICONV_OLDSTYLE, [], [Unknown])
+     #we'll check out the need of
+     #typecast in the call of iconv_open
+     AC_MSG_CHECKING(whether to typecast in iconv)
+@@ -184,7 +184,7 @@ if test $has_iconv = 1; then
+                    iconv_cast=0, iconv_cast=1)
+     if test $iconv_cast = 1; then
+       AC_MSG_RESULT(yes)
+-      AC_DEFINE(ID3LIB_ICONV_CAST_OK)
++      AC_DEFINE(ID3LIB_ICONV_CAST_OK, [], [Unknown])
+     else
+       AC_MSG_RESULT(no)
+     fi
+@@ -206,7 +206,7 @@ if test $has_iconv = 1; then
+                    iconv_cast=0, iconv_cast=1)
+     if test $iconv_cast = 1; then
+       AC_MSG_RESULT(yes)
+-      AC_DEFINE(ID3LIB_ICONV_CAST_OK)
++      AC_DEFINE(ID3LIB_ICONV_CAST_OK, [], [Unknown])
+     else
+       AC_MSG_RESULT(no)
+     fi

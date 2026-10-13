@@ -1,0 +1,25 @@
+From d3fdb070ad2b4737434e9f5aa324872af6c48428 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 07/11] Add a missing null pointer check
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ src/header_tag.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/header_tag.cpp b/src/header_tag.cpp
+index ec3b3ef..44eea94 100644
+--- a/src/header_tag.cpp
++++ b/src/header_tag.cpp
+@@ -54,7 +54,7 @@ size_t ID3_TagHeader::Size() const
+ {
+   size_t bytesUsed = ID3_TagHeader::SIZE;
+ 
+-  if (_info->is_extended)
++  if (_info && _info->is_extended)
+   {
+     bytesUsed += _info->extended_bytes;
+   }
