@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : lmdb
-version     : "0.9.35"
-release     : 15
+version     : "0.9.36"
+release     : 16
 homepage    : https://www.symas.com/lmdb
 upstreams   :
-    - https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.35/openldap-LMDB_0.9.35.tar.gz : 0d090c6a7c85a4f31a2ab0d734554c21097f24752393a190b0e51996b08f48c4
+    - https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.36/openldap-LMDB_0.9.36.tar.gz : 90a595ea500074af61b213464452d8d212405261094667a686357467ae7b57b9
 summary     : Symas Lightning Memory-Mapped Database
 description : |
     Symas Lightning Memory-Mapped Database
