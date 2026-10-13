@@ -117,6 +117,7 @@
 				"cmake(KF6WidgetsAddons)"
 			],
 			"depends": [
+				"cmake(KF6Completion)",
 				"libkdepim",
 				"soname(libKPim6Libkdepim.so.6(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
@@ -162,6 +163,6 @@
 		}
 	},
 	"source-name": "libkdepim",
-	"source-release": "18",
+	"source-release": "19",
 	"source-version": "26.08.2"
 }
