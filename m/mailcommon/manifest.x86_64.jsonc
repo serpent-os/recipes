@@ -165,6 +165,14 @@
 				"cmake(Qt6Multimedia)"
 			],
 			"depends": [
+				"cmake(KF6Completion)",
+				"cmake(KPim6Akonadi)",
+				"cmake(KPim6AkonadiMime)",
+				"cmake(KPim6Libkdepim)",
+				"cmake(KPim6MessageComposer)",
+				"cmake(KPim6MessageViewer)",
+				"cmake(KPim6PimCommon)",
+				"cmake(KPim6PimCommonAkonadi)",
 				"mailcommon",
 				"soname(libKPim6MailCommon.so.6(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
@@ -298,6 +306,6 @@
 		}
 	},
 	"source-name": "mailcommon",
-	"source-release": "21",
+	"source-release": "22",
 	"source-version": "26.08.2"
 }
