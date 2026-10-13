@@ -1,0 +1,50 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"mdadm": {
+			"build-depends": [
+				"pkgconfig(libudev)",
+				"pkgconfig(udev)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libudev.so.1(x86_64))"
+			],
+			"files": [
+				"/usr/lib/systemd/system-shutdown/mdadm.shutdown",
+				"/usr/lib/systemd/system/mdadm-grow-continue@.service",
+				"/usr/lib/systemd/system/mdadm-last-resort@.service",
+				"/usr/lib/systemd/system/mdadm-last-resort@.timer",
+				"/usr/lib/systemd/system/mdcheck_continue.service",
+				"/usr/lib/systemd/system/mdcheck_continue.timer",
+				"/usr/lib/systemd/system/mdcheck_start.service",
+				"/usr/lib/systemd/system/mdcheck_start.timer",
+				"/usr/lib/systemd/system/mdmon@.service",
+				"/usr/lib/systemd/system/mdmonitor-oneshot.service",
+				"/usr/lib/systemd/system/mdmonitor-oneshot.timer",
+				"/usr/lib/systemd/system/mdmonitor.service",
+				"/usr/lib/udev/rules.d/01-md-raid-creating.rules",
+				"/usr/lib/udev/rules.d/63-md-raid-arrays.rules",
+				"/usr/lib/udev/rules.d/64-md-raid-assembly.rules",
+				"/usr/lib/udev/rules.d/69-md-clustered-confirm-device.rules",
+				"/usr/sbin/mdadm",
+				"/usr/sbin/mdmon",
+				"/usr/share/man/man4/md.4",
+				"/usr/share/man/man5/mdadm.conf.5",
+				"/usr/share/man/man8/mdadm.8",
+				"/usr/share/man/man8/mdmon.8",
+				"/usr/share/mdadm/mdcheck"
+			],
+			"name": "mdadm",
+			"provides": [
+				"sysbinary(mdadm)",
+				"sysbinary(mdmon)"
+			]
+		}
+	},
+	"source-name": "mdadm",
+	"source-release": "1",
+	"source-version": "4.6"
+}

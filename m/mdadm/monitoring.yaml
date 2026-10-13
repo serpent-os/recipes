@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 1958
+  rss: https://github.com/md-raid-utilities/mdadm/releases.atom
+security:
+  # Last checked 2026-10-12
+  cpe:
+  - vendor: mdadm_project
+    product: mdadm
