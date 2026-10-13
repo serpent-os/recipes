@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kmines
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kmines-26.08.2.tar.xz : b88e3a8e7e3deacb2fc113d97deceb05662d188a9639d513acd34a2a88d25ea8
+homepage    : https://apps.kde.org/kmines/
+license     :
+    - BSD-3-Clause
+    - CC-BY-SA-4.0
+    - CC0-1.0
+    - GFDL-1.2-or-later
+    - GPL-2.0-or-later
+summary     : Minesweeper game
+description : |
+    KMines is a classic Minesweeper game. The idea is to uncover all the squares without blowing up any mines.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KDEGames6)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6TextWidgets)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6XmlGui)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
