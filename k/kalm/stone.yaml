@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kalm
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kalm-26.08.2.tar.xz : aeca52aa8e5c094df222dd29ac2b76711317b5f4a724a7255f7b1f51a3c5799d
+homepage    : https://apps.kde.org/kalm/
+license     :
+    - BSD-2-Clause
+    - CC-BY-SA-4.0
+    - CC0-1.0
+    - LGPL-2.1-or-later
+summary     : Breathing exercise trainer
+description : |
+    Kalm can teach you different breathing techniques to help you relax and focus.
+builddeps   :
+    - binary(python3)
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6I18n)
+    - cmake(KF6Kirigami)
+    - cmake(KF6KirigamiAddons)
+    - cmake(KF6QQC2DesktopStyle)
+    - cmake(Qt6QuickControls2)
+rundeps     :
+    - kf6-kirigami-addons
+    - kf6-qqc2-desktop-style
+    - qt6-wayland
+setup       : |
+    %cmake_kf6 \
+        -DBUILD_TESTING=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check       : |
+    env QT_QPA_PLATFORM=offscreen %cmake_test
