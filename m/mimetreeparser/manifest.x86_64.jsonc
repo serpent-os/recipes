@@ -160,6 +160,10 @@
 				"cmake(Qt6Qml)"
 			],
 			"depends": [
+				"cmake(KF6I18n)",
+				"cmake(KF6Mime)",
+				"cmake(KPim6Libkleo)",
+				"cmake(KPim6Mbox)",
 				"mimetreeparser"
 			],
 			"files": [
@@ -216,6 +220,6 @@
 		}
 	},
 	"source-name": "mimetreeparser",
-	"source-release": "31",
+	"source-release": "32",
 	"source-version": "26.08.2"
 }
