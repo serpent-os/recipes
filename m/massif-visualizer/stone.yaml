@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : massif-visualizer
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/massif-visualizer-26.08.2.tar.xz : c05c0fab639d72443e6f89f9ddd52b55c32ba0e830910d162d1c95c0b6f20b86
+homepage    : https://apps.kde.org/massif_visualizer/
+license     : GPL-2.0-or-later
+summary     : Visualizer for Valgrind Massif data files
+description : |
+    Inspect memory profiling data produced by Valgrind's Massif heap profiler.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KChart6)
+    - cmake(KF6Archive)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6KIO)
+    - cmake(KF6Parts)
+    - cmake(KGraphViewerPart)
+    - cmake(Qt6Core5Compat)
+    - cmake(Qt6Svg)
+    - pkgconfig(shared-mime-info)
+rundeps     :
+    - kgraphviewer
+    - qt6-wayland
+    - valgrind
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
