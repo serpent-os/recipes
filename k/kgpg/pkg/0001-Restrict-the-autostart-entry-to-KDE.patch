@@ -1,0 +1,38 @@
+From 0344f831b69b94e27fc5af56ffa3cf570fdf72a9 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 13 Oct 2026 12:00:00 -0500
+Subject: [PATCH] Restrict the autostart entry to KDE
+
+X-KDE-autostart-condition is a Plasma-only extension. Desktops that implement
+the XDG autostart specification but not that extension ignore the condition and
+start kgpg unconditionally, so restrict the autostart entry to KDE via
+OnlyShowIn. The application-menu entry is left untouched so kgpg stays visible
+on every desktop.
+
+Origin: https://bugzilla.redhat.com/show_bug.cgi?id=1427707
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ CMakeLists.txt | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 818278c..068bd82 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -284,7 +284,14 @@ install(TARGETS kgpg  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+ install( PROGRAMS org.kde.kgpg.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
+ install( FILES org.kde.kgpg.appdata.xml  DESTINATION ${KDE_INSTALL_METAINFODIR})
+ install( FILES kgpg.kcfg  DESTINATION ${KDE_INSTALL_KCFGDIR})
+-install( FILES org.kde.kgpg.desktop  DESTINATION ${KDE_INSTALL_AUTOSTARTDIR} )
++# Only Plasma honours X-KDE-autostart-condition; other desktops implement the XDG
++# autostart specification but not the KDE extension, so they would start kgpg
++# unconditionally. Restrict the autostart entry to KDE. The application-menu
++# entry is left untouched.
++file(READ "${CMAKE_CURRENT_SOURCE_DIR}/org.kde.kgpg.desktop" _kgpg_autostart_desktop)
++string(REPLACE "[Desktop Entry]" "[Desktop Entry]\nOnlyShowIn=KDE;" _kgpg_autostart_desktop "${_kgpg_autostart_desktop}")
++file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/org.kde.kgpg.autostart.desktop" "${_kgpg_autostart_desktop}")
++install( FILES "${CMAKE_CURRENT_BINARY_DIR}/org.kde.kgpg.autostart.desktop" DESTINATION ${KDE_INSTALL_AUTOSTARTDIR} RENAME org.kde.kgpg.desktop )
+ 
+ install( PROGRAMS kgpg_encryptfile.desktop kgpg_encryptfolder.desktop kgpg_viewdecrypted.desktop  DESTINATION ${KDE_INSTALL_DATADIR}/kio/servicemenus )
+ install( FILES org.kde.kgpg.Key.xml DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR})
