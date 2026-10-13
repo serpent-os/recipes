@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : pimcommon
 version     : "26.08.2"
-release     : 24
+release     : 25
 upstreams   :
     - https://download.kde.org/stable/release-service/26.08.2/src/pimcommon-26.08.2.tar.xz : b93967e0d198893b5fcf8a90e76ae63c465d8613ee1b4529ac9425216c36f15e
 homepage    : https://kde.org
@@ -42,10 +42,16 @@ build       : |
 install     : |
     %cmake_install
 packages    :
+    # KPim6PimCommonConfig.cmake find_dependency()s these, so consumers need them present
     - "%(name)-devel":
         rundeps:
+            - cmake(KF6Completion)
+            - cmake(KF6Config)
             - cmake(KF6Contacts)
+            - cmake(KF6KIO)
+            - cmake(KF6TextAddonsWidgets)
             - cmake(KF6TextAutoCorrectionWidgets)
+            - cmake(KF6TextCustomEditor)
             - cmake(KPim6Akonadi)
             - cmake(KPim6AkonadiContactWidgets)
             - cmake(KPim6IMAP)
