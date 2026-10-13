@@ -1,0 +1,62 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"lumine-capture": {
+			"build-depends": [
+				"pkgconfig(libpipewire-0.3)",
+				"pkgconfig(libspa-0.2)",
+				"pkgconfig(openssl)",
+				"pkgconfig(xkbcommon)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.4(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpipewire-0.3.so.0(x86_64))",
+				"soname(libssl.so.4(x86_64))",
+				"soname(libstdc++.so.6(x86_64))",
+				"soname(libxkbcommon.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/lumine-capture",
+				"/usr/share/applications/lumine-capture.desktop",
+				"/usr/share/doc/lumine-capture/README.md",
+				"/usr/share/doc/lumine-capture/lumine-capture-shortcuts-kde.kksrc",
+				"/usr/share/icons/hicolor/128x128/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/128x128/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/16x16/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/16x16/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/22x22/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/22x22/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/24x24/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/24x24/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/256x256/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/256x256/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/32x32/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/32x32/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/48x48/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/48x48/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/512x512/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/512x512/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/64x64/apps/lumine-capture.png",
+				"/usr/share/icons/hicolor/64x64/apps/lumine-pin.png",
+				"/usr/share/icons/hicolor/scalable/apps/lumine-capture.svg",
+				"/usr/share/icons/hicolor/scalable/apps/lumine-pin.svg",
+				"/usr/share/licenses/lumine-capture/LICENSE-APACHE",
+				"/usr/share/licenses/lumine-capture/LICENSE-MIT",
+				"/usr/share/licenses/lumine-capture/LICENSE-OFL-Inter.txt"
+			],
+			"name": "lumine-capture",
+			"provides": [
+				"binary(lumine-capture)"
+			]
+		}
+	},
+	"source-name": "lumine-capture",
+	"source-release": "1",
+	"source-version": "0.2.0"
+}
