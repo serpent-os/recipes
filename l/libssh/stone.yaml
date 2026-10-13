@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libssh
@@ -33,6 +33,7 @@ build       : |
 install     : |
     %cmake_install
 check       : |
-    # These tests probably need networking or a PTY
+    # torture_server_x11 / torture_server_direct_tcpip drive X11 and direct-tcpip
+    # channel forwards against an in-process server on 127.0.0.1 (loopback)
     %cmake_test \
         --exclude-regex 'torture_server_x11|torture_server_direct_tcpip'
