@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libcmis
+version     : "0.6.3"
+release     : 1
+upstreams   :
+    - https://dev-www.libreoffice.org/src/libcmis-0.6.3.tar.xz : 5adb3781f374adf491103b2cb2dc290085150c9b7d097baf56d8ac35df84e792
+homepage    : https://github.com/tdf/libcmis
+license     : MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
+summary     : C/C++ client library for the CMIS protocol
+description : |
+    libcmis is a C/C++ client library for the CMIS protocol. A cmis-client tool is provided to help testing and demonstrate libcmis features.
+builddeps   :
+    - binary(xmlto)
+    - binary(xsltproc)
+    - cmake(Boost)
+    - pkgconfig(cppunit)
+    - pkgconfig(libcurl)
+    - pkgconfig(libxml-2.0)
+    - docbook
+    - docbook-xsl
+environment : |
+    %export_docbook_catalogs
+setup       : |
+    %configure \
+        --disable-static \
+        --disable-werror
+build       : |
+    %make
+check       : |
+    %make check
+install     : |
+    %make_install
+packages    :
+    - "%(name)-tools":
+        summary: Command-line CMIS client
+        description: Command-line client for the CMIS protocol provided by libcmis.
+        paths:
+            - /usr/bin/
+            - /usr/share/man/

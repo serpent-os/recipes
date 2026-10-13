@@ -1,0 +1,131 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libcmis": {
+			"build-depends": [
+				"binary(xmlto)",
+				"binary(xsltproc)",
+				"cmake(Boost)",
+				"docbook",
+				"docbook-xsl",
+				"pkgconfig(cppunit)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"depends": [
+				"soname(libboost_date_time.so.1.92.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcurl.so.4(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libstdc++.so.6(x86_64))",
+				"soname(libxml2.so.16(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libcmis-0.6.so.6",
+				"/usr/lib/libcmis-0.6.so.6.1.2",
+				"/usr/lib/libcmis-c-0.6.so.6",
+				"/usr/lib/libcmis-c-0.6.so.6.0.1"
+			],
+			"name": "libcmis",
+			"provides": [
+				"soname(libcmis-0.6.so.6(x86_64))",
+				"soname(libcmis-c-0.6.so.6(x86_64))"
+			]
+		},
+		"libcmis-devel": {
+			"build-depends": [
+				"binary(xmlto)",
+				"binary(xsltproc)",
+				"cmake(Boost)",
+				"docbook",
+				"docbook-xsl",
+				"pkgconfig(cppunit)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"depends": [
+				"libcmis",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"files": [
+				"/usr/include/libcmis-0.6/libcmis/allowable-actions.hxx",
+				"/usr/include/libcmis-0.6/libcmis/document.hxx",
+				"/usr/include/libcmis-0.6/libcmis/exception.hxx",
+				"/usr/include/libcmis-0.6/libcmis/folder.hxx",
+				"/usr/include/libcmis-0.6/libcmis/libcmis-api.h",
+				"/usr/include/libcmis-0.6/libcmis/libcmis.hxx",
+				"/usr/include/libcmis-0.6/libcmis/oauth2-data.hxx",
+				"/usr/include/libcmis-0.6/libcmis/object-type.hxx",
+				"/usr/include/libcmis-0.6/libcmis/object.hxx",
+				"/usr/include/libcmis-0.6/libcmis/property-type.hxx",
+				"/usr/include/libcmis-0.6/libcmis/property.hxx",
+				"/usr/include/libcmis-0.6/libcmis/rendition.hxx",
+				"/usr/include/libcmis-0.6/libcmis/repository.hxx",
+				"/usr/include/libcmis-0.6/libcmis/session-factory.hxx",
+				"/usr/include/libcmis-0.6/libcmis/session.hxx",
+				"/usr/include/libcmis-0.6/libcmis/xml-utils.hxx",
+				"/usr/include/libcmis-0.6/libcmis/xmlserializable.hxx",
+				"/usr/include/libcmis-c-0.6/libcmis-c/allowable-actions.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/document.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/error.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/folder.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/libcmis-c-api.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/libcmis-c.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/oauth2-data.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/object-type.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/object.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/property-type.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/property.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/rendition.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/repository.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/session-factory.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/session.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/types.h",
+				"/usr/include/libcmis-c-0.6/libcmis-c/vectors.h",
+				"/usr/lib/libcmis-0.6.so",
+				"/usr/lib/libcmis-c-0.6.so",
+				"/usr/lib/pkgconfig/libcmis-0.6.pc",
+				"/usr/lib/pkgconfig/libcmis-c-0.6.pc"
+			],
+			"name": "libcmis-devel",
+			"provides": [
+				"pkgconfig(libcmis-0.6)",
+				"pkgconfig(libcmis-c-0.6)"
+			]
+		},
+		"libcmis-tools": {
+			"build-depends": [
+				"binary(xmlto)",
+				"binary(xsltproc)",
+				"cmake(Boost)",
+				"docbook",
+				"docbook-xsl",
+				"pkgconfig(cppunit)",
+				"pkgconfig(libcurl)",
+				"pkgconfig(libxml-2.0)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libboost_program_options.so.1.92.0(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libcmis-0.6.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cmis-client",
+				"/usr/share/man/man1/cmis-client.1"
+			],
+			"name": "libcmis-tools",
+			"provides": [
+				"binary(cmis-client)"
+			]
+		}
+	},
+	"source-name": "libcmis",
+	"source-release": "1",
+	"source-version": "0.6.3"
+}
