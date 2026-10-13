@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : sudo-rs
 version     : "0.2.15"
-release     : 21
+release     : 22
 homepage    : https://github.com/trifectatechfoundation/sudo-rs
 upstreams   :
     - https://github.com/trifectatechfoundation/sudo-rs/archive/refs/tags/v0.2.15.tar.gz : ae857c3cde962a1ade2b981f7e01cf95e9fa05d5c5f95f94cf5f35394c1bf899
@@ -14,8 +14,9 @@ license     :
     - Apache-2.0
     - MIT
 builddeps   :
-    - binary(go-md2man)
     - pkgconfig(pam)
+checkdeps   :
+    - tzdata
 networking  : true
 tuning      :
     - lto: thin
@@ -31,12 +32,15 @@ install     : |
     # su and sudo setuid permissions
     chmod 4755 %(installroot)%(bindir)/su
     chmod 4755 %(installroot)%(bindir)/sudo
+    ln -s sudo %(installroot)%(bindir)/sudoedit
 
     %install_dir %(installroot)%(sbindir)
     mv %(installroot)%(bindir)/visudo %(installroot)%(sbindir)/visudo
 
-    %install_dir %(installroot)%(mandir)/man1
-    %install_dir %(installroot)%(mandir)/man8
+    %install_file docs/man/su.1.man %(installroot)%(mandir)/man1/su.1
+    %install_file docs/man/sudo.8.man %(installroot)%(mandir)/man8/sudo.8
+    %install_file docs/man/sudoers.5.man %(installroot)%(mandir)/man5/sudoers.5
+    %install_file docs/man/visudo.8.man %(installroot)%(mandir)/man8/visudo.8
 
     %install_file %(pkgdir)/sudo.conf %(installroot)%(libdir)/tmpfiles.d/sudo.conf
     %install_file %(pkgdir)/sudo.pam %(installroot)%(vendordir)/pam.d/sudo
@@ -49,9 +53,9 @@ install     : |
     # We own special permission on the dir now
     install -d -m 00750 %(installroot)%(vendordir)/sudo/sudoers.d
 
-    go-md2man -in docs/man/su.1.md -out %(installroot)%(mandir)/man1/su.1
-    go-md2man -in docs/man/sudo.8.md -out %(installroot)%(mandir)/man8/sudo.8
-    go-md2man -in docs/man/visudo.8.md -out %(installroot)%(mandir)/man8/visudo.8
+    %install_file COPYRIGHT -t %(installroot)%(datadir)/licenses/%(name)/
+    %install_file LICENSE-APACHE -t %(installroot)%(datadir)/licenses/%(name)/
+    %install_file LICENSE-MIT -t %(installroot)%(datadir)/licenses/%(name)/
 
     %install_dir %(installroot)%(docdir)/%(name)
     TRANSITION="This is a transitional package. Please use sudo-rs"
@@ -60,8 +64,17 @@ install     : |
     echo "${TRANSITION}-devel" > %(installroot)%(docdir)/%(name)/TRANSITION.devel
 
 check       : |
-    # Currently stateless will break some tests involving /etc/hosts
-    %cargo_test --all-features || true
+    # The suite must not run as root, and expects /etc/hosts plus a "daemon"
+    # user; provide the environment and skip the tests that assert non-root
+    # behaviour (the sandbox is root-only).
+    echo '127.0.0.1 localhost' > /etc/hosts
+    echo 'daemon:x:1:1:daemon:/:/usr/sbin/nologin' >> /etc/passwd
+    echo 'daemon:x:1:' >> /etc/group
+    %cargo_test --features pam-login -- \
+        --skip su::context::tests::group_as_non_root \
+        --skip su::context::tests::invalid_shell \
+        --skip system::audit::test::secure_open_is_predictable \
+        --skip system::audit::test::test_secure_open_cookie_file
 packages    :
     - sudo:
         summary: Transitional package for sudo-rs

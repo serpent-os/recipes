@@ -4,8 +4,8 @@
 	"packages": {
 		"sudo": {
 			"build-depends": [
-				"binary(go-md2man)",
-				"pkgconfig(pam)"
+				"pkgconfig(pam)",
+				"tzdata"
 			],
 			"depends": [
 				"sudo-rs"
@@ -17,8 +17,8 @@
 		},
 		"sudo-devel": {
 			"build-depends": [
-				"binary(go-md2man)",
-				"pkgconfig(pam)"
+				"pkgconfig(pam)",
+				"tzdata"
 			],
 			"depends": [
 				"sudo-rs"
@@ -30,8 +30,8 @@
 		},
 		"sudo-rs": {
 			"build-depends": [
-				"binary(go-md2man)",
-				"pkgconfig(pam)"
+				"pkgconfig(pam)",
+				"tzdata"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -43,6 +43,7 @@
 			"files": [
 				"/usr/bin/su",
 				"/usr/bin/sudo",
+				"/usr/bin/sudoedit",
 				"/usr/lib/tmpfiles.d/sudo.conf",
 				"/usr/sbin/visudo",
 				"/usr/share/defaults/pam.d/su",
@@ -51,7 +52,11 @@
 				"/usr/share/defaults/pam.d/sudo-i",
 				"/usr/share/defaults/sudo/sudoers",
 				"/usr/share/defaults/sudo/sudoers.d",
+				"/usr/share/licenses/sudo-rs/COPYRIGHT",
+				"/usr/share/licenses/sudo-rs/LICENSE-APACHE",
+				"/usr/share/licenses/sudo-rs/LICENSE-MIT",
 				"/usr/share/man/man1/su.1",
+				"/usr/share/man/man5/sudoers.5",
 				"/usr/share/man/man8/sudo.8",
 				"/usr/share/man/man8/visudo.8"
 			],
@@ -59,11 +64,12 @@
 			"provides": [
 				"binary(su)",
 				"binary(sudo)",
+				"binary(sudoedit)",
 				"sysbinary(visudo)"
 			]
 		}
 	},
 	"source-name": "sudo-rs",
-	"source-release": "21",
+	"source-release": "22",
 	"source-version": "0.2.15"
 }

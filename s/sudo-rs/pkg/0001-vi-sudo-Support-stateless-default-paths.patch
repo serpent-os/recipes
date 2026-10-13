@@ -15,6 +15,10 @@ We modify `visudo` to default to the `/etc/sudoers.d/visudo` path for
 new customisations.
 
 Signed-off-by: Ikey Doherty <ikey@serpentos.com>
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-07-29
 ---
  src/sudo/mod.rs   | 3 +++
  src/visudo/mod.rs | 4 ++--
