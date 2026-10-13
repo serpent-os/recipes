@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : colord-kde
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/colord-kde-26.08.2.tar.xz : b3a12f1bab882d9aa0857889b93178dd2c2b45d31f9b069013b4d41b2dc3dcd9
+homepage    : https://invent.kde.org/graphics/colord-kde
+license     : GPL-2.0-or-later
+summary     : Color management integration for KDE
+description : |
+    Interfaces and session daemon to colord for KDE.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6ItemModels)
+    - cmake(KF6KCMUtils)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(Qt6CorePrivate)
+    - cmake(Qt6Qml)
+    - pkgconfig(lcms2)
+    - pkgconfig(xcb)
+    - pkgconfig(xcb-randr)
+    - pkgconfig(xrandr)
+rundeps     :
+    - colord
+    - kf6-kirigami # QML dep
+    - kf6-kirigami-addons
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
