@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : thunderbird
-version     : "157.0.1"
-release     : 57
+version     : "158.0"
+release     : 58
 homepage    : https://www.thunderbird.net/
 upstreams   :
-    - https://releases.mozilla.org/pub/thunderbird/releases/157.0.1/source/thunderbird-157.0.1.source.tar.xz : f4f46de621d44ab7718a5878e0fcaff136e13f0f326db657c38953dc0151a1e8
+    - https://releases.mozilla.org/pub/thunderbird/releases/158.0/source/thunderbird-158.0.source.tar.xz : 6f586b18edcbad00e875ce4ce9d1c6df8dfda454fbd8a891c5da8a0ec06ec0c6
 summary     : Thunderbird Email Client
 description : |
     Thunderbird Email Client
