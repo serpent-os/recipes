@@ -132,6 +132,15 @@
 				"cmake(KPim6PimCommon)"
 			],
 			"depends": [
+				"cmake(KF6Archive)",
+				"cmake(KF6Config)",
+				"cmake(KF6CoreAddons)",
+				"cmake(KF6I18n)",
+				"cmake(KF6KIO)",
+				"cmake(KF6Mime)",
+				"cmake(KPim6Akonadi)",
+				"cmake(KPim6AkonadiMime)",
+				"cmake(KPim6PimCommon)",
 				"mailimporter"
 			],
 			"files": [
@@ -216,6 +225,6 @@
 		}
 	},
 	"source-name": "mailimporter",
-	"source-release": "19",
+	"source-release": "20",
 	"source-version": "26.08.2"
 }
