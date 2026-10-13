@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : francis
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/francis-26.08.2.tar.xz : fc504c2c7a2abc2af57e22f66302ecd515d2c40425c7ac60daef4b50a42de502
+homepage    : https://apps.kde.org/francis/
+license     :
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - CC0-1.0
+    - GPL-3.0-or-later
+    - LGPL-2.0-or-later
+    - LGPL-2.1-or-later
+summary     : Time tracking app based on the Pomodoro Technique
+description : |
+    Francis is a time-tracking application that helps you stay productive using the Pomodoro Technique.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6Kirigami)
+    - cmake(KF6KirigamiAddons)
+    - cmake(Qt6QuickControls2)
+    - cmake(Qt6Svg)
+rundeps     :
+    - kf6-kirigami-addons
+    - kf6-qqc2-desktop-style
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
