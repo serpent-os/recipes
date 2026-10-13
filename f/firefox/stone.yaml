@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : firefox
 version     : "158.0"
-release     : 90
+release     : 91
 homepage    : https://www.mozilla.org/
 upstreams   :
     - https://releases.mozilla.org/pub/firefox/releases/158.0/source/firefox-158.0.source.tar.xz:
@@ -32,6 +32,8 @@ builddeps   :
     - binary(weston) # PGO
     - binary(wlheadless-run) # PGO
     - pkgconfig(alsa)
+    - pkgconfig(aom)
+    - pkgconfig(dav1d)
     - pkgconfig(gbm)
     - pkgconfig(gtk+-3.0)
     - pkgconfig(icu-uc)
@@ -72,14 +74,13 @@ environment : |
 
     export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%%Y%%m%%d%%H%%M%%S)"
 setup       : |
+    # Downstream patches
     %patch %(pkgdir)/patches/0001-Fix-Firefox-Thunderbird-envvar-conflicts.patch
-    %patch %(pkgdir)/patches/0001-Allow-installing-addons-from-user-scope.patch
     %patch %(pkgdir)/patches/wasm-sdk.patch
 
-    # Fixes a build issue with PGO introduced with f1d273acc9442cc43a8c340a86056fbc4ad85d57. Unknown if there's an upstream fix
-    %patch %(pkgdir)/patches/pgo-simple-programs-2.patch
-
-    # TODO: Figure out if we still need to enable unsigned addon loading considering we switched back to unmodified langpacks
+    # Upstream backports from Firefox 159; drop when updating to 159.0
+    %patch %(pkgdir)/patches/2001075-wayland-report-drag-cancelled.patch
+    %patch %(pkgdir)/patches/1971509-disable-panel-fade-with-reduced-motion.patch
 
     cp %(pkgdir)/build/mozconfig mozconfig.save
     sed -e 's|@@JOBCOUNT@@|%(jobs)|' \
@@ -164,6 +165,7 @@ install     : |
 
     %install_file %(pkgdir)/install/firefox-symbolic.svg %(installroot)%(datadir)/icons/hicolor/symbolic/apps/firefox-symbolic.svg
     %install_file %(pkgdir)/install/org.mozilla.firefox.desktop %(installroot)%(datadir)/applications/org.mozilla.firefox.desktop
+    %install_file %(pkgdir)/install/org.mozilla.firefox.metainfo.xml %(installroot)%(datadir)/metainfo/org.mozilla.firefox.metainfo.xml
 
     %install_file %(pkgdir)/install/distribution.ini %(installroot)%(libdir)/firefox/distribution/distribution.ini
     %install_file %(pkgdir)/install/prefs.js %(installroot)/%(libdir)/firefox/defaults/pref/prefs.js
