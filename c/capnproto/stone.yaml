@@ -3,7 +3,7 @@
 
 name        : capnproto
 version     : "1.5.0"
-release     : 2
+release     : 3
 homepage    : https://capnproto.org/
 upstreams   :
     - https://github.com/capnproto/capnproto/archive/refs/tags/v1.5.0.tar.gz : d5ebdf858e9885c33d4b3f765006d68bd66e9b002bf4d607ff4317ef9c1aac6a
@@ -29,10 +29,8 @@ build       : |
 install     : |
     %cmake_install
 check       : |
-    # failed: DNS lookup failed. Temporary failure in name resolution
     # failed: mkdtemp: No such file or directory; filename = /var/tmp/
-    mkdir -p /etc /var/tmp
-    echo '127.0.0.1 localhost' > /etc/hosts
+    mkdir -p /var/tmp
     %cmake_test
 packages    :
     - "%(name)-libs":
