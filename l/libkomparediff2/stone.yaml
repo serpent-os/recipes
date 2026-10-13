@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libkomparediff2
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/libkomparediff2-26.08.2.tar.xz : ffdc293a6904a62740357168a89b7a61c955557cddbb69598015940d19d368db
+homepage    : https://invent.kde.org/sdk/libkomparediff2
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.0-or-later
+summary     : Library to compare files and strings
+description : |
+    Library to compare files and strings, used in Kompare and KDevelop.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6KIO)
+    - cmake(KF6XmlGui)
+setup       : |
+    %cmake_kf6 \
+        -DBUILD_TESTING=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check       : |
+    %cmake_test
+packages    :
+    # KompareDiff2Config.cmake find_dependency()s these, so consumers need them present
+    - "%(name)-devel":
+        rundeps:
+            - cmake(KF6Config)
+            - cmake(KF6XmlGui)
