@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kbackup
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kbackup-26.08.2.tar.xz : b070b45598deffad762eee60ab0776cd10b11c7291995a389965c8ab47e8adcd
+homepage    : https://apps.kde.org/kbackup/
+license     : GPL-2.0-or-later
+summary     : Simple backup application
+description : |
+    KBackup is an application which lets you back up your data in a simple, user friendly way.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6DocTools)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6KIO)
+    - cmake(KF6Notifications)
+    - cmake(KF6StatusNotifierItem)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6XmlGui)
+    - cmake(Qt6Core5Compat)
+    - pkgconfig(libarchive)
+    - pkgconfig(shared-mime-info)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
