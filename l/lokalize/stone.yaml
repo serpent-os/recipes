@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : lokalize
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/lokalize-26.08.2.tar.xz : f7c73c77a158cf2df339a7cc040e9add999a8331f0c2b2a6dba2e2be10eaeffd
+homepage    : https://apps.kde.org/lokalize/
+license     :
+    - BSD-3-Clause
+    - GFDL-1.2-or-later
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - LGPL-2.1-or-later
+summary     : Computer-aided translation system
+description : |
+    Lokalize is a computer-aided translation system focused on software translation, with support for translation memories, glossaries and project management.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6ColorScheme)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6ItemViews)
+    - cmake(KF6KIO)
+    - cmake(KF6Notifications)
+    - cmake(KF6Sonnet)
+    - cmake(KF6TextWidgets)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6XmlGui)
+    - pkgconfig(hunspell)
+setup       : |
+    %cmake_kf6 \
+        -DBUILD_TESTING=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check       : |
+    env QT_QPA_PLATFORM=offscreen %cmake_test
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
