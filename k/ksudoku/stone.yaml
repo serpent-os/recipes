@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : ksudoku
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/ksudoku-26.08.2.tar.xz : 2c273747dec718c3a7a09e59f3619c3c3330438a9b828de8d2610820613bda66
+homepage    : https://apps.kde.org/ksudoku/
+license     :
+    - BSD-3-Clause
+    - GPL-2.0-or-later
+summary     : Sudoku game
+description : |
+    KSudoku is a logic-based symbol placement puzzle game, offering several Sudoku variants and other grid-based puzzles.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KDEGames6)
+    - cmake(KF6Archive)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6JobWidgets)
+    - cmake(KF6KIO)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6XmlGui)
+    - cmake(Qt6Svg)
+    - pkgconfig(gl)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
