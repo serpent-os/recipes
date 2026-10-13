@@ -1,0 +1,69 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kalarm
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kalarm-26.08.2.tar.xz : b8b68cf4c20903adecdacf867df0fe3c538593fca0506a3719fe7d249dd917c4
+homepage    : https://apps.kde.org/kalarm/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GFDL-1.2-or-later
+    - GPL-2.0-or-later
+    - LGPL-2.0-or-later
+summary     : Personal alarm scheduler
+description : |
+    KAlarm lets you schedule alarms, commands and emails to be triggered at a chosen time, with support for recurring alarms.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Auth)
+    - cmake(KF6CalendarCore)
+    - cmake(KF6Codecs)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6Contacts)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6GlobalAccel)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6Holidays)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6ItemModels)
+    - cmake(KF6JobWidgets)
+    - cmake(KF6KIO)
+    - cmake(KF6Mime)
+    - cmake(KF6Notifications)
+    - cmake(KF6NotifyConfig)
+    - cmake(KF6Service)
+    - cmake(KF6StatusNotifierItem)
+    - cmake(KF6TextEditTextToSpeech)
+    - cmake(KF6TextWidgets)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+    - cmake(KPim6Akonadi)
+    - cmake(KPim6AkonadiContactWidgets)
+    - cmake(KPim6AkonadiMime)
+    - cmake(KPim6CalendarUtils)
+    - cmake(KPim6IdentityManagementWidgets)
+    - cmake(KPim6MailTransport)
+    - cmake(KPim6Mime)
+    - pkgconfig(libvlc)
+    - pkgconfig(mpv)
+    - pkgconfig(x11)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
