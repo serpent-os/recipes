@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kdialog
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kdialog-26.08.2.tar.xz : ed4a6fde2832d2c0265c855b2a871a6b2bb5a22a1949edaed67f44dbda84bf20
+homepage    : https://invent.kde.org/utilities/kdialog
+license     : GPL-2.0-or-later
+summary     : Show KDE dialogs from shell scripts
+description : |
+    KDialog allows you to display dialog boxes from shell scripts. The syntax is very much inspired by the dialog command.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6GuiAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6KIO)
+    - cmake(KF6Notifications)
+    - cmake(KF6TextWidgets)
+    - cmake(KF6WindowSystem)
+    - pkgconfig(x11)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
