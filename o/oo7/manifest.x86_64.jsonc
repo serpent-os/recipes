@@ -1,0 +1,65 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"oo7": {
+			"build-depends": [
+				"binary(desktop-file-validate)",
+				"binary(meson)",
+				"pkgconfig(pam)",
+				"pkgconfig(systemd)",
+				"python-maturin"
+			],
+			"depends": [
+				"dbus",
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libpam.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/cargo-credential-oo7",
+				"/usr/bin/git-credential-oo7",
+				"/usr/bin/oo7-cli",
+				"/usr/lib/oo7/oo7-daemon",
+				"/usr/lib/oo7/oo7-daemon-login",
+				"/usr/lib/oo7/oo7-portal",
+				"/usr/lib/python3.14/site-packages/oo7.pyi",
+				"/usr/lib/python3.14/site-packages/oo7/__init__.py",
+				"/usr/lib/python3.14/site-packages/oo7/__init__.pyi",
+				"/usr/lib/python3.14/site-packages/oo7/__pycache__/__init__.cpython-314.opt-1.pyc",
+				"/usr/lib/python3.14/site-packages/oo7/__pycache__/__init__.cpython-314.pyc",
+				"/usr/lib/python3.14/site-packages/oo7/oo7.abi3.so",
+				"/usr/lib/python3.14/site-packages/oo7/py.typed",
+				"/usr/lib/python3.14/site-packages/oo7_python-0.6.0.dist-info/METADATA",
+				"/usr/lib/python3.14/site-packages/oo7_python-0.6.0.dist-info/RECORD",
+				"/usr/lib/python3.14/site-packages/oo7_python-0.6.0.dist-info/WHEEL",
+				"/usr/lib/python3.14/site-packages/oo7_python-0.6.0.dist-info/licenses/LICENSE",
+				"/usr/lib/python3.14/site-packages/oo7_python-0.6.0.dist-info/sboms/oo7-python.cyclonedx.json",
+				"/usr/lib/python3.14/site-packages/py.typed",
+				"/usr/lib/security/pam_oo7.so",
+				"/usr/lib/systemd/user/dbus-org.freedesktop.impl.portal.desktop.oo7.service",
+				"/usr/lib/systemd/user/dbus-org.freedesktop.secrets.service",
+				"/usr/lib/systemd/user/oo7-daemon.service",
+				"/usr/lib/systemd/user/oo7-portal.service",
+				"/usr/share/applications/oo7-portal.desktop",
+				"/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.oo7.service",
+				"/usr/share/xdg-desktop-portal/portals/oo7-portal.portal"
+			],
+			"name": "oo7",
+			"provides": [
+				"binary(cargo-credential-oo7)",
+				"binary(git-credential-oo7)",
+				"binary(oo7-cli)",
+				"python(oo7-python)",
+				"soname(python3.14/site-packages/oo7/oo7.abi3.so(x86_64))",
+				"soname(security/pam_oo7.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "oo7",
+	"source-release": "1",
+	"source-version": "0.7.0.beta"
+}

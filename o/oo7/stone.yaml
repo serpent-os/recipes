@@ -1,0 +1,69 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : oo7
+version     : "0.7.0.beta"
+release     : 1
+homepage    : https://github.com/linux-credentials/oo7
+upstreams   :
+    - https://github.com/linux-credentials/oo7/archive/refs/tags/0.7.0.beta.tar.gz : b5bc59a755936fcc87de140e6210885c7e432f68fc0e60369457fde12d021ae1
+summary     : Secret service provider replacing libsecret and implementing secret service API.
+description : |
+    James Bond went on a new mission as a Secret Service provider.
+    A user-daemon server, implementing the secret service API
+    for (separate packages) xdg-portals, git-credential, cargo-credential, any other usage, supporting PAM auto-unlock at login.
+    Supports modern authentication methods like systemd-creds, FIDO, TPM, etc...
+license     :
+    - MIT
+networking  : true
+builddeps   :
+    - pkgconfig(pam)
+    - pkgconfig(systemd)
+    - binary(desktop-file-validate)
+    - binary(meson)
+    - python-maturin
+rundeps     :
+    - dbus
+setup       : |
+    %cargo_fetch
+    %cargo_set_environment
+    %install_dir target
+    for subdir in server pam portal; do
+      pushd $subdir
+      %meson
+      # To share build artefacts
+      rmdir "%(builddir)/src"
+      ln -sr ../target "%(builddir)/src"
+      popd
+    done
+build       : |
+    %cargo_set_environment
+    for subdir in server pam portal; do
+      pushd $subdir
+      %meson_build
+      popd
+    done
+
+    for bin in oo7-cli cargo-credential-oo7 git-credential-oo7; do
+      %cargo_build --package $bin
+    done
+
+    export MATURIN_PEP517_ARGS="--target %(target_triple)"
+    %pyproject_build python
+install     : |
+    for subdir in server pam portal; do
+      pushd $subdir
+      %meson_install
+      popd
+    done
+
+    for bin in oo7-cli cargo-credential-oo7 git-credential-oo7; do
+      %install_bin %(cargo_target_dir)/$bin
+    done
+
+    pushd python
+    %pyproject_install
+    popd
+#check       : |
+#    desktop-file-validate %(installroot)%(datadir)/applications/oo7-portal.desktop
+#    %cargo_test

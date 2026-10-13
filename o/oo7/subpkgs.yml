@@ -1,0 +1,44 @@
+packages    :
+    - "%(name)-portal":
+       summary     : XDG portal for secrets by oo7
+       rundeps     :
+          - oo7
+          - xdg-desktop-portal
+       paths        :
+          - "%(libexecdir)/oo7-portal"
+          - "%(datadir)/applications/oo7-portal.desktop"
+          - "%(datadir)/dbus-1/services/org.freedesktop.impl.portal.desktop.oo7.service"
+          - "%(datadir)/xdg-desktop-portal/portals/oo7-portal.portal"
+          - "%(libdir)/systemd/user/dbus-org.freedesktop.impl.portal.desktop.oo7.service"
+          - "%(libdir)/systemd/user/oo7-portal.service"
+    - "%(name)-pam":
+        summary     : PAM module for login-time auto-unlock
+        description : |
+          Unlocks the oo7 keyring during login through PAM. Alternative to manual unlocking and systemd-creds
+        rundeps      :
+          - soname(libpam.so.0(x86_64))
+          - oo7
+        paths       :
+          - "%(libdir)/security/pam_oo7.so"
+    - "cargo-credential-%(name)":
+         summary : Cargo credential provider using oo7
+         paths   :
+          - "%(bindir)/cargo-credential-oo7"
+    - "git-credential-%(name)":
+         summary : Git credential provider using oo7
+         paths   :
+           - "%(bindir)/git-credential-oo7"
+    - "%(name)-kwallet":
+         summary     : Migration from kwallet to oo7
+         description : |
+             A command to migrate all stored info from kwallet's wallet to oo7 secret service. Read-only support; DOES NOT replace any component of kwallet.
+         paths       :
+           -  "%(bindir)/kwallet-cli"
+    - "%(name)-python":
+       summary : Python bindings for oo7
+       rundeps :
+         - oo7
+       paths   :
+         - "%(libdir)/python3.14/site-packages/oo7.pyi"
+         - "%(libdir)/python3.14/site-packages/oo7/"
+         - "%(libdir)/python3.14/site-packages/oo7_python-0.6.0.dist-into/"
