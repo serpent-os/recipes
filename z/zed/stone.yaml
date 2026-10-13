@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : zed
-version     : "1.23.2"
-release     : 65
+version     : "1.23.3"
+release     : 66
 homepage    : https://zed.dev/
 upstreams   :
-    - https://github.com/zed-industries/zed/archive/refs/tags/v1.23.2.tar.gz : 6752dd00f248f1f684a69f9381b5cb359f6c0264d032b239d61a51fec625e7d4
+    - https://github.com/zed-industries/zed/archive/refs/tags/v1.23.3.tar.gz : 4a5db0aced94bba54f1b8fa5b51bba849385ae869851260fbdc44385d76ee02d
 summary     : High performance, graphical code editor
 description : |
     Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.
