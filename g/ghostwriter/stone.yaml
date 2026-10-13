@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : ghostwriter
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/ghostwriter-26.08.2.tar.xz : 03ad5d604205bc6a33f6dcd0cc4c1e04e7c4a4e0ba88ef3169e2aaf971d21700
+homepage    : https://ghostwriter.kde.org/
+license     :
+    - Apache-2.0
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - CC-BY-SA-4.0
+    - CC0-1.0
+    - GPL-3.0-or-later
+    - LGPL-2.1-or-later
+    - MIT
+    - OFL-1.1
+summary     : Distraction-free Markdown editor
+description : |
+    ghostwriter is a text editor for Markdown, providing a relaxing, distraction-free writing environment.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6DocTools)
+    - cmake(KF6Sonnet)
+    - cmake(KF6XmlGui)
+    - cmake(Qt6CorePrivate)
+    - cmake(Qt6Positioning)
+    - cmake(Qt6Svg)
+    - cmake(Qt6WebEngineCore)
+    - pkgconfig(hunspell)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
