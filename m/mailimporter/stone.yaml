@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : mailimporter
 version     : "26.08.2"
-release     : 19
+release     : 20
 upstreams   :
     - https://download.kde.org/stable/release-service/26.08.2/src/mailimporter-26.08.2.tar.xz : 7badf1e23f8a3660f20d9e36397bc6015dc70c0ba51825fd6f47ed405a55853c
 homepage    : https://kde.org
@@ -27,3 +27,16 @@ build       : |
     %cmake_build
 install     : |
     %cmake_install
+packages    :
+    # KPim6MailImporter*Config.cmake find_dependency()s these, so consumers need them present
+    - "%(name)-devel":
+        rundeps:
+            - cmake(KF6Archive)
+            - cmake(KF6Config)
+            - cmake(KF6CoreAddons)
+            - cmake(KF6I18n)
+            - cmake(KF6KIO)
+            - cmake(KF6Mime)
+            - cmake(KPim6Akonadi)
+            - cmake(KPim6AkonadiMime)
+            - cmake(KPim6PimCommon)
