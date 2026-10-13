@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kamera
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kamera-26.08.2.tar.xz : 5b0aa76ece2d89491704f769403352a3d8de2699c85a83f941069103ee5ebe02
+homepage    : https://apps.kde.org/kamera/
+license     :
+    - BSD-3-Clause
+    - GFDL-1.2-or-later
+    - GPL-2.0-or-later
+summary     : KDE integration for gphoto2 cameras
+description : |
+    KDE integration for gphoto2 cameras.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6KCMUtils)
+    - cmake(KF6KIO)
+    - cmake(KF6XmlGui)
+    - pkgconfig(libgphoto2)
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
