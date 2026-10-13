@@ -1,0 +1,58 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : umbrello
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/umbrello-26.08.2.tar.xz : 3ec1e7e7bf167fde51313a709635cd946fd27fb62e7d3255f1844c76afaa0acf
+homepage    : https://apps.kde.org/umbrello/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - GPL-3.0-or-later
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - MIT
+summary     : UML modelling and diagramming tool
+description : |
+    Umbrello UML Modeller is a UML diagramming tool for KDE.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Archive)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6KIO)
+    - cmake(KF6TextEditor)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+    - cmake(Qt6PrintSupport)
+    - cmake(Qt6Svg)
+    - cmake(Qt6Xml)
+    - pkgconfig(libxml-2.0)
+    - pkgconfig(libxslt)
+    # - cmake(KDevelop-PG-Qt) # enables the KDevelop PHP import plugin
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6 \
+        -DBUILD_WITH_QT6=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
+            - /usr/share/umbrello6/apidoc
