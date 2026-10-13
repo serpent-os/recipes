@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 13 Oct 2026 12:00:00 -0500
+Subject: [PATCH] Fix clipped text in diff view
+
+The diff view paints the line text using the view's display alignment, which
+defaults to a vertically centered alignment. Because paintHeight() does not
+account for the item height correctly, this clips the text to its lower half at
+smaller font sizes and/or non-100% display scaling, rendering the diff view
+almost unusable.
+
+Force a top vertical alignment, which matches the way the text is actually
+laid out and fixes the clipping.
+
+Origin: https://bugs.kde.org/show_bug.cgi?id=481778
+Forwarded: https://invent.kde.org/sdk/kompare/-/merge_requests/42
+Last-Update: 2026-10-13
+---
+ src/komparepart/komparelistview.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/komparepart/komparelistview.cpp b/src/komparepart/komparelistview.cpp
+index 61cd7bb..3deb472 100644
+--- a/src/komparepart/komparelistview.cpp
++++ b/src/komparepart/komparelistview.cpp
+@@ -745,7 +745,7 @@ void KompareListViewLineItem::init(int line, DifferenceString* text)
+ void KompareListViewLineItem::paintCell(QPainter* p, const QStyleOptionViewItem& option, int column)
+ {
+     int width = option.rect.width();
+-    Qt::Alignment align = option.displayAlignment;
++    Qt::Alignment align = option.displayAlignment & ~Qt::AlignVCenter | Qt::AlignTop;
+ 
+     p->setRenderHint(QPainter::Antialiasing);
+     p->translate(option.rect.topLeft());
