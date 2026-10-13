@@ -1,0 +1,66 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"kf6-kplotting": {
+			"build-depends": [
+				"cmake(ECM)"
+			],
+			"depends": [
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
+				"soname(libQt6Widgets.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libKF6Plotting.so.6",
+				"/usr/lib/libKF6Plotting.so.6.31.0"
+			],
+			"name": "kf6-kplotting",
+			"provides": [
+				"soname(libKF6Plotting.so.6(x86_64))"
+			]
+		},
+		"kf6-kplotting-devel": {
+			"build-depends": [
+				"cmake(ECM)"
+			],
+			"depends": [
+				"kf6-kplotting",
+				"soname(libKF6Plotting.so.6(x86_64))",
+				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libstdc++.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/include/KF6/KPlotting/KPlotAxis",
+				"/usr/include/KF6/KPlotting/KPlotObject",
+				"/usr/include/KF6/KPlotting/KPlotPoint",
+				"/usr/include/KF6/KPlotting/KPlotWidget",
+				"/usr/include/KF6/KPlotting/kplotaxis.h",
+				"/usr/include/KF6/KPlotting/kplotobject.h",
+				"/usr/include/KF6/KPlotting/kplotpoint.h",
+				"/usr/include/KF6/KPlotting/kplotting_export.h",
+				"/usr/include/KF6/KPlotting/kplotting_version.h",
+				"/usr/include/KF6/KPlotting/kplotwidget.h",
+				"/usr/lib/cmake/KF6Plotting/KF6PlottingConfig.cmake",
+				"/usr/lib/cmake/KF6Plotting/KF6PlottingConfigVersion.cmake",
+				"/usr/lib/cmake/KF6Plotting/KF6PlottingTargets-release.cmake",
+				"/usr/lib/cmake/KF6Plotting/KF6PlottingTargets.cmake",
+				"/usr/lib/libKF6Plotting.so",
+				"/usr/lib/qt6/plugins/designer/kplotting6widgets.so"
+			],
+			"name": "kf6-kplotting-devel",
+			"provides": [
+				"cmake(KF6Plotting)",
+				"soname(qt6/plugins/designer/kplotting6widgets.so(x86_64))"
+			]
+		}
+	},
+	"source-name": "kf6-kplotting",
+	"source-release": "1",
+	"source-version": "6.31.0"
+}
