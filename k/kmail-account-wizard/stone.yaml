@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kmail-account-wizard
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kmail-account-wizard-26.08.2.tar.xz : 12c80011c79bd9df7a452d911086fe63164e4a51fdc2749c366b51404b21a980
+homepage    : https://kontact.kde.org/components/kmail/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - GFDL-1.2-or-later
+    - GPL-2.0-or-later
+    - LGPL-2.0-or-later
+    - MIT
+summary     : KMail account setup wizard
+description : |
+    An application which assists you with the configuration of accounts in KMail.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6KIO)
+    - cmake(KF6Mime)
+    - cmake(KPim6Akonadi)
+    - cmake(KPim6IdentityManagementCore)
+    - cmake(KPim6MailTransport)
+    - cmake(Qt6CorePrivate)
+    - cmake(Qt6Keychain)
+    - cmake(Qt6Qml)
+    - cmake(Qt6Quick)
+    - cmake(Qt6QuickControls2)
+rundeps     :
+    - kf6-kirigami
+    - kf6-kirigami-addons
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
