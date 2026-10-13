@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : glibc
-version     : "2.44+git.e01330dc"
-release     : 44
+version     : "2.44+git.34106fee"
+release     : 45
 summary     : The GNU libc libraries
 license     :
     - GPL-2.0-or-later
@@ -14,7 +14,7 @@ description : |
     The GNU libc libraries
 upstreams   :
     - git|https://sourceware.org/git/glibc.git :
-        ref : e01330dcec96ddc3495bb3c62fe59e4fc9bbe083
+        ref : 34106fee698c83eb0af71d4d0381e66b399be746
 builddeps   :
     - binary(bison)
     - binary(gperf)
