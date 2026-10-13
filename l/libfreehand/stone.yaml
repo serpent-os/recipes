@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libfreehand
+version     : "0.1.4"
+release     : 1
+upstreams   :
+    - https://dev-www.libreoffice.org/src/libfreehand/libfreehand-0.1.4.tar.xz : 350b10d24a76d7e8c8ae98b74c2d432a2c8ddec08935d09856d20b695a35e600
+homepage    : https://wiki.documentfoundation.org/DLP/Libraries/libfreehand
+license     : MPL-2.0
+summary     : A library for parsing Adobe FreeHand documents
+description : |
+    libfreehand is a library for parsing the Adobe FreeHand file format structure.
+builddeps   :
+    - binary(doxygen)
+    - binary(gperf)
+    - cmake(Boost)
+    - pkgconfig(cppunit)
+    - pkgconfig(icu-uc)
+    - pkgconfig(lcms2)
+    - pkgconfig(librevenge-0.0)
+    - pkgconfig(zlib)
+setup       : |
+    %configure
+build       : |
+    %make
+check       : |
+    %make check
+install     : |
+    %make_install
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
+
+    - "%(name)-tools":
+        summary: Tools to transform Adobe FreeHand documents into other formats
+        description: Tools to transform Adobe FreeHand documents into other formats
+        paths:
+            - /usr/bin/
