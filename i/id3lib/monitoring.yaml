@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 8422
+  rss: https://sourceforge.net/projects/id3lib/rss
+security:
+  # Last checked 2026-10-13
+  cpe: ~

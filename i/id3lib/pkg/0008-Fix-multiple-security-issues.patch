@@ -1,0 +1,63 @@
+From f7a83d8ecea80498bc103808f6d66b466f531e81 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 08/11] Fix multiple security issues
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ src/tag_file.cpp | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/tag_file.cpp b/src/tag_file.cpp
+index 09461fc..6b64235 100644
+--- a/src/tag_file.cpp
++++ b/src/tag_file.cpp
+@@ -242,8 +242,8 @@ size_t RenderV2ToFile(const ID3_TagImpl& tag, fstream& file)
+     strcpy(sTempFile, filename.c_str());
+     strcat(sTempFile, sTmpSuffix.c_str());
+ 
+-#if ((defined(__GNUC__) && __GNUC__ >= 3  ) || !defined(HAVE_MKSTEMP))
+-    // This section is for Windows folk && gcc 3.x folk
++#if !defined(HAVE_MKSTEMP)
++    // This section is for Windows folk
+     fstream tmpOut;
+     createFile(sTempFile, tmpOut);
+ 
+@@ -257,7 +257,7 @@ size_t RenderV2ToFile(const ID3_TagImpl& tag, fstream& file)
+       tmpOut.write((char *)tmpBuffer, nBytes);
+     }
+ 
+-#else //((defined(__GNUC__) && __GNUC__ >= 3  ) || !defined(HAVE_MKSTEMP))
++#else //!defined(HAVE_MKSTEMP)
+ 
+     // else we gotta make a temp file, copy the tag into it, copy the
+     // rest of the old file after the tag, delete the old file, rename
+@@ -270,7 +270,7 @@ size_t RenderV2ToFile(const ID3_TagImpl& tag, fstream& file)
+       //ID3_THROW_DESC(ID3E_NoFile, "couldn't open temp file");
+     }
+ 
+-    ofstream tmpOut(fd);
++    ofstream tmpOut(sTempFile);
+     if (!tmpOut)
+     {
+       tmpOut.close();
+@@ -285,14 +285,14 @@ size_t RenderV2ToFile(const ID3_TagImpl& tag, fstream& file)
+     uchar tmpBuffer[BUFSIZ];
+     while (file)
+     {
+-      file.read(tmpBuffer, BUFSIZ);
++      file.read((char *)tmpBuffer, BUFSIZ);
+       size_t nBytes = file.gcount();
+-      tmpOut.write(tmpBuffer, nBytes);
++      tmpOut.write((char *)tmpBuffer, nBytes);
+     }
+ 
+     close(fd); //closes the file
+ 
+-#endif ////((defined(__GNUC__) && __GNUC__ >= 3  ) || !defined(HAVE_MKSTEMP))
++#endif ////!defined(HAVE_MKSTEMP)
+ 
+     tmpOut.close();
+     file.close();

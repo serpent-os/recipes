@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : id3lib
+version     : "3.8.3"
+release     : 1
+upstreams   :
+    - https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz : 2749cc3c0cd7280b299518b1ddf5a5bcfe2d1100614519b68702230e26c7d079
+homepage    : https://id3lib.sourceforge.net/
+license     : LGPL-2.0-or-later
+summary     : Library for reading and writing ID3 tags
+description : |
+    id3lib is a cross-platform library for reading, writing and manipulating ID3v1 and ID3v2 tags.
+builddeps   :
+    - pkgconfig(zlib)
+setup       : |
+    %patch %(pkgdir)/0001-Link-against-zlib.patch
+    %patch %(pkgdir)/0002-Fix-test_io-build.patch
+    %patch %(pkgdir)/0003-Fix-build-with-newer-autoconf.patch
+    %patch %(pkgdir)/0004-Fix-doxygen-input-path.patch
+    %patch %(pkgdir)/0005-Fix-UTF-16-conversion.patch
+    %patch %(pkgdir)/0006-Fix-build-with-GCC-4.3-and-newer.patch
+    %patch %(pkgdir)/0007-Add-a-missing-null-pointer-check.patch
+    %patch %(pkgdir)/0008-Fix-multiple-security-issues.patch
+    %patch %(pkgdir)/0009-Fix-stack-smashing-in-VBR-handling.patch
+    %patch %(pkgdir)/0010-Fix-configure-with-Clang.patch
+    %patch %(pkgdir)/0011-Fix-build-with-C23.patch
+
+    %reconfigure \
+        --disable-static
+build       : |
+    %make
+install     : |
+    %make_install

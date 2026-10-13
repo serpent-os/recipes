@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Urs Fleisch
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 09/11] Fix stack smashing in VBR handling
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ src/mp3_parse.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mp3_parse.cpp b/src/mp3_parse.cpp
+index 41d8560..fc8992b 100755
+--- a/src/mp3_parse.cpp
++++ b/src/mp3_parse.cpp
+@@ -465,7 +465,7 @@ bool Mp3Info::Parse(ID3_Reader& reader, size_t mp3size)
+   // from http://www.xingtech.com/developer/mp3/
+ 
+   const size_t VBR_HEADER_MIN_SIZE = 8;     // "xing" + flags are fixed
+-  const size_t VBR_HEADER_MAX_SIZE = 116;   // frames, bytes, toc and scale are optional
++  const size_t VBR_HEADER_MAX_SIZE = 120;   // frames, bytes, toc and scale are optional
+ 
+   if (mp3size >= vbr_header_offest + VBR_HEADER_MIN_SIZE) 
+   {

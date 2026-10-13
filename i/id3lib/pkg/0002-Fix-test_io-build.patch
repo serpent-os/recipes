@@ -1,0 +1,24 @@
+From eb8b0e80a45094496bf57ba001d164d190ebbfe9 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 12 Oct 2026 12:00:00 -0500
+Subject: [PATCH 02/11] Fix test_io build
+
+Origin: Gentoo
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ examples/test_io.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/examples/test_io.cpp b/examples/test_io.cpp
+index bee1a27..7069a75 100644
+--- a/examples/test_io.cpp
++++ b/examples/test_io.cpp
+@@ -16,6 +16,7 @@ using std::endl;
+ using std::cerr;
+ 
+ using namespace dami;
++using namespace std;
+ 
+ int
+ main(size_t argc, const char** argv)
