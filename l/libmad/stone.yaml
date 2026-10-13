@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libmad
+version     : "0.15.1b"
+release     : 1
+upstreams   :
+    - https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz : bbfac3ed6bfbc2823d3775ebb931087371e142bb0e9bb1bee51a76a6e0078690
+homepage    : https://mad.sourceforge.net/
+license     : GPL-2.0-or-later
+summary     : High-quality MPEG audio decoding library
+description : |
+    MAD (libmad) is a high-quality MPEG audio decoder supporting MPEG-1, MPEG-2 and MPEG-2.5 layers I, II and III.
+setup       : |
+    %patch %(pkgdir)/0001-Fix-CFLAGS-handling-for-modern-toolchains.patch
+    %patch %(pkgdir)/0002-Restore-O2-optimization.patch
+    %patch %(pkgdir)/0003-Remove-obsolete-MIPS-constraint-for-GCC-4.4-and-newe.patch
+    %patch %(pkgdir)/0004-Fix-CVE-2017-8372-CVE-2017-8373-and-CVE-2017-8374.patch
+
+    # The release tarball omits these files, which automake requires
+    touch AUTHORS ChangeLog NEWS
+
+    %reconfigure \
+        --disable-static \
+        --enable-accuracy \
+        --enable-fpm=64bit
+build       : |
+    %make
+install     : |
+    %make_install
+
+    %install_file %(pkgdir)/mad.pc -t %(installroot)%(libdir)/pkgconfig/
