@@ -1,0 +1,39 @@
+From 5fd855a752eaae1b574f2d01ac38167d02192914 Mon Sep 17 00:00:00 2001
+From: Jeff Zhou <zhouwg2000@gmail.com>
+Date: Mon, 5 Oct 2026 19:24:42 +0800
+Subject: [PATCH] fix: call pw_loop_enter/leave on the SPA event loop
+
+PwCore::start() creates a pw_loop but never calls pw_loop_enter() before
+iterating it via QSocketNotifier. This triggers SPA's internal assertion
+impl->enter_count > 0 at loop.c:817 on every pw_loop_iterate() call,
+causing the PipeWire connection to fail silently.
+
+Add pw_loop_enter() after pw_loop_new() and pw_loop_leave() before
+pw_loop_destroy() to properly manage the loop lifecycle.
+
+Assisted-by: MiMoCode + MiMo-V2.5-Pro
+---
+ src/services/pipewire/core.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/services/pipewire/core.cpp b/src/services/pipewire/core.cpp
+index 5077abeab..3fe680eb9 100644
+--- a/src/services/pipewire/core.cpp
++++ b/src/services/pipewire/core.cpp
+@@ -55,6 +55,8 @@ bool PwCore::start(bool retry) {
+ 		return false;
+ 	}
+ 
++	pw_loop_enter(this->loop);
++
+ 	this->context = pw_context_new(this->loop, nullptr, 0);
+ 	if (this->context == nullptr) {
+ 		if (retry) {
+@@ -103,6 +105,7 @@ void PwCore::shutdown() {
+ 	}
+ 
+ 	if (this->loop != nullptr) {
++		pw_loop_leave(this->loop);
+ 		pw_loop_destroy(this->loop);
+ 		this->loop = nullptr;
+ 	}

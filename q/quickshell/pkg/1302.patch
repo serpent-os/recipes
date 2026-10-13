@@ -1,0 +1,54 @@
+From 07c1fe795994dde3804a6572211c2d1be6664dd2 Mon Sep 17 00:00:00 2001
+From: TrafficDemotion <paan114514@gmail.com>
+Date: Mon, 12 Oct 2026 09:53:32 +0000
+Subject: [PATCH] pipewire: recover default sink/source when a node is
+ re-created with the same name
+
+PwDefaultTracker unset the default node when it got destroyed but never looked for a
+replacement: onNodeAdded() only re-resolves while mDefaultSink is still null, which
+misses the case where the replacement node is registered before the old one is
+destroyed (the added event then sees the dying node and is skipped, and no further
+default.audio.sink metadata update arrives because the value did not change).
+
+That leaves defaultAudioSink null forever, so anything bound to it goes dead:
+Audio.volume reads 0, volume writes are no-ops and UIs stop reacting to volume
+changes - e.g. a bluetooth transport being re-established or a card profile change
+kills the volume UI until the shell is restarted.
+
+Resolve the expected node again from the registry right after clearing the default;
+this also covers the same problem for the default source.
+---
+ src/services/pipewire/defaults.cpp | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/src/services/pipewire/defaults.cpp b/src/services/pipewire/defaults.cpp
+index b9c8e3559..f3e3478d1 100644
+--- a/src/services/pipewire/defaults.cpp
++++ b/src/services/pipewire/defaults.cpp
+@@ -241,6 +241,14 @@ void PwDefaultTracker::onDefaultSinkDestroyed() {
+ 	qCInfo(logDefaults) << "Default sink destroyed.";
+ 	this->mDefaultSink = nullptr;
+ 	emit this->defaultSinkChanged();
++
++	// Nodes are re-created with the same name in practice (a bluetooth transport being
++	// re-established, a card profile change, ...). If the replacement node is already
++	// registered at this point, no further update for default.audio.sink will arrive,
++	// so resolve it again here instead of leaving the default sink null forever.
++	if (auto* node = this->registry->findNodeByName(this->mDefaultSinkName)) {
++		this->setDefaultSink(node);
++	}
+ }
+ 
+ void PwDefaultTracker::setDefaultSinkName(const QString& name) {
+@@ -282,6 +290,11 @@ void PwDefaultTracker::onDefaultSourceDestroyed() {
+ 	qCInfo(logDefaults) << "Default source destroyed.";
+ 	this->mDefaultSource = nullptr;
+ 	emit this->defaultSourceChanged();
++
++	// See onDefaultSinkDestroyed.
++	if (auto* node = this->registry->findNodeByName(this->mDefaultSourceName)) {
++		this->setDefaultSource(node);
++	}
+ }
+ 
+ void PwDefaultTracker::setDefaultSourceName(const QString& name) {
