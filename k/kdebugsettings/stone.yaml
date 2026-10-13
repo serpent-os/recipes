@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kdebugsettings
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/kdebugsettings-26.08.2.tar.xz : dc2f45a9ac0002c6eb6dfc591332460fd0298b970e73bfbdbc980484c9d67e61
+homepage    : https://apps.kde.org/kdebugsettings/
+license     :
+    - BSD-3-Clause
+    - CC0-1.0
+    - LGPL-2.0-or-later
+    - MIT
+summary     : Configure Qt logging categories
+description : |
+    An application to enable/disable qCDebug logging categories.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Completion)
+    - cmake(KF6Config)
+    - cmake(KF6ConfigWidgets)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
