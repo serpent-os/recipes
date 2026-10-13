@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : zanshin
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/zanshin-26.08.2.tar.xz : 51457e05d0e45de98ffebb9bd1f9c74c4b7ed29ee9917928dd5d1dddab67244c
+homepage    : https://zanshin.kde.org/
+license     :
+    - CC0-1.0
+    - GPL-2.0-only
+    - GPL-3.0-only
+    - LGPL-2.0-or-later
+    - MIT
+summary     : To-do management application
+description : |
+    A powerful yet simple application to manage your day to day actions.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(Boost)
+    - cmake(ECM)
+    - cmake(KF6CalendarCore)
+    - cmake(KF6Crash)
+    - cmake(KF6I18n)
+    - cmake(KF6Parts)
+    - cmake(KF6Runner)
+    - cmake(KF6WindowSystem)
+    - cmake(KPim6Akonadi)
+    - cmake(KPim6AkonadiCalendar)
+    - cmake(KPim6IdentityManagementCore)
+    - cmake(KPim6KontactInterface)
+    - cmake(Qt6Qml)
+rundeps     :
+    - kdepim-runtime
+    - qt6-wayland
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
