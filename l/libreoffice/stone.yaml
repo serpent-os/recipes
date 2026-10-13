@@ -8,7 +8,7 @@ name        : libreoffice
 ##@@BEGIN_VERSION
 version     : "26.8.1.1"
 ##@@END_VERSION
-release     : 5
+release     : 6
 upstreams   :
 ##@@BEGIN_SOURCE
     - https://download.documentfoundation.org/libreoffice/src/26.8.1/libreoffice-26.8.1.1.tar.xz:
@@ -537,7 +537,10 @@ builddeps   :
     - pkgconfig(ldap)
     - pkgconfig(libabw-0.1)
     - pkgconfig(libargon2)
+    - pkgconfig(libcdr-0.1)
+    - pkgconfig(libcmis-0.6)
     - pkgconfig(libcurl)
+    - pkgconfig(libfreehand-0.1)
     - pkgconfig(libjpeg)
     - pkgconfig(libpng)
     - pkgconfig(libpq)
@@ -582,12 +585,9 @@ builddeps   :
     # libwpg
     # libwps
     # libvisio
-    # libcmis
-    # libcdr
     # libmspub
     # libmwaw
     # libetonyek
-    # libfreehand
     # libebook
     # libabw
     # libpagemaker
@@ -638,15 +638,12 @@ setup       : |
         --without-system-frozen \
         --without-system-java-websocket \
         --without-system-jfreereport \
-        --without-system-libcdr \
-        --without-system-libcmis \
         --without-system-libebook \
         --without-system-libeot \
         --without-system-libepubgen \
         --without-system-libetonyek \
         --without-system-libexttextcat \
         --without-system-libfixmath \
-        --without-system-libfreehand \
         --without-system-liblangtag \
         --without-system-libmspub \
         --without-system-libmwaw \
