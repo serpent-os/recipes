@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : akregator
+version     : "26.08.2"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/release-service/26.08.2/src/akregator-26.08.2.tar.xz : d819df8e453e45167ed90c3bf99073017f325f792832b97ce9df5445f844deed
+homepage    : https://apps.kde.org/akregator/
+license     :
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - CC0-1.0
+    - GFDL-1.2-or-later
+    - GPL-2.0-or-later
+    - LGPL-2.0-or-later
+    - MIT
+summary     : RSS/Atom feed reader
+description : |
+    Akregator is a news feed reader for the KDE desktop. It enables you to follow news sites, blogs and other RSS/Atom-enabled websites without the need to manually check for updates using a web browser.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Codecs)
+    - cmake(KF6Crash)
+    - cmake(KF6DocTools)
+    - cmake(KF6I18n)
+    - cmake(KF6IconThemes)
+    - cmake(KF6KCMUtils)
+    - cmake(KF6Notifications)
+    - cmake(KF6NotifyConfig)
+    - cmake(KF6Parts)
+    - cmake(KF6Sonnet)
+    - cmake(KF6StatusNotifierItem)
+    - cmake(KF6Syndication)
+    - cmake(KF6SyntaxHighlighting)
+    - cmake(KF6TextAddonsWidgets)
+    - cmake(KF6TextEditTextToSpeech)
+    - cmake(KF6TextTemplate)
+    - cmake(KF6TextUtils)
+    - cmake(KF6UserFeedback)
+    - cmake(KF6XmlGui)
+    - cmake(KPim6GrantleeTheme)
+    - cmake(KPim6KontactInterface)
+    - cmake(KPim6Libkdepim)
+    - cmake(KPim6MessageViewer)
+    - cmake(KPim6PimCommon)
+    - cmake(KPim6PimCommonActivities)
+    - cmake(KPim6WebEngineViewer)
+    - cmake(Qt6Keychain)
+    - cmake(Qt6WebEngineCore)
+rundeps     :
+    - qt6-wayland
+setup       : |
+    %cmake_kf6 \
+        -DBUILD_TESTING=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check       : |
+    env QT_QPA_PLATFORM=offscreen %cmake_test
+packages    :
+    - "%(name)-docs":
+        paths:
+            - /usr/share/doc
