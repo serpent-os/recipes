@@ -57,7 +57,13 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
-				"libvncserver"
+				"libvncserver",
+				"pkgconfig(gnutls)",
+				"pkgconfig(libjpeg)",
+				"pkgconfig(libpng)",
+				"pkgconfig(libssl)",
+				"pkgconfig(lzo2)",
+				"pkgconfig(zlib)"
 			],
 			"files": [
 				"/usr/include/rfb/keysym.h",
@@ -85,6 +91,6 @@
 		}
 	},
 	"source-name": "libvncserver",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "0.9.15"
 }

@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libvncserver
 version     : "0.9.15"
-release     : 3
+release     : 4
 upstreams   :
     - https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.15.tar.gz : 62352c7795e231dfce044beb96156065a05a05c974e5de9e023d688d8ff675d7
 homepage    : https://libvnc.github.io/
@@ -33,3 +33,15 @@ build       : |
     %cmake_build
 install     : |
     %cmake_install
+packages    :
+    # The exported LibVNCServer targets link these by absolute path
+    # (INTERFACE_LINK_LIBRARIES), so consumers need them present. Keep this list in
+    # sync with the upstream CMake target every time libvncserver is updated.
+    - "%(name)-devel":
+        rundeps:
+            - pkgconfig(gnutls)
+            - pkgconfig(libjpeg)
+            - pkgconfig(libpng)
+            - pkgconfig(libssl)
+            - pkgconfig(lzo2)
+            - pkgconfig(zlib)
