@@ -223,7 +223,7 @@
 				"soname(libKF6CoreAddons.so.6(x86_64))",
 				"soname(libKF6KIOCore.so.6(x86_64))",
 				"soname(libKF6KIOWidgets.so.6(x86_64))",
-				"soname(libPlasma.so.7(x86_64))",
+				"soname(libPlasma.so.8(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
 				"soname(libQt6Gui.so.6(x86_64))",
 				"soname(libQt6Network.so.6(x86_64))",
@@ -275,6 +275,6 @@
 		}
 	},
 	"source-name": "syncthingtray",
-	"source-release": "24",
+	"source-release": "25",
 	"source-version": "2.1.8"
 }
