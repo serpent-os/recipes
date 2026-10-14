@@ -1,0 +1,55 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Sat, 10 Oct 2026 05:27:16 -0500
+Subject: [PATCH] Revert "Add CAP_SYS_NICE capability in CMake"
+
+Boulder does not support file capabilities (it cannot package xattrs), so
+setting CAP_SYS_NICE with setcap is meaningless here and the required
+Libcap dependency breaks the build. Revert upstream commit e643a373
+("Add CAP_SYS_NICE capability in CMake").
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-10
+---
+ CMakeLists.txt     | 8 --------
+ src/CMakeLists.txt | 9 ---------
+ 2 files changed, 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6489e9b..63e0eff 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -142,14 +142,6 @@ set_package_properties(KWayland PROPERTIES
+     TYPE REQUIRED
+ )
+ 
+-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+-    find_package(Libcap)
+-    set_package_properties(Libcap PROPERTIES
+-        PURPOSE "Needed for setting CAP_SYS_NICE on kwin_wayland."
+-        TYPE REQUIRED
+-    )
+-endif()
+-
+ # optional frameworks
+ find_package(PlasmaActivities ${PROJECT_DEP_VERSION} CONFIG)
+ set_package_properties(PlasmaActivities PROPERTIES
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index a5eb835..737599c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -699,13 +699,4 @@ install(FILES
+     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/vulkan COMPONENT Devel
+ )
+ 
+-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+-    install(
+-        CODE "execute_process(
+-        COMMAND ${SETCAP_EXECUTABLE}
+-        CAP_SYS_NICE=+ep
+-        \$ENV{DESTDIR}${CMAKE_INSTALL_FULL_BINDIR}/kwin_wayland)"
+-    )
+-endif()
+-
+ ecm_generate_qdoc(kwin kwin.qdocconf)
