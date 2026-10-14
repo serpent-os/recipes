@@ -96,6 +96,7 @@
 				"/usr/share/locale/sv/LC_MESSAGES/kcm_sddm.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/kcm_sddm.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/kcm_sddm.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/kcm_sddm.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/kcm_sddm.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/kcm_sddm.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/kcm_sddm.mo",
@@ -109,6 +110,6 @@
 		}
 	},
 	"source-name": "sddm-kcm",
-	"source-release": "24",
-	"source-version": "6.7.5"
+	"source-release": "25",
+	"source-version": "6.8.0"
 }
