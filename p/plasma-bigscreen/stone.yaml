@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-bigscreen
-version     : "6.7.5"
-release     : 7
+version     : "6.8.0"
+release     : 8
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-bigscreen-6.7.5.tar.xz : fd00b8ffd6a1c0fd7058acd06098110b00b5ca1dc720167058fad65d2ab50bdc
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-bigscreen-6.8.0.tar.xz : b9385610f90f19ba0986fc50165d0449dc802bc036a957d8dd503a6dfe1e466e
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : Plasma shell for TVs
@@ -15,6 +15,7 @@ builddeps   :
     # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
     - cmake(ECM)
     - cmake(KF6BluezQt)
+    - cmake(KF6ColorScheme)
     - cmake(KF6Config)
     - cmake(KF6DBusAddons)
     - cmake(KF6GlobalAccel)
@@ -43,6 +44,8 @@ builddeps   :
     - cmake(Qt6WebEngineCore)
     - cmake(SDL3)
     - pkgconfig(libcec)
+    - pkgconfig(systemd)
+    - kdeconnect
 rundeps     :
     # https://bugs.kde.org/show_bug.cgi?id=522585
     - kdeconnect
@@ -51,6 +54,7 @@ rundeps     :
     - plasma-workspace
     - qqc2-breeze-style
     - qt6-5compat
+    - systemd # systemd-logind uaccess ACLs for uinput devices
 tuning      :
     - lto: full
     - optimize: speed
