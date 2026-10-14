@@ -7,51 +7,33 @@
 				"cmake(ECM)",
 				"cmake(KF6Config)",
 				"cmake(KF6CoreAddons)",
-				"cmake(KF6Crash)",
-				"cmake(KF6DBusAddons)",
 				"cmake(KF6GlobalAccel)",
+				"cmake(KF6JobWidgets)",
 				"cmake(KF6KIO)",
-				"cmake(KF6Service)",
-				"cmake(KF6WindowSystem)",
-				"cmake(Qt6CorePrivate)"
+				"cmake(KF6Service)"
 			],
 			"depends": [
-				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libKF6ConfigCore.so.6(x86_64))",
 				"soname(libKF6CoreAddons.so.6(x86_64))",
-				"soname(libKF6Crash.so.6(x86_64))",
-				"soname(libKF6DBusAddons.so.6(x86_64))",
 				"soname(libKF6GlobalAccel.so.6(x86_64))",
 				"soname(libKF6JobWidgets.so.6(x86_64))",
 				"soname(libKF6KIOCore.so.6(x86_64))",
 				"soname(libKF6KIOGui.so.6(x86_64))",
 				"soname(libKF6Service.so.6(x86_64))",
-				"soname(libKF6WindowSystem.so.6(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
 				"soname(libQt6DBus.so.6(x86_64))",
 				"soname(libQt6Gui.so.6(x86_64))",
-				"soname(libQt6Widgets.so.6(x86_64))",
-				"soname(libX11.so.6(x86_64))",
 				"soname(libc.so.6(x86_64))",
-				"soname(libstdc++.so.6(x86_64))",
-				"soname(libxcb-keysyms.so.1(x86_64))",
-				"soname(libxcb-record.so.0(x86_64))",
-				"soname(libxcb-xkb.so.1(x86_64))",
-				"soname(libxcb.so.1(x86_64))"
+				"soname(libstdc++.so.6(x86_64))"
 			],
 			"files": [
-				"/usr/lib/kf6/kglobalacceld",
 				"/usr/lib/libKGlobalAccelD.so.0",
-				"/usr/lib/libKGlobalAccelD.so.6.7.5",
-				"/usr/lib/qt6/plugins/org.kde.kglobalacceld.platforms/KGlobalAccelDXcb.so",
-				"/usr/lib/systemd/user/plasma-kglobalaccel.service",
-				"/usr/share/qlogging-categories6/kglobalacceld.categories",
-				"/usr/share/xdg/autostart/kglobalacceld.desktop"
+				"/usr/lib/libKGlobalAccelD.so.6.8.0",
+				"/usr/share/qlogging-categories6/kglobalacceld.categories"
 			],
 			"name": "kglobalacceld",
 			"provides": [
-				"soname(libKGlobalAccelD.so.0(x86_64))",
-				"soname(qt6/plugins/org.kde.kglobalacceld.platforms/KGlobalAccelDXcb.so(x86_64))"
+				"soname(libKGlobalAccelD.so.0(x86_64))"
 			]
 		},
 		"kglobalacceld-devel": {
@@ -59,19 +41,15 @@
 				"cmake(ECM)",
 				"cmake(KF6Config)",
 				"cmake(KF6CoreAddons)",
-				"cmake(KF6Crash)",
-				"cmake(KF6DBusAddons)",
 				"cmake(KF6GlobalAccel)",
+				"cmake(KF6JobWidgets)",
 				"cmake(KF6KIO)",
-				"cmake(KF6Service)",
-				"cmake(KF6WindowSystem)",
-				"cmake(Qt6CorePrivate)"
+				"cmake(KF6Service)"
 			],
 			"depends": [
 				"kglobalacceld"
 			],
 			"files": [
-				"/usr/include/KGlobalAccelD/kglobalaccel_interface.h",
 				"/usr/include/KGlobalAccelD/kglobalacceld.h",
 				"/usr/include/KGlobalAccelD/kglobalacceld_export.h",
 				"/usr/include/KGlobalAccelD/shortcutkeystate.h",
@@ -87,6 +65,6 @@
 		}
 	},
 	"source-name": "kglobalacceld",
-	"source-release": "31",
-	"source-version": "6.7.5"
+	"source-release": "32",
+	"source-version": "6.8.0"
 }

@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kglobalacceld
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kglobalacceld-6.7.5.tar.xz : 83e9a4e226e695fe1544cfa19a9659c5f1000be46c669fe3a9e299029c6c2abf
+    - https://download.kde.org/stable/plasma/6.8.0/kglobalacceld-6.8.0.tar.xz : 0266bbe7a2ce0c7f859a5e7d151df18edcd5bb6bfb11681f32bf82e583b209cd
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - LGPL-2.0-or-later
@@ -19,13 +19,10 @@ builddeps   :
     - cmake(ECM)
     - cmake(KF6Config)
     - cmake(KF6CoreAddons)
-    - cmake(KF6Crash)
-    - cmake(KF6DBusAddons)
     - cmake(KF6GlobalAccel)
+    - cmake(KF6JobWidgets)
     - cmake(KF6KIO)
     - cmake(KF6Service)
-    - cmake(KF6WindowSystem)
-    - cmake(Qt6CorePrivate)
 tuning      :
     - lto: full
     - optimize: speed
