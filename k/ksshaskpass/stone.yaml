@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : ksshaskpass
-version     : "6.7.5"
-release     : 23
+version     : "6.8.0"
+release     : 24
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/ksshaskpass-6.7.5.tar.xz : deb5698b5682bc15d22446db9cf8641857d0bd7785e145b7b6e9247a68d35fd2
+    - https://download.kde.org/stable/plasma/6.8.0/ksshaskpass-6.8.0.tar.xz : 3d38254e4e982ea912e2dcd599e19f207eae0f8d34bfdb1b770980b0168e6f1f
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : Front-end for ssh-add which stores the password of the ssh key in KWallet
@@ -14,6 +14,7 @@ description : |
 builddeps   :
     # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
     - cmake(ECM)
+    - cmake(KF6Config)
     - cmake(KF6CoreAddons)
     - cmake(KF6DocTools)
     - cmake(KF6I18n)
