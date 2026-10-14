@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : print-manager
-version     : "6.7.5"
-release     : 32
+version     : "6.8.0"
+release     : 33
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/print-manager-6.7.5.tar.xz : f1658390a7104f2b806176f188ea38f148e7900cb928b4ddfcae0616af52f6ce
+    - https://download.kde.org/stable/plasma/6.8.0/print-manager-6.8.0.tar.xz : 031f3ac3fa3fd4f4389bb839c501281cecf6afca090d73fbc3291891df02f4dd
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : Tool for managing print jobs and printers
