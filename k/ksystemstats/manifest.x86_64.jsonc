@@ -41,6 +41,7 @@
 				"/usr/bin/kstatsviewer",
 				"/usr/bin/ksystemstats",
 				"/usr/lib/kf6/ksystemstats_intel_helper",
+				"/usr/lib/kf6/ksystemstats_xe_helper",
 				"/usr/lib/qt6/plugins/ksystemstats/ksystemstats_plugin_cpu.so",
 				"/usr/lib/qt6/plugins/ksystemstats/ksystemstats_plugin_disk.so",
 				"/usr/lib/qt6/plugins/ksystemstats/ksystemstats_plugin_gpu.so",
@@ -92,9 +93,14 @@
 				"/usr/share/locale/sa/LC_MESSAGES/ksystemstats_plugins.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/ksystemstats_plugins.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/ksystemstats_plugins.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/ksystemstats_plugins.mo",
+				"/usr/share/locale/sr@ijekavian/LC_MESSAGES/ksystemstats_plugins.mo",
+				"/usr/share/locale/sr@ijekavianlatin/LC_MESSAGES/ksystemstats_plugins.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/ksystemstats_plugins.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/ksystemstats_plugins.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/ksystemstats_plugins.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/ksystemstats_plugins.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/ksystemstats_plugins.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/ksystemstats_plugins.mo",
 				"/usr/share/locale/vi/LC_MESSAGES/ksystemstats_plugins.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/ksystemstats_plugins.mo",
@@ -118,6 +124,6 @@
 		}
 	},
 	"source-name": "ksystemstats",
-	"source-release": "23",
-	"source-version": "6.7.5"
+	"source-release": "24",
+	"source-version": "6.8.0"
 }
