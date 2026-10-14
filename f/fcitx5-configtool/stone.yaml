@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : fcitx5-configtool
 version     : "5.1.16"
-release     : 4
+release     : 5
 homepage    : https://github.com/fcitx/fcitx5-configtool
 upstreams   :
     - https://github.com/fcitx/fcitx5-configtool/archive/refs/tags/5.1.16.tar.gz : bb72455836d2612a306771406bb848d645d51e8b67be86431ba21185dceb567c
