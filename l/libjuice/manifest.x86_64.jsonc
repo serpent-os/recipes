@@ -1,0 +1,48 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libjuice": {
+			"build-depends": [
+				"pkgconfig(nettle)",
+				"sysbinary(ip)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libnettle.so.9(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libjuice.so.1",
+				"/usr/lib/libjuice.so.1.7.4"
+			],
+			"name": "libjuice",
+			"provides": [
+				"soname(libjuice.so.1(x86_64))"
+			]
+		},
+		"libjuice-devel": {
+			"build-depends": [
+				"pkgconfig(nettle)",
+				"sysbinary(ip)"
+			],
+			"depends": [
+				"libjuice"
+			],
+			"files": [
+				"/usr/include/juice/juice.h",
+				"/usr/lib/cmake/LibJuice/LibJuiceConfig.cmake",
+				"/usr/lib/cmake/LibJuice/LibJuiceConfigVersion.cmake",
+				"/usr/lib/cmake/LibJuice/LibJuiceTargets-release.cmake",
+				"/usr/lib/cmake/LibJuice/LibJuiceTargets.cmake",
+				"/usr/lib/libjuice.so"
+			],
+			"name": "libjuice-devel",
+			"provides": [
+				"cmake(LibJuice)"
+			]
+		}
+	},
+	"source-name": "libjuice",
+	"source-release": "1",
+	"source-version": "1.7.4"
+}

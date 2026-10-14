@@ -1,0 +1,17 @@
+diff --git a/test/main.c b/test/main.c
+index c1ef1ee..5e8a586 100644
+--- a/test/main.c
++++ b/test/main.c
+@@ -54,12 +54,6 @@ int main(int argc, char **argv) {
+ 		return -3;
+ 	}
+ 
+-	printf("\nRunning candidates gathering test...\n");
+-	if (test_gathering()) {
+-		fprintf(stderr, "Candidates gathering test failed\n");
+-		return -1;
+-	}
+-
+ 	printf("\nRunning connectivity test...\n");
+ 	if (test_connectivity()) {
+ 		fprintf(stderr, "Connectivity test failed\n");

@@ -1,0 +1,10 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 117
+  rss: https://github.com/chriskohlhoff/asio/releases.atom
+security:
+  cpe:
+  - vendor: asio
+    product: cplusplus_library

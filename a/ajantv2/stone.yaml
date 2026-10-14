@@ -1,0 +1,68 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : ajantv2
+version     : "18.0.0"
+release     : 1
+homepage    : https://github.com/aja-video/libajantv2
+upstreams   :
+    - https://github.com/aja-video/libajantv2/archive/refs/tags/ntv2_18_0_0.tar.gz : 46ea35f131ac795107d953d86de63fe3a490594b8abb109ad2d1efcb2eeaf1fa
+summary     : SDK for NTV2 professional video I/O devices
+description : |
+    Open-source SDK for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc
+license     : MIT
+builddeps   :
+    - binary(python3)
+    - pkgconfig(libudev)
+    - pkgconfig(mbedtls)
+setup       : |
+    %patch %(pkgdir)/libajantv2-system-mbedtls.patch
+
+    # Fix OBS failing to dlopen the aja plugin
+    # https://github.com/aja-video/libajantv2/commit/860d38b3eb5759172e4f32fcf03958ca82410c67
+    # TODO: Remove in next update
+    %patch %(pkgdir)/libajantv2-GetDeviceInfoList.patch
+
+    %cmake \
+        -DAJANTV2_BUILD_OPENSOURCE=ON \
+        -DAJANTV2_BUILD_SHARED=ON \
+        -DAJANTV2_DISABLE_DEMOS=ON \
+        -DAJANTV2_DISABLE_DRIVER=ON \
+        -DAJANTV2_DISABLE_PLUGIN_LOAD=OFF \
+        -DAJANTV2_DISABLE_TESTS=ON \
+        -DAJANTV2_DISABLE_TOOLS=OFF \
+        -DAJA_DISABLE_NVIDIA=ON \
+        -DAJA_DISABLE_QT=ON \
+        -DAJA_INSTALL_CMAKE=OFF \
+        -DAJA_INSTALL_HEADERS=ON \
+        -DAJA_INSTALL_MISC=OFF \
+        -DAJA_INSTALL_SOURCES=OFF
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+packages    :
+    - "%(name)-tools":
+        summary: Command-line utilities for NTV2 professional video I/O devices
+        description: |
+            Command-line utilities for NTV2 professional video I/O devices
+        paths:
+            - /usr/bin/
+
+    - "lib%(name)":
+        summary: Library for NTV2 professional video I/O devices
+        description: |
+            Library for NTV2 professional video I/O devices
+        paths:
+            - /usr/lib/libajantv2.so.*
+
+    - "lib%(name)-devel":
+        summary: Headers and development files for lib%(name)
+        description: |
+            Headers and development files for lib%(name)
+        rundeps:
+            - "lib%(name)"
+        paths:
+            - /usr/include
+            - /usr/lib/cmake
+            - /usr/lib/libajantv2.so

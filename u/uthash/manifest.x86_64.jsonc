@@ -1,0 +1,23 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"uthash": {
+			"build-depends": [
+				"binary(perl)"
+			],
+			"files": [
+				"/usr/include/utarray.h",
+				"/usr/include/uthash.h",
+				"/usr/include/utlist.h",
+				"/usr/include/utringbuffer.h",
+				"/usr/include/utstack.h",
+				"/usr/include/utstring.h"
+			],
+			"name": "uthash"
+		}
+	},
+	"source-name": "uthash",
+	"source-release": "1",
+	"source-version": "2.4.0"
+}

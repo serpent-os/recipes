@@ -3,7 +3,7 @@
 
 name        : vlc
 version     : "3.0.24"
-release     : 35
+release     : 36
 homepage    : https://www.videolan.org/
 upstreams   :
     - https://download.videolan.org/pub/videolan/vlc/3.0.24/vlc-3.0.24.tar.xz : e7cab503d1d7d5849b89d2cf0e1ee60d0ef6d012407791b644b9cfc0cc225fdf
@@ -49,6 +49,7 @@ builddeps   :
     - pkgconfig(libgcrypt)
     - pkgconfig(libidn2)
     - pkgconfig(libjpeg)
+    - pkgconfig(libmatroska)
     - pkgconfig(libmpg123)
     - pkgconfig(libmtp)
     - pkgconfig(libnfs)
@@ -57,6 +58,7 @@ builddeps   :
     # - pkgconfig(libplacebo)
     - pkgconfig(libpng)
     - pkgconfig(libpulse)
+    - pkgconfig(librist)
     - pkgconfig(librsvg-2.0)
     - pkgconfig(libsecret-1)
     - pkgconfig(libssh2)
@@ -67,7 +69,6 @@ builddeps   :
     - pkgconfig(libva-wayland)
     - pkgconfig(libvncclient)
     - pkgconfig(lua)
-    - pkgconfig(libmatroska)
     - pkgconfig(minizip)
     - pkgconfig(ncursesw)
     - pkgconfig(ogg)
@@ -82,6 +83,7 @@ builddeps   :
     - pkgconfig(soxr)
     - pkgconfig(speex)
     - pkgconfig(speexdsp)
+    - pkgconfig(srt)
     - pkgconfig(taglib)
     - pkgconfig(theoradec)
     - pkgconfig(vdpau)
@@ -120,7 +122,6 @@ builddeps   :
     # SDL_image (only supports SDL1?)
     # caca
     # mmal ?
-    # srt
     # libgoom2
     # libprojectM
     # libvsxu

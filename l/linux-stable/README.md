@@ -1,5 +1,5 @@
 <!--
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2024 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 -->
 
@@ -90,6 +90,7 @@ You can optionally replace `%break_exit` with `%break_continue` in the last step
 
 When submitting a PR, it is important to also remember to either update or `just bump`, then `just build` the below list of stand-alone extra kernel module recipes with the kernel added to your local repo:
 
+- `ajantv2-module`
 - `bcachefs-module`
 - `broadcom-sta-module`
 - `nvidia-open-gpu-kernel-modules`

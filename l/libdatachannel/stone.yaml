@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libdatachannel
+version     : "0.24.6"
+release     : 1
+homepage    : https://github.com/paullouisageneau/libdatachannel
+upstreams   :
+    - https://github.com/paullouisageneau/libdatachannel/archive/refs/tags/v0.24.6.tar.gz : 22a66aebebd8dae561d8e5181da96f2fcc203e067c5b2186c07b39af913464c0
+summary     : C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets
+description : |
+    libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++ with C bindings for multiple platforms, including GNU/Linux, Android, FreeBSD, Apple macOS, iOS, and Microsoft Windows. WebRTC is a W3C and IETF standard enabling real-time peer-to-peer data and media exchange between two devices.
+license     : MPL-2.0
+builddeps   :
+    - cmake(LibJuice)
+    - cmake(plog)
+    - pkgconfig(libsrtp2)
+    - pkgconfig(openssl)
+    - pkgconfig(usrsctp)
+checkdeps   :
+    - sysbinary(ip)
+setup       : |
+    %cmake \
+        -DPREFER_SYSTEM_LIB=ON \
+        -DNO_EXAMPLES=ON
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
+check       : |
+    export PATH="$PATH:/usr/sbin"
+    # provide a dummy interface for the tests to use.
+    ip link add dtls0 type dummy
+    ip addr add 192.0.2.1/24 dev dtls0
+    ip link set dtls0 up
+
+    %(builddir)/tests

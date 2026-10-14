@@ -1,0 +1,48 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"plog": {
+			"files": [
+				"/usr/include/plog/Appenders/AndroidAppender.h",
+				"/usr/include/plog/Appenders/ArduinoAppender.h",
+				"/usr/include/plog/Appenders/ColorConsoleAppender.h",
+				"/usr/include/plog/Appenders/ConsoleAppender.h",
+				"/usr/include/plog/Appenders/DebugOutputAppender.h",
+				"/usr/include/plog/Appenders/DynamicAppender.h",
+				"/usr/include/plog/Appenders/EventLogAppender.h",
+				"/usr/include/plog/Appenders/IAppender.h",
+				"/usr/include/plog/Appenders/RollingFileAppender.h",
+				"/usr/include/plog/Converters/NativeEOLConverter.h",
+				"/usr/include/plog/Converters/UTF8Converter.h",
+				"/usr/include/plog/Formatters/CsvFormatter.h",
+				"/usr/include/plog/Formatters/FuncMessageFormatter.h",
+				"/usr/include/plog/Formatters/MessageOnlyFormatter.h",
+				"/usr/include/plog/Formatters/TxtFormatter.h",
+				"/usr/include/plog/Helpers/AscDump.h",
+				"/usr/include/plog/Helpers/HexDump.h",
+				"/usr/include/plog/Helpers/PrintVar.h",
+				"/usr/include/plog/Init.h",
+				"/usr/include/plog/Initializers/ConsoleInitializer.h",
+				"/usr/include/plog/Initializers/RollingFileInitializer.h",
+				"/usr/include/plog/Log.h",
+				"/usr/include/plog/Logger.h",
+				"/usr/include/plog/Record.h",
+				"/usr/include/plog/Severity.h",
+				"/usr/include/plog/Util.h",
+				"/usr/include/plog/WinApi.h",
+				"/usr/lib/cmake/plog/plogConfig.cmake",
+				"/usr/lib/cmake/plog/plogConfigVersion.cmake",
+				"/usr/share/doc/plog/LICENSE",
+				"/usr/share/doc/plog/README.md"
+			],
+			"name": "plog",
+			"provides": [
+				"cmake(plog)"
+			]
+		}
+	},
+	"source-name": "plog",
+	"source-release": "1",
+	"source-version": "1.1.11"
+}

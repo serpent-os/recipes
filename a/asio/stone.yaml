@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : asio
+version     : "1.38.2"
+release     : 1
+homepage    : http://think-async.com/Asio
+upstreams   :
+    - https://downloads.sourceforge.net/asio/asio-1.38.2.tar.gz: 4893ad026013d1f64bf111c606e6abd857bb953823a4744e449969f1063fd9ce
+summary     : Cross-platform C++ library for ASynchronous network I/O
+description : |
+    Asio is a cross-platform C++ library for network and low-level I/O programming that provides developers with a consistent asynchronous model using a modern C++ approach.
+license     : BSL-1.0
+checkdeps   :
+    - cmake(Boost)
+    - cmake(OpenSSL)
+setup       : |
+    %configure
+build       : |
+    %make
+install     : |
+    %make_install
+check       : |
+    %make check
+packages    :
+    # Headers only package
+    - "%(name)" :
+        paths :
+            - /*

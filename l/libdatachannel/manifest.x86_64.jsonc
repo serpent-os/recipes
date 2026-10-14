@@ -1,0 +1,100 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"libdatachannel": {
+			"build-depends": [
+				"cmake(LibJuice)",
+				"cmake(plog)",
+				"pkgconfig(libsrtp2)",
+				"pkgconfig(openssl)",
+				"pkgconfig(usrsctp)",
+				"sysbinary(ip)"
+			],
+			"depends": [
+				"soname(libc.so.6(x86_64))",
+				"soname(libcrypto.so.4(x86_64))",
+				"soname(libgcc_s.so.1(x86_64))",
+				"soname(libjuice.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
+				"soname(libsrtp2.so.1(x86_64))",
+				"soname(libssl.so.4(x86_64))",
+				"soname(libstdc++.so.6(x86_64))",
+				"soname(libusrsctp.so.2(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libdatachannel.so.0.24",
+				"/usr/lib/libdatachannel.so.0.24.6"
+			],
+			"name": "libdatachannel",
+			"provides": [
+				"soname(libdatachannel.so.0.24(x86_64))"
+			]
+		},
+		"libdatachannel-devel": {
+			"build-depends": [
+				"cmake(LibJuice)",
+				"cmake(plog)",
+				"pkgconfig(libsrtp2)",
+				"pkgconfig(openssl)",
+				"pkgconfig(usrsctp)",
+				"sysbinary(ip)"
+			],
+			"depends": [
+				"libdatachannel"
+			],
+			"files": [
+				"/usr/include/rtc/av1rtppacketizer.hpp",
+				"/usr/include/rtc/candidate.hpp",
+				"/usr/include/rtc/channel.hpp",
+				"/usr/include/rtc/common.hpp",
+				"/usr/include/rtc/configuration.hpp",
+				"/usr/include/rtc/datachannel.hpp",
+				"/usr/include/rtc/dependencydescriptor.hpp",
+				"/usr/include/rtc/description.hpp",
+				"/usr/include/rtc/frameinfo.hpp",
+				"/usr/include/rtc/global.hpp",
+				"/usr/include/rtc/h264rtpdepacketizer.hpp",
+				"/usr/include/rtc/h264rtppacketizer.hpp",
+				"/usr/include/rtc/h265nalunit.hpp",
+				"/usr/include/rtc/h265rtpdepacketizer.hpp",
+				"/usr/include/rtc/h265rtppacketizer.hpp",
+				"/usr/include/rtc/iceudpmuxlistener.hpp",
+				"/usr/include/rtc/mediahandler.hpp",
+				"/usr/include/rtc/message.hpp",
+				"/usr/include/rtc/nalunit.hpp",
+				"/usr/include/rtc/pacinghandler.hpp",
+				"/usr/include/rtc/peerconnection.hpp",
+				"/usr/include/rtc/plihandler.hpp",
+				"/usr/include/rtc/reliability.hpp",
+				"/usr/include/rtc/rembhandler.hpp",
+				"/usr/include/rtc/rtc.h",
+				"/usr/include/rtc/rtc.hpp",
+				"/usr/include/rtc/rtcpnackresponder.hpp",
+				"/usr/include/rtc/rtcpreceivingsession.hpp",
+				"/usr/include/rtc/rtcpsrreporter.hpp",
+				"/usr/include/rtc/rtp.hpp",
+				"/usr/include/rtc/rtpdepacketizer.hpp",
+				"/usr/include/rtc/rtppacketizationconfig.hpp",
+				"/usr/include/rtc/rtppacketizer.hpp",
+				"/usr/include/rtc/track.hpp",
+				"/usr/include/rtc/utils.hpp",
+				"/usr/include/rtc/version.h",
+				"/usr/include/rtc/websocket.hpp",
+				"/usr/include/rtc/websocketserver.hpp",
+				"/usr/lib/cmake/LibDataChannel/LibDataChannelConfig.cmake",
+				"/usr/lib/cmake/LibDataChannel/LibDataChannelConfigVersion.cmake",
+				"/usr/lib/cmake/LibDataChannel/LibDataChannelTargets-release.cmake",
+				"/usr/lib/cmake/LibDataChannel/LibDataChannelTargets.cmake",
+				"/usr/lib/libdatachannel.so"
+			],
+			"name": "libdatachannel-devel",
+			"provides": [
+				"cmake(LibDataChannel)"
+			]
+		}
+	},
+	"source-name": "libdatachannel",
+	"source-release": "1",
+	"source-version": "0.24.6"
+}

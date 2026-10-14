@@ -1,0 +1,26 @@
+From 6d13e52ad913648a6bde57dd021896ba1bb46078 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Fri, 10 Jan 2020 21:54:39 -0800
+Subject: [PATCH] Correct clang compiler flags
+
+Fix misplaced quotes, this was leading to spurious ; in compiler cmdline
+Remove demanding libc++, clang can link with both libc++ and libstdc++
+and platforms have their own defaults, user can demand non defaults via
+adding it to cmake flags
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2d13117ba..c17354aa5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -148,7 +148,7 @@ if (BUILD_TESTS OR BUILD_EXAMPLES)
+         endif()
+         set (WEBSOCKETPP_PLATFORM_TLS_LIBS ssl crypto)
+         set (WEBSOCKETPP_BOOST_LIBS system thread)
+-        set (CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++0x -stdlib=libc++") # todo: is libc++ really needed here?
++        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+         if (NOT APPLE)
+             add_definitions (-DNDEBUG -Wall -Wno-padded) # todo: should we use CMAKE_C_FLAGS for these?
+         endif ()
