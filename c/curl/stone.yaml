@@ -1,17 +1,17 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : curl
-version     : "8.22.0"
-release     : 34
-summary     : A utility for fetching files from remote servers
-license     : MIT
+version     : "8.23.0"
+release     : 35
 homepage    : https://curl.se/
+upstreams   :
+    - https://curl.se/download/curl-8.23.0.tar.gz : e3de77cfa6367083c776a26647fc9f633b538c06c3baa73d931a252ac8f72b49
+summary     : A utility for fetching files from remote servers
 description : |
     A utility for fetching files from remote servers.
-upstreams   :
-    - https://curl.se/download/curl-8.22.0.tar.gz: d54dd598bf05927a726deb38df31c6a255ba83ff1de57c5d1464dac3ed8f44a1
-builddeps:
+license     : MIT
+builddeps   :
     - pkgconfig(krb5-gssapi)
     - pkgconfig(ldap)
     - pkgconfig(libnghttp3)

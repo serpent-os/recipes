@@ -736,6 +736,6 @@
 		}
 	},
 	"source-name": "curl",
-	"source-release": "34",
-	"source-version": "8.22.0"
+	"source-release": "35",
+	"source-version": "8.23.0"
 }
