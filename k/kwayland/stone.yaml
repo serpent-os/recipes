@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kwayland
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kwayland-6.7.5.tar.xz : 8d4c83524919dc87b5dec546d0fb14c591c03957888cb7b240a4a9d1bbdc8269
+    - https://download.kde.org/stable/plasma/6.8.0/kwayland-6.8.0.tar.xz : 40e40a1e23239ec8c2d66df286a6be73aed36ebf797a2b33812e3ba07de41ab5
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-3-Clause
