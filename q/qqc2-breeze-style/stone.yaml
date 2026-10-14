@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : qqc2-breeze-style
-version     : "6.7.5"
-release     : 5
+version     : "6.8.0"
+release     : 6
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/qqc2-breeze-style-6.7.5.tar.xz : 788f0698c904112cc33bf6f8fb446b2e4fd7231d38c0955cbc3baa50d375d1ee
+    - https://download.kde.org/stable/plasma/6.8.0/qqc2-breeze-style-6.8.0.tar.xz : e92843147369836f3e348e26dd5b930739a1c13bb67f930e0a343cbded118705
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
