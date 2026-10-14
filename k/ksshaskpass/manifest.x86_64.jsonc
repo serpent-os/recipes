@@ -5,6 +5,7 @@
 		"ksshaskpass": {
 			"build-depends": [
 				"cmake(ECM)",
+				"cmake(KF6Config)",
 				"cmake(KF6CoreAddons)",
 				"cmake(KF6DocTools)",
 				"cmake(KF6I18n)",
@@ -15,10 +16,12 @@
 				"binary(ssh-add)",
 				"binary(ssh-agent)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libKF6ConfigCore.so.6(x86_64))",
 				"soname(libKF6CoreAddons.so.6(x86_64))",
 				"soname(libKF6I18n.so.6(x86_64))",
 				"soname(libKF6WidgetsAddons.so.6(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
 				"soname(libQt6Widgets.so.6(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libqt6keychain.so.1(x86_64))",
@@ -78,6 +81,7 @@
 				"/usr/share/locale/sv/LC_MESSAGES/ksshaskpass.mo",
 				"/usr/share/locale/tg/LC_MESSAGES/ksshaskpass.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/ksshaskpass.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/ksshaskpass.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/ksshaskpass.mo",
 				"/usr/share/locale/vi/LC_MESSAGES/ksshaskpass.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/ksshaskpass.mo",
@@ -92,6 +96,6 @@
 		}
 	},
 	"source-name": "ksshaskpass",
-	"source-release": "23",
-	"source-version": "6.7.5"
+	"source-release": "24",
+	"source-version": "6.8.0"
 }
