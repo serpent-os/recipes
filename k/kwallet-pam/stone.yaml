@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kwallet-pam
-version     : "6.7.5"
-release     : 23
+version     : "6.8.0"
+release     : 24
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kwallet-pam-6.7.5.tar.xz : d71f5945ef3086f56f52f531508c2ab363078fbbd5ae4084bd3647049e6ee94f
+    - https://download.kde.org/stable/plasma/6.8.0/kwallet-pam-6.8.0.tar.xz : 9cf830e9ee662f8d500f5f314f8b639415d917c1cfbeb7c1521ac093292e410e
 homepage    : https://kde.org/plasma-desktop/
 license     : LGPL-2.1-only
 summary     : KWallet PAM integration
