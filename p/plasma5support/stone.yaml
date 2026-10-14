@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma5support
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma5support-6.7.5.tar.xz : dcd58d280b9c3f9570b1790134f692374ecae633cd15c60b1ee76947d5543e80
+    - https://download.kde.org/stable/plasma/6.8.0/plasma5support-6.8.0.tar.xz : 094a3959622ccb4ada2cd577d9d6f1f326f2c3a3a6630675d9218aa300772424
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
