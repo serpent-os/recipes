@@ -48,7 +48,7 @@
 				"soname(libKF6Svg.so.6(x86_64))",
 				"soname(libKF6WidgetsAddons.so.6(x86_64))",
 				"soname(libKF6WindowSystem.so.6(x86_64))",
-				"soname(libPlasma.so.7(x86_64))",
+				"soname(libPlasma.so.8(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
 				"soname(libQt6DBus.so.6(x86_64))",
 				"soname(libQt6Gui.so.6(x86_64))",
@@ -156,6 +156,6 @@
 		}
 	},
 	"source-name": "fcitx5-configtool",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "5.1.16"
 }
