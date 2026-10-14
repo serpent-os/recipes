@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kdecoration
-version     : "6.7.5"
-release     : 25
+version     : "6.8.0"
+release     : 26
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kdecoration-6.7.5.tar.xz : 7ff1fe2854ca08a21a1ba47f1b0c97d12ea24f1db618631319cba4023ca53d86
+    - https://download.kde.org/stable/plasma/6.8.0/kdecoration-6.8.0.tar.xz : 39d46c495e094ef70cbcd2f51fadaf5d96fae7c35f3da63f31c638a43912cf78
 homepage    : https://kde.org/plasma-desktop/
 license     : LGPL-2.1-only
 summary     : Plugin based library to create window decorations
