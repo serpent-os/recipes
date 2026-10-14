@@ -4,14 +4,14 @@ Date: Thu, 3 Jul 2025 15:51:31 -0500
 Subject: [PATCH] Remove wayland from session name
 
 ---
- login-sessions/plasmawayland.desktop.cmake | 112 ++++++++++-----------
- 1 file changed, 56 insertions(+), 56 deletions(-)
+ login-sessions/plasmawayland.desktop.cmake | 104 ++++++++++++++---------------
+ 1 file changed, 52 insertions(+), 52 deletions(-)
 
 diff --git a/login-sessions/plasmawayland.desktop.cmake b/login-sessions/plasmawayland.desktop.cmake
-index d91e869a9d..7fbbcbad03 100644
+index 80b02a0..71f8719 100644
 --- a/login-sessions/plasmawayland.desktop.cmake
 +++ b/login-sessions/plasmawayland.desktop.cmake
-@@ -2,63 +2,63 @@
+@@ -2,67 +2,67 @@
  Exec=@CMAKE_INSTALL_FULL_LIBEXECDIR@/plasma-dbus-run-session-if-needed ${CMAKE_INSTALL_FULL_BINDIR}/startplasma-wayland
  TryExec=${CMAKE_INSTALL_FULL_BINDIR}/startplasma-wayland
  DesktopNames=KDE
@@ -101,10 +101,16 @@ index d91e869a9d..7fbbcbad03 100644
  Name[sa]=प्लाज्मा (वेलैण्ड्)
 -Name[sk]=Plasma (Wayland)
 -Name[sl]=Plasma (Wayland)
--Name[sv]=Plasma (Wayland)
--Name[ta]=பிளாஸ்மா (Wayland)
 +Name[sk]=Plasma
 +Name[sl]=Plasma
+ Name[sr]=Плазма (вејланд)
+ Name[sr@ijekavian]=Плазма (вејланд)
+-Name[sr@ijekavianlatin]=Plasma (Wayland)
+-Name[sr@latin]=Plasma (Wayland)
+-Name[sv]=Plasma (Wayland)
+-Name[ta]=பிளாஸ்மா (Wayland)
++Name[sr@ijekavianlatin]=Plasma
++Name[sr@latin]=Plasma
 +Name[sv]=Plasma
 +Name[ta]=பிளாஸ்மா
  Name[tg]=Плазма (Вэйленд)
