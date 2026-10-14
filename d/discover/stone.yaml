@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : discover
-version     : "6.7.5"
-release     : 25
+version     : "6.8.0"
+release     : 26
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/discover-6.7.5.tar.xz : e9830fffebc54c781dcb076db4ab9462ee27ddd7fd3769403a211743636e1f67
+    - https://download.kde.org/stable/plasma/6.8.0/discover-6.8.0.tar.xz : db7f4553852e6fbbcaf549fc77fc2c0856e5e7217745ccf1ab8b473e1d5ad6e4
 homepage    : https://apps.kde.org/discover/
 license     : GPL-2.0-or-later
 summary     : Discover helps you find and install applications, games, and tools.
