@@ -18,12 +18,14 @@
 				"cmake(KF6StatusNotifierItem)",
 				"cmake(KF6WidgetsAddons)",
 				"cmake(KF6WindowSystem)",
+				"cmake(KPipeWire)",
 				"cmake(KWayland)",
 				"cmake(PlasmaWaylandProtocols)",
 				"cmake(Qt6CorePrivate)",
 				"cmake(Qt6QuickWidgets)",
 				"cmake(Qt6WaylandClient)",
 				"kio-fuse",
+				"pkgconfig(libpipewire-0.3)",
 				"pkgconfig(wayland-protocols)"
 			],
 			"depends": [
@@ -46,6 +48,7 @@
 				"soname(libKF6Service.so.6(x86_64))",
 				"soname(libKF6StatusNotifierItem.so.6(x86_64))",
 				"soname(libKF6WindowSystem.so.6(x86_64))",
+				"soname(libKPipeWireMonitor.so.6(x86_64))",
 				"soname(libKWaylandClient.so.6(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
 				"soname(libQt6DBus.so.6(x86_64))",
@@ -119,6 +122,7 @@
 				"/usr/share/locale/sv/LC_MESSAGES/xdg-desktop-portal-kde.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/xdg-desktop-portal-kde.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/xdg-desktop-portal-kde.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/xdg-desktop-portal-kde.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/xdg-desktop-portal-kde.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/xdg-desktop-portal-kde.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/xdg-desktop-portal-kde.mo",
@@ -129,6 +133,6 @@
 		}
 	},
 	"source-name": "xdg-desktop-portal-kde",
-	"source-release": "31",
-	"source-version": "6.7.5"
+	"source-release": "32",
+	"source-version": "6.8.0"
 }
