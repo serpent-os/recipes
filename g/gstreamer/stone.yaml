@@ -3,20 +3,15 @@
 
 name        : gstreamer
 version     : "1.28.8"
-release     : 64
+release     : 65
 homepage    : https://gstreamer.freedesktop.org/
 upstreams   :
     - https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.28.8/gstreamer-1.28.8.tar.gz : fd146dc03ea55ccfe78c1a91d35b71f20089209e173163f98237aad9f5ec7540
 summary     : GStreamer multimedia framework
 description : |
     GStreamer can bridge to other multimedia frameworks in order to reuse existing components (e.g. codecs) and use platform input/output mechanisms.
-license     :
-    - LGPL-2.1-or-later
+license     : LGPL-2.1-or-later
 builddeps   :
-    - cmake(Qt6GuiPrivate) # fatal error: 'QtGui/private/qrhi_p.h' file not found
-    - cmake(Qt6Qml)
-    - cmake(Qt6WaylandClient)
-    - cmake(VulkanHeaders)
     - binary(bison)
     - binary(cargo)
     - binary(flex)
@@ -26,8 +21,12 @@ builddeps   :
     - binary(nasm)
     - binary(qmake6)
     - binary(qsb)
-    - binary(xgettext)
     - binary(valac)
+    - binary(xgettext)
+    - cmake(Qt6GuiPrivate) # fatal error: 'QtGui/private/qrhi_p.h' file not found
+    - cmake(Qt6Qml)
+    - cmake(Qt6WaylandClient)
+    - cmake(VulkanHeaders)
     - pkgconfig(OpenEXR)
     - pkgconfig(SvtAv1Enc)
     - pkgconfig(alsa)
@@ -66,15 +65,14 @@ builddeps   :
     - pkgconfig(libexif)
     - pkgconfig(libfreeaptx)
     - pkgconfig(libgcrypt)
-    - pkgconfig(libmpg123)
-    - pkgconfig(lilv-0)
-    - pkgconfig(libopenjp2)
     - pkgconfig(libjpeg)
+    - pkgconfig(libmpg123)
+    - pkgconfig(libopenjp2)
     - pkgconfig(libpulse)
     - pkgconfig(libqrencode)
     - pkgconfig(librsvg-2.0)
-    - pkgconfig(libsrtp2)
     - pkgconfig(libsoup-3.0)
+    - pkgconfig(libsrtp2)
     - pkgconfig(libssh2)
     - pkgconfig(libssl)
     - pkgconfig(libunwind)
@@ -84,14 +82,15 @@ builddeps   :
     - pkgconfig(libwebp)
     - pkgconfig(libxml-2.0)
     - pkgconfig(libzstd)
+    - pkgconfig(lilv-0)
     - pkgconfig(nettle)
     - pkgconfig(nice)
+    - pkgconfig(ogg)
     - pkgconfig(openal)
     - pkgconfig(opencv4)
     - pkgconfig(openh264)
     - pkgconfig(opus)
     - pkgconfig(orc-0.4)
-    - pkgconfig(ogg)
     - pkgconfig(pango)
     - pkgconfig(pygobject-3.0)
     - pkgconfig(python3-embed)
@@ -99,12 +98,13 @@ builddeps   :
     - pkgconfig(sndfile)
     - pkgconfig(soundtouch)
     - pkgconfig(speex)
+    - pkgconfig(srt)
     - pkgconfig(taglib)
     - pkgconfig(theoradec)
     - pkgconfig(vapigen)
+    - pkgconfig(vorbis)
     - pkgconfig(vpl)
     - pkgconfig(vpx)
-    - pkgconfig(vorbis)
     - pkgconfig(vulkan)
     - pkgconfig(wayland-client)
     - pkgconfig(wayland-protocols)
@@ -142,7 +142,6 @@ builddeps   :
 # - mpeg2encpp
 # - libopenmpt
 # - librtmp
-# - srt
 # - svthevcenc
 # - vo-aacenc
 # - wildmidi
@@ -508,6 +507,7 @@ packages    :
             - /usr/lib/gstreamer-1.0/libgstsndfile.so
             - /usr/lib/gstreamer-1.0/libgstsoundtouch.so
             - /usr/lib/gstreamer-1.0/libgstspeed.so
+            - /usr/lib/gstreamer-1.0/libgstsrt.so
             - /usr/lib/gstreamer-1.0/libgstsrtp.so
             - /usr/lib/gstreamer-1.0/libgstsubenc.so
             - /usr/lib/gstreamer-1.0/libgstsvtav1.so
