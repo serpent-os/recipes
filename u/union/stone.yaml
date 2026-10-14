@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : union
-version     : "6.7.5"
-release     : 4
+version     : "6.8.0"
+release     : 5
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/union-6.7.5.tar.xz : deea749acb710357e56fce07198e3de3bad4bdfa95298e185e38eb8938f8d2c8
+    - https://download.kde.org/stable/plasma/6.8.0/union-6.8.0.tar.xz : d7340ffe4e269c6ee676acc6c93b928932b06ee2654ae3e7b904b699fb46a46c
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - LGPL-2.1-only
