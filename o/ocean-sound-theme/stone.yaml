@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : ocean-sound-theme
-version     : "6.7.5"
-release     : 23
+version     : "6.8.0"
+release     : 24
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/ocean-sound-theme-6.7.5.tar.xz : 452e5ab04f5e2d7cbf9357e4e12badf8493aefda437ba130eb38c9e511313b72
+    - https://download.kde.org/stable/plasma/6.8.0/ocean-sound-theme-6.8.0.tar.xz : dd5e5d254faa90054e2cc3e9325db8202a965c24592921d52f68cd5fca371a4e
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-2-Clause
