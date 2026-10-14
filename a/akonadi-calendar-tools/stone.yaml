@@ -3,7 +3,7 @@
 
 name        : akonadi-calendar-tools
 version     : "26.08.2"
-release     : 1
+release     : 2
 upstreams   :
     - https://download.kde.org/stable/release-service/26.08.2/src/akonadi-calendar-tools-26.08.2.tar.xz : f500b5b9fe9d34a3fd03f7e9c2a9cd9930f9d67ce66b31826826de508e2501dc
 homepage    : https://invent.kde.org/pim/akonadi-calendar-tools
