@@ -7,7 +7,7 @@ Aeryn has per-app libexec directories
 
 Origin: vendor
 Forwarded: not-needed
-Last-Update: 2026-02-27
+Last-Update: 2026-10-14
 ---
  meson.build            | 2 ++
  meson_options.txt      | 1 +
@@ -36,6 +36,7 @@ index c19ece3f..f6acd523 100644
  option('udev_dir', type: 'string', value: '', description: 'Absolute path of the udev base directory')
 +option('gnomesessionpath', type: 'string', value: '/usr/libexec/gnome-session-ctl', description: 'Absolute path to the gnome-session-ctl binary')
  option('systemd', type: 'boolean', value: true, description: 'Enable systemd integration')
+ option('systemd-units', type: 'boolean', value: true, description: 'Enable systemd unit installation')
  option('elogind', type: 'boolean', value: false, description: 'Use elogind')
  option('alsa', type: 'boolean', value: true, description: 'build with ALSA support (not optional on Linux platforms)')
 diff --git a/plugins/gsd.service.in b/plugins/gsd.service.in
