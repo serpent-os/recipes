@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : aerynos-eldritch-icon-theme
-version     : 1.0
-release     : 1
+version     : "1.2"
+release     : 2
 homepage    : https://codeberg.org/StormRosenaa/AerynOS-Art-icons
 upstreams   :
-    - https://codeberg.org/StormRosenaa/AerynOS-Art-icons/raw/branch/main/AerynOS-Eldritch.tar.xz : 58c3bd6ca4a4e1a81dbdde17a05c9d9d030d0ec98d392fea8ac583063ea80d50
+    - https://codeberg.org/StormRosenaa/AerynOS-Art-icons/raw/branch/main/AerynOS-Eldritch.tar.xz : cc76b62e2b88675b062f4e293525fff50b3047ffbc71138d444a696317dc5f86
 summary     : Eldritch icon theme for AerynOS
 description : |
     Eldritch is a custom icon theme for AerynOS.

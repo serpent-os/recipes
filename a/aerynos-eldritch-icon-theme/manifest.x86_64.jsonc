@@ -229,6 +229,7 @@
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/com.system76.CosmicSettings.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/com.system76.CosmicStore.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/com.system76.CosmicTerm.svg",
+				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/com.system76.CosmicViewer.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/com.system76.CosmicWorkspaces.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/com.system76.Popsicle.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/com.teamspeak.TeamSpeak.svg",
@@ -441,6 +442,7 @@
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/io.gitlab.elescoute.spacelaunch.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/io.missioncenter.MissionCenter.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/io.mpv.Mpv.svg",
+				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/io.neovim.nvim.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/io.podman_desktop.PodmanDesktop.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/io.wavebox.Wavebox.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/it.mijorus.gearlever.svg",
@@ -522,6 +524,9 @@
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/notepadqq.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/nuclear.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/nvidia-settings.svg",
+				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/nvim-gtk.svg",
+				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/nvim-qt.svg",
+				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/nvim.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/nz.mega.MEGAsync.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/obs.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/obsidian.svg",
@@ -543,6 +548,7 @@
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/org.blender.Blender.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/org.bluesabre.MenuLibre.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/org.chromium.Chromium.svg",
+				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/org.daa.NeovimGtk.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/org.darktable.Darktable.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/org.deluge_torrent.deluge.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/org.denemo.Denemo.svg",
@@ -704,6 +710,7 @@
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/prusa-slicer.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/psensor.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/ptyxis.svg",
+				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/pynvim.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/qtoctave.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/reaper.svg",
 				"/usr/share/icons/AerynOS-Eldritch/apps/scalable/recordbox.svg",
@@ -1683,6 +1690,6 @@
 		}
 	},
 	"source-name": "aerynos-eldritch-icon-theme",
-	"source-release": "1",
-	"source-version": "1.0"
+	"source-release": "2",
+	"source-version": "1.2"
 }
