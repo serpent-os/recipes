@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kpipewire
-version     : "6.7.5"
-release     : 33
+version     : "6.8.0"
+release     : 34
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kpipewire-6.7.5.tar.xz : 20af39d9450d495468c56a50930810d82137f7ccd3a710592e02b6f620758f55
+    - https://download.kde.org/stable/plasma/6.8.0/kpipewire-6.8.0.tar.xz : c9da8fc5216ebd45f860335bfcf9da36bb60ba3ec9416ebf9322175db30a2560
 homepage    : https://kde.org/plasma-desktop/
 license     : LGPL-2.1-or-later
 summary     : Components relating to pipewire use in Plasma

@@ -34,6 +34,7 @@
 				"soname(libdrm.so.2(x86_64))",
 				"soname(libepoxy.so.0(x86_64))",
 				"soname(libgbm.so.1(x86_64))",
+				"soname(libm.so.6(x86_64))",
 				"soname(libpipewire-0.3.so.0(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
 				"soname(libva-drm.so.2(x86_64))",
@@ -41,17 +42,19 @@
 			],
 			"files": [
 				"/usr/lib/libKPipeWire.so.6",
-				"/usr/lib/libKPipeWire.so.6.7.5",
+				"/usr/lib/libKPipeWire.so.6.8.0",
 				"/usr/lib/libKPipeWireDmaBuf.so.6",
-				"/usr/lib/libKPipeWireDmaBuf.so.6.7.5",
+				"/usr/lib/libKPipeWireDmaBuf.so.6.8.0",
+				"/usr/lib/libKPipeWireMonitor.so.6",
+				"/usr/lib/libKPipeWireMonitor.so.6.8.0",
 				"/usr/lib/libKPipeWireRecord.so.6",
-				"/usr/lib/libKPipeWireRecord.so.6.7.5",
+				"/usr/lib/libKPipeWireRecord.so.6.8.0",
 				"/usr/lib/qt6/qml/org/kde/pipewire/KPipeWire.qmltypes",
 				"/usr/lib/qt6/qml/org/kde/pipewire/kde-qmlmodule.version",
 				"/usr/lib/qt6/qml/org/kde/pipewire/libKPipeWireplugin.so",
-				"/usr/lib/qt6/qml/org/kde/pipewire/monitor/KPipeWireMonitorDeclarative.qmltypes",
+				"/usr/lib/qt6/qml/org/kde/pipewire/monitor/KPipeWireMonitor.qmltypes",
 				"/usr/lib/qt6/qml/org/kde/pipewire/monitor/kde-qmlmodule.version",
-				"/usr/lib/qt6/qml/org/kde/pipewire/monitor/libKPipeWireMonitorDeclarative.so",
+				"/usr/lib/qt6/qml/org/kde/pipewire/monitor/libKPipeWireMonitorplugin.so",
 				"/usr/lib/qt6/qml/org/kde/pipewire/monitor/qmldir",
 				"/usr/lib/qt6/qml/org/kde/pipewire/qmldir",
 				"/usr/lib/qt6/qml/org/kde/pipewire/record/KPipeWireRecord.qmltypes",
@@ -96,9 +99,14 @@
 				"/usr/share/locale/sa/LC_MESSAGES/kpipewire6.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/kpipewire6.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/kpipewire6.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/kpipewire6.mo",
+				"/usr/share/locale/sr@ijekavian/LC_MESSAGES/kpipewire6.mo",
+				"/usr/share/locale/sr@ijekavianlatin/LC_MESSAGES/kpipewire6.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/kpipewire6.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/kpipewire6.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/kpipewire6.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/kpipewire6.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/kpipewire6.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/kpipewire6.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/kpipewire6.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/kpipewire6.mo",
@@ -109,9 +117,10 @@
 			"provides": [
 				"soname(libKPipeWire.so.6(x86_64))",
 				"soname(libKPipeWireDmaBuf.so.6(x86_64))",
+				"soname(libKPipeWireMonitor.so.6(x86_64))",
 				"soname(libKPipeWireRecord.so.6(x86_64))",
 				"soname(qt6/qml/org/kde/pipewire/libKPipeWireplugin.so(x86_64))",
-				"soname(qt6/qml/org/kde/pipewire/monitor/libKPipeWireMonitorDeclarative.so(x86_64))",
+				"soname(qt6/qml/org/kde/pipewire/monitor/libKPipeWireMonitorplugin.so(x86_64))",
 				"soname(qt6/qml/org/kde/pipewire/record/libKPipeWireRecordplugin.so(x86_64))"
 			]
 		},
@@ -138,6 +147,7 @@
 			],
 			"files": [
 				"/usr/include/KPipeWire/DmaBufHandler",
+				"/usr/include/KPipeWire/MediaMonitor",
 				"/usr/include/KPipeWire/PipeWireBaseEncodedStream",
 				"/usr/include/KPipeWire/PipeWireEncodedStream",
 				"/usr/include/KPipeWire/PipeWireRecord",
@@ -147,6 +157,8 @@
 				"/usr/include/KPipeWire/kpipewire_export.h",
 				"/usr/include/KPipeWire/kpipewire_version.h",
 				"/usr/include/KPipeWire/kpipewiredmabuf_export.h",
+				"/usr/include/KPipeWire/kpipewiremonitor_export.h",
+				"/usr/include/KPipeWire/mediamonitor.h",
 				"/usr/include/KPipeWire/pipewirebaseencodedstream.h",
 				"/usr/include/KPipeWire/pipewireencodedstream.h",
 				"/usr/include/KPipeWire/pipewirerecord.h",
@@ -158,6 +170,7 @@
 				"/usr/lib/cmake/KPipeWire/KPipeWireTargets.cmake",
 				"/usr/lib/libKPipeWire.so",
 				"/usr/lib/libKPipeWireDmaBuf.so",
+				"/usr/lib/libKPipeWireMonitor.so",
 				"/usr/lib/libKPipeWireRecord.so"
 			],
 			"name": "kpipewire-devel",
@@ -167,6 +180,6 @@
 		}
 	},
 	"source-name": "kpipewire",
-	"source-release": "33",
-	"source-version": "6.7.5"
+	"source-release": "34",
+	"source-version": "6.8.0"
 }
