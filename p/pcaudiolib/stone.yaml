@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : pcaudiolib
+version     : "1.3"
+release     : 1
+homepage    : https://github.com/espeak-ng/pcaudiolib
+upstreams   :
+    - https://github.com/espeak-ng/pcaudiolib/releases/download/1.3/pcaudiolib-1.3.tar.gz : e8bd15f460ea171ccd0769ea432e188532a7fb27fa73ec2d526088a082abaaad
+summary     : Portable C Audio Library
+description : |
+    Portable C Audio Library
+license     : GPL-3.0-or-later
+builddeps   :
+    - pkgconfig(alsa)
+    - pkgconfig(libpulse-simple)
+setup       : |
+    %configure \
+        --disable-static \
+        --with-alsa \
+        --with-pulseaudio
+build       : |
+    %make
+install     : |
+    %make_install

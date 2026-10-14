@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 388317
+  rss: https://github.com/waywardgeek/sonic/releases.atom
+security:
+  # No known CPE, checked 2026-10-14
+  cpe: ~

@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : espeak-ng
+version     : "1.52.0"
+release     : 1
+homepage    : https://github.com/espeak-ng/espeak-ng
+upstreams   :
+    - https://github.com/espeak-ng/espeak-ng/archive/refs/tags/1.52.0.tar.gz : bb4338102ff3b49a81423da8a1a158b420124b055b60fa76cfb4b18677130a23
+summary     : Multi-lingual software speech synthesizer
+description : |
+    eSpeak NG is an open source speech synthesizer that supports more than a
+    hundred languages and accents. It uses spectral formant synthesis by
+    default, and can also use Klatt formant synthesis or MBROLA.
+networking  : true
+license     :
+    - Apache-2.0
+    - BSD-2-Clause
+    - CC-BY-SA-3.0
+    - GPL-3.0-or-later
+    - Unicode-DFS-2016
+builddeps   :
+    - binary(gem)
+    - binary(make)
+    - pkgconfig(ruby)
+    - libsonic-devel
+    - pcaudiolib-devel
+checkdeps   :
+    - binary(which)
+environment : |
+    export GEM_HOME=%(workdir)/gems
+    export GEM_PATH=%(workdir)/gems
+    export PATH=$PATH:$GEM_PATH/bin
+setup       : |
+    gem install ronn-ng
+
+    %cmake \
+        -DBUILD_SHARED_LIBS=ON \
+        -DESPEAK_BUILD_MANPAGES=ON \
+        -DESPEAK_COMPAT=ON \
+        -DUSE_LIBPCAUDIO=ON \
+        -DUSE_LIBSONIC=ON
+build       : |
+    %cmake_build
+    # ronn-ng is build-only scratch; the test suite rejects stray executables in the source tree
+    rm -rf %(workdir)/gems
+install     : |
+    %cmake_install
+check       : |
+    %cmake_test

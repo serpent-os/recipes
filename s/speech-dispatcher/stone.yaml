@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: © 2026- AerynOS Developers
+# SPDX-FileCopyrightText: © 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : speech-dispatcher
 version     : "0.12.1"
-release     : 5
+release     : 6
 homepage    : http://www.freebsoft.org/speechd
 upstreams   :
     - https://github.com/brailcom/speechd/releases/download/0.12.1/speech-dispatcher-0.12.1.tar.gz : b14a5238d287d2dcce4dd42bbd66ca65fa228e7e683708267f7b34036f7ba4b4
@@ -24,6 +24,7 @@ builddeps   :
     - binary(tar)
     - pkgconfig(alsa)
     - pkgconfig(dotconf)
+    - pkgconfig(espeak-ng)
     - pkgconfig(glib-2.0)
     - pkgconfig(libpipewire-0.3)
     - pkgconfig(libpulse)
@@ -31,6 +32,8 @@ builddeps   :
     - pkgconfig(sndfile)
     # TODO: flite
 setup       : |
+    # TODO: Possibly split out the modules once we have recommends/optional
+
     %patch %(pkgdir)/0001-Support-a-stateless-configuration.patch
     %patch %(pkgdir)/remove-pyxdg.patch
     %patch %(pkgdir)/slibtool-export-dynamic.patch
@@ -56,6 +59,10 @@ install     : |
 
     sed -i 's|includedir=.*|includedir=${prefix}/include/speech-dispatcher|g' "%(installroot)%(libdir)/pkgconfig/speech-dispatcher.pc"
 packages    :
+    - "%(name)":
+        rundeps:
+            - espeak-ng
+
     - "libspeechd":
         paths:
             - /usr/lib/libspeechd*.so.*

@@ -1,0 +1,47 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 13 Oct 2026 00:00:00 -0500
+Subject: [PATCH] Make the build honour the environment
+
+The Makefile hardcodes CC and CFLAGS, and drops LDFLAGS entirely. Respect
+the toolchain and flags supplied by the build environment instead.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+--- a/Makefile
++++ b/Makefile
+@@ -11,16 +11,16 @@
+   SONAME=install_name
+ endif
+ #CFLAGS=-Wall -g -ansi -fPIC -pthread
+-CFLAGS=-Wall -O3 -ansi -fPIC -pthread
++CFLAGS+=-ansi -fPIC -pthread
+ LIB_TAG=0.2.0
+-CC=gcc
++CC?=gcc
+ PREFIX=/usr
+ LIBDIR=$(PREFIX)/lib
+ 
+ all: sonic libsonic.so.$(LIB_TAG) libsonic.a
+ 
+ sonic: wave.o main.o libsonic.so.$(LIB_TAG)
+-	$(CC) $(CFLAGS) -o sonic wave.o main.o libsonic.so.$(LIB_TAG)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o sonic wave.o main.o libsonic.so.$(LIB_TAG)
+ 
+ sonic.o: sonic.c sonic.h
+ 	$(CC) $(CFLAGS) -c sonic.c
+@@ -32,7 +32,7 @@
+ 	$(CC) $(CFLAGS) -c main.c
+ 
+ libsonic.so.$(LIB_TAG): sonic.o
+-	$(CC) $(CFLAGS) -shared -Wl,-$(SONAME),libsonic.so.0 sonic.o -o libsonic.so.$(LIB_TAG)
++	$(CC) $(CFLAGS) -shared -Wl,-$(SONAME),libsonic.so.0 $(LDFLAGS) sonic.o -o libsonic.so.$(LIB_TAG)
+ 	ln -sf libsonic.so.$(LIB_TAG) libsonic.so
+ 	ln -sf libsonic.so.$(LIB_TAG) libsonic.so.0
+ 

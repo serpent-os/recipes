@@ -1,0 +1,43 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"pcaudiolib": {
+			"build-depends": [
+				"pkgconfig(alsa)",
+				"pkgconfig(libpulse-simple)"
+			],
+			"depends": [
+				"soname(libasound.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libpulse-simple.so.0(x86_64))",
+				"soname(libpulse.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/lib/libpcaudio.so.0",
+				"/usr/lib/libpcaudio.so.0.0.1"
+			],
+			"name": "pcaudiolib",
+			"provides": [
+				"soname(libpcaudio.so.0(x86_64))"
+			]
+		},
+		"pcaudiolib-devel": {
+			"build-depends": [
+				"pkgconfig(alsa)",
+				"pkgconfig(libpulse-simple)"
+			],
+			"depends": [
+				"pcaudiolib"
+			],
+			"files": [
+				"/usr/include/pcaudiolib/audio.h",
+				"/usr/lib/libpcaudio.so"
+			],
+			"name": "pcaudiolib-devel"
+		}
+	},
+	"source-name": "pcaudiolib",
+	"source-release": "1",
+	"source-version": "1.3"
+}
