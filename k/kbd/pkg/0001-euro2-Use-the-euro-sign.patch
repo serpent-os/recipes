@@ -1,0 +1,27 @@
+From 9b607ebefc1f9e97a23ff385fd04ece3cb55357d Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Wed, 14 Oct 2026 12:00:00 -0500
+Subject: [PATCH] euro2: Use the euro sign instead of the currency sign
+
+euro2.map maps AltGr+E to the generic currency sign (U+00A4) rather than the
+euro sign (U+20AC), despite the file's comment saying it produces the Euro.
+Arch has carried this same fix since 2013; upstream still has it unfixed.
+
+Origin: arch
+Forwarded: no
+Last-Update: 2026-10-14
+---
+ data/keymaps/i386/include/euro2.map | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/keymaps/i386/include/euro2.map b/data/keymaps/i386/include/euro2.map
+index 1f456f7..b0fcaec 100644
+--- a/data/keymaps/i386/include/euro2.map
++++ b/data/keymaps/i386/include/euro2.map
+@@ -2,5 +2,5 @@
+ # [Say: "loadkeys euro2" to get Euro and cent with AltGr (right alt)
+ #  on the positions where many keyboards have E and C.
+ #  To get it displayed, use a latin0 (i.e., latin9) font.]
+-altgr keycode  18 = currency
++altgr keycode  18 = euro
+ altgr keycode  46 = cent

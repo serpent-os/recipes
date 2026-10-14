@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kbd
 version     : "2.10.0"
-release     : 11
+release     : 12
 homepage    : https://kbd-project.org/
 upstreams   :
     - https://mirrors.edge.kernel.org/pub/linux/utils/kbd/kbd-2.10.0.tar.xz : 6e5ca4f8d76ee9e3a8db700b667f13e12aac9933828a64e1aaad93d26be9b479
@@ -28,6 +28,18 @@ rundeps     :
     - binary(gzip)
     - terminus-font
 setup       : |
+    %patch %(pkgdir)/0001-euro2-Use-the-euro-sign.patch
+
+    # Give keymaps that clash with another basename unique names, and expose the
+    # Colemak layout as "colemak" rather than upstream's "en-latin9"
+    # https://github.com/aerynOS/recipes/issues/2866
+    # https://bugs.archlinux.org/task/13837
+    mv data/keymaps/i386/qwertz/cz{,-qwertz}.map
+    mv data/keymaps/i386/olpc/es{,-olpc}.map
+    mv data/keymaps/i386/olpc/pt{,-olpc}.map
+    mv data/keymaps/i386/fgGIod/trf{,-fgGIod}.map
+    mv data/keymaps/i386/colemak/{en-latin9,colemak}.map
+
     # TODO: This now supports zstd compression (dlopening the shared lib). Switch to that (requires changes to the kernel recipes)
     %configure \
         --datadir=%(datadir)/kbd
@@ -38,3 +50,5 @@ install     : |
 
     # PAM configuration
     %install_file %(pkgdir)/vlock.pam %(installroot)/%(vendordir)/pam.d/vlock
+check       : |
+    %make check
