@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-vault
-version     : "6.7.5"
-release     : 4
+version     : "6.8.0"
+release     : 5
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-vault-6.7.5.tar.xz : 2a25bb2bd75c9d92894d3e75a19b2bcb01adaa937980579f9422e8c1df84dda5
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-vault-6.8.0.tar.xz : fce26884a57ab2e0f6a6df4a70d5a7642bb47a3787ea6ac9d66143c9fb851362
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-3-Clause
