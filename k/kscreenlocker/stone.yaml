@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kscreenlocker
-version     : "6.7.5"
-release     : 29
+version     : "6.8.0"
+release     : 30
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kscreenlocker-6.7.5.tar.xz : 6c41ce2cb79d2b85d4fbe5a3a61c09e40c70e5a869ae6f0352c7e1cb3b44606b
+    - https://download.kde.org/stable/plasma/6.8.0/kscreenlocker-6.8.0.tar.xz : aec2b4e741d8b6a69853fb1cb0efd6a0e9f4d2a0eb14f23712918096a06def4f
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : Library and components for secure lock screen architecture
@@ -29,10 +29,11 @@ builddeps   :
     - cmake(KF6XmlGui)
     - cmake(LayerShellQt)
     - cmake(PlasmaQuick)
+    - cmake(Qt6Core)
     - cmake(Qt6CorePrivate)
+    - cmake(Qt6Qml)
     - cmake(Qt6Quick)
     - pkgconfig(pam)
-    - pkgconfig(wayland-server)
 tuning      :
     - lto: full
     - optimize: speed
