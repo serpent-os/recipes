@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : powerdevil
-version     : "6.7.5"
-release     : 34
+version     : "6.8.0"
+release     : 35
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/powerdevil-6.7.5.tar.xz : 6a738fccf01e4d1b10fea68ff8b404a406f95bc36fcb593bcc70fafb1c53258b
+    - https://download.kde.org/stable/plasma/6.8.0/powerdevil-6.8.0.tar.xz : 2027b43339faeedd29c89520efba54e1c3f46900d275b2d48fc9c69575b1d57e
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : Manages the power settings of KDE Plasma
