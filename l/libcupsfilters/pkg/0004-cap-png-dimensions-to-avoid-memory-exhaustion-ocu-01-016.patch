@@ -1,0 +1,55 @@
+From 0c30efe8e2c17c5b654625c5e1360dd8b4302c9a Mon Sep 17 00:00:00 2001
+From: Aayush Kumar <aaayushkumar20@gmail.com>
+Date: Fri, 28 Aug 2026 23:12:23 +0530
+Subject: [PATCH] Cap PNG dimensions to avoid memory exhaustion (OCU-01-016)
+
+_cfImageReadPNG() loads interlaced PNGs all at once, allocating
+xsize*ysize*3 in one malloc. The existing checks only catch overflow of
+that product, not large-but-valid sizes, so a crafted interlaced PNG
+could request an enormous allocation from a small file. Cap each
+dimension at 283465 px (5 m at 1440 dpi), which keeps the size
+multiplication from overflowing; allocations still too large for the
+machine then fail gracefully at the existing malloc NULL check.
+
+Fixes OpenPrinting/libcupsfilters#215
+Origin: upstream, https://github.com/OpenPrinting/libcupsfilters/commit/b722e1ce07fb7fcb455471b0e303d81156b19d09
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ cupsfilters/image-png.c     | 3 ++-
+ cupsfilters/image-private.h | 8 ++++++++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/cupsfilters/image-png.c b/cupsfilters/image-png.c
+index 9f482fa..0346b2c 100644
+--- a/cupsfilters/image-png.c
++++ b/cupsfilters/image-png.c
+@@ -165,7 +165,8 @@ _cfImageReadPNG(
+     img->colorspace = secondary;
+ 
+   if (width == 0 || width > CF_IMAGE_MAX_WIDTH ||
+-      height == 0 || height > CF_IMAGE_MAX_HEIGHT)
++      height == 0 || height > CF_IMAGE_MAX_HEIGHT ||
++      width > CF_IMAGE_MAX_PIXELS || height > CF_IMAGE_MAX_PIXELS)
+   {
+     DEBUG_printf(("DEBUG: PNG image has invalid dimensions %ux%u!\n",
+ 		  (unsigned)width, (unsigned)height));
+diff --git a/cupsfilters/image-private.h b/cupsfilters/image-private.h
+index d0c2daf..461c8b6 100644
+--- a/cupsfilters/image-private.h
++++ b/cupsfilters/image-private.h
+@@ -52,6 +52,14 @@
+ #  define CF_IMAGE_MAX_HEIGHT	0x3fffffff
+ 					// 2^30-1
+ 
++#  define CF_IMAGE_MAX_PIXELS	283465
++					// Max pixels per side: 5 m at 1440 dpi,
++					// the largest realistic print (5 m-wide
++					// inkjets exist). Bounding each dimension
++					// keeps the decoded buffer-size
++					// multiplication from overflowing;
++					// allocations too large for the machine
++					// then fail gracefully at malloc().
+ #  define CF_TILE_SIZE		256	// 256x256 pixel tiles
+ #  define CF_TILE_MINIMUM	10	// Minimum number of tiles
+ 

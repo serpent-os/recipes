@@ -1,0 +1,60 @@
+From 5f38eeb0536b81b89a671642aacba819a44b21f2 Mon Sep 17 00:00:00 2001
+From: K HARSHAVARDHAN <harshahvk2005@gmail.com>
+Date: Wed, 9 Sep 2026 19:12:35 +0530
+Subject: [PATCH] Fix: Prevent infinite loop in cfIEEE1284NormalizeMakeModel on
+ empty MFG/MDL (fixes OpenPrinting/libcupsfilters#214) (OpenPrinting/libcupsfilters#223)
+
+Origin: upstream, https://github.com/OpenPrinting/libcupsfilters/commit/77b19a7d022626bf6f3e46a94dd5f7d928925d63
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ cupsfilters/ieee1284.c | 22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/cupsfilters/ieee1284.c b/cupsfilters/ieee1284.c
+index 95d580d..6e99168 100644
+--- a/cupsfilters/ieee1284.c
++++ b/cupsfilters/ieee1284.c
+@@ -804,7 +804,15 @@ cfIEEE1284NormalizeMakeModel(
+       makeptr ++;
+       bufptr ++;
+     }
+-    while (isspace(*(bufptr - 1))) bufptr --;
++    while (bufptr > buffer && isspace(*(bufptr - 1))) bufptr --;
++    if (bufptr == buffer)
++    {
++      if (buffer)
++	*buffer = '\0';
++
++      return (NULL);
++    }
++
+     if (bufptr < buffer + bufsize - 1)
+     {
+       *bufptr = ' ';
+@@ -822,7 +830,14 @@ cfIEEE1284NormalizeMakeModel(
+       modelptr ++;
+       bufptr ++;
+     }
+-    while (isspace(*(bufptr - 1))) bufptr --;
++    while (bufptr > makeptr && isspace(*(bufptr - 1))) bufptr --;
++    if (!nomakemodel && bufptr == makeptr)
++    {
++      if (buffer)
++	*buffer = '\0';
++
++      return (NULL);
++    }
+     *bufptr = '\0';
+     if (!nomakemodel && makeptr != bufptr)
+       modelptr = makeptr;
+@@ -1161,6 +1176,9 @@ cfIEEE1284NormalizeMakeModel(
+     // Remove repeated manufacturer names...
+     //
+ 
++    if (!modelptr || modelptr > buffer + strlen(buffer))
++      modelptr = buffer + strlen(buffer);
++
+     compare_len = modelptr - buffer;
+     while (compare_len > 0 && strncasecmp(buffer, modelptr, compare_len) == 0)
+       move_right_part(buffer, bufsize, modelptr, buffer - modelptr);

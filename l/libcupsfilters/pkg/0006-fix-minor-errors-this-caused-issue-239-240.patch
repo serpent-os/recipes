@@ -1,0 +1,39 @@
+From 2158294be42115bae1625e096c9007c25c855b85 Mon Sep 17 00:00:00 2001
+From: szlt5 <117269245+szlt5@users.noreply.github.com>
+Date: Tue, 8 Sep 2026 17:16:39 +0800
+Subject: [PATCH] Fix minor errors; this caused issue OpenPrinting/libcupsfilters#239. (OpenPrinting/libcupsfilters#240)
+
+Origin: upstream, https://github.com/OpenPrinting/libcupsfilters/commit/cb82339e748b6c1b0509060526dbd52e74968829
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ cupsfilters/ipp-options.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/cupsfilters/ipp-options.c b/cupsfilters/ipp-options.c
+index d3fed1a..506056e 100644
+--- a/cupsfilters/ipp-options.c
++++ b/cupsfilters/ipp-options.c
+@@ -404,7 +404,8 @@ cfFilterOptionsCreate(size_t num_options,   // I - Number of command-line option
+   ippo->separator_media       = ippo->media;
+ 
+   // Set the rest of the options...
+-  if ((value = get_option("output-order", num_options, options)) != NULL)
++  if ((value = get_option("outputorder", num_options, options)) != NULL ||
++      (value = cupsGetOption("output-order", num_options, options)) != NULL)
+   {
+     if (!strcasecmp(value, "reverse"))
+       ippo->reverse_order = true;
+@@ -492,9 +493,9 @@ cfFilterOptionsCreate(size_t num_options,   // I - Number of command-line option
+   if ((value = get_option("imposition-template", num_options, options)) != NULL ||
+       (value = get_option("booklet", num_options, options)) != NULL)
+   {
+-    if(strcasecmp(value, "yes") ||
+-       strcasecmp(value, "true") ||
+-       strcasecmp(value, "booklet")) 
++    if(!strcasecmp(value, "yes") ||
++       !strcasecmp(value, "true") ||
++       !strcasecmp(value, "booklet")) 
+     {
+       cupsCopyString(ippo->imposition_template, "booklet", sizeof(ippo->imposition_template));
+     }

@@ -1,0 +1,31 @@
+From aebf39d871e6c5807a7d0ee4c097ad846475fdd2 Mon Sep 17 00:00:00 2001
+From: ValdikSS <iam@valdikss.org.ru>
+Date: Tue, 8 Sep 2026 12:13:51 +0300
+Subject: [PATCH] pdftopdf: assume print-scaling=auto by default. Fixes OpenPrinting/libcupsfilters#237
+ (OpenPrinting/libcupsfilters#238)
+
+cups-filters 1.x rotate already-landscape documents according to printer
+paper path, and libcupsfilters 2.1.x do the same at least since V2.0rc1,
+where print-scaling=auto was used as default.
+
+Use print-scaling=auto as default for PDFio pdftopdf as well.
+Origin: upstream, https://github.com/OpenPrinting/libcupsfilters/commit/1973c4a959ad0041b07e2f2616bd153e0c218d4d
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ cupsfilters/ipp-options.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cupsfilters/ipp-options.c b/cupsfilters/ipp-options.c
+index 27f0a39..d3fed1a 100644
+--- a/cupsfilters/ipp-options.c
++++ b/cupsfilters/ipp-options.c
+@@ -368,7 +368,7 @@ cfFilterOptionsCreate(size_t num_options,   // I - Number of command-line option
+   ippo->copies                     = 1;
+   ippo->image_orientation          = CF_FILTER_ORIENT_NONE;
+   ippo->multiple_document_handling = CF_FILTER_HANDLING_COLLATED_COPIES;
+-  ippo->print_scaling 		   = CF_FILTER_SCALING_NONE;
++  ippo->print_scaling 		   = CF_FILTER_SCALING_AUTO;
+   ippo->number_up                  = 1;
+   ippo->orientation_requested      = CF_FILTER_ORIENT_NONE;
+   ippo->page_set      		   = CF_FILTER_PAGESET_ALL;

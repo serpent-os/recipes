@@ -1,0 +1,147 @@
+From 9496dd7d9f95d21bc25ab00b8b34ce777add0341 Mon Sep 17 00:00:00 2001
+From: kk1987 <kk1987@gmail.com>
+Date: Tue, 15 Sep 2026 18:44:01 -0700
+Subject: [PATCH] pdftopdf: Honor inherited MediaBox, CropBox and Rotate
+ attributes
+
+The PDFio-based cfFilterPDFToPDF() read /MediaBox, /CropBox and /Rotate
+only from the page dictionary itself.  These attributes are inheritable
+(ISO 32000-1, 7.7.3.4) and producers such as macOS Quartz PDFContext
+define the MediaBox on the /Pages node only.  Such a page fell back to
+the output page size, so print-scaling and auto-rotation were skipped
+and an oversized page was printed at 1:1, cropped to its lower-left
+corner.  The QPDF-based code handled this through
+pushInheritedAttributesToPage(); the PDFio port lost it.
+
+pdfioDictGetRect() also rejects an indirect reference to the rectangle
+array, which is what qpdf writes when it pushes inherited attributes
+down to the pages, so resolve that case as well.
+
+Add page_get_rect() and page_get_rotate() helpers that walk up the
+/Parent chain and use them for the input page boxes in copy_page() and
+for the /Rotate lookup in flatten_pdf().
+
+Add a regression test: test_files/inherited_mediabox.pdf is a single
+2970x2100 pt page whose MediaBox is an indirect array on the /Pages
+node.  test-pdftopdf-inherited-mediabox.sh runs it through the
+testfilters harness for Letter and reads the output back with PDFio,
+checking that the page transform scales by less than 0.5 and rotates
+by 90 degrees.
+
+Fixes OpenPrinting/libcupsfilters#251
+
+Assisted-By: Claude Code
+Origin: upstream, https://github.com/OpenPrinting/libcupsfilters/commit/c5dc208c05068ed2b1428e3562516a4bd08e0f0f
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ cupsfilters/pdftopdf.c | 80 ++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 77 insertions(+), 3 deletions(-)
+
+diff --git a/cupsfilters/pdftopdf.c b/cupsfilters/pdftopdf.c
+index f5397f4..679edfd 100644
+--- a/cupsfilters/pdftopdf.c
++++ b/cupsfilters/pdftopdf.c
+@@ -250,6 +250,80 @@ media_to_rect(cups_media_t *size,       // I - CUPS media (size) information
+   crop->y2  = 72.0 * (size->length - size->top) / 2540.0;
+ }
+ 
++//
++// 'page_get_rect()' - Look up an inheritable rectangle attribute ("MediaBox"
++//                     or "CropBox") for a page.
++//
++// Page attributes may be inherited from ancestor /Pages nodes (ISO 32000-1
++// section 7.7.3.4), so walk up the /Parent chain.  Also resolve an indirect
++// reference to the rectangle array, which pdfioDictGetRect() does not do.
++//
++
++static bool                             // O - `true` if found, `false` otherwise
++page_get_rect(pdfio_obj_t  *page,       // I - Page object
++              const char   *key,        // I - Key ("MediaBox" or "CropBox")
++              pdfio_rect_t *rect)       // O - Rectangle
++{
++  pdfio_obj_t   *obj = page;            // Current page/pages node
++  pdfio_dict_t  *dict;                  // Current dictionary
++  pdfio_obj_t   *ref;                   // Indirect rectangle array object
++  pdfio_array_t *array;                 // Rectangle array
++  int           depth;                  // Loop guard against cyclic /Parent
++
++
++  for (depth = 0; obj && depth < 64; depth ++)
++  {
++    if ((dict = pdfioObjGetDict(obj)) == NULL)
++      break;
++
++    if (pdfioDictGetRect(dict, key, rect))
++      return (true);
++
++    if ((ref = pdfioDictGetObj(dict, key)) != NULL && (array = pdfioObjGetArray(ref)) != NULL && pdfioArrayGetSize(array) == 4)
++    {
++      rect->x1 = pdfioArrayGetNumber(array, 0);
++      rect->y1 = pdfioArrayGetNumber(array, 1);
++      rect->x2 = pdfioArrayGetNumber(array, 2);
++      rect->y2 = pdfioArrayGetNumber(array, 3);
++      return (true);
++    }
++
++    obj = pdfioDictGetObj(dict, "Parent");
++  }
++
++  memset(rect, 0, sizeof(pdfio_rect_t));
++  return (false);
++}
++
++
++//
++// 'page_get_rotate()' - Look up the inheritable /Rotate attribute for a page,
++//                       walking up the /Parent chain.
++//
++
++static int                              // O - Rotation in degrees (0 if unset)
++page_get_rotate(pdfio_obj_t *page)      // I - Page object
++{
++  pdfio_obj_t   *obj = page;            // Current page/pages node
++  pdfio_dict_t  *dict;                  // Current dictionary
++  int           depth;                  // Loop guard against cyclic /Parent
++
++
++  for (depth = 0; obj && depth < 64; depth ++)
++  {
++    if ((dict = pdfioObjGetDict(obj)) == NULL)
++      break;
++
++    if (pdfioDictGetType(dict, "Rotate") == PDFIO_VALTYPE_NUMBER)
++      return ((int)pdfioDictGetNumber(dict, "Rotate"));
++
++    obj = pdfioDictGetObj(dict, "Parent");
++  }
++
++  return (0);
++}
++
++
+ //
+ // 'prepare_log()' - Log an informational or error message while preparing
+ //                   documents for printing.
+@@ -1518,7 +1592,7 @@ flatten_pdf(xform_prepare_t *p,			// I - Preparation data
+   idict = pdfioObjGetDict(outpage->input[pg]); 
+   
+   annotsArray = pdfioDictGetArray(idict, "Annots"); 
+-  rotate_val = (int)pdfioDictGetNumber(idict, "Rotate"); 
++  rotate_val = page_get_rotate(outpage->input[pg]);
+   count = pdfioArrayGetSize(annotsArray); 
+   
+   p->annotation_contents = (char**)malloc(count * sizeof(char*)); 
+@@ -2044,10 +2118,10 @@ copy_page(xform_prepare_t *p,		// I - Preparation data
+   // Transform input page to output cell...
+   idict = pdfioObjGetDict(outpage->input[layout]);
+ 
+-  if (!pdfioDictGetRect(idict, "CropBox", &irect))
++  if (!page_get_rect(outpage->input[layout], "CropBox", &irect))
+   {
+     // No crop box, use media box...
+-    if (!pdfioDictGetRect(idict, "MediaBox", &irect))
++    if (!page_get_rect(outpage->input[layout], "MediaBox", &irect))
+     {
+       // No media box, use output page size...
+       irect = p->media;

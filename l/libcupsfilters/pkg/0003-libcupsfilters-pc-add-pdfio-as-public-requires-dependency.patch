@@ -1,0 +1,37 @@
+From cf4804a5fb440bdd501ba1973a66f9c042b9e259 Mon Sep 17 00:00:00 2001
+From: princemittalr <prince.mittal.work@gmail.com>
+Date: Sun, 30 Aug 2026 09:45:59 +0530
+Subject: [PATCH] libcupsfilters.pc: Add pdfio as public Requires dependency
+
+pdf.h (a public installed header) includes <pdfio.h> directly, which
+means downstream packages (e.g. libppd) that include pdf.h need pdfio
+headers and types at compile time. Moving pdfio from Libs.private to
+Requires ensures pkg-config propagates this dependency correctly.
+
+Fixes: OpenPrinting/libcupsfilters#213
+Origin: upstream, https://github.com/OpenPrinting/libcupsfilters/commit/b13e63e80d9c094bc4484dcbc7efd000f21308db
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ libcupsfilters.pc.in | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/libcupsfilters.pc.in b/libcupsfilters.pc.in
+index db1b9a6..478d53d 100644
+--- a/libcupsfilters.pc.in
++++ b/libcupsfilters.pc.in
+@@ -2,11 +2,12 @@ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+ includedir=@includedir@
+-                                                                       
++
+ Name: libcupsfilters
+ Description: Library providing everything for filtering/converting print/scan job data
+ Version: @VERSION@
+ 
++Requires: pdfio >= 1.6.4
+ Libs: -L${libdir} -lcupsfilters
+-Libs.private: @CUPS_LIBS@ @LIBJPEG_LIBS@ @LIBPNG_LIBS@ @LIBTIFF_LIBS@ @LIBPDFIO_LIBS@
++Libs.private: @CUPS_LIBS@ @LIBJPEG_LIBS@ @LIBPNG_LIBS@ @LIBTIFF_LIBS@
+ Cflags: -I${includedir}/cupsfilters -I${includedir} @CUPS_CFLAGS@

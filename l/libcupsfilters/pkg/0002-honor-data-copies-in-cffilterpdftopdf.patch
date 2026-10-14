@@ -1,0 +1,46 @@
+From 9a0846c5f95ca62bcb07022febccb8373edaa6f8 Mon Sep 17 00:00:00 2001
+From: hakibro <sandalkuganti@gmail.com>
+Date: Tue, 1 Sep 2026 10:58:43 +0700
+Subject: [PATCH] Honor data->copies in cfFilterPDFToPDF
+
+CUPS passes the copy count via the standard 'copies' filter argument
+(argv[4], exposed as data->copies) and strips the 'copies' option from
+the options string (argv[5]).  cfFilterOptionsCreate() only reads the
+copy count from the options string, so it defaults to 1 and the
+requested number of copies is lost.
+
+For raster drivers that go through the 'universal' filter this means
+'print N copies' always prints a single copy.
+
+Honor data->copies as a fallback when no explicit copies option was
+given.
+
+Fixes OpenPrinting/libcupsfilters#227
+Origin: upstream, https://github.com/OpenPrinting/libcupsfilters/commit/4c06f1bc2f090b487a71a9287c6eb54ce2827f7b
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ cupsfilters/pdftopdf.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/cupsfilters/pdftopdf.c b/cupsfilters/pdftopdf.c
+index 8945003..f5397f4 100644
+--- a/cupsfilters/pdftopdf.c
++++ b/cupsfilters/pdftopdf.c
+@@ -2777,6 +2777,16 @@ cfFilterPDFToPDF(int inputfd,
+ 
+   filter_options = cfFilterOptionsCreate(data->num_options, data->options);
+ 
++  // CUPS passes the copy count through the standard "copies" filter argument
++  // (argv[4], exposed here as data->copies) and strips the "copies" option
++  // from the options string (argv[5]).  cfFilterOptionsCreate() only reads
++  // the copy count from the options string, so it defaults to 1 and the
++  // requested number of copies is lost.  Honor data->copies as a fallback so
++  // that printing multiple copies works for raster drivers going through the
++  // "universal" filter.
++  if (data->copies > 1 && filter_options->copies <= 1)
++    filter_options->copies = data->copies;
++
+   char temp_filename[] = "/tmp/tempfileXXXXXX";
+   int temp_fd = mkstemp(temp_filename);
+   if (temp_fd == -1)

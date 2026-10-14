@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libcupsfilters
 version     : "2.2.1"
-release     : 12
+release     : 13
 homepage    : https://github.com/OpenPrinting/libcupsfilters
 upstreams   :
     - https://github.com/OpenPrinting/libcupsfilters/releases/download/2.2.1/libcupsfilters-2.2.1.tar.xz : 0a22b849d5068c4c86b20fbb4192d3faa3dabcc9ee844c8fd73710ed821d4860
@@ -27,6 +27,19 @@ builddeps   :
     - pkgconfig(pdfio)
     - dejavu-fonts-ttf
 setup       : |
+    # Backports from post-2.2.1 master; drop when 2.2.2 (or later) ships
+    %patch %(pkgdir)/0001-fix-printing-error-pdfio-output-missing-root-object-167.patch
+    %patch %(pkgdir)/0002-honor-data-copies-in-cffilterpdftopdf.patch
+    %patch %(pkgdir)/0003-libcupsfilters-pc-add-pdfio-as-public-requires-dependency.patch
+    %patch %(pkgdir)/0004-cap-png-dimensions-to-avoid-memory-exhaustion-ocu-01-016.patch
+    %patch %(pkgdir)/0005-pdftopdf-assume-print-scaling-auto-by-default-fixes-237-238.patch
+    %patch %(pkgdir)/0006-fix-minor-errors-this-caused-issue-239-240.patch
+    %patch %(pkgdir)/0007-fix-prevent-infinite-loop-in-cfieee1284normalizemakemodel-on-empty-mfg.patch
+    %patch %(pkgdir)/0008-bannertopdf-close-output-stream-so-the-generated-pdf-is-not-truncated-.patch
+    %patch %(pkgdir)/0009-pdftopdf-honor-inherited-mediabox-cropbox-and-rotate-attributes.patch
+    %patch %(pkgdir)/0010-pdftopdf-keep-annotations-without-an-appearance-from-aborting-the-job.patch
+    %patch %(pkgdir)/0011-texttotext-restore-the-default-tab-width-instead-of-just-logging-it.patch
+
     %configure \
         --disable-mutool \
         --disable-static
@@ -41,7 +54,3 @@ packages    :
             - binary(pdftoppm)
             - colord # Integration with color profiles
             - dejavu-fonts-ttf
-
-    - "%(name)-devel":
-        rundeps     :
-            - pkgconfig(pdfio)

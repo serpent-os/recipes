@@ -1,0 +1,66 @@
+From 5c7ffb817af7bcde505312bce5bc85c3551f8d0a Mon Sep 17 00:00:00 2001
+From: ManasBagul23 <bagulmanas23@gmail.com>
+Date: Tue, 13 Oct 2026 00:10:12 +0530
+Subject: [PATCH] texttotext: restore the default tab width instead of just
+ logging it
+
+cfFilterTextToText() parsed TabWidth/tab-width straight into tab_width
+via atoi(), then only used the validity check (tab_width <= 0 ||
+tab_width > num_columns - 1) to pick which debug message to log --
+neither branch ever reset tab_width itself. The debug message claims
+'use default' but nothing did; an explicit TabWidth=0 (or any
+non-positive value) left tab_width at 0 all the way to the character
+loop, where 'column % tab_width' is evaluated for every tab character
+in the document and divides by zero.
+
+Reset tab_width to the documented default (8, the same value the
+variable is initialized to) when the validity check fails, instead of
+only logging that it would be. Also fixes the less severe half of the
+same check (tab_width > num_columns - 1 was flagged invalid but
+likewise never clamped).
+
+Verified by extracting the atoi-and-validate logic and the vulnerable
+modulo into a standalone reproduction: TabWidth=0 through the
+unfixed validation crashes before anything is printed (the division by
+zero); through the fixed validation, tab_width is restored to 8 and
+the modulo completes normally.
+
+Fixes OpenPrinting/libcupsfilters#180.
+Origin: upstream, https://github.com/OpenPrinting/libcupsfilters/commit/3daf8bdde2326c5bed5414bf6c17082918092e6a
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ cupsfilters/texttotext.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/cupsfilters/texttotext.c b/cupsfilters/texttotext.c
+index 0c24117..34e0ee4 100644
+--- a/cupsfilters/texttotext.c
++++ b/cupsfilters/texttotext.c
+@@ -568,16 +568,20 @@ cfFilterTextToText(int inputfd,         // I - File descriptor input stream
+ 	val += 7;
+       tab_width = atoi(val);
+     }
+-    if (log)
++    if (tab_width <= 0 || tab_width > num_columns - 1)
+     {
+-      if (tab_width <= 0 || tab_width > num_columns - 1)
++      // An invalid value must not reach the "column % tab_width" below with
++      // tab_width still zero (or negative) -- restore the documented default
++      // instead of just logging that the default would be used.
++      tab_width = 8;
++      if (log)
+ 	log(ld, CF_LOGLEVEL_DEBUG,
+ 	    "cfFilterTextToText: Tab width not set or invalid, use default");
+-      else
+-	log(ld, CF_LOGLEVEL_DEBUG,
+-	    "cfFilterTextToText: Tab width: %d columns",
+-	    tab_width);
+     }
++    else if (log)
++      log(ld, CF_LOGLEVEL_DEBUG,
++	  "cfFilterTextToText: Tab width: %d columns",
++	  tab_width);
+   }
+   if (log) log(ld, CF_LOGLEVEL_DEBUG,
+ 	       "cfFilterTextToText: Tab width: %d", tab_width);
