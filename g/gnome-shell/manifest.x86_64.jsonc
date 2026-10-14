@@ -252,6 +252,7 @@
 				"/usr/share/locale/sr/LC_MESSAGES/gnome-shell.mo",
 				"/usr/share/locale/sr@latin/LC_MESSAGES/gnome-shell.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/gnome-shell.mo",
+				"/usr/share/locale/sw/LC_MESSAGES/gnome-shell.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/gnome-shell.mo",
 				"/usr/share/locale/te/LC_MESSAGES/gnome-shell.mo",
 				"/usr/share/locale/tg/LC_MESSAGES/gnome-shell.mo",
@@ -283,6 +284,6 @@
 		}
 	},
 	"source-name": "gnome-shell",
-	"source-release": "54",
-	"source-version": "51.0"
+	"source-release": "55",
+	"source-version": "51.1"
 }
