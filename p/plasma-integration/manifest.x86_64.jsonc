@@ -45,6 +45,7 @@
 				"soname(libKF6KIOFileWidgets.so.6(x86_64))",
 				"soname(libKF6KIOGui.so.6(x86_64))",
 				"soname(libKF6KIOWidgets.so.6(x86_64))",
+				"soname(libKF6Notifications.so.6(x86_64))",
 				"soname(libKF6Service.so.6(x86_64))",
 				"soname(libKF6StatusNotifierItem.so.6(x86_64))",
 				"soname(libKF6WidgetsAddons.so.6(x86_64))",
@@ -116,6 +117,7 @@
 				"/usr/share/locale/sv/LC_MESSAGES/plasmaintegration5.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/plasmaintegration5.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/plasmaintegration5.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/plasmaintegration5.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/plasmaintegration5.mo",
 				"/usr/share/locale/vi/LC_MESSAGES/plasmaintegration5.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/plasmaintegration5.mo",
@@ -128,6 +130,6 @@
 		}
 	},
 	"source-name": "plasma-integration",
-	"source-release": "31",
-	"source-version": "6.7.5"
+	"source-release": "32",
+	"source-version": "6.8.0"
 }

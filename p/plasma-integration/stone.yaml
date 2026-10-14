@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-integration
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-integration-6.7.5.tar.xz : 0786c49f2f357744e0f4cfda49f55284faa1a97da85a667ca6cf1d8ab07aff89
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-integration-6.8.0.tar.xz : 121b0bc88059f61c45415dab12effbd245a5b5bb9be8856603f352c3f93a9adb
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
