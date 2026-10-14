@@ -148,6 +148,14 @@
 				"/usr/share/locale/sk/LC_MESSAGES/plasma-browser-integration-reminder.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/plasma-browser-integration-host.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/plasma-browser-integration-reminder.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/plasma-browser-integration-host.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/plasma-browser-integration-reminder.mo",
+				"/usr/share/locale/sr@ijekavian/LC_MESSAGES/plasma-browser-integration-host.mo",
+				"/usr/share/locale/sr@ijekavian/LC_MESSAGES/plasma-browser-integration-reminder.mo",
+				"/usr/share/locale/sr@ijekavianlatin/LC_MESSAGES/plasma-browser-integration-host.mo",
+				"/usr/share/locale/sr@ijekavianlatin/LC_MESSAGES/plasma-browser-integration-reminder.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/plasma-browser-integration-host.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/plasma-browser-integration-reminder.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/plasma-browser-integration-host.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/plasma-browser-integration-reminder.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/plasma-browser-integration-host.mo",
@@ -155,6 +163,8 @@
 				"/usr/share/locale/tg/LC_MESSAGES/plasma-browser-integration-reminder.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/plasma-browser-integration-host.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/plasma-browser-integration-reminder.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/plasma-browser-integration-host.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/plasma-browser-integration-reminder.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/plasma-browser-integration-host.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/plasma-browser-integration-reminder.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/plasma-browser-integration-host.mo",
@@ -171,6 +181,6 @@
 		}
 	},
 	"source-name": "plasma-browser-integration",
-	"source-release": "24",
-	"source-version": "6.7.5"
+	"source-release": "25",
+	"source-version": "6.8.0"
 }
