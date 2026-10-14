@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kwrited
-version     : "6.7.5"
-release     : 22
+version     : "6.8.0"
+release     : 23
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kwrited-6.7.5.tar.xz : f8aa905734d0ccde796884cfcb06b36084e441fb199ea5aab2bc92cfa4c0506d
+    - https://download.kde.org/stable/plasma/6.8.0/kwrited-6.8.0.tar.xz : d48770ba53b4171c3a6547efe6e6e4a4f5c4ec2d887c84369532abe89319b9f2
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : KDE daemon listening for wall and write messages
