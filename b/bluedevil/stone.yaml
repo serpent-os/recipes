@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : bluedevil
-version     : "6.7.5"
-release     : 32
+version     : "6.8.0"
+release     : 33
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/bluedevil-6.7.5.tar.xz : 1f6c0b01327b4b5e2ddcf11fd8e4b3e66ba492c9c66c61a95d4ddfd258850d5f
+    - https://download.kde.org/stable/plasma/6.8.0/bluedevil-6.8.0.tar.xz : 22cf80b9b1eb6e1039c6469dda3f6932833f192f404d4b7e7df47f1854200a2f
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-3-Clause
