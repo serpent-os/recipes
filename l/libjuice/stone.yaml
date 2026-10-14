@@ -3,7 +3,7 @@
 
 name        : libjuice
 version     : "1.7.4"
-release     : 1
+release     : 2
 homepage    : https://github.com/paullouisageneau/libjuice
 upstreams   :
     - https://github.com/paullouisageneau/libjuice/archive/refs/tags/v1.7.4.tar.gz : 95c088862aa1b88b73d62aa99577135010eb768fcafb252d13aa85a8515ef798
