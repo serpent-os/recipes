@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : aurorae
-version     : "6.7.5"
-release     : 25
+version     : "6.8.0"
+release     : 26
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/aurorae-6.7.5.tar.xz : 7e4305d4e28698024fcd797554ccad84bfd4ed4e5bdcb0f42b5da77fab244416
+    - https://download.kde.org/stable/plasma/6.8.0/aurorae-6.8.0.tar.xz : b012e3894eb1cfe8cb0bf20ecb48aac18cd655359941a5387f521e3bb9da2b91
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later

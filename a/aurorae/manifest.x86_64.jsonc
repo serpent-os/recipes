@@ -97,8 +97,13 @@
 				"/usr/share/locale/ru/LC_MESSAGES/aurorae.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/aurorae.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/aurorae.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/aurorae.mo",
+				"/usr/share/locale/sr@ijekavian/LC_MESSAGES/aurorae.mo",
+				"/usr/share/locale/sr@ijekavianlatin/LC_MESSAGES/aurorae.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/aurorae.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/aurorae.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/aurorae.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/aurorae.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/aurorae.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/aurorae.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/aurorae.mo"
@@ -140,6 +145,6 @@
 		}
 	},
 	"source-name": "aurorae",
-	"source-release": "25",
-	"source-version": "6.7.5"
+	"source-release": "26",
+	"source-version": "6.8.0"
 }
