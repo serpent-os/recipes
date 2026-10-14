@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : drkonqi
-version     : "6.7.5"
-release     : 23
+version     : "6.8.0"
+release     : 24
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/drkonqi-6.7.5.tar.xz : 9d02b9bd8534ac98dbb77a73248112654e2dee3ab1cf3cc59e69ba78027ab423
+    - https://download.kde.org/stable/plasma/6.8.0/drkonqi-6.8.0.tar.xz : 27a41dc4181df3a0af5322961541692d8020bab82946276dab57f924663cefaf
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
@@ -23,6 +23,8 @@ builddeps   :
     - cmake(KF6Config)
     - cmake(KF6CoreAddons)
     - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6GuiAddons)
     - cmake(KF6I18n)
     - cmake(KF6IdleTime)
     - cmake(KF6JobWidgets)
@@ -35,6 +37,7 @@ builddeps   :
     - cmake(KF6WidgetsAddons)
     - cmake(KF6WindowSystem)
     - cmake(PolkitQt6-1)
+    - cmake(Qt6Qml)
     - cmake(Qt6Quick)
     - pkgconfig(systemd)
     - python(psutil)
