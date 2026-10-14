@@ -35,6 +35,7 @@
 				"soname(libKF6AuthCore.so.6(x86_64))",
 				"soname(libKF6ColorScheme.so.6(x86_64))",
 				"soname(libKF6ConfigCore.so.6(x86_64))",
+				"soname(libKF6ConfigGui.so.6(x86_64))",
 				"soname(libKF6ConfigWidgets.so.6(x86_64))",
 				"soname(libKF6CoreAddons.so.6(x86_64))",
 				"soname(libKF6Crash.so.6(x86_64))",
@@ -69,6 +70,7 @@
 				"/usr/lib/qt6/plugins/kf6/krunner/krunner_systemsettings.so",
 				"/usr/share/applications/kdesystemsettings.desktop",
 				"/usr/share/applications/systemsettings.desktop",
+				"/usr/share/config.kcfg/systemsettings-config.kcfg",
 				"/usr/share/kglobalaccel/systemsettings.desktop",
 				"/usr/share/locale/ar/LC_MESSAGES/systemsettings.mo",
 				"/usr/share/locale/ast/LC_MESSAGES/systemsettings.mo",
@@ -255,6 +257,6 @@
 		}
 	},
 	"source-name": "systemsettings",
-	"source-release": "31",
-	"source-version": "6.7.5"
+	"source-release": "32",
+	"source-version": "6.8.0"
 }
