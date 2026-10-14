@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plymouth-kcm
-version     : "6.7.5"
-release     : 22
+version     : "6.8.0"
+release     : 23
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plymouth-kcm-6.7.5.tar.xz : ce723d67e6b8cd71b6eb353e87c10f698a095ea7d455bee703d8ba59e793e57e
+    - https://download.kde.org/stable/plasma/6.8.0/plymouth-kcm-6.8.0.tar.xz : bf6b206d34080cbc1f0ce9df7c79884134f7d7e5a87504734d397eb9820727fb
 homepage    : https://kde.org/plasma-desktop/
 license     : LGPL-2.0-or-later
 summary     : KCM to manage the Plymouth (Boot) theme
