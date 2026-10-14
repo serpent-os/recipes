@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : krdp
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/krdp-6.7.5.tar.xz : 483fb1d9ffd6954e7b12aa4321763a31726e5c0daac10e135cd13a503ced5330
+    - https://download.kde.org/stable/plasma/6.8.0/krdp-6.8.0.tar.xz : a080f796f4e91963e913708ee14f43d6deb158fe9ccb86476994a0c6532ccfb4
 homepage    : https://kde.org/plasma-desktop/
 license     : LGPL-2.1-or-later
 summary     : Library and examples for creating an RDP server
@@ -25,10 +25,12 @@ builddeps   :
     - cmake(KF6StatusNotifierItem)
     - cmake(KPipeWire)
     - cmake(PlasmaWaylandProtocols)
+    - cmake(Qt6Concurrent)
     - cmake(Qt6CorePrivate)
     - cmake(Qt6Keychain)
     - cmake(Qt6Quick)
     - cmake(Qt6WaylandClient)
+    - pkgconfig(libei-1.0)
     - pkgconfig(pam)
     - kf6-kirigami-addons
 rundeps     :
