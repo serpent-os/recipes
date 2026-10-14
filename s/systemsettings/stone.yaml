@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : systemsettings
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/systemsettings-6.7.5.tar.xz : 317a21165709d61796fba19f5454397577ffd8aa96655b29dd286a1df252cddb
+    - https://download.kde.org/stable/plasma/6.8.0/systemsettings-6.8.0.tar.xz : 57b72facd3a2cf50bd4ba0aa3e759f91ea18d1dfc059e8accc44023f54beb89f
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GFDL-1.2-only
