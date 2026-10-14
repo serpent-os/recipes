@@ -19,7 +19,7 @@
 			],
 			"files": [
 				"/usr/lib/libfreetype.so.6",
-				"/usr/lib/libfreetype.so.6.20.6"
+				"/usr/lib/libfreetype.so.6.20.7"
 			],
 			"name": "freetype",
 			"provides": [
@@ -45,7 +45,7 @@
 			],
 			"files": [
 				"/usr/lib32/libfreetype.so.6",
-				"/usr/lib32/libfreetype.so.6.20.6"
+				"/usr/lib32/libfreetype.so.6.20.7"
 			],
 			"name": "freetype-32bit",
 			"provides": [
@@ -159,6 +159,6 @@
 		}
 	},
 	"source-name": "freetype",
-	"source-release": "20",
-	"source-version": "2.14.3"
+	"source-release": "21",
+	"source-version": "2.15.0"
 }

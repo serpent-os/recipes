@@ -1,23 +1,27 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : freetype
-version     : "2.14.3"
-release     : 20
+version     : "2.15.0"
+release     : 21
 homepage    : http://freetype.org
 upstreams   :
-    - https://sourceforge.net/projects/freetype/files/freetype2/2.14.3/freetype-2.14.3.tar.xz : 36bc4f1cc413335368ee656c42afca65c5a3987e8768cc28cf11ba775e785a5f
+    - https://sourceforge.net/projects/freetype/files/freetype2/2.15.0/freetype-2.15.0.tar.xz : 93cd47eb719c325107f2d3cf087d06299e944c3b48a40b55537302304dea1dd5
 summary     : Library to rasterize glyphs from font files
 description : |
     freetype is a font rasterizer library written in C, designed to be small, efficient, highly customizable, and portable while capable of producing high-quality output (glyph images) of most vector and bitmap font formats.
 license     :
-    - FTL OR GPL-2.0-only
+    - FTL OR GPL-2.0-or-later  # main library
+    - MIT                      # BDF/PCF font drivers (src/bdf, src/pcf) and hashing code (src/base/fthash.c)
+    - MIT-Modern-Variant       # HarfBuzz-derived autofit code (src/autofit/ft-hb-*.{c,h}, hb-script-list.h)
+    - Zlib                     # gzip compression module (src/gzip)
 builddeps   :
     - binary(python3)
     - pkgconfig32(bzip2)
     - pkgconfig32(libbrotlidec)
     - pkgconfig32(libpng)
     - pkgconfig32(zlib)
+# harfbuzz is dlopen()ed at runtime (-Dharfbuzz=dynamic); should be a recommends
 emul32      : true
 profiles    :
     - emul32:
