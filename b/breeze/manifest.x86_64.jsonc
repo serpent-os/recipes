@@ -53,6 +53,8 @@
 				"/usr/share/color-schemes/BreezeClassic.colors",
 				"/usr/share/color-schemes/BreezeDark.colors",
 				"/usr/share/color-schemes/BreezeLight.colors",
+				"/usr/share/config.kcfg/breeze-decoration.kcfg",
+				"/usr/share/config.kcfg/breeze.kcfg",
 				"/usr/share/icons/hicolor/scalable/apps/breeze-settings.svgz",
 				"/usr/share/kstyle/themes/breeze.themerc",
 				"/usr/share/locale/ar/LC_MESSAGES/breeze_kwin_deco.mo",
@@ -165,6 +167,8 @@
 				"/usr/share/locale/tg/LC_MESSAGES/breeze_style_config.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/breeze_kwin_deco.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/breeze_style_config.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/breeze_kwin_deco.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/breeze_style_config.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/breeze_kwin_deco.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/breeze_style_config.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/breeze_kwin_deco.mo",
@@ -877,6 +881,6 @@
 		}
 	},
 	"source-name": "breeze",
-	"source-release": "25",
-	"source-version": "6.7.5"
+	"source-release": "26",
+	"source-version": "6.8.0"
 }
