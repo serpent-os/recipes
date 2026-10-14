@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : sddm-kcm
-version     : "6.7.5"
-release     : 24
+version     : "6.8.0"
+release     : 25
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/sddm-kcm-6.7.5.tar.xz : b7641d15996f590df27d8f820dffc79d83ce9e4e19a88f03bb1d8651faa25887
+    - https://download.kde.org/stable/plasma/6.8.0/sddm-kcm-6.8.0.tar.xz : 3482e9509989f0dbb828ae4d2761fd2622a59bd2b98d0a4ca84287bcb851d197
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : Config module for SDDM
