@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-login-manager
-version     : "6.7.5"
-release     : 28
+version     : "6.8.0"
+release     : 29
 homepage    : https://kde.org/plasma-desktop/
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-login-manager-6.7.5.tar.xz : 6ed7c3bbac1c79bc1a21c330923804aa6c3f720fafd6accb1a6a1fada684e84f
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-login-manager-6.8.0.tar.xz : 69e829f49fdf40a6a020c7d5d8603eb50a1cd76feb88c770cf0611f78c9d9818
 summary     : Display manager for KDE Plasam
 description : |
     Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with a new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).
