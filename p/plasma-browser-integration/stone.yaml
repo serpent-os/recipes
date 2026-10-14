@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-browser-integration
-version     : "6.7.5"
-release     : 24
+version     : "6.8.0"
+release     : 25
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-browser-integration-6.7.5.tar.xz : d88bdf85a990b4ff819e08843c74faa17715d14419981bbe24f68ec7cff0b8ce
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-browser-integration-6.8.0.tar.xz : ac546b9ccc90894bf709baa30b73a2e10ca056811c55d8ae881b9c599a22db71
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-3.0-or-later
 summary     : Integrate browsers into the Plasma Desktop
