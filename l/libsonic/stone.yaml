@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : libsonic
+version     : "0.2.0"
+release     : 1
+homepage    : https://github.com/waywardgeek/sonic
+upstreams   :
+    - https://github.com/waywardgeek/sonic/archive/refs/tags/release-0.2.0.tar.gz : c7827ce576838467590ffa1f935fbe1049e896dfed6c515cf569ad3779c24085
+summary     : Simple library to speed up or slow down speech
+description : |
+    Sonic is a simple, lightweight library to speed up or slow down speech. It
+    is used by speech synthesizers such as eSpeak NG to change the speaking
+    rate without altering the pitch.
+license     : Apache-2.0
+setup       : |
+    %patch %(pkgdir)/0001-Make-the-build-honour-the-environment.patch
+build       : |
+    %make
+install     : |
+    %make_install
+    rm %(installroot)%(libdir)/libsonic.a
+    %install_file sonic.1 -t %(installroot)%(mandir)/man1
