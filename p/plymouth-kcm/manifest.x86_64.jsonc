@@ -90,6 +90,7 @@
 				"/usr/share/locale/sr@latin/LC_MESSAGES/kcm_plymouth.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/kcm_plymouth.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/kcm_plymouth.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/kcm_plymouth.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/kcm_plymouth.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/kcm_plymouth.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/kcm_plymouth.mo",
@@ -103,6 +104,6 @@
 		}
 	},
 	"source-name": "plymouth-kcm",
-	"source-release": "22",
-	"source-version": "6.7.5"
+	"source-release": "23",
+	"source-version": "6.8.0"
 }
