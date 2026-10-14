@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-disks
-version     : "6.7.5"
-release     : 23
+version     : "6.8.0"
+release     : 24
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-disks-6.7.5.tar.xz : 34125cd31e559d4d0fef49bb33a6ffc1803112a17495ae1bfbcf5e8beda464c4
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-disks-6.8.0.tar.xz : 03f6e02ddc304b0aee74ca42ae6039a80fba51211039a55c839632041c98ccd3
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-3-Clause
