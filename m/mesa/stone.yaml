@@ -5,14 +5,14 @@ name        : mesa
 ### IMPORTANT: Use the update-mesa.py script to update this package
 
 ##@@BEGIN_VERSION
-version     : "26.2.4"
+version     : "26.2.5"
 ##@@END_VERSION
 # Note: keep mesa-clc in-sync with this package version-wise
-release     : 91
+release     : 92
 homepage    : https://mesa3d.org/
 upstreams   :
 ##@@BEGIN_SOURCE
-    - https://mesa.freedesktop.org/archive/mesa-26.2.4.tar.xz : bce5f7fbebb934373b86c999a064d52fb5065878dc57f287f95346648ec832e9
+    - https://mesa.freedesktop.org/archive/mesa-26.2.5.tar.xz : 794b3d1729075dae7ebd47c7283b7ca0cdb5dec668f7f11cc0a5d82f6138a0a5
 ##@@END_SOURCE
 
 ##@@BEGIN_CRATES
