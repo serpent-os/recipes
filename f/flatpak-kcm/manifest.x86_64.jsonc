@@ -76,8 +76,13 @@
 				"/usr/share/locale/sa/LC_MESSAGES/kcm_app-permissions.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/kcm_app-permissions.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/kcm_app-permissions.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/kcm_app-permissions.mo",
+				"/usr/share/locale/sr@ijekavian/LC_MESSAGES/kcm_app-permissions.mo",
+				"/usr/share/locale/sr@ijekavianlatin/LC_MESSAGES/kcm_app-permissions.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/kcm_app-permissions.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/kcm_app-permissions.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/kcm_app-permissions.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/kcm_app-permissions.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/kcm_app-permissions.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/kcm_app-permissions.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/kcm_app-permissions.mo"
@@ -89,6 +94,6 @@
 		}
 	},
 	"source-name": "flatpak-kcm",
-	"source-release": "22",
-	"source-version": "6.7.5"
+	"source-release": "23",
+	"source-version": "6.8.0"
 }

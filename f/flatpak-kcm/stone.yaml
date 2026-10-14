@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : flatpak-kcm
-version     : "6.7.5"
-release     : 22
+version     : "6.8.0"
+release     : 23
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/flatpak-kcm-6.7.5.tar.xz : acf25d4c7eed41e0d0ba9c897e6dae081b9021f9bcb75e3ca532ef5406ffa0ad
+    - https://download.kde.org/stable/plasma/6.8.0/flatpak-kcm-6.8.0.tar.xz : c9cd4ac35da3fcb31d3210cc3b641caaa8cc324abb9d9571437aecad6ac92575
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : Flatpak Permissions Management KCM
