@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : milou
-version     : "6.7.5"
-release     : 32
+version     : "6.8.0"
+release     : 33
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/milou-6.7.5.tar.xz : b43c7cb765109a91ad9ef7d5856c4584b380349837baf63ccca4b45a67925ab5
+    - https://download.kde.org/stable/plasma/6.8.0/milou-6.8.0.tar.xz : 0738c848ca48d90f52d41c9e8371686415e6f47ff8cf95fb4c14dea49965cb40
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
