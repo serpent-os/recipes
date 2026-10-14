@@ -30,7 +30,7 @@
 				"/usr/bin/xpu-smi",
 				"/usr/lib/libxpum.so",
 				"/usr/lib/libxpum.so.2",
-				"/usr/lib/libxpum.so.2.2.0",
+				"/usr/lib/libxpum.so.2.3.0",
 				"/usr/share/xpum/resources/config/device_thresholds.json",
 				"/usr/share/xpum/resources/config/pci.conf",
 				"/usr/share/xpum/resources/config/pci.ids"
@@ -43,6 +43,6 @@
 		}
 	},
 	"source-name": "xpumanager",
-	"source-release": "2",
-	"source-version": "2.2.0"
+	"source-release": "3",
+	"source-version": "2.3.0"
 }

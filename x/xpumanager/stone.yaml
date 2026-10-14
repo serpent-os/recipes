@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : xpumanager
-version     : "2.2.0"
-release     : 2
+version     : "2.3.0"
+release     : 3
 homepage    : https://intel.github.io/xpumanager/
 upstreams   :
-    - https://github.com/intel/xpumanager/archive/refs/tags/v2.2.0.tar.gz : ddb8a91ea5a3a3e7269056f1fa412f7a5db0c5bc67ea92819a9a9815dc9645a4
+    - https://github.com/intel/xpumanager/archive/refs/tags/v2.3.0.tar.gz : f3f3f1a9328b4d6a0e14efe11815d9c7d3f8d25102968096816e1403eecc2e22
 summary     : Free and open-source tool for monitoring and managing Intel Data Center GPUs.
 description : |
     Free and open-source tool for monitoring and managing Intel Data Center GPUs.
