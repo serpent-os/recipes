@@ -1,0 +1,48 @@
+.TH VAINFO 1 "2026-10-10" "libva-utils" "User Commands"
+.SH NAME
+vainfo \- print information about the VA-API driver
+.SH SYNOPSIS
+.B vainfo
+.RI [ options ]
+.SH DESCRIPTION
+.B vainfo
+prints information about the VA-API (Video Acceleration API) driver in use.
+It reports the libva version, the vendor/driver version, and the video profiles
+and entrypoints (decode, encode and video processing) that the driver supports.
+It is the standard way to check whether hardware\-accelerated video decoding and
+encoding are available on the system.
+.SH OPTIONS
+.TP
+.B \-\-help
+Print a usage message and exit.
+.TP
+.BR \-a ", " \-\-all
+In addition to the profiles and entrypoints, print all supported attributes.
+.TP
+.BI \-\-display " display"
+Query the given display instead of the default one. The special value
+.B help
+prints the list of available displays.
+.TP
+.BI \-\-device " device"
+Use the given device node. This is only honoured by the
+.B drm
+display.
+.SH ENVIRONMENT
+.TP
+.B LIBVA_DRIVER_NAME
+Select the VA-API driver to load (for example
+.BR iHD " or " i965 ).
+.TP
+.B DISPLAY
+The X11 or Wayland display to use, when the corresponding backend is enabled.
+.SH EXAMPLES
+.TP
+.B vainfo
+Show the driver version and the supported profiles and entrypoints.
+.TP
+.B vainfo \-\-all
+Also show all supported attributes.
+.SH SEE ALSO
+The VA-API documentation:
+.IR https://github.com/intel/libva .

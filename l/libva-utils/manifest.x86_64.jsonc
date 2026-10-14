@@ -13,6 +13,7 @@
 				"pkgconfig(x11)"
 			],
 			"depends": [
+				"binary(vainfo)",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -40,7 +41,6 @@
 				"/usr/bin/putsurface_wayland",
 				"/usr/bin/sfcsample",
 				"/usr/bin/vacopy",
-				"/usr/bin/vainfo",
 				"/usr/bin/vavpp",
 				"/usr/bin/vp8enc",
 				"/usr/bin/vp9enc",
@@ -68,7 +68,6 @@
 				"binary(putsurface_wayland)",
 				"binary(sfcsample)",
 				"binary(vacopy)",
-				"binary(vainfo)",
 				"binary(vavpp)",
 				"binary(vp8enc)",
 				"binary(vp9enc)",
@@ -81,9 +80,39 @@
 				"binary(vppscaling_n_out_usrptr)",
 				"binary(vppsharpness)"
 			]
+		},
+		"vainfo": {
+			"build-depends": [
+				"pkgconfig(libdrm)",
+				"pkgconfig(libva)",
+				"pkgconfig(libva-drm)",
+				"pkgconfig(libva-wayland)",
+				"pkgconfig(libva-x11)",
+				"pkgconfig(wayland-client)",
+				"pkgconfig(x11)"
+			],
+			"depends": [
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libX11.so.6(x86_64))",
+				"soname(libc.so.6(x86_64))",
+				"soname(libdrm.so.2(x86_64))",
+				"soname(libva-drm.so.2(x86_64))",
+				"soname(libva-wayland.so.2(x86_64))",
+				"soname(libva-x11.so.2(x86_64))",
+				"soname(libva.so.2(x86_64))",
+				"soname(libwayland-client.so.0(x86_64))"
+			],
+			"files": [
+				"/usr/bin/vainfo",
+				"/usr/share/man/man1/vainfo.1"
+			],
+			"name": "vainfo",
+			"provides": [
+				"binary(vainfo)"
+			]
 		}
 	},
 	"source-name": "libva-utils",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "2.24.0"
 }

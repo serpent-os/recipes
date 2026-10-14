@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libva-utils
 version     : "2.24.0"
-release     : 4
+release     : 5
 homepage    : https://github.com/intel/libva-utils
 upstreams   :
     - https://github.com/intel/libva-utils/archive/refs/tags/2.24.0.tar.gz : bf959a1ced3cde8176a7ff50ad358ee98e93301ac068581a8b2617c5b83afcb3
@@ -25,3 +25,20 @@ build       : |
     %meson_build
 install     : |
     %meson_install
+    %install_file %(pkgdir)/vainfo.1 %(installroot)%(mandir)/man1/vainfo.1
+
+packages    :
+    - "%(name)":
+        # Keep the split-out tool with the main package so an existing
+        # libva-utils install is not silently depleted.
+        rundeps:
+            - binary(vainfo)
+
+    - vainfo:
+        summary: VA-API driver information tool
+        description: |
+            Print information about the VA-API (Video Acceleration API) driver in use,
+            including the reported libva version and the supported profiles and entrypoints.
+        paths:
+            - /usr/bin/vainfo
+            - /usr/share/man/man1/vainfo.1
