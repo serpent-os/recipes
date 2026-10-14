@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : oxygen-sounds
-version     : "6.7.5"
-release     : 3
+version     : "6.8.0"
+release     : 4
 homepage    : https://download.kde.org/stable/plasma/6.7.3
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/oxygen-sounds-6.7.5.tar.xz : 0cc5b60004d8feb8b1de032cb5d3c056c98f62a8713589b90b471e5943e31ad9
+    - https://download.kde.org/stable/plasma/6.8.0/oxygen-sounds-6.8.0.tar.xz : 76160a3a63cf615b84e9ab354bd1752a8bda2f00b403c58b0e51de65cbacee46
 summary     : Oxygen Sound Theme
 description : |
     Oxygen sound theme for KDE plasma
