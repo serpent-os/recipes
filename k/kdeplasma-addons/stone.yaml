@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kdeplasma-addons
-version     : "6.7.5"
-release     : 32
+version     : "6.8.0"
+release     : 33
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kdeplasma-addons-6.7.5.tar.xz : 1bc1c861487733f4944695d509c81f19b90a4d80c5825cc6df633b0313e3e8cc
+    - https://download.kde.org/stable/plasma/6.8.0/kdeplasma-addons-6.8.0.tar.xz : f8d6000fb4cb0ce7f172bd9bfe4dbd4763200b71f36c87c39005189075af7486
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
