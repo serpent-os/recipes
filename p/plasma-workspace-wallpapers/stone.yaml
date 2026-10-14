@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-workspace-wallpapers
-version     : "6.7.5"
-release     : 22
+version     : "6.8.0"
+release     : 23
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-workspace-wallpapers-6.7.5.tar.xz : c481ac4b937a2b1b080c3273e0557cd0c9d57b644156b941902483fd8e1646b5
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-workspace-wallpapers-6.8.0.tar.xz : 1c0902504d1c27ab86cac5aa354ebe3c2797e4430200511d83ff1ed3111ce663
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later

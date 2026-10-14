@@ -281,6 +281,13 @@
 				"/usr/share/wallpapers/Volna/contents/images/5120x2880.jpg",
 				"/usr/share/wallpapers/Volna/contents/screenshot.png",
 				"/usr/share/wallpapers/Volna/metadata.json",
+				"/usr/share/wallpapers/Waterfall/contents/images/1440x2960.png",
+				"/usr/share/wallpapers/Waterfall/contents/images/5120x2880.png",
+				"/usr/share/wallpapers/Waterfall/contents/images/7680x2160.png",
+				"/usr/share/wallpapers/Waterfall/contents/images_dark/1440x2960.png",
+				"/usr/share/wallpapers/Waterfall/contents/images_dark/5120x2880.png",
+				"/usr/share/wallpapers/Waterfall/contents/images_dark/7680x2160.png",
+				"/usr/share/wallpapers/Waterfall/metadata.json",
 				"/usr/share/wallpapers/summer_1am/contents/images/1280x1024.jpg",
 				"/usr/share/wallpapers/summer_1am/contents/images/1280x800.jpg",
 				"/usr/share/wallpapers/summer_1am/contents/images/1440x900.jpg",
@@ -300,6 +307,6 @@
 		}
 	},
 	"source-name": "plasma-workspace-wallpapers",
-	"source-release": "22",
-	"source-version": "6.7.5"
+	"source-release": "23",
+	"source-version": "6.8.0"
 }
