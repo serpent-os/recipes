@@ -45,7 +45,7 @@
 				"soname(libKF6KIOGui.so.6(x86_64))",
 				"soname(libKF6Service.so.6(x86_64))",
 				"soname(libKF6WindowSystem.so.6(x86_64))",
-				"soname(libPlasma.so.7(x86_64))",
+				"soname(libPlasma.so.8(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
 				"soname(libQt6Gui.so.6(x86_64))",
 				"soname(libQt6Network.so.6(x86_64))",
@@ -67,6 +67,7 @@
 				"/usr/lib/qt6/qml/org/kde/plasma/welcome/plasma-welcome-public.qmltypes",
 				"/usr/lib/qt6/qml/org/kde/plasma/welcome/qmldir",
 				"/usr/share/applications/org.kde.plasma-welcome.desktop",
+				"/usr/share/config.kcfg/plasma-welcome.kcfg",
 				"/usr/share/locale/ar/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/ast/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/az/LC_MESSAGES/plasma-welcome.mo",
@@ -109,8 +110,13 @@
 				"/usr/share/locale/sa/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/plasma-welcome.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/plasma-welcome.mo",
+				"/usr/share/locale/sr@ijekavian/LC_MESSAGES/plasma-welcome.mo",
+				"/usr/share/locale/sr@ijekavianlatin/LC_MESSAGES/plasma-welcome.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/plasma-welcome.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/plasma-welcome.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/plasma-welcome.mo",
@@ -125,6 +131,6 @@
 		}
 	},
 	"source-name": "plasma-welcome",
-	"source-release": "32",
-	"source-version": "6.7.5"
+	"source-release": "33",
+	"source-version": "6.8.0"
 }
