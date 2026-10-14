@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : merkuro
 version     : "26.08.2"
-release     : 34
+release     : 35
 homepage    : https://apps.kde.org/merkuro/
 upstreams   :
     - https://download.kde.org/stable/release-service/26.08.2/src/merkuro-26.08.2.tar.xz : ca036db50a0e3daaac96be9e1da48f1e8d73ce5dfb942bcbaedf3785cb66a91f

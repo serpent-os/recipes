@@ -86,7 +86,7 @@
 				"soname(libKPim6MimeTreeParserCore.so.6(x86_64))",
 				"soname(libKPim6PimCommonAkonadi.so.6(x86_64))",
 				"soname(libKirigamiAddonsStatefulApp.so.6(x86_64))",
-				"soname(libPlasma.so.7(x86_64))",
+				"soname(libPlasma.so.8(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
 				"soname(libQt6DBus.so.6(x86_64))",
 				"soname(libQt6Gui.so.6(x86_64))",
@@ -324,6 +324,6 @@
 		}
 	},
 	"source-name": "merkuro",
-	"source-release": "34",
+	"source-release": "35",
 	"source-version": "26.08.2"
 }
