@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 13 Oct 2026 00:00:00 -0500
+Subject: [PATCH] Export module symbols for dlopened audio plugins
+
+The synthesis modules open the audio output plugins (spd_pipewire,
+spd_pulse, spd_alsa) at runtime with dlopen(RTLD_NOW); the plugins
+resolve symbols such as MSG() from the module executable, so the module
+must export its dynamic symbols. Upstream relies on GNU libtool turning
+`-dlopen force` on a program into `-Wl,--export-dynamic`, but slibtool
+(which aerynOS uses) treats `-dlopen` as `-dlpreopen` and does not add
+that flag, so the plugins fail to load with "undefined symbol: MSG".
+
+Link the modules with -Wl,--export-dynamic explicitly.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-13
+---
+ src/modules/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/modules/Makefile.am b/src/modules/Makefile.am
+index c0f916b..a1b2c3d 100644
+--- a/src/modules/Makefile.am
++++ b/src/modules/Makefile.am
+@@ -27,6 +27,7 @@
+ CLEANFILES = dummy-message.wav
+ 
+ inc_local = -I$(top_srcdir)/include -I$(top_srcdir)/src/common
++AM_LDFLAGS = -Wl,--export-dynamic
+ LDFLAGS =
+ 
+ if DARWIN_HOST
