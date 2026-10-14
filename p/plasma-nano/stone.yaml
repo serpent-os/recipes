@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-nano
-version     : "6.7.5"
-release     : 4
+version     : "6.8.0"
+release     : 5
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-nano-6.7.5.tar.xz : 9a5356f6526daec0873c8dd35d98d88122c2bc7739eb69fb9585146a6772f202
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-nano-6.8.0.tar.xz : 8b4a8e3d07184bf239991274a019c8e4f03eefdb374684d39f043827ebccae58
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
