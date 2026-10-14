@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libkscreen
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/libkscreen-6.7.5.tar.xz : df317e03acfadfcbc68981b78131750103fadf4d5c5df6368c9e91e698677219
+    - https://download.kde.org/stable/plasma/6.8.0/libkscreen-6.8.0.tar.xz : 09a30242ad027978333f4773ae6401f9a666c6dbf80fa25f74c8be2deaecb949
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
