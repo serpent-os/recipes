@@ -4,11 +4,13 @@
 	"packages": {
 		"pdfio": {
 			"build-depends": [
+				"pkgconfig(libpng)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
 				"soname(libc.so.6(x86_64))",
 				"soname(libm.so.6(x86_64))",
+				"soname(libpng16.so.16(x86_64))",
 				"soname(libz.so.1(x86_64))"
 			],
 			"files": [
@@ -25,10 +27,12 @@
 		},
 		"pdfio-devel": {
 			"build-depends": [
+				"pkgconfig(libpng)",
 				"pkgconfig(zlib)"
 			],
 			"depends": [
 				"pdfio",
+				"pkgconfig(libpng)",
 				"pkgconfig(zlib)"
 			],
 			"files": [
@@ -45,6 +49,7 @@
 		},
 		"pdfio-examples": {
 			"build-depends": [
+				"pkgconfig(libpng)",
 				"pkgconfig(zlib)"
 			],
 			"files": [
@@ -69,6 +74,6 @@
 		}
 	},
 	"source-name": "pdfio",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "1.6.5"
 }

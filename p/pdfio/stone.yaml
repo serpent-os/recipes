@@ -3,7 +3,7 @@
 
 name        : pdfio
 version     : "1.6.5"
-release     : 3
+release     : 4
 upstreams   :
     - https://github.com/michaelrsweet/pdfio/releases/download/v1.6.5/pdfio-1.6.5.tar.gz : 2b9e1db7c4a72cbc896098a6682a1e51fc2bfb979f00bec8bb515ee79c338084
 homepage    : https://www.msweet.org/pdfio
@@ -12,6 +12,7 @@ summary     : A simple C library for reading and writing PDF files
 description : |
     A simple C library for reading and writing PDF files
 builddeps   :
+    - pkgconfig(libpng)
     - pkgconfig(zlib)
 setup       : |
     %configure \
