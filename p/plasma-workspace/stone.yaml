@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-workspace
-version     : "6.7.5"
-release     : 46
+version     : "6.8.0"
+release     : 47
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-workspace-6.7.5.tar.xz : 94ab21e2243b7876f65c315f1e545081c6437f5bd0a041ca4fb6c2533ae874c9
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-workspace-6.8.0.tar.xz : 01677cede8a94681a96bd0ee1b211acddaa4678cf7b89aa670b949bdf68c1973
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GFDL-1.2
@@ -16,7 +16,6 @@ description : |
     KDE Plasma workspace
 builddeps   :
     - cmake(AppStreamQt)
-    - cmake(Breeze)
     # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
     - cmake(ECM)
     - cmake(KExiv2Qt6)
@@ -74,15 +73,18 @@ builddeps   :
     - cmake(Qt6Svg)
     - cmake(Qt6WaylandClient)
     - cmake(ScreenSaverDBusInterface)
+    - cmake(Union)
+    - pkgconfig(accountsservice)
     - pkgconfig(fontconfig)
-    # ice can be removed once we can do WITH_X11=OFF
+    # ice is required by ksmserver (X11 session manager), built while WITH_X11=ON
     - pkgconfig(ice)
     - pkgconfig(libcanberra)
     - pkgconfig(libpipewire-0.3)
     - pkgconfig(libqalculate)
     - pkgconfig(libxcrypt)
-    # sm and xcb-icccm can be removed once we can do WITH_X11=OFF
+    # sm is required by ksmserver (X11 session manager), built while WITH_X11=ON
     - pkgconfig(sm)
+    # xcb-icccm is required by xembed-sni-proxy, which is always built (not gated by WITH_X11)
     - pkgconfig(xcb-icccm)
     - iso-codes
     - kio-extras
@@ -95,7 +97,8 @@ setup       : |
     %patch %(pkgdir)/0001-Remove-wayland-from-session-name.patch
     %patch %(pkgdir)/0001-Use-stateless-dir-for-menu.patch
 
-    # Regrettably we can't set WITH_X11=OFF yet because the font KCM relies on it to build. For now we can just cleanup the session bits afterwords
+    # WITH_X11=OFF isn't viable yet: it gates the fonts KCM (Xcursor-based). It also gates
+    # ksmserver (X11 session manager, and its ICE/SM deps) and gmenu-dbusmenu-proxy.
     %cmake_kf6 \
         -DGLIBC_LOCALE_GEN=OFF \
         -DGLIBC_LOCALE_PREGENERATED=ON \
@@ -138,10 +141,9 @@ packages    :
         paths:
             - /usr/lib/libkworkspace6.so.*
 
-    # This is split out to resolve build ordering issues with powerdevil. This package will likely need to be checked on future updates
-    # to ensure that it doesn't depend on any other devel files in plasma-workspace-devel
-    # ALTERNATIVELY, if we could exclude plasma-workspace as a rundep of plasma-workspace-devel (which technically only needs plasma-workspace-libs)
-    # then it should be possible to fix the ordering issue as well.
+    # Split out to resolve build ordering issues with powerdevil. plasma-workspace-devel now depends
+    # on plasma-workspace-libs (not plasma-workspace) via rundeps-exclude, so this split may no
+    # longer be needed - verify before removing.
     - "libkworkspace-devel":
         summary: Runtime libkworkspace6 library - devel files
         description: Runtime libkworkspace6 library - devel files
@@ -188,6 +190,10 @@ packages    :
         rundeps:
             - "libkworkspace-devel"
             - cmake(KF6ItemModels)
+            - "%(name)-libs"
+        rundeps-exclude:
+            - '^plasma-workspace$'
+            - '^name\(plasma-workspace\)$'
         paths:
             - /usr/share/dbus-1/interfaces/
 
