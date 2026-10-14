@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kinfocenter
-version     : "6.7.5"
-release     : 35
+version     : "6.8.0"
+release     : 36
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/kinfocenter-6.7.5.tar.xz : e3aeb4b6f7237fddff4e68f4d7d715772cc47bd0ac376febe24ae3d717680416
+    - https://download.kde.org/stable/plasma/6.8.0/kinfocenter-6.8.0.tar.xz : 56ca33428a14c7963e75be1c39025e62b70253b0e0fdc500072a38df9411a761
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GFDL-1.2-only
@@ -22,6 +22,7 @@ builddeps   :
     - binary(lspci)
     - binary(pactl)
     - binary(sensors)
+    - binary(vainfo)
     - binary(vulkaninfo)
     - binary(wayland-info)
     # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
@@ -37,6 +38,7 @@ builddeps   :
     - cmake(KF6Service)
     - cmake(KF6Solid)
     - cmake(Qt6CorePrivate)
+    - cmake(Qt6Graphs)
     - pkgconfig(libdrm)
     - pkgconfig(libpipewire-0.3)
     - pkgconfig(libusb-1.0)
@@ -53,6 +55,7 @@ rundeps     :
     - binary(lspci)
     - binary(pactl)
     - binary(sensors)
+    - binary(vainfo)
     - binary(vulkaninfo)
     - binary(wayland-info)
     - sysbinary(dmidecode)
