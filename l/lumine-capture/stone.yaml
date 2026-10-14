@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : lumine-capture
+version     : "0.2.0"
+release     : 1
+homepage    : https://github.com/Netflate/LumineCapture
+upstreams   :
+    - https://github.com/Netflate/LumineCapture/archive/refs/tags/v0.2.0.tar.gz : 23d96d3adbc43429f42322afd72ae608327da255e8ed570222e858e22d52754c
+summary     : Fast, lightweight Wayland screenshot tool
+description : |
+    Screenshot and annotation tool for Wayland with built-in OCR (OCR models are downloaded at runtime)
+license     :
+    - Apache-2.0 OR MIT
+    - MIT # statically linked ONNX Runtime
+    - OFL-1.1
+networking  : true
+builddeps   :
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libspa-0.2)
+    - pkgconfig(openssl)
+    - pkgconfig(xkbcommon)
+setup       : |
+    %cargo_fetch
+build       : |
+    %cargo_build --features ocr-gpu
+install     : |
+    %cargo_install
+
+    %install_file assets/lumine-capture.desktop -t %(installroot)%(datadir)/applications/
+
+    for icon in assets/hicolor/*/apps/*; do
+        %install_file "$icon" %(installroot)%(datadir)/icons/${icon#assets/}
+    done
+
+    %install_file LICENSE-MIT LICENSE-APACHE -t %(installroot)%(datadir)/licenses/%(name)/
+    %install_file assets/fonts/LICENSE-OFL.txt %(installroot)%(datadir)/licenses/%(name)/LICENSE-OFL-Inter.txt
+    %install_file README.md docs/lumine-capture-shortcuts-kde.kksrc -t %(installroot)%(docdir)/%(name)/
+check       : |
+    %cargo_test --features ocr-gpu
