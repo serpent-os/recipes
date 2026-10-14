@@ -25,7 +25,6 @@
 				"cmake(KPipeWire)",
 				"cmake(KQuickImageEditor)",
 				"cmake(LayerShellQt)",
-				"cmake(OpenCV)",
 				"cmake(PlasmaWaylandProtocols)",
 				"cmake(Qt6CorePrivate)",
 				"cmake(Qt6Multimedia)",
@@ -73,8 +72,6 @@
 				"soname(libc.so.6(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libm.so.6(x86_64))",
-				"soname(libopencv_core.so.414(x86_64))",
-				"soname(libopencv_imgproc.so.414(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
 				"soname(libtesseract.so.5.5(x86_64))",
 				"soname(libwayland-client.so.0(x86_64))",
@@ -94,6 +91,7 @@
 				"/usr/lib/kconf_update_bin/spectacle-24.02.0-video_format",
 				"/usr/lib/systemd/user/app-org.kde.spectacle.service",
 				"/usr/share/applications/org.kde.spectacle.desktop",
+				"/usr/share/config.kcfg/spectacle.kcfg",
 				"/usr/share/dbus-1/interfaces/org.kde.Spectacle.xml",
 				"/usr/share/dbus-1/services/org.kde.Spectacle.service",
 				"/usr/share/dbus-1/services/org.kde.spectacle.service",
@@ -154,6 +152,7 @@
 				"/usr/share/locale/sv/LC_MESSAGES/spectacle.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/spectacle.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/spectacle.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/spectacle.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/spectacle.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/spectacle.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/spectacle.mo",
@@ -164,6 +163,7 @@
 				"/usr/share/man/man1/spectacle.1",
 				"/usr/share/man/nl/man1/spectacle.1",
 				"/usr/share/man/pt_BR/man1/spectacle.1",
+				"/usr/share/man/ru/man1/spectacle.1",
 				"/usr/share/man/sl/man1/spectacle.1",
 				"/usr/share/man/sv/man1/spectacle.1",
 				"/usr/share/man/tr/man1/spectacle.1",
@@ -199,7 +199,6 @@
 				"cmake(KPipeWire)",
 				"cmake(KQuickImageEditor)",
 				"cmake(LayerShellQt)",
-				"cmake(OpenCV)",
 				"cmake(PlasmaWaylandProtocols)",
 				"cmake(Qt6CorePrivate)",
 				"cmake(Qt6Multimedia)",
@@ -254,6 +253,6 @@
 		}
 	},
 	"source-name": "spectacle",
-	"source-release": "35",
-	"source-version": "6.7.5"
+	"source-release": "36",
+	"source-version": "6.8.0"
 }

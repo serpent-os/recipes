@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : spectacle
-version     : "6.7.5"
-release     : 35
+version     : "6.8.0"
+release     : 36
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/spectacle-6.7.5.tar.xz : 2a63a8da331f9249e0ff0091a38f2fa946c7b85c7b7133bd8b60dd524e8e01b8
+    - https://download.kde.org/stable/plasma/6.8.0/spectacle-6.8.0.tar.xz : 58f4b21417021b019f5a701ba681e3e51dd1d971c7a68f006bfb2e24de8c9e95
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-only
 summary     : KDE Screenshot Utility
@@ -34,7 +34,6 @@ builddeps   :
     - cmake(KPipeWire)
     - cmake(KQuickImageEditor)
     - cmake(LayerShellQt)
-    - cmake(OpenCV)
     - cmake(PlasmaWaylandProtocols)
     - cmake(Qt6CorePrivate)
     - cmake(Qt6Multimedia)
