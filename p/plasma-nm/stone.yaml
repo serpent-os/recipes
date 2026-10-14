@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-nm
-version     : "6.7.5"
-release     : 35
+version     : "6.8.0"
+release     : 36
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/plasma-nm-6.7.5.tar.xz : 6469ff89e26d44565292c968df595b3a68f353707255ba48725c1bae2a67f3be
+    - https://download.kde.org/stable/plasma/6.8.0/plasma-nm-6.8.0.tar.xz : 5a7f9ae94920579e5eaee601323ba5723f7cc6385e189ae571dc6c925211728c
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-only
@@ -32,7 +32,6 @@ builddeps   :
     - cmake(KF6QuickCharts)
     - cmake(KF6Service)
     - cmake(KF6Solid)
-    - cmake(KF6Svg)
     - cmake(KF6WidgetsAddons)
     - cmake(KF6WindowSystem)
     - cmake(Plasma)
