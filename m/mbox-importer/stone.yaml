@@ -3,7 +3,7 @@
 
 name        : mbox-importer
 version     : "26.08.2"
-release     : 1
+release     : 2
 upstreams   :
     - https://download.kde.org/stable/release-service/26.08.2/src/mbox-importer-26.08.2.tar.xz : 48ef7b90a7ce35fe2253d262d17e7d74f78391bc566048bf521450e491f8b65d
 homepage    : https://invent.kde.org/pim/mbox-importer
