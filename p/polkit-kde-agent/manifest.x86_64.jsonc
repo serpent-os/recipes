@@ -16,6 +16,7 @@
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"kf6-kirigami",
 				"soname(libKF6CoreAddons.so.6(x86_64))",
 				"soname(libKF6Crash.so.6(x86_64))",
 				"soname(libKF6DBusAddons.so.6(x86_64))",
@@ -112,6 +113,6 @@
 		}
 	},
 	"source-name": "polkit-kde-agent",
-	"source-release": "23",
-	"source-version": "6.7.5"
+	"source-release": "24",
+	"source-version": "6.8.0"
 }

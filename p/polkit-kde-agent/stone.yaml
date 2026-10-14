@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : polkit-kde-agent
-version     : "6.7.5"
-release     : 23
+version     : "6.8.0"
+release     : 24
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/polkit-kde-agent-1-6.7.5.tar.xz : fb731dd979c0296994b5efe37b0a9cdeec5e704f91565540930effdbd7efee58
+    - https://download.kde.org/stable/plasma/6.8.0/polkit-kde-agent-1-6.8.0.tar.xz : 822bab19efac249d716b6de4409760fcfbc5cd06e062a31c23c92e43d9fc905a
 homepage    : https://kde.org/plasma-desktop/
 license     : GPL-2.0-or-later
 summary     : Daemon providing a polkit authentication for KDE
@@ -22,6 +22,8 @@ builddeps   :
     - cmake(KF6WindowSystem)
     - cmake(PolkitQt6-1)
     - cmake(Qt6Quick)
+rundeps     :
+    - kf6-kirigami
 tuning      :
     - lto: full
     - optimize: speed
