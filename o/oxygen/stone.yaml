@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : oxygen
-version     : "6.7.5"
-release     : 5
+version     : "6.8.0"
+release     : 6
 homepage    : https://kde.org/plasma-desktop/
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/oxygen-6.7.5.tar.xz: ffa4b969197f6e09a6ee4f468925e67223666d761ee9801a8ea612e09b756037
+    - https://download.kde.org/stable/plasma/6.8.0/oxygen-6.8.0.tar.xz: e37302a7219cfadfdb462af5992aeb07fd30ae396a5cc6e9a8f1a0e0ae268136
 summary     : Qt Oxygen Theme
 description : |
     The Oxygen Style for Qt/KDE Applications
