@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : ksystemstats
-version     : "6.7.5"
-release     : 23
+version     : "6.8.0"
+release     : 24
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/ksystemstats-6.7.5.tar.xz : 27cfb9a189244b897ae23f3a8681e7c4b45cc67ec27faff8961783edce16f1fc
+    - https://download.kde.org/stable/plasma/6.8.0/ksystemstats-6.8.0.tar.xz : 759e604618e60d74608d267f865cce4467db41d6d58cb0c8226060066a15d0de
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-only
