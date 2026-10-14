@@ -41,7 +41,7 @@
 				"soname(libKF6KCMUtilsQuick.so.6(x86_64))",
 				"soname(libKF6PulseAudioQt.so.5(x86_64))",
 				"soname(libKF6StatusNotifierItem.so.6(x86_64))",
-				"soname(libPlasma.so.7(x86_64))",
+				"soname(libPlasma.so.8(x86_64))",
 				"soname(libQt6Core.so.6(x86_64))",
 				"soname(libQt6DBus.so.6(x86_64))",
 				"soname(libQt6Gui.so.6(x86_64))",
@@ -60,7 +60,7 @@
 			],
 			"files": [
 				"/usr/lib/libplasma-volume.so.6",
-				"/usr/lib/libplasma-volume.so.6.7.5",
+				"/usr/lib/libplasma-volume.so.6.8.0",
 				"/usr/lib/qt6/plugins/kf6/kded/audioshortcutsservice.so",
 				"/usr/lib/qt6/plugins/plasma/applets/org.kde.plasma.volume.so",
 				"/usr/lib/qt6/plugins/plasma/kcms/systemsettings/kcm_pulseaudio.so",
@@ -70,6 +70,7 @@
 				"/usr/lib/qt6/qml/org/kde/plasma/private/volume/plasma-volume-declarative.qmltypes",
 				"/usr/lib/qt6/qml/org/kde/plasma/private/volume/qmldir",
 				"/usr/share/applications/kcm_pulseaudio.desktop",
+				"/usr/share/config.kcfg/plasmapa.kcfg",
 				"/usr/share/locale/ar/LC_MESSAGES/kcm_pulseaudio.mo",
 				"/usr/share/locale/ar/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo",
 				"/usr/share/locale/ast/LC_MESSAGES/kcm_pulseaudio.mo",
@@ -173,6 +174,8 @@
 				"/usr/share/locale/ta/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/kcm_pulseaudio.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/kcm_pulseaudio.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/kcm_pulseaudio.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/kcm_pulseaudio.mo",
@@ -249,6 +252,6 @@
 		}
 	},
 	"source-name": "plasma-pa",
-	"source-release": "33",
-	"source-version": "6.7.5"
+	"source-release": "34",
+	"source-version": "6.8.0"
 }
