@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : kup
+version     : "6.8.0"
+release     : 1
+upstreams   :
+    - https://download.kde.org/stable/plasma/6.8.0/kup-6.8.0.tar.xz : 0879a8edb3becad34613db8d75cb854caf44a6051a53bcfa4d1fb59d0f510d5c
+homepage    : https://kde.org/plasma-desktop/
+license     :
+    - CC0-1.0
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+summary     : Backup scheduler for KDE's Plasma desktop
+description : |
+    Kup is a backup scheduler for KDE's Plasma desktop. It can be configured to run
+    backups on a schedule and to keep multiple versions of backed-up files.
+builddeps   :
+    # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
+    - cmake(ECM)
+    - cmake(KF6Config)
+    - cmake(KF6CoreAddons)
+    - cmake(KF6Crash)
+    - cmake(KF6DBusAddons)
+    - cmake(KF6I18n)
+    - cmake(KF6IdleTime)
+    - cmake(KF6JobWidgets)
+    - cmake(KF6KCMUtils)
+    - cmake(KF6KIO)
+    - cmake(KF6Notifications)
+    - cmake(KF6Solid)
+    - cmake(KF6WidgetsAddons)
+    - cmake(KF6WindowSystem)
+    - cmake(KF6XmlGui)
+    - cmake(Plasma)
+    - pkgconfig(libgit2)
+tuning      :
+    - lto: full
+    - optimize: speed
+setup       : |
+    %cmake_kf6
+build       : |
+    %cmake_build
+install     : |
+    %cmake_install
