@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : knighttime
-version     : "6.7.5"
-release     : 19
+version     : "6.8.0"
+release     : 20
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/knighttime-6.7.5.tar.xz : 5cb23e736e4be4952e63c855cfb45850e1085d650e67b7cae3cbf9721921cb9f
+    - https://download.kde.org/stable/plasma/6.8.0/knighttime-6.8.0.tar.xz : eba13437d5cc769e5d8b7f4f69aa7d0baee016ee9ca2c8d539fc063adf99072a
 homepage    : https://kde.org/plasma-desktop/
 license     : LGPL-2.0-or-later
 summary     : Helpers for scheduling the dark-light cycle
