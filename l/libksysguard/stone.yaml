@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libksysguard
-version     : "6.7.5"
-release     : 33
+version     : "6.8.0"
+release     : 34
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/libksysguard-6.7.5.tar.xz : 9069bcf3fe4e491ea774d0d70eb17f99b567299871045a38543fcabcdb56dfc4
+    - https://download.kde.org/stable/plasma/6.8.0/libksysguard-6.8.0.tar.xz : 742fa0f0a93444e62fa4fb21906d23716b863f1d460b0a4a82ef1f58025d05ba
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
