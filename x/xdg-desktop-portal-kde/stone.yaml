@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : xdg-desktop-portal-kde
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/xdg-desktop-portal-kde-6.7.5.tar.xz : 5ebedc3dcf508e85f2f7bbddffa2cca6805650ffe1dce350c4a1dfc5d2f07c50
+    - https://download.kde.org/stable/plasma/6.8.0/xdg-desktop-portal-kde-6.8.0.tar.xz : ba18b285588b427dc16dea2aee5e2cd0407348b820159751971821dd6004e036
 homepage    : https://kde.org/plasma-desktop/
 license     : LGPL-2.1-or-later
 summary     : Qt/KDE for xdg-desktop-portal
@@ -27,11 +27,13 @@ builddeps   :
     - cmake(KF6StatusNotifierItem)
     - cmake(KF6WidgetsAddons)
     - cmake(KF6WindowSystem)
+    - cmake(KPipeWire)
     - cmake(KWayland)
     - cmake(PlasmaWaylandProtocols)
     - cmake(Qt6CorePrivate)
     - cmake(Qt6QuickWidgets)
     - cmake(Qt6WaylandClient)
+    - pkgconfig(libpipewire-0.3)
     - pkgconfig(wayland-protocols)
     - kio-fuse
 rundeps     :
