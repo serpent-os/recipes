@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : layer-shell-qt
-version     : "6.7.5"
-release     : 31
+version     : "6.8.0"
+release     : 32
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.7.5/layer-shell-qt-6.7.5.tar.xz : ccdcfec7081ca956f7a52c9113a4df3a226575bfbe98b56a2a9a4d7d7e19e8f0
+    - https://download.kde.org/stable/plasma/6.8.0/layer-shell-qt-6.8.0.tar.xz : 91ced561862f0d84836ad4ae5c34914bb532576c88607baf4ec2c957b895b41d
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-3-Clause
