@@ -82,6 +82,7 @@
 				"/usr/share/locale/sv/LC_MESSAGES/plasma_shell_org.kde.plasma.nano.mo",
 				"/usr/share/locale/ta/LC_MESSAGES/plasma_shell_org.kde.plasma.nano.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/plasma_shell_org.kde.plasma.nano.mo",
+				"/usr/share/locale/ug/LC_MESSAGES/plasma_shell_org.kde.plasma.nano.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/plasma_shell_org.kde.plasma.nano.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/plasma_shell_org.kde.plasma.nano.mo",
 				"/usr/share/locale/zh_TW/LC_MESSAGES/plasma_shell_org.kde.plasma.nano.mo",
@@ -108,6 +109,6 @@
 		}
 	},
 	"source-name": "plasma-nano",
-	"source-release": "4",
-	"source-version": "6.7.5"
+	"source-release": "5",
+	"source-version": "6.8.0"
 }
