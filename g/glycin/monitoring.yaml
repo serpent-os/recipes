@@ -1,8 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 371932
   rss: https://gitlab.gnome.org/GNOME/glycin/-/tags?format=atom
 security:
-  cpe: ~ # last checked 2026/09/14
+  # No known CPE. Last checked 2026-10-15
+  cpe: ~
