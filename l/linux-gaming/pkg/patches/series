@@ -220,6 +220,12 @@ ogc/0207-FROM-ML-platform-x86-asus-wmi-enable-TUF-RGB-state-f.patch
 ogc/0208-FROM-ML-platform-x86-asus-wmi-re-assert-FA401-keyboa.patch
 ogc/0209-NOT-FOR-UPSTREAM-HID-hid-msi-Add-additional-logging.patch
 ogc/0210-FROM-ML-platform-x86-ayaneo-ec-Add-AYANEO-2S-charge-.patch
+ogc/0211-FROM-ML-platform-x86-asus-wmi-Serialize-WMI-method-e.patch
+ogc/0212-FROM-ML-platform-x86-asus-wmi-Remove-redundant-per-d.patch
+ogc/0213-FROM-ML-platform-x86-amd-wmi-Add-AMD-Overclocking-AO.patch
+ogc/0214-FROM-ML-platform-x86-amd-wmi-aod-Add-debugfs-interfa.patch
+ogc/0215-FROM-ML-platform-x86-amd-wmi-aod-Document-the-WMI-in.patch
+
 
 # Valve patches
 # https://github.com/ValveSoftware/steam-devices/pull/83#issuecomment-4786835173
