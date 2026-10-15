@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : bpf-linker
-version     : "0.11.1"
-release     : 2
+version     : "0.12.0"
+release     : 3
 upstreams   :
-    - https://github.com/aya-rs/bpf-linker/archive/refs/tags/v0.11.1.tar.gz: 9e7791bb5edaab7670e15ade3cc1df549cf5f672401b52c354643e9e9d6de31c
+    - https://github.com/aya-rs/bpf-linker/archive/refs/tags/v0.12.0.tar.gz: b338f41fb9bb690693eaa9021bb1c28e6dfe894ad5ff60385a0343aa269c0c02
 homepage    : https://github.com/aya-rs/bpf-linker
 license     :
     - Apache-2.0
