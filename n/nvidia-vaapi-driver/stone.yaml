@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : nvidia-vaapi-driver
+version     : "0.0.18"
+release     : 1
+homepage    : https://github.com/elFarto/nvidia-vaapi-driver
+upstreams   :
+    - https://github.com/elFarto/nvidia-vaapi-driver/archive/refs/tags/v0.0.18.tar.gz : 7459205cd1719a5865ab9c8969723c27e9863add5e7229e8e56c5f8816017b2a
+summary     : VA-API implementation using NVIDIA's NVDEC
+description : |
+    A VA-API driver that translates VA-API decode calls into NVIDIA's NVDEC hardware decoder, allowing applications such as Firefox to use hardware video decoding on NVIDIA GPUs. Decode only; it does not provide VA-API encoding.
+license     : MIT
+builddeps   :
+    - pkgconfig(egl)
+    - pkgconfig(ffnvcodec)
+    - pkgconfig(gstreamer-codecparsers-1.0)
+    - pkgconfig(libdrm)
+    - pkgconfig(libva)
+setup       : |
+    %meson
+build       : |
+    %meson_build
+install     : |
+    %meson_install
