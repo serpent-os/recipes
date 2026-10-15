@@ -20,7 +20,7 @@
 				"soname(libgdk-3.so.0(x86_64))",
 				"soname(libgedit-amtk-5.so.0(x86_64))",
 				"soname(libgedit-gfls-1.so.0(x86_64))",
-				"soname(libgedit-gtksourceview-300.so.5(x86_64))",
+				"soname(libgedit-gtksourceview-300.so.6(x86_64))",
 				"soname(libgio-2.0.so.0(x86_64))",
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
@@ -32,7 +32,7 @@
 			],
 			"files": [
 				"/usr/lib/girepository-1.0/Tepl-6.typelib",
-				"/usr/lib/libgedit-tepl-6.so.4",
+				"/usr/lib/libgedit-tepl-6.so.5",
 				"/usr/share/locale/be/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/ca/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/cs/LC_MESSAGES/libgedit-tepl-6.mo",
@@ -49,8 +49,11 @@
 				"/usr/share/locale/id/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/ja/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/libgedit-tepl-6.mo",
+				"/usr/share/locale/kk/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/nl/LC_MESSAGES/libgedit-tepl-6.mo",
+				"/usr/share/locale/nn/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/pl/LC_MESSAGES/libgedit-tepl-6.mo",
+				"/usr/share/locale/pt/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/pt_BR/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/ro/LC_MESSAGES/libgedit-tepl-6.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/libgedit-tepl-6.mo",
@@ -63,7 +66,7 @@
 			],
 			"name": "libgedit-tepl",
 			"provides": [
-				"soname(libgedit-tepl-6.so.4(x86_64))"
+				"soname(libgedit-tepl-6.so.5(x86_64))"
 			]
 		},
 		"libgedit-tepl-devel": {
@@ -264,6 +267,6 @@
 		}
 	},
 	"source-name": "libgedit-tepl",
-	"source-release": "3",
-	"source-version": "6.14.0"
+	"source-release": "4",
+	"source-version": "6.15.0"
 }
