@@ -1,10 +1,11 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 372593
   rss: https://discord.com/api/updates/stable?platform=linux
 security:
+  # Last checked 2026-10-15
   cpe:
   - vendor: discord
     product: discord
