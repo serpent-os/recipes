@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: © 2025- AerynOS Developers
+# SPDX-FileCopyrightText: 2025-2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libgedit-tepl
-version     : "6.14.0"
-release     : 3
+version     : "6.15.0"
+release     : 4
 homepage    : https://gitlab.gnome.org/World/gedit/libgedit-tepl
 upstreams   :
-    - git|https://gitlab.gnome.org/World/gedit/libgedit-tepl.git : d60f7ded17b52ea42091c073ea81090e91f38620
+    - git|https://gitlab.gnome.org/World/gedit/libgedit-tepl.git : 621fa9e8c43fafca8a0f299ac116715b3a835fbe
 summary     : Gedit Technology - Text editor product line
 description : |
     Gedit Technology - Text editor product line
@@ -17,10 +17,10 @@ builddeps   :
     - binary(msgfmt)
     - pkgconfig(gio-2.0)
     - pkgconfig(gobject-introspection-1.0)
-    - pkgconfig(gtk+-3.0)
     - pkgconfig(gsettings-desktop-schemas)
-    - pkgconfig(libhandy-1)
+    - pkgconfig(gtk+-3.0)
     - pkgconfig(libgedit-gtksourceview-300)
+    - pkgconfig(libhandy-1)
     - docbook-xsl
 environment : |
     %export_docbook_catalogs
