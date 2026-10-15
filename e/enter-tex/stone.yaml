@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: © 2025- AerynOS Developers
+# SPDX-FileCopyrightText: 2025-2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : enter-tex
-version     : "3.49.0"
-release     : 2
+version     : "3.51.0"
+release     : 3
 homepage    : https://gitlab.gnome.org/World/gedit/enter-tex
 upstreams   :
-    - git|https://gitlab.gnome.org/World/gedit/enter-tex.git : b0fad18c98fb7ae6576eb29354df438c0c22ace1
+    - git|https://gitlab.gnome.org/World/gedit/enter-tex.git : 3c7f4551316d8de162353af535baaf7e4aaeb82b
 summary     : Enter TeX - A TeX/LaTeX text editor
 description : |
     Enter TeX - A TeX/LaTeX text editor
@@ -21,10 +21,16 @@ builddeps   :
     - pkgconfig(dconf)
     - pkgconfig(gee-0.8)
     - pkgconfig(gio-2.0)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(gobject-2.0)
     - pkgconfig(gobject-introspection-1.0)
+    - pkgconfig(gsettings-desktop-schemas)
     - pkgconfig(gspell-1)
     - pkgconfig(gtk+-3.0)
+    - pkgconfig(libgedit-amtk-5)
+    - pkgconfig(libgedit-gtksourceview-300)
     - pkgconfig(libgedit-tepl-6)
+    - pkgconfig(libhandy-1)
     - docbook-xsl
 environment : |
     %export_docbook_catalogs
