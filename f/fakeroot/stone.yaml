@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : fakeroot
-version     : "1.38.1"
-release     : 10
+version     : "2.1.4"
+release     : 11
 homepage    : https://packages.debian.org/fakeroot
 upstreams   :
-    - https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.38.1.orig.tar.gz : 37c5063942efe2e2aeefd6e71ae2690bcb9b7d512c53bc6409b54d0730cbdac1
+    - https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_2.1.4.orig.tar.xz : 0822bd5a9f0cf19d2ba0546b88b0432d4d3d9917db62c57b74044ccadba06e49
 summary     : Tool for simulating super-user privileges
 description : |
     Tool for simulating super-user privileges
@@ -15,14 +15,32 @@ license     :
 emul32      : true
 builddeps   :
     - pkgconfig(libacl)
-    - pkgconfig(libattr)
     - pkgconfig(libcap)
+    # - binary(po4a) # generates the translated man pages; po4a isn't packaged
+checkdeps   :
+    - binary(perl)
+profiles    :
+    - emul32:
+        check: |
+            # the suite LD_PRELOADs the built libfakeroot into the host shell, which fails for 32-bit
 setup       : |
-    %configure \
-        --disable-static \
-        --libdir=%(libdir)/fakeroot \
-        --with-ipc=sysv
+    %meson \
+        -Dipc=sysv
 build       : |
-    %make
+    %meson_build
 install     : |
-    %make_install
+    %meson_install
+check       : |
+    # t.tar needs uudecode from sharutils, which isn't packaged
+    # t.xattr2 sets the Hurd-specific gnu.translator xattr and fails in our
+    # build environment (Debian disables it as well)
+    %meson_test --exclude t.tar --exclude t.xattr2
+packages    :
+    # Suppress the devel subpackages; libfakeroot.so is LD_PRELOADed at runtime
+    - "%(name)":
+        paths:
+            - /usr/lib/libfakeroot*.so*
+
+    - "%(name)-32bit":
+        paths:
+            - /usr/lib32/libfakeroot*.so*
