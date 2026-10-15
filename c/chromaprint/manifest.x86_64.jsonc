@@ -20,7 +20,7 @@
 			],
 			"files": [
 				"/usr/lib/libchromaprint.so.1",
-				"/usr/lib/libchromaprint.so.1.6.1"
+				"/usr/lib/libchromaprint.so.1.6.2"
 			],
 			"name": "chromaprint",
 			"provides": [
@@ -56,6 +56,6 @@
 		}
 	},
 	"source-name": "chromaprint",
-	"source-release": "3",
-	"source-version": "1.6.1"
+	"source-release": "4",
+	"source-version": "1.6.2"
 }
