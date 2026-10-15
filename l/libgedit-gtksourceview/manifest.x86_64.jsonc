@@ -30,7 +30,7 @@
 			],
 			"files": [
 				"/usr/lib/girepository-1.0/GtkSource-300.typelib",
-				"/usr/lib/libgedit-gtksourceview-300.so.5",
+				"/usr/lib/libgedit-gtksourceview-300.so.6",
 				"/usr/share/libgedit-gtksourceview-300/language-specs/R.lang",
 				"/usr/share/libgedit-gtksourceview-300/language-specs/abnf.lang",
 				"/usr/share/libgedit-gtksourceview-300/language-specs/actionscript.lang",
@@ -260,7 +260,7 @@
 			],
 			"name": "libgedit-gtksourceview",
 			"provides": [
-				"soname(libgedit-gtksourceview-300.so.5(x86_64))"
+				"soname(libgedit-gtksourceview-300.so.6(x86_64))"
 			]
 		},
 		"libgedit-gtksourceview-devel": {
@@ -294,7 +294,6 @@
 				"/usr/include/libgedit-gtksourceview-300/gtksourceview/gtksourcecompletionitem.h",
 				"/usr/include/libgedit-gtksourceview-300/gtksourceview/gtksourcecompletionproposal.h",
 				"/usr/include/libgedit-gtksourceview-300/gtksourceview/gtksourcecompletionprovider.h",
-				"/usr/include/libgedit-gtksourceview-300/gtksourceview/gtksourceencoding.h",
 				"/usr/include/libgedit-gtksourceview-300/gtksourceview/gtksourcefile.h",
 				"/usr/include/libgedit-gtksourceview-300/gtksourceview/gtksourcefileloader.h",
 				"/usr/include/libgedit-gtksourceview-300/gtksourceview/gtksourcefilesaver.h",
@@ -350,7 +349,6 @@
 				"/usr/share/gtk-doc/html/libgedit-gtksourceview-300/GtkSourceCompletionProposal.html",
 				"/usr/share/gtk-doc/html/libgedit-gtksourceview-300/GtkSourceCompletionProvider.html",
 				"/usr/share/gtk-doc/html/libgedit-gtksourceview-300/GtkSourceCompletionWords.html",
-				"/usr/share/gtk-doc/html/libgedit-gtksourceview-300/GtkSourceEncoding.html",
 				"/usr/share/gtk-doc/html/libgedit-gtksourceview-300/GtkSourceFile.html",
 				"/usr/share/gtk-doc/html/libgedit-gtksourceview-300/GtkSourceFileLoader.html",
 				"/usr/share/gtk-doc/html/libgedit-gtksourceview-300/GtkSourceFileSaver.html",
@@ -418,6 +416,6 @@
 		}
 	},
 	"source-name": "libgedit-gtksourceview",
-	"source-release": "3",
-	"source-version": "299.7.1"
+	"source-release": "4",
+	"source-version": "299.8.0"
 }
