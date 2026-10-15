@@ -13,7 +13,7 @@
 			],
 			"files": [
 				"/usr/lib/libluv.so.1",
-				"/usr/lib/libluv.so.1.52.1"
+				"/usr/lib/libluv.so.1.53.0"
 			],
 			"name": "libluv",
 			"provides": [
@@ -43,6 +43,6 @@
 		}
 	},
 	"source-name": "libluv",
-	"source-release": "2",
-	"source-version": "1.52.1"
+	"source-release": "3",
+	"source-version": "1.53.0"
 }
