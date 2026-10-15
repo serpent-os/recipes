@@ -11,7 +11,7 @@
 			],
 			"files": [
 				"/usr/lib/libeconf.so.0",
-				"/usr/lib/libeconf.so.0.8.5"
+				"/usr/lib/libeconf.so.0.8.6"
 			],
 			"name": "libeconf",
 			"provides": [
@@ -28,7 +28,7 @@
 			],
 			"files": [
 				"/usr/lib32/libeconf.so.0",
-				"/usr/lib32/libeconf.so.0.8.5"
+				"/usr/lib32/libeconf.so.0.8.6"
 			],
 			"name": "libeconf-32bit",
 			"provides": [
@@ -102,9 +102,11 @@
 				"/usr/share/man/man3/econf_getUIntValueDef.3",
 				"/usr/share/man/man3/econf_getValue.3",
 				"/usr/share/man/man3/econf_getValueDef.3",
+				"/usr/share/man/man3/econf_hasQuotes.3",
 				"/usr/share/man/man3/econf_mergeFiles.3",
 				"/usr/share/man/man3/econf_newIniFile.3",
 				"/usr/share/man/man3/econf_newKeyFile.3",
+				"/usr/share/man/man3/econf_newKeyFile_with_options.3",
 				"/usr/share/man/man3/econf_readConfig.3",
 				"/usr/share/man/man3/econf_readConfigWithCallback.3",
 				"/usr/share/man/man3/econf_readFile.3",
@@ -115,6 +117,7 @@
 				"/usr/share/man/man3/econf_setFloatValue.3",
 				"/usr/share/man/man3/econf_setInt64Value.3",
 				"/usr/share/man/man3/econf_setIntValue.3",
+				"/usr/share/man/man3/econf_setQuotes.3",
 				"/usr/share/man/man3/econf_setStringValue.3",
 				"/usr/share/man/man3/econf_setUInt64Value.3",
 				"/usr/share/man/man3/econf_setValue.3",
@@ -151,6 +154,6 @@
 		}
 	},
 	"source-name": "libeconf",
-	"source-release": "9",
-	"source-version": "0.8.5"
+	"source-release": "10",
+	"source-version": "0.8.6"
 }

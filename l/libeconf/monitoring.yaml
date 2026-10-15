@@ -1,8 +1,11 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 21922
   rss: ~
 security:
-  cpe: ~
+  # Last checked 2026-10-15
+  cpe:
+  - vendor: opensuse
+    product: libeconf
