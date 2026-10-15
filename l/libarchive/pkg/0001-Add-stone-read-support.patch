@@ -3,34 +3,36 @@ From: Cory Forsstrom <cforsstrom18@gmail.com>
 Date: Mon, 4 Nov 2024 14:34:16 -0800
 Subject: [PATCH] Add stone read support
 
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-15
 ---
- CMakeLists.txt                                |  34 +
- Makefile.am                                   |   1 +
- build/cmake/config.h.in                       |   6 +
- configure.ac                                  |   8 +
- libarchive/CMakeLists.txt                     |   1 +
- libarchive/archive.h                          |   3 +
- libarchive/archive_read_private.h             |   2 +-
- libarchive/archive_read_set_format.c          |   3 +
- libarchive/archive_read_support_format_all.c  |   2 +
- .../archive_read_support_format_by_code.c     |   2 +
- .../archive_read_support_format_stone.c       | 582 ++++++++++++++++++
+ CMakeLists.txt                                   |  34 ++
+ Makefile.am                                      |   1 +
+ build/cmake/config.h.in                          |   6 +
+ configure.ac                                     |   8 +
+ libarchive/CMakeLists.txt                        |   1 +
+ libarchive/archive.h                             |   3 +
+ libarchive/archive_read_private.h                |   2 +-
+ libarchive/archive_read_set_format.c             |   3 +
+ libarchive/archive_read_support_format_all.c     |   2 +
+ libarchive/archive_read_support_format_by_code.c |   2 +
+ libarchive/archive_read_support_format_stone.c   | 582 +++++++++++++++++++++++
  11 files changed, 643 insertions(+), 1 deletion(-)
- create mode 100644 libarchive/archive_read_support_format_stone.c
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4c1f8770..049c63a0 100644
+index 7ff01a2..cc5dda3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -232,6 +232,7 @@ OPTION(ENABLE_WIN32_XMLLITE "Enable the use of the Windows XmlLite library if fo
+@@ -239,6 +239,7 @@ OPTION(ENABLE_WIN32_XMLLITE "Enable the use of the Windows XmlLite library if fo
  OPTION(ENABLE_PCREPOSIX "Enable the use of the system PCREPOSIX library if found" ON)
  OPTION(ENABLE_PCRE2POSIX "Enable the use of the system PCRE2POSIX library if found" ON)
  OPTION(ENABLE_LIBGCC "Enable the use of the system LibGCC library if found" ON)
 +OPTION(ENABLE_LIBSTONE "Enable the use of the system stone library if found" OFF)
  # CNG is used for encrypt/decrypt Zip archives on Windows.
- OPTION(ENABLE_CNG "Enable the use of CNG(Crypto Next Generation)" ON)
+ OPTION(ENABLE_CNG "Enable the use of Windows CNG (Crypto Next Generation) if found" ON)
  
-@@ -677,6 +678,39 @@ IF(ZSTD_FOUND)
+@@ -726,6 +727,39 @@ IF(ZSTD_FOUND)
  ENDIF(ZSTD_FOUND)
  MARK_AS_ADVANCED(CLEAR ZSTD_INCLUDE_DIR)
  MARK_AS_ADVANCED(CLEAR ZSTD_LIBRARY)
@@ -71,22 +73,22 @@ index 4c1f8770..049c63a0 100644
  #
  # Check headers
 diff --git a/Makefile.am b/Makefile.am
-index 05232712..e0c2f066 100644
+index 8bc70c5..2e88abd 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -192,6 +192,7 @@ libarchive_la_SOURCES= \
+@@ -216,6 +216,7 @@ libarchive_la_SOURCES= \
  	libarchive/archive_read_support_format_warc.c \
  	libarchive/archive_read_support_format_xar.c \
  	libarchive/archive_read_support_format_zip.c \
 +	libarchive/archive_read_support_format_stone.c \
  	libarchive/archive_string.c \
- 	libarchive/archive_string.h \
- 	libarchive/archive_string_composition.h \
+ 	libarchive/archive_string_sprintf.c \
+ 	libarchive/archive_time.c \
 diff --git a/build/cmake/config.h.in b/build/cmake/config.h.in
-index 692d4516..0e461fe1 100644
+index 00482d1..ec157b7 100644
 --- a/build/cmake/config.h.in
 +++ b/build/cmake/config.h.in
-@@ -783,6 +783,9 @@ typedef uint64_t uintmax_t;
+@@ -819,6 +819,9 @@ typedef uint64_t uintmax_t;
  /* Define to 1 if you have the ZSTD_minCLevel function. */
  #cmakedefine HAVE_ZSTD_minCLevel 1
  
@@ -96,22 +98,22 @@ index 692d4516..0e461fe1 100644
  /* Define to 1 if you have the <limits.h> header file. */
  #cmakedefine HAVE_LIMITS_H 1
  
-@@ -1291,6 +1294,9 @@ typedef uint64_t uintmax_t;
+@@ -1345,6 +1348,9 @@ typedef uint64_t uintmax_t;
  /* Define to 1 if you have the <zstd.h> header file. */
  #cmakedefine HAVE_ZSTD_H 1
  
 +/* Define to 1 if you have the <stone.h> header file. */
 +#cmakedefine HAVE_STONE_H 1
 +
- /* Define to 1 if you have the `ctime_s' function. */
+ /* Define to 1 if you have the 'ctime_s' function. */
  #cmakedefine HAVE_CTIME_S 1
  
 diff --git a/configure.ac b/configure.ac
-index d8d85eda..1134e4ed 100644
+index b964e36..5e549c3 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -500,6 +500,14 @@ if test "x$with_zstd" != "xno"; then
-     AC_DEFINE([HAVE_ZSTD_minCLevel], [1], [Define to 1 if you have a `zstd' library version with ZSTD_minCLevel().]))
+@@ -515,6 +515,14 @@ if test "x$with_zstd" != "xno"; then
+     AC_DEFINE([HAVE_ZSTD_minCLevel], [1], [Define to 1 if you have a 'zstd' library version with ZSTD_minCLevel().]))
  fi
  
 +AC_ARG_WITH([libstone],
@@ -126,10 +128,10 @@ index d8d85eda..1134e4ed 100644
    AS_HELP_STRING([--without-lzma], [Don't build support for xz through lzma]))
  
 diff --git a/libarchive/CMakeLists.txt b/libarchive/CMakeLists.txt
-index fd997db4..dd7ed3e1 100644
+index ac039c1..a3052e1 100644
 --- a/libarchive/CMakeLists.txt
 +++ b/libarchive/CMakeLists.txt
-@@ -112,6 +112,7 @@ SET(libarchive_SOURCES
+@@ -114,6 +114,7 @@ SET(libarchive_SOURCES
    archive_read_support_format_warc.c
    archive_read_support_format_xar.c
    archive_read_support_format_zip.c
@@ -138,10 +140,10 @@ index fd997db4..dd7ed3e1 100644
    archive_string.h
    archive_string_composition.h
 diff --git a/libarchive/archive.h b/libarchive/archive.h
-index 002190a2..3d3bce67 100644
+index 19b316a..42a5b33 100644
 --- a/libarchive/archive.h
 +++ b/libarchive/archive.h
-@@ -383,6 +383,7 @@ typedef const char *archive_passphrase_callback(struct archive *,
+@@ -387,6 +387,7 @@ typedef const char *archive_passphrase_callback(struct archive *,
  #define	ARCHIVE_FORMAT_7ZIP			0xE0000
  #define	ARCHIVE_FORMAT_WARC			0xF0000
  #define	ARCHIVE_FORMAT_RAR_V5			0x100000
@@ -149,7 +151,7 @@ index 002190a2..3d3bce67 100644
  
  /*
   * Codes returned by archive_read_format_capabilities().
-@@ -510,6 +511,8 @@ __LA_DECL int archive_read_support_format_zip_streamable(struct archive *);
+@@ -514,6 +515,8 @@ __LA_DECL int archive_read_support_format_zip_streamable(struct archive *);
  /* Reads starting from central directory; requires seekable input. */
  __LA_DECL int archive_read_support_format_zip_seekable(struct archive *);
  
@@ -159,10 +161,10 @@ index 002190a2..3d3bce67 100644
   * useful to bypass the bidding process when the format and filters to use
   * is known in advance.
 diff --git a/libarchive/archive_read_private.h b/libarchive/archive_read_private.h
-index 0c374f48..3c4efafb 100644
+index 43b7f85..d0d4c84 100644
 --- a/libarchive/archive_read_private.h
 +++ b/libarchive/archive_read_private.h
-@@ -205,7 +205,7 @@ struct archive_read {
+@@ -208,7 +208,7 @@ struct archive_read {
  		int	(*cleanup)(struct archive_read *);
  		int	(*format_capabilties)(struct archive_read *);
  		int	(*has_encrypted_entries)(struct archive_read *);
@@ -172,12 +174,12 @@ index 0c374f48..3c4efafb 100644
  
  	/*
 diff --git a/libarchive/archive_read_set_format.c b/libarchive/archive_read_set_format.c
-index c74361b2..69fc3479 100644
+index 552ab12..d5fd792 100644
 --- a/libarchive/archive_read_set_format.c
 +++ b/libarchive/archive_read_set_format.c
 @@ -93,6 +93,9 @@ archive_read_set_format(struct archive *_a, int code)
      case ARCHIVE_FORMAT_ZIP:
-       strcpy(str, "zip");
+       str = "zip";
        break;
 +    case ARCHIVE_FORMAT_STONE:
 +      strcpy(str, "stone");
@@ -186,7 +188,7 @@ index c74361b2..69fc3479 100644
        archive_set_error(&a->archive, ARCHIVE_ERRNO_PROGRAMMER,
            "Invalid format code specified");
 diff --git a/libarchive/archive_read_support_format_all.c b/libarchive/archive_read_support_format_all.c
-index 3b53c9ad..228ef43c 100644
+index a2c5a4c..201695d 100644
 --- a/libarchive/archive_read_support_format_all.c
 +++ b/libarchive/archive_read_support_format_all.c
 @@ -77,6 +77,8 @@ archive_read_support_format_all(struct archive *a)
@@ -199,7 +201,7 @@ index 3b53c9ad..228ef43c 100644
  	 * above return ARCHIVE_WARN.  The intent here is to enable
  	 * "as much as possible."  Clients who need specific
 diff --git a/libarchive/archive_read_support_format_by_code.c b/libarchive/archive_read_support_format_by_code.c
-index 982e2db7..8c0bcd5d 100644
+index 982e2db..8c0bcd5 100644
 --- a/libarchive/archive_read_support_format_by_code.c
 +++ b/libarchive/archive_read_support_format_by_code.c
 @@ -69,6 +69,8 @@ archive_read_support_format_by_code(struct archive *a, int format_code)
@@ -213,7 +215,7 @@ index 982e2db7..8c0bcd5d 100644
  	    "Invalid format code specified");
 diff --git a/libarchive/archive_read_support_format_stone.c b/libarchive/archive_read_support_format_stone.c
 new file mode 100644
-index 00000000..ad279e8e
+index 0000000..ad279e8
 --- /dev/null
 +++ b/libarchive/archive_read_support_format_stone.c
 @@ -0,0 +1,582 @@
