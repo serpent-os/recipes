@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : mangowm
-version     : "0.18.0"
-release     : 10
+version     : "0.18.1"
+release     : 11
 homepage    : https://github.com/mangowm/mango
 upstreams   :
-        - https://github.com/mangowm/mango/archive/refs/tags/0.18.0.tar.gz : 984386900d8a6896a67c56e3defcc8a979c8a9bd5b3b8ba9fb1ef537965b64a1
+        - https://github.com/mangowm/mango/archive/refs/tags/0.18.1.tar.gz : cb7c25c3491fd8f81c0658500699b0ab3efec57b6f0517fcbaab18bd2b42dffb
 summary     : A Wayland compositor with smooth animation
 description : |
     A wayland compositor utilizing wlroots as a base and SceneFX for aesthetics
