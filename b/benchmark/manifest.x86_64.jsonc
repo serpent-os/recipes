@@ -14,9 +14,9 @@
 			],
 			"files": [
 				"/usr/lib/libbenchmark.so.1",
-				"/usr/lib/libbenchmark.so.1.9.5",
+				"/usr/lib/libbenchmark.so.1.10.0",
 				"/usr/lib/libbenchmark_main.so.1",
-				"/usr/lib/libbenchmark_main.so.1.9.5"
+				"/usr/lib/libbenchmark_main.so.1.10.0"
 			],
 			"name": "benchmark",
 			"provides": [
@@ -33,7 +33,18 @@
 			],
 			"files": [
 				"/usr/include/benchmark/benchmark.h",
+				"/usr/include/benchmark/benchmark_api.h",
+				"/usr/include/benchmark/counter.h",
 				"/usr/include/benchmark/export.h",
+				"/usr/include/benchmark/macros.h",
+				"/usr/include/benchmark/managers.h",
+				"/usr/include/benchmark/registration.h",
+				"/usr/include/benchmark/reporter.h",
+				"/usr/include/benchmark/state.h",
+				"/usr/include/benchmark/statistics.h",
+				"/usr/include/benchmark/sysinfo.h",
+				"/usr/include/benchmark/types.h",
+				"/usr/include/benchmark/utils.h",
 				"/usr/lib/cmake/benchmark/benchmarkConfig.cmake",
 				"/usr/lib/cmake/benchmark/benchmarkConfigVersion.cmake",
 				"/usr/lib/cmake/benchmark/benchmarkTargets-release.cmake",
@@ -52,6 +63,6 @@
 		}
 	},
 	"source-name": "benchmark",
-	"source-release": "3",
-	"source-version": "1.9.5"
+	"source-release": "4",
+	"source-version": "1.10.0"
 }
