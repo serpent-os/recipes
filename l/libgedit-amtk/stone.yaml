@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: © 2025- AerynOS Developers
+# SPDX-FileCopyrightText: 2025-2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libgedit-amtk
-version     : "5.10.0"
-release     : 3
+version     : "5.11.0"
+release     : 4
 homepage    : https://gitlab.gnome.org/World/gedit/libgedit-amtk
 upstreams   :
-    - git|https://gitlab.gnome.org/World/gedit/libgedit-amtk.git : 8420fb89b340e33576a50f3ee2d69df417b16e5a
+    - git|https://gitlab.gnome.org/World/gedit/libgedit-amtk.git : fcd22592dbe2589df622c31cf8fe823470ad28b5
 summary     : Gedit Technology - Actions, Menus and Toolbars Kit
 description : |
     Gedit Technology - Actions, Menus and Toolbars Kit
