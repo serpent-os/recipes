@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : linux-pam
 version     : "1.7.3"
-release     : 21
+release     : 22
 summary     : Pluggable Authentication Modules
 license     :
     - BSD-3-Clause
@@ -21,11 +21,16 @@ builddeps   :
     - pkgconfig32(libeconf)
     - pkgconfig32(libsystemd)
     - pkgconfig32(libxcrypt)
+    - pkgconfig(audit)
     - docbook-xsl
     - docbook5-xml
 emul32      : true
 profiles    :
     - emul32:
+        setup       : |
+            %meson \
+                -Daudit=disabled \
+                -Dvendordir=%(vendordir)
         install: |
             %meson_install
 
