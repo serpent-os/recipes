@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : lazygit
-version     : "0.66.1"
-release     : 16
+version     : "0.66.2"
+release     : 17
 homepage    : https://github.com/jesseduffield/lazygit
 upstreams   :
-    - https://github.com/jesseduffield/lazygit/archive/refs/tags/v0.66.1.tar.gz : 75d82496e7e99a4ae58279efd37186ee5d10de9bb751077775487639c07185af
+    - https://github.com/jesseduffield/lazygit/archive/refs/tags/v0.66.2.tar.gz : fcaad0909af765ef87bd873164a4de78435515ab4d8b04f58d6ad51e8ecd00e5
 summary     : A simple terminal UI for git commands
 description : |
     A simple terminal UI for git commands
