@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : gdm
 version     : "51.0"
-release     : 38
+release     : 39
 homepage    : https://gitlab.gnome.org/GNOME/gdm
 upstreams   :
     - https://download.gnome.org/sources/gdm/51/gdm-51.0.tar.xz : 2ce5acf5a438b8f6dc1d14fd777a911be5eeb2f7ab9a7c4600166205b15d6536
@@ -16,6 +16,7 @@ builddeps   :
     - binary(itstool)
     - binary(msgmerge)
     - pkgconfig(accountsservice)
+    - pkgconfig(audit)
     - pkgconfig(check)
     - pkgconfig(dconf)
     - pkgconfig(gio-2.0)
@@ -31,7 +32,6 @@ builddeps   :
     - pkgconfig(systemd)
     - pkgconfig(udev)
     - pkgconfig(xau)
-    # - pkgconfig(audit)
 rundeps     :
     - binary(gnome-session)
     - binary(gnome-shell)
