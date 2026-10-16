@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : dbus-broker
 version     : "37"
-release     : 12
+release     : 13
 summary     : Linux D-Bus Message Broker
 license     : Apache-2.0
 homepage    : https://github.com/bus1/dbus-broker
@@ -12,13 +12,17 @@ description : |
 upstreams   :
     - https://github.com/bus1/dbus-broker/releases/download/v37/dbus-broker-37.tar.xz: f819a8db8795fa08c767612e3823fd594694a0990f2543ecf35d6a1a6bf2ab5b
 builddeps   :
-    # TODO Build with audit
+    - binary(rst2man)
+    - pkgconfig(audit)
     - pkgconfig(expat)
     - pkgconfig(libsystemd)
 rundeps     :
     - dbus
 setup       : |
-    %meson -Dsystem-console-users=gdm
+    %meson \
+        -Daudit=true \
+        -Ddocs=true \
+        -Dsystem-console-users=gdm
 build       : |
     %meson_build
 install     : |
