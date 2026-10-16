@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Thu, 15 Oct 2026 12:00:00 -0500
+Subject: [PATCH] tests: resolve netgroups from files
+
+aerynOS's default nsswitch.conf uses "netgroup: nis" (glibc's historical
+default). The test harness replaces /etc with test/data/etc, which ships no
+nsswitch.conf, so netgroup lookups fall back to the nis provider and never
+match, making rules_netgroup_membership_with_member fail.
+
+Ship a minimal nsswitch.conf in the test data that resolves netgroups from
+files; every other database keeps glibc's built-in default.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-15
+---
+ test/data/etc/nsswitch.conf | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test/data/etc/nsswitch.conf
+
+diff --git a/test/data/etc/nsswitch.conf b/test/data/etc/nsswitch.conf
+new file mode 100644
+index 000000000..f74405169
+--- /dev/null
++++ b/test/data/etc/nsswitch.conf
+@@ -0,0 +1 @@
++netgroup: files

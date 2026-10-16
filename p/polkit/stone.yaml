@@ -1,20 +1,21 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : polkit
-version     : "127"
-release     : 11
+version     : "128"
+release     : 12
 summary     : Application-level authorization toolkit
 license     : GPL-2.0-or-later
 homepage    : https://github.com/polkit-org/polkit
 description : |
     polkit is an application-level toolkit for defining and handling the policy that allows unprivileged processes to speak to privileged processes: It is a framework for centralizing the decision making process with respect to granting access to privileged operations for unprivileged applications. See the polkit(8) manual page for more detailed information.
 upstreams   :
-    - https://github.com/polkit-org/polkit/archive/refs/tags/127.tar.gz: 9b7bc16f086479dcc626c575976568ba4a85d34297a750d8ab3d2e57f6d8b988
+    - https://github.com/polkit-org/polkit/archive/refs/tags/128.tar.gz: 6edb06bf1448e49e428f9597a97af6a05d62146dd0b58f86eeaebcee3f5ecfaa
 builddeps   :
     - binary(msgfmt)
     - binary(perl)
     - binary(xsltproc)
+    - pkgconfig(dbus-1)
     - pkgconfig(duktape)
     - pkgconfig(expat)
     - pkgconfig(gio-2.0)
@@ -23,9 +24,13 @@ builddeps   :
     - pkgconfig(pam)
     - docbook
     - docbook-xsl
+checkdeps   :
+    - binary(dbus-daemon)
+    - python(python-dbusmock)
 environment : |
     %export_docbook_catalogs
 setup       : |
+    %patch %(pkgdir)/0001-tests-netgroup-from-files.patch
     %patch %(pkgdir)/stateless/0001-pkexec-Support-a-stateless-configuration.patch
 
     %meson \
@@ -34,7 +39,7 @@ setup       : |
         -Dexamples=false \
         -Dman=true \
         -Dgtk_doc=false \
-        -Dtests=false
+        -Dtests=true
     # TODO build gtk_docs
 build       : |
     %meson_build
@@ -66,8 +71,9 @@ install     : |
     %install_file %(pkgdir)/00-ntp-and-time-zones.rules %(installroot)%(datadir)/polkit-1/rules.d/00-ntp-and-time-zones.rules
 
     # TODO: Capabilities
-
-# TODO checks (needs python-dbusmock)
+check       : |
+    # dbusmock start-up is slow under the build sandbox
+    %meson_test -t 3
 packages    :
     - "%(name)-libs":
         summary: Libraries for %(name)
