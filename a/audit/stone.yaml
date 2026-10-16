@@ -1,0 +1,96 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : audit
+version     : "4.2.1"
+release     : 1
+homepage    : https://github.com/linux-audit/audit-userspace
+upstreams   :
+    - https://github.com/linux-audit/audit-userspace/archive/refs/tags/v4.2.1.tar.gz : 42876d195ee2ded19e5f72d7664096eee314928aa36ad346719ba5b25818fc84
+summary     : Userspace components of the audit framework
+description : |
+    The Linux Audit System is designed to make Linux compliant with the requirements from Common Criteria, PCI-DSS, and other security standards by intercepting system calls and serializing audit log entries from privileged user space applications. The framework allows the configured events to be recorded to disk and distributed to plugins in realtime. Each audit event contains the date and time of event, type of event, subject identity, object acted upon, and result (success/fail) of the action if applicable.
+license     :
+    - GPL-2.0-or-later
+    - LGPL-2.1-or-later
+builddeps   :
+    - binary(swig)
+    - pkgconfig(libcap-ng)
+    - pkgconfig(python3)
+environment : |
+    # auparse builds a helper tool for the host
+    export CC_FOR_BUILD="$CC"
+    export CPP_FOR_BUILD="$CPP"
+setup       : |
+    # TODO: The audisp-filter and audisp-remote dispatchers (and the zos-remote
+    # plugin) are dropped because their configuration is not stateless: auditd
+    # reads the plugin directory from /etc/audit/plugins.d and audisp-remote
+    # reads /etc/audit/audisp-remote.conf, neither of which falls back to
+    # %(vendordir). Ship them once stateless support covers their configuration.
+
+    %patch %(pkgdir)/stateless.patch
+
+    %reconfigure \
+        --disable-gssapi-krb5 \
+        --disable-legacy-actions \
+        --disable-static \
+        --disable-zos-remote \
+        --with-io_uring \
+        --with-libcap-ng \
+        --with-nftables \
+        --with-python3 \
+        --with-vendordir=%(vendordir)
+build       : |
+    %make
+install     : |
+    %make_install
+
+    # Only the local af_unix and syslog dispatchers are shipped; drop the
+    # remote and filter ones with their configuration and man pages
+    rm %(installroot)%(sbindir)/audisp-filter \
+       %(installroot)%(sbindir)/audisp-remote \
+       %(installroot)%(mandir)/man5/audisp-remote.conf.5 \
+       %(installroot)%(mandir)/man8/audisp-filter.8 \
+       %(installroot)%(mandir)/man8/audisp-remote.8
+
+    # No dispatcher plugins are enabled by default
+    rm %(installroot)%(sysconfdir)/audit/audisp-filter.conf \
+       %(installroot)%(sysconfdir)/audit/audisp-remote.conf
+    rm -r %(installroot)%(sysconfdir)/audit/plugins.d
+
+    # System config is admin-owned; the shipped defaults live in %(vendordir)
+    %tmpfiles "# Audit daemon"
+    %tmpfiles "d /etc/audit 0750 root root -"
+    %tmpfiles "d /etc/audit/plugins.d 0750 root root -"
+    %tmpfiles "d /etc/audit/rules.d 0750 root root -"
+packages    :
+    - "%(name)-libs":
+        summary: "Library files for %(name)"
+        description: |
+            Library files for %(name), typically pulled in as a dependency of another package.
+        paths:
+            - /usr/lib/libaudit.so.*
+            - /usr/lib/libauparse.so.*
+            - /usr/lib/libauplugin.so.*
+
+    - "%(name)-libs-devel":
+        summary: "Development files for %(name)"
+        description: |
+            Development files for %(name).
+        rundeps:
+            - "%(name)-libs"
+        paths:
+            - /usr/include/
+            - /usr/lib/lib*.so
+            - /usr/lib/pkgconfig/
+            - /usr/share/aclocal/audit.m4
+            - /usr/share/man/man3/
+
+    - "python-audit":
+        summary: "Userspace components of the audit framework - Python bindings"
+        description: |
+            Python bindings for the audit framework.
+        rundeps:
+            - python-libs
+        paths:
+            - /usr/lib/python3.*

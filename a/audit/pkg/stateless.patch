@@ -1,0 +1,240 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Thu, 15 Oct 2026 12:00:00 -0500
+Subject: [PATCH] Make audit stateless
+
+Install the default configuration into the vendor directory and fall back
+to it when the system configuration is absent, so that changes to the
+packaged defaults reach existing systems and nothing needs to be seeded
+into /etc.
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2026-10-15
+---
+ auparse/auditd-config.c | 22 +++++++++++++++-------
+ configure.ac            | 15 +++++++++++++++
+ init.d/Makefile.am      | 10 ++++++++--
+ lib/libaudit.c          | 13 ++++++++++---
+ src/auditd-config.c     | 11 +++++++++++
+ src/auditd-config.h     |  5 ++++-
+ 6 files changed, 63 insertions(+), 13 deletions(-)
+
+diff --git a/auparse/auditd-config.c b/auparse/auditd-config.c
+index c03de22..5996b7d 100644
+--- a/auparse/auditd-config.c
++++ b/auparse/auditd-config.c
+@@ -112,11 +112,19 @@ int aup_load_config(auparse_state_t *au, struct daemon_conf *config,
+ 	int fd, lineno = 1;
+ 	FILE *f;
+ 	char buf[512];
++	const char *config_file = CONFIG_FILE;
+ 
+ 	aup_clear_config(config);
+ 
+ 	/* open the file */
+-	fd = open(CONFIG_FILE, O_RDONLY|O_NOFOLLOW);
++	fd = open(config_file, O_RDONLY|O_NOFOLLOW);
++#ifdef USE_VENDORDIR
++	/* Fall back to the distribution defaults when the system config is absent */
++	if (fd < 0 && errno == ENOENT) {
++		config_file = VENDOR_CONFIG_FILE;
++		fd = open(config_file, O_RDONLY|O_NOFOLLOW);
++	}
++#endif
+ 	if (fd < 0) {
+ 		if (errno != ENOENT) {
+ 			if (errno == EACCES) {
+@@ -129,7 +137,7 @@ int aup_load_config(auparse_state_t *au, struct daemon_conf *config,
+ 			return 1;
+ 		}
+ 		audit_msg(au, LOG_WARNING,
+-			"Config file %s doesn't exist, skipping", CONFIG_FILE);
++			"Config file %s doesn't exist, skipping", config_file);
+ 		return 0;
+ 	}
+ 
+@@ -142,7 +150,7 @@ int aup_load_config(auparse_state_t *au, struct daemon_conf *config,
+ 		return 1;
+ 	}
+ 
+-	while (get_line(au, f,  buf, sizeof(buf), &lineno, CONFIG_FILE)) {
++	while (get_line(au, f,  buf, sizeof(buf), &lineno, config_file)) {
+ 		// convert line into name-value pair
+ 		const struct kw_pair *kw;
+ 		struct _pair nv;
+@@ -153,17 +161,17 @@ int aup_load_config(auparse_state_t *au, struct daemon_conf *config,
+ 			case 1: // not the right number of tokens.
+ 				audit_msg(au, LOG_ERR, 
+ 				"Wrong number of arguments for line %d in %s", 
+-					lineno, CONFIG_FILE);
++					lineno, config_file);
+ 				break;
+ 			case 2: // no '=' sign
+ 				audit_msg(au, LOG_ERR, 
+ 					"Missing equal sign for line %d in %s", 
+-					lineno, CONFIG_FILE);
++					lineno, config_file);
+ 				break;
+ 			default: // something else went wrong... 
+ 				audit_msg(au, LOG_ERR, 
+ 					"Unknown error for line %d in %s", 
+-					lineno, CONFIG_FILE);
++					lineno, config_file);
+ 				break;
+ 		}
+ 		if (nv.name == NULL) {
+@@ -174,7 +182,7 @@ int aup_load_config(auparse_state_t *au, struct daemon_conf *config,
+ 			fclose(f);
+ 			audit_msg(au, LOG_ERR,
+ 				"Not processing any more lines in %s",
+-				CONFIG_FILE);
++				config_file);
+ 			return 1;
+ 		}
+ 
+diff --git a/configure.ac b/configure.ac
+index c95015a..9978f32 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -152,6 +152,21 @@ AC_SEARCH_LIBS(pthread_yield, pthread,
+ 	[AC_DEFINE(HAVE_PTHREAD_YIELD, 1, [Define to 1 if we have pthread_yield])], [])
+ LIBS="$OLDLIBS"
+ 
++AC_DEFINE_UNQUOTED([SYSCONFDIR], ["$sysconfdir"],
++	[Directory for system config files])
++AC_ARG_WITH([vendordir],
++	[AS_HELP_STRING([--with-vendordir=DIR],
++		[Directory for distribution provided configuration files])],
++	[], []
++)
++AC_SUBST([vendordir], [$with_vendordir])
++AM_CONDITIONAL([USE_VENDORDIR], [test "x$with_vendordir" != x])
++AS_IF([test "x$with_vendordir" != x], [
++	AC_DEFINE([USE_VENDORDIR], [1], [Define to 1 to use vendordir])
++	AC_DEFINE_UNQUOTED([VENDORDIR], ["$vendordir"],
++		[Directory for vendor-managed config files])
++])
++
+ withval=""
+ AC_MSG_CHECKING(whether to create python3 bindings)
+ AC_ARG_WITH(python3,
+diff --git a/init.d/Makefile.am b/init.d/Makefile.am
+index b88104b..125d391 100644
+--- a/init.d/Makefile.am
++++ b/init.d/Makefile.am
+@@ -34,7 +34,13 @@ initdir = $(prefix)/lib/systemd/system
+ legacydir = $(libexecdir)/initscripts/legacy-actions/auditd
+ bashcompdir = $(datadir)/bash-completion/completions
+ 
++if USE_VENDORDIR
++auditdir = $(vendordir)/audit
++libconfigdir = $(vendordir)
++else
+ auditdir = $(sysconfdir)/audit
++libconfigdir = $(sysconfdir)
++endif
+ auditrdir = $(auditdir)/rules.d
+ dist_audit_DATA = auditd.conf audit-stop.rules
+ sbin_SCRIPTS = augenrules
+@@ -48,7 +54,7 @@ BUILT_SOURCES = auditd.service audit-rules.service augenrules
+ 		$< > $@
+ 
+ install-data-hook:
+-	$(INSTALL_DATA) -D -m 640 ${srcdir}/${libconfig} ${DESTDIR}${sysconfdir}
++	$(INSTALL_DATA) -D -m 640 ${srcdir}/${libconfig} ${DESTDIR}${libconfigdir}
+ 	mkdir -p ${DESTDIR}$(prefix)/lib/tmpfiles.d/
+ 	$(INSTALL_DATA) -m 640 ${srcdir}/audit-tmpfiles.conf ${DESTDIR}$(prefix)/lib/tmpfiles.d/audit.conf
+ 
+@@ -76,7 +82,7 @@ if INSTALL_LEGACY_ACTIONS
+ endif
+ 
+ uninstall-hook:
+-	rm ${DESTDIR}${sysconfdir}/${libconfig}
++	rm ${DESTDIR}${libconfigdir}/${libconfig}
+ 	rm ${DESTDIR}${initdir}/auditd.service
+ 	rm ${DESTDIR}${initdir}/audit-rules.service
+ if INSTALL_LEGACY_ACTIONS
+diff --git a/lib/libaudit.c b/lib/libaudit.c
+index 9a0e23a..630cde5 100644
+--- a/lib/libaudit.c
++++ b/lib/libaudit.c
+@@ -52,7 +52,12 @@
+ #include "common.h"
+ 
+ /* #defines for the audit failure query  */
+-#define CONFIG_FILE "/etc/libaudit.conf"
++#define CONFIG_FILE SYSCONFDIR "/libaudit.conf"
++#ifdef USE_VENDORDIR
++#define VENDOR_CONFIG_FILE VENDORDIR "/libaudit.conf"
++#else
++#define VENDOR_CONFIG_FILE NULL
++#endif
+ #ifndef IORING_OP_LAST
+ #define IORING_OP_LAST 37
+ #endif
+@@ -215,7 +220,7 @@ static int audit_failure_parser(const char *val, int line)
+ /*
+  *  Read the /etc/libaudit.conf file and all tunables.
+  */
+-static int load_libaudit_config(const char *path)
++static int load_libaudit_config(const char *path, const char *fallback)
+ {
+ 	int fd, rc, lineno = 1;
+ 	struct stat st;
+@@ -230,6 +235,8 @@ static int load_libaudit_config(const char *path)
+ 				path, strerror(errno));
+ 			return 1;
+ 		}
++		if (fallback)
++			return load_libaudit_config(fallback, NULL);
+ 		audit_msg(LOG_WARNING,
+ 			"Config file %s doesn't exist, skipping", path);
+ 		return 0;
+@@ -344,7 +351,7 @@ int get_auditfail_action(auditfail_t *failmode)
+ {
+ 	clear_config();
+ 
+-	if (load_libaudit_config(CONFIG_FILE)) {
++	if (load_libaudit_config(CONFIG_FILE, VENDOR_CONFIG_FILE)) {
+ 		*failmode = config.failure_action;
+ 		return 1;
+ 	}
+diff --git a/src/auditd-config.c b/src/auditd-config.c
+index 1f9589f..79c8210 100644
+--- a/src/auditd-config.c
++++ b/src/auditd-config.c
+@@ -450,6 +450,17 @@ int load_config(struct daemon_conf *config, log_test_t lt)
+ 	if (allow_links == 0)
+ 		mode |= O_NOFOLLOW;
+ 	rc = open(config_file, mode);
++#ifdef USE_VENDORDIR
++	/* Fall back to the distribution defaults when the system config is absent */
++	if (rc < 0 && errno == ENOENT &&
++				strcmp(config_file, CONFIG_FILE) == 0) {
++		free(config_file);
++		config_file = strdup(VENDOR_CONFIG_FILE);
++		if (config_file == NULL)
++			return report_oom("config file", 0);
++		rc = open(config_file, mode);
++	}
++#endif
+ 	if (rc < 0) {
+ 		if (errno != ENOENT) {
+ 			audit_msg(LOG_ERR, "Error opening config file (%s)", 
+diff --git a/src/auditd-config.h b/src/auditd-config.h
+index b4b0038..aa4e8b2 100644
+--- a/src/auditd-config.h
++++ b/src/auditd-config.h
+@@ -26,7 +26,10 @@
+ #include "libaudit.h"
+ #include "gcc-attributes.h"
+ #include <grp.h>
+-#define CONFIG_FILE "/etc/audit/auditd.conf"
++#define CONFIG_FILE SYSCONFDIR "/audit/auditd.conf"
++#ifdef USE_VENDORDIR
++#define VENDOR_CONFIG_FILE VENDORDIR "/audit/auditd.conf"
++#endif
+ #define MEGABYTE 1048576UL
+ 
+ // Define user space end of event timeout default (in seconds)
