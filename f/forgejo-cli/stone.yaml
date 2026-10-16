@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : forgejo-cli
-version     : "0.6.0"
-release     : 2
+version     : "0.7.0"
+release     : 3
 homepage    : https://codeberg.org/forgejo-contrib/forgejo-cli
 upstreams   :
-    - https://codeberg.org/forgejo-contrib/forgejo-cli/archive/v0.6.0.tar.gz : 8b91194cb1886f253261a4567ee6f83aa34b05a9637644793f88b40b7110322a
+    - https://codeberg.org/forgejo-contrib/forgejo-cli/archive/v0.7.0.tar.gz : 748ce60eb18e72af83ef3956910933b1e091abf673f12ff9777aea214f6eae40
 summary     : CLI application for interacting with Forgejo
 description : |
     fj is a CLI client for Forgejo, akin to gh, glab, or tea. It handles
