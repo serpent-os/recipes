@@ -4,13 +4,16 @@
 	"packages": {
 		"dbus": {
 			"build-depends": [
+				"pkgconfig(audit)",
 				"pkgconfig32(expat)",
 				"pkgconfig32(glib-2.0)",
 				"pkgconfig32(libsystemd)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libaudit.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
+				"soname(libcap-ng.so.0(x86_64))",
 				"soname(libexpat.so.1(x86_64))",
 				"soname(libsystemd.so.0(x86_64))",
 				"systemd"
@@ -72,6 +75,7 @@
 		},
 		"dbus-32bit": {
 			"build-depends": [
+				"pkgconfig(audit)",
 				"pkgconfig32(expat)",
 				"pkgconfig32(glib-2.0)",
 				"pkgconfig32(libsystemd)"
@@ -96,6 +100,7 @@
 		},
 		"dbus-32bit-devel": {
 			"build-depends": [
+				"pkgconfig(audit)",
 				"pkgconfig32(expat)",
 				"pkgconfig32(glib-2.0)",
 				"pkgconfig32(libsystemd)"
@@ -119,6 +124,7 @@
 		},
 		"dbus-devel": {
 			"build-depends": [
+				"pkgconfig(audit)",
 				"pkgconfig32(expat)",
 				"pkgconfig32(glib-2.0)",
 				"pkgconfig32(libsystemd)"
@@ -158,6 +164,6 @@
 		}
 	},
 	"source-name": "dbus",
-	"source-release": "14",
+	"source-release": "15",
 	"source-version": "1.16.2"
 }
