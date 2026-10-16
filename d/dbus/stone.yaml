@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : dbus
 version     : "1.16.2"
-release     : 14
+release     : 15
 summary     : D-Bus Message Bus System
 license     :
     - AFL-2.1
@@ -14,13 +14,14 @@ description : |
 upstreams   :
     - https://dbus.freedesktop.org/releases/dbus/dbus-1.16.2.tar.xz: 0ba2a1a4b16afe7bceb2c07e9ce99a8c2c3508e5dec290dbb643384bd6beb7e2
 builddeps   :
-    # TODO build with audit
+    - pkgconfig(audit)
     - pkgconfig32(expat)
     - pkgconfig32(glib-2.0)
     - pkgconfig32(libsystemd)
 emul32      : true
 setup       : |
-    %meson -Druntime_dir=/run
+    %meson \
+        -Druntime_dir=/run
 build       : |
     %meson_build
 install     : |
