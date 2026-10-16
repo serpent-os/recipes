@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+releases:
+  id: 15225
+  rss: https://github.com/linux-audit/audit-userspace/releases.atom
+security:
+  # Last checked 2026-10-15
+  cpe:
+  - vendor: linux_audit_project
+    product: linux_audit
