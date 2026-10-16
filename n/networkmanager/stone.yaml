@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : networkmanager
 version     : "1.58.1"
-release     : 19
+release     : 20
 homepage    : https://wiki.gnome.org/Projects/NetworkManager
 upstreams   :
     - https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/1.58.1/downloads/NetworkManager-1.58.1.tar.xz : 262864cfd198123d3e5dbe91937441b97ee9059d6d712e1a5bfbb1c54668d14d
@@ -23,6 +23,7 @@ builddeps   :
     - binary(perl)
     - binary(vapigen)
     - binary(xsltproc)
+    - pkgconfig(audit)
     - pkgconfig(bluez)
     - pkgconfig(dbus-1)
     - pkgconfig(gio-unix-2.0)
@@ -42,6 +43,7 @@ builddeps   :
     - pkgconfig(mobile-broadband-provider-info)
     - pkgconfig(nss)
     - pkgconfig(polkit-gobject-1)
+    - pkgconfig(pppd)
     - pkgconfig(readline)
     - pkgconfig(slang)
     - pkgconfig(systemd)
@@ -49,8 +51,6 @@ builddeps   :
     - python(pygobject) # Docs
     - docbook
     - docbook-xsl
-    - ppp-devel
-    # libaudit
     # libxdp
 tuning      :
     - lto: false # Handled by meson flag
@@ -76,7 +76,6 @@ setup       : |
         -Dip6tables=%(sbindir)/ip6tables \
         -Diwd=true \
         -Dld_gc=false \
-        -Dlibaudit=no \
         -Dnft=%(sbindir)/nft \
         -Dnmtui=true \
         -Dpppd_plugin_dir="$(pkgconf --variable=plugindir pppd)" \
