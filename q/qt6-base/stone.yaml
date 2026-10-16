@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : qt6-base
 version     : "6.12.0"
-release     : 40
+release     : 41
 homepage    : https://www.qt.io
 upstreams   :
     - https://download.qt.io/official_releases/qt/6.12/6.12.0/submodules/qtbase-everywhere-src-6.12.0.tar.xz : a951bd163c7b80fc6b8c88d7668fb56abf91c152373e13c10666763238131307
@@ -95,7 +95,20 @@ setup       : |
     %patch %(pkgdir)/upstream-02.patch
     %patch %(pkgdir)/upstream-03.patch
 
+    # Only the PGO workload stages need the test suite. The final stage must not
+    # build it, or the test data gets installed into /usr/tests.
+    _qt_test_arg="-DQT_BUILD_TESTS=OFF"
+    if [[ "${PGO_STAGE}" == "ONE" || "${PGO_STAGE}" == "TWO" ]]; then
+        _qt_test_arg="-DQT_BUILD_TESTS=ON"
+    fi
+
+    # This is higher than we probably need but if it's too low some of the clang warnings will leak into stderr during
+    # tests and cause unnecessary failures
+    export CFLAGS+=" -mllvm -vp-counters-per-site=20"
+    export CXXFLAGS+=" -mllvm -vp-counters-per-site=20"
+
     %cmake_qt6 \
+        "${_qt_test_arg}" \
         -DQT_QMAKE_TARGET_MKSPEC=linux-clang \
         -DQT_FEATURE_accessibility=ON \
         -DQT_FEATURE_brotli=ON \
@@ -147,6 +160,18 @@ install     : |
             %(installroot)%(libdir)/qt6/modules/ExamplesAssetDownloaderPrivate.json \
             %(installroot)%(libdir)/libQt6ExamplesAssetDownloader* \
             %(installroot)%(libdir)/qt6/mkspecs/features/uikit
+
+# The test suite is the representative workload: it exercises the whole of
+# QtCore/QtGui/QtWidgets/QtNetwork/QtSql, which is what we want profiles for.
+# Failures are irrelevant, only that the code runs. tst_qfile is excluded because
+# it picks the first writable mounted volume, which in the sandbox is our
+# bind-mounted recipe directory, and leaves trash files there.
+# TODO: Get more of this test suite working
+workload    : |
+    export QT_QPA_PLATFORM=offscreen
+
+    ctest --test-dir %(builddir) --parallel %(jobs) --timeout 120 --output-on-failure \
+        -E '^tst_qfile$' || :
 packages    :
     - "%(name)":
         rundeps:
