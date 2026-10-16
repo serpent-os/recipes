@@ -3,7 +3,7 @@
 
 name        : systemd
 version     : "261.3"
-release     : 103
+release     : 104
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -22,6 +22,7 @@ builddeps   :
     - binary(readelf.py)
     - binary(rsync)
     - binary(xsltproc)
+    - pkgconfig(audit)
     - pkgconfig(blkid)
     - pkgconfig(bzip2)
     - pkgconfig(dbus-1)
@@ -62,7 +63,6 @@ builddeps   :
     - docbook
     - docbook-xsl
     - gettext-devel
-    # libaudit (+32bit)
     # systemtap
     # libselinux/libapparmor
     # jekyll?
@@ -107,6 +107,7 @@ setup       : |
         -Dadm-group=true \
         -Danalyze=${_IS_64BIT_BOOL} \
         -Daudio-gid=11 \
+        -Daudit=${_IS_64BIT_BOOL} \
         -Dbacklight=${_IS_64BIT_BOOL} \
         -Dbinfmt=${_IS_64BIT_BOOL} \
         -Dblkid=${_IS_64BIT_FEAT} \
@@ -352,7 +353,7 @@ packages    :
         rundeps:
             # This specific list should only contain dependencies used by sysusers/tmpfiles
             - soname(libacl.so.1(x86_64))
-            # libaudit
+            - soname(libaudit.so.1(x86_64))
         paths:
             - /usr/lib/systemd/libsystemd-core-*.so
             - /usr/lib/systemd/libsystemd-shared-*.so
