@@ -3,7 +3,7 @@
 
 name        : plasma-workspace
 version     : "6.8.0"
-release     : 47
+release     : 48
 upstreams   :
     - https://download.kde.org/stable/plasma/6.8.0/plasma-workspace-6.8.0.tar.xz : 01677cede8a94681a96bd0ee1b211acddaa4678cf7b89aa670b949bdf68c1973
 homepage    : https://kde.org/plasma-desktop/
@@ -96,6 +96,9 @@ tuning      :
 setup       : |
     %patch %(pkgdir)/0001-Remove-wayland-from-session-name.patch
     %patch %(pkgdir)/0001-Use-stateless-dir-for-menu.patch
+
+    # Upstream backport(s)
+    %patch %(pkgdir)/7239.patch
 
     # WITH_X11=OFF isn't viable yet: it gates the fonts KCM (Xcursor-based). It also gates
     # ksmserver (X11 session manager, and its ICE/SM deps) and gmenu-dbusmenu-proxy.
