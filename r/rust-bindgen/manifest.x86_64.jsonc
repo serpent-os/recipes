@@ -23,6 +23,6 @@
 		}
 	},
 	"source-name": "rust-bindgen",
-	"source-release": "7",
-	"source-version": "0.72.1"
+	"source-release": "8",
+	"source-version": "0.73.2"
 }

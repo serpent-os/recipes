@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 17910
   rss: https://github.com/rust-lang/rust-bindgen/releases.atom
 security:
-  # No known CPE, last checked 2024-04-25
+  # No known CPE. Last checked 2026-10-15
   cpe: ~
