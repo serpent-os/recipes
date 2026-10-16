@@ -4,13 +4,17 @@
 	"packages": {
 		"dbus-broker": {
 			"build-depends": [
+				"binary(rst2man)",
+				"pkgconfig(audit)",
 				"pkgconfig(expat)",
 				"pkgconfig(libsystemd)"
 			],
 			"depends": [
 				"dbus",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libaudit.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
+				"soname(libcap-ng.so.0(x86_64))",
 				"soname(libexpat.so.1(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libsystemd.so.0(x86_64))"
@@ -23,7 +27,9 @@
 				"/usr/lib/systemd/system/dbus-broker.service",
 				"/usr/lib/systemd/system/dbus.service",
 				"/usr/lib/systemd/user/dbus-broker.service",
-				"/usr/lib/systemd/user/dbus.service"
+				"/usr/lib/systemd/user/dbus.service",
+				"/usr/share/man/man1/dbus-broker-launch.1",
+				"/usr/share/man/man1/dbus-broker.1"
 			],
 			"name": "dbus-broker",
 			"provides": [
@@ -33,6 +39,6 @@
 		}
 	},
 	"source-name": "dbus-broker",
-	"source-release": "12",
+	"source-release": "13",
 	"source-version": "37"
 }
