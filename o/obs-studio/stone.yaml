@@ -3,7 +3,7 @@
 
 name        : obs-studio
 version     : "32.2.2"
-release     : 1
+release     : 2
 homepage    : https://github.com/obsproject/obs-studio
 upstreams   :
     - https://github.com/obsproject/obs-studio/releases/download/32.2.2/OBS-Studio-32.2.2-Sources.tar.gz:
@@ -68,13 +68,23 @@ builddeps   :
 tuning      :
     - optimize: speed
 setup       : |
+    # Must rebuild libcef_dll_wrapper, using the prebuilt wrapper
+    # causes obs to segfault whenever a browser source is added
+    cmake \
+        -G Ninja \
+        -S %(buildroot)/cef \
+        -B %(buildroot)/cef-wrapper-build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=%(buildroot)/cef/libcef_dll_wrapper
+    cmake --build %(buildroot)/cef-wrapper-build --target libcef_dll_wrapper
+
     %cmake \
         -DCEF_ROOT_DIR="%(buildroot)/cef" \
         -DENABLE_BROWSER=ON \
         -DENABLE_JACK=ON \
         -DENABLE_LIBFDK=ON \
         -DENABLE_SNDIO=ON \
-        -DOBS_VERSION_OVERRIDE="%(version)" \
+        -DOBS_VERSION_OVERRIDE="%(version)"
 build       : |
     %cmake_build
 install     : |
