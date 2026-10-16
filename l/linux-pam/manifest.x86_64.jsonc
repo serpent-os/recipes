@@ -10,6 +10,7 @@
 				"binary(xsltproc)",
 				"docbook-xsl",
 				"docbook5-xml",
+				"pkgconfig(audit)",
 				"pkgconfig32(libeconf)",
 				"pkgconfig32(libsystemd)",
 				"pkgconfig32(libxcrypt)"
@@ -17,6 +18,7 @@
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"linux-pam-base",
+				"soname(libaudit.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libcrypt.so.2(x86_64))",
 				"soname(libeconf.so.0(x86_64))",
@@ -59,6 +61,7 @@
 				"/usr/lib/security/pam_succeed_if.so",
 				"/usr/lib/security/pam_time.so",
 				"/usr/lib/security/pam_timestamp.so",
+				"/usr/lib/security/pam_tty_audit.so",
 				"/usr/lib/security/pam_umask.so",
 				"/usr/lib/security/pam_unix.so",
 				"/usr/lib/security/pam_usertype.so",
@@ -217,6 +220,7 @@
 				"/usr/share/man/man8/pam_time.8",
 				"/usr/share/man/man8/pam_timestamp.8",
 				"/usr/share/man/man8/pam_timestamp_check.8",
+				"/usr/share/man/man8/pam_tty_audit.8",
 				"/usr/share/man/man8/pam_umask.8",
 				"/usr/share/man/man8/pam_unix.8",
 				"/usr/share/man/man8/pam_usertype.8",
@@ -261,6 +265,7 @@
 				"soname(security/pam_succeed_if.so(x86_64))",
 				"soname(security/pam_time.so(x86_64))",
 				"soname(security/pam_timestamp.so(x86_64))",
+				"soname(security/pam_tty_audit.so(x86_64))",
 				"soname(security/pam_umask.so(x86_64))",
 				"soname(security/pam_unix.so(x86_64))",
 				"soname(security/pam_usertype.so(x86_64))",
@@ -283,6 +288,7 @@
 				"binary(xsltproc)",
 				"docbook-xsl",
 				"docbook5-xml",
+				"pkgconfig(audit)",
 				"pkgconfig32(libeconf)",
 				"pkgconfig32(libsystemd)",
 				"pkgconfig32(libxcrypt)"
@@ -315,6 +321,7 @@
 				"binary(xsltproc)",
 				"docbook-xsl",
 				"docbook5-xml",
+				"pkgconfig(audit)",
 				"pkgconfig32(libeconf)",
 				"pkgconfig32(libsystemd)",
 				"pkgconfig32(libxcrypt)"
@@ -346,6 +353,7 @@
 				"binary(xsltproc)",
 				"docbook-xsl",
 				"docbook5-xml",
+				"pkgconfig(audit)",
 				"pkgconfig32(libeconf)",
 				"pkgconfig32(libsystemd)",
 				"pkgconfig32(libxcrypt)"
@@ -428,6 +436,7 @@
 				"binary(xsltproc)",
 				"docbook-xsl",
 				"docbook5-xml",
+				"pkgconfig(audit)",
 				"pkgconfig32(libeconf)",
 				"pkgconfig32(libsystemd)",
 				"pkgconfig32(libxcrypt)"
@@ -551,11 +560,13 @@
 				"binary(xsltproc)",
 				"docbook-xsl",
 				"docbook5-xml",
+				"pkgconfig(audit)",
 				"pkgconfig32(libeconf)",
 				"pkgconfig32(libsystemd)",
 				"pkgconfig32(libxcrypt)"
 			],
 			"depends": [
+				"soname(libaudit.so.1(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libeconf.so.0(x86_64))"
 			],
@@ -576,6 +587,6 @@
 		}
 	},
 	"source-name": "linux-pam",
-	"source-release": "21",
+	"source-release": "22",
 	"source-version": "1.7.3"
 }
