@@ -3,7 +3,7 @@
 
 name        : cups
 version     : "2.4.20"
-release     : 27
+release     : 28
 homepage    : https://openprinting.github.io/cups/
 upstreams   :
     - https://github.com/OpenPrinting/cups/releases/download/v2.4.20/cups-2.4.20-source.tar.gz : ab4d9cd7f3e58060091d2b24972223d6401675f11c49b65abf4f6ef31dea22ff
@@ -38,7 +38,7 @@ setup       : |
         --enable-pam \
         --with-ondemand=systemd \
         --without-rcdir \
-        --with-system-groups="wheel" \
+        --with-system-groups="root wheel" \
         ac_cv_path_AR=${AR}
 build       : |
     %make
