@@ -8,7 +8,7 @@ name        : mesa
 version     : "26.2.5"
 ##@@END_VERSION
 # Note: keep mesa-clc in-sync with this package version-wise
-release     : 92
+release     : 93
 homepage    : https://mesa3d.org/
 upstreams   :
 ##@@BEGIN_SOURCE
