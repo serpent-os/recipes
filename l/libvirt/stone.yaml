@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libvirt
 version     : "12.8.0"
-release     : 21
+release     : 22
 homepage    : https://gitlab.com/libvirt/libvirt
 upstreams   :
     - https://libvirt.org/sources/libvirt-12.8.0.tar.xz : 0cd46a8f3a2b9b63c35c6e6f42a6c2989183ef3b3d1499ee92b4876db35e6fe9
@@ -18,6 +18,7 @@ builddeps   :
     - binary(perl)
     - binary(rst2html5)
     - binary(xsltproc)
+    - pkgconfig(audit)
     - pkgconfig(bash-completion)
     - pkgconfig(blkid)
     - pkgconfig(devmapper)

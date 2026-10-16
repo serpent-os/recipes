@@ -8,6 +8,7 @@
 				"binary(perl)",
 				"binary(rst2html5)",
 				"binary(xsltproc)",
+				"pkgconfig(audit)",
 				"pkgconfig(bash-completion)",
 				"pkgconfig(blkid)",
 				"pkgconfig(devmapper)",
@@ -44,6 +45,7 @@
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"osinfo-db",
 				"soname(libacl.so.1(x86_64))",
+				"soname(libaudit.so.1(x86_64))",
 				"soname(libblkid.so.1(x86_64))",
 				"soname(libbsd.so.0(x86_64))",
 				"soname(libc.so.6(x86_64))",
@@ -638,6 +640,7 @@
 				"binary(perl)",
 				"binary(rst2html5)",
 				"binary(xsltproc)",
+				"pkgconfig(audit)",
 				"pkgconfig(bash-completion)",
 				"pkgconfig(blkid)",
 				"pkgconfig(devmapper)",
@@ -714,6 +717,7 @@
 				"binary(perl)",
 				"binary(rst2html5)",
 				"binary(xsltproc)",
+				"pkgconfig(audit)",
 				"pkgconfig(bash-completion)",
 				"pkgconfig(blkid)",
 				"pkgconfig(devmapper)",
@@ -1045,6 +1049,6 @@
 		}
 	},
 	"source-name": "libvirt",
-	"source-release": "21",
+	"source-release": "22",
 	"source-version": "12.8.0"
 }
