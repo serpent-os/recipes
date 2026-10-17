@@ -1,33 +1,31 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2025 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : chezmoi
-version     : "2.70.2"
-release     : 7
+version     : "2.73.2"
+release     : 8
 homepage    : https://github.com/twpayne/chezmoi
 upstreams   :
-    - https://github.com/twpayne/chezmoi/archive/refs/tags/v2.70.2.tar.gz : 4dfacb37e1f6714305d7c8570bc25880342dfddbe81259c9253a5881de035321
+    - https://github.com/twpayne/chezmoi/archive/refs/tags/v2.73.2.tar.gz : 6cb09c62d65c77b5c9cafc817dd2ecb984441c28350ea75aeb2709f991d0f671
 summary     : Manage your dotfiles across multiple machines
 description : |
     chezmoi helps you manage your personal configuration files
     (dotfiles, like ~/.gitconfig) across multiple machines.
 license     : MIT
 networking  : true
-builddeps   :
-    - binary(git)
-    - binary(go)
 setup       : |
-    go mod download
+    %go_mod
 build       : |
-    go build \
+    _xflags="-X main.version=%(version) \
+        -X main.date=$(date -u +'%%Y-%%m-%%dT%%H:%%M:%%SZ' --date=@$SOURCE_DATE_EPOCH) \
+        -X main.builtBy=aerynOS"
+    export GOFLAGS="$(echo "${GOFLAGS}" | sed "s#-ldflags=[^ ]*#\"& ${_xflags}\"#")"
+
+    go build -v \
         -buildmode=pie \
-        -mod=readonly \
-        -tags noupgrade \
-        -ldflags "-compressdwarf=false \
-        -X main.version=%(version) \
-        -X main.date=$(date -u +'%%Y-%%m-%%dT%%H:%%M:%%SZ' --date=@$SOURCE_DATE_EPOCH)"
+        -tags noupgrade
 install     : |
     %install_bin chezmoi
-    %install_file completions/chezmoi-completion.bash %(installroot)%(datadir)/bash-completion/completions/chezmoi
-    %install_file completions/chezmoi.fish %(installroot)%(datadir)/fish/completions/chezmoi.fish
-    %install_file completions/chezmoi.zsh %(installroot)%(datadir)/zsh/site-functions/_chezmoi
+    %install_file completions/*.bash %(installroot)%(bashcompletionsdir)/chezmoi
+    %install_file completions/*.fish %(installroot)%(fishcompletionsdir)/chezmoi.fish
+    %install_file completions/*.zsh %(installroot)%(zshcompletionsdir)/_chezmoi
