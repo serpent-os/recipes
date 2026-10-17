@@ -2,20 +2,20 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libx11
-version     : "1.8.13"
-release     : 10
+version     : "1.8.14"
+release     : 11
 homepage    : https://gitlab.freedesktop.org/xorg/lib/libx11
 upstreams   :
-    - https://xorg.freedesktop.org/releases/individual/lib/libX11-1.8.13.tar.xz : 69606f485c2c07c14ef64f75b7bb326d48587af33795d9ab3e607c0b5f94f11c
+    - https://xorg.freedesktop.org/releases/individual/lib/libX11-1.8.14.tar.xz : bbc78c46217174655c2b32b138ad119f3ac15f50808b4d0b3a2677a4b1afc950
 summary     : Core X11 protocol client library
 description : |
     %(name) is a library to build X11 client applications to interact with an X11 server.
 license     : X11
 builddeps   :
-    - pkgconfig32(xau)
-    - pkgconfig32(xcb)
     - pkgconfig(xproto)
     - pkgconfig(xtrans)
+    - pkgconfig32(xau)
+    - pkgconfig32(xcb)
 emul32      : true
 packages    :
     - "%(name)-devel":
