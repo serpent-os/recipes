@@ -5,7 +5,8 @@
 		"starship": {
 			"build-depends": [
 				"binary(cmake)",
-				"binary(make)"
+				"binary(make)",
+				"tzdata"
 			],
 			"depends": [
 				"font-firacode-nerd",
@@ -30,6 +31,6 @@
 		}
 	},
 	"source-name": "starship",
-	"source-release": "19",
-	"source-version": "1.26.0"
+	"source-release": "20",
+	"source-version": "1.27.0"
 }
