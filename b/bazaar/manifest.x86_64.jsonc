@@ -41,6 +41,7 @@
 				"soname(libglib-2.0.so.0(x86_64))",
 				"soname(libglycin-2.so.0(x86_64))",
 				"soname(libglycin-gtk4-2.so.0(x86_64))",
+				"soname(libgmodule-2.0.so.0(x86_64))",
 				"soname(libgobject-2.0.so.0(x86_64))",
 				"soname(libgraphene-1.0.so.0(x86_64))",
 				"soname(libgtk-4.so.1(x86_64))",
@@ -63,8 +64,9 @@
 				"/usr/bin/bazaar-daemon",
 				"/usr/bin/bazaar-dl-worker",
 				"/usr/bin/bge-demo",
+				"/usr/lib/bazaar/libbazaar-login-page.so",
 				"/usr/lib/libbge.so.0",
-				"/usr/lib/libbge.so.0.9.7",
+				"/usr/lib/libbge.so.0.9.9",
 				"/usr/lib/systemd/user/io.github.kolunmi.Bazaar.service",
 				"/usr/share/applications/io.github.kolunmi.Bazaar.desktop",
 				"/usr/share/dbus-1/services/io.github.kolunmi.Bazaar.SearchProvider.service",
@@ -117,6 +119,7 @@
 				"binary(bazaar-daemon)",
 				"binary(bazaar-dl-worker)",
 				"binary(bge-demo)",
+				"soname(bazaar/libbazaar-login-page.so(x86_64))",
 				"soname(libbge.so.0(x86_64))"
 			]
 		},
@@ -170,6 +173,6 @@
 		}
 	},
 	"source-name": "bazaar",
-	"source-release": "10",
-	"source-version": "0.9.7"
+	"source-release": "11",
+	"source-version": "0.9.9"
 }
