@@ -2,20 +2,22 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : starship
-version     : "1.26.0"
-release     : 19
-license     : ISC
+version     : "1.27.0"
+release     : 20
 homepage    : https://starship.rs/
 upstreams   :
-    - https://github.com/starship/starship/archive/refs/tags/v1.26.0.tar.gz : 8c95e8a6c596b29ac192104eae00dd991e8c8fd66083fd2b34d6b223a5803a59
+    - https://github.com/starship/starship/archive/refs/tags/v1.27.0.tar.gz : f1887ffa88a7ba437d2932501794047e28d03387996f7d1c364631c053cffc44
 summary     : The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 description : |
     The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+license     : ISC
 builddeps   :
     - binary(cmake)
     - binary(make)
 rundeps     :
     - font-firacode-nerd
+checkdeps   :
+    - tzdata
 networking  : true
 tuning      :
     - optimize: speed
@@ -35,6 +37,7 @@ install     : |
 
     # Default initialisation
     %install_file %(pkgdir)/50-starship.sh %(installroot)%(vendordir)/profile.d/50-starship.sh
-check      : |
-    # $HOME .config tests fail and TERM=dumb causing issues in a couple of tests
-    %cargo_test || :
+check       : |
+    # Boulder sets TERM=dumb, which makes starship refuse to render a prompt.
+    export TERM=xterm-256color
+    %cargo_test
