@@ -4,7 +4,7 @@
 	"packages": {
 		"zls": {
 			"build-depends": [
-				"binary(zig-0.16)"
+				"binary(zig-0.17)"
 			],
 			"files": [
 				"/usr/bin/zls",
@@ -17,6 +17,6 @@
 		}
 	},
 	"source-name": "zls",
-	"source-release": "4",
-	"source-version": "0.16.0"
+	"source-release": "5",
+	"source-version": "0.17.0"
 }
