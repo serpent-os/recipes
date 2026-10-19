@@ -1,17 +1,16 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : cpx
-version     : "0.1.4"
-release     : 3
+version     : "0.2.1"
+release     : 4
 homepage    : https://github.com/11happy/cpx
 upstreams   :
-    - https://github.com/11happy/cpx/archive/refs/tags/v0.1.4.tar.gz : f7d8b7d1926c007d358780dbf82e4ef6b0a84cb44ea3f68732f29a83e78a0495
+    - https://github.com/11happy/cpx/archive/refs/tags/v0.2.1.tar.gz : 3f2aa3a4ef8ab86239671eeadded9b9b2f942ab448842e2170e63f870ee5c2d0
 summary     : cp reimagined
 description : |
     cpx is a modern replacement for the traditional cp command, built with Rust for maximum performance and safety on Linux systems.
-license     :
-    - MIT
+license     : MIT
 networking  : true
 setup       : |
     %cargo_fetch
@@ -20,5 +19,5 @@ build       : |
 install     : |
     %cargo_install
 check       : |
-    # a few test fail
-    %cargo_test || exit 0
+    # test is expected to fail but succeeds due to root, skip it
+    %cargo_test -- --skip test_no_config_flag
