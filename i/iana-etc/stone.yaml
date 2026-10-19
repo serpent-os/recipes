@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2025-2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : iana-etc
-version     : "20260723"
-release     : 6
+version     : "20261015"
+release     : 7
 homepage    : https://github.com/Mic92/iana-etc
 upstreams   :
-    - https://github.com/Mic92/iana-etc/releases/download/20260723/iana-etc-20260723.tar.gz : 250a2ecd0e6e49e4f9cc31057d7f1119beeb9e459c50dd433966194e9a0a0ce0
+    - https://github.com/Mic92/iana-etc/releases/download/20261015/iana-etc-20261015.tar.gz : 6a4a9663befe0b9c5ad65433fdb161c4e7a8283fbc6f7f46cf4892291f8d29eb
 summary     : /etc/protocols and /etc/services
 description : |
     Build /etc/protocols and /etc/services files from IANA's Assigned Internet Protocol Numbers

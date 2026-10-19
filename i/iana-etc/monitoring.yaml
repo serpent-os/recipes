@@ -1,8 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2025-2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 379382
   rss: https://github.com/Mic92/iana-etc/releases.atom
 security:
+  # Last checked 2026-10-19
   cpe: ~
