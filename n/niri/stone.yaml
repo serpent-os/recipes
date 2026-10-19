@@ -3,7 +3,7 @@
 
 name        : niri
 version     : "26.04"
-release     : 19
+release     : 20
 summary     : Niri Desktop Compositor
 license     : GPL-3.0
 homepage    : https://github.com/YaLTeR/niri
@@ -38,6 +38,7 @@ rundeps    :
     - xdg-desktop-portal-gtk
 setup       : |
     %patch %(pkgdir)/stateless.patch
+    %patch %(pkgdir)/mutter-51-crash.patch
 
     mkdir .cargo
 
