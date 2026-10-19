@@ -661,6 +661,7 @@
 				"/usr/share/locale/tr/LC_MESSAGES/lutris.mo",
 				"/usr/share/locale/vi/LC_MESSAGES/lutris.mo",
 				"/usr/share/locale/zh_CN/LC_MESSAGES/lutris.mo",
+				"/usr/share/locale/zh_TW/LC_MESSAGES/lutris.mo",
 				"/usr/share/lutris/bin/lutris-wrapper",
 				"/usr/share/lutris/conf/origin-openssl3.cnf",
 				"/usr/share/lutris/json/86box.json",
@@ -716,6 +717,6 @@
 		}
 	},
 	"source-name": "lutris",
-	"source-release": "3",
-	"source-version": "0.5.22+git.0747076"
+	"source-release": "4",
+	"source-version": "0.5.22+git.d262218"
 }

@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : lutris
-version     : "0.5.22+git.0747076"
-release     : 3
+version     : "0.5.22+git.d262218"
+release     : 4
 homepage    : https://lutris.net/
 upstreams   :
-    - git|https://github.com/lutris/lutris.git : 07470764e709c1abcda8164e680815d9a2239b3c # 0747076
+    - git|https://github.com/lutris/lutris.git : d262218565a5a7c3628583d8ae9cd776447d52da # d262218
 summary     : Lutris desktop client
 description : |
     Lutris is an open source gaming platform. Lutris helps you install and play video games from all eras and from most gaming systems. By leveraging and combining existing emulators, engine re-implementations and compatibility layers, it gives you a central interface to launch all your games.
