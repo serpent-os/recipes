@@ -435,7 +435,7 @@
 			],
 			"files": [
 				"/usr/lib/libweston-16.so.0",
-				"/usr/lib/libweston-16.so.0.0.0",
+				"/usr/lib/libweston-16.so.0.0.1",
 				"/usr/lib/libweston-16/color-lcms.so",
 				"/usr/lib/libweston-16/drm-backend.so",
 				"/usr/lib/libweston-16/gl-renderer.so",
@@ -586,6 +586,6 @@
 		}
 	},
 	"source-name": "weston",
-	"source-release": "6",
-	"source-version": "16.0.0"
+	"source-release": "7",
+	"source-version": "16.0.1"
 }
