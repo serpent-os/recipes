@@ -1,24 +1,22 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2024 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : dtc
-version     : "1.7.2"
-release     : 6
+version     : "1.8.1"
+release     : 7
 homepage    : https://github.com/dgibson/dtc.git
 upstreams   :
-    - git|https://github.com/dgibson/dtc.git : 2d10aa2afe35527728db30b35ec491ecb6959e5c
+    - https://github.com/dgibson/dtc/archive/refs/tags/v1.8.1.tar.gz : 74b50bb19134f6562490afea53e59953dd6c4afb17e5ccb60be32221262d3390
 summary     : Device Tree Compiler
 description : |
     Device Tree Compiler
-license     :
-    - BSD-2-Clause
+license     : BSD-2-Clause
 builddeps   :
     - binary(bison)
     - binary(flex)
     - binary(swig)
     - pkgconfig(python3)
     - pkgconfig(yaml-0.1)
-    - python-setuptools_scm
 setup       : |
     %meson
 build       : |
@@ -26,3 +24,6 @@ build       : |
 install     : |
     %meson_install
     rm %(installroot)%(libdir)/*.a -v
+check       : |
+    # meson_test passes --no-rebuild, need to rebuild for test exes
+    meson test --print-errorlogs --verbose -j "%(jobs)" -C "%(builddir)"
