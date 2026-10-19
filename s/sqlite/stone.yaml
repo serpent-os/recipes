@@ -3,7 +3,7 @@
 
 name        : sqlite
 version     : "3.54.1"
-release     : 25
+release     : 26
 homepage    : https://www.sqlite.org
 upstreams   :
     - https://www.sqlite.org/2026/sqlite-autoconf-3540100.tar.gz:
@@ -14,17 +14,17 @@ upstreams   :
         ref: 39e175c2bf6fcd58376260cb39ef9f66edaf889b
         clonedir: ClickBench
 
-    - https://datasets.clickhouse.com/hits_compatible/hits.csv.gz:
-        hash: 189c37a5f2020d20ef9ebc0b9d4cf2204fe78658bbab235f0313d41447410ddd
+    - https://cdn.aerynos.dev/mirrors/datasets.clickhouse.com/hits_compatible/hits.csv.zst:
+        hash: 643b251317b0fdb94f62daf77bf2deb879f727a3ed77119403c56d38673c82a9
         unpack: false
 summary     : Small, self-contained SQL database engine
 description : |
     SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. SQLite is the most used database engine in the world. SQLite is built into all mobile phones and most computers and comes bundled inside countless other applications that people use every day.
-license     : Public Domain
+license     : blessing
 builddeps   :
-    - binary(zcat)
-    - pkgconfig32(zlib)
+    - binary(zstdcat)
     - pkgconfig(readline)
+    - pkgconfig32(zlib)
 tuning      :
     - asneeded: false # Otherwise the linking to libz gets optimized away
     - lto: full
@@ -44,7 +44,7 @@ profiles    :
 
             # Expected to fail
             set +o pipefail
-            zcat %(sourcedir)/hits.csv.gz | head -n 5000000 > sample.csv
+            zstdcat %(sourcedir)/hits.csv.zst | head -n 5000000 > sample.csv
             set -o pipefail
 
             %(workdir)/sqlite3 mydb <create.sql

@@ -4,7 +4,7 @@
 	"packages": {
 		"sqlite": {
 			"build-depends": [
-				"binary(zcat)",
+				"binary(zstdcat)",
 				"pkgconfig(readline)",
 				"pkgconfig32(zlib)"
 			],
@@ -30,7 +30,7 @@
 		},
 		"sqlite-32bit": {
 			"build-depends": [
-				"binary(zcat)",
+				"binary(zstdcat)",
 				"pkgconfig(readline)",
 				"pkgconfig32(zlib)"
 			],
@@ -51,7 +51,7 @@
 		},
 		"sqlite-32bit-devel": {
 			"build-depends": [
-				"binary(zcat)",
+				"binary(zstdcat)",
 				"pkgconfig(readline)",
 				"pkgconfig32(zlib)"
 			],
@@ -70,7 +70,7 @@
 		},
 		"sqlite-devel": {
 			"build-depends": [
-				"binary(zcat)",
+				"binary(zstdcat)",
 				"pkgconfig(readline)",
 				"pkgconfig32(zlib)"
 			],
@@ -90,6 +90,6 @@
 		}
 	},
 	"source-name": "sqlite",
-	"source-release": "25",
+	"source-release": "26",
 	"source-version": "3.54.1"
 }
