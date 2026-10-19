@@ -12,6 +12,7 @@
 				"/usr/share/hyprland-protocols/protocols/hyprland-surface-v1.xml",
 				"/usr/share/hyprland-protocols/protocols/hyprland-toplevel-export-v1.xml",
 				"/usr/share/hyprland-protocols/protocols/hyprland-toplevel-mapping-v1.xml",
+				"/usr/share/hyprland-protocols/protocols/hyprland-workspace-image-capture-source-v1.xml",
 				"/usr/share/pkgconfig/hyprland-protocols.pc"
 			],
 			"name": "hyprland-protocols",
@@ -21,6 +22,6 @@
 		}
 	},
 	"source-name": "hyprland-protocols",
-	"source-release": "3",
-	"source-version": "0.7.1"
+	"source-release": "4",
+	"source-version": "0.8.0"
 }
