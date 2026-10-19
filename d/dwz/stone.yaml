@@ -1,22 +1,22 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2025 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : dwz
-version     : "0.16"
-release     : 2
-upstreams   :
-    - https://sourceware.org/ftp/dwz/releases/dwz-0.16.tar.xz : 3602c8221be1f31fe612d4c80226b2e6bb20e19ccfcc0ebef321d90ba74d35a1
+version     : "0.17"
+release     : 3
 homepage    : https://sourceware.org/dwz/
-license     : GPL-2.0-or-later
+upstreams   :
+    - https://sourceware.org/ftp/dwz/releases/dwz-0.17.tar.xz : db10030528f3365c03755969619dd6789147d34fc588db8107364351085aebad
 summary     : DWARF optimization and duplicate removal tool
 description : |
     DWARF optimization and duplicate removal tool
+license     : GPL-2.0-or-later
 builddeps   :
     - binary(readelf)
     - pkgconfig(libelf)
     - pkgconfig(libxxhash)
-checkdeps   :
-    - binary(runtest)
+# checkdeps   :
+#     - binary(runtest)
 setup       : |
     %patch %(pkgdir)/0001-no-gold.patch -p2
     %patch %(pkgdir)/readelf.patch
@@ -33,7 +33,10 @@ install     : |
         mandir=%(mandir) \
         bindir=%(bindir)
 # check       : |
+#     # https://sourceware.org/bugzilla/show_bug.cgi?id=27434
+#     # dwarf5 not very supported, tests work with gcc
 #     CFLAGS="" LDFLAGS="" \
 #     srcdir=${PWD} \
-#         %make check
-# TODO: Figure out tests
+#         %make check \
+#             CC="gcc" \
+#             CXX="g++"
