@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libnotify
-version     : "0.8.8"
-release     : 8
+version     : "0.8.9"
+release     : 9
 homepage    : https://gitlab.gnome.org/GNOME/libnotify
 upstreams   :
-    - https://download.gnome.org/sources/libnotify/0.8/libnotify-0.8.8.tar.xz : 23420ef619dc2cb5aebad613f4823a2fa41c07e5a1d05628d40f6ec4b35bfddd
+    - https://download.gnome.org/sources/libnotify/0.8/libnotify-0.8.9.tar.xz : c906bb084027ea512f94a60fbfc0cc8d4f17e4b4d525bed370d07a6d8714c923
 summary     : Send desktop notifications.
 description : |
     Library to send desktop notifications.
