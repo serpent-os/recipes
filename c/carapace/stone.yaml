@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : carapace
-version     : "1.8.0"
-release     : 3
+version     : "1.8.1"
+release     : 4
 homepage    : https://carapace.sh/
 upstreams   :
-  - https://github.com/carapace-sh/carapace-bin/archive/refs/tags/v1.8.0.tar.gz : f29dec6afe57675a01076e94cd3850327b5106b47e557d213958124bc2f3cabb
+  - https://github.com/carapace-sh/carapace-bin/archive/refs/tags/v1.8.1.tar.gz : 1dc7314cbda4643186bcf00b6e2402002a113b09a0220e5d564a40e77daa886e
 summary     : A multi-shell completion library
 description : |
     Carapace-bin provides argument completion for multiple CLI commands, works across multiple POSIX and non-POSIX shells
@@ -22,3 +22,6 @@ install     : |
     %install_bin carapace
 
     %install_file LICENSE -t %(installroot)%(datadir)/licenses/%(name)/
+check       : |
+    export PATH="%(installroot)%(bindir):$PATH"
+    go test -v ./cmd/...
