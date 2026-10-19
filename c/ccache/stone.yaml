@@ -1,16 +1,16 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2024 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : ccache
-version     : "4.14.1"
-release     : 28
-summary     : ccache - a fast C/C++ compiler cache
-license     : GPL-3.0-or-later
+version     : "4.14.2"
+release     : 29
 homepage    : https://ccache.dev/
+upstreams   :
+    - https://github.com/ccache/ccache/releases/download/v4.14.2/ccache-4.14.2.tar.xz: 0feb2707d9cb48885abb950e5d629e85f57fa79a2439cbbdfa681d6c3dc5f0dc
+summary     : ccache - a fast C/C++ compiler cache
 description : |
     Ccache is a compiler cache. It speeds up recompilation by caching previous compilations and detecting when the same compilation is being done again. Supported languages are C, C++, Objective-C and Objective-C++.
-upstreams   :
-    - https://github.com/ccache/ccache/releases/download/v4.14.1/ccache-4.14.1.tar.xz: 29f10de481ac2c41c91bfabead63d803bd2fe823e09752aade5b0b8704cc4f30
+license     : GPL-3.0-or-later
 builddeps   :
     - binary(asciidoctor)
     - pkgconfig(fmt)
