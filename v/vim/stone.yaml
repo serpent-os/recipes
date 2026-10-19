@@ -1,13 +1,13 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : vim
-version     : "9.2.1186"
-release     : 35
+version     : "9.2.1202"
+release     : 36
 homepage    : https://github.com/vim/vim
 upstreams   :
-    - https://github.com/vim/vim/archive/refs/tags/v9.2.1186.tar.gz:
-        hash: 1d638249ff0c0ab0585fa3da04d26a92eda48cb89b15ec2743cf912ef50dd141
+    - https://github.com/vim/vim/archive/refs/tags/v9.2.1202.tar.gz:
+        hash: 9e97414b85bdcb2d28d5264c65dd730d86b9a75319b005c63da0bc130c715a2f
         unpack: false
         rename: vim.tar.gz
 summary     : Vi IMproved, an advanced text editor
