@@ -8,8 +8,7 @@
 				"binary(flex)",
 				"binary(swig)",
 				"pkgconfig(python3)",
-				"pkgconfig(yaml-0.1)",
-				"python-setuptools_scm"
+				"pkgconfig(yaml-0.1)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
@@ -25,13 +24,9 @@
 				"/usr/bin/fdtoverlay",
 				"/usr/bin/fdtput",
 				"/usr/lib/libfdt.so.1",
-				"/usr/lib/libfdt.so.1.7.2",
+				"/usr/lib/libfdt.so.1.8.1",
 				"/usr/lib/python3.14/site-packages/__pycache__/libfdt.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/_libfdt.cpython-314-x86_64-linux-gnu.so",
-				"/usr/lib/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/PKG-INFO",
-				"/usr/lib/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/SOURCES.txt",
-				"/usr/lib/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/dependency_links.txt",
-				"/usr/lib/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/top_level.txt",
 				"/usr/lib/python3.14/site-packages/libfdt.py"
 			],
 			"name": "dtc",
@@ -43,7 +38,6 @@
 				"binary(fdtget)",
 				"binary(fdtoverlay)",
 				"binary(fdtput)",
-				"python(libfdt)",
 				"soname(libfdt.so.1(x86_64))",
 				"soname(python3.14/site-packages/_libfdt.cpython-314-x86_64-linux-gnu.so(x86_64))"
 			]
@@ -54,8 +48,7 @@
 				"binary(flex)",
 				"binary(swig)",
 				"pkgconfig(python3)",
-				"pkgconfig(yaml-0.1)",
-				"python-setuptools_scm"
+				"pkgconfig(yaml-0.1)"
 			],
 			"depends": [
 				"dtc"
@@ -74,6 +67,6 @@
 		}
 	},
 	"source-name": "dtc",
-	"source-release": "6",
-	"source-version": "1.7.2"
+	"source-release": "7",
+	"source-version": "1.8.1"
 }
