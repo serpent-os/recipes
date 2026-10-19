@@ -5,7 +5,7 @@ releases:
   id: 12753
   rss: ~
 security:
-  # Last checked 2026-10-15
+  # Last checked 2026-10-19
   cpe:
   - vendor: pkgconf
     product: pkgconf
