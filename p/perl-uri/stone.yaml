@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : perl-uri
-version     : "5.37"
-release     : 9
+version     : "5.40"
+release     : 10
 homepage    : https://metacpan.org/pod/URI
 upstreams   :
-    - https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.37.tar.gz : 5a8750ddd8ee743d7cc89bebdd542a9b78a34023164ebe19dea0c248e121c21e
+    - https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.40.tar.gz : ef5d2ef099a1a24a6e83ffe543de73337805d3d39c00b84fa205d725ad1a1b63
 summary     : Uniform Resource Identifiers
 description : |
     Uniform Resource Identifiers (absolute and relative)

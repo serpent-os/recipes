@@ -98,6 +98,6 @@
 		}
 	},
 	"source-name": "perl-uri",
-	"source-release": "9",
-	"source-version": "5.37"
+	"source-release": "10",
+	"source-version": "5.40"
 }
