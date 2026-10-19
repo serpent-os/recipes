@@ -1,10 +1,11 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 1637
   rss: ~
 security:
+  # Last checked 2026-10-19
   cpe:
   - vendor: libical_project
     product: libical

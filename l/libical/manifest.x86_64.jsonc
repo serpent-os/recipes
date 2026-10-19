@@ -25,17 +25,17 @@
 			"files": [
 				"/usr/lib/girepository-1.0/ICal-4.0.typelib",
 				"/usr/lib/libical.so.4.0",
-				"/usr/lib/libical.so.4.0.6",
+				"/usr/lib/libical.so.4.0.7",
 				"/usr/lib/libical_cxx.so.4.0",
-				"/usr/lib/libical_cxx.so.4.0.6",
+				"/usr/lib/libical_cxx.so.4.0.7",
 				"/usr/lib/libicalss.so.4.0",
-				"/usr/lib/libicalss.so.4.0.6",
+				"/usr/lib/libicalss.so.4.0.7",
 				"/usr/lib/libicalss_cxx.so.4.0",
-				"/usr/lib/libicalss_cxx.so.4.0.6",
+				"/usr/lib/libicalss_cxx.so.4.0.7",
 				"/usr/lib/libicalvcal.so.4.0",
-				"/usr/lib/libicalvcal.so.4.0.6",
+				"/usr/lib/libicalvcal.so.4.0.7",
 				"/usr/lib/libicalvcard.so.4.0",
-				"/usr/lib/libicalvcard.so.4.0.6"
+				"/usr/lib/libicalvcard.so.4.0.7"
 			],
 			"name": "libical",
 			"provides": [
@@ -2248,7 +2248,7 @@
 			"files": [
 				"/usr/lib/girepository-1.0/ICalGLib-4.0.typelib",
 				"/usr/lib/libical-glib.so.4.0",
-				"/usr/lib/libical-glib.so.4.0.6"
+				"/usr/lib/libical-glib.so.4.0.7"
 			],
 			"name": "libical-glib",
 			"provides": [
@@ -2338,6 +2338,6 @@
 		}
 	},
 	"source-name": "libical",
-	"source-release": "13",
-	"source-version": "4.0.6"
+	"source-release": "14",
+	"source-version": "4.0.7"
 }
