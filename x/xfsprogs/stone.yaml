@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : xfsprogs
-version     : "7.2.0"
-release     : 19
+version     : "7.2.1"
+release     : 20
 homepage    : https://xfs.wiki.kernel.org/
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-7.2.0.tar.xz : 501dfa363cd8e19997a4a1a71f70ded88241b45e9db233e8875c23b80520cc83
+    - https://mirrors.edge.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-7.2.1.tar.xz : c45f5fd81fdebcdae61938fcfdff86c9960b39fc89a06df633730d93876cd27d
 summary     : Filesystem utilities for xfs filesystems
 description : |
     Filesystem utilities for xfs filesystems
