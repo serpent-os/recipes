@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Mon, 19 Oct 2026 12:17:55 -0500
+Subject: [PATCH] Fix niri crash
+
+https://gitlab.gnome.org/GNOME/libgxdp/-/work_items/5
+
+---
+ src/gxdp-wayland.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/gxdp-wayland.c b/src/gxdp-wayland.c
+index 650424a..20a2036 100644
+--- a/src/gxdp-wayland.c
++++ b/src/gxdp-wayland.c
+@@ -304,6 +304,9 @@ gxdp_wayland_set_x11_parent (GdkSurface *dialog_surface,
+ 
+   g_return_if_fail (dialog_surface);
+ 
++  if (!x11_interop)
++    return;
++
+   wl_surface = gdk_wayland_surface_get_wl_surface (dialog_surface);
+   mutter_x11_interop_set_x11_parent (x11_interop, wl_surface, parent_xid);
+ }
