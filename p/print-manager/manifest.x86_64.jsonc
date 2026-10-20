@@ -126,6 +126,7 @@
 				"/usr/share/locale/et/LC_MESSAGES/plasma_applet_org.kde.plasma.printmanager.mo",
 				"/usr/share/locale/et/LC_MESSAGES/print-manager.mo",
 				"/usr/share/locale/eu/LC_MESSAGES/kcm_printer_manager.mo",
+				"/usr/share/locale/eu/LC_MESSAGES/org.kde.plasma.printqueue.mo",
 				"/usr/share/locale/eu/LC_MESSAGES/plasma_applet_org.kde.plasma.printmanager.mo",
 				"/usr/share/locale/eu/LC_MESSAGES/print-manager.mo",
 				"/usr/share/locale/fi/LC_MESSAGES/kcm_printer_manager.mo",
@@ -223,6 +224,7 @@
 				"/usr/share/locale/ro/LC_MESSAGES/plasma_applet_org.kde.plasma.printmanager.mo",
 				"/usr/share/locale/ro/LC_MESSAGES/print-manager.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_printer_manager.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/org.kde.plasma.printqueue.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasma_applet_org.kde.plasma.printmanager.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/print-manager.mo",
 				"/usr/share/locale/sa/LC_MESSAGES/kcm_printer_manager.mo",
@@ -297,6 +299,6 @@
 		}
 	},
 	"source-name": "print-manager",
-	"source-release": "33",
-	"source-version": "6.8.0"
+	"source-release": "34",
+	"source-version": "6.8.1"
 }
