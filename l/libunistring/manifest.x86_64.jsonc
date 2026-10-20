@@ -8,7 +8,7 @@
 			],
 			"files": [
 				"/usr/lib/libunistring.so.5",
-				"/usr/lib/libunistring.so.5.2.1",
+				"/usr/lib/libunistring.so.5.2.2",
 				"/usr/share/info/libunistring.info"
 			],
 			"name": "libunistring",
@@ -23,7 +23,7 @@
 			],
 			"files": [
 				"/usr/lib32/libunistring.so.5",
-				"/usr/lib32/libunistring.so.5.2.1"
+				"/usr/lib32/libunistring.so.5.2.2"
 			],
 			"name": "libunistring-32bit",
 			"provides": [
@@ -102,6 +102,6 @@
 		}
 	},
 	"source-name": "libunistring",
-	"source-release": "8",
-	"source-version": "1.4.2"
+	"source-release": "9",
+	"source-version": "1.5"
 }
