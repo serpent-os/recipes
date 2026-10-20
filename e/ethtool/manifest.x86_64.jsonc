@@ -15,7 +15,8 @@
 			"files": [
 				"/usr/sbin/ethtool",
 				"/usr/share/bash-completion/completions/ethtool",
-				"/usr/share/man/man8/ethtool.8"
+				"/usr/share/man/man8/ethtool.8",
+				"/usr/share/metainfo/org.kernel.software.network.ethtool.metainfo.xml"
 			],
 			"name": "ethtool",
 			"provides": [
@@ -24,6 +25,6 @@
 		}
 	},
 	"source-name": "ethtool",
-	"source-release": "3",
-	"source-version": "6.11"
+	"source-release": "4",
+	"source-version": "7.2"
 }
