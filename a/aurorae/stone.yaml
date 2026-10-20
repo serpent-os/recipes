@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : aurorae
-version     : "6.8.0"
-release     : 26
+version     : "6.8.1"
+release     : 27
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/aurorae-6.8.0.tar.xz : b012e3894eb1cfe8cb0bf20ecb48aac18cd655359941a5387f521e3bb9da2b91
+    - https://download.kde.org/stable/plasma/6.8.1/aurorae-6.8.1.tar.xz : 3ffd6381ef5f2ebb4001970ba0ae7a36596ddae7383fa3cc199f9430e72ef281
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
