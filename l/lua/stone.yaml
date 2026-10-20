@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : lua
 version     : "5.5.1"
-release     : 12
+release     : 13
 homepage    : https://www.lua.org
 upstreams   :
     - https://www.lua.org/ftp/lua-5.5.1.tar.gz : 1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce
@@ -52,7 +52,11 @@ install     : |
         INSTALL_LIB=%(installroot)/%(libdir) \
         INSTALL_MAN=%(installroot)/%(mandir)
 
-    %install_file %(pkgdir)/lua-${_version_major_minor}.pc %(installroot)%(libdir)/pkgconfig/lua-${_version_major_minor}.pc
+    cp %(pkgdir)/lua.pc.in ./lua.pc
+    sed -e "s|@V@|${_version_major_minor}|g" \
+        -e "s|@R@|%(version)|g" \
+        -i ./lua.pc
+    %install_file ./lua.pc %(installroot)%(libdir)/pkgconfig/lua-${_version_major_minor}.pc
     ln -s lua-${_version_major_minor}.pc %(installroot)%(libdir)/pkgconfig/lua.pc
 
     mv %(installroot)%(libdir)/liblua.so %(installroot)%(libdir)/liblua.so.%(version)
