@@ -1,0 +1,113 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 20 Oct 2026 14:21:11 -0500
+Subject: [PATCH] Add option to build against system Lua
+
+The plugin engine bundles a copy of Lua. Distributions that package Lua
+separately would rather link against it than compile an identical copy.
+
+Add a SYSTEM_LUA option (off by default) that locates a system Lua via
+pkg-config and requires at least 5.5. The bundled headers are now exposed
+flat, as <lua.hpp>, to match the layout used by system installations.
+---
+ CMakeLists.txt                       |  1 +
+ src/base/3rdparty/lua/CMakeLists.txt |  3 +--
+ src/base/CMakeLists.txt              | 13 ++++++++++---
+ src/base/plugins/luaclasses.h        |  2 +-
+ src/base/plugins/luastack.h          |  2 +-
+ src/base/plugins/plugin.h            |  2 +-
+ 6 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 07d40af9a..ec0a97e59 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,6 +24,7 @@ include(FeatureOptionsSetup)
+ feature_option(GUI "Build GUI application" ON)
+ feature_option(WEBUI "Enable built-in HTTP server for remote control" ON)
+ feature_option(PLUGINS "Enable built-in Lua plugins engine" ON)
++feature_option(SYSTEM_LUA "Build against the system-provided Lua instead of the bundled copy" OFF)
+ feature_option(STACKTRACE "Enable stacktrace support" ON)
+ feature_option(TESTING "Build internal testing suite" OFF)
+ feature_option(VERBOSE_CONFIGURE "Show information about PACKAGES_FOUND and PACKAGES_NOT_FOUND in the configure output (only useful for debugging the CMake build scripts)" OFF)
+diff --git a/src/base/3rdparty/lua/CMakeLists.txt b/src/base/3rdparty/lua/CMakeLists.txt
+index 823efaecd..4bb010b9c 100644
+--- a/src/base/3rdparty/lua/CMakeLists.txt
++++ b/src/base/3rdparty/lua/CMakeLists.txt
+@@ -78,8 +78,7 @@ target_sources(qbt_lua PRIVATE
+ )
+ 
+ target_include_directories(qbt_lua
+-    PUBLIC "include"
+-    PRIVATE "include/lua"
++    PUBLIC "include/lua"
+ )
+ 
+ target_compile_definitions(qbt_lua
+diff --git a/src/base/CMakeLists.txt b/src/base/CMakeLists.txt
+index d560c9e4d..c22f3ec1a 100644
+--- a/src/base/CMakeLists.txt
++++ b/src/base/CMakeLists.txt
+@@ -290,14 +290,21 @@ if (DBUS)
+ endif()
+ 
+ if (PLUGINS)
+-    add_subdirectory(3rdparty/lua)
+-    set_target_properties(qbt_lua PROPERTIES INTERFACE_SYSTEM_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:qbt_lua,INTERFACE_INCLUDE_DIRECTORIES>)
++    if (SYSTEM_LUA)
++        find_package(PkgConfig REQUIRED)
++        pkg_check_modules(LuaLib REQUIRED IMPORTED_TARGET lua>=5.5)
++        set(LUA_TARGET PkgConfig::LuaLib)
++    else()
++        add_subdirectory(3rdparty/lua)
++        set_target_properties(qbt_lua PROPERTIES INTERFACE_SYSTEM_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:qbt_lua,INTERFACE_INCLUDE_DIRECTORIES>)
++        set(LUA_TARGET qbt_lua)
++    endif()
+ 
+     add_subdirectory(3rdparty/luabridge)
+     set_target_properties(qbt_luabridge PROPERTIES INTERFACE_SYSTEM_INCLUDE_DIRECTORIES $<TARGET_PROPERTY:qbt_luabridge,INTERFACE_INCLUDE_DIRECTORIES>)
+ 
+     target_compile_definitions(qbt_base PUBLIC ENABLE_PLUGINS)
+-    target_link_libraries(qbt_base PRIVATE qbt_lua qbt_luabridge)
++    target_link_libraries(qbt_base PRIVATE ${LUA_TARGET} qbt_luabridge)
+ 
+     target_sources(qbt_base PRIVATE
+             plugins/luaclasses.h
+diff --git a/src/base/plugins/luaclasses.h b/src/base/plugins/luaclasses.h
+index a4235a19d..4255db6a3 100644
+--- a/src/base/plugins/luaclasses.h
++++ b/src/base/plugins/luaclasses.h
+@@ -28,6 +28,6 @@
+ 
+ #pragma once
+ 
+-#include <lua/lua.hpp>
++#include <lua.hpp>
+ 
+ void registerLuaClasses(lua_State *luaState);
+diff --git a/src/base/plugins/luastack.h b/src/base/plugins/luastack.h
+index 7c8b20dbe..067a948c6 100644
+--- a/src/base/plugins/luastack.h
++++ b/src/base/plugins/luastack.h
+@@ -28,7 +28,7 @@
+ 
+ #pragma once
+ 
+-#include <lua/lua.hpp>
++#include <lua.hpp>
+ #include <LuaBridge/LuaBridge.h>
+ 
+ #include <QHash>
+diff --git a/src/base/plugins/plugin.h b/src/base/plugins/plugin.h
+index df7ea6625..14132fe4d 100644
+--- a/src/base/plugins/plugin.h
++++ b/src/base/plugins/plugin.h
+@@ -30,7 +30,7 @@
+ 
+ #include <memory>
+ 
+-#include <lua/lua.hpp>
++#include <lua.hpp>
+ #include <LuaBridge/LuaBridge.h>
+ 
+ #include <QObject>

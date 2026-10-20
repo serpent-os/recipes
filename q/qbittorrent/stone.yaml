@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : qbittorrent
-version     : "5.2.4"
-release     : 20
+version     : "5.3.0"
+release     : 21
 upstreams   :
-    - https://github.com/qbittorrent/qBittorrent/archive/refs/tags/release-5.2.4.tar.gz : 226a6ad1aa7810fcbfa58b0d28b14feb8e207726cbe774d4d267ce769c19dd6c
+    - https://github.com/qbittorrent/qBittorrent/archive/refs/tags/release-5.3.0.tar.gz : dcb5273496117ebf264fc1fc7936de8707374f07dcee0805228ac5adb403a465
 homepage    : https://www.qbittorrent.org/
 license     : GPL-2.0-or-later
 summary     : qBittorrent project aims to provide a Free Software alternative to µTorrent
@@ -17,19 +17,20 @@ builddeps   :
     - cmake(Qt6CorePrivate)
     - cmake(Qt6LinguistTools)
     - cmake(Qt6Svg)
+    - pkgconfig(lua)
     - pkgconfig(openssl)
     - pkgconfig(zlib)
     - zlib-static
 setup       : |
-    %patch %(pkgdir)/0001-Support-build-against-latest-version-of-libtorrent.patch
-    %patch %(pkgdir)/0001-Don-t-use-deprecated-libtorrent-features.patch
-    %patch %(pkgdir)/0001-Don-t-use-deprecated-flag.patch
+    %patch %(pkgdir)/0001-Add-option-to-build-against-system-Lua.patch
 
     %cmake -B nox \
         -DGUI=OFF \
+        -DSYSTEM_LUA=ON \
         -DSYSTEMD=ON
 
-    %cmake -B gui
+    %cmake -B gui \
+        -DSYSTEM_LUA=ON
 build       : |
     for b in nox gui; do
         %ccache_zero
