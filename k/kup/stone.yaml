@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kup
-version     : "6.8.0"
-release     : 1
+version     : "6.8.1"
+release     : 2
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/kup-6.8.0.tar.xz : 0879a8edb3becad34613db8d75cb854caf44a6051a53bcfa4d1fb59d0f510d5c
+    - https://download.kde.org/stable/plasma/6.8.1/kup-6.8.1.tar.xz : 867483361720b389fa9d4219e77fd51486157e1fd410587a86ab58b180607a77
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - CC0-1.0

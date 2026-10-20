@@ -100,6 +100,10 @@
 				"/usr/share/locale/ru/LC_MESSAGES/kup.mo",
 				"/usr/share/locale/sk/LC_MESSAGES/kup.mo",
 				"/usr/share/locale/sl/LC_MESSAGES/kup.mo",
+				"/usr/share/locale/sr/LC_MESSAGES/kup.mo",
+				"/usr/share/locale/sr@ijekavian/LC_MESSAGES/kup.mo",
+				"/usr/share/locale/sr@ijekavianlatin/LC_MESSAGES/kup.mo",
+				"/usr/share/locale/sr@latin/LC_MESSAGES/kup.mo",
 				"/usr/share/locale/sv/LC_MESSAGES/kup.mo",
 				"/usr/share/locale/tr/LC_MESSAGES/kup.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/kup.mo",
@@ -122,6 +126,6 @@
 		}
 	},
 	"source-name": "kup",
-	"source-release": "1",
-	"source-version": "6.8.0"
+	"source-release": "2",
+	"source-version": "6.8.1"
 }
