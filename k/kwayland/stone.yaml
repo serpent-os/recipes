@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kwayland
-version     : "6.8.0"
-release     : 32
+version     : "6.8.1"
+release     : 33
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/kwayland-6.8.0.tar.xz : 40e40a1e23239ec8c2d66df286a6be73aed36ebf797a2b33812e3ba07de41ab5
+    - https://download.kde.org/stable/plasma/6.8.1/kwayland-6.8.1.tar.xz : ca65fde44a481ea3e1455eb14c5f4dd665267a925673194988ab39fcf4ae98f9
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-3-Clause
