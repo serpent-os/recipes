@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kdeplasma-addons
-version     : "6.8.0"
-release     : 33
+version     : "6.8.1"
+release     : 34
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/kdeplasma-addons-6.8.0.tar.xz : f8d6000fb4cb0ce7f172bd9bfe4dbd4763200b71f36c87c39005189075af7486
+    - https://download.kde.org/stable/plasma/6.8.1/kdeplasma-addons-6.8.1.tar.xz : b850f9a3d071e4e4a02814ff731d96818580108ada36f05c0533185bd0cf6ff5
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
