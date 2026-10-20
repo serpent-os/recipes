@@ -242,6 +242,7 @@
 				"/usr/share/locale/ru/LC_MESSAGES/hdrcalibrator.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_kscreen.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kscreen_common.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/kscreen_osd.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasma_applet_org.kde.kscreen.mo",
 				"/usr/share/locale/sa/LC_MESSAGES/kcm_kscreen.mo",
 				"/usr/share/locale/sa/LC_MESSAGES/kscreen_common.mo",
@@ -325,6 +326,6 @@
 		}
 	},
 	"source-name": "kscreen",
-	"source-release": "34",
-	"source-version": "6.8.0"
+	"source-release": "35",
+	"source-version": "6.8.1"
 }
