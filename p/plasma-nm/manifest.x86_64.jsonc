@@ -915,7 +915,9 @@
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_cellular_network.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_mobile_hotspot.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_mobile_wifi.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/kcm_mobile_wired.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasma_applet_org.kde.plasma.networkmanagement.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/plasmanetworkmanagement-kcm-qml.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasmanetworkmanagement-kcm.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasmanetworkmanagement-kded.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasmanetworkmanagement-libs.mo",
@@ -1252,6 +1254,6 @@
 		}
 	},
 	"source-name": "plasma-nm",
-	"source-release": "36",
-	"source-version": "6.8.0"
+	"source-release": "37",
+	"source-version": "6.8.1"
 }
