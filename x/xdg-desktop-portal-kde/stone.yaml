@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : xdg-desktop-portal-kde
-version     : "6.8.0"
-release     : 32
+version     : "6.8.1"
+release     : 33
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/xdg-desktop-portal-kde-6.8.0.tar.xz : ba18b285588b427dc16dea2aee5e2cd0407348b820159751971821dd6004e036
+    - https://download.kde.org/stable/plasma/6.8.1/xdg-desktop-portal-kde-6.8.1.tar.xz : 1eb8d64195f3c07a5afec050d51e031b805425a560c061552c1138ee281dbd05
 homepage    : https://kde.org/plasma-desktop/
 license     : LGPL-2.1-or-later
 summary     : Qt/KDE for xdg-desktop-portal
