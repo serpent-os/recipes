@@ -4,14 +4,15 @@
 	"packages": {
 		"c-ares": {
 			"build-depends": [
-				"pkgconfig(gtest)"
+				"cmake(GTest)",
+				"sysbinary(ip)"
 			],
 			"depends": [
 				"soname(libc.so.6(x86_64))"
 			],
 			"files": [
 				"/usr/lib/libcares.so.2",
-				"/usr/lib/libcares.so.2.19.7"
+				"/usr/lib/libcares.so.2.19.8"
 			],
 			"name": "c-ares",
 			"provides": [
@@ -20,7 +21,8 @@
 		},
 		"c-ares-devel": {
 			"build-depends": [
-				"pkgconfig(gtest)"
+				"cmake(GTest)",
+				"sysbinary(ip)"
 			],
 			"depends": [
 				"c-ares"
@@ -198,6 +200,6 @@
 		}
 	},
 	"source-name": "c-ares",
-	"source-release": "5",
-	"source-version": "1.34.8"
+	"source-release": "6",
+	"source-version": "1.34.9"
 }
