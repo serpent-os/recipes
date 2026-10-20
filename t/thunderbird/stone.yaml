@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : thunderbird
-version     : "158.0"
-release     : 58
+version     : "158.0.1"
+release     : 59
 homepage    : https://www.thunderbird.net/
 upstreams   :
-    - https://releases.mozilla.org/pub/thunderbird/releases/158.0/source/thunderbird-158.0.source.tar.xz : 6f586b18edcbad00e875ce4ce9d1c6df8dfda454fbd8a891c5da8a0ec06ec0c6
+    - https://releases.mozilla.org/pub/thunderbird/releases/158.0.1/source/thunderbird-158.0.1.source.tar.xz : 3a1a9af721332779481cba4e498468a2c7a56a4f1094b0f84474b76538c2f055
 summary     : Thunderbird Email Client
 description : |
     Thunderbird Email Client
