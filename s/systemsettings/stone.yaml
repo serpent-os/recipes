@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : systemsettings
-version     : "6.8.0"
-release     : 32
+version     : "6.8.1"
+release     : 33
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/systemsettings-6.8.0.tar.xz : 57b72facd3a2cf50bd4ba0aa3e759f91ea18d1dfc059e8accc44023f54beb89f
+    - https://download.kde.org/stable/plasma/6.8.1/systemsettings-6.8.1.tar.xz : 46c8a4246334b4bd382a08ac70ca6774fb7230f9e64a808585b7951ea55e3084
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GFDL-1.2-only
