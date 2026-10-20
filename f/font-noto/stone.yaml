@@ -1,20 +1,19 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2024 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : font-noto
-version     : "2026.06.01"
-release     : 9
+version     : "2026.10.01"
+release     : 10
 homepage    : https://notofonts.github.io/
 upstreams   :
-    - https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-2026.06.01.tar.gz : 2f8539d08b9b6c73e86dce670eaa46e1d47d2330137ccb11ef4c69b27c865601
+    - https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-2026.10.01.tar.gz : 65493b5967fd11372c1566e87f38a05c8c80a0e7f1fee4644fcaad23731a7b8e
 summary     : Noto is a collection of high-quality fonts with multiple weights and widths in sans, serif, mono, and other styles, in more than 1,000 languages and over 150 writing systems.
 description : |
     Noto is a collection of high-quality fonts with multiple weights and widths in sans, serif, mono, and other styles. The Noto fonts are perfect for harmonious, aesthetic, and typographically correct global communication, in more than 1,000 languages and over 150 writing systems.
-license     :
-    - OFL-1.1
+license     : OFL-1.1
 install     : |
     # Packager Note: Do we want to slim this package down more, e.g. split off serif fonts
-    install -Dm00644 fonts/*/hinted/ttf/*.tt[fc] -t %(installroot)/usr/share/fonts/truetype/noto
+    %install_file fonts/*/hinted/ttf/*.tt[fc] -t %(installroot)/usr/share/fonts/truetype/noto/
 packages:
     - "%(name)-extra":
         paths:

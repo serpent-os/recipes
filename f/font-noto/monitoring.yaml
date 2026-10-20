@@ -1,10 +1,10 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2024 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 # Warning: broken tracking
 # Last checked: 07/03/24
 releases:
   id: 10671
-  rss: ~
+  rss: https://github.com/notofonts/notofonts.github.io/releases.atom
 security:
   cpe: ~
