@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kwin
-version     : "6.8.0"
-release     : 43
+version     : "6.8.1"
+release     : 44
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/kwin-6.8.0.tar.xz : 4bfaf31e29a8f9fdf231dc3bbb9b09b0ce07cae9fee7a01cfc86425ece796258
+    - https://download.kde.org/stable/plasma/6.8.1/kwin-6.8.1.tar.xz : f3d725f81061c1ba97fdef8aeb2101a5c5e03c77f11e9a2abaa1dfed4489d3b6
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GFDL-1.2-only
