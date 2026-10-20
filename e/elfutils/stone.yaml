@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : elfutils
-version     : "0.196"
-release     : 14
+version     : "0.197"
+release     : 15
 homepage    : https://sourceware.org/elfutils
 upstreams   :
-    - https://sourceware.org/elfutils/ftp/0.196/elfutils-0.196.tar.bz2 : fd5cc6b77ad6773cac93cb3f415f9318ac3b3455eecf801f6b4a742c4f6c7209
+    - https://sourceware.org/elfutils/ftp/0.197/elfutils-0.197.tar.bz2 : 1fdf525f22dcf796d99a99ba3ea00a1f7b1ae5421bc62e8443a708920b99b904
 summary     : Collection of utilities and libraries to read, create and modify ELF binary files
 description : |
     elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.

@@ -74,7 +74,6 @@
 				"soname(libelf.so.1(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
 				"soname(libjson-c.so.5(x86_64))",
-				"soname(libm.so.6(x86_64))",
 				"soname(libstdc++.so.6(x86_64))"
 			],
 			"files": [
@@ -104,6 +103,7 @@
 				"/usr/share/locale/ja/LC_MESSAGES/elfutils.mo",
 				"/usr/share/locale/ka/LC_MESSAGES/elfutils.mo",
 				"/usr/share/locale/pl/LC_MESSAGES/elfutils.mo",
+				"/usr/share/locale/sv/LC_MESSAGES/elfutils.mo",
 				"/usr/share/locale/uk/LC_MESSAGES/elfutils.mo",
 				"/usr/share/man/man1/eu-elfclassify.1",
 				"/usr/share/man/man1/eu-readelf.1",
@@ -161,9 +161,9 @@
 				"soname(libzstd.so.1(386))"
 			],
 			"files": [
-				"/usr/lib32/libasm-0.196.so",
+				"/usr/lib32/libasm-0.197.so",
 				"/usr/lib32/libasm.so.1",
-				"/usr/lib32/libdw-0.196.so",
+				"/usr/lib32/libdw-0.197.so",
 				"/usr/lib32/libdw.so.1"
 			],
 			"name": "elfutils-32bit",
@@ -276,9 +276,9 @@
 				"soname(libzstd.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libasm-0.196.so",
+				"/usr/lib/libasm-0.197.so",
 				"/usr/lib/libasm.so.1",
-				"/usr/lib/libdw-0.196.so",
+				"/usr/lib/libdw-0.197.so",
 				"/usr/lib/libdw.so.1"
 			],
 			"name": "elfutils-libs",
@@ -311,7 +311,7 @@
 				"soname(libjson-c.so.5(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libdebuginfod-0.196.so",
+				"/usr/lib/libdebuginfod-0.197.so",
 				"/usr/lib/libdebuginfod.so.1",
 				"/usr/share/defaults/debuginfod/aerynos.urls",
 				"/usr/share/defaults/profile.d/debuginfod.csh",
@@ -390,7 +390,7 @@
 				"soname(libzstd.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libelf-0.196.so",
+				"/usr/lib/libelf-0.197.so",
 				"/usr/lib/libelf.so.1"
 			],
 			"name": "libelf",
@@ -422,7 +422,7 @@
 				"soname(libzstd.so.1(386))"
 			],
 			"files": [
-				"/usr/lib32/libelf-0.196.so",
+				"/usr/lib32/libelf-0.197.so",
 				"/usr/lib32/libelf.so.1"
 			],
 			"name": "libelf-32bit",
@@ -608,6 +608,6 @@
 		}
 	},
 	"source-name": "elfutils",
-	"source-release": "14",
-	"source-version": "0.196"
+	"source-release": "15",
+	"source-version": "0.197"
 }
