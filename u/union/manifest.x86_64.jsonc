@@ -4,7 +4,6 @@
 	"packages": {
 		"union": {
 			"build-depends": [
-				"cmake(Breeze)",
 				"cmake(ECM)",
 				"cmake(KF6ColorScheme)",
 				"cmake(KF6CoreAddons)",
@@ -15,7 +14,6 @@
 				"cmake(cxx-rust-cssparser)"
 			],
 			"depends": [
-				"breeze",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libKF6ColorScheme.so.6(x86_64))",
 				"soname(libKF6ConfigCore.so.6(x86_64))",
@@ -41,11 +39,11 @@
 				"/usr/bin/union-ruleinspector",
 				"/usr/bin/union-styletool",
 				"/usr/lib/libUnion.so.6",
-				"/usr/lib/libUnion.so.6.8.0",
+				"/usr/lib/libUnion.so.6.8.1",
 				"/usr/lib/libUnionQuickImpl.so.6",
-				"/usr/lib/libUnionQuickImpl.so.6.8.0",
+				"/usr/lib/libUnionQuickImpl.so.6.8.1",
 				"/usr/lib/libUnionQuickStyle.so.6",
-				"/usr/lib/libUnionQuickStyle.so.6.8.0",
+				"/usr/lib/libUnionQuickStyle.so.6.8.1",
 				"/usr/lib/qt6/plugins/kf6/kirigami/platform/org.kde.union.so",
 				"/usr/lib/qt6/plugins/styles/UnionWidgetsStyle.so",
 				"/usr/lib/qt6/plugins/union/union-colorprovider-kcolorscheme.so",
@@ -186,7 +184,6 @@
 		},
 		"union-devel": {
 			"build-depends": [
-				"cmake(Breeze)",
 				"cmake(ECM)",
 				"cmake(KF6ColorScheme)",
 				"cmake(KF6CoreAddons)",
@@ -245,6 +242,6 @@
 		}
 	},
 	"source-name": "union",
-	"source-release": "5",
-	"source-version": "6.8.0"
+	"source-release": "6",
+	"source-version": "6.8.1"
 }

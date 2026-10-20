@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : union
-version     : "6.8.0"
-release     : 5
+version     : "6.8.1"
+release     : 6
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/union-6.8.0.tar.xz : d7340ffe4e269c6ee676acc6c93b928932b06ee2654ae3e7b904b699fb46a46c
+    - https://download.kde.org/stable/plasma/6.8.1/union-6.8.1.tar.xz : abea413c79fe9a52337a9b8a50ee8fb29be7ed38bd764eb7555d724e99b39f00
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - LGPL-2.1-only
@@ -14,7 +14,6 @@ summary     : A Qt style supporting both QtQuick and QtWidgets
 description : |
     A Qt style supporting both QtQuick and QtWidgets
 builddeps   :
-    - cmake(Breeze)
     # Temporary, boulder doesn't handle build ordering resolution correctly when builddeps are added by macros, so add ECM manually
     - cmake(ECM)
     - cmake(KF6ColorScheme)
@@ -24,8 +23,6 @@ builddeps   :
     - cmake(KF6KirigamiPlatform)
     - cmake(Qt6ShaderTools)
     - cmake(cxx-rust-cssparser)
-rundeps     :
-    - breeze
 tuning      :
     - lto: full
     - optimize: speed
