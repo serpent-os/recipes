@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-pa
-version     : "6.8.0"
-release     : 34
+version     : "6.8.1"
+release     : 35
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/plasma-pa-6.8.0.tar.xz : ef15a6d0b2ff97b13bd82f36965e8d265a4438e9b685547674ffa72e2160cca4
+    - https://download.kde.org/stable/plasma/6.8.1/plasma-pa-6.8.1.tar.xz : f480befed3f3d11c132673a023793d9e43facfe00c2644c9f638c58fea8f7d66
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-only
