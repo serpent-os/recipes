@@ -38,7 +38,7 @@
 				"/usr/bin/wmf2x",
 				"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-wmf.so",
 				"/usr/lib/libwmf-0.2.so.7",
-				"/usr/lib/libwmf-0.2.so.7.9.0",
+				"/usr/lib/libwmf-0.2.so.7.10.0",
 				"/usr/share/libwmf/fonts/NimbusMonoPS-Bold.afm",
 				"/usr/share/libwmf/fonts/NimbusMonoPS-Bold.t1",
 				"/usr/share/libwmf/fonts/NimbusMonoPS-BoldItalic.afm",
@@ -137,7 +137,7 @@
 			],
 			"files": [
 				"/usr/lib/libwmflite-0.2.so.7",
-				"/usr/lib/libwmflite-0.2.so.7.0.9"
+				"/usr/lib/libwmflite-0.2.so.7.0.10"
 			],
 			"name": "libwmf-lite",
 			"provides": [
@@ -146,6 +146,6 @@
 		}
 	},
 	"source-name": "libwmf",
-	"source-release": "2",
-	"source-version": "0.2.16"
+	"source-release": "3",
+	"source-version": "0.2.17"
 }
