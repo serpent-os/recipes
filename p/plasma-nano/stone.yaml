@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-nano
-version     : "6.8.0"
-release     : 5
+version     : "6.8.1"
+release     : 6
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/plasma-nano-6.8.0.tar.xz : 8b4a8e3d07184bf239991274a019c8e4f03eefdb374684d39f043827ebccae58
+    - https://download.kde.org/stable/plasma/6.8.1/plasma-nano-6.8.1.tar.xz : dc860d7e07040501eac7e19365be16cec9f056308b1440405213bbc14c32bae2
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
