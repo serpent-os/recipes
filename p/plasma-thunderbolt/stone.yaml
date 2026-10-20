@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-thunderbolt
-version     : "6.8.0"
-release     : 25
+version     : "6.8.1"
+release     : 26
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/plasma-thunderbolt-6.8.0.tar.xz : d0d2c9ab06650b4ef75dca952517348ebbb57a6cc0eed32648edb0a67e09f40c
+    - https://download.kde.org/stable/plasma/6.8.1/plasma-thunderbolt-6.8.1.tar.xz : 47fa3d2258cf29527cca3ca67ae796db25e11a17741075526f41782ccbc092e0
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
