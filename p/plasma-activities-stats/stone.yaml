@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-activities-stats
-version     : "6.8.0"
-release     : 24
+version     : "6.8.1"
+release     : 25
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/plasma-activities-stats-6.8.0.tar.xz : 6ab189046d9bbe44c4c8a4bb7eaf2f9593c0c692aa17d0e3e8207a7f658ced6c
+    - https://download.kde.org/stable/plasma/6.8.1/plasma-activities-stats-6.8.1.tar.xz : 561c0d28f4ed3d534cf94fad0c62159d556bf3a4ed2396284be06f13dc802907
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-only
