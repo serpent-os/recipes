@@ -5,5 +5,5 @@ releases:
   id: 8761
   rss: https://invent.kde.org/plasma/ocean-sound-theme/-/tags?format=atom
 security:
-  # Last checked 2025-07-02
+  # No known CPE, last checked 2026-10-20
   cpe: ~
