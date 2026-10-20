@@ -1,9 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 5506
   rss: ~
 security:
-  # This is a langpack package, and does not have the same CVEs as the main one
+  # Langpacks have no CPE of their own; last checked 2026-10-20
   cpe: ~
