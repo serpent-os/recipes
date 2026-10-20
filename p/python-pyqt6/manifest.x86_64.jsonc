@@ -1152,6 +1152,7 @@
 			"depends": [
 				"python-pyqt6",
 				"soname(libQt6Core.so.6(x86_64))",
+				"soname(libQt6Gui.so.6(x86_64))",
 				"soname(libQt6Pdf.so.6(x86_64))",
 				"soname(libQt6PdfWidgets.so.6(x86_64))",
 				"soname(libQt6Widgets.so.6(x86_64))",
@@ -1604,6 +1605,6 @@
 		}
 	},
 	"source-name": "python-pyqt6",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "6.11.0"
 }
