@@ -5,6 +5,7 @@ releases:
   id: 8761
   rss: https://invent.kde.org/plasma/kscreenlocker/-/tags?format=atom
 security:
+  # CPE present in NVD, last checked 2026-10-20
   cpe:
   - vendor: kde
     product: kscreenlocker
