@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : qqc2-breeze-style
-version     : "6.8.0"
-release     : 6
+version     : "6.8.1"
+release     : 7
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/qqc2-breeze-style-6.8.0.tar.xz : e92843147369836f3e348e26dd5b930739a1c13bb67f930e0a343cbded118705
+    - https://download.kde.org/stable/plasma/6.8.1/qqc2-breeze-style-6.8.1.tar.xz : 2845af73223377b39123f3374bcd56ac53b54385b3cc032eb6c72d96c8a8ac80
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
