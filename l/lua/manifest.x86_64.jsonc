@@ -78,6 +78,6 @@
 		}
 	},
 	"source-name": "lua",
-	"source-release": "12",
+	"source-release": "13",
 	"source-version": "5.5.1"
 }
