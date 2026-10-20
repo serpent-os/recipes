@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libkscreen
-version     : "6.8.0"
-release     : 32
+version     : "6.8.1"
+release     : 33
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/libkscreen-6.8.0.tar.xz : 09a30242ad027978333f4773ae6401f9a666c6dbf80fa25f74c8be2deaecb949
+    - https://download.kde.org/stable/plasma/6.8.1/libkscreen-6.8.1.tar.xz : 081e39bc7fb7b0b894a71dc15897a2022ad0f8b78a8e1bec163cd566fa6712fb
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - GPL-2.0-or-later
