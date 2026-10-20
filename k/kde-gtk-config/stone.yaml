@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : kde-gtk-config
-version     : "6.8.0"
-release     : 25
+version     : "6.8.1"
+release     : 26
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/kde-gtk-config-6.8.0.tar.xz : b49565815ef8872888169179e110eecdc52d8a9d5c9f4785b80b51c0c0c5077c
+    - https://download.kde.org/stable/plasma/6.8.1/kde-gtk-config-6.8.1.tar.xz : 072c5e85e26cea57b13683e724133b6886f4947fce29f65dec4cf56bbd59f4d7
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-2-Clause
