@@ -2,4 +2,5 @@ releases:
   id: 8761
   rss: https://invent.kde.org/plasma/oxygen-sounds/-/tags?format=atom
 security:
-  cpe: ~ # No CPE found, last checked (2026-06-28)
+  # No known CPE, last checked 2026-10-20
+  cpe: ~
