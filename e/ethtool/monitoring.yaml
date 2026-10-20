@@ -1,5 +1,10 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2024 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
-  id:
+  id: 763
+  rss: https://git.kernel.org/pub/scm/network/ethtool/ethtool.git/atom/
+security:
+  cpe:
+  - vendor: kernel
+    product: ethtool
