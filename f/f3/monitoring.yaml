@@ -1,6 +1,8 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2025 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 141665
   rss: https://github.com/AltraMayor/f3/releases.atom
+security:
+  cpe: ~ # No CPE found, last checked (2026-10-21)
