@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2025 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : f3
-version     : "9.0"
-release     : 4
+version     : "10.0"
+release     : 5
 homepage    : https://github.com/AltraMayor/f3
 upstreams   :
-    - https://github.com/AltraMayor/f3/archive/refs/tags/v9.0.tar.gz : 569ec069dc3ec1c74d90d6704aa8b7f45240f5998a9dc6f14f1736c917506ecb
+    - https://github.com/AltraMayor/f3/archive/refs/tags/v10.0.tar.gz : ce54275b7793f97391583ede33c1d87590901d8da20cce604b1f07a029aefc67
 summary     : Simple tool that tests flash cards capacity and performance to see if they live up to claimed specifications
 description : |
     f3 is a simple tool that tests flash cards capacity and performance to see if they live up to claimed specifications. It fills the device with pseudorandom data and then checks if it returns the same on reading.
