@@ -604,10 +604,18 @@
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_audiodevice.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_mediacenter_bigscreen_settings.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_mediacenter_bluetooth.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/kcm_mediacenter_display.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/kcm_mediacenter_input.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_mediacenter_kdeconnect.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/kcm_mediacenter_wallpaper.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/kcm_mediacenter_webapps.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/kcm_mediacenter_wifi.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/plasma-bigscreen-settings.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/plasma-bigscreen-uvcviewer.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/plasma-bigscreen-webapp-viewer.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasma_applet_org.kde.bigscreen.homescreen.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasma_lookandfeel_org.kde.plasma.bigscreen.mo",
+				"/usr/share/locale/ru/LC_MESSAGES/plasma_org.kde.bigscreen.mo",
 				"/usr/share/locale/ru/LC_MESSAGES/plasma_shell_org.kde.plasma.bigscreen.mo",
 				"/usr/share/locale/sa/LC_MESSAGES/kcm_audiodevice.mo",
 				"/usr/share/locale/sa/LC_MESSAGES/kcm_mediacenter_bigscreen_settings.mo",
@@ -847,6 +855,6 @@
 		}
 	},
 	"source-name": "plasma-bigscreen",
-	"source-release": "8",
-	"source-version": "6.8.0"
+	"source-release": "9",
+	"source-version": "6.8.1"
 }
