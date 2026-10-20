@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plasma-vault
-version     : "6.8.0"
-release     : 5
+version     : "6.8.1"
+release     : 6
 upstreams   :
-    - https://download.kde.org/stable/plasma/6.8.0/plasma-vault-6.8.0.tar.xz : fce26884a57ab2e0f6a6df4a70d5a7642bb47a3787ea6ac9d66143c9fb851362
+    - https://download.kde.org/stable/plasma/6.8.1/plasma-vault-6.8.1.tar.xz : 0da7a15ce222d352b34f901c6331771a54be0d2ecf3c1a532a4373b212d26f74
 homepage    : https://kde.org/plasma-desktop/
 license     :
     - BSD-3-Clause
