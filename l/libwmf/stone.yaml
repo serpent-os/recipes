@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : libwmf
-version     : "0.2.16"
-release     : 2
+version     : "0.2.17"
+release     : 3
 homepage    : https://github.com/caolanm/libwmf
 upstreams   :
-    - https://github.com/caolanm/libwmf/releases/download/v0.2.16/libwmf-0.2.16.tar.gz : e20a0bfc2550e779f5f2f13e1afd34cb3b3692954b7e2b73a25ac94c86cb484a
+    - https://github.com/caolanm/libwmf/releases/download/v0.2.17/libwmf-0.2.17.tar.gz : 876915024b64edda8d417daf06819d03a0d18adff1fcc2f64182c69274ed0519
 summary     : Library for reading and converting Windows Metafile (WMF) images
 description : |
     libwmf is a library for reading vector images in Microsoft's native Windows Metafile Format (WMF) and for either displaying them or converting them to more standard formats such as SVG.
