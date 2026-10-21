@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : openjdk-21
-version     : "21.0.12"
-release     : 6
+version     : "21.0.13"
+release     : 7
 upstreams   :
-    - https://github.com/openjdk/jdk21u/archive/refs/tags/jdk-21.0.12-ga.tar.gz:
-        hash: 1efd38fa2729d32cdf0ed4c9197c31ee31890ad1b7bff82984992e0c2c67c72b
+    - https://github.com/openjdk/jdk21u/archive/refs/tags/jdk-21.0.13-ga.tar.gz:
+        hash: a10eb756f12542b530db90e15aff44c72cd572ba02c47496affb5e3510814935
         unpackdir: "jdk"
     # BOOTSTRAPPIN
     # - https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12%2B10/OpenJDK21U-jdk_x64_linux_hotspot_21.0.12_10.tar.gz:
@@ -51,6 +51,8 @@ builddeps   :
     - pkgconfig(zlib)
     - giflib-devel
     - openjdk-21
+rundeps     :
+    - ca-certificates
 rundeps-exclude:
     - 'soname\(libjvm\.so\(.*\)\)'
 setup       : |
@@ -127,6 +129,10 @@ install     : |
     jvm_dir="%(libdir)/%(name)"
     %install_dir %(installroot)${jvm_dir}
     cp -ra build/linux-x86_64-server-release/images/jdk/* %(installroot)${jvm_dir}
+
+    # Use the system trust store instead of the bundled CA list
+    rm -f %(installroot)${jvm_dir}/lib/security/cacerts
+    ln -srv %(installroot)/etc/ssl/certs/java/cacerts %(installroot)${jvm_dir}/lib/security/cacerts
 
     # Remove license files and demo files
     rm -rfv %(installroot)${jvm_dir}/{legal,demo}/
