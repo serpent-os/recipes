@@ -3,7 +3,7 @@
 
 name        : chezmoi
 version     : "2.73.3"
-release     : 9
+release     : 10
 homepage    : https://www.chezmoi.io/
 upstreams   :
     - https://github.com/twpayne/chezmoi/archive/refs/tags/v2.73.3.tar.gz : 5bee6b243331b9c02a7f25ca1696bbde30cb3909c8bccb91108f2718931e4fc7
@@ -13,6 +13,8 @@ description : |
     (dotfiles, like ~/.gitconfig) across multiple machines.
 license     : MIT
 networking  : true
+rundeps     :
+    - ca-certificates
 setup       : |
     %go_mod
 build       : |
