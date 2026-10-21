@@ -9,6 +9,7 @@
 			],
 			"depends": [
 				"binary(dockerd)",
+				"ca-certificates",
 				"docker-buildx",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
@@ -207,6 +208,6 @@
 		}
 	},
 	"source-name": "docker",
-	"source-release": "34",
+	"source-release": "35",
 	"source-version": "29.9.1"
 }
