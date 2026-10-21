@@ -3,7 +3,7 @@
 
 name        : croc
 version     : "11.5.5"
-release     : 12
+release     : 13
 homepage    : https://getcroc.com/
 upstreams   :
     - https://github.com/schollz/croc/archive/refs/tags/v11.5.5.tar.gz : 1263e430cd62654438c9724072b7d5587e9930ca0e687d65b3dd8917ec0141df
@@ -16,6 +16,8 @@ description : |
     or a local server.
 license     : MIT
 networking  : true
+rundeps     :
+    - ca-certificates
 setup       : |
     %go_mod
 build       : |
