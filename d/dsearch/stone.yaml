@@ -3,7 +3,7 @@
 
 name        : dsearch
 version     : "1.6.0"
-release     : 1
+release     : 2
 upstreams   :
     - https://github.com/AvengeMedia/danksearch/releases/download/v1.6.0/dsearch-1.6.0.tar.gz : 4e63abb6f352fd9a0d7846aeab8fa115b12eb90ed47d54c765070f6831f9707b
 homepage    : https://github.com/AvengeMedia/danksearch
@@ -12,6 +12,8 @@ summary     : Indexed filesystem search in Go
 description : |
     A configurable filesystem search service powered by bleve for Unix-based operating systems.
 networking  : true
+rundeps     :
+    - ca-certificates
 setup       : |
     # Fix systemd service
     sed -i 's|/usr/local|/usr|' assets/dsearch.service
