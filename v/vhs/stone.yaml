@@ -3,7 +3,7 @@
 
 name        : vhs
 version     : "0.12.1"
-release     : 5
+release     : 6
 homepage    : https://github.com/charmbracelet/vhs
 upstreams   :
     - https://github.com/charmbracelet/vhs/archive/refs/tags/v0.12.1.tar.gz : ba9fbcb40133d1734c580ccb6b0fcae9673bf51d227f00877ac581c56ad15b77
@@ -14,6 +14,7 @@ license     : MIT
 rundeps     :
     - binary(ffmpeg)
     - binary(ttyd)
+    - ca-certificates
 networking  : true
 setup       : |
     %go_mod
