@@ -3,7 +3,7 @@
 
 name        : go-task
 version     : "3.54.0"
-release     : 16
+release     : 17
 homepage    : https://taskfile.dev/
 upstreams   :
     - https://github.com/go-task/task/archive/refs/tags/v3.54.0.tar.gz : d9e92770c2c18f135701431d04bb24fb77b5f13464699683892bdfc0b26f2eb8
@@ -14,6 +14,8 @@ license     : MIT
 builddeps   :
    - binary(go)
 networking  : true
+rundeps     :
+    - ca-certificates
 setup       : |
     %go_mod
 build       : |
