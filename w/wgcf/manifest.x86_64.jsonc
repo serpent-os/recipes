@@ -7,6 +7,7 @@
 				"binary(go)"
 			],
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"nftables",
 				"soname(libc.so.6(x86_64))",
@@ -25,6 +26,6 @@
 		}
 	},
 	"source-name": "wgcf",
-	"source-release": "2",
+	"source-release": "3",
 	"source-version": "2.2.30"
 }
