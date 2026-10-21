@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : cosmic-idle
-version     : "1.10.0"
-release     : 46
+version     : "1.11.0"
+release     : 47
 homepage    : https://github.com/pop-os/cosmic-idle
 upstreams   :
-    - https://github.com/pop-os/cosmic-idle/archive/refs/tags/epoch-1.10.0.tar.gz : 532074f48a9c0c23bebfcc171b527a732fa8850ce83f3cd2f4ca5926ef6fbac7
+    - https://github.com/pop-os/cosmic-idle/archive/refs/tags/epoch-1.11.0.tar.gz : 683290f2a67a63fd553f654a34756cbfdcc41b2d2141b79850c58c16643dc63a
 summary     : Cosmic Desktop Idle Daemon
 description : |
     Cosmic Desktop Idle Daemon
