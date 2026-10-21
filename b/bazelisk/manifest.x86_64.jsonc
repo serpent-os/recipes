@@ -23,6 +23,6 @@
 		}
 	},
 	"source-name": "bazelisk",
-	"source-release": "3",
-	"source-version": "1.29.0"
+	"source-release": "4",
+	"source-version": "1.30.0"
 }
