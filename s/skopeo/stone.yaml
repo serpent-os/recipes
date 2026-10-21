@@ -3,7 +3,7 @@
 
 name        : skopeo
 version     : "1.24.1"
-release     : 12
+release     : 13
 upstreams   :
     - https://github.com/containers/skopeo/archive/refs/tags/v1.24.1.tar.gz : 6a3f342a327ec7684198eb0e15114940b6101506db48d9a96590f5942cb3b335
 homepage    : https://github.com/containers/skopeo
@@ -22,6 +22,7 @@ builddeps   :
     - pkgconfig(sqlite3)
     - shadow-devel
 rundeps     :
+    - ca-certificates
     - containers-common
 setup       : |
     sed -i 's|.PHONY: bin/skopeo||' Makefile
