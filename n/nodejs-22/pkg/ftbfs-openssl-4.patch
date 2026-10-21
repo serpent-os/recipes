@@ -1,0 +1,24 @@
+--- a/src/crypto/crypto_x509.cc
++++ b/src/crypto/crypto_x509.cc
+@@ -682,10 +682,10 @@
+ // Convert an X509_NAME* into a JavaScript object.
+ // Each entry of the name is converted into a property of the object.
+ // The property value may be a single string or an array of strings.
+-template <X509_NAME* get_name(const X509*)>
++template <auto get_name>
+ static MaybeLocal<Value> GetX509NameObject(Environment* env,
+                                            const X509View& cert) {
+-  X509_NAME* name = get_name(cert.get());
++  auto* name = get_name(cert.get());
+   if (name == nullptr) [[unlikely]] {
+     THROW_ERR_CRYPTO_OPERATION_FAILED(env, "Failed to inspect X509 name");
+     return {};
+@@ -705,7 +705,7 @@
+   if (result.IsEmpty()) return {};
+ 
+   for (int i = 0; i < cnt; i++) {
+-    X509_NAME_ENTRY* entry = X509_NAME_get_entry(name, i);
++    auto* entry = X509_NAME_get_entry(name, i);
+     if (entry == nullptr) [[unlikely]] {
+       THROW_ERR_CRYPTO_OPERATION_FAILED(env, "Failed to inspect X509 name");
+       return {};
