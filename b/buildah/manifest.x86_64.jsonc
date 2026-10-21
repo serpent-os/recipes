@@ -16,6 +16,7 @@
 				"binary(passt)",
 				"binary(runc)",
 				"binary(skopeo)",
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgpgme.so.45(x86_64))",
@@ -75,6 +76,6 @@
 		}
 	},
 	"source-name": "buildah",
-	"source-release": "11",
+	"source-release": "12",
 	"source-version": "1.45.2"
 }
