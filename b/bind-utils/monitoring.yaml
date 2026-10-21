@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
@@ -6,6 +6,7 @@ releases:
   id: 374094
   rss: https://gitlab.isc.org/isc-projects/bind9/-/tags?format=atom
 security:
+  # Last checked 2026-10-21
   cpe:
   - vendor: isc
     product: bind
