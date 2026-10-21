@@ -4,6 +4,7 @@
 	"packages": {
 		"lazygit": {
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -18,6 +19,6 @@
 		}
 	},
 	"source-name": "lazygit",
-	"source-release": "17",
+	"source-release": "18",
 	"source-version": "0.66.2"
 }

@@ -3,7 +3,7 @@
 
 name        : lazygit
 version     : "0.66.2"
-release     : 17
+release     : 18
 homepage    : https://github.com/jesseduffield/lazygit
 upstreams   :
     - https://github.com/jesseduffield/lazygit/archive/refs/tags/v0.66.2.tar.gz : fcaad0909af765ef87bd873164a4de78435515ab4d8b04f58d6ad51e8ecd00e5
@@ -12,6 +12,8 @@ description : |
     A simple terminal UI for git commands
 license     : MIT
 networking  : true
+rundeps     :
+    - ca-certificates
 setup       : |
     %go_mod
 build       : |
