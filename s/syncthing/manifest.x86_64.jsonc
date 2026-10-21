@@ -7,6 +7,7 @@
 				"binary(go)"
 			],
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -49,6 +50,7 @@
 				"binary(go)"
 			],
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -66,6 +68,7 @@
 				"binary(go)"
 			],
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -80,6 +83,6 @@
 		}
 	},
 	"source-name": "syncthing",
-	"source-release": "17",
+	"source-release": "18",
 	"source-version": "2.1.6"
 }
