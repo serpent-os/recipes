@@ -3,7 +3,7 @@
 
 name        : docker-compose
 version     : "5.6.0"
-release     : 26
+release     : 27
 homepage    : https://github.com/docker/compose
 upstreams   :
     - https://github.com/docker/compose/archive/refs/tags/v5.6.0.tar.gz : 51ad60cc28d38a0850678053f0a259dfee931d150dd1d50ee9e6d758125b1d47
@@ -17,6 +17,7 @@ builddeps   :
     - binary(git)
 rundeps     :
     - binary(docker)
+    - ca-certificates
 environment : |
     export _compose_r=github.com/docker/compose
     export _cli_plugins_dir=%(libdir)/docker/cli-plugins
