@@ -3,7 +3,7 @@
 
 name        : moby
 version     : "29.9.1"
-release     : 34
+release     : 35
 homepage    : https://www.docker.com
 upstreams   :
     - https://github.com/moby/moby/archive/refs/tags/docker-v29.9.1.tar.gz : ca453bcd399712c5d41e32f30992b1d91a5bc9a78c58aaea19b57429173cfe0f
@@ -24,6 +24,7 @@ rundeps     :
     - binary(containerd)
     - binary(tini-static)
     - sysbinary(iptables)
+    - ca-certificates
 setup       : |
     %patch %(pkgdir)/0001-Use-serpent-paths.patch
 build      : |
