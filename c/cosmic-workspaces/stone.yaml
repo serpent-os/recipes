@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : cosmic-workspaces
-version     : "1.10.0"
-release     : 51
+version     : "1.11.0"
+release     : 52
 homepage    : https://github.com/pop-os/cosmic-workspaces-epoch
 upstreams   :
-    - https://github.com/pop-os/cosmic-workspaces-epoch/archive/refs/tags/epoch-1.10.0.tar.gz : 914c229f29b2dc1eaf91757b7f3d51ee7d58be5687fa6a5d7ad83b23121fd0f6
+    - https://github.com/pop-os/cosmic-workspaces-epoch/archive/refs/tags/epoch-1.11.0.tar.gz : 4dad3cd1fffe5b377c84948598c666493e5a053e6e1105a958f20a73bea92eab
 summary     : Cosmic Desktop Workspaces
 description : |
     Cosmic Desktop Workspaces
