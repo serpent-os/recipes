@@ -4,6 +4,7 @@
 	"packages": {
 		"docker-buildx": {
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -14,6 +15,6 @@
 		}
 	},
 	"source-name": "docker-buildx",
-	"source-release": "21",
+	"source-release": "22",
 	"source-version": "0.38.0"
 }

@@ -3,7 +3,7 @@
 
 name        : docker-buildx
 version     : "0.38.0"
-release     : 21
+release     : 22
 homepage    : https://github.com/docker/buildx
 upstreams   :
     - https://github.com/docker/buildx/archive/refs/tags/v0.38.0.tar.gz : f4705415fe4e011f19c6fe0fa324fef81236791815c51bb6210b3bbbca5b1319
@@ -12,6 +12,8 @@ description : |
     Docker CLI plugin for extended build capabilities with BuildKit
 license     : Apache-2.0
 networking  : true
+rundeps     :
+    - ca-certificates
 environment : |
     export _buildx_r=github.com/docker/buildx
     export _cli_plugins_dir=%(libdir)/docker/cli-plugins
