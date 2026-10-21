@@ -4,6 +4,7 @@
 	"packages": {
 		"hugo": {
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))",
 				"soname(libgcc_s.so.1(x86_64))",
@@ -68,6 +69,6 @@
 		}
 	},
 	"source-name": "hugo",
-	"source-release": "13",
+	"source-release": "14",
 	"source-version": "0.168.0"
 }

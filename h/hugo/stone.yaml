@@ -3,7 +3,7 @@
 
 name        : hugo
 version     : "0.168.0"
-release     : 13
+release     : 14
 homepage    : https://gohugo.io/
 upstreams   :
     - https://github.com/gohugoio/hugo/archive/refs/tags/v0.168.0.tar.gz : 45ba430ac86cfe8e5fb07b81eaef78769973af9b4d1c51f1d88195e0d438be3e
@@ -13,6 +13,8 @@ description : |
     with support for Markdown, content management, and site theming.
 license     : Apache-2.0
 networking  : true
+rundeps     :
+    - ca-certificates
 setup       : |
     %go_mod
 build       : |
