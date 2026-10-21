@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : iproute2
-version     : "7.2.0"
-release     : 16
+version     : "7.3.0"
+release     : 17
 homepage    : https://wiki.linuxfoundation.org/networking/iproute2
 upstreams   :
-    - https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-7.2.0.tar.gz : fad570d3b044715955f816422264897bdb1b315d2b41e42ffbbf0989c9b3f7cd
+    - https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-7.3.0.tar.gz : 753edda448be3ddb34f749eb3aa678c50e6cbf6222a1af2c29444ddebbeb7fa1
 summary     : Utility collection to control networking and traffic
 description : |
     Iproute2 is a collection of utilities for controlling TCP/IP networking and traffic control in Linux. It supersedes ifconfig and route commands.
