@@ -3,7 +3,7 @@
 
 name        : bazelisk
 version     : "1.29.0"
-release     : 2
+release     : 3
 homepage    : https://github.com/bazelbuild/bazelisk
 upstreams   :
     - https://github.com/bazelbuild/bazelisk/archive/refs/tags/v1.29.0.tar.gz : 7e4c7b8ade016052e63c1553cb4fbe0c4fe921e1e66913d49eef074ed894e933
@@ -14,6 +14,8 @@ license     : Apache-2.0
 networking  : true
 builddeps   :
     - binary(go)
+rundeps     :
+    - ca-certificates
 setup       : |
     go mod vendor
 build       : |
