@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : syncthing
-version     : "2.1.6"
-release     : 18
+version     : "2.1.7"
+release     : 19
 homepage    : https://syncthing.net
 upstreams   :
-    - https://github.com/syncthing/syncthing/releases/download/v2.1.6/syncthing-source-v2.1.6.tar.gz : 4927b6b0f3a5c395486bad6accf128aa7c30bfd41b43ad0e423c4f85dd6677f2
+    - https://github.com/syncthing/syncthing/releases/download/v2.1.7/syncthing-source-v2.1.7.tar.gz : 5b84abd0e8b187f618fb2c38c37fa37ce0b377a275d3e0b981bad94176a24afa
 summary     : Continuous file synchronization program
 description : |
     It synchronizes files between two or more computers in real time,
