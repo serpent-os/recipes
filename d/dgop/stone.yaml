@@ -3,16 +3,18 @@
 
 name        : dgop
 version     : "1.6.2"
-release     : 3
+release     : 4
 homepage    : https://github.com/AvengeMedia/dgop
 upstreams   :
-    - https://github.com/AvengeMedia/dgop/archive/refs/tags/v1.6.2.zip : 4fa4197fd188ca0940fe8c03ff2d83ccc5e1609dd51e9f62735f03082d7f4c91
+    - https://github.com/AvengeMedia/dgop/archive/refs/tags/v1.6.2.zip : 72aa5b2e6621f4b6921315b7312d4f7085fd40f0c845785631188e9a6d545433
 summary     : System monitoring tool with CLI & REST API built in Go
 description : |
     dgop is a stateless system and process monitoring tool that provides a top-like tui,
     CLI, and REST API. It allows sampling numerous metrics related to the system.
 license     : MIT
 networking  : true
+rundeps     :
+    - ca-certificates
 setup       : |
     %go_mod
 build       : |
