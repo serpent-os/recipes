@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : nodejs-24
-version     : "24.22.0"
-release     : 15
+version     : "24.22.1"
+release     : 16
 homepage    : https://nodejs.org/
 upstreams   :
-    - https://nodejs.org/dist/v24.22.0/node-v24.22.0.tar.gz : 9010e34b40beb69ee5eb8c0ee22e08da6a6c7bff16c6f8be7904638970a66c91
+    - https://nodejs.org/dist/v24.22.1/node-v24.22.1.tar.gz : 001773d9bd53fbd27a25efd42aa6a9693ebfe500998ca9bec635e9b6ee79bc91
 summary     : A JavaScript runtime environment.
 description : |
     Node.js is an open-source, cross-platform JavaScript runtime environment.
