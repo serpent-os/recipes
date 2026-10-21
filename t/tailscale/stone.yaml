@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : tailscale
-version     : "1.104.1"
-release     : 22
+version     : "1.104.2"
+release     : 23
 homepage    : https://tailscale.com/
 upstreams   :
-    - https://github.com/tailscale/tailscale/archive/refs/tags/v1.104.1.tar.gz : bf868b2b1a46b9485d55bcda12c2d7573279ce4474bc6d607f42f1495db36ed8
+    - https://github.com/tailscale/tailscale/archive/refs/tags/v1.104.2.tar.gz : 4c1c806e16507414a1459afcdc399f6a1323c21a1ac90f07bea0465fd8fd7e1d
 summary     :  Private WireGuard® networks made easy
 description : |
     The easiest, most secure way to use WireGuard and 2FA.
@@ -27,8 +27,10 @@ setup       : |
    %patch %(pkgdir)/0001-remove-baked-ca-roots.patch
    %go_mod
 build       : |
-   ./build_dist.sh tailscale.com/cmd/tailscale
-   ./build_dist.sh tailscale.com/cmd/tailscaled
+   export CGO_ENABLED=1
+   ldflags="-linkmode=external -X tailscale.com/version.longStamp=${VERSION_LONG} -X tailscale.com/version.shortStamp=${VERSION_SHORT}"
+   go build -tags="${TAGS}" -ldflags="${ldflags}" -o tailscale ./cmd/tailscale
+   go build -tags="${TAGS}" -ldflags="${ldflags}" -o tailscaled ./cmd/tailscaled
 install     : |
    %install_exe %(workdir)/tailscale %(installroot)%(bindir)/tailscale
    %install_exe %(workdir)/tailscaled %(installroot)%(sbindir)/tailscaled
