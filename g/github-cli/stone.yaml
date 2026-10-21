@@ -3,7 +3,7 @@
 
 name        : github-cli
 version     : "2.102.0"
-release     : 20
+release     : 21
 homepage    : https://github.com/cli/cli
 upstreams   :
     - https://github.com/cli/cli/archive/refs/tags/v2.102.0.tar.gz : 08bf0ef8b4409893889175e0f5279d30d6edd96465816042c0d7c72eac598158
@@ -16,6 +16,7 @@ checkdeps   :
     - binary(ssh)
 rundeps     :
     - binary(xdg-open)  # For opening browser
+    - ca-certificates
 networking  : true
 setup       : |
     # As-yet unmerged telemetry patch, see https://github.com/cli/cli/issues/13260
