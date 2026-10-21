@@ -3,7 +3,7 @@
 
 name        : syncthing
 version     : "2.1.6"
-release     : 17
+release     : 18
 homepage    : https://syncthing.net
 upstreams   :
     - https://github.com/syncthing/syncthing/releases/download/v2.1.6/syncthing-source-v2.1.6.tar.gz : 4927b6b0f3a5c395486bad6accf128aa7c30bfd41b43ad0e423c4f85dd6677f2
@@ -17,6 +17,8 @@ license     : MPL-2.0
 networking  : true
 builddeps   :
     - binary(go)
+rundeps     :
+    - ca-certificates
 setup       : |
     %patch %(pkgdir)/fix-tests-pie.patch -p5
 
@@ -58,6 +60,8 @@ packages:
     - "%(name)-stdiscosrv":
         summary: Discovery server
         description: Discovery server
+        rundeps:
+            - ca-certificates
         paths:
             - /usr/bin/stdiscosrv
             - /usr/share/man/man1/stdiscosrv.1
@@ -65,6 +69,8 @@ packages:
     - "%(name)-strelaysrv":
         summary: Relay server
         description: Relay server
+        rundeps:
+            - ca-certificates
         paths:
             - /usr/bin/strelaysrv
             - /usr/share/man/man1/strelaysrv.1
