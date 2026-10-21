@@ -1,0 +1,30 @@
+diff --git a/plugins/obs-browser/obs-browser-plugin.cpp b/plugins/obs-browser/obs-browser-plugin.cpp
+index 95a168c..fe23e4a 100644
+--- a/plugins/obs-browser/obs-browser-plugin.cpp
++++ b/plugins/obs-browser/obs-browser-plugin.cpp
+@@ -36,6 +36,7 @@
+ #include "browser-version.h"
+ 
+ #include "cef-headers.hpp"
++#include <include/cef_file_util.h>
+ 
+ #ifdef _WIN32
+ #include <util/windows/ComPtr.hpp>
+@@ -388,6 +389,17 @@ static void BrowserInit(void)
+ 		return;
+ 	}
+ 
++	/* CEF ships a Chrome Root Store and an empty CRLSet frozen at build time.
++	 * Load the distro-provided CRLSet so revoked CAs are rejected. */
++	BPtr<char> crlset_alloc = obs_module_file("crlset");
++	const char *crlset_path = crlset_alloc;
++	if (crlset_path && os_file_exists(crlset_path)) {
++		blog(LOG_INFO, "[obs-browser]: Loading CRLSet from %s", crlset_path);
++		CefLoadCRLSetsFile(crlset_path);
++	} else {
++		blog(LOG_WARNING, "[obs-browser]: CRLSet not found");
++	}
++
+ 	// Register custom scheme handler for local browser sources
+ 	CefRegisterSchemeHandlerFactory("http", "absolute", new BrowserSchemeHandlerFactory());
+ 
