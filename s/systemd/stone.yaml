@@ -3,7 +3,7 @@
 
 name        : systemd
 version     : "261.4"
-release     : 105
+release     : 106
 summary     : A System and Service Manager
 license     :
     - GPL-2.0-or-later
@@ -120,6 +120,7 @@ setup       : |
         -Dcreate-log-dirs=false \
         -Ddefault-compression=zstd \
         -Ddefault-dnssec=no \
+        -Ddefault-kill-user-processes=false \
         -Ddefault-timeout-sec=5 \
         -Ddialout-gid=10 \
         -Ddisk-gid=8 \
