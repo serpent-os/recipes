@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : signal-desktop
-version     : "8.30.0"
-release     : 30
+version     : "8.32.0"
+release     : 31
 homepage    : https://signal.org
 upstreams   :
-    - https://github.com/signalapp/Signal-Desktop/archive/refs/tags/v8.30.0.tar.gz : 6015f33fabe44fcc4c7a8dbb50081349afbeccd3975bf9fcacd6f79704e1fa79
+    - https://github.com/signalapp/Signal-Desktop/archive/refs/tags/v8.32.0.tar.gz : 15b6599558e37ef0232336f5e7074820ade8ab8cd90fe1cd7296d226a1393902
 summary     : A private messenger for Windows, macOS, and Linux
 description : |
     Signal Desktop links with Signal on Android or iOS and lets you message from your Windows, macOS, and Linux computers.
