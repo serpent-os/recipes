@@ -3,7 +3,7 @@
 
 name        : lichen
 version     : "0.1.0+git.2014408"
-release     : 54
+release     : 55
 summary     : OS installer
 license     : MPL-2.0
 homepage    : https://github.com/AerynOS/lichen
@@ -28,6 +28,6 @@ build       : |
     %cargo_build -p lichen_cli
 install     : |
     %cargo_install lichen_cli
-    %install_file %(pkgdir)/lichen.desktop %(installroot)/%(datadir)/applications/lichen.desktop
-    %install_file %(pkgdir)/org.freedesktop.policykit.pkexec.lichen.policy %(installroot)/%(datadir)/polkit-1/actions/org.freedesktop.policykit.pkexec.lichen.policy
-    %install_exe %(pkgdir)/lichen.sh %(installroot)%(bindir)/lichen
+    %install_file %(pkgdir)/lichen-legacy.desktop -t %(installroot)%(datadir)/applications/
+    %install_file %(pkgdir)/org.freedesktop.policykit.pkexec.lichen-legacy.policy -t %(installroot)%(datadir)/polkit-1/actions/
+    %install_exe %(pkgdir)/lichen-legacy.sh %(installroot)%(bindir)/lichen-legacy

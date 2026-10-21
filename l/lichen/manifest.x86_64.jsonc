@@ -20,19 +20,19 @@
 				"sysbinary(mkfs.xfs)"
 			],
 			"files": [
-				"/usr/bin/lichen",
+				"/usr/bin/lichen-legacy",
 				"/usr/bin/lichen_cli",
-				"/usr/share/applications/lichen.desktop",
-				"/usr/share/polkit-1/actions/org.freedesktop.policykit.pkexec.lichen.policy"
+				"/usr/share/applications/lichen-legacy.desktop",
+				"/usr/share/polkit-1/actions/org.freedesktop.policykit.pkexec.lichen-legacy.policy"
 			],
 			"name": "lichen",
 			"provides": [
-				"binary(lichen)",
+				"binary(lichen-legacy)",
 				"binary(lichen_cli)"
 			]
 		}
 	},
 	"source-name": "lichen",
-	"source-release": "54",
+	"source-release": "55",
 	"source-version": "0.1.0+git.2014408"
 }

@@ -3,12 +3,12 @@
 "http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
 <policyconfig>
 
-  <vendor>AerynOS</vendor>
+  <vendor>aerynOS</vendor>
   <vendor_url>https://aerynos.com/</vendor_url>
 
-  <action id="org.freedesktop.policykit.pkexec.lichen">
-    <description>Install AerynOS</description>
-    <message>Authentication is required to install AerynOS</message>
+  <action id="org.freedesktop.policykit.pkexec.lichen-legacy">
+    <description>Install aerynOS (legacy)</description>
+    <message>Authentication is required to install aerynOS</message>
     <defaults>
       <allow_any>no</allow_any>
       <allow_inactive>no</allow_inactive>
