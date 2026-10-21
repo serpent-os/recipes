@@ -9,6 +9,7 @@
 			"depends": [
 				"accountsservice",
 				"binary(quickshell)",
+				"ca-certificates",
 				"dgop",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
@@ -31,6 +32,6 @@
 		}
 	},
 	"source-name": "dankmaterialshell",
-	"source-release": "21",
+	"source-release": "22",
 	"source-version": "1.6.3"
 }
