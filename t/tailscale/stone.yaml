@@ -3,7 +3,7 @@
 
 name        : tailscale
 version     : "1.104.1"
-release     : 21
+release     : 22
 homepage    : https://tailscale.com/
 upstreams   :
     - https://github.com/tailscale/tailscale/archive/refs/tags/v1.104.1.tar.gz : bf868b2b1a46b9485d55bcda12c2d7573279ce4474bc6d607f42f1495db36ed8
@@ -14,11 +14,17 @@ license     : BSD-3-Clause
 networking  : true
 rundeps     :
     - sysbinary(iptables)
+    - ca-certificates
 environment: |
    export VERSION_LONG=%(version)
    export VERSION_SHORT=%(version)
+
+   # Do not embed the Let's Encrypt fallback roots; TLS verification uses the
+   # system CA store from ca-certificates.
+   export TAGS=ts_omit_bakedroots
 setup       : |
    %patch %(pkgdir)/defaults.patch
+   %patch %(pkgdir)/0001-remove-baked-ca-roots.patch
    %go_mod
 build       : |
    ./build_dist.sh tailscale.com/cmd/tailscale
