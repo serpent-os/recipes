@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : cosmic-osk
-version     : "1.10.0"
-release     : 2
+version     : "1.11.0"
+release     : 3
 homepage    : https://github.com/pop-os/cosmic-osk
 upstreams   :
-    - https://github.com/pop-os/cosmic-osk/archive/refs/tags/epoch-1.10.0.tar.gz : 7d92c3df124d1d009ae94cc95915c9085af4ceeb6027473fc02ee564dcead81a
+    - https://github.com/pop-os/cosmic-osk/archive/refs/tags/epoch-1.11.0.tar.gz : bdb94386f451e672c2512ddb65bd0c8691921d5488595d0988fd935ce7e43bb6
 summary     : Cosmic On-Screen Keyboard
 description : |
     Cosmic On-Screen Keyboard
