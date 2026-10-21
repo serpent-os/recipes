@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : cosmic-comp
-version     : "1.10.0"
-release     : 59
+version     : "1.11.0"
+release     : 60
 homepage    : https://github.com/pop-os/cosmic-comp
 upstreams   :
-    - https://github.com/pop-os/cosmic-comp/archive/refs/tags/epoch-1.10.0.tar.gz : db6bf35703db06b3ac89e5da9ba9cd60eceaed90515c47e4b3256d73cf0a0b81
+    - https://github.com/pop-os/cosmic-comp/archive/refs/tags/epoch-1.11.0.tar.gz : c07778440f25e909358a37f293ddf403a28a153b02eedb30b61b846a7142ba60
 summary     : Cosmic Desktop Compositor
 description : |
     Cosmic Desktop Compositor
