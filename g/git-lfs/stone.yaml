@@ -3,7 +3,7 @@
 
 name        : git-lfs
 version     : "3.8.0"
-release     : 4
+release     : 5
 homepage    : https://git-lfs.github.com
 upstreams   :
     - https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-v3.8.0.tar.gz : 4f75492c6832038fa73d39a45316657208bb6caa23b273451cb4ec2358d42ccb
@@ -15,6 +15,7 @@ builddeps   :
     - binary(asciidoctor)
 rundeps     :
     - binary(git)
+    - ca-certificates
 networking  : true
 setup       : |
     %go_mod

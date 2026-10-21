@@ -8,6 +8,7 @@
 			],
 			"depends": [
 				"binary(git)",
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -59,6 +60,6 @@
 		}
 	},
 	"source-name": "git-lfs",
-	"source-release": "4",
+	"source-release": "5",
 	"source-version": "3.8.0"
 }
