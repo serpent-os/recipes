@@ -7,6 +7,7 @@
 				"binary(go)"
 			],
 			"depends": [
+				"ca-certificates",
 				"interpreter(/lib64/ld-linux-x86-64.so.2(x86_64))"
 			],
 			"files": [
@@ -59,6 +60,6 @@
 		}
 	},
 	"source-name": "restic",
-	"source-release": "12",
+	"source-release": "13",
 	"source-version": "0.19.1"
 }

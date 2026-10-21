@@ -3,7 +3,7 @@
 
 name        : restic
 version     : "0.19.1"
-release     : 12
+release     : 13
 homepage    : https://restic.net
 upstreams   :
     - https://github.com/restic/restic/archive/refs/tags/v0.19.1.tar.gz : bb9b1a19040744d26d8a79be029d4e6b189c45ccc9d8831d7fe367d3c33df725
@@ -15,6 +15,8 @@ license     :
 networking  : true
 builddeps   :
     - binary(go)
+rundeps     :
+    - ca-certificates
 build       : |
     export GOMODCACHE="%(workdir)/.cache"
 
