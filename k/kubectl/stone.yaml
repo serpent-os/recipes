@@ -3,7 +3,7 @@
 
 name        : kubectl
 version     : "1.37.1"
-release     : 13
+release     : 14
 homepage    : https://kubernetes.io/
 upstreams   :
     - https://github.com/kubernetes/kubernetes/archive/refs/tags/v1.37.1.tar.gz : 89295ac375eb0fdfe68a0696d81be615771d6b27c7ad9bb675dc6ffd0d2ce5f3
@@ -15,6 +15,8 @@ networking  : true
 builddeps   :
     - binary(go)
     - binary(rsync)
+rundeps     :
+    - ca-certificates
 environment: |
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"

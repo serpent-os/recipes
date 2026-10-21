@@ -8,6 +8,7 @@
 				"binary(rsync)"
 			],
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
@@ -135,6 +136,6 @@
 		}
 	},
 	"source-name": "kubectl",
-	"source-release": "13",
+	"source-release": "14",
 	"source-version": "1.37.1"
 }
