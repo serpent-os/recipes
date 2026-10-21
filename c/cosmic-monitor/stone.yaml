@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : cosmic-monitor
-version     : "1.10.0"
-release     : 10
+version     : "1.11.0"
+release     : 11
 homepage    : https://github.com/pop-os/cosmic-monitor
 upstreams   :
-    - https://github.com/pop-os/cosmic-monitor/archive/refs/tags/epoch-1.10.0.tar.gz : ad05af39c240f252bf1191a58563c3d3e858afeeec8334879bba0050c9697496
+    - https://github.com/pop-os/cosmic-monitor/archive/refs/tags/epoch-1.11.0.tar.gz : c63aef9814982fd6dd1a0527c83bbe29c015154dee32a1ac9ce8f84290afd52b
 summary     : Cosmic System Monitor
 description : |
     Cosmic System Monitor
