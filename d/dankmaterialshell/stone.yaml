@@ -3,7 +3,7 @@
 
 name        : dankmaterialshell
 version     : "1.6.3"
-release     : 21
+release     : 22
 homepage    : https://danklinux.com/
 upstreams   :
     - https://github.com/AvengeMedia/DankMaterialShell/releases/download/v1.6.3/dms-source.tar.gz : e2418cde0e59c5d31f649b760164d30b01af520314281a8cd132887f5f07cf6a
@@ -16,6 +16,7 @@ builddeps   :
 rundeps     :
     - binary(quickshell)
     - accountsservice # User integration
+    - ca-certificates
     - dgop # Process information widgets
 networking  : true
 setup       : |
