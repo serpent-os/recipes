@@ -33,6 +33,7 @@
 				"pkgconfig(zlib)"
 			],
 			"depends": [
+				"ca-certificates",
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libX11.so.6(x86_64))",
 				"soname(libXext.so.6(x86_64))",
@@ -399,6 +400,6 @@
 		}
 	},
 	"source-name": "openjdk-17",
-	"source-release": "6",
-	"source-version": "17.0.20"
+	"source-release": "7",
+	"source-version": "17.0.21"
 }
