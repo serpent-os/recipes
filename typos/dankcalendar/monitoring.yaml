@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
-  id: 391095
-  rss: https://github.com/AvengeMedia/dankcalendar/releases.atom
+  id: ~
+  rss: ~
 security:
   # No known CPE, checked 2026-07-08
   cpe: ~
