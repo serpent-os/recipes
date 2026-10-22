@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : dux-calendar
+version     : "2.0.0"
+release     : 1
+homepage    : https://duxlabs.dev/
+upstreams   :
+    - https://github.com/duxlabs-dev/dux-calendar/releases/download/v2.0.0/dankcalendar-2.0.0.tar.gz : 8c435530000c72beb12b756890c6553e0125cff0143975b512946259dc85cd10
+summary     : Calendar from the Dux Suite
+description : |
+    Dux Calendar is a standalone calendar app that brings your Local, Google, Microsoft, CalDAV, and iCloud calendars together in one place. It runs as a lightweight daemon with a tray icon, keeps your accounts in sync, and reminds you about events — all with the look and feel of Dux Shell.
+license     : MIT
+builddeps   :
+    - binary(go)
+    - binary(tar)
+rundeps     :
+    - binary(quickshell)
+    - ca-certificates
+networking  : true
+setup       : |
+    cd core
+    %go_mod
+build       : |
+    cd core
+
+    %make sync-shell
+
+    go build -o bin/dcal \
+        -tags withshell \
+        -ldflags "-X main.Version=v%(version)" \
+        ./cmd/dcal
+
+    mkdir ../completions
+    bin/dcal completion bash > ../completions/dcal
+    bin/dcal completion zsh > ../completions/_dcal
+    bin/dcal completion fish > ../completions/dcal.fish
+install     : |
+    %make_install install-systemd \
+        PREFIX=%(prefix) \
+        SYSTEMD_USER_DIR=%(installroot)%(libdir)/systemd/user
+
+    %install_file completions/dcal -t %(installroot)%(bashcompletionsdir)
+    %install_file completions/_dcal -t %(installroot)%(zshcompletionsdir)
+    %install_file completions/dcal.fish -t %(installroot)%(fishcompletionsdir)
