@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dsearch": {
+			"depends": [
+				"dux-search"
+			],
+			"files": [
+				"/usr/share/doc/dsearch/README"
+			],
+			"name": "dsearch"
+		}
+	},
+	"source-name": "dsearch",
+	"source-release": "3",
+	"source-version": "1.6.0"
+}

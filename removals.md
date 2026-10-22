@@ -296,3 +296,5 @@ NB: Each entry *must* contain all sub-packages created by the package!
 - dgop-dbginfo
 - dankmaterialshell
 - dankmaterialshell-dbginfo
+- dsearch
+- dsearch-dbginfo
