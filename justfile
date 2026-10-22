@@ -115,7 +115,7 @@ create-local:
 
 # index .stones in LOCAL_REPO (create it if it doesn't exist)
 index-local: create-local
-    cd {{ invocation_directory() }} && moss index {{local_repo}}
+    cd {{ invocation_directory() }} && moss index -i {{local_repo}}
 
 # list .stones in LOCAL_REPO (create it if it doesn't exist)
 ls-local: create-local
@@ -123,11 +123,11 @@ ls-local: create-local
 
 # move .stones to LOCAL_REPO (create if it doesn't exist) and reindex it
 mv-local: create-local
-    cd {{ invocation_directory() }} && mv -v *.stone {{local_repo}}/ && moss index {{local_repo}}
+    cd {{ invocation_directory() }} && mv -v *.stone {{local_repo}}/ && moss index -i {{local_repo}}
 
 # remove individual .stones present in LOCAL_REPO (create if it doesn't exist) and reindex it.
 rm-local target: create-local
-    cd {{ invocation_directory() }} && rm -v {{local_repo}}/{{target}} && moss index {{local_repo}}
+    cd {{ invocation_directory() }} && rm -v {{local_repo}}/{{target}} && moss index -i {{local_repo}}
 
 # Check for upstream updates
 updates:
