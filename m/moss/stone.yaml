@@ -2,14 +2,14 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : moss
-version     : "0.26.8+git.3d9f9fa"
-release     : 131
+version     : "0.26.10~git.7630acf"
+release     : 132
 summary     : AerynOS package & system state manager
 license     : MPL-2.0
 homepage    : https://github.com/AerynOS/os-tools
 upstreams   :
-    - git|https://github.com/AerynOS/os-tools.git :
-        ref : 3d9f9fa58075e01270587296181dc96f7c3fb94a
+    - git|https://github.com/aerynOS/os-tools.git :
+        ref : 7630acf727195fba7cac4bdb76cbe8bdb25aad73
 description : |
     Advanced package & system state manager with atomic transactions, content deduplication and declarative system-model support.
 builddeps   :
@@ -32,29 +32,29 @@ build       : |
 install     : |
     %cargo_install
 
-    # Completions
-    mkdir compl/
-    ./target/*/release/moss --generate-completions compl/.
-    %install_file compl/_moss %(installroot)%(datadir)/zsh/site-functions/_moss
-    %install_file compl/moss.bash %(installroot)%(datadir)/bash-completion/completions/moss
-    %install_file compl/moss.fish %(installroot)%(datadir)/fish/completions/moss.fish
+    # Generate completions and man pages
+    mkdir generated/
+    ./target/*/release/moss completions generated/
 
-    # Generate manpages
-    mkdir man/
-    ./target/*/release/moss --generate-manpages man/.
+    # Install completions
+    %install_file generated/_moss %(installroot)%(datadir)/zsh/site-functions/_moss
+    %install_file generated/moss.bash %(installroot)%(datadir)/bash-completion/completions/moss
+    %install_file generated/moss.fish %(installroot)%(datadir)/fish/completions/moss.fish
+
+    # Install man pages
     %install_dir %(installroot)%(mandir)/man1
-    cp man/*.1 %(installroot)%(mandir)/man1/.
+    cp generated/*.1 %(installroot)%(mandir)/man1/
 
     # Install the base cmdline snippet
-    %install_file %(pkgdir)/00-quiet.cmdline %(installroot)%(libdir)/kernel/cmdline.d/00-quiet.cmdline
+    %install_file %(pkgdir)/00-quiet.cmdline -t %(installroot)%(libdir)/kernel/cmdline.d/
 
     # Install the mime type
-    %install_file stone.xml %(installroot)%(datadir)/mime/packages/stone.xml
+    %install_file stone.xml -t %(installroot)%(datadir)/mime/packages/
 
     # Install command-not-found helper
-    %install_file %(pkgdir)/80-command-not-found.sh %(installroot)%(vendordir)/profile.d/80-command-not-found.sh
+    %install_file %(pkgdir)/80-command-not-found.sh -t %(installroot)%(vendordir)/profile.d/
 
     %install_dir %(installroot)%(libdir)/dracut/modules.d/90moss
-    %install_file boot/module/module-setup.sh %(installroot)%(libdir)/dracut/modules.d/90moss/module-setup.sh
-    %install_file boot/moss-fstx.service %(installroot)%(libdir)/systemd/system/moss-fstx.service
-    %install_exe boot/moss-fstx.sh %(installroot)%(libdir)/moss/moss-fstx.sh
+    %install_file boot/module/module-setup.sh -t %(installroot)%(libdir)/dracut/modules.d/90moss/
+    %install_file boot/moss-fstx.service -t %(installroot)%(libdir)/systemd/system/
+    %install_exe boot/moss-fstx.sh -t %(installroot)%(libdir)/moss/
