@@ -77,6 +77,7 @@
 				"/usr/share/inputplumber/capability_maps/retroid_type2.yaml",
 				"/usr/share/inputplumber/capability_maps/rsinput_type1.yaml",
 				"/usr/share/inputplumber/capability_maps/swap_west_north.yaml",
+				"/usr/share/inputplumber/capability_maps/zone_buttons.yaml",
 				"/usr/share/inputplumber/capability_maps/zone_type1.yaml",
 				"/usr/share/inputplumber/devices/10-ignore_unsupported.yaml",
 				"/usr/share/inputplumber/devices/50-anbernic_win600.yaml",
@@ -141,6 +142,7 @@
 				"/usr/share/inputplumber/devices/50-rog_ally_x.yaml",
 				"/usr/share/inputplumber/devices/50-rog_flow_z13.yaml",
 				"/usr/share/inputplumber/devices/50-rog_xbox_ally.yaml",
+				"/usr/share/inputplumber/devices/50-rog_xbox_ally_x20.yaml",
 				"/usr/share/inputplumber/devices/50-steam_deck.yaml",
 				"/usr/share/inputplumber/devices/50-suiplay_0x1.yaml",
 				"/usr/share/inputplumber/devices/50-zotac-zone.yaml",
@@ -179,6 +181,6 @@
 		}
 	},
 	"source-name": "inputplumber",
-	"source-release": "69",
-	"source-version": "0.82.0"
+	"source-release": "70",
+	"source-version": "0.83.0"
 }
