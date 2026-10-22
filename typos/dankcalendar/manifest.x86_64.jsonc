@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dankcalendar": {
+			"depends": [
+				"dux-calendar"
+			],
+			"files": [
+				"/usr/share/doc/dankcalendar/README"
+			],
+			"name": "dankcalendar"
+		}
+	},
+	"source-name": "dankcalendar",
+	"source-release": "11",
+	"source-version": "1.6.1"
+}

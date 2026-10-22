@@ -298,3 +298,5 @@ NB: Each entry *must* contain all sub-packages created by the package!
 - dankmaterialshell-dbginfo
 - dsearch
 - dsearch-dbginfo
+- dankcalendar
+- dankcalendar-dbginfo

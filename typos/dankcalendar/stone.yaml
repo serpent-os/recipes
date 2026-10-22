@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2026 AerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : dankcalendar
+version     : "1.6.1"
+release     : 11
+homepage    : https://danklinux.com/
+# upstreams   :
+#     - https://github.com/AvengeMedia/dankcalendar/releases/download/v1.6.1/dankcalendar-1.6.1.tar.gz : 4fb321efe73091305116aff0044ebf72f63a3d9204907c9e05ce2974f7f6989a
+summary     : Replaced by dux-calendar
+description : |
+    Replaced by dux-calendar
+license     : MIT
+rundeps     :
+    - dux-calendar
+install     : |
+    %install_dir %(installroot)%(docdir)/%(name)/
+    echo "DEPRECATED" > %(installroot)%(docdir)/%(name)/README
