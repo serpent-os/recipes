@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : pipewire
-version     : "1.6.9"
-release     : 42
+version     : "1.6.10"
+release     : 43
 homepage    : https://pipewire.org/
 upstreams   :
-   - https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.6.9/pipewire-1.6.9.tar.gz : dbc3624cf71215c26a22fc98f6f71f7b8599f5f6b415eab4a5c90ca96c170c7c
+   - https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.6.10/pipewire-1.6.10.tar.gz : 93b7c4f1e62fd9ec3a921846c6bfc64442872bb2366c2bbc3ea69a427b79a4f9
 summary     : Linux audio + video multiplexing
 description : |
     PipeWire is a project that aims to greatly improve handling of audio and video under Linux. It provides a low-latency, graph-based processing engine on top of audio and video devices that can be used to support the use cases currently handled by both PulseAudio and JACK. PipeWire was designed with a powerful security model that makes interacting with audio and video devices from containerized applications easy, with support for Flatpak applications being the primary goal.
@@ -62,9 +62,6 @@ builddeps   :
     # libselinux
 setup       : |
     %patch %(pkgdir)/0001-stateless.patch
-
-    # gdm greeter pipewire crash when Xwayland goes away; drop once fixed upstream
-    %patch %(pkgdir)/0002-x11-bell-idempotent-io-handler.patch
 
     # HDMI/ELD profile-selection backports; drop once they land in a release
     %patch %(pkgdir)/upstream-01.patch
