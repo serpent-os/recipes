@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : genfstab
-version     : "31"
-release     : 3
+version     : "32"
+release     : 4
 homepage    : https://gitlab.archlinux.org/archlinux/arch-install-scripts/
 upstreams   :
-    - https://gitlab.archlinux.org/archlinux/arch-install-scripts/-/archive/v31/arch-install-scripts-v31.tar.gz : ef22eae93b5cc78c7e7982acc160428cced9f96cb95090aeb77d55bc844a988e
+    - https://gitlab.archlinux.org/archlinux/arch-install-scripts/-/archive/v32/arch-install-scripts-v32.tar.gz : 50f21a1818af338b97c38490c591759529d6e911bb4d7bca6d4c9370557ea9cc
 summary     : genfstab archlinux bash script
 description : |
     genfstab(8) is a Bash script that is used to automatically detect all
