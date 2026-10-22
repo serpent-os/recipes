@@ -1,0 +1,24 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dux-search": {
+			"depends": [
+				"ca-certificates",
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dsearch",
+				"/usr/lib/systemd/user/dsearch.service"
+			],
+			"name": "dux-search",
+			"provides": [
+				"binary(dsearch)"
+			]
+		}
+	},
+	"source-name": "dux-search",
+	"source-release": "1",
+	"source-version": "2.0.0"
+}
