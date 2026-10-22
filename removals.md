@@ -294,3 +294,5 @@ NB: Each entry *must* contain all sub-packages created by the package!
 ### Moved to Dux
 - dgop
 - dgop-dbginfo
+- dankmaterialshell
+- dankmaterialshell-dbginfo

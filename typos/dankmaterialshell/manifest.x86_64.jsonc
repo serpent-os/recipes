@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dankmaterialshell": {
+			"depends": [
+				"dux-shell"
+			],
+			"files": [
+				"/usr/share/doc/dankmaterialshell/README"
+			],
+			"name": "dankmaterialshell"
+		}
+	},
+	"source-name": "dankmaterialshell",
+	"source-release": "23",
+	"source-version": "1.6.3"
+}
