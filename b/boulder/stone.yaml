@@ -2,16 +2,16 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : boulder
-version     : "0.26.8+git.3d9f9fa"
-release     : 168
+version     : "0.26.10~git.7630acf"
+release     : 169
 summary     : Modern package building tool
 license     : MPL-2.0
 homepage    : https://github.com/AerynOS/os-tools
 description : |
     Modern package building tool with containerized builds and intelligent package splitting
 upstreams   :
-    - git|https://github.com/AerynOS/os-tools.git :
-        ref : 3d9f9fa58075e01270587296181dc96f7c3fb94a
+    - git|https://github.com/aerynOS/os-tools.git :
+        ref : 7630acf727195fba7cac4bdb76cbe8bdb25aad73
     - git|https://github.com/spdx/license-list-data.git :
         ref : d46e94e2c78ceede1cfc63cfa0396472d2798d4c # v3.27.0
 builddeps   :
