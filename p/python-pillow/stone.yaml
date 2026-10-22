@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-pillow
-version     : "12.3.0"
-release     : 5
+version     : "13.0.0"
+release     : 6
 homepage    : https://python-pillow.github.io/
 upstreams   :
-    - https://github.com/python-pillow/Pillow/archive/refs/tags/12.3.0.tar.gz : d7ce60fdf8b3d3b4370ea213834d7c852b1ca16396d4e75e5046be815b11b2fb
+    - https://github.com/python-pillow/Pillow/archive/refs/tags/13.0.0.tar.gz : edf59ba26a21ea6d7e6a3755fe139a57297704591c4113ad470dac9ac2ccaf5e
 summary    : The friendly PIL fork (Python Imaging Library)
 description: |
     Pillow is the "friendly PIL fork" by Alex Clark and Contributors. PIL is the Python Imaging Library by Fredrik Lundh and Contributors.
