@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : dgop
+version     : "1.6.2"
+release     : 5
+homepage    : https://github.com/AvengeMedia/dgop
+# upstreams   :
+#     - https://github.com/AvengeMedia/dgop/archive/refs/tags/v1.6.2.zip : 72aa5b2e6621f4b6921315b7312d4f7085fd40f0c845785631188e9a6d545433
+summary     : Replaced by dux-gop
+description : |
+    Replaced by dux-gop
+license     : MIT
+rundeps     :
+    - dux-gop
+install     : |
+    %install_dir %(installroot)%(docdir)/%(name)/
+    echo "DEPRECATED" > %(installroot)%(docdir)/%(name)/README

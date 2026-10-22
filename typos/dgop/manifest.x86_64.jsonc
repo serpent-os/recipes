@@ -1,0 +1,18 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dgop": {
+			"depends": [
+				"dux-gop"
+			],
+			"files": [
+				"/usr/share/doc/dgop/README"
+			],
+			"name": "dgop"
+		}
+	},
+	"source-name": "dgop",
+	"source-release": "5",
+	"source-version": "1.6.2"
+}

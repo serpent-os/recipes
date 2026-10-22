@@ -290,3 +290,7 @@ NB: Each entry *must* contain all sub-packages created by the package!
 ### Renamed to cosmic-app-library
 - cosmic-applibrary
 - cosmic-applibrary-dbginfo
+
+### Moved to Dux
+- dgop
+- dgop-dbginfo
