@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : dux-search
+version     : "2.0.0"
+release     : 1
+upstreams   :
+    - https://github.com/duxlabs-dev/dux-search/releases/download/v2.0.0/dsearch-2.0.0.tar.gz : 4a1740ef16412619ba4457868db947058a3bacb8c39480bbcceed741b67921cb
+homepage    : https://github.com/duxlabs-dev/dux-search
+license     : MIT
+summary     : Indexed filesystem search in Go
+description : |
+    A configurable filesystem search service powered by bleve for Unix-based operating systems.
+networking  : true
+rundeps     :
+    - ca-certificates
+setup       : |
+    # Fix systemd service
+    sed -i 's|/usr/local|/usr|' assets/dsearch.service
+
+    %go_mod
+build       : |
+    go build \
+        -o bin/dsearch \
+        -ldflags="-s -w -X main.Version=%(version)" \
+        cmd/dsearch/*.go
+install     : |
+    %install_bin bin/dsearch
+
+    %install_file assets/dsearch.service -t %(installroot)%(libdir)/systemd/user/
