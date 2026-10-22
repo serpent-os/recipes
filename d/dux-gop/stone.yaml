@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : dux-gop
+version     : "2.0.0"
+release     : 1
+homepage    : https://github.com/duxlabs-dev/dux-gop
+upstreams   :
+    - https://github.com/duxlabs-dev/dux-gop/releases/download/v2.0.0/dgop-2.0.0.tar.gz : 532cb956a336245c62aadc81cde52c8bfeed8fd479aea850ae4ddbef73397b40
+summary     : System monitoring tool with CLI & REST API built in Go
+description : |
+    dux gop is a stateless system and process monitoring tool that provides a top-like tui,
+    CLI, and REST API. It allows sampling numerous metrics related to the system.
+license     : MIT
+networking  : true
+rundeps     :
+    - ca-certificates
+setup       : |
+    %go_mod
+build       : |
+    export GOFLAGS+=" -ldflags=-X=main.Version=v%(version)"
+    go build ./cmd/dgop
+
+    ./dgop completion bash > dgop.bash
+    ./dgop completion fish > dgop.fish
+    ./dgop completion zsh > _dgop
+install     : |
+    %install_bin dgop
+
+    %install_file dgop.bash %(installroot)%(bashcompletionsdir)/dgop
+    %install_file dgop.fish %(installroot)%(fishcompletionsdir)/dgop.fish
+    %install_file _dgop %(installroot)%(zshcompletionsdir)/_dgop
+
+    %install_file LICENSE %(installroot)%(datadir)/licenses/dgop/LICENSE
