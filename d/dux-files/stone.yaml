@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
+# SPDX-License-Identifier: MPL-2.0
+
+name        : dux-files
+version     : "2.0.0"
+release     : 1
+homepage    : https://duxlabs.dev/
+upstreams   :
+    - https://github.com/duxlabs-dev/dux-files/releases/download/v2.0.0/dfiles-2.0.0.tar.gz : 5883246328482b37928c16a795d9f4a97f2fd71ed2f8772210284dede6a49739
+summary     : File manager from Dux Labs
+description : |
+    File manager from Dux Labs
+license     : MIT
+builddeps   :
+    - binary(go)
+    - binary(tar)
+rundeps     :
+    - binary(quickshell)
+    - ca-certificates
+networking  : true
+setup       : |
+    cd core
+    %go_mod
+build       : |
+    cd core
+
+    %make sync-shell
+
+    go build -o bin/dfiles \
+        -tags withshell \
+        -ldflags "-X main.Version=v%(version)" \
+        ./cmd/dfiles
+install     : |
+    %make_install install-systemd \
+        PREFIX=%(prefix) \
+        SYSTEMD_USER_DIR=%(installroot)%(libdir)/systemd/user

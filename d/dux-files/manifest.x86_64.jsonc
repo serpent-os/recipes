@@ -1,0 +1,36 @@
+/** Human readable report. This is not consumed by boulder */
+{
+	"manifest-version": "0.2",
+	"packages": {
+		"dux-files": {
+			"build-depends": [
+				"binary(go)",
+				"binary(tar)"
+			],
+			"depends": [
+				"binary(quickshell)",
+				"ca-certificates",
+				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
+				"soname(libc.so.6(x86_64))"
+			],
+			"files": [
+				"/usr/bin/dfiles",
+				"/usr/lib/systemd/user/dfiles.service",
+				"/usr/share/applications/dev.duxlabs.files.desktop",
+				"/usr/share/dbus-1/services/dev.duxlabs.files.FileManager1.service",
+				"/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.dfiles.service",
+				"/usr/share/icons/hicolor/scalable/apps/dev.duxlabs.files.svg",
+				"/usr/share/metainfo/dev.duxlabs.files.metainfo.xml",
+				"/usr/share/polkit-1/actions/dev.duxlabs.files.policy",
+				"/usr/share/xdg-desktop-portal/portals/dfiles.portal"
+			],
+			"name": "dux-files",
+			"provides": [
+				"binary(dfiles)"
+			]
+		}
+	},
+	"source-name": "dux-files",
+	"source-release": "1",
+	"source-version": "2.0.0"
+}
