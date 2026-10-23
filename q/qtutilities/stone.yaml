@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : qtutilities
-version     : "6.22.3"
-release     : 16
+version     : "6.23.0"
+release     : 17
 upstreams   :
-    - https://github.com/Martchus/qtutilities/archive/refs/tags/v6.22.3.tar.gz : 403d8df04fa66ba3dfb76da0f709286adca97c30a52f930167cad7fba9f918ac
+    - https://github.com/Martchus/qtutilities/archive/refs/tags/v6.23.0.tar.gz : ae984301e080278b5eda612a8628845fd826efda5fb8b8aa651df7f28c347a78
 homepage    : https://github.com/Martchus/qtutilities
 license     : GPL-2.0-or-later
 summary     : Common Qt related C++ classes and routines used by Martchus applications such as dialogs, widgets and models
