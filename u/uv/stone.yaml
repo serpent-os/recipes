@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : uv
-version     : "0.12.23"
-release     : 13
+version     : "0.13.5"
+release     : 14
 homepage    : https://docs.astral.sh/uv/
 upstreams   :
-    - https://github.com/astral-sh/uv/releases/download/0.12.23/source.tar.gz : 4c4b598aefa63b311861f3cc60f8cf563a3e42c659f2b9db4799fbc7c7fb43b3
+    - https://github.com/astral-sh/uv/releases/download/0.13.5/source.tar.gz : 1af98369e94f841426a673323760155d7507119c05c55456bdecbcb151eaaea4
 summary     : An extremely fast Python package and project manager, written in Rust.
 description : |
     An extremely fast Python package and project manager, written in Rust.
