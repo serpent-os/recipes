@@ -76,6 +76,6 @@
 		}
 	},
 	"source-name": "buildah",
-	"source-release": "12",
-	"source-version": "1.45.2"
+	"source-release": "13",
+	"source-version": "1.46.0"
 }
