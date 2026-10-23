@@ -42,11 +42,11 @@
 			],
 			"files": [
 				"/usr/lib32/libbrotlicommon.so.1",
-				"/usr/lib32/libbrotlicommon.so.1.2.0",
+				"/usr/lib32/libbrotlicommon.so.1.2.1",
 				"/usr/lib32/libbrotlidec.so.1",
-				"/usr/lib32/libbrotlidec.so.1.2.0",
+				"/usr/lib32/libbrotlidec.so.1.2.1",
 				"/usr/lib32/libbrotlienc.so.1",
-				"/usr/lib32/libbrotlienc.so.1.2.0"
+				"/usr/lib32/libbrotlienc.so.1.2.1"
 			],
 			"name": "brotli-32bit",
 			"provides": [
@@ -131,11 +131,11 @@
 			],
 			"files": [
 				"/usr/lib/libbrotlicommon.so.1",
-				"/usr/lib/libbrotlicommon.so.1.2.0",
+				"/usr/lib/libbrotlicommon.so.1.2.1",
 				"/usr/lib/libbrotlidec.so.1",
-				"/usr/lib/libbrotlidec.so.1.2.0",
+				"/usr/lib/libbrotlidec.so.1.2.1",
 				"/usr/lib/libbrotlienc.so.1",
-				"/usr/lib/libbrotlienc.so.1.2.0"
+				"/usr/lib/libbrotlienc.so.1.2.1"
 			],
 			"name": "brotli-libs",
 			"provides": [
@@ -162,11 +162,11 @@
 				"/usr/lib/python3.14/site-packages/__pycache__/brotli.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/__pycache__/brotli.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/_brotli.cpython-314-x86_64-linux-gnu.so",
-				"/usr/lib/python3.14/site-packages/brotli-1.2.0.dist-info/METADATA",
-				"/usr/lib/python3.14/site-packages/brotli-1.2.0.dist-info/RECORD",
-				"/usr/lib/python3.14/site-packages/brotli-1.2.0.dist-info/WHEEL",
-				"/usr/lib/python3.14/site-packages/brotli-1.2.0.dist-info/licenses/LICENSE",
-				"/usr/lib/python3.14/site-packages/brotli-1.2.0.dist-info/top_level.txt",
+				"/usr/lib/python3.14/site-packages/brotli-1.2.1.dist-info/METADATA",
+				"/usr/lib/python3.14/site-packages/brotli-1.2.1.dist-info/RECORD",
+				"/usr/lib/python3.14/site-packages/brotli-1.2.1.dist-info/WHEEL",
+				"/usr/lib/python3.14/site-packages/brotli-1.2.1.dist-info/licenses/LICENSE",
+				"/usr/lib/python3.14/site-packages/brotli-1.2.1.dist-info/top_level.txt",
 				"/usr/lib/python3.14/site-packages/brotli.py"
 			],
 			"name": "python-brotli",
@@ -177,6 +177,6 @@
 		}
 	},
 	"source-name": "brotli",
-	"source-release": "12",
-	"source-version": "1.2.0"
+	"source-release": "13",
+	"source-version": "1.2.1"
 }

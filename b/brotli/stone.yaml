@@ -2,15 +2,15 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : brotli
-version     : "1.2.0"
-release     : 12
+version     : "1.2.1"
+release     : 13
 summary     : Generic-purpose lossless compression algorithm
 license     : MIT
 homepage    : https://github.com/google/brotli
 description : |
     Generic-purpose lossless compression algorithm
 upstreams   :
-    - git|https://github.com/google/brotli: 028fb5a23661f123017c060daa546b55cf4bde29 # v1.2.0
+    - git|https://github.com/google/brotli: db24a98aed38a16de78cc05ca15cdd8dc2a0d92d # v1.2.1
 builddeps   :
     - pkgconfig(python3)
     - python(pkgconfig)
@@ -28,8 +28,6 @@ profiles    :
         check: |
             %cmake_test
 setup       : |
-    %patch %(pkgdir)/CVE-2026-111497.patch
-
     %cmake \
         -DBUILD_SHARED_LIBS=True \
         -DCMAKE_INSTALL_LIBDIR=%(libdir)
