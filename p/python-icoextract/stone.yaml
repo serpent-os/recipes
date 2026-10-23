@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-icoextract
-version     : "0.3.0"
-release     : 3
+version     : "0.3.1"
+release     : 4
 homepage    : https://github.com/jlu5/icoextract
 upstreams   :
-    - https://github.com/jlu5/icoextract/archive/refs/tags/0.3.0.tar.gz : ce46a9dde2054edd13922dbe254e01eefe64a110ebbfe3c0d695fe703e9d295a
+    - https://github.com/jlu5/icoextract/archive/refs/tags/0.3.1.tar.gz : 37fcc5fb7f7a07927e93b335ddf2533360d73cfd3599572e85d848313821e151
 summary     : Extract icons from Windows PE files (.exe/.dll)
 description : |
     Icon extractor for Windows PE files (.exe/.dll) with optional thumbnailer functionality
