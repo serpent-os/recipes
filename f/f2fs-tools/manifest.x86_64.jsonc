@@ -21,10 +21,10 @@
 				"soname(libuuid.so.1(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libf2fs.so.10",
-				"/usr/lib/libf2fs.so.10.0.0",
-				"/usr/lib/libf2fs_format.so.9",
-				"/usr/lib/libf2fs_format.so.9.0.0",
+				"/usr/lib/libf2fs.so.11",
+				"/usr/lib/libf2fs.so.11.0.0",
+				"/usr/lib/libf2fs_format.so.10",
+				"/usr/lib/libf2fs_format.so.10.0.0",
 				"/usr/sbin/defrag.f2fs",
 				"/usr/sbin/dump.f2fs",
 				"/usr/sbin/f2fs_io",
@@ -32,6 +32,7 @@
 				"/usr/sbin/f2fslabel",
 				"/usr/sbin/fibmap.f2fs",
 				"/usr/sbin/fsck.f2fs",
+				"/usr/sbin/inject.f2fs",
 				"/usr/sbin/mkfs.f2fs",
 				"/usr/sbin/parse.f2fs",
 				"/usr/sbin/resize.f2fs",
@@ -42,14 +43,15 @@
 				"/usr/share/man/man8/f2fscrypt.8",
 				"/usr/share/man/man8/f2fslabel.8",
 				"/usr/share/man/man8/fsck.f2fs.8",
+				"/usr/share/man/man8/inject.f2fs.8",
 				"/usr/share/man/man8/mkfs.f2fs.8",
 				"/usr/share/man/man8/resize.f2fs.8",
 				"/usr/share/man/man8/sload.f2fs.8"
 			],
 			"name": "f2fs-tools",
 			"provides": [
-				"soname(libf2fs.so.10(x86_64))",
-				"soname(libf2fs_format.so.9(x86_64))",
+				"soname(libf2fs.so.11(x86_64))",
+				"soname(libf2fs_format.so.10(x86_64))",
 				"sysbinary(defrag.f2fs)",
 				"sysbinary(dump.f2fs)",
 				"sysbinary(f2fs_io)",
@@ -57,6 +59,7 @@
 				"sysbinary(f2fslabel)",
 				"sysbinary(fibmap.f2fs)",
 				"sysbinary(fsck.f2fs)",
+				"sysbinary(inject.f2fs)",
 				"sysbinary(mkfs.f2fs)",
 				"sysbinary(parse.f2fs)",
 				"sysbinary(resize.f2fs)",
@@ -86,6 +89,6 @@
 		}
 	},
 	"source-name": "f2fs-tools",
-	"source-release": "5",
-	"source-version": "1.16.0"
+	"source-release": "6",
+	"source-version": "1.17.0"
 }

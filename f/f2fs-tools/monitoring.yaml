@@ -1,10 +1,11 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 14689
   rss: ~
 security:
+  # Last checked 2026-10-23
   cpe:
   - vendor: f2fs-tools_project
     product: f2fs-tools

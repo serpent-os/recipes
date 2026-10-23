@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : f2fs-tools
-version     : "1.16.0"
-release     : 5
+version     : "1.17.0"
+release     : 6
 homepage    : https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/about/
 upstreams   :
-    - https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-1.16.0.tar.gz : 208c7a07e95383fbd7b466b5681590789dcb41f41bf197369c41a95383b57c5e
+    - https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-1.17.0.tar.gz : 1dbc89ada373b43cc9130b47ad3f575117583ca74715e952046c88a121a2a469
 summary     : Userland tools for the f2fs filesystem
 description : |
     f2fs-tools are a collection of tools for Flash-Friendly File System (F2FS).
@@ -24,10 +24,6 @@ builddeps  :
     - pkgconfig(uuid)
     # selinux
 setup      : |
-    # without this, ../lib/.libs/ does not get included in shared library searches for -lf2fs
-    # TODO: Toolchain search path issue?
-    %patch %(pkgdir)/add-.libs-sharedlib-search-dir-for-mkfs-target.patch
-    %patch %(pkgdir)/ftbfs-gcc-15.patch
     %autogen \
         --disable-static
 build       : |
