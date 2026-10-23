@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : strace
-version     : "7.2"
-release     : 20
+version     : "7.3"
+release     : 21
 homepage    : https://strace.io
 upstreams   :
-    - https://github.com/strace/strace/releases/download/v7.2/strace-7.2.tar.xz : 4bde6246926890dcee824f6e6ac42a06752f47d77e5097d86e3c0d6d4b709fe5
+    - https://github.com/strace/strace/releases/download/v7.3/strace-7.3.tar.xz : 529634c40910895a9a1f3c5c1e65da2ca9ed72fb158dfc4bcc89efdf05e39b72
 summary     : Diagnostic, debugging and instructional userspace utility
 description : |
     strace is a diagnostic, debugging and instructional userspace utility with a traditional command-line interface for Linux. It is used to monitor and tamper with interactions between processes and the Linux kernel, which include system calls, signal deliveries, and changes of process state. The operation of strace is made possible by the kernel feature known as ptrace.
