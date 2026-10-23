@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-importlib_metadata
-version     : "9.0.1"
-release     : 5
+version     : "10.0.0"
+release     : 6
 homepage    : https://pypi.org/project/importlib_metadata
 upstreams   :
-    - https://pypi.debian.net/importlib-metadata/importlib_metadata-9.0.1.tar.gz : ab830580bc0ef3db61ce8fae716389e5462b67e033018bab6d8f80ef17172f99
+    - https://pypi.debian.net/importlib-metadata/importlib_metadata-10.0.0.tar.gz : 91f91d04082e49e99df91762a6571ad65a56dabf876b860e668ffa107eaf1a98
 summary     : Read metadata from Python packages
 description : |
     Library to access the metadata for a Python package.
