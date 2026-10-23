@@ -14,7 +14,7 @@
 				"soname(libstdc++.so.6(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libhyprutils.so.0.14.2",
+				"/usr/lib/libhyprutils.so.0.14.3",
 				"/usr/lib/libhyprutils.so.13"
 			],
 			"name": "hyprutils",
@@ -69,6 +69,7 @@
 				"/usr/include/hyprutils/string/ConstVarList.hpp",
 				"/usr/include/hyprutils/string/Numeric.hpp",
 				"/usr/include/hyprutils/string/String.hpp",
+				"/usr/include/hyprutils/string/UTF8.hpp",
 				"/usr/include/hyprutils/string/VarList.hpp",
 				"/usr/include/hyprutils/string/VarList2.hpp",
 				"/usr/include/hyprutils/utils/ScopeGuard.hpp",
@@ -82,6 +83,6 @@
 		}
 	},
 	"source-name": "hyprutils",
-	"source-release": "6",
-	"source-version": "0.14.2"
+	"source-release": "7",
+	"source-version": "0.14.3"
 }

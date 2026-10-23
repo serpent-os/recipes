@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : hyprutils
-version     : "0.14.2"
-release     : 6
+version     : "0.14.3"
+release     : 7
 homepage    : https://github.com/hyprwm/hyprutils
 upstreams   :
-    - https://github.com/hyprwm/hyprutils/archive/refs/tags/v0.14.2.tar.gz : 2061b7b08c8104fb02a609553b28f6c8580e5ec38633015845f1c4553980175b
+    - https://github.com/hyprwm/hyprutils/archive/refs/tags/v0.14.3.tar.gz : 87bbfc9549ed96316b0d592c16d01f58729b23a2999a5293b73eec620b40c5f5
 summary     : Small C++ library for the Hypr* ecosystem.
 description : |
     Hyprutils is a small C++ library for utilities used across the Hypr* ecosystem.
