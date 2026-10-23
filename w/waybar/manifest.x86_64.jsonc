@@ -67,7 +67,7 @@
 				"soname(libplayerctl.so.2(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
 				"soname(libsigc-2.0.so.0(x86_64))",
-				"soname(libsndio.so.7(x86_64))",
+				"soname(libsndio.so.9(x86_64))",
 				"soname(libspdlog.so.1.17(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
 				"soname(libudev.so.1(x86_64))",
@@ -142,6 +142,6 @@
 		}
 	},
 	"source-name": "waybar",
-	"source-release": "12",
+	"source-release": "13",
 	"source-version": "0.15.0"
 }
