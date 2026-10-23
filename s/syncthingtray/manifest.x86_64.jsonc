@@ -48,11 +48,11 @@
 			"files": [
 				"/usr/bin/syncthingctl",
 				"/usr/bin/syncthingtray",
-				"/usr/lib/libsyncthingconnector.so.2.1.8",
+				"/usr/lib/libsyncthingconnector.so.2.1.9",
 				"/usr/lib/libsyncthingconnector.so.41",
-				"/usr/lib/libsyncthingmodel.so.2.1.8",
+				"/usr/lib/libsyncthingmodel.so.2.1.9",
 				"/usr/lib/libsyncthingmodel.so.41",
-				"/usr/lib/libsyncthingwidgets.so.2.1.8",
+				"/usr/lib/libsyncthingwidgets.so.2.1.9",
 				"/usr/lib/libsyncthingwidgets.so.41",
 				"/usr/share/applications/syncthingtray.desktop",
 				"/usr/share/bash-completion/completions/syncthingctl",
@@ -275,6 +275,6 @@
 		}
 	},
 	"source-name": "syncthingtray",
-	"source-release": "25",
-	"source-version": "2.1.8"
+	"source-release": "26",
+	"source-version": "2.1.9"
 }
