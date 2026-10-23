@@ -29,7 +29,7 @@
 				"soname(libpipewire-0.3.so.0(x86_64))",
 				"soname(libpulse-simple.so.0(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
-				"soname(libsndio.so.7(x86_64))"
+				"soname(libsndio.so.9(x86_64))"
 			],
 			"files": [
 				"/usr/bin/cava",
@@ -97,7 +97,7 @@
 				"soname(libpipewire-0.3.so.0(x86_64))",
 				"soname(libpulse-simple.so.0(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
-				"soname(libsndio.so.7(x86_64))"
+				"soname(libsndio.so.9(x86_64))"
 			],
 			"files": [
 				"/usr/lib/libcava.so.1",
@@ -110,6 +110,6 @@
 		}
 	},
 	"source-name": "cava",
-	"source-release": "6",
+	"source-release": "7",
 	"source-version": "1.0.0"
 }

@@ -3,7 +3,7 @@
 
 name        : cava
 version     : "1.0.0"
-release     : 6
+release     : 7
 homepage    : https://github.com/LukashonakV/cava
 upstreams   :
     - https://github.com/LukashonakV/cava/archive/refs/tags/1.0.0.tar.gz : 437df0a29e52e555357a06238f4c5cbe6d51b5dd4225700cb7adbb19d8bb9474
