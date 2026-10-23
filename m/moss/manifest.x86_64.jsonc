@@ -31,11 +31,11 @@
 				"/usr/share/man/man1/moss-cache.1",
 				"/usr/share/man/man1/moss-completions.1",
 				"/usr/share/man/man1/moss-index.1",
+				"/usr/share/man/man1/moss-inspect.1",
 				"/usr/share/man/man1/moss-pkg-add.1",
 				"/usr/share/man/man1/moss-pkg-extract.1",
 				"/usr/share/man/man1/moss-pkg-fetch.1",
 				"/usr/share/man/man1/moss-pkg-info.1",
-				"/usr/share/man/man1/moss-pkg-inspect.1",
 				"/usr/share/man/man1/moss-pkg-list.1",
 				"/usr/share/man/man1/moss-pkg-remove.1",
 				"/usr/share/man/man1/moss-pkg.1",
@@ -69,6 +69,6 @@
 		}
 	},
 	"source-name": "moss",
-	"source-release": "132",
-	"source-version": "0.26.10~git.7630acf"
+	"source-release": "133",
+	"source-version": "0.26.10~git.3b6dd70"
 }
