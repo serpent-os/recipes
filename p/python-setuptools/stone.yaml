@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-setuptools
-version     : "84.0.0"
-release     : 15
+version     : "84.2.1"
+release     : 16
 homepage    : https://setuptools.pypa.io/
 upstreams   :
-    - https://pypi.debian.net/setuptools/setuptools-84.0.0.tar.gz:
-        hash: f4695c21257f0d9b537ec2692c941d02ee143b7cc1276941349a546573b2ef73
+    - https://pypi.debian.net/setuptools/setuptools-84.2.1.tar.gz:
+        hash: 3ff8b3b5492a0aa66960f4419365a86b84e013070d4313e4d4a6894f5d64d6bc
         rename: setuptools.tar.gz
 
     # Comment both of these out if not bootstrapping
