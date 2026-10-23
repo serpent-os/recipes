@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : gram
-version     : "3.4.0"
-release     : 9
+version     : "3.4.1"
+release     : 10
 homepage    : https://gram-editor.com/
 upstreams   :
-    - https://codeberg.org/GramEditor/gram/archive/3.4.0.tar.gz : c15d11a4af69ae5c9f33906b85df649b6436cd2eff64b3a0039417c440b33472
+    - https://codeberg.org/GramEditor/gram/archive/3.4.1.tar.gz : 07b849e711c01f2434704b180c16b6b578c3c6aa00a87857c36bd0ac6993aee0
 summary     : A code editor for humanoid apes and grumpy toads
 description : |
     Gram is a powerful and modern source code editor.
