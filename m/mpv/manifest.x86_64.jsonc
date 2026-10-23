@@ -82,7 +82,7 @@
 				"soname(libpipewire-0.3.so.0(x86_64))",
 				"soname(libplacebo.so.360(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
-				"soname(libsndio.so.7(x86_64))",
+				"soname(libsndio.so.9(x86_64))",
 				"soname(libswresample.so.7(x86_64))",
 				"soname(libswscale.so.10(x86_64))",
 				"soname(libuchardet.so.0(x86_64))",
@@ -224,7 +224,7 @@
 				"soname(libpipewire-0.3.so.0(x86_64))",
 				"soname(libplacebo.so.360(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
-				"soname(libsndio.so.7(x86_64))",
+				"soname(libsndio.so.9(x86_64))",
 				"soname(libswresample.so.7(x86_64))",
 				"soname(libswscale.so.10(x86_64))",
 				"soname(libuchardet.so.0(x86_64))",
@@ -358,6 +358,6 @@
 		}
 	},
 	"source-name": "mpv",
-	"source-release": "20",
+	"source-release": "21",
 	"source-version": "0.41.0"
 }
