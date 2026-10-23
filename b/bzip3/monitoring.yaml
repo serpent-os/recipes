@@ -1,10 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 301351
   rss: https://github.com/kspalaiologos/bzip3/releases.atom
 security:
+  # Last checked 2026-10-23
   cpe:
   - vendor: bzip3_project
     product: bzip3

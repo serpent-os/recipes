@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : bzip3
-version     : "1.5.4"
-release     : 6
+version     : "1.5.5"
+release     : 7
 homepage    : https://github.com/kspalaiologos/bzip3
 upstreams   :
-    - https://github.com/kspalaiologos/bzip3/releases/download/1.5.4/bzip3-1.5.4.tar.xz : fac65d7f39ae73c1c9221a97075eebeb27696299b02ad1e01ec039ab0eca9fca
+    - https://github.com/kspalaiologos/bzip3/releases/download/1.5.5/bzip3-1.5.5.tar.xz : dc4e30d4581e5b2c46ed32f4320f03ba21474afc1e89e24dda3879307a61b010
 summary     : A better and stronger spiritual successor to BZip2
 description : |
     A better, faster and stronger spiritual successor to BZip2. Features higher compression ratios and better performance thanks to a order-0 context mixing entropy coder, a fast Burrows-Wheeler transform code making use of suffix arrays and a RLE with Lempel Ziv+Prediction pass based on LZ77-style string matching and PPM-style context modeling.
