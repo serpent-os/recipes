@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : git-lfs
-version     : "3.8.0"
-release     : 5
+version     : "3.8.1"
+release     : 6
 homepage    : https://git-lfs.github.com
 upstreams   :
-    - https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-v3.8.0.tar.gz : 4f75492c6832038fa73d39a45316657208bb6caa23b273451cb4ec2358d42ccb
+    - https://github.com/git-lfs/git-lfs/releases/download/v3.8.1/git-lfs-v3.8.1.tar.gz : 1939307bef808580f7c8954ede7072889d7e76721f5d6fdc4ab110bf907330ab
 summary     : A command line extension and specification for managing large files with Git.
 description : |
     A command line extension and specification for managing large files with Git.

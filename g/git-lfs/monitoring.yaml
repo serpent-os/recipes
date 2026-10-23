@@ -1,8 +1,9 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 releases:
   id: 11551
   rss: https://github.com/git-lfs/git-lfs/releases.atom
 security:
-  cpe: ~ # No CPE found, last checked (2025-09-10)
+  # Last checked 2026-10-23
+  cpe: ~
