@@ -24,12 +24,12 @@
 				"/usr/lib/python3.14/site-packages/_distutils_hack/__pycache__/override.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/_distutils_hack/override.py",
 				"/usr/lib/python3.14/site-packages/distutils-precedence.pth",
-				"/usr/lib/python3.14/site-packages/setuptools-84.0.0.dist-info/METADATA",
-				"/usr/lib/python3.14/site-packages/setuptools-84.0.0.dist-info/RECORD",
-				"/usr/lib/python3.14/site-packages/setuptools-84.0.0.dist-info/WHEEL",
-				"/usr/lib/python3.14/site-packages/setuptools-84.0.0.dist-info/entry_points.txt",
-				"/usr/lib/python3.14/site-packages/setuptools-84.0.0.dist-info/licenses/LICENSE",
-				"/usr/lib/python3.14/site-packages/setuptools-84.0.0.dist-info/top_level.txt",
+				"/usr/lib/python3.14/site-packages/setuptools-84.2.1.dist-info/METADATA",
+				"/usr/lib/python3.14/site-packages/setuptools-84.2.1.dist-info/RECORD",
+				"/usr/lib/python3.14/site-packages/setuptools-84.2.1.dist-info/WHEEL",
+				"/usr/lib/python3.14/site-packages/setuptools-84.2.1.dist-info/entry_points.txt",
+				"/usr/lib/python3.14/site-packages/setuptools-84.2.1.dist-info/licenses/LICENSE",
+				"/usr/lib/python3.14/site-packages/setuptools-84.2.1.dist-info/top_level.txt",
 				"/usr/lib/python3.14/site-packages/setuptools/__init__.py",
 				"/usr/lib/python3.14/site-packages/setuptools/__pycache__/__init__.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/setuptools/__pycache__/__init__.cpython-314.pyc",
@@ -463,12 +463,12 @@
 				"python(jaraco-text)"
 			],
 			"files": [
-				"/usr/share/python-wheels/setuptools-84.0.0-py3-none-any.whl"
+				"/usr/share/python-wheels/setuptools-84.2.1-py3-none-any.whl"
 			],
 			"name": "python-setuptools-wheel"
 		}
 	},
 	"source-name": "python-setuptools",
-	"source-release": "15",
-	"source-version": "84.0.0"
+	"source-release": "16",
+	"source-version": "84.2.1"
 }
