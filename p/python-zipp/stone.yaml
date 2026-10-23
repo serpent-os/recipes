@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : python-zipp
-version     : "4.1.1"
-release     : 6
+version     : "4.1.2"
+release     : 7
 homepage    : https://pypi.org/project/zipp
 upstreams   :
-    - https://files.pythonhosted.org/packages/source/z/zipp/zipp-4.1.1.tar.gz : 7ebb7a44c021b29fd8dbd7cce6812d0d7b5b454521f93cc71af6ccd155aaa70b
+    - https://files.pythonhosted.org/packages/source/z/zipp/zipp-4.1.2.tar.gz : cf474b90b07ea932637e17c6b9479de2b2882900b0d311bdaf4f5c000a15a97f
 summary     : Backport of pathlib-compatible object wrapper for zip files
 description : |
     A pathlib-compatible Zipfile object wrapper. Official backport of the standard library Path object.
