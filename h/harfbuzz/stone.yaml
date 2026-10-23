@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : harfbuzz
-version     : "14.6.0"
-release     : 42
+version     : "15.0.0"
+release     : 43
 homepage    : https://harfbuzz.github.io/
 upstreams   :
-    - https://github.com/harfbuzz/harfbuzz/releases/download/14.6.0/harfbuzz-14.6.0.tar.xz : d07a007327277708a2a73ae437887cdbaf282937f6d03ca5467723e9099af586
+    - https://github.com/harfbuzz/harfbuzz/releases/download/15.0.0/harfbuzz-15.0.0.tar.xz : 968536e9abd782f07f7954044c0c4020199fcdd39b41d221ec42d2a3be4a44df
 summary     : HarfBuzz text shaping engine
 description : |
     HarfBuzz is a text shaping library. Using the HarfBuzz library allows programs to convert a sequence of Unicode input into properly formatted and positioned glyph output—for any writing system and language.
