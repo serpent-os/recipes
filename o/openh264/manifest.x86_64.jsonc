@@ -13,7 +13,7 @@
 				"soname(libstdc++.so.6(x86_64))"
 			],
 			"files": [
-				"/usr/lib/libopenh264.so.2.6.0",
+				"/usr/lib/libopenh264.so.2.7.0",
 				"/usr/lib/libopenh264.so.8"
 			],
 			"name": "openh264",
@@ -43,6 +43,6 @@
 		}
 	},
 	"source-name": "openh264",
-	"source-release": "3",
-	"source-version": "2.6.0"
+	"source-release": "4",
+	"source-version": "2.7.0"
 }

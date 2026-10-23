@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : openh264
-version     : "2.6.0"
-release     : 3
+version     : "2.7.0"
+release     : 4
 upstreams   :
-    - https://github.com/cisco/openh264/archive/refs/tags/v2.6.0.tar.gz : 558544ad358283a7ab2930d69a9ceddf913f4a51ee9bf1bfb9e377322af81a69
+    - https://github.com/cisco/openh264/archive/refs/tags/v2.7.0.tar.gz : 5178775c8b440073e70920e97d195efff721c0e56d0a78cc82c919e95d54924d
 homepage    : https://www.openh264.org/
 license     : BSD-2-Clause
 summary     : H.264 codec library
