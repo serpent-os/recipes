@@ -94,7 +94,7 @@
 				"soname(libqrcodegencpp.so.1(x86_64))",
 				"soname(librist.so.4(x86_64))",
 				"soname(librnnoise.so.0(x86_64))",
-				"soname(libsndio.so.7(x86_64))",
+				"soname(libsndio.so.9(x86_64))",
 				"soname(libspeexdsp.so.1(x86_64))",
 				"soname(libsrt.so.1.5(x86_64))",
 				"soname(libstdc++.so.6(x86_64))",
@@ -2577,6 +2577,6 @@
 		}
 	},
 	"source-name": "obs-studio",
-	"source-release": "3",
+	"source-release": "4",
 	"source-version": "32.2.2"
 }

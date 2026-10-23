@@ -3,7 +3,7 @@
 
 name        : obs-studio
 version     : "32.2.2"
-release     : 3
+release     : 4
 homepage    : https://github.com/obsproject/obs-studio
 upstreams   :
     - https://github.com/obsproject/obs-studio/releases/download/32.2.2/OBS-Studio-32.2.2-Sources.tar.gz:
