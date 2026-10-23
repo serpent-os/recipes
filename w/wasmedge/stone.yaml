@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2025 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : wasmedge
-version     : "0.18.0"
-release     : 3
+version     : "0.18.1"
+release     : 4
 upstreams   :
-    - https://github.com/WasmEdge/WasmEdge/releases/download/0.18.0/WasmEdge-0.18.0-src.tar.gz : c3ef59723d8e5e09021bb9ed7ec55c596b33969b95bc1fbfb0ce1d21075e061e
+    - https://github.com/WasmEdge/WasmEdge/releases/download/0.18.1/WasmEdge-0.18.1-src.tar.gz : 589031c828628fbae8576e9d6ef497ac9888bca964dacacaa79ad9c82f9538bc
 homepage    : https://wasmedge.org/
 license     : Apache-2.0 AND CC0-1.0
 summary     : High performance WebAssembly Virtual Machine
