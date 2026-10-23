@@ -11,13 +11,11 @@
 				"python(zipp)"
 			],
 			"files": [
-				"/usr/lib/python3.14/site-packages/importlib_metadata-9.0.1.dist-info/METADATA",
-				"/usr/lib/python3.14/site-packages/importlib_metadata-9.0.1.dist-info/RECORD",
-				"/usr/lib/python3.14/site-packages/importlib_metadata-9.0.1.dist-info/WHEEL",
-				"/usr/lib/python3.14/site-packages/importlib_metadata-9.0.1.dist-info/licenses/LICENSE",
-				"/usr/lib/python3.14/site-packages/importlib_metadata-9.0.1.dist-info/scm_file_list.json",
-				"/usr/lib/python3.14/site-packages/importlib_metadata-9.0.1.dist-info/scm_version.json",
-				"/usr/lib/python3.14/site-packages/importlib_metadata-9.0.1.dist-info/top_level.txt",
+				"/usr/lib/python3.14/site-packages/importlib_metadata-10.0.0.dist-info/METADATA",
+				"/usr/lib/python3.14/site-packages/importlib_metadata-10.0.0.dist-info/RECORD",
+				"/usr/lib/python3.14/site-packages/importlib_metadata-10.0.0.dist-info/WHEEL",
+				"/usr/lib/python3.14/site-packages/importlib_metadata-10.0.0.dist-info/licenses/LICENSE",
+				"/usr/lib/python3.14/site-packages/importlib_metadata-10.0.0.dist-info/top_level.txt",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__init__.py",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/__init__.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/__init__.cpython-314.pyc",
@@ -25,8 +23,6 @@
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/_adapters.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/_collections.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/_collections.cpython-314.pyc",
-				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/_compat.cpython-314.opt-1.pyc",
-				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/_compat.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/_context.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/_context.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/_functools.cpython-314.opt-1.pyc",
@@ -41,7 +37,12 @@
 				"/usr/lib/python3.14/site-packages/importlib_metadata/__pycache__/diagnose.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/_adapters.py",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/_collections.py",
-				"/usr/lib/python3.14/site-packages/importlib_metadata/_compat.py",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/_compat/__init__.py",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/_compat/__pycache__/__init__.cpython-314.opt-1.pyc",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/_compat/__pycache__/__init__.cpython-314.pyc",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/_compat/__pycache__/localize.cpython-314.opt-1.pyc",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/_compat/__pycache__/localize.cpython-314.pyc",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/_compat/localize.py",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/_context.py",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/_functools.py",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/_itertools.py",
@@ -52,7 +53,10 @@
 				"/usr/lib/python3.14/site-packages/importlib_metadata/compat/__pycache__/__init__.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/compat/__pycache__/py311.cpython-314.opt-1.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/compat/__pycache__/py311.cpython-314.pyc",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/compat/__pycache__/py312.cpython-314.opt-1.pyc",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/compat/__pycache__/py312.cpython-314.pyc",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/compat/py311.py",
+				"/usr/lib/python3.14/site-packages/importlib_metadata/compat/py312.py",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/diagnose.py",
 				"/usr/lib/python3.14/site-packages/importlib_metadata/py.typed"
 			],
@@ -63,6 +67,6 @@
 		}
 	},
 	"source-name": "python-importlib_metadata",
-	"source-release": "5",
-	"source-version": "9.0.1"
+	"source-release": "6",
+	"source-version": "10.0.0"
 }
