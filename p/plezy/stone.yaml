@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : plezy
-version     : "2.23.0"
-release     : 16
+version     : "2.24.0"
+release     : 17
 homepage    : https://plezy.app/
 upstreams   :
-    - https://github.com/edde746/plezy/archive/refs/tags/2.23.0.tar.gz:
-        hash: e47567e1a36a646f364b03e2232ad1634d2982d60c88c84f6bac68ffe1b6bc34
+    - https://github.com/edde746/plezy/archive/refs/tags/2.24.0.tar.gz:
+        hash: ac5a9f5806aee56266c26ef91364af32fae164f3e7dc4d259be4795d449d252f
         unpackdir: plezy
     # https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json
     - https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.7-stable.tar.xz:
