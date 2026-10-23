@@ -44,7 +44,7 @@
 				"/usr/bin/test-unit",
 				"/usr/bin/typeprof",
 				"/usr/lib/libruby.so.4.0",
-				"/usr/lib/libruby.so.4.0.8",
+				"/usr/lib/libruby.so.4.0.9",
 				"/usr/lib/ruby/4.0/English.rb",
 				"/usr/lib/ruby/4.0/bundled_gems.rb",
 				"/usr/lib/ruby/4.0/bundler.rb",
@@ -3059,6 +3059,6 @@
 		}
 	},
 	"source-name": "ruby",
-	"source-release": "21",
-	"source-version": "4.0.8"
+	"source-release": "22",
+	"source-version": "4.0.9"
 }
