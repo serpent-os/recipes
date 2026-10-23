@@ -51,9 +51,9 @@
 				"/usr/bin/dbxtool",
 				"/usr/bin/fwupdmgr",
 				"/usr/bin/fwupdtool",
-				"/usr/lib/fwupd-2.1.8/libfwupdengine.so",
-				"/usr/lib/fwupd-2.1.8/libfwupdplugin.so",
-				"/usr/lib/fwupd-2.1.8/libfwupdutil.so",
+				"/usr/lib/fwupd-2.1.9/libfwupdengine.so",
+				"/usr/lib/fwupd-2.1.9/libfwupdplugin.so",
+				"/usr/lib/fwupd-2.1.9/libfwupdutil.so",
 				"/usr/lib/fwupd/fwupd/fwupd",
 				"/usr/lib/fwupd/installed-tests/fwupd/acpi-dmar-self-test",
 				"/usr/lib/fwupd/installed-tests/fwupd/acpi-facp-self-test",
@@ -638,9 +638,9 @@
 				"binary(dbxtool)",
 				"binary(fwupdmgr)",
 				"binary(fwupdtool)",
-				"soname(fwupd-2.1.8/libfwupdengine.so(x86_64))",
-				"soname(fwupd-2.1.8/libfwupdplugin.so(x86_64))",
-				"soname(fwupd-2.1.8/libfwupdutil.so(x86_64))",
+				"soname(fwupd-2.1.9/libfwupdengine.so(x86_64))",
+				"soname(fwupd-2.1.9/libfwupdplugin.so(x86_64))",
+				"soname(fwupd-2.1.9/libfwupdutil.so(x86_64))",
 				"soname(libfwupd.so.3(x86_64))"
 			]
 		},
@@ -734,6 +734,6 @@
 		}
 	},
 	"source-name": "fwupd",
-	"source-release": "2",
-	"source-version": "2.1.8"
+	"source-release": "3",
+	"source-version": "2.1.9"
 }

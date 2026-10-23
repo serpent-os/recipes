@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : fwupd
-version     : "2.1.8"
-release     : 2
+version     : "2.1.9"
+release     : 3
 homepage    : https://fwupd.org/
 upstreams   :
-    - https://github.com/fwupd/fwupd/releases/download/2.1.8/fwupd-2.1.8.tar.xz : 8724305a52621ab6586de3290f6a78edb8393a4aa4bcb6c63f9228ae5e00acf8
+    - https://github.com/fwupd/fwupd/releases/download/2.1.9/fwupd-2.1.9.tar.xz : d45f3cbac06f1f6da300fb7c148237ff15c12df9981824e925bc2f3722bff233
 summary     : A system daemon to allow session software to update firmware
 description : |
     fwupd is a simple daemon to allow session software to update device firmware on your local machine. It's designed for desktops, but also usable on phones and headless servers. You can either use a GUI software manager like GNOME Software to view and apply updates, the command-line tool or the system D-Bus interface directly. Updating firmware on Linux is now automatic, safe and reliable.

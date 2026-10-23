@@ -5,6 +5,7 @@ releases:
   id: 5833
   rss: https://github.com/fwupd/fwupd/releases.atom
 security:
+  # Last checked 2026-10-23
   cpe:
   - vendor: fwupd
     product: fwupd
