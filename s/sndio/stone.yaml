@@ -1,12 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AerynOS Developers
+# SPDX-FileCopyrightText: 2026 aerynOS Developers
 # SPDX-License-Identifier: MPL-2.0
 
 name        : sndio
-version     : "1.10.0"
-release     : 5
+version     : "1.11.0"
+release     : 6
 homepage    : https://sndio.org
 upstreams   :
-    - https://sndio.org/sndio-1.10.0.tar.gz : bebd3bfd01c50c9376cf3e7814b9379bed9e17d0393b5113b7eb7a3d0d038c54
+    - https://sndio.org/sndio-1.11.0.tar.gz : 3e274b5968aa863090d6c6857d7df4f432cd0bafbe4d27312bdca34726eff1e8
 summary     : Audio and MIDI framework
 description : |
     Sndio is a small audio and MIDI framework. It provides a lightweight audio & MIDI server and a fully documented user-space API to access either the server or the hardware directly in a uniform way. Sndio is designed to work for desktop applications, but pays special attention to synchronization mechanisms and reliability required by music applications. Reliability through simplicity are part of the project goals.
@@ -14,6 +14,7 @@ license     :
     - ISC
 builddeps   :
     - pkgconfig(alsa)
+    - pkgconfig(libbsd)
 setup       : |
     ./configure --prefix=%(prefix) \
                 --libdir=%(libdir) \

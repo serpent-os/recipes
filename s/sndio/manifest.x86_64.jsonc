@@ -4,11 +4,13 @@
 	"packages": {
 		"sndio": {
 			"build-depends": [
-				"pkgconfig(alsa)"
+				"pkgconfig(alsa)",
+				"pkgconfig(libbsd)"
 			],
 			"depends": [
 				"interpreter(/usr/lib/ld-linux-x86-64.so.2(x86_64))",
 				"soname(libasound.so.2(x86_64))",
+				"soname(libbsd.so.0(x86_64))",
 				"soname(libc.so.6(x86_64))"
 			],
 			"files": [
@@ -16,9 +18,8 @@
 				"/usr/bin/midicat",
 				"/usr/bin/sndioctl",
 				"/usr/bin/sndiod",
-				"/usr/lib/libsndio.so.7",
-				"/usr/lib/libsndio.so.7.0",
-				"/usr/lib/libsndio.so.7.3",
+				"/usr/lib/libsndio.so.9",
+				"/usr/lib/libsndio.so.9.0",
 				"/usr/share/man/man1/aucat.1",
 				"/usr/share/man/man1/midicat.1",
 				"/usr/share/man/man1/sndioctl.1",
@@ -31,12 +32,13 @@
 				"binary(midicat)",
 				"binary(sndioctl)",
 				"binary(sndiod)",
-				"soname(libsndio.so.7(x86_64))"
+				"soname(libsndio.so.9(x86_64))"
 			]
 		},
 		"sndio-devel": {
 			"build-depends": [
-				"pkgconfig(alsa)"
+				"pkgconfig(alsa)",
+				"pkgconfig(libbsd)"
 			],
 			"depends": [
 				"sndio"
@@ -61,6 +63,7 @@
 				"/usr/share/man/man3/sio_nfds.3",
 				"/usr/share/man/man3/sio_onmove.3",
 				"/usr/share/man/man3/sio_onvol.3",
+				"/usr/share/man/man3/sio_onxrun.3",
 				"/usr/share/man/man3/sio_open.3",
 				"/usr/share/man/man3/sio_pollfd.3",
 				"/usr/share/man/man3/sio_read.3",
@@ -87,6 +90,6 @@
 		}
 	},
 	"source-name": "sndio",
-	"source-release": "5",
-	"source-version": "1.10.0"
+	"source-release": "6",
+	"source-version": "1.11.0"
 }
