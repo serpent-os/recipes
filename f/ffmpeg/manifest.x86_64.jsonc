@@ -648,7 +648,7 @@
 				"soname(libdrm.so.2(x86_64))",
 				"soname(libjack.so.0(x86_64))",
 				"soname(libpulse.so.0(x86_64))",
-				"soname(libsndio.so.7(x86_64))",
+				"soname(libsndio.so.9(x86_64))",
 				"soname(libv4l2.so.0(x86_64))",
 				"soname(libxcb-shape.so.0(x86_64))",
 				"soname(libxcb-shm.so.0(x86_64))",
@@ -1929,6 +1929,6 @@
 		}
 	},
 	"source-name": "ffmpeg",
-	"source-release": "42",
+	"source-release": "43",
 	"source-version": "9.0.2"
 }
