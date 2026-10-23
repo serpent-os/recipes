@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : keepassxc
-version     : "2.7.12"
-release     : 10
+version     : "2.8.0"
+release     : 11
 homepage    : https://keepassxc.org/
 upstreams   :
-    - https://github.com/keepassxreboot/keepassxc/archive/refs/tags/2.7.12.tar.gz : 8a6812a6e24484af77a75bdc9cf36aaa4c5f6852c2ea664180fe6a5c0dbada6e
+    - https://github.com/keepassxreboot/keepassxc/archive/refs/tags/2.8.0.tar.gz : ea44ba7ced55c8437eade22e6ed22b3c48950220a789d63f422b23c401f95db8
 summary     : Cross-platform community-driven port of Keepass password manager
 description : |
     Cross-platform community-driven port of Keepass password manager
@@ -16,13 +16,17 @@ license     :
     - LGPL-2.1
 builddeps   :
     - binary(asciidoctor)
-    - pkgconfig(Qt5Core)
-    - pkgconfig(Qt5Qml)
-    - pkgconfig(Qt5Svg)
-    - pkgconfig(Qt5UiTools)
-    - pkgconfig(Qt5X11Extras)
+    - cmake(Qt6Concurrent)
+    - cmake(Qt6Core)
+    - cmake(Qt6DBus)
+    - cmake(Qt6Gui)
+    - cmake(Qt6LinguistTools)
+    - cmake(Qt6Network)
+    - cmake(Qt6Svg)
+    - cmake(Qt6Test)
+    - cmake(Qt6Widgets)
     - pkgconfig(botan-3)
-    - pkgconfig(libargon2)
+    - pkgconfig(libkeyutils)
     - pkgconfig(libpcsclite)
     - pkgconfig(libqrencode)
     - pkgconfig(libusb-1.0)
@@ -30,14 +34,15 @@ builddeps   :
     - pkgconfig(readline)
     - pkgconfig(xtst)
 rundeps     :
-    - qt5-wayland
+    - qt6-wayland
 setup       : |
     %cmake \
         -DKEEPASSXC_BUILD_TYPE=Release \
-        -DWITH_GUI_TESTS=ON \
-        -DWITH_XC_ALL=ON \
-        -DWITH_XC_UPDATECHECK=OFF
+        -DKPXC_FEATURE_UPDATES=OFF
 build       : |
     %cmake_build
 install     : |
     %cmake_install
+check       : |
+    # C locale fails https://github.com/keepassxreboot/keepassxc/issues/11813
+    env LC_ALL=en_US.UTF-8 %cmake_test -E testcli
