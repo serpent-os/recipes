@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name        : budgie-backgrounds
-version     : "4.1"
-release     : 1
+version     : "4.2"
+release     : 2
 homepage    : https://github.com/BuddiesOfBudgie/budgie-backgrounds
 upstreams   :
-    - https://github.com/BuddiesOfBudgie/budgie-backgrounds/releases/download/v4.1/budgie-backgrounds-v4.1.tar.xz : c760da9869f3ef7524ffc19936c99bbb54f728ec4b798caecac470a981711e41
+    - https://github.com/BuddiesOfBudgie/budgie-backgrounds/releases/download/v4.2/budgie-backgrounds-v4.2.tar.xz : 9d4dfd71982283b767c3e1b994b34aeeb51167c1d36e7d19f130b24b5647c128
 summary     : Budgie Backgrounds is the default set of background images for the Budgie Desktop
 description : |
     Budgie Backgrounds is the default set of background images for the Budgie Desktop.
